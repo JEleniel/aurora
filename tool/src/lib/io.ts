@@ -65,3 +65,61 @@ export async function saveSvg(filename: string, svg: string) {
   // write as .svg
   return saveText(filename.endsWith('.svg') ? filename : `${filename}.svg`, svg)
 }
+
+// Recent files: prefer Tauri app-local storage, fallback to localStorage
+export async function getRecentFiles(): Promise<string[]> {
+  try {
+    const { appLocalDataDir } = await import('@tauri-apps/api/path')
+    const { fs } = await import('@tauri-apps/api')
+    const dir = await appLocalDataDir()
+    const path = `${dir}/aurora_recent.json`
+    try {
+      const contents = await fs.readText(path)
+      const parsed = JSON.parse(contents)
+      return Array.isArray(parsed) ? parsed : []
+    } catch (e) {
+      return []
+    }
+  } catch (e) {
+    // fallback to localStorage
+    try {
+      const raw = localStorage.getItem('aurora_recent')
+      const parsed = raw ? JSON.parse(raw) : []
+      return Array.isArray(parsed) ? parsed : []
+    } catch (e2) {
+      return []
+    }
+  }
+}
+
+export async function addRecentFile(p: string) {
+  if (!p) return
+  try {
+    const { appLocalDataDir } = await import('@tauri-apps/api/path')
+    const { fs } = await import('@tauri-apps/api')
+    const dir = await appLocalDataDir()
+    const path = `${dir}/aurora_recent.json`
+    let items: string[] = []
+    try {
+      const contents = await fs.readText(path)
+      items = JSON.parse(contents)
+      if (!Array.isArray(items)) items = []
+    } catch (e) {
+      items = []
+    }
+    // dedupe and unshift
+    items = [p].concat(items.filter((x) => x !== p)).slice(0, 10)
+    await fs.writeFile({ path, contents: JSON.stringify(items) })
+    return
+  } catch (e) {
+    // fallback
+    try {
+      const raw = localStorage.getItem('aurora_recent')
+      const items = raw ? JSON.parse(raw) : []
+      const arr = [p].concat((Array.isArray(items) ? items : []).filter((x) => x !== p)).slice(0, 10)
+      localStorage.setItem('aurora_recent', JSON.stringify(arr))
+    } catch (e2) {
+      // ignore
+    }
+  }
+}

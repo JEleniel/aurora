@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import DiagramPreview from './components/DiagramPreview'
 import MonacoEditor from './components/MonacoEditor'
 import Toolbar from './components/Toolbar'
+import StatusBar from './components/StatusBar'
 import schemaIndex from '../../schemas/card.schema.json'
 
 export default function App(): JSX.Element {
   const [text, setText] = useState<string>('')
+
+  const [status, setStatus] = useState<string | undefined>(undefined)
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
@@ -15,7 +18,7 @@ export default function App(): JSX.Element {
           <div className="text-sm opacity-80">Dark • Desktop • Tauri</div>
         </header>
 
-        <Toolbar source={text} onOpen={setText} />
+        <Toolbar source={text} onOpen={setText} onStatus={setStatus} />
 
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-5">
@@ -33,6 +36,7 @@ export default function App(): JSX.Element {
           </div>
         </div>
       </div>
+      <StatusBar message={status} />
     </div>
   )
 }

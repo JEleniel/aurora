@@ -36,4 +36,11 @@
 		"eslint-config-prettier": "^8.0.0",
 		"eslint-plugin-react": "^7.0.0"
 	}
+	,
+	"lint-staged": {
+		"src/**/*.{ts,tsx}": [
+			"eslint --fix",
+			"prettier --write"
+		]
+	}
 }
