@@ -7,22 +7,22 @@ packaged with Tauri for native desktop support.
 Quick start
 
 1. Install Node (16+) and Rust toolchain (for Tauri). On Linux, install `libwebkit2gtk`.
-2. From repo root:
+2. From repo root (preferred: `pnpm`):
 
 ```bash
 cd tool
-npm install
-npm run dev   # starts Vite dev server
+pnpm install
+pnpm run dev   # starts Vite dev server
 # in another terminal (requires Rust + Tauri deps):
-npm run tauri:dev
+pnpm run tauri:dev
 ```
 
 Build
 
 ```bash
 cd tool
-npm run build
-npm run tauri:build
+pnpm run build
+pnpm run tauri:build
 ```
 
 Notes
