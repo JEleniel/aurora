@@ -1,0 +1,21 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "AURORA Link",
+	"description": "Typed relationship connecting two cards.",
+	"type": "object",
+	"required": ["type", "source", "target"],
+	"properties": {
+		"id": { "type": "string" },
+		"type": {
+			"type": "string",
+			"description": "Link type",
+			"enum": ["satisfies", "refines", "depends-on", "verified-by", "derives-from", "related-to"]
+		},
+		"source": { "type": "string", "description": "Source card id" },
+		"target": { "type": "string", "description": "Target card id" },
+		"rationale": { "type": "string" },
+		"strength": { "type": "string", "enum": ["weak", "normal", "strong"] },
+		"metadata": { "type": "object", "additionalProperties": true }
+	},
+	"additionalProperties": false
+}

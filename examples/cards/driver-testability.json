@@ -1,0 +1,13 @@
+{
+	"id": "driver:testability",
+	"type": "driver",
+	"name": "Treat Tests as First-Class Artifacts",
+	"description": "Treat tests and acceptance criteria as first-class cards and require links from requirements to tests to support automated verification.",
+	"version": "1.0.0",
+	"status": "proposed",
+	"attributes": { "verification_level": "automated", "automated": true },
+	"relations": ["driver:root"],
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "project definition", "owner": "JEleniel", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

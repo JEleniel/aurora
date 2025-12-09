@@ -1,0 +1,17 @@
+{
+	"id": "driver:root",
+	"type": "driver",
+	"name": "Create a Unified, Simple Architectural Practice",
+	"description": "Create a Simple, Unified Architectural Practice that is equally readable by both human and machine agents that still captures full traceability but uses simple approaches and diagrams.",
+	"version": "1.0.0",
+	"status": "proposed",
+	"attributes": {},
+	"relations": [],
+	"audit_history": [
+		{
+			"event": "created",
+			"by": "JEleniel",
+			"event_time": "2025-12-09T00:00:00Z"
+		}
+	]
+}

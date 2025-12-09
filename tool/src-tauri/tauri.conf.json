@@ -1,0 +1,17 @@
+{
+  "build": {
+    "beforeBuildCommand": "cd .. && npm run build",
+    "beforeDevCommand": "cd .. && npm run dev",
+    "devPath": "http://localhost:5173",
+    "distDir": "../dist"
+  },
+  "tauri": {
+    "bundle": {
+      "identifier": "dev.jeleniel.aurora",
+      "icon": [],
+      "targets": ["deb"],
+      "resources": []
+    },
+    "windows": []
+  }
+}

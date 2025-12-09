@@ -1,0 +1,14 @@
+{
+	"id": "behavior:submit-change-request",
+	"type": "behavior",
+	"name": "Submit Change Request",
+	"description": "Stakeholders submit change requests for review, approval, and scheduling.",
+	"version": "1.0.0",
+	"status": "proposed",
+	"priority": "medium",
+	"owner": "governance-team",
+	"relations": ["actor:business-stakeholder"],
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "governance process", "owner": "governance-team", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

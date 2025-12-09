@@ -1,0 +1,17 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "AURORA View",
+	"description": "A named projection (collection) of cards for a stakeholder or task.",
+	"type": "object",
+	"required": ["id", "type", "name", "cards"],
+	"properties": {
+		"id": { "type": "string" },
+		"type": { "type": "string", "const": "view" },
+		"name": { "type": "string" },
+		"description": { "type": "string" },
+		"cards": { "type": "array", "items": { "type": "string" } },
+		"displayRules": { "type": "object", "additionalProperties": true },
+		"metadata": { "type": "object", "additionalProperties": true }
+	},
+	"additionalProperties": false
+}

@@ -1,0 +1,23 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "AURORA Logical Component Card",
+	"description": "Logical component, service or module within the logical view.",
+	"allOf": [
+		{ "$ref": "./card.schema.json" },
+		{
+			"type": "object",
+			"properties": {
+				"type": { "const": "logical-component" },
+				"attributes": {
+					"type": "object",
+					"properties": {
+						"responsibility": { "type": "string" },
+						"interfaces": { "type": "array", "items": { "type": "string" } }
+					},
+					"additionalProperties": true
+				}
+			},
+			"required": ["type"]
+		}
+	]
+}

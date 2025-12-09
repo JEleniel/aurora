@@ -1,0 +1,23 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "AURORA Interface / Contract Card",
+	"description": "Interface or contract card describing an API, message schema, or contract.",
+	"allOf": [
+		{ "$ref": "./card.schema.json" },
+		{
+			"type": "object",
+			"properties": {
+				"type": { "const": "interface" },
+				"attributes": {
+					"type": "object",
+					"properties": {
+						"schema": { "type": "object" },
+						"protocol": { "type": "string" }
+					},
+					"additionalProperties": true
+				}
+			},
+			"required": ["type"]
+		}
+	]
+}

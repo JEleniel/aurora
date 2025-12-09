@@ -1,0 +1,23 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "AURORA Deployable Node Card",
+	"description": "Physical deployment node, host, or environment artifact.",
+	"allOf": [
+		{ "$ref": "./card.schema.json" },
+		{
+			"type": "object",
+			"properties": {
+				"type": { "const": "deployable-node" },
+				"attributes": {
+					"type": "object",
+					"properties": {
+						"capacity": { "type": "string" },
+						"os": { "type": "string" }
+					},
+					"additionalProperties": true
+				}
+			},
+			"required": ["type"]
+		}
+	]
+}

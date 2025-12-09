@@ -1,0 +1,24 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "AURORA Requirement Card",
+	"description": "Requirement card: structured requirement artifact (one requirement per card).",
+	"allOf": [
+		{ "$ref": "./card.schema.json" },
+		{
+			"type": "object",
+			"properties": {
+				"type": { "const": "requirement" },
+				"attributes": {
+					"type": "object",
+					"properties": {
+						"priority": { "type": "string" },
+						"classification": { "type": "string" },
+						"acceptance_criteria": { "type": "string" }
+					},
+					"additionalProperties": true
+				}
+			},
+			"required": ["type"]
+		}
+	]
+}

@@ -1,0 +1,14 @@
+{
+	"id": "behavior:user-authentication",
+	"type": "behavior",
+	"name": "Authenticate User",
+	"description": "Users authenticate to the system to obtain access tokens and personalized sessions.",
+	"version": "1.0.0",
+	"status": "proposed",
+	"priority": "high",
+	"owner": "identity-team",
+	"relations": ["actor:end-user"],
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "use-cases", "owner": "identity-team", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

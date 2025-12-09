@@ -1,0 +1,13 @@
+{
+	"id": "driver:governance-collaboration",
+	"type": "driver",
+	"name": "Support Governance and Collaboration Workflows",
+	"description": "Support human+agent workflows for proposing, reviewing, approving, and evolving cards; preserve audit and provenance for auditability.",
+	"version": "1.0.0",
+	"status": "proposed",
+	"attributes": { "workflow": ["propose", "review", "approve"], "audit_required": true },
+	"relations": ["driver:root"],
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "project definition", "owner": "JEleniel", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

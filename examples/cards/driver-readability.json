@@ -1,0 +1,16 @@
+{
+	"id": "driver:readability",
+	"type": "driver",
+	"name": "Ensure Readability for Humans and Machines",
+	"description": "Ensure artifacts are equally readable by humans and machines: clear field names, plain-language descriptions, examples, and deterministic JSON serialization.",
+	"version": "1.0.0",
+	"status": "proposed",
+	"attributes": {
+		"priority": "high",
+		"owner": "arch-team"
+	},
+	"relations": ["driver:root"],
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "project definition", "owner": "JEleniel", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

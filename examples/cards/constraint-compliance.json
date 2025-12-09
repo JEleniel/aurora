@@ -1,0 +1,15 @@
+{
+	"id": "constraint:compliance",
+	"type": "constraint",
+	"name": "Enforce Data Residency",
+	"description": "Persisted data must reside within approved geographic regions to satisfy legal and regulatory requirements.",
+	"classification": "non-functional",
+	"version": "1.0.0",
+	"status": "proposed",
+	"priority": "high",
+	"owner": "security-team",
+	"relations": [],
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "compliance guidance", "owner": "security-team", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

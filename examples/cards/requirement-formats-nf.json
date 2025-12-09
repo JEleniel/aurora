@@ -1,0 +1,21 @@
+{
+	"id": "requirement:formats-determinism",
+	"type": "requirement",
+	"name": "Guarantee Serialization Determinism",
+	"description": "Non-functional requirement: serialization order, field presence and canonicalization must be deterministic across tools producing canonical JSON.",
+	"classification": "non-functional",
+	"version": "1.0.0",
+	"status": "proposed",
+	"priority": "medium",
+	"owner": "platform-team",
+	"relations": ["driver:formats"],
+	"links": ["link:req-formats-nf-driver-formats"],
+	"acceptance_criteria": [
+		"Two independent tooling runs on the same logical model produce byte-for-byte identical canonical JSON outputs",
+		"Canonical sort, stable key ordering and consistent timestamp formats documented"
+	],
+	"rationale": "Derived from `driver:formats` to enable reliable diffing, signing, and caching.",
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "derived from drivers", "owner": "JEleniel", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

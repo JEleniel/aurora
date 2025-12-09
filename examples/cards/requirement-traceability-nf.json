@@ -1,0 +1,21 @@
+{
+	"id": "requirement:traceability-nonfunctional",
+	"type": "requirement",
+	"name": "Provide Traceability Performance Guarantees",
+	"description": "Non-functional requirement for traceability: queries and automated analyses should run within acceptable time bounds for repositories of expected size.",
+	"classification": "non-functional",
+	"version": "1.0.0",
+	"status": "proposed",
+	"priority": "medium",
+	"owner": "platform-team",
+	"relations": ["driver:traceability"],
+	"links": ["link:req-traceability-nf-driver-traceability"],
+	"acceptance_criteria": [
+		"Trace queries return results within 5s for repositories with <= 10k cards",
+		"Indexing or caching strategies documented and validated"
+	],
+	"rationale": "Derived from `driver:traceability` to ensure traceability is practical at scale.",
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "derived from drivers", "owner": "JEleniel", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

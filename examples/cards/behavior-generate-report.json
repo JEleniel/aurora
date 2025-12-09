@@ -1,0 +1,14 @@
+{
+	"id": "behavior:generate-report",
+	"type": "behavior",
+	"name": "Generate Report",
+	"description": "Generate operational or business reports from system data on demand or by schedule.",
+	"version": "1.0.0",
+	"status": "proposed",
+	"priority": "medium",
+	"owner": "analytics-team",
+	"relations": ["actor:business-stakeholder"],
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "reporting requirements", "owner": "analytics-team", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

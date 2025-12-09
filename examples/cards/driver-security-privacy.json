@@ -1,0 +1,13 @@
+{
+	"id": "driver:security-and-privacy",
+	"type": "driver",
+	"name": "Enforce Card-Level Security and Privacy Constraints",
+	"description": "Record security, privacy, and safety constraints at the card level and require traceability for compliance-relevant drivers.",
+	"version": "1.0.0",
+	"status": "proposed",
+	"attributes": { "sensitivity": "medium", "compliance_refs": [] },
+	"relations": ["driver:root"],
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "project definition", "owner": "JEleniel", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

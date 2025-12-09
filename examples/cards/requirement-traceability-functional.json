@@ -1,0 +1,21 @@
+{
+	"id": "requirement:traceability-functional",
+	"type": "requirement",
+	"name": "Maintain End-to-End Traceability",
+	"description": "Ensure every requirement, component, interface, and test links back to one or more drivers so impact analysis and provenance are computable.",
+	"classification": "functional",
+	"version": "1.0.0",
+	"status": "proposed",
+	"priority": "high",
+	"owner": "traceability-team",
+	"relations": ["driver:traceability"],
+	"links": ["link:req-traceability-functional-driver-traceability"],
+	"acceptance_criteria": [
+		"Every requirement has at least one `satisfies` or `derived-from` link to a driver",
+		"Trace queries can produce a path from any artifact to `driver:root`"
+	],
+	"rationale": "Derived from `driver:traceability` to guarantee computable provenance and impact analysis.",
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "derived from drivers", "owner": "JEleniel", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

@@ -1,0 +1,13 @@
+{
+	"id": "driver:simplicity",
+	"type": "driver",
+	"name": "Keep Schema Minimal and Composable",
+	"description": "Keep the core schema minimal and composable; enforce one-element=one-card and avoid unnecessary complexity.",
+	"version": "1.0.0",
+	"status": "proposed",
+	"attributes": { "schema_principle": "minimal" },
+	"relations": ["driver:root"],
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "project definition", "owner": "JEleniel", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

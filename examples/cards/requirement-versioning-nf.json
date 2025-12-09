@@ -1,0 +1,21 @@
+{
+	"id": "requirement:versioning-compatibility",
+	"type": "requirement",
+	"name": "Ensure Backward Compatibility Guarantees",
+	"description": "Non-functional: minor and patch releases must remain backward compatible for consumers of cards unless a major version bump is issued.",
+	"classification": "non-functional",
+	"version": "1.0.0",
+	"status": "proposed",
+	"priority": "medium",
+	"owner": "arch-team",
+	"relations": ["driver:versioning-lifecycle"],
+	"links": ["link:req-versioning-nf-driver-versioning-lifecycle"],
+	"acceptance_criteria": [
+		"Compatibility policy documented and enforced in release process",
+		"Breaking changes require major version and migration notes"
+	],
+	"rationale": "Derived from `driver:versioning-lifecycle` to protect consumers from surprise breaking changes.",
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"provenance": { "source": "derived from drivers", "owner": "JEleniel", "version": "1.0" },
+	"metadata": { "format": "aurora-card-v1", "serialization": ["json"] }
+}

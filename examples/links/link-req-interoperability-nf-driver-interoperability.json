@@ -1,0 +1,11 @@
+{
+	"id": "link:req-interoperability-nf-driver-interoperability",
+	"type": "link",
+	"link_type": "derived-from",
+	"source": "requirement:interoperability-stability",
+	"target": "driver:interoperability",
+	"rationale": "Stability requirement for integration points derived from driver:interoperability.",
+	"strength": "medium",
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"metadata": { "format": "aurora-link-v1", "serialization": ["json"] }
+}

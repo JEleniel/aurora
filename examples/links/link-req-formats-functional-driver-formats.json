@@ -1,0 +1,11 @@
+{
+	"id": "link:req-formats-functional-driver-formats",
+	"type": "link",
+	"link_type": "derived-from",
+	"source": "requirement:formats-json-first",
+	"target": "driver:formats",
+	"rationale": "Functional requirement enforcing JSON-only canonical artifacts.",
+	"strength": "strong",
+	"audit_history": [{ "event": "created", "by": "JEleniel", "event_time": "2025-12-09T00:00:00Z" }],
+	"metadata": { "format": "aurora-link-v1", "serialization": ["json"] }
+}
