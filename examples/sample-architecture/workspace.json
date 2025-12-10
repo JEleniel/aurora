@@ -1,0 +1,24 @@
+{
+  "cards": [
+    {
+      "id": "user",
+      "name": "End User",
+      "type": "actor",
+      "description": "A human user of the system"
+    },
+    {
+      "id": "public-api",
+      "name": "Public API",
+      "type": "interface",
+      "description": "Public HTTP API"
+    }
+  ],
+  "links": [
+    {
+      "source": "user",
+      "target": "public-api",
+      "link_type": "uses",
+      "description": "User calls the public API"
+    }
+  ]
+}

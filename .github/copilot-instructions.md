@@ -4,7 +4,7 @@ All paths are relative to the repository root. Use `pwd` at the beginning of _ev
 
 ## About this Project
 
-AURORA is a documentation only project focused on the design and documentation of a new Architectural style for technology development. It does not and MUST not contain any source code. It is structured for easy deployment via Github Pages, with everything under `docs/`.
+AURORA is focused on the design and documentation of a new Architectural style for technology development. It contains a reference tool implementation in the `tool/` folder. It is structured for easy deployment via Github Pages, with all documentation under `docs/` (the `docs/README.md` is a symbolic link to the root `README.md` so that we only have to maintain one).
 
 ## Prohibited Actions
 
@@ -45,6 +45,7 @@ Your memory must track, at minimum:
 * Use the Mermaid MCP to help generate and validate Mermaid diagrams.
 * Prefer MCP interaction over command line or shell tools.
 * Only run one command at a time; do not chain commands.
+* Don't pend a lot of effort on formatting. I use automated tooling to finalize everything.
 
 ## Markdown
 

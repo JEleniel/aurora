@@ -1,102 +1,111 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"title": "AURORA Card",
-	"description": "Base schema for a single AURORA card (one element = one card).",
-	"type": "object",
-	"required": ["id", "type", "name"],
-	"properties": {
-		"version": {
-			"type": "string",
-			"description": "Semantic version (semver) for the card, e.g. 1.0.0",
-			"pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z-.]+)?(?:\\+[0-9A-Za-z-.]+)?$"
-		},
-		"status": {
-			"type": "string",
-			"description": "Lifecycle status of the card",
-			"enum": ["proposed", "draft", "defined", "approved", "implemented", "verified", "deprecated", "retired"]
-		},
-		"audit_history": {
-			"type": "array",
-			"description": "Audit events for the card",
-			"items": {
-				"type": "object",
-				"properties": {
-					"event": { "type": "string" },
-					"by": { "type": "string" },
-					"event_time": { "type": "string", "format": "date-time" },
-					"note": { "type": "string" }
-				},
-				"required": ["event_time"],
-				"additionalProperties": true
-			}
-		},
-		"id": {
-			"type": "string",
-			"description": "Unique identifier for the card. Prefer colon-separated namespaced ids e.g. 'driver:root'."
-		},
-		"type": {
-			"type": "string",
-			"description": "Card type. One of the specific types defined by AURORA.",
-			"enum": [
-				"driver",
-				"requirement",
-				"interface",
-				"logical-component",
-				"deployable-node",
-				"test",
-				"view",
-				"component",
-				"node",
-				"artifact",
-				"note"
-			]
-		},
-		"name": { "type": "string" },
-		"description": { "type": "string" },
-		"attributes": {
-			"type": "object",
-			"description": "Typed key/value attributes. Values may be primitive or structured.",
-			"additionalProperties": {
-				"anyOf": [
-					{ "type": "string" },
-					{ "type": "number" },
-					{ "type": "boolean" },
-					{ "type": "array" },
-					{ "type": "object" },
-					{ "type": "null" }
-				]
-			}
-		},
-		"relations": {
-			"type": "array",
-			"description": "References to related card ids or explicit link ids.",
-			"items": { "type": "string" },
-			"default": []
-		},
-		"constraints": {
-			"type": "array",
-			"items": { "type": "string" }
-		},
-		"provenance": {
-			"type": "object",
-			"properties": {
-				"source": { "type": "string" },
-				"owner": { "type": "string" },
-				"version": { "type": "string" }
-			},
-			"additionalProperties": true
-		},
-		"metadata": {
-			"type": "object",
-			"properties": {
-				"format": { "type": "string" },
-				"serialization": {
-					"type": "array",
-					"items": { "type": "string", "enum": ["json"] }
-				}
-			},
-			"additionalProperties": true
-		}
-	},
-	"additionalProperties": false
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AURORA Card",
+  "description": "Base schema for a single AURORA card (one element = one card).",
+  "type": "object",
+  "required": ["id", "type", "name"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Semantic version (semver) for the card, e.g. 1.0.0",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z-.]+)?(?:\\+[0-9A-Za-z-.]+)?$"
+    },
+    "status": {
+      "type": "string",
+      "description": "Lifecycle status of the card",
+      "enum": [
+        "proposed",
+        "denied",
+        "cancelled",
+        "approved",
+        "implemented",
+        "verified",
+        "deprecated",
+        "retired"
+      ]
+    },
+    "audit_history": {
+      "type": "array",
+      "description": "Audit events for the card",
+      "items": {
+        "type": "object",
+        "properties": {
+          "event": { "type": "string" },
+          "by": { "type": "string" },
+          "event_time": { "type": "string", "format": "date-time" },
+          "note": { "type": "string" }
+        },
+        "required": ["event_time"],
+        "additionalProperties": true
+      }
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the card. Tooling should generate a UUID or similar."
+    },
+    "type": {
+      "type": "string",
+      "description": "Card type. One of the specific types defined by AURORA.",
+      "enum": [
+        "driver",
+        "requirement",
+        "interface",
+        "logical-component",
+        "deployable-node",
+        "test",
+        "view",
+        "component",
+        "node",
+        "artifact",
+        "note"
+      ]
+    },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "attributes": {
+      "type": "object",
+      "description": "Typed key/value attributes. Values may be primitive or structured.",
+      "additionalProperties": {
+        "anyOf": [
+          { "type": "string" },
+          { "type": "number" },
+          { "type": "boolean" },
+          { "type": "array" },
+          { "type": "object" },
+          { "type": "null" }
+        ]
+      }
+    },
+    "relations": {
+      "type": "array",
+      "description": "References to related card ids or explicit link ids.",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "source": { "type": "string" },
+        "owner": { "type": "string" },
+        "version": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "format": { "type": "string" },
+        "serialization": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["json"] }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
 }
