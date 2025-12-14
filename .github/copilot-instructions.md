@@ -27,6 +27,8 @@ Your memory must track, at minimum:
 * Active Context - What you are working on _at this moment_ and the state of the work.
 * Master Project Plan and Progress Tracker - The current state of the project, the master TODO list, and all other project tracking information
 
+In addition, maintain a `PROGRESS.md` file at the root of the repository that contains your complete implementation plan, the current status, and any notes needed during development.
+
 ## Coding Standards
 
 * This repository and project MUST NOT contain any source code.

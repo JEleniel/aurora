@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AURORA - Architecture Tooling</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        background: white;
+        color: #333;
+      }
+
+      #app {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #1e40af;
+        margin-bottom: 1rem;
+      }
+
+      .status {
+        background: #f3f4f6;
+        border: 1px solid #d1d5db;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        font-family: monospace;
+        font-size: 0.875rem;
+      }
+
+      .error {
+        background: #fee2e2;
+        border: 1px solid #fca5a5;
+        color: #991b1b;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .ready {
+        color: #059669;
+        font-weight: bold;
+      }
+
+      .loading {
+        color: #2563eb;
+        font-weight: bold;
+      }
+
+      .test-section {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+      }
+
+      .test-section h2 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #1f2937;
+      }
+
+      .command-test {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+        align-items: center;
+      }
+
+      button {
+        background: #3b82f6;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      button:hover {
+        background: #2563eb;
+      }
+
+      button:disabled {
+        background: #9ca3af;
+        cursor: not-allowed;
+      }
+
+      .result {
+        background: white;
+        border: 1px solid #e5e7eb;
+        padding: 0.75rem;
+        border-radius: 0.375rem;
+        font-family: monospace;
+        font-size: 0.75rem;
+        max-height: 200px;
+        overflow-y: auto;
+        margin-top: 0.5rem;
+      }
+
+      .result.success {
+        border-color: #86efac;
+        background: #f0fdf4;
+      }
+
+      .result.error {
+        border-color: #fca5a5;
+        background: #fef2f2;
+        color: #991b1b;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>AURORA - Backend Integration Test</h1>
+      <div id="status" class="status">Initializing application...</div>
+
+      <div class="test-section">
+        <h2>Core Functionality</h2>
+
+        <div class="command-test">
+          <button onclick="testCommand('query_get_statistics')">
+            Get Stats
+          </button>
+          <div id="result-query_get_statistics" class="result"></div>
+        </div>
+
+        <div class="command-test">
+          <button onclick="testCommand('list_cards')">List Cards</button>
+          <div id="result-list_cards" class="result"></div>
+        </div>
+
+        <div class="command-test">
+          <button onclick="testCommand('list_links')">List Links</button>
+          <div id="result-list_links" class="result"></div>
+        </div>
+
+        <div class="command-test">
+          <button onclick="testCardOps()">Test Card Operations</button>
+          <div id="result-card-ops" class="result"></div>
+        </div>
+
+        <div class="command-test">
+          <button onclick="testLinkOps()">Test Link Operations</button>
+          <div id="result-link-ops" class="result"></div>
+        </div>
+
+        <div class="command-test">
+          <button onclick="testQueryOps()">Test Query Operations</button>
+          <div id="result-query-ops" class="result"></div>
+        </div>
+
+        <div class="command-test">
+          <button onclick="testPersistence()">Test Persistence</button>
+          <div id="result-persistence" class="result"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      import { invoke } from '@tauri-apps/api/core';
+
+      const statusEl = document.getElementById('status');
+
+      // Global test state
+      window.testState = {
+        lastCardId: null,
+        lastLinkId: null,
+      };
+
+      // Test a single command
+      window.testCommand = async (command, args = {}) => {
+        const resultId = `result-${command}`;
+        const resultEl = document.getElementById(resultId);
+
+        try {
+          resultEl.textContent = 'Testing...';
+          resultEl.className = 'result loading';
+
+          const result = await invoke(command, args);
+
+          resultEl.className = 'result success';
+          resultEl.textContent = JSON.stringify(result, null, 2);
+          console.log(`✓ ${command}:`, result);
+        } catch (err) {
+          resultEl.className = 'result error';
+          const errMsg =
+            typeof err === 'string'
+              ? err
+              : err?.message || JSON.stringify(err) || 'Unknown error';
+          resultEl.textContent = `Error: ${errMsg}`;
+          console.error(`✗ ${command}:`, err, typeof err, err?.message);
+        }
+      };
+
+      // Test card operations
+      window.testCardOps = async () => {
+        const resultEl = document.getElementById('result-card-ops');
+        const results = [];
+
+        try {
+          resultEl.textContent = 'Testing card operations...';
+          resultEl.className = 'result loading';
+
+          // Create a card with correct parameters (Tauri converts to camelCase)
+          // ID format must be "namespace:element-name"
+          const cardId = `test:card-${Date.now()}`;
+          const createResult = await invoke('create_card', {
+            id: cardId,
+            card_type: 'driver',
+            name: 'Test Driver Card',
+          });
+
+          if (!createResult.success) {
+            throw new Error(createResult.error || 'Failed to create card');
+          }
+
+          results.push(`✓ create_card: ${cardId}`);
+          window.testState.lastCardId = cardId;
+
+          // Get the card
+          const getResult = await invoke('get_card', {
+            id: cardId,
+          });
+
+          if (!getResult.success) {
+            throw new Error(getResult.error || 'Failed to get card');
+          }
+
+          results.push(`✓ get_card: ${getResult.data?.name}`);
+
+          // Update the card
+          const updateResult = await invoke('update_card', {
+            id: cardId,
+            updates: {
+              name: 'Updated Requirement Card',
+              description: 'Updated description',
+              status: 'approved',
+            },
+          });
+
+          if (!updateResult.success) {
+            throw new Error(updateResult.error || 'Failed to update card');
+          }
+
+          results.push(`✓ update_card: success`);
+
+          // List cards
+          const listResult = await invoke('list_cards', {});
+
+          if (!listResult.success) {
+            throw new Error(listResult.error || 'Failed to list cards');
+          }
+
+          results.push(`✓ list_cards: ${listResult.data?.length || 0} cards`);
+
+          resultEl.className = 'result success';
+          resultEl.textContent = results.join('\n');
+        } catch (err) {
+          results.push(
+            `✗ Error: ${
+              typeof err === 'string'
+                ? err
+                : err?.message || JSON.stringify(err)
+            }`
+          );
+          resultEl.className = 'result error';
+          resultEl.textContent = results.join('\n');
+          console.error('Card ops error:', err);
+        }
+      };
+
+      // Test link operations
+      window.testLinkOps = async () => {
+        const resultEl = document.getElementById('result-link-ops');
+        const results = [];
+
+        try {
+          resultEl.textContent = 'Testing link operations...';
+          resultEl.className = 'result loading';
+
+          // Create two test cards for linking
+          const card1Id = `test:source-${Date.now()}`;
+          const card2Id = `test:target-${Date.now()}`;
+          const card1Result = await invoke('create_card', {
+            id: card1Id,
+            card_type: 'driver',
+            name: 'Source Driver',
+          });
+
+          if (!card1Result.success) {
+            throw new Error(
+              card1Result.error || 'Failed to create source card'
+            );
+          }
+
+          const card2Result = await invoke('create_card', {
+            id: card2Id,
+            card_type: 'requirement',
+            name: 'Target Requirement',
+          });
+
+          if (!card2Result.success) {
+            throw new Error(
+              card2Result.error || 'Failed to create target card'
+            );
+          }
+
+          // Create a link with correct parameters
+          const createLinkResult = await invoke('create_link', {
+            source_id: card1Id,
+            target_id: card2Id,
+          });
+
+          if (!createLinkResult.success) {
+            throw new Error(createLinkResult.error || 'Failed to create link');
+          }
+
+          results.push(`✓ create_link: ${createLinkResult.data?.id}`);
+          window.testState.lastLinkId = createLinkResult.data?.id;
+
+          // Get links for card
+          const linksResult = await invoke('get_links_for_card', {
+            card_id: card1Id,
+          });
+
+          if (!linksResult.success) {
+            throw new Error(linksResult.error || 'Failed to get links');
+          }
+
+          results.push(
+            `✓ get_links_for_card: ${linksResult.data?.length || 0} links`
+          );
+
+          // List all links
+          const listResult = await invoke('list_links', {});
+
+          if (!listResult.success) {
+            throw new Error(listResult.error || 'Failed to list links');
+          }
+
+          results.push(`✓ list_links: ${listResult.data?.length || 0} links`);
+
+          resultEl.className = 'result success';
+          resultEl.textContent = results.join('\n');
+        } catch (err) {
+          results.push(
+            `✗ Error: ${
+              typeof err === 'string'
+                ? err
+                : err?.message || JSON.stringify(err)
+            }`
+          );
+          resultEl.className = 'result error';
+          resultEl.textContent = results.join('\n');
+          console.error('Link ops error:', err);
+        }
+      };
+
+      // Test query operations
+      window.testQueryOps = async () => {
+        const resultEl = document.getElementById('result-query-ops');
+        const results = [];
+
+        try {
+          resultEl.textContent = 'Testing query operations...';
+          resultEl.className = 'result loading';
+
+          // Query by type
+          const typeResult = await invoke('query_find_by_type', {
+            card_type: 'driver',
+          });
+          results.push(
+            `✓ query_find_by_type: ${typeResult.data?.length || 0} cards`
+          );
+
+          // Get statistics
+          const statsResult = await invoke('query_get_statistics', {});
+          results.push(`✓ query_get_statistics:`);
+          results.push(`  - Total views: ${statsResult.data?.total_views}`);
+          results.push(`  - Total cards: ${statsResult.data?.total_cards}`);
+          results.push(`  - Total links: ${statsResult.data?.total_links}`);
+
+          resultEl.className = 'result success';
+          resultEl.textContent = results.join('\n');
+        } catch (err) {
+          results.push(
+            `✗ Error: ${err?.message || String(err) || 'Unknown error'}`
+          );
+          resultEl.className = 'result error';
+          resultEl.textContent = results.join('\n');
+          console.error('Query ops error:', err);
+        }
+      };
+
+      // Test persistence operations
+      window.testPersistence = async () => {
+        const resultEl = document.getElementById('result-persistence');
+        const results = [];
+
+        try {
+          resultEl.textContent = 'Testing persistence operations...';
+          resultEl.className = 'result loading';
+
+          // Get autosave status
+          const statusResult = await invoke('get_autosave_status', {});
+
+          if (!statusResult.success) {
+            throw new Error(
+              statusResult.error || 'Failed to get autosave status'
+            );
+          }
+
+          results.push(
+            `✓ get_autosave_status: ${
+              statusResult.data?.enabled ? 'enabled' : 'disabled'
+            }`
+          );
+
+          // Load project - this might fail if path doesn't exist, which is OK
+          try {
+            const loadResult = await invoke('load_project', {
+              project_path: './test_project',
+            });
+
+            if (loadResult.success) {
+              results.push(`✓ load_project: success`);
+            } else {
+              results.push(`⚠ load_project: ${loadResult.error}`);
+            }
+          } catch (loadErr) {
+            results.push(
+              `⚠ load_project: ${
+                typeof loadErr === 'string' ? loadErr : loadErr?.message
+              }`
+            );
+          }
+
+          // Save project
+          const saveResult = await invoke('save_project', {});
+
+          if (!saveResult.success) {
+            throw new Error(saveResult.error || 'Failed to save project');
+          }
+
+          results.push(`✓ save_project: success`);
+
+          resultEl.className = 'result success';
+          resultEl.textContent = results.join('\n');
+        } catch (err) {
+          results.push(
+            `✗ Error: ${
+              typeof err === 'string'
+                ? err
+                : err?.message || JSON.stringify(err)
+            }`
+          );
+          resultEl.className = 'result error';
+          resultEl.textContent = results.join('\n');
+          console.error('Persistence error:', err);
+        }
+      };
+
+      // Initialize on load
+      async function init() {
+        try {
+          statusEl.textContent = 'Testing Tauri command...';
+
+          const result = await invoke('query_get_statistics', {});
+
+          statusEl.innerHTML =
+            '<span class="ready">✓ Connected to Rust Backend</span>';
+          console.log('✓ IPC working!', result);
+        } catch (err) {
+          statusEl.classList.add('error');
+          statusEl.innerHTML = `<strong>Error:</strong> ${
+            err?.message || String(err) || 'Unknown error'
+          }`;
+          console.error('Error:', err);
+        }
+      }
+
+      init();
+    </script>
+  </body>
+</html>

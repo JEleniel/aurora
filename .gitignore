@@ -3,6 +3,8 @@
 build/
 node_modules/
 dist/
+target/
+**/target/**/*
 
 # Visual Studio Code
 .vscode/*

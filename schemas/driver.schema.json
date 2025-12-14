@@ -1,23 +1,19 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"title": "AURORA Driver Card",
-	"description": "Driver card: authoritative source such as mission, law, policy, or stakeholder intent.",
-	"allOf": [
-		{ "$ref": "./card.schema.json" },
-		{
-			"type": "object",
-			"properties": {
-				"type": { "const": "driver" },
-				"attributes": {
-					"type": "object",
-					"properties": {
-						"category": { "type": "string" },
-						"priority": { "type": "string" }
-					},
-					"additionalProperties": true
-				}
-			},
-			"required": ["type"]
-		}
-	]
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AURORA Driver Card",
+  "description": "A driver represents a high-level goal, concern, or rationale for the architecture. Drivers are aspirational and not directly verifiable.",
+  "allOf": [
+    {
+      "$ref": "card.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "driver"
+        }
+      },
+      "required": ["type"]
+    }
+  ]
 }

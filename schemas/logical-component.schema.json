@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AURORA Logical Component Card",
+  "description": "A logical component represents a service, subsystem, module, or logical unit of the system architecture. Logical components may be composed of subcomponents.",
+  "allOf": [
+    {
+      "$ref": "card.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "logical-component"
+        },
+        "attributes": {
+          "type": "object",
+          "description": "Logical component-specific attributes",
+          "properties": {
+            "responsibilities": {
+              "type": "array",
+              "description": "Primary responsibilities of the component",
+              "items": {
+                "type": "string"
+              }
+            },
+            "components": {
+              "type": "array",
+              "description": "Subcomponent IDs (composition)",
+              "items": {
+                "type": "string"
+              }
+            },
+            "interfaces": {
+              "type": "array",
+              "description": "Interfaces exposed by this component",
+              "items": {
+                "type": "string"
+              }
+            },
+            "dependencies": {
+              "type": "array",
+              "description": "Dependencies on other components",
+              "items": {
+                "type": "string"
+              }
+            },
+            "data_flows": {
+              "type": "array",
+              "description": "Data flows in and out of the component",
+              "items": {
+                "type": "object"
+              }
+            },
+            "patterns": {
+              "type": "array",
+              "description": "Design patterns used (microservice, monolith, actor-based, etc.)",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "required": ["type"]
+    }
+  ]
+}

@@ -1,22 +1,51 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "AURORA Card",
-  "description": "Base schema for a single AURORA card (one element = one card).",
+  "title": "AURORA Card (Base)",
+  "description": "Base schema for all AURORA cards. Every element in the architecture is represented by exactly one card.",
   "type": "object",
   "required": ["id", "type", "name"],
   "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier in format namespace:element-name (lowercase, hyphens only)",
+      "pattern": "^[a-z](?:[a-z0-9])*(?:[a-z0-9]|-)*[a-z0-9]:(?:[a-z0-9])+(?:-[a-z0-9]+)*$"
+    },
+    "type": {
+      "type": "string",
+      "description": "Card type indicating the element's role in the architecture",
+      "enum": [
+        "driver",
+        "requirement",
+        "behavior",
+        "interface",
+        "constraint",
+        "logical-component",
+        "deployable-node",
+        "actor",
+        "test",
+        "artifact",
+        "view",
+        "note"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable title of the element"
+    },
+    "description": {
+      "type": "string",
+      "description": "Plain-language explanation of scope, intent, and rationale (50-200 words recommended)"
+    },
     "version": {
       "type": "string",
-      "description": "Semantic version (semver) for the card, e.g. 1.0.0",
-      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z-.]+)?(?:\\+[0-9A-Za-z-.]+)?$"
+      "description": "Semantic version (semver) of the card content",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
     },
     "status": {
       "type": "string",
-      "description": "Lifecycle status of the card",
+      "description": "Lifecycle state of the card",
       "enum": [
         "proposed",
-        "denied",
-        "cancelled",
         "approved",
         "implemented",
         "verified",
@@ -24,84 +53,170 @@
         "retired"
       ]
     },
-    "audit_history": {
-      "type": "array",
-      "description": "Audit events for the card",
-      "items": {
-        "type": "object",
-        "properties": {
-          "event": { "type": "string" },
-          "by": { "type": "string" },
-          "event_time": { "type": "string", "format": "date-time" },
-          "note": { "type": "string" }
-        },
-        "required": ["event_time"],
-        "additionalProperties": true
-      }
-    },
-    "id": {
+    "rationale": {
       "type": "string",
-      "description": "Unique identifier for the card. Tooling should generate a UUID or similar."
+      "description": "Why this card exists; its derivation or justification"
     },
-    "type": {
+    "priority": {
       "type": "string",
-      "description": "Card type. One of the specific types defined by AURORA.",
-      "enum": [
-        "driver",
-        "requirement",
-        "interface",
-        "logical-component",
-        "deployable-node",
-        "test",
-        "view",
-        "component",
-        "node",
-        "artifact",
-        "note"
-      ]
+      "description": "Optional priority level",
+      "enum": ["low", "medium", "high", "critical"]
     },
-    "name": { "type": "string" },
-    "description": { "type": "string" },
+    "owner": {
+      "type": "string",
+      "description": "Person, team, or organization responsible for the card"
+    },
     "attributes": {
       "type": "object",
-      "description": "Typed key/value attributes. Values may be primitive or structured.",
+      "description": "Type-specific key-value attributes (primitive or structured)",
       "additionalProperties": {
         "anyOf": [
-          { "type": "string" },
-          { "type": "number" },
-          { "type": "boolean" },
-          { "type": "array" },
-          { "type": "object" },
-          { "type": "null" }
+          {
+            "type": "string"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "type": "array"
+          },
+          {
+            "type": "object"
+          },
+          {
+            "type": "null"
+          }
         ]
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "description": "Machine-or-human-verifiable criteria for satisfying a requirement or test",
+      "items": {
+        "type": "string"
       }
     },
     "relations": {
       "type": "array",
-      "description": "References to related card ids or explicit link ids.",
-      "items": { "type": "string" },
+      "description": "References to related card IDs (inline lightweight relationships)",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "links": {
+      "type": "array",
+      "description": "Explicit link artifact IDs (provides richer metadata than inline relations)",
+      "items": {
+        "type": "string"
+      },
       "default": []
     },
     "constraints": {
       "type": "array",
-      "items": { "type": "string" }
+      "description": "References to constraint cards that apply to this element",
+      "items": {
+        "type": "string"
+      },
+      "default": []
     },
     "provenance": {
       "type": "object",
+      "description": "Source and origin metadata",
       "properties": {
-        "source": { "type": "string" },
-        "owner": { "type": "string" },
-        "version": { "type": "string" }
+        "source": {
+          "type": "string",
+          "description": "Origin or source of the card (e.g., derived from drivers, external specification)"
+        },
+        "owner": {
+          "type": "string",
+          "description": "Original owner or author"
+        },
+        "version": {
+          "type": "string",
+          "description": "Source version or reference"
+        }
       },
       "additionalProperties": true
     },
+    "change_counter": {
+      "type": "integer",
+      "description": "Monotonically incrementing counter tracking total number of changes to this card (auto-incremented on every update)",
+      "minimum": 0,
+      "default": 0
+    },
+    "last_modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of the most recent modification (auto-updated on every change)"
+    },
+    "audit_history": {
+      "type": "array",
+      "description": "Chronological record of all changes to the card (auto-updated on each save)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "change_number": {
+            "type": "integer",
+            "description": "Sequential change identifier (1, 2, 3, ...)"
+          },
+          "event": {
+            "type": "string",
+            "description": "Type of event (created, modified, approved, deprecated, etc.)"
+          },
+          "by": {
+            "type": "string",
+            "description": "Agent or person responsible for the event"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO 8601 timestamp of the event"
+          },
+          "fields_modified": {
+            "type": "array",
+            "description": "List of field names that were modified in this change",
+            "items": {
+              "type": "string"
+            }
+          },
+          "previous_values": {
+            "type": "object",
+            "description": "Previous values of modified fields (for rollback/audit)",
+            "additionalProperties": true
+          },
+          "note": {
+            "type": "string",
+            "description": "Optional human-readable summary of the change"
+          }
+        },
+        "required": ["timestamp", "change_number"],
+        "additionalProperties": true
+      }
+    },
     "metadata": {
       "type": "object",
+      "description": "Format and serialization metadata",
       "properties": {
-        "format": { "type": "string" },
+        "format": {
+          "type": "string",
+          "description": "Metadata format identifier",
+          "default": "aurora-card-v1"
+        },
         "serialization": {
           "type": "array",
-          "items": { "type": "string", "enum": ["json"] }
+          "description": "Supported serialization formats",
+          "items": {
+            "type": "string",
+            "enum": ["json"]
+          },
+          "default": ["json"]
         }
       },
       "additionalProperties": true

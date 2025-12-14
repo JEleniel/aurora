@@ -1,7 +1,0 @@
-[package]
-name = "aurora_tauri"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-tauri = { version = "^2.0", features = ["api-all"] }

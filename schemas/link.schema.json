@@ -1,35 +1,37 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "AURORA Link",
-  "description": "Typed relationship connecting two cards.",
+  "description": "A link represents a directional relationship between two cards. Links are untyped; their semantic meaning depends on the current view or interpretation context.",
   "type": "object",
-  "required": ["type", "source", "target"],
   "properties": {
-    "id": { "type": "string" },
-    "type": {
+    "source_id": {
       "type": "string",
-      "description": "Link type",
-      "enum": [
-        "satisfies",
-        "refines",
-        "depends-on",
-        "verified-by",
-        "derives-from",
-        "related-to",
-        "is-composed-of",
-        "aggregates",
-        "extends",
-        "implements",
-        "realizes",
-        "serves",
-        "data-flows"
-      ]
+      "description": "ID of the source card (origin of the link)"
     },
-    "source": { "type": "string", "description": "Source card id" },
-    "target": { "type": "string", "description": "Target card id" },
-    "rationale": { "type": "string" },
-    "strength": { "type": "string", "enum": ["weak", "normal", "strong"] },
-    "metadata": { "type": "object", "additionalProperties": true }
+    "target_id": {
+      "type": "string",
+      "description": "ID of the target card (destination of the link)"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional metadata about the link (weight, confidence, view-specific annotations)",
+      "properties": {
+        "weight": {
+          "type": "number",
+          "description": "Optional weight or strength indicator for the link"
+        },
+        "confidence": {
+          "type": "number",
+          "description": "Optional confidence level (0.0 to 1.0)"
+        },
+        "view_context": {
+          "type": "string",
+          "description": "Optional context indicating which view or interpretation applies to this link"
+        }
+      },
+      "additionalProperties": true
+    }
   },
+  "required": ["source_id", "target_id"],
   "additionalProperties": false
 }

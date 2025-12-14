@@ -1,6 +1,0 @@
-{
-  "id": "public-api",
-  "name": "Public API",
-  "type": "interface",
-  "description": "Public HTTP API"
-}

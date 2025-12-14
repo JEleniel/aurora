@@ -1,8 +1,0 @@
-{
-	"preferred_serialization": ["json"],
-	"reject_yaml": true,
-	"pre_release": true,
-	"require_changelog": false,
-	"note": "User preference recorded: do not use YAML or other whitespace-delimited formats for AURORA artifacts. Repository is in pre-release; changelogs are optional."
-}
-	"pre_release": true,

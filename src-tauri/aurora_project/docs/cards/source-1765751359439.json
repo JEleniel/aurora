@@ -1,0 +1,34 @@
+{
+  "id": "test:source-1765751359439",
+  "type": "driver",
+  "name": "Source Driver",
+  "description": null,
+  "version": "1.0.0",
+  "status": "proposed",
+  "rationale": null,
+  "priority": null,
+  "owner": null,
+  "change_counter": 1,
+  "last_modified": "2025-12-14T22:29:19.440924760Z",
+  "relations": [],
+  "links": [],
+  "constraints": [],
+  "attributes": {},
+  "acceptance_criteria": [],
+  "audit_history": [
+    {
+      "change_number": 1,
+      "event": "created",
+      "timestamp": "2025-12-14T22:29:19.440924760Z",
+      "by": "system:new-card",
+      "fields_modified": [
+        "id",
+        "type",
+        "name"
+      ],
+      "previous_values": {},
+      "note": "Initial card creation"
+    }
+  ],
+  "provenance": null
+}

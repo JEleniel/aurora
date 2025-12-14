@@ -1,23 +1,78 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
-	"title": "AURORA Test / Acceptance Card",
-	"description": "Test or acceptance criteria card for verifying requirements and behaviors.",
-	"allOf": [
-		{ "$ref": "./card.schema.json" },
-		{
-			"type": "object",
-			"properties": {
-				"type": { "const": "test" },
-				"attributes": {
-					"type": "object",
-					"properties": {
-						"steps": { "type": "array", "items": { "type": "string" } },
-						"expected_result": { "type": "string" }
-					},
-					"additionalProperties": true
-				}
-			},
-			"required": ["type"]
-		}
-	]
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AURORA Test Card",
+  "description": "A test card represents a test case, test suite, acceptance test, or verification method used to validate requirements and behaviors.",
+  "allOf": [
+    {
+      "$ref": "card.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "test"
+        },
+        "acceptance_criteria": {
+          "type": "array",
+          "description": "Specific test cases or assertions that must pass",
+          "items": {
+            "type": "string"
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "description": "Test-specific attributes",
+          "properties": {
+            "test_type": {
+              "type": "string",
+              "description": "Type of test (unit, integration, system, acceptance, performance, security, etc.)"
+            },
+            "framework": {
+              "type": "string",
+              "description": "Test framework or tool (Jest, pytest, JUnit, Selenium, etc.)"
+            },
+            "execution_environment": {
+              "type": "string",
+              "description": "Environment where test executes (CI/CD, local, cloud, etc.)"
+            },
+            "requirements_verified": {
+              "type": "array",
+              "description": "Requirement IDs this test verifies",
+              "items": {
+                "type": "string"
+              }
+            },
+            "behaviors_tested": {
+              "type": "array",
+              "description": "Behavior IDs this test exercises",
+              "items": {
+                "type": "string"
+              }
+            },
+            "setup": {
+              "type": "string",
+              "description": "Setup steps or preconditions"
+            },
+            "teardown": {
+              "type": "string",
+              "description": "Cleanup or teardown steps"
+            },
+            "duration_ms": {
+              "type": "integer",
+              "description": "Expected execution duration in milliseconds"
+            },
+            "data_fixtures": {
+              "type": "array",
+              "description": "Test data or fixtures required",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "required": ["type"]
+    }
+  ]
 }
