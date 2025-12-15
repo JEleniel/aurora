@@ -1,0 +1,27 @@
+[package]
+name = "aurora"
+version = "1.0.0"
+edition = "2024"
+publish = false
+
+[[bin]]
+name = "aurora"
+path = "src-tauri/main.rs"
+
+[dependencies]
+anyhow = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+fern = { version = "0.7", features = ["colored", "date-based"] }
+jsonschema = "0.18"
+log = { version = "0.4.9", features = ["serde"] }
+regex = "1.10"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+sha2 = { version = "0.10" }
+tauri = { version = "2.9", features = ["image-png", "rustls-tls"] }
+thiserror = { version = "2.0.17" }
+tokio = { version = "1", features = ["full"] }
+uuid = { version = "1.19", features = ["serde", "v4", "v7"] }
+
+[build-dependencies]
+tauri-build = "2.0"

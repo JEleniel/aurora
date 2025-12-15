@@ -5,6 +5,11 @@ node_modules/
 dist/
 target/
 **/target/**/*
+build/
+.svelte-kit/
+package/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
 
 # Visual Studio Code
 .vscode/*

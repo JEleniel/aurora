@@ -1,7 +1,0 @@
-packages:
-  - frontend
-  - src-tauri
-
-onlyBuiltDependencies:
-  - esbuild
-  - svelte-preprocess

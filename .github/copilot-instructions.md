@@ -4,7 +4,7 @@ All paths are relative to the repository root. Use `pwd` at the beginning of _ev
 
 ## About this Project
 
-AURORA is focused on the design and documentation of a new Architectural style for technology development. It contains a reference tool implementation in the `tool/` folder. It is structured for easy deployment via Github Pages, with all documentation under `docs/` (the `docs/README.md` is a symbolic link to the root `README.md` so that we only have to maintain one).
+AURORA is focused on the design and documentation of a new Architectural style for technology development. It is structured for easy deployment via Github Pages, with all documentation under `docs/` (the `docs/README.md` is a symbolic link to the root `README.md` so that we only have to maintain one). The `app/` directory contains a SvelteKit-based application that serves as a fully functional reference tooling for the architecture.
 
 ## Prohibited Actions
 
