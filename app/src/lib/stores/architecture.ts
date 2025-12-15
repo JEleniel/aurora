@@ -1,7 +1,7 @@
 /// Svelte store for architecture state
-import { writable, derived, type Readable } from "svelte/store";
-import type { Card, CardStatus, CardType, Link, ModelStatistics, ProjectMetadata } from "../types";
-import * as archService from "../services/architecture";
+import { writable, derived, type Readable } from 'svelte/store';
+import type { Card, CardStatus, CardType, Link, ModelStatistics, ProjectMetadata } from '../types';
+import * as archService from '../services/architecture';
 
 interface ArchitectureState {
 	cards: Map<string, Card>;
@@ -18,7 +18,7 @@ function createArchitectureStore() {
 		cards: new Map(),
 		links: [],
 		metadata: {
-			version: "1.0.0",
+			version: '1.0.0',
 		},
 		statistics: null,
 		selectedCardId: null,
@@ -85,12 +85,7 @@ function createArchitectureStore() {
 		},
 
 		// Create card
-		async createCard(
-			id: string,
-			cardType: CardType,
-			name: string,
-			description?: string,
-		) {
+		async createCard(id: string, cardType: CardType, name: string, description?: string) {
 			update((state) => ({ ...state, loading: true, error: null }));
 			try {
 				await archService.createCard(id, cardType, name, description);
@@ -122,12 +117,7 @@ function createArchitectureStore() {
 		},
 
 		// Update card
-		async updateCard(
-			id: string,
-			name?: string,
-			description?: string,
-			status?: CardStatus,
-		) {
+		async updateCard(id: string, name?: string, description?: string, status?: CardStatus) {
 			update((state) => ({ ...state, loading: true, error: null }));
 			try {
 				await archService.updateCard(id, name, description, status);
@@ -183,18 +173,12 @@ function createArchitectureStore() {
 export const architecture = createArchitectureStore();
 
 // Derived stores
-export const allCards: Readable<Card[]> = derived(architecture, (state) =>
-	Array.from(state.cards.values()),
-);
+export const allCards: Readable<Card[]> = derived(architecture, (state) => Array.from(state.cards.values()));
 
-export const allLinks: Readable<Link[]> = derived(
-	architecture,
-	(state) => state.links,
-);
+export const allLinks: Readable<Link[]> = derived(architecture, (state) => state.links);
 
-export const selectedCard: Readable<Card | null> = derived(
-	architecture,
-	(state) => (state.selectedCardId ? state.cards.get(state.selectedCardId) || null : null),
+export const selectedCard: Readable<Card | null> = derived(architecture, (state) =>
+	state.selectedCardId ? state.cards.get(state.selectedCardId) || null : null,
 );
 
 export const cardsByType = (type: CardType): Readable<Card[]> =>
@@ -207,6 +191,4 @@ export const linksFrom = (cardId: string): Readable<Link[]> =>
 	derived(allLinks, (links) => links.filter((l) => l.source_id === cardId));
 
 export const linksTo = (cardId: string): Readable<Link[]> =>
-	derived(allLinks, (links) =>
-		links.filter((l) => l.target_id === cardId),
-	);
+	derived(allLinks, (links) => links.filter((l) => l.target_id === cardId));

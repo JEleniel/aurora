@@ -16,14 +16,7 @@
 	{#if label}
 		<label for={id}>{label}</label>
 	{/if}
-	<select
-		{id}
-		{name}
-		{value}
-		{required}
-		{disabled}
-		on:change={handleChange}
-	>
+	<select {id} {name} {value} {required} {disabled} on:change={handleChange}>
 		<option value="">-- Select --</option>
 		{#each options as option}
 			<option value={option.value}>

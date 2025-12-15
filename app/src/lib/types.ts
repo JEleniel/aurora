@@ -1,26 +1,26 @@
 /// TypeScript types for AURORA architecture models
 export enum CardType {
-	Driver = "driver",
-	Requirement = "requirement",
-	Behavior = "behavior",
-	Interface = "interface",
-	Constraint = "constraint",
-	LogicalComponent = "logical-component",
-	DeployableNode = "deployable-node",
-	Actor = "actor",
-	Test = "test",
-	Artifact = "artifact",
-	View = "view",
-	Note = "note",
+	Driver = 'driver',
+	Requirement = 'requirement',
+	Behavior = 'behavior',
+	Interface = 'interface',
+	Constraint = 'constraint',
+	LogicalComponent = 'logical-component',
+	DeployableNode = 'deployable-node',
+	Actor = 'actor',
+	Test = 'test',
+	Artifact = 'artifact',
+	View = 'view',
+	Note = 'note',
 }
 
 export enum CardStatus {
-	Proposed = "proposed",
-	Approved = "approved",
-	Implemented = "implemented",
-	Verified = "verified",
-	Deprecated = "deprecated",
-	Retired = "retired",
+	Proposed = 'proposed',
+	Approved = 'approved',
+	Implemented = 'implemented',
+	Verified = 'verified',
+	Deprecated = 'deprecated',
+	Retired = 'retired',
 }
 
 export interface Card {
@@ -77,30 +77,30 @@ export function cardTypeFolder(type: CardType): string {
 
 export function cardTypeLabel(type: CardType): string {
 	const labels: Record<CardType, string> = {
-		[CardType.Driver]: "Driver",
-		[CardType.Requirement]: "Requirement",
-		[CardType.Behavior]: "Behavior",
-		[CardType.Interface]: "Interface",
-		[CardType.Constraint]: "Constraint",
-		[CardType.LogicalComponent]: "Logical Component",
-		[CardType.DeployableNode]: "Deployable Node",
-		[CardType.Actor]: "Actor",
-		[CardType.Test]: "Test",
-		[CardType.Artifact]: "Artifact",
-		[CardType.View]: "View",
-		[CardType.Note]: "Note",
+		[CardType.Driver]: 'Driver',
+		[CardType.Requirement]: 'Requirement',
+		[CardType.Behavior]: 'Behavior',
+		[CardType.Interface]: 'Interface',
+		[CardType.Constraint]: 'Constraint',
+		[CardType.LogicalComponent]: 'Logical Component',
+		[CardType.DeployableNode]: 'Deployable Node',
+		[CardType.Actor]: 'Actor',
+		[CardType.Test]: 'Test',
+		[CardType.Artifact]: 'Artifact',
+		[CardType.View]: 'View',
+		[CardType.Note]: 'Note',
 	};
 	return labels[type] || type;
 }
 
 export function cardStatusLabel(status: CardStatus): string {
 	const labels: Record<CardStatus, string> = {
-		[CardStatus.Proposed]: "Proposed",
-		[CardStatus.Approved]: "Approved",
-		[CardStatus.Implemented]: "Implemented",
-		[CardStatus.Verified]: "Verified",
-		[CardStatus.Deprecated]: "Deprecated",
-		[CardStatus.Retired]: "Retired",
+		[CardStatus.Proposed]: 'Proposed',
+		[CardStatus.Approved]: 'Approved',
+		[CardStatus.Implemented]: 'Implemented',
+		[CardStatus.Verified]: 'Verified',
+		[CardStatus.Deprecated]: 'Deprecated',
+		[CardStatus.Retired]: 'Retired',
 	};
 	return labels[status] || status;
 }

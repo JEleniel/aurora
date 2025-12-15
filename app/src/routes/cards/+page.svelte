@@ -128,7 +128,14 @@
 			<h3>{editingId ? 'Edit Card' : 'Create New Card'}</h3>
 			<form on:submit={handleSubmit}>
 				{#if !editingId}
-					<Select label="Card Type" name="cardType" bind:value={cardType} options={cardTypes} required disabled={editingId !== null} />
+					<Select
+						label="Card Type"
+						name="cardType"
+						bind:value={cardType}
+						options={cardTypes}
+						required
+						disabled={editingId !== null}
+					/>
 				{/if}
 
 				<TextField
@@ -140,13 +147,7 @@
 					disabled={editingId !== null}
 				/>
 
-				<TextField
-					label="Name"
-					name="cardName"
-					placeholder="Enter card name"
-					bind:value={cardName}
-					required
-				/>
+				<TextField label="Name" name="cardName" placeholder="Enter card name" bind:value={cardName} required />
 
 				<TextArea
 					label="Description"
@@ -162,9 +163,16 @@
 
 				<div class="form-buttons">
 					<button type="submit" class="md-button md-button--primary" disabled={isLoading}>
-						{isLoading ? '...' : editingId ? 'Save' : 'Create'}
+						{isLoading ? '...'
+						: editingId ? 'Save'
+						: 'Create'}
 					</button>
-					<button type="button" class="md-button md-button--outlined" on:click={resetForm} disabled={isLoading}>
+					<button
+						type="button"
+						class="md-button md-button--outlined"
+						on:click={resetForm}
+						disabled={isLoading}
+					>
 						{editingId ? 'Cancel' : 'Clear'}
 					</button>
 				</div>
@@ -180,18 +188,20 @@
 			{:else}
 				<div class="cards-grid">
 					{#each $allCards as card (card.id)}
-						<div 
-							class="card-item" 
-							class:selected={card.id === $selectedCard?.id} 
+						<div
+							class="card-item"
+							class:selected={card.id === $selectedCard?.id}
 							on:click={() => selectCard(card.id)}
 							on:keydown={(e) => e.key === 'Enter' && selectCard(card.id)}
-							role="button" 
+							role="button"
 							tabindex="0"
 						>
 							<div class="card-header">
 								<span class="card-type-badge">{cardTypeLabel(card.type)}</span>
 								{#if card.status}
-									<span class="card-status-badge {getStatusClass(card.status)}">{cardStatusLabel(card.status)}</span>
+									<span class="card-status-badge {getStatusClass(card.status)}"
+										>{cardStatusLabel(card.status)}</span
+									>
 								{/if}
 							</div>
 							<h4>{card.name}</h4>
@@ -202,8 +212,17 @@
 							<div class="card-footer">
 								<small>v{card.version || '1.0.0'}</small>
 								<div class="card-actions">
-									<button class="action-btn edit-btn" on:click|stopPropagation={() => editCard(card.id)} title="Edit">✎</button>
-									<button class="action-btn delete-btn" on:click|stopPropagation={() => deleteCard(card.id)} title="Delete" disabled={isLoading}>✕</button>
+									<button
+										class="action-btn edit-btn"
+										on:click|stopPropagation={() => editCard(card.id)}
+										title="Edit">✎</button
+									>
+									<button
+										class="action-btn delete-btn"
+										on:click|stopPropagation={() => deleteCard(card.id)}
+										title="Delete"
+										disabled={isLoading}>✕</button
+									>
 								</div>
 							</div>
 						</div>
