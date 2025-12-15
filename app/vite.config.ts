@@ -5,35 +5,39 @@ import fs from 'fs';
 import os from 'os';
 
 const host: string = os.hostname();
+process.env['TAURI_DEV_URL'] = `http://${host}:1420`;
 
 const tlsKey = process.env['AUR_TLS_KEY'];
 const tlsCert = process.env['AUR_TLS_CERT'];
 
-const httpsConfig = tlsKey && tlsCert && fs.existsSync(tlsKey) && fs.existsSync(tlsCert)
-	? {
-			key: fs.readFileSync(tlsKey),
-			cert: fs.readFileSync(tlsCert),
-		}
-	: undefined;
+const httpsConfig =
+	tlsKey && tlsCert && fs.existsSync(tlsKey) && fs.existsSync(tlsCert)
+		? {
+				key: fs.readFileSync(tlsKey),
+				cert: fs.readFileSync(tlsCert),
+		  }
+		: undefined;
 
-export default defineConfig((): UserConfig => ({
-	plugins: [sveltekit()],
+export default defineConfig(
+	(): UserConfig => ({
+		plugins: [sveltekit()],
 
-	clearScreen: false,
-	server: {
-		https: httpsConfig,
-		port: 1420,
-		strictPort: true,
-		host: host || false,
-		hmr: host
-			? {
-					protocol: 'wss' as const,
-					host,
-					port: 1421,
-			  }
-			: undefined,
-		watch: {
-			ignored: ['**/src-tauri/**'],
+		clearScreen: false,
+		server: {
+			https: httpsConfig,
+			port: 1420,
+			strictPort: true,
+			host: host || false,
+			hmr: host
+				? {
+						protocol: httpsConfig ? ('wss' as const) : ('ws' as const),
+						host,
+						port: 1420,
+				  }
+				: undefined,
+			watch: {
+				ignored: ['**/src-tauri/**'],
+			},
 		},
-	},
-}));
+	}),
+);

@@ -1,156 +1,138 @@
 <script lang="ts">
-  import { invoke } from "@tauri-apps/api/core";
+	import { themeStore, type ThemeMode } from '$lib/stores/theme';
 
-  let name = $state("");
-  let greetMsg = $state("");
+	let currentTheme: ThemeMode;
 
-  async function greet(event: Event) {
-    event.preventDefault();
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    greetMsg = await invoke("greet", { name });
-  }
+	themeStore.subscribe((theme) => {
+		currentTheme = theme;
+	});
 </script>
 
-<main class="container">
-  <h1>Welcome to Tauri + Svelte</h1>
+<div class="home-container">
+	<h2>Welcome to AURORA</h2>
+	<p>Agent-Unified Representation of Requirements and Architecture</p>
 
-  <div class="row">
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo vite" alt="Vite Logo" />
-    </a>
-    <a href="https://tauri.app" target="_blank">
-      <img src="/tauri.svg" class="logo tauri" alt="Tauri Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank">
-      <img src="/svelte.svg" class="logo svelte-kit" alt="SvelteKit Logo" />
-    </a>
-  </div>
-  <p>Click on the Tauri, Vite, and SvelteKit logos to learn more.</p>
+	<section class="intro-section">
+		<h3>Getting Started</h3>
+		<p>
+			AURORA provides a unified architectural modeling framework designed for symmetric readability by human
+			engineers and autonomous agents.
+		</p>
 
-  <form class="row" onsubmit={greet}>
-    <input id="greet-input" placeholder="Enter a name..." bind:value={name} />
-    <button type="submit">Greet</button>
-  </form>
-  <p>{greetMsg}</p>
-</main>
+		<div class="card-grid">
+			<div class="info-card">
+				<h4>📋 Create Cards</h4>
+				<p>
+					Define drivers, requirements, behaviors, interfaces, and constraints with complete metadata
+					tracking.
+				</p>
+				<a href="/cards" class="md-button md-button--primary">Go to Cards</a>
+			</div>
+
+			<div class="info-card">
+				<h4>🔗 Manage Links</h4>
+				<p>Establish directional relationships between cards and external URLs for complete traceability.</p>
+				<a href="/links" class="md-button md-button--primary">Go to Links</a>
+			</div>
+
+			<div class="info-card">
+				<h4>👁️ Explore Views</h4>
+				<p>Navigate your architecture through requirement, component, and custom views.</p>
+				<a href="/views" class="md-button md-button--primary">Go to Views</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="theme-section">
+		<h3>Current Theme: <code>{currentTheme}</code></h3>
+		<p>The app automatically adapts to your system preference. You can override it in the top navigation.</p>
+	</section>
+</div>
 
 <style>
-.logo.vite:hover {
-  filter: drop-shadow(0 0 2em #747bff);
-}
+	.home-container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
 
-.logo.svelte-kit:hover {
-  filter: drop-shadow(0 0 2em #ff3e00);
-}
+	h2 {
+		font-size: 2rem;
+		font-weight: 500;
+		color: var(--md-sys-color-primary);
+		margin-bottom: 0.5rem;
+	}
 
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+	:global(> p) {
+		font-size: 1.125rem;
+		color: var(--md-sys-color-on-surface-variant);
+		margin-bottom: 2rem;
+	}
 
-  color: #0f0f0f;
-  background-color: #f6f6f6;
+	section {
+		margin-bottom: 3rem;
+	}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
+	h3 {
+		font-size: 1.25rem;
+		font-weight: 500;
+		margin-bottom: 1rem;
+		color: var(--md-sys-color-on-background);
+	}
 
-.container {
-  margin: 0;
-  padding-top: 10vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
+	p {
+		color: var(--md-sys-color-on-surface-variant);
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: 0.75s;
-}
+	.card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1.5rem;
+		margin-top: 1.5rem;
+	}
 
-.logo.tauri:hover {
-  filter: drop-shadow(0 0 2em #24c8db);
-}
+	.info-card {
+		background-color: var(--md-sys-color-surface);
+		border: 1px solid var(--md-sys-color-outline-variant);
+		border-radius: 12px;
+		padding: 1.5rem;
+		transition: all 0.2s ease;
+	}
 
-.row {
-  display: flex;
-  justify-content: center;
-}
+	.info-card:hover {
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	}
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
+	.info-card h4 {
+		font-size: 1.125rem;
+		font-weight: 500;
+		margin-bottom: 0.5rem;
+		color: var(--md-sys-color-primary);
+	}
 
-a:hover {
-  color: #535bf2;
-}
+	.info-card p {
+		margin-bottom: 1rem;
+		font-size: 0.95rem;
+	}
 
-h1 {
-  text-align: center;
-}
+	.info-card a {
+		display: inline-block;
+		text-decoration: none;
+	}
 
-input,
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  color: #0f0f0f;
-  background-color: #ffffff;
-  transition: border-color 0.25s;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-}
+	.theme-section {
+		background-color: color-mix(in srgb, var(--md-sys-color-primary) 12%, transparent);
+		border: 1px solid var(--md-sys-color-outline-variant);
+		border-radius: 8px;
+		padding: 1.5rem;
+	}
 
-button {
-  cursor: pointer;
-}
-
-button:hover {
-  border-color: #396cd8;
-}
-button:active {
-  border-color: #396cd8;
-  background-color: #e8e8e8;
-}
-
-input,
-button {
-  outline: none;
-}
-
-#greet-input {
-  margin-right: 5px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: #f6f6f6;
-    background-color: #2f2f2f;
-  }
-
-  a:hover {
-    color: #24c8db;
-  }
-
-  input,
-  button {
-    color: #ffffff;
-    background-color: #0f0f0f98;
-  }
-  button:active {
-    background-color: #0f0f0f69;
-  }
-}
-
+	code {
+		background-color: var(--md-sys-color-surface-variant);
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
+		font-family: 'Courier New', monospace;
+		font-size: 0.875rem;
+	}
 </style>

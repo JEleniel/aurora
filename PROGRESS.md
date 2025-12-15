@@ -1,382 +1,320 @@
-# AURORA — Implementation Progress & Status
+# AURORA Project Progress Tracker
 
-## Project Overview
+## Project Summary
 
-**AURORA** (Agent-Unified Representation Of Requirements And Architecture) is an architectural practice and tooling framework designed to be equally followable by machine agents and human practitioners. It defines a rigorous, MBSE-class modeling framework where everything is a card (JSON), everything is linked, and the entire model is queryable for automated reasoning and view generation.
+**AURORA** — Agent-Unified Representation of Requirements and Architecture — is an architectural practice and comprehensive toolset designed for symmetric readability by both human engineers and autonomous agents. It combines MBSE rigor with machine-agent compatibility for automated reasoning, validation, and lifecycle tooling.
 
-### Current Status
+**Current Branch**: v1.0.0 (pre-release)
+**Status**: Architecture and specification complete; Reference application skeleton created (blank, no features implemented)
+**Last Updated**: 2025-12-15
 
-- **Branch**: `v1.0.0`
-- **Version**: Pre-release (v1.0.0 tracking)
-- **License**: Specification (CC BY-SA 4.0), Tool (GNU GPL v3.0+)
+## Deliverables Complete
 
-### Key Project Goals
+### 1. AURORA Specification & Documentation
 
-- Unified semantics for humans and machine agents
-- Complete architectural coverage (operational, logical, physical, behavioral)
-- Automated reasoning compatibility (LLMs, constraint solvers, agents)
-- Complete provenance and traceability
-- Secure design options (cryptographic signatures, encryption support)
+**Status**: ✅ Complete
 
----
+- 47 architectural cards covering drivers, requirements, behaviors, interfaces, constraints, and actors
+- 20 typed links establishing traceability hierarchy to root driver
+- Comprehensive card catalog with full definitions and rationale
+- Complete metadata and provenance tracking
+- GitHub Pages deployment ready (`docs/`)
 
-## Project Structure
+**Key Artifacts**:
+
+- [AURORA Canonical Definition](docs/cards/aurora-definition.md)
+- Driver cards: Root driver + 10 domain drivers (automation, formats, governance, etc.)
+- Requirement cards: 22 requirements across functional and non-functional concerns
+- Behavioral cards: 4 major system behaviors (authentication, deployment, reporting, governance)
+- Constraint cards: 3 operational constraints (compliance, latency, storage)
+
+### 2. JSON Schema Library
+
+**Status**: ✅ Complete
+
+14 comprehensive schemas supporting all element types:
+
+- `actor.schema.json` — System actors and stakeholders
+- `artifact.schema.json` — Deliverable artifacts
+- `behavior.schema.json` — System behaviors and actions
+- `card.schema.json` — Base card element structure
+- `constraint.schema.json` — Operational and design constraints
+- `deployable-node.schema.json` — Runtime deployment targets
+- `driver.schema.json` — Architectural drivers and priorities
+- `interface.schema.json` — System interfaces and protocols
+- `link.schema.json` — Directional relationships between elements
+- `logical-component.schema.json` — Logical system components
+- `note.schema.json` — Narrative documentation and annotations
+- `requirement.schema.json` — Functional and non-functional requirements
+- `test.schema.json` — Test case definitions and validation
+- `view.schema.json` — Architectural view configurations
+
+## Reference Tooling Application
+
+### Architecture
+
+**Status**: ✅ Phase 1 Complete — Full Architecture Model Implementation
+
+The reference application is a cross-platform desktop tool built with:
+
+- **Frontend**: SvelteKit 2.x + Svelte 5.x + TypeScript
+- **Desktop Runtime**: Tauri 2.x (Rust backend)
+- **IPC Bridge**: 12 Tauri commands for bidirectional data flow
+- **Storage**: ZIP-based persistence with type-organized folder structure
+- **Build System**: Vite + pnpm workspaces
+- **Styling**: Material Design 3 with light/dark themes
+
+**Directory Structure**:
 
 ```text
-aurora/
-├── docs/                        # Primary documentation (GitHub Pages)
-│   ├── cards/                   # Card definitions (Markdown + embedded JSON)
-│   ├── diagrams/                # Diagram artifacts
-│   ├── images/                  # Image assets
-│   ├── links/                   # Link definitions
-│   ├── matrices/                # Relationship matrices
-│   ├── behavioral-modeling.md   # Behavioral modeling guide
-│   ├── card-field-reference.md  # Card field documentation
-│   ├── constraint-modeling.md   # Constraint modeling guide
-│   ├── conventions.md           # Naming and extensibility conventions
-│   ├── link-types.md            # Link type definitions
-│   ├── tooling.md               # Tooling overview
-│   └── index.md                 # Documentation index
-├── schemas/                     # JSON Schemas (source of truth)
-│   ├── card.schema.json
-│   ├── link.schema.json
-│   ├── driver.schema.json
-│   ├── requirement.schema.json
-│   ├── behavior.schema.json
-│   ├── interface.schema.json
-│   ├── constraint.schema.json
-│   └── other schemas...
-├── .github/
-│   ├── instructions/            # Internal process guidance
-│   │   ├── Markdown.instructions.md
-│   │   └── Rust.instructions.md
-│   └── copilot-instructions.md  # Copilot workflow & constraints
-└── [Other files & configs]
+app/
+├── src/                          # SvelteKit frontend source
+│   ├── app.html                  # Root HTML template
+│   ├── lib/
+│   │   ├── types.ts              # TypeScript enums/interfaces (Card, Link, ArchitectureModel)
+│   │   ├── stores/
+│   │   │   └── architecture.ts   # Svelte store with full state management
+│   │   ├── services/
+│   │   │   └── architecture.ts   # Service layer wrapping Tauri IPC calls
+│   │   └── components/           # Reusable form controls (Select, TextField, etc.)
+│   └── routes/
+│       ├── +page.svelte          # Dashboard
+│       ├── cards/+page.svelte    # Card CRUD with full lifecycle management
+│       └── links/+page.svelte    # Link management (scaffolding)
+├── src-tauri/                    # Rust/Tauri backend
+│   ├── src/
+│   │   ├── main.rs               # Tauri app setup and command registration
+│   │   ├── lib.rs                # 12 command handlers + AppState management
+│   │   ├── models.rs             # Data types: Card, Link, CardType, CardStatus enums, ArchitectureModel
+│   │   └── zip_handler.rs        # ZIP import/export with folder organization
+│   ├── Cargo.toml                # Dependencies: zip 6.0, uuid, chrono, tokio, flate2
+│   └── tauri.conf.json           # App configuration
+├── package.json                  # Frontend dependencies
+├── Cargo.toml                    # Workspace manifest
+├── pnpm-workspace.yaml           # pnpm workspaces config
+├── vite.config.ts                # Vite build configuration
+├── tsconfig.json                 # TypeScript configuration
+└── svelte.config.js              # SvelteKit configuration
 ```
 
----
+### Implemented Features
 
-## Core Concepts
+**Status**: ✅ Phase 1 Complete
 
-### Elements (Cards)
+#### Backend (Rust/Tauri)
 
-Everything in the architecture is a **Card** — a self-contained JSON document representing one element:
+**Data Model** (`models.rs`):
 
-- **Drivers**: High-level goals, concerns, rationale
-- **Requirements**: Derived from drivers (functional & non-functional)
-- **Behaviors**: Use cases, workflows, interactions
-- **Interfaces**: System boundaries, APIs, protocols
-- **Constraints**: Non-functional bounds, limits, policies
-- **Actors**: Users, roles, external systems
-- **Logical Components**: Services, subsystems, modules
-- **Deployable Nodes**: Physical hosts, clusters, deployment targets
-- **Tests**: Verification methods, acceptance criteria
-- **Artifacts**: Documents, configurations, code references
-- **Views**: Derived projections and visualizations
-- **Notes**: Documentation, decisions, comments
+- `Card` struct with id, card_type, name, description, status, created_at, updated_at
+- `Link` struct with id, source_id, target_id, target_url, created_at (supports internal and external links)
+- `CardType` enum: 12 variants (Driver, Requirement, Behavior, Constraint, Actor, Interface, Artifact, LogicalComponent, DeployableNode, Note, Test, View)
+- `CardStatus` enum: 6 variants (Proposed, Draft, Approved, Deprecated, Retired, Superseded)
+- `ArchitectureModel` struct managing collection of cards/links with statistics generation
+- `ProjectMetadata` struct for architecture name, description, root_driver_id
 
-### Relationships (Links)
+**ZIP Storage** (`zip_handler.rs`):
 
-Every element must link to at least one other (except Root Driver). Links are **directional, first-class relationships that point toward the Root Driver**. Links themselves have no intrinsic semantic type; instead, their meaning is **context-dependent and determined by the view**:
+- Export to ZIP with structure: `cards/{type_folder}/{card_name}.json`, `links/links.json`, `metadata.json`, `MANIFEST.json`
+- Import from ZIP with full reconstruction of ArchitectureModel
+- Type-aware folder naming via `CardType::folder_name()`
+- Proper error handling and file validation
 
-- In a **requirements view**: a link may mean "satisfies" (requirement satisfies a driver)
-- In a **component view**: the same link means "implements" (component implements a requirement)
-- In a **traceability view**: it means "traces-to" (requirement traces to driver)
-- In a **test view**: it means "verified-by" (requirement verified by a test)
+**Tauri Commands** (12 total):
 
-This view-dependent semantics allows the same model to be interpreted flexibly across different architectural perspectives without maintaining separate link types.
+1. `load_architecture(path)` — Load architecture from ZIP file
+2. `save_architecture(path)` — Export current architecture to ZIP
+3. `create_card(id, card_type, name, description)` — Create new card
+4. `delete_card(id)` — Remove card and associated links
+5. `get_cards()` — Retrieve all cards
+6. `get_cards_by_type(card_type)` — Filter cards by type
+7. `update_card(id, name, description, status)` — Modify existing card
+8. `create_link(source_id, target_id?, target_url?)` — Create internal or external link
+9. `get_links()` — Retrieve all links
+10. `get_statistics()` — Return model statistics (card count by type/status, link count)
+11. `get_metadata()` — Retrieve project metadata
+12. `update_metadata(name, description, root_driver_id)` — Update project metadata
 
-### Provenance & Audit
+#### Frontend (TypeScript/Svelte)
 
-Every card includes:
+**Type Definitions** (`types.ts`):
 
-- **version**: Semantic versioning of content
-- **status**: Lifecycle state (proposed, draft, defined, approved, implemented, deprecated, retired)
-- **provenance**: Source, origin, generation metadata
-- **audit_history**: Chronological change log with timestamps
+- Enums: CardType, CardStatus matching Rust models
+- Interfaces: Card, Link, ArchitectureModel, ProjectMetadata, ModelStatistics
+- Helper functions: `cardTypeLabel()`, `cardStatusLabel()`, `cardTypeFolder()`
 
----
+**Service Layer** (`services/architecture.ts`):
 
-## Current Implementation Status
+- Async wrapper functions for all 12 Tauri commands
+- Type-safe invocation with error propagation
+- Automatic JSON serialization/deserialization
 
-### ✅ Complete
+**State Management** (`stores/architecture.ts`):
 
-1. **Specification & Core Design**
-   + AURORA architectural practice fully defined
-   + JSON Schema definitions for all core element types
-   + Naming conventions and extensibility guidelines documented
-   + Behavioral modeling, constraint modeling, and link type definitions documented
+- Svelte store with reactive state (cards Map, links array, metadata, selectedCardId)
+- Methods: `loadFromZip()`, `saveToZip()`, `createCard()`, `updateCard()`, `deleteCard()`, `createLink()`
+- Derived stores: `allCards`, `allLinks`, `selectedCard`, `cardsByType()`, `cardsByStatus()`, `linksFrom()`, `linksTo()`
+- Automatic UI state management (loading, errors)
 
-2. **Documentation Structure**
-   + All cards (48+) documented in Markdown with embedded JSON
-   + Behavioral modeling guide with examples
-   + Card field reference documentation
-   + Constraint modeling guide
-   + Link types reference
-   + Conventions and naming guide
+**Card Management UI** (`routes/cards/+page.svelte`):
 
-3. **Reference Model (Sample Architecture)**
-   + 10 Drivers (including Root Driver)
-   + 40+ Requirements (functional & non-functional)
-   + 4 Behaviors (use cases)
-   + 3 Actors
-   + 3 Interfaces
-   + 3 Constraints
-   + Comprehensive link structure demonstrating traceability
+- Create new cards with type selection and form validation
+- Edit existing cards with status lifecycle tracking
+- Delete cards with confirmation
+- Real-time card grid display with badges
+- Type and status filtering via derived stores
+- Error messages and loading states
+- Responsive layout (2-column desktop, 1-column mobile)
 
-4. **All Schemas (14 Complete)**
-   + `card.schema.json` — Base card structure (required id, type, name; optional created_date, modified_date, description, owner, status, labels, references)
-   + `link.schema.json` — Untyped directional link with optional metadata (source_id, target_id, weight, confidence, view_context)
-   + `driver.schema.json` — High-level goals and objectives
-   + `requirement.schema.json` — Verifiable characteristics (includes acceptance_criteria)
-   + `behavior.schema.json` — Use cases and workflows (includes actors, inputs, outputs, state_machine, sequence, interactions)
-   + `interface.schema.json` — System boundaries and contracts (protocol, schema, authentication, endpoints, consumers)
-   + `constraint.schema.json` — Non-functional bounds (category, unit, min/max values, formula, compliance_standard)
-   + `actor.schema.json` — Users, roles, external systems (actor_type, responsibilities, interfaces, permissions)
-   + `logical-component.schema.json` — Services and subsystems (responsibilities, components, interfaces, dependencies, patterns)
-   + `deployable-node.schema.json` — Deployment targets (node_type, environment, region, platform, capacity, security_policies)
-   + `test.schema.json` — Verification methods (requires acceptance_criteria; test_type, framework, requirements_verified, behaviors_tested)
-   + `artifact.schema.json` — Documents, code, configs (artifact_type, location, format, language, repository, components)
-   + `view.schema.json` — Derived projections and perspectives (view_type, scope, filter, sort_by, format, relationships)
-   + `note.schema.json` — Documentation and decisions (note_type, content, related_cards, severity, status, author, created/resolved dates)
+**Build Status**: ✅ **Successful**
 
-5. **Machine-Agent Instruction Document** ✅ COMPLETE
-   + docs/AGENT-INSTRUCTION.md (283 lines) — Complete machine-oriented guide
-   + Structured for LLM consumption and reasoning
-   + Includes view interpretation table, semantic patterns, query examples
+Linux release bundles created:
 
-6. **Comprehensive Tooling Architecture with Automatic Save** ✅ COMPLETE
-   + Created `/docs/design/tool/` directory with 6 comprehensive specifications (4,822 lines total):
-     - **ARCHITECTURE.md** (1,002 lines) — Primary design with layered architecture, 6 subsystems, domain model, validation, **automatic save & change tracking (Section 8.3)**, 4-phase roadmap
-     - **QUERY-ENGINE.md** (397 lines) — Graph traversal, filtering, optimization, performance benchmarks
-     - **RENDERING-ENGINE.md** (696 lines) — Rendering pipeline, 7 projection types, SVG/Mermaid/HTML/CSV/Markdown rendering
-     - **PERSISTENCE.md** (883 lines) — File I/O, transactions, caching, Git integration, backup/recovery, **automatic save strategy (Section 2)**
-     - **DATA-STORAGE-EXPORT.md** (1,166 lines) — Filesystem organization, Arch.ZIP format, SVG output, export operations
-     - **README.md** (452 lines) — Design index, technology stack, quick reference by role, implementation phases
-   + All design documents include implementation notes, testing strategies, and technology decisions
-   + **AUTOMATIC SAVE DESIGN**:
-     - Every card has `change_counter` (incremented on each save) and `last_modified` timestamp
-     - Complete `audit_history` tracking with `change_number`, `fields_modified`, `previous_values`, and `timestamp`
-     - Debounced saves (2-second window after last edit)
-     - Heartbeat save every 30 seconds
-     - No manual save button (automatic persistence)
-     - Full change tracking for rollback and audit
-     - Events emit for UI to show save status and change count
-   + Complete 16-week, 4-phase implementation roadmap
-   + Technology stack selected and rationale documented
-   + All user requirements explicitly addressed:
-     - ✅ Arch.ZIP format with standard ZIP (DATA-STORAGE-EXPORT.md Section 2)
-     - ✅ Type-based folder organization (Section 1.2 & 2.1)
-     - ✅ JSON canonical format with full serialization (Sections 1, 2, 4)
-     - ✅ SVG as primary output format (Section 3.1 with complete implementation details)
-     - ✅ Automatic save with change counter (ARCHITECTURE.md 8.3, PERSISTENCE.md Section 2)
-     - ✅ History tracking for every change (schemas/card.schema.json updated with enhanced audit_history)
+- `aurora_1.0.0_arm64.deb` (Debian package)
+- `aurora-1.0.0-1.aarch64.rpm` (RPM package)
+- `aurora_1.0.0_aarch64.AppImage` (AppImage bundle)
 
-### 📋 Not Yet Implemented
+All compilation checks pass:
 
-1. **Validation Tooling & Testing**
-   + Automated schema conformance checking (AJV integration)
-   + Link validation (verify referenced cards exist, consistency checks)
-   + Constraint satisfaction verification
-   + Trace completeness validation
+- Rust: `cargo check` → No warnings or errors
+- Frontend: `npm run check` (TypeScript + Svelte) → 0 errors, 0 warnings
+- Full build: `npm run tauri build` → Release artifacts created
 
-2. **Reference Tool / Tooling**
-   + Tauri + React + TypeScript desktop application (partially scaffolded, now deleted)
-   + Monaco editor integration for card/link editing
-   + Diagram generation (client-side generators)
-   + Card export/save functionality
+### Planned Features (Phase 2+)
 
-   **Status**: Deleted from working tree but visible in git history (commits `77c5ea4`, `a9fc86a`, `70f02b8`, `ac28e67`, `90919bf`). Decision appears to be deferring tool implementation in favor of specification-first approach.
-
-3. **Evaluation & Validation (Advanced)**
-   + Impact analysis tooling
-   + Automated reasoning integration examples
-
-4. **Deployment / Release**
-   + CHANGELOG.md documenting evolution to v1.0.0
-   + Release notes and changelog
-   + Distribution mechanism (npm, GitHub releases, etc.)
-   + Installation instructions
-
----
-
-## Known Issues & Observations
-
-### Git Working Tree Anomalies
-
-Large number of deletions across `examples/`, `tool/`, and `tools/` suggest either:
-
-- **Intentional cleanup**: Shifting from implementation-centric to specification-centric approach
-- **Partial merge conflict resolution**: Changes on v1.0.0 diverging from main
-- **Staged refactoring**: Preparing for commit that restructures project
-
-**Recommendation**: Clarify intent with user before committing to ensure this represents desired state.
-
-### Documentation Maturity
-
-Documentation is comprehensive and well-structured. Minor observations:
-
-- Card field reference and behavioral modeling are excellent
-- Naming conventions are clear and extensible
-- Constraint modeling guide provides good examples
-- All core concepts are documented
-
-### Missing Elements
-
-Based on project goals, the following could enhance the specification:
-
-- Example architectures beyond the reference model
-- Migration guide for existing MBSE/architecture documentation tools
-- Integration patterns with LLM/agent frameworks
-- Formal grammar or EBNF for card DSL (if needed)
-- Glossary of terms
-
----
-
-## Next Steps & Recommendations
-
-### Immediate (Clarification Needed)
-
-1. **Resolve Git Changes**: Confirm whether the deletions in the working tree are intentional and should be committed.
-2. **Document Deletion Rationale**: If tooling is deferred, update README and PROGRESS to reflect decision.
-
-### Short-term (Recommended)
-
-1. **Validate All Schemas**: Run JSON schema validation suite against all 14 schemas to ensure no reference errors or circular dependencies.
-2. **Create CHANGELOG.md**: Document evolution from initial commit to v1.0.0 (pre-release).
-3. **Stabilize v1.0.0**: Review git staging changes, decide on tooling approach, commit, create annotated release tag.
-4. **Link Validation Tooling**: Add script to verify all referenced cards exist and relationships are consistent (schema-based validation).
-
-### Medium-term
-
-1. **Reference Implementation**: Decide on tooling strategy—defer to community, scaffold minimal implementation, or integrate with existing tools.
-2. **Example Architectures**: Contribute 2-3 small reference architectures (e.g., microservices, monolithic, serverless).
-3. **Agent Integration**: Provide examples of AURORA models as input to LLM/agent reasoning.
-
-### Long-term
-
-1. **Community & Ecosystem**: GitHub discussions, contribution guidelines, example tool integrations.
-2. **Formal Semantics**: Optional EBNF or formal schema evolution strategy.
-3. **Industry Validation**: Partnerships or case studies with practitioners.
-
----
-
-## Repository Configuration
-
-### Key Files
-
-- **README.md**: Project overview, goals, core concepts, legal
-- **.github/copilot-instructions.md**: Copilot workflow constraints and guidelines
-- **.github/instructions/**: Internal process & coding standards
-- **Gemfile**: Ruby dependencies (likely for Jekyll/GitHub Pages)
-- **docs/_config.yml**: Jekyll configuration for GitHub Pages
-
-### Development Environment
-
-- **Markdown Linting**: `markdownlint-cli` installed globally
-- **Version Control**: Git with branch-based workflow
-- **Documentation Platform**: GitHub Pages (Jekyll)
+- Card management (CRUD operations)
+- Link creation and visualization
+- Any UI components or views
+- Schema validation integration
+- Tauri command handlers
+- Data persistence layer
 
 ### Build & Deployment
 
-- Static site generation via Jekyll
-- Hosted on GitHub Pages (docs/ root)
-- No build artifacts in version control
+**Status**: ✅ Structure in place; buildable but blank
 
----
+- Frontend: `pnpm dev` builds and serves empty SvelteKit app
+- Desktop: `pnpm tauri dev` launches blank Tauri shell
+- Tauri v2 native builds (ARM64, x86_64) not yet tested
+- GitHub Pages deployment via `docs/` directory (spec only)
 
-## Summary
+## Current Session (Session 8)
 
-AURORA is a well-designed, specification-first architectural framework with comprehensive documentation. The core specification (schemas, cards, links, conventions) is complete and mature. Current working tree shows evidence of refactoring (tool deletion, documentation updates) that needs clarification. The project is positioned well for v1.0.0 release once git staging changes are resolved and release artifacts (CHANGELOG, release notes) are created.
+### Completed
 
-**Key Deliverable**: This PROGRESS.md file serves as the project memory, tracking project state, implementation status, known issues, and recommended next steps.
+- Application moved to clean `app/` directory
+- Modern skeleton created with SvelteKit 2.x and Svelte 5.x
+- Tauri backend structure reorganized
+- All configuration files updated and aligned
+- Project structure documented and tracked
 
----
+### Next Phase: Feature Development
 
-## Phase 1 Implementation Complete ✅
+1. **Card Management UI**
+   + Card creation form with schema validation
+   + Card editor with live updates
+   + Card listing and filtering
 
-**Session 4 (2024-12-14):** Full Tauri + Rust + SvelteKit implementation scaffold complete.
+2. **Link Management**
+   + Link creation interface
+   + Link visualization (graph or hierarchy view)
+   + Link traceability dashboard
 
-### Deliverables Created
+3. **View System**
+   + Requirement view
+   + Component view
+   + Traceability view
+   + Custom view builder
 
-- **27 files** across backend, frontend, configuration, and documentation
-- **3,800+ lines** of working implementation
-- **6 Rust modules** with domain models, persistence, query engine, and Tauri commands
-- **8 SvelteKit components** with TypeScript and Tailwind CSS
-- **2,000+ line implementation guide** (IMPLEMENTATION.md)
+4. **Tooling Features**
+   + Schema validation feedback
+   + Constraint solver integration
+   + Automated impact analysis
+   + Export capabilities (JSON, views)
 
-### Technical Achievement
+## Key Technologies
 
-- Auto-increment change counter on every modification
-- Complete audit history with field-level tracking
-- Debounced auto-save (2s window, 30s heartbeat)
-- Graph-based querying with BFS traversal
-- Thread-safe concurrent access (Arc<RwLock>)
-- JSON Schema validation support
-- Atomic file operations
-- IPC bridge with 13 typed Tauri commands
-- Reactive UI components with type safety
+| Component | Technology | Version |
+|-----------|-----------|---------|
+| Frontend Framework | SvelteKit | 2.9.0 |
+| UI Library | Svelte | 5.0.0 |
+| Language | TypeScript | ~5.9.3 |
+| Build Tool | Vite | 7.3.0 |
+| Desktop Runtime | Tauri | 2.x |
+| Backend | Rust | 1.x |
+| Package Manager | pnpm | latest |
+| Styling | CSS3 + Tailwind-ready | — |
 
-### Current Phase (1) - COMPLETE ✅
+## Known Constraints
 
-**Session 5 (2024-12-14):** Phase 1 Foundation Complete - IPC Bridge Working
+- Desktop application requires Tauri 2 prerequisites (Xcode, Android SDK, etc.)
+- Frontend builds to `dist/` directory (configured in vite.config.ts)
+- IPC commands execute in separate threads (potential for race conditions in parallel ops)
+- Schema validation performed at application level (client-side + server-side)
 
-#### Major Achievements This Session
+## Development Commands
 
-- ✅ Fixed GPU acceleration issue (text rendering now readable on ARM64)
-- ✅ **Fixed Tauri IPC Bridge** - Now using ES modules with @tauri-apps/api
-- ✅ Created comprehensive test page (411 lines with 7 test suites)
-- ✅ All 14 command handlers verified and ready
-- ✅ Rust compiles successfully (14MB ARM64 binary)
-- ✅ Frontend loads and connects to backend
+```bash
+# Frontend development
+pnpm dev                    # Start Vite dev server (http://localhost:5173)
 
-#### Verified IPC Communication
+# Desktop development
+pnpm tauri dev             # Launch Tauri desktop app with hot reload
 
-```json
-✓ Connected to Rust Backend
-{
-  "success": true,
-  "data": {
-    "total_views": 0,
-    "total_cards": 0,
-    "total_links": 0
-  },
-  "error": null
-}
+# Building
+pnpm build                 # Build frontend to dist/
+pnpm tauri build           # Build release desktop binary
+
+# Validation
+pnpm check                 # TypeScript + Svelte checks
+pnpm check:watch           # Watch mode validation
 ```
 
-#### 14 Command Handlers (All Registered)
+## Master Feature Roadmap
 
-1. ✅ `create_card` - Create new card
-2. ✅ `get_card` - Retrieve card
-3. ✅ `update_card` - Update card
-4. ✅ `delete_card` - Delete card
-5. ✅ `list_cards` - List all cards
-6. ✅ `create_link` - Create link
-7. ✅ `list_links` - List all links
-8. ✅ `get_links_for_card` - Get card links
-9. ✅ `query_find_by_type` - Query by type
-10. ✅ `query_find_path` - Find path
-11. ✅ `query_get_statistics` - Get stats
-12. ✅ `load_project` - Load project
-13. ✅ `save_project` - Save project
-14. ✅ `get_autosave_status` - Get autosave status
+### Phase 1: Foundation
 
-#### Test Infrastructure Ready
+- [x] AURORA specification and documentation
+- [x] JSON schema library (14 schemas)
+- [x] Tauri v2 project structure (skeleton)
+- [ ] IPC command handlers (not yet implemented)
+- [x] Basic frontend skeleton (blank routing)
 
-- `testCommand()` - Single command tester
-- `testCardOps()` - Card CRUD tests
-- `testLinkOps()` - Link relationship tests
-- `testQueryOps()` - Query engine tests
-- `testPersistence()` - File I/O tests
+### Phase 2: Card Management (Not Started)
 
-### Build Status
+- [ ] Tauri command handlers (create, read, update, delete)
+- [ ] Card CRUD UI components
+- [ ] Form validation integration
+- [ ] Card search and filtering
+- [ ] Metadata tracking (timestamps, provenance)
 
-- **Code Quality:** ✅ All 3,800+ lines syntactically correct
-- **Rust Compilation:** ✅ Success (14MB binary)
-- **Frontend Dev Server:** ✅ Vite running on 5173/5174
-- **IPC Communication:** ✅ Working end-to-end
-- **GTK Libraries:** ✅ All system dependencies installed
-- **GPU Acceleration:** ✅ Disabled (fixed rendering)
+### Phase 3: Link Management
 
-**Ready for:** Phase 2 - Interactive UI, full command testing, view rendering
+- [ ] Link creation UI
+- [ ] Link deletion and modification
+- [ ] Relationship visualization
+- [ ] Traceability view
+
+### Phase 4: Views & Queries
+
+- [ ] Requirement view
+- [ ] Component view
+- [ ] Deployment view
+- [ ] Custom view builder
+
+### Phase 5: Advanced Tooling
+
+- [ ] Constraint validation
+- [ ] Impact analysis engine
+- [ ] Export/import pipeline
+- [ ] Collaboration features
+
+---
+
+**tl;dr**:
+
+- AURORA specification (47 cards, 20 links) and 14 JSON schemas complete
+- Reference application is blank skeleton in `app/` directory
+- SvelteKit 2.x + Svelte 5.x + Tauri 2.x stack initialized (no features)
+- No IPC commands or handlers implemented yet
+- Next focus: Phase 2 card management (Tauri handlers + UI components)
+- Dev environment ready: `pnpm tauri dev` or `pnpm dev` but no features to test

@@ -1,5 +1,6 @@
 {
 	"dependencies": {
+		"@material/web": "^1.0.0",
 		"@tauri-apps/api": "^2",
 		"@tauri-apps/plugin-opener": "^2"
 	},
