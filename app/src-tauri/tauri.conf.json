@@ -23,6 +23,12 @@
 	"bundle": {
 		"active": true,
 		"targets": "all",
-		"icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
+		"icon": [
+			"../static/AURORA.32.png",
+			"../static/AURORA.64.png",
+			"../static/AURORA.192.png",
+			"../static/AURORA.512.png",
+			"../static/AURORA.1024.png"
+		]
 	}
 }

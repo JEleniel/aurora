@@ -2,6 +2,7 @@
 import { writable, derived, type Readable } from 'svelte/store';
 import type { Card, CardStatus, CardType, Link, ModelStatistics, ProjectMetadata } from '../types';
 import * as archService from '../services/architecture';
+import { errorLogging } from '../services/errorLogging';
 
 interface ArchitectureState {
 	cards: Map<string, Card>;
@@ -31,7 +32,6 @@ function createArchitectureStore() {
 	return {
 		subscribe,
 
-		// Load architecture from ZIP
 		async loadFromZip(path: string) {
 			update((state) => ({ ...state, loading: true, error: null }));
 			try {
@@ -41,11 +41,9 @@ function createArchitectureStore() {
 			} catch (error) {
 				const errorMsg = error instanceof Error ? error.message : String(error);
 				update((state) => ({ ...state, loading: false, error: errorMsg }));
-				throw error;
 			}
 		},
 
-		// Save architecture to ZIP
 		async saveToZip(path: string) {
 			update((state) => ({ ...state, loading: true, error: null }));
 			try {
@@ -54,11 +52,9 @@ function createArchitectureStore() {
 			} catch (error) {
 				const errorMsg = error instanceof Error ? error.message : String(error);
 				update((state) => ({ ...state, loading: false, error: errorMsg }));
-				throw error;
 			}
 		},
 
-		// Refresh all data from backend
 		async refresh() {
 			try {
 				const [cards, links, metadata, statistics] = await Promise.all([
@@ -80,11 +76,10 @@ function createArchitectureStore() {
 			} catch (error) {
 				const errorMsg = error instanceof Error ? error.message : String(error);
 				update((state) => ({ ...state, error: errorMsg }));
-				throw error;
+				await errorLogging.warn(`Failed to refresh data: ${errorMsg}`, 'architectureStore');
 			}
 		},
 
-		// Create card
 		async createCard(id: string, cardType: CardType, name: string, description?: string) {
 			update((state) => ({ ...state, loading: true, error: null }));
 			try {
@@ -94,11 +89,10 @@ function createArchitectureStore() {
 			} catch (error) {
 				const errorMsg = error instanceof Error ? error.message : String(error);
 				update((state) => ({ ...state, loading: false, error: errorMsg }));
-				throw error;
+				await errorLogging.error(`Failed to create card: ${errorMsg}`, 'architectureStore');
 			}
 		},
 
-		// Delete card
 		async deleteCard(id: string) {
 			update((state) => ({ ...state, loading: true, error: null }));
 			try {
@@ -112,11 +106,10 @@ function createArchitectureStore() {
 			} catch (error) {
 				const errorMsg = error instanceof Error ? error.message : String(error);
 				update((state) => ({ ...state, loading: false, error: errorMsg }));
-				throw error;
+				await errorLogging.error(`Failed to delete card: ${errorMsg}`, 'architectureStore');
 			}
 		},
 
-		// Update card
 		async updateCard(id: string, name?: string, description?: string, status?: CardStatus) {
 			update((state) => ({ ...state, loading: true, error: null }));
 			try {
@@ -126,11 +119,10 @@ function createArchitectureStore() {
 			} catch (error) {
 				const errorMsg = error instanceof Error ? error.message : String(error);
 				update((state) => ({ ...state, loading: false, error: errorMsg }));
-				throw error;
+				await errorLogging.error(`Failed to update card: ${errorMsg}`, 'architectureStore');
 			}
 		},
 
-		// Create link
 		async createLink(sourceId: string, targetId?: string, targetUrl?: string) {
 			update((state) => ({ ...state, loading: true, error: null }));
 			try {
@@ -140,16 +132,27 @@ function createArchitectureStore() {
 			} catch (error) {
 				const errorMsg = error instanceof Error ? error.message : String(error);
 				update((state) => ({ ...state, loading: false, error: errorMsg }));
-				throw error;
+				await errorLogging.error(`Failed to create link: ${errorMsg}`, 'architectureStore');
 			}
 		},
 
-		// Select card
+		async deleteLink(sourceId: string, targetId?: string, targetUrl?: string) {
+			update((state) => ({ ...state, loading: true, error: null }));
+			try {
+				await archService.deleteLink(sourceId, targetId, targetUrl);
+				await this.refresh();
+				update((state) => ({ ...state, loading: false }));
+			} catch (error) {
+				const errorMsg = error instanceof Error ? error.message : String(error);
+				update((state) => ({ ...state, loading: false, error: errorMsg }));
+				await errorLogging.error(`Failed to delete link: ${errorMsg}`, 'architectureStore');
+			}
+		},
+
 		selectCard(id: string | null) {
 			update((state) => ({ ...state, selectedCardId: id }));
 		},
 
-		// Update metadata
 		async updateMetadata(name?: string, description?: string, rootDriverId?: string) {
 			update((state) => ({ ...state, loading: true, error: null }));
 			try {
@@ -159,11 +162,10 @@ function createArchitectureStore() {
 			} catch (error) {
 				const errorMsg = error instanceof Error ? error.message : String(error);
 				update((state) => ({ ...state, loading: false, error: errorMsg }));
-				throw error;
+				await errorLogging.error(`Failed to update metadata: ${errorMsg}`, 'architectureStore');
 			}
 		},
 
-		// Clear state
 		clear() {
 			set(initialState);
 		},
@@ -172,7 +174,6 @@ function createArchitectureStore() {
 
 export const architecture = createArchitectureStore();
 
-// Derived stores
 export const allCards: Readable<Card[]> = derived(architecture, (state) => Array.from(state.cards.values()));
 
 export const allLinks: Readable<Link[]> = derived(architecture, (state) => state.links);
@@ -183,7 +184,6 @@ export const selectedCard: Readable<Card | null> = derived(architecture, (state)
 
 export const cardsByType = (type: CardType): Readable<Card[]> =>
 	derived(allCards, (cards) => cards.filter((c) => c.type === type));
-
 export const cardsByStatus = (status: CardStatus): Readable<Card[]> =>
 	derived(allCards, (cards) => cards.filter((c) => c.status === status));
 
@@ -192,3 +192,6 @@ export const linksFrom = (cardId: string): Readable<Link[]> =>
 
 export const linksTo = (cardId: string): Readable<Link[]> =>
 	derived(allLinks, (links) => links.filter((l) => l.target_id === cardId));
+
+// Store for initializing a new card with a specific type
+export const cardToCreate = writable<{ type: CardType } | null>(null);

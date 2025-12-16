@@ -31,7 +31,9 @@ In addition, maintain a `PROGRESS.md` file at the root of the repository that co
 
 ## Coding Standards
 
-* This repository and project MUST NOT contain any source code.
+* Use Rust 2024 edition for all Rust code.
+Follow the single responsibility principle: each module, function, or class should have one clear purpose.
+* Try to keep functions <20 lines where possible.>
 
 ## Copilot Persona & Behavior
 

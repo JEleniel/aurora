@@ -2,6 +2,121 @@
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
+use std::fmt;
+
+/// Custom error type for application-wide error handling
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AppError {
+    /// User-facing error message
+    pub user_message: String,
+    /// Detailed technical error for logging
+    pub technical_message: String,
+    /// Error category for UI handling
+    pub error_type: ErrorType,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum ErrorType {
+    ValidationError,
+    NotFoundError,
+    FileError,
+    ParsingError,
+    SerializationError,
+    LockingError,
+    InternalError,
+}
+
+impl fmt::Display for AppError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "{} ({})", self.user_message, self.technical_message)
+    }
+}
+
+impl From<AppError> for String {
+    fn from(err: AppError) -> String {
+        serde_json::to_string(&err).unwrap_or_else(|_| err.user_message)
+    }
+}
+
+impl AppError {
+    pub fn validation(
+        user_message: impl Into<String>,
+        technical_message: impl Into<String>,
+    ) -> Self {
+        AppError {
+            user_message: user_message.into(),
+            technical_message: technical_message.into(),
+            error_type: ErrorType::ValidationError,
+        }
+    }
+
+    pub fn not_found(
+        user_message: impl Into<String>,
+        technical_message: impl Into<String>,
+    ) -> Self {
+        AppError {
+            user_message: user_message.into(),
+            technical_message: technical_message.into(),
+            error_type: ErrorType::NotFoundError,
+        }
+    }
+
+    pub fn file_error(
+        user_message: impl Into<String>,
+        technical_message: impl Into<String>,
+    ) -> Self {
+        AppError {
+            user_message: user_message.into(),
+            technical_message: technical_message.into(),
+            error_type: ErrorType::FileError,
+        }
+    }
+
+    pub fn parsing_error(
+        user_message: impl Into<String>,
+        technical_message: impl Into<String>,
+    ) -> Self {
+        AppError {
+            user_message: user_message.into(),
+            technical_message: technical_message.into(),
+            error_type: ErrorType::ParsingError,
+        }
+    }
+
+    pub fn serialization_error(
+        user_message: impl Into<String>,
+        technical_message: impl Into<String>,
+    ) -> Self {
+        AppError {
+            user_message: user_message.into(),
+            technical_message: technical_message.into(),
+            error_type: ErrorType::SerializationError,
+        }
+    }
+
+    pub fn locking_error(
+        user_message: impl Into<String>,
+        technical_message: impl Into<String>,
+    ) -> Self {
+        AppError {
+            user_message: user_message.into(),
+            technical_message: technical_message.into(),
+            error_type: ErrorType::LockingError,
+        }
+    }
+
+    pub fn internal_error(
+        user_message: impl Into<String>,
+        technical_message: impl Into<String>,
+    ) -> Self {
+        AppError {
+            user_message: user_message.into(),
+            technical_message: technical_message.into(),
+            error_type: ErrorType::InternalError,
+        }
+    }
+}
 
 /// Card types in the architecture
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
@@ -213,6 +328,21 @@ impl ArchitectureModel {
 
     pub fn add_link(&mut self, link: Link) {
         self.links.push(link);
+    }
+
+    pub fn remove_link(
+        &mut self,
+        source_id: &str,
+        target_id: Option<&str>,
+        target_url: Option<&str>,
+    ) -> bool {
+        let initial_len = self.links.len();
+        self.links.retain(|link| {
+            !(link.source_id == source_id
+                && link.target_id.as_deref() == target_id
+                && link.target_url.as_deref() == target_url)
+        });
+        self.links.len() < initial_len
     }
 
     pub fn get_card(&self, id: &str) -> Option<&Card> {

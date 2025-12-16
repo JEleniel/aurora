@@ -44,6 +44,8 @@
 					<li><a href="/" class="nav-item">Dashboard</a></li>
 					<li><a href="/cards" class="nav-item">Cards</a></li>
 					<li><a href="/links" class="nav-item">Links</a></li>
+					<li><a href="/matrix" class="nav-item">Traceability Matrix</a></li>
+					<li><a href="/graph" class="nav-item">Dependency Graph</a></li>
 					<li><a href="/views" class="nav-item">Views</a></li>
 					<li><a href="/settings" class="nav-item">Settings</a></li>
 				</ul>

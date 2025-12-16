@@ -6,114 +6,6 @@ use std::io::{Read, Write};
 use std::path::Path;
 use zip::ZipArchive;
 
-/// Export an architecture model to a ZIP file
-pub fn export_to_zip(
-    model: &ArchitectureModel,
-    output_path: &Path,
-) -> Result<(), Box<dyn std::error::Error>> {
-    let file = File::create(output_path)?;
-    let mut zip_writer = zip::ZipWriter::new(file);
-
-    // Create folders and add cards by type
-    for card in model.cards.values() {
-        let folder = card.r#type.folder_name();
-        let filename = format!(
-            "cards/{}/{}-{}.json",
-            folder,
-            folder,
-            normalize_name(&card.id)
-        );
-
-        let card_json = serde_json::to_string_pretty(&card)?;
-
-        // Use empty tuple () as the extension type
-        let options: zip::write::FileOptions<()> = zip::write::FileOptions::default();
-        zip_writer.start_file(filename, options)?;
-        zip_writer.write_all(card_json.as_bytes())?;
-    }
-
-    // Add links file
-    if !model.links.is_empty() {
-        let links_json = serde_json::to_string_pretty(&model.links)?;
-        let options: zip::write::FileOptions<()> = zip::write::FileOptions::default();
-        zip_writer.start_file("links/links.json", options)?;
-        zip_writer.write_all(links_json.as_bytes())?;
-    }
-
-    // Add metadata
-    let metadata_json = serde_json::to_string_pretty(&model.metadata)?;
-    let options: zip::write::FileOptions<()> = zip::write::FileOptions::default();
-    zip_writer.start_file("metadata.json", options)?;
-    zip_writer.write_all(metadata_json.as_bytes())?;
-
-    // Add manifest
-    let stats = model.statistics();
-    let manifest = json!({
-        "version": "1.0.0",
-        "format": "aurora-archive-v1",
-        "created": chrono::Utc::now().to_rfc3339(),
-        "created_by": "AURORA Tooling v1.0.0",
-        "model": {
-            "name": model.metadata.name,
-            "description": model.metadata.description,
-            "root_driver_id": model.metadata.root_driver_id,
-            "statistics": {
-                "total_cards": stats.total_cards,
-                "total_links": stats.total_links,
-                "cards_by_type": stats.cards_by_type,
-            }
-        }
-    });
-
-    let manifest_json = serde_json::to_string_pretty(&manifest)?;
-    let options: zip::write::FileOptions<()> = zip::write::FileOptions::default();
-    zip_writer.start_file("MANIFEST.json", options)?;
-    zip_writer.write_all(manifest_json.as_bytes())?;
-
-    zip_writer.finish()?;
-    Ok(())
-}
-
-/// Import an architecture model from a ZIP file
-pub fn import_from_zip(input_path: &Path) -> Result<ArchitectureModel, Box<dyn std::error::Error>> {
-    let file = File::open(input_path)?;
-    let mut archive = ZipArchive::new(file)?;
-
-    let mut model = ArchitectureModel::new();
-
-    // Load metadata if present
-    if let Ok(mut metadata_file) = archive.by_name("metadata.json") {
-        let mut contents = String::new();
-        metadata_file.read_to_string(&mut contents)?;
-        model.metadata = serde_json::from_str(&contents)?;
-    }
-
-    // Load all cards
-    for i in 0..archive.len() {
-        let mut file = archive.by_index(i)?;
-        if file.is_file() && file.name().starts_with("cards/") && file.name().ends_with(".json") {
-            let mut contents = String::new();
-            file.read_to_string(&mut contents)?;
-            if let Ok(card) = serde_json::from_str::<Card>(&contents) {
-                model.add_card(card);
-            }
-        }
-    }
-
-    // Load links
-    if let Ok(mut links_file) = archive.by_name("links/links.json") {
-        let mut contents = String::new();
-        links_file.read_to_string(&mut contents)?;
-        if let Ok(links) = serde_json::from_str::<Vec<Link>>(&contents) {
-            for link in links {
-                model.add_link(link);
-            }
-        }
-    }
-
-    Ok(model)
-}
-
 /// Normalize a name for use in filenames
 fn normalize_name(s: &str) -> String {
     s.to_lowercase()
@@ -130,6 +22,170 @@ fn normalize_name(s: &str) -> String {
         .filter(|s| !s.is_empty())
         .collect::<Vec<_>>()
         .join("-")
+}
+
+/// Write a single card to ZIP archive
+fn write_card_to_zip(
+    zip_writer: &mut zip::ZipWriter<File>,
+    card: &Card,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let folder = card.r#type.folder_name();
+    let filename = format!(
+        "cards/{}/{}-{}.json",
+        folder,
+        folder,
+        normalize_name(&card.id)
+    );
+    let card_json = serde_json::to_string_pretty(&card)?;
+    let options: zip::write::FileOptions<()> = zip::write::FileOptions::default();
+    zip_writer.start_file(filename, options)?;
+    zip_writer.write_all(card_json.as_bytes())?;
+    Ok(())
+}
+
+/// Write all cards to ZIP archive
+fn write_cards_to_zip(
+    zip_writer: &mut zip::ZipWriter<File>,
+    model: &ArchitectureModel,
+) -> Result<(), Box<dyn std::error::Error>> {
+    for card in model.cards.values() {
+        write_card_to_zip(zip_writer, card)?;
+    }
+    Ok(())
+}
+
+/// Write links to ZIP archive
+fn write_links_to_zip(
+    zip_writer: &mut zip::ZipWriter<File>,
+    model: &ArchitectureModel,
+) -> Result<(), Box<dyn std::error::Error>> {
+    if !model.links.is_empty() {
+        let links_json = serde_json::to_string_pretty(&model.links)?;
+        let options: zip::write::FileOptions<()> = zip::write::FileOptions::default();
+        zip_writer.start_file("links/links.json", options)?;
+        zip_writer.write_all(links_json.as_bytes())?;
+    }
+    Ok(())
+}
+
+/// Write metadata to ZIP archive
+fn write_metadata_to_zip(
+    zip_writer: &mut zip::ZipWriter<File>,
+    model: &ArchitectureModel,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let metadata_json = serde_json::to_string_pretty(&model.metadata)?;
+    let options: zip::write::FileOptions<()> = zip::write::FileOptions::default();
+    zip_writer.start_file("metadata.json", options)?;
+    zip_writer.write_all(metadata_json.as_bytes())?;
+    Ok(())
+}
+
+/// Build manifest JSON from model
+fn build_manifest(model: &ArchitectureModel) -> serde_json::Value {
+    let stats = model.statistics();
+    json!({
+        "version": "1.0.0",
+        "format": "aurora-archive-v1",
+        "created": chrono::Utc::now().to_rfc3339(),
+        "created_by": "AURORA Tooling v1.0.0",
+        "model": {
+            "name": model.metadata.name,
+            "description": model.metadata.description,
+            "root_driver_id": model.metadata.root_driver_id,
+            "statistics": {
+                "total_cards": stats.total_cards,
+                "total_links": stats.total_links,
+                "cards_by_type": stats.cards_by_type,
+            }
+        }
+    })
+}
+
+/// Write manifest to ZIP archive
+fn write_manifest_to_zip(
+    zip_writer: &mut zip::ZipWriter<File>,
+    model: &ArchitectureModel,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let manifest = build_manifest(model);
+    let manifest_json = serde_json::to_string_pretty(&manifest)?;
+    let options: zip::write::FileOptions<()> = zip::write::FileOptions::default();
+    zip_writer.start_file("MANIFEST.json", options)?;
+    zip_writer.write_all(manifest_json.as_bytes())?;
+    Ok(())
+}
+
+/// Export an architecture model to a ZIP file
+pub fn export_to_zip(
+    model: &ArchitectureModel,
+    output_path: &Path,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let file = File::create(output_path)?;
+    let mut zip_writer = zip::ZipWriter::new(file);
+    write_cards_to_zip(&mut zip_writer, model)?;
+    write_links_to_zip(&mut zip_writer, model)?;
+    write_metadata_to_zip(&mut zip_writer, model)?;
+    write_manifest_to_zip(&mut zip_writer, model)?;
+    zip_writer.finish()?;
+    Ok(())
+}
+
+/// Import an architecture model from a ZIP file
+pub fn import_from_zip(input_path: &Path) -> Result<ArchitectureModel, Box<dyn std::error::Error>> {
+    let file = File::open(input_path)?;
+    let mut archive = ZipArchive::new(file)?;
+    let mut model = ArchitectureModel::new();
+    parse_and_add_metadata(&mut archive, &mut model)?;
+    load_cards_from_zip(&mut archive, &mut model)?;
+    load_links_from_zip(&mut archive, &mut model)?;
+    Ok(model)
+}
+
+/// Load and parse metadata file from archive into model
+fn parse_and_add_metadata(
+    archive: &mut ZipArchive<File>,
+    model: &mut ArchitectureModel,
+) -> Result<(), Box<dyn std::error::Error>> {
+    if let Ok(mut metadata_file) = archive.by_name("metadata.json") {
+        let mut contents = String::new();
+        metadata_file.read_to_string(&mut contents)?;
+        model.metadata = serde_json::from_str(&contents)?;
+    }
+    Ok(())
+}
+
+/// Load all cards from ZIP archive into model
+fn load_cards_from_zip(
+    archive: &mut ZipArchive<File>,
+    model: &mut ArchitectureModel,
+) -> Result<(), Box<dyn std::error::Error>> {
+    for i in 0..archive.len() {
+        let mut file = archive.by_index(i)?;
+        if file.is_file() && file.name().starts_with("cards/") && file.name().ends_with(".json") {
+            let mut contents = String::new();
+            file.read_to_string(&mut contents)?;
+            if let Ok(card) = serde_json::from_str::<Card>(&contents) {
+                model.add_card(card);
+            }
+        }
+    }
+    Ok(())
+}
+
+/// Load all links from ZIP archive into model
+fn load_links_from_zip(
+    archive: &mut ZipArchive<File>,
+    model: &mut ArchitectureModel,
+) -> Result<(), Box<dyn std::error::Error>> {
+    if let Ok(mut links_file) = archive.by_name("links/links.json") {
+        let mut contents = String::new();
+        links_file.read_to_string(&mut contents)?;
+        if let Ok(links) = serde_json::from_str::<Vec<Link>>(&contents) {
+            for link in links {
+                model.add_link(link);
+            }
+        }
+    }
+    Ok(())
 }
 
 #[cfg(test)]

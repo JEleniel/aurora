@@ -2,7 +2,8 @@
 	"dependencies": {
 		"@material/web": "^1.0.0",
 		"@tauri-apps/api": "^2",
-		"@tauri-apps/plugin-opener": "^2"
+		"@tauri-apps/plugin-opener": "^2",
+		"d3": "^7.9.0"
 	},
 	"description": "AURORA is an architectural practice and tools designed to be equally followable by both machine and human agents.",
 	"devDependencies": {
@@ -10,6 +11,7 @@
 		"@sveltejs/kit": "^2.9.0",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@tauri-apps/cli": "^2",
+		"@types/d3": "^7.4.3",
 		"@types/node": "^25.0.2",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
