@@ -25,6 +25,7 @@
 		{ href: '/links', label: 'Links' },
 		{ href: '/matrix', label: 'Traceability' },
 		{ href: '/graph', label: 'Graph' },
+		{ href: '/relationship', label: 'Relationships' },
 		{ href: '/views', label: 'Views' },
 		{ href: '/settings', label: 'Settings' },
 	];

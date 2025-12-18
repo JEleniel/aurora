@@ -3,6 +3,7 @@ pub mod config;
 pub mod constants;
 pub mod dependency_graph;
 pub mod models;
+pub mod relationship_analyzer;
 pub mod schema_validator;
 pub mod traceability_matrix;
 pub mod zip_handler;
@@ -374,6 +375,7 @@ pub fn run() {
             commands::diagnostics::validate_card,
             commands::analytics::generate_traceability_matrix,
             commands::analytics::generate_dependency_graph,
+            commands::relationships::analyze_relationships,
             commands::file_dialogs::select_file,
             commands::file_dialogs::select_save_file,
         ])
