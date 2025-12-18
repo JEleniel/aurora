@@ -1,5 +1,6 @@
 /// Traceability matrix generation and analysis
 /// Produces a matrix showing links between card types (e.g., Drivers × Requirements × Behaviors)
+use crate::constants::{GapType, Severity};
 use crate::models::{ArchitectureModel, Card, CardType};
 use serde::{Deserialize, Serialize};
 use std::collections::{HashMap, HashSet};
@@ -199,10 +200,10 @@ impl GapAnalysis {
         // Check for orphaned sources
         for source_id in &matrix.orphaned_sources {
             gaps.push(GapAnalysis {
-                gap_type: "orphaned_source".to_string(),
+                gap_type: GapType::OrphanedSource.to_string(),
                 source_id: source_id.clone(),
                 target_id: None,
-                severity: "high".to_string(),
+                severity: Severity::High.to_string(),
                 recommendation: format!(
                     "Source {} has no links to any target. Please create at least one link.",
                     source_id
@@ -213,10 +214,10 @@ impl GapAnalysis {
         // Check for unreferenced targets
         for target_id in &matrix.unreferenced_targets {
             gaps.push(GapAnalysis {
-                gap_type: "unreferenced_target".to_string(),
+                gap_type: GapType::UnreferencedTarget.to_string(),
                 source_id: target_id.clone(),
                 target_id: None,
-                severity: "medium".to_string(),
+                severity: Severity::Medium.to_string(),
                 recommendation: format!(
                     "Target {} is not referenced by any source. Consider removing or linking it.",
                     target_id

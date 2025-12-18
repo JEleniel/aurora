@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import { allCards } from '$lib/stores/architecture';
 	import { generateTraceabilityMatrix } from '$lib/services/architecture';
@@ -7,13 +8,13 @@
 
 	export const data: PageData = {};
 
-	let sourceType: string = 'Driver';
-	let targetType: string = 'Requirement';
-	let matrix: TraceabilityMatrix | null = null;
-	let loading = false;
-	let errorMessage = '';
-
+	let sourceType = $state('Mission');
+	let targetType = $state('Driver');
+	let matrix = $state<TraceabilityMatrix | null>(null);
+	let loading = $state(false);
+	let errorMessage = $state('');
 	const cardTypeOptions = [
+		{ value: 'Mission', label: 'Mission' },
 		{ value: 'Driver', label: 'Driver' },
 		{ value: 'Requirement', label: 'Requirement' },
 		{ value: 'Behavior', label: 'Behavior' },
@@ -29,13 +30,19 @@
 	];
 
 	// Build card map for lookup
-	$: cardMap = new Map($allCards.map((c) => [c.id, c]));
+	let cardMap = $derived(new Map($allCards.map((c) => [c.id, c])));
+
+	onMount(() => {
+		// Auto-generate matrix on mount with default Driver → Requirement
+		generateMatrix();
+	});
 
 	async function generateMatrix() {
 		errorMessage = '';
 		loading = true;
 		try {
-			const result = await generateTraceabilityMatrix(sourceType, targetType);
+			// Convert card type names to lowercase for backend
+			const result = await generateTraceabilityMatrix(sourceType.toLowerCase(), targetType.toLowerCase());
 			matrix = parseTraceabilityMatrix(result);
 		} catch (error) {
 			errorMessage = error instanceof Error ? error.message : String(error);
@@ -65,14 +72,14 @@
 			<button
 				type="button"
 				class="md-button md-button--outlined swap-button"
-				on:click={swapTypes}
+				onclick={swapTypes}
 				disabled={loading}
 				title="Swap source and target"
 			>
 				⇄
 			</button>
 			<Select label="To (Target)" bind:value={targetType} options={cardTypeOptions} disabled={loading} />
-			<button type="button" class="md-button md-button--filled" on:click={generateMatrix} disabled={loading}>
+			<button type="button" class="md-button md-button--filled" onclick={generateMatrix} disabled={loading}>
 				{loading ? 'Generating...' : 'Generate Matrix'}
 			</button>
 		</div>

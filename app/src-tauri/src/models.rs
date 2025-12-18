@@ -1,4 +1,5 @@
 /// AURORA data models representing cards, links, and architectures
+use crate::constants::APP_VERSION;
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
@@ -122,6 +123,7 @@ impl AppError {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 #[serde(rename_all = "kebab-case")]
 pub enum CardType {
+    Mission,
     Driver,
     Requirement,
     Behavior,
@@ -140,6 +142,7 @@ impl CardType {
     /// Returns the folder name for this card type
     pub fn folder_name(&self) -> &'static str {
         match self {
+            CardType::Mission => "mission",
             CardType::Driver => "driver",
             CardType::Requirement => "requirement",
             CardType::Behavior => "behavior",
@@ -158,6 +161,7 @@ impl CardType {
     /// Parse from string
     pub fn from_str(s: &str) -> Option<Self> {
         match s {
+            "mission" => Some(CardType::Mission),
             "driver" => Some(CardType::Driver),
             "requirement" => Some(CardType::Requirement),
             "behavior" => Some(CardType::Behavior),
@@ -223,7 +227,7 @@ impl Card {
             r#type,
             name,
             description,
-            version: Some("1.0.0".to_string()),
+            version: Some(APP_VERSION.to_string()),
             status: Some(CardStatus::Proposed),
             attributes: None,
             created_at: now,
@@ -303,7 +307,7 @@ impl Default for ArchitectureModel {
             metadata: ProjectMetadata {
                 name: None,
                 description: None,
-                version: Some("1.0.0".to_string()),
+                version: Some(APP_VERSION.to_string()),
                 root_driver_id: None,
             },
         }

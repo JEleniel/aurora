@@ -55,6 +55,15 @@ function createThemeStore() {
 
 export const themeStore = createThemeStore();
 
+// Apply initial theme on creation
+if (typeof window !== 'undefined') {
+	const initialMode = localStorage.getItem('theme') as ThemeMode | null;
+	const mode = (initialMode && ['light', 'dark', 'auto'].includes(initialMode) ? initialMode : 'auto') as ThemeMode;
+	const effectiveTheme =
+		mode === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : mode;
+	applyTheme(effectiveTheme);
+}
+
 // Watch system preference changes when in auto mode
 if (typeof window !== 'undefined') {
 	const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');

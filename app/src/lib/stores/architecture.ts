@@ -149,6 +149,19 @@ function createArchitectureStore() {
 			}
 		},
 
+		async updateLink(sourceId: string, targetId?: string, targetUrl?: string, metadata?: Record<string, unknown>) {
+			update((state) => ({ ...state, loading: true, error: null }));
+			try {
+				await archService.updateLink(sourceId, targetId, targetUrl, metadata);
+				await this.refresh();
+				update((state) => ({ ...state, loading: false }));
+			} catch (error) {
+				const errorMsg = error instanceof Error ? error.message : String(error);
+				update((state) => ({ ...state, loading: false, error: errorMsg }));
+				await errorLogging.error(`Failed to update link: ${errorMsg}`, 'architectureStore');
+			}
+		},
+
 		selectCard(id: string | null) {
 			update((state) => ({ ...state, selectedCardId: id }));
 		},
@@ -194,4 +207,4 @@ export const linksTo = (cardId: string): Readable<Link[]> =>
 	derived(allLinks, (links) => links.filter((l) => l.target_id === cardId));
 
 // Store for initializing a new card with a specific type
-export const cardToCreate = writable<{ type: CardType } | null>(null);
+export const cardToCreate = writable<{ type: CardType; name?: string } | null>(null);

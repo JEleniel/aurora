@@ -9,6 +9,14 @@ export interface CardTemplate {
 }
 
 export const cardTemplates: Record<CardType, CardTemplate[]> = {
+	[CardTypeEnum.Mission]: [
+		{
+			name: 'System Mission',
+			description: 'Primary mission and purpose of the system',
+			tags: ['mission', 'strategic'],
+			icon: '🎯',
+		},
+	],
 	[CardTypeEnum.Driver]: [
 		{
 			name: 'Business Driver',

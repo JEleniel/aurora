@@ -39,21 +39,21 @@
 	--md-sys-color-scrim: #000000;
 
 	/* Font families */
-	--md-sys-typescale-display-large-font: 'Roboto', sans-serif;
-	--md-sys-typescale-display-medium-font: 'Roboto', sans-serif;
-	--md-sys-typescale-display-small-font: 'Roboto', sans-serif;
-	--md-sys-typescale-headline-large-font: 'Roboto', sans-serif;
-	--md-sys-typescale-headline-medium-font: 'Roboto', sans-serif;
-	--md-sys-typescale-headline-small-font: 'Roboto', sans-serif;
-	--md-sys-typescale-title-large-font: 'Roboto', sans-serif;
-	--md-sys-typescale-title-medium-font: 'Roboto', sans-serif;
-	--md-sys-typescale-title-small-font: 'Roboto', sans-serif;
-	--md-sys-typescale-body-large-font: 'Roboto', sans-serif;
-	--md-sys-typescale-body-medium-font: 'Roboto', sans-serif;
-	--md-sys-typescale-body-small-font: 'Roboto', sans-serif;
-	--md-sys-typescale-label-large-font: 'Roboto', sans-serif;
-	--md-sys-typescale-label-medium-font: 'Roboto', sans-serif;
-	--md-sys-typescale-label-small-font: 'Roboto', sans-serif;
+	--md-sys-typescale-display-large-font: 'Noto Serif', serif;
+	--md-sys-typescale-display-medium-font: 'Noto Serif', serif;
+	--md-sys-typescale-display-small-font: 'Noto Serif', serif;
+	--md-sys-typescale-headline-large-font: 'Noto Serif', serif;
+	--md-sys-typescale-headline-medium-font: 'Noto Serif', serif;
+	--md-sys-typescale-headline-small-font: 'Noto Serif', serif;
+	--md-sys-typescale-title-large-font: 'Noto Serif', serif;
+	--md-sys-typescale-title-medium-font: 'Noto Serif', serif;
+	--md-sys-typescale-title-small-font: 'Noto Serif', serif;
+	--md-sys-typescale-body-large-font: 'Noto Sans', sans-serif;
+	--md-sys-typescale-body-medium-font: 'Noto Sans', sans-serif;
+	--md-sys-typescale-body-small-font: 'Noto Sans', sans-serif;
+	--md-sys-typescale-label-large-font: 'Noto Sans', sans-serif;
+	--md-sys-typescale-label-medium-font: 'Noto Sans', sans-serif;
+	--md-sys-typescale-label-small-font: 'Noto Sans', sans-serif;
 }
 
 html.dark {
@@ -105,7 +105,7 @@ html.dark {
 }
 
 html {
-	font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	font-size: 16px;
 	color: var(--md-sys-color-on-background);
 	background-color: var(--md-sys-color-background);
@@ -210,7 +210,7 @@ select {
 	border: 1px solid var(--md-sys-color-outline-variant);
 	border-radius: 4px;
 	padding: 0.5rem;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Noto Sans', sans-serif;
 	font-size: 0.875rem;
 	transition: all 0.2s ease;
 
@@ -225,4 +225,47 @@ select {
 		opacity: 0.38;
 		cursor: not-allowed;
 	}
+}
+
+/* Heading typography scale (scaled ~20% larger) */
+h1 {
+	font-size: 2.4rem;
+	font-weight: 300;
+	letter-spacing: -0.015625em;
+	margin: 2rem 0 1rem 0;
+}
+
+h2 {
+	font-size: 1.95rem;
+	font-weight: 400;
+	letter-spacing: 0em;
+	margin: 1.75rem 0 0.875rem 0;
+}
+
+h3 {
+	font-size: 1.55rem;
+	font-weight: 500;
+	letter-spacing: 0em;
+	margin: 1.5rem 0 0.75rem 0;
+}
+
+h4 {
+	font-size: 1.2rem;
+	font-weight: 600;
+	letter-spacing: 0.0125em;
+	margin: 1rem 0 0.5rem 0;
+}
+
+h5 {
+	font-size: 0.95rem;
+	font-weight: 600;
+	letter-spacing: 0.0125em;
+	margin: 0.75rem 0 0.375rem 0;
+}
+
+h6 {
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.125em;
+	margin: 0.5rem 0 0.25rem 0;
 }

@@ -22,7 +22,7 @@
 	},
 	"bundle": {
 		"active": true,
-		"targets": "all",
+		"targets": ["appimage"],
 		"icon": [
 			"../static/AURORA.32.png",
 			"../static/AURORA.64.png",

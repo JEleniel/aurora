@@ -1,19 +1,39 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import { allCards } from '$lib/stores/architecture';
 	import { generateDependencyGraph } from '$lib/services/architecture';
 	import { parseDependencyGraph, type DependencyGraph, type GraphMetrics } from '$lib/dependencyGraphTypes';
+	import { getCardColor } from '$lib/utils/cardStyling';
+	import { CardTypeDisplay, getCardTypesByDisplay } from '$lib/types';
 	import * as d3 from 'd3';
 
 	export const data: PageData = {};
 
-	let svgElement: SVGSVGElement;
-	let graph: DependencyGraph | null = null;
-	let metrics: GraphMetrics | null = null;
-	let loading = false;
-	let errorMessage = '';
-	let selectedNode: string | null = null;
-	let zoomLevel = 1;
+	// Precompute shape groupings using the display enum
+	const beveled = getCardTypesByDisplay(CardTypeDisplay.Mission, CardTypeDisplay.Requirement, CardTypeDisplay.Driver);
+	const beveledSet = new Set(beveled.map((t) => t as string));
+
+	let svgElement = $state<SVGSVGElement | null>(null);
+	let graph = $state<DependencyGraph | null>(null);
+	let metrics = $state<GraphMetrics | null>(null);
+	let loading = $state(false);
+	let errorMessage = $state('');
+	let selectedNode = $state<string | null>(null);
+	let zoomLevel = $state(1);
+	let zoomBehavior: d3.ZoomBehavior<SVGSVGElement, unknown> | null = null;
+
+	onMount(() => {
+		// Auto-load graph on component mount
+		loadGraph();
+	});
+
+	// Automatically regenerate graph when cards change
+	$effect(() => {
+		if ($allCards.length > 0) {
+			loadGraph();
+		}
+	});
 
 	async function loadGraph() {
 		errorMessage = '';
@@ -68,8 +88,280 @@
 		};
 	}
 
+	function renderNodeShape(selection: any) {
+		// Mission, Requirement, Driver: Beveled square
+		selection
+			.filter((d: any) => beveledSet.has(d.card_type))
+			.append('polygon')
+			.attr('points', `${-12},${-10} ${12},${-10} ${16},${10} ${-12},${10}`)
+			.attr('fill', (d: any) => getCardColor(d.card_type as any) || '#999999')
+			.attr('stroke', '#fff')
+			.attr('stroke-width', 1.5);
+
+		// Behavior: Oval
+		selection
+			.filter((d: any) => d.card_type === CardTypeDisplay.Behavior)
+			.append('ellipse')
+			.attr('rx', 12)
+			.attr('ry', 8)
+			.attr('fill', (d: any) => getCardColor(d.card_type as any) || '#999999')
+			.attr('stroke', '#fff')
+			.attr('stroke-width', 1.5);
+
+		// Constraint: Elongated octagon
+		selection
+			.filter((d: any) => d.card_type === CardTypeDisplay.Constraint)
+			.append('polygon')
+			.attr('points', `${-4},${-10} ${4},${-10} ${14},${0} ${4},${10} ${-4},${10} ${-14},${0}`)
+			.attr('fill', (d: any) => getCardColor(d.card_type as any) || '#999999')
+			.attr('stroke', '#fff')
+			.attr('stroke-width', 1.5);
+
+		// LogicalComponent: 3D shadow
+		selection
+			.filter((d: any) => d.card_type === CardTypeDisplay.LogicalComponent)
+			.append('g')
+			.each(function (this: SVGGElement, d: any) {
+				d3.select(this)
+					.append('rect')
+					.attr('x', -8)
+					.attr('y', 4)
+					.attr('width', 12)
+					.attr('height', 6)
+					.attr('fill', getCardColor(d.card_type as any) || '#999999')
+					.attr('opacity', 0.3);
+				d3.select(this)
+					.append('rect')
+					.attr('x', -10)
+					.attr('y', -5)
+					.attr('width', 13)
+					.attr('height', 11)
+					.attr('fill', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke', '#fff')
+					.attr('stroke-width', 1.5);
+			});
+
+		// DeployableNode: Server with legs
+		selection
+			.filter((d: any) => d.card_type === CardTypeDisplay.DeployableNode)
+			.append('g')
+			.each(function (this: SVGGElement, d: any) {
+				d3.select(this)
+					.append('rect')
+					.attr('x', -6)
+					.attr('y', -4)
+					.attr('width', 12)
+					.attr('height', 8)
+					.attr('fill', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke', '#fff')
+					.attr('stroke-width', 1.5);
+				d3.select(this)
+					.append('line')
+					.attr('x1', -3)
+					.attr('y1', 4)
+					.attr('x2', -5)
+					.attr('y2', 10)
+					.attr('stroke', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke-width', 1.5);
+				d3.select(this)
+					.append('line')
+					.attr('x1', 3)
+					.attr('y1', 4)
+					.attr('x2', 5)
+					.attr('y2', 10)
+					.attr('stroke', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke-width', 1.5);
+			});
+
+		// Actor: Stick figure with computer head
+		selection
+			.filter((d: any) => d.card_type === CardTypeDisplay.Actor)
+			.append('g')
+			.each(function (this: SVGGElement, d: any) {
+				d3.select(this)
+					.append('circle')
+					.attr('cx', 0)
+					.attr('cy', -6)
+					.attr('r', 2.5)
+					.attr('fill', getCardColor(d.card_type as any) || '#999999');
+				d3.select(this)
+					.append('rect')
+					.attr('x', -4)
+					.attr('y', -9)
+					.attr('width', 8)
+					.attr('height', 5)
+					.attr('fill', 'none')
+					.attr('stroke', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke-width', 1);
+				d3.select(this)
+					.append('line')
+					.attr('x1', 0)
+					.attr('y1', -3.5)
+					.attr('x2', 0)
+					.attr('y2', 2)
+					.attr('stroke', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke-width', 1.5);
+				d3.select(this)
+					.append('line')
+					.attr('x1', -4)
+					.attr('y1', 0)
+					.attr('x2', 4)
+					.attr('y2', 0)
+					.attr('stroke', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke-width', 1.5);
+				d3.select(this)
+					.append('line')
+					.attr('x1', -2)
+					.attr('y1', 2)
+					.attr('x2', -5)
+					.attr('y2', 8)
+					.attr('stroke', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke-width', 1.5);
+				d3.select(this)
+					.append('line')
+					.attr('x1', 2)
+					.attr('y1', 2)
+					.attr('x2', 5)
+					.attr('y2', 8)
+					.attr('stroke', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke-width', 1.5);
+			});
+
+		// Test: Elongated hexagon
+		selection
+			.filter((d: any) => d.card_type === CardTypeDisplay.Test)
+			.append('polygon')
+			.attr('points', `${-4},${-10} ${4},${-10} ${14},${0} ${4},${10} ${-4},${10} ${-14},${0}`)
+			.attr('fill', (d: any) => getCardColor(d.card_type as any) || '#999999')
+			.attr('stroke', '#fff')
+			.attr('stroke-width', 1.5);
+
+		// Artifact: Document
+		selection
+			.filter((d: any) => d.card_type === CardTypeDisplay.Artifact)
+			.append('g')
+			.each(function (this: SVGGElement, d: any) {
+				d3.select(this)
+					.append('rect')
+					.attr('x', -4)
+					.attr('y', -7)
+					.attr('width', 10)
+					.attr('height', 14)
+					.attr('fill', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke', '#fff')
+					.attr('stroke-width', 1.5);
+				d3.select(this)
+					.append('line')
+					.attr('x1', -2)
+					.attr('y1', -3)
+					.attr('x2', 2)
+					.attr('y2', -3)
+					.attr('stroke', 'white')
+					.attr('stroke-width', 1);
+				d3.select(this)
+					.append('line')
+					.attr('x1', -2)
+					.attr('y1', 0)
+					.attr('x2', 2)
+					.attr('y2', 0)
+					.attr('stroke', 'white')
+					.attr('stroke-width', 1);
+				d3.select(this)
+					.append('line')
+					.attr('x1', -2)
+					.attr('y1', 3)
+					.attr('x2', 2)
+					.attr('y2', 3)
+					.attr('stroke', 'white')
+					.attr('stroke-width', 1);
+			});
+
+		// View: Double circle
+		selection
+			.filter((d: any) => d.card_type === CardTypeDisplay.View)
+			.append('g')
+			.each(function (this: SVGGElement, d: any) {
+				d3.select(this)
+					.append('circle')
+					.attr('cx', -4)
+					.attr('cy', 0)
+					.attr('r', 4)
+					.attr('fill', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke', '#fff')
+					.attr('stroke-width', 1.5);
+				d3.select(this)
+					.append('circle')
+					.attr('cx', 4)
+					.attr('cy', 0)
+					.attr('r', 4)
+					.attr('fill', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke', '#fff')
+					.attr('stroke-width', 1.5);
+			});
+
+		// Interface: Elongated circle on stick
+		selection
+			.filter((d: any) => d.card_type === CardTypeDisplay.Interface)
+			.append('g')
+			.each(function (this: SVGGElement, d: any) {
+				d3.select(this)
+					.append('ellipse')
+					.attr('cx', 0)
+					.attr('cy', -4)
+					.attr('rx', 5)
+					.attr('ry', 4)
+					.attr('fill', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke', '#fff')
+					.attr('stroke-width', 1.5);
+				d3.select(this)
+					.append('line')
+					.attr('x1', 0)
+					.attr('y1', 0)
+					.attr('x2', 0)
+					.attr('y2', 10)
+					.attr('stroke', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke-width', 1.5);
+			});
+
+		// Note: Note card with fold
+		selection
+			.filter((d: any) => d.card_type === CardTypeDisplay.Note)
+			.append('g')
+			.each(function (this: SVGGElement, d: any) {
+				d3.select(this)
+					.append('path')
+					.attr('d', `M ${-8} ${-6} L ${8} ${-6} L ${8} ${-2} L ${10} ${-2} L ${10} ${8} L ${-8} ${8} Z`)
+					.attr('fill', getCardColor(d.card_type as any) || '#999999')
+					.attr('stroke', '#fff')
+					.attr('stroke-width', 1.5);
+				d3.select(this)
+					.append('polygon')
+					.attr('points', `${4},${-6} ${10},${-2} ${8},${-2}`)
+					.attr('fill', 'white')
+					.attr('opacity', 0.3);
+			});
+	}
+
 	function renderGraph() {
 		if (!graph || !svgElement) return;
+
+		// Handle empty graph
+		if (graph.nodes.length === 0) {
+			d3.select(svgElement).selectAll('*').remove();
+			const svg = d3.select(svgElement);
+			const width = svgElement.clientWidth;
+			const height = svgElement.clientHeight;
+
+			svg.append('text')
+				.attr('x', width / 2)
+				.attr('y', height / 2)
+				.attr('text-anchor', 'middle')
+				.attr('font-size', '16px')
+				.attr('fill', '#999')
+				.text('No cards in architecture. Create some cards to see the dependency graph.');
+
+			return;
+		}
 
 		// Clear previous content
 		d3.select(svgElement).selectAll('*').remove();
@@ -105,6 +397,7 @@
 				g.attr('transform', event.transform.toString());
 			});
 
+		zoomBehavior = zoom;
 		svg.call(zoom as any);
 
 		// Draw links
@@ -113,6 +406,7 @@
 			.selectAll('line')
 			.data(graph.links)
 			.join('line')
+			.attr('class', 'link')
 			.attr('stroke', '#888')
 			.attr('stroke-opacity', 0.6)
 			.attr('stroke-width', 2)
@@ -132,46 +426,18 @@
 			.attr('fill', '#888');
 
 		// Draw nodes
-		const node = g
-			.append('g')
-			.selectAll('circle')
-			.data(graph.nodes)
-			.join('circle')
-			.attr('r', (d: any) => {
-				const links = graph!.links.filter((l) => l.source === d.id || l.target === d.id).length;
-				return Math.max(5, Math.min(15, 5 + links));
-			})
-			.attr('fill', (d: any) => {
-				const colors = [
-					'#1f77b4',
-					'#ff7f0e',
-					'#2ca02c',
-					'#d62728',
-					'#9467bd',
-					'#8c564b',
-					'#e377c2',
-					'#7f7f7f',
-					'#bcbd22',
-					'#17becf',
-					'#1f77b4',
-					'#ff7f0e',
-				];
-				return colors[d.group % colors.length] || '#1f77b4';
-			})
-			.attr('stroke', '#fff')
-			.attr('stroke-width', 2)
-			.style('cursor', 'pointer')
+		const nodeContainer = g.append('g').selectAll('g').data(graph.nodes).join('g');
+
+		// Render custom shapes for each card type
+		renderNodeShape(nodeContainer);
+
+		// Add click handler to all nodes
+		nodeContainer
 			.on('click', (_event: any, d: any) => {
 				selectedNode = d.id;
 				highlightNode(d.id);
 			})
-			.call(
-				d3
-					.drag<SVGCircleElement, any>()
-					.on('start', dragStarted)
-					.on('drag', dragged)
-					.on('end', dragEnded) as any,
-			);
+			.call(d3.drag<SVGGElement, any>().on('start', dragStarted).on('drag', dragged).on('end', dragEnded) as any);
 
 		// Add labels
 		const labels = g
@@ -180,13 +446,14 @@
 			.data(graph.nodes)
 			.join('text')
 			.attr('x', 0)
-			.attr('y', 4)
+			.attr('y', 0)
 			.attr('text-anchor', 'middle')
-			.attr('font-size', '10px')
+			.attr('dominant-baseline', 'central')
+			.attr('font-size', '12px')
 			.attr('fill', '#fff')
 			.attr('font-weight', 'bold')
 			.attr('pointer-events', 'none')
-			.text((d: any) => d.name.substring(0, 2));
+			.text((d: any) => d.name);
 
 		// Update positions on simulation tick
 		simulation.on('tick', () => {
@@ -195,7 +462,7 @@
 				.attr('x2', (d: any) => d.target.x)
 				.attr('y2', (d: any) => d.target.y);
 
-			node.attr('cx', (d: any) => d.x).attr('cy', (d: any) => d.y);
+			nodeContainer.attr('transform', (d: any) => `translate(${d.x},${d.y})`);
 
 			labels.attr('x', (d: any) => d.x).attr('y', (d: any) => d.y);
 		});
@@ -216,13 +483,18 @@
 			d.fx = null;
 			d.fy = null;
 		}
+
+		// Fit to view after simulation has progressed
+		setTimeout(() => {
+			fitToView();
+		}, 1000);
 	}
 
 	function highlightNode(nodeId: string) {
-		if (!graph) return;
+		if (!graph || !svgElement) return;
 
 		d3.select(svgElement)
-			.selectAll('circle')
+			.selectAll('g > *')
 			.attr('opacity', (d: any) => {
 				if (d.id === nodeId) return 1;
 				const isConnected =
@@ -232,16 +504,55 @@
 			});
 
 		d3.select(svgElement)
-			.selectAll('line')
+			.selectAll('line.link')
 			.attr('opacity', (d: any) => {
 				return d.source.id === nodeId || d.target.id === nodeId ? 0.8 : 0.1;
 			});
 	}
 
 	function resetView() {
+		if (!svgElement) return;
 		selectedNode = null;
-		d3.select(svgElement).selectAll('circle').attr('opacity', 1);
-		d3.select(svgElement).selectAll('line').attr('opacity', 0.6);
+		d3.select(svgElement).selectAll('g > *').attr('opacity', 1);
+		d3.select(svgElement).selectAll('line.link').attr('opacity', 0.6);
+	}
+
+	function fitToView() {
+		if (!svgElement || !graph || !zoomBehavior) return;
+
+		const svg = d3.select(svgElement);
+		const g = svg.select('g');
+		const bounds = (g.node() as SVGGElement).getBBox();
+		const width = svgElement.clientWidth;
+		const height = svgElement.clientHeight;
+
+		const midX = bounds.x + bounds.width / 2;
+		const midY = bounds.y + bounds.height / 2;
+		const scale = 0.8 / Math.max(bounds.width / width, bounds.height / height);
+		const translateX = width / 2 - scale * midX;
+		const translateY = height / 2 - scale * midY;
+
+		const transform = d3.zoomIdentity.translate(translateX, translateY).scale(scale);
+		svg.transition()
+			.duration(750)
+			.call(zoomBehavior.transform as any, transform);
+		zoomLevel = scale;
+	}
+
+	function zoomIn() {
+		if (!svgElement || !zoomBehavior) return;
+		const svg = d3.select(svgElement);
+		svg.transition()
+			.duration(300)
+			.call(zoomBehavior.scaleBy as any, 1.3);
+	}
+
+	function zoomOut() {
+		if (!svgElement || !zoomBehavior) return;
+		const svg = d3.select(svgElement);
+		svg.transition()
+			.duration(300)
+			.call(zoomBehavior.scaleBy as any, 0.77);
 	}
 </script>
 
@@ -254,12 +565,21 @@
 	</header>
 
 	<div class="controls">
-		<button type="button" class="md-button md-button--filled" on:click={loadGraph} disabled={loading}>
+		<button type="button" class="md-button md-button--filled" onclick={loadGraph} disabled={loading}>
 			{loading ? 'Loading...' : 'Generate Graph'}
 		</button>
 
 		{#if graph}
-			<button type="button" class="md-button md-button--outlined" on:click={resetView}> Reset View </button>
+			<button type="button" class="md-button md-button--outlined" onclick={fitToView} title="Fit graph to view">
+				⊡ Fit View
+			</button>
+			<button type="button" class="md-button md-button--outlined" onclick={zoomIn} title="Zoom in">
+				+ Zoom In
+			</button>
+			<button type="button" class="md-button md-button--outlined" onclick={zoomOut} title="Zoom out">
+				− Zoom Out
+			</button>
+			<button type="button" class="md-button md-button--outlined" onclick={resetView}> Reset View </button>
 			<span class="zoom-level">Zoom: {zoomLevel.toFixed(1)}x</span>
 		{/if}
 

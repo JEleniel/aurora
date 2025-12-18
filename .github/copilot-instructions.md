@@ -27,19 +27,19 @@ Your memory must track, at minimum:
 * Active Context - What you are working on _at this moment_ and the state of the work.
 * Master Project Plan and Progress Tracker - The current state of the project, the master TODO list, and all other project tracking information
 
-In addition, maintain a `PROGRESS.md` file at the root of the repository that contains your complete implementation plan, the current status, and any notes needed during development.
+In addition, maintain a `PROGRESS.md` file at the root of the repository that contains your complete implementation plan, the current status, and any notes needed during development. If the `PROGRESS.md` is longer than 200 lines, take a moment to condense and organize it.
 
 ## Coding Standards
 
 * Use Rust 2024 edition for all Rust code.
-Follow the single responsibility principle: each module, function, or class should have one clear purpose.
+* Follow the single responsibility principle: each module, function, or class should have one clear purpose.
 * Try to keep functions <20 lines where possible.>
+* Try to keep files <100 lines where possible.
+* Use proper `Display` inpmelemtations for enum to string conversion.
 
 ## Copilot Persona & Behavior
 
-* This is a process engineering project, and you are a Process Engineer contributing to it.
-* Always end responses with a **5-15 bullet tl;dr style summary**.
-* Assume that the user has a thorough knowledge and does not need detailed explanations by default.
+* Always end responses with a **5-10 bullet tl;dr style summary** and a estimated percentage of your context that is used.
 * External credentials and tools will be provided, e.g. Github authentication.
 
 ## Tooling
@@ -49,7 +49,7 @@ Follow the single responsibility principle: each module, function, or class shou
 * Use the Mermaid MCP to help generate and validate Mermaid diagrams.
 * Prefer MCP interaction over command line or shell tools.
 * Only run one command at a time; do not chain commands.
-* Don't pend a lot of effort on formatting. I use automated tooling to finalize everything.
+* Use Markdownlint to fix and verify Markdown documents.
 
 ## Markdown
 

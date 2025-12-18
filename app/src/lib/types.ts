@@ -1,5 +1,6 @@
 /// TypeScript types for AURORA architecture models
 export enum CardType {
+	Mission = 'mission',
 	Driver = 'driver',
 	Requirement = 'requirement',
 	Behavior = 'behavior',
@@ -12,6 +13,50 @@ export enum CardType {
 	Artifact = 'artifact',
 	View = 'view',
 	Note = 'note',
+}
+
+/// Display names for card types used in UI rendering
+export enum CardTypeDisplay {
+	Mission = 'Mission',
+	Driver = 'Driver',
+	Requirement = 'Requirement',
+	Behavior = 'Behavior',
+	Interface = 'Interface',
+	Constraint = 'Constraint',
+	LogicalComponent = 'LogicalComponent',
+	DeployableNode = 'DeployableNode',
+	Actor = 'Actor',
+	Test = 'Test',
+	Artifact = 'Artifact',
+	View = 'View',
+	Note = 'Note',
+}
+
+/// Mapping from CardType enum to CardTypeDisplay enum
+const cardTypeDisplayMap: Record<CardType, CardTypeDisplay> = {
+	[CardType.Mission]: CardTypeDisplay.Mission,
+	[CardType.Driver]: CardTypeDisplay.Driver,
+	[CardType.Requirement]: CardTypeDisplay.Requirement,
+	[CardType.Behavior]: CardTypeDisplay.Behavior,
+	[CardType.Interface]: CardTypeDisplay.Interface,
+	[CardType.Constraint]: CardTypeDisplay.Constraint,
+	[CardType.LogicalComponent]: CardTypeDisplay.LogicalComponent,
+	[CardType.DeployableNode]: CardTypeDisplay.DeployableNode,
+	[CardType.Actor]: CardTypeDisplay.Actor,
+	[CardType.Test]: CardTypeDisplay.Test,
+	[CardType.Artifact]: CardTypeDisplay.Artifact,
+	[CardType.View]: CardTypeDisplay.View,
+	[CardType.Note]: CardTypeDisplay.Note,
+};
+
+export function toCardTypeDisplay(type: CardType): CardTypeDisplay {
+	return cardTypeDisplayMap[type];
+}
+
+export function getCardTypesByDisplay(...displays: CardTypeDisplay[]): CardType[] {
+	return Object.entries(cardTypeDisplayMap)
+		.filter(([, display]) => displays.includes(display))
+		.map(([type]) => type as CardType);
 }
 
 export enum CardStatus {
@@ -77,6 +122,7 @@ export function cardTypeFolder(type: CardType): string {
 
 export function cardTypeLabel(type: CardType): string {
 	const labels: Record<CardType, string> = {
+		[CardType.Mission]: 'Mission',
 		[CardType.Driver]: 'Driver',
 		[CardType.Requirement]: 'Requirement',
 		[CardType.Behavior]: 'Behavior',

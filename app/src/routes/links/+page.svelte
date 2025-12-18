@@ -1,22 +1,28 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import TextField from '$lib/components/TextField.svelte';
+	import CardSelect from '$lib/components/CardSelect.svelte';
 	import RadioGroup from '$lib/components/RadioGroup.svelte';
+	import LinkEditModal from '$lib/components/LinkEditModal.svelte';
 	import { architecture } from '$lib/stores/architecture';
 	import type { Link } from '$lib/types';
 
-	let linkTarget = 'card';
-	let sourceCardId = '';
-	let targetCardId = '';
-	let targetUrl = '';
-	let linkTitle = '';
-	let error = '';
-	let successMessage = '';
-	let isLoading = false;
+	let linkTarget: string = $state('card');
+	let sourceCardId: string = $state('');
+	let targetCardId: string = $state('');
+	let targetUrl: string = $state('');
+	let linkTitle: string = $state('');
+	let error: string = $state('');
+	let successMessage: string = $state('');
+	let isLoading: boolean = $state(false);
 
-	$: allCards = $architecture.cards;
-	$: allLinks = $architecture.links;
-	$: loading = $architecture.loading;
+	let editingLink: Link | null = $state(null);
+	let showEditModal: boolean = $state(false);
+
+	let allCards = $derived($architecture.cards);
+	let allCardsArray = $derived(Array.from(allCards.values()));
+	let allLinks = $derived($architecture.links);
+	let loading = $derived($architecture.loading);
 
 	const linkTargets = [
 		{ value: 'card', label: 'Link to Card' },
@@ -97,6 +103,16 @@
 	function getTargetCard(link: Link) {
 		return link.target_id ? allCards.get(link.target_id) : null;
 	}
+
+	function openEditModal(link: Link) {
+		editingLink = link;
+		showEditModal = true;
+	}
+
+	function closeEditModal() {
+		editingLink = null;
+		showEditModal = false;
+	}
 </script>
 
 <div class="links-container">
@@ -104,14 +120,14 @@
 	<p>Create relationships between cards and external URLs for complete traceability.</p>
 
 	{#if error}
-		<div class="error-message">
+		<div class="error-message" role="alert">
 			<p><strong>Error:</strong> {error}</p>
-			<button on:click={() => (error = '')} class="dismiss-btn">✕</button>
+			<button onclick={() => (error = '')} class="dismiss-btn" aria-label="Dismiss error message">✕</button>
 		</div>
 	{/if}
 
 	{#if successMessage}
-		<div class="success-message">
+		<div class="success-message" role="status" aria-live="polite" aria-atomic="true">
 			<p>{successMessage}</p>
 		</div>
 	{/if}
@@ -119,11 +135,11 @@
 	<div class="links-layout">
 		<section class="links-form" class:disabled={isLoading || loading}>
 			<h3>Create New Link</h3>
-			<form on:submit={handleSubmit}>
-				<TextField
-					label="Source Card ID"
+			<form onsubmit={handleSubmit}>
+				<CardSelect
+					label="Source Card"
 					name="sourceCardId"
-					placeholder="e.g., requirement-automation"
+					cards={allCardsArray}
 					bind:value={sourceCardId}
 					required
 					disabled={isLoading || loading}
@@ -138,10 +154,10 @@
 				/>
 
 				{#if linkTarget === 'card'}
-					<TextField
-						label="Target Card ID"
+					<CardSelect
+						label="Target Card"
 						name="targetCardId"
-						placeholder="e.g., driver-automation"
+						cards={allCardsArray}
 						bind:value={targetCardId}
 						required
 						disabled={isLoading || loading}
@@ -211,22 +227,32 @@
 							</div>
 							<div class="link-footer">
 								<span class="link-date">Created {new Date(link.created_at).toLocaleDateString()}</span>
-								<button
-									class="delete-btn"
-									on:click={() => {
-										if (confirm('Are you sure you want to delete this link?')) {
-											architecture.deleteLink(
-												link.source_id,
-												link.target_id || undefined,
-												link.target_url || undefined,
-											);
-										}
-									}}
-									disabled={loading}
-									title="Delete link"
-								>
-									🗑️
-								</button>
+								<div class="link-actions">
+									<button
+										class="edit-btn"
+										onclick={() => openEditModal(link)}
+										disabled={loading}
+										title="Edit link metadata"
+									>
+										✎
+									</button>
+									<button
+										class="delete-btn"
+										onclick={() => {
+											if (confirm('Are you sure you want to delete this link?')) {
+												architecture.deleteLink(
+													link.source_id,
+													link.target_id || undefined,
+													link.target_url || undefined,
+												);
+											}
+										}}
+										disabled={loading}
+										title="Delete link"
+									>
+										🗑️
+									</button>
+								</div>
 							</div>
 						</div>
 					{/each}
@@ -234,6 +260,8 @@
 			{/if}
 		</section>
 	</div>
+
+	<LinkEditModal isOpen={showEditModal} link={editingLink} onClose={closeEditModal} />
 </div>
 
 <style>
@@ -517,6 +545,31 @@
 	}
 
 	.delete-btn:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	.link-actions {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	.edit-btn {
+		background: none;
+		border: none;
+		font-size: 1.1rem;
+		cursor: pointer;
+		padding: 0.5rem;
+		border-radius: 4px;
+		transition: all 0.2s ease;
+		color: var(--md-sys-color-primary);
+	}
+
+	.edit-btn:hover:not(:disabled) {
+		background-color: var(--md-sys-color-primary-container);
+	}
+
+	.edit-btn:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
 	}

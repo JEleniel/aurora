@@ -1,0 +1,227 @@
+@import 'tailwindcss';
+
+@layer base {
+	:root {
+		/* Light theme colors (Tailwind Color Palette) */
+		--color-primary: 59, 130, 246;
+		--color-on-primary: 255, 255, 255;
+		--color-primary-container: 219, 234, 254;
+		--color-on-primary-container: 12, 50, 142;
+
+		--color-secondary: 99, 102, 241;
+		--color-on-secondary: 255, 255, 255;
+		--color-secondary-container: 230, 230, 250;
+		--color-on-secondary-container: 35, 37, 102;
+
+		--color-tertiary: 20, 184, 166;
+		--color-on-tertiary: 255, 255, 255;
+		--color-tertiary-container: 204, 251, 241;
+		--color-on-tertiary-container: 0, 65, 61;
+
+		--color-error: 239, 68, 68;
+		--color-on-error: 255, 255, 255;
+		--color-error-container: 254, 226, 226;
+		--color-on-error-container: 95, 20, 20;
+
+		--color-background: 255, 251, 254;
+		--color-on-background: 28, 27, 31;
+
+		--color-surface: 255, 251, 254;
+		--color-on-surface: 28, 27, 31;
+		--color-surface-variant: 229, 226, 230;
+		--color-on-surface-variant: 73, 69, 78;
+
+		--color-outline: 121, 116, 126;
+		--color-outline-variant: 201, 198, 206;
+
+		--color-shadow: 0, 0, 0;
+		--color-inverse-surface: 49, 48, 51;
+		--color-inverse-on-surface: 244, 239, 244;
+		--color-inverse-primary: 177, 214, 255;
+
+		--color-scrim: 0, 0, 0;
+	}
+
+	html.dark {
+		/* Dark theme colors (Tailwind Color Palette) */
+		--color-primary: 177, 214, 255;
+		--color-on-primary: 0, 34, 102;
+		--color-primary-container: 3, 71, 155;
+		--color-on-primary-container: 219, 234, 254;
+
+		--color-secondary: 219, 221, 255;
+		--color-on-secondary: 28, 27, 88;
+		--color-secondary-container: 70, 75, 179;
+		--color-on-secondary-container: 230, 230, 250;
+
+		--color-tertiary: 177, 245, 234;
+		--color-on-tertiary: 0, 57, 53;
+		--color-tertiary-container: 0, 99, 90;
+		--color-on-tertiary-container: 204, 251, 241;
+
+		--color-error: 255, 180, 171;
+		--color-on-error: 156, 28, 24;
+		--color-error-container: 200, 45, 42;
+		--color-on-error-container: 254, 226, 226;
+
+		--color-background: 28, 27, 31;
+		--color-on-background: 230, 225, 230;
+
+		--color-surface: 28, 27, 31;
+		--color-on-surface: 230, 225, 230;
+		--color-surface-variant: 73, 69, 78;
+		--color-on-surface-variant: 202, 199, 208;
+
+		--color-outline: 147, 143, 153;
+		--color-outline-variant: 73, 69, 78;
+
+		--color-shadow: 0, 0, 0;
+		--color-inverse-surface: 230, 225, 230;
+		--color-inverse-on-surface: 28, 27, 31;
+		--color-inverse-primary: 103, 80, 164;
+
+		--color-scrim: 0, 0, 0;
+	}
+
+	* {
+		@apply box-border;
+	}
+
+	html {
+		@apply font-sans text-base bg-[rgb(var(--color-background))] text-[rgb(var(--color-on-background))] transition-colors duration-300 ease-in-out;
+	}
+
+	body {
+		@apply m-0 p-0 bg-[rgb(var(--color-background))] text-[rgb(var(--color-on-background))];
+	}
+
+	a {
+		@apply text-[rgb(var(--color-primary))] no-underline;
+
+		&:hover {
+			@apply underline;
+		}
+	}
+
+	h1 {
+		@apply text-4xl font-light;
+		font-size: 2.4rem;
+	}
+
+	h2 {
+		@apply text-3xl font-normal;
+		font-size: 1.95rem;
+	}
+
+	h3 {
+		@apply text-2xl font-medium;
+		font-size: 1.55rem;
+	}
+
+	h4 {
+		@apply text-xl font-semibold;
+		font-size: 1.2rem;
+	}
+
+	h5 {
+		@apply text-lg font-semibold;
+		font-size: 0.95rem;
+	}
+
+	h6 {
+		@apply text-base font-bold;
+		font-size: 0.75rem;
+	}
+
+	input,
+	textarea,
+	select {
+		@apply bg-[rgb(var(--color-surface-variant))] text-[rgb(var(--color-on-surface))] border border-[rgb(var(--color-outline-variant))] rounded px-2 py-2 font-sans text-sm transition-all duration-200 ease-in-out;
+
+		&:focus {
+			@apply outline-none bg-[rgb(var(--color-surface))];
+			border-color: rgb(var(--color-primary));
+			box-shadow: 0 0 0 3px rgba(var(--color-primary), 0.12);
+		}
+
+		&:disabled {
+			@apply opacity-38 cursor-not-allowed;
+		}
+	}
+}
+
+@layer components {
+	/* Material Design 3 Button Components */
+	.md-button {
+		@apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium cursor-pointer transition-all duration-200 ease-in-out border-0;
+
+		&:focus-visible {
+			outline: 2px solid rgb(var(--color-primary));
+			outline-offset: 2px;
+		}
+
+		&:active {
+			@apply scale-95;
+		}
+	}
+
+	.md-button--primary {
+		@apply text-[rgb(var(--color-on-primary))];
+		background-color: rgb(var(--color-primary));
+
+		&:hover {
+			@apply opacity-92;
+		}
+
+		&:active {
+			@apply opacity-84;
+		}
+	}
+
+	.md-button--secondary {
+		@apply text-[rgb(var(--color-on-secondary-container))];
+		background-color: rgb(var(--color-secondary-container));
+
+		&:hover {
+			@apply opacity-92;
+		}
+
+		&:active {
+			@apply opacity-84;
+		}
+	}
+
+	.md-button--text {
+		@apply text-[rgb(var(--color-primary))];
+		background-color: transparent;
+
+		&:hover {
+			background-color: rgba(var(--color-primary), 0.12);
+		}
+
+		&:active {
+			background-color: rgba(var(--color-primary), 0.16);
+		}
+	}
+
+	.md-button--outlined {
+		@apply text-[rgb(var(--color-primary))] border;
+		background-color: transparent;
+		border-color: rgb(var(--color-outline));
+
+		&:hover {
+			background-color: rgba(var(--color-primary), 0.08);
+		}
+
+		&:active {
+			background-color: rgba(var(--color-primary), 0.12);
+		}
+	}
+
+	/* Skip link for accessibility */
+	.skip-link {
+		@apply absolute top-0 left-0 -translate-y-12 px-4 py-2 rounded focus:translate-y-0 focus:z-50 transition-transform duration-200 ease-in-out;
+		background-color: rgb(var(--color-primary));
+		color: rgb(var(--color-on-primary));
+	}
+}

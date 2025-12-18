@@ -1,13 +1,17 @@
 <script lang="ts">
-	export let name: string = '';
-	export let label: string = '';
-	export let value: string = '';
-	export let options: Array<{ value: string; label: string }> = [];
-	export let required: boolean = false;
-	export let disabled: boolean = false;
+	let {
+		name = '',
+		label = '',
+		value = $bindable(''),
+		options = [],
+		required = false,
+		disabled = false,
+		onchange = undefined,
+	} = $props();
 
 	function handleChange(e: Event) {
 		value = (e.target as HTMLInputElement).value;
+		onchange?.(e);
 	}
 </script>
 
@@ -25,7 +29,7 @@
 					checked={value === option.value}
 					{required}
 					{disabled}
-					on:change={handleChange}
+					onchange={handleChange}
 				/>
 				<span>{option.label}</span>
 			</label>

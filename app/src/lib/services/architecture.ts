@@ -178,6 +178,34 @@ export async function deleteLink(sourceId: string, targetId?: string, targetUrl?
 	}
 }
 
+export async function updateLink(
+	sourceId: string,
+	targetId: string | undefined,
+	targetUrl: string | undefined,
+	metadata?: Record<string, unknown>,
+): Promise<string> {
+	if (!targetId && !targetUrl) {
+		const err = new Error('Either targetId or targetUrl must be provided');
+		await errorLogging.error('Invalid link parameters', 'updateLink', err);
+		throw err;
+	}
+
+	try {
+		const result = await invoke<string>('update_link', {
+			source_id: sourceId,
+			target_id: targetId,
+			target_url: targetUrl,
+			metadata,
+		});
+		await errorLogging.info(`Link updated from ${sourceId} to ${targetId || targetUrl}`, 'updateLink');
+		return result;
+	} catch (error) {
+		const { userMessage, technicalMessage } = parseBackendError(error);
+		await errorLogging.error(userMessage, 'updateLink', new Error(technicalMessage));
+		throw new Error(userMessage);
+	}
+}
+
 export async function getLinks(): Promise<Link[]> {
 	try {
 		const result = await invoke<string>('get_links', {});
@@ -230,11 +258,11 @@ export async function updateMetadata(name?: string, description?: string, rootDr
 export async function validateCard(card: Card): Promise<string> {
 	try {
 		const result = await invoke<string>('validate_card', { card });
-		await errorLogging.info(`Card "${card.name}" validated successfully`, 'validateCard');
+		await errorLogging.debug(`Card "${card.name}" validated successfully`, 'validateCard');
 		return result;
 	} catch (error) {
 		const { userMessage } = parseBackendError(error);
-		await errorLogging.warn(`Card "${card.name}" validation failed: ${userMessage}`, 'validateCard');
+		await errorLogging.debug(`Card "${card.name}" validation failed: ${userMessage}`, 'validateCard');
 		throw new Error(userMessage);
 	}
 }

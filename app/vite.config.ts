@@ -3,6 +3,7 @@ import type { UserConfig } from 'vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import fs from 'fs';
 import os from 'os';
+import tailwindcss from '@tailwindcss/vite';
 
 const host: string = os.hostname();
 process.env['TAURI_DEV_URL'] = `http://${host}:1420`;
@@ -20,7 +21,7 @@ const httpsConfig =
 
 export default defineConfig(
 	(): UserConfig => ({
-		plugins: [sveltekit()],
+		plugins: [tailwindcss(), sveltekit()],
 
 		clearScreen: false,
 		server: {

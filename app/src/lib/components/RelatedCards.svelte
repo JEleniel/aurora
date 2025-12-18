@@ -1,16 +1,19 @@
 <script lang="ts">
 	import CardItem from './CardItem.svelte';
+	// @ts-ignore - Card type used for documentation purposes
 	import type { Card } from '$lib/types';
 
-	export let selectedCard: Card | null = null;
-	export let relatedCards: Card[] = [];
-	export let otherCards: Card[] = [];
-	export let onSelect: ((id: string) => void) | undefined = undefined;
-	export let onDragstart: ((id: string) => void) | undefined = undefined;
-	export let onDragend: (() => void) | undefined = undefined;
-	export let onDragover: (() => void) | undefined = undefined;
-	export let onDragleave: (() => void) | undefined = undefined;
-	export let onDrop: ((id: string) => void) | undefined = undefined;
+	let {
+		selectedCard = null,
+		relatedCards = [],
+		otherCards = [],
+		onSelect = undefined,
+		onDragstart = undefined,
+		onDragend = undefined,
+		onDragover = undefined,
+		onDragleave = undefined,
+		onDrop = undefined,
+	} = $props();
 </script>
 
 <aside class="cards-related">
@@ -77,6 +80,39 @@
 		padding: 1.5rem;
 		overflow-y: auto;
 		max-height: calc(100vh - 200px);
+	}
+
+	@media (max-width: 1200px) {
+		.cards-related {
+			max-height: none;
+			padding: 1rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.cards-related {
+			padding: 0.75rem;
+		}
+
+		.cards-related h3 {
+			font-size: 0.95rem;
+			margin-bottom: 0.75rem;
+		}
+
+		.cards-related h4 {
+			font-size: 0.85rem;
+			margin-bottom: 0.375rem;
+		}
+
+		.other-cards-section {
+			margin-top: 1rem;
+			padding-top: 1rem;
+		}
+
+		.related-cards-list,
+		.other-cards-list {
+			gap: 0.5rem;
+		}
 	}
 
 	.cards-related h3 {
