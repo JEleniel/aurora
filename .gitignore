@@ -38,6 +38,9 @@
 .github/instructions/codacy.instructions.md
 .github/instructions/IDE.instructions.md
 
+#Ignore vscode AI rules
+.github/instructions/IDE.instructions.md
+
 # Archive Files
 *.7z
 *.bz2
