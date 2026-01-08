@@ -1,0 +1,43 @@
+# Link `link:req-governance-nf-driver-governance-collaboration`
+
+- **Type**: `link`
+- **Link Type**: `derived-from`
+- **Source**: `requirement:governance-collaboration`
+- **Target**: `driver:governance-collaboration`
+- **Strength**: `medium`
+
+## Rationale
+
+Collaboration workflows requirement derived from governance driver.
+
+## Audit History
+
+- created — by JEleniel at 2025-12-09T00:00:00Z
+
+## Raw JSON
+
+```json
+{
+  "id": "link:req-governance-nf-driver-governance-collaboration",
+  "type": "link",
+  "link_type": "derived-from",
+  "source": "requirement:governance-collaboration",
+  "target": "driver:governance-collaboration",
+  "rationale": "Collaboration workflows requirement derived from governance driver.",
+  "strength": "medium",
+  "audit_history": [
+    {
+      "event": "created",
+      "by": "JEleniel",
+      "event_time": "2025-12-09T00:00:00Z"
+    }
+  ],
+  "metadata": {
+    "format": "aurora-link-v1",
+    "serialization": [
+      "json"
+    ]
+  }
+}
+
+```

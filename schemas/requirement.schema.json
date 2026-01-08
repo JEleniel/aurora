@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AURORA Requirement Card",
+  "description": "A requirement specifies a verifiable characteristic derived from one or more drivers. Requirements include acceptance criteria and should link to the drivers they satisfy.",
+  "allOf": [
+    {
+      "$ref": "card.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "requirement"
+        },
+        "acceptance_criteria": {
+          "type": "array",
+          "description": "Specific, verifiable criteria that must be met to satisfy this requirement",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      },
+      "required": ["type", "acceptance_criteria"]
+    }
+  ]
+}

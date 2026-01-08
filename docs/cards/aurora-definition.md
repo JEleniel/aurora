@@ -1,0 +1,519 @@
+# Aurora Definition
+
+---
+
+- **ID**: `aurora:definition`
+- **Type**: `definition`
+- **Version**: `0.0.0+generated.20251209114536`
+- **Status**: `proposed`
+
+## Field Reference
+
+- **id**: Canonical identifier for the card (namespace:type).
+- **type**: Card type (driver, requirement, actor, behavior, interface, constraint, link, view, etc.).
+- **name**: Human-friendly title using verb+noun where applicable.
+- **description**: Plain-language explanation of the card's intent and scope.
+- **version**: Semver for the card's content (MAJOR.MINOR.PATCH).
+- **status**: Lifecycle state (proposed, accepted, deprecated, retired, etc.).
+- **priority**: Optional top-level priority (high/medium/low).
+- **owner**: Optional top-level owner or team responsible for the card.
+- **relations**: References to other card IDs indicating logical relationships.
+- **links**: Explicit link artifact IDs that encode richer relationship metadata.
+- **acceptance_criteria**: Machine-or-human-verifiable criteria for satisfying a requirement.
+- **rationale**: Why this card exists; derivation or justification.
+- **provenance**: Source and origin metadata (source, owner, version).
+- **audit_history**: Chronological events describing create/update actions with timestamps.
+- **metadata**: Format and serialization metadata for tooling (format, serialization).
+
+## Description
+
+Canonical Aurora definition generated from the repository JSON Schemas. This card is auto-generated from `schemas/*.json`. Treat schemas as the single source of truth.
+
+## Provenance
+
+- **generated_at**: `2025-12-09T11:45:36.295105+00:00`
+
+## Raw JSON
+
+```json
+{
+  "id": "aurora:definition",
+  "type": "definition",
+  "name": "Aurora Definition",
+  "description": "Canonical Aurora definition generated from the repository JSON Schemas. This card is auto-generated from `schemas/*.json`. Treat schemas as the single source of truth.",
+  "version": "0.0.0+generated.20251209114536",
+  "status": "proposed",
+  "metadata": {
+    "serialization": [
+      "json"
+    ],
+    "generated_by": "tools/generate_docs.py"
+  },
+  "provenance": {
+    "generated_at": "2025-12-09T11:45:36.295105+00:00"
+  },
+  "schemas": {
+    "card.json": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AURORA Card",
+      "description": "Base schema for a single AURORA card (one element = one card).",
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "name"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Semantic version (semver) for the card, e.g. 1.0.0",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z-.]+)?(?:\\+[0-9A-Za-z-.]+)?$"
+        },
+        "status": {
+          "type": "string",
+          "description": "Lifecycle status of the card",
+          "enum": [
+            "proposed",
+            "draft",
+            "defined",
+            "approved",
+            "implemented",
+            "verified",
+            "deprecated",
+            "retired"
+          ]
+        },
+        "audit_history": {
+          "type": "array",
+          "description": "Audit events for the card",
+          "items": {
+            "type": "object",
+            "properties": {
+              "event": {
+                "type": "string"
+              },
+              "by": {
+                "type": "string"
+              },
+              "event_time": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "note": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "event_time"
+            ],
+            "additionalProperties": true
+          }
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the card. Prefer colon-separated namespaced ids e.g. 'driver:root'."
+        },
+        "type": {
+          "type": "string",
+          "description": "Card type. One of the specific types defined by AURORA.",
+          "enum": [
+            "driver",
+            "requirement",
+            "interface",
+            "logical-component",
+            "deployable-node",
+            "test",
+            "view",
+            "component",
+            "node",
+            "artifact",
+            "note"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "attributes": {
+          "type": "object",
+          "description": "Typed key/value attributes. Values may be primitive or structured.",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "array"
+              },
+              {
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "relations": {
+          "type": "array",
+          "description": "References to related card ids or explicit link ids.",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string"
+            },
+            "owner": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "format": {
+              "type": "string"
+            },
+            "serialization": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "json"
+                ]
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "deployable_node.json": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AURORA Deployable Node Card",
+      "description": "Physical deployment node, host, or environment artifact.",
+      "allOf": [
+        {
+          "$ref": "./card.schema.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "deployable-node"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "capacity": {
+                  "type": "string"
+                },
+                "os": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      ]
+    },
+    "driver.json": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AURORA Driver Card",
+      "description": "Driver card: authoritative source such as mission, law, policy, or stakeholder intent.",
+      "allOf": [
+        {
+          "$ref": "./card.schema.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "driver"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                },
+                "priority": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      ]
+    },
+    "interface.json": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AURORA Interface / Contract Card",
+      "description": "Interface or contract card describing an API, message schema, or contract.",
+      "allOf": [
+        {
+          "$ref": "./card.schema.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "interface"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "schema": {
+                  "type": "object"
+                },
+                "protocol": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      ]
+    },
+    "link.json": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AURORA Link",
+      "description": "Typed relationship connecting two cards.",
+      "type": "object",
+      "required": [
+        "type",
+        "source",
+        "target"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "description": "Link type",
+          "enum": [
+            "satisfies",
+            "refines",
+            "depends-on",
+            "verified-by",
+            "derives-from",
+            "related-to"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "description": "Source card id"
+        },
+        "target": {
+          "type": "string",
+          "description": "Target card id"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "strength": {
+          "type": "string",
+          "enum": [
+            "weak",
+            "normal",
+            "strong"
+          ]
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "logical_component.json": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AURORA Logical Component Card",
+      "description": "Logical component, service or module within the logical view.",
+      "allOf": [
+        {
+          "$ref": "./card.schema.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "logical-component"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "responsibility": {
+                  "type": "string"
+                },
+                "interfaces": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      ]
+    },
+    "requirement.json": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AURORA Requirement Card",
+      "description": "Requirement card: structured requirement artifact (one requirement per card).",
+      "allOf": [
+        {
+          "$ref": "./card.schema.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "requirement"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "priority": {
+                  "type": "string"
+                },
+                "classification": {
+                  "type": "string"
+                },
+                "acceptance_criteria": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      ]
+    },
+    "test.json": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AURORA Test / Acceptance Card",
+      "description": "Test or acceptance criteria card for verifying requirements and behaviors.",
+      "allOf": [
+        {
+          "$ref": "./card.schema.json"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "test"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "expected_result": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "required": [
+            "type"
+          ]
+        }
+      ]
+    },
+    "view.json": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AURORA View",
+      "description": "A named projection (collection) of cards for a stakeholder or task.",
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "name",
+        "cards"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "const": "view"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "displayRules": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
+
+```

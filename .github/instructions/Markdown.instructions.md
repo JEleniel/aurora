@@ -1,16 +1,15 @@
 ---
-applyTo: '*.md'
+applyTo: '*'
 ---
 
 # Markdown Style Guide
 
-This document defines formatting and style conventions for all Markdown documentation files in the repository.
+This document defines formatting and style conventions for all Markdown files. These rules are enforced by the project's `.markdownlint.json` configuration. Markdownlint can be run via its CLI or integrated into IDEs and CI pipelines.
 
 ---
 
 ## Documentation Conventions
 
-- Name Markdown files using title case without spaces or punctuation (excluding the extension separator period).
 - Use clear, well-structured GitHub‑Flavored Markdown (GFM).
 - Match the tone, style, and structure of existing documentation.
 - Cross-reference related docs where relevant; include appropriate direct links.
@@ -18,7 +17,6 @@ This document defines formatting and style conventions for all Markdown document
 
 ## Formatting Rules
 
-- Use `markdownlint` to validate and format markdown files.
 - Include blanks around fences = true,
 - Include blanks around lists = true,
 - Include blanks around tables = true,

@@ -4,18 +4,12 @@ applyTo: '*.rs'
 
 # Rust Style Guide
 
-This document defines formatting and style conventions for all Rust source code These rules are enforced by the project's `rustfmt.toml` configuration.
+This document defines formatting and style conventions for all Rust code These rules are enforced by the project's `rustfmt.toml` configuration.
 
 ---
 
 ## Formatting Rules
 
-- Use `cargo fmt` to format Rust files.
-- Use `cargo clippy` to lint Rust files.
-- Use `cargo test` to run tests.
-- **Version** Always use the Rust 2004 or later edition.
-- **Organization** Organize code into modules logically, and use submodules as needed. Minimize top level `*.rs` files by grouping related functionality into modules. Use the 2024 style of `<name.rs>` and `<name>/` directories for modules. Do NOT use `mod.rs` files.
-- **Minimize Lines per File** Aim for a maximum of 200 lines per file. Split large files into smaller, focused modules. Modules should be in files named for the module. Do not mix multiple modules in a single file.
 - **Indentation:** Use hard tabs for indentation. Do not use spaces.
 - **Line Endings:** Use Unix-style newlines (`\n`).
 - **Comment Width:** Limit comments to 100 characters per line.
@@ -29,15 +23,12 @@ This document defines formatting and style conventions for all Rust source code 
 - **Field Initialization:** Use field init shorthand where possible.
 - **Try Shorthand:** Prefer the `?` operator for error propagation.
 - **General:** Normalize all code and documentation attributes.
-- Follow the [2024 Rust Style Guide](https://doc.rust-lang.org/stable/style-guide/index.html) for idiomatic code for all rules not covered here.
+- Follow the [Rust Style Guide](https://doc.rust-lang.org/1.0.0/style/) for idiomatic code for all rules not covered here.
 
 ---
 
 ## Best Practices
 
-- `#[allow...]` is not permitted.
-- Use `thiserror` and `anyhow` for error handling. All errors MUST be handled, and top level errors should be logged and the app exited cleanly.
-- Use `clippy` lints to enforce code quality. Address all warnings.
 - Write clear, concise, and well-documented code.
 - Include comments for non-obvious logic.
 - Do not use unsafe code; all code must be 100% safe Rust.
@@ -47,4 +38,8 @@ This document defines formatting and style conventions for all Rust source code 
 
 ## Enforcement
 
-Run rustfmt and clippy as part of the CI pipeline to enforce these rules. All code must pass formatting and linting checks before merging.
+Run the following command to check formatting:
+
+```bash
+cargo fmt --all -- --check
+```

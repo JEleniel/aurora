@@ -1,0 +1,19 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "AURORA Mission Card",
+	"description": "A mission represents the foundational purpose and high-level objectives of the architecture. Each architecture has exactly one mission card that serves as the root of the model. The mission card has no outgoing links—all other cards link to it as the architectural root.",
+	"allOf": [
+		{
+			"$ref": "card.schema.json"
+		},
+		{
+			"type": "object",
+			"properties": {
+				"type": {
+					"const": "mission"
+				}
+			},
+			"required": ["type"]
+		}
+	]
+}
