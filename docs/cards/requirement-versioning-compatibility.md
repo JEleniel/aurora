@@ -1,0 +1,102 @@
+# Ensure Backward Compatibility Guarantees
+
+---
+
+- **ID**: `requirement:versioning-compatibility`
+- **Type**: `requirement`
+- **Version**: `1.0.0`
+- **Status**: `proposed`
+- **Priority**: `medium`
+- **Owner**: `arch-team`
+
+## Field Reference
+
+- **id**: Canonical identifier for the card (namespace:type).
+- **type**: Card type (driver, requirement, actor, behavior, interface, constraint, link, view, etc.).
+- **name**: Human-friendly title using verb+noun where applicable.
+- **description**: Plain-language explanation of the card's intent and scope.
+- **version**: Semver for the card's content (MAJOR.MINOR.PATCH).
+- **status**: Lifecycle state (proposed, accepted, deprecated, retired, etc.).
+- **priority**: Optional top-level priority (high/medium/low).
+- **owner**: Optional top-level owner or team responsible for the card.
+- **relations**: References to other card IDs indicating logical relationships.
+- **links**: Explicit link artifact IDs that encode richer relationship metadata.
+- **acceptance_criteria**: Machine-or-human-verifiable criteria for satisfying a requirement.
+- **rationale**: Why this card exists; derivation or justification.
+- **provenance**: Source and origin metadata (source, owner, version).
+- **audit_history**: Chronological events describing create/update actions with timestamps.
+- **metadata**: Format and serialization metadata for tooling (format, serialization).
+
+## Description
+
+Non-functional: minor and patch releases must remain backward compatible for consumers of cards unless a major version bump is issued.
+
+## Acceptance Criteria
+
+- Compatibility policy documented and enforced in release process
+- Breaking changes require major version and migration notes
+
+## Rationale
+
+Derived from `driver:versioning-lifecycle` to protect consumers from surprise breaking changes.
+
+## Provenance
+
+- **source**: `derived from drivers`
+- **owner**: `JEleniel`
+- **version**: `1.0`
+
+## Audit History
+
+- created — by JEleniel at 2025-12-09T00:00:00Z
+
+## Related
+
+**Relations**: [driver:versioning-lifecycle](../cards/driver-versioning-lifecycle.md)
+**Links**: [link:req-versioning-nf-driver-versioning-lifecycle](../links/link-req-versioning-nf-driver-versioning-lifecycle.md)
+
+## Raw JSON
+
+```json
+{
+  "id": "requirement:versioning-compatibility",
+  "type": "requirement",
+  "name": "Ensure Backward Compatibility Guarantees",
+  "description": "Non-functional: minor and patch releases must remain backward compatible for consumers of cards unless a major version bump is issued.",
+  "classification": "non-functional",
+  "version": "1.0.0",
+  "status": "proposed",
+  "priority": "medium",
+  "owner": "arch-team",
+  "relations": [
+    "driver:versioning-lifecycle"
+  ],
+  "links": [
+    "link:req-versioning-nf-driver-versioning-lifecycle"
+  ],
+  "acceptance_criteria": [
+    "Compatibility policy documented and enforced in release process",
+    "Breaking changes require major version and migration notes"
+  ],
+  "rationale": "Derived from `driver:versioning-lifecycle` to protect consumers from surprise breaking changes.",
+  "audit_history": [
+    {
+      "event": "created",
+      "by": "JEleniel",
+      "event_time": "2025-12-09T00:00:00Z"
+    }
+  ],
+  "provenance": {
+    "source": "derived from drivers",
+    "owner": "JEleniel",
+    "version": "1.0"
+  },
+  "metadata": {
+    "format": "aurora-card-v1",
+    "serialization": [
+      "json"
+    ]
+  }
+}
+
+```

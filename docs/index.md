@@ -1,0 +1,83 @@
+---
+title: AURORA
+permalink: /
+---
+
+# AURORA
+
+## Aurora Documentation Index
+
+## Canonical Definition
+
+- [Aurora Definition](cards/aurora-definition.md)
+
+## Cards
+
+- [actor:business-stakeholder](cards/actor-business-stakeholder.md)
+- [actor:end-user](cards/actor-end-user.md)
+- [actor:system-operator](cards/actor-system-operator.md)
+- [aurora:definition](cards/aurora-definition.md)
+- [behavior:user-authentication](cards/behavior-user-authentication.md)
+- [behavior:deploy-release](cards/behavior-deploy-release.md)
+- [behavior:generate-report](cards/behavior-generate-report.md)
+- [behavior:submit-change-request](cards/behavior-submit-change-request.md)
+- [constraint:compliance](cards/constraint-compliance.md)
+- [constraint:latency](cards/constraint-latency.md)
+- [constraint:storage](cards/constraint-storage.md)
+- [driver:automation](cards/driver-automation.md)
+- [driver:formats](cards/driver-formats.md)
+- [driver:governance-collaboration](cards/driver-governance-collaboration.md)
+- [driver:interoperability](cards/driver-interoperability.md)
+- [driver:readability](cards/driver-readability.md)
+- [driver:security-and-privacy](cards/driver-security-and-privacy.md)
+- [driver:simplicity](cards/driver-simplicity.md)
+- [driver:testability](cards/driver-testability.md)
+- [driver:traceability](cards/driver-traceability.md)
+- [driver:versioning-lifecycle](cards/driver-versioning-lifecycle.md)
+- [interface:admin-console](cards/interface-admin-console.md)
+- [interface:events-bus](cards/interface-events-bus.md)
+- [interface:public-api](cards/interface-public-api.md)
+- [requirement:automation-pipeline](cards/requirement-automation-pipeline.md)
+- [requirement:automation-reliability](cards/requirement-automation-reliability.md)
+- [requirement:formats-json-first](cards/requirement-formats-json-first.md)
+- [requirement:formats-determinism](cards/requirement-formats-determinism.md)
+- [requirement:governance-provenance](cards/requirement-governance-provenance.md)
+- [requirement:governance-collaboration](cards/requirement-governance-collaboration.md)
+- [requirement:interoperability-contexts](cards/requirement-interoperability-contexts.md)
+- [requirement:interoperability-stability](cards/requirement-interoperability-stability.md)
+- [requirement:readability-human](cards/requirement-readability-human.md)
+- [requirement:readability-machine](cards/requirement-readability-machine.md)
+- [requirement:security-data-protection](cards/requirement-security-data-protection.md)
+- [requirement:security-privacy-audit](cards/requirement-security-privacy-audit.md)
+- [requirement:simplicity-minimal-schema](cards/requirement-simplicity-minimal-schema.md)
+- [requirement:simplicity-usability](cards/requirement-simplicity-usability.md)
+- [requirement:testability-acceptance](cards/requirement-testability-acceptance.md)
+- [requirement:testability-performance](cards/requirement-testability-performance.md)
+- [requirement:traceability-functional](cards/requirement-traceability-functional.md)
+- [requirement:traceability-nonfunctional](cards/requirement-traceability-nonfunctional.md)
+- [requirement:versioning-metadata](cards/requirement-versioning-metadata.md)
+- [requirement:versioning-compatibility](cards/requirement-versioning-compatibility.md)
+- [driver:root](cards/driver-root.md)
+
+## Links
+
+- [link:req-automation-functional-driver-automation](links/link-req-automation-functional-driver-automation.md)
+- [link:req-automation-nf-driver-automation](links/link-req-automation-nf-driver-automation.md)
+- [link:req-formats-functional-driver-formats](links/link-req-formats-functional-driver-formats.md)
+- [link:req-formats-nf-driver-formats](links/link-req-formats-nf-driver-formats.md)
+- [link:req-governance-functional-driver-governance-collaboration](links/link-req-governance-functional-driver-governance-collaboration.md)
+- [link:req-governance-nf-driver-governance-collaboration](links/link-req-governance-nf-driver-governance-collaboration.md)
+- [link:req-interoperability-functional-driver-interoperability](links/link-req-interoperability-functional-driver-interoperability.md)
+- [link:req-interoperability-nf-driver-interoperability](links/link-req-interoperability-nf-driver-interoperability.md)
+- [link:req-readability-human-driver-readability](links/link-req-readability-human-driver-readability.md)
+- [link:req-readability-machine-driver-readability](links/link-req-readability-machine-driver-readability.md)
+- [link:req-security-functional-driver-security-and-privacy](links/link-req-security-functional-driver-security-and-privacy.md)
+- [link:req-security-nf-driver-security-and-privacy](links/link-req-security-nf-driver-security-and-privacy.md)
+- [link:req-simplicity-functional-driver-simplicity](links/link-req-simplicity-functional-driver-simplicity.md)
+- [link:req-simplicity-nf-driver-simplicity](links/link-req-simplicity-nf-driver-simplicity.md)
+- [link:req-testability-functional-driver-testability](links/link-req-testability-functional-driver-testability.md)
+- [link:req-testability-nf-driver-testability](links/link-req-testability-nf-driver-testability.md)
+- [link:req-traceability-functional-driver-traceability](links/link-req-traceability-functional-driver-traceability.md)
+- [link:req-traceability-nf-driver-traceability](links/link-req-traceability-nf-driver-traceability.md)
+- [link:req-versioning-functional-driver-versioning-lifecycle](links/link-req-versioning-functional-driver-versioning-lifecycle.md)
+- [link:req-versioning-nf-driver-versioning-lifecycle](links/link-req-versioning-nf-driver-versioning-lifecycle.md)

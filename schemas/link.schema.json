@@ -1,0 +1,60 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "AURORA Link",
+	"description": "A link represents a directional relationship between two cards, or from a card to an external URL. Links are untyped; their semantic meaning depends on the current view or interpretation context.",
+	"type": "object",
+	"properties": {
+		"source_id": {
+			"type": "string",
+			"description": "ID of the source card (origin of the link)"
+		},
+		"target_id": {
+			"type": ["string", "null"],
+			"description": "ID of the target card (destination of the link). Null if target is external URL."
+		},
+		"target_url": {
+			"type": ["string", "null"],
+			"format": "uri",
+			"description": "External URL if target is not a card. Null if target is internal card."
+		},
+		"metadata": {
+			"type": "object",
+			"description": "Optional metadata about the link (weight, confidence, view-specific annotations)",
+			"properties": {
+				"weight": {
+					"type": "number",
+					"description": "Optional weight or strength indicator for the link"
+				},
+				"confidence": {
+					"type": "number",
+					"description": "Optional confidence level (0.0 to 1.0)"
+				},
+				"view_context": {
+					"type": "string",
+					"description": "Optional context indicating which view or interpretation applies to this link"
+				},
+				"link_title": {
+					"type": "string",
+					"description": "Optional display title for external links"
+				}
+			},
+			"additionalProperties": true
+		}
+	},
+	"required": ["source_id"],
+	"oneOf": [
+		{
+			"required": ["source_id", "target_id"],
+			"not": {
+				"required": ["target_url"]
+			}
+		},
+		{
+			"required": ["source_id", "target_url"],
+			"not": {
+				"required": ["target_id"]
+			}
+		}
+	],
+	"additionalProperties": false
+}

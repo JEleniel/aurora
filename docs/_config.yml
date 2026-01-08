@@ -1,0 +1,48 @@
+title: AURORA
+description: 'AURORA — Architectural style and reference documentation'
+baseurl: ''
+url: 'https://JEleniel.github.io/aurora'
+remote_theme: pages-themes/midnight
+plugins:
+  - jekyll-remote-theme
+
+paginate: 10
+
+# Exclude large or irrelevant folders from the site build
+exclude:
+  - node_modules
+  - tool
+  - src
+  - 'src-tauri'
+  - tools
+
+defaults:
+  - scope:
+      path: ''
+      type: 'pages'
+    values:
+      layout: 'default'
+title: AURORA
+description: 'AURORA — Architectural style and reference documentation'
+baseurl: ''
+url: 'https://JEleniel.github.io/aurora'
+remote_theme: pages-themes/midnight
+plugins:
+  - jekyll-remote-theme
+
+paginate: 10
+
+# Exclude large or irrelevant folders from the site build
+exclude:
+  - node_modules
+  - tool
+  - src
+  - 'src-tauri'
+  - tools
+
+defaults:
+  - scope:
+      path: ''
+      type: 'pages'
+    values:
+      layout: 'default'

@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AURORA View Card",
+  "description": "A view represents a derived projection or perspective of the model. Views are generated from the card and link structure and do not store independent canonical data.",
+  "allOf": [
+    {
+      "$ref": "card.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "view"
+        },
+        "attributes": {
+          "type": "object",
+          "description": "View-specific attributes",
+          "properties": {
+            "view_type": {
+              "type": "string",
+              "description": "Type of view (traceability matrix, diagram, hierarchy, dependency graph, etc.)"
+            },
+            "scope": {
+              "type": "array",
+              "description": "Card IDs or types included in this view",
+              "items": {
+                "type": "string"
+              }
+            },
+            "filter": {
+              "type": "object",
+              "description": "Filtering criteria (by status, by owner, by constraint, etc.)"
+            },
+            "sort_by": {
+              "type": "array",
+              "description": "Sort fields for the view",
+              "items": {
+                "type": "string"
+              }
+            },
+            "format": {
+              "type": "string",
+              "description": "Output format (mermaid, svg, html, json, csv, etc.)"
+            },
+            "relationships": {
+              "type": "array",
+              "description": "Relationship types to include (satisfies, implements, derives-from, etc.)",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "required": ["type"]
+    }
+  ]
+}
