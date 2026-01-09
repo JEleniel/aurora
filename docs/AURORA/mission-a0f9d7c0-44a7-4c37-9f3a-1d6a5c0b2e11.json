@@ -1,0 +1,55 @@
+{
+	"$schema": "./../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"attributes": {
+		"domain": "fast_food",
+		"example": true
+	},
+	"card_type": "mission",
+	"description": "Provide a mobile ordering app for a fast food restaurant that lets customers place and pay for orders quickly and reliably, with clear order status from submission through pickup.",
+	"id": "mobile_ordering_app",
+	"links": [
+		{
+			"relationship": "establishes",
+			"target": "b1c2d3e4-1f23-4a56-8b9c-0d1e2f3a4b5c"
+		},
+		{
+			"relationship": "establishes",
+			"target": "c2d3e4f5-2345-4b67-8cde-1234567890ab"
+		},
+		{
+			"relationship": "establishes",
+			"target": "d3e4f506-3456-4c78-8def-234567890abc"
+		},
+		{
+			"relationship": "establishes",
+			"target": "e4f50617-4567-4d89-8ef0-34567890abcd"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "8e45e6f7-e6f0-45c3-9c89-def012345678"
+		},
+		{
+			"relationship": "contains",
+			"target": "17de7f80-7f89-4efc-8b12-6789abcde012"
+		},
+		{
+			"relationship": "contains",
+			"target": "28ef8091-809a-4f0d-9c23-789abcde0123"
+		},
+		{
+			"relationship": "contains",
+			"target": "39f091a2-90ab-4e1e-8d34-8901abcde234"
+		}
+	],
+	"name": "Mobile Ordering App Mission",
+	"status": "proposed",
+	"uuid": "a0f9d7c0-44a7-4c37-9f3a-1d6a5c0b2e11",
+	"version": "1.0.0"
+}

@@ -1,0 +1,23 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "component",
+	"description": "Client-side cart management for item selection, customization, and totals display.",
+	"id": "cart_manager",
+	"links": [
+		{
+			"relationship": "implements",
+			"target": "b2a1908f-2d76-49f4-8c32-10fedcba9876"
+		}
+	],
+	"name": "Cart Manager",
+	"status": "proposed",
+	"uuid": "3a444444-5555-4d66-8e77-88889999aaaa",
+	"version": "1.0.0"
+}

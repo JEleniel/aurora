@@ -1,0 +1,20 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"attributes": {
+		"data_classification": "sensitive"
+	},
+	"card_type": "datastore",
+	"description": "Append-only audit log storage for security and operational events.",
+	"id": "audit_log_store",
+	"name": "Audit Log Store",
+	"status": "proposed",
+	"uuid": "3c4d5e6f-cccc-4ddd-8eee-333344445555",
+	"version": "1.0.0"
+}

@@ -1,0 +1,17 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "component",
+	"description": "Mobile push notification and in-app updates client.",
+	"id": "notification_client",
+	"name": "Notification Client",
+	"status": "proposed",
+	"uuid": "5c666666-7777-4f88-8a99-aaaabbbbcccc",
+	"version": "1.0.0"
+}

@@ -313,6 +313,7 @@ flowchart
                 condition{condition}
                 event(event)
                 process[process]@{ shape: lin-rect }
+                statemachine[state_machine]@{ shape: lin-rect }
                 state((state))
         end
 
@@ -348,6 +349,8 @@ flowchart
         application -- implements --> test
         component -- exposes --> interface
         component -- calls --> interface
+        component -- sends --> artifact
+        artifact -- calls --> interface
         component -- implements --> feature
         component -- generates --> artifact
         artifact -- persists --> datastore
@@ -358,10 +361,16 @@ flowchart
 
         %% Process/Workflow/State Machine Elements
         process -- involves --> actor
-        process -- starts_in --> state
+        process -- starts_with --> action
+        process -- starts_with --> event
         actor -- takes --> action
+        component -- emits --> event
+        event -- triggers --> action
         condition -- triggers_case_n --> action
         action -- triggers --> event
+
+        component -- executes --> statemachine
+        statemachine -- starts_in --> state
         state -- receives --> event
         event -- triggers --> state
         event -- meets --> condition

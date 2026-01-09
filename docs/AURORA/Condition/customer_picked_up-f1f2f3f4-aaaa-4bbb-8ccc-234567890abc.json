@@ -1,0 +1,23 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "condition",
+	"description": "Customer picks up the order from the store.",
+	"id": "customer_picked_up",
+	"links": [
+		{
+			"relationship": "triggers_case_n",
+			"target": "5e5d5c5b-ffff-4a00-8111-67890abcdef0"
+		}
+	],
+	"name": "Customer Picked Up",
+	"status": "proposed",
+	"uuid": "f1f2f3f4-aaaa-4bbb-8ccc-234567890abc",
+	"version": "1.0.0"
+}

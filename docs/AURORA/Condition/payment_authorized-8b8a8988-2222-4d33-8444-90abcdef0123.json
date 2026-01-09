@@ -1,0 +1,23 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "condition",
+	"description": "Payment authorization succeeds.",
+	"id": "payment_authorized",
+	"links": [
+		{
+			"relationship": "triggers_case_n",
+			"target": "dededede-7777-4c88-8999-ef0123456789"
+		}
+	],
+	"name": "Payment Authorized",
+	"status": "proposed",
+	"uuid": "8b8a8988-2222-4d33-8444-90abcdef0123",
+	"version": "1.0.0"
+}

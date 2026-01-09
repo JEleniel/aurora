@@ -8,6 +8,10 @@
 	"required": ["uuid", "id", "card_type", "name", "description", "version", "audit_history"],
 	"additionalProperties": false,
 	"properties": {
+		"$schema": {
+			"type": "string",
+			"description": "The JSON schema version and location"
+		},
 		"uuid": {
 			"type": "string",
 			"description": "UUID v4 or v7 that never changes for the life of the card",
@@ -19,30 +23,40 @@
 			"pattern": "^[a-z0-9_]+$"
 		},
 		"card_type": {
-			"type": "string",
-			"description": "The architectural type represented by the card",
-			"enum": [
-				"mission",
-				"driver",
-				"requirement",
-				"capability",
-				"feature",
-				"constraint",
-				"actor",
-				"action",
-				"condition",
-				"event",
-				"process",
-				"state",
-				"system",
-				"application",
-				"component",
-				"interface",
-				"test",
-				"artifact",
-				"datastore",
-				"node",
-				"boundary"
+			"oneOf": [
+				{
+					"type": "string",
+					"description": "The architectural type represented by the card",
+					"enum": [
+						"mission",
+						"driver",
+						"requirement",
+						"capability",
+						"feature",
+						"constraint",
+						"actor",
+						"action",
+						"condition",
+						"event",
+						"process",
+						"state",
+						"system",
+						"application",
+						"component",
+						"interface",
+						"test",
+						"artifact",
+						"datastore",
+						"node",
+						"boundary",
+						"state_machine"
+					]
+				},
+				{
+					"type": "string",
+					"description": "A custom card type defined by the user",
+					"pattern": "^[A-Za-z0-9_-]+$"
+				}
 			]
 		},
 		"card_subtype": {

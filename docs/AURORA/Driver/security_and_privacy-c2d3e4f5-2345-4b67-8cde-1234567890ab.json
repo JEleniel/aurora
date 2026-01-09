@@ -1,0 +1,31 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "driver",
+	"description": "Protect customer data and payment flows while maintaining trust and regulatory compliance.",
+	"id": "security_and_privacy",
+	"links": [
+		{
+			"relationship": "drives",
+			"target": "66666666-ffff-4a00-8111-ffff00001111"
+		},
+		{
+			"relationship": "drives",
+			"target": "55555555-eeee-4fff-8000-eeeeffff0000"
+		},
+		{
+			"relationship": "drives",
+			"target": "77777777-0000-4b11-8222-000011112222"
+		}
+	],
+	"name": "Security and Privacy",
+	"status": "proposed",
+	"uuid": "c2d3e4f5-2345-4b67-8cde-1234567890ab",
+	"version": "1.0.0"
+}

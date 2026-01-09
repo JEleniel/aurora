@@ -1,0 +1,18 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "constraint",
+	"card_subtype": "threat",
+	"description": "Security-relevant events may go undetected without sufficient audit logging and monitoring, delaying response and increasing impact.",
+	"id": "undetected_security_incident",
+	"name": "Threat: Undetected Security Incident",
+	"status": "proposed",
+	"uuid": "45f60718-4444-4d55-8666-def012345678",
+	"version": "1.0.0"
+}

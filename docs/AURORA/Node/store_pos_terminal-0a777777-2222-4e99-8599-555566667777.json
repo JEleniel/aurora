@@ -1,0 +1,23 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "node",
+	"description": "In-store POS/kitchen terminal that receives orders and updates order status.",
+	"id": "store_pos_terminal",
+	"links": [
+		{
+			"relationship": "hosts",
+			"target": "0b888888-3333-4faa-86aa-666677778888"
+		}
+	],
+	"name": "Store POS Terminal",
+	"status": "proposed",
+	"uuid": "0a777777-2222-4e99-8599-555566667777",
+	"version": "1.0.0"
+}

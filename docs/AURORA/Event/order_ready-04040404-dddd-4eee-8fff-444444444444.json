@@ -1,0 +1,23 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "event",
+	"description": "Store marks the order as ready for pickup.",
+	"id": "order_ready",
+	"links": [
+		{
+			"relationship": "triggers",
+			"target": "4f4e4d4c-eeee-4fff-8000-567890abcdef"
+		}
+	],
+	"name": "Order Ready",
+	"status": "proposed",
+	"uuid": "04040404-dddd-4eee-8fff-444444444444",
+	"version": "1.0.0"
+}

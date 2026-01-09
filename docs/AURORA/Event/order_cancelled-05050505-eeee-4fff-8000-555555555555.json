@@ -1,0 +1,23 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "event",
+	"description": "Order is cancelled.",
+	"id": "order_cancelled",
+	"links": [
+		{
+			"relationship": "triggers",
+			"target": "6d6c6b6a-0000-4b11-8222-7890abcdef01"
+		}
+	],
+	"name": "Order Cancelled",
+	"status": "proposed",
+	"uuid": "05050505-eeee-4fff-8000-555555555555",
+	"version": "1.0.0"
+}

@@ -1,0 +1,20 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"attributes": {
+		"data_classification": "pii"
+	},
+	"card_type": "datastore",
+	"description": "Durable store for customer profiles, preferences, and saved payment tokens (if applicable).",
+	"id": "user_db",
+	"name": "User Database",
+	"status": "proposed",
+	"uuid": "2b3c4d5e-bbbb-4ccc-8ddd-222233334444",
+	"version": "1.0.0"
+}

@@ -1,0 +1,23 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "constraint",
+	"description": "The ordering system must be designed for high availability appropriate for customer checkout and store fulfillment.",
+	"id": "availability_slo",
+	"links": [
+		{
+			"relationship": "limits",
+			"target": "e4f5a6b7-4c56-4d89-9e8f-3a4b5c6d7e8f"
+		}
+	],
+	"name": "Availability SLO",
+	"status": "proposed",
+	"uuid": "cccccccc-5555-4a66-8777-555566667777",
+	"version": "1.0.0"
+}

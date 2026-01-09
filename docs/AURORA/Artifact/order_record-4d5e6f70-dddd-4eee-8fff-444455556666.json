@@ -1,0 +1,23 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "artifact",
+	"description": "Persisted order record containing line items, totals, store selection, payment status, and fulfillment status.",
+	"id": "order_record",
+	"links": [
+		{
+			"relationship": "persists",
+			"target": "f6666666-1111-4d88-8488-444455556666"
+		}
+	],
+	"name": "Order Record",
+	"status": "proposed",
+	"uuid": "4d5e6f70-dddd-4eee-8fff-444455556666",
+	"version": "1.0.0"
+}

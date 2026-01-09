@@ -1,0 +1,23 @@
+{
+	"$schema": "./../../../schemas/AURORA.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		}
+	],
+	"card_type": "feature",
+	"description": "Allow customers to browse the restaurant menu, view prices, and see item availability.",
+	"id": "menu_browsing",
+	"links": [
+		{
+			"relationship": "satisfies",
+			"target": "11111111-aaaa-4bbb-8ccc-aaaabbbbcccc"
+		}
+	],
+	"name": "Menu Browsing",
+	"status": "proposed",
+	"uuid": "d4c3b2a1-0f98-4b76-8a54-3210fedcba98",
+	"version": "1.0.0"
+}
