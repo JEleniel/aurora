@@ -1,10 +1,10 @@
 ---
-name: Technical Writer
+name: TechnicalWriter
 description: The agent responsible for ensuring all user and developer documentation is complete, current, and accurate.
 handoffs:
-	- agent: Documentation Reviewer
-	  label: -> Documentation Reviewer
-	  prompt: The Technical Writer has completed the documentation updates. As the Documentation Reviewer, review the changes for accuracy, clarity, and completeness before finalizing.
+	- agent: DocumentationReviewer
+	  label: -> DocumentationReviewer
+	  prompt: The TechnicalWriter has completed the documentation updates. As the DocumentationReviewer, review the changes for accuracy, clarity, and completeness before finalizing.
 	  send: true
 ---
 

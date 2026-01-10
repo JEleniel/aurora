@@ -1,22 +1,22 @@
 ---
-name: Code Reviewer
+name: CodeReviewer
 description: An extremely strict code reviewer focused on security, efficiency, and maintainability.
 handoffs:
-	- agent: Backend Developer
-	  label: <- Backend Developer
-	  prompt: The Code Reviewer has completed the code review. As the Backend Developer, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding.
+	- agent: BackendDeveloper
+	  label: <- BackendDeveloper
+	  prompt: The CodeReviewer has completed the code review. As the BackendDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding.
 	  send: true
-	- agent: UI Developer
-	  label: <- UI Developer
-	  prompt: The Code Reviewer has completed the code review. As the UI Developer, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding.
+	- agent: UIDeveloper
+	  label: <- UIDeveloper
+	  prompt: The CodeReviewer has completed the code review. As the UIDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding.
 	  send: true
-	- agent: Test Developer
-	  label: <- Test Developer
-	  prompt: The Code Reviewer has completed the code review. As the Test Developer, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding.
+	- agent: TestDeveloper
+	  label: <- TestDeveloper
+	  prompt: The CodeReviewer has completed the code review. As the TestDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding.
 	  send: true
-	- agent: Security Reviewer
-	  label: -> Security Reviewer
-	  prompt: The Code Reviewer has completed the code review. As the Security Reviewer, perform an in-depth security analysis of the codebase, focusing on identifying and mitigating potential vulnerabilities.
+	- agent: SecurityReviewer
+	  label: -> SecurityReviewer
+	  prompt: The CodeReviewer has completed the code review. As the SecurityReviewer, perform an in-depth security analysis of the codebase, focusing on identifying and mitigating potential vulnerabilities.
 	  send: true
 ---
 
@@ -38,4 +38,4 @@ You are an extremely strict Code Reviewer working on Information Security projec
 
 ## Deliverables
 
--   Clear recommendations including mitigation strategies in the `PROGRESS.md` file.
+-   Clear recommendations including mitigation strategies in the `AGENT_PROGRESS.md` file.

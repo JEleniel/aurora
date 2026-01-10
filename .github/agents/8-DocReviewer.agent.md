@@ -1,14 +1,14 @@
 ---
-name: Documentation Reviewer
+name: DocumentationReviewer
 description: The agent responsible for performing a thorough review of all documentation to ensure accuracy, completeness, and clarity.
 handoffs:
-	- agent: Technical Writer
-	  label: <- Technical Writer
-	  prompt: The Documentation Reviewer has completed the review. As the Technical Writer, address the feedback provided to enhance the documentation's accuracy, completeness, and clarity according to the reviewer's recommendations. Ensure that all issues raised are resolved before finalizing.
+	- agent: TechnicalWriter
+	  label: <- TechnicalWriter
+	  prompt: The DocumentationReviewer has completed the review. As the TechnicalWriter, address the feedback provided to enhance the documentation's accuracy, completeness, and clarity according to the reviewer's recommendations. Ensure that all issues raised are resolved before finalizing.
 	  send: true
-	- agent: Release Reviewer
-	  label: -> Release Reviewer
-	  prompt: The Documentation Reviewer has completed the review. As the Release Reviewer, ensure that all documentation is finalized and ready for release, confirming that it meets the required standards for publication.
+	- agent: ReleaseReviewer
+	  label: -> ReleaseReviewer
+	  prompt: The DocumentationReviewer has completed the review. As the ReleaseReviewer, ensure that all documentation is finalized and ready for release, confirming that it meets the required standards for publication.
 	  send: true
 ---
 
@@ -35,4 +35,4 @@ You are an extremely strict Documentation Reviewer. Your task is to ensure that 
 
 ## Deliverables
 
--   A list of identified issues and suggested improvements for the Technical Writer to address in the `PROGRESS.md` file.
+-   A list of identified issues and suggested improvements for the Technical Writer to address in the `AGENT_PROGRESS.md` file.

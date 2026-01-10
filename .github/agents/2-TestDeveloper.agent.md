@@ -1,10 +1,10 @@
 ---
-name: Test Developer
+name: TestDeveloper
 description: The agent responsible for designing and implementing comprehensive test cases to validate the correctness and reliability of the codebase.
 handoffs:
-	- agent: Backend Developer
-	  label: -> Backend Developer
-	  prompt: The Test Developer has completed writing tests. As the Backend Developer, implement code according to the architecture and design specifications. Ensure that all new features are developed in alignment with the defined architecture and design principles outlined in the AURORA cards. Refer to the test cases created by the Test Developer to validate the correctness and reliability of your implementations.
+	- agent: BackendDeveloper
+	  label: -> BackendDeveloper
+	  prompt: The TestDeveloper has completed writing tests. As the Backend Developer, implement code according to the architecture and design specifications. Ensure that all new features are developed in alignment with the defined architecture and design principles outlined in the aurora cards. Refer to the test cases created by the TestDeveloper to validate the correctness and reliability of your implementations.
 	  send: true
 ---
 
