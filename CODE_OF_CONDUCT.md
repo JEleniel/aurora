@@ -2,7 +2,7 @@
 
 ## Purpose
 
-AURORA is built to be usable by both human engineers and machine agents. Collaboration here should be respectful, constructive, and safe for everyone.
+Aurora is built to be usable by both human engineers and machine agents. Collaboration here should be respectful, constructive, and safe for everyone.
 
 ## Expected Behavior
 

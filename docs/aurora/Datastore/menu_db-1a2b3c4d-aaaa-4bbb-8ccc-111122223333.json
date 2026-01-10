@@ -1,0 +1,25 @@
+{
+	"$schema": "./../../../schemas/Aurora.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		},
+		{
+			"user": "copilot",
+			"event": "edited",
+			"timestamp": "2026-01-10T00:00:00Z"
+		}
+	],
+	"attributes": {
+		"data_classification": "public"
+	},
+	"card_type": "datastore",
+	"description": "Durable store for menu items, availability, and customization rules.",
+	"id": "menu_db",
+	"name": "Menu Database",
+	"status": "proposed",
+	"uuid": "1a2b3c4d-aaaa-4bbb-8ccc-111122223333",
+	"version": "2.0.0"
+}

@@ -14,7 +14,7 @@ By participating, you agree to follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 ## Repository Layout
 
 - [README.md](README.md): Project overview and core concepts
-- [schemas/](schemas/): JSON Schemas (canonical schema: [schemas/AURORA.schema.json](https://github.com/JEleniel/aurora/blob/main/schemas/AURORA.schema.json))
+- [schemas/](schemas/): JSON Schemas (canonical schema: [schemas/Aurora.schema.json](https://github.com/JEleniel/aurora/blob/main/schemas/Aurora.schema.json))
 
 ## Style and Quality
 
@@ -24,8 +24,8 @@ By participating, you agree to follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## Proposing Specification or Schema Changes
 
-- Keep the README aligned with the authoritative modeling rules in `.github/instructions/AURORA.instructions.md`.
-- If you change the schema meaningfully, update the schema `version` field in [schemas/AURORA.schema.json](https://github.com/JEleniel/aurora/blob/main/schemas/AURORA.schema.json).
+- Keep the README aligned with the authoritative modeling rules in `.github/instructions/Aurora.instructions.md`.
+- If you change the schema meaningfully, update the schema `version` field in [schemas/Aurora.schema.json](https://github.com/JEleniel/aurora/blob/main/schemas/Aurora.schema.json).
 - Include rationale: _why_ the change is needed and what it enables.
 
 ## Submitting Changes

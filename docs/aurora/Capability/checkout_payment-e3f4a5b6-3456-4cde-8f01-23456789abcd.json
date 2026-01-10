@@ -1,0 +1,36 @@
+{
+	"$schema": "./../../../schemas/Aurora.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		},
+		{
+			"user": "copilot",
+			"event": "edited",
+			"timestamp": "2026-01-10T00:00:00Z"
+		}
+	],
+	"card_type": "capability",
+	"description": "Enable customers to securely authorize payment and submit an order.",
+	"id": "checkout_payment",
+	"links": [
+		{
+			"relationship": "satisfies",
+			"target": "7d24d5e6-d5ef-4a12-8b78-c3456789abcd"
+		},
+		{
+			"relationship": "satisfies",
+			"target": "55555555-eeee-4fff-8000-eeeeffff0000"
+		},
+		{
+			"relationship": "satisfies",
+			"target": "44444444-dddd-4eee-8fff-ddddeeeeffff"
+		}
+	],
+	"name": "Checkout & Payment",
+	"status": "proposed",
+	"uuid": "e3f4a5b6-3456-4cde-8f01-23456789abcd",
+	"version": "2.0.0"
+}

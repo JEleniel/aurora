@@ -1,6 +1,7 @@
 ---
 name: SecurityReviewer
 description: The agent responsible for performing in-depth security analysis of the codebase, focusing on identifying and mitigating potential vulnerabilities.
+model: GPT-5.2 (copilot)
 handoffs:
 	- agent: BackendDeveloper
 	  label: <- BackendDeveloper

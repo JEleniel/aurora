@@ -1,0 +1,28 @@
+{
+	"$schema": "./../../../schemas/Aurora.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		},
+		{
+			"user": "copilot",
+			"event": "edited",
+			"timestamp": "2026-01-10T00:00:00Z"
+		}
+	],
+	"card_type": "action",
+	"description": "Customer initiates checkout in the mobile app.",
+	"id": "customer_initiates_checkout",
+	"links": [
+		{
+			"relationship": "triggers",
+			"target": "01010101-aaaa-4bbb-8ccc-111111111111"
+		}
+	],
+	"name": "Customer Initiates Checkout",
+	"status": "proposed",
+	"uuid": "bcbcbcbc-5555-4a66-8777-cdef01234567",
+	"version": "2.0.0"
+}

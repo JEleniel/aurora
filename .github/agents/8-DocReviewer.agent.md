@@ -1,6 +1,7 @@
 ---
 name: DocumentationReviewer
 description: The agent responsible for performing a thorough review of all documentation to ensure accuracy, completeness, and clarity.
+model: GPT-5.2 (copilot)
 handoffs:
 	- agent: TechnicalWriter
 	  label: <- TechnicalWriter

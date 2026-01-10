@@ -14,7 +14,7 @@ graph
 	mission((Mission))
 	system[System]@{shape: div-rect}
 	application[[Application]]
-	component(Component)
+	component[[Component]]
 	interface[Interface]@{shape: delay}
 	test(Test)
 	artifact[Artifact]@{shape: docs}

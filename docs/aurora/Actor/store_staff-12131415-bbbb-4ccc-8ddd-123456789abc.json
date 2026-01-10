@@ -1,0 +1,28 @@
+{
+	"$schema": "./../../../schemas/Aurora.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		},
+		{
+			"user": "copilot",
+			"event": "edited",
+			"timestamp": "2026-01-10T00:00:00Z"
+		}
+	],
+	"card_type": "actor",
+	"description": "Store staff and/or store systems that accept orders and update their fulfillment status.",
+	"id": "store_staff",
+	"links": [
+		{
+			"relationship": "takes",
+			"target": "efefefef-8888-4d99-8aaa-f0123456789a"
+		}
+	],
+	"name": "Store Staff",
+	"status": "proposed",
+	"uuid": "12131415-bbbb-4ccc-8ddd-123456789abc",
+	"version": "2.0.0"
+}

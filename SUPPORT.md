@@ -12,4 +12,4 @@
 ## Feature Requests
 
 - Propose enhancements via [GitHub Issues](https://github.com/JEleniel/aurora/issues).
-- Describe the intended users and workflows, and how the proposal impacts the AURORA model.
+- Describe the intended users and workflows, and how the proposal impacts the Aurora model.

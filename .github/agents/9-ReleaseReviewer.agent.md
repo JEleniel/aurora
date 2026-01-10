@@ -1,6 +1,7 @@
 ---
 name: ReleaseReviewer
 description: The agent responsible for ensuring that all aspects of the release are thoroughly reviewed and meet the necessary criteria before deployment.
+model: GPT-5.2 (copilot)
 handoffs:
 	- agent: BackendDeveloper
 	  label: <- BackendDeveloper

@@ -2,7 +2,7 @@
 
 A State Machine View models the lifecycle and valid transitions of a runtime element, showing its states, the conditions that guard transitions, events that trigger changes, and activities that occur within states.
 
-- **Cards**: `component`, `state_machine`, `state`, `condition`, `activity`, `event`, `constraint`, `note`, `boundary`
+- **Cards**: `component`, `state_machine`, `state`, `condition`, `activity`, `event`, `constraint`
 - **Optional Cards**: `mission`, `system`, `application`
 
 ```mermaid
@@ -11,9 +11,9 @@ config:
   layout: elk
 ---
 graph
-	mission(Mission)
-	system{System}
-	application[Application]@{shape: lin-rect}
+	mission((Mission))
+	system[System]@{shape: div-rect}
+	application[[Application]]
 	component[[Component]]
 	state_machine[State Machine]@{shape: div-rect}
 	state(State)
@@ -40,5 +40,5 @@ graph
 	activity -- triggers --> activity
 	constraint -- limits --> activity
 
-	note -- annotates --> application
+	note ---> application
 ```

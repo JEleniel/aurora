@@ -1,0 +1,28 @@
+{
+	"$schema": "./../../../schemas/Aurora.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		},
+		{
+			"user": "copilot",
+			"event": "edited",
+			"timestamp": "2026-01-10T00:00:00Z"
+		}
+	],
+	"card_type": "requirement",
+	"description": "The system shall emit audit records for security-relevant and order-lifecycle events.",
+	"id": "audit_security_events",
+	"links": [
+		{
+			"relationship": "imposes",
+			"target": "eeeeeeee-7777-4c88-8999-777788889999"
+		}
+	],
+	"name": "Audit Security Events",
+	"status": "proposed",
+	"uuid": "77777777-0000-4b11-8222-000011112222",
+	"version": "2.0.0"
+}

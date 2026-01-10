@@ -1,0 +1,28 @@
+{
+	"$schema": "./../../../schemas/Aurora.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		},
+		{
+			"user": "copilot",
+			"event": "edited",
+			"timestamp": "2026-01-10T00:00:00Z"
+		}
+	],
+	"card_type": "condition",
+	"description": "Store acknowledges the order and begins preparation.",
+	"id": "store_begins_preparing",
+	"links": [
+		{
+			"relationship": "triggers_case_n",
+			"target": "3a393837-dddd-4eee-8fff-4567890abcde"
+		}
+	],
+	"name": "Store Begins Preparing",
+	"status": "proposed",
+	"uuid": "9a999897-3333-4e44-8555-a0bcdef01234",
+	"version": "2.0.0"
+}

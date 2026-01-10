@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-AURORA is in pre-release. Security fixes, when applicable, are made available via repository updates and releases.
+Aurora is in pre-release. Security fixes, when applicable, are made available via repository updates and releases.
 
 ## Reporting a Vulnerability
 

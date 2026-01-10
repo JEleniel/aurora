@@ -110,7 +110,7 @@ document.getElementById('folderInput').addEventListener('change', async (ev) => 
 
 viewSelect.addEventListener('change', () => renderCurrentView());
 
-// drag & drop support: drop AURORA folder or JSON files onto the chart
+// drag & drop support: drop Aurora folder or JSON files onto the chart
 const chartEl = document.getElementById('chart');
 chartEl.addEventListener('dragover', (e) => {
 	e.preventDefault();
@@ -170,7 +170,7 @@ async function collectFilesFromHandle(handle, path = '') {
 async function loadFromDirectoryHandle(dirHandle) {
 	const files = await collectFilesFromHandle(dirHandle, dirHandle.name || '');
 	let jsonFiles = files.filter((f) => f.name && f.name.toLowerCase().endsWith('.json'));
-	// prefer files under an AURORA subfolder if present
+	// prefer files under an Aurora subfolder if present
 	const auroraFiles = jsonFiles.filter((f) => (f.path || '').toLowerCase().includes('/aurora/'));
 	if (auroraFiles.length) jsonFiles = auroraFiles;
 	for (const f of jsonFiles) {
@@ -707,7 +707,7 @@ async function loadFilesFromFileInput(files) {
 	// files is FileList with webkitRelativePath if directory chosen
 	const arr = Array.from(files).filter((f) => f.name && f.name.toLowerCase().endsWith('.json'));
 	if (arr.length === 0) return;
-	// prefer files inside an AURORA subfolder when provided via directory selection
+	// prefer files inside an Aurora subfolder when provided via directory selection
 	const aurora = arr.filter((f) => (f.webkitRelativePath || '').toLowerCase().includes('/aurora/'));
 	const chosen = aurora.length ? aurora : arr;
 	for (const f of chosen) {
@@ -730,9 +730,9 @@ async function attemptAutoDiscover() {
 		console.log('Autodiscovery skipped: not an http(s) origin ->', location.protocol);
 		return false;
 	}
-	// Try simple index or directory listing at ./AURORA/
+	// Try simple index or directory listing at ./Aurora/
 	try {
-		const idxUrls = ['./AURORA/index.json', './AURORA/_index.json', './AURORA/manifest.json'];
+		const idxUrls = ['./Aurora/index.json', './Aurora/_index.json', './Aurora/manifest.json'];
 		for (const u of idxUrls) {
 			try {
 				const r = await fetch(u);
@@ -741,7 +741,7 @@ async function attemptAutoDiscover() {
 					if (Array.isArray(list.files)) {
 						for (const p of list.files) {
 							try {
-								const rr = await fetch('./AURORA/' + p);
+								const rr = await fetch('./Aurora/' + p);
 								if (rr.ok) {
 									const j = await rr.json();
 									if (j && j.uuid) cards[j.uuid] = j;
@@ -755,7 +755,7 @@ async function attemptAutoDiscover() {
 			} catch (e) {}
 		}
 		// try directory HTML listing
-		const res = await fetch('./AURORA/');
+		const res = await fetch('./Aurora/');
 		if (res.ok) {
 			const ct = res.headers.get('content-type') || '';
 			if (ct.includes('text/html')) {
@@ -765,7 +765,7 @@ async function attemptAutoDiscover() {
 				const jsons = anchors.map((a) => a.getAttribute('href')).filter((h) => h && h.endsWith('.json'));
 				for (const href of jsons) {
 					try {
-						const rr = await fetch('./AURORA/' + href);
+						const rr = await fetch('./Aurora/' + href);
 						if (rr.ok) {
 							const j = await rr.json();
 							if (j && j.uuid) cards[j.uuid] = j;
@@ -796,8 +796,8 @@ async function init() {
 			document.getElementById('chart').innerHTML = `
 					<div style="padding:20px">
 						<strong>Local mode detected</strong>
-						<p class="note">Click anywhere on the page (or use the button) to grant access to a folder containing the AURORA model. The viewer will then load JSON files automatically.</p>
-						<button id="pickDirBtn" class="btn-primary">Select AURORA Folder</button>
+						<p class="note">Click anywhere on the page (or use the button) to grant access to a folder containing the Aurora model. The viewer will then load JSON files automatically.</p>
+						<button id="pickDirBtn" class="btn-primary">Select Aurora Folder</button>
 						<button id="fallbackFiles" class="btn-ghost">Or select JSON files</button>
 					</div>
 				`;
@@ -819,7 +819,7 @@ async function init() {
 		document.getElementById('chart').innerHTML = `
 				<div style="padding:20px">
 					<strong>No automatic discovery (file:// detected).</strong>
-					<p class="note">Browser security prevents fetching local files from pages opened via <code>file://</code>. Click <strong>Open AURORA Folder</strong> to select the folder or drag & drop the AURORA folder (or JSON files) onto this area.</p>
+					<p class="note">Browser security prevents fetching local files from pages opened via <code>file://</code>. Click <strong>Open Aurora Folder</strong> to select the folder or drag & drop the Aurora folder (or JSON files) onto this area.</p>
 					<button id="openFiles" class="btn-primary">Choose JSON files</button>
 				</div>
 			`;
@@ -831,7 +831,7 @@ async function init() {
 	const ok = await attemptAutoDiscover();
 	if (!ok) {
 		document.getElementById('chart').textContent =
-			'No AURORA index discovered. Click "Open AURORA Folder" and select the folder containing the AURORA model.';
+			'No Aurora index discovered. Click "Open Aurora Folder" and select the folder containing the Aurora model.';
 	}
 }
 

@@ -1,0 +1,28 @@
+{
+	"$schema": "./../../../schemas/Aurora.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		},
+		{
+			"user": "copilot",
+			"event": "edited",
+			"timestamp": "2026-01-10T00:00:00Z"
+		}
+	],
+	"card_type": "requirement",
+	"description": "The system shall allow a customer to browse the menu and view item prices and availability.",
+	"id": "browse_menu_and_view_prices",
+	"links": [
+		{
+			"relationship": "imposes",
+			"target": "dddddddd-6666-4b77-8888-666677778888"
+		}
+	],
+	"name": "Browse Menu and View Prices",
+	"status": "proposed",
+	"uuid": "11111111-aaaa-4bbb-8ccc-aaaabbbbcccc",
+	"version": "2.0.0"
+}

@@ -1,0 +1,28 @@
+{
+	"$schema": "./../../../schemas/Aurora.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		},
+		{
+			"user": "copilot",
+			"event": "edited",
+			"timestamp": "2026-01-10T00:00:00Z"
+		}
+	],
+	"card_type": "feature",
+	"description": "Integrate with store systems so submitted orders are received by the store and fulfillment status is reflected back to the customer.",
+	"id": "store_fulfillment_integration",
+	"links": [
+		{
+			"relationship": "satisfies",
+			"target": "99999999-2222-4d33-8444-222233334444"
+		}
+	],
+	"name": "Store Fulfillment Integration",
+	"status": "proposed",
+	"uuid": "b5c6d7e8-5555-4fff-8012-234567890abc",
+	"version": "2.0.0"
+}

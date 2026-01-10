@@ -2,7 +2,7 @@
 
 A Requirements View captures the system goals and constraints as testable, traceable requirements, showing their relationships to drivers, features, and tests.
 
-- **Cards**: `mission`, `driver`, `requirement`, `constraint`, `test`, `control`
+- **Cards**: `mission`, `driver`, `capability`, `feature`, `requirement`, `constraint`, `test`, `control`
 - **Optional Cards**: `actor`, `story`
 
 ```mermaid
@@ -14,10 +14,11 @@ config:
 graph
 	mission((Mission))
 	driver([Driver])
+	capability([Capability])
+	feature([Feature])
 	requirement([Requirement])
-	constraint([Constraint])
+	constraint[Constraint]@{shape: card}
 	test(Test)
-	actor{{Actor}}
 	story[Story]@{shape: document}
 	control(Control)
 
@@ -29,10 +30,10 @@ graph
 	mission -- involves --> actor
 	driver -- drives --> requirement
 	capability -- satisfies --> requirement
-    feature -- satisfies --> requirement
-    requirement -- imposes --> constraint        
-    constraint -- limits --> capability
-    constraint -- limits --> feature
+	feature -- satisfies --> requirement
+	requirement -- imposes --> constraint
+	constraint -- limits --> capability
+	constraint -- limits --> feature
 	test -- validates --> feature
 	actor -- desires --> story
 	story -- explains --> feature

@@ -1,6 +1,7 @@
 ---
 name: Planner
 description: Responsible for creating, reviewing, maintaining, and updating project plans and task breakdowns.
+model: GPT-5.2
 ---
 
 # Planner Agent Instructions
@@ -20,7 +21,7 @@ You are permitted to read and edit the `AGENT_PROGRESS.md` file to maintain proj
 -   Review existing project plans and task breakdowns in `AGENT_PROGRESS.md`.
 -   Create detailed project plans for new features or initiatives, breaking them down into manageable tasks with clear statuses.
 -   Review the `AGENT_PROGRESS.md` against the repository - you may read any files - to ensure it reflects the current state of the project.
--   Ensure that the plan reflects the complete aurora architecture at `docs/design/aurora/` and design principles as outlined in the relevant documentation, if present.
+-   Ensure that the plan reflects the completeAuroraarchitecture at `docs/design/aurora/` and design principles as outlined in the relevant documentation, if present.
 
 ## Deliverables
 

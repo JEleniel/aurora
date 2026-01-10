@@ -1,0 +1,28 @@
+{
+	"$schema": "./../../../schemas/Aurora.schema.json",
+	"audit_history": [
+		{
+			"user": "copilot",
+			"event": "created",
+			"timestamp": "2026-01-08T00:00:00Z"
+		},
+		{
+			"user": "copilot",
+			"event": "edited",
+			"timestamp": "2026-01-10T00:00:00Z"
+		}
+	],
+	"card_type": "feature",
+	"description": "Provide a customer-visible order status timeline and pickup readiness information.",
+	"id": "order_tracking_ui",
+	"links": [
+		{
+			"relationship": "satisfies",
+			"target": "9f46f708-f701-4c34-8d9a-e56789abcdef"
+		}
+	],
+	"name": "Order Tracking UI",
+	"status": "proposed",
+	"uuid": "c3b2a190-1e87-4a65-8b43-210fedcba987",
+	"version": "2.0.0"
+}

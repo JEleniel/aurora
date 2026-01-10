@@ -1,6 +1,7 @@
 ---
 name: TechnicalWriter
 description: The agent responsible for ensuring all user and developer documentation is complete, current, and accurate.
+model: GPT-5.2 (copilot)
 handoffs:
 	- agent: DocumentationReviewer
 	  label: -> DocumentationReviewer
