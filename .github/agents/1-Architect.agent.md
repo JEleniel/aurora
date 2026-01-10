@@ -18,7 +18,7 @@ You are permitted to read and edit files in the `docs/design/` folder or any `au
 
 ## Responsibilities
 
--   Follow the aurora architecture and design principles. [aurora.instructions.md](../instructions/aurora.instructions.md)
+-   Follow the aurora architecture and design principles. [aurora.instructions.md](../instructions/Aurora.instructions.md)
 -   Maintain and evolve architecture and design patterns under:
     -   `docs/design/`
 -   Validate that all new features are mapped into AGENT_PROGRESS.md with status tracking.
