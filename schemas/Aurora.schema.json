@@ -64,13 +64,17 @@
 				"additionalProperties": false,
 				"properties": {
 					"relationship": {
-						"description": "A single-word description of the relationship (view-dependent)",
+						"description": "A verb based description of the relationship (view-dependent) in snake case",
 						"minLength": 1,
 						"type": "string"
 					},
 					"target": {
 						"description": "The UUID of the destination card",
 						"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[47][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+						"type": "string"
+					},
+					"name": {
+						"description": "The human-readable name for the link target",
 						"type": "string"
 					}
 				},

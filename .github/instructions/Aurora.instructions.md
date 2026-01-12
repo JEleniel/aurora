@@ -72,7 +72,7 @@ Each card is comprised of:
 - `description` - Details regarding the element the card represents
 - `version` - semver version of the particular card, updated whenever the card changes; revision increments for minor edits, minor increments for significant changes (e.g., description/links), and major increments for role changes (e.g., `id`, `card_type`, `card_subtype`)
 - `status` - the status of an implementable element; one of: "proposed", "pending", "implementation", "review", "verified", "deprecated", "retired"; status transitions are not constrained beyond this set, but any change requires an audit entry and a version update
-- `links` - pointers to other cards establishing relationships (`target` = destination `uuid`, `relationship` = verb describing the impact)
+- `links` - pointers to other cards establishing relationships (`target` = destination `uuid`, `relationship` = verb describing the impact, "name" = "The human readable name of the target")
 - `audit_history` - a record of created/edited/deleted events the card has been through (includes `event`, `user`, `timestamp`)
 - `attributes` - Arbitrary, optional key-value pairs providing additional data; the value can be any valid JSON value, including objects.
 
