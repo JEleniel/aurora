@@ -4,7 +4,7 @@ applyTo: '*.rs'
 
 # Rust Style Guide
 
-This document defines formatting and style conventions for all Rust source code These rules are enforced by the project's `rustfmt.toml` configuration.
+This document defines formatting and style conventions for all Rust source code. `cargo fmt` is the source of truth; if this repo includes a `rustfmt.toml`, it MUST be treated as authoritative.
 
 ---
 
@@ -13,10 +13,10 @@ This document defines formatting and style conventions for all Rust source code 
 - Use `cargo fmt` to format Rust files.
 - Use `cargo clippy` to lint Rust files.
 - Use `cargo test` to run tests.
-- **Version** Always use the Rust 2004 or later edition.
+- **Edition (Required)** Always use the Rust 2024 edition. Module layout must conform to the Rust 2024 edition guidelines.
 - **Organization** Organize code into modules logically, and use submodules as needed. Minimize top level `*.rs` files by grouping related functionality into modules. Use the 2024 style of `<name.rs>` and `<name>/` directories for modules. Do NOT use `mod.rs` files.
 - **Minimize Lines per File** Aim for a maximum of 200 lines per file. Split large files into smaller, focused modules. Modules should be in files named for the module. Do not mix multiple modules in a single file.
-- **Indentation:** Use hard tabs for indentation. Do not use spaces.
+- **Indentation (Accessibility)** Prefer hard tabs for indentation. If this repo includes a `rustfmt.toml`, it SHOULD preserve tabs so tab visibility can be adjusted for accessibility.
 - **Line Endings:** Use Unix-style newlines (`\n`).
 - **Comment Width:** Limit comments to 100 characters per line.
 - **Comment Formatting:** Normalize comments and doc attributes. Wrap comments for readability.
@@ -29,14 +29,20 @@ This document defines formatting and style conventions for all Rust source code 
 - **Field Initialization:** Use field init shorthand where possible.
 - **Try Shorthand:** Prefer the `?` operator for error propagation.
 - **General:** Normalize all code and documentation attributes.
-- Follow the [2024 Rust Style Guide](https://doc.rust-lang.org/stable/style-guide/index.html) for idiomatic code for all rules not covered here.
+- Follow the [2024 Rust Style Guide](https://doc.rust-lang.org/stable/style-guide/index.html) as the baseline for all rules not covered here.
 
 ---
 
 ## Best Practices
 
 - `#[allow...]` is not permitted.
-- Use `thiserror` and `anyhow` for error handling. All errors MUST be handled, and top level errors should be logged and the app exited cleanly.
+- Avoid `unwrap`, `expect`, and `panic` unless justified by a higher-level invariant; prefer intentional error handling.
+- Unimplemented code paths MUST fail fast and be explicit (prefer `todo!()`), so they cannot be accidentally relied upon.
+- Use `thiserror` and `anyhow` for error handling:
+    + Prefer `thiserror` for defining structured error types in libraries/modules.
+    + Prefer `anyhow` at application boundaries (CLI/app entrypoints) for ergonomic context (`anyhow::Context`) and `anyhow::Result`.
+    + Avoid exposing `anyhow::Error` in library public APIs.
+    + All errors MUST be handled; top-level errors should be logged and the app exited cleanly.
 - Use `clippy` lints to enforce code quality. Address all warnings.
 - Write clear, concise, and well-documented code.
 - Include comments for non-obvious logic.

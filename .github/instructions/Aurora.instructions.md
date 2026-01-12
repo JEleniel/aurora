@@ -7,302 +7,612 @@ applyTo: '**/*'
 ## Model Overview
 
 **Version**: 2.0.0
-**Ontology**: Element-centric, link-relationship model
 
-Aurora is a deterministic, JSON-based architectural model where architectural elements are Cards, Links represent the relationships between Cards, and the model forms a Directed Graph away from the `mission`. The model is designed for direct machine consumption by LLMs, agents, reasoners, and automated tools, as well as human readability.
+Aurora is a deterministic architectural model where architectural elements are cards, the relationships between cards are represented as links, and the model forms a Directed Graph. The model is designed for direct machine consumption by LLMs, agents, reasoners, and automated tools; in addition any view a human wants can be automatically generated.
 
-The directed graph invariants apply to all cards and links **except** `note` cards. `note` cards are annotations and are explicitly excluded from the graph (details below).
+**One Goal**: Enable the Architect to focus on modeling the architecture instead of drawing diagrams and pictures.
 
-**One Goal**: Enable the Architect to focus on modeling the architecture instead of diagrams and pictures.
+## Models
 
-### Principles
+The model is the central piece of the architecture and is a collection of cards that have links describing their relationships. Cards represent the elements of the design, described as nouns. Links represent how the elements interact, and are tagged with verbs (for human convenience).
 
-- Eliminate ambiguity by enforcing strict structural rules.
-- Produce and persist the model in open, machine readable formats.
-- Enable agentic creation and editing of the model.
+Any pair of cards in the model can be described using simple sentences:
 
-## Card Structures
+**Examples**:
 
-### Files
+```text
+The mission "Drive Excellence" is "Drive excellence in operations by streamlining processes, integrating automation, and formalizing documentation".
 
-A `Model` is comprised of a collection of cards, starting from the `mission` card. Cards are stored in JSON files, one file per Card.
+The mission establishes the driver "Operational Friction Elimination" which is "Eliminate non-value-adding manual effort by enforcing end-to-end process automation, standardized workflows, and machine-verifiable documentation across all operational domains".
 
-Files must be named in the form `{id}-{uuid}.json`, in lowercase. If a `card_subtype` exists, name it as `{card_subtype}-{id}-{uuid}.json`.
+"Operational Friction Elimination" drives the requirement "Define a Deterministic Modeling Framework" which is "Design a framework for documenting deterministic process models with measurable latency and failure semantics".
 
-Files must be stored in a folder named `aurora`, in subfolders named for the `card_type` in title case, e.g., `aurora/Requirement`. The only exception is the `mission` card, which should always be stored at `aurora/mission-{uuid}.json` to provide a consistent entry point.
+The capability "Deterministic Process Authoring & Validation Workflow" which is "A machine-verifiable, executable representation of every operational workflow with deterministic guarantees" satisfies the requirement "Define a Deterministic Modeling Framework".
+
+The feature "Deterministic Workflow Modeling Engine (DWME)" which is "Software tools to create, manage, and render machine-verifiable executable representations of operational workflows" satisfies the requirement "Define a Deterministic Modeling Framework" and enables the capability "Deterministic Process Authoring & Validation Workflow".
+
+The mission necessitates the system "Workflow Model Tooling" which integrates the application "Workflow Modeler".
+
+Workflow Modeler implements the feature "Deterministic Workflow Modeling Engine".
+```
+
+**These result in a model that looks like this**:
+
+```mermaid
+graph
+	drive_excellence(("`Mission:<br />Drive Excellence`"))
+	operational_friction_elimination(["`Driver:<br />Operational Friction Elimination`"])
+	define_a_deterministic_modeling_framework(["`Requirement:<br />Define a Deterministic Modeling Framework`"])
+	deterministic_process_authoring(["`Capability:<br />Deterministic Process Authoring & Validation Workflow`"])
+	deterministic_workflow_modeling_engine(["`Feature:<br />Deterministic Workflow Modeling Engine (DWME)`"])
+	workflow__model_tooling["`System:<br />Workflow Model Tooling`"]@{shape: div-rect}
+	workflow_modeler["`Application:<br />Workflow Modeler`"]@{shape: lin-rect}
+
+	drive_excellence -- establishes --> operational_friction_elimination
+	operational_friction_elimination -- drives --> define_a_deterministic_modeling_framework
+	deterministic_process_authoring -- satisfies --> define_a_deterministic_modeling_framework
+	deterministic_workflow_modeling_engine -- satisfies --> define_a_deterministic_modeling_framework
+	deterministic_workflow_modeling_engine -- enables --> deterministic_process_authoring
+	drive_excellence -- necessitates --> workflow__model_tooling
+	workflow__model_tooling -- integrates --> workflow_modeler
+	workflow_modeler -- implements --> deterministic_workflow_modeling_engine
+```
+
+### Cards
+
+A card contains the information about an element of the model. The cards themselves and the links between them do not encode semantic meaning; they represent the elements of the architecture and their connections.
+
+Each card is comprised of:
+
+- `uuid` - A unique identifier (UUID v4 or v7) that never changes for the life of the card
+- `id` - A short, machine-friendly name for the card in snake case
+- `card_type` - The architectural type represented by the card in snake case
+- `card_subtype` - An optional refinement of the `card_type`, for example a `boundary` card may have the `card_subtype` `domain`, `vlan`, etc.
+- `name` - A concise human-readable name for the card
+- `description` - Details regarding the element the card represents
+- `version` - semver version of the particular card, updated whenever the card changes; revision increments for minor edits, minor increments for significant changes (e.g., description/links), and major increments for role changes (e.g., `id`, `card_type`, `card_subtype`)
+- `status` - the status of an implementable element; one of: "proposed", "pending", "implementation", "review", "verified", "deprecated", "retired"; status transitions are not constrained beyond this set, but any change requires an audit entry and a version update
+- `links` - pointers to other cards establishing relationships (`target` = destination `uuid`, `relationship` = verb describing the impact)
+- `audit_history` - a record of created/edited/deleted events the card has been through (includes `event`, `user`, `timestamp`)
+- `attributes` - Arbitrary, optional key-value pairs providing additional data; the value can be any valid JSON value, including objects.
+
+Every card file must include a `"$schema"` field. Tooling should prefer a schema copy placed alongside the `mission` card for validation and portability.
+
+#### Common Cards
+
+The following list contains a set of common cards that can be used as a starting point. For convenience, approximate UML and SysML equivalents are included; Aurora is intentionally broader and more flexible than either standard, so these mappings are provided only as familiar analogies.
+
+- `activity` - a unit of behavior performed by an `actor` (UML: Activity, SysML: Activity)
+- `actor` - an external role that interacts with the system (UML: Actor, SysML: Actor)
+- `application` - a runnable software product deployed to deliver features (UML: Component, SysML: Block)
+- `artifact` - a tangible work product produced/consumed by the system, e.g., binary, document, or configuration (UML: Artifact, SysML: Artifact)
+- `boundary` - a logical container defining a scope and grouping related model elements (UML: Package, SysML: Package/Block boundary)
+- `capability` - an ability the organization or system can perform to achieve outcomes (UML: Use Case, SysML: Use Case (capability))
+- `component` - a modular unit with clear responsibilities and explicit interfaces (UML: Component, SysML: Block)
+- `condition` - a boolean predicate used as a guard for control flow or state transitions (UML: Guard, SysML: Guard)
+- `constraint` - a rule or limit that restricts design or behavior (UML: Constraint, SysML: Constraint)
+- `control` - a governance or assurance mechanism that enforces constraints (UML: Constraint/Comment, SysML: Requirement/Constraint)
+- `data_store` - a persistent storage resource that holds data used by components (UML: Node «database», SysML: Block)
+- `deployment` - a definition of the hosting topology and where software runs (UML: Deployment, SysML: Deployment)
+- `driver` - a motivating concern that drives requirements and prioritization (UML: Comment/Rationale, SysML: Stakeholder concern/rationale)
+- `event` - a discrete occurrence that triggers activities or state changes (UML: Signal/Trigger, SysML: Signal/Trigger)
+- `feature` - a deliverable slice of functionality that satisfies requirements (UML: Use Case, SysML: Use Case)
+- `interface` - a contract describing how a component is used or invoked (UML: Interface, SysML: Interface)
+- `mission` - the root purpose and single entry point for the model (UML: Model/Package, SysML: stakeholder need / top-level requirement)
+- `node_instance` - a concrete runtime instance of a `node` (UML: InstanceSpecification (Node), SysML: InstanceSpecification (Block/Node))
+- `node` - a compute or hosting resource on which components and data stores run (UML: Node, SysML: Block)
+- `note` - a non-structural annotation attached to another element; always a leaf (UML: Comment, SysML: Comment)
+- `process` - an ordered set of activities describing how work is performed (UML: Activity, SysML: Activity)
+- `requirement` - a testable need or constraint the system must satisfy (UML: Constraint/Comment (profiled as «requirement»), SysML: Requirement)
+- `risk` - a potential adverse condition with likelihood/impact that may affect objectives (UML: Comment/Constraint «risk», SysML: Requirement/Constraint «risk»)
+- `state_machine` - a lifecycle model of states and transitions for an element (UML: State Machine, SysML: State Machine)
+- `state` - a distinct mode or condition within a lifecycle (UML: State, SysML: State)
+- `story` - a user-centric narrative describing desired behavior or outcome (UML: Use Case (textual scenario), SysML: Use Case (textual scenario))
+- `system` - a top-level solution boundary that integrates applications to deliver capabilities (UML: Component/Package, SysML: Block)
+- `test` - a verification artifact that validates behavior, features, or requirements (UML: TestCase (via profile), SysML: TestCase)
+- `threat` - an adversarial risk describing a potential attacker and their capability/intent (UML: Comment/Constraint «threat», SysML: Requirement/Constraint «threat»)
+
+#### Common Relationships
+
+Links are intentionally free-form; the `relationship` verb is descriptive for humans and does not encode semantic meaning by itself. The following relationships appear in the examples in this document and are recommended conventions for consistency:
+
+- `contains` - used by `boundary` to indicate containment (structural membership)
+- `includes` - used to indicate membership without containment (e.g., view/topology constructs like `deployment`, and associating a parent element with a `boundary` in a view)
+- `establishes` - introduces a downstream motivation element (e.g., `mission` → `driver`)
+- `drives` - indicates a motivating element influences a downstream need (e.g., `driver` → `requirement`)
+- `satisfies` - indicates a downstream element fulfills a need (e.g., `capability`/`feature` → `requirement`)
+- `enables` - indicates an element makes another feasible/possible (e.g., `feature` → `capability`)
+- `necessitates` - indicates a higher-level goal requires an element to exist (e.g., `mission` → `system`)
+- `integrates` - indicates a container/system pulls together sub-elements (e.g., `system` → `application`)
+- `comprises` - indicates composition (e.g., `application` → `component`)
+- `implements` - indicates an element realizes another (e.g., `component` → `feature`)
+- `exposes` - indicates an element provides an interface (e.g., `component` → `interface`)
+- `generates` - indicates an element produces an artifact (e.g., `component` → `artifact`)
+- `uses` - indicates a dependency or consumption (e.g., `component` → `artifact`)
+- `to_call` - indicates an invocation path (e.g., `artifact` → `interface`)
+- `persists_to` - indicates persistence of an artifact to storage (e.g., `artifact` → `data_store`)
+- `validates` - indicates a test verifies behavior (e.g., `test` → `component`/`feature`)
+- `participates_in` - indicates involvement in a topology (e.g., `application` → `deployment`)
+- `hosts` - indicates a runtime host relationship (e.g., `node`/`node_instance` → `component`/`data_store`)
+- `instantiates` - indicates a node creates a runtime instance (e.g., `node` → `node_instance`)
+- `involves` - indicates a process or mission includes an actor (e.g., `process`/`mission` → `actor`)
+- `desires` - indicates an actor has a story/goal (e.g., `actor` → `story`)
+- `performs` - indicates an actor executes an activity (e.g., `actor` → `activity`)
+- `explains` - indicates a story elaborates on a capability/feature (e.g., `story` → `capability`)
+- `implies` - indicates a story suggests a constraint (e.g., `story` → `constraint`)
+- `starts_with` - indicates the first event of a process (e.g., `process` → `event`)
+- `receives` - indicates a state receives an event (e.g., `state` → `event`)
+- `starts_in` - indicates the initial state of a state machine (e.g., `state_machine` → `state`)
+- `transitions_to` - indicates a transition edge (e.g., `state`/`activity` → `state`)
+- `triggers` - indicates an event/activity triggers another element (e.g., `event` → `state`)
+- `triggers_true` / `triggers_false` - indicates conditional branching outcomes (e.g., `condition` → `state`)
+- `limits` - indicates a constraint bounds another element (e.g., `constraint` → `feature`)
+- `governs` - indicates control/assurance applies to an element (e.g., `control` → `capability`)
+- `presents` - indicates an actor presents a threat (e.g., `actor` → `threat`)
+- `imposes` - indicates a threat introduces a risk (e.g., `threat` → `risk`)
+- `impacts` - indicates a risk affects another element (e.g., `risk` → `feature`)
+
+#### Special cards
+
+##### The `mission` card
+
+The root card of the model is _always_ a `mission` card. The `mission` card captures the overarching purpose and goal of the model. A given model must only have a single `mission` card. All paths must lead away from the `mission`.
+
+##### The `boundary` card
+
+The `boundary` card represents a logical grouping of other cards, in other words, they contain them. `boundary` cards frequently "contain" `system`, `application`, `node`, `process`, `state_machine`, and similar higher-level cards, and optionally their descendants. They are linked between a parent and the contained card, e.g., parent --> boundary --> contained, always in parallel to another link.
+
+A `boundary` card may include an attribute named `recursive` (boolean, default false). If true, the boundary includes all descendants of `target` _in the current view_. Because the cards contained by a boundary may form local loops rendering engines have to be careful when traversing the descendants.
+
+When recursing, descendants are determined by link traversal and then filtered to only those cards included in the current view. Tooling should consider warning when a recursive boundary could expand to an unusually large number of nodes in common views.
+
+**Example of a Boundary in a Model**:
+
+```mermaid
+---
+config:
+  layout: elk
+---
+graph LR
+	a(A)
+	boundary([Boundary])
+	b(B)
+
+	a -- verb --> b
+	a -- includes --> boundary
+	boundary -- contains --> b
+```
+
+**Example of a Boundary Rendered in a View**:
+
+```mermaid
+---
+config:
+  layout: elk
+---
+%%{init: {'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+graph LR
+	a(A)
+
+	subgraph Boundary
+		b(B)
+	end
+
+	a -- verb --> b
+
+classDef dashed stroke-dasharray:5 5;
+class Boundary dashed
+```
+
+##### The `note` Card
+
+The `note` card is purely an annotation to the model. They only have an incoming link and are always leaf nodes. The `note` card does not add any new elements to the model; it expands on the target card and is for additional information. When rendered, the link to a `note` card is often drawn as a dotted or dashed line.
+
+**Example**:
+
+```mermaid
+---
+config:
+  layout: elk
+---
+graph LR
+	card[Card]
+	note[Note]@{shape: card}
+
+	card -.- note
+```
+
+#### Card Files
+
+Cards are stored as JSON files, one file per card. The model always starts from the `mission` and forms a directed graph. `note` cards are leaf annotations (with only an incoming link) attached to another card. Files are named in the form `{id}-{uuid}.json`, in lowercase. If a `card_subtype` exists, name it as `{card_subtype}-{id}-{uuid}.json`.
+
+The model is stored in a folder named `aurora`, with subfolders named for the `card_type` in title case, e.g., `aurora/Requirement`. The only exception is the `mission` card, which should always be stored at `aurora/mission-{uuid}.json` to provide a consistent entry point.
+
+If a repo has a `schemas/Aurora.schema.json` then that is the canonical version. Second, the version included with a particular model is canonical _to that model_ since it will be the version the model was built against. The copy at `.github/instructions/Aurora.schema.json` is for agent use; it should be updated if out of sync with the canonical version.
+
+To prevent issues with validation across high-security environments and multiple schema versions, any tooling or agent starting a model should place a copy of the schema with the `mission` card and require all card JSON files to include a `"$schema"` entry that points to that local copy.
+
+An `aurora/` folder containing a schema copy and one or more `mission-*.json` files is considered a model root. Each `mission` card roots a separate model; multiple models may share the same `aurora/` folder.
 
 An entire model may be stored in a ZIP-compressed file to allow for portability as long as the folder structure is preserved.
 
 **Example**:
 
 ```text
-|- Aurora
-        |- mission-8f3c9d27-6b4e-4a91-b2e7-5d1f0c6a9e42.json
-     |- Driver
-     |    |- find_the_signal-2c7e1a4b-9f3d-4c6a-8e52-0f7b1d9a3c84.json
-     |- Requirement
-     |    |- analyze_breach_data_dumps-b6f0e2d9-1a4c-4f8b-9c37-52a1e8d4f6b0.json
+aurora
+  ├─ mission-8f3c9d27-6b4e-4a91-b2e7-5d1f0c6a9e42.json
+  ├─ Driver
+  │    └─ find_the_signal-2c7e1a4b-9f3d-4c6a-8e52-0f7b1d9a3c84.json
+  ├─ Requirement
+  │    └─ analyze_breach_data_dumps-b6f0e2d9-1a4c-4f8b-9c37-52a1e8d4f6b0.json
 ```
-
-### JSON Format
 
 The exact format can be found in the canonical JSON schema at `schemas/Aurora.schema.json`.
 
-**Example**:
-
-```json
-{
-	"audit_history": [
-		{
-			"user": "user",
-			"event": "created",
-			"timestamp": "2025-01-01T00:00:00Z"
-		}
-	],
-	"attributes": {
-		"key": "value",
-		"key2": {
-			"property": "value"
-		}
-	},
-	"card_type": "boundary",
-	"card_subtype": "domain",
-	"description": "Plain text explanation of scope and intent",
-	"id": "dumptruck_mission",
-	"links": [
-		{
-			"relationship": "drives",
-			"target": "0f4b6e2e-6e60-47b3-9fda-49c4c3a2a9b8"
-		}
-	],
-	"name": "Human-Readable Title",
-	"status": "proposed",
-	"uuid": "7c0d2c45-6df4-4b8a-9f3a-2a8f7aa6f0d1",
-	"version": "1.0.0"
-}
-```
-
-**Required fields**: `uuid`, `id`, `card_type`, `name`, `description`, `version`, `audit_history`
-
-#### Field Descriptions
-
-- `uuid` - UUID v4 or v7 that never changes for the life of the card
-- `id` - A short name for the card in `snake_case`
-- `card_type` - The architectural type represented by the card.
-    + **Naming**: `card_type` values must be `snake_case`, consistent with `id`.
-    + Common types (as used in the Everything View): `mission`, `driver`, `requirement`, `capability`, `feature`, `constraint`, `actor`, `action`, `condition`, `event`, `process`, `state`, `state_machine`, `system`, `application`, `component`, `interface`, `test`, `artifact`, `data_store`, `node`, `node_instance`, `deployment`, `boundary`, `control`, `activity`, `story`, `note`.
-- `card_subtype` - An optional refinement of the `card_type`, for example a `boundary` card may have the `card_subtype` `domain`, `vlan`, etc.
-- `name` - A concise human readable name for the card
-- `description` - Details regarding the element the card represents
-- `version` - semver version of the particular card, updated whenever the card changes
-    _The revision is incremented for minor edits, such as spelling, grammar, edits to a few words
-    _ The minor version is incremented for more significant changes, such as the entire `description` changing, adding or removing links, etc. \* The major version is incremented for changes that alter the card's role in the architecture, including renaming, re-id-ing, changing `card_type`, or changing `card_subtype`
-- `status` - the status of an implementable element; one of: proposed, pending, implementation, review, verified, deprecated, retired. Changes to this field do not trigger `version` changes.
-- `attributes` - Key-value pairs providing additional data; the value can be any valid JSON value, including objects. This field is primarily meant for use by tooling and agents.
-
-- `links` - relationships between cards, always directed away from `mission`. Examples can be found at the end of the document.
-    + `target` - the `uuid` of the destination card
-    + `relationship` - a single-token description of the relationship (view-dependent) - e.g. `drives`, `implements`, `hosts`, `triggers_false`
-- `audit_history` - A record of the events - created, edited, etc. - the card has been through - `event` - The type of change made to the card: created, edited, deleted - `user` - The user ID who made the change - `timestamp` - ISO 8601 UTC timestamp of the change
-
-## Logical Structure
+### Logical Structure
 
 The logical structure of Aurora is designed to be easily extended to meet the needs of any architecture. While the structure and rules here are inviolate, they do not limit what is represented in the model and impose only necessary limitations on links.
 
-### Cards
+By using `boundary` cards and card subtypes almost any structure can be mapped onto a model.
 
-- The list of card types and subtypes included here is by far not exhaustive. Because the type and subtype directly encode their semantic meaning, any type that makes sense in your model may be used.
-- The cards themselves and the links between them do not encode any semantic meaning. They only represent the elements of the architecture and their connections.
+### Invariant Rules
 
-### Link Rules
+1. **The `mission` Card**: All models must start with a single `mission` card that summarizes the high-level "why" of the project. The `mission` card must only have outgoing links, and serves as the root of a directed graph.
 
-1. **Direction (graph links)**: All links except `note` links point away from the `mission` card, forming a directed graph. Multiple paths may converge and local loops may exist, but there must not be a path all the way back to the `mission` card when traversing **non-`note`** links.
-2. **Semantics**: Links have a `relationship` that describes them but does not convey semantic meaning. Semantic meaning is provided by generating Views of the model. The `relationship` is for human readability.
-3. **`mission` card**: The first card, and root of the graph, is the `mission` card which represents the project mission.
-    + The `mission` card only has outgoing links.
-    + The `mission` card must not be the target of any **non-`note`** link.
-4. **Every other card (except `note`)**: Must be the target of at least one incoming **non-`note`** link reachable from `mission` (directly or indirectly). May have any number of incoming or outgoing links.
-5. **Hierarchy**: Cards form a directed graph from `mission`. Local cycles are allowed for bounded subgraphs such as state machines (for example: `state → condition → state`) and event/action-driven transitions, as long as those links do not create a path out of the local area and back to `mission`.
+2. **Direction (graph links)**: All links must lead away from the `mission` card. There must be a route from `mission` to every card. The graph is not acyclic; local loops can and often do exist, for example when a state model returns to the starting state.
+
+3. **Hierarchy**: The model forms a directed graph rooted in the `mission` card. Local cycles are allowed for bounded subgraphs such as state machines (for example: `state → condition → state`) and event/action-driven transitions, as long as those links do not create a path out of the local area and back to `mission`.
+
+4. **Semantics**: links have a `relationship` field that describes them but does not convey semantic meaning by itself. The relationship is meant to describe how one element impacts another. Semantic meaning is derived from the link and relationship when a view is rendered.
+
+5. **Every other card**: Other than the `mission` all cards must have at least one incoming link. They must also have a path from the `mission` card. Cards may have more than one incoming or any number of outgoing links.
+
 6. **Validation**: All `links[].target` values must reference existing cards by `uuid`.
-7. **`boundary` cards**: `boundary` cards are special and can be used to visually/groupingly contain other cards.
-    + Boundaries can be inserted between any two cards using `source -- includes --> boundary -- contains --> target`.
-    + A `boundary` card may include an attribute named `recursive` (boolean). If true, the boundary includes all descendants of `target` _in the current view_.
-    + `boundary` cards, in addition to an incoming **non-`note`** link, must have one or more outgoing `contains` links showing what the boundary contains.
-8. **`note` cards (excluded from the graph)**: `note` cards are annotations and are not considered part of the directed graph.
-    + They must have no incoming links.
-    + They must have exactly one outgoing link whose `relationship` is `annotates`.
-    + Their outgoing link may target any card, including `mission`.
-    + `note` cards are excluded from the “away from mission” and “no orphans” invariants.
+
+## Views
+
+Views are generated by selecting a set of card types (and optionally subtypes) to include and rendering a diagram showing those cards, and the links between them. Views **do not change the model**; they change what part of and how the model is viewed. One model, many views.
+
+In general, a view should display the `card_type`, `card_subtype`, and `name` fields as the text for each node. The text should be wrapped in outer quotation marks and inner graves (back ticks), e.g., ``"`Type<br />Name Property'"`` or ``"`Type (subtype)<br />Name Property'"`` to allow the use of Markdown for formatting (like line breaks).
+
+Our tools add a few enhancements to improve the look and readability of the diagrams:
+
+- Mermaid shapes are used to help distinguish different types of cards.
+- Boundaries are rendered as a dashed outline around the elements they contain.
+- Links to `note` cards are rendered as dotted lines.
+
+## Examples of Common Views
+
+### Component View
+
+A Component View shows the system's runtime and logical components, their public interfaces, and how they compose and depend on each other to realize features and services.
+
+- **cards**: `system`, `application`, `component`, `interface`, `test`, `artifact`, `data_store`
+- **Optional cards**: `mission`, `feature`
+
+**Example**:
+
+```mermaid
+---
+config:
+  layout: elk
+---
+graph
+	mission((Mission))
+	system[System]@{shape: div-rect}
+	application[[Application]]
+	component[[Component]]
+	interface[Interface]@{shape: delay}
+	test(Test)
+	artifact[Artifact]@{shape: docs}
+	data_store[(Data Store)]
+	feature([Feature])
+
+	mission -- necessitates --> system
+	system -- integrates --> application
+	application -- comprises --> component
+	application -- implements --> test
+	component -- exposes --> interface
+	component -- generates --> artifact
+	artifact -- persists_to --> data_store
+	test -- validates --> component
+	component -- uses --> artifact
+	artifact -- to_call --> interface
+	component -- implements --> feature
+```
+
+### Deployment View
+
+A Deployment View shows the hosting topology—nodes, boundaries, and where components and applications are deployed.
+
+- **cards**: `component`, `data_store`, `node`, `node_instance`
+
+> This diagram shows the rendering of a `boundary` card for the "Intranet" zone.
+
+**Example**:
+
+```mermaid
+---
+config:
+  layout: elk
+---
+%%{init: {'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+graph
+	subgraph Intranet
+		component[[Component]]
+		data_store[(Data Store)]
+		node[/Node\]
+		node_instance[\Node Instance/]
+	end
+
+	node -- instantiates --> node_instance
+	node -- hosts --> component
+	node_instance -- hosts --> component
+	node -- hosts --> data_store
+	node_instance -- hosts --> data_store
+
+classDef dashed stroke-dasharray:5 5;
+class Intranet dashed
+```
+
+### Everything View
+
+A view unique to Aurora, it is exactly what the name implies; it includes all cards and all relationships. For anything more than simple architectures, this can be quite large and complex.
+
+This example shows, generally, how all default card types relate to each other. The boundary is rendered here as a card for visibility. This is not an exhaustive list; after all, Aurora is designed to be extendable and flexible.
+
+**Example**:
+
+```mermaid
+---
+config:
+  layout: elk
+---
+graph
+	activity([Activity])
+	actor{{Actor}}
+	application[[Application]]
+	artifact[Artifact]@{shape: docs}
+	boundary[Boundary]
+	capability([Capability])
+	component[[Component]]
+	condition{Condition}
+	constraint[Constraint]@{shape: card}
+	control(Control)
+	data_store[(Data Store)]
+	deployment[/Deployment/]
+	driver([Driver])
+	event[Event]@{shape: tri}
+	feature([Feature])
+	interface[Interface]@{shape: delay}
+	mission((Mission))
+	node_instance[\Node Instance/]
+	node[/Node\]
+	note[Note]@{shape: comment}
+	process[Process]@{shape: lin-rect}
+	requirement([Requirement])
+	risk{{Risk}}
+	state_machine[State Machine]@{shape: div-rect}
+	state(State)
+	story[Story]@{shape: document}
+	system[System]@{shape: div-rect}
+	test(Test)
+	threat{{Threat}}
+
+
+	activity -- transitions_to --> state
+	activity -- triggers --> activity
+	activity -- triggers --> condition
+	actor -- desires --> story
+	actor -- performs --> activity
+	actor -- presents --> threat
+	application -- comprises --> component
+	application -- implements --> test
+	application -- participates_in --> deployment
+	artifact -- persists_to --> data_store
+	artifact -- to_call --> interface
+	boundary -- contains --> system
+	capability -- necessitates --> process
+	capability -- satisfies --> requirement
+	component -- exposes --> interface
+	component -- generates --> artifact
+	component -- implements --> feature
+	component -- implements --> state_machine
+	component -- uses --> artifact
+	condition -- triggers_false --> activity
+	condition -- triggers_false --> state
+	condition -- triggers_true --> activity
+	condition -- triggers_true --> state
+	constraint -- limits --> activity
+	constraint -- limits --> capability
+	constraint -- limits --> feature
+	control -- governs --> capability
+	deployment -- includes --> boundary
+	deployment -- includes --> node
+	driver -- drives --> requirement
+	event -- triggers --> activity
+	event -- triggers --> state
+	feature -- satisfies --> requirement
+	mission -- establishes --> driver
+	mission -- involves --> actor
+	mission -- necessitates --> system
+	node -- hosts --> component
+	node -- hosts --> data_store
+	node -- instantiates --> node_instance
+	node_instance -- hosts --> component
+	node_instance -- hosts --> data_store
+	note ---> actor
+	process -- involves --> actor
+	process -- starts_with --> event
+	state -- receives --> event
+	state -- transitions_to --> state
+	state -- triggers --> activity
+	state -- triggers --> condition
+	state_machine -- starts_in --> state
+	story -- explains --> capability
+	story -- explains --> feature
+	story -- implies --> constraint
+	system -- integrates --> application
+	test -- validates --> component
+	test -- validates --> feature
+	threat -- imposes --> risk
+	risk -- impacts --> feature
+	requirement -- necessitates --> control
+	requirement -- imposes --> constraint
+```
+
+### Requirements View
+
+A Requirements View captures the system goals and constraints as testable, traceable requirements, showing their relationships to drivers, features, and tests.
+
+- **cards**: `mission`, `driver`, `capability`, `feature`, `requirement`, `constraint`, `test`, `control`
+- **Optional cards**: `actor`, `story`
+
+> This diagram shows the rendering of a `boundary` card for the "Team".
+
+**Example**:
+
+```mermaid
+---
+config:
+  layout: elk
+---
+%%{init: {'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+graph
+	mission((Mission))
+	driver([Driver])
+	capability([Capability])
+	feature([Feature])
+	requirement([Requirement])
+	constraint[Constraint]@{shape: card}
+	test(Test)
+	story[Story]@{shape: document}
+	control(Control)
+
+	subgraph Team
+		actor{{Actor}}
+	end
+
+	mission -- establishes --> driver
+	mission -- involves --> actor
+	driver -- drives --> requirement
+	capability -- satisfies --> requirement
+	feature -- satisfies --> requirement
+	requirement -- imposes --> constraint
+	constraint -- limits --> capability
+	constraint -- limits --> feature
+	test -- validates --> feature
+	actor -- desires --> story
+	story -- explains --> feature
+	story -- explains --> capability
+	requirement -- necessitates --> control
+	control -- governs --> capability
+classDef dashed stroke-dasharray:5 5;
+class Team dashed
+```
+
+### State Machine View
+
+A State Machine View models the lifecycle and valid transitions of a runtime element, showing its states, the conditions that guard transitions, events that trigger changes, and activities that occur within states.
+
+- **cards**: `component`, `state_machine`, `state`, `condition`, `activity`, `event`, `constraint`
+- **Optional cards**: `mission`, `system`, `application`
+
+**Example**:
+
+```mermaid
+---
+config:
+  layout: elk
+---
+graph
+	mission((Mission))
+	system[System]@{shape: div-rect}
+	application[[Application]]
+	component[[Component]]
+	state_machine[State Machine]@{shape: div-rect}
+	state(State)
+	condition{Condition}
+	activity([Activity])
+	event[Event]@{shape: tri}
+	constraint[Constraint]@{shape: card}
+
+	note[A Note can annotate any element and does not count as part of the graph structure.]@{shape: comment}
+
+	mission -- necessitates --> system
+	system -- integrates --> application
+	application -- comprises --> component
+	component -- implements --> state_machine
+	state_machine -- starts_in --> state
+	state -- transitions_to --> state
+	state -- triggers --> condition
+	condition -- triggers_true --> state
+	condition -- triggers_false --> state
+	state -- receives --> event
+	event -- triggers --> state
+	state -- triggers --> activity
+	activity -- transitions_to --> state
+	activity -- triggers --> activity
+	constraint -- limits --> activity
+
+	note ---> application
+```
+
+### Story View
+
+A Story View captures user-centric scenarios combining use-case narratives and activity sequences, showing actors, goals, and step-by-step flows.
+
+- **cards**: `actor`, `story`, `activity`, `event`, `condition`, `constraint`, `process`, `capability`
+
+**Example**:
+
+```mermaid
+---
+config:
+  layout: elk
+---
+graph
+	actor{{Actor}}
+	story[Story]@{shape: document}
+	activity([Activity])
+	event[Event]@{shape: tri}
+	condition{Condition}
+	capability([Capability])
+	constraint[Constraint]@{shape: card}
+	process[Process]@{shape: lin-rect}
+
+	capability -- necessitates --> process
+	process -- involves --> actor
+	process -- starts_with --> event
+	actor -- desires --> story
+	story -- explains --> capability
+	constraint -- limits --> capability
+	story -- implies --> constraint
+	event -- triggers --> activity
+	actor -- performs --> activity
+	activity -- triggers --> condition
+	condition -- triggers_true --> activity
+	condition -- triggers_false --> activity
+
+```
 
 ## Processing Instructions for Agents
 
 ### Loading
 
-1. Read all JSON card files (for this repo: `docs/Aurora/**.json`).
-2. Build adjacency lists: `card_uuid` pointing to `target_card_uuids`.
+1. Read all JSON card files for the model, recursively. Models are typically stored in an `aurora/` folder (or a ZIP containing that folder); some repos also keep example models under `docs/design/aurora/`. If no model folder exists then the repo may only contain the schema and documentation. It is possible for a repo to contain multiple models.
+2. Build adjacency lists, starting with `mission`: `card_uuid` pointing to `target_card_uuids`.
 3. Index by `uuid` (canonical) for O(1) lookups.
-4. Verify schemas using `schemas/Aurora.schema.json` if available.
+4. Validate the model: check every card against the schema, and ensure the model conforms to the invariants in this document.
 
-In this repository, the example model lives under `docs/Aurora/**.json`, and the canonical schema is `schemas/Aurora.schema.json`.
+In a high-security environment, audit everything. Status changes require an audit entry and a version update. Link changes are significant and require an audit entry and a version update. Whitespace-only formatting changes (pretty formatting) do not require audit or version updates, but whitespace changes inside values are edits and do require audit and version updates.
 
 - **Traceability**: Walk downstream from any `mission` to any card to establish provenance.
-- **Coverage**: Count cards by type and status to assess completeness. E.g., `How many requirements have tests?` → count `requirement` cards that link to `test` cards.
 - **Impact Analysis**: Change in card X → find all cards up and downstream of X (follow incoming and outgoing links) to identify affected cards.
-
-## Views
-
-### Common Views
-
-To derive any view:
-
-1. Select one or more starting cards, e.g., the `mission` for a Requirements View.
-2. Walk outgoing links to produce a candidate subgraph.
-3. Filter cards by `card_type` and/or attributes relevant to the view.
-
-Common views and how to derive them:
-
-- **Requirements Traceability**: Cards: `mission`, `driver`, `capability`, `feature`, `requirement`, `constraint`, `test`. Derivation: traverse from `mission`; keep the listed types; optionally collapse intermediate nodes to show `mission` → `requirement` → `test` coverage.
-
-- **Capability Map**: Cards: `driver`, `capability`, `feature`, `process`. Notes: `capability` is typically a multi-modal workflow, most often expressed via one or more `process` cards. Derivation: keep only `capability`/`feature` cards reachable from each `driver`; group by the first `driver` ancestor.
-
-- **Component Architecture**: Cards: `system`, `application`, `boundary`, `component`, `interface`, `artifact`, `data_store`, `node`, `test`. Derivation: keep structural runtime elements and their direct links; use `boundary` cards to denote trust or deployment boundaries.
-
-- **Interface / API Surface**: Cards: `interface`, `actor`, `component`, `action`. Derivation: keep actors and the interfaces they touch; interpret `calls` links as connectivity between `component` and `interface`.
-
-- **Data Flow and Storage**: Cards: `data_store`, `component`, `interface`, `artifact`. Derivation: keep nodes that produce/consume stored artifacts; interpret `links` as “flows_to” in this view.
-
-- **Threat Model and Controls**: Cards: `constraint`, `boundary`, `component`, `data_store`, `interface`, `test`. Derivation: traverse from `mission` to include security-related `constraint` cards and the runtime elements they apply to; use `attributes` for threat/control metadata.
-
-- **Deployment Topology**: Cards: `node`, `boundary`, `application`, `component`, `data_store`. Derivation: keep deployable elements; interpret `node` as a hosting target and `boundary` as network/zone segmentation.
-
-- **Action / Process Flow**: Cards: `actor`, `action`, `condition`, `event`, `state`, `process`, `interface`. Derivation: keep actions and their prerequisites/conditions; interpret `links` as “enables_next_step” in this view.
-
-Views **do not change the model**; they change what part of and how the model is viewed. One model, many views.
 
 ## Constraints and Guardrails
 
-1. **No semantic type in links**: Agents must not invent link types. Use view overlays instead.
+1. **No semantic type in links**: Agents must not invent link types. Humans will provide appropriate relationship verb clauses.
 2. **All graph links away from `mission`**: Agents must not create **non-`note`** links that point towards `mission`. Local cycles are permitted only when modeling bounded flows such as state machines.
 3. **No orphans (graph cards)**: Every card except `mission` and `note` must be reachable via a path starting from `mission` following **non-`note`** links.
 4. **Audit everything**: Every change must create an audit entry.
-
-## Exemplars
-
-This section describes, in plain English, how to represent common architecture “diagram types” as Aurora cards and links. This list is not exhaustive, and a view can be composed by selecting any set of card types and displaying those cards and their links.
-
-### Requirements View
-
-- Start from the `mission` card.
-- Ensure all requirement-related cards are reachable from `mission` via `mission` → `driver` → `requirement`.
-- Create `driver` cards for major forces (security, performance, operability, etc.).
-- Create `capability` and/or `feature` cards to describe what the system must enable.
-- Create `requirement` cards for concrete, testable statements.
-- Use `constraint` cards for non-functional requirements.
-- Link `mission` → `driver` (relationship: `establishes`).
-- Link `driver` → `requirement` (relationship: `drives`).
-- Link `capability` → `requirement` (relationship: `satisfies`).
-- Link `feature` → `requirement` (relationship: `satisfies`).
-- Link `requirement` → `constraint` (relationship: `imposes`).
-- Link `constraint` → `capability`/`feature` (relationship: `limits`) where applicable.
-- Link `component` → `feature` (relationship: `implements`).
-- Link `test` → `feature`/`component`/`interface` (relationship: `validates`) to express test coverage.
-
-### Use Case View
-
-- Start from the `mission` card.
-- Create or reuse a `capability` card to represent the user goal.
-- Create a `process` card to represent the workflow.
-- Link `capability` → `process` (relationship: `necessitates`).
-- Create `actor` cards for external users/systems.
-- Link `process` → `actor` (relationship: `involves`).
-- Model the interaction mechanics using `condition`, `action`, `event`, and `state` cards:
-    _Link `actor` → `action` (relationship: `takes`).
-    _ Link `condition` → `action` (relationship: `triggers_case_n`).
-    _Link `action` → `event` (relationship: `triggers`).
-    _ Link `state` → `event` (relationship: `receives`).
-    _Link `event` → `state` (relationship: `triggers`).
-    _ Link `state`/`event` → `condition` (relationship: `meets`).
-
-### Component View
-
-- Start from the `mission` card.
-- Create a `system` and/or `application` card for the overall product.
-- Link `mission` → `system`/`application` (relationship: `necessitates`).
-- If modeling integration, link `system` → `system`/`application` (relationship: `integrates`).
-- Create `boundary` cards for trust zones (local machine, public internet, internal network).
-- Create `component` cards for runtime units and code units.
-- Use `boundary` cards to denote trust/deployment zones.
-	_ Insert boundaries using `source` → `boundary` (relationship: `includes`) → `target` (relationship: `contains`).
-- Link `application` → `component` (relationship: `comprises`).
-- Create `interface` cards for major public entrypoints (CLI, HTTP API, job queue, etc.).
-- Create `data_store` cards for durable storage.
-- Create `artifact` cards to represent persisted data elements.
-- Link `component` → `interface` (relationship: `exposes`) as appropriate.
-- Link `component` → `interface` (relationship: `calls`) when modeling `calls` paths.
-- Link `component` → `artifact` (relationship: `generates`) → `data_store` (relationship: `persists_to`) to express durable storage.
-- If modeling delivery of features, link `component` → `feature` (relationship: `implements`).
-
-### Deployment Diagram
-
-- Start from the `mission` card.
-- Create a `deployment` card to group the topology.
-- Ensure the topology is reachable from `mission` by linking runtime structure through the normal chain (example: `mission` → `system` → `application` → `deployment`).
-    + Link `mission` → `system` (relationship: `necessitates`).
-    + Link `system` → `application` (relationship: `integrates`).
-    + Link `application` → `deployment` (relationship: `participates_in`).
-- Create `boundary` cards for network segments or trust boundaries.
-- Create `node` cards for runtime hosts (laptop, server, container node).
-- Link `deployment` → `boundary` (relationship: `includes`).
-- Link `deployment` → `node` (relationship: `includes`).
-- Link `boundary` → `system`/`application`/`component`/`data_store` (relationship: `contains`) as appropriate.
-- Link `node` → `component` (relationship: `hosts`).
-- Link `node` → `data_store` (relationship: `hosts`).
-- Create `artifact` cards to represent data elements.
-- Link `component` → `artifact` (relationship: `generates`).
-- Create `data_store` cards for durable storage.
-- Link `artifact` → `data_store` (relationship: `persists_to`) to show persistence dependencies.
-
-### Process / Sequence / Activity Views
-
-- Start from the `mission` card.
-- Ensure the process subgraph is reachable by anchoring it under an existing `capability` card (reachable from `mission` via runtime elements implementing the capability).
-- Create a `process` card.
-- Link `capability` → `process` (relationship: `necessitates`).
-- Create `actor` cards for participants.
-- Link `process` → `actor` (relationship: `involves`).
-- Model the workflow lifecycle as a state machine.
-    _Link `process` → `state` (relationship: `starts_in`) to indicate the initial state.
-    _ Link `state` → `condition` (relationship: `meets`) → `state` (relationship: `triggers`) for transitions.
-- Model the interaction mechanics using `condition`, `action`, `event`, and `state` cards:
-    _Link `actor` → `action` (relationship: `takes`).
-    _ Link `condition` → `action` (relationship: `triggers_case_n`).
-    _Link `action` → `event` (relationship: `triggers`).
-    _ Link `state` → `event` (relationship: `receives`).
-    _Link `event` → `state` (relationship: `triggers`).
-    _ Link `state`/`event` → `condition` (relationship: `meets`).
-- Model endpoints as `interface` cards and connectivity via runtime elements.
-    _Link `component` → `interface` (relationship: `exposes`).
-    _ Link `component` → `interface` (relationship: `calls`).
-
-### State Diagram
-
-- Start from the `mission` card.
-- Anchor the state graph under a reachable runtime element (common: `mission` → `boundary` → `application` → `component`).
-    _Link card → `boundary` (relationship: `contains`) → card (relationship: `contains`).
-    _ Link `application` → `component` (relationship: `comprises`).
-- Model `state` cards.
-- Model transitions using `condition` cards (guards/branches). A `condition` may have multiple outgoing transitions (for example: `triggers_yes` and `triggers_no`).
-- State machines either loop back to the initial state or have a terminal state.
-- External triggers (outside effector): \* Link `actor` → `action` (relationship: `takes`) → `event` (relationship: `triggers`) → `state` (relationship: `triggers`).
-- State transitions (from one state to another): \* Link `state` → `condition` (relationship: `meets`) → `state` (relationship: `triggers`).
-- Prefer a `state_machine` card to anchor states.
-    + Link `component` → `state_machine` (relationship: `implements`).
-    + Link `state_machine` → `state` (relationship: `starts_in`).
-
-### Communication Diagram
-
-- Start from the `mission` card.
-- Model participants as `actor` and/or `component` cards.
-- Prefer diagram-consistent relationships for connectivity:
-    _Link `component` → `interface` (relationship: `calls`).
-    _ Put message details in `attributes` on the calling `component` and/or the `interface`.
