@@ -9,7 +9,7 @@
 	"description": "AURORA is an architectural practice and tools designed to be equally followable by both machine and human agents.",
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^3.0.10",
-		"@sveltejs/kit": "^2.49.2",
+		"@sveltejs/kit": "^2.49.5",
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@tauri-apps/cli": "^2.9.6",
 		"@types/d3": "^7.4.3",
