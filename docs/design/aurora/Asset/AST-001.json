@@ -1,0 +1,24 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "AST-001",
+	"card_type": "Asset",
+	"name": "Aurora Model",
+	"description": "The authoritative set of Aurora card JSON files and schema copy that defines an architecture model.",
+	"links": [
+		{
+			"target": "DTS-001",
+			"relationship": "persists_to"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:33.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

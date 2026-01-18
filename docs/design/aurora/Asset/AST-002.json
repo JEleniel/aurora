@@ -1,0 +1,24 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "AST-002",
+	"card_type": "Asset",
+	"name": "Generated Documentation Set",
+	"description": "The generated Markdown card catalog (per-card files and index) plus the set of standard view documents.",
+	"links": [
+		{
+			"target": "DTS-002",
+			"relationship": "persists_to"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:34.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

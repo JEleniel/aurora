@@ -1,0 +1,62 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "DRI-001",
+	"card_type": "Driver",
+	"name": "Operational Friction Elimination",
+	"description": "Reduce manual effort by generating documentation and standard views directly from the authoritative Aurora model.",
+	"links": [
+		{
+			"target": "REQ-004",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-005",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-006",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-007",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-008",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-009",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-010",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-016",
+			"relationship": "drives"
+		}
+	],
+	"audit_trail": {
+		"version": "1.2.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:05.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-18T00:20:00.000Z",
+				"event": "edited"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-18T01:10:30.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}

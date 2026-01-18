@@ -1,0 +1,44 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "COM-007",
+	"card_type": "Component",
+	"name": "Standard View Generator",
+	"description": "Generates standard Mermaid view documents from the model cards using ELK layout and per-card-type shapes.",
+	"links": [
+		{
+			"target": "INT-002",
+			"relationship": "exposes"
+		},
+		{
+			"target": "FEA-003",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-005",
+			"relationship": "implements"
+		},
+		{
+			"target": "CAP-004",
+			"relationship": "implements"
+		},
+		{
+			"target": "ART-004",
+			"relationship": "generates"
+		},
+		{
+			"target": "DTS-002",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:47.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

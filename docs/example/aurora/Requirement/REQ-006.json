@@ -1,0 +1,18 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "REQ-006",
+	"card_type": "Requirement",
+	"name": "Customer Experience Is Accessible",
+	"description": "The storefront and checkout are accessible to users with disabilities, including keyboard-only use and screen readers.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:21.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

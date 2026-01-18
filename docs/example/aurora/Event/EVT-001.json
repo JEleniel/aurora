@@ -1,0 +1,24 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "EVT-001",
+	"card_type": "Event",
+	"name": "Order Submitted",
+	"description": "A customer submits an order for checkout and payment authorization.",
+	"links": [
+		{
+			"target": "ATV-001",
+			"relationship": "triggers"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:02:12.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

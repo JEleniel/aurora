@@ -1,0 +1,33 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CNS-005",
+	"card_type": "Constraint",
+	"name": "Tax And Receipt Requirements",
+	"description": "Orders must produce receipts/invoices that satisfy tax requirements for supported jurisdictions, including accurate itemization and totals.",
+	"links": [
+		{
+			"target": "FEA-005",
+			"relationship": "limits"
+		},
+		{
+			"target": "ART-003",
+			"relationship": "limits"
+		}
+	],
+	"attributes": {
+		"jurisdiction": "US/EU",
+		"scope": ["checkout", "order_records"],
+		"notes": "Retain receipts per retention policy; avoid storing card data."
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:09.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

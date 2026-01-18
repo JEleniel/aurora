@@ -1,0 +1,18 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "DTS-003",
+	"card_type": "Data Store",
+	"name": "Audit Log Store",
+	"description": "Append-only storage for audit log entries and security-relevant events.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:41.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

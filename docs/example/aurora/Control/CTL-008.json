@@ -1,0 +1,31 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CTL-008",
+	"card_type": "Control",
+	"name": "Immutable Audit Logging",
+	"description": "Make audit logs append-only and protected from modification to preserve integrity.",
+	"links": [
+		{
+			"target": "RIS-003",
+			"relationship": "mitigates"
+		},
+		{
+			"target": "CAP-005",
+			"relationship": "governs"
+		}
+	],
+	"attributes": {
+		"implementation_notes": "Use append-only storage; restrict deletes; include cryptographic integrity where feasible."
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:01:21.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

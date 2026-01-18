@@ -1,0 +1,32 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "DRI-001",
+	"card_type": "Driver",
+	"name": "Protect Customer Data",
+	"description": "Prevent unauthorized access to customer accounts, personal data, and order history while minimizing sensitive data retention.",
+	"links": [
+		{
+			"target": "REQ-001",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-002",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-003",
+			"relationship": "drives"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:01.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "ART-004",
+	"card_type": "Artifact",
+	"name": "Audit Log Entry",
+	"description": "An immutable, structured record of a security or business-critical event.",
+	"links": [
+		{
+			"target": "DTS-003",
+			"relationship": "persists_to"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:48.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

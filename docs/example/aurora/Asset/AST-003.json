@@ -1,0 +1,32 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "AST-003",
+	"card_type": "Asset",
+	"name": "Service Secrets",
+	"description": "Secrets used by services such as API keys, webhook signing secrets, and database credentials.",
+	"links": [
+		{
+			"target": "RIS-002",
+			"relationship": "impacts"
+		},
+		{
+			"target": "RIS-005",
+			"relationship": "impacts"
+		}
+	],
+	"attributes": {
+		"sensitivity": "Critical",
+		"notes": "Rotate and store in a dedicated secret manager; do not log."
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:44.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

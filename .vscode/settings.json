@@ -1,0 +1,5 @@
+{
+	"chat.tools.terminal.autoApprove": {
+		"./tools/aurora_cli/target/debug/aurora_cli": true
+	}
+}

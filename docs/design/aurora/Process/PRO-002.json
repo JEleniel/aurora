@@ -1,0 +1,40 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "PRO-002",
+	"card_type": "Process",
+	"name": "Documentation Generation",
+	"description": "Process of rendering human-friendly Markdown cards and standard views from a validated model.",
+	"links": [
+		{
+			"target": "ACT-001",
+			"relationship": "involves"
+		},
+		{
+			"target": "EVT-003",
+			"relationship": "starts_with"
+		},
+		{
+			"target": "ATV-005",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-006",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-007",
+			"relationship": "includes"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:52.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

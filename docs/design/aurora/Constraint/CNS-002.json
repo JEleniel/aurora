@@ -1,0 +1,32 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CNS-002",
+	"card_type": "Constraint",
+	"name": "Safe Filesystem Writes",
+	"description": "aurora_cli prevents partial or corrupt output by writing deterministically and safely (create directories as needed, avoid unexpected clobbering, and ensure atomic writes where feasible).",
+	"links": [
+		{
+			"target": "FEA-002",
+			"relationship": "limits"
+		},
+		{
+			"target": "FEA-003",
+			"relationship": "limits"
+		},
+		{
+			"target": "CTL-002",
+			"relationship": "governs"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:04.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

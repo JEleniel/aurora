@@ -1,0 +1,64 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "APP-001",
+	"card_type": "Application",
+	"name": "aurora_cli",
+	"description": "A command-line application that validates Aurora models and generates human-friendly Markdown cards and standard view diagrams.",
+	"links": [
+		{
+			"target": "COM-001",
+			"relationship": "comprises"
+		},
+		{
+			"target": "PRO-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "PRO-002",
+			"relationship": "includes"
+		},
+		{
+			"target": "STM-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "COM-002",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-003",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-004",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-005",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-006",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-007",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-008",
+			"relationship": "comprises"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:28.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

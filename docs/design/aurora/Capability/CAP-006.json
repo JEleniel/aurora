@@ -1,0 +1,40 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CAP-006",
+	"card_type": "Capability",
+	"name": "Maintain Audit Trails",
+	"description": "Update Aurora card audit trails in a consistent, deterministic way (semantic version bumps and appended history entries with editor and timestamp).",
+	"links": [
+		{
+			"target": "REQ-012",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-013",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-014",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-015",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "CAP-005",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-18T00:30:04.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "STR-002",
+	"card_type": "Story",
+	"name": "Tool User Validates And Renders Outputs",
+	"description": "As a Tool User, I want to validate an Aurora model and render cards and views so I can share an up-to-date, trustworthy architecture snapshot.",
+	"links": [
+		{
+			"target": "CAP-002",
+			"relationship": "explains"
+		},
+		{
+			"target": "CAP-003",
+			"relationship": "explains"
+		},
+		{
+			"target": "CAP-004",
+			"relationship": "explains"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:30.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

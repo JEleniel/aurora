@@ -1,0 +1,32 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "COM-007",
+	"card_type": "Component",
+	"name": "Admin UI",
+	"description": "Administrative UI for order review, refunds, and audit searches.",
+	"links": [
+		{
+			"target": "INT-004",
+			"relationship": "uses"
+		},
+		{
+			"target": "CTL-007",
+			"relationship": "governs"
+		},
+		{
+			"target": "CAP-002",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:59.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

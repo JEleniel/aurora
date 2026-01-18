@@ -1,0 +1,28 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "THR-005",
+	"card_type": "Threat",
+	"name": "Fraud And Abuse",
+	"description": "Attackers exploit bots, stolen cards, or refund abuse to obtain goods or refunds illegitimately.",
+	"links": [
+		{
+			"target": "RIS-004",
+			"relationship": "imposes"
+		}
+	],
+	"attributes": {
+		"attack_surface": ["checkout", "refunds", "promotions"],
+		"signals": ["velocity_spikes", "mismatched_geo", "unusual_refund_patterns"]
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:01:12.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

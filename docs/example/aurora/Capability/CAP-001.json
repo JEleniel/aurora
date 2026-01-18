@@ -1,0 +1,24 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CAP-001",
+	"card_type": "Capability",
+	"name": "Authenticate Identities",
+	"description": "Establish the identity of customers and administrators before allowing protected actions.",
+	"links": [
+		{
+			"target": "REQ-001",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:26.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

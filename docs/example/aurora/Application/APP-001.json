@@ -1,0 +1,38 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "APP-001",
+	"card_type": "Application",
+	"name": "Web Storefront",
+	"description": "Customer-facing web application for browsing products, managing the cart, and initiating checkout.",
+	"links": [
+		{
+			"target": "COM-001",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-002",
+			"relationship": "comprises"
+		},
+		{
+			"target": "FEA-004",
+			"relationship": "implements"
+		}
+	],
+	"attributes": {
+		"branding": {
+			"theme": "Aurora Bites",
+			"constraints": "Maintain high contrast and accessible focus states"
+		}
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:34.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

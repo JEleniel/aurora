@@ -1,0 +1,24 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "STA-005",
+	"card_type": "State",
+	"name": "Failed",
+	"description": "Execution failed due to invalid input model or an unrecoverable error.",
+	"links": [
+		{
+			"target": "STA-001",
+			"relationship": "transitions_to"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:01:09.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

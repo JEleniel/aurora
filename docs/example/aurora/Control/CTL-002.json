@@ -1,0 +1,31 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CTL-002",
+	"card_type": "Control",
+	"name": "Input Validation",
+	"description": "Validate and normalize inputs at trust boundaries to prevent injection, logic abuse, and unsafe data propagation.",
+	"links": [
+		{
+			"target": "RIS-002",
+			"relationship": "mitigates"
+		},
+		{
+			"target": "THR-002",
+			"relationship": "mitigates"
+		}
+	],
+	"attributes": {
+		"implementation_notes": "Use schema validation; reject unknown fields; enforce length and character sets."
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:01:15.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

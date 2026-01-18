@@ -1,0 +1,29 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CNS-004",
+	"card_type": "Constraint",
+	"name": "Marketing Consent And Unsubscribe",
+	"description": "Marketing messages must require consent where applicable and must always include a working opt-out mechanism.",
+	"links": [
+		{
+			"target": "FEA-008",
+			"relationship": "limits"
+		}
+	],
+	"attributes": {
+		"jurisdiction": "Varies",
+		"scope": ["email_notifications"],
+		"notes": "Separate transactional notifications from marketing."
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:08.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

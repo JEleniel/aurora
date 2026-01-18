@@ -1,0 +1,28 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "ATV-001",
+	"card_type": "Activity",
+	"name": "Resolve Model Root",
+	"description": "Resolve a user-supplied path into a model root and locate the Mission card and local schema.",
+	"links": [
+		{
+			"target": "ATV-002",
+			"relationship": "triggers"
+		},
+		{
+			"target": "CTL-002",
+			"relationship": "governs"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:56.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

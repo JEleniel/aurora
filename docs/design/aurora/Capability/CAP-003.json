@@ -1,0 +1,41 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CAP-003",
+	"card_type": "Capability",
+	"name": "Render Markdown Card Catalog",
+	"description": "Generate a human-friendly Markdown representation of each card plus a single index README grouped by type.",
+	"links": [
+		{
+			"target": "REQ-004",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-005",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-009",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "AST-002",
+			"relationship": "generates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.1.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:19.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-18T00:20:00.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}

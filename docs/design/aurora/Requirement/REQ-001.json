@@ -1,0 +1,18 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "REQ-001",
+	"card_type": "Requirement",
+	"name": "Validate Aurora Schema",
+	"description": "aurora_cli validates all card JSON files against the Aurora schema copy co-located with the model's Mission card.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:08.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

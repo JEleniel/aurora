@@ -1,0 +1,32 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "COM-004",
+	"card_type": "Component",
+	"name": "Schema Validator",
+	"description": "Validates all cards against the local Aurora JSON schema.",
+	"links": [
+		{
+			"target": "FEA-001",
+			"relationship": "implements"
+		},
+		{
+			"target": "CAP-002",
+			"relationship": "implements"
+		},
+		{
+			"target": "ART-001",
+			"relationship": "generates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:44.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

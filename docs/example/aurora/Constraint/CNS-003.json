@@ -1,0 +1,33 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CNS-003",
+	"card_type": "Constraint",
+	"name": "Accessibility WCAG",
+	"description": "Customer-facing experiences must meet accessibility requirements consistent with WCAG (e.g., contrast, keyboard navigation, and screen reader support).",
+	"links": [
+		{
+			"target": "REQ-006",
+			"relationship": "limits"
+		},
+		{
+			"target": "APP-001",
+			"relationship": "limits"
+		}
+	],
+	"attributes": {
+		"jurisdiction": "Varies",
+		"scope": ["web_storefront", "checkout"],
+		"notes": "Branding must not reduce contrast; ensure accessible error messaging and form validation."
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:07.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

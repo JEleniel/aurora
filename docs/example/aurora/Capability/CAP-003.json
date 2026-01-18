@@ -1,0 +1,32 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CAP-003",
+	"card_type": "Capability",
+	"name": "Process Checkout And Payments",
+	"description": "Accept orders and coordinate payment authorization/capture while preserving integrity and reliability.",
+	"links": [
+		{
+			"target": "REQ-005",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-007",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "RIS-004",
+			"relationship": "mitigates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:28.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

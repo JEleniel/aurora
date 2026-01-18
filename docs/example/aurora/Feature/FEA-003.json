@@ -1,0 +1,33 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "FEA-003",
+	"card_type": "Feature",
+	"name": "Hosted Payment Checkout",
+	"description": "Use a compliant payment provider for hosted checkout/tokenization, avoiding storage of payment card data.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CAP-003",
+			"relationship": "enables"
+		},
+		{
+			"target": "REQ-005",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "RIS-004",
+			"relationship": "mitigates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:01:25.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

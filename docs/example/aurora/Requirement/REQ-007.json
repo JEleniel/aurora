@@ -1,0 +1,18 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "REQ-007",
+	"card_type": "Requirement",
+	"name": "Checkout Is Reliable",
+	"description": "Checkout and order submission tolerate retries and partial failures without duplicating orders or losing payment state.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:22.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

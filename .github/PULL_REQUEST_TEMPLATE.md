@@ -1,52 +1,50 @@
-<<<<<<< HEAD
-# Pull Request Template
+# Pull Request
 
-## Type of change
-
-- [ ] Bugfix
-- [ ] Feature
-- [ ] Docs
-- [ ] Chore
-
-## Summary
-
-Provide a concise summary of the change and the motivation.
-
-## Changes
-
-- Brief list of the main changes (files, behaviors, features).
+Thanks for taking the time to open a pull request.
 
 ## Related issues
 
-- Link any related issues, e.g. fixes #123
+Link related issues (examples: `Fixes #123`, `Closes #123`, `Related to #123`).
 
-## Testing and verification
+## Type of change (required if no issue linked)
 
-Describe how this change was tested (commands, environment, steps) and how to verify it locally.
+- [ ] Bug fix
+- [ ] Feature
+- [ ] Documentation
+- [ ] Refactor
+- [ ] Performance
+- [ ] Tests
+- [ ] Chore / maintenance
 
-Example:
+## Summary (required)
 
-- Run: `make test` or `pnpm test`
-- Environment: OS, runtime versions, any env vars required (do not include secrets)
-=======
-# Pull Request
+What does this change do, and why?
 
-Please fill out this pull request template completely. Fields marked as required must be filled.
+## Changes
 
-Type of Change (required):
-        - bug_fix
-        - documentation
-        - new_feature
-        - performance improvement
-        - refactor
-        - security
-        - tests
+List the key changes (high level):
 
-Does the change introduce a breaking change? (required)
-        - yes
-        - no
+-
+-
+-
 
-Related Issues:
+## Breaking change
 
-Description (required):
->>>>>>> 388b8aea5e651424b70717a1a2f9395b52b41905
+- [ ] This change introduces a breaking change
+
+If yes, describe the impact and migration steps:
+
+## Testing
+
+How was this validated?
+
+- Commands run:
+- Environment details (OS, runtime/tooling versions; do not include secrets):
+- Manual testing steps (if any):
+
+## Checklist
+
+- [ ] I kept this PR focused and scoped
+- [ ] I updated documentation (if needed)
+- [ ] I added or updated tests (if needed)
+- [ ] I verified the change locally (or explained why not)

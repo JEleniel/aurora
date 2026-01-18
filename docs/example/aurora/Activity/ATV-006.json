@@ -1,0 +1,32 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "ATV-006",
+	"card_type": "Activity",
+	"name": "Issue Refund",
+	"description": "Issue a refund via the payment provider and record immutable audit evidence.",
+	"links": [
+		{
+			"target": "FEA-009",
+			"relationship": "supports"
+		},
+		{
+			"target": "CTL-008",
+			"relationship": "governed_by"
+		},
+		{
+			"target": "ATV-007",
+			"relationship": "triggers"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:02:19.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

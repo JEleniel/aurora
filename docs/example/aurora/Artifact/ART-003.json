@@ -1,0 +1,24 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "ART-003",
+	"card_type": "Artifact",
+	"name": "Receipt",
+	"description": "Customer-facing receipt/invoice for an order including itemization, taxes, and totals.",
+	"links": [
+		{
+			"target": "CNS-005",
+			"relationship": "limited_by"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:47.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

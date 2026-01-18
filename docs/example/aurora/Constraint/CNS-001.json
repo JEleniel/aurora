@@ -1,0 +1,37 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CNS-001",
+	"card_type": "Constraint",
+	"name": "GDPR Data Protection",
+	"description": "For EU users, personal data processing must follow GDPR principles including lawful basis, data minimization, purpose limitation, and support for data subject rights.",
+	"links": [
+		{
+			"target": "REQ-004",
+			"relationship": "limits"
+		},
+		{
+			"target": "FEA-010",
+			"relationship": "limits"
+		},
+		{
+			"target": "FEA-011",
+			"relationship": "limits"
+		}
+	],
+	"attributes": {
+		"jurisdiction": "EU",
+		"scope": ["customer_personal_data", "account_data", "order_history"],
+		"notes": "Implement DSAR workflows (access/export/delete) and retention policies; document processors/subprocessors."
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:05.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -5,23 +5,23 @@ model: GPT-5.2 (copilot)
 handoffs:
     - agent: BackendDeveloper
       label: <- BackendDeveloper
-      prompt: The ReleaseReviewer has completed their review. As the BackendDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding.
+      prompt: The ReleaseReviewer has completed their review. As the BackendDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. Before you begin do you have any questions?
       send: false
     - agent: UIDeveloper
       label: <- UIDeveloper
-      prompt: The ReleaseReviewer has completed their review. As the UIDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding.
+      prompt: The ReleaseReviewer has completed their review. As the UIDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. Before you begin do you have any questions?
       send: false
     - agent: TestDeveloper
       label: <- TestDeveloper
-      prompt: The ReleaseReviewer has completed their review. As the TestDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding.
+      prompt: The ReleaseReviewer has completed their review. As the TestDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. Before you begin do you have any questions?
       send: false
     - agent: TechnicalWriter
       label: <- TechnicalWriter
-      prompt: The ReleaseReviewer has completed their review. As the TechnicalWriter, address the feedback provided to enhance the documentation's accuracy, completeness, and clarity according to the reviewer's recommendations. Ensure that all issues raised are resolved before finalizing.
+      prompt: The ReleaseReviewer has completed their review. As the TechnicalWriter, address the feedback provided to enhance the documentation's accuracy, completeness, and clarity according to the reviewer's recommendations. Ensure that all issues raised are resolved before finalizing. Before you begin do you have any questions?
       send: false
 ---
 
-# Release Reviewer Agent
+# Release Reviewer Agent Instructions
 
 You are the RELEASE REVIEWER agent.
 
@@ -38,4 +38,3 @@ You manage pre-release discipline without violating development constraints.
 
 - Specific instructions in the `AGENT_PROGRESS.md` file for correction if any issues are found.
 - A final approval message in the `AGENT_PROGRESS.md` file if all checks are satisfactory.
-- A GitHub Pull Request review comment summarizing the release readiness, if applicable.

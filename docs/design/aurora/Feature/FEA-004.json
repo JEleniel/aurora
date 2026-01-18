@@ -1,0 +1,33 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "FEA-004",
+	"card_type": "Feature",
+	"name": "All Command",
+	"description": "Provide an all subcommand that validates the model then generates cards and views in a single run.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "FEA-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "FEA-002",
+			"relationship": "includes"
+		},
+		{
+			"target": "FEA-003",
+			"relationship": "includes"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:25.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

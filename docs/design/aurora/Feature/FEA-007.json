@@ -1,0 +1,29 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "FEA-007",
+	"card_type": "Feature",
+	"name": "Compact Model Export Command",
+	"description": "Provide a `compact` subcommand that writes a compact JSON snapshot of the model to a single file with top-level `{ \"cards\": [...] }`, where each card is stripped of `audit_trail` and each link is stripped of the `relationship` field. Output is deterministic (stable ordering) for diff-friendly automation.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CAP-007",
+			"relationship": "enables"
+		},
+		{
+			"target": "REQ-016",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-18T01:10:10.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "ACT-002",
+	"card_type": "Actor",
+	"name": "Administrator",
+	"description": "An operator who manages catalog items, order exceptions, and refunds.",
+	"links": [
+		{
+			"target": "STR-002",
+			"relationship": "desires"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:11.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

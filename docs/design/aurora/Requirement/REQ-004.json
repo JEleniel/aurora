@@ -1,0 +1,18 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "REQ-004",
+	"card_type": "Requirement",
+	"name": "Generate Human-Friendly Markdown Cards",
+	"description": "aurora_cli generates one Markdown file per card, mirroring the model folder structure, using the JSON filename and card name as the H1 with the card id placed at the end.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:11.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

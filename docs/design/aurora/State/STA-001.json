@@ -1,0 +1,28 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "STA-001",
+	"card_type": "State",
+	"name": "Initialized",
+	"description": "The CLI starts and is ready to parse arguments.",
+	"links": [
+		{
+			"target": "EVT-001",
+			"relationship": "receives"
+		},
+		{
+			"target": "STA-002",
+			"relationship": "transitions_to"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:01:06.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

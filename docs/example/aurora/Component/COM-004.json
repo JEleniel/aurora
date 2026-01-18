@@ -1,0 +1,36 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "COM-004",
+	"card_type": "Component",
+	"name": "Order Service",
+	"description": "Service responsible for order creation, state transitions, and retrieval.",
+	"links": [
+		{
+			"target": "DTS-001",
+			"relationship": "uses"
+		},
+		{
+			"target": "ART-001",
+			"relationship": "generates"
+		},
+		{
+			"target": "CAP-004",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-004",
+			"relationship": "implements"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:56.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

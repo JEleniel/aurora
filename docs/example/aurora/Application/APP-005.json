@@ -1,0 +1,28 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "APP-005",
+	"card_type": "Application",
+	"name": "Notification Worker",
+	"description": "Background service that sends transactional order and receipt notifications.",
+	"links": [
+		{
+			"target": "COM-009",
+			"relationship": "comprises"
+		},
+		{
+			"target": "FEA-008",
+			"relationship": "implements"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:38.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

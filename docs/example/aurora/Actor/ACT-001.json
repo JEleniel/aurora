@@ -1,0 +1,24 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "ACT-001",
+	"card_type": "Actor",
+	"name": "Customer",
+	"description": "A shopper who browses the catalog, places orders, and receives fulfillment notifications.",
+	"links": [
+		{
+			"target": "STR-001",
+			"relationship": "desires"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:10.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

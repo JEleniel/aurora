@@ -1,0 +1,32 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "THR-004",
+	"card_type": "Threat",
+	"name": "Webhook Forgery Or Replay",
+	"description": "Attackers forge or replay payment provider webhooks to mark payments as successful or manipulate order state.",
+	"links": [
+		{
+			"target": "RIS-004",
+			"relationship": "imposes"
+		},
+		{
+			"target": "RIS-002",
+			"relationship": "imposes"
+		}
+	],
+	"attributes": {
+		"attack_surface": ["payment_webhook"],
+		"notes": "Require signature verification, timestamp tolerance, and idempotency."
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:01:11.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

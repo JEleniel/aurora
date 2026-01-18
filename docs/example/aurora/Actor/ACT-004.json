@@ -1,0 +1,44 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "ACT-004",
+	"card_type": "Actor",
+	"name": "Threat Actor",
+	"description": "An attacker attempting to steal accounts or data, commit fraud, disrupt service, or tamper with payment/fulfillment flows.",
+	"links": [
+		{
+			"target": "THR-001",
+			"relationship": "presents"
+		},
+		{
+			"target": "THR-002",
+			"relationship": "presents"
+		},
+		{
+			"target": "THR-003",
+			"relationship": "presents"
+		},
+		{
+			"target": "THR-004",
+			"relationship": "presents"
+		},
+		{
+			"target": "THR-005",
+			"relationship": "presents"
+		},
+		{
+			"target": "THR-006",
+			"relationship": "presents"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:13.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

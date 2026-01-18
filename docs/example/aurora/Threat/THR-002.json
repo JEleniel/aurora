@@ -1,0 +1,32 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "THR-002",
+	"card_type": "Threat",
+	"name": "Injection Attacks",
+	"description": "Attackers exploit insufficient input validation to perform SQL/NoSQL injection or command injection.",
+	"links": [
+		{
+			"target": "RIS-002",
+			"relationship": "imposes"
+		},
+		{
+			"target": "RIS-005",
+			"relationship": "imposes"
+		}
+	],
+	"attributes": {
+		"attack_surface": ["checkout", "admin_search", "webhooks"],
+		"notes": "Prefer parameterized queries and strict schema validation."
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:01:09.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

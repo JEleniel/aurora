@@ -1,0 +1,67 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "FEA-003",
+	"card_type": "Feature",
+	"name": "Render Views Command",
+	"description": "Provide a render-views subcommand that generates the standard set of view diagrams from the model, skipping any empty views.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CAP-004",
+			"relationship": "enables"
+		},
+		{
+			"target": "REQ-006",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-007",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-008",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-010",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-003",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-011",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-009",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "ART-004",
+			"relationship": "generates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.2.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:24.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-18T00:20:00.000Z",
+				"event": "edited"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-18T00:21:00.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}

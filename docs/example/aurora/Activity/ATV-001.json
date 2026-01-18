@@ -1,0 +1,28 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "ATV-001",
+	"card_type": "Activity",
+	"name": "Validate Cart And Pricing",
+	"description": "Validate cart contents, pricing, taxes, and delivery options before creating an order.",
+	"links": [
+		{
+			"target": "CTL-002",
+			"relationship": "governed_by"
+		},
+		{
+			"target": "ATV-002",
+			"relationship": "triggers"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:02:14.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

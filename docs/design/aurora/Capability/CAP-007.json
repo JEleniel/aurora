@@ -1,0 +1,24 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "CAP-007",
+	"card_type": "Capability",
+	"name": "Compact Model Packaging",
+	"description": "Produce a compact, agent-friendly representation of an Aurora model that reduces context footprint while retaining the information required to reconstruct cards and their link targets.",
+	"links": [
+		{
+			"target": "REQ-016",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-18T01:10:05.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

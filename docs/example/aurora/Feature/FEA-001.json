@@ -1,0 +1,33 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "FEA-001",
+	"card_type": "Feature",
+	"name": "Customer Sign-In",
+	"description": "Allow customers to sign in to view order history and manage saved delivery details.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CAP-001",
+			"relationship": "enables"
+		},
+		{
+			"target": "REQ-001",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "RIS-001",
+			"relationship": "mitigates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:01:23.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

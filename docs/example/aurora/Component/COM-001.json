@@ -1,0 +1,28 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "COM-001",
+	"card_type": "Component",
+	"name": "Storefront UI",
+	"description": "Customer-facing UI for browsing, cart management, and initiating checkout.",
+	"links": [
+		{
+			"target": "INT-001",
+			"relationship": "exposes"
+		},
+		{
+			"target": "INT-002",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:53.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

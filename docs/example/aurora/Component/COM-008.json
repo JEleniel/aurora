@@ -1,0 +1,36 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "COM-008",
+	"card_type": "Component",
+	"name": "Audit Logger",
+	"description": "Emits structured audit log entries for security and business-critical events.",
+	"links": [
+		{
+			"target": "CAP-005",
+			"relationship": "implements"
+		},
+		{
+			"target": "ART-004",
+			"relationship": "generates"
+		},
+		{
+			"target": "DTS-003",
+			"relationship": "uses"
+		},
+		{
+			"target": "CTL-008",
+			"relationship": "governs"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:01:00.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

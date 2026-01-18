@@ -1,6 +1,6 @@
 {
-	"$id": "https://crystultima.org/aurora/card.schema.json",
 	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://crystultima.org/aurora/card.schema.json",
 	"additionalProperties": false,
 	"description": "JSON schema for Aurora architectural model cards",
 	"properties": {
@@ -13,39 +13,65 @@
 			"description": "Key-value pairs providing additional data for tooling and agents",
 			"type": "object"
 		},
-		"audit_history": {
-			"description": "A record of events (created, edited, deleted) the card has been through",
-			"items": {
-				"additionalProperties": false,
-				"properties": {
-					"event": {
-						"description": "The type of change made to the card",
-						"enum": ["created", "edited", "deleted"],
-						"type": "string"
-					},
-					"timestamp": {
-						"description": "ISO 8601 UTC timestamp of the change",
-						"format": "date-time",
-						"type": "string"
-					},
-					"user": {
-						"description": "The user ID who made the change",
-						"type": "string"
-					}
+		"audit_trail": {
+			"additionalProperties": false,
+			"description": "A record of the version and history of events (created/edited) a card has been through",
+			"properties": {
+				"hash": {
+					"description": "SHA256 of the card; may be null while calculating",
+					"anyOf": [
+						{
+							"type": "null"
+						},
+						{
+							"pattern": "^[A-Fa-f0-9]{64}$",
+							"type": "string"
+						}
+					]
 				},
-				"required": ["event", "user", "timestamp"],
-				"type": "object"
+				"history": {
+					"description": "A chronological list of events the card has been through",
+					"items": {
+						"additionalProperties": false,
+						"properties": {
+							"editor": {
+								"description": "The identity of the entity making the change",
+								"minLength": 1,
+								"type": "string"
+							},
+							"event": {
+								"description": "The type of change event",
+								"enum": ["created", "edited"],
+								"type": "string"
+							},
+							"timestamp": {
+								"description": "UTC time of the edit in RFC3339/ISO 8601 format",
+								"format": "date-time",
+								"type": "string"
+							}
+						},
+						"required": ["editor", "timestamp", "event"],
+						"type": "object"
+					},
+					"type": "array"
+				},
+				"version": {
+					"description": "Semver version of the card (major.minor.patch)",
+					"pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+					"type": "string"
+				}
 			},
-			"type": "array"
+			"required": ["version", "hash", "history"],
+			"type": "object"
 		},
 		"card_subtype": {
-			"description": "An optional refinement of the card_type in snake_case (e.g., 'domain' for a boundary card)",
-			"pattern": "^[a-z][a-z0-9_]*$",
+			"description": "An optional refinement of the card_type in Title Case",
+			"pattern": "^[A-Z][A-Za-z0-9]*(?: [A-Z][A-Za-z0-9]*)*$",
 			"type": "string"
 		},
 		"card_type": {
-			"description": "The architectural type represented by the card in snake_case",
-			"pattern": "^[a-z][a-z0-9_]*$",
+			"description": "The architectural type represented by the card in Title Case",
+			"pattern": "^[A-Z][A-Za-z0-9]*(?: [A-Z][A-Za-z0-9]*)*$",
 			"type": "string"
 		},
 		"description": {
@@ -54,8 +80,8 @@
 			"type": "string"
 		},
 		"id": {
-			"description": "A short name for the card in snake_case",
-			"pattern": "^[a-z][a-z0-9_]*$",
+			"description": "A stable identifier composed of a 3-letter prefix and a numeric suffix (e.g., 'MIS-001')",
+			"pattern": "^[A-Z]{3}-\\d{3,}$",
 			"type": "string"
 		},
 		"links": {
@@ -64,17 +90,14 @@
 				"additionalProperties": false,
 				"properties": {
 					"relationship": {
-						"description": "A verb based description of the relationship (view-dependent) in snake case",
+						"description": "A verb-based description of the relationship (view-dependent)",
 						"minLength": 1,
+						"pattern": "^[a-z][a-z0-9_]*$",
 						"type": "string"
 					},
 					"target": {
-						"description": "The UUID of the destination card",
-						"pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[47][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
-						"type": "string"
-					},
-					"name": {
-						"description": "The human-readable name for the link target",
+						"description": "The destination card id",
+						"pattern": "^[A-Z]{3}-\\d{3,}$",
 						"type": "string"
 					}
 				},
@@ -90,21 +113,31 @@
 		},
 		"status": {
 			"description": "The status of an implementable element",
-			"enum": ["proposed", "pending", "implementation", "review", "verified", "deprecated", "retired"],
-			"type": "string"
-		},
-		"uuid": {
-			"description": "UUID v4 or v7 that never changes for the life of the card",
-			"type": "string"
-		},
-		"version": {
-			"description": "Semantic version of the card (major.minor.revision)",
-			"pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+			"anyOf": [
+				{
+					"enum": [
+						"Proposed",
+						"Backlog",
+						"Design",
+						"Implementation",
+						"Review",
+						"Pre-Release",
+						"Deployed",
+						"Deprecated",
+						"Retired"
+					],
+					"type": "string"
+				},
+				{
+					"pattern": "^[A-Z][A-Za-z0-9]*(?:[ -][A-Za-z0-9]+)*$",
+					"type": "string"
+				}
+			],
 			"type": "string"
 		}
 	},
-	"required": ["$schema", "uuid", "id", "card_type", "name", "description", "version", "audit_history"],
+	"required": ["$schema", "id", "card_type", "name", "description", "audit_trail"],
 	"title": "Aurora Card Schema",
 	"type": "object",
-	"version": "1.0.0"
+	"version": "2.0.0"
 }

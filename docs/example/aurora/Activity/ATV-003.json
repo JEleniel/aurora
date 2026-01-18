@@ -1,0 +1,32 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "ATV-003",
+	"card_type": "Activity",
+	"name": "Initiate Payment",
+	"description": "Start hosted checkout/payment authorization with the payment provider.",
+	"links": [
+		{
+			"target": "FEA-003",
+			"relationship": "supports"
+		},
+		{
+			"target": "FEA-012",
+			"relationship": "supports"
+		},
+		{
+			"target": "ATV-004",
+			"relationship": "triggers"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:02:16.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

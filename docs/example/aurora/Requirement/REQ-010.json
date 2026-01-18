@@ -1,0 +1,18 @@
+{
+	"$schema": "../Aurora.schema.json",
+	"id": "REQ-010",
+	"card_type": "Requirement",
+	"name": "Incidents Can Be Responded To",
+	"description": "The organization can detect incidents, contain impact, recover service, and preserve evidence.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-17T00:00:25.000Z",
+				"event": "created"
+			}
+		]
+	}
+}
