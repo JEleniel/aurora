@@ -7,7 +7,9 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added [rustfmt.toml](rustfmt.toml) to enforce hard tabs and consistent Rust formatting.
-- Added a `compact` CLI subcommand that exports the model as a single JSON file (sans `audit_trail` and link `relationship` fields) for agent-friendly consumption.
+- Added a `compact` CLI subcommand that exports the model as a single JSON file (sans `audit_trail` metadata) for agent-friendly consumption.
+- Added a `full` CLI subcommand that validates, renders all docs, and writes the compact model in a single run.
+- Added [schemas/Aurora.compact.schema.json](schemas/Aurora.compact.schema.json) to validate compact model exports.
 
 ### Changed
 
@@ -25,12 +27,16 @@ All notable changes to this project will be documented in this file.
 - View renderer now labels each node with the card `id` (wrapped as `"``ID``"`) and eliminates double blank lines in generated Markdown sections.
 - Applied the canon shape palette per card type (mission circles, driver rounded boxes, custom document/comment glyphs, etc.) when rendering Mermaid views.
 - `render-all` now renders views before cards and the generated README always lists the applicable view links, preventing the views section from being blank.
+- The `compact` command now retains each card's `$schema` reference while stripping `audit_trail` blocks, ensuring the export passes schema validation and still preserves link relationship metadata.
+- Compact exports now set the top-level `$schema` pointer to the mission's local `Aurora.compact.schema.json` via a relative path so agents can validate models without hardcoded absolute locations.
+- Replaced the placeholder CLI implementations for `render-*`, `compact`, and `bump-*` with concrete logic that streams Markdown summaries, produces compact JSON exports, and updates audit history entries when versions change.
 
 ### Fixed
 
 - Corrected a case-sensitive link typo in Architect agent documentation.
 - Replaced outdated `PROGRESS.md` references with `AGENT_PROGRESS.md` in handoff guidance and docs.
 - Resolved Mermaid bracket mismatches for deployment, node instance, and process/actor nodes so rendered views use the intended shapes.
+- Fixed the nested `aurora::model` exports so the CLI can resolve `CompactModel` and the bump argument structs ([tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs), [tools/aurora_cli/src/aurora/model/model_args.rs](tools/aurora_cli/src/aurora/model/model_args.rs), [tools/aurora_cli/src/aurora/model/compact_model.rs](tools/aurora_cli/src/aurora/model/compact_model.rs), [tools/aurora_cli/src/cli.rs](tools/aurora_cli/src/cli.rs)).
 
 ### Removed
 

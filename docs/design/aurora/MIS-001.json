@@ -67,7 +67,7 @@
 				"per_mission_cards_root": "docs/design/{MissionId}/cards/",
 				"per_mission_views_root": "docs/design/{MissionId}/views/",
 				"per_mission_index_readme": "docs/design/{MissionId}/README-{MissionId}.md",
-				"per_mission_compact_model": "docs/design/{MissionId}/model-compact.json"
+				"per_mission_compact_model": "docs/design/aurora/AGENT-{MissionId}.json"
 			}
 		}
 	},

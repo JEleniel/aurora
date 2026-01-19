@@ -1,6 +1,6 @@
 {
-	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "https://crystultima.org/aurora/card.schema.json",
+	"$schema": "http://json-schema.org/draft-07/schema#",
 	"additionalProperties": false,
 	"description": "JSON schema for Aurora architectural model cards",
 	"properties": {
@@ -18,7 +18,6 @@
 			"description": "A record of the version and history of events (created/edited) a card has been through",
 			"properties": {
 				"hash": {
-					"description": "SHA256 of the card; may be null while calculating",
 					"anyOf": [
 						{
 							"type": "null"
@@ -27,7 +26,8 @@
 							"pattern": "^[A-Fa-f0-9]{64}$",
 							"type": "string"
 						}
-					]
+					],
+					"description": "SHA256 of the card; may be null while calculating"
 				},
 				"history": {
 					"description": "A chronological list of events the card has been through",
@@ -66,12 +66,10 @@
 		},
 		"card_subtype": {
 			"description": "An optional refinement of the card_type in Title Case",
-			"pattern": "^[A-Z][A-Za-z0-9]*(?: [A-Z][A-Za-z0-9]*)*$",
 			"type": "string"
 		},
 		"card_type": {
 			"description": "The architectural type represented by the card in Title Case",
-			"pattern": "^[A-Z][A-Za-z0-9]*(?: [A-Z][A-Za-z0-9]*)*$",
 			"type": "string"
 		},
 		"description": {
@@ -92,7 +90,6 @@
 					"relationship": {
 						"description": "A verb-based description of the relationship (view-dependent)",
 						"minLength": 1,
-						"pattern": "^[a-z][a-z0-9_]*$",
 						"type": "string"
 					},
 					"target": {
@@ -112,32 +109,12 @@
 			"type": "string"
 		},
 		"status": {
-			"description": "The status of an implementable element",
-			"anyOf": [
-				{
-					"enum": [
-						"Proposed",
-						"Backlog",
-						"Design",
-						"Implementation",
-						"Review",
-						"Pre-Release",
-						"Deployed",
-						"Deprecated",
-						"Retired"
-					],
-					"type": "string"
-				},
-				{
-					"pattern": "^[A-Z][A-Za-z0-9]*(?:[ -][A-Za-z0-9]+)*$",
-					"type": "string"
-				}
-			],
+			"description": "Status of an implementable element",
 			"type": "string"
 		}
 	},
 	"required": ["$schema", "id", "card_type", "name", "description", "audit_trail"],
 	"title": "Aurora Card Schema",
 	"type": "object",
-	"version": "2.0.0"
+	"version": "1.0.0"
 }

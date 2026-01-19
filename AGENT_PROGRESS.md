@@ -7,14 +7,29 @@ AURORA is a deterministic, JSON-based architectural modeling format where Cards 
 - Feature: Maintain authoritative schema and modeling guidance
     + Status: In Progress
     + Primary schema: [schemas/Aurora.schema.json](schemas/Aurora.schema.json)
+    + Compact schema: [schemas/Aurora.compact.schema.json](schemas/Aurora.compact.schema.json)
     + Modeling guidance: [.github/instructions/Aurora.instructions.md](.github/instructions/Aurora.instructions.md)
 
 ## Active Context Summary
 
 - Branch: `v2.0.0`
 - Current work: implementing the `tools/aurora_cli` backend (model loader, validator, deterministic card/view renderers, CLI entrypoints) directly from the design model in `docs/design/aurora/`
-- Recent progress: rewired the CLI around new modules (`loader`, `validator`, `render`, `output`), added integration tests, and fixed schema compilation + deployment view handling issues uncovered during `cargo test`
+- Recent progress: rewired the CLI around new modules (`loader`, `validator`, `render`, `output`), added integration tests, fixed schema compilation + deployment view handling issues uncovered during `cargo test`, and added a `full` command that chains validation, render-all, and compact export
+- Backend update (2026-01-19): Implemented the CLI renderer, bumper, and compactor flows in [tools/aurora_cli/src/renderer.rs](tools/aurora_cli/src/renderer.rs), [tools/aurora_cli/src/bumper.rs](tools/aurora_cli/src/bumper.rs), and [tools/aurora_cli/src/compactor.rs](tools/aurora_cli/src/compactor.rs) so each subcommand now produces deterministic Markdown/JSON output rather than panicking with `todo!()` placeholders.
+- Backend update (2026-01-19): Follow-up fixes wired the renderer through dedicated card/model/view modules, added Card helper methods for writing/compacting/append-history, ensured compact exports validate against the local schema, and simplified all CLI command reports to short human-readable summaries.
 - Example model work: created a complete sample Aurora model under [docs/example/aurora/](docs/example/aurora/) for an online ordering app (branding, legal constraints, and threat/risk/control evaluation), including missing `Feature` and `Process` cards to close dangling references
+- Backend update (2026-01-19): Re-exported the `aurora::model` helpers and bump argument structs so the CLI subcommands compile without nested module errors.
+
+### Rust Project State Review (2026-01-19)
+
+- Scope: workspace `Cargo.toml`, `tools/aurora_cli/Cargo.toml`, Rust source layout under `tools/aurora_cli/src/`
+- Findings: None observed in the Rust workspace configuration or crate layout.
+- Notes:
+	+ Workspace members: `tools/*` (currently only `tools/aurora_cli`)
+	+ Toolchain: `rust-toolchain.toml` pins `stable`; `rustfmt.toml` enforces hard tabs + Unix newlines
+	+ Crate: `aurora_cli` uses Rust 2024 edition, reverse-DNS `app_id` in package metadata, workspace-shared deps, and dev-only `tempfile`
+- Residual risk: tests/lints not executed during this review; last recorded `cargo test` run is 2026-01-17 in this log.
+- Required next action: None.
 
 ### aurora_cli design model (2026-01-18)
 
@@ -49,7 +64,7 @@ Highlights:
 - `validation_passes_for_design_model` confirms schema/invariant checks succeed for `docs/design/aurora/`.
 - `render_cards_produces_markdown_files` writes deterministic Markdown (includes `MIS-001.md` and README) to a temp directory.
 - `render_views_creates_expected_files` now succeeds after adding anchor-aware skipping logic (deployment view omitted when no Deployment cards exist).
-- `compact_export_strips_audit_and_relationship` exercises the new compact exporter to ensure it removes `audit_trail` blocks and link `relationship` fields.
+- `full_pipeline_renders_and_compacts` verifies the validate → render (views then cards) → compact pipeline used by the new `full` command.
 - README generation now lists applicable views regardless of execution order, so the “Views” section is no longer blank after `render-all`.
 
 Next steps:
@@ -83,7 +98,7 @@ Findings (High):
 Findings (Medium):
 
 - Loader silently skips JSON files missing `id` ([tools/aurora_cli/src/loader.rs](tools/aurora_cli/src/loader.rs#L46-L48)). This undermines DRI-002 (“high-confidence validation”) because malformed or incomplete cards can be ignored rather than reported.
-    + Mitigation: treat “JSON file in model tree without `id`” as a validation error (or at minimum report it in `validation-report.md`).
+    + Mitigation: treat “JSON file in model tree without `id`” as a validation error (or at minimum emit it directly in the CLI validation output).
 
 - Invariant validation is incomplete vs the Aurora instructions:
     + Current logic checks missing link targets, “non-mission has inbound links”, and “reachable from mission” ([tools/aurora_cli/src/validator.rs](tools/aurora_cli/src/validator.rs#L99-L147)).

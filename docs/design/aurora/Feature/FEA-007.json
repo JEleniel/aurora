@@ -3,7 +3,7 @@
 	"id": "FEA-007",
 	"card_type": "Feature",
 	"name": "Compact Model Export Command",
-	"description": "Provide a `compact` subcommand that writes a compact JSON snapshot of the model to a single file with top-level `{ \"cards\": [...] }`, where each card is stripped of `audit_trail` and each link is stripped of the `relationship` field. Output is deterministic (stable ordering) for diff-friendly automation.",
+	"description": "Provide a `compact` subcommand that writes a compact JSON snapshot of the model to a single file with top-level `{ \"cards\": [...] }`, where each card is stripped of `$schema` and `audit_trail` and each link is stripped of the `relationship` field. Output is deterministic (stable ordering) for diff-friendly automation.",
 	"status": "Design",
 	"links": [
 		{

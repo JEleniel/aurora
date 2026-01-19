@@ -7,13 +7,13 @@ applyTo: '**/*'
 
 **Version**: 2.0.0
 
-Aurora is a deterministic architectural model where architectural elements are cards, the relationships between cards are represented as links, and the model forms a Directed Graph. The model is designed for direct machine consumption by LLMs, agents, reasoners, and automated tools; in addition any view a human wants can be automatically generated.
+Aurora is a deterministic architectural model where architectural elements are cards, the relationships between cards are represented as links, and the model forms a Directed Graph. The model is designed so that any interpretation, such as view diagrams, can be generated from the model; and for direct machine consumption by LLMs, agents, reasoners, and automated tools. The model invariants guarantee unambiguous interpretation and reasoning about the model.
 
 **One Goal**: Enable the Architect to focus on modeling the architecture instead of drawing diagrams and pictures.
 
 ## Models
 
-The model is the central piece of the architecture and is a collection of cards that have links describing their relationships. Cards represent the elements of the design, described as nouns. Links represent how the elements interact, and are tagged with verbs (for human convenience).
+The model is the central piece of the architecture and is a collection of cards that have links describing their relationships, starting from a `Mission`. Cards represent the elements of the design, described as nouns. Links represent how the elements interact, and are tagged with verbs (for human convenience).
 
 Any pair of cards in the model can be described using simple sentences:
 
@@ -59,12 +59,12 @@ graph
 
 ### Cards
 
-A card contains the information about an element of the model. The cards themselves and the links between them do not encode semantic meaning; they represent the elements of the architecture and their connections.
+A card contains the information about an element of the model and the links to other elements. The cards themselves and the links between them do not encode semantic meaning (see [Invariant Rules](#invariant-rules)). Cards also have an `attributes` property that allows additional, arbitrary information to be included. Card files should be "pretty printed" using `prettier`.
 
 Each card is comprised of:
 
-- `$schema` - the relative link to the Aurora schema file included with the model(s). The schema used to construct the model MUST be placed in the same folder as the `Mission` card. Multiple models sharing the same `aurora` folder MUST share the same schema.
-- `id` - A unique identifier assigned to the card composed from a predefined prefix per `card_type` followed by a sequentially assigned integer per card type. Once issued to a card the `id` MUST NOT change.
+- `$schema` - the relative link to the Aurora schema file included with the model(s) in the model home.
+- `id` - A unique identifier assigned to the card composed from a predefined prefix per `card_type` followed by a sequentially assigned integer per card type. If the model is extended, additional prefixes must also be issued for new card types. Once issued to a card the `id` MUST NOT change. If `card_type` changes, a new card should be issued and the original moved to the `status` "Deleted" with an appropriate audit history entry added. This enables traceability of the model over time.
 
 **Example Names**:
 
@@ -78,20 +78,29 @@ Each card is comprised of:
 - `card_subtype` - An optional refinement of the `card_type` in title case. See [Common Cards](#common-cards) for examples.
 - `name` - A concise human-readable name for the card in title case
 - `description` - Details regarding the element the card represents
-- `status` - the status of an implementable element such as a `Feature`, in title case
-	+ One of: "Proposed", "Backlog", "Design", "Implementation", "Review", "Pre-Release", "Deployed", "Deprecated", "Retired".
-	+ or any other series of lifecycle states that make sense for the model may be used, as long as they are kept consistent per type across the model.
+- `status` - the status of an implementable element such as a `Feature`
+	+ A common lifecycle is: "Proposed", "Backlog", "Design", "Implementation", "Review", "Pre-Release", "Released", "Deprecated", "Retired", "Deleted".
+	+ Any other series of lifecycle states that make sense for the model may be used, as long as they are kept consistent per type across the model.
 - `links` - pointers to other cards establishing relationships
 	+ `target` - the destination card `id`
-	+ `relationship` - verb describing the impact for human reference.
+	+ `relationship` - verb describing the impact for human reference
 - `audit_trail` - a record of the version and a history of the events (created/edited/deleted) the card has been through
-	+ `version` - A semver version number for the card that is incremented when the card changes. The major version is incremented for changes which alter the meaning or definition of the element, such as the changing the `card_type`, `card_subtype`, or `name`; or `description` changing in a way that alters the meaning. The minor version is incremented for changes which do not alter the elements definition, such as a revision to the phrasing of the `description` that does not alter the meaning, or a change in `status`. Insignificant changes, such as typographic or grammatic corrections increase the patch.
-	+ `hash` - an SHA256 hash of the card with the hash temporarily set to `null` to calculate the hash
+	+ `version` - A semver version number for the card that is incremented when the card changes.
+		* The major version is incremented for changes that alter the meaning or definition of the element, such as changing the `card_subtype`, updating the `name`, or adjusting the `description` in a way that changes meaning. The `status` moving to `Deleted` is also a major increment.
+		* The minor version is incremented for changes that do not alter the element's definition, such as revising the phrasing of the `description` without changing meaning, or a change in `status` other than to "Deleted".
+		* Insignificant changes, such as typographic or grammatical corrections, increase the patch version.
+	+ `hash` - an optional SHA256 hash of the card with the hash temporarily set to `null` to calculate the hash
 	+ `history` - an array of objects capturing the audit history of the card
 		* `editor` - the identity of the entity making the change. Agents should use the name of their host (e.g. "Copilot") and, if acting as a particular role, a colon followed by a space and the agent role name, for example "Copilot: BackendDeveloper".
 		* `timestamp` - the UTC time of the edit in RFC3339 format with millisecond resolution
-		* `event` - the type of change event, one of: `created`, `edited`
+		* `event` - the type of change event, one of: `created`, `edited`, `deleted`
 - `attributes` - Arbitrary, optional key-value pairs providing additional data; the value can be any valid JSON value, including objects. See [Common Cards](#common-cards) for examples.
+
+#### The Compressed Model
+
+In order to make the model easier for implementing agents to process and save context space, a compressed model file may be generated named `{mission id}.agent.json` for agent reference in the model home that conforms to the `Aurora.compact.schema.json` in the model home.
+
+The compressed file will have all of the cards in a top level array named `cards` and will have the `audit_trail` stripped from each. The compressed file may be "pretty printed" but that is not required.
 
 #### Common Cards
 
@@ -228,18 +237,19 @@ Links are intentionally free-form; the `relationship` verb is descriptive for hu
 
 ##### The `Mission` card
 
-The root card of the model is _always_ a `Mission` card. The `Mission` card captures the overarching purpose and goal of the model. A given model must only have a single `Mission` card. All paths must lead away from the `Mission`.
+The root card of the model is _always_ a `Mission` card. The `Mission` card captures the overarching purpose and goal of the model.
 
 ##### The `Boundary` card
 
 The `Boundary` card represents a logical grouping of other cards, in other words, they contain them. For simplicity in the model, a parent card includes a `Boundary` and a boundary contains a link to a single target card; in order to represent complex boundaries, a `Boundary` card may include an attribute named `recursive` (boolean, default false). If true, the boundary includes all descendants of the contained card (the contains target) in the current view. Because the cards contained by a boundary may form local loops rendering engines have to be careful when traversing the descendants. `Boundary` cards frequently "contain" `System`, `Application`, `Node`, `Process`, `State Machine`, and similar higher-level cards, and optionally their descendants. They are linked between a parent and the contained card, e.g., parent -- includes --> `Boundary` -- contains --> target, always in parallel to another link.
 
-When recursing, descendants are determined by link traversal and then filtered to only those cards included in the current view. Tooling should consider warning when a recursive boundary could expand to an unusually large number of nodes in common views.
+When recursing, descendants are determined by link traversal and then filtered to only those cards included in the current view. Tooling should consider encountering a card previously traversed as a terminal point to prevent recursion.
 
 **Example of a Boundary in a Model**:
 
-```mermaidconfig:
-  layout: elkgraph LR
+```mermaid
+%%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+graph LR
 	a(A)
 	boundary([Boundary])
 	b(B)
@@ -251,8 +261,8 @@ When recursing, descendants are determined by link traversal and then filtered t
 
 **Example of a Boundary Rendered in a View**:
 
-```mermaidconfig:
-  layout: elk%%{init: {'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+```mermaid
+%%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
 graph LR
 	a(A)
 
@@ -262,8 +272,8 @@ graph LR
 
 	a -- verb --> b
 
-classDef dashed stroke-dasharray:5 5;
-class Boundary dashed
+	classDef cls_boundary stroke-dasharray:5 5;
+	class Boundary cls_boundary
 ```
 
 ##### The `Note` Card
@@ -272,40 +282,44 @@ The `Note` card is purely an annotation to the model. They only have an incoming
 
 **Example**:
 
-```mermaidconfig:
-  layout: elkgraph LR
+```mermaid
+%%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+graph LR
 	card[Card]
 	note[Note]@{shape: card}
 
 	card -.- note
 ```
 
-#### Card Files
+#### Model Folders and Card Files
 
-Cards are stored as JSON files, one file per card. The model always starts from the `Mission` and forms a directed graph. `Note` cards are leaf annotations (with only an incoming link) attached to another card. Files are named in the form `{id}.json`, matching the exact case of the `id`. If a `card_subtype` exists, name it as `{card_subtype}-{id}.json`.
+Models are stored in a folder named `aurora` (model home) with the root `Mission` card(s) in the model home and a subfolder named for the `id` of the mission containing all other cards (mission home). The mission home is divided further into a subfolder for each `card_type`. Multiple models may share a model home.
 
-The model is stored in a folder named `aurora`, with subfolders named for the `card_type` in title case, e.g., `aurora/Requirement`. The only exception is the `Mission` card, which should always be stored at `aurora/{name with spaces replaced with underscores}.json` to provide a consistent entry point.
+Each model starts with a single `Mission` card in the model home named `MIS-{number}-{name with spaces converted to underscores}.json`, for example `aurora/MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.json`. Like all cards, the number is issued sequentially by card type.
 
-If a repo has a `schemas/Aurora.schema.json` then that is the canonical version. Second, the version included with a particular model is canonical _to that model_ since it will be the version the model was built against. The copy at `.github/instructions/Aurora.schema.json` is for agent use; it should be updated if out of sync with the canonical version.
+All other cards are stored as a separate JSON files, named for the card's `id`, e.g., `REQ-001.json`. All cards starting from a shared model home must conform to the `Aurora.schema.json` schema in that model home. If the schema is not present in the model home when starting a model, the canonical `schemas/Aurora.schema.json`, if present, or the `.github/instructions/Aurora.schema.json` must be copied into the `aurora` folder before creating the first `Mission` card.
 
-To prevent issues with validation across high-security environments and multiple schema versions, any tooling or agent starting a model should place a copy of the schema with the `Mission` card and require all card JSON files to include a `"$schema"` entry that points to that local copy.
+Compact model files must conform to the `Aurora.compact.schema.json` schema in the model home. If the schema is not present in the model home when starting a model, the canonical `schemas/Aurora.compact.schema.json`, if present, or the `.github/instructions/Aurora.compact.schema.json` must be copied into the `aurora` folder before creating the first `Mission` card.
 
-An `aurora/` folder containing a schema copy and one or more Mission card files (`MIS-*.json`) is considered a model root. Each `Mission` card roots a separate model; multiple models may share the same `aurora/` folder.
-
-An entire model may be stored in a ZIP-compressed file to allow for portability as long as the folder structure is preserved.
-
-**Example**:
+**Example Folder and File Structure**:
 
 ```text
 aurora
-  ├─ MIS-001.json
-  ├─ Driver
-  │    └─ DRI-001.json
-  ├─ Requirement
-  │	   └─ REQ-001.json
+  ├─ Aurora.schema.json
+  ├─ MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.json
+  ├─ MIS-002-Write_User_Documentation_for_Aurora.json
+  ├─ MIS-001
+  │    ├─ Driver
+  │    │    ├─ DRI-001.json
+  │    │    └─ DRI-002.json
+  │	   └─ Requirement	 
+  │	   	    └─ REQ-001.json
+  ├─ MIS-002
+  │    ├─ Driver
+... etc
 ```
 
-The exact format can be found in the canonical JSON schema at `schemas/Aurora.schema.json`.
+An entire model home may be stored in a ZIP-compressed file to allow for portability as long as the folder structure is preserved.
 
 ### Logical Structure
 
@@ -315,15 +329,15 @@ By using `Boundary` cards and card subtypes almost any structure can be mapped o
 
 ### Invariant Rules
 
-1. **The `Mission` Card**: All models must start with a single `Mission` card that summarizes the high-level "why" of the project. The `Mission` card must only have outgoing links, and serves as the root of a directed graph.
+1. **The `Mission` Card**: All models must start with and include a single `Mission` card that summarizes the high-level "why" of the project. The `Mission` card must only have outgoing links, and serves as the root of a directed graph.
 
-2. **Direction (graph links)**: All links must lead away from the `Mission` card. There must be a route from `Mission` to every card. The graph is not acyclic; local loops can and often do exist, for example when a state model returns to the starting state.
+2. **Direction (graph links)**: All links must lead away from the `Mission` card. There must be a route from `Mission` to every card. The graph is not acyclic; local loops can and often do exist, for example when a state model returns to the starting state. Traversing any path starting from `Mission` must have an increasing number of links and end either in a leaf card or a previously seen card (local loop).
 
-3. **Hierarchy**: The model forms a directed graph rooted in the `Mission` card. Local cycles are allowed for bounded subgraphs such as state machines (for example: `State` → `Condition` → `State`) and event/action-driven transitions, as long as those links do not create a path out of the local area and back to `Mission`.
+3. **Hierarchy**: The model forms a directed graph rooted in the `Mission` card. Local cycles are allowed for bounded subgraphs such as state machines (for example: `State` → `Condition` → `State`) and event/action-driven transitions, as long as no link creates a path back to `Mission`. This ensures that all loops terminate locally.
 
 4. **Semantics**: links have a `relationship` field that describes them but does not convey semantic meaning by itself. The relationship is meant to describe how one element impacts another, primarily for humans. Semantic meaning is derived from the link and relationship when interpreted for a purpose, such as generating a view, performing impact analysis, or producing traceability narratives.
 
-5. **Every other card**: Other than the `Mission` card, all cards must have at least one incoming link. They must also have a path from the `Mission` card. Cards may have more than one incoming or any number of outgoing links.
+5. **Every other card**: Other than the `Mission` card, all cards must have at least one incoming link. They must also have a path from the `Mission` card. These cards may have more than one incoming or any number of outgoing links.
 
 6. **Validation**: All `links[].target` values must reference existing cards by `id`.
 
@@ -331,342 +345,80 @@ By using `Boundary` cards and card subtypes almost any structure can be mapped o
 
 Views are generated by selecting a set of card types (and optionally subtypes) to include and rendering a diagram showing those cards, and the links between them. Views **do not change the model**; they change what part of and how the model is viewed. One model, many views.
 
-In general, a view should display the `card_type`, `card_subtype`, and `name` fields as the text for each node. The text should be wrapped in outer quotation marks and inner graves (back ticks), e.g., ``"`Type<br />Name Property'"`` or ``"`Type (subtype)<br />Name Property'"`` to allow the use of Markdown for formatting (like line breaks).
+In general, a view should display the `card_type`, `card_subtype`, and `name` fields as the text for each node.
 
-Our tools add a few enhancements to improve the look and readability of the diagrams:
+## Default Tooling
 
-- Mermaid shapes are used to help distinguish different types of cards.
-- Boundaries are rendered as a dashed outline around the elements they contain.
-- Links to `Note` cards are rendered as dotted lines.
+### `aurora_cli`
 
-## Examples of Common Views
+- Validates models
+- Generates human readable Markdown copies
+- Generates Markdown files containing views
+- Bumps the major, minor, and patch versions (for manual edits)
+- Generates the compact model files
 
-### Everything View
+### Mermaid Rules
 
-- Cards included:
-	+ All cards in the model (every `card_type` present).
-	+ Common types include:
-		* `Mission`
-		* `Driver`
-		* `Requirement`
-		* `Capability`
-		* `Feature`
-		* `System`
-		* `Application`
-		* `Component`
-		* `Interface`
-		* `Artifact`
-		* `Data Store`
-		* `Asset`
-		* `Deployment`
-		* `Node`
-		* `Node Instance`
-		* `Process`
-		* `Activity`
-		* `Actor`
-		* `Event`
-		* `State Machine`
-		* `State`
-		* `Condition`
-		* `Control`
-		* `Constraint`
-		* `Risk`
-		* `Threat`
-		* `Test`
-		* `Boundary`
-		* `Note`
+Every Mermaid diagram must start with the following line before the diagram type line that enables the "Elk" layout engine and makes subgraphs transparent (for boundaries):
 
-```mermaid
+```text
 %%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
-graph LR
-	mission(("`Mission<br />Drive Excellence`"))
-	driver(["`Driver<br />Operational Friction Elimination`"])
-	requirement(["`Requirement<br />Define a Deterministic Modeling Framework`"])
-	capability(["`Capability<br />Deterministic Process Authoring & Validation Workflow`"])
-	feature(["`Feature<br />Deterministic Workflow Modeling Engine (DWME)`"])
-
-	system["`System<br />Workflow Model Tooling`"]@{shape: div-rect}
-	boundary_core(["`Boundary<br />Core Platform Boundary`"])
-	application["`Application<br />Workflow Modeler`"]@{shape: lin-rect}
-	component(["`Component<br />Rendering Engine`"])
-	interface(["`Interface<br />View Rendering API`"])
-	data_store(["`Data Store<br />Model Repository`"])
-	artifact(["`Artifact<br />Rendered Diagram`"])
-	asset(["`Asset<br />Model Files`"])
-
-	deployment(["`Deployment<br />Production`"])
-	node(["`Node<br />Managed Cloud Runtime`"])
-	node_instance(["`Node Instance<br />runtime-01`"])
-
-	process(["`Process<br />Authentication Process`"])
-	actor(["`Actor<br />User`"])
-	story(["`Story<br />User Logs In to Access Account`"])
-	event_login(["`Event<br />Login Request Received`"])
-	activity_validate(["`Activity<br />Validate Credentials`"])
-	condition_valid{"`Condition<br />Credentials Are Valid`"}
-	control(["`Control<br />Rate Limiting`"])
-	constraint(["`Constraint<br />Retain Audit Logs for Seven Years`"])
-
-	state_machine(["`State Machine<br />Session Lifecycle`"])
-	state_logged_out(["`State<br />Logged Out`"])
-	state_active(["`State<br />Active`"])
-	state_expired(["`State<br />Expired`"])
-	event_timeout(["`Event<br />Session Timeout`"])
-	condition_account{"`Condition<br />Account Is Active`"}
-
-	threat_actor(["`Actor<br />Threat Actor`"])
-	threat(["`Threat<br />Credential Theft`"])
-	risk(["`Risk<br />Unauthorized Account Access`"])
-
-	test(["`Test<br />Verify Successful User Login`"])
-	note["`Note<br />Notes are leaf annotations`"]@{shape: card}
-
-	mission -- establishes --> driver
-	driver -- drives --> requirement
-	capability -- satisfies --> requirement
-	feature -- satisfies --> requirement
-	feature -- enables --> capability
-
-	mission -- necessitates --> system
-	system -- includes --> boundary_core
-	boundary_core -- contains --> application
-	system -- integrates --> application
-	application -- comprises --> component
-	component -- exposes --> interface
-	component -- uses --> data_store
-	component -- uses --> asset
-	component -- generates --> artifact
-	artifact -- persists_to --> data_store
-
-	application -- participates_in --> deployment
-	node -- participates_in --> deployment
-	node -- instantiates --> node_instance
-	node_instance -- hosts --> component
-	node_instance -- hosts --> data_store
-
-	process -- involves --> actor
-	actor -- desires --> story
-	story -- explains --> capability
-	story -- implies --> constraint
-	constraint -- limits --> feature
-	process -- starts_with --> event_login
-	event_login -- triggers --> activity_validate
-	control -- governs --> activity_validate
-	activity_validate -- triggers --> condition_valid
-
-	state_machine -- starts_in --> state_logged_out
-	state_logged_out -- receives --> event_login
-	event_login -- triggers --> condition_account
-	condition_account -- triggers_true --> state_active
-	condition_account -- triggers_false --> state_logged_out
-	state_active -- receives --> event_timeout
-	event_timeout -- triggers --> state_expired
-	state_expired -- transitions_to --> state_logged_out
-
-	threat_actor -- presents --> threat
-	threat -- imposes --> risk
-	risk -- impacts --> feature
-	feature -- mitigates --> risk
-
-	test -- validates --> feature
-	feature -.- note
-
-	class boundary_core boundary;
-	class mission mission;
-	class driver driver;
-	class requirement requirement;
-	class capability capability;
-	class feature feature;
-	class system system;
-	class application application;
-	class component component;
-	class interface interface;
-	class data_store data_store;
-	class artifact artifact;
-	class asset asset;
-	class deployment deployment;
-	class node node;
-	class node_instance node_instance;
-	class process process;
-	class actor,threat_actor actor;
-	class story story;
-	class event_login,event_timeout event;
-	class activity_validate activity;
-	class condition_valid,condition_account condition;
-	class control control;
-	class constraint constraint;
-	class state_machine state_machine;
-	class state_logged_out,state_active,state_expired state;
-	class threat threat;
-	class risk risk;
-	class test test;
-	class note note;
-
-	classDef boundary stroke-dasharray:5 5,stroke-width:4;
-	classDef mission fill:##022c22,color:#FFFFFF;
-	classDef driver fill:#064e3b,color:#FFFFFF;
-	classDef requirement fill:#065f46,color:#FFFFFF;
-	classDef capability fill:#052e16,color:#FFFFFF;
-	classDef feature fill:#14532d,color:#FFFFFF;
-	classDef actor fill:#1a2e05,color:#FFFFFF;
-	classDef story fill:#365314,color:#FFFFFF;
-	classDef condition fill:#422006,color:#FFFFFF;
-	classDef control fill:#713f12,color:#FFFFFF;
-	classDef constraint fill:#854d0e,color:#FFFFFF;
-	classDef system fill:#172554,color:#FFFFFF;
-	classDef application fill:#1e3a8a,color:#FFFFFF;
-	classDef component fill:#1e40af,color:#FFFFFF;
-	classDef interface fill:#082f49,color:#FFFFFF;
-	classDef test fill:#022c22,color:#FFFFFF;
-	classDef data_store fill:#075985,color:#FFFFFF;
-	classDef artifact fill:#1e293b,color:#FFFFFF;
-	classDef asset fill:#334155,color:#FFFFFF;
-	classDef deployment fill:#1e1b4b,color:#FFFFFF;
-	classDef node fill:#312e81,color:#FFFFFF;
-	classDef node_instance fill:#3730a3,color:#FFFFFF;
-	classDef process fill:#2e1065,color:#FFFFFF;
-	classDef activity fill:#4c1d95,color:#FFFFFF;
-	classDef event fill:#5b21b6,color:#FFFFFF;
-	classDef state_machine fill:#4a044e,color:#FFFFFF;
-	classDef state fill:#701a75,color:#FFFFFF;
-	classDef risk fill:#881337,color:#FFFFFF;
-	classDef threat fill:#4c0519,color:#FFFFFF;
-	classDef note fill:#1f2937,color:#FFFFFF;
 ```
 
-### Requirements View
+Mermaid diagrams should use the "graph LR" diagram type. The diagram text should be separated into ordered sections separated by a single blank line:
 
-- Cards included:
-	+ `Mission`
-	+ `Driver`
-	+ `Requirement`
-	+ `Capability`
-	+ `Feature`
+1. The node definitions, named for the `id` of the card.
+2. The links between cards.
+3. The `classDef` entries (specified below)
+4. The `class` assignments (specified below)
 
-```mermaid
-graph LR
-	mission(("`Mission<br />Drive Excellence`"))
-	driver(["`Driver<br />Operational Friction Elimination`"])
-	requirement(["`Requirement<br />Define A Deterministic Modeling Framework`"])
-	capability(["`Capability<br />Deterministic Process Authoring & Validation Workflow`"])
-	feature(["`Feature<br />Deterministic Workflow Modeling Engine (DWME)`"])
+Graph nodes should have their text wrapped in Mermaid style Markdown quoting, specifically a quotation mark, a grave, the text, another grave, and a closing quotation mark. This enables the use of bold and line breaks. Node text should include the `card_type` in bold, a line break (`<br />`) and the `name` of the card.
 
-	mission -- establishes --> driver
-	driver -- drives --> requirement
-	capability -- satisfies --> requirement
-	feature -- satisfies --> requirement
-	feature -- enables --> capability
+**Graph Node Format**:
+
+```text
+	{id}["`**{card_type}**<br />{name}`"]
 ```
 
-### System Composition View
+**Example Graph Node**:
 
-- Cards included:
-	+ `System`
-	+ `Application`
-	+ `Component`
-	+ `Interface`
-	+ `Data Store`
-	+ `Artifact`
-
-```mermaid
-graph LR
-	system["`System<br />Workflow Model Tooling`"]@{shape: div-rect}
-	application["`Application<br />Workflow Modeler`"]@{shape: lin-rect}
-	component(["`Component<br />Rendering Engine`"])
-	interface(["`Interface<br />View Rendering API`"])
-	data_store(["`Data Store<br />Model Repository`"])
-	artifact(["`Artifact<br />Rendered Diagram`"])
-
-	system -- integrates --> application
-	application -- comprises --> component
-	component -- exposes --> interface
-	component -- uses --> data_store
-	component -- generates --> artifact
-	artifact -- persists_to --> data_store
+```text
+	MIS-001(("`**Mission**<br />Enable_Deterministic_Aurora_CLI_Tooling`"))
 ```
 
-### Deployment Topology View
+Use tabs for indentation. Every line after the diagram type should be indented at least one tab. Elements in subgraphs should be indented an additional tab.
 
-- Cards included:
-	+ `Deployment`
-	+ `Node`
-	+ `Node Instance`
-	+ `Application`
-	+ `Component`
-	+ `Data Store`
+Every Mermaid diagram must include the appropriate `classDef` entries from the following list, along with `class` lines assigning cards to the appropriate entry. Use the single line form of `class`, e.g., `class REQ-001,REQ-002 cls_requirement;`:
 
-```mermaid
-graph LR
-	deployment(["`Deployment<br />Production`"])
-	node(["`Node<br />Managed Cloud Runtime`"])
-	node_instance(["`Node Instance<br />runtime-01`"])
-	application["`Application<br />Workflow Modeler`"]@{shape: lin-rect}
-	component(["`Component<br />Rendering Engine`"])
-	data_store(["`Data Store<br />Object Storage`"])
-
-	application -- participates_in --> deployment
-	node -- participates_in --> deployment
-	node -- instantiates --> node_instance
-	application -- comprises --> component
-	node_instance -- hosts --> component
-	node_instance -- hosts --> data_store
-```
-
-### Process Flow View
-
-- Cards included:
-	+ `Process`
-	+ `Actor`
-	+ `Event`
-	+ `Activity`
-	+ `Condition`
-	+ `Control`
-
-```mermaid
-graph LR
-	process(["`Process<br />Authentication Process`"])
-	actor(["`Actor<br />User`"])
-	event_login(["`Event<br />Login Request Received`"])
-	activity_validate(["`Activity<br />Validate Credentials`"])
-	condition_valid(["`Condition<br />Credentials Are Valid`"])
-	activity_issue(["`Activity<br />Issue Session`"])
-	activity_deny(["`Activity<br />Deny Access`"])
-	control_rate(["`Control<br />Rate Limiting`"])
-
-	process -- starts_with --> event_login
-	process -- involves --> actor
-	actor -- performs --> activity_validate
-	event_login -- triggers --> activity_validate
-	control_rate -- governs --> activity_validate
-	activity_validate -- triggers --> condition_valid
-	condition_valid -- triggers_true --> activity_issue
-	condition_valid -- triggers_false --> activity_deny
-```
-
-### State Machine View
-
-- Cards included:
-	+ `State Machine`
-	+ `State`
-	+ `Event`
-	+ `Condition`
-
-```mermaid
-graph LR
-	state_machine(["`State Machine<br />Session Lifecycle`"])
-	state_logged_out(["`State<br />Logged Out`"])
-	state_active(["`State<br />Active`"])
-	state_expired(["`State<br />Expired`"])
-	event_login(["`Event<br />Login Succeeded`"])
-	event_timeout(["`Event<br />Session Timeout`"])
-	condition_account(["`Condition<br />Account Is Active`"])
-
-	state_machine -- starts_in --> state_logged_out
-	state_logged_out -- receives --> event_login
-	event_login -- triggers --> condition_account
-	condition_account -- triggers_true --> state_active
-	condition_account -- triggers_false --> state_logged_out
-	state_active -- receives --> event_timeout
-	event_timeout -- triggers --> state_expired
-	state_expired -- transitions_to --> state_logged_out
+```text
+	classDef cls_boundary stroke-dasharray:5 5,stroke-width:4;
+	classDef cls_mission fill:#022c22,color:#FFFFFF
+	classDef cls_driver fill:#064e3b,color:#FFFFFF
+	classDef cls_requirement fill:#065f46,color:#FFFFFF
+	classDef cls_capability fill:#052e16,color:#FFFFFF
+	classDef cls_feature fill:#14532d,color:#FFFFFF
+	classDef cls_actor fill:#1a2e05,color:#FFFFFF
+	classDef cls_story fill:#365314,color:#FFFFFF;
+	classDef cls_condition fill:#422006,color:#FFFFFF
+	classDef cls_control fill:#713f12,color:#FFFFFF
+	classDef cls_constraint fill:#854d0e,color:#FFFFFF;
+	classDef cls_system fill:#172554,color:#FFFFFF
+	classDef cls_application fill:#1e3a8a,color:#FFFFFF
+	classDef cls_component fill:#1e40af,color:#FFFFFF
+	classDef cls_interface fill:#082f49,color:#FFFFFF
+	classDef cls_artifact fill:#1e293b,color:#FFFFFF
+	classDef cls_asset fill:#334155,color:#FFFFFF;
+	classDef cls_data_store fill:#075985,color:#FFFFFF
+	classDef cls_test fill:#022c22,color:#FFFFFF;
+	classDef cls_deployment fill:#1e1b4b,color:#FFFFFF;
+	classDef cls_node fill:#312e81,color:#FFFFFF;
+	classDef cls_node_instance fill:#3730a3,color:#FFFFFF;
+	classDef cls_process fill:#2e1065,color:#FFFFFF
+	classDef cls_activity fill:#4c1d95,color:#FFFFFF
+	classDef cls_event fill:#5b21b6,color:#FFFFFF
+	classDef cls_state_machine fill:#4a044e,color:#FFFFFF
+	classDef cls_state fill:#701a75,color:#FFFFFF
+	classDef cls_risk fill:#881337,color:#FFFFFF;
+	classDef cls_threat fill:#4c0519,color:#FFFFFF;
+	classDef cls_note fill:#1f2937,color:#FFFFFF;
 ```
