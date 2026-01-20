@@ -2,32 +2,16 @@ use std::{fs::File, path::PathBuf};
 
 use jsonschema::Validator;
 use serde::{Deserialize, Serialize};
-use serde_json::{Map, Value};
+use serde_json::Value;
 use thiserror::Error;
 
-use super::card::Link;
+use crate::aurora::model::{Model, compact_card::CompactCard};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CompactModel {
 	#[serde(rename = "$schema")]
 	pub schema: String,
 	pub cards: Vec<CompactCard>,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct CompactCard {
-	#[serde(skip_serializing_if = "Option::is_none")]
-	pub attributes: Option<Map<String, Value>>,
-	#[serde(skip_serializing_if = "Option::is_none")]
-	pub card_subtype: Option<String>,
-	pub card_type: String,
-	pub description: String,
-	pub id: String,
-	#[serde(skip_serializing_if = "Option::is_none")]
-	pub links: Option<Vec<Link>>,
-	pub name: String,
-	#[serde(skip_serializing_if = "Option::is_none")]
-	pub status: Option<String>,
 }
 
 impl CompactModel {
@@ -44,6 +28,15 @@ impl CompactModel {
 		let reader = std::io::BufReader::new(file);
 		let compact_model: CompactModel = serde_json::from_reader(reader)?;
 		Ok(compact_model)
+	}
+}
+
+impl From<&Model> for CompactModel {
+	fn from(model: &Model) -> Self {
+		Self {
+			schema: "Aurora.compact.schema.json".to_string(),
+			cards: model.cards.values().map(CompactCard::from).collect(),
+		}
 	}
 }
 

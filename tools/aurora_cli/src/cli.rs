@@ -1,5 +1,5 @@
-mod bump_args;
-mod output_args;
+pub mod bump_args;
+pub mod output_args;
 
 use clap::{Parser, Subcommand};
 use std::path::PathBuf;
@@ -24,7 +24,7 @@ pub struct Cli {
 #[derive(Subcommand, Debug)]
 pub enum Command {
 	Validate,
-	RenderCards(OutputArgs),
+	RenderAurora(OutputArgs),
 	RenderViews(OutputArgs),
 	RenderAll(OutputArgs),
 	Compact(OutputArgs),

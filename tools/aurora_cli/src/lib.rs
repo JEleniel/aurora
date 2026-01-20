@@ -18,17 +18,17 @@ pub fn run() -> Result<String, AuroraError> {
 
 	Logging::init(cli.log_level)?;
 
-	let aurora = Aurora::load(&cli.input_path)?;
+	let mut aurora = Aurora::load(&cli.input_path)?;
 
 	let results = match cli.command {
 		Command::Validate => aurora.validate()?,
-		Command::RenderCards(args) => todo!(),
-		Command::RenderViews(args) => todo!(),
-		Command::RenderAll(args) => todo!(),
-		Command::Compact(args) => todo!(),
-		Command::BumpPatch(args) => todo!(),
-		Command::BumpMinor(args) => todo!(),
-		Command::BumpMajor(args) => todo!(),
+		Command::RenderAurora(args) => aurora.render_models(&args)?,
+		Command::RenderViews(args) => aurora.render_cards(&args)?,
+		Command::RenderAll(args) => aurora.render_all(&args)?,
+		Command::Compact(args) => aurora.compact(&args)?,
+		Command::BumpPatch(args) => aurora.bump_patch(&args)?,
+		Command::BumpMinor(args) => aurora.bump_minor(&args)?,
+		Command::BumpMajor(args) => aurora.bump_major(&args)?,
 	};
 	Ok(results.iter().map(|r| format!("{}\n", r)).collect())
 }

@@ -10,6 +10,8 @@ use thiserror::Error;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Card {
+	#[serde(skip)]
+	path: PathBuf,
 	#[serde(rename = "$schema")]
 	pub schema: String,
 	#[serde(skip_serializing_if = "Option::is_none")]
@@ -49,26 +51,64 @@ impl Card {
 		Ok(results)
 	}
 
-	pub fn load(path: &Path, validator: &Validator) -> Result<Self, CardError> {
+	pub fn load(path: &Path) -> Result<Self, CardError> {
 		let file = File::open(path)?;
 		let reader = std::io::BufReader::new(file);
-		let card: Card = serde_json::from_reader(reader)?;
+		let mut card: Card = serde_json::from_reader(reader)?;
+		card.path = path.to_path_buf();
 		Ok(card)
 	}
 
-	pub fn write(&self, path: &Path) -> Result<(), CardError> {
-		let file = File::create(path)?;
-		let mut writer = BufWriter::new(file);
-		serde_json::to_writer_pretty(&mut writer, self)?;
+	pub fn bump_patch(&mut self, editor: &str) -> Result<(), CardError> {
+		let mut sv = semver::Version::parse(&self.audit_trail.version)?;
+		sv.patch += 1;
+		self.audit_trail.version = sv.to_string();
+		self.audit_trail.history.push(HistoryEntry {
+			editor: editor.to_string(),
+			event: HistoryEvent::Edited,
+			timestamp: chrono::Utc::now().to_rfc3339(),
+		});
+		self.write()?;
+
 		Ok(())
 	}
 
-	pub fn compact(&self) -> Result<Value, CardError> {
-		let mut value = serde_json::to_value(self)?;
-		if let Some(obj) = value.as_object_mut() {
-			obj.remove("audit_trail");
-		}
-		Ok(value)
+	pub fn bump_minor(&mut self, editor: &str) -> Result<(), CardError> {
+		let mut sv = semver::Version::parse(&self.audit_trail.version)?;
+		sv.minor += 1;
+		sv.patch = 0;
+		self.audit_trail.version = sv.to_string();
+		self.audit_trail.history.push(HistoryEntry {
+			editor: editor.to_string(),
+			event: HistoryEvent::Edited,
+			timestamp: chrono::Utc::now().to_rfc3339(),
+		});
+		self.write()?;
+
+		Ok(())
+	}
+
+	pub fn bump_major(&mut self, editor: &str) -> Result<(), CardError> {
+		let mut sv = semver::Version::parse(&self.audit_trail.version)?;
+		sv.major += 1;
+		sv.minor = 0;
+		sv.patch = 0;
+		self.audit_trail.version = sv.to_string();
+		self.audit_trail.history.push(HistoryEntry {
+			editor: editor.to_string(),
+			event: HistoryEvent::Edited,
+			timestamp: chrono::Utc::now().to_rfc3339(),
+		});
+		self.write()?;
+
+		Ok(())
+	}
+
+	fn write(&self) -> Result<(), CardError> {
+		let file = File::create(&self.path)?;
+		let mut writer = BufWriter::new(file);
+		serde_json::to_writer_pretty(&mut writer, self)?;
+		Ok(())
 	}
 }
 
@@ -112,4 +152,6 @@ pub enum CardError {
 	InvalidCardFileName,
 	#[error("Schema validation error: {0}")]
 	SchemaValidationError(String),
+	#[error("SemVer error: {0}")]
+	SemVerError(#[from] semver::Error),
 }

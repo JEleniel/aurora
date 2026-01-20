@@ -1,5 +1,6 @@
 //! In-memory representation of Aurora cards and models.
 mod card;
+mod compact_card;
 mod compact_model;
 
 pub use card::*;
@@ -7,13 +8,10 @@ pub use compact_model::{CompactModel, CompactModelError};
 use jsonschema::Validator;
 use log::debug;
 use regex::Regex;
-use std::{
-	collections::HashMap,
-	fs::File,
-	io::{BufReader, Read},
-	path::PathBuf,
-};
+use std::{collections::HashMap, path::PathBuf};
 use thiserror::Error;
+
+use crate::cli::bump_args::BumpArgs;
 
 /// Fully materialized Aurora model state.
 #[derive(Debug, Clone)]
@@ -33,7 +31,7 @@ impl Model {
 		compact_validator: &Validator,
 	) -> Result<Vec<Self>, ModelError> {
 		// Load all the Mission cards to identify models
-		let mut models: Vec<Model> = Self::load_models(path, card_validator)?;
+		let mut models: Vec<Model> = Self::load_models(path)?;
 		if models.is_empty() {
 			return Err(ModelError::ModelNotFound);
 		}
@@ -55,9 +53,42 @@ impl Model {
 		Ok(models)
 	}
 
-	fn load_models(path: &PathBuf, card_validator: &Validator) -> Result<Vec<Self>, ModelError> {
-		let regex_mission_card = Regex::new(r"^MIS-\d{3}.json$")?;
+	pub fn compact(&self) -> CompactModel {
+		CompactModel::from(self)
+	}
 
+	pub fn bump_patch(&mut self, args: &BumpArgs) -> Result<(), ModelError> {
+		let card = self
+			.cards
+			.get_mut(&args.card_id)
+			.ok_or(ModelError::CardNotFound(args.card_id.clone()))?;
+		let user = whoami::account().unwrap_or_else(|_| "unknown".to_string());
+		card.bump_patch(&args.editor.clone().unwrap_or(user))?;
+		Ok(())
+	}
+
+	pub fn bump_minor(&mut self, args: &BumpArgs) -> Result<(), ModelError> {
+		let card = self
+			.cards
+			.get_mut(&args.card_id)
+			.ok_or(ModelError::CardNotFound(args.card_id.clone()))?;
+		let user = whoami::account().unwrap_or_else(|_| "unknown".to_string());
+		card.bump_minor(&args.editor.clone().unwrap_or(user))?;
+		Ok(())
+	}
+
+	pub fn bump_major(&mut self, args: &BumpArgs) -> Result<(), ModelError> {
+		let card = self
+			.cards
+			.get_mut(&args.card_id)
+			.ok_or(ModelError::CardNotFound(args.card_id.clone()))?;
+		let user = whoami::account().unwrap_or_else(|_| "unknown".to_string());
+		card.bump_major(&args.editor.clone().unwrap_or(user))?;
+		Ok(())
+	}
+
+	fn load_models(path: &PathBuf) -> Result<Vec<Self>, ModelError> {
+		let regex_mission_card = Regex::new(r"^MIS-\d{3}.json$")?;
 		let mut models: Vec<Self> = Vec::new();
 		for entry in path.read_dir()? {
 			let path = entry?.path();
@@ -69,7 +100,7 @@ impl Model {
 							.to_str()
 							.ok_or(ModelError::InvalidFileName(file_name.display().to_string()))?,
 					) {
-						let mission_card = Card::load(&path, card_validator)?;
+						let mission_card = Card::load(&path)?;
 
 						let model = Self {
 							mission_card,
@@ -122,7 +153,7 @@ impl Model {
 						if !results.is_empty() {
 							model.card_schema_errors.append(&mut results);
 						}
-						let card = Card::load(&entry_path, card_validator)?;
+						let card = Card::load(&entry_path)?;
 						model.add_card(card);
 					}
 				}
@@ -155,16 +186,6 @@ impl Model {
 					.push(link.target.clone());
 			}
 		}
-	}
-
-	fn validate_schema(path: &PathBuf) -> Result<bool, ModelError> {
-		let file = File::open(path)?;
-		let mut data: String = String::new();
-		let mut reader = BufReader::new(&file);
-		reader.read_to_string(&mut data)?;
-		let schema: serde_json::Value = serde_json::from_str(&data)?;
-
-		Ok(jsonschema::meta::is_valid(&schema))
 	}
 }
 
