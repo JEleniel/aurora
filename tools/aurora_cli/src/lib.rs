@@ -108,8 +108,8 @@ mod tests {
 		touch(&model_home.join("Aurora.schema.json"));
 		touch(&model_home.join("Aurora.compact.schema.json"));
 
-		let resolved = resolve_input_path(Path::new("docs/design/aurora"), &nested)
-			.expect("resolve path");
+		let resolved =
+			resolve_input_path(Path::new("docs/design/aurora"), &nested).expect("resolve path");
 		assert_eq!(resolved, model_home.canonicalize().expect("canonicalize"));
 
 		fs::remove_dir_all(&root).expect("cleanup temp root");
