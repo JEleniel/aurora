@@ -1,0 +1,21 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Capability",
+	"description": "Render a deterministic Markdown card catalog (one file per card) plus per-mission and aggregate index README(s).",
+	"id": "CAP-003",
+	"links": [
+		{ "relationship": "satisfies", "target": "REQ-004" },
+		{ "relationship": "satisfies", "target": "REQ-005" },
+		{ "relationship": "satisfies", "target": "REQ-009" },
+		{ "relationship": "generates", "target": "AST-002" },
+		{ "relationship": "generates", "target": "ART-002" },
+		{ "relationship": "generates", "target": "ART-003" },
+		{ "relationship": "uses", "target": "CAP-005" }
+	],
+	"name": "Render Markdown Card Catalog"
+}

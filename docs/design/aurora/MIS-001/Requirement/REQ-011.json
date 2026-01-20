@@ -1,0 +1,12 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Requirement",
+	"description": "Discover a default model root if an explicit input is not provided.",
+	"id": "REQ-011",
+	"name": "Discover Default Model Root"
+}

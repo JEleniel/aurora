@@ -17,11 +17,13 @@ impl Logging {
 		let stdout_builder = fern::Dispatch::new()
 			.format(move |out, message, record| {
 				out.finish(format_args!(
-					"[{} {}] ({}) {}",
+					"[{} {}] ({}) {} at {} {}",
 					Utc::now().to_rfc3339_opts(SecondsFormat::Millis, true),
 					colors.color(record.level()),
 					record.target(),
 					message,
+					record.line().unwrap_or(0),
+					record.file().unwrap_or("unknown"),
 				))
 			})
 			.filter(|f| f.level() != Level::Error)
@@ -30,11 +32,14 @@ impl Logging {
 		let stdoerr_builder = fern::Dispatch::new()
 			.format(move |out, message, record| {
 				out.finish(format_args!(
-					"[{} {}] ({}) {}",
+					"[{} {}] ({}) {} at {} {}, {}",
 					Utc::now().to_rfc3339_opts(SecondsFormat::Millis, true),
 					colors.color(record.level()),
 					record.target(),
 					message,
+					record.line().unwrap_or(0),
+					record.file().unwrap_or("unknown"),
+					record.module_path().unwrap_or(""),
 				))
 			})
 			.level(LevelFilter::Error)

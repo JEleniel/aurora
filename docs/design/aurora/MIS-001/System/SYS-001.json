@@ -1,0 +1,13 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "System",
+	"description": "A supporting system that provides first-party tooling around Aurora models, integrating the aurora_cli application.",
+	"id": "SYS-001",
+	"links": [{ "relationship": "integrates", "target": "APP-001" }],
+	"name": "Aurora Support Tooling"
+}

@@ -1,0 +1,13 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Asset",
+	"description": "The authoritative Aurora model comprising card JSON files and schemas.",
+	"id": "AST-001",
+	"links": [{ "relationship": "persists_to", "target": "DTS-001" }],
+	"name": "Aurora Model"
+}

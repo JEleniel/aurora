@@ -1,0 +1,16 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Component",
+	"description": "Resolves the Aurora model root and mission entrypoints from user input or default discovery rules.",
+	"id": "COM-002",
+	"links": [
+		{ "relationship": "implements", "target": "CAP-001" },
+		{ "relationship": "uses", "target": "COM-003" }
+	],
+	"name": "Model Root Resolver"
+}

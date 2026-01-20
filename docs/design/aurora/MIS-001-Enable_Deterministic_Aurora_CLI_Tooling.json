@@ -1,0 +1,80 @@
+{
+	"$schema": "./Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"event": "created",
+				"timestamp": "2026-01-20T00:00:00.000Z"
+			}
+		],
+		"version": "1.0.0"
+	},
+	"card_type": "Mission",
+	"description": "Provide a first-party command-line tool that validates Aurora models and deterministically generates human-friendly documentation and standard views so architects can model systems without hand-drawing diagrams or manually maintaining documentation.",
+	"id": "MIS-001",
+	"links": [
+		{
+			"relationship": "establishes",
+			"target": "DRI-001"
+		},
+		{
+			"relationship": "establishes",
+			"target": "DRI-002"
+		},
+		{
+			"relationship": "establishes",
+			"target": "DRI-003"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "SYS-001"
+		},
+		{
+			"relationship": "involves",
+			"target": "ACT-001"
+		},
+		{
+			"relationship": "involves",
+			"target": "ACT-002"
+		},
+		{
+			"relationship": "implies",
+			"target": "CNS-001"
+		},
+		{
+			"relationship": "implies",
+			"target": "CNS-002"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "CAP-006"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "CAP-007"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "FEA-006"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "FEA-007"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "PRO-001"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "PRO-002"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "STM-001"
+		}
+	],
+	"name": "Enable Deterministic Aurora CLI Tooling"
+}

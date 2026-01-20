@@ -1,0 +1,12 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Requirement",
+	"description": "Include the standard Mermaid palette and assign classes by card type in view documents.",
+	"id": "REQ-010",
+	"name": "Apply Standard Mermaid Palette And Classes"
+}

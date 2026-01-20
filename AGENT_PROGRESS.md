@@ -16,6 +16,7 @@ AURORA is a deterministic, JSON-based architectural modeling format where Cards 
 - Current work: implementing the `tools/aurora_cli` backend (model loader, validator, deterministic card/view renderers, CLI entrypoints) directly from the design model in `docs/design/aurora/`
 - Backend update (2026-01-21): Mission loader now enforces sanitized `MIS-###-Name` filenames and reports schema violations with per-field line/column context during validation ([tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs)).
 - Backend update (2026-01-21): Aurora root detection now keys off the presence of schema files, card discovery enforces `<Mission>/<CardType>/<ID>.json` layout with pointer-aware diagnostics, and compact exports serialize borrowed cards instead of cloning ([tools/aurora_cli/src/aurora.rs](tools/aurora_cli/src/aurora.rs), [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs), [tools/aurora_cli/src/aurora/model/compact_model.rs](tools/aurora_cli/src/aurora/model/compact_model.rs)).
+- Backend update (2026-01-20): Improved `aurora_cli` model detection when invoked from subdirectories by resolving the default `--input` relative to the nearest git root and expanding Aurora home discovery to search upwards and include `docs/design/aurora/` ([tools/aurora_cli/src/lib.rs](tools/aurora_cli/src/lib.rs), [tools/aurora_cli/src/aurora.rs](tools/aurora_cli/src/aurora.rs)).
 - Backend update (2026-01-20): Implemented boundary-aware Mermaid rendering in [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs), including subgraph generation, node/edge output, and class mapping normalization.
 - Recent progress: rewired the CLI around new modules (`loader`, `validator`, `render`, `output`), added integration tests, fixed schema compilation + deployment view handling issues uncovered during `cargo test`, and added a `full` command that chains validation, render-all, and compact export
 - Backend update (2026-01-19): Implemented the CLI renderer, bumper, and compactor flows in [tools/aurora_cli/src/renderer.rs](tools/aurora_cli/src/renderer.rs), [tools/aurora_cli/src/bumper.rs](tools/aurora_cli/src/bumper.rs), and [tools/aurora_cli/src/compactor.rs](tools/aurora_cli/src/compactor.rs) so each subcommand now produces deterministic Markdown/JSON output rather than panicking with `todo!()` placeholders.
@@ -30,7 +31,7 @@ AURORA is a deterministic, JSON-based architectural modeling format where Cards 
 - Notes:
 	+ Workspace members: `tools/*` (currently only `tools/aurora_cli`)
 	+ Toolchain: `rust-toolchain.toml` pins `stable`; `rustfmt.toml` enforces hard tabs + Unix newlines
-	+ Crate: `aurora_cli` uses Rust 2024 edition, reverse-DNS `app_id` in package metadata, workspace-shared deps, and dev-only `tempfile`
+    + Crate: `aurora_cli` uses Rust 2024 edition, reverse-DNS `app_id` in package metadata, and workspace-shared deps
 - Residual risk: tests/lints not executed during this review; last recorded `cargo test` run is 2026-01-17 in this log.
 - Required next action: None.
 
@@ -152,7 +153,7 @@ Doc hygiene note:
 - JSON Schema: [schemas/Aurora.schema.json](schemas/Aurora.schema.json)
 - Static docs site under [docs/](docs/) (note: `docs/viewer.html` removed due to CORS issues and incompatibility with the current structure)
 - Mermaid diagrams for examples
-- Rust crates used by `tools/aurora_cli`: `clap`, `chrono`, `indexmap`, `jsonschema`, `pathdiff`, `percent-encoding`, `semver`, `serde`, `serde_json`, `tempfile` (dev), `thiserror`, `walkdir`, `whoami`
+- Rust crates used by `tools/aurora_cli`: `chrono`, `clap`, `fern`, `indexmap`, `jsonschema`, `log`, `pathdiff`, `percent-encoding`, `regex`, `semver`, `serde`, `serde_json`, `thiserror`, `whoami`
 
 ## Master Project Plan and Progress Tracker
 
@@ -172,6 +173,7 @@ Doc hygiene note:
 - 2026-01-12: Consolidated repeated agent coding standards into `.github/instructions/Coding.instructions.md` and refactored developer agents to reference it.
 - 2026-01-18: Updated [schemas/Aurora.schema.json](schemas/Aurora.schema.json) to match the v2 Aurora instructions (`audit_trail`, `MIS-001` ids, Title Case `card_type`, and link targets by card id).
 - 2026-01-18: Created an example model under [docs/example/aurora/](docs/example/aurora/) for a simple online ordering system, including Features and Processes to maintain internal link consistency.
+- 2026-01-20: Fixed `aurora_cli` input/model discovery so running from subdirectories still finds `docs/design/aurora/` via git-root resolution and upward Aurora-home search.
 
 </memory>
 

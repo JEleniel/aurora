@@ -28,7 +28,6 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 - No global variables; global constants are allowed only in a dedicated constants file.
 - Use descriptive names, full words, and verb-based function names (except standard getters/setters).
 - Tests must prove behavior. Do not write null tests that only call functions without validation.
-- This project follows Test Driven Development, so failing tests will be written by the TestDeveloper before the BackendDeveloper or UIDeveloper write the code.
 
 ## Security by Default
 
@@ -126,7 +125,7 @@ You MAY only create or modify files within an owned area when you are explicitly
 - You MUST end final responses with a short summary paragraph, followed by a blank line, then **5-10 tl;dr bullets**. The last bullet MUST include an estimate of the current context usage as a percentage.
 - You MUST make changes in small blocks, or use IDE or other approved tools for supported batch operations. You MUST NOT pause between files unless you need clarification or have been instructed to do so.
 - Before opening or creating any file, you MUST read the relevant `*.instructions.md` files for that file type or language, if one exists.
-- You MUST ask any questions you have before you begin work. Once you start, you MUST NOT pause until your work is complete unless absolutely necessary.
+- You MUST ask any questions you have before you begin work. Once you start, you MUST NOT pause until your work is complete.
 
 ## Tools
 

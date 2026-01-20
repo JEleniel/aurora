@@ -8,6 +8,7 @@ use std::{
 };
 
 use jsonschema::{Validator, draft7::meta};
+use log::debug;
 use thiserror::Error;
 
 use crate::{
@@ -24,12 +25,18 @@ impl Aurora {
 	pub fn load(path: &Path) -> Result<Self, AuroraError> {
 		let aurora_path = Self::find_aurora_path(path)?;
 		let schema_path = aurora_path.join("Aurora.schema.json");
+		debug!("Using schema path: {}", schema_path.display());
 		let compact_schema_path = aurora_path.join("Aurora.compact.schema.json");
-
+		debug!(
+			"Using compact schema path: {}",
+			compact_schema_path.display(),
+		);
 		let card_validator = Self::validate_and_load_schema(&schema_path)?;
 		let compact_validator = Self::validate_and_load_schema(&compact_schema_path)?;
+		debug!("Validators loaded successfully.");
 
 		let models = Model::load(&aurora_path, &card_validator, &compact_validator)?;
+		debug!("Loaded {} models.", models.len());
 		Ok(Self { models })
 	}
 
@@ -133,27 +140,53 @@ impl Aurora {
 	}
 
 	fn find_aurora_path(path: &Path) -> Result<PathBuf, AuroraError> {
-		if Self::is_aurora_home(path) {
-			return Ok(path.to_path_buf());
-		}
-		if path.is_dir() {
-			let candidate = path.join("aurora");
-			if Self::is_aurora_home(&candidate) {
-				return Ok(candidate);
+		let start = if path.is_file() {
+			path.parent().unwrap_or(path)
+		} else {
+			path
+		};
+
+		let mut current: Option<&Path> = Some(start);
+		while let Some(dir) = current {
+			if Self::is_aurora_home(dir) {
+				debug!("Found Aurora home at '{}'", dir.display());
+				return Ok(dir.to_path_buf());
 			}
-		}
-		if let Some(parent) = path.parent() {
-			if Self::is_aurora_home(parent) {
-				return Ok(parent.to_path_buf());
+
+			let aurora_folder = dir.join("aurora");
+			if Self::is_aurora_home(&aurora_folder) {
+				debug!(
+					"Found Aurora home at '{}' (via ./aurora)",
+					aurora_folder.display(),
+				);
+				return Ok(aurora_folder);
 			}
+
+			let docs_design_aurora = dir.join("docs").join("design").join("aurora");
+			if Self::is_aurora_home(&docs_design_aurora) {
+				debug!(
+					"Found Aurora home at '{}' (via ./docs/design/aurora)",
+					docs_design_aurora.display(),
+				);
+				return Ok(docs_design_aurora);
+			}
+
+			current = dir.parent();
 		}
+
 		Err(AuroraError::InvalidPath(path.display().to_string()))
 	}
 
 	fn is_aurora_home(path: &Path) -> bool {
-		path.is_dir()
+		let result = path.is_dir()
 			&& path.join("Aurora.schema.json").is_file()
-			&& path.join("Aurora.compact.schema.json").is_file()
+			&& path.join("Aurora.compact.schema.json").is_file();
+		debug!(
+			"Checking if '{}' is Aurora home: {}",
+			path.display(),
+			result
+		);
+		result
 	}
 
 	fn validate_and_load_schema(path: &Path) -> Result<Validator, AuroraError> {
@@ -185,6 +218,76 @@ impl Aurora {
 			writeln!(file, "{}", entry)?;
 		}
 		Ok(())
+	}
+}
+
+#[cfg(test)]
+mod tests {
+	use super::Aurora;
+	use std::{
+		fs,
+		path::{Path, PathBuf},
+		time::{SystemTime, UNIX_EPOCH},
+	};
+
+	fn unique_temp_dir(prefix: &str) -> PathBuf {
+		let nanos = SystemTime::now()
+			.duration_since(UNIX_EPOCH)
+			.unwrap_or_default()
+			.as_nanos();
+		std::env::temp_dir().join(format!("{}_{}_{}", prefix, std::process::id(), nanos))
+	}
+
+	fn write_empty_file(path: &Path) {
+		fs::write(path, "{}").expect("write temp file");
+	}
+
+	#[test]
+	fn find_aurora_path_finds_docs_design_aurora_from_repo_root() {
+		let root = unique_temp_dir("aurora_cli_find_model");
+		fs::create_dir_all(&root).expect("create temp root");
+		let model_home = root.join("docs").join("design").join("aurora");
+		fs::create_dir_all(&model_home).expect("create aurora home");
+		write_empty_file(&model_home.join("Aurora.schema.json"));
+		write_empty_file(&model_home.join("Aurora.compact.schema.json"));
+
+		let found = Aurora::find_aurora_path(&root).expect("find aurora home");
+		assert_eq!(found, model_home);
+
+		fs::remove_dir_all(&root).expect("cleanup temp root");
+	}
+
+	#[test]
+	fn find_aurora_path_walks_upwards_from_nested_tool_dir() {
+		let root = unique_temp_dir("aurora_cli_find_model_nested");
+		let nested = root.join("tools").join("aurora_cli");
+		fs::create_dir_all(&nested).expect("create nested dir");
+		let model_home = root.join("docs").join("design").join("aurora");
+		fs::create_dir_all(&model_home).expect("create aurora home");
+		write_empty_file(&model_home.join("Aurora.schema.json"));
+		write_empty_file(&model_home.join("Aurora.compact.schema.json"));
+
+		let found = Aurora::find_aurora_path(&nested).expect("find aurora home");
+		assert_eq!(found, model_home);
+
+		fs::remove_dir_all(&root).expect("cleanup temp root");
+	}
+
+	#[test]
+	fn find_aurora_path_accepts_mission_file_path() {
+		let root = unique_temp_dir("aurora_cli_find_model_file");
+		let model_home = root.join("docs").join("design").join("aurora");
+		fs::create_dir_all(&model_home).expect("create aurora home");
+		write_empty_file(&model_home.join("Aurora.schema.json"));
+		write_empty_file(&model_home.join("Aurora.compact.schema.json"));
+
+		let mission_path = model_home.join("MIS-001-Example.json");
+		write_empty_file(&mission_path);
+
+		let found = Aurora::find_aurora_path(&mission_path).expect("find aurora home");
+		assert_eq!(found, model_home);
+
+		fs::remove_dir_all(&root).expect("cleanup temp root");
 	}
 }
 

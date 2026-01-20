@@ -1,0 +1,16 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Component",
+	"description": "The single persistence point for generated artifacts; enforces safe writes, deterministic paths, and output sanitization.",
+	"id": "COM-008",
+	"links": [
+		{ "relationship": "implements", "target": "CAP-005" },
+		{ "relationship": "uses", "target": "DTS-002" }
+	],
+	"name": "Filesystem Writer"
+}

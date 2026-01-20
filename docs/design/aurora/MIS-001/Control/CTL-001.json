@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"event": "created",
+				"timestamp": "2026-01-20T00:00:00.000Z"
+			}
+		],
+		"version": "1.0.0"
+	},
+	"card_type": "Control",
+	"description": "Apply stable ordering rules to rendering and writing so outputs are deterministic across runs.",
+	"id": "CTL-001",
+	"links": [
+		{ "relationship": "governs", "target": "ATV-005" },
+		{ "relationship": "governs", "target": "ATV-006" },
+		{ "relationship": "governs", "target": "ATV-007" },
+		{ "relationship": "governs", "target": "CAP-005" }
+	],
+	"name": "Deterministic Ordering"
+}
