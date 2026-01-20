@@ -14,6 +14,9 @@ AURORA is a deterministic, JSON-based architectural modeling format where Cards 
 
 - Branch: `v2.0.0`
 - Current work: implementing the `tools/aurora_cli` backend (model loader, validator, deterministic card/view renderers, CLI entrypoints) directly from the design model in `docs/design/aurora/`
+- Backend update (2026-01-21): Mission loader now enforces sanitized `MIS-###-Name` filenames and reports schema violations with per-field line/column context during validation ([tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs)).
+- Backend update (2026-01-21): Aurora root detection now keys off the presence of schema files, card discovery enforces `<Mission>/<CardType>/<ID>.json` layout with pointer-aware diagnostics, and compact exports serialize borrowed cards instead of cloning ([tools/aurora_cli/src/aurora.rs](tools/aurora_cli/src/aurora.rs), [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs), [tools/aurora_cli/src/aurora/model/compact_model.rs](tools/aurora_cli/src/aurora/model/compact_model.rs)).
+- Backend update (2026-01-20): Implemented boundary-aware Mermaid rendering in [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs), including subgraph generation, node/edge output, and class mapping normalization.
 - Recent progress: rewired the CLI around new modules (`loader`, `validator`, `render`, `output`), added integration tests, fixed schema compilation + deployment view handling issues uncovered during `cargo test`, and added a `full` command that chains validation, render-all, and compact export
 - Backend update (2026-01-19): Implemented the CLI renderer, bumper, and compactor flows in [tools/aurora_cli/src/renderer.rs](tools/aurora_cli/src/renderer.rs), [tools/aurora_cli/src/bumper.rs](tools/aurora_cli/src/bumper.rs), and [tools/aurora_cli/src/compactor.rs](tools/aurora_cli/src/compactor.rs) so each subcommand now produces deterministic Markdown/JSON output rather than panicking with `todo!()` placeholders.
 - Backend update (2026-01-19): Follow-up fixes wired the renderer through dedicated card/model/view modules, added Card helper methods for writing/compacting/append-history, ensured compact exports validate against the local schema, and simplified all CLI command reports to short human-readable summaries.
@@ -70,6 +73,16 @@ Highlights:
 Next steps:
 
 - Extend integration coverage for render outputs (per-mission cards/views, README links, Mermaid styling) to lock in the current behavior.
+
+### Test Report Update (2026-01-21)
+
+- Command: `cargo test`
+- Result: Blocked by unresolved import `CompactModelBorrowed` in [tools/aurora_cli/src/aurora.rs](tools/aurora_cli/src/aurora.rs#L14); the existing module no longer defines that type, so the suite fails before exercising the updated loader. Fix or remove the stale import to restore regression coverage.
+
+### Test Report Update (2026-01-21, later)
+
+- Command: `cargo test`
+- Result: Passed after introducing `CompactModelBorrowed` and the new card layout validation (warnings about unused CLI exit codes remain and are tracked under the “Improve render outputs and exit codes” task). The `runTests` helper could not discover the crate, so the check was executed via `cargo test` to ensure coverage.
 
 ### Code Review: tools/aurora_cli vs MIS-001 (2026-01-18)
 
@@ -161,3 +174,53 @@ Doc hygiene note:
 - 2026-01-18: Created an example model under [docs/example/aurora/](docs/example/aurora/) for a simple online ordering system, including Features and Processes to maintain internal link consistency.
 
 </memory>
+
+### Rust Code Review Readout (2026-01-20)
+
+- Scope: `tools/aurora_cli` plus Rust examples under `.github/instructions/rust_example/`
+- Evidence:
+    + `cargo test` passes, but warnings are present and will fail `clippy` under `-D warnings`.
+    + No tests are currently detected/run (0 tests reported).
+
+Findings (High):
+
+- Schema loading logic currently treats schema text as a JSON string instead of parsing JSON, so schema validation/compilation is not trustworthy: [tools/aurora_cli/src/aurora.rs](tools/aurora_cli/src/aurora.rs#L163-L175)
+    + Mitigation: parse via `serde_json::from_str::<serde_json::Value>(&data)` before `meta::is_valid`, and prefer taking `&Path` instead of `&PathBuf` in the public API.
+
+- Card discovery in `load_cards` appears functionally broken because it checks `path.file_name()` (the root folder name) rather than each `entry_path.file_name()`, so the regex gate will skip every file: [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs#L559-L596)
+    + Mitigation: switch the filename check to `entry_path.file_name()` and ensure card validation/load runs for matching `XXX-000.json` files.
+
+- View definitions include embedded trailing newlines in view names and card type names (e.g., `"Driver\n"`, `"System\n"`), which will not match `card.card_type` values loaded from JSON, resulting in empty/incomplete views: [tools/aurora_cli/src/aurora/model/view_definitions.rs](tools/aurora_cli/src/aurora/model/view_definitions.rs#L3-L65)
+    + Mitigation: remove the embedded newlines and enforce exact Title Case card type strings.
+
+- Card Markdown template placeholders do not match the renderer replacements (`{{audit_trail}}` exists in the template, but the renderer writes `{{history}}` / `{{version}}`): [tools/aurora_cli/src/aurora/model/card/template.rs](tools/aurora_cli/src/aurora/model/card/template.rs#L1-L21), [tools/aurora_cli/src/aurora/model/card.rs](tools/aurora_cli/src/aurora/model/card.rs#L112-L178)
+    + Mitigation: rename placeholders to one consistent contract and add a small unit/integration test that asserts rendered Markdown contains the audit trail fields.
+
+Findings (Medium):
+
+- Determinism gaps due to `HashMap` iteration order:
+    + Card index generation iterates `self.cards.values()` without sorting: [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs#L397-L437)
+    + Card writes iterate `self.cards.values()` without sorting: [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs#L385-L395)
+    + Mitigation: collect/sort card ids first, then iterate deterministically.
+
+- Broken/incorrect links in the generated card index: the “no subtype” branch uses `prefixes::get_prefix(card_type)` as a directory component, but cards are written under the `card_type` directory name: [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs#L420-L433)
+
+- Mermaid wrapper strings likely contain quoting/escaping mistakes (notably `Interface`, `System`, `Risk`, and several shapes), risking invalid Mermaid output: [tools/aurora_cli/src/aurora/model/view_definitions.rs](tools/aurora_cli/src/aurora/model/view_definitions.rs#L67-L99)
+
+- `main.rs` defines multiple exit codes but maps most errors to `99`, and it treats any `ModelError` as “bump failed” even when the operation is render/compact: [tools/aurora_cli/src/main.rs](tools/aurora_cli/src/main.rs#L1-L16)
+
+- CLI arg parsing for `log::Level` may not be robust/portable across clap versions without an explicit value parser/value enum: [tools/aurora_cli/src/cli.rs](tools/aurora_cli/src/cli.rs#L15-L22)
+
+Findings (Low):
+
+- `clippy` cleanups:
+    + Nested `format!` (prefer direct format args): [tools/aurora_cli/src/aurora/model/card.rs](tools/aurora_cli/src/aurora/model/card.rs#L139-L148)
+    + Unused import and unused fields warnings: [tools/aurora_cli/src/aurora.rs](tools/aurora_cli/src/aurora.rs#L3-L25)
+    + Unused function: [tools/aurora_cli/src/aurora/model/view_definitions.rs](tools/aurora_cli/src/aurora/model/view_definitions.rs#L102-L107)
+
+- Boundary-related prefix handling is inconsistent (`BND` vs `BOU`): [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs#L190-L196), [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs#L359-L373)
+
+Next actions:
+
+- Fix the three correctness blockers (schema parse, card discovery, view-definition string normalization), then rerun `cargo test` and `cargo clippy -- -D warnings`.
+- Reintroduce/restore test coverage (current harness reports 0 tests).

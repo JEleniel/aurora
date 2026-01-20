@@ -26,10 +26,15 @@ All notable changes to this project will be documented in this file.
 - Updated the view renderer to group Mermaid `class` assignments per type (single `class element1,element2 class_name` line per `classDef`).
 - View renderer now labels each node with the card `id` (wrapped as `"``ID``"`) and eliminates double blank lines in generated Markdown sections.
 - Applied the canon shape palette per card type (mission circles, driver rounded boxes, custom document/comment glyphs, etc.) when rendering Mermaid views.
+- Mermaid view rendering now generates boundary subgraphs plus node, edge, and class mappings during model rendering ([tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs)).
 - `render-all` now renders views before cards and the generated README always lists the applicable view links, preventing the views section from being blank.
 - The `compact` command now retains each card's `$schema` reference while stripping `audit_trail` blocks, ensuring the export passes schema validation and still preserves link relationship metadata.
 - Compact exports now set the top-level `$schema` pointer to the mission's local `Aurora.compact.schema.json` via a relative path so agents can validate models without hardcoded absolute locations.
 - Replaced the placeholder CLI implementations for `render-*`, `compact`, and `bump-*` with concrete logic that streams Markdown summaries, produces compact JSON exports, and updates audit history entries when versions change.
+- Mission loader now enforces `MIS-###-Sanitized_Name` filenames and reports schema violations with precise file:line detail ([tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs)).
+- Schema loader now detects the aurora root by looking for local schema files, tolerates trailing slashes/parent paths, and builds validators from a single buffered parse ([tools/aurora_cli/src/aurora.rs](tools/aurora_cli/src/aurora.rs)).
+- Card discovery enforces the `<Mission>/<CardType>/<ID>.json` layout, validates filename/directory/prefix consistency, and surfaces per-field line+column errors ([tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs)).
+- Compact exports stream via `CompactModelBorrowed`/`CompactCardBorrowed`, avoiding redundant cloning while keeping `Model` immutable ([tools/aurora_cli/src/aurora/model/compact_model.rs](tools/aurora_cli/src/aurora/model/compact_model.rs), [tools/aurora_cli/src/aurora/model/compact_card.rs](tools/aurora_cli/src/aurora/model/compact_card.rs)).
 
 ### Fixed
 

@@ -23,7 +23,7 @@ pub fn run() -> Result<String, AuroraError> {
 	let results = match cli.command {
 		Command::Validate => aurora.validate()?,
 		Command::RenderAurora(args) => aurora.render_models(&args)?,
-		Command::RenderViews(args) => aurora.render_cards(&args)?,
+		Command::RenderViews(args) => aurora.render_views(&args)?,
 		Command::RenderAll(args) => aurora.render_all(&args)?,
 		Command::Compact(args) => aurora.compact(&args)?,
 		Command::BumpPatch(args) => aurora.bump_patch(&args)?,

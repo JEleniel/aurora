@@ -14,7 +14,6 @@ Purpose: These directives are written for an automated coding agent that creates
 ## Formatting & Content Rules
 
 - **Indentation**: Use 2 spaces for indentation in YAML. Do not use tabs.
-- **Document Start/End**: Use `---` (three dashes) to separate multiple documents within a single file. Do not include `---` in a single-document file unless it is required by the consuming tool. The document-end marker `...` is optional and rarely required; avoid it unless needed. Use a prefix and suffix of `---` for frontmatter in Markdown files.
 - **Document Start/End**: Use `---` (three dashes) to separate multiple documents within a single file. Do not include `---` in a single-document file unless it is required by the consuming tool. The document-end marker `...` is optional and rarely required; avoid it unless needed.
 - **Quoting**: Prefer unquoted scalars for simple strings. Quote values when necessary (when a value contains leading/trailing whitespace, special characters like `:`, or starts with characters that cause implicit typing). Use double quotes when you need escape sequences; single quotes are acceptable for literal strings.
 - **Booleans & Nulls**: Use YAML booleans `true`/`false` (lowercase) and `null` for empty values. Avoid using `yes`/`no` unless required by a specific tool that expects them.

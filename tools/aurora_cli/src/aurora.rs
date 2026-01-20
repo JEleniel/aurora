@@ -2,30 +2,26 @@ pub mod model;
 
 use std::{
 	fs::File,
-	io::{Read, Write},
-	path::PathBuf,
+	io::{BufReader, Write},
+	path::{Path, PathBuf},
 	vec,
 };
 
 use jsonschema::{Validator, draft7::meta};
-use serde_json::json;
 use thiserror::Error;
 
 use crate::{
-	aurora::model::{Model, ModelError},
+	aurora::model::{CompactModelBorrowed, Model, ModelError},
 	cli::{bump_args::BumpArgs, output_args::OutputArgs},
 	logging::LoggingError,
 };
 
 pub struct Aurora {
-	pub path: PathBuf,
-	pub card_schema_validator: Validator,
-	pub compact_schema_validator: Validator,
 	pub models: Vec<Model>,
 }
 
 impl Aurora {
-	pub fn load(path: &PathBuf) -> Result<Self, AuroraError> {
+	pub fn load(path: &Path) -> Result<Self, AuroraError> {
 		let aurora_path = Self::find_aurora_path(path)?;
 		let schema_path = aurora_path.join("Aurora.schema.json");
 		let compact_schema_path = aurora_path.join("Aurora.compact.schema.json");
@@ -34,12 +30,7 @@ impl Aurora {
 		let compact_validator = Self::validate_and_load_schema(&compact_schema_path)?;
 
 		let models = Model::load(&aurora_path, &card_validator, &compact_validator)?;
-		Ok(Self {
-			path: aurora_path,
-			card_schema_validator: card_validator,
-			compact_schema_validator: compact_validator,
-			models,
-		})
+		Ok(Self { models })
 	}
 
 	pub fn validate(&self) -> Result<Vec<String>, AuroraError> {
@@ -52,15 +43,32 @@ impl Aurora {
 	}
 
 	pub fn render_models(&self, args: &OutputArgs) -> Result<Vec<String>, AuroraError> {
-		todo!()
+		std::fs::create_dir_all(&args.output_path)?;
+		for model in &self.models {
+			model.render_markdown(args)?;
+		}
+		self.write_root_readme(args)?;
+		Ok(vec![format!(
+			"Rendered cards for {} models.",
+			self.models.len()
+		)])
 	}
 
-	pub fn render_cards(&self, args: &OutputArgs) -> Result<Vec<String>, AuroraError> {
-		todo!()
+	pub fn render_views(&self, args: &OutputArgs) -> Result<Vec<String>, AuroraError> {
+		let mut results: Vec<String> = Vec::new();
+		for model in &self.models {
+			model.render_views(args)?;
+			results.push(format!(
+				"Rendered views for model {}.",
+				model.mission_card.id
+			));
+		}
+		Ok(results)
 	}
 
 	pub fn render_all(&self, args: &OutputArgs) -> Result<Vec<String>, AuroraError> {
-		let mut result = self.render_cards(args)?;
+		// Render views first so the model indexer can find them
+		let mut result = self.render_views(args)?;
 		result.extend(self.render_models(args)?);
 		Ok(result)
 	}
@@ -69,13 +77,12 @@ impl Aurora {
 		let mut results: Vec<String> = Vec::new();
 
 		for model in &self.models {
-			let compact_model = model.compact();
-			let output = serde_json::to_string(&compact_model)?;
+			let compact_model = CompactModelBorrowed::from(model);
 			let output_path = args
 				.output_path
 				.join(format!("AGENT-{}.json", model.mission_card.id));
 			let mut file = File::create(&output_path)?;
-			file.write_all(output.as_bytes())?;
+			serde_json::to_writer_pretty(&mut file, &compact_model)?;
 
 			results.push(format!(
 				"Wrote compact model for {} to {}.",
@@ -125,38 +132,59 @@ impl Aurora {
 		Err(AuroraError::CardNotFound(args.card_id.clone()))
 	}
 
-	fn find_aurora_path(path: &PathBuf) -> Result<PathBuf, AuroraError> {
-		let mut path = path.clone();
-		if path.is_dir() {
-			if !path.ends_with("aurora") && !path.ends_with("aurora/") {
-				path = path.join("aurora/");
-				if !path.exists() {
-					return Err(AuroraError::InvalidPath(path.display().to_string()));
-				} else {
-					return Ok(path);
-				}
-			} else {
-				if !path.exists() {
-					return Err(AuroraError::InvalidPath(path.display().to_string()));
-				}
-				return Ok(path);
-			};
+	fn find_aurora_path(path: &Path) -> Result<PathBuf, AuroraError> {
+		if Self::is_aurora_home(path) {
+			return Ok(path.to_path_buf());
 		}
-		Ok(path)
+		if path.is_dir() {
+			let candidate = path.join("aurora");
+			if Self::is_aurora_home(&candidate) {
+				return Ok(candidate);
+			}
+		}
+		if let Some(parent) = path.parent() {
+			if Self::is_aurora_home(parent) {
+				return Ok(parent.to_path_buf());
+			}
+		}
+		Err(AuroraError::InvalidPath(path.display().to_string()))
 	}
 
-	fn validate_and_load_schema(path: &PathBuf) -> Result<Validator, AuroraError> {
+	fn is_aurora_home(path: &Path) -> bool {
+		path.is_dir()
+			&& path.join("Aurora.schema.json").is_file()
+			&& path.join("Aurora.compact.schema.json").is_file()
+	}
+
+	fn validate_and_load_schema(path: &Path) -> Result<Validator, AuroraError> {
 		let file = File::open(path)?;
-		let mut data: String = String::new();
-		let mut reader = std::io::BufReader::new(&file);
-		reader.read_to_string(&mut data)?;
-		let schema = json!(data);
+		let reader = BufReader::new(file);
+		let schema: serde_json::Value = serde_json::from_reader(reader)?;
 		if meta::is_valid(&schema) {
-			Ok(Validator::new(&schema)
-				.map_err(|err| AuroraError::SchemaValidationError(err.to_string()))?)
+			Validator::new(&schema)
+				.map_err(|err| AuroraError::SchemaValidationError(err.to_string()))
 		} else {
 			Err(AuroraError::InvalidSchema)
 		}
+	}
+
+	fn write_root_readme(&self, args: &OutputArgs) -> Result<(), AuroraError> {
+		let mut entries: Vec<String> = Vec::new();
+		for model in &self.models {
+			let sanitized_name = Model::sanitize_name(&model.mission_card.name);
+			let mission_readme = format!("README-{}-{}.md", model.mission_card.id, sanitized_name);
+			entries.push(format!(
+				"- [{}]({})",
+				model.mission_card.name, mission_readme
+			));
+		}
+		entries.sort();
+		let mut file = File::create(args.output_path.join("README.md"))?;
+		writeln!(file, "# Aurora Models\n")?;
+		for entry in entries {
+			writeln!(file, "{}", entry)?;
+		}
+		Ok(())
 	}
 }
 

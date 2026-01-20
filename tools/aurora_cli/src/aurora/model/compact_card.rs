@@ -33,3 +33,34 @@ impl From<&Card> for CompactCard {
 		}
 	}
 }
+
+#[derive(Debug, Serialize)]
+pub struct CompactCardBorrowed<'a> {
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub attributes: Option<&'a Map<String, Value>>,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub card_subtype: Option<&'a str>,
+	pub card_type: &'a str,
+	pub description: &'a str,
+	pub id: &'a str,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub links: Option<&'a Vec<Link>>,
+	pub name: &'a str,
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub status: Option<&'a str>,
+}
+
+impl<'a> From<&'a Card> for CompactCardBorrowed<'a> {
+	fn from(card: &'a Card) -> Self {
+		Self {
+			attributes: card.attributes.as_ref(),
+			card_subtype: card.card_subtype.as_deref(),
+			card_type: &card.card_type,
+			description: &card.description,
+			id: &card.id,
+			links: card.links.as_ref(),
+			name: &card.name,
+			status: card.status.as_deref(),
+		}
+	}
+}
