@@ -8,7 +8,6 @@ use std::{
 };
 
 use jsonschema::{Validator, draft7::meta};
-use log::debug;
 use thiserror::Error;
 
 use crate::{
@@ -25,18 +24,11 @@ impl Aurora {
 	pub fn load(path: &Path) -> Result<Self, AuroraError> {
 		let aurora_path = Self::find_aurora_path(path)?;
 		let schema_path = aurora_path.join("Aurora.schema.json");
-		debug!("Using schema path: {}", schema_path.display());
 		let compact_schema_path = aurora_path.join("Aurora.compact.schema.json");
-		debug!(
-			"Using compact schema path: {}",
-			compact_schema_path.display(),
-		);
 		let card_validator = Self::validate_and_load_schema(&schema_path)?;
 		let compact_validator = Self::validate_and_load_schema(&compact_schema_path)?;
-		debug!("Validators loaded successfully.");
 
 		let models = Model::load(&aurora_path, &card_validator, &compact_validator)?;
-		debug!("Loaded {} models.", models.len());
 		Ok(Self { models })
 	}
 
@@ -149,25 +141,16 @@ impl Aurora {
 		let mut current: Option<&Path> = Some(start);
 		while let Some(dir) = current {
 			if Self::is_aurora_home(dir) {
-				debug!("Found Aurora home at '{}'", dir.display());
 				return Ok(dir.to_path_buf());
 			}
 
 			let aurora_folder = dir.join("aurora");
 			if Self::is_aurora_home(&aurora_folder) {
-				debug!(
-					"Found Aurora home at '{}' (via ./aurora)",
-					aurora_folder.display(),
-				);
 				return Ok(aurora_folder);
 			}
 
 			let docs_design_aurora = dir.join("docs").join("design").join("aurora");
 			if Self::is_aurora_home(&docs_design_aurora) {
-				debug!(
-					"Found Aurora home at '{}' (via ./docs/design/aurora)",
-					docs_design_aurora.display(),
-				);
 				return Ok(docs_design_aurora);
 			}
 
@@ -178,15 +161,9 @@ impl Aurora {
 	}
 
 	fn is_aurora_home(path: &Path) -> bool {
-		let result = path.is_dir()
+		path.is_dir()
 			&& path.join("Aurora.schema.json").is_file()
-			&& path.join("Aurora.compact.schema.json").is_file();
-		debug!(
-			"Checking if '{}' is Aurora home: {}",
-			path.display(),
-			result
-		);
-		result
+			&& path.join("Aurora.compact.schema.json").is_file()
 	}
 
 	fn validate_and_load_schema(path: &Path) -> Result<Validator, AuroraError> {

@@ -8,7 +8,6 @@ use crate::{
 	cli::{Cli, Command},
 };
 use clap::Parser;
-use log::debug;
 use logging::Logging;
 use std::path::{Path, PathBuf};
 
@@ -53,8 +52,6 @@ pub fn run() -> Result<String, AuroraError> {
 
 	let current_dir = std::env::current_dir()?;
 	cli.input_path = resolve_input_path(&cli.input_path, &current_dir)?;
-
-	debug!("Using input path: {}", cli.input_path.display());
 	let mut aurora = Aurora::load(&cli.input_path)?;
 
 	let results = match cli.command {
@@ -67,11 +64,7 @@ pub fn run() -> Result<String, AuroraError> {
 		Command::BumpMinor(args) => aurora.bump_minor(&args)?,
 		Command::BumpMajor(args) => aurora.bump_major(&args)?,
 	};
-	if !results.is_empty() {
-		Ok(results.iter().map(|r| format!("{}\n", r)).collect())
-	} else {
-		Ok("\nNo output generated.\n".to_string())
-	}
+	Ok(results.iter().map(|r| format!("{}\n", r)).collect())
 }
 
 #[cfg(test)]

@@ -1,4 +1,4 @@
-pub const CARD_PREFIXES: [(&str, &str); 31] = [
+pub const CARD_PREFIXES: [(&str, &str); 30] = [
 	("ACT", "Actor"),
 	("APP", "Application"),
 	("ART", "Artifact"),
@@ -12,7 +12,6 @@ pub const CARD_PREFIXES: [(&str, &str); 31] = [
 	("CON", "Condition"),
 	("CTL", "Control"),
 	("DEP", "Deployment"),
-	("DRI", "Driver"),
 	("DTS", "Data Store"),
 	("EVT", "Event"),
 	("FEA", "Feature"),

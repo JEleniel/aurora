@@ -650,6 +650,18 @@ impl Model {
 				path, mission_id, card_type, card_id, line_col, &message,
 			));
 		}
+		for annotation in evaluation.iter_annotations() {
+			let pointer = annotation.instance_location.to_string();
+			let pointer_display = format_pointer(&pointer);
+			let message = format!(
+				"Annotation at {}: {:?}",
+				pointer_display, annotation.annotations
+			);
+			let line_col = pointer_position(source, &pointer, line_index);
+			results.push(format_error_message(
+				path, mission_id, card_type, card_id, line_col, &message,
+			));
+		}
 
 		results
 	}
