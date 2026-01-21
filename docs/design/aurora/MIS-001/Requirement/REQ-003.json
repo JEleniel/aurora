@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "REQ-003",
 	"card_type": "Requirement",
@@ -20,4 +21,16 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Requirement",
+	"description": "Accept an input path that can be a model root folder, a parent folder that contains an aurora folder, or a Mission card file; if multiple Missions exist in a shared model root, process each mission as a separate model.",
+	"id": "REQ-003",
+	"name": "Resolve Model Root And Missions From Input"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

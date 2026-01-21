@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "FEA-006",
 	"card_type": "Feature",
@@ -38,4 +39,23 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Feature",
+	"description": "Provide bump-major, bump-minor, and bump-patch CLI commands to update card audit_trail versioning and history.",
+	"id": "FEA-006",
+	"links": [
+		{ "relationship": "enables", "target": "CAP-006" },
+		{ "relationship": "satisfies", "target": "REQ-012" },
+		{ "relationship": "satisfies", "target": "REQ-013" },
+		{ "relationship": "satisfies", "target": "REQ-014" },
+		{ "relationship": "satisfies", "target": "REQ-015" }
+	],
+	"name": "Bump Version Commands"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

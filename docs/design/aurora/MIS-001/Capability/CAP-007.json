@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "CAP-007",
 	"card_type": "Capability",
@@ -21,4 +22,21 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Capability",
+	"description": "Export a compact, agent-friendly snapshot of the model suitable for machine consumption by removing non-essential fields.",
+	"id": "CAP-007",
+	"links": [
+		{ "relationship": "satisfies", "target": "REQ-016" },
+		{ "relationship": "uses", "target": "CAP-001" },
+		{ "relationship": "uses", "target": "CAP-005" }
+	],
+	"name": "Compact Model Packaging"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

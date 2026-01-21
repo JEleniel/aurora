@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "REQ-012",
 	"card_type": "Requirement",
@@ -15,4 +16,16 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Requirement",
+	"description": "Bump semantic versions in audit_trail.version.",
+	"id": "REQ-012",
+	"name": "Bump Card Semver Versions"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

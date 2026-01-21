@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "ATV-001",
 	"card_type": "Activity",
@@ -25,4 +26,20 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Activity",
+	"description": "Resolve an Aurora model root and mission entrypoints from CLI input or default discovery.",
+	"id": "ATV-001",
+	"links": [
+		{ "relationship": "triggers", "target": "ATV-002" },
+		{ "relationship": "governed by", "target": "CTL-002" }
+	],
+	"name": "Resolve Model Root"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

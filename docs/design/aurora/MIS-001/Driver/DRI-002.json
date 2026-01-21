@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "DRI-002",
 	"card_type": "Driver",
@@ -44,10 +45,15 @@
 	],
 	"audit_trail": {
 		"version": "1.3.0",
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 		"hash": null,
 		"history": [
 			{
 				"editor": "Copilot: Architect",
+<<<<<<< HEAD
 				"timestamp": "2026-01-17T00:00:06.000Z",
 				"event": "created"
 			},
@@ -68,4 +74,27 @@
 			}
 		]
 	}
+=======
+				"event": "created",
+				"timestamp": "2026-01-20T00:00:00.000Z"
+			}
+		],
+		"version": "1.0.0"
+	},
+	"card_type": "Driver",
+	"description": "Provide high-confidence validation that a model conforms to the schema and the architectural invariants defined by the Aurora specification.",
+	"id": "DRI-002",
+	"links": [
+		{ "relationship": "drives", "target": "REQ-001" },
+		{ "relationship": "drives", "target": "REQ-002" },
+		{ "relationship": "drives", "target": "REQ-003" },
+		{ "relationship": "drives", "target": "REQ-009" },
+		{ "relationship": "drives", "target": "REQ-011" },
+		{ "relationship": "drives", "target": "REQ-012" },
+		{ "relationship": "drives", "target": "REQ-013" },
+		{ "relationship": "drives", "target": "REQ-014" },
+		{ "relationship": "drives", "target": "REQ-015" }
+	],
+	"name": "Trustworthy Model Validation"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "PRO-001",
 	"card_type": "Process",
@@ -53,4 +54,21 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Process",
+	"description": "Deterministic end-to-end CLI execution pipeline: resolve model root, load cards, validate schema and invariants, and conditionally render outputs.",
+	"id": "PRO-001",
+	"links": [
+		{ "relationship": "starts_with", "target": "EVT-001" },
+		{ "relationship": "triggers", "target": "ATV-001" },
+		{ "relationship": "involves", "target": "ACT-002" }
+	],
+	"name": "Aurora CLI Execution"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

@@ -44,7 +44,11 @@ All notable changes to this project will be documented in this file.
 - Replaced outdated `PROGRESS.md` references with `AGENT_PROGRESS.md` in handoff guidance and docs.
 - Resolved Mermaid bracket mismatches for deployment, node instance, and process/actor nodes so rendered views use the intended shapes.
 - Fixed the nested `aurora::model` exports so the CLI can resolve `CompactModel` and the bump argument structs ([tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs), [tools/aurora_cli/src/aurora/model/model_args.rs](tools/aurora_cli/src/aurora/model/model_args.rs), [tools/aurora_cli/src/aurora/model/compact_model.rs](tools/aurora_cli/src/aurora/model/compact_model.rs), [tools/aurora_cli/src/cli.rs](tools/aurora_cli/src/cli.rs)).
+<<<<<<< HEAD
 - Ensured `render-all` preserves `.view.md` outputs when `--clear` is enabled by clearing once before rendering both views and cards ([tools/aurora_cli/src/aurora.rs](tools/aurora_cli/src/aurora.rs), [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs)).
+=======
+- Fixed `aurora_cli` model detection when invoked from subdirectories by resolving the default `--input` relative to the nearest git root and expanding Aurora home discovery to search upwards and include `docs/design/aurora/` ([tools/aurora_cli/src/lib.rs](tools/aurora_cli/src/lib.rs), [tools/aurora_cli/src/aurora.rs](tools/aurora_cli/src/aurora.rs)).
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 
 ### Removed
 

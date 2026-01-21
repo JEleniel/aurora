@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "STA-002",
 	"card_type": "State",
@@ -25,4 +26,20 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "State",
+	"description": "State indicating a model has been loaded and validation may proceed.",
+	"id": "STA-002",
+	"links": [
+		{ "relationship": "receives", "target": "EVT-003" },
+		{ "relationship": "triggers", "target": "CON-001" }
+	],
+	"name": "Loaded"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

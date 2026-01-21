@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "FEA-002",
 	"card_type": "Feature",
@@ -60,4 +61,22 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Feature",
+	"description": "Render one Markdown file per card and generate index README(s) as a CLI command.",
+	"id": "FEA-002",
+	"links": [
+		{ "relationship": "enables", "target": "CAP-003" },
+		{ "relationship": "satisfies", "target": "REQ-004" },
+		{ "relationship": "satisfies", "target": "REQ-005" },
+		{ "relationship": "satisfies", "target": "REQ-009" }
+	],
+	"name": "Render Cards Command"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

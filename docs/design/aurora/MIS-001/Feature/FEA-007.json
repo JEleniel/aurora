@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "FEA-007",
 	"card_type": "Feature",
@@ -26,4 +27,20 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Feature",
+	"description": "Export a compact agent-friendly JSON representation of the model as a CLI command.",
+	"id": "FEA-007",
+	"links": [
+		{ "relationship": "enables", "target": "CAP-007" },
+		{ "relationship": "satisfies", "target": "REQ-016" }
+	],
+	"name": "Compact Model Export Command"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

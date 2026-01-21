@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "DRI-003",
 	"card_type": "Driver",
@@ -32,10 +33,15 @@
 	],
 	"audit_trail": {
 		"version": "1.2.0",
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 		"hash": null,
 		"history": [
 			{
 				"editor": "Copilot: Architect",
+<<<<<<< HEAD
 				"timestamp": "2026-01-17T00:00:07.000Z",
 				"event": "created"
 			},
@@ -51,4 +57,24 @@
 			}
 		]
 	}
+=======
+				"event": "created",
+				"timestamp": "2026-01-20T00:00:00.000Z"
+			}
+		],
+		"version": "1.0.0"
+	},
+	"card_type": "Driver",
+	"description": "Communicate architecture consistently by generating a standardized card catalog and repeatable views.",
+	"id": "DRI-003",
+	"links": [
+		{ "relationship": "drives", "target": "REQ-004" },
+		{ "relationship": "drives", "target": "REQ-005" },
+		{ "relationship": "drives", "target": "REQ-006" },
+		{ "relationship": "drives", "target": "REQ-008" },
+		{ "relationship": "drives", "target": "REQ-010" },
+		{ "relationship": "drives", "target": "REQ-016" }
+	],
+	"name": "Automate Architecture Communication"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

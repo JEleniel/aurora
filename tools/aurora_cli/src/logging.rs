@@ -21,7 +21,7 @@ impl Logging {
 					Utc::now().to_rfc3339_opts(SecondsFormat::Millis, true),
 					colors.color(record.level()),
 					record.target(),
-					message,
+					message
 				))
 			})
 			.filter(|f| f.level() != Level::Error)
@@ -34,7 +34,7 @@ impl Logging {
 					Utc::now().to_rfc3339_opts(SecondsFormat::Millis, true),
 					colors.color(record.level()),
 					record.target(),
-					message,
+					message
 				))
 			})
 			.level(LevelFilter::Error)

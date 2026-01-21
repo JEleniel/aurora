@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "CAP-004",
 	"card_type": "Capability",
@@ -38,4 +39,24 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Capability",
+	"description": "Render a standard set of Mermaid-based views with deterministic ordering, ELK layout defaults, and per-card-type class styling.",
+	"id": "CAP-004",
+	"links": [
+		{ "relationship": "satisfies", "target": "REQ-006" },
+		{ "relationship": "satisfies", "target": "REQ-007" },
+		{ "relationship": "satisfies", "target": "REQ-008" },
+		{ "relationship": "satisfies", "target": "REQ-010" },
+		{ "relationship": "generates", "target": "ART-004" },
+		{ "relationship": "uses", "target": "CAP-005" }
+	],
+	"name": "Render Standard Views"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

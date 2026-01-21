@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "COM-007",
 	"card_type": "Component",
@@ -41,4 +42,24 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Component",
+	"description": "Generates the standard Mermaid view documents, implementing the view set definition and exposing the view rendering contract.",
+	"id": "COM-007",
+	"links": [
+		{ "relationship": "exposes", "target": "INT-002" },
+		{ "relationship": "implements", "target": "FEA-003" },
+		{ "relationship": "implements", "target": "FEA-005" },
+		{ "relationship": "implements", "target": "CAP-004" },
+		{ "relationship": "generates", "target": "ART-004" },
+		{ "relationship": "uses", "target": "COM-008" }
+	],
+	"name": "Standard View Generator"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

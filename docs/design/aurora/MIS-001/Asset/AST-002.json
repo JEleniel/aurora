@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"$schema": "../Aurora.schema.json",
 	"id": "AST-002",
 	"card_type": "Asset",
@@ -21,4 +22,22 @@
 			}
 		]
 	}
+=======
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Asset",
+	"description": "The set of generated documentation outputs (Markdown cards, index README(s), and view documents) produced deterministically from a validated model.",
+	"id": "AST-002",
+	"links": [
+		{ "relationship": "uses", "target": "ART-002" },
+		{ "relationship": "uses", "target": "ART-003" },
+		{ "relationship": "uses", "target": "ART-004" },
+		{ "relationship": "persists_to", "target": "DTS-002" }
+	],
+	"name": "Generated Documentation Set"
+>>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }
