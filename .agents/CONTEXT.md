@@ -21,6 +21,3 @@ Example:
 - Finished: Updated Aurora schemas (deleted audit events, optional compact `$schema`), refreshed the example feature card, and repaired the Rust model loader sample (path resolution, regex, JSON parsing, and schema validation logic).
 - Next: Wait for additional schema or tooling updates from the Architect/TestDeveloper teams.
 - Blockers: None.
-- Finished: Updated Aurora schemas (deleted audit events, optional compact `$schema`), refreshed the example feature card, and repaired the Rust model loader sample (path resolution, regex, JSON parsing, and schema validation logic).
-- Next: Wait for additional schema or tooling updates from the Architect/TestDeveloper teams.
-- Blockers: None.
