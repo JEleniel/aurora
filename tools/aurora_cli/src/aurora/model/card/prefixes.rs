@@ -5,16 +5,13 @@ pub const CARD_PREFIXES: [(&str, &str); 30] = [
 	("AST", "Asset"),
 	("ATV", "Activity"),
 	("BND", "Boundary"),
-<<<<<<< HEAD
-=======
-	("DRI", "Driver"),
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 	("CAP", "Capability"),
 	("CNS", "Constraint"),
 	("COM", "Component"),
 	("CON", "Condition"),
 	("CTL", "Control"),
 	("DEP", "Deployment"),
+	("DRI", "Driver"),
 	("DTS", "Data Store"),
 	("EVT", "Event"),
 	("FEA", "Feature"),

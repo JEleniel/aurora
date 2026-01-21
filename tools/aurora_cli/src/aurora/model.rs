@@ -160,9 +160,15 @@ impl Model {
 			// Gether all the cards to be included in the view
 			let mut cards: Vec<&Card> = Vec::new();
 			for card_type in view_definition.root_card_types {
+				if card_type == self.mission_card.card_type {
+					cards.push(&self.mission_card);
+				}
 				cards.append(&mut self.add_cards_by_type(card_type)?);
 			}
 			for card_type in view_definition.include_card_types {
+				if card_type == self.mission_card.card_type {
+					cards.push(&self.mission_card);
+				}
 				cards.append(&mut self.add_cards_by_type(card_type)?);
 			}
 

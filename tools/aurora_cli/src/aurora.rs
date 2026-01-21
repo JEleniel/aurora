@@ -26,11 +26,8 @@ impl Aurora {
 		let aurora_path = Self::find_aurora_path(path)?;
 		let schema_path = aurora_path.join("Aurora.schema.json");
 		let compact_schema_path = aurora_path.join("Aurora.compact.schema.json");
-<<<<<<< HEAD
 		debug!("Aurora home found at {}", aurora_path.display());
 
-=======
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 		let card_validator = Self::validate_and_load_schema(&schema_path)?;
 		let compact_validator = Self::validate_and_load_schema(&compact_schema_path)?;
 		debug!("Loaded schema and validators.");
@@ -220,7 +217,9 @@ impl Aurora {
 #[cfg(test)]
 mod tests {
 	use super::Aurora;
+	use crate::cli::output_args::OutputArgs;
 	use std::{
+		collections::HashMap,
 		fs,
 		path::{Path, PathBuf},
 		time::{SystemTime, UNIX_EPOCH},
@@ -236,6 +235,62 @@ mod tests {
 
 	fn write_empty_file(path: &Path) {
 		fs::write(path, "{}").expect("write temp file");
+	}
+
+	#[test]
+	fn render_views_includes_mission_root_when_configured() {
+		use crate::aurora::model::{Card, Model};
+
+		let mission_value = serde_json::json!({
+			"$schema": "./Aurora.schema.json",
+			"id": "MIS-001",
+			"card_type": "Mission",
+			"name": "Example Mission",
+			"description": "Example mission for view rendering tests.",
+			"audit_trail": { "hash": null, "version": "0.1.0", "history": [] },
+			"links": [{ "relationship": "establishes", "target": "DRI-001" }]
+		});
+		let driver_value = serde_json::json!({
+			"$schema": "./Aurora.schema.json",
+			"id": "DRI-001",
+			"card_type": "Driver",
+			"name": "Example Driver",
+			"description": "Example driver for view rendering tests.",
+			"audit_trail": { "hash": null, "version": "0.1.0", "history": [] }
+		});
+
+		let mission_card = Card::from_value(Path::new("MIS-001.json"), mission_value)
+			.expect("create mission card");
+		let driver_card =
+			Card::from_value(Path::new("DRI-001.json"), driver_value).expect("create driver card");
+
+		let mut cards: HashMap<String, Card> = HashMap::new();
+		cards.insert(driver_card.id.clone(), driver_card);
+
+		let model = Model {
+			mission_card,
+			compact_model: None,
+			cards,
+			adjacency: HashMap::new(),
+			card_schema_errors: Vec::new(),
+			card_invariant_errors: Vec::new(),
+		};
+
+		let out_dir = unique_temp_dir("aurora_cli_views");
+		let args = OutputArgs {
+			output_path: out_dir.clone(),
+			clear: true,
+		};
+		model.render_views(&args).expect("render views");
+
+		let requirements_view = out_dir.join("MIS-001").join("Requirements.view.md");
+		let contents = fs::read_to_string(&requirements_view).expect("read rendered view");
+		assert!(
+			contents.contains("\tMIS-001"),
+			"expected mission node to be rendered in Requirements view"
+		);
+
+		fs::remove_dir_all(&out_dir).expect("cleanup temp output");
 	}
 
 	#[test]

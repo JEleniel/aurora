@@ -7,6 +7,11 @@ and the project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+### Fixed
+
+- Added the missing `DRI` → `Driver` entry to `CARD_PREFIXES` so it matches the documented Aurora card prefixes.
+- Fixed view rendering to include configured root cards even when the root is the mission card.
+
 ## [2.0.0](https://github.com/JEleniel/aurora/releases/tag/v2.0.0) - 2026-01-21
 
 ### Added
@@ -36,6 +41,5 @@ and the project adheres to [Semantic Versioning].
 - Deprecated JSON cards and outdated schema artifacts that conflicted with the new compact modeling workflow.
 
 [Unreleased]: https://github.com/JEleniel/aurora/compare/v2.0.0...HEAD
-[2.0.0]: https://github.com/JEleniel/aurora/releases/tag/v2.0.0
 [Keep a Changelog]: https://keepachangelog.com/en/1.1.0/
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
