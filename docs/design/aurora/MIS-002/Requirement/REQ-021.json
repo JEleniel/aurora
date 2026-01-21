@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-021",
+	"card_type": "Requirement",
+	"name": "Respect Reduced Motion Preferences",
+	"description": "When a user requests reduced motion, graph animations are minimized or disabled.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:20.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

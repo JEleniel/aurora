@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ART-003",
+	"card_type": "Artifact",
+	"name": "Generated View Markdown File",
+	"description": "A generated Markdown file containing an official view diagram (Mermaid) and related narrative.",
+	"links": [
+		{
+			"target": "DTS-002",
+			"relationship": "persists_to"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:05:05.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

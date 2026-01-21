@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CAP-006",
+	"card_type": "Capability",
+	"name": "Persist Model Changes",
+	"description": "Persist edits to disk in a save-as-you-go workflow and support undo of recent changes.",
+	"links": [
+		{
+			"target": "REQ-012",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-024",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:03:05.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

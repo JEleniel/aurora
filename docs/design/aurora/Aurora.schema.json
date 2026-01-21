@@ -41,7 +41,7 @@
 							},
 							"event": {
 								"description": "The type of change event",
-								"enum": ["created", "edited"],
+								"enum": ["created", "edited", "deleted"],
 								"type": "string"
 							},
 							"timestamp": {

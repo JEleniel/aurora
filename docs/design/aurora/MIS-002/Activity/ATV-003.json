@@ -1,0 +1,37 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ATV-003",
+	"card_type": "Activity",
+	"name": "Render Navigation Panes",
+	"description": "Render and update the tree and graph panes based on the current model index and selection.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "COM-003",
+			"relationship": "uses"
+		},
+		{
+			"target": "COM-004",
+			"relationship": "uses"
+		},
+		{
+			"target": "COM-005",
+			"relationship": "uses"
+		},
+		{
+			"target": "CAP-002",
+			"relationship": "enables"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:30.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

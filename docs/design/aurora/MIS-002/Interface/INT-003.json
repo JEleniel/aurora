@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "INT-003",
+	"card_type": "Interface",
+	"name": "aurora_cli Invocation Contract",
+	"description": "A contract for invoking aurora_cli to validate models and regenerate derived outputs deterministically.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:05:12.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

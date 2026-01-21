@@ -1,15 +1,14 @@
-const EXIT_VALIDATION_FAILED: i32 = 2;
-const EXIT_RENDER_FAILED: i32 = 3;
-const EXIT_BUMP_FAILED: i32 = 4;
-const EXIT_COMPACT_FAILED: i32 = 5;
+use log::debug;
+
+const EXIT_FAILED: u8 = 1;
 
 fn main() {
 	match aurora_cli::run() {
 		Ok(result) => print!("{}", result),
 		Err(err) => {
-			eprintln!("{err}");
+			debug!("{err}");
 			match err {
-				aurora_cli::AuroraError::ModelError(_) => std::process::exit(EXIT_BUMP_FAILED),
+				aurora_cli::AuroraError::ModelError(_) => std::process::exit(EXIT_FAILED.into()),
 				_ => std::process::exit(99),
 			}
 		}

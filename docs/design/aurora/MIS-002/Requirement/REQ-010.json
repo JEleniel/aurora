@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-010",
+	"card_type": "Requirement",
+	"name": "Filtering Affects Visibility Only",
+	"description": "Filtering affects what is visible in the graph view and does not alter the underlying model.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:09.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

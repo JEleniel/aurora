@@ -285,7 +285,7 @@ graph LR
 
 ## Tooling
 
-Aurora includes a set of reference tooling including an editor, a standalone viewer, and a command line tool. All tooling features listed below are planned and currently pending implementation; progress is tracked in `AGENT_PROGRESS.md`.
+Aurora includes a set of reference tooling including an editor, a standalone viewer, and a command line tool.
 
 ### Editor
 

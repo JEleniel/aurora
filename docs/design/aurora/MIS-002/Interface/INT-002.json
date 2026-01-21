@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "INT-002",
+	"card_type": "Interface",
+	"name": "Model Home Layout Contract",
+	"description": "The contract describing the expected on-disk model home and mission home folder layout and allowed files.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:05:11.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

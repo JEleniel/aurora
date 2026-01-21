@@ -47,7 +47,7 @@
 					"type": "string"
 				}
 			},
-			"required": ["$schema", "id", "card_type", "name", "description"],
+			"required": ["id", "card_type", "name", "description"],
 			"type": "object"
 		},
 		"link": {
@@ -71,7 +71,7 @@
 	"description": "JSON schema for the compact Aurora model representation emitted by the aurora_cli compact exporter",
 	"properties": {
 		"$schema": {
-			"description": "Reference to the Aurora.compact.schema.json in the Aurora model used to construct the compact document",
+			"description": "Optional reference to the Aurora.compact.schema.json in the Aurora model used to construct the compact document",
 			"type": "string"
 		},
 		"cards": {
@@ -83,7 +83,7 @@
 			"type": "array"
 		}
 	},
-	"required": ["$schema", "cards"],
+	"required": ["cards"],
 	"title": "Aurora Compact Model Schema",
 	"type": "object",
 	"version": "1.0.0"

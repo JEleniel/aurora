@@ -1,0 +1,37 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ATV-007",
+	"card_type": "Activity",
+	"name": "Resolve Concurrent Changes",
+	"description": "When external changes are detected, compute and apply deterministic merge and conflict resolution rules.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "COM-009",
+			"relationship": "uses"
+		},
+		{
+			"target": "COM-010",
+			"relationship": "uses"
+		},
+		{
+			"target": "CAP-007",
+			"relationship": "enables"
+		},
+		{
+			"target": "CON-002",
+			"relationship": "triggers"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:34.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

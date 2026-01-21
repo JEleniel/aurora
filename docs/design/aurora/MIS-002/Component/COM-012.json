@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-012",
+	"card_type": "Component",
+	"name": "Audit And Hash Manager",
+	"description": "Applies audit history entries and version bumps and computes SHA256 hashes during save.",
+	"links": [
+		{
+			"target": "FEA-010",
+			"relationship": "implements"
+		},
+		{
+			"target": "AST-002",
+			"relationship": "uses"
+		},
+		{
+			"target": "ART-001",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:06:11.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

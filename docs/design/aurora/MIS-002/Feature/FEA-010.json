@@ -1,0 +1,33 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "FEA-010",
+	"card_type": "Feature",
+	"name": "Audit Trail And Hash Updates",
+	"description": "On save, append audit history, apply version bumps, and compute the card hash.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CAP-009",
+			"relationship": "enables"
+		},
+		{
+			"target": "REQ-027",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-028",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:04:09.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

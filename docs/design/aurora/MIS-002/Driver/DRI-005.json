@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "DRI-005",
+	"card_type": "Driver",
+	"name": "Accessible Cross-Platform UX",
+	"description": "Deliver a consistent, keyboard-navigable, WCAG AA-conformant user experience across Linux, Windows, and macOS.",
+	"links": [
+		{
+			"target": "REQ-020",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-021",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-032",
+			"relationship": "drives"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:05.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

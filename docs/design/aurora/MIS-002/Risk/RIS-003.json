@@ -1,0 +1,33 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "RIS-003",
+	"card_type": "Risk",
+	"name": "Tool Unavailability Or Lag",
+	"description": "The UI becomes unresponsive or unreliable when handling large models or rapid filesystem changes, preventing safe navigation and editing.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CAP-001",
+			"relationship": "impacts"
+		},
+		{
+			"target": "CAP-005",
+			"relationship": "impacts"
+		},
+		{
+			"target": "CAP-013",
+			"relationship": "impacts"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:05.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

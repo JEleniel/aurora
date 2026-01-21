@@ -1,0 +1,36 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "DRI-004",
+	"card_type": "Driver",
+	"name": "Live Modeling With Agents",
+	"description": "Support concurrent modeling with human users and agents by watching the filesystem, resolving non-conflicting updates deterministically, and providing an MCP endpoint with change events.",
+	"links": [
+		{
+			"target": "REQ-016",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-017",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-018",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-019",
+			"relationship": "drives"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:04.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -110,7 +110,7 @@ impl Model {
 
 	pub fn render_markdown(&self, args: &OutputArgs) -> Result<(), ModelError> {
 		if args.clear {
-			self.clear_markdown(args)?;
+			Self::clear_output_dir(&args.output_path)?;
 		}
 
 		let mut markdown: String = MODEL_TEMPLATE.to_string();
@@ -125,11 +125,13 @@ impl Model {
 		let cards = self.build_card_index();
 		markdown = markdown.replace("{{cards}}", &cards);
 
+		debug!("Writing README for model {}", self.mission_card.id);
 		let readme_path = args
 			.output_path
 			.join(format!("README-{}.md", self.mission_card.id));
 		let mut file = std::fs::File::create(&readme_path)?;
 		file.write_all(markdown.as_bytes())?;
+		debug!("Wrote README to {}", readme_path.display());
 
 		self.write_cards_markdown(args)?;
 
@@ -138,10 +140,17 @@ impl Model {
 
 	pub fn render_views(&self, args: &OutputArgs) -> Result<(), ModelError> {
 		for (view_name, view_definition) in view_definitions::get_definitions() {
+			let view_path = args.output_path.join(&self.mission_card.id);
+			fs::create_dir_all(&view_path)?;
+
 			let view_path = args
 				.output_path
 				.join(&self.mission_card.id)
 				.join(format!("{}.view.md", view_name.replace(" ", "_")));
+			debug!(
+				"Rendering view {} for model {}",
+				view_name, self.mission_card.id
+			);
 
 			let mut view = view_template::VIEW_TEMPLATE.to_string();
 			view = view.replace("{{id}}", &self.mission_card.id);
@@ -191,8 +200,10 @@ impl Model {
 			view = view.replace("{{edges}}", &edges);
 			view = view.replace("{{class_mappings}}", &classes);
 
+			debug!("Writing view file for model {}", &view_path.display());
 			let mut file = std::fs::File::create(&view_path)?;
 			file.write_all(view.as_bytes())?;
+			debug!("Wrote view to {}", view_path.display());
 		}
 
 		Ok(())
@@ -328,7 +339,7 @@ impl Model {
 			if Self::is_boundary_card(card) || boundary_members.contains(&card.id) {
 				continue;
 			}
-			nodes.push_str(&format!("\t{}{}", card.id, card.render_view_node()));
+			nodes.push_str(&format!("\t{}{}\n", card.id, card.render_view_node()));
 		}
 		nodes
 	}
@@ -511,9 +522,9 @@ impl Model {
 		card_type.trim().to_lowercase().replace(' ', "_")
 	}
 
-	fn clear_markdown(&self, args: &OutputArgs) -> Result<(), ModelError> {
+	pub(crate) fn clear_output_dir(output_root: &Path) -> Result<(), ModelError> {
 		let mut pending_paths: Vec<PathBuf> = Vec::new();
-		pending_paths.push(args.output_path.clone());
+		pending_paths.push(output_root.to_path_buf());
 
 		while let Some(path) = pending_paths.pop() {
 			for entry in path.read_dir()? {
@@ -644,18 +655,6 @@ impl Model {
 			let message = format!(
 				"JSON schema validation failed at {}: {}",
 				pointer_display, error.error
-			);
-			let line_col = pointer_position(source, &pointer, line_index);
-			results.push(format_error_message(
-				path, mission_id, card_type, card_id, line_col, &message,
-			));
-		}
-		for annotation in evaluation.iter_annotations() {
-			let pointer = annotation.instance_location.to_string();
-			let pointer_display = format_pointer(&pointer);
-			let message = format!(
-				"Annotation at {}: {:?}",
-				pointer_display, annotation.annotations
 			);
 			let line_col = pointer_position(source, &pointer, line_index);
 			results.push(format_error_message(

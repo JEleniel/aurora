@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CNS-003",
+	"card_type": "Constraint",
+	"name": "Treat Model Content As Untrusted",
+	"description": "Nothing in an Aurora model is executable; the application must treat all model content as untrusted input and must not execute any content from the model.",
+	"links": [
+		{
+			"target": "CTL-001",
+			"relationship": "governs"
+		},
+		{
+			"target": "CTL-002",
+			"relationship": "governs"
+		},
+		{
+			"target": "FEA-016",
+			"relationship": "limits"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:12.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

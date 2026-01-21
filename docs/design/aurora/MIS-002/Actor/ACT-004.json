@@ -1,0 +1,37 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ACT-004",
+	"card_type": "Actor",
+	"name": "Threat Actor",
+	"description": "An adversary who attempts to exploit the UI by providing malicious model content (e.g., unsafe paths or oversized inputs).",
+	"links": [
+		{
+			"target": "THR-001",
+			"relationship": "presents"
+		},
+		{
+			"target": "THR-002",
+			"relationship": "presents"
+		},
+		{
+			"target": "THR-003",
+			"relationship": "presents"
+		}
+	],
+	"audit_trail": {
+		"version": "1.1.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:09.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:11:03.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}

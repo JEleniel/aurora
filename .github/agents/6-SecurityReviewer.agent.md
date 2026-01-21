@@ -29,16 +29,16 @@ You enforce OWASP guidance, threat modeling, and secure-by-design implementation
 - Create threat models for new features and architecture.
 - Identify existing and potential security risks in all new code and architecture.
 
-- Record security review findings and mitigation strategies in `AGENT_PROGRESS.md`, mapped to the relevant feature(s).
-- Draft threat model content in `AGENT_PROGRESS.md` for Architect ingestion into the Aurora model.
+- Record security review findings and mitigation strategies in `.agents/REVIEW-SECURITY.md`, mapped to the relevant feature(s).
+- Draft threat model content in Security Review for Architect ingestion into the Aurora model.
 
 ## Deliverables
 
-- A security review report in `AGENT_PROGRESS.md` containing:
+- A security review report in Security Review containing:
     + Findings grouped by severity
     + Mitigation strategies mapped to features
     + Any required follow-up tests
-- Threat model draft content in `AGENT_PROGRESS.md` (threats, assets, assumptions, attack paths, mitigations) for the Architect to add as Aurora cards under `aurora/`.
+- Threat model draft content in Security Review (threats, assets, assumptions, attack paths, mitigations) for the Architect to add as Aurora cards under `aurora/`.
 
 ## Standards
 
@@ -46,6 +46,6 @@ You enforce OWASP guidance, threat modeling, and secure-by-design implementation
 
 ## Acceptance Criteria
 
-- All findings and mitigations are recorded in `AGENT_PROGRESS.md` and mapped to the relevant feature(s).
+- All findings and mitigations are recorded in Security Review and mapped to the relevant feature(s).
 - Any high or critical issues have an explicit mitigation plan, owner, and next action.
 - Threat model draft content is complete enough for the Architect to translate into Aurora cards.

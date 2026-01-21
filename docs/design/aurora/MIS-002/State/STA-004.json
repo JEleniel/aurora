@@ -1,0 +1,41 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "STA-004",
+	"card_type": "State",
+	"name": "Validating",
+	"description": "The application is validating the model and pending edit against schema and invariants.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "EVT-005",
+			"relationship": "receives"
+		},
+		{
+			"target": "EVT-006",
+			"relationship": "receives"
+		},
+		{
+			"target": "CON-001",
+			"relationship": "triggers"
+		},
+		{
+			"target": "STA-006",
+			"relationship": "transitions_to"
+		},
+		{
+			"target": "STA-007",
+			"relationship": "transitions_to"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:16.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -8,6 +8,7 @@ use std::{
 };
 
 use jsonschema::{Validator, draft7::meta};
+use log::debug;
 use thiserror::Error;
 
 use crate::{
@@ -25,11 +26,15 @@ impl Aurora {
 		let aurora_path = Self::find_aurora_path(path)?;
 		let schema_path = aurora_path.join("Aurora.schema.json");
 		let compact_schema_path = aurora_path.join("Aurora.compact.schema.json");
+		debug!("Aurora home found at {}", aurora_path.display());
 
 		let card_validator = Self::validate_and_load_schema(&schema_path)?;
 		let compact_validator = Self::validate_and_load_schema(&compact_schema_path)?;
+		debug!("Loaded schema and validators.");
 
 		let models = Model::load(&aurora_path, &card_validator, &compact_validator)?;
+		debug!("Loaded {} models.", models.len());
+
 		Ok(Self { models })
 	}
 
@@ -38,6 +43,10 @@ impl Aurora {
 		for model in &self.models {
 			all_errors.extend(model.card_schema_errors.clone());
 			all_errors.extend(model.card_invariant_errors.clone());
+		}
+
+		if all_errors.is_empty() {
+			all_errors.push("All models are valid.".to_string());
 		}
 		Ok(all_errors)
 	}
@@ -67,9 +76,15 @@ impl Aurora {
 	}
 
 	pub fn render_all(&self, args: &OutputArgs) -> Result<Vec<String>, AuroraError> {
+		let mut render_args = args.clone();
+		if render_args.clear {
+			Model::clear_output_dir(&render_args.output_path)?;
+			render_args.clear = false;
+		}
+
 		// Render views first so the model indexer can find them
-		let mut result = self.render_views(args)?;
-		result.extend(self.render_models(args)?);
+		let mut result = self.render_views(&render_args)?;
+		result.extend(self.render_models(&render_args)?);
 		Ok(result)
 	}
 

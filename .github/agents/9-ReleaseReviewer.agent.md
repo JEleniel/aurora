@@ -36,5 +36,5 @@ You manage pre-release discipline without violating development constraints.
 
 ## Deliverables
 
-- Specific instructions in the `AGENT_PROGRESS.md` file for correction if any issues are found.
-- A final approval message in the `AGENT_PROGRESS.md` file if all checks are satisfactory.
+- Specific instructions in the `.agents/REVIEW-RELEASE.md` file for correction if any issues are found.
+- A final approval message in the Review File if all checks are satisfactory.

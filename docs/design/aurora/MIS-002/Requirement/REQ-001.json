@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-001",
+	"card_type": "Requirement",
+	"name": "Load Models From A Model Home",
+	"description": "The application loads one or more Aurora models from a single selected model home folder.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:00.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

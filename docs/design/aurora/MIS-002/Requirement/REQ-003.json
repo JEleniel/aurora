@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-003",
+	"card_type": "Requirement",
+	"name": "Model Tabs Remember Context",
+	"description": "Each loaded model is displayed on its own tab; each tab remembers its central card and filter selection while the app is running.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:02.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

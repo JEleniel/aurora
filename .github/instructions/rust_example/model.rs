@@ -5,9 +5,10 @@ mod model_args;
 pub use card::*;
 pub use model_args::*;
 use regex::Regex;
-use serde_json::json;
+use serde_json::Value;
 use std::{
 	collections::HashMap,
+	convert::TryFrom,
 	fs::File,
 	io::{BufReader, Read},
 	path::{Path, PathBuf},
@@ -34,18 +35,35 @@ impl Model {
 
 		let mut model_path: PathBuf = path.clone();
 
-		// Check to see if the provided path is the parent directory of "aurora/"
-		if path.is_dir() {
-			model_path = if !path.ends_with("aurora") && !path.ends_with("aurora/") {
-				let path = path.join("aurora/");
-				if !path.exists() {
-					return Err(ModelError::PathNotFound(path.display().to_string()));
+		if model_path.is_file() {
+			model_path = model_path
+				.parent()
+				.ok_or_else(|| ModelError::ModelPathNotFound(path.display().to_string()))?
+				.to_path_buf();
+		}
+
+		if model_path.is_dir() {
+			let schema_here = model_path.join("Aurora.schema.json");
+			if !schema_here.exists() {
+				let child_candidate = model_path.join("aurora");
+				let child_schema = child_candidate.join("Aurora.schema.json");
+				if child_schema.exists() {
+					model_path = child_candidate;
+				} else if let Some(parent) = model_path.parent() {
+					let parent_schema = parent.join("Aurora.schema.json");
+					if parent_schema.exists() {
+						model_path = parent.to_path_buf();
+					} else {
+						return Err(ModelError::SchemaNotFound);
+					}
 				} else {
-					path
+					return Err(ModelError::SchemaNotFound);
 				}
-			} else {
-				model_path
-			};
+			}
+		} else {
+			return Err(ModelError::ModelPathNotFound(
+				model_path.display().to_string(),
+			));
 		}
 
 		// Locate and validate schema file
@@ -62,20 +80,20 @@ impl Model {
 		}
 		Self::validate_schema(&compact_schema_path)?;
 
-		let mut models: Vec<Model> = Self::load_models(path)?;
+		let mut models: Vec<Model> = Self::load_models(&model_path)?;
 		if models.is_empty() {
 			return Err(ModelError::ModelNotFound);
 		}
 
 		// Load all the cards for each model
-		for mut model in models.iter_mut() {
+		for model in models.iter_mut() {
 			let mission_path = model_path.join(&model.mission_id);
 			if !mission_path.exists() {
 				return Err(ModelError::ModelPathNotFound(
 					mission_path.display().to_string(),
 				));
 			}
-			Self::load_cards(&mut model, &mission_path)?;
+			Self::load_cards(model, &mission_path)?;
 		}
 
 		Ok(models)
@@ -85,54 +103,48 @@ impl Model {
 		let schema_path = self.model_home_path.join("Aurora.schema.json");
 
 		let schema_file = File::open(&schema_path)?;
-		let mut schema_reader = BufReader::new(&schema_file);
-		let mut schema: String = String::new();
-		schema_reader.read_to_string(&mut schema)?;
-		let schema = json!(schema);
+		let schema: Value = serde_json::from_reader(BufReader::new(schema_file))?;
 
 		let card = self
 			.cards
 			.get(card_id)
-			.ok_or(ModelError::CardNotFound(card_id.to_string()))?;
+			.ok_or_else(|| ModelError::CardNotFound(card_id.to_string()))?;
 
-		let card_file = File::open(
-			self.model_home_path
-				.join(format!("{}/", self.mission_id))
-				.join(format!("{}/", card.card_type))
-				.join(format!("{}.json", card.id)),
-		)?;
-		let mut card_reader = BufReader::new(&card_file);
-		let mut card: String = String::new();
-		card_reader.read_to_string(&mut card)?;
-		let card = json!(card);
+		let card_path = self
+			.model_home_path
+			.join(&self.mission_id)
+			.join(&card.card_type)
+			.join(format!("{}.json", card.id));
+		let card_file = File::open(&card_path)?;
+		let card_json: Value = serde_json::from_reader(BufReader::new(card_file))?;
 
-		Ok(jsonschema::is_valid(&schema, &card))
+		Ok(jsonschema::is_valid(&schema, &card_json))
 	}
 
 	fn load_models(path: &PathBuf) -> Result<Vec<Self>, ModelError> {
-		let regex_mission_card = Regex::new(r"^MIS-\d{3}.json$")?;
+		let regex_mission_card = Regex::new(r"^MIS-\d{3}-.+\.json$")?;
 
 		let mut models: Vec<Self> = Vec::new();
 		for entry in path.read_dir()? {
-			let path = entry?.path();
+			let entry_path = entry?.path();
 
-			if path.is_file() {
-				if let Some(file_name) = path.file_name() {
-					if regex_mission_card
-						.is_match(file_name.to_str().ok_or(ModelError::ModelNotFound)?)
-					{
-						let mission_card = Card::load(&path)?;
+			if entry_path.is_file() {
+				let Some(file_name) = entry_path.file_name().and_then(|name| name.to_str()) else {
+					continue;
+				};
 
-						let mut model = Self {
-							mission_id: mission_card.id.clone(),
-							mission_name: mission_card.name.clone(),
-							model_home_path: path.clone(),
-							cards: HashMap::new(),
-							adjacency: HashMap::new(),
-						};
-						model.add_card(mission_card);
-						models.push(model);
-					}
+				if regex_mission_card.is_match(file_name) {
+					let mission_card = Card::load(&entry_path)?;
+
+					let mut model = Self {
+						mission_id: mission_card.id.clone(),
+						mission_name: mission_card.name.clone(),
+						model_home_path: path.clone(),
+						cards: HashMap::new(),
+						adjacency: HashMap::new(),
+					};
+					model.add_card(mission_card);
+					models.push(model);
 				}
 			}
 		}
@@ -181,30 +193,30 @@ impl Model {
 		}
 	}
 
-	const MAX_BYTES: usize = 1 * 1024 ^ 3; // 1 GiB
+	const MAX_BYTES: usize = 1024 * 1024 * 1024; // 1 GiB
 	fn validate_schema(path: &Path) -> Result<(), ModelError> {
 		let file = File::open(path)?;
-		let mut reader = BufReader::new(&file);
+		let mut reader = BufReader::new(file);
 
 		let mut buf = Vec::new();
 		reader
 			.by_ref()
 			.take(Self::MAX_BYTES as u64 + 1) // +1 lets us detect oversize without truncating silently
-			.read_to_end(&mut buf);
+			.read_to_end(&mut buf)?;
 
 		if buf.len() > Self::MAX_BYTES {
+			let actual_size = std::fs::metadata(path)?.len();
+			let actual_size = usize::try_from(actual_size).unwrap_or(usize::MAX);
 			return Err(ModelError::SchemaTooLarge(
 				Self::MAX_BYTES,
-				file.metadata()?.len() as usize,
+				actual_size,
 				path.display().to_string(),
 			));
 		}
 
-		// 2) Parse JSON from bytes
-		let schema_json: serde_json::Value = serde_json::from_slice(&buf)?;
+		let schema_json: Value = serde_json::from_slice(&buf)?;
 
-		// 3) Validate against Draft-07 meta-schema
-		if jsonschema::meta::is_valid(&schema_json) {
+		if !jsonschema::meta::is_valid(&schema_json) {
 			return Err(ModelError::InvalidSchema(path.display().to_string()));
 		}
 
@@ -224,7 +236,7 @@ pub enum ModelError {
 	InvalidSchema(String),
 	#[error("Model root file not found")]
 	ModelNotFound,
-	#[error("Schema file too large, max {0} GB ({1} GB): {2}")]
+	#[error("Schema file too large, max {0} bytes ({1} bytes): {2}")]
 	SchemaTooLarge(usize, usize, String),
 	#[error("Io error: {0}")]
 	IoError(#[from] std::io::Error),

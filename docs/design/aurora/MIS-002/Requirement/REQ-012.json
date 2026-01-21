@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-012",
+	"card_type": "Requirement",
+	"name": "Save-As-You-Go With Conflict Handling",
+	"description": "The application saves changes automatically and detects concurrent edits, applying deterministic conflict resolution and notifying users when their changes were not applied.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:11.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

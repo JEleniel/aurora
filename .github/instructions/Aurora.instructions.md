@@ -1,6 +1,7 @@
 ---
 applyTo: '**/*'
 ---
+
 # Aurora Machine Agent Instruction
 
 ## Model Overview
@@ -8,6 +9,8 @@ applyTo: '**/*'
 **Version**: 2.0.0
 
 Aurora is a deterministic architectural model where architectural elements are cards, the relationships between cards are represented as links, and the model forms a Directed Graph. The model is designed so that any interpretation, such as view diagrams, can be generated from the model; and for direct machine consumption by LLMs, agents, reasoners, and automated tools. The model invariants guarantee unambiguous interpretation and reasoning about the model.
+
+Semantics are derived from the invariant rules: cards and relationship verbs are descriptive only, and meaning comes from interpretation (views, impact analysis, traceability).
 
 **One Goal**: Enable the Architect to focus on modeling the architecture instead of drawing diagrams and pictures.
 
@@ -38,7 +41,8 @@ Workflow Modeler implements the feature "Deterministic Workflow Modeling Engine"
 **These result in a model that looks like this**:
 
 ```mermaid
-graph
+%%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
+graph LR
 	drive_excellence(("`Mission:<br />Drive Excellence`"))
 	operational_friction_elimination(["`Driver:<br />Operational Friction Elimination`"])
 	define_a_deterministic_modeling_framework(["`Requirement:<br />Define a Deterministic Modeling Framework`"])
@@ -59,12 +63,22 @@ graph
 
 ### Cards
 
-A card contains the information about an element of the model and the links to other elements. The cards themselves and the links between them do not encode semantic meaning (see [Invariant Rules](#invariant-rules)). Cards also have an `attributes` property that allows additional, arbitrary information to be included. Card files should be "pretty printed" using `prettier`.
+A card contains the information about an element of the model and the links to other elements. See [Model Overview](#model-overview) for semantics and determinism. Cards also have an `attributes` property that allows additional, arbitrary information to be included. Card files should be "pretty printed" using `prettier`.
 
 Each card is comprised of:
 
-- `$schema` - the relative link to the Aurora schema file included with the model(s) in the model home.
-- `id` - A unique identifier assigned to the card composed from a predefined prefix per `card_type` followed by a sequentially assigned integer per card type. If the model is extended, additional prefixes must also be issued for new card types. Once issued to a card the `id` MUST NOT change. If `card_type` changes, a new card should be issued and the original moved to the `status` "Deleted" with an appropriate audit history entry added. This enables traceability of the model over time.
+| Field          | Required | Meaning                                                                                                                                                                                                                                                                         |
+| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$schema`      | Yes      | Relative link to the Aurora schema file included with the model(s) in the model home.                                                                                                                                                                                           |
+| `id`           | Yes      | Unique identifier with a `card_type` prefix and sequential integer. Once issued, the `id` MUST NOT change; if `card_type` changes, issue a new card and move the original to `status` "Deleted" with an audit history entry.                                                    |
+| `card_type`    | Yes      | Architectural element represented by the card in title case. See [Common Cards](#common-cards) for examples.                                                                                                                                                                    |
+| `card_subtype` | No       | Optional refinement of the `card_type` in title case.                                                                                                                                                                                                                           |
+| `name`         | Yes      | Concise human-readable name for the card in title case.                                                                                                                                                                                                                         |
+| `description`  | Yes      | Details regarding the element the card represents.                                                                                                                                                                                                                              |
+| `status`       | No       | Status of an implementable element such as a `Feature`. Recommended lifecycle: "Proposed", "Design", "Implementation", "Released", "Deprecated", "Deleted"; extend consistently per `card_type`.                                                                                |
+| `links`        | No       | Pointers to other cards establishing relationships (`target` is the destination card `id`; `relationship` is a human-readable verb).                                                                                                                                            |
+| `audit_trail`  | Yes      | Semver audit: major for meaning changes or `Deleted`, minor for non-meaning updates, patch for typos; include history entries with `editor`, RFC3339 `timestamp`, and `event` (`created`, `edited`, `deleted`); optional SHA256 `hash` uses `null` placeholder for calculation. |
+| `attributes`   | No       | Arbitrary optional key-value pairs providing additional data; the value can be any valid JSON value, including objects.                                                                                                                                                         |
 
 **Example Names**:
 
@@ -74,232 +88,14 @@ Each card is comprised of:
 - REQ-001
 - REQ-002
 
-- `card_type` - The architectural element represented by the card in title case. See [Common Cards](#common-cards) for examples
-- `card_subtype` - An optional refinement of the `card_type` in title case. See [Common Cards](#common-cards) for examples.
-- `name` - A concise human-readable name for the card in title case
-- `description` - Details regarding the element the card represents
-- `status` - the status of an implementable element such as a `Feature`
-	+ A common lifecycle is: "Proposed", "Backlog", "Design", "Implementation", "Review", "Pre-Release", "Released", "Deprecated", "Retired", "Deleted".
-	+ Any other series of lifecycle states that make sense for the model may be used, as long as they are kept consistent per type across the model.
-- `links` - pointers to other cards establishing relationships
-	+ `target` - the destination card `id`
-	+ `relationship` - verb describing the impact for human reference
-- `audit_trail` - a record of the version and a history of the events (created/edited/deleted) the card has been through
-	+ `version` - A semver version number for the card that is incremented when the card changes.
-		* The major version is incremented for changes that alter the meaning or definition of the element, such as changing the `card_subtype`, updating the `name`, or adjusting the `description` in a way that changes meaning. The `status` moving to `Deleted` is also a major increment.
-		* The minor version is incremented for changes that do not alter the element's definition, such as revising the phrasing of the `description` without changing meaning, or a change in `status` other than to "Deleted".
-		* Insignificant changes, such as typographic or grammatical corrections, increase the patch version.
-	+ `hash` - an optional SHA256 hash of the card with the hash temporarily set to `null` to calculate the hash
-	+ `history` - an array of objects capturing the audit history of the card
-		* `editor` - the identity of the entity making the change. Agents should use the name of their host (e.g. "Copilot") and, if acting as a particular role, a colon followed by a space and the agent role name, for example "Copilot: BackendDeveloper".
-		* `timestamp` - the UTC time of the edit in RFC3339 format with millisecond resolution
-		* `event` - the type of change event, one of: `created`, `edited`, `deleted`
-- `attributes` - Arbitrary, optional key-value pairs providing additional data; the value can be any valid JSON value, including objects. See [Common Cards](#common-cards) for examples.
+#### Model Storage
 
-#### The Compressed Model
-
-In order to make the model easier for implementing agents to process and save context space, a compressed model file may be generated named `{mission id}.agent.json` for agent reference in the model home that conforms to the `Aurora.compact.schema.json` in the model home.
-
-The compressed file will have all of the cards in a top level array named `cards` and will have the `audit_trail` stripped from each. The compressed file may be "pretty printed" but that is not required.
-
-#### Common Cards
-
-The following list contains a set of common cards (enough for a complete model) that can be used as a starting point. It is a refined, internally consistent card list aligned to the Aurora semantics, BPMN-inclusive, and AI-friendly. The prefix for file names is in parentheses after the card type and colon.
-
-- **Mission**: (MIS) The fundamental purpose that gives the model intent and meaning and from which all drivers originate.
-	+ Examples: "Modernize operations through automation", "Protect sensitive information at scale", "Enable reliable digital service delivery", "Ensure regulatory compliance and trust", "Support equitable access to services"
-
-- **Driver**: (DRI) A motivating force that explains why requirements exist.
-	+ Examples: "Grow Responsibly", "Comply with Laws, Rules, and Regulations", "Prevent Data Breaches", "Reduce Operational Risk", "Improve User Trust"
-
-- **Requirement**: (REQ) A verifiable statement of need or obligation that must be satisfied.
-	+ Examples: "Users are authenticated", "Access to resources is controlled", "Security-relevant events are recorded", "Users can recover account access", "Transaction history is maintained"
-
-- **Capability**: (CAP) A stable, implementation-independent ability required to satisfy one or more requirements.
-	+ Examples: "Authenticate identities", "Authorize actions", "Manage configuration changes", "Monitor operational health", "Respond to security incidents"
-
-- **Feature**: (FEA) An externally observable system behavior that realizes one or more requirements.
-	+ Examples: "Single sign-on using an external identity provider", "Document upload and download", "Administrative approval workflow", "Audit log viewer", "Password reset via email link"
-
-- **System**: (SYS) A bounded collection of interacting applications organized to achieve a mission.
-	+ Examples: "Identity and Access System", "Payment Processing System", "Customer Management System", "Monitoring and Alerting System", "Content Delivery System"
-
-- **Application**: (APP) A deployable software system that implements features.
-	+ Examples: "Web Portal", "Mobile Application", "Background Service", "API Provider", "Desktop Console"
-
-- **Component**: (COM) A modular unit with a single responsibility and explicit interfaces.
-	+ Examples: "User Interface", "Authorization Service", "Notification Dispatcher", "Data Ingestion Pipeline", "Reporting Engine"
-
-- **Interface**: (INT) A defined contract governing interaction across a boundary.
-	+ Examples: "Authentication API", "GraphQL API", "Command Line Interface", "Webhook Endpoint", "Message Consumer Interface"
-
-- **Artifact**: (ART) A concrete work product produced or consumed by the system.
-	+ Examples: "Configuration File", "Executable Binary", "Deployment Package", "Generated Report", "Log File"
-
-- **Asset**: (AST) Information or resources that have value and require protection or management.
-	+ Examples: "User Credentials", "Customer Personal Data", "Transaction Records", "System Configuration Data", "Audit Logs"
-
-- **Data Store**: (DTS) A persistent resource that robustly stores and recovers data for its intended lifetime.
-	+ Examples: "Database", "File System", "Cache", "Message Queue", "Object Storage"
-
-- **Deployment**: (DEP) A defined environment or configuration in which software is executed.
-	+ Examples: "Development", "Integration Test", "User Acceptance Test", "Production", "Disaster Recovery"
-
-- **Node**: (NOD) A logical or physical execution environment capable of hosting components or data stores.
-	+ Examples: "Virtual Machine", "Docker Container", "Physical Server", "Edge Device", "Managed Cloud Runtime"
-
-- **Node Instance**: (NIN) A concrete, identifiable runtime realization of a node.
-	+ Examples: "app-server-03", "db-primary-us-east-1", "container-instance-7f9c8d", "edge-node-12", "worker-node-a"
-
-- **Process**: (PRO) An ordered sequence of activities and decisions required to enable a capability.
-	+ Examples: "Authentication Process", "Customer Onboarding Process", "Incident Response Process", "Configuration Update Process", "Metrics Collection Process"
-
-- **Activity**: (ATV) A unit of behavior performed by an actor as part of a process.
-	+ Examples: "Log In", "Submit Form", "Review Request", "Approve Change", "Reset Password"
-
-- **Actor**: (ACT) An external role that interacts with the system or imposes obligations on it.
-	+ Examples: "User", "Administrator", "Support Agent", "Threat Actor", "Department of the Treasury"
-
-- **Story**: (STR) A concise narrative expressing a desired behavior or outcome from an actor’s perspective.
-	+ Examples: "User logs in to access their account", "Administrator resets a user password", "Customer cancels an order", "Operator investigates a security alert", "Regulator reviews compliance evidence"
-
-- **Event**: (EVT) A discrete occurrence that initiates a process or triggers behavior.
-	+ Examples: "Login request received", "Password reset requested", "Configuration change submitted", "Alert generated", "Message received"
-
-- **State Machine**: (STM) A behavioral model defining allowable states and transitions.
-	+ Examples: "User Account Lifecycle", "Order Fulfillment Lifecycle", "Session Lifecycle", "Incident Lifecycle", "Deployment Lifecycle"
-
-- **State**: (STA) A persistent, observable condition of an element until a transition occurs.
-	+ Examples: "Logged Out", "Pending Approval", "Active", "Suspended", "Completed"
-
-- **Condition**: (CON) A binary predicate that evaluates to true or false and influences behavior.
-	+ Examples: "User is authenticated", "Input is valid", "Account is active", "Quota is exceeded", "Error is detected"
-
-- **Control**: (CTL) A mechanism that governs or constrains a process.
-	+ Examples: "Authorization Check", "Input Validation", "Rate Limiting", "Approval Gate", "Encryption Enforcement"
-
-- **Constraint**: (CNS) A rule or limitation that restricts allowable behavior or solutions.
-	+ Examples: "GDPR data minimization requirement", "PCI-DSS encryption requirement", "Retain audit logs for seven years", "Maximum transaction value limit", "Accessibility compliance obligation"
-
-- **Risk**: (RIS) The potential for loss or harm arising from threats and vulnerabilities.
-	+ Examples: "Unauthorized account access", "Sensitive data exposure", "Service outage during peak usage", "Privilege escalation by insider", "Loss of audit trail integrity"
-
-- **Threat**: (THR) A potential cause of an unwanted impact on the system or mission.
-	+ Examples: "Data exfiltration", "Credential theft", "Denial of service", "Unauthorized configuration change", "Malware injection"
-
-- **Test**: (TES) A defined procedure used to verify that a feature satisfies its requirements.
-	+ Examples: "Verify successful user login", "Validate access denial without authentication", "Confirm password reset email delivery", "Ensure audit log entry is created", "Measure API response time under load"
-
-- **Note**: (NOT) A non-structural annotation attached to another element.
-
-#### Common Relationships
-
-Links are intentionally free-form; the `relationship` verb is descriptive for humans and does not encode semantic meaning by itself. The following relationships appear in the examples in this document and are recommended conventions for consistency:
-
-- `contains` - used by `Boundary` to indicate containment (structural membership)
-- `includes` - used to indicate membership without containment (e.g., view/topology constructs like `Deployment`, and associating a parent element with a `Boundary` in a view)
-- `establishes` - introduces a downstream motivation element (e.g., `Mission` → `Driver`)
-- `drives` - indicates a motivating element influences a downstream need (e.g., `Driver` → `Requirement`)
-- `satisfies` - indicates a downstream element fulfills a need (e.g., `Capability`/`Feature` → `Requirement`)
-- `enables` - indicates an element makes another feasible/possible (e.g., `Feature` → `Capability`)
-- `necessitates` - indicates a higher-level goal requires an element to exist (e.g., `Mission` → `System`)
-- `integrates` - indicates a container/system pulls together sub-elements (e.g., `System` → `Application`)
-- `comprises` - indicates composition (e.g., `Application` → `Component`)
-- `implements` - indicates an element realizes another (e.g., `Component` → `Feature`)
-- `exposes` - indicates an element provides an interface (e.g., `Component` → `Interface`)
-- `generates` - indicates an element produces an artifact (e.g., `Component` → `Artifact`)
-- `uses` - indicates a dependency or consumption (e.g., `Component` → `Artifact`)
-- `to_call` - indicates an invocation path (e.g., `Artifact` → `Interface`)
-- `persists_to` - indicates persistence of an artifact to storage (e.g., `Artifact` → `Data Store`)
-- `validates` - indicates a test verifies behavior (e.g., `Test` → `Component`/`Feature`)
-- `participates_in` - indicates involvement in a topology (e.g., `Application` → `Deployment`)
-- `hosts` - indicates a runtime host relationship (e.g., `Node`/`Node Instance` → `Component`/`Data Store`)
-- `instantiates` - indicates a node creates a runtime instance (e.g., `Node` → `Node Instance`)
-- `involves` - indicates a process or mission includes an actor (e.g., `Process`/`Mission` → `Actor`)
-- `desires` - indicates an actor has a story/goal (e.g., `Actor` → `Story`)
-- `performs` - indicates an actor executes an activity (e.g., `Actor` → `Activity`)
-- `explains` - indicates a story elaborates on a capability/feature (e.g., `Story` → `Capability`)
-- `implies` - indicates a story suggests a constraint (e.g., `Story` → `Constraint`)
-- `starts_with` - indicates the first event of a process (e.g., `Process` → `Event`)
-- `receives` - indicates a state receives an event (e.g., `State` → `Event`)
-- `starts_in` - indicates the initial state of a state machine (e.g., `State Machine` → `State`)
-- `transitions_to` - indicates a transition edge (e.g., `State`/`Activity` → `State`)
-- `triggers` - indicates an event/activity triggers another element (e.g., `Event` → `State`)
-- `triggers_true` / `triggers_false` - indicates conditional branching outcomes (e.g., `Condition` → `State`)
-- `limits` - indicates a constraint bounds another element (e.g., `Constraint` → `Feature`)
-- `governs` - indicates control/assurance applies to an element (e.g., `Control` → `Capability`)
-- `presents` - indicates an actor presents a threat (e.g., `Actor` → `Threat`)
-- `imposes` - indicates a threat introduces a risk (e.g., `Threat` → `Risk`)
-- `impacts` - indicates a risk affects another element (e.g., `Risk` → `Feature`)
-- `mitigates` - indicates that a feature or capability addresses a risk (e.g., `Feature` → `Risk`)
-
-#### Special cards
-
-##### The `Mission` card
-
-The root card of the model is _always_ a `Mission` card. The `Mission` card captures the overarching purpose and goal of the model.
-
-##### The `Boundary` card
-
-The `Boundary` (BND) card represents a logical grouping of other cards, in other words, they contain them. For simplicity in the model, a parent card includes a `Boundary` and a boundary contains a link to a single target card; in order to represent complex boundaries, a `Boundary` card may include an attribute named `recursive` (boolean, default false). If true, the boundary includes all descendants of the contained card (the contains target) in the current view. Because the cards contained by a boundary may form local loops rendering engines have to be careful when traversing the descendants. `Boundary` cards frequently "contain" `System`, `Application`, `Node`, `Process`, `State Machine`, and similar higher-level cards, and optionally their descendants. They are linked between a parent and the contained card, e.g., parent -- includes --> `Boundary` -- contains --> target, always in parallel to another link.
-
-When recursing, descendants are determined by link traversal and then filtered to only those cards included in the current view. Tooling should consider encountering a card previously traversed as a terminal point to prevent recursion.
-
-**Example of a Boundary in a Model**:
-
-```mermaid
-%%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
-graph LR
-	a(A)
-	boundary([Boundary])
-	b(B)
-
-	a -- verb --> b
-	a -- includes --> boundary
-	boundary -- contains --> b
-```
-
-**Example of a Boundary Rendered in a View**:
-
-```mermaid
-%%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
-graph LR
-	a(A)
-
-	subgraph Boundary
-		b(B)
-	end
-
-	a -- verb --> b
-
-	classDef cls_boundary stroke-dasharray:5 5;
-	class Boundary cls_boundary
-```
-
-##### The `Note` Card
-
-The `Note` card is purely an annotation to the model. They only have an incoming link and are always leaf nodes. The `Note` card does not add any new elements to the model; it expands on the target card and is for additional information. When rendered, the link to a `Note` card is often drawn as a dotted or dashed line.
-
-**Example**:
-
-```mermaid
-%%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
-graph LR
-	card[Card]
-	note[Note]@{shape: card}
-
-	card -.- note
-```
-
-#### Model Folders and Card Files
-
-Models are stored in a folder named `aurora` (model home) with the root `Mission` card(s) in the model home and a subfolder named for the `id` of the mission containing all other cards (mission home). The mission home is divided further into a subfolder for each `card_type`. Multiple models may share a model home.
-
-Each model starts with a single `Mission` card in the model home named `MIS-{number}-{name with spaces converted to underscores}.json`, for example `aurora/MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.json`. Like all cards, the number is issued sequentially by card type.
-
-All other cards are stored as a separate JSON files, named for the card's `id`, e.g., `REQ-001.json`. All cards starting from a shared model home must conform to the `Aurora.schema.json` schema in that model home. If the schema is not present in the model home when starting a model, the canonical `schemas/Aurora.schema.json`, if present, or the `.github/instructions/Aurora.schema.json` must be copied into the `aurora` folder before creating the first `Mission` card.
-
-Compact model files must conform to the `Aurora.compact.schema.json` schema in the model home. If the schema is not present in the model home when starting a model, the canonical `schemas/Aurora.compact.schema.json`, if present, or the `.github/instructions/Aurora.compact.schema.json` must be copied into the `aurora` folder before creating the first `Mission` card.
+- Model home: `aurora/` contains `Aurora.schema.json` and root `Mission` card files.
+- Root `Mission` file name: `MIS-{number}-{name_with_underscores}.json`, using sequential numbering per card type.
+- Mission home: `aurora/{mission id}/` with subfolders per `card_type`; all other cards are stored as `{id}.json`.
+- All cards conform to `Aurora.schema.json`; if missing, copy `.github/instructions/Aurora.schema.json` before creating the first `Mission` card.
+- Optional compact model: `{mission id}.agent.json` in model home, conforming to `Aurora.compact.schema.json`, with a top-level `cards` array and `audit_trail` removed; copy `.github/instructions/Aurora.compact.schema.json` if missing. The compact file may be "pretty printed" but is not required.
+- The model home may be stored as a ZIP file if the folder structure is preserved.
 
 **Example Folder and File Structure**:
 
@@ -312,14 +108,141 @@ aurora
   │    ├─ Driver
   │    │    ├─ DRI-001.json
   │    │    └─ DRI-002.json
-  │	   └─ Requirement	 
+  │	   └─ Requirement
   │	   	    └─ REQ-001.json
   ├─ MIS-002
   │    ├─ Driver
 ... etc
 ```
 
-An entire model home may be stored in a ZIP-compressed file to allow for portability as long as the folder structure is preserved.
+#### Common Cards
+
+The following table contains a minimally complete card palette that aligns with Aurora semantics (BPMN inclusive and AI-friendly). Use it as a quick reference when issuing new ids.
+
+| Card Type | Prefix | Description | Example |
+| --- | --- | --- | --- |
+| Mission | MIS | Root intent that spawns every downstream driver. | "Modernize operations through automation" |
+| Driver | DRI | Motivation explaining why requirements exist. | "Prevent Data Breaches" |
+| Requirement | REQ | Verifiable statement of need/obligation. | "Users are authenticated" |
+| Capability | CAP | Implementation-independent ability that satisfies requirements. | "Authenticate identities" |
+| Feature | FEA | Externally observable behavior realizing one or more requirements. | "Document upload and download" |
+| System | SYS | Bounded collection of interacting applications that fulfill a mission. | "Payment Processing System" |
+| Application | APP | Deployable software system implementing features. | "Web Portal" |
+| Component | COM | Modular unit with a single responsibility and explicit interfaces. | "Authorization Service" |
+| Interface | INT | Contract governing interaction across a boundary. | "Authentication API" |
+| Artifact | ART | Concrete work product produced or consumed by the system. | "Configuration File" |
+| Asset | AST | Valuable information/resources requiring protection. | "User Credentials" |
+| Data Store | DTS | Persistent resource for durable storage/retrieval. | "Database" |
+| Deployment | DEP | Defined environment or configuration where software executes. | "Production" |
+| Node | NOD | Logical/physical execution environment hosting components or stores. | "Virtual Machine" |
+| Node Instance | NIN | Concrete runtime realization of a node. | `app-server-03` |
+| Process | PRO | Ordered sequence of activities/decisions enabling a capability. | "Authentication Process" |
+| Activity | ATV | Unit of behavior performed by an actor inside a process. | "Log In" |
+| Actor | ACT | External role interacting with or obligating the system. | "User" |
+| Story | STR | Narrative expressing desired behavior/outcome. | "User logs in to access their account" |
+| Event | EVT | Discrete occurrence initiating a process or triggering behavior. | "Login request received" |
+| State Machine | STM | Behavioral model defining allowable states/transitions. | "User Account Lifecycle" |
+| State | STA | Observable condition that persists until a transition. | "Active" |
+| Condition | CON | Binary predicate influencing behavior. | "User is authenticated" |
+| Control | CTL | Mechanism governing or constraining a process. | "Authorization Check" |
+| Constraint | CNS | Rule limiting allowable behavior or solutions. | "GDPR data minimization requirement" |
+| Risk | RIS | Potential for loss/harm from threats/vulnerabilities. | "Unauthorized account access" |
+| Threat | THR | Potential cause of an unwanted impact on the system/mission. | "Data exfiltration" |
+| Test | TES | Procedure verifying that a feature satisfies requirements. | "Verify successful user login" |
+| Note | NOT | Non-structural annotation attached to another element. | "Clarification about a retention policy" |
+
+#### Common Relationships
+
+Relationship verbs are descriptive (see [Model Overview](#model-overview)). The following relationships appear in the examples in this document and are recommended conventions for consistency:
+
+##### Motivation
+
+| Relationship | Description |
+| --- | --- |
+| `establishes` | Introduces a downstream motivation element. |
+| `drives` | Influences a downstream need. |
+| `necessitates` | Higher-level goal requires an element. |
+
+##### Realization
+
+| Relationship | Description |
+| --- | --- |
+| `satisfies` | Fulfills a need. |
+| `enables` | Makes another feasible. |
+| `implements` | Realizes another element. |
+| `exposes` | Provides an interface. |
+| `generates` | Produces an artifact. |
+| `uses` | Consumes or depends on another element. |
+| `validates` | Verifies behavior. |
+
+##### Containment and Composition
+
+| Relationship | Description |
+| --- | --- |
+| `contains` | Structural containment. |
+| `includes` | Membership without containment. |
+| `integrates` | Pulls together sub-elements. |
+| `comprises` | Composition. |
+
+##### Runtime and Topology
+
+| Relationship | Description |
+| --- | --- |
+| `participates_in` | Involvement in a topology or deployment. |
+| `hosts` | Runtime host relationship. |
+| `instantiates` | Creates a runtime instance. |
+| `to_call` | Invocation path. |
+| `persists_to` | Persistence to storage. |
+
+##### Behavior and Flow
+
+| Relationship | Description |
+| --- | --- |
+| `involves` | Process or mission includes an actor. |
+| `desires` | Actor has a story or goal. |
+| `performs` | Actor executes an activity. |
+| `explains` | Story elaborates on a capability or feature. |
+| `implies` | Story suggests a constraint. |
+| `starts_with` | First event of a process. |
+| `receives` | State receives an event. |
+| `starts_in` | Initial state of a state machine. |
+| `transitions_to` | Transition edge. |
+| `triggers` | Event or activity triggers another element. |
+| `triggers_true` / `triggers_false` | Conditional branching outcomes. |
+
+##### Risk and Control
+
+| Relationship | Description |
+| --- | --- |
+| `limits` | Constraint bounds another element. |
+| `governs` | Control applies to an element. |
+| `presents` | Actor presents a threat. |
+| `imposes` | Threat introduces a risk. |
+| `impacts` | Risk affects another element. |
+| `mitigates` | Feature or capability addresses a risk. |
+
+#### Special cards
+
+Each special card follows the standard card fields plus the exceptions noted below.
+
+##### `Mission`
+
+- Purpose: Root of the model that captures the overarching purpose.
+- Required fields: Standard card fields.
+- Allowed links: Outgoing only; no incoming links.
+
+##### `Boundary` (BND)
+
+- Purpose: Logical grouping of other cards.
+- Required fields: Standard card fields; optional `attributes.recursive` boolean (default false).
+- Allowed links: Parent includes the `Boundary`; the `Boundary` contains a single target card, in parallel to another link between parent and target.
+- Exception: When `recursive` is true, the boundary includes all descendants of the target in the current view; traversal must avoid loops.
+
+##### `Note` (NOT)
+
+- Purpose: Annotation on another card; does not add new model elements.
+- Required fields: Standard card fields.
+- Allowed links: Incoming only; always a leaf node.
 
 ### Logical Structure
 
@@ -335,7 +258,7 @@ By using `Boundary` cards and card subtypes almost any structure can be mapped o
 
 3. **Hierarchy**: The model forms a directed graph rooted in the `Mission` card. Local cycles are allowed for bounded subgraphs such as state machines (for example: `State` → `Condition` → `State`) and event/action-driven transitions, as long as no link creates a path back to `Mission`. This ensures that all loops terminate locally.
 
-4. **Semantics**: links have a `relationship` field that describes them but does not convey semantic meaning by itself. The relationship is meant to describe how one element impacts another, primarily for humans. Semantic meaning is derived from the link and relationship when interpreted for a purpose, such as generating a view, performing impact analysis, or producing traceability narratives.
+4. **Semantics**: See [Model Overview](#model-overview). Relationship verbs are descriptive; meaning comes from interpretation.
 
 5. **Every other card**: Other than the `Mission` card, all cards must have at least one incoming link. They must also have a path from the `Mission` card. These cards may have more than one incoming or any number of outgoing links.
 

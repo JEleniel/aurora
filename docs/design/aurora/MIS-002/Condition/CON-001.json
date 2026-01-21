@@ -1,0 +1,29 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CON-001",
+	"card_type": "Condition",
+	"name": "Schema And Invariants Valid",
+	"description": "The current in-memory model and the edited card conform to the Aurora schema and invariant rules.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CAP-008",
+			"relationship": "validates"
+		},
+		{
+			"target": "CTL-001",
+			"relationship": "governs"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:10.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

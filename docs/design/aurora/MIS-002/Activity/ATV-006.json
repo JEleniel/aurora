@@ -1,0 +1,37 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ATV-006",
+	"card_type": "Activity",
+	"name": "Persist Card JSON",
+	"description": "Persist the edited card JSON to disk and update audit trail metadata deterministically.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "COM-012",
+			"relationship": "uses"
+		},
+		{
+			"target": "COM-018",
+			"relationship": "uses"
+		},
+		{
+			"target": "DTS-001",
+			"relationship": "persists_to"
+		},
+		{
+			"target": "CON-003",
+			"relationship": "triggers"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:33.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

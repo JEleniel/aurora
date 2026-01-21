@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-013",
+	"card_type": "Component",
+	"name": "Link Safety Engine",
+	"description": "Computes the set of valid link targets for a proposed link edit by checking directionality, reachability from mission, and other Aurora invariants.",
+	"links": [
+		{
+			"target": "FEA-011",
+			"relationship": "implements"
+		},
+		{
+			"target": "COM-011",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:06:12.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

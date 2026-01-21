@@ -1,0 +1,33 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ATV-008",
+	"card_type": "Activity",
+	"name": "Regenerate Derived Outputs",
+	"description": "Invoke aurora_cli to regenerate derived outputs (cards and views) to keep the model outputs consistent.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "COM-014",
+			"relationship": "uses"
+		},
+		{
+			"target": "DTS-002",
+			"relationship": "persists_to"
+		},
+		{
+			"target": "FEA-012",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:35.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "EVT-004",
+	"card_type": "Event",
+	"name": "Save Requested",
+	"description": "The user requests saving the current edit.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CON-001",
+			"relationship": "triggers"
+		},
+		{
+			"target": "CON-003",
+			"relationship": "triggers"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:23.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

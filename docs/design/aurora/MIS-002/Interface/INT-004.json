@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "INT-004",
+	"card_type": "Interface",
+	"name": "Mermaid SVG Rendering Contract",
+	"description": "A contract for rendering Mermaid diagrams to SVG for export, using the same Mermaid rules as official views.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:05:13.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

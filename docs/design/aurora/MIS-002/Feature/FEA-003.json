@@ -1,0 +1,37 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "FEA-003",
+	"card_type": "Feature",
+	"name": "Graph Navigation View",
+	"description": "Provide the central graph navigation view with recentering and configurable generation depth.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CAP-003",
+			"relationship": "enables"
+		},
+		{
+			"target": "REQ-007",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-008",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-022",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:04:02.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

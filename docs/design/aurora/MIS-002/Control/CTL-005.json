@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CTL-005",
+	"card_type": "Control",
+	"name": "Accessibility Preference Enforcement",
+	"description": "Ensure keyboard navigation is available across panes and respect reduced motion preferences by minimizing or disabling animations when requested.",
+	"links": [
+		{
+			"target": "CAP-013",
+			"relationship": "governs"
+		},
+		{
+			"target": "FEA-017",
+			"relationship": "governs"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:01:04.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

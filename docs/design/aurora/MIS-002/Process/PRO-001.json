@@ -1,0 +1,53 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "PRO-001",
+	"card_type": "Process",
+	"name": "Open And Index Model Home",
+	"description": "Open a selected model home, scan for missions and cards, build a graph index, and render navigation panes.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "ACT-001",
+			"relationship": "involves"
+		},
+		{
+			"target": "ACT-002",
+			"relationship": "involves"
+		},
+		{
+			"target": "EVT-001",
+			"relationship": "starts_with"
+		},
+		{
+			"target": "ATV-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-002",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-003",
+			"relationship": "includes"
+		},
+		{
+			"target": "CAP-001",
+			"relationship": "explains"
+		},
+		{
+			"target": "DTS-001",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:38.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-015",
+	"card_type": "Component",
+	"name": "Output Browser",
+	"description": "Loads and presents generated Markdown and view outputs for browsing within the UI.",
+	"links": [
+		{
+			"target": "FEA-013",
+			"relationship": "implements"
+		},
+		{
+			"target": "DTS-002",
+			"relationship": "uses"
+		},
+		{
+			"target": "ART-003",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:06:14.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

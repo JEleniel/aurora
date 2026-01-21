@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-015",
+	"card_type": "Requirement",
+	"name": "Export SVG Of Official Diagrams",
+	"description": "The tool exports SVG versions of the official diagrams using the same Mermaid rules as the canonical renderer.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:14.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

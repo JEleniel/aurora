@@ -1,4 +1,4 @@
-pub const VIEW_TEMPLATE: &str = r#"## {{id}}: {{name}} - {{view_name}}
+pub const VIEW_TEMPLATE: &str = r#"# {{id}}: {{name}} - {{view_name}}
 
 ```mermaid
 %%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
@@ -42,5 +42,4 @@ classDef cls_note fill:#1f2937,color:#FFFFFF;
 
 {{class_mappings}}
 ```
-
 "#;

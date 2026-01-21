@@ -1,9 +1,9 @@
 [package]
 name = "aurora_cli"
-version = "1.0.0"
-edition = "2024"
+version = { workspace = true }
+edition = { workspace = true }
 description = "CLI utilities for validating Aurora models and generating documentation"
-license = "MIT-or-Apache-2.0"
+license = { workspace = true }
 
 [package.metadata]
 app_id = "org.crystultima.aurora_cli"

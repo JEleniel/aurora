@@ -1,0 +1,25 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "EVT-001",
+	"card_type": "Event",
+	"name": "Model Home Selected",
+	"description": "The user selects a model home folder to open.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "ATV-001",
+			"relationship": "triggers"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:20.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

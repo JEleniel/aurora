@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CAP-004",
+	"card_type": "Capability",
+	"name": "Filter Views",
+	"description": "Filter visible cards in the graph view using a fixed set of view filters aligned with aurora_cli built-in views.",
+	"links": [
+		{
+			"target": "REQ-009",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-010",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:03:03.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

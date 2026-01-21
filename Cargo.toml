@@ -1,10 +1,21 @@
 [workspace]
-members = ["tools/*"]
+members = [
+	"tools/aurora_cli",
+	"tools/aurora_lib",
+	"tools/aurora_editor/src-tauri",
+]
 resolver = "3"
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+repository = "https://github.com/JEleniel/aurora"
+license = "MIT-or-Apache-2.0"
 
 [workspace.dependencies]
 chrono = { version = "0.4", features = ["serde"] }
 clap = { version = "4.5", features = ["derive", "string", "unicode"] }
+config = { version = "0.15" }
 fern = { version = "0.7.1", features = ["date-based", "colored"] }
 indexmap = { version = "2.2", features = ["serde"] }
 jsonschema = { version = "0.40" }
@@ -20,3 +31,10 @@ whoami = { version = "2", default-features = false, features = [
 	"std",
 	"wasi-wasite",
 ] }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+
+[workspace.metadata]
+app_org = "org.crystultima"

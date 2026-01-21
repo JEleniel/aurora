@@ -1,0 +1,33 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ATV-005",
+	"card_type": "Activity",
+	"name": "Validate Edit",
+	"description": "Validate the edited card and the overall graph invariants before allowing persistence.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "COM-011",
+			"relationship": "uses"
+		},
+		{
+			"target": "CAP-008",
+			"relationship": "enables"
+		},
+		{
+			"target": "CON-001",
+			"relationship": "triggers"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:32.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

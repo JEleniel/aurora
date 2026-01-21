@@ -1,0 +1,37 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "STR-003",
+	"card_type": "Story",
+	"name": "Agent Updates Model Via MCP",
+	"description": "As an automated agent, I want to read and update cards through an MCP endpoint and subscribe to change events so that I can assist the architect deterministically while the application is running.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CAP-012",
+			"relationship": "explains"
+		},
+		{
+			"target": "FEA-015",
+			"relationship": "explains"
+		},
+		{
+			"target": "INT-001",
+			"relationship": "uses"
+		},
+		{
+			"target": "CNS-003",
+			"relationship": "implies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:02.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

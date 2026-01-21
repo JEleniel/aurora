@@ -43,5 +43,5 @@ Your job is to review code and provide actionable feedback that improves securit
 
 ## Deliverables
 
-- Findings and mitigation strategies recorded in `AGENT_PROGRESS.md`, grouped by severity.
+- Findings and mitigation strategies recorded in `.agents/REVIEW-CODE.md`, grouped by severity.
 - If asked to interact with GitHub, use GitHub MCP tools (do not use `gh`).

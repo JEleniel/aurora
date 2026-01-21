@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added [rustfmt.toml](rustfmt.toml) to enforce hard tabs and consistent Rust formatting.
+- Added `tools/aurora_lib` plus the `tools/aurora_editor` Tauri + SvelteKit workspace so the GUI can share model logic with `aurora_cli`.
 - Added a `compact` CLI subcommand that exports the model as a single JSON file (sans `audit_trail` metadata) for agent-friendly consumption.
 - Added a `full` CLI subcommand that validates, renders all docs, and writes the compact model in a single run.
 - Added [schemas/Aurora.compact.schema.json](schemas/Aurora.compact.schema.json) to validate compact model exports.
@@ -35,6 +36,7 @@ All notable changes to this project will be documented in this file.
 - Schema loader now detects the aurora root by looking for local schema files, tolerates trailing slashes/parent paths, and builds validators from a single buffered parse ([tools/aurora_cli/src/aurora.rs](tools/aurora_cli/src/aurora.rs)).
 - Card discovery enforces the `<Mission>/<CardType>/<ID>.json` layout, validates filename/directory/prefix consistency, and surfaces per-field line+column errors ([tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs)).
 - Compact exports stream via `CompactModelBorrowed`/`CompactCardBorrowed`, avoiding redundant cloning while keeping `Model` immutable ([tools/aurora_cli/src/aurora/model/compact_model.rs](tools/aurora_cli/src/aurora/model/compact_model.rs), [tools/aurora_cli/src/aurora/model/compact_card.rs](tools/aurora_cli/src/aurora/model/compact_card.rs)).
+- Aurora Editor's Tauri build now runs through `vite build` with an explicit `@sveltejs/vite-plugin-svelte` dependency and a square-icon bundle configuration, restoring successful `pnpm tauri build` runs.
 
 ### Fixed
 
@@ -42,6 +44,7 @@ All notable changes to this project will be documented in this file.
 - Replaced outdated `PROGRESS.md` references with `AGENT_PROGRESS.md` in handoff guidance and docs.
 - Resolved Mermaid bracket mismatches for deployment, node instance, and process/actor nodes so rendered views use the intended shapes.
 - Fixed the nested `aurora::model` exports so the CLI can resolve `CompactModel` and the bump argument structs ([tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs), [tools/aurora_cli/src/aurora/model/model_args.rs](tools/aurora_cli/src/aurora/model/model_args.rs), [tools/aurora_cli/src/aurora/model/compact_model.rs](tools/aurora_cli/src/aurora/model/compact_model.rs), [tools/aurora_cli/src/cli.rs](tools/aurora_cli/src/cli.rs)).
+- Ensured `render-all` preserves `.view.md` outputs when `--clear` is enabled by clearing once before rendering both views and cards ([tools/aurora_cli/src/aurora.rs](tools/aurora_cli/src/aurora.rs), [tools/aurora_cli/src/aurora/model.rs](tools/aurora_cli/src/aurora/model.rs)).
 
 ### Removed
 

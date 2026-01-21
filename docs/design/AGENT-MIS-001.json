@@ -1,0 +1,1480 @@
+{
+  "$schema": "Aurora.compact.schema.json",
+  "cards": [
+    {
+      "attributes": {
+        "tool": {
+          "name": "aurora_cli",
+          "tool_path": "tools/aurora_cli/",
+          "default_input": {
+            "model_root": "docs/design/aurora/"
+          },
+          "default_output": {
+            "aggregate_index_readme": "docs/design/README.md",
+            "per_mission_root": "docs/design/{MissionId}/",
+            "per_mission_cards_root": "docs/design/{MissionId}/cards/",
+            "per_mission_views_root": "docs/design/{MissionId}/views/",
+            "per_mission_index_readme": "docs/design/{MissionId}/README-{MissionId}.md",
+            "per_mission_compact_model": "docs/design/aurora/AGENT-{MissionId}.json"
+          }
+        }
+      },
+      "card_type": "Mission",
+      "description": "Provide a first-party command-line tool that validates Aurora models and deterministically generates human-friendly documentation and standard views so architects can model systems without hand-drawing diagrams or manually maintaining documentation.",
+      "id": "MIS-001",
+      "links": [
+        {
+          "relationship": "establishes",
+          "target": "DRI-001"
+        },
+        {
+          "relationship": "establishes",
+          "target": "DRI-002"
+        },
+        {
+          "relationship": "establishes",
+          "target": "DRI-003"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "SYS-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-002"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-001"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-002"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "FEA-006"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "CAP-007"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "FEA-007"
+        }
+      ],
+      "name": "Enable Deterministic Aurora CLI Tooling"
+    },
+    {
+      "card_type": "Control",
+      "description": "Ensure aurora_cli writes only within the user-configured output root and avoids unsafe path traversal.",
+      "id": "CTL-002",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "ATV-007"
+        },
+        {
+          "relationship": "governs",
+          "target": "CAP-005"
+        }
+      ],
+      "name": "Output Path Sanitization"
+    },
+    {
+      "card_type": "State",
+      "description": "The CLI starts and is ready to parse arguments.",
+      "id": "STA-001",
+      "links": [
+        {
+          "relationship": "receives",
+          "target": "EVT-001"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-002"
+        }
+      ],
+      "name": "Initialized"
+    },
+    {
+      "card_type": "Actor",
+      "description": "Runs aurora_cli to validate and generate documentation for an Aurora model.",
+      "id": "ACT-002",
+      "links": [
+        {
+          "relationship": "desires",
+          "target": "STR-002"
+        }
+      ],
+      "name": "Tool User"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "aurora_cli generates one Markdown file per card, mirroring the model folder structure, using the JSON filename and card name as the H1 with the card id placed at the end.",
+      "id": "REQ-004",
+      "name": "Generate Human-Friendly Markdown Cards"
+    },
+    {
+      "card_type": "Component",
+      "description": "Writes generated artifacts to the configured output folder using deterministic ordering and safe write semantics.",
+      "id": "COM-008",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "ART-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "ART-003"
+        },
+        {
+          "relationship": "uses",
+          "target": "ART-004"
+        },
+        {
+          "relationship": "generates",
+          "target": "AST-002"
+        }
+      ],
+      "name": "Filesystem Writer"
+    },
+    {
+      "card_type": "Driver",
+      "description": "Provide high-confidence validation that an Aurora model conforms to the schema and the architectural invariants defined by the Aurora specification.",
+      "id": "DRI-002",
+      "links": [
+        {
+          "relationship": "drives",
+          "target": "REQ-001"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-002"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-003"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-011"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-009"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-012"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-013"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-014"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-015"
+        }
+      ],
+      "name": "Trustworthy Model Validation"
+    },
+    {
+      "card_type": "Event",
+      "description": "The user invokes aurora_cli with a model path and subcommand.",
+      "id": "EVT-001",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "ATV-001"
+        }
+      ],
+      "name": "Command Invoked"
+    },
+    {
+      "card_type": "Condition",
+      "description": "Evaluates to true when schema validation and invariant checks pass.",
+      "id": "CON-001",
+      "links": [
+        {
+          "relationship": "triggers_true",
+          "target": "ATV-005"
+        },
+        {
+          "relationship": "triggers_false",
+          "target": "STA-005"
+        }
+      ],
+      "name": "Model Is Valid"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The CLI provides a compact export command that emits the model as a single JSON file for machine consumption, removing fields that are not needed for topology/trace analysis (at minimum: audit_trail and links[].relationship), while preserving stable ordering for diff-friendly output.",
+      "id": "REQ-016",
+      "links": [
+        {
+          "relationship": "includes",
+          "target": "CNS-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "CNS-002"
+        }
+      ],
+      "name": "Export Compact Model Snapshot"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "For version bump operations, aurora_cli generates audit_trail.history[].timestamp automatically in RFC3339 UTC format with millisecond precision using chrono.",
+      "id": "REQ-015",
+      "name": "Generate Audit Timestamps"
+    },
+    {
+      "card_type": "Component",
+      "description": "Loads all card JSON files from a model root folder and builds an in-memory graph.",
+      "id": "COM-003",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "AST-001"
+        },
+        {
+          "relationship": "implements",
+          "target": "CAP-001"
+        }
+      ],
+      "name": "Model Loader"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Render the standard set of view documents using ELK layout and per-card-type shapes, skipping any empty view.",
+      "id": "ATV-006",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "CON-002"
+        },
+        {
+          "relationship": "governs",
+          "target": "CTL-001"
+        }
+      ],
+      "name": "Render Standard Views"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "For version bump operations, aurora_cli sets audit_trail.history[].editor to an explicit CLI option when provided; otherwise it derives the editor identity from the logged-in OS user.",
+      "id": "REQ-014",
+      "name": "Derive Editor Identity"
+    },
+    {
+      "card_type": "Data Store",
+      "description": "The local filesystem folder containing the Aurora schema copy and card JSON files for a model.",
+      "id": "DTS-001",
+      "name": "Aurora Model Folder"
+    },
+    {
+      "card_type": "Driver",
+      "description": "Reduce manual effort by generating documentation and standard views directly from the authoritative Aurora model.",
+      "id": "DRI-001",
+      "links": [
+        {
+          "relationship": "drives",
+          "target": "REQ-004"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-005"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-006"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-007"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-008"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-009"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-010"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-016"
+        }
+      ],
+      "name": "Operational Friction Elimination"
+    },
+    {
+      "card_type": "Artifact",
+      "description": "A generated README that indexes all generated Markdown cards grouped by card type, starting with the Mission.",
+      "id": "ART-003",
+      "links": [
+        {
+          "relationship": "persists_to",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Card Index README"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Resolve the model root from either a folder path or a Mission card path and load all card files into an in-memory directed graph.",
+      "id": "CAP-001",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-003"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "AST-001"
+        }
+      ],
+      "name": "Resolve And Load Aurora Model"
+    },
+    {
+      "card_type": "Control",
+      "description": "Enforce stable ordering for file traversal, link rendering, and grouped output generation to make documentation diff-friendly.",
+      "id": "CTL-001",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "governs",
+          "target": "ATV-005"
+        },
+        {
+          "relationship": "governs",
+          "target": "ATV-006"
+        },
+        {
+          "relationship": "governs",
+          "target": "ATV-007"
+        }
+      ],
+      "name": "Deterministic Ordering"
+    },
+    {
+      "card_type": "State",
+      "description": "Documentation and views were generated successfully.",
+      "id": "STA-004",
+      "links": [
+        {
+          "relationship": "transitions_to",
+          "target": "STA-001"
+        }
+      ],
+      "name": "Generated"
+    },
+    {
+      "card_type": "State",
+      "description": "The model has been resolved and loaded.",
+      "id": "STA-002",
+      "links": [
+        {
+          "relationship": "receives",
+          "target": "EVT-003"
+        },
+        {
+          "relationship": "triggers",
+          "target": "CON-001"
+        }
+      ],
+      "name": "Loaded"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Validate an Aurora model against the local schema and the invariants defined by the Aurora specification.",
+      "id": "CAP-002",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-001"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-002"
+        }
+      ],
+      "name": "Validate Aurora Model"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "aurora_cli writes generated Markdown cards, index README(s), and views to a single configurable output root folder; by default it writes to docs/design/ and creates a per-Mission output folder under docs/design/{MissionId}/ with cards under docs/design/{MissionId}/cards/ and views under docs/design/{MissionId}/views/. aurora_cli creates missing output directories by default and provides a flag to disable directory creation (failing if required output directories do not already exist).",
+      "id": "REQ-009",
+      "name": "Configurable Output Folders"
+    },
+    {
+      "card_type": "Component",
+      "description": "Parses CLI arguments, selects subcommands, orchestrates validation and rendering operations, and sets exit codes.",
+      "id": "COM-001",
+      "links": [
+        {
+          "relationship": "exposes",
+          "target": "INT-001"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-004"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-004"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-005"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-006"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-007"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-008"
+        }
+      ],
+      "name": "CLI Command Router"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "aurora_cli accepts an input path that resolves to either (a) an Aurora model root folder (an aurora folder containing one or more Mission cards and a schema copy), (b) a parent folder that contains an aurora folder, or (c) a Mission card JSON file. If multiple Mission cards are present in a shared aurora folder, aurora_cli processes each Mission as a separate model rooted at that Mission.",
+      "id": "REQ-003",
+      "name": "Accept Model Root Or Mission Path"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Write generated artifacts to disk in a safe, deterministic way (stable ordering, stable paths, and predictable formatting).",
+      "id": "CAP-005",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "CNS-001"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "CNS-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Write Outputs Deterministically"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Update Aurora card audit trails in a consistent, deterministic way (semantic version bumps and appended history entries with editor and timestamp).",
+      "id": "CAP-006",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-012"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-013"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-014"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-015"
+        },
+        {
+          "relationship": "uses",
+          "target": "CAP-005"
+        }
+      ],
+      "name": "Maintain Audit Trails"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "aurora_cli generates one index README per Mission, grouped by card type starting with that Mission and linking to every generated Markdown card using the card name as link text. When multiple Missions are processed in a single run, aurora_cli also generates an aggregate index README that links to each per-Mission index.",
+      "id": "REQ-005",
+      "name": "Generate Card Index README"
+    },
+    {
+      "card_type": "Component",
+      "description": "Generates standard Mermaid view documents from the model cards using ELK layout and per-card-type shapes.",
+      "id": "COM-007",
+      "links": [
+        {
+          "relationship": "exposes",
+          "target": "INT-002"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-003"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-005"
+        },
+        {
+          "relationship": "implements",
+          "target": "CAP-004"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-004"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Standard View Generator"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide a render-cards subcommand that generates one Markdown file per card and a grouped index README.",
+      "id": "FEA-002",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-003"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-004"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-005"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-003"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-011"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-009"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-002"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-003"
+        }
+      ],
+      "name": "Render Cards Command",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "When bumping audit_trail.version, aurora_cli appends a new audit_trail.history entry. The entry event is 'created' if the history is empty; otherwise it is 'edited'.",
+      "id": "REQ-013",
+      "name": "Append Audit Trail History Entry"
+    },
+    {
+      "card_type": "Actor",
+      "description": "Creates and maintains Aurora models and uses generated documentation and views to communicate architecture.",
+      "id": "ACT-001",
+      "links": [
+        {
+          "relationship": "desires",
+          "target": "STR-001"
+        },
+        {
+          "relationship": "performs",
+          "target": "ATV-001"
+        },
+        {
+          "relationship": "performs",
+          "target": "ATV-007"
+        }
+      ],
+      "name": "Architect"
+    },
+    {
+      "card_type": "Artifact",
+      "description": "A generated Markdown file representing a single Aurora card in a human-friendly layout.",
+      "id": "ART-002",
+      "links": [
+        {
+          "relationship": "persists_to",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Markdown Card File"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "aurora_cli validates the model invariants defined by the Aurora specification (single Mission root, directed graph away from Mission with only local cycles, all non-Mission/non-Note cards have inbound links, and all link targets exist).",
+      "id": "REQ-002",
+      "name": "Validate Aurora Graph Invariants"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Validate the Aurora model invariants defined in the specification.",
+      "id": "ATV-004",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "EVT-003"
+        }
+      ],
+      "name": "Validate Invariants"
+    },
+    {
+      "card_type": "Constraint",
+      "description": "Given the same input model and options, aurora_cli produces byte-stable documentation and views (stable ordering, stable filenames, and stable formatting) to enable clean diffs and predictable automation.",
+      "id": "CNS-001",
+      "links": [
+        {
+          "relationship": "limits",
+          "target": "FEA-002"
+        },
+        {
+          "relationship": "limits",
+          "target": "FEA-003"
+        },
+        {
+          "relationship": "governs",
+          "target": "CTL-001"
+        }
+      ],
+      "name": "Deterministic, Diff-Friendly Output"
+    },
+    {
+      "card_type": "Artifact",
+      "description": "A generated Markdown document containing a Mermaid diagram for a standard view.",
+      "id": "ART-004",
+      "links": [
+        {
+          "relationship": "persists_to",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "View Document"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "Generated view diagrams include a standard Mermaid init header configuring the flowchart renderer to ELK and distinguish card types with distinct, consistent node shapes.",
+      "id": "REQ-008",
+      "name": "Use ELK Layout And Type Shapes"
+    },
+    {
+      "card_type": "Data Store",
+      "description": "The local filesystem folder where aurora_cli writes generated Markdown cards, the index README, and standard view files.",
+      "id": "DTS-002",
+      "name": "Documentation Output Folder"
+    },
+    {
+      "card_type": "Asset",
+      "description": "The authoritative set of Aurora card JSON files and schema copy that defines an architecture model.",
+      "id": "AST-001",
+      "links": [
+        {
+          "relationship": "persists_to",
+          "target": "DTS-001"
+        }
+      ],
+      "name": "Aurora Model"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide bump-major, bump-minor, and bump-patch subcommands that update audit_trail.version and append an audit_trail.history entry with editor and timestamp.",
+      "id": "FEA-006",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-012"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-013"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-014"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-015"
+        }
+      ],
+      "name": "Bump Version Commands",
+      "status": "Design"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide a `compact` subcommand that writes a compact JSON snapshot of the model to a single file with top-level `{ \"cards\": [...] }`, where each card is stripped of `$schema` and `audit_trail` and each link is stripped of the `relationship` field. Output is deterministic (stable ordering) for diff-friendly automation.",
+      "id": "FEA-007",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-007"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-016"
+        }
+      ],
+      "name": "Compact Model Export Command",
+      "status": "Design"
+    },
+    {
+      "card_type": "Constraint",
+      "description": "aurora_cli prevents partial or corrupt output by writing deterministically and safely (create directories as needed, avoid unexpected clobbering, and ensure atomic writes where feasible).",
+      "id": "CNS-002",
+      "links": [
+        {
+          "relationship": "limits",
+          "target": "FEA-002"
+        },
+        {
+          "relationship": "limits",
+          "target": "FEA-003"
+        },
+        {
+          "relationship": "governs",
+          "target": "CTL-002"
+        }
+      ],
+      "name": "Safe Filesystem Writes"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Generate a standard set of mermaid-based views from the model for common communication needs.",
+      "id": "CAP-004",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-006"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-007"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-008"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-010"
+        }
+      ],
+      "name": "Render Standard Views"
+    },
+    {
+      "card_type": "Process",
+      "description": "Process of rendering human-friendly Markdown cards and standard views from a validated model.",
+      "id": "PRO-002",
+      "links": [
+        {
+          "relationship": "involves",
+          "target": "ACT-001"
+        },
+        {
+          "relationship": "starts_with",
+          "target": "EVT-003"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-005"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-006"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-007"
+        }
+      ],
+      "name": "Documentation Generation"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide an all subcommand that validates the model then generates cards and views in a single run.",
+      "id": "FEA-004",
+      "links": [
+        {
+          "relationship": "includes",
+          "target": "FEA-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "FEA-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "FEA-003"
+        }
+      ],
+      "name": "All Command",
+      "status": "Design"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Render one Markdown file per card and a single index README grouped by card type.",
+      "id": "ATV-005",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "CTL-001"
+        },
+        {
+          "relationship": "triggers",
+          "target": "ATV-007"
+        }
+      ],
+      "name": "Render Markdown Cards"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "aurora_cli provides commands to bump a card's audit_trail.version using semantic version rules: bump-major increments major and resets minor and patch to 0; bump-minor increments minor and resets patch to 0; bump-patch increments patch.",
+      "id": "REQ-012",
+      "name": "Bump Audit Trail Version"
+    },
+    {
+      "card_type": "Application",
+      "description": "A command-line application that validates Aurora models and generates human-friendly Markdown cards and standard view diagrams.",
+      "id": "APP-001",
+      "links": [
+        {
+          "relationship": "comprises",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "PRO-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "PRO-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "STM-001"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-002"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-003"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-004"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-005"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-006"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-007"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-008"
+        }
+      ],
+      "name": "aurora_cli"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Resolve a user-supplied path into a model root and locate the Mission card and local schema.",
+      "id": "ATV-001",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "ATV-002"
+        },
+        {
+          "relationship": "governs",
+          "target": "CTL-002"
+        }
+      ],
+      "name": "Resolve Model Root"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "aurora_cli generates the standard view set (Requirements View, System Composition, Deployment Topology, Process Flow, and State Machine) from the cards present in the model.",
+      "id": "REQ-006",
+      "name": "Generate Standard Views"
+    },
+    {
+      "card_type": "Component",
+      "description": "Validates Aurora directed-graph invariants (root Mission, reachability, inbound link requirements, and link target existence).",
+      "id": "COM-005",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-001"
+        },
+        {
+          "relationship": "implements",
+          "target": "CAP-002"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-001"
+        }
+      ],
+      "name": "Invariant Validator"
+    },
+    {
+      "card_type": "Artifact",
+      "description": "A human-readable report describing schema validation results and any invariant violations.",
+      "id": "ART-001",
+      "links": [
+        {
+          "relationship": "persists_to",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Validation Report"
+    },
+    {
+      "card_type": "State",
+      "description": "Execution failed due to invalid input model or an unrecoverable error.",
+      "id": "STA-005",
+      "links": [
+        {
+          "relationship": "transitions_to",
+          "target": "STA-001"
+        }
+      ],
+      "name": "Failed"
+    },
+    {
+      "card_type": "Interface",
+      "description": "A contract defining standard view names, included card types, layout defaults (ELK), and per-card-type shape mapping.",
+      "id": "INT-002",
+      "name": "View Rendering Contract"
+    },
+    {
+      "card_type": "Story",
+      "description": "As an Architect, I want documentation and standard views generated from the Aurora model so the model remains the single source of truth.",
+      "id": "STR-001",
+      "links": [
+        {
+          "relationship": "explains",
+          "target": "CAP-003"
+        },
+        {
+          "relationship": "explains",
+          "target": "CAP-004"
+        }
+      ],
+      "name": "Architect Generates Documentation From Model"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "aurora_cli skips generating any standard view whose included card types are absent from the model.",
+      "id": "REQ-007",
+      "name": "Skip Empty Views"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide a render-views subcommand that generates the standard set of view diagrams from the model, skipping any empty views.",
+      "id": "FEA-003",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-004"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-006"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-007"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-008"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-010"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-003"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-011"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-009"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-004"
+        }
+      ],
+      "name": "Render Views Command",
+      "status": "Design"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Generate a human-friendly Markdown representation of each card plus a single index README grouped by type.",
+      "id": "CAP-003",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-004"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-005"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-009"
+        },
+        {
+          "relationship": "generates",
+          "target": "AST-002"
+        }
+      ],
+      "name": "Render Markdown Card Catalog"
+    },
+    {
+      "card_type": "Story",
+      "description": "As a Tool User, I want to validate an Aurora model and render cards and views so I can share an up-to-date, trustworthy architecture snapshot.",
+      "id": "STR-002",
+      "links": [
+        {
+          "relationship": "explains",
+          "target": "CAP-002"
+        },
+        {
+          "relationship": "explains",
+          "target": "CAP-003"
+        },
+        {
+          "relationship": "explains",
+          "target": "CAP-004"
+        }
+      ],
+      "name": "Tool User Validates And Renders Outputs"
+    },
+    {
+      "card_type": "Event",
+      "description": "All card JSON files have been loaded into an in-memory graph.",
+      "id": "EVT-002",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "ATV-003"
+        }
+      ],
+      "name": "Model Loaded"
+    },
+    {
+      "card_type": "Condition",
+      "description": "Evaluates to true when the model contains at least one card for the view's included card types.",
+      "id": "CON-002",
+      "links": [
+        {
+          "relationship": "triggers_true",
+          "target": "ATV-007"
+        },
+        {
+          "relationship": "triggers_false",
+          "target": "STA-004"
+        }
+      ],
+      "name": "View Has Included Cards"
+    },
+    {
+      "card_type": "Driver",
+      "description": "Ensure architecture can be communicated consistently by generating a standardized, human-friendly card catalog and a repeatable set of views.",
+      "id": "DRI-003",
+      "links": [
+        {
+          "relationship": "drives",
+          "target": "REQ-004"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-005"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-006"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-008"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-010"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-016"
+        }
+      ],
+      "name": "Automate Architecture Communication"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Produce a compact, agent-friendly representation of an Aurora model that reduces context footprint while retaining the information required to reconstruct cards and their link targets.",
+      "id": "CAP-007",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-016"
+        }
+      ],
+      "name": "Compact Model Packaging"
+    },
+    {
+      "card_type": "Event",
+      "description": "Schema validation and invariant checks have completed.",
+      "id": "EVT-003",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "CON-001"
+        }
+      ],
+      "name": "Validation Completed"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "aurora_cli validates all card JSON files against the Aurora schema copy co-located with the model's Mission card.",
+      "id": "REQ-001",
+      "name": "Validate Aurora Schema"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Validate each card JSON document against the Aurora schema.",
+      "id": "ATV-003",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "ATV-004"
+        }
+      ],
+      "name": "Validate Schema"
+    },
+    {
+      "card_type": "Process",
+      "description": "End-to-end process for resolving a model, validating it, and generating documentation outputs.",
+      "id": "PRO-001",
+      "links": [
+        {
+          "relationship": "starts_with",
+          "target": "EVT-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-003"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-004"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-005"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-006"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-007"
+        }
+      ],
+      "name": "Aurora CLI Execution"
+    },
+    {
+      "card_type": "Component",
+      "description": "Validates all cards against the local Aurora JSON schema.",
+      "id": "COM-004",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-001"
+        },
+        {
+          "relationship": "implements",
+          "target": "CAP-002"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-001"
+        }
+      ],
+      "name": "Schema Validator"
+    },
+    {
+      "card_type": "System",
+      "description": "A bounded system providing first-party support tooling for Aurora models.",
+      "id": "SYS-001",
+      "links": [
+        {
+          "relationship": "integrates",
+          "target": "APP-001"
+        }
+      ],
+      "name": "Aurora Support Tooling"
+    },
+    {
+      "card_type": "State Machine",
+      "description": "High-level lifecycle of a single aurora_cli invocation from initialization through validation and generation.",
+      "id": "STM-001",
+      "links": [
+        {
+          "relationship": "starts_in",
+          "target": "STA-001"
+        }
+      ],
+      "name": "Aurora CLI Run Lifecycle"
+    },
+    {
+      "attributes": {
+        "views": [
+          "Requirements View",
+          "System Composition",
+          "Deployment Topology",
+          "Process Flow",
+          "State Machine"
+        ]
+      },
+      "card_type": "Feature",
+      "description": "Generate the standard view set (Requirements View, System Composition, Deployment Topology, Process Flow, and State Machine) using model cards and link relationships.",
+      "id": "FEA-005",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-004"
+        }
+      ],
+      "name": "Standard View Set Generation",
+      "status": "Design"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide a validate subcommand that checks schema conformance and Aurora invariants and returns a non-zero exit code on failure.",
+      "id": "FEA-001",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-002"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-001"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-002"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-003"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-011"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-009"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-001"
+        }
+      ],
+      "name": "Validate Command",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "aurora_cli includes the standard Mermaid classDef palette and assigns the appropriate class to every node by card type in every generated view diagram.",
+      "id": "REQ-010",
+      "name": "Standard Mermaid Styling"
+    },
+    {
+      "card_type": "Component",
+      "description": "Renders human-friendly Markdown for each card and generates an index README grouped by card type.",
+      "id": "COM-006",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-002"
+        },
+        {
+          "relationship": "implements",
+          "target": "CAP-003"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-002"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-003"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Markdown Card Generator"
+    },
+    {
+      "card_type": "Interface",
+      "description": "A stable CLI contract consisting of subcommands, flags, exit codes, and structured output conventions.",
+      "id": "INT-001",
+      "name": "Command Line Interface"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Load all card JSON files from the model root into an in-memory graph.",
+      "id": "ATV-002",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "EVT-002"
+        }
+      ],
+      "name": "Load Cards"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Write generated artifacts to the configured output folders.",
+      "id": "ATV-007",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "CTL-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Write Outputs"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "When an explicit input path is not provided, aurora_cli discovers a default Aurora model root by locating the nearest docs/design/aurora/ folder within the workspace root and uses it as the input model root.",
+      "id": "REQ-011",
+      "name": "Discover Default Input Model"
+    },
+    {
+      "card_type": "Component",
+      "description": "Resolves a user-provided path into a model root folder and identifies the Mission card and co-located schema copy.",
+      "id": "COM-002",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-003"
+        }
+      ],
+      "name": "Model Root Resolver"
+    },
+    {
+      "card_type": "Asset",
+      "description": "The generated Markdown card catalog (per-card files and index) plus the set of standard view documents.",
+      "id": "AST-002",
+      "links": [
+        {
+          "relationship": "persists_to",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Generated Documentation Set"
+    }
+  ]
+}
