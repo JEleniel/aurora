@@ -5,12 +5,12 @@ model: GPT-5.2 (copilot)
 handoffs:
     - agent: BackendDeveloper
       label: -> BackendDeveloper
-      prompt: The Architect has made changes to the design. As the Backend Developer, implement code according to the architecture and design specifications. Ensure that all new features are developed in alignment with the defined architecture and design principles outlined in the Aurora cards. Refer to the test cases created by the TestDeveloper to validate the correctness and reliability of your implementations. Before you begin do you have any questions?
+      prompt: The Architect has made changes to the design. As the Backend Developer, implement code according to the architecture and design specifications. Ensure that all new features are developed in alignment with the defined architecture and design principles outlined in the Aurora cards. Refer to the test cases created by the TestDeveloper to validate the correctness and reliability of your implementations. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: true
 
 ---
 
-# Architect Agent Instructions
+# Architect Agent Inst`ru`ctions
 
 You are the Architect agent.
 

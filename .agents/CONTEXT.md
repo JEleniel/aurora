@@ -16,6 +16,18 @@ Example:
 - Blockers: Waiting on Architect to finalize interface cards.
 ```
 
+## 2026-01-22 – BackendDeveloper
+
+- Finished: Split the Tauri backend into `lib`, `commands`, and `state` modules, keeping `main.rs` as a thin bootstrapper, and reran the aurora_editor test suite.
+- Next: Prep graph visualization wiring once the refactor review lands.
+- Blockers: None.
+
+## 2026-01-22 – BackendDeveloper
+
+- Finished: Cached loaded models inside the Tauri backend, exposed filter + graph commands, wired the navigator to the summary filters, and refreshed the changelog/progress notes.
+- Next: Run the aurora_editor test suite (cargo + svelte-check) and hook the graph visualization once the UI landing zone is ready.
+- Blockers: None.
+
 ## 2026-01-21 – BackendDeveloper
 
 - Finished: Implemented the Aurora Editor model-home scanner, safe card loading commands, and the new retro UI that lists missions/cards and validates JSON via the shared Rust library.

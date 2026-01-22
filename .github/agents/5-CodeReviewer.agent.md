@@ -5,19 +5,19 @@ model: GPT-5.2 (copilot)
 handoffs:
     - agent: BackendDeveloper
       label: <- BackendDeveloper
-      prompt: The CodeReviewer has completed the code review. As the BackendDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. Before you begin do you have any questions?
+      prompt: The CodeReviewer has completed the code review. As the BackendDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: false
     - agent: UIDeveloper
       label: <- UIDeveloper
-      prompt: The CodeReviewer has completed the code review. As the UIDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. Before you begin do you have any questions?
+      prompt: The CodeReviewer has completed the code review. As the UIDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: false
     - agent: TestDeveloper
       label: <- TestDeveloper
-      prompt: The CodeReviewer has completed the code review. As the TestDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. Before you begin do you have any questions?
+      prompt: The CodeReviewer has completed the code review. As the TestDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: false
     - agent: SecurityReviewer
       label: -> SecurityReviewer
-      prompt: The CodeReviewer has completed the code review. As the SecurityReviewer, perform an in-depth security analysis of the codebase, focusing on identifying and mitigating potential vulnerabilities. Before you begin do you have any questions?
+      prompt: The CodeReviewer has completed the code review. As the SecurityReviewer, perform an in-depth security analysis of the codebase, focusing on identifying and mitigating potential vulnerabilities. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: true
 ---
 

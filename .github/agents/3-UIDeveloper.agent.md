@@ -5,12 +5,12 @@ model: GPT-5.1-Codex
 handoffs:
     - agent: TestDeveloper
       label: -> TestDeveloper
-      prompt: The UIDeveloper has completed work. As the TestDeveloper, create and execute test plans and tests to ensure the system meets all specified requirements and quality standards. Refer to the Aurora cards for detailed design specifications. Before you begin do you have any questions?
+      prompt: The UIDeveloper has completed work. As the TestDeveloper, create and execute test plans and tests to ensure the system meets all specified requirements and quality standards. Refer to the Aurora cards for detailed design specifications. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: true
 
     - agent: CodeReviewer
       label: -> CodeReviewer
-      prompt: The Developers have completed work. As the CodeReviewer, review the backend and UI to ensure they meet the architectural patterns defined by the Architect agent and documented in the Aurora cards. Verify seamless communication and data flow between UI and backend. Before you begin do you have any questions?
+      prompt: The Developers have completed work. As the CodeReviewer, review the backend and UI to ensure they meet the architectural patterns defined by the Architect agent and documented in the Aurora cards. Verify seamless communication and data flow between UI and backend. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: true
 ---
 

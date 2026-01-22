@@ -6,6 +6,26 @@
 # Project specific
 # Add files and directories specific to your project that should be ignored here
 
+# AGENT: Add node exclusiong here
+# Node
+node_modules/
+.npm/
+.yarn/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Svelte
+.svelte-kit/
+.svelte-kit
+.svelte-devtools
+
+# AGENT: End of edit area.
+
 # Rust
 .analyze/
 *.pdb

@@ -5,11 +5,11 @@ model: GPT-5.2 (copilot)
 handoffs:
     - agent: TechnicalWriter
       label: <- TechnicalWriter
-      prompt: The DocumentationReviewer has completed the review. As the TechnicalWriter, address the feedback provided to enhance the documentation's accuracy, completeness, and clarity according to the reviewer's recommendations. Ensure that all issues raised are resolved before finalizing. Before you begin do you have any questions?
+      prompt: The DocumentationReviewer has completed the review. As the TechnicalWriter, address the feedback provided to enhance the documentation's accuracy, completeness, and clarity according to the reviewer's recommendations. Ensure that all issues raised are resolved before finalizing. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: false
     - agent: ReleaseReviewer
       label: -> ReleaseReviewer
-      prompt: The DocumentationReviewer has completed the review. As the ReleaseReviewer, ensure that all documentation is finalized and ready for release, confirming that it meets the required standards for publication. Before you begin do you have any questions?
+      prompt: The DocumentationReviewer has completed the review. As the ReleaseReviewer, ensure that all documentation is finalized and ready for release, confirming that it meets the required standards for publication. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: true
 ---
 

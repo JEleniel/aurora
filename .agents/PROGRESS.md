@@ -21,10 +21,16 @@ Add new entries under the headings below.
 ## Features
 
 - [ ] **BackendDeveloper** (FEA-002) **Aurora Editor loads model homes**
-  * Status: implementation
+  * Status: review
   * Owner: BackendDeveloper
   * Links: [docs/design/AGENT-MIS-002.json](../docs/design/AGENT-MIS-002.json)
-  * Next Actions: Expand the navigator with filtering plus hook the graph + MCP surfaces to the new summary API.
+  * Next Actions: Await review on the modularized Tauri backend; follow up with UI graph pane wiring after approval.
+
+- [ ] **UIDeveloper** (FEA-003) **Graph navigation view**
+  * Status: implementation
+  * Owner: UIDeveloper
+  * Links: [tools/aurora_editor/src/routes/+page.svelte](../tools/aurora_editor/src/routes/+page.svelte)
+  * Next Actions: Run `pnpm tauri:dev`, launch the native folder picker, confirm the error banner’s copy action works, and re-verify the Graph Explorer (zoom slider + recenter) still passes AAA checks on a real mission.
 
 ## Bugs
 
@@ -39,6 +45,12 @@ Add new entries under the headings below.
   * Owner: BackendDeveloper (monitor)
   * Links: [tools/aurora_cli/src/aurora/model.rs](../tools/aurora_cli/src/aurora/model.rs), [tools/aurora_cli/src/aurora.rs](../tools/aurora_cli/src/aurora.rs)
   * Next Actions: Keep the view renderer aligned with Aurora special-card semantics.
+
+- [ ] **BackendDeveloper** (BUG-003) **Editor selection stale after filesystem changes**
+  * Status: review
+  * Owner: BackendDeveloper
+  * Links: [tools/aurora_editor/src/routes/+page.svelte](../tools/aurora_editor/src/routes/+page.svelte)
+  * Next Actions: Re-run `pnpm tauri:dev` (now that watcher events emit via the supported Tauri API) and touch a card file to confirm the selection reload still fires end-to-end.
 
 ## Documentation
 

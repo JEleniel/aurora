@@ -9,14 +9,27 @@ and the project adheres to [Semantic Versioning].
 
 ### Added
 
+- Node, Svelte, and TypeScript ignore patterns in the root `.gitignore` to keep workspace noise out of source control.
 - Aurora Editor now scans model homes, lists missions/cards, and loads card JSON through the shared Rust
 	library to power the retro-futuristic editor view.
+- Aurora Editor navigator now consumes the summary filters, with new filtering + graph commands that keep MCP surfaces aligned with aurora_cli views.
+- Aurora Editor Graph Explorer visualizes upstream/downstream relationships with zoomable generations and click-to-recenter navigation backed by `graph_neighborhood`.
+- Aurora Editor's model picker now uses the official Tauri dialog plugin so the folder chooser opens as a native window instead of overlapping the UI.
+- Aurora Editor now provides a native folder picker for selecting the model home so users no longer need to paste paths manually.
+
+### Changed
+
+- Aurora Editor's Tauri backend now lives in a proper library with dedicated command/state modules, leaving `main.rs` as a thin bootstrapper for clearer factoring and easier testing.
 
 ### Fixed
 
 - Added the missing `DRI` → `Driver` entry to `CARD_PREFIXES` so it matches the documented Aurora card prefixes.
 - Fixed view rendering to include configured root cards even when the root is the mission card.
 - Fixed view rendering to always include `Boundary` and `Note` cards when they are linked as children of other included cards.
+- Aurora Editor now reloads (or clears) the active selection whenever filesystem watcher events detect external changes, so card details stay in sync with on-disk edits.
+- Aurora Editor watcher events now use the supported Tauri `emit` API so the desktop shell compiles and runs again.
+- Card parsing errors now include the offending file path, making it easier to locate malformed JSON or audit issues inside the model home.
+- Model load failures now render inside a copyable alert with a one-click “Copy error” control so testers can share diagnostics quickly.
 
 ## [2.0.0](https://github.com/JEleniel/aurora/releases/tag/v2.0.0) - 2026-01-21
 

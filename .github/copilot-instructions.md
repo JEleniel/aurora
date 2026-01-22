@@ -111,25 +111,12 @@ See `.agents/PROJECT_BRIEF.md` for the authoritative ownership matrix, quick-sta
 
 ## Agent Behavior
 
-<<<<<<< HEAD
-- You MAY hand off to appropriate subagents.
-- Treat this section as the shared rulebook; `.agent.md` files only cover role-specific nuances.
-- Before editing or creating a file, read the relevant instructions from `.github/instructions/` (language/file-type) and the Aurora schema guidance.
-- Capture coordination updates:
-    + Update `.agents/PROGRESS.md` for plan changes and reference related files or cards.
-    + Update `.agents/CONTEXT.md` before every summary next agent can resume quickly. Keep it limited to the current context; do not net it accrue.
-    + Document dependency or tooling caveats inside `.agents/TECHNOLOGIES.md` (do not duplicate that guidance elsewhere).
-- Work in small, reviewable increments. Use IDE tooling where possible; do not pause between files unless you need clarification.
-- Ask clarifying questions before starting work. Once you begin, continue until the task is complete or a blocker appears.
-- End final responses with a short summary paragraph, followed by a blank line, then a **tl;dr** list of 5–10 bullets (last bullet includes context usage percentage).
-=======
 - If an `docs/design/aurora/AGENT-*.json` file exists, read it to load the entire design.
 - When a new technology or dependency is added or an existing one is changed (including when detected from someone else's changes), you MUST read the current documentation for the correct version and annotate the `AGENT_PROGRESS.md` with any notes needed to work safely and idiomatically.
 - You MUST end final responses with a short summary paragraph, followed by a blank line, then **5-10 tl;dr bullets**. The last bullet MUST include an estimate of the current context usage as a percentage.
 - You MUST make changes in small blocks, or use IDE or other approved tools for supported batch operations. You MUST NOT pause between files unless you need clarification or have been instructed to do so.
 - Before opening or creating any file, you MUST read the relevant `*.instructions.md` files for that file type or language, if one exists.
-- You MUST ask any questions you have before you begin work. Once you start, you MUST NOT pause until your work is complete.
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
+- If you have any questions ask before beginning work, otherwise go dierectly to work. One started, continue until the work is complete unless absolutely necessary to stop.
 
 ## Tools
 

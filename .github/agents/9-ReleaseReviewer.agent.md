@@ -5,19 +5,19 @@ model: GPT-5.2 (copilot)
 handoffs:
     - agent: BackendDeveloper
       label: <- BackendDeveloper
-      prompt: The ReleaseReviewer has completed their review. As the BackendDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. Before you begin do you have any questions?
+      prompt: The ReleaseReviewer has completed their review. As the BackendDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: false
     - agent: UIDeveloper
       label: <- UIDeveloper
-      prompt: The ReleaseReviewer has completed their review. As the UIDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. Before you begin do you have any questions?
+      prompt: The ReleaseReviewer has completed their review. As the UIDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: false
     - agent: TestDeveloper
       label: <- TestDeveloper
-      prompt: The ReleaseReviewer has completed their review. As the TestDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. Before you begin do you have any questions?
+      prompt: The ReleaseReviewer has completed their review. As the TestDeveloper, address the feedback provided to enhance the code quality, security, and maintainability according to the reviewer's recommendations. Ensure that all issues raised are resolved before proceeding. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: false
     - agent: TechnicalWriter
       label: <- TechnicalWriter
-      prompt: The ReleaseReviewer has completed their review. As the TechnicalWriter, address the feedback provided to enhance the documentation's accuracy, completeness, and clarity according to the reviewer's recommendations. Ensure that all issues raised are resolved before finalizing. Before you begin do you have any questions?
+      prompt: The ReleaseReviewer has completed their review. As the TechnicalWriter, address the feedback provided to enhance the documentation's accuracy, completeness, and clarity according to the reviewer's recommendations. Ensure that all issues raised are resolved before finalizing. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: false
 ---
 

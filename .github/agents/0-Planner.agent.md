@@ -5,7 +5,7 @@ model: GPT-5.2 (copilot)
 handoffs:
     - agent: Architect
       label: -> Architect
-      prompt: The Planner has completed the Master Project Plan. As the Architect, create and maintain the architecture and design documentation that guides the development team. Before you begin do you have any questions?
+      prompt: The Planner has completed the Master Project Plan. As the Architect, create and maintain the architecture and design documentation that guides the development team. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: true
 ---
 

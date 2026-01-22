@@ -5,12 +5,12 @@ model: GPT-5.1-Codex
 handoffs:
     - agent: BackendDeveloper
       label: <- BackendDeveloper
-      prompt: The TestDeveloper has completed writing tests. As the Backend Developer, implement code according to the architecture and design specifications. Ensure that all new features are developed in alignment with the defined architecture and design principles outlined in the Aurora cards. Refer to the test cases created by the TestDeveloper to validate the correctness and reliability of your implementations. Before you begin do you have any questions?
+      prompt: The TestDeveloper has completed writing tests. As the Backend Developer, implement code according to the architecture and design specifications. Ensure that all new features are developed in alignment with the defined architecture and design principles outlined in the Aurora cards. Refer to the test cases created by the TestDeveloper to validate the correctness and reliability of your implementations. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: true
 
     - agent: CodeReviewer
       label: -> CodeReviewer
-      prompt: The Developers have completed work. As the CodeReviewer, review the backend and UI to ensure they meet the architectural patterns defined by the Architect agent and documented in the Aurora cards. Verify seamless communication and data flow between UI and backend. Before you begin do you have any questions?
+      prompt: The Developers have completed work. As the CodeReviewer, review the backend and UI to ensure they meet the architectural patterns defined by the Architect agent and documented in the Aurora cards. Verify seamless communication and data flow between UI and backend. If you have any questions before you begin work, ask now, otherwise get right to work.
       send: true
 ---
 

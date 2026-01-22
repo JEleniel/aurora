@@ -168,12 +168,12 @@ pub(crate) struct LoadedModel {
 }
 
 impl LoadedModel {
-	pub fn summary(&self) -> &ModelHomeSummary {
-		&self.summary
+	pub fn root_path(&self) -> &Path {
+		&self.root
 	}
 
-	pub fn root(&self) -> &Path {
-		&self.root
+	pub fn summary(&self) -> &ModelHomeSummary {
+		&self.summary
 	}
 
 	pub fn filter_cards(&self, filter_id: Option<&str>) -> FilteredCards {
@@ -414,7 +414,7 @@ fn index_root_missions(
 			&& path.extension().is_some_and(|ext| ext == "json")
 			&& looks_like_mission_card(&name)
 		{
-			let card = read_card_from_path(&path)?;
+			let card = read_card_with_context(&path)?;
 			let path_info = relative_path_info(root, &path)?;
 			register_card(missions, cards_by_id, card, path_info, None)?;
 		}
@@ -474,7 +474,7 @@ fn scan_card_tree(
 			reject_tmp_directory(name, &path)?;
 			scan_card_tree(root, &path, mission_id, missions, cards_by_id)?;
 		} else if file_type.is_file() && path.extension().is_some_and(|ext| ext == "json") {
-			let card = read_card_from_path(&path)?;
+			let card = read_card_with_context(&path)?;
 			let path_info = relative_path_info(root, &path)?;
 			register_card(
 				missions,
@@ -523,10 +523,8 @@ fn register_card(
 	cards_by_id.insert(
 		card.id.clone(),
 		CardRecord {
-			summary,
 			mission_id,
 			relative_path: path_info.relative,
-			absolute_path: path_info.absolute,
 			card,
 			outgoing: Vec::new(),
 			incoming: Vec::new(),
@@ -578,7 +576,6 @@ fn reject_tmp_directory(name: &str, path: &Path) -> Result<(), AuroraLibError> {
 
 struct RelativePathInfo {
 	relative: String,
-	absolute: PathBuf,
 }
 
 fn relative_path_info(root: &Path, path: &Path) -> Result<RelativePathInfo, AuroraLibError> {
@@ -593,7 +590,6 @@ fn relative_path_info(root: &Path, path: &Path) -> Result<RelativePathInfo, Auro
 	})?;
 	Ok(RelativePathInfo {
 		relative: path_to_unix_string(relative),
-		absolute: canonical,
 	})
 }
 
@@ -603,11 +599,28 @@ pub(crate) fn open_card(
 ) -> Result<OpenedCard, AuroraLibError> {
 	let canonical_root = canonicalize_model_home(root_path.as_ref())?;
 	let resolved = resolve_relative_path(&canonical_root, relative_path.as_ref())?;
-	let card = read_card_from_path(&resolved)?;
+	let card = read_card_with_context(&resolved)?;
 	Ok(OpenedCard {
 		absolute_path: resolved,
 		card,
 	})
+}
+
+fn read_card_with_context(path: &Path) -> Result<AuroraCard, AuroraLibError> {
+	read_card_from_path(path).map_err(|err| annotate_card_error(path, err))
+}
+
+fn annotate_card_error(path: &Path, err: AuroraLibError) -> AuroraLibError {
+	match err {
+		AuroraLibError::Serialization(source) => AuroraLibError::Validation(format!(
+			"card serialization error at {}: {source}",
+			path.display()
+		)),
+		AuroraLibError::Validation(message) => {
+			AuroraLibError::Validation(format!("{}: {message}", path.display()))
+		}
+		other => other,
+	}
 }
 
 fn resolve_relative_path(root: &Path, relative: &Path) -> Result<PathBuf, AuroraLibError> {
@@ -645,7 +658,7 @@ fn io_error(path: impl Into<PathBuf>, err: std::io::Error) -> AuroraLibError {
 
 fn hydrate_incoming_links(cards_by_id: &mut BTreeMap<String, CardRecord>) {
 	let mut incoming: HashMap<String, Vec<IncomingEdge>> = HashMap::new();
-	for (source_id, record) in cards_by_id.iter() {
+	for (source_id, record) in cards_by_id.iter_mut() {
 		let mut outgoing_edges = Vec::new();
 		for link in &record.card.links {
 			outgoing_edges.push(LinkEdge {
@@ -660,9 +673,7 @@ fn hydrate_incoming_links(cards_by_id: &mut BTreeMap<String, CardRecord>) {
 					relationship: link.relationship.clone(),
 				});
 		}
-		if let Some(entry) = cards_by_id.get_mut(source_id) {
-			entry.outgoing = outgoing_edges;
-		}
+		record.outgoing = outgoing_edges;
 	}
 	for (target_id, edges) in incoming {
 		if let Some(record) = cards_by_id.get_mut(&target_id) {
@@ -727,10 +738,8 @@ fn normalize_filter_id(input: &str) -> String {
 }
 
 struct CardRecord {
-	summary: CardSummary,
 	mission_id: String,
 	relative_path: String,
-	absolute_path: PathBuf,
 	card: AuroraCard,
 	outgoing: Vec<LinkEdge>,
 	incoming: Vec<IncomingEdge>,

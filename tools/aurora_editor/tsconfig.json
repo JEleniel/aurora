@@ -3,7 +3,7 @@
 	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
 		"isolatedModules": true,
-		"types": ["svelte"],
+		"types": ["svelte", "node", "@typescript-eslint/types"],
 		"noFallthroughCasesInSwitch": true,
 		"noErrorTruncation": true,
 		"noImplicitAny": true,
