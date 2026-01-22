@@ -294,6 +294,108 @@ mod tests {
 	}
 
 	#[test]
+	fn render_views_includes_boundary_and_note_children_of_included_cards() {
+		use crate::aurora::model::{Card, Model};
+
+		let mission_value = serde_json::json!({
+			"$schema": "./Aurora.schema.json",
+			"id": "MIS-001",
+			"card_type": "Mission",
+			"name": "Example Mission",
+			"description": "Example mission for view rendering tests.",
+			"audit_trail": { "hash": null, "version": "0.1.0", "history": [] },
+			"links": [{ "relationship": "establishes", "target": "DRI-001" }]
+		});
+		let driver_value = serde_json::json!({
+			"$schema": "./Aurora.schema.json",
+			"id": "DRI-001",
+			"card_type": "Driver",
+			"name": "Example Driver",
+			"description": "Example driver with boundary and note children.",
+			"audit_trail": { "hash": null, "version": "0.1.0", "history": [] },
+			"links": [
+				{ "relationship": "drives", "target": "REQ-001" },
+				{ "relationship": "includes", "target": "BND-001" },
+				{ "relationship": "annotated_by", "target": "NOT-001" }
+			]
+		});
+		let requirement_value = serde_json::json!({
+			"$schema": "./Aurora.schema.json",
+			"id": "REQ-001",
+			"card_type": "Requirement",
+			"name": "Example Requirement",
+			"description": "Example requirement contained by a boundary.",
+			"audit_trail": { "hash": null, "version": "0.1.0", "history": [] }
+		});
+		let boundary_value = serde_json::json!({
+			"$schema": "./Aurora.schema.json",
+			"id": "BND-001",
+			"card_type": "Boundary",
+			"name": "Example Boundary",
+			"description": "Example boundary containing the requirement.",
+			"audit_trail": { "hash": null, "version": "0.1.0", "history": [] },
+			"links": [{ "relationship": "contains", "target": "REQ-001" }]
+		});
+		let note_value = serde_json::json!({
+			"$schema": "./Aurora.schema.json",
+			"id": "NOT-001",
+			"card_type": "Note",
+			"name": "Example Note",
+			"description": "Example note linked from the driver.",
+			"audit_trail": { "hash": null, "version": "0.1.0", "history": [] }
+		});
+
+		let mission_card = Card::from_value(Path::new("MIS-001.json"), mission_value)
+			.expect("create mission card");
+		let driver_card =
+			Card::from_value(Path::new("DRI-001.json"), driver_value).expect("create driver card");
+		let requirement_card = Card::from_value(Path::new("REQ-001.json"), requirement_value)
+			.expect("create requirement card");
+		let boundary_card = Card::from_value(Path::new("BND-001.json"), boundary_value)
+			.expect("create boundary card");
+		let note_card =
+			Card::from_value(Path::new("NOT-001.json"), note_value).expect("create note card");
+
+		let mut cards: HashMap<String, Card> = HashMap::new();
+		cards.insert(driver_card.id.clone(), driver_card);
+		cards.insert(requirement_card.id.clone(), requirement_card);
+		cards.insert(boundary_card.id.clone(), boundary_card);
+		cards.insert(note_card.id.clone(), note_card);
+
+		let mut adjacency: HashMap<String, Vec<String>> = HashMap::new();
+		adjacency.insert("BND-001".to_string(), vec!["REQ-001".to_string()]);
+
+		let model = Model {
+			mission_card,
+			compact_model: None,
+			cards,
+			adjacency,
+			card_schema_errors: Vec::new(),
+			card_invariant_errors: Vec::new(),
+		};
+
+		let out_dir = unique_temp_dir("aurora_cli_views_children");
+		let args = OutputArgs {
+			output_path: out_dir.clone(),
+			clear: true,
+		};
+		model.render_views(&args).expect("render views");
+
+		let requirements_view = out_dir.join("MIS-001").join("Requirements.view.md");
+		let contents = fs::read_to_string(&requirements_view).expect("read rendered view");
+		assert!(
+			contents.contains("subgraph BND-001"),
+			"expected boundary subgraph to be rendered when linked from an included card"
+		);
+		assert!(
+			contents.contains("\tNOT-001"),
+			"expected note node to be rendered when linked from an included card"
+		);
+
+		fs::remove_dir_all(&out_dir).expect("cleanup temp output");
+	}
+
+	#[test]
 	fn find_aurora_path_finds_docs_design_aurora_from_repo_root() {
 		let root = unique_temp_dir("aurora_cli_find_model");
 		fs::create_dir_all(&root).expect("create temp root");

@@ -20,4 +20,9 @@ Maintain this file whenever dependencies are added, upgraded, or removed.
 
 ## Current Entries
 
-- _None yet_
+### tempfile
+
+- Location: tools/aurora_editor/src-tauri/Cargo.toml (dev-dependency)
+- Version: 3.14
+- Purpose: Provides throwaway directories for the model-home scanner tests in `aurora_editor`.
+- Notes: Use only in tests; the runtime still relies on user-selected paths so no additional sandboxing is provided.

@@ -176,6 +176,7 @@ impl Model {
 			for card in cards {
 				view_cards.entry(card.id.clone()).or_insert(card);
 			}
+			self.expand_view_cards_with_special_children(&mut view_cards)?;
 			let mut cards: Vec<&Card> = view_cards.values().copied().collect();
 			cards.sort_by(|left, right| left.id.cmp(&right.id));
 
@@ -213,6 +214,47 @@ impl Model {
 		}
 
 		Ok(())
+	}
+
+	fn expand_view_cards_with_special_children<'a>(
+		&'a self,
+		view_cards: &mut HashMap<String, &'a Card>,
+	) -> Result<(), ModelError> {
+		let mut changed = true;
+		while changed {
+			changed = false;
+			let view_ids: Vec<String> = view_cards.keys().cloned().collect();
+			for view_id in view_ids {
+				let Some(card) = view_cards.get(&view_id).copied() else {
+					continue;
+				};
+				let Some(links) = &card.links else {
+					continue;
+				};
+				for link in links {
+					if !Self::is_special_child_id(&link.target) {
+						continue;
+					}
+					let special_card = self
+						.cards
+						.get(&link.target)
+						.ok_or(ModelError::CardNotFound(link.target.clone()))?;
+					if !Self::is_boundary_card(special_card) && !Self::is_note_card(special_card) {
+						continue;
+					}
+					if view_cards.contains_key(&special_card.id) {
+						continue;
+					}
+					view_cards.insert(special_card.id.clone(), special_card);
+					changed = true;
+				}
+			}
+		}
+		Ok(())
+	}
+
+	fn is_special_child_id(card_id: &str) -> bool {
+		card_id.starts_with("BND") || card_id.starts_with("BOU") || card_id.starts_with("NOT")
 	}
 
 	fn is_boundary_card(card: &Card) -> bool {
@@ -388,12 +430,14 @@ impl Model {
 		let mut cards: Vec<&Card> = Vec::new();
 		if let Some(links) = &card.links {
 			for link in links {
-				if link.target.starts_with("BOU") || link.target.starts_with("NOT") {
+				if Self::is_special_child_id(&link.target) {
 					let special_card = self
 						.cards
 						.get(&link.target)
 						.ok_or(ModelError::CardNotFound(link.target.clone()))?;
-					cards.push(special_card);
+					if Self::is_boundary_card(special_card) || Self::is_note_card(special_card) {
+						cards.push(special_card);
+					}
 				}
 			}
 		};

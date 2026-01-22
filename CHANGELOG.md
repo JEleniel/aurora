@@ -7,10 +7,16 @@ and the project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+### Added
+
+- Aurora Editor now scans model homes, lists missions/cards, and loads card JSON through the shared Rust
+	library to power the retro-futuristic editor view.
+
 ### Fixed
 
 - Added the missing `DRI` → `Driver` entry to `CARD_PREFIXES` so it matches the documented Aurora card prefixes.
 - Fixed view rendering to include configured root cards even when the root is the mission card.
+- Fixed view rendering to always include `Boundary` and `Note` cards when they are linked as children of other included cards.
 
 ## [2.0.0](https://github.com/JEleniel/aurora/releases/tag/v2.0.0) - 2026-01-21
 
