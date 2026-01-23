@@ -1,0 +1,37 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "STA-003",
+	"card_type": "State",
+	"name": "Editing",
+	"description": "The user is editing card content in the editor pane.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "EVT-004",
+			"relationship": "receives"
+		},
+		{
+			"target": "EVT-002",
+			"relationship": "receives"
+		},
+		{
+			"target": "STA-004",
+			"relationship": "transitions_to"
+		},
+		{
+			"target": "STA-005",
+			"relationship": "transitions_to"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:15.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

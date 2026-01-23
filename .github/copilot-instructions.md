@@ -57,6 +57,7 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
     + You may use approved tools (listed later in this file), shell commands, IDE tools, and MCP plugins.
 - You MUST NOT branch from or open a PR to `main`.
 - You MUST NOT use the `gh` command line tool. It is not installed.
+- You MUST NOT pause before beginning work unless you have specific questions. You MUST NOT pause oonce work has begun until all tasks are complete.
 
 ## Work Tracking
 

@@ -1,0 +1,29 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ACT-003",
+	"card_type": "Actor",
+	"name": "Agent",
+	"description": "An automated agent that reads and updates Aurora models through the MCP endpoint and subscribes to model change events.",
+	"links": [
+		{
+			"target": "STR-003",
+			"relationship": "desires"
+		}
+	],
+	"audit_trail": {
+		"version": "1.1.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:08.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:11:02.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}

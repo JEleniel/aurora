@@ -1,0 +1,25 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "APP-002",
+	"card_type": "Application",
+	"name": "Aurora VS Code Extension",
+	"description": "A VS Code extension UI that reuses the Viewer/Editor UI and core logic to enable in-editor modeling and agent-assisted editing.",
+	"status": "Backlog",
+	"links": [
+		{
+			"target": "COM-020",
+			"relationship": "comprises"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:17.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

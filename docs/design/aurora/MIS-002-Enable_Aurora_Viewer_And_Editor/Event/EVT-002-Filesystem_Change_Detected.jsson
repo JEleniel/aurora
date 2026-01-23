@@ -1,0 +1,25 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "EVT-002",
+	"card_type": "Event",
+	"name": "Filesystem Change Detected",
+	"description": "A watched file change is observed in the model home or derived output folders.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CON-002",
+			"relationship": "triggers"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:21.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

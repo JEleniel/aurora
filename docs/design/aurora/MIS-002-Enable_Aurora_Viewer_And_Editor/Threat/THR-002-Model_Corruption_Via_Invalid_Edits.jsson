@@ -1,0 +1,25 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "THR-002",
+	"card_type": "Threat",
+	"name": "Model Corruption Via Invalid Edits",
+	"description": "An adversary (or accidental misuse) attempts to introduce invalid cards or links that break schema requirements or graph invariants.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "RIS-001",
+			"relationship": "imposes"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:07.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CNS-005",
+	"card_type": "Constraint",
+	"name": "Prefer aurora_cli For Derived Outputs",
+	"description": "The application should keep generated views and exports consistent with aurora_cli by invoking aurora_cli rather than duplicating rendering and export logic.",
+	"links": [
+		{
+			"target": "CTL-001",
+			"relationship": "governs"
+		},
+		{
+			"target": "FEA-012",
+			"relationship": "limits"
+		},
+		{
+			"target": "FEA-014",
+			"relationship": "limits"
+		}
+	],
+
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:14.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

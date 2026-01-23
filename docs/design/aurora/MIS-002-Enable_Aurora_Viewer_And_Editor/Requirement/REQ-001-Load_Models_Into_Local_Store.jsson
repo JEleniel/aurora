@@ -1,0 +1,23 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-001",
+	"card_type": "Requirement",
+	"name": "Load Models Into Local Store",
+	"description": "When a model home folder is opened, the application imports missions, cards, and links into the local IndraDB store in user storage and then loads the model from that store for navigation and editing.",
+	"audit_trail": {
+		"version": "2.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:00.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:00:10.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}

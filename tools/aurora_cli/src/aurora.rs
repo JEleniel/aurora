@@ -25,8 +25,8 @@ pub struct Aurora {
 impl Aurora {
 	pub fn load(path: &Path) -> Result<Self, AuroraError> {
 		let aurora_path = Self::find_aurora_path(path)?;
-		let schema_path = aurora_path.join("Aurora.schema.json");
-		let compact_schema_path = aurora_path.join("Aurora.compact.schema.json");
+		let schema_path = Self::resolve_schema_path(&aurora_path, "Aurora.schema")?;
+		let compact_schema_path = Self::resolve_schema_path(&aurora_path, "Aurora.compact.schema")?;
 		debug!("Aurora home found at {}", aurora_path.display());
 
 		let card_validator = Self::validate_and_load_schema(&schema_path)?;
@@ -188,8 +188,25 @@ impl Aurora {
 
 	fn is_aurora_home(path: &Path) -> bool {
 		path.is_dir()
-			&& path.join("Aurora.schema.json").is_file()
-			&& path.join("Aurora.compact.schema.json").is_file()
+			&& Self::has_schema(path, "Aurora.schema")
+			&& Self::has_schema(path, "Aurora.compact.schema")
+	}
+
+	fn has_schema(path: &Path, base_name: &str) -> bool {
+		path.join(format!("{}.jsjson", base_name)).is_file()
+			|| path.join(format!("{}.json", base_name)).is_file()
+	}
+
+	fn resolve_schema_path(aurora_path: &Path, base_name: &str) -> Result<PathBuf, AuroraError> {
+		let jsjson_path = aurora_path.join(format!("{}.jsjson", base_name));
+		if jsjson_path.is_file() {
+			return Ok(jsjson_path);
+		}
+		let json_path = aurora_path.join(format!("{}.json", base_name));
+		if json_path.is_file() {
+			return Ok(json_path);
+		}
+		Err(AuroraError::InvalidPath(aurora_path.display().to_string()))
 	}
 
 	fn validate_and_load_schema(path: &Path) -> Result<Validator, AuroraError> {
@@ -440,8 +457,8 @@ mod tests {
 		fs::create_dir_all(&root).expect("create temp root");
 		let model_home = root.join("docs").join("design").join("aurora");
 		fs::create_dir_all(&model_home).expect("create aurora home");
-		write_empty_file(&model_home.join("Aurora.schema.json"));
-		write_empty_file(&model_home.join("Aurora.compact.schema.json"));
+		write_empty_file(&model_home.join("Aurora.schema.jsjson"));
+		write_empty_file(&model_home.join("Aurora.compact.schema.jsjson"));
 
 		let found = Aurora::find_aurora_path(&root).expect("find aurora home");
 		assert_eq!(found, model_home);
@@ -483,6 +500,7 @@ mod tests {
 	}
 
 	#[test]
+<<<<<<< HEAD
 	fn load_filters_models_when_input_is_mission_card() {
 		use crate::aurora::model::Model;
 		use serde_json::json;
@@ -523,6 +541,20 @@ mod tests {
 			2,
 			"expected both missions when pointing at model root"
 		);
+=======
+	fn find_aurora_path_accepts_mission_jsjson_file_path() {
+		let root = unique_temp_dir("aurora_cli_find_model_file_jsjson");
+		let model_home = root.join("docs").join("design").join("aurora");
+		fs::create_dir_all(&model_home).expect("create aurora home");
+		write_empty_file(&model_home.join("Aurora.schema.jsjson"));
+		write_empty_file(&model_home.join("Aurora.compact.schema.jsjson"));
+
+		let mission_path = model_home.join("MIS-001-Example.jsjson");
+		write_empty_file(&mission_path);
+
+		let found = Aurora::find_aurora_path(&mission_path).expect("find aurora home");
+		assert_eq!(found, model_home);
+>>>>>>> ea0f089b55667f9af631722e94fc3c1af887da4e
 
 		fs::remove_dir_all(&root).expect("cleanup temp root");
 	}

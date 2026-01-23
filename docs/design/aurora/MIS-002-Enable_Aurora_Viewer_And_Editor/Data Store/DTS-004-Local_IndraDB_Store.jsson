@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "DTS-004",
+	"card_type": "Data Store",
+	"name": "Local IndraDB Store",
+	"description": "A local IndraDB-backed graph database stored in the application user storage directory and used as the primary persistence layer for Aurora cards and links while editing.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:02:00.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

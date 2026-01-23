@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-018",
+	"card_type": "Requirement",
+	"name": "Expose MCP Endpoint While Running",
+	"description": "The standalone application exposes an MCP endpoint while it is running to allow agents to assist in design.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:17.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

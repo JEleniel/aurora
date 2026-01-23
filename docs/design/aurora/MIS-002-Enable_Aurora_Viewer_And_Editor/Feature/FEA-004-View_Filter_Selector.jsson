@@ -1,0 +1,33 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "FEA-004",
+	"card_type": "Feature",
+	"name": "View Filter Selector",
+	"description": "Provide view filters aligned with aurora_cli built-in view sets.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CAP-004",
+			"relationship": "enables"
+		},
+		{
+			"target": "REQ-009",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-010",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:04:03.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

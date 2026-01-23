@@ -1,0 +1,36 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-002",
+	"card_type": "Component",
+	"name": "Model Graph Indexer",
+	"description": "Parses card JSON files, builds the directed graph index, and provides link traversal queries for navigation and filtering.",
+	"links": [
+		{
+			"target": "FEA-001",
+			"relationship": "implements"
+		},
+		{
+			"target": "COM-011",
+			"relationship": "uses"
+		},
+		{
+			"target": "ART-001",
+			"relationship": "uses"
+		},
+		{
+			"target": "AST-001",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:06:01.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

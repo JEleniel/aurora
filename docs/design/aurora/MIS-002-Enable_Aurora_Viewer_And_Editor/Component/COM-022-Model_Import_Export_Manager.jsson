@@ -1,0 +1,40 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-022",
+	"card_type": "Component",
+	"name": "Model Import/Export Manager",
+	"description": "Imports Aurora model home folders into the local IndraDB store and exports the local store back to canonical model home layout, enforcing schema, invariants, and safe file handling.",
+	"links": [
+		{
+			"target": "FEA-020",
+			"relationship": "implements"
+		},
+		{
+			"target": "DTS-001",
+			"relationship": "uses"
+		},
+		{
+			"target": "DTS-004",
+			"relationship": "uses"
+		},
+		{
+			"target": "COM-001",
+			"relationship": "uses"
+		},
+		{
+			"target": "COM-018",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:03:20.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

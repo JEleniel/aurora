@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CAP-013",
+	"card_type": "Capability",
+	"name": "Accessible And Polished UI",
+	"description": "Provide a cross-platform, keyboard-navigable, reduced-motion-aware UI with the specified visual style.",
+	"links": [
+		{
+			"target": "REQ-020",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-021",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-032",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:03:12.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

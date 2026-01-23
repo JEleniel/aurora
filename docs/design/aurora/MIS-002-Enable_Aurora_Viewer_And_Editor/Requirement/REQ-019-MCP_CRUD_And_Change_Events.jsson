@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-019",
+	"card_type": "Requirement",
+	"name": "MCP CRUD And Change Events",
+	"description": "MCP provides CRUD operations for cards and links and emits model change events to connected clients.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:18.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

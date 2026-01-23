@@ -70,7 +70,7 @@ Each card is comprised of:
 | Field          | Required | Meaning                                                                                                                                                                                                                                                                         |
 | -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `$schema`      | Yes      | Relative link to the Aurora schema file included with the model(s) in the model home.                                                                                                                                                                                           |
-| `id`           | Yes      | Unique identifier with a `card_type` prefix and sequential integer. Once issued, the `id` MUST NOT change; if `card_type` changes, issue a new card and move the original to `status` "Deleted" with an audit history entry.                                                    |
+| `id`           | Yes      | Unique (to the model) identifier with a `card_type` prefix and sequential integer. Once issued, the `id` MUST NOT change; if `card_type` changes, issue a new card and move the original to `status` "Deleted" with an audit history entry.                                                    |
 | `card_type`    | Yes      | Architectural element represented by the card in title case. See [Common Cards](#common-cards) for examples.                                                                                                                                                                    |
 | `card_subtype` | No       | Optional refinement of the `card_type` in title case.                                                                                                                                                                                                                           |
 | `name`         | Yes      | Concise human-readable name for the card in title case.                                                                                                                                                                                                                         |
@@ -80,7 +80,7 @@ Each card is comprised of:
 | `audit_trail`  | Yes      | Semver audit: major for meaning changes or `Deleted`, minor for non-meaning updates, patch for typos; include history entries with `editor`, RFC3339 `timestamp`, and `event` (`created`, `edited`, `deleted`); optional SHA256 `hash` uses `null` placeholder for calculation. |
 | `attributes`   | No       | Arbitrary optional key-value pairs providing additional data; the value can be any valid JSON value, including objects.                                                                                                                                                         |
 
-**Example Names**:
+**Example IDs**:
 
 - MIS-001
 - DRI-001
@@ -90,28 +90,29 @@ Each card is comprised of:
 
 #### Model Storage
 
+- JSJSON files are functionally identical to JSON files.
 - Any time the `name` property is used in a file name the spaces must be replaced with underscores (`Sanitized_Name`).
-- Model home: `aurora/` contains `Aurora.schema.json`, `Aurora.compact.schema.json`, and root `Mission` card files. Mission cards are placed in the model home to provide a consistent, easy to find starting point.
-- Root `Mission` file name: `MIS-###-<Sanitized_Name>.json`, using sequential numbering per card type.
-- Mission home: `aurora/<MISSION_ID>/` with subfolders per `card_type`; all other cards are stored as `<CARD_ID>-<NAME>.json`.
-- All cards conform to `Aurora.schema.json`; if missing, copy `.github/instructions/Aurora.schema.json` before creating the first `Mission` card.
-- Optional compact model: `AGENT-<MISSION_ID>.json` in the model home, conforming to `Aurora.compact.schema.json`, with a top-level `cards` array and `audit_trail` removed; copy `.github/instructions/Aurora.compact.schema.json` if missing. The compact file should not be "pretty-printed" to save whitespace.
+- Model home: `aurora/` contains `Aurora.schema.jsjson`, `Aurora.compact.schema.jsjson`, and root `Mission` card files. Mission cards are placed in the model home to provide a consistent, easy to find starting point.
+- Root `Mission` file name: `MIS-###-<Sanitized_Name>.jsjson`, using sequential numbering per card type.
+- Mission home: `aurora/<MISSION_ID>/` with subfolders per `card_type`; all other cards are stored as `<CARD_ID>-<Sanitized_Name>.jsjson`.
+- All cards conform to `Aurora.schema.jsjson`; if missing, copy `.github/instructions/Aurora.schema.jsjson` before creating the first `Mission` card.
+- Optional compact model: `AGENT-<MISSION_ID>.jsjson` in the model home, conforming to `Aurora.compact.schema.jsjson`, with a top-level `cards` array and `audit_trail` removed; copy `.github/instructions/Aurora.compact.schema.jsjson` if missing. The compact file should not be "pretty-printed" to save whitespace.
 - The model home may be stored as a ZIP file if the folder structure is preserved.
 
 **Example Folder and File Structure**:
 
 ```text
 aurora
-  ├─ Aurora.schema.json
-  ├─ Aurora.compact.schema.json
-  ├─ MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.json
-  ├─ MIS-002-Write_User_Documentation_for_Aurora.json
+  ├─ Aurora.schema.jsjson
+  ├─ Aurora.compact.schema.jsjson
+  ├─ MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.jsjson
+  ├─ MIS-002-Write_User_Documentation_for_Aurora.jsjson
   ├─ MIS-001
   │    ├─ Driver
-  │    │    ├─ DRI-001-Do_Something.json
-  │    │    └─ DRI-002-Do_Something_Else.json
+  │    │    ├─ DRI-001-Do_Something.jsjson
+  │    │    └─ DRI-002-Do_Something_Else.jsjson
   │	   └─ Requirement
-  │	   	    └─ REQ-001-Can_Do_Something.json
+  │	   	    └─ REQ-001-Can_Do_Something.jsjson
   ├─ MIS-002
   │    ├─ Driver
 ... etc

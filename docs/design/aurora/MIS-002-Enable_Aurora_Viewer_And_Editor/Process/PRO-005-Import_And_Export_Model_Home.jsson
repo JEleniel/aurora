@@ -1,0 +1,49 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "PRO-005",
+	"card_type": "Process",
+	"name": "Import And Export Model Home",
+	"description": "Import an Aurora model home folder into the local IndraDB store and export changes back out to canonical model home layout on demand.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "ACT-001",
+			"relationship": "involves"
+		},
+		{
+			"target": "ACT-002",
+			"relationship": "involves"
+		},
+		{
+			"target": "ATV-011",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-012",
+			"relationship": "includes"
+		},
+		{
+			"target": "CAP-014",
+			"relationship": "explains"
+		},
+		{
+			"target": "DTS-001",
+			"relationship": "uses"
+		},
+		{
+			"target": "DTS-004",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:03:50.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

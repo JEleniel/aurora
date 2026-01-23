@@ -1,0 +1,97 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "STM-001",
+	"card_type": "State Machine",
+	"name": "Editing Session Lifecycle",
+	"description": "A bounded state model for the application session: loading a model, editing cards, validating, resolving conflicts, and generating outputs.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "STA-001",
+			"relationship": "starts_in"
+		},
+		{
+			"target": "STA-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "STA-002",
+			"relationship": "includes"
+		},
+		{
+			"target": "STA-003",
+			"relationship": "includes"
+		},
+		{
+			"target": "STA-004",
+			"relationship": "includes"
+		},
+		{
+			"target": "STA-005",
+			"relationship": "includes"
+		},
+		{
+			"target": "STA-006",
+			"relationship": "includes"
+		},
+		{
+			"target": "STA-007",
+			"relationship": "includes"
+		},
+		{
+			"target": "EVT-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "EVT-002",
+			"relationship": "includes"
+		},
+		{
+			"target": "EVT-003",
+			"relationship": "includes"
+		},
+		{
+			"target": "EVT-004",
+			"relationship": "includes"
+		},
+		{
+			"target": "EVT-005",
+			"relationship": "includes"
+		},
+		{
+			"target": "EVT-006",
+			"relationship": "includes"
+		},
+		{
+			"target": "EVT-007",
+			"relationship": "includes"
+		},
+		{
+			"target": "EVT-008",
+			"relationship": "includes"
+		},
+		{
+			"target": "CON-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "CON-002",
+			"relationship": "includes"
+		},
+		{
+			"target": "CON-003",
+			"relationship": "includes"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:09.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

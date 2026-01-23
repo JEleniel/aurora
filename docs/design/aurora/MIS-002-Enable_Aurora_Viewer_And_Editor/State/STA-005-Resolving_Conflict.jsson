@@ -1,0 +1,37 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "STA-005",
+	"card_type": "State",
+	"name": "Resolving Conflict",
+	"description": "An external change conflicts with local edits; deterministic conflict resolution is applied and the user may be prompted to review outcomes.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "EVT-002",
+			"relationship": "receives"
+		},
+		{
+			"target": "CON-002",
+			"relationship": "triggers"
+		},
+		{
+			"target": "STA-002",
+			"relationship": "transitions_to"
+		},
+		{
+			"target": "STA-007",
+			"relationship": "transitions_to"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:17.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

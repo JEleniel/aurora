@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-011",
+	"card_type": "Requirement",
+	"name": "Edit Allowed Fields",
+	"description": "The editor supports modifying only the allowed editable fields: name, description, status, card_subtype, attributes, and links.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:10.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

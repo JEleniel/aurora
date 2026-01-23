@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-007",
+	"card_type": "Component",
+	"name": "Card Markdown Renderer",
+	"description": "Renders a selected card into a Markdown preview representation for display in the editor pane.",
+	"links": [
+		{
+			"target": "FEA-006",
+			"relationship": "implements"
+		},
+		{
+			"target": "ART-002",
+			"relationship": "generates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:06:06.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

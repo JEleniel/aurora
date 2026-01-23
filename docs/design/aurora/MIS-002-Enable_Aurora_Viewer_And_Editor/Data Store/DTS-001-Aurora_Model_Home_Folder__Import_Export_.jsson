@@ -1,0 +1,23 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "DTS-001",
+	"card_type": "Data Store",
+	"name": "Aurora Model Home Folder (Import/Export)",
+	"description": "A filesystem folder in canonical Aurora model layout used for importing models into the local store and exporting them back out.",
+	"audit_trail": {
+		"version": "2.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:05:00.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:00:00.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}

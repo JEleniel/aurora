@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CNS-002",
+	"card_type": "Constraint",
+	"name": "WCAG AA Conformance",
+	"description": "The UI must conform to WCAG AA, including full keyboard navigation and support for reduced motion preferences.",
+	"links": [
+		{
+			"target": "CTL-005",
+			"relationship": "governs"
+		},
+		{
+			"target": "FEA-017",
+			"relationship": "limits"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:11.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Feature",
+	"description": "Render standard view documents as a CLI command, using ELK layout and applying the standard styling palette.",
+	"id": "FEA-003",
+	"links": [
+		{ "relationship": "enables", "target": "CAP-004" },
+		{ "relationship": "includes", "target": "FEA-005" },
+		{ "relationship": "satisfies", "target": "REQ-006" },
+		{ "relationship": "satisfies", "target": "REQ-007" },
+		{ "relationship": "satisfies", "target": "REQ-008" },
+		{ "relationship": "satisfies", "target": "REQ-010" }
+	],
+	"name": "Render Views Command"
+}

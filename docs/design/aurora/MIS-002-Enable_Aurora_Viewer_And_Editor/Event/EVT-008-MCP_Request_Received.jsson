@@ -1,0 +1,25 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "EVT-008",
+	"card_type": "Event",
+	"name": "MCP Request Received",
+	"description": "An MCP client sends a CRUD request or subscribes to change events.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "ATV-010",
+			"relationship": "triggers"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:27.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

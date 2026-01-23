@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-025",
+	"card_type": "Requirement",
+	"name": "IDs Are Immutable",
+	"description": "Card ids are immutable; changing card_type requires creating a new card and marking the original as Deleted, with explicit user confirmation.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:24.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

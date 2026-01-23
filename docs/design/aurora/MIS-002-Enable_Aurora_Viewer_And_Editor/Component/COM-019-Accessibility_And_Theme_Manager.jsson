@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-019",
+	"card_type": "Component",
+	"name": "Accessibility And Theme Manager",
+	"description": "Coordinates keyboard navigation affordances, reduced-motion behavior, and theme styling consistent with the visual constraints.",
+	"links": [
+		{
+			"target": "FEA-017",
+			"relationship": "implements"
+		},
+		{
+			"target": "CTL-005",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:06:18.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

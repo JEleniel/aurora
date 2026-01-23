@@ -1,0 +1,139 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "APP-001",
+	"card_type": "Application",
+	"name": "Aurora Viewer And Editor",
+	"description": "A standalone cross-platform desktop application for loading, navigating, editing, validating, and exporting Aurora models, exposing an MCP endpoint while running.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "COM-001",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-002",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-003",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-004",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-005",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-006",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-007",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-008",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-009",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-010",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-011",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-012",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-013",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-014",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-015",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-016",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-017",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-018",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-019",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-021",
+			"relationship": "comprises"
+		},
+		{
+			"target": "COM-022",
+			"relationship": "comprises"
+		},
+		{
+			"target": "PRO-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "PRO-002",
+			"relationship": "includes"
+		},
+		{
+			"target": "PRO-003",
+			"relationship": "includes"
+		},
+		{
+			"target": "PRO-004",
+			"relationship": "includes"
+		},
+		{
+			"target": "PRO-005",
+			"relationship": "includes"
+		},
+		{
+			"target": "STM-001",
+			"relationship": "includes"
+		}
+	],
+	"audit_trail": {
+		"version": "1.2.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:16.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:11:04.000Z",
+				"event": "edited"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:01:40.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}

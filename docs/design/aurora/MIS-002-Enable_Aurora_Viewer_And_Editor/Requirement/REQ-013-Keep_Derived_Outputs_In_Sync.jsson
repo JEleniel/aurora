@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-013",
+	"card_type": "Requirement",
+	"name": "Keep Derived Outputs In Sync",
+	"description": "The tool can keep compact models and generated Markdown/views in sync with the active model, preferring invocation of aurora_cli.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:12.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

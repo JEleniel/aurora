@@ -1,0 +1,36 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-017",
+	"card_type": "Component",
+	"name": "MCP Server",
+	"description": "Hosts the MCP endpoint, implements CRUD operations, and emits model change events to clients.",
+	"links": [
+		{
+			"target": "INT-001",
+			"relationship": "exposes"
+		},
+		{
+			"target": "FEA-015",
+			"relationship": "implements"
+		},
+		{
+			"target": "COM-011",
+			"relationship": "uses"
+		},
+		{
+			"target": "COM-008",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:06:16.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

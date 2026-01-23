@@ -1,0 +1,41 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "DRI-003",
+	"card_type": "Driver",
+	"name": "Canonical Output Parity",
+	"description": "Keep derived outputs (views, Markdown, compact models, SVG exports) consistent with aurora_cli so that the UI does not fork the specification or rendering rules.",
+	"links": [
+		{
+			"target": "REQ-036",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-013",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-014",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-015",
+			"relationship": "drives"
+		}
+	],
+	"audit_trail": {
+		"version": "1.1.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:03.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:01:30.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}

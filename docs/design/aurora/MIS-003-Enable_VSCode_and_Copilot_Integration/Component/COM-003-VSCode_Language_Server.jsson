@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-003",
+	"card_type": "Component",
+	"name": "VSCode Language Server",
+	"description": "Language server component that provides validation feedback, navigation, and editor assistance for Aurora model content in VS Code.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:00:18.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

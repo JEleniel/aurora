@@ -1,0 +1,81 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "DRI-002",
+	"card_type": "Driver",
+	"name": "Safe Invariant-Preserving Editing",
+	"description": "Prevent invalid or ambiguous architecture by blocking edits that would violate the Aurora schema or invariants, and by providing safe editing affordances (e.g., link target filtering).",
+	"links": [
+		{
+			"target": "REQ-033",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-009",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-010",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-011",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-012",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-023",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-024",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-025",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-026",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-027",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-028",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-029",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-030",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-031",
+			"relationship": "drives"
+		}
+	],
+	"audit_trail": {
+		"version": "1.1.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:02.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:01:20.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}

@@ -1,0 +1,150 @@
+{
+	"$schema": "./Aurora.schema.json",
+	"id": "MIS-002",
+	"card_type": "Mission",
+	"name": "Enable Aurora Viewer And Editor",
+	"description": "Provide a cross-platform UI tool for viewing and editing Aurora models that enforces the Aurora schema and invariants, supports deterministic and conflict-safe edits, and stays consistent with the canonical aurora_cli outputs.",
+	"links": [
+		{
+			"target": "DRI-001",
+			"relationship": "establishes"
+		},
+		{
+			"target": "DRI-002",
+			"relationship": "establishes"
+		},
+		{
+			"target": "DRI-003",
+			"relationship": "establishes"
+		},
+		{
+			"target": "DRI-004",
+			"relationship": "establishes"
+		},
+		{
+			"target": "DRI-005",
+			"relationship": "establishes"
+		},
+		{
+			"target": "SYS-001",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "ACT-001",
+			"relationship": "involves"
+		},
+		{
+			"target": "ACT-002",
+			"relationship": "involves"
+		},
+		{
+			"target": "ACT-003",
+			"relationship": "involves"
+		},
+		{
+			"target": "ACT-004",
+			"relationship": "involves"
+		},
+		{
+			"target": "CNS-001",
+			"relationship": "implies"
+		},
+		{
+			"target": "CNS-002",
+			"relationship": "implies"
+		},
+		{
+			"target": "CNS-003",
+			"relationship": "implies"
+		},
+		{
+			"target": "CNS-004",
+			"relationship": "implies"
+		},
+		{
+			"target": "CNS-005",
+			"relationship": "implies"
+		},
+		{
+			"target": "CAP-001",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "CAP-005",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "CAP-008",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "CAP-009",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "CAP-010",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "CAP-012",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "PRO-001",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "PRO-002",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "PRO-003",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "PRO-004",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "PRO-005",
+			"relationship": "necessitates"
+		},
+		{
+			"target": "STM-001",
+			"relationship": "necessitates"
+		}
+	],
+	"attributes": {
+		"tool": {
+			"name": "aurora_editor",
+			"tool_path": "tools/aurora_editor/",
+			"default_input": {
+				"model_root": "docs/design/aurora/"
+			},
+			"default_output": {
+				"aggregate_index_readme": "docs/design/README.md",
+				"per_mission_root": "docs/design/{MissionId}/",
+				"per_mission_cards_root": "docs/design/{MissionId}/cards/",
+				"per_mission_views_root": "docs/design/{MissionId}/views/",
+				"per_mission_index_readme": "docs/design/{MissionId}/README-{MissionId}.md",
+				"per_mission_compact_model": "docs/design/aurora/AGENT-{MissionId}.json"
+			}
+		}
+	},
+	"audit_trail": {
+		"version": "1.1.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:00:00.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:00:00.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [
+			{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" },
+			{ "editor": "Copilot: Architect", "event": "edited", "timestamp": "2026-01-23T00:00:00.000Z" }
+		],
+		"version": "1.1.0"
+	},
+	"card_type": "Capability",
+	"description": "Resolve an Aurora model root and load all cards (supporting .jsjson and .json card files) into an in-memory directed graph for downstream validation and rendering.",
+	"id": "CAP-001",
+	"links": [
+		{ "relationship": "satisfies", "target": "REQ-003" },
+		{ "relationship": "satisfies", "target": "REQ-011" },
+		{ "relationship": "uses", "target": "AST-001" }
+	],
+	"name": "Resolve And Load Aurora Model"
+}

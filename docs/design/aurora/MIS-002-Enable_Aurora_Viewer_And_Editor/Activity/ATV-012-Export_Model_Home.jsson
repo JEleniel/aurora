@@ -1,0 +1,45 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ATV-012",
+	"card_type": "Activity",
+	"name": "Export Model Home",
+	"description": "Export missions, cards, and links from the local IndraDB store to the selected model home folder using canonical Aurora layout.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "COM-022",
+			"relationship": "uses"
+		},
+		{
+			"target": "DTS-004",
+			"relationship": "uses"
+		},
+		{
+			"target": "DTS-001",
+			"relationship": "persists_to"
+		},
+		{
+			"target": "INT-002",
+			"relationship": "validates"
+		},
+		{
+			"target": "CON-003",
+			"relationship": "triggers"
+		},
+		{
+			"target": "CAP-014",
+			"relationship": "enables"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:03:40.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Component",
+	"description": "Generates deterministic per-card Markdown files and index README(s) based on the loaded model.",
+	"id": "COM-006",
+	"links": [
+		{ "relationship": "implements", "target": "FEA-002" },
+		{ "relationship": "implements", "target": "CAP-003" },
+		{ "relationship": "generates", "target": "ART-002" },
+		{ "relationship": "generates", "target": "ART-003" },
+		{ "relationship": "uses", "target": "COM-008" }
+	],
+	"name": "Markdown Card Generator"
+}

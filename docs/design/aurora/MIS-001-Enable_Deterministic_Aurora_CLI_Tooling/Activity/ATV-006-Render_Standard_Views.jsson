@@ -1,0 +1,17 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Activity",
+	"description": "Render standard view documents for the validated model.",
+	"id": "ATV-006",
+	"links": [
+		{ "relationship": "triggers", "target": "CON-002" },
+		{ "relationship": "governed by", "target": "CTL-001" },
+		{ "relationship": "generates", "target": "ART-004" }
+	],
+	"name": "Render Standard Views"
+}

@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CAP-014",
+	"card_type": "Capability",
+	"name": "Import And Export Model Homes",
+	"description": "Import Aurora models from canonical model home folders into the local IndraDB store and export them back out deterministically.",
+	"links": [
+		{
+			"target": "REQ-035",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-036",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:02:40.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

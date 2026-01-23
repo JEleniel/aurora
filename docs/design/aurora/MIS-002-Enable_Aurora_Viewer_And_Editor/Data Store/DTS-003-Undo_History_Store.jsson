@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "DTS-003",
+	"card_type": "Data Store",
+	"name": "Undo History Store",
+	"description": "A bounded storage for undo history (typically in-memory) that records recent edits for reversal.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:05:02.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

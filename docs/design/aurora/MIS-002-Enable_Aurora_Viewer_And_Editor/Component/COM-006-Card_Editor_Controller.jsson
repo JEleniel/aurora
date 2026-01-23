@@ -1,0 +1,40 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-006",
+	"card_type": "Component",
+	"name": "Card Editor Controller",
+	"description": "Manages the JSON editor form for the selected card, enforces editable field rules, and integrates validation, safe link selection, and save operations.",
+	"links": [
+		{
+			"target": "FEA-005",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-011",
+			"relationship": "implements"
+		},
+		{
+			"target": "COM-011",
+			"relationship": "uses"
+		},
+		{
+			"target": "COM-013",
+			"relationship": "uses"
+		},
+		{
+			"target": "COM-008",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:06:05.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

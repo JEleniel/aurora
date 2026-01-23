@@ -1,0 +1,37 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ATV-004",
+	"card_type": "Activity",
+	"name": "Edit Card Fields",
+	"description": "Edit card fields using a structured form and Markdown editor with a live preview.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "COM-006",
+			"relationship": "uses"
+		},
+		{
+			"target": "COM-007",
+			"relationship": "uses"
+		},
+		{
+			"target": "COM-008",
+			"relationship": "uses"
+		},
+		{
+			"target": "CAP-005",
+			"relationship": "enables"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:31.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

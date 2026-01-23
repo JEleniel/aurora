@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-002",
+	"card_type": "Requirement",
+	"name": "Default To Lowest Mission",
+	"description": "On startup, the active tab and central card default to the Mission with the lowest numbered MIS-### in the selected model home.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:01.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

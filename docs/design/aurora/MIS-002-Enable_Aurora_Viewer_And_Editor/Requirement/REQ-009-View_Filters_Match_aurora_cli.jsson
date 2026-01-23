@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-009",
+	"card_type": "Requirement",
+	"name": "View Filters Match aurora_cli",
+	"description": "The graph view supports filters matching the built-in aurora_cli view selections (e.g., Requirements, Component, Deployment, Process, State Machine, Threat Model).",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:02:08.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

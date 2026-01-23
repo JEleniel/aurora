@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" }],
+		"version": "1.0.0"
+	},
+	"card_type": "Component",
+	"description": "Routes CLI commands, parses flags, and orchestrates validation and rendering flows by coordinating downstream components.",
+	"id": "COM-001",
+	"links": [
+		{ "relationship": "exposes", "target": "INT-001" },
+		{ "relationship": "implements", "target": "FEA-004" },
+		{ "relationship": "implements", "target": "FEA-006" },
+		{ "relationship": "implements", "target": "FEA-007" },
+		{ "relationship": "uses", "target": "COM-002" },
+		{ "relationship": "uses", "target": "COM-004" },
+		{ "relationship": "uses", "target": "COM-005" },
+		{ "relationship": "uses", "target": "COM-006" },
+		{ "relationship": "uses", "target": "COM-007" },
+		{ "relationship": "uses", "target": "COM-008" }
+	],
+	"name": "CLI Command Router"
+}
