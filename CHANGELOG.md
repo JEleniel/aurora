@@ -11,7 +11,7 @@ and the project adheres to [Semantic Versioning].
 
 - Node, Svelte, and TypeScript ignore patterns in the root `.gitignore` to keep workspace noise out of source control.
 - Aurora Editor now scans model homes, lists missions/cards, and loads card JSON through the shared Rust
-	library to power the retro-futuristic editor view.
+  library to power the retro-futuristic editor view.
 - Aurora Editor navigator now consumes the summary filters, with new filtering + graph commands that keep MCP surfaces aligned with aurora_cli views.
 - Aurora Editor Graph Explorer visualizes upstream/downstream relationships with zoomable generations and click-to-recenter navigation backed by `graph_neighborhood`.
 - Aurora Editor's model picker now uses the official Tauri dialog plugin so the folder chooser opens as a native window instead of overlapping the UI.
@@ -30,6 +30,7 @@ and the project adheres to [Semantic Versioning].
 - Aurora Editor watcher events now use the supported Tauri `emit` API so the desktop shell compiles and runs again.
 - Card parsing errors now include the offending file path, making it easier to locate malformed JSON or audit issues inside the model home.
 - Model load failures now render inside a copyable alert with a one-click “Copy error” control so testers can share diagnostics quickly.
+- aurora_cli now accepts both .json and .jsjson card file extensions when loading missions and cards.
 
 ## [2.0.0](https://github.com/JEleniel/aurora/releases/tag/v2.0.0) - 2026-01-21
 

@@ -16,7 +16,13 @@ Example:
 - Blockers: Waiting on Architect to finalize interface cards.
 ```
 
-## 2026-01-22 – BackendDeveloper
+## 2026-01-23 – BackendDeveloper
+
+- Finished: Updated aurora_cli to accept .json/.jsjson schemas and card files, added path resolution coverage tests, and documented the change.
+- Next: Re-run aurora_cli validation against the design model once new cards land.
+- Blockers: None.
+
+## 2026-01-22 – BackendDeveloper (2)
 
 - Finished: Split the Tauri backend into `lib`, `commands`, and `state` modules, keeping `main.rs` as a thin bootstrapper, and reran the aurora_editor test suite.
 - Next: Prep graph visualization wiring once the refactor review lands.

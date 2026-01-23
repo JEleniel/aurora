@@ -21,37 +21,49 @@ Add new entries under the headings below.
 ## Features
 
 - [ ] **BackendDeveloper** (FEA-002) **Aurora Editor loads model homes**
-  * Status: review
-  * Owner: BackendDeveloper
-  * Links: [docs/design/AGENT-MIS-002.json](../docs/design/AGENT-MIS-002.json)
-  * Next Actions: Await review on the modularized Tauri backend; follow up with UI graph pane wiring after approval.
+    + Status: review
+    + Owner: BackendDeveloper
+    + Links: [docs/design/AGENT-MIS-002.json](../docs/design/AGENT-MIS-002.json)
+    + Next Actions: Await review on the modularized Tauri backend; follow up with UI graph pane wiring after approval.
 
 - [ ] **UIDeveloper** (FEA-003) **Graph navigation view**
-  * Status: implementation
-  * Owner: UIDeveloper
-  * Links: [tools/aurora_editor/src/routes/+page.svelte](../tools/aurora_editor/src/routes/+page.svelte)
-  * Next Actions: Run `pnpm tauri:dev`, launch the native folder picker, confirm the error banner’s copy action works, and re-verify the Graph Explorer (zoom slider + recenter) still passes AAA checks on a real mission.
+    + Status: implementation
+    + Owner: UIDeveloper
+    + Links: [tools/aurora_editor/src/routes/+page.svelte](../tools/aurora_editor/src/routes/+page.svelte)
+    + Next Actions: Run `pnpm tauri:dev`, launch the native folder picker, confirm the error banner’s copy action works, and re-verify the Graph Explorer (zoom slider + recenter) still passes AAA checks on a real mission.
 
 ## Bugs
 
 - [x] **BackendDeveloper** (BUG-001) **Schema & tooling sample fixes**
-  * Status: verified
-  * Owner: BackendDeveloper (monitor)
-  * Links: [schemas/Aurora.schema.json](../schemas/Aurora.schema.json), [schemas/Aurora.compact.schema.json](../schemas/Aurora.compact.schema.json), [.github/instructions/rust_example/model.rs](../.github/instructions/rust_example/model.rs)
-  * Next Actions: Keep schemas and instructional samples aligned with future mission updates.
+    + Status: verified
+    + Owner: BackendDeveloper (monitor)
+    + Links: [schemas/Aurora.schema.json](../schemas/Aurora.schema.json), [schemas/Aurora.compact.schema.json](../schemas/Aurora.compact.schema.json), [.github/instructions/rust_example/model.rs](../.github/instructions/rust_example/model.rs)
+    + Next Actions: Keep schemas and instructional samples aligned with future mission updates.
 
 - [x] **BackendDeveloper** (BUG-002) **Include Boundary/Note cards in views**
-  * Status: verified
-  * Owner: BackendDeveloper (monitor)
-  * Links: [tools/aurora_cli/src/aurora/model.rs](../tools/aurora_cli/src/aurora/model.rs), [tools/aurora_cli/src/aurora.rs](../tools/aurora_cli/src/aurora.rs)
-  * Next Actions: Keep the view renderer aligned with Aurora special-card semantics.
+    + Status: verified
+    + Owner: BackendDeveloper (monitor)
+    + Links: [tools/aurora_cli/src/aurora/model.rs](../tools/aurora_cli/src/aurora/model.rs), [tools/aurora_cli/src/aurora.rs](../tools/aurora_cli/src/aurora.rs)
+    + Next Actions: Keep the view renderer aligned with Aurora special-card semantics.
 
 - [ ] **BackendDeveloper** (BUG-003) **Editor selection stale after filesystem changes**
-  * Status: review
-  * Owner: BackendDeveloper
-  * Links: [tools/aurora_editor/src/routes/+page.svelte](../tools/aurora_editor/src/routes/+page.svelte)
-  * Next Actions: Re-run `pnpm tauri:dev` (now that watcher events emit via the supported Tauri API) and touch a card file to confirm the selection reload still fires end-to-end.
+    + Status: review
+    + Owner: BackendDeveloper
+    + Links: [tools/aurora_editor/src/routes/+page.svelte](../tools/aurora_editor/src/routes/+page.svelte)
+    + Next Actions: Re-run `pnpm tauri:dev` (now that watcher events emit via the supported Tauri API) and touch a card file to confirm the selection reload still fires end-to-end.
+
+- [x] **BackendDeveloper** (BUG-004) **aurora_cli accepts .json and .jsjson cards**
+    + Status: verified
+    + Owner: BackendDeveloper
+    + Links: [tools/aurora_cli/src/aurora.rs](../tools/aurora_cli/src/aurora.rs), [tools/aurora_cli/src/aurora/model.rs](../tools/aurora_cli/src/aurora/model.rs)
+    + Next Actions: Monitor extension handling in downstream tools.
 
 ## Documentation
+
+- [x] **BackendDeveloper** (DOC-001) **docs/design/aurora cards validated**
+    + Status: verified
+    + Owner: BackendDeveloper (monitor)
+    + Links: [docs/design/aurora](../docs/design/aurora)
+    + Next Actions: Monitor future card edits and rerun `aurora_cli validate` after any model change.
 
 ## Reviews & Audits

@@ -36,6 +36,10 @@ pub struct Model {
 }
 
 impl Model {
+	fn is_supported_card_extension(extension: Option<&str>) -> bool {
+		matches!(extension, Some("json") | Some("jsjson"))
+	}
+
 	pub fn sanitize_name(name: &str) -> String {
 		let mut sanitized: String = name
 			.trim()
@@ -597,7 +601,7 @@ impl Model {
 	}
 
 	fn load_models(path: &Path, card_validator: &Validator) -> Result<Vec<Self>, ModelError> {
-		let regex_mission = Regex::new(r"^(MIS-\d{3})-([A-Za-z0-9_]+)\.json$")?;
+		let regex_mission = Regex::new(r"^(MIS-\d{3})-([A-Za-z0-9_]+)\.(?:json|jsjson)$")?;
 		let mut models: Vec<Self> = Vec::new();
 		for entry in path.read_dir()? {
 			let entry = entry?;
@@ -752,11 +756,17 @@ impl Model {
 		errors: &mut Vec<String>,
 	) {
 		let expected_sanitized_name = Self::sanitize_name(&card.name);
-		let expected_file_name = format!("{}-{}.json", card.id, expected_sanitized_name);
-		if file_name != expected_file_name {
+		let expected_file_name = format!("{}-{}", card.id, expected_sanitized_name);
+		let file_path = Path::new(file_name);
+		let file_stem = file_path
+			.file_stem()
+			.and_then(|stem| stem.to_str())
+			.unwrap_or("");
+		let extension = file_path.extension().and_then(|ext| ext.to_str());
+		if file_stem != expected_file_name || !Self::is_supported_card_extension(extension) {
 			let message = format!(
-				"Card file name must be '{}', found '{}'.",
-				expected_file_name, file_name
+				"Card file name must be '{}.json' or '{}.jsjson', found '{}'.",
+				expected_file_name, expected_file_name, file_name
 			);
 			errors.push(format_error_message(
 				card_path,
@@ -822,9 +832,8 @@ impl Model {
 			for card_entry in type_path.read_dir()? {
 				let card_entry = card_entry?;
 				let card_path = card_entry.path();
-				if !card_path.is_file()
-					|| card_path.extension().and_then(|ext| ext.to_str()) != Some("json")
-				{
+				let extension = card_path.extension().and_then(|ext| ext.to_str());
+				if !card_path.is_file() || !Self::is_supported_card_extension(extension) {
 					continue;
 				}
 				let file_name = card_path
@@ -882,12 +891,15 @@ impl Model {
 		model_id: &str,
 		compact_validator: &Validator,
 	) -> Result<Option<CompactModel>, ModelError> {
-		let path = path.join(format!("AGENT-{}.json", model_id));
-		if path.exists() {
-			Ok(Some(CompactModel::load(&path, compact_validator)?))
-		} else {
-			Ok(None)
+		let jsjson_path = path.join(format!("AGENT-{}.jsjson", model_id));
+		if jsjson_path.is_file() {
+			return Ok(Some(CompactModel::load(&jsjson_path, compact_validator)?));
 		}
+		let json_path = path.join(format!("AGENT-{}.json", model_id));
+		if json_path.is_file() {
+			return Ok(Some(CompactModel::load(&json_path, compact_validator)?));
+		}
+		Ok(None)
 	}
 
 	fn add_card(&mut self, card: Card) {

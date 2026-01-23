@@ -1,0 +1,20 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"audit_trail": {
+		"hash": null,
+		"history": [
+			{ "editor": "Copilot: Architect", "event": "created", "timestamp": "2026-01-20T00:00:00.000Z" },
+			{ "editor": "Copilot: Architect", "event": "edited", "timestamp": "2026-01-23T00:00:00.000Z" }
+		],
+		"version": "1.1.0"
+	},
+	"card_type": "Component",
+	"description": "Loads cards from the model folder (supporting .jsjson and .json card files) into an in-memory graph representation for validation and rendering.",
+	"id": "COM-003",
+	"links": [
+		{ "relationship": "implements", "target": "CAP-001" },
+		{ "relationship": "uses", "target": "DTS-001" },
+		{ "relationship": "uses", "target": "AST-001" }
+	],
+	"name": "Model Loader"
+}
