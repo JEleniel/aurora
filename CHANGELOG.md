@@ -11,7 +11,7 @@ and the project adheres to [Semantic Versioning].
 
 - Node, Svelte, and TypeScript ignore patterns in the root `.gitignore` to keep workspace noise out of source control.
 - Aurora Editor now scans model homes, lists missions/cards, and loads card JSON through the shared Rust
-	library to power the retro-futuristic editor view.
+ library to power the retro-futuristic editor view.
 - Aurora Editor navigator now consumes the summary filters, with new filtering + graph commands that keep MCP surfaces aligned with aurora_cli views.
 - Aurora Editor Graph Explorer visualizes upstream/downstream relationships with zoomable generations and click-to-recenter navigation backed by `graph_neighborhood`.
 - Aurora Editor's model picker now uses the official Tauri dialog plugin so the folder chooser opens as a native window instead of overlapping the UI.
