@@ -19,7 +19,6 @@ graph LR
 
 	CON-001 -- triggers_false --> STA-005;
 	CON-002 -- triggers_false --> STA-004;
-	EVT-003 -- triggers --> CON-001;
 	STA-001 -- receives --> EVT-001;
 	STA-001 -- transitions_to --> STA-002;
 	STA-002 -- receives --> EVT-003;
@@ -66,4 +65,3 @@ classDef cls_note fill:#1f2937,color:#FFFFFF;
 	class STM-001 cls_state_machine;
 
 ```
-

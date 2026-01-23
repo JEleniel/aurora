@@ -25,9 +25,12 @@ graph LR
 	COM-018[["`**Component**: COM-018<br />Security Gate`"]]
 	COM-019[["`**Component**: COM-019<br />Accessibility And Theme Manager`"]]
 	COM-020[["`**Component**: COM-020<br />VS Code Host Adapter`"]]
-	DTS-001[("`**Data Store**: DTS-001<br />Aurora Model Home Folder`")]
+	COM-021[["`**Component**: COM-021<br />IndraDB Store Adapter`"]]
+	COM-022[["`**Component**: COM-022<br />Model Import/Export Manager`"]]
+	DTS-001[("`**Data Store**: DTS-001<br />Aurora Model Home Folder (Import/Export)`")]
 	DTS-002[("`**Data Store**: DTS-002<br />Derived Output Folder`")]
 	DTS-003[("`**Data Store**: DTS-003<br />Undo History Store`")]
+	DTS-004[("`**Data Store**: DTS-004<br />Local IndraDB Store`")]
 
 
 	COM-001 -- uses --> DTS-001;
@@ -55,6 +58,12 @@ graph LR
 	COM-017 -- uses --> COM-011;
 	COM-017 -- uses --> COM-008;
 	COM-018 -- uses --> DTS-001;
+	COM-021 -- uses --> DTS-004;
+	COM-021 -- uses --> COM-018;
+	COM-022 -- uses --> DTS-001;
+	COM-022 -- uses --> DTS-004;
+	COM-022 -- uses --> COM-001;
+	COM-022 -- uses --> COM-018;
 
 
 classDef cls_boundary stroke-dasharray:5 5,stroke-width:4;
@@ -88,8 +97,7 @@ classDef cls_risk fill:#881337,color:#FFFFFF;
 classDef cls_threat fill:#4c0519,color:#FFFFFF;
 classDef cls_note fill:#1f2937,color:#FFFFFF;
 
-	class COM-001,COM-002,COM-003,COM-004,COM-005,COM-006,COM-007,COM-008,COM-009,COM-010,COM-011,COM-012,COM-013,COM-014,COM-015,COM-016,COM-017,COM-018,COM-019,COM-020 cls_component;
-	class DTS-001,DTS-002,DTS-003 cls_data_store;
+	class COM-001,COM-002,COM-003,COM-004,COM-005,COM-006,COM-007,COM-008,COM-009,COM-010,COM-011,COM-012,COM-013,COM-014,COM-015,COM-016,COM-017,COM-018,COM-019,COM-020,COM-021,COM-022 cls_component;
+	class DTS-001,DTS-002,DTS-003,DTS-004 cls_data_store;
 
 ```
-

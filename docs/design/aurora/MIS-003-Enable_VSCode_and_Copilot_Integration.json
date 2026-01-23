@@ -4,6 +4,28 @@
 	"card_type": "Mission",
 	"name": "Enable VSCode and Copilot Integration",
 	"description": "Enable the integration of Aurora, Aurora modeling, and Copilot assistance with managing Aurora models in VSCode.",
+	"links": [
+		{
+			"target": "DRI-001",
+			"relationship": "establishes"
+		},
+		{
+			"target": "DRI-002",
+			"relationship": "establishes"
+		},
+		{
+			"target": "DRI-003",
+			"relationship": "establishes"
+		},
+		{
+			"target": "DRI-004",
+			"relationship": "establishes"
+		},
+		{
+			"target": "DRI-005",
+			"relationship": "establishes"
+		}
+	],
 	"audit_trail": {
 		"version": "1.0.0",
 		"hash": null,

@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "DRI-004",
+	"card_type": "Driver",
+	"name": "Simplify Agent Workflow",
+	"description": "Remove the concerns about files, formatting, linting, etc. from the agent and into the tooling.",
+	"links": [
+		{
+			"target": "REQ-001",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-004",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-005",
+			"relationship": "drives"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:00:04.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

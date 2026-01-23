@@ -25,8 +25,8 @@ graph LR
 	COM-001 -- uses --> COM-008;
 	COM-002 -- uses --> COM-003;
 	COM-003 -- uses --> DTS-001;
-	COM-006 -- uses --> DTS-002;
-	COM-007 -- uses --> DTS-002;
+	COM-006 -- uses --> COM-008;
+	COM-007 -- uses --> COM-008;
 	COM-008 -- uses --> DTS-002;
 
 
@@ -65,4 +65,3 @@ classDef cls_note fill:#1f2937,color:#FFFFFF;
 	class DTS-001,DTS-002 cls_data_store;
 
 ```
-

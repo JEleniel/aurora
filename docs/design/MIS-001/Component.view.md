@@ -50,14 +50,11 @@ graph LR
 	COM-005 -- generates --> ART-001;
 	COM-006 -- generates --> ART-002;
 	COM-006 -- generates --> ART-003;
-	COM-006 -- uses --> DTS-002;
+	COM-006 -- uses --> COM-008;
 	COM-007 -- exposes --> INT-002;
 	COM-007 -- generates --> ART-004;
-	COM-007 -- uses --> DTS-002;
+	COM-007 -- uses --> COM-008;
 	COM-008 -- uses --> DTS-002;
-	COM-008 -- uses --> ART-002;
-	COM-008 -- uses --> ART-003;
-	COM-008 -- uses --> ART-004;
 	SYS-001 -- integrates --> APP-001;
 
 
@@ -100,4 +97,3 @@ classDef cls_note fill:#1f2937,color:#FFFFFF;
 	class SYS-001 cls_system;
 
 ```
-

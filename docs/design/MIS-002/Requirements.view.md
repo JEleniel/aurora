@@ -9,7 +9,7 @@ graph LR
 	ACT-002{{"`**Actor**: ACT-002<br />Tool User`"}}
 	ACT-003{{"`**Actor**: ACT-003<br />Agent`"}}
 	ACT-004{{"`**Actor**: ACT-004<br />Threat Actor`"}}
-	CAP-001(["`**Capability**: CAP-001<br />Load And Index Model Home`"])
+	CAP-001(["`**Capability**: CAP-001<br />Load And Index Local Store`"])
 	CAP-002(["`**Capability**: CAP-002<br />Browse Model Tree`"])
 	CAP-003(["`**Capability**: CAP-003<br />Navigate Model Graph`"])
 	CAP-004(["`**Capability**: CAP-004<br />Filter Views`"])
@@ -22,6 +22,7 @@ graph LR
 	CAP-011(["`**Capability**: CAP-011<br />Export Official Diagrams To SVG`"])
 	CAP-012(["`**Capability**: CAP-012<br />Expose MCP CRUD And Events`"])
 	CAP-013(["`**Capability**: CAP-013<br />Accessible And Polished UI`"])
+	CAP-014(["`**Capability**: CAP-014<br />Import And Export Model Homes`"])
 	CNS-001(["`**Constraint**: CNS-001<br />Cross-Platform Desktop Application`"])
 	CNS-002(["`**Constraint**: CNS-002<br />WCAG AA Conformance`"])
 	CNS-003(["`**Constraint**: CNS-003<br />Treat Model Content As Untrusted`"])
@@ -50,7 +51,10 @@ graph LR
 	FEA-016(["`**Feature**: FEA-016<br />Secure File Handling`"])
 	FEA-017(["`**Feature**: FEA-017<br />Accessible And Styled UI`"])
 	FEA-018(["`**Feature**: FEA-018<br />VS Code Extension UI`"])
-	REQ-001(["`**Requirement**: REQ-001<br />Load Models From A Model Home`"])
+	FEA-019(["`**Feature**: FEA-019<br />IndraDB-Backed Model Storage`"])
+	FEA-020(["`**Feature**: FEA-020<br />Import And Export Aurora Model Homes`"])
+	MIS-002(("`**Mission**: MIS-002<br />Enable Aurora Viewer And Editor`"))
+	REQ-001(["`**Requirement**: REQ-001<br />Load Models Into Local Store`"])
 	REQ-002(["`**Requirement**: REQ-002<br />Default To Lowest Mission`"])
 	REQ-003(["`**Requirement**: REQ-003<br />Model Tabs Remember Context`"])
 	REQ-004(["`**Requirement**: REQ-004<br />Model Tree Mirrors On-Disk Layout`"])
@@ -82,7 +86,10 @@ graph LR
 	REQ-030(["`**Requirement**: REQ-030<br />Paths And Filenames Are Safe`"])
 	REQ-031(["`**Requirement**: REQ-031<br />Never Execute Model Content`"])
 	REQ-032(["`**Requirement**: REQ-032<br />Retro-Futuristic Control-Panel Aesthetic`"])
+	REQ-033(["`**Requirement**: REQ-033<br />Store Cards In Local IndraDB`"])
 	REQ-034(["`**Requirement**: REQ-034<br />VS Code Extension Reuses Core Logic`"])
+	REQ-035(["`**Requirement**: REQ-035<br />Import Model Home Into Local Store`"])
+	REQ-036(["`**Requirement**: REQ-036<br />Export Local Store To Model Home`"])
 	STR-001["`**Story**: STR-001<br />Edit Cards Safely With Feedback`"]@{shape: card}
 	STR-002["`**Story**: STR-002<br />Export Official Views To SVG`"]@{shape: card}
 	STR-003["`**Story**: STR-003<br />Agent Updates Model Via MCP`"]@{shape: card}
@@ -126,6 +133,8 @@ graph LR
 	CAP-013 -- satisfies --> REQ-020;
 	CAP-013 -- satisfies --> REQ-021;
 	CAP-013 -- satisfies --> REQ-032;
+	CAP-014 -- satisfies --> REQ-035;
+	CAP-014 -- satisfies --> REQ-036;
 	CNS-002 -- limits --> FEA-017;
 	CNS-003 -- limits --> FEA-016;
 	CNS-004 -- limits --> FEA-002;
@@ -140,6 +149,7 @@ graph LR
 	DRI-001 -- drives --> REQ-007;
 	DRI-001 -- drives --> REQ-008;
 	DRI-001 -- drives --> REQ-022;
+	DRI-002 -- drives --> REQ-033;
 	DRI-002 -- drives --> REQ-009;
 	DRI-002 -- drives --> REQ-010;
 	DRI-002 -- drives --> REQ-011;
@@ -153,6 +163,7 @@ graph LR
 	DRI-002 -- drives --> REQ-029;
 	DRI-002 -- drives --> REQ-030;
 	DRI-002 -- drives --> REQ-031;
+	DRI-003 -- drives --> REQ-036;
 	DRI-003 -- drives --> REQ-013;
 	DRI-003 -- drives --> REQ-014;
 	DRI-003 -- drives --> REQ-015;
@@ -214,6 +225,31 @@ graph LR
 	FEA-017 -- satisfies --> REQ-021;
 	FEA-017 -- satisfies --> REQ-032;
 	FEA-018 -- satisfies --> REQ-034;
+	FEA-019 -- enables --> CAP-001;
+	FEA-019 -- enables --> CAP-006;
+	FEA-019 -- satisfies --> REQ-033;
+	FEA-020 -- enables --> CAP-014;
+	FEA-020 -- satisfies --> REQ-035;
+	FEA-020 -- satisfies --> REQ-036;
+	MIS-002 -- establishes --> DRI-001;
+	MIS-002 -- establishes --> DRI-002;
+	MIS-002 -- establishes --> DRI-003;
+	MIS-002 -- establishes --> DRI-004;
+	MIS-002 -- establishes --> DRI-005;
+	MIS-002 -- involves --> ACT-001;
+	MIS-002 -- involves --> ACT-002;
+	MIS-002 -- involves --> ACT-003;
+	MIS-002 -- involves --> ACT-004;
+	MIS-002 -- implies --> CNS-001;
+	MIS-002 -- implies --> CNS-002;
+	MIS-002 -- implies --> CNS-003;
+	MIS-002 -- implies --> CNS-004;
+	MIS-002 -- implies --> CNS-005;
+	MIS-002 -- necessitates --> CAP-001;
+	MIS-002 -- necessitates --> CAP-005;
+	MIS-002 -- necessitates --> CAP-008;
+	MIS-002 -- necessitates --> CAP-010;
+	MIS-002 -- necessitates --> CAP-012;
 	STR-001 -- explains --> CAP-005;
 	STR-001 -- explains --> CAP-008;
 	STR-001 -- explains --> FEA-009;
@@ -257,12 +293,12 @@ classDef cls_threat fill:#4c0519,color:#FFFFFF;
 classDef cls_note fill:#1f2937,color:#FFFFFF;
 
 	class ACT-001,ACT-002,ACT-003,ACT-004 cls_actor;
-	class CAP-001,CAP-002,CAP-003,CAP-004,CAP-005,CAP-006,CAP-007,CAP-008,CAP-009,CAP-010,CAP-011,CAP-012,CAP-013 cls_capability;
+	class CAP-001,CAP-002,CAP-003,CAP-004,CAP-005,CAP-006,CAP-007,CAP-008,CAP-009,CAP-010,CAP-011,CAP-012,CAP-013,CAP-014 cls_capability;
 	class CNS-001,CNS-002,CNS-003,CNS-004,CNS-005 cls_constraint;
 	class DRI-001,DRI-002,DRI-003,DRI-004,DRI-005 cls_driver;
-	class FEA-001,FEA-002,FEA-003,FEA-004,FEA-005,FEA-006,FEA-007,FEA-008,FEA-009,FEA-010,FEA-011,FEA-012,FEA-013,FEA-014,FEA-015,FEA-016,FEA-017,FEA-018 cls_feature;
-	class REQ-001,REQ-002,REQ-003,REQ-004,REQ-005,REQ-006,REQ-007,REQ-008,REQ-009,REQ-010,REQ-011,REQ-012,REQ-013,REQ-014,REQ-015,REQ-016,REQ-017,REQ-018,REQ-019,REQ-020,REQ-021,REQ-022,REQ-023,REQ-024,REQ-025,REQ-026,REQ-027,REQ-028,REQ-029,REQ-030,REQ-031,REQ-032,REQ-034 cls_requirement;
+	class FEA-001,FEA-002,FEA-003,FEA-004,FEA-005,FEA-006,FEA-007,FEA-008,FEA-009,FEA-010,FEA-011,FEA-012,FEA-013,FEA-014,FEA-015,FEA-016,FEA-017,FEA-018,FEA-019,FEA-020 cls_feature;
+	class MIS-002 cls_mission;
+	class REQ-001,REQ-002,REQ-003,REQ-004,REQ-005,REQ-006,REQ-007,REQ-008,REQ-009,REQ-010,REQ-011,REQ-012,REQ-013,REQ-014,REQ-015,REQ-016,REQ-017,REQ-018,REQ-019,REQ-020,REQ-021,REQ-022,REQ-023,REQ-024,REQ-025,REQ-026,REQ-027,REQ-028,REQ-029,REQ-030,REQ-031,REQ-032,REQ-033,REQ-034,REQ-035,REQ-036 cls_requirement;
 	class STR-001,STR-002,STR-003 cls_story;
 
 ```
-

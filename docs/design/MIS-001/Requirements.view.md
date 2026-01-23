@@ -26,38 +26,43 @@ graph LR
 	FEA-005(["`**Feature**: FEA-005<br />Standard View Set Generation`"])
 	FEA-006(["`**Feature**: FEA-006<br />Bump Version Commands`"])
 	FEA-007(["`**Feature**: FEA-007<br />Compact Model Export Command`"])
-	REQ-001(["`**Requirement**: REQ-001<br />Validate Aurora Schema`"])
-	REQ-002(["`**Requirement**: REQ-002<br />Validate Aurora Graph Invariants`"])
-	REQ-003(["`**Requirement**: REQ-003<br />Accept Model Root Or Mission Path`"])
-	REQ-004(["`**Requirement**: REQ-004<br />Generate Human-Friendly Markdown Cards`"])
-	REQ-005(["`**Requirement**: REQ-005<br />Generate Card Index README`"])
-	REQ-006(["`**Requirement**: REQ-006<br />Generate Standard Views`"])
+	MIS-001(("`**Mission**: MIS-001<br />Enable Deterministic Aurora CLI Tooling`"))
+	REQ-001(["`**Requirement**: REQ-001<br />Validate Cards Against Co-Located Schema`"])
+	REQ-002(["`**Requirement**: REQ-002<br />Validate Model Invariants`"])
+	REQ-003(["`**Requirement**: REQ-003<br />Resolve Model Root And Missions From Input`"])
+	REQ-004(["`**Requirement**: REQ-004<br />Render One Markdown File Per Card`"])
+	REQ-005(["`**Requirement**: REQ-005<br />Generate Card Catalog Indexes`"])
+	REQ-006(["`**Requirement**: REQ-006<br />Generate Standard View Set`"])
 	REQ-007(["`**Requirement**: REQ-007<br />Skip Empty Views`"])
-	REQ-008(["`**Requirement**: REQ-008<br />Use ELK Layout And Type Shapes`"])
-	REQ-009(["`**Requirement**: REQ-009<br />Configurable Output Folders`"])
-	REQ-010(["`**Requirement**: REQ-010<br />Standard Mermaid Styling`"])
-	REQ-011(["`**Requirement**: REQ-011<br />Discover Default Input Model`"])
-	REQ-012(["`**Requirement**: REQ-012<br />Bump Audit Trail Version`"])
-	REQ-013(["`**Requirement**: REQ-013<br />Append Audit Trail History Entry`"])
-	REQ-014(["`**Requirement**: REQ-014<br />Derive Editor Identity`"])
-	REQ-015(["`**Requirement**: REQ-015<br />Generate Audit Timestamps`"])
+	REQ-008(["`**Requirement**: REQ-008<br />Use ELK Layout And Per-Type Shapes`"])
+	REQ-009(["`**Requirement**: REQ-009<br />Support Configurable Output Roots`"])
+	REQ-010(["`**Requirement**: REQ-010<br />Apply Standard Mermaid Palette And Classes`"])
+	REQ-011(["`**Requirement**: REQ-011<br />Discover Default Model Root`"])
+	REQ-012(["`**Requirement**: REQ-012<br />Bump Card Semver Versions`"])
+	REQ-013(["`**Requirement**: REQ-013<br />Append Audit History On Version Bumps`"])
+	REQ-014(["`**Requirement**: REQ-014<br />Determine Editor Identity`"])
+	REQ-015(["`**Requirement**: REQ-015<br />Generate RFC3339 UTC Millisecond Timestamps`"])
 	REQ-016(["`**Requirement**: REQ-016<br />Export Compact Model Snapshot`"])
-	STR-001["`**Story**: STR-001<br />Architect Generates Documentation From Model`"]@{shape: card}
-	STR-002["`**Story**: STR-002<br />Tool User Validates And Renders Outputs`"]@{shape: card}
+	STR-001["`**Story**: STR-001<br />Generate Documentation And Views From Model`"]@{shape: card}
+	STR-002["`**Story**: STR-002<br />Validate And Render Outputs For Sharing`"]@{shape: card}
 
 
 	ACT-001 -- desires --> STR-001;
 	ACT-002 -- desires --> STR-002;
 	CAP-001 -- satisfies --> REQ-003;
+	CAP-001 -- satisfies --> REQ-011;
 	CAP-002 -- satisfies --> REQ-001;
 	CAP-002 -- satisfies --> REQ-002;
+	CAP-002 -- uses --> CAP-001;
 	CAP-003 -- satisfies --> REQ-004;
 	CAP-003 -- satisfies --> REQ-005;
 	CAP-003 -- satisfies --> REQ-009;
+	CAP-003 -- uses --> CAP-005;
 	CAP-004 -- satisfies --> REQ-006;
 	CAP-004 -- satisfies --> REQ-007;
 	CAP-004 -- satisfies --> REQ-008;
 	CAP-004 -- satisfies --> REQ-010;
+	CAP-004 -- uses --> CAP-005;
 	CAP-005 -- satisfies --> CNS-001;
 	CAP-005 -- satisfies --> CNS-002;
 	CAP-006 -- satisfies --> REQ-012;
@@ -66,6 +71,8 @@ graph LR
 	CAP-006 -- satisfies --> REQ-015;
 	CAP-006 -- uses --> CAP-005;
 	CAP-007 -- satisfies --> REQ-016;
+	CAP-007 -- uses --> CAP-001;
+	CAP-007 -- uses --> CAP-005;
 	CNS-001 -- limits --> FEA-002;
 	CNS-001 -- limits --> FEA-003;
 	CNS-002 -- limits --> FEA-002;
@@ -81,8 +88,8 @@ graph LR
 	DRI-002 -- drives --> REQ-001;
 	DRI-002 -- drives --> REQ-002;
 	DRI-002 -- drives --> REQ-003;
-	DRI-002 -- drives --> REQ-011;
 	DRI-002 -- drives --> REQ-009;
+	DRI-002 -- drives --> REQ-011;
 	DRI-002 -- drives --> REQ-012;
 	DRI-002 -- drives --> REQ-013;
 	DRI-002 -- drives --> REQ-014;
@@ -96,27 +103,19 @@ graph LR
 	FEA-001 -- enables --> CAP-002;
 	FEA-001 -- satisfies --> REQ-001;
 	FEA-001 -- satisfies --> REQ-002;
-	FEA-001 -- satisfies --> REQ-003;
-	FEA-001 -- satisfies --> REQ-011;
-	FEA-001 -- satisfies --> REQ-009;
 	FEA-002 -- enables --> CAP-003;
 	FEA-002 -- satisfies --> REQ-004;
 	FEA-002 -- satisfies --> REQ-005;
-	FEA-002 -- satisfies --> REQ-003;
-	FEA-002 -- satisfies --> REQ-011;
 	FEA-002 -- satisfies --> REQ-009;
 	FEA-003 -- enables --> CAP-004;
+	FEA-003 -- includes --> FEA-005;
 	FEA-003 -- satisfies --> REQ-006;
 	FEA-003 -- satisfies --> REQ-007;
 	FEA-003 -- satisfies --> REQ-008;
 	FEA-003 -- satisfies --> REQ-010;
-	FEA-003 -- satisfies --> REQ-003;
-	FEA-003 -- satisfies --> REQ-011;
-	FEA-003 -- satisfies --> REQ-009;
 	FEA-004 -- includes --> FEA-001;
 	FEA-004 -- includes --> FEA-002;
 	FEA-004 -- includes --> FEA-003;
-	FEA-005 -- enables --> CAP-004;
 	FEA-006 -- enables --> CAP-006;
 	FEA-006 -- satisfies --> REQ-012;
 	FEA-006 -- satisfies --> REQ-013;
@@ -124,8 +123,17 @@ graph LR
 	FEA-006 -- satisfies --> REQ-015;
 	FEA-007 -- enables --> CAP-007;
 	FEA-007 -- satisfies --> REQ-016;
-	REQ-016 -- includes --> CNS-001;
-	REQ-016 -- includes --> CNS-002;
+	MIS-001 -- establishes --> DRI-001;
+	MIS-001 -- establishes --> DRI-002;
+	MIS-001 -- establishes --> DRI-003;
+	MIS-001 -- involves --> ACT-001;
+	MIS-001 -- involves --> ACT-002;
+	MIS-001 -- implies --> CNS-001;
+	MIS-001 -- implies --> CNS-002;
+	MIS-001 -- necessitates --> CAP-006;
+	MIS-001 -- necessitates --> FEA-006;
+	MIS-001 -- necessitates --> CAP-007;
+	MIS-001 -- necessitates --> FEA-007;
 	STR-001 -- explains --> CAP-003;
 	STR-001 -- explains --> CAP-004;
 	STR-002 -- explains --> CAP-002;
@@ -169,8 +177,8 @@ classDef cls_note fill:#1f2937,color:#FFFFFF;
 	class CNS-001,CNS-002 cls_constraint;
 	class DRI-001,DRI-002,DRI-003 cls_driver;
 	class FEA-001,FEA-002,FEA-003,FEA-004,FEA-005,FEA-006,FEA-007 cls_feature;
+	class MIS-001 cls_mission;
 	class REQ-001,REQ-002,REQ-003,REQ-004,REQ-005,REQ-006,REQ-007,REQ-008,REQ-009,REQ-010,REQ-011,REQ-012,REQ-013,REQ-014,REQ-015,REQ-016 cls_requirement;
 	class STR-001,STR-002 cls_story;
 
 ```
-

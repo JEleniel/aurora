@@ -14,14 +14,16 @@ graph LR
 	ATV-003[["`**Activity**: ATV-003<br />Render Navigation Panes`"]]
 	ATV-004[["`**Activity**: ATV-004<br />Edit Card Fields`"]]
 	ATV-005[["`**Activity**: ATV-005<br />Validate Edit`"]]
-	ATV-006[["`**Activity**: ATV-006<br />Persist Card JSON`"]]
+	ATV-006[["`**Activity**: ATV-006<br />Persist Card Change`"]]
 	ATV-007[["`**Activity**: ATV-007<br />Resolve Concurrent Changes`"]]
 	ATV-008[["`**Activity**: ATV-008<br />Regenerate Derived Outputs`"]]
 	ATV-009[["`**Activity**: ATV-009<br />Export SVG`"]]
 	ATV-010[["`**Activity**: ATV-010<br />Serve MCP Request`"]]
+	ATV-011[["`**Activity**: ATV-011<br />Import Model Home`"]]
+	ATV-012[["`**Activity**: ATV-012<br />Export Model Home`"]]
 	CON-001{{"`**Condition**: CON-001<br />Schema And Invariants Valid`"}}
 	CON-002{{"`**Condition**: CON-002<br />External Change Conflicts With Local Edit`"}}
-	CON-003{{"`**Condition**: CON-003<br />Filesystem Write Is Safe`"}}
+	CON-003{{"`**Condition**: CON-003<br />Persistent Store Write Is Safe`"}}
 	EVT-001["`**Event**: EVT-001<br />Model Home Selected`"]@{shape: tri}
 	EVT-002["`**Event**: EVT-002<br />Filesystem Change Detected`"]@{shape: tri}
 	EVT-003["`**Event**: EVT-003<br />Edit Initiated`"]@{shape: tri}
@@ -34,11 +36,13 @@ graph LR
 	PRO-002[/"`**Process**: PRO-002<br />Edit Card Safely`"\]
 	PRO-003[/"`**Process**: PRO-003<br />Resolve Concurrent Changes`"\]
 	PRO-004[/"`**Process**: PRO-004<br />Generate Outputs And Export SVG`"\]
+	PRO-005[/"`**Process**: PRO-005<br />Import And Export Model Home`"\]
 
 
 	ATV-005 -- triggers --> CON-001;
 	ATV-006 -- triggers --> CON-003;
 	ATV-007 -- triggers --> CON-002;
+	ATV-012 -- triggers --> CON-003;
 	EVT-001 -- triggers --> ATV-001;
 	EVT-002 -- triggers --> CON-002;
 	EVT-003 -- triggers --> ATV-004;
@@ -53,6 +57,7 @@ graph LR
 	PRO-001 -- includes --> ATV-001;
 	PRO-001 -- includes --> ATV-002;
 	PRO-001 -- includes --> ATV-003;
+	PRO-001 -- includes --> ATV-011;
 	PRO-002 -- involves --> ACT-001;
 	PRO-002 -- involves --> ACT-002;
 	PRO-002 -- starts_with --> EVT-003;
@@ -70,6 +75,10 @@ graph LR
 	PRO-004 -- starts_with --> EVT-007;
 	PRO-004 -- includes --> ATV-008;
 	PRO-004 -- includes --> ATV-009;
+	PRO-005 -- involves --> ACT-001;
+	PRO-005 -- involves --> ACT-002;
+	PRO-005 -- includes --> ATV-011;
+	PRO-005 -- includes --> ATV-012;
 
 
 classDef cls_boundary stroke-dasharray:5 5,stroke-width:4;
@@ -103,11 +112,10 @@ classDef cls_risk fill:#881337,color:#FFFFFF;
 classDef cls_threat fill:#4c0519,color:#FFFFFF;
 classDef cls_note fill:#1f2937,color:#FFFFFF;
 
-	class ATV-001,ATV-002,ATV-003,ATV-004,ATV-005,ATV-006,ATV-007,ATV-008,ATV-009,ATV-010 cls_activity;
+	class ATV-001,ATV-002,ATV-003,ATV-004,ATV-005,ATV-006,ATV-007,ATV-008,ATV-009,ATV-010,ATV-011,ATV-012 cls_activity;
 	class ACT-001,ACT-002,ACT-003,ACT-004 cls_actor;
 	class CON-001,CON-002,CON-003 cls_condition;
 	class EVT-001,EVT-002,EVT-003,EVT-004,EVT-005,EVT-006,EVT-007,EVT-008 cls_event;
-	class PRO-001,PRO-002,PRO-003,PRO-004 cls_process;
+	class PRO-001,PRO-002,PRO-003,PRO-004,PRO-005 cls_process;
 
 ```
-

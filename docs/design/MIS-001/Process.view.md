@@ -23,33 +23,22 @@ graph LR
 	PRO-002[/"`**Process**: PRO-002<br />Documentation Generation`"\]
 
 
-	ACT-001 -- performs --> ATV-001;
-	ACT-001 -- performs --> ATV-007;
 	ATV-001 -- triggers --> ATV-002;
 	ATV-002 -- triggers --> EVT-002;
+	ATV-002 -- triggers --> ATV-003;
 	ATV-003 -- triggers --> ATV-004;
 	ATV-004 -- triggers --> EVT-003;
 	ATV-005 -- triggers --> ATV-007;
 	ATV-006 -- triggers --> CON-002;
 	CON-001 -- triggers_true --> ATV-005;
+	CON-001 -- triggers_true --> ATV-006;
 	CON-002 -- triggers_true --> ATV-007;
-	EVT-001 -- triggers --> ATV-001;
-	EVT-002 -- triggers --> ATV-003;
-	EVT-003 -- triggers --> CON-001;
 	PRO-001 -- starts_with --> EVT-001;
+	PRO-001 -- triggers --> ATV-001;
 	PRO-001 -- involves --> ACT-002;
-	PRO-001 -- includes --> ATV-001;
-	PRO-001 -- includes --> ATV-002;
-	PRO-001 -- includes --> ATV-003;
-	PRO-001 -- includes --> ATV-004;
-	PRO-001 -- includes --> ATV-005;
-	PRO-001 -- includes --> ATV-006;
-	PRO-001 -- includes --> ATV-007;
-	PRO-002 -- involves --> ACT-001;
 	PRO-002 -- starts_with --> EVT-003;
-	PRO-002 -- includes --> ATV-005;
-	PRO-002 -- includes --> ATV-006;
-	PRO-002 -- includes --> ATV-007;
+	PRO-002 -- triggers --> CON-001;
+	PRO-002 -- involves --> ACT-001;
 
 
 classDef cls_boundary stroke-dasharray:5 5,stroke-width:4;
@@ -90,4 +79,3 @@ classDef cls_note fill:#1f2937,color:#FFFFFF;
 	class PRO-001,PRO-002 cls_process;
 
 ```
-

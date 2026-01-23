@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-002",
+	"card_type": "Requirement",
+	"name": "Present Flexible Modeling Interface",
+	"description": "Based on mind-map and multidimensional browser UIs, present a visual network view along with an editor view for humans to navigate and edit cards.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:00:07.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

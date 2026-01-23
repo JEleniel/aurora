@@ -7,7 +7,7 @@ graph LR
 
 	CON-001{{"`**Condition**: CON-001<br />Schema And Invariants Valid`"}}
 	CON-002{{"`**Condition**: CON-002<br />External Change Conflicts With Local Edit`"}}
-	CON-003{{"`**Condition**: CON-003<br />Filesystem Write Is Safe`"}}
+	CON-003{{"`**Condition**: CON-003<br />Persistent Store Write Is Safe`"}}
 	EVT-001["`**Event**: EVT-001<br />Model Home Selected`"]@{shape: tri}
 	EVT-002["`**Event**: EVT-002<br />Filesystem Change Detected`"]@{shape: tri}
 	EVT-003["`**Event**: EVT-003<br />Edit Initiated`"]@{shape: tri}
@@ -111,4 +111,3 @@ classDef cls_note fill:#1f2937,color:#FFFFFF;
 	class STM-001 cls_state_machine;
 
 ```
-
