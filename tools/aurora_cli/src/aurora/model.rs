@@ -747,22 +747,26 @@ impl Model {
 		card_path: &Path,
 		mission_id: &str,
 		directory_card_type: &str,
-		file_stem: &str,
+		file_name: &str,
 		card: &Card,
 		errors: &mut Vec<String>,
 	) {
-		Self::enforce_identifier_rule(
-			source,
-			line_index,
-			card_path,
-			mission_id,
-			&card.card_type,
-			&card.id,
-			"id",
-			file_stem,
-			&card.id,
-			errors,
-		);
+		let expected_sanitized_name = Self::sanitize_name(&card.name);
+		let expected_file_name = format!("{}-{}.json", card.id, expected_sanitized_name);
+		if file_name != expected_file_name {
+			let message = format!(
+				"Card file name must be '{}', found '{}'.",
+				expected_file_name, file_name
+			);
+			errors.push(format_error_message(
+				card_path,
+				mission_id,
+				directory_card_type,
+				&card.id,
+				find_field_offset(source, "name").map(|offset| line_index.line_col(offset)),
+				&message,
+			));
+		}
 
 		if card.card_type != directory_card_type {
 			Self::enforce_identifier_rule(
@@ -804,8 +808,6 @@ impl Model {
 		mission_path: &Path,
 		card_validator: &Validator,
 	) -> Result<(), ModelError> {
-		let regex_card: Regex = Regex::new(r"^[A-Z]{3}-\d{3}\.json$")?;
-
 		for type_entry in mission_path.read_dir()? {
 			let type_entry = type_entry?;
 			let type_path = type_entry.path();
@@ -835,24 +837,14 @@ impl Model {
 					.unwrap_or("")
 					.to_string();
 
-				if !regex_card.is_match(file_name) {
-					let message = format!(
-						"Card filenames must follow XXX-###.json but found '{}'.",
-						file_name
-					);
-					model.card_schema_errors.push(format_error_message(
-						&card_path,
-						&model.mission_card.id,
-						&card_type_dir,
-						&file_stem,
-						None,
-						&message,
-					));
-				}
-
 				let raw = fs::read_to_string(&card_path)?;
 				let line_index = LineIndex::new(&raw);
 				let card_value: serde_json::Value = serde_json::from_str(&raw)?;
+				let card_id_hint = card_value
+					.get("id")
+					.and_then(|value| value.as_str())
+					.unwrap_or(file_stem.as_str())
+					.to_string();
 				let mut schema_errors = Self::collect_schema_errors(
 					&raw,
 					&line_index,
@@ -861,7 +853,7 @@ impl Model {
 					&card_path,
 					&model.mission_card.id,
 					&card_type_dir,
-					&file_stem,
+					&card_id_hint,
 				);
 				if !schema_errors.is_empty() {
 					model.card_schema_errors.append(&mut schema_errors);
@@ -874,7 +866,7 @@ impl Model {
 					&card_path,
 					&model.mission_card.id,
 					&card_type_dir,
-					&file_stem,
+					file_name,
 					&card,
 					&mut model.card_schema_errors,
 				);

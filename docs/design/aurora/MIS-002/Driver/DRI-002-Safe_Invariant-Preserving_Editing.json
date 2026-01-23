@@ -6,6 +6,10 @@
 	"description": "Prevent invalid or ambiguous architecture by blocking edits that would violate the Aurora schema or invariants, and by providing safe editing affordances (e.g., link target filtering).",
 	"links": [
 		{
+			"target": "REQ-033",
+			"relationship": "drives"
+		},
+		{
 			"target": "REQ-009",
 			"relationship": "drives"
 		},
@@ -59,13 +63,18 @@
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.1.0",
 		"hash": null,
 		"history": [
 			{
 				"editor": "Copilot: Architect",
 				"timestamp": "2026-01-20T00:00:02.000Z",
 				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:01:20.000Z",
+				"event": "edited"
 			}
 		]
 	}

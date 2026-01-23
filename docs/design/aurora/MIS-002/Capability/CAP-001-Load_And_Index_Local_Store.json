@@ -2,8 +2,8 @@
 	"$schema": "../../Aurora.schema.json",
 	"id": "CAP-001",
 	"card_type": "Capability",
-	"name": "Load And Index Model Home",
-	"description": "Resolve a selected model home, discover missions and cards, and build an in-memory directed graph index for navigation and validation.",
+	"name": "Load And Index Local Store",
+	"description": "Import cards from a selected model home into the local IndraDB store (user storage) and build an in-memory directed graph index from the store for navigation and validation.",
 	"links": [
 		{
 			"target": "REQ-001",
@@ -31,13 +31,18 @@
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "2.0.0",
 		"hash": null,
 		"history": [
 			{
 				"editor": "Copilot: Architect",
 				"timestamp": "2026-01-20T00:03:00.000Z",
 				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:00:20.000Z",
+				"event": "edited"
 			}
 		]
 	}

@@ -105,7 +105,7 @@ The inline comments do not override direct instructions from the user. If the us
 
 See `.agents/PROJECT_BRIEF.md` for the authoritative ownership matrix, quick-start checklist, and required coordination files. Highlights:
 
-- Modify `.github/` only when explicitly instructed (schema syncs are the sole standing exception).
+- You MUST NOT modify `.github/` on any files in it unless explicitly instructed.
 - Respect role ownership for `docs/`, `docs/design/`, `tools/`, and language-specific source trees; work inside those areas only when acting in that role.
 - You MAY update `.agents/*` and `CHANGELOG.md` as required by these instructions.
 

@@ -1,17 +1,17 @@
 {
 	"$schema": "../../Aurora.schema.json",
-	"id": "ATV-006",
+	"id": "ATV-012",
 	"card_type": "Activity",
-	"name": "Persist Card JSON",
-	"description": "Persist the edited card JSON to disk and update audit trail metadata deterministically.",
+	"name": "Export Model Home",
+	"description": "Export missions, cards, and links from the local IndraDB store to the selected model home folder using canonical Aurora layout.",
 	"status": "Design",
 	"links": [
 		{
-			"target": "COM-012",
+			"target": "COM-022",
 			"relationship": "uses"
 		},
 		{
-			"target": "COM-018",
+			"target": "DTS-004",
 			"relationship": "uses"
 		},
 		{
@@ -19,8 +19,16 @@
 			"relationship": "persists_to"
 		},
 		{
+			"target": "INT-002",
+			"relationship": "validates"
+		},
+		{
 			"target": "CON-003",
 			"relationship": "triggers"
+		},
+		{
+			"target": "CAP-014",
+			"relationship": "enables"
 		}
 	],
 	"audit_trail": {
@@ -29,7 +37,7 @@
 		"history": [
 			{
 				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-20T00:10:33.000Z",
+				"timestamp": "2026-01-23T00:03:40.000Z",
 				"event": "created"
 			}
 		]

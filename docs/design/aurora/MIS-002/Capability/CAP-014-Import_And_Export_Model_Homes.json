@@ -1,16 +1,16 @@
 {
 	"$schema": "../../Aurora.schema.json",
-	"id": "CAP-006",
+	"id": "CAP-014",
 	"card_type": "Capability",
-	"name": "Persist Model Changes",
-	"description": "Persist edits to disk in a save-as-you-go workflow and support undo of recent changes.",
+	"name": "Import And Export Model Homes",
+	"description": "Import Aurora models from canonical model home folders into the local IndraDB store and export them back out deterministically.",
 	"links": [
 		{
-			"target": "REQ-012",
+			"target": "REQ-035",
 			"relationship": "satisfies"
 		},
 		{
-			"target": "REQ-024",
+			"target": "REQ-036",
 			"relationship": "satisfies"
 		}
 	],
@@ -20,7 +20,7 @@
 		"history": [
 			{
 				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-20T00:03:05.000Z",
+				"timestamp": "2026-01-23T00:02:40.000Z",
 				"event": "created"
 			}
 		]

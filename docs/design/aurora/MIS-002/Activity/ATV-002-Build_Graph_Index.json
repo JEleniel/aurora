@@ -3,11 +3,15 @@
 	"id": "ATV-002",
 	"card_type": "Activity",
 	"name": "Build Graph Index",
-	"description": "Parse card JSON files and build an in-memory directed graph index for navigation, validation, and filtering.",
+	"description": "Read cards and links from the local IndraDB store and build an in-memory directed graph index for navigation, validation, and filtering.",
 	"status": "Design",
 	"links": [
 		{
 			"target": "COM-002",
+			"relationship": "uses"
+		},
+		{
+			"target": "DTS-004",
 			"relationship": "uses"
 		},
 		{
@@ -20,13 +24,18 @@
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "2.0.0",
 		"hash": null,
 		"history": [
 			{
 				"editor": "Copilot: Architect",
 				"timestamp": "2026-01-20T00:10:29.000Z",
 				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:00:50.000Z",
+				"event": "edited"
 			}
 		]
 	}

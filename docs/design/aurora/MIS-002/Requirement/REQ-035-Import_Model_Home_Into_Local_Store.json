@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-035",
+	"card_type": "Requirement",
+	"name": "Import Model Home Into Local Store",
+	"description": "The editor can import one or more missions and all referenced cards/links from a selected Aurora model home folder into the local IndraDB store.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:02:20.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

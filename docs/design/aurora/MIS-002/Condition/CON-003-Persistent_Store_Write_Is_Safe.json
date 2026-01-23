@@ -1,0 +1,34 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CON-003",
+	"card_type": "Condition",
+	"name": "Persistent Store Write Is Safe",
+	"description": "The computed destination path is within the allowed storage roots (application user storage for the IndraDB store, and/or the selected model home for import/export), uses safe filenames, and does not violate path sanitization rules.",
+	"status": "Design",
+	"links": [
+		{
+			"target": "CTL-002",
+			"relationship": "governs"
+		},
+		{
+			"target": "FEA-016",
+			"relationship": "validates"
+		}
+	],
+	"audit_trail": {
+		"version": "2.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-20T00:10:12.000Z",
+				"event": "created"
+			},
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:01:10.000Z",
+				"event": "edited"
+			}
+		]
+	}
+}
