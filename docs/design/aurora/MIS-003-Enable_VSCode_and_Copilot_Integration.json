@@ -24,6 +24,18 @@
 		{
 			"target": "DRI-005",
 			"relationship": "establishes"
+		},
+		{
+			"target": "ACT-001",
+			"relationship": "involves"
+		},
+		{
+			"target": "ACT-002",
+			"relationship": "involves"
+		},
+		{
+			"target": "APP-001",
+			"relationship": "necessitates"
 		}
 	],
 	"audit_trail": {

@@ -5,8 +5,17 @@
 graph LR
 
 
+	APP-001["`**Application**: APP-001<br />Aurora VSCode Extension`"]@{shape: lin-rect}
+	COM-001[["`**Component**: COM-001<br />Aurora Model Library`"]]
+	COM-002[["`**Component**: COM-002<br />MCP Server`"]]
+	COM-003[["`**Component**: COM-003<br />VSCode Language Server`"]]
+	COM-004[["`**Component**: COM-004<br />VSCode Extension UI`"]]
 
 
+	APP-001 -- comprises --> COM-001;
+	APP-001 -- comprises --> COM-002;
+	APP-001 -- comprises --> COM-003;
+	APP-001 -- comprises --> COM-004;
 
 
 classDef cls_boundary stroke-dasharray:5 5,stroke-width:4;
@@ -40,5 +49,7 @@ classDef cls_risk fill:#881337,color:#FFFFFF;
 classDef cls_threat fill:#4c0519,color:#FFFFFF;
 classDef cls_note fill:#1f2937,color:#FFFFFF;
 
+	class APP-001 cls_application;
+	class COM-001,COM-002,COM-003,COM-004 cls_component;
 
 ```

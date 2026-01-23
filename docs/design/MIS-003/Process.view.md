@@ -5,6 +5,8 @@
 graph LR
 
 
+	ACT-001{{"`**Actor**: ACT-001<br />User`"}}
+	ACT-002{{"`**Actor**: ACT-002<br />Agent`"}}
 
 
 
@@ -40,5 +42,6 @@ classDef cls_risk fill:#881337,color:#FFFFFF;
 classDef cls_threat fill:#4c0519,color:#FFFFFF;
 classDef cls_note fill:#1f2937,color:#FFFFFF;
 
+	class ACT-001,ACT-002 cls_actor;
 
 ```

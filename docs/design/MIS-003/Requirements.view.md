@@ -5,6 +5,8 @@
 graph LR
 
 
+	ACT-001{{"`**Actor**: ACT-001<br />User`"}}
+	ACT-002{{"`**Actor**: ACT-002<br />Agent`"}}
 	DRI-001(["`**Driver**: DRI-001<br />Enable Direct Copilot Assistance`"])
 	DRI-002(["`**Driver**: DRI-002<br />Enable Modeling in VSCode`"])
 	DRI-003(["`**Driver**: DRI-003<br />Give Developers Access to the Model`"])
@@ -13,15 +15,38 @@ graph LR
 	MIS-003(("`**Mission**: MIS-003<br />Enable VSCode and Copilot Integration`"))
 	REQ-001(["`**Requirement**: REQ-001<br />Present an MCP Interface`"])
 	REQ-002(["`**Requirement**: REQ-002<br />Present Flexible Modeling Interface`"])
+	REQ-003(["`**Requirement**: REQ-003<br />Enable Access to the Shared Model(s)`"])
+	REQ-004(["`**Requirement**: REQ-004<br />Ensure Model Integrity`"])
+	REQ-005(["`**Requirement**: REQ-005<br />Lint and Format on Write`"])
+	STR-001["`**Story**: STR-001<br />Collaborate`"]@{shape: card}
+	STR-002["`**Story**: STR-002<br />Improve Model Response`"]@{shape: card}
 
 
+	ACT-001 -- desires --> STR-001;
+	ACT-001 -- desires --> STR-002;
+	ACT-002 -- desires --> STR-001;
 	DRI-001 -- drives --> REQ-001;
 	DRI-002 -- drives --> REQ-002;
+	DRI-003 -- drives --> REQ-003;
+	DRI-004 -- drives --> REQ-001;
+	DRI-004 -- drives --> REQ-004;
+	DRI-004 -- drives --> REQ-005;
+	DRI-005 -- drives --> REQ-001;
+	DRI-005 -- drives --> REQ-004;
 	MIS-003 -- establishes --> DRI-001;
 	MIS-003 -- establishes --> DRI-002;
 	MIS-003 -- establishes --> DRI-003;
 	MIS-003 -- establishes --> DRI-004;
 	MIS-003 -- establishes --> DRI-005;
+	MIS-003 -- involves --> ACT-001;
+	MIS-003 -- involves --> ACT-002;
+	REQ-001 -- necessitates --> REQ-003;
+	REQ-003 -- necessitates --> REQ-003;
+	REQ-004 -- necessitates --> REQ-003;
+	REQ-005 -- necessitates --> REQ-003;
+	STR-001 -- explains --> REQ-001;
+	STR-001 -- explains --> REQ-002;
+	STR-002 -- explains --> REQ-005;
 
 
 classDef cls_boundary stroke-dasharray:5 5,stroke-width:4;
@@ -55,8 +80,10 @@ classDef cls_risk fill:#881337,color:#FFFFFF;
 classDef cls_threat fill:#4c0519,color:#FFFFFF;
 classDef cls_note fill:#1f2937,color:#FFFFFF;
 
+	class ACT-001,ACT-002 cls_actor;
 	class DRI-001,DRI-002,DRI-003,DRI-004,DRI-005 cls_driver;
 	class MIS-003 cls_mission;
-	class REQ-001,REQ-002 cls_requirement;
+	class REQ-001,REQ-002,REQ-003,REQ-004,REQ-005 cls_requirement;
+	class STR-001,STR-002 cls_story;
 
 ```

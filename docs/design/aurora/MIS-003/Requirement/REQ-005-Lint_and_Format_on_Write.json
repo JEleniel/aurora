@@ -4,6 +4,12 @@
 	"card_type": "Requirement",
 	"name": "Lint and Format on Write",
 	"description": "When writing the model to JSON, ensure that it is linted and formatted automatically.",
+	"links": [
+		{
+			"target": "REQ-003",
+			"relationship": "necessitates"
+		}
+	],
 	"audit_trail": {
 		"version": "1.0.0",
 		"hash": null,

@@ -4,6 +4,12 @@
 	"card_type": "Requirement",
 	"name": "Ensure Model Integrity",
 	"description": "With any change requested, verify that it will not break model validity and reject those that would.",
+	"links": [
+		{
+			"target": "REQ-003",
+			"relationship": "necessitates"
+		}
+	],
 	"audit_trail": {
 		"version": "1.0.0",
 		"hash": null,

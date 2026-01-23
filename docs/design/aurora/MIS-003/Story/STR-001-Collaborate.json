@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "STR-001",
+	"card_type": "Story",
+	"name": "Collaborate",
+	"description": "A user can actively collaborate with one or more agents to build and maintain an Aurora model.",
+	"links": [
+		{
+			"target": "REQ-001",
+			"relationship": "explains"
+		},
+		{
+			"target": "REQ-002",
+			"relationship": "explains"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Copilot: Architect",
+				"timestamp": "2026-01-23T00:00:13.000Z",
+				"event": "created"
+			}
+		]
+	}
+}

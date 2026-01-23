@@ -5,6 +5,10 @@
 graph LR
 
 
+	COM-001[["`**Component**: COM-001<br />Aurora Model Library`"]]
+	COM-002[["`**Component**: COM-002<br />MCP Server`"]]
+	COM-003[["`**Component**: COM-003<br />VSCode Language Server`"]]
+	COM-004[["`**Component**: COM-004<br />VSCode Extension UI`"]]
 
 
 
@@ -40,5 +44,6 @@ classDef cls_risk fill:#881337,color:#FFFFFF;
 classDef cls_threat fill:#4c0519,color:#FFFFFF;
 classDef cls_note fill:#1f2937,color:#FFFFFF;
 
+	class COM-001,COM-002,COM-003,COM-004 cls_component;
 
 ```
