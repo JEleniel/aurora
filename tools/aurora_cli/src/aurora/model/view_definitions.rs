@@ -93,13 +93,6 @@ pub fn get_card_wrapper(card_type: &str) -> &'static str {
 	}
 }
 
-pub fn get_boundary(boundary_id: &str, boundary_name: &str) -> String {
-	format!(
-		"subgraph {}[\"**{}**\"]{{cards}}end",
-		boundary_id, boundary_name
-	)
-}
-
 pub struct ViewDefinition {
 	pub root_card_types: Vec<&'static str>,
 	pub include_card_types: Vec<&'static str>,

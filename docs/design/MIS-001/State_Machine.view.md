@@ -5,27 +5,27 @@
 graph LR
 
 
-	CON-001{{"`**Condition**: CON-001<br />Model Is Valid`"}}
-	CON-002{{"`**Condition**: CON-002<br />View Has Included Cards`"}}
-	EVT-001["`**Event**: EVT-001<br />Command Invoked`"]@{shape: tri}
-	EVT-002["`**Event**: EVT-002<br />Model Loaded`"]@{shape: tri}
-	EVT-003["`**Event**: EVT-003<br />Validation Completed`"]@{shape: tri}
-	STA-001["`**State**: STA-001<br />Initialized`"]@{shape: win-pane}
-	STA-002["`**State**: STA-002<br />Loaded`"]@{shape: win-pane}
-	STA-004["`**State**: STA-004<br />Generated`"]@{shape: win-pane}
-	STA-005["`**State**: STA-005<br />Failed`"]@{shape: win-pane}
-	STM-001[\"`**State Machine**: STM-001<br />Aurora CLI Run Lifecycle`"\]
+ CON-001{{"`**Condition**: CON-001<br />Model Is Valid`"}}
+ CON-002{{"`**Condition**: CON-002<br />View Has Included Cards`"}}
+ EVT-001["`**Event**: EVT-001<br />Command Invoked`"]@{shape: tri}
+ EVT-002["`**Event**: EVT-002<br />Model Loaded`"]@{shape: tri}
+ EVT-003["`**Event**: EVT-003<br />Validation Completed`"]@{shape: tri}
+ STA-001["`**State**: STA-001<br />Initialized`"]@{shape: win-pane}
+ STA-002["`**State**: STA-002<br />Loaded`"]@{shape: win-pane}
+ STA-004["`**State**: STA-004<br />Generated`"]@{shape: win-pane}
+ STA-005["`**State**: STA-005<br />Failed`"]@{shape: win-pane}
+ STM-001[\"`**State Machine**: STM-001<br />Aurora CLI Run Lifecycle`"\]
 
 
-	CON-001 -- triggers_false --> STA-005;
-	CON-002 -- triggers_false --> STA-004;
-	STA-001 -- receives --> EVT-001;
-	STA-001 -- transitions_to --> STA-002;
-	STA-002 -- receives --> EVT-003;
-	STA-002 -- triggers --> CON-001;
-	STA-004 -- transitions_to --> STA-001;
-	STA-005 -- transitions_to --> STA-001;
-	STM-001 -- starts_in --> STA-001;
+ CON-001 -- triggers_false --> STA-005;
+ CON-002 -- triggers_false --> STA-004;
+ STA-001 -- receives --> EVT-001;
+ STA-001 -- transitions_to --> STA-002;
+ STA-002 -- receives --> EVT-003;
+ STA-002 -- triggers --> CON-001;
+ STA-004 -- transitions_to --> STA-001;
+ STA-005 -- transitions_to --> STA-001;
+ STM-001 -- starts_in --> STA-001;
 
 
 classDef cls_boundary stroke-dasharray:5 5,stroke-width:4;
@@ -59,9 +59,9 @@ classDef cls_risk fill:#881337,color:#FFFFFF;
 classDef cls_threat fill:#4c0519,color:#FFFFFF;
 classDef cls_note fill:#1f2937,color:#FFFFFF;
 
-	class CON-001,CON-002 cls_condition;
-	class EVT-001,EVT-002,EVT-003 cls_event;
-	class STA-001,STA-002,STA-004,STA-005 cls_state;
-	class STM-001 cls_state_machine;
+ class CON-001,CON-002 cls_condition;
+ class EVT-001,EVT-002,EVT-003 cls_event;
+ class STA-001,STA-002,STA-004,STA-005 cls_state;
+ class STM-001 cls_state_machine;
 
 ```

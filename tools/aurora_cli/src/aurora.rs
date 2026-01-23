@@ -9,6 +9,7 @@ use std::{
 
 use jsonschema::{Validator, draft7::meta};
 use log::debug;
+use regex::Regex;
 use thiserror::Error;
 
 use crate::{
@@ -32,7 +33,16 @@ impl Aurora {
 		let compact_validator = Self::validate_and_load_schema(&compact_schema_path)?;
 		debug!("Loaded schema and validators.");
 
-		let models = Model::load(&aurora_path, &card_validator, &compact_validator)?;
+		let mission_filter = Self::mission_filter(path, &aurora_path)?;
+		if let Some(mission_id) = &mission_filter {
+			debug!("Filtering load to mission {}", mission_id);
+		}
+		let models = Model::load(
+			&aurora_path,
+			&card_validator,
+			&compact_validator,
+			mission_filter.as_deref(),
+		)?;
 		debug!("Loaded {} models.", models.len());
 
 		Ok(Self { models })
@@ -192,6 +202,35 @@ impl Aurora {
 		} else {
 			Err(AuroraError::InvalidSchema)
 		}
+	}
+
+	fn mission_filter(
+		input_path: &Path,
+		aurora_path: &Path,
+	) -> Result<Option<String>, AuroraError> {
+		if !input_path.is_file() {
+			return Ok(None);
+		}
+
+		let Some(parent) = input_path.parent() else {
+			return Ok(None);
+		};
+		let aurora_root = aurora_path.canonicalize()?;
+		let parent = parent.canonicalize()?;
+		if parent != aurora_root {
+			return Ok(None);
+		}
+
+		let Some(file_name) = input_path.file_name().and_then(|value| value.to_str()) else {
+			return Ok(None);
+		};
+		let regex = Regex::new(r"^(MIS-\d{3})-[A-Za-z0-9_]+\.json$")
+			.map_err(|err| AuroraError::SchemaValidationError(err.to_string()))?;
+		if let Some(captures) = regex.captures(file_name) {
+			return Ok(Some(captures[1].to_string()));
+		}
+
+		Ok(None)
 	}
 
 	fn write_root_readme(&self, args: &OutputArgs) -> Result<(), AuroraError> {
@@ -439,6 +478,51 @@ mod tests {
 
 		let found = Aurora::find_aurora_path(&mission_path).expect("find aurora home");
 		assert_eq!(found, model_home);
+
+		fs::remove_dir_all(&root).expect("cleanup temp root");
+	}
+
+	#[test]
+	fn load_filters_models_when_input_is_mission_card() {
+		use crate::aurora::model::Model;
+		use serde_json::json;
+
+		fn write_mission_file(root: &Path, mission_id: &str, name: &str) -> PathBuf {
+			let sanitized = Model::sanitize_name(name);
+			let mission_path = root.join(format!("{}-{}.json", mission_id, sanitized));
+			let mission_card = json!({
+				"$schema": "./Aurora.schema.json",
+				"id": mission_id,
+				"card_type": "Mission",
+				"name": name,
+				"description": "Example mission",
+				"audit_trail": { "hash": null, "version": "0.1.0", "history": [] }
+			});
+			let serialized = serde_json::to_vec_pretty(&mission_card).expect("serialize mission");
+			fs::write(&mission_path, serialized).expect("write mission card");
+			fs::create_dir_all(root.join(mission_id)).expect("create mission directory");
+			mission_path
+		}
+
+		let root = unique_temp_dir("aurora_cli_load_filter");
+		let model_home = root.join("docs").join("design").join("aurora");
+		fs::create_dir_all(&model_home).expect("create aurora home");
+		write_empty_file(&model_home.join("Aurora.schema.json"));
+		write_empty_file(&model_home.join("Aurora.compact.schema.json"));
+
+		let mis1_path = write_mission_file(&model_home, "MIS-001", "Mission One");
+		write_mission_file(&model_home, "MIS-002", "Mission Two");
+
+		let aurora = Aurora::load(&mis1_path).expect("load single mission");
+		assert_eq!(aurora.models.len(), 1, "expected only one mission to load");
+		assert_eq!(aurora.models[0].mission_card.id, "MIS-001");
+
+		let multi = Aurora::load(&model_home).expect("load all missions");
+		assert_eq!(
+			multi.models.len(),
+			2,
+			"expected both missions when pointing at model root"
+		);
 
 		fs::remove_dir_all(&root).expect("cleanup temp root");
 	}

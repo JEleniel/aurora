@@ -57,8 +57,9 @@ impl Model {
 		path: &Path,
 		card_validator: &Validator,
 		compact_validator: &Validator,
+		mission_filter: Option<&str>,
 	) -> Result<Vec<Self>, ModelError> {
-		let mut models: Vec<Model> = Self::load_models(path, card_validator)?;
+		let mut models: Vec<Model> = Self::load_models(path, card_validator, mission_filter)?;
 		if models.is_empty() {
 			return Err(ModelError::ModelNotFound);
 		}
@@ -596,7 +597,11 @@ impl Model {
 		Ok(())
 	}
 
-	fn load_models(path: &Path, card_validator: &Validator) -> Result<Vec<Self>, ModelError> {
+	fn load_models(
+		path: &Path,
+		card_validator: &Validator,
+		mission_filter: Option<&str>,
+	) -> Result<Vec<Self>, ModelError> {
 		let regex_mission = Regex::new(r"^(MIS-\d{3})-([A-Za-z0-9_]+)\.json$")?;
 		let mut models: Vec<Self> = Vec::new();
 		for entry in path.read_dir()? {
@@ -614,6 +619,11 @@ impl Model {
 				None => continue,
 			};
 			let mission_id = captures.get(1).unwrap().as_str().to_string();
+			if let Some(filter) = mission_filter {
+				if filter != mission_id {
+					continue;
+				}
+			}
 			let file_sanitized = captures.get(2).unwrap().as_str().to_string();
 
 			let raw = fs::read_to_string(&entry_path)?;

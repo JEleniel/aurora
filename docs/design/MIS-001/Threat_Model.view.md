@@ -5,12 +5,12 @@
 graph LR
 
 
-	ACT-001{{"`**Actor**: ACT-001<br />Architect`"}}
-	ACT-002{{"`**Actor**: ACT-002<br />Tool User`"}}
-	AST-001["`**Asset**: AST-001<br />Aurora Model`"]@{shape: document}
-	AST-002["`**Asset**: AST-002<br />Generated Documentation Set`"]@{shape: document}
-	CTL-001((("`**Control**: CTL-001<br />Deterministic Ordering`")))
-	CTL-002((("`**Control**: CTL-002<br />Output Path Sanitization`")))
+ ACT-001{{"`**Actor**: ACT-001<br />Architect`"}}
+ ACT-002{{"`**Actor**: ACT-002<br />Tool User`"}}
+ AST-001["`**Asset**: AST-001<br />Aurora Model`"]@{shape: document}
+ AST-002["`**Asset**: AST-002<br />Generated Documentation Set`"]@{shape: document}
+ CTL-001((("`**Control**: CTL-001<br />Deterministic Ordering`")))
+ CTL-002((("`**Control**: CTL-002<br />Output Path Sanitization`")))
 
 
 
@@ -46,8 +46,8 @@ classDef cls_risk fill:#881337,color:#FFFFFF;
 classDef cls_threat fill:#4c0519,color:#FFFFFF;
 classDef cls_note fill:#1f2937,color:#FFFFFF;
 
-	class ACT-001,ACT-002 cls_actor;
-	class AST-001,AST-002 cls_asset;
-	class CTL-001,CTL-002 cls_control;
+ class ACT-001,ACT-002 cls_actor;
+ class AST-001,AST-002 cls_asset;
+ class CTL-001,CTL-002 cls_control;
 
 ```

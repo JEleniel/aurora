@@ -1,0 +1,3236 @@
+{
+  "$schema": "Aurora.compact.schema.json",
+  "cards": [
+    {
+      "attributes": {
+        "tool": {
+          "name": "aurora_editor",
+          "tool_path": "tools/aurora_editor/",
+          "default_input": {
+            "model_root": "docs/design/aurora/"
+          },
+          "default_output": {
+            "aggregate_index_readme": "docs/design/README.md",
+            "per_mission_root": "docs/design/{MissionId}/",
+            "per_mission_cards_root": "docs/design/{MissionId}/cards/",
+            "per_mission_views_root": "docs/design/{MissionId}/views/",
+            "per_mission_index_readme": "docs/design/{MissionId}/README-{MissionId}.md",
+            "per_mission_compact_model": "docs/design/aurora/AGENT-{MissionId}.json"
+          }
+        }
+      },
+      "card_type": "Mission",
+      "description": "Provide a cross-platform UI tool for viewing and editing Aurora models that enforces the Aurora schema and invariants, supports deterministic and conflict-safe edits, and stays consistent with the canonical aurora_cli outputs.",
+      "id": "MIS-002",
+      "links": [
+        {
+          "relationship": "establishes",
+          "target": "DRI-001"
+        },
+        {
+          "relationship": "establishes",
+          "target": "DRI-002"
+        },
+        {
+          "relationship": "establishes",
+          "target": "DRI-003"
+        },
+        {
+          "relationship": "establishes",
+          "target": "DRI-004"
+        },
+        {
+          "relationship": "establishes",
+          "target": "DRI-005"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "SYS-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-002"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-003"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-004"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-001"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-002"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-003"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-004"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-005"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "CAP-008"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "CAP-009"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "CAP-010"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "CAP-012"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "PRO-001"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "PRO-002"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "PRO-003"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "PRO-004"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "PRO-005"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "STM-001"
+        }
+      ],
+      "name": "Enable Aurora Viewer And Editor"
+    },
+    {
+      "card_type": "Condition",
+      "description": "The computed destination path is within the allowed storage roots (application user storage for the IndraDB store, and/or the selected model home for import/export), uses safe filenames, and does not violate path sanitization rules.",
+      "id": "CON-003",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "CTL-002"
+        },
+        {
+          "relationship": "validates",
+          "target": "FEA-016"
+        }
+      ],
+      "name": "Persistent Store Write Is Safe",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The application computes and maintains the SHA256 hash of each card as part of the save process.",
+      "id": "REQ-028",
+      "name": "Compute Hash On Save"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Edit card fields using a structured editor, enforcing allowed fields and invariant-safe link selection.",
+      "id": "CAP-005",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-011"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-023"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-025"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-029"
+        }
+      ],
+      "name": "Edit Cards Safely"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The graph view supports filters matching the built-in aurora_cli view selections (e.g., Requirements, Component, Deployment, Process, State Machine, Threat Model).",
+      "id": "REQ-009",
+      "name": "View Filters Match aurora_cli"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Read cards and links from the local IndraDB store and build an in-memory directed graph index for navigation, validation, and filtering.",
+      "id": "ATV-002",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-004"
+        },
+        {
+          "relationship": "uses",
+          "target": "AST-001"
+        },
+        {
+          "relationship": "enables",
+          "target": "CAP-001"
+        }
+      ],
+      "name": "Build Graph Index",
+      "status": "Design"
+    },
+    {
+      "card_type": "Artifact",
+      "description": "A generated Markdown file containing an official view diagram (Mermaid) and related narrative.",
+      "id": "ART-003",
+      "links": [
+        {
+          "relationship": "persists_to",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Generated View Markdown File"
+    },
+    {
+      "card_type": "Component",
+      "description": "Imports Aurora model home folders into the local IndraDB store and exports the local store back to canonical model home layout, enforcing schema, invariants, and safe file handling.",
+      "id": "COM-022",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-020"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-004"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-018"
+        }
+      ],
+      "name": "Model Import/Export Manager"
+    },
+    {
+      "card_type": "Component",
+      "description": "Watches the model home and mission folders for file changes and forwards change events to the conflict resolver and UI.",
+      "id": "COM-009",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-008"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-010"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-001"
+        }
+      ],
+      "name": "Filesystem Watcher"
+    },
+    {
+      "card_type": "Actor",
+      "description": "An automated agent that reads and updates Aurora models through the MCP endpoint and subscribes to model change events.",
+      "id": "ACT-003",
+      "links": [
+        {
+          "relationship": "desires",
+          "target": "STR-003"
+        }
+      ],
+      "name": "Agent"
+    },
+    {
+      "card_type": "Component",
+      "description": "Computes the set of valid link targets for a proposed link edit by checking directionality, reachability from mission, and other Aurora invariants.",
+      "id": "COM-013",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-011"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-011"
+        }
+      ],
+      "name": "Link Safety Engine"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "When creating or editing a link, the UI only offers target cards that preserve Aurora invariants and does not allow invalid links to be saved.",
+      "id": "REQ-029",
+      "name": "Link Creation Is Invariant Safe"
+    },
+    {
+      "card_type": "State",
+      "description": "No model home is loaded; the application is waiting for the user to open a model.",
+      "id": "STA-001",
+      "links": [
+        {
+          "relationship": "receives",
+          "target": "EVT-001"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-002"
+        }
+      ],
+      "name": "Idle",
+      "status": "Design"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Store and retrieve Aurora cards and links using a local IndraDB database in application user storage as the primary persistence layer.",
+      "id": "FEA-019",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "enables",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-033"
+        }
+      ],
+      "name": "IndraDB-Backed Model Storage",
+      "status": "Design"
+    },
+    {
+      "card_type": "State",
+      "description": "A model home is loaded and indexed; navigation and editing can begin.",
+      "id": "STA-002",
+      "links": [
+        {
+          "relationship": "receives",
+          "target": "EVT-003"
+        },
+        {
+          "relationship": "receives",
+          "target": "EVT-002"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-003"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-005"
+        }
+      ],
+      "name": "Model Loaded",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "Keyboard navigation works across the model tree, graph navigation view, and the editor panes.",
+      "id": "REQ-020",
+      "name": "Keyboard Navigation Works End-To-End"
+    },
+    {
+      "card_type": "State",
+      "description": "The application is validating the model and pending edit against schema and invariants.",
+      "id": "STA-004",
+      "links": [
+        {
+          "relationship": "receives",
+          "target": "EVT-005"
+        },
+        {
+          "relationship": "receives",
+          "target": "EVT-006"
+        },
+        {
+          "relationship": "triggers",
+          "target": "CON-001"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-006"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-007"
+        }
+      ],
+      "name": "Validating",
+      "status": "Design"
+    },
+    {
+      "card_type": "Interface",
+      "description": "A contract for rendering Mermaid diagrams to SVG for export, using the same Mermaid rules as official views.",
+      "id": "INT-004",
+      "name": "Mermaid SVG Rendering Contract"
+    },
+    {
+      "card_type": "Actor",
+      "description": "An adversary who attempts to exploit the UI by providing malicious model content (e.g., unsafe paths or oversized inputs).",
+      "id": "ACT-004",
+      "links": [
+        {
+          "relationship": "presents",
+          "target": "THR-001"
+        },
+        {
+          "relationship": "presents",
+          "target": "THR-002"
+        },
+        {
+          "relationship": "presents",
+          "target": "THR-003"
+        }
+      ],
+      "name": "Threat Actor"
+    },
+    {
+      "card_type": "Data Store",
+      "description": "A local IndraDB-backed graph database stored in the application user storage directory and used as the primary persistence layer for Aurora cards and links while editing.",
+      "id": "DTS-004",
+      "name": "Local IndraDB Store"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Watch for filesystem changes and resolve concurrent edits using first-writer and field-level merge rules.",
+      "id": "FEA-008",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-007"
+        },
+        {
+          "relationship": "mitigates",
+          "target": "RIS-003"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-016"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-017"
+        }
+      ],
+      "name": "File Watching And Conflict Resolution",
+      "status": "Design"
+    },
+    {
+      "card_type": "Interface",
+      "description": "A contract for MCP operations supporting CRUD for cards and links and providing a model change event stream.",
+      "id": "INT-001",
+      "name": "MCP API Contract"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The model tree displays only card JSON files; it must not show schema files or non-card files.",
+      "id": "REQ-005",
+      "name": "Tree Shows Only Card JSON Files"
+    },
+    {
+      "card_type": "State",
+      "description": "An external change conflicts with local edits; deterministic conflict resolution is applied and the user may be prompted to review outcomes.",
+      "id": "STA-005",
+      "links": [
+        {
+          "relationship": "receives",
+          "target": "EVT-002"
+        },
+        {
+          "relationship": "triggers",
+          "target": "CON-002"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-002"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-007"
+        }
+      ],
+      "name": "Resolving Conflict",
+      "status": "Design"
+    },
+    {
+      "card_type": "Component",
+      "description": "Bridges VS Code extension hosting and UI embedding to reuse the core Viewer/Editor logic inside VS Code.",
+      "id": "COM-020",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-018"
+        }
+      ],
+      "name": "VS Code Host Adapter",
+      "status": "Backlog"
+    },
+    {
+      "card_type": "Constraint",
+      "description": "The UI must conform to WCAG AA, including full keyboard navigation and support for reduced motion preferences.",
+      "id": "CNS-002",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "CTL-005"
+        },
+        {
+          "relationship": "limits",
+          "target": "FEA-017"
+        }
+      ],
+      "name": "WCAG AA Conformance"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The tool exports SVG versions of the official diagrams using the same Mermaid rules as the canonical renderer.",
+      "id": "REQ-015",
+      "name": "Export SVG Of Official Diagrams"
+    },
+    {
+      "card_type": "Data Store",
+      "description": "A filesystem folder containing derived outputs such as generated Markdown cards, standard views, compact models, and exported SVG diagrams.",
+      "id": "DTS-002",
+      "name": "Derived Output Folder"
+    },
+    {
+      "card_type": "Event",
+      "description": "The user requests saving the current edit.",
+      "id": "EVT-004",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "CON-001"
+        },
+        {
+          "relationship": "triggers",
+          "target": "CON-003"
+        }
+      ],
+      "name": "Save Requested",
+      "status": "Design"
+    },
+    {
+      "card_type": "Component",
+      "description": "Discovers mission root JSON files and per-mission folders within a selected model home and enforces the model layout contract.",
+      "id": "COM-001",
+      "links": [
+        {
+          "relationship": "exposes",
+          "target": "INT-002"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "ART-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-018"
+        }
+      ],
+      "name": "Model Home Scanner"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Invoke aurora_cli to regenerate derived outputs (cards and views) to keep the model outputs consistent.",
+      "id": "ATV-008",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-014"
+        },
+        {
+          "relationship": "persists_to",
+          "target": "DTS-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "FEA-012"
+        }
+      ],
+      "name": "Regenerate Derived Outputs",
+      "status": "Design"
+    },
+    {
+      "card_type": "Event",
+      "description": "The user selects a model home folder to open.",
+      "id": "EVT-001",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "ATV-001"
+        }
+      ],
+      "name": "Model Home Selected",
+      "status": "Design"
+    },
+    {
+      "card_type": "Data Store",
+      "description": "A filesystem folder in canonical Aurora model layout used for importing models into the local store and exporting them back out.",
+      "id": "DTS-001",
+      "name": "Aurora Model Home Folder (Import/Export)"
+    },
+    {
+      "card_type": "Process",
+      "description": "Edit card fields in the UI, validate continuously, and persist changes only when schema and invariants are satisfied.",
+      "id": "PRO-002",
+      "links": [
+        {
+          "relationship": "involves",
+          "target": "ACT-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-002"
+        },
+        {
+          "relationship": "starts_with",
+          "target": "EVT-003"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-004"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-005"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-006"
+        },
+        {
+          "relationship": "explains",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "uses",
+          "target": "CAP-008"
+        }
+      ],
+      "name": "Edit Card Safely",
+      "status": "Design"
+    },
+    {
+      "card_type": "Event",
+      "description": "The user requests regeneration of derived outputs and/or SVG export of a selected view.",
+      "id": "EVT-007",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "ATV-008"
+        },
+        {
+          "relationship": "triggers",
+          "target": "ATV-009"
+        }
+      ],
+      "name": "Output Generation Or Export Requested",
+      "status": "Design"
+    },
+    {
+      "card_type": "Risk",
+      "description": "The UI becomes unresponsive or unreliable when handling large models or rapid filesystem changes, preventing safe navigation and editing.",
+      "id": "RIS-003",
+      "links": [
+        {
+          "relationship": "impacts",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "impacts",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "impacts",
+          "target": "CAP-013"
+        }
+      ],
+      "name": "Tool Unavailability Or Lag",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "On startup, the active tab and central card default to the Mission with the lowest numbered MIS-### in the selected model home.",
+      "id": "REQ-002",
+      "name": "Default To Lowest Mission"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The tool supports an optional undo queue of reasonable size for user edits.",
+      "id": "REQ-024",
+      "name": "Undo Queue Is Available"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Run schema and invariant validation on load, on edit, and on save; block invalid edits.",
+      "id": "FEA-009",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-008"
+        },
+        {
+          "relationship": "mitigates",
+          "target": "RIS-001"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-026"
+        }
+      ],
+      "name": "Validation On Load Edit And Save",
+      "status": "Design"
+    },
+    {
+      "card_type": "Component",
+      "description": "Validates cards against the Aurora schema and invariants on load and before save.",
+      "id": "COM-011",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-009"
+        },
+        {
+          "relationship": "uses",
+          "target": "AST-001"
+        }
+      ],
+      "name": "Model Validator"
+    },
+    {
+      "card_type": "Control",
+      "description": "Only allow creating or editing links that preserve Aurora invariants; when selecting a link target, exclude cards that would create invalid graph direction or missing-path violations.",
+      "id": "CTL-004",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "FEA-011"
+        },
+        {
+          "relationship": "governs",
+          "target": "CAP-005"
+        }
+      ],
+      "name": "Invariant-Safe Link Targeting"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The editor persists Aurora cards and links in a local IndraDB store located in application user storage by default instead of writing card JSON files directly as the primary store.",
+      "id": "REQ-033",
+      "name": "Store Cards In Local IndraDB"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Detect external file changes and resolve concurrency using deterministic first-writer and field-level merge rules.",
+      "id": "CAP-007",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-016"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-017"
+        }
+      ],
+      "name": "Detect And Resolve Concurrent Changes"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide a structured JSON editor for the selected card, limited to the allowed editable fields.",
+      "id": "FEA-005",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-011"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-023"
+        }
+      ],
+      "name": "Card JSON Editor",
+      "status": "Design"
+    },
+    {
+      "card_type": "Component",
+      "description": "Parses card JSON files, builds the directed graph index, and provides link traversal queries for navigation and filtering.",
+      "id": "COM-002",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-011"
+        },
+        {
+          "relationship": "uses",
+          "target": "ART-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "AST-001"
+        }
+      ],
+      "name": "Model Graph Indexer"
+    },
+    {
+      "card_type": "Component",
+      "description": "Coordinates save-as-you-go persistence, undo history, and audit/hash updates.",
+      "id": "COM-008",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-007"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-012"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-018"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-003"
+        },
+        {
+          "relationship": "uses",
+          "target": "ART-001"
+        }
+      ],
+      "name": "Autosave And Undo Manager"
+    },
+    {
+      "card_type": "Component",
+      "description": "Invokes aurora_cli to validate and regenerate derived outputs to avoid duplicating CLI logic in the UI.",
+      "id": "COM-014",
+      "links": [
+        {
+          "relationship": "exposes",
+          "target": "INT-003"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-012"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-002"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-003"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-005"
+        }
+      ],
+      "name": "aurora_cli Invoker"
+    },
+    {
+      "card_type": "Component",
+      "description": "Applies audit history entries and version bumps and computes SHA256 hashes during save.",
+      "id": "COM-012",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-010"
+        },
+        {
+          "relationship": "uses",
+          "target": "AST-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "ART-001"
+        }
+      ],
+      "name": "Audit And Hash Manager"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "Card ids are immutable; changing card_type requires creating a new card and marking the original as Deleted, with explicit user confirmation.",
+      "id": "REQ-025",
+      "name": "IDs Are Immutable"
+    },
+    {
+      "card_type": "Component",
+      "description": "Loads and presents generated Markdown and view outputs for browsing within the UI.",
+      "id": "COM-015",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-013"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "ART-003"
+        }
+      ],
+      "name": "Output Browser"
+    },
+    {
+      "card_type": "State",
+      "description": "The application is regenerating derived outputs and/or exporting diagrams after a validated change.",
+      "id": "STA-006",
+      "links": [
+        {
+          "relationship": "receives",
+          "target": "EVT-007"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-002"
+        }
+      ],
+      "name": "Generating Outputs",
+      "status": "Design"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Import missions, cards, and links from the selected model home folder into the local IndraDB store.",
+      "id": "ATV-011",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-022"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "persists_to",
+          "target": "DTS-004"
+        },
+        {
+          "relationship": "validates",
+          "target": "INT-002"
+        },
+        {
+          "relationship": "enables",
+          "target": "CAP-014"
+        }
+      ],
+      "name": "Import Model Home",
+      "status": "Design"
+    },
+    {
+      "card_type": "Condition",
+      "description": "The current in-memory model and the edited card conform to the Aurora schema and invariant rules.",
+      "id": "CON-001",
+      "links": [
+        {
+          "relationship": "validates",
+          "target": "CAP-008"
+        },
+        {
+          "relationship": "governs",
+          "target": "CTL-001"
+        }
+      ],
+      "name": "Schema And Invariants Valid",
+      "status": "Design"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Compute and validate filesystem paths safely, treat model content as untrusted, and prevent execution or unsafe file operations.",
+      "id": "FEA-016",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-008"
+        },
+        {
+          "relationship": "mitigates",
+          "target": "RIS-002"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-030"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-031"
+        }
+      ],
+      "name": "Secure File Handling",
+      "status": "Design"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Render and update the tree and graph panes based on the current model index and selection.",
+      "id": "ATV-003",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-003"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-004"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-005"
+        },
+        {
+          "relationship": "enables",
+          "target": "CAP-002"
+        }
+      ],
+      "name": "Render Navigation Panes",
+      "status": "Design"
+    },
+    {
+      "card_type": "Feature",
+      "description": "On save, append audit history, apply version bumps, and compute the card hash.",
+      "id": "FEA-010",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-009"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-027"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-028"
+        }
+      ],
+      "name": "Audit Trail And Hash Updates",
+      "status": "Design"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Validate the edited card and the overall graph invariants before allowing persistence.",
+      "id": "ATV-005",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-011"
+        },
+        {
+          "relationship": "enables",
+          "target": "CAP-008"
+        },
+        {
+          "relationship": "triggers",
+          "target": "CON-001"
+        }
+      ],
+      "name": "Validate Edit",
+      "status": "Design"
+    },
+    {
+      "card_type": "Process",
+      "description": "Import an Aurora model home folder into the local IndraDB store and export changes back out to canonical model home layout on demand.",
+      "id": "PRO-005",
+      "links": [
+        {
+          "relationship": "involves",
+          "target": "ACT-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-011"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-012"
+        },
+        {
+          "relationship": "explains",
+          "target": "CAP-014"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-004"
+        }
+      ],
+      "name": "Import And Export Model Home",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The editor can export missions, cards, and links from the local IndraDB store into a canonical Aurora model home folder layout suitable for aurora_cli and git versioning.",
+      "id": "REQ-036",
+      "name": "Export Local Store To Model Home"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "MCP provides CRUD operations for cards and links and emits model change events to connected clients.",
+      "id": "REQ-019",
+      "name": "MCP CRUD And Change Events"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "When concurrent changes occur, first writer wins for conflicting fields; non-conflicting changes are merged at field level.",
+      "id": "REQ-017",
+      "name": "First Writer Wins For Conflicts"
+    },
+    {
+      "card_type": "Component",
+      "description": "Manages the JSON editor form for the selected card, enforces editable field rules, and integrates validation, safe link selection, and save operations.",
+      "id": "COM-006",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-005"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-011"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-011"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-013"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-008"
+        }
+      ],
+      "name": "Card Editor Controller"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Apply audit trail history entries, semver version bumps, and compute card hashes as part of the save process.",
+      "id": "CAP-009",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-027"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-028"
+        }
+      ],
+      "name": "Maintain Audit Trail And Hash"
+    },
+    {
+      "card_type": "Constraint",
+      "description": "The application should keep generated views and exports consistent with aurora_cli by invoking aurora_cli rather than duplicating rendering and export logic.",
+      "id": "CNS-005",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "CTL-001"
+        },
+        {
+          "relationship": "limits",
+          "target": "FEA-012"
+        },
+        {
+          "relationship": "limits",
+          "target": "FEA-014"
+        }
+      ],
+      "name": "Prefer aurora_cli For Derived Outputs"
+    },
+    {
+      "card_type": "Component",
+      "description": "Hosts the MCP endpoint, implements CRUD operations, and emits model change events to clients.",
+      "id": "COM-017",
+      "links": [
+        {
+          "relationship": "exposes",
+          "target": "INT-001"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-015"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-011"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-008"
+        }
+      ],
+      "name": "MCP Server"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Expose an MCP endpoint that supports CRUD operations for Aurora cards and emits model change events for live agent assistance.",
+      "id": "CAP-012",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-018"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-019"
+        }
+      ],
+      "name": "Expose MCP CRUD And Events"
+    },
+    {
+      "card_type": "Threat",
+      "description": "An adversary (or accidental misuse) attempts to introduce invalid cards or links that break schema requirements or graph invariants.",
+      "id": "THR-002",
+      "links": [
+        {
+          "relationship": "imposes",
+          "target": "RIS-001"
+        }
+      ],
+      "name": "Model Corruption Via Invalid Edits",
+      "status": "Design"
+    },
+    {
+      "card_type": "Event",
+      "description": "Schema and invariant validation succeeds for the current edit and the loaded model.",
+      "id": "EVT-005",
+      "name": "Validation Passed",
+      "status": "Design"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Persist edits automatically and provide an undo queue for user changes.",
+      "id": "FEA-007",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-012"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-024"
+        }
+      ],
+      "name": "Autosave And Undo",
+      "status": "Design"
+    },
+    {
+      "card_type": "Component",
+      "description": "Applies filter rules aligned with aurora_cli views to determine which cards are visible in the graph view.",
+      "id": "COM-005",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-004"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-002"
+        }
+      ],
+      "name": "View Filter Engine"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Import canonical Aurora model home folders into the local IndraDB store and export the local store back to canonical model home layout.",
+      "id": "FEA-020",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-014"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-035"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-036"
+        }
+      ],
+      "name": "Import And Export Aurora Model Homes",
+      "status": "Design"
+    },
+    {
+      "card_type": "Control",
+      "description": "When concurrent file changes occur, apply deterministic conflict resolution: first writer wins for conflicts and merge non-conflicting field-level updates.",
+      "id": "CTL-003",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "CAP-007"
+        },
+        {
+          "relationship": "governs",
+          "target": "FEA-008"
+        }
+      ],
+      "name": "Deterministic Conflict Resolution"
+    },
+    {
+      "card_type": "Constraint",
+      "description": "Nothing in an Aurora model is executable; the application must treat all model content as untrusted input and must not execute any content from the model.",
+      "id": "CNS-003",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "CTL-001"
+        },
+        {
+          "relationship": "governs",
+          "target": "CTL-002"
+        },
+        {
+          "relationship": "limits",
+          "target": "FEA-016"
+        }
+      ],
+      "name": "Treat Model Content As Untrusted"
+    },
+    {
+      "card_type": "Artifact",
+      "description": "A compact JSON representation of the model intended for agent consumption, derived from the full set of cards.",
+      "id": "ART-005",
+      "links": [
+        {
+          "relationship": "persists_to",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Compact Model Snapshot"
+    },
+    {
+      "card_type": "Control",
+      "description": "Run schema and invariant validation on load, on edit, and on save; block invalid edits and prevent persisting invalid models.",
+      "id": "CTL-001",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "CAP-008"
+        },
+        {
+          "relationship": "governs",
+          "target": "FEA-009"
+        }
+      ],
+      "name": "Schema And Invariant Validation Gate"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Invoke aurora_cli to regenerate compact models, Markdown cards, and standard views to keep derived outputs in sync.",
+      "id": "FEA-012",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-010"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-013"
+        }
+      ],
+      "name": "Output Synchronization Via aurora_cli",
+      "status": "Design"
+    },
+    {
+      "card_type": "Story",
+      "description": "As an automated agent, I want to read and update cards through an MCP endpoint and subscribe to change events so that I can assist the architect deterministically while the application is running.",
+      "id": "STR-003",
+      "links": [
+        {
+          "relationship": "explains",
+          "target": "CAP-012"
+        },
+        {
+          "relationship": "explains",
+          "target": "FEA-015"
+        },
+        {
+          "relationship": "uses",
+          "target": "INT-001"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-003"
+        }
+      ],
+      "name": "Agent Updates Model Via MCP",
+      "status": "Design"
+    },
+    {
+      "card_type": "Driver",
+      "description": "Keep derived outputs (views, Markdown, compact models, SVG exports) consistent with aurora_cli so that the UI does not fork the specification or rendering rules.",
+      "id": "DRI-003",
+      "links": [
+        {
+          "relationship": "drives",
+          "target": "REQ-036"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-013"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-014"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-015"
+        }
+      ],
+      "name": "Canonical Output Parity"
+    },
+    {
+      "card_type": "Interface",
+      "description": "A contract for invoking aurora_cli to validate models and regenerate derived outputs deterministically.",
+      "id": "INT-003",
+      "name": "aurora_cli Invocation Contract"
+    },
+    {
+      "card_type": "Process",
+      "description": "Open a selected model home, scan for missions and cards, import the model into the local IndraDB store (user storage), build a graph index from the store, and render navigation panes.",
+      "id": "PRO-001",
+      "links": [
+        {
+          "relationship": "involves",
+          "target": "ACT-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-002"
+        },
+        {
+          "relationship": "starts_with",
+          "target": "EVT-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-003"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-011"
+        },
+        {
+          "relationship": "explains",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-004"
+        }
+      ],
+      "name": "Open And Index Model Home",
+      "status": "Design"
+    },
+    {
+      "card_type": "System",
+      "description": "A bounded system providing an interactive UI for viewing and editing Aurora models, including live agent assistance via MCP.",
+      "id": "SYS-001",
+      "links": [
+        {
+          "relationship": "integrates",
+          "target": "APP-001"
+        },
+        {
+          "relationship": "integrates",
+          "target": "APP-002"
+        }
+      ],
+      "name": "Aurora Viewer And Editor Tooling"
+    },
+    {
+      "card_type": "Actor",
+      "description": "A human user who opens Aurora models, navigates the graph, and performs edits using the UI.",
+      "id": "ACT-002",
+      "links": [
+        {
+          "relationship": "desires",
+          "target": "STR-002"
+        }
+      ],
+      "name": "Tool User"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "Validation runs on load, on edit, and on save; invalid edits are blocked and invalid models are not persisted.",
+      "id": "REQ-026",
+      "name": "Validate On Load Edit And Save"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The left-side tree view mirrors the on-disk Aurora model layout (mission files at the model home root, mission folders, and card type folders).",
+      "id": "REQ-004",
+      "name": "Model Tree Mirrors On-Disk Layout"
+    },
+    {
+      "card_type": "Asset",
+      "description": "Audit trail versions, history entries, and hashes that provide traceability for card edits.",
+      "id": "AST-002",
+      "links": [
+        {
+          "relationship": "is_part_of",
+          "target": "ART-001"
+        }
+      ],
+      "name": "Audit Trail Metadata"
+    },
+    {
+      "card_type": "Interface",
+      "description": "The contract describing the expected on-disk model home and mission home folder layout and allowed files.",
+      "id": "INT-002",
+      "name": "Model Home Layout Contract"
+    },
+    {
+      "card_type": "Constraint",
+      "description": "The Aurora Viewer and Editor must run on Linux, Windows, and macOS.",
+      "id": "CNS-001",
+      "links": [
+        {
+          "relationship": "limits",
+          "target": "APP-001"
+        },
+        {
+          "relationship": "limits",
+          "target": "APP-002"
+        }
+      ],
+      "name": "Cross-Platform Desktop Application"
+    },
+    {
+      "card_type": "Constraint",
+      "description": "The model tree must never display a tmp directory and the application must not create or require a tmp directory within Aurora model homes.",
+      "id": "CNS-004",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "CTL-002"
+        },
+        {
+          "relationship": "limits",
+          "target": "FEA-002"
+        }
+      ],
+      "name": "No tmp Directory Inside Model Homes"
+    },
+    {
+      "card_type": "Threat",
+      "description": "Large models, rapid file changes, or maliciously oversized inputs cause the application to become unresponsive, preventing safe editing and navigation.",
+      "id": "THR-003",
+      "links": [
+        {
+          "relationship": "imposes",
+          "target": "RIS-003"
+        }
+      ],
+      "name": "Resource Exhaustion",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The model tree must never display a tmp directory; tmp must never exist inside Aurora model homes.",
+      "id": "REQ-006",
+      "name": "Tree Never Shows tmp"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The graph view supports zooming to show more or fewer generations, defaulting to one or two generations based on available space.",
+      "id": "REQ-022",
+      "name": "Graph View Supports Zoom"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Persist edits to the local IndraDB store in a save-as-you-go workflow and support undo of recent changes.",
+      "id": "CAP-006",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-012"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-024"
+        }
+      ],
+      "name": "Persist Model Changes"
+    },
+    {
+      "card_type": "Risk",
+      "description": "The application reads or writes outside of the selected model home (or in unexpected locations) due to unsafe path handling or malicious inputs.",
+      "id": "RIS-002",
+      "links": [
+        {
+          "relationship": "impacts",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "impacts",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Unauthorized Filesystem Access",
+      "status": "Design"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Render and export an SVG diagram for a selected official view using the canonical Mermaid rules.",
+      "id": "ATV-009",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-015"
+        },
+        {
+          "relationship": "uses",
+          "target": "INT-004"
+        },
+        {
+          "relationship": "persists_to",
+          "target": "DTS-002"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-004"
+        }
+      ],
+      "name": "Export SVG",
+      "status": "Design"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Discover mission roots and per-mission folders in the selected model home and validate the expected layout.",
+      "id": "ATV-001",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "validates",
+          "target": "INT-002"
+        }
+      ],
+      "name": "Scan Model Home",
+      "status": "Design"
+    },
+    {
+      "card_type": "Threat",
+      "description": "An adversary attempts to trick the application into reading or writing outside the selected model home by providing unsafe paths or filenames.",
+      "id": "THR-001",
+      "links": [
+        {
+          "relationship": "imposes",
+          "target": "RIS-002"
+        }
+      ],
+      "name": "Path Traversal And Unsafe File Writes",
+      "status": "Design"
+    },
+    {
+      "card_type": "Event",
+      "description": "The user initiates an edit to a selected card.",
+      "id": "EVT-003",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "ATV-004"
+        }
+      ],
+      "name": "Edit Initiated",
+      "status": "Design"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Export missions, cards, and links from the local IndraDB store to the selected model home folder using canonical Aurora layout.",
+      "id": "ATV-012",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-022"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-004"
+        },
+        {
+          "relationship": "persists_to",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "validates",
+          "target": "INT-002"
+        },
+        {
+          "relationship": "triggers",
+          "target": "CON-003"
+        },
+        {
+          "relationship": "enables",
+          "target": "CAP-014"
+        }
+      ],
+      "name": "Export Model Home",
+      "status": "Design"
+    },
+    {
+      "card_type": "Condition",
+      "description": "A filesystem change is detected that overlaps with local edits in a way that requires deterministic conflict resolution.",
+      "id": "CON-002",
+      "links": [
+        {
+          "relationship": "validates",
+          "target": "CAP-007"
+        },
+        {
+          "relationship": "governs",
+          "target": "CTL-003"
+        }
+      ],
+      "name": "External Change Conflicts With Local Edit",
+      "status": "Design"
+    },
+    {
+      "card_type": "Component",
+      "description": "Coordinates keyboard navigation affordances, reduced-motion behavior, and theme styling consistent with the visual constraints.",
+      "id": "COM-019",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-017"
+        },
+        {
+          "relationship": "uses",
+          "target": "CTL-005"
+        }
+      ],
+      "name": "Accessibility And Theme Manager"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "A VS Code extension can be implemented later by reusing the same UI and core logic as the standalone application.",
+      "id": "REQ-034",
+      "name": "VS Code Extension Reuses Core Logic"
+    },
+    {
+      "card_type": "Data Store",
+      "description": "A bounded storage for undo history (typically in-memory) that records recent edits for reversal.",
+      "id": "DTS-003",
+      "name": "Undo History Store"
+    },
+    {
+      "card_type": "Story",
+      "description": "As a tool user, I want to export the official Aurora view diagrams as SVG so that I can share architecture views in documents and presentations.",
+      "id": "STR-002",
+      "links": [
+        {
+          "relationship": "explains",
+          "target": "CAP-011"
+        },
+        {
+          "relationship": "explains",
+          "target": "FEA-014"
+        },
+        {
+          "relationship": "uses",
+          "target": "INT-004"
+        }
+      ],
+      "name": "Export Official Views To SVG",
+      "status": "Design"
+    },
+    {
+      "card_type": "Story",
+      "description": "As an architect, I want to edit card fields in a structured editor and get immediate validation feedback so that the model remains schema- and invariant-correct.",
+      "id": "STR-001",
+      "links": [
+        {
+          "relationship": "explains",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "explains",
+          "target": "CAP-008"
+        },
+        {
+          "relationship": "explains",
+          "target": "FEA-009"
+        },
+        {
+          "relationship": "implies",
+          "target": "CTL-001"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-003"
+        }
+      ],
+      "name": "Edit Cards Safely With Feedback",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "Clicking a non-center card in the graph navigation view brings that card to the center.",
+      "id": "REQ-008",
+      "name": "Click To Recenter"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "Saving a card automatically appends an audit history entry and applies the correct semver version bump; if ambiguous, the user is prompted.",
+      "id": "REQ-027",
+      "name": "Audit Trail And Version Bump"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The tool watches model folders for new or changed files to support live modeling with concurrent human and agent edits.",
+      "id": "REQ-016",
+      "name": "Watch Model Folders"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide link creation and editing that only offers invariant-preserving targets.",
+      "id": "FEA-011",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-029"
+        }
+      ],
+      "name": "Safe Link Editor",
+      "status": "Design"
+    },
+    {
+      "card_type": "Event",
+      "description": "A watched file change is observed in the model home or derived output folders.",
+      "id": "EVT-002",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "CON-002"
+        }
+      ],
+      "name": "Filesystem Change Detected",
+      "status": "Design"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Edit card fields using a structured form and Markdown editor with a live preview.",
+      "id": "ATV-004",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-006"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-007"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-008"
+        },
+        {
+          "relationship": "enables",
+          "target": "CAP-005"
+        }
+      ],
+      "name": "Edit Card Fields",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "All filenames and paths are computed and validated to avoid traversal and unsafe characters.",
+      "id": "REQ-030",
+      "name": "Paths And Filenames Are Safe"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The standalone application exposes an MCP endpoint while it is running to allow agents to assist in design.",
+      "id": "REQ-018",
+      "name": "Expose MCP Endpoint While Running"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Export SVG versions of the official diagrams using Mermaid SVG rendering based on the canonical Mermaid rules.",
+      "id": "FEA-014",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-011"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-015"
+        }
+      ],
+      "name": "SVG Export",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "When a model home folder is opened, the application imports missions, cards, and links into the local IndraDB store in user storage and then loads the model from that store for navigation and editing.",
+      "id": "REQ-001",
+      "name": "Load Models Into Local Store"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Load one or more missions from a model home and initialize the default active mission tab.",
+      "id": "FEA-001",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "enables",
+          "target": "CAP-008"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-001"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-002"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-003"
+        }
+      ],
+      "name": "Multi-Model Loader",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The application saves changes automatically and detects concurrent edits, applying deterministic conflict resolution and notifying users when their changes were not applied.",
+      "id": "REQ-012",
+      "name": "Save-As-You-Go With Conflict Handling"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The tool can keep compact models and generated Markdown/views in sync with the active model, preferring invocation of aurora_cli.",
+      "id": "REQ-013",
+      "name": "Keep Derived Outputs In Sync"
+    },
+    {
+      "card_type": "Component",
+      "description": "Computes the local neighborhood layout for the central card (parents, siblings, descendants) and handles graph recentering.",
+      "id": "COM-004",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-003"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-005"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-019"
+        }
+      ],
+      "name": "Graph View Controller"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Provide graph-centric navigation over the directed graph, including recentering and generation zoom.",
+      "id": "CAP-003",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-007"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-008"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-022"
+        }
+      ],
+      "name": "Navigate Model Graph"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Provide a cross-platform, keyboard-navigable, reduced-motion-aware UI with the specified visual style.",
+      "id": "CAP-013",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-020"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-021"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-032"
+        }
+      ],
+      "name": "Accessible And Polished UI"
+    },
+    {
+      "card_type": "Asset",
+      "description": "The directed graph of Aurora cards and links stored on disk; treated as untrusted input by the application.",
+      "id": "AST-001",
+      "links": [
+        {
+          "relationship": "persists_to",
+          "target": "DTS-001"
+        }
+      ],
+      "name": "Aurora Model"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide the central graph navigation view with recentering and configurable generation depth.",
+      "id": "FEA-003",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-003"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-007"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-008"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-022"
+        }
+      ],
+      "name": "Graph Navigation View",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The editor supports modifying only the allowed editable fields: name, description, status, card_subtype, attributes, and links.",
+      "id": "REQ-011",
+      "name": "Edit Allowed Fields"
+    },
+    {
+      "card_type": "Application",
+      "description": "A VS Code extension UI that reuses the Viewer/Editor UI and core logic to enable in-editor modeling and agent-assisted editing.",
+      "id": "APP-002",
+      "links": [
+        {
+          "relationship": "comprises",
+          "target": "COM-020"
+        }
+      ],
+      "name": "Aurora VS Code Extension",
+      "status": "Backlog"
+    },
+    {
+      "card_type": "Process",
+      "description": "Regenerate derived outputs via aurora_cli and export official view diagrams to SVG.",
+      "id": "PRO-004",
+      "links": [
+        {
+          "relationship": "involves",
+          "target": "ACT-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-002"
+        },
+        {
+          "relationship": "starts_with",
+          "target": "EVT-007"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-008"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-009"
+        },
+        {
+          "relationship": "uses",
+          "target": "FEA-012"
+        },
+        {
+          "relationship": "uses",
+          "target": "FEA-014"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Generate Outputs And Export SVG",
+      "status": "Design"
+    },
+    {
+      "card_type": "Event",
+      "description": "An MCP client sends a CRUD request or subscribes to change events.",
+      "id": "EVT-008",
+      "links": [
+        {
+          "relationship": "triggers",
+          "target": "ATV-010"
+        }
+      ],
+      "name": "MCP Request Received",
+      "status": "Design"
+    },
+    {
+      "card_type": "Artifact",
+      "description": "An exported SVG representation of an official diagram.",
+      "id": "ART-004",
+      "links": [
+        {
+          "relationship": "persists_to",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "SVG Diagram Export"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide view filters aligned with aurora_cli built-in view sets.",
+      "id": "FEA-004",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-004"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-009"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-010"
+        }
+      ],
+      "name": "View Filter Selector",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The UI uses a slick, clean, retro-futuristic control-panel aesthetic with a cool-toned palette.",
+      "id": "REQ-032",
+      "name": "Retro-Futuristic Control-Panel Aesthetic"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Validate all loaded and edited cards against the Aurora schema and invariants and block invalid edits.",
+      "id": "CAP-008",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-026"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-030"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-031"
+        }
+      ],
+      "name": "Validate Schema And Invariants"
+    },
+    {
+      "card_type": "Risk",
+      "description": "The model becomes invalid or semantically incorrect, causing invariants to be violated and downstream views/outputs to become untrustworthy.",
+      "id": "RIS-001",
+      "links": [
+        {
+          "relationship": "impacts",
+          "target": "AST-001"
+        },
+        {
+          "relationship": "impacts",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "impacts",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "Model Integrity Loss",
+      "status": "Design"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide keyboard navigation, reduced-motion behavior, and the specified retro-futuristic visual style.",
+      "id": "FEA-017",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-013"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-020"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-021"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-032"
+        }
+      ],
+      "name": "Accessible And Styled UI",
+      "status": "Design"
+    },
+    {
+      "card_type": "State Machine",
+      "description": "A bounded state model for the application session: loading a model, editing cards, validating, resolving conflicts, and generating outputs.",
+      "id": "STM-001",
+      "links": [
+        {
+          "relationship": "starts_in",
+          "target": "STA-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "STA-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "STA-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "STA-003"
+        },
+        {
+          "relationship": "includes",
+          "target": "STA-004"
+        },
+        {
+          "relationship": "includes",
+          "target": "STA-005"
+        },
+        {
+          "relationship": "includes",
+          "target": "STA-006"
+        },
+        {
+          "relationship": "includes",
+          "target": "STA-007"
+        },
+        {
+          "relationship": "includes",
+          "target": "EVT-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "EVT-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "EVT-003"
+        },
+        {
+          "relationship": "includes",
+          "target": "EVT-004"
+        },
+        {
+          "relationship": "includes",
+          "target": "EVT-005"
+        },
+        {
+          "relationship": "includes",
+          "target": "EVT-006"
+        },
+        {
+          "relationship": "includes",
+          "target": "EVT-007"
+        },
+        {
+          "relationship": "includes",
+          "target": "EVT-008"
+        },
+        {
+          "relationship": "includes",
+          "target": "CON-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "CON-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "CON-003"
+        }
+      ],
+      "name": "Editing Session Lifecycle",
+      "status": "Design"
+    },
+    {
+      "card_type": "Driver",
+      "description": "Deliver a consistent, keyboard-navigable, WCAG AA-conformant user experience across Linux, Windows, and macOS.",
+      "id": "DRI-005",
+      "links": [
+        {
+          "relationship": "drives",
+          "target": "REQ-020"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-021"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-032"
+        }
+      ],
+      "name": "Accessible Cross-Platform UX"
+    },
+    {
+      "card_type": "State",
+      "description": "A validation, IO, or conflict resolution error has occurred; the user must correct the issue or revert changes.",
+      "id": "STA-007",
+      "links": [
+        {
+          "relationship": "receives",
+          "target": "EVT-006"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-003"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-001"
+        }
+      ],
+      "name": "Error",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The central view renders a graph-centric navigation layout with a single central card and surrounding clusters for incoming/outgoing links and parents/descendants.",
+      "id": "REQ-007",
+      "name": "Graph View Displays Local Topology"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Expose an MCP endpoint for CRUD operations over the model and emit model change events to connected MCP clients.",
+      "id": "FEA-015",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-012"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-018"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-019"
+        }
+      ],
+      "name": "MCP Server And Change Events",
+      "status": "Design"
+    },
+    {
+      "card_type": "Component",
+      "description": "Provides a storage abstraction over the local IndraDB database (user storage), including schema initialization, migrations, and transactional CRUD for cards and links.",
+      "id": "COM-021",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-019"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-004"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-018"
+        }
+      ],
+      "name": "IndraDB Store Adapter"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Persist the edited card and link changes to the local IndraDB store and update audit trail metadata deterministically.",
+      "id": "ATV-006",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-012"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-018"
+        },
+        {
+          "relationship": "persists_to",
+          "target": "DTS-004"
+        },
+        {
+          "relationship": "triggers",
+          "target": "CON-003"
+        }
+      ],
+      "name": "Persist Card Change",
+      "status": "Design"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The tool can render and browse official views and generated Markdown outputs associated with a model.",
+      "id": "REQ-014",
+      "name": "Browse Views And Generated Markdown"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The application treats all model content as untrusted input and does not execute any content from the model.",
+      "id": "REQ-031",
+      "name": "Never Execute Model Content"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Browse the generated views and Markdown outputs for the currently loaded model.",
+      "id": "FEA-013",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-010"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-014"
+        }
+      ],
+      "name": "View Browser",
+      "status": "Design"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Import cards from a selected model home into the local IndraDB store (user storage) and build an in-memory directed graph index from the store for navigation and validation.",
+      "id": "CAP-001",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-001"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-002"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-003"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-004"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-005"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-006"
+        }
+      ],
+      "name": "Load And Index Local Store"
+    },
+    {
+      "card_type": "Actor",
+      "description": "A human architect who creates, edits, and reviews Aurora models.",
+      "id": "ACT-001",
+      "links": [
+        {
+          "relationship": "desires",
+          "target": "STR-001"
+        }
+      ],
+      "name": "Architect"
+    },
+    {
+      "card_type": "Event",
+      "description": "Schema and invariant validation fails and the edit cannot be persisted.",
+      "id": "EVT-006",
+      "name": "Validation Failed",
+      "status": "Design"
+    },
+    {
+      "card_type": "Driver",
+      "description": "Prevent invalid or ambiguous architecture by blocking edits that would violate the Aurora schema or invariants, and by providing safe editing affordances (e.g., link target filtering).",
+      "id": "DRI-002",
+      "links": [
+        {
+          "relationship": "drives",
+          "target": "REQ-033"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-009"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-010"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-011"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-012"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-023"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-024"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-025"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-026"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-027"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-028"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-029"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-030"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-031"
+        }
+      ],
+      "name": "Safe Invariant-Preserving Editing"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The right-side editor pane is split vertically into an editable JSON form (upper) and a read-only rendered Markdown preview (lower).",
+      "id": "REQ-023",
+      "name": "Editor Pane Has JSON And Markdown"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Import Aurora models from canonical model home folders into the local IndraDB store and export them back out deterministically.",
+      "id": "CAP-014",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-035"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-036"
+        }
+      ],
+      "name": "Import And Export Model Homes"
+    },
+    {
+      "card_type": "Control",
+      "description": "Validate and sanitize all filesystem paths and filenames to prevent traversal, unsafe characters, and accidental writes outside the selected model home.",
+      "id": "CTL-002",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "FEA-016"
+        }
+      ],
+      "name": "Path And Filename Sanitization"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "Filtering affects what is visible in the graph view and does not alter the underlying model.",
+      "id": "REQ-010",
+      "name": "Filtering Affects Visibility Only"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "When a user requests reduced motion, graph animations are minimized or disabled.",
+      "id": "REQ-021",
+      "name": "Respect Reduced Motion Preferences"
+    },
+    {
+      "card_type": "Artifact",
+      "description": "A single Aurora card stored as a JSON file on disk.",
+      "id": "ART-001",
+      "links": [
+        {
+          "relationship": "persists_to",
+          "target": "DTS-001"
+        }
+      ],
+      "name": "Card JSON File"
+    },
+    {
+      "card_type": "Component",
+      "description": "Implements field-level merge and first-writer-wins rules for concurrent edits and produces user-facing conflict notifications.",
+      "id": "COM-010",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-008"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-011"
+        }
+      ],
+      "name": "Conflict Resolver"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Render a tree view mirroring the on-disk model layout, showing only card JSON files and excluding tmp.",
+      "id": "FEA-002",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-002"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-004"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-005"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-006"
+        }
+      ],
+      "name": "Model Tree View",
+      "status": "Design"
+    },
+    {
+      "card_type": "Control",
+      "description": "Ensure keyboard navigation is available across panes and respect reduced motion preferences by minimizing or disabling animations when requested.",
+      "id": "CTL-005",
+      "links": [
+        {
+          "relationship": "governs",
+          "target": "CAP-013"
+        },
+        {
+          "relationship": "governs",
+          "target": "FEA-017"
+        }
+      ],
+      "name": "Accessibility Preference Enforcement"
+    },
+    {
+      "card_type": "Application",
+      "description": "A standalone cross-platform desktop application for loading, navigating, editing, validating, and exporting Aurora models, exposing an MCP endpoint while running.",
+      "id": "APP-001",
+      "links": [
+        {
+          "relationship": "comprises",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-002"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-003"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-004"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-005"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-006"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-007"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-008"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-009"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-010"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-011"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-012"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-013"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-014"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-015"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-016"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-017"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-018"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-019"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-021"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-022"
+        },
+        {
+          "relationship": "includes",
+          "target": "PRO-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "PRO-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "PRO-003"
+        },
+        {
+          "relationship": "includes",
+          "target": "PRO-004"
+        },
+        {
+          "relationship": "includes",
+          "target": "PRO-005"
+        },
+        {
+          "relationship": "includes",
+          "target": "STM-001"
+        }
+      ],
+      "name": "Aurora Viewer And Editor",
+      "status": "Design"
+    },
+    {
+      "card_type": "State",
+      "description": "The user is editing card content in the editor pane.",
+      "id": "STA-003",
+      "links": [
+        {
+          "relationship": "receives",
+          "target": "EVT-004"
+        },
+        {
+          "relationship": "receives",
+          "target": "EVT-002"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-004"
+        },
+        {
+          "relationship": "transitions_to",
+          "target": "STA-005"
+        }
+      ],
+      "name": "Editing",
+      "status": "Design"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Present the on-disk model layout as a navigable tree while filtering out schema files, non-card files, and tmp directories.",
+      "id": "CAP-002",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-004"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-005"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-006"
+        }
+      ],
+      "name": "Browse Model Tree"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Filter visible cards in the graph view using a fixed set of view filters aligned with aurora_cli built-in views.",
+      "id": "CAP-004",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-009"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-010"
+        }
+      ],
+      "name": "Filter Views"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Export SVG versions of official diagrams using Mermaid SVG rendering consistent with the canonical view rules.",
+      "id": "CAP-011",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-015"
+        }
+      ],
+      "name": "Export Official Diagrams To SVG"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Render a read-only Markdown preview of the selected card in the editor pane.",
+      "id": "FEA-006",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-023"
+        }
+      ],
+      "name": "Rendered Markdown Preview",
+      "status": "Design"
+    },
+    {
+      "card_type": "Activity",
+      "description": "Handle an MCP CRUD request or subscription and emit model change events when updates occur.",
+      "id": "ATV-010",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-017"
+        },
+        {
+          "relationship": "uses",
+          "target": "INT-001"
+        },
+        {
+          "relationship": "enables",
+          "target": "CAP-012"
+        }
+      ],
+      "name": "Serve MCP Request",
+      "status": "Design"
+    },
+    {
+      "card_type": "Activity",
+      "description": "When external changes are detected, compute and apply deterministic merge and conflict resolution rules.",
+      "id": "ATV-007",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-009"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-010"
+        },
+        {
+          "relationship": "enables",
+          "target": "CAP-007"
+        },
+        {
+          "relationship": "triggers",
+          "target": "CON-002"
+        }
+      ],
+      "name": "Resolve Concurrent Changes",
+      "status": "Design"
+    },
+    {
+      "card_type": "Capability",
+      "description": "Invoke aurora_cli to generate compact models, Markdown, and standard views, and enable browsing of those outputs.",
+      "id": "CAP-010",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-013"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-014"
+        }
+      ],
+      "name": "Generate And Browse Derived Outputs"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "Each loaded model is displayed on its own tab; each tab remembers its central card and filter selection while the app is running.",
+      "id": "REQ-003",
+      "name": "Model Tabs Remember Context"
+    },
+    {
+      "card_type": "Component",
+      "description": "Centralizes validation and sanitization of paths, filenames, and other untrusted inputs at filesystem boundaries.",
+      "id": "COM-018",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-016"
+        },
+        {
+          "relationship": "uses",
+          "target": "CTL-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-001"
+        }
+      ],
+      "name": "Security Gate"
+    },
+    {
+      "card_type": "Component",
+      "description": "Builds and maintains the model tree view representation and handles tree selection events.",
+      "id": "COM-003",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-002"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-018"
+        }
+      ],
+      "name": "Tree View Controller"
+    },
+    {
+      "card_type": "Feature",
+      "description": "Provide a VS Code extension UI that reuses the same core logic and UI patterns as the standalone application.",
+      "id": "FEA-018",
+      "links": [
+        {
+          "relationship": "satisfies",
+          "target": "REQ-034"
+        }
+      ],
+      "name": "VS Code Extension UI",
+      "status": "Backlog"
+    },
+    {
+      "card_type": "Process",
+      "description": "Detect external filesystem changes and apply deterministic merge and conflict resolution before continuing edits.",
+      "id": "PRO-003",
+      "links": [
+        {
+          "relationship": "involves",
+          "target": "ACT-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-002"
+        },
+        {
+          "relationship": "starts_with",
+          "target": "EVT-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-007"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-005"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-006"
+        },
+        {
+          "relationship": "explains",
+          "target": "CAP-007"
+        }
+      ],
+      "name": "Resolve Concurrent Changes",
+      "status": "Design"
+    },
+    {
+      "card_type": "Component",
+      "description": "Renders a selected card into a Markdown preview representation for display in the editor pane.",
+      "id": "COM-007",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-006"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-002"
+        }
+      ],
+      "name": "Card Markdown Renderer"
+    },
+    {
+      "card_type": "Artifact",
+      "description": "Rendered preview content for a selected card (e.g., a Markdown rendition displayed in the UI).",
+      "id": "ART-002",
+      "name": "Rendered Card Preview"
+    },
+    {
+      "card_type": "Driver",
+      "description": "Enable architects to understand and traverse an Aurora model quickly using an interactive, graph-centric UI rather than manually inspecting many files.",
+      "id": "DRI-001",
+      "links": [
+        {
+          "relationship": "drives",
+          "target": "REQ-001"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-002"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-003"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-004"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-005"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-006"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-007"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-008"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-022"
+        }
+      ],
+      "name": "Graph-Centric Model Navigation"
+    },
+    {
+      "card_type": "Driver",
+      "description": "Support concurrent modeling with human users and agents by watching the filesystem, resolving non-conflicting updates deterministically, and providing an MCP endpoint with change events.",
+      "id": "DRI-004",
+      "links": [
+        {
+          "relationship": "drives",
+          "target": "REQ-016"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-017"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-018"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-019"
+        }
+      ],
+      "name": "Live Modeling With Agents"
+    },
+    {
+      "card_type": "Requirement",
+      "description": "The editor can import one or more missions and all referenced cards/links from a selected Aurora model home folder into the local IndraDB store.",
+      "id": "REQ-035",
+      "name": "Import Model Home Into Local Store"
+    },
+    {
+      "card_type": "Component",
+      "description": "Renders Mermaid diagrams to SVG and writes exports to the output folder.",
+      "id": "COM-016",
+      "links": [
+        {
+          "relationship": "exposes",
+          "target": "INT-004"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-014"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-004"
+        },
+        {
+          "relationship": "uses",
+          "target": "DTS-002"
+        }
+      ],
+      "name": "SVG Exporter"
+    }
+  ]
+}

@@ -5,29 +5,29 @@
 graph LR
 
 
-	COM-001[["`**Component**: COM-001<br />CLI Command Router`"]]
-	COM-002[["`**Component**: COM-002<br />Model Root Resolver`"]]
-	COM-003[["`**Component**: COM-003<br />Model Loader`"]]
-	COM-004[["`**Component**: COM-004<br />Schema Validator`"]]
-	COM-005[["`**Component**: COM-005<br />Invariant Validator`"]]
-	COM-006[["`**Component**: COM-006<br />Markdown Card Generator`"]]
-	COM-007[["`**Component**: COM-007<br />Standard View Generator`"]]
-	COM-008[["`**Component**: COM-008<br />Filesystem Writer`"]]
-	DTS-001[("`**Data Store**: DTS-001<br />Aurora Model Folder`")]
-	DTS-002[("`**Data Store**: DTS-002<br />Documentation Output Folder`")]
+ COM-001[["`**Component**: COM-001<br />CLI Command Router`"]]
+ COM-002[["`**Component**: COM-002<br />Model Root Resolver`"]]
+ COM-003[["`**Component**: COM-003<br />Model Loader`"]]
+ COM-004[["`**Component**: COM-004<br />Schema Validator`"]]
+ COM-005[["`**Component**: COM-005<br />Invariant Validator`"]]
+ COM-006[["`**Component**: COM-006<br />Markdown Card Generator`"]]
+ COM-007[["`**Component**: COM-007<br />Standard View Generator`"]]
+ COM-008[["`**Component**: COM-008<br />Filesystem Writer`"]]
+ DTS-001[("`**Data Store**: DTS-001<br />Aurora Model Folder`")]
+ DTS-002[("`**Data Store**: DTS-002<br />Documentation Output Folder`")]
 
 
-	COM-001 -- uses --> COM-002;
-	COM-001 -- uses --> COM-004;
-	COM-001 -- uses --> COM-005;
-	COM-001 -- uses --> COM-006;
-	COM-001 -- uses --> COM-007;
-	COM-001 -- uses --> COM-008;
-	COM-002 -- uses --> COM-003;
-	COM-003 -- uses --> DTS-001;
-	COM-006 -- uses --> COM-008;
-	COM-007 -- uses --> COM-008;
-	COM-008 -- uses --> DTS-002;
+ COM-001 -- uses --> COM-002;
+ COM-001 -- uses --> COM-004;
+ COM-001 -- uses --> COM-005;
+ COM-001 -- uses --> COM-006;
+ COM-001 -- uses --> COM-007;
+ COM-001 -- uses --> COM-008;
+ COM-002 -- uses --> COM-003;
+ COM-003 -- uses --> DTS-001;
+ COM-006 -- uses --> COM-008;
+ COM-007 -- uses --> COM-008;
+ COM-008 -- uses --> DTS-002;
 
 
 classDef cls_boundary stroke-dasharray:5 5,stroke-width:4;
@@ -61,7 +61,7 @@ classDef cls_risk fill:#881337,color:#FFFFFF;
 classDef cls_threat fill:#4c0519,color:#FFFFFF;
 classDef cls_note fill:#1f2937,color:#FFFFFF;
 
-	class COM-001,COM-002,COM-003,COM-004,COM-005,COM-006,COM-007,COM-008 cls_component;
-	class DTS-001,DTS-002 cls_data_store;
+ class COM-001,COM-002,COM-003,COM-004,COM-005,COM-006,COM-007,COM-008 cls_component;
+ class DTS-001,DTS-002 cls_data_store;
 
 ```

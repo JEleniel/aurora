@@ -30,6 +30,7 @@ and the project adheres to [Semantic Versioning].
 - Aurora Editor watcher events now use the supported Tauri `emit` API so the desktop shell compiles and runs again.
 - Card parsing errors now include the offending file path, making it easier to locate malformed JSON or audit issues inside the model home.
 - Model load failures now render inside a copyable alert with a one-click “Copy error” control so testers can share diagnostics quickly.
+- `aurora_cli compact` now honors mission-card inputs by filtering to that mission only, ensuring a single AGENT file is rewritten when the user points the CLI at a specific JSON card.
 
 ## [2.0.0](https://github.com/JEleniel/aurora/releases/tag/v2.0.0) - 2026-01-21
 
