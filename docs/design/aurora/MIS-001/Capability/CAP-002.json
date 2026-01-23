@@ -1,32 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "CAP-002",
-	"card_type": "Capability",
-	"name": "Validate Aurora Model",
-	"description": "Validate an Aurora model against the local schema and the invariants defined by the Aurora specification.",
-	"links": [
-		{
-			"target": "REQ-001",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "REQ-002",
-			"relationship": "satisfies"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:18.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -43,5 +15,4 @@
 		{ "relationship": "generates", "target": "ART-001" }
 	],
 	"name": "Validate Aurora Model"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

@@ -1,36 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "CAP-005",
-	"card_type": "Capability",
-	"name": "Write Outputs Deterministically",
-	"description": "Write generated artifacts to disk in a safe, deterministic way (stable ordering, stable paths, and predictable formatting).",
-	"links": [
-		{
-			"target": "CNS-001",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "CNS-002",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "DTS-002",
-			"relationship": "uses"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:21.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -46,5 +14,4 @@
 		{ "relationship": "uses", "target": "DTS-002" }
 	],
 	"name": "Write Outputs Deterministically"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

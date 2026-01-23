@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "INT-001",
-	"card_type": "Interface",
-	"name": "Command Line Interface",
-	"description": "A stable CLI contract consisting of subcommands, flags, exit codes, and structured output conventions.",
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:39.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -27,5 +9,4 @@
 	"description": "The command line interface of aurora_cli: subcommands, flags, exit codes, and output conventions.",
 	"id": "INT-001",
 	"name": "Command Line Interface"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

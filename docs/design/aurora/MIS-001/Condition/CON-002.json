@@ -1,32 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "CON-002",
-	"card_type": "Condition",
-	"name": "View Has Included Cards",
-	"description": "Evaluates to true when the model contains at least one card for the view's included card types.",
-	"links": [
-		{
-			"target": "ATV-007",
-			"relationship": "triggers_true"
-		},
-		{
-			"target": "STA-004",
-			"relationship": "triggers_false"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:01:04.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -41,5 +13,4 @@
 		{ "relationship": "triggers_false", "target": "STA-004" }
 	],
 	"name": "View Has Included Cards"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

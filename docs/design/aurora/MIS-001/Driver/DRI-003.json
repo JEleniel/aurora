@@ -1,63 +1,10 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "DRI-003",
-	"card_type": "Driver",
-	"name": "Automate Architecture Communication",
-	"description": "Ensure architecture can be communicated consistently by generating a standardized, human-friendly card catalog and a repeatable set of views.",
-	"links": [
-		{
-			"target": "REQ-004",
-			"relationship": "drives"
-		},
-		{
-			"target": "REQ-005",
-			"relationship": "drives"
-		},
-		{
-			"target": "REQ-006",
-			"relationship": "drives"
-		},
-		{
-			"target": "REQ-008",
-			"relationship": "drives"
-		},
-		{
-			"target": "REQ-010",
-			"relationship": "drives"
-		},
-		{
-			"target": "REQ-016",
-			"relationship": "drives"
-		}
-	],
-	"audit_trail": {
-		"version": "1.2.0",
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 		"hash": null,
 		"history": [
 			{
 				"editor": "Copilot: Architect",
-<<<<<<< HEAD
-				"timestamp": "2026-01-17T00:00:07.000Z",
-				"event": "created"
-			},
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:20:00.000Z",
-				"event": "edited"
-			},
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T01:10:35.000Z",
-				"event": "edited"
-			}
-		]
-	}
-=======
 				"event": "created",
 				"timestamp": "2026-01-20T00:00:00.000Z"
 			}
@@ -76,5 +23,4 @@
 		{ "relationship": "drives", "target": "REQ-016" }
 	],
 	"name": "Automate Architecture Communication"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

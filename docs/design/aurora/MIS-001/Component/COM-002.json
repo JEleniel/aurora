@@ -1,32 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "COM-002",
-	"card_type": "Component",
-	"name": "Model Root Resolver",
-	"description": "Resolves a user-provided path into a model root folder and identifies the Mission card and co-located schema copy.",
-	"links": [
-		{
-			"target": "CAP-001",
-			"relationship": "implements"
-		},
-		{
-			"target": "COM-003",
-			"relationship": "uses"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:42.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -41,5 +13,4 @@
 		{ "relationship": "uses", "target": "COM-003" }
 	],
 	"name": "Model Root Resolver"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

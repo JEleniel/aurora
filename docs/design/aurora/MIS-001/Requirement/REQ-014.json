@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-014",
-	"card_type": "Requirement",
-	"name": "Derive Editor Identity",
-	"description": "For version bump operations, aurora_cli sets audit_trail.history[].editor to an explicit CLI option when provided; otherwise it derives the editor identity from the logged-in OS user.",
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:30:02.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -27,5 +9,4 @@
 	"description": "Determine the editor identity via an explicit CLI option or OS user.",
 	"id": "REQ-014",
 	"name": "Determine Editor Identity"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

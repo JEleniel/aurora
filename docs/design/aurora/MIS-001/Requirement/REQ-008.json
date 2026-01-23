@@ -1,27 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-008",
-	"card_type": "Requirement",
-	"name": "Use ELK Layout And Type Shapes",
-	"description": "Generated view diagrams include a standard Mermaid init header configuring the flowchart renderer to ELK and distinguish card types with distinct, consistent node shapes.",
-	"audit_trail": {
-		"version": "1.1.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:15.000Z",
-				"event": "created"
-			},
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:20:00.000Z",
-				"event": "edited"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -32,5 +9,4 @@
 	"description": "Use ELK layout and distinct per-card-type node shapes when generating Mermaid views.",
 	"id": "REQ-008",
 	"name": "Use ELK Layout And Per-Type Shapes"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

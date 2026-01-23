@@ -1,56 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "COM-001",
-	"card_type": "Component",
-	"name": "CLI Command Router",
-	"description": "Parses CLI arguments, selects subcommands, orchestrates validation and rendering operations, and sets exit codes.",
-	"links": [
-		{
-			"target": "INT-001",
-			"relationship": "exposes"
-		},
-		{
-			"target": "FEA-004",
-			"relationship": "implements"
-		},
-		{
-			"target": "COM-002",
-			"relationship": "uses"
-		},
-		{
-			"target": "COM-004",
-			"relationship": "uses"
-		},
-		{
-			"target": "COM-005",
-			"relationship": "uses"
-		},
-		{
-			"target": "COM-006",
-			"relationship": "uses"
-		},
-		{
-			"target": "COM-007",
-			"relationship": "uses"
-		},
-		{
-			"target": "COM-008",
-			"relationship": "uses"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:41.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -73,5 +21,4 @@
 		{ "relationship": "uses", "target": "COM-008" }
 	],
 	"name": "CLI Command Router"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

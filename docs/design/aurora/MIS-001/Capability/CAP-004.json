@@ -1,45 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "CAP-004",
-	"card_type": "Capability",
-	"name": "Render Standard Views",
-	"description": "Generate a standard set of mermaid-based views from the model for common communication needs.",
-	"links": [
-		{
-			"target": "REQ-006",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "REQ-007",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "REQ-008",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "REQ-010",
-			"relationship": "satisfies"
-		}
-	],
-	"audit_trail": {
-		"version": "1.1.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:20.000Z",
-				"event": "created"
-			},
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:20:00.000Z",
-				"event": "edited"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -58,5 +17,4 @@
 		{ "relationship": "uses", "target": "CAP-005" }
 	],
 	"name": "Render Standard Views"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

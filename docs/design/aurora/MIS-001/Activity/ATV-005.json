@@ -1,32 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "ATV-005",
-	"card_type": "Activity",
-	"name": "Render Markdown Cards",
-	"description": "Render one Markdown file per card and a single index README grouped by card type.",
-	"links": [
-		{
-			"target": "CTL-001",
-			"relationship": "governs"
-		},
-		{
-			"target": "ATV-007",
-			"relationship": "triggers"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:01:00.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -43,5 +15,4 @@
 		{ "relationship": "generates", "target": "ART-003" }
 	],
 	"name": "Render Markdown Cards"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

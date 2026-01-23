@@ -1,32 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "CON-001",
-	"card_type": "Condition",
-	"name": "Model Is Valid",
-	"description": "Evaluates to true when schema validation and invariant checks pass.",
-	"links": [
-		{
-			"target": "ATV-005",
-			"relationship": "triggers_true"
-		},
-		{
-			"target": "STA-005",
-			"relationship": "triggers_false"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:01:03.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -42,5 +14,4 @@
 		{ "relationship": "triggers_false", "target": "STA-005" }
 	],
 	"name": "Model Is Valid"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

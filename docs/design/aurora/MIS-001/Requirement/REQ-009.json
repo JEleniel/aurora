@@ -1,27 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-009",
-	"card_type": "Requirement",
-	"name": "Configurable Output Folders",
-	"description": "aurora_cli writes generated Markdown cards, index README(s), and views to a single configurable output root folder; by default it writes to docs/design/ and creates a per-Mission output folder under docs/design/{MissionId}/ with cards under docs/design/{MissionId}/cards/ and views under docs/design/{MissionId}/views/. aurora_cli creates missing output directories by default and provides a flag to disable directory creation (failing if required output directories do not already exist).",
-	"audit_trail": {
-		"version": "2.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:16.000Z",
-				"event": "created"
-			},
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:20:00.000Z",
-				"event": "edited"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -32,5 +9,4 @@
 	"description": "Support configurable output roots with default layout and directory creation semantics.",
 	"id": "REQ-009",
 	"name": "Support Configurable Output Roots"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

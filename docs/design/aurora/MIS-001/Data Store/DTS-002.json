@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "DTS-002",
-	"card_type": "Data Store",
-	"name": "Documentation Output Folder",
-	"description": "The local filesystem folder where aurora_cli writes generated Markdown cards, the index README, and standard view files.",
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:32.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -27,5 +9,4 @@
 	"description": "The filesystem folder where generated documentation outputs (reports, cards, indexes, views, compact exports) are persisted.",
 	"id": "DTS-002",
 	"name": "Documentation Output Folder"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

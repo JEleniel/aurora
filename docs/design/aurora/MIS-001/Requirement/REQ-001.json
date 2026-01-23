@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-001",
-	"card_type": "Requirement",
-	"name": "Validate Aurora Schema",
-	"description": "aurora_cli validates all card JSON files against the Aurora schema copy co-located with the model's Mission card.",
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:08.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -27,5 +9,4 @@
 	"description": "Validate all cards against the JSON schema co-located with the mission.",
 	"id": "REQ-001",
 	"name": "Validate Cards Against Co-Located Schema"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

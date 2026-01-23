@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-013",
-	"card_type": "Requirement",
-	"name": "Append Audit Trail History Entry",
-	"description": "When bumping audit_trail.version, aurora_cli appends a new audit_trail.history entry. The entry event is 'created' if the history is empty; otherwise it is 'edited'.",
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:30:01.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -27,5 +9,4 @@
 	"description": "Append an audit history entry on version bumps.",
 	"id": "REQ-013",
 	"name": "Append Audit History On Version Bumps"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

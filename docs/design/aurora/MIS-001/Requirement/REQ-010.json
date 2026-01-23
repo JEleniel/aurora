@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-010",
-	"card_type": "Requirement",
-	"name": "Standard Mermaid Styling",
-	"description": "aurora_cli includes the standard Mermaid classDef palette and assigns the appropriate class to every node by card type in every generated view diagram.",
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:20:00.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -27,5 +9,4 @@
 	"description": "Include the standard Mermaid palette and assign classes by card type in view documents.",
 	"id": "REQ-010",
 	"name": "Apply Standard Mermaid Palette And Classes"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

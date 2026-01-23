@@ -1,28 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "ATV-002",
-	"card_type": "Activity",
-	"name": "Load Cards",
-	"description": "Load all card JSON files from the model root into an in-memory graph.",
-	"links": [
-		{
-			"target": "EVT-002",
-			"relationship": "triggers"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:57.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -37,5 +13,4 @@
 		{ "relationship": "triggers", "target": "ATV-003" }
 	],
 	"name": "Load Cards"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

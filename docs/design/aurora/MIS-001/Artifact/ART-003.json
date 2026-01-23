@@ -1,28 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "ART-003",
-	"card_type": "Artifact",
-	"name": "Card Index README",
-	"description": "A generated README that indexes all generated Markdown cards grouped by card type, starting with the Mission.",
-	"links": [
-		{
-			"target": "DTS-002",
-			"relationship": "persists_to"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:37.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -34,5 +10,4 @@
 	"id": "ART-003",
 	"links": [{ "relationship": "persists_to", "target": "DTS-002" }],
 	"name": "Card Index README"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

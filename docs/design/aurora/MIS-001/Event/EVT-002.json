@@ -1,28 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "EVT-002",
-	"card_type": "Event",
-	"name": "Model Loaded",
-	"description": "All card JSON files have been loaded into an in-memory graph.",
-	"links": [
-		{
-			"target": "ATV-003",
-			"relationship": "triggers"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:54.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -33,5 +9,4 @@
 	"description": "The model has been loaded into memory and is ready for schema and invariant validation.",
 	"id": "EVT-002",
 	"name": "Model Loaded"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

@@ -1,36 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "CAP-001",
-	"card_type": "Capability",
-	"name": "Resolve And Load Aurora Model",
-	"description": "Resolve the model root from either a folder path or a Mission card path and load all card files into an in-memory directed graph.",
-	"links": [
-		{
-			"target": "REQ-003",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "DTS-001",
-			"relationship": "uses"
-		},
-		{
-			"target": "AST-001",
-			"relationship": "uses"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:17.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -46,5 +14,4 @@
 		{ "relationship": "uses", "target": "AST-001" }
 	],
 	"name": "Resolve And Load Aurora Model"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

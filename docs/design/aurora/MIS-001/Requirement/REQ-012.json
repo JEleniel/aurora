@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-012",
-	"card_type": "Requirement",
-	"name": "Bump Audit Trail Version",
-	"description": "aurora_cli provides commands to bump a card's audit_trail.version using semantic version rules: bump-major increments major and resets minor and patch to 0; bump-minor increments minor and resets patch to 0; bump-patch increments patch.",
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:30:00.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -27,5 +9,4 @@
 	"description": "Bump semantic versions in audit_trail.version.",
 	"id": "REQ-012",
 	"name": "Bump Card Semver Versions"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

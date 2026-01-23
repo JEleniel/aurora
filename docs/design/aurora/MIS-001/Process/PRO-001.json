@@ -1,60 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "PRO-001",
-	"card_type": "Process",
-	"name": "Aurora CLI Execution",
-	"description": "End-to-end process for resolving a model, validating it, and generating documentation outputs.",
-	"links": [
-		{
-			"target": "EVT-001",
-			"relationship": "starts_with"
-		},
-		{
-			"target": "ACT-002",
-			"relationship": "involves"
-		},
-		{
-			"target": "ATV-001",
-			"relationship": "includes"
-		},
-		{
-			"target": "ATV-002",
-			"relationship": "includes"
-		},
-		{
-			"target": "ATV-003",
-			"relationship": "includes"
-		},
-		{
-			"target": "ATV-004",
-			"relationship": "includes"
-		},
-		{
-			"target": "ATV-005",
-			"relationship": "includes"
-		},
-		{
-			"target": "ATV-006",
-			"relationship": "includes"
-		},
-		{
-			"target": "ATV-007",
-			"relationship": "includes"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:51.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -70,5 +14,4 @@
 		{ "relationship": "involves", "target": "ACT-002" }
 	],
 	"name": "Aurora CLI Execution"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

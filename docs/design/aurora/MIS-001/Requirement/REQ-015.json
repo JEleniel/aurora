@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-015",
-	"card_type": "Requirement",
-	"name": "Generate Audit Timestamps",
-	"description": "For version bump operations, aurora_cli generates audit_trail.history[].timestamp automatically in RFC3339 UTC format with millisecond precision using chrono.",
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:30:03.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -27,5 +9,4 @@
 	"description": "Generate audit timestamps in RFC3339 UTC with millisecond precision.",
 	"id": "REQ-015",
 	"name": "Generate RFC3339 UTC Millisecond Timestamps"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

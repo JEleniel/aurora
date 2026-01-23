@@ -1,27 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-003",
-	"card_type": "Requirement",
-	"name": "Accept Model Root Or Mission Path",
-	"description": "aurora_cli accepts an input path that resolves to either (a) an Aurora model root folder (an aurora folder containing one or more Mission cards and a schema copy), (b) a parent folder that contains an aurora folder, or (c) a Mission card JSON file. If multiple Mission cards are present in a shared aurora folder, aurora_cli processes each Mission as a separate model rooted at that Mission.",
-	"audit_trail": {
-		"version": "2.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:10.000Z",
-				"event": "created"
-			},
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:20:00.000Z",
-				"event": "edited"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -32,5 +9,4 @@
 	"description": "Accept an input path that can be a model root folder, a parent folder that contains an aurora folder, or a Mission card file; if multiple Missions exist in a shared model root, process each mission as a separate model.",
 	"id": "REQ-003",
 	"name": "Resolve Model Root And Missions From Input"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

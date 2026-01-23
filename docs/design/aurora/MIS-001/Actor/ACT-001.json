@@ -1,41 +1,10 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "ACT-001",
-	"card_type": "Actor",
-	"name": "Architect",
-	"description": "Creates and maintains Aurora models and uses generated documentation and views to communicate architecture.",
-	"links": [
-		{
-			"target": "STR-001",
-			"relationship": "desires"
-		},
-		{
-			"target": "ATV-001",
-			"relationship": "performs"
-		},
-		{
-			"target": "ATV-007",
-			"relationship": "performs"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 		"hash": null,
 		"history": [
 			{
 				"editor": "Copilot: Architect",
-<<<<<<< HEAD
-				"timestamp": "2026-01-17T00:00:01.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 				"event": "created",
 				"timestamp": "2026-01-20T00:00:00.000Z"
 			}
@@ -47,5 +16,4 @@
 	"id": "ACT-001",
 	"links": [{ "relationship": "desires", "target": "STR-001" }],
 	"name": "Architect"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

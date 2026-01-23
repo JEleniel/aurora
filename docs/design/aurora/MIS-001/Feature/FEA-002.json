@@ -1,67 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "FEA-002",
-	"card_type": "Feature",
-	"name": "Render Cards Command",
-	"description": "Provide a render-cards subcommand that generates one Markdown file per card and a grouped index README.",
-	"status": "Design",
-	"links": [
-		{
-			"target": "CAP-003",
-			"relationship": "enables"
-		},
-		{
-			"target": "REQ-004",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "REQ-005",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "REQ-003",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "REQ-011",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "REQ-009",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "ART-002",
-			"relationship": "generates"
-		},
-		{
-			"target": "ART-003",
-			"relationship": "generates"
-		}
-	],
-	"audit_trail": {
-		"version": "1.2.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:23.000Z",
-				"event": "created"
-			},
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:20:00.000Z",
-				"event": "edited"
-			},
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:21:00.000Z",
-				"event": "edited"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -78,5 +15,4 @@
 		{ "relationship": "satisfies", "target": "REQ-009" }
 	],
 	"name": "Render Cards Command"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

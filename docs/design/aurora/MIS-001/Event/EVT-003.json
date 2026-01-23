@@ -1,28 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "EVT-003",
-	"card_type": "Event",
-	"name": "Validation Completed",
-	"description": "Schema validation and invariant checks have completed.",
-	"links": [
-		{
-			"target": "CON-001",
-			"relationship": "triggers"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:55.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -33,5 +9,4 @@
 	"description": "Schema and invariant validation have completed and a validity decision can be made.",
 	"id": "EVT-003",
 	"name": "Validation Completed"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-006",
-	"card_type": "Requirement",
-	"name": "Generate Standard Views",
-	"description": "aurora_cli generates the standard view set (Requirements View, System Composition, Deployment Topology, Process Flow, and State Machine) from the cards present in the model.",
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:13.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -27,5 +9,4 @@
 	"description": "Generate a standard view set for consistent architecture communication.",
 	"id": "REQ-006",
 	"name": "Generate Standard View Set"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

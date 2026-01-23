@@ -1,28 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "ATV-003",
-	"card_type": "Activity",
-	"name": "Validate Schema",
-	"description": "Validate each card JSON document against the Aurora schema.",
-	"links": [
-		{
-			"target": "ATV-004",
-			"relationship": "triggers"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:58.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -37,5 +13,4 @@
 		{ "relationship": "generates", "target": "ART-001" }
 	],
 	"name": "Validate Schema"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

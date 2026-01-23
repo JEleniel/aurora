@@ -1,32 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "ATV-006",
-	"card_type": "Activity",
-	"name": "Render Standard Views",
-	"description": "Render the standard set of view documents using ELK layout and per-card-type shapes, skipping any empty view.",
-	"links": [
-		{
-			"target": "CON-002",
-			"relationship": "triggers"
-		},
-		{
-			"target": "CTL-001",
-			"relationship": "governs"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:01:01.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -42,5 +14,4 @@
 		{ "relationship": "generates", "target": "ART-004" }
 	],
 	"name": "Render Standard Views"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

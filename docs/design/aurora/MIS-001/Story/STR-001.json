@@ -1,37 +1,10 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "STR-001",
-	"card_type": "Story",
-	"name": "Architect Generates Documentation From Model",
-	"description": "As an Architect, I want documentation and standard views generated from the Aurora model so the model remains the single source of truth.",
-	"links": [
-		{
-			"target": "CAP-003",
-			"relationship": "explains"
-		},
-		{
-			"target": "CAP-004",
-			"relationship": "explains"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 		"hash": null,
 		"history": [
 			{
 				"editor": "Copilot: Architect",
-<<<<<<< HEAD
-				"timestamp": "2026-01-17T00:00:29.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 				"event": "created",
 				"timestamp": "2026-01-20T00:00:00.000Z"
 			}
@@ -46,5 +19,4 @@
 		{ "relationship": "explains", "target": "CAP-004" }
 	],
 	"name": "Generate Documentation And Views From Model"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

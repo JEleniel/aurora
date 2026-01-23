@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-002",
-	"card_type": "Requirement",
-	"name": "Validate Aurora Graph Invariants",
-	"description": "aurora_cli validates the model invariants defined by the Aurora specification (single Mission root, directed graph away from Mission with only local cycles, all non-Mission/non-Note cards have inbound links, and all link targets exist).",
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:09.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -27,5 +9,4 @@
 	"description": "Validate the model invariants defined by the Aurora specification, including directed graph constraints and link target integrity.",
 	"id": "REQ-002",
 	"name": "Validate Model Invariants"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

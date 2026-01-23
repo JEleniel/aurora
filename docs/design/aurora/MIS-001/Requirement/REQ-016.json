@@ -1,32 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-016",
-	"card_type": "Requirement",
-	"name": "Export Compact Model Snapshot",
-	"description": "The CLI provides a compact export command that emits the model as a single JSON file for machine consumption, removing fields that are not needed for topology/trace analysis (at minimum: audit_trail and links[].relationship), while preserving stable ordering for diff-friendly output.",
-	"links": [
-		{
-			"target": "CNS-001",
-			"relationship": "includes"
-		},
-		{
-			"target": "CNS-002",
-			"relationship": "includes"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T01:10:00.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -37,5 +9,4 @@
 	"description": "Export a compact model snapshot for machine consumption, removing audit_trail and links[].relationship at minimum.",
 	"id": "REQ-016",
 	"name": "Export Compact Model Snapshot"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

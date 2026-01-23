@@ -1,28 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "STM-001",
-	"card_type": "State Machine",
-	"name": "Aurora CLI Run Lifecycle",
-	"description": "High-level lifecycle of a single aurora_cli invocation from initialization through validation and generation.",
-	"links": [
-		{
-			"target": "STA-001",
-			"relationship": "starts_in"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:01:05.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -37,5 +13,4 @@
 		{ "relationship": "involves", "target": "ACT-002" }
 	],
 	"name": "Aurora CLI Run Lifecycle"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

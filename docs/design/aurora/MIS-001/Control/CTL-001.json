@@ -1,45 +1,10 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "CTL-001",
-	"card_type": "Control",
-	"name": "Deterministic Ordering",
-	"description": "Enforce stable ordering for file traversal, link rendering, and grouped output generation to make documentation diff-friendly.",
-	"links": [
-		{
-			"target": "CAP-005",
-			"relationship": "governs"
-		},
-		{
-			"target": "ATV-005",
-			"relationship": "governs"
-		},
-		{
-			"target": "ATV-006",
-			"relationship": "governs"
-		},
-		{
-			"target": "ATV-007",
-			"relationship": "governs"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 		"hash": null,
 		"history": [
 			{
 				"editor": "Copilot: Architect",
-<<<<<<< HEAD
-				"timestamp": "2026-01-17T00:00:49.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 				"event": "created",
 				"timestamp": "2026-01-20T00:00:00.000Z"
 			}
@@ -56,5 +21,4 @@
 		{ "relationship": "governs", "target": "CAP-005" }
 	],
 	"name": "Deterministic Ordering"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

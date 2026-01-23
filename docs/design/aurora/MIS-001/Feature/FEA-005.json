@@ -1,32 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "FEA-005",
-	"card_type": "Feature",
-	"name": "Standard View Set Generation",
-	"description": "Generate the standard view set (Requirements View, System Composition, Deployment Topology, Process Flow, and State Machine) using model cards and link relationships.",
-	"status": "Design",
-	"links": [
-		{
-			"target": "CAP-004",
-			"relationship": "enables"
-		}
-	],
-	"attributes": {
-		"views": ["Requirements View", "System Composition", "Deployment Topology", "Process Flow", "State Machine"]
-	},
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:26.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -37,5 +9,4 @@
 	"description": "Define the standard view set names and intent: Requirements View, System Composition, Deployment Topology, Process Flow, State Machine.",
 	"id": "FEA-005",
 	"name": "Standard View Set Generation"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

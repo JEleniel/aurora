@@ -1,33 +1,10 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "ACT-002",
-	"card_type": "Actor",
-	"name": "Tool User",
-	"description": "Runs aurora_cli to validate and generate documentation for an Aurora model.",
-	"links": [
-		{
-			"target": "STR-002",
-			"relationship": "desires"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 		"hash": null,
 		"history": [
 			{
 				"editor": "Copilot: Architect",
-<<<<<<< HEAD
-				"timestamp": "2026-01-17T00:00:02.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 				"event": "created",
 				"timestamp": "2026-01-20T00:00:00.000Z"
 			}
@@ -39,5 +16,4 @@
 	"id": "ACT-002",
 	"links": [{ "relationship": "desires", "target": "STR-002" }],
 	"name": "Tool User"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

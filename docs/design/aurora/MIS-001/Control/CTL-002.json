@@ -1,37 +1,10 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "CTL-002",
-	"card_type": "Control",
-	"name": "Output Path Sanitization",
-	"description": "Ensure aurora_cli writes only within the user-configured output root and avoids unsafe path traversal.",
-	"links": [
-		{
-			"target": "ATV-007",
-			"relationship": "governs"
-		},
-		{
-			"target": "CAP-005",
-			"relationship": "governs"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 		"hash": null,
 		"history": [
 			{
 				"editor": "Copilot: Architect",
-<<<<<<< HEAD
-				"timestamp": "2026-01-17T00:00:50.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 				"event": "created",
 				"timestamp": "2026-01-20T00:00:00.000Z"
 			}
@@ -47,5 +20,4 @@
 		{ "relationship": "governs", "target": "CAP-005" }
 	],
 	"name": "Output Path Sanitization"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

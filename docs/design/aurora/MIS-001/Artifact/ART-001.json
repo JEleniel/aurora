@@ -1,28 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "ART-001",
-	"card_type": "Artifact",
-	"name": "Validation Report",
-	"description": "A human-readable report describing schema validation results and any invariant violations.",
-	"links": [
-		{
-			"target": "DTS-002",
-			"relationship": "persists_to"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:00:35.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -34,5 +10,4 @@
 	"id": "ART-001",
 	"links": [{ "relationship": "persists_to", "target": "DTS-002" }],
 	"name": "Validation Report"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

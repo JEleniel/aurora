@@ -1,32 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "ATV-007",
-	"card_type": "Activity",
-	"name": "Write Outputs",
-	"description": "Write generated artifacts to the configured output folders.",
-	"links": [
-		{
-			"target": "CTL-002",
-			"relationship": "governs"
-		},
-		{
-			"target": "DTS-002",
-			"relationship": "uses"
-		}
-	],
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-17T00:01:02.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -42,5 +14,4 @@
 		{ "relationship": "uses", "target": "DTS-002" }
 	],
 	"name": "Write Outputs"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }

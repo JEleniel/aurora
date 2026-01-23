@@ -1,22 +1,4 @@
 {
-<<<<<<< HEAD
-	"$schema": "../Aurora.schema.json",
-	"id": "REQ-011",
-	"card_type": "Requirement",
-	"name": "Discover Default Input Model",
-	"description": "When an explicit input path is not provided, aurora_cli discovers a default Aurora model root by locating the nearest docs/design/aurora/ folder within the workspace root and uses it as the input model root.",
-	"audit_trail": {
-		"version": "1.0.0",
-		"hash": null,
-		"history": [
-			{
-				"editor": "Copilot: Architect",
-				"timestamp": "2026-01-18T00:21:00.000Z",
-				"event": "created"
-			}
-		]
-	}
-=======
 	"$schema": "../../Aurora.schema.json",
 	"audit_trail": {
 		"hash": null,
@@ -27,5 +9,4 @@
 	"description": "Discover a default model root if an explicit input is not provided.",
 	"id": "REQ-011",
 	"name": "Discover Default Model Root"
->>>>>>> bd934f2a22ba6c59dcf4fd3c5b2629e9f3d72b35
 }
