@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "FEA-007",
+	"card_type": "Feature",
+	"name": "Browse and Search Models",
+	"description": "Browse, filter, and search cards and links in an Aurora model with fast navigation primitives.",
+	"links": [
+		{
+			"target": "CAP-007",
+			"relationship": "enables"
+		},
+		{
+			"target": "REQ-009",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:20:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ATV-007",
+	"card_type": "Activity",
+	"name": "Edit Cards and Links",
+	"description": "Create and update cards and links in the model.",
+	"links": [
+		{
+			"target": "FEA-008",
+			"relationship": "uses"
+		},
+		{
+			"target": "FEA-009",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:45:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

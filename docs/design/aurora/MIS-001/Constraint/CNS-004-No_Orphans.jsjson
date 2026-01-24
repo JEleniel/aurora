@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "CNS-004",
+	"card_type": "Constraint",
+	"name": "No Orphans",
+	"description": "All cards other than `Mission` must have at least one incoming link.",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:05:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "FEA-011",
+	"card_type": "Feature",
+	"name": "Preview Rendered Markdown",
+	"description": "Preview and navigate rendered Markdown documentation from Aurora models inside tooling.",
+	"links": [
+		{
+			"target": "CAP-007",
+			"relationship": "enables"
+		},
+		{
+			"target": "REQ-013",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "ART-008",
+			"relationship": "generates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:20:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "COM-011",
+	"card_type": "Component",
+	"name": "Card",
+	"description": "Aurora card domain component representing a single architectural element with links and audit trail.",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:25:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ART-001",
+	"card_type": "Artifact",
+	"name": "Aurora Schema",
+	"description": "The Aurora JSON schema(s) that define valid card structure and related invariants for validation tooling.",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:25:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

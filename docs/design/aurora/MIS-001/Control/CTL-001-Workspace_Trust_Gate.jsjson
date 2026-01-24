@@ -1,0 +1,36 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "CTL-001",
+	"card_type": "Control",
+	"name": "Workspace Trust Gate",
+	"description": "Gate potentially unsafe operations (e.g., file writes, webview rendering, executing tools) behind workspace trust checks and explicit user consent.",
+	"links": [
+		{
+			"target": "COM-013",
+			"relationship": "governs"
+		},
+		{
+			"target": "COM-015",
+			"relationship": "governs"
+		},
+		{
+			"target": "THR-003",
+			"relationship": "mitigates"
+		},
+		{
+			"target": "RIS-003",
+			"relationship": "mitigates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:40:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

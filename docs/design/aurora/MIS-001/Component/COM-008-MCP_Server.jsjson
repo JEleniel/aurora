@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "COM-008",
+	"card_type": "Component",
+	"name": "MCP Server",
+	"description": "Model Context Protocol (MCP) server component used by the VSCode extension to expose Aurora model operations via the shared library.",
+	"links": [
+		{
+			"target": "COM-001",
+			"relationship": "uses"
+		},
+		{
+			"target": "INT-002",
+			"relationship": "exposes"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:25:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,37 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "DRI-003",
+	"card_type": "Driver",
+	"name": "One Model to Rule Them All",
+	"description": "A single Aurora model captures every aspect of the architecture in one cohesive model.",
+	"links": [
+		{
+			"target": "CNS-002",
+			"relationship": "drives"
+		},
+		{
+			"target": "CNS-003",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-001",
+			"relationship": "drives"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:10:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:00:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

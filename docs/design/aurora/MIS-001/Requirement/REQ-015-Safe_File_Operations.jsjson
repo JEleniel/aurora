@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "REQ-015",
+	"card_type": "Requirement",
+	"name": "Safe File Operations",
+	"description": "Tools MUST perform file operations safely (prevent unintended overwrites, constrain paths, and avoid writing outside the user’s intended workspace locations).",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:10:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

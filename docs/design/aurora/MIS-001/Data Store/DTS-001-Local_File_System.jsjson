@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "DTS-001",
+	"card_type": "Data Store",
+	"name": "Local File System",
+	"description": "Local file system (workspace) used as the primary persistence mechanism for Aurora model files and generated outputs.",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:35:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

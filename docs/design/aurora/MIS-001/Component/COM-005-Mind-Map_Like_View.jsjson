@@ -1,0 +1,29 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "COM-005",
+	"card_type": "Component",
+	"name": "Mind-Map Like View",
+	"description": "Editor UI component that provides a mind-map-like visualization for navigating the Aurora model.",
+	"links": [
+		{
+			"target": "FEA-010",
+			"relationship": "implements"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:25:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:30:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

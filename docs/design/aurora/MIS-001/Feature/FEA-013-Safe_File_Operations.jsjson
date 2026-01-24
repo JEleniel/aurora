@@ -1,0 +1,41 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "FEA-013",
+	"card_type": "Feature",
+	"name": "Safe File Operations",
+	"description": "Perform safe, constrained file operations with clear user intent boundaries and reliable persistence semantics.",
+	"links": [
+		{
+			"target": "CAP-009",
+			"relationship": "enables"
+		},
+		{
+			"target": "THR-002",
+			"relationship": "mitigates"
+		},
+		{
+			"target": "RIS-002",
+			"relationship": "mitigates"
+		},
+		{
+			"target": "REQ-015",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:20:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:40:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

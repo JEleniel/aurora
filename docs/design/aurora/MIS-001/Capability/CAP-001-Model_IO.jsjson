@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "CAP-001",
+	"card_type": "Capability",
+	"name": "Model IO",
+	"description": "Ability to load and save Aurora models from and to disk in stable formats.",
+	"links": [
+		{
+			"target": "REQ-003",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "REQ-006",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:15:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

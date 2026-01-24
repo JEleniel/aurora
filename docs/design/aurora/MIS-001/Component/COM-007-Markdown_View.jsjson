@@ -1,0 +1,33 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "COM-007",
+	"card_type": "Component",
+	"name": "Markdown View",
+	"description": "Editor UI component for viewing and editing human-readable Markdown renderings of the Aurora model.",
+	"links": [
+		{
+			"target": "FEA-011",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-015",
+			"relationship": "implements"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:25:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:30:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

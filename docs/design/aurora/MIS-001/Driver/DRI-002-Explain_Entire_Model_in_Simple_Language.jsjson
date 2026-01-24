@@ -1,0 +1,41 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "DRI-002",
+	"card_type": "Driver",
+	"name": "Explain Entire Model in Simple Language",
+	"description": "The entire model is expressible by listing the nodes and their relationships in simple sentences.",
+	"links": [
+		{
+			"target": "CNS-002",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-001",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-004",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-011",
+			"relationship": "drives"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:10:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:00:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "FEA-012",
+	"card_type": "Feature",
+	"name": "Workspace Integration",
+	"description": "Integrate with the user workspace: open models, watch for changes, and keep views in sync.",
+	"links": [
+		{
+			"target": "CAP-008",
+			"relationship": "enables"
+		},
+		{
+			"target": "REQ-014",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:20:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "INT-005",
+	"card_type": "Interface",
+	"name": "VSCode Commands Interface",
+	"description": "VSCode command surface for invoking Aurora tooling actions (validate, render, open views, export compact, etc.) from the command palette and context menus.",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:30:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

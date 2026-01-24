@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ART-006",
+	"card_type": "Artifact",
+	"name": "Compact Model Format",
+	"description": "Compact, agent-friendly representation of the model (e.g., AGENT-<MISSION_ID>.jsjson) used for interchange and machine consumption.",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:25:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

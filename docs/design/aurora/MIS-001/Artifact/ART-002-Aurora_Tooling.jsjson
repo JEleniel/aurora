@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ART-002",
+	"card_type": "Artifact",
+	"name": "Aurora Tooling",
+	"description": "Default tooling suite for Aurora, including CLI, editor, and VS Code extension surfaces.",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:25:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

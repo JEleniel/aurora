@@ -1,0 +1,29 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "DEP-001",
+	"card_type": "Deployment",
+	"name": "Local Development",
+	"description": "A local development deployment where Aurora tooling is built and run during development.",
+	"links": [
+		{
+			"target": "NOD-001",
+			"relationship": "includes"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:40:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:35:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

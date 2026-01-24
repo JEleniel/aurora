@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "AST-002",
+	"card_type": "Asset",
+	"name": "Rendered Documentation Output",
+	"description": "Generated Markdown and view artifacts produced from Aurora models (e.g., rendered card pages and view markdown).",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:40:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

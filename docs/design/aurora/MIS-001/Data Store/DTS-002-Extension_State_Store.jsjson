@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "DTS-002",
+	"card_type": "Data Store",
+	"name": "Extension State Store",
+	"description": "VSCode extension storage for persisted settings and non-source-of-truth state (cache, UI state, last-opened model, etc.).",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:35:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

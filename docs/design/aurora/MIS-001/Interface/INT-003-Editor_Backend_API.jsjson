@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "INT-003",
+	"card_type": "Interface",
+	"name": "Editor Backend API",
+	"description": "Native command interface between the Editor UI and the Tauri Rust backend for model operations (load, validate, update, render previews, save).",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:30:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

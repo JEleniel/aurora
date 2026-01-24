@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "REQ-010",
+	"card_type": "Requirement",
+	"name": "Edit Models Interactively",
+	"description": "Tools MUST enable users to create, edit, and delete cards and links with immediate feedback and without corrupting the model.",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:10:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

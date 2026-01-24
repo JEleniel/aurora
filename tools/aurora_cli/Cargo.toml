@@ -1,29 +1,22 @@
 [package]
 name = "aurora_cli"
-version = { workspace = true }
-edition = { workspace = true }
-description = "CLI utilities for validating Aurora models and generating documentation"
-license = { workspace = true }
-
-[package.metadata]
-app_id = "org.crystultima.aurora_cli"
+version = "0.1.0"
+edition = "2024"
+authors = ["Aurora Architects"]
+description = "Aurora command-line interface"
+license = "MIT OR Apache-2.0"
 
 [[bin]]
 name = "aurora_cli"
 path = "src/main.rs"
 
+[package.metadata]
+app_id = "org.crystultima.aurora.cli"
+
 [dependencies]
-chrono = { workspace = true }
-clap = { workspace = true }
-fern = { workspace = true }
-indexmap = { workspace = true }
-jsonschema = { workspace = true }
-log = { workspace = true }
-pathdiff = { workspace = true }
-percent-encoding = { workspace = true }
-regex = { workspace = true }
-semver = { workspace = true }
-serde = { workspace = true }
-serde_json = { workspace = true }
-thiserror = { workspace = true }
-whoami = { workspace = true }
+aurora_shared = { path = "../aurora_shared" }
+anyhow = "1.0"
+clap = { version = "4.5", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
+serde_json = "1.0"

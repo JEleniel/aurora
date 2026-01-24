@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "STR-003",
+	"card_type": "Story",
+	"name": "Store the Model in a Postable Format",
+	"description": "As an architect, I want to package an Aurora model into a single portable file (for example, a ZIP) so that I can transport it between instances and share it reliably.",
+	"links": [
+		{
+			"target": "REQ-018",
+			"relationship": "explains"
+		},
+		{
+			"target": "STO-001",
+			"relationship": "includes"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:45:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

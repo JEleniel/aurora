@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "THR-003",
+	"card_type": "Threat",
+	"name": "Untrusted Workspace Execution or Access",
+	"description": "Operating in an untrusted workspace could allow unsafe operations that lead to data exposure or unintended execution paths.",
+	"links": [
+		{
+			"target": "RIS-003",
+			"relationship": "imposes"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:40:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

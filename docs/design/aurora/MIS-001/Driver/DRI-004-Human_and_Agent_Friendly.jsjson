@@ -1,0 +1,93 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "DRI-004",
+	"card_type": "Driver",
+	"name": "Human and Agent Friendly",
+	"description": "Express the model in a form that is easy to parse and understand for both humans and machine agents.",
+	"links": [
+		{
+			"target": "CNS-001",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-001",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-002",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-003",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-004",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-005",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-006",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-008",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-009",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-010",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-011",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-012",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-013",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-014",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-015",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-016",
+			"relationship": "drives"
+		},
+		{
+			"target": "REQ-017",
+			"relationship": "drives"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:10:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:00:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

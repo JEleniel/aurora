@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ATV-009",
+	"card_type": "Activity",
+	"name": "Preview Output",
+	"description": "Preview rendered views and Markdown representations of the model.",
+	"links": [
+		{
+			"target": "FEA-011",
+			"relationship": "uses"
+		},
+		{
+			"target": "FEA-010",
+			"relationship": "uses"
+		},
+		{
+			"target": "FEA-015",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:45:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

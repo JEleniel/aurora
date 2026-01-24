@@ -1,0 +1,67 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "APP-001",
+	"card_type": "Application",
+	"name": "Command Line Tools",
+	"description": "A deployable command-line application that validates, renders, and manages Aurora models. The CLI is optimized for deterministic, automatable workflows (local scripting and CI), and delegates model semantics (parsing, invariants, rendering) to the shared library.",
+	"links": [
+		{
+			"target": "FEA-002",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-005",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-006",
+			"relationship": "implements"
+		},
+		{
+			"target": "TES-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "TES-002",
+			"relationship": "includes"
+		},
+		{
+			"target": "TES-003",
+			"relationship": "includes"
+		},
+		{
+			"target": "COM-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "COM-012",
+			"relationship": "includes"
+		}
+	],
+	"attributes": {
+		"design_docs": [
+			"docs/design/CLI.md"
+		]
+	},
+	"audit_trail": {
+		"version": "1.1.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:20:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:30:00Z",
+				"event": "edited"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:45:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

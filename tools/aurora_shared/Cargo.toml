@@ -1,0 +1,19 @@
+[package]
+name = "aurora_shared"
+version = "0.1.0"
+edition = "2024"
+authors = ["Aurora Architects"]
+description = "Shared domain library for Aurora tooling surfaces"
+license = "MIT OR Apache-2.0"
+
+[package.metadata]
+app_id = "org.crystultima.aurora.shared"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+walkdir = "2.4"
+
+[dev-dependencies]
+tempfile = "3.10"

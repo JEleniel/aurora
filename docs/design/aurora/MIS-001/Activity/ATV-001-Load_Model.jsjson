@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ATV-001",
+	"card_type": "Activity",
+	"name": "Load Model",
+	"description": "Load a model from disk into memory.",
+	"links": [
+		{
+			"target": "FEA-001",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:45:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

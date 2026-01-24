@@ -1,0 +1,90 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "APP-002",
+	"card_type": "Application",
+	"name": "Editor",
+	"description": "A deployable application that provides an interactive experience for creating, editing, and navigating Aurora models. The Editor focuses on discoverability and safe, incremental iteration with immediate validation feedback.",
+	"links": [
+		{
+			"target": "FEA-007",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-008",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-009",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-010",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-011",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-012",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-013",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-015",
+			"relationship": "implements"
+		},
+		{
+			"target": "COM-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "COM-002",
+			"relationship": "includes"
+		},
+		{
+			"target": "COM-003",
+			"relationship": "includes"
+		},
+		{
+			"target": "COM-004",
+			"relationship": "includes"
+		},
+		{
+			"target": "COM-005",
+			"relationship": "includes"
+		},
+		{
+			"target": "COM-006",
+			"relationship": "includes"
+		},
+		{
+			"target": "COM-007",
+			"relationship": "includes"
+		}
+	],
+	"attributes": {
+		"design_docs": [
+			"docs/design/Editor.md"
+		]
+	},
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:20:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:30:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "CTL-004",
+	"card_type": "Control",
+	"name": "Least Privilege File Access",
+	"description": "Minimize read/write permissions and scope operations to explicit user-selected paths; avoid reading or writing unrelated workspace files.",
+	"links": [
+		{
+			"target": "COM-013",
+			"relationship": "governs"
+		},
+		{
+			"target": "COM-015",
+			"relationship": "governs"
+		},
+		{
+			"target": "RIS-002",
+			"relationship": "mitigates"
+		},
+		{
+			"target": "RIS-003",
+			"relationship": "mitigates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:40:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

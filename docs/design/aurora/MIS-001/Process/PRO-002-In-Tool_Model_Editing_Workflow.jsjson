@@ -1,0 +1,48 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "PRO-002",
+	"card_type": "Process",
+	"name": "In-Tool Model Editing Workflow",
+	"description": "A repeatable workflow for interactively opening, navigating, editing, validating, previewing, and saving an Aurora model.",
+	"links": [
+		{
+			"target": "ACT-002",
+			"relationship": "involves"
+		},
+		{
+			"target": "ATV-005",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-006",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-007",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-008",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-009",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-010",
+			"relationship": "includes"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:45:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

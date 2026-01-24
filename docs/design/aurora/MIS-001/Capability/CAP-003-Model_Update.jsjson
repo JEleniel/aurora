@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "CAP-003",
+	"card_type": "Capability",
+	"name": "Model Update",
+	"description": "Ability to update Aurora models by creating, editing, and deleting cards and links while preserving invariants.",
+	"links": [
+		{
+			"target": "REQ-005",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:15:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

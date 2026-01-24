@@ -1,0 +1,40 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "PRO-001",
+	"card_type": "Process",
+	"name": "Model Authoring Workflow",
+	"description": "A repeatable workflow for authoring, validating, rendering, and exporting an Aurora model.",
+	"links": [
+		{
+			"target": "ACT-001",
+			"relationship": "involves"
+		},
+		{
+			"target": "ATV-001",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-002",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-003",
+			"relationship": "includes"
+		},
+		{
+			"target": "ATV-004",
+			"relationship": "includes"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:45:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

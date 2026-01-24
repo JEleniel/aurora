@@ -1,0 +1,33 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "COM-014",
+	"card_type": "Component",
+	"name": "Webview UI Host",
+	"description": "Webview UI component hosting interactive model browsing, editing, visualization, and preview experiences within VSCode.",
+	"links": [
+		{
+			"target": "FEA-015",
+			"relationship": "implements"
+		},
+		{
+			"target": "COM-013",
+			"relationship": "uses"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:25:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:30:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

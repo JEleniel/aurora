@@ -1,0 +1,45 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "FEA-015",
+	"card_type": "Feature",
+	"name": "Sanitized Rendering",
+	"description": "Render Markdown and webview content safely, preventing script injection and unsafe resource access.",
+	"links": [
+		{
+			"target": "CAP-009",
+			"relationship": "enables"
+		},
+		{
+			"target": "THR-001",
+			"relationship": "mitigates"
+		},
+		{
+			"target": "RIS-001",
+			"relationship": "mitigates"
+		},
+		{
+			"target": "REQ-017",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "ART-008",
+			"relationship": "generates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:20:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:40:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "COM-009",
+	"card_type": "Component",
+	"name": "Aurora",
+	"description": "Core Aurora domain component providing the aggregate root for working with a set of models.",
+	"links": [
+		{
+			"target": "COM-010",
+			"relationship": "comprises"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:25:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

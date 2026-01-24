@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "CTL-002",
+	"card_type": "Control",
+	"name": "Safe Path Handling and Atomic Writes",
+	"description": "Constrain paths to the intended workspace/model roots, normalize and validate paths, and use atomic write patterns to prevent partial writes and clobbering.",
+	"links": [
+		{
+			"target": "COM-015",
+			"relationship": "governs"
+		},
+		{
+			"target": "THR-002",
+			"relationship": "mitigates"
+		},
+		{
+			"target": "RIS-002",
+			"relationship": "mitigates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:40:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

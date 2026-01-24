@@ -1,0 +1,36 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "CTL-003",
+	"card_type": "Control",
+	"name": "Content Sanitization",
+	"description": "Sanitize rendered Markdown and webview content, restrict resource loading, and disable script execution to prevent injection.",
+	"links": [
+		{
+			"target": "COM-007",
+			"relationship": "governs"
+		},
+		{
+			"target": "COM-014",
+			"relationship": "governs"
+		},
+		{
+			"target": "THR-001",
+			"relationship": "mitigates"
+		},
+		{
+			"target": "RIS-001",
+			"relationship": "mitigates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:40:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

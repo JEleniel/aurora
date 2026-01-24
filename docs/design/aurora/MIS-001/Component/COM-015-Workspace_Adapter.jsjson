@@ -1,0 +1,45 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "COM-015",
+	"card_type": "Component",
+	"name": "Workspace Adapter",
+	"description": "Component that mediates workspace file operations (open, watch, and save) with safe defaults and trust-aware behaviors.",
+	"links": [
+		{
+			"target": "FEA-012",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-013",
+			"relationship": "implements"
+		},
+		{
+			"target": "COM-001",
+			"relationship": "uses"
+		},
+		{
+			"target": "DTS-001",
+			"relationship": "persists_to"
+		},
+		{
+			"target": "DTS-002",
+			"relationship": "persists_to"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T00:25:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:30:00Z",
+				"event": "edited"
+			}
+		]
+	}
+}

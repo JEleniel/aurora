@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ART-007",
+	"card_type": "Artifact",
+	"name": "Validation Report",
+	"description": "Structured and/or human-readable validation report and diagnostics output for a model.",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:25:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

@@ -1,0 +1,15 @@
+[package]
+name = "aurora_vscode_host"
+version = "0.1.0"
+edition = "2024"
+authors = ["Aurora Architects"]
+description = "Workspace adapter and host services for the Aurora VS Code extension"
+license = "MIT OR Apache-2.0"
+
+[package.metadata]
+app_id = "org.crystultima.aurora.vscode"
+
+[dependencies]
+aurora_shared = { path = "../aurora_shared" }
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0"

@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "FEA-002",
+	"card_type": "Feature",
+	"name": "Model Validation",
+	"description": "Validate Aurora models against schemas and invariants and produce actionable diagnostics.",
+	"links": [
+		{
+			"target": "CAP-002",
+			"relationship": "enables"
+		},
+		{
+			"target": "REQ-004",
+			"relationship": "satisfies"
+		},
+		{
+			"target": "ART-007",
+			"relationship": "generates"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:20:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

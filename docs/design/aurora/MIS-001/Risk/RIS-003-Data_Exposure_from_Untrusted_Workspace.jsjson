@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "RIS-003",
+	"card_type": "Risk",
+	"name": "Data Exposure from Untrusted Workspace",
+	"description": "Operating against untrusted workspace content could lead to disclosure of sensitive data or unintended access beyond user intent.",
+	"links": [
+		{
+			"target": "AST-003",
+			"relationship": "impacts"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:40:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

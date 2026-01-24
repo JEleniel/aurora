@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "REQ-002",
+	"card_type": "Requirement",
+	"name": "Note Cards",
+	"description": "There must be a special card called `Note` that allows the capture of arbitrary text and annotates an existing node in the model without modifying it or the model. The `Note` card must have only one incoming link from the card it modifies.",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:10:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

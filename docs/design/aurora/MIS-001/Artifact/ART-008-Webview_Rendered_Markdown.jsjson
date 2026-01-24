@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ART-008",
+	"card_type": "Artifact",
+	"name": "Webview Rendered Markdown",
+	"description": "Rendered Markdown content displayed inside a sandboxed webview (e.g., VS Code or Tauri webview).",
+	"links": [],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:25:00Z",
+				"event": "created"
+			}
+		]
+	}
+}

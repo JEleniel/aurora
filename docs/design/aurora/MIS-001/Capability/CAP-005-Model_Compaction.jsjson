@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "CAP-005",
+	"card_type": "Capability",
+	"name": "Model Compaction",
+	"description": "Ability to emit a compact, machine-friendly representation of an Aurora model for agents and interchange.",
+	"links": [
+		{
+			"target": "REQ-008",
+			"relationship": "satisfies"
+		}
+	],
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-24T01:15:00Z",
+				"event": "created"
+			}
+		]
+	}
+}
