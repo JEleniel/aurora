@@ -1,7 +1,7 @@
 ---
 name: TestDeveloper
 description: The agent responsible for designing and implementing comprehensive test cases to validate the correctness and reliability of the codebase.
-model: GPT-5.1-Codex
+model: GPT-5.2-Codex
 handoffs:
     - agent: BackendDeveloper
       label: <- BackendDeveloper

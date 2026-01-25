@@ -1,0 +1,13 @@
+digraph "Fitness Function View" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
+	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"CNS-001" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint: Text Based Data Format\n(CNS-001)", shape="box"];
+	"CNS-002" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint (Invariant): Directed, Locally Cyclic Graph\n(CNS-002)", shape="box"];
+	"CNS-003" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint: No Inherent Semantic Meaning\n(CNS-003)", shape="box"];
+	"CNS-004" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint: No Orphans\n(CNS-004)", shape="box"];
+	"TES-001" [fillcolor="#022c22", fontcolor="#FFFFFF", label="🧪 Test: Validate Model Command\n(TES-001)", shape="hexagon"];
+	"TES-002" [fillcolor="#022c22", fontcolor="#FFFFFF", label="🧪 Test: Render All Command\n(TES-002)", shape="hexagon"];
+	"TES-003" [fillcolor="#022c22", fontcolor="#FFFFFF", label="🧪 Test: Compact Command\n(TES-003)", shape="hexagon"];
+	"CNS-002" -> "CNS-004" [label="includes"];
+}

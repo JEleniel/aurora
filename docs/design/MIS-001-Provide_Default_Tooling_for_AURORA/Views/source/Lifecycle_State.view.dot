@@ -1,0 +1,8 @@
+digraph "Lifecycle/State View for Assets" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
+	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"AST-001" [fillcolor="#334155", fontcolor="#FFFFFF", label="🛡️ Asset: Aurora Models\n(AST-001)", shape="box"];
+	"AST-002" [fillcolor="#334155", fontcolor="#FFFFFF", label="🛡️ Asset: Rendered Documentation Output\n(AST-002)", shape="box"];
+	"AST-003" [fillcolor="#334155", fontcolor="#FFFFFF", label="🛡️ Asset: User Workspace Content\n(AST-003)", shape="box"];
+}

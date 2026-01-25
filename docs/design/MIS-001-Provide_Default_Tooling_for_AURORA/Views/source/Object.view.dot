@@ -1,0 +1,28 @@
+digraph "Object View" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
+	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"ART-001" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Aurora Schema\n(ART-001)", shape="tab"];
+	"ART-002" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Aurora Tooling\n(ART-002)", shape="tab"];
+	"ART-003" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Card Registry\n(ART-003)", shape="tab"];
+	"ART-004" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Markdown Documentation\n(ART-004)", shape="tab"];
+	"ART-005" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: View Diagram Set\n(ART-005)", shape="tab"];
+	"ART-006" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Compact Model Format\n(ART-006)", shape="tab"];
+	"ART-007" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Validation Report\n(ART-007)", shape="tab"];
+	"ART-008" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Webview Rendered Markdown\n(ART-008)", shape="tab"];
+	"ART-009" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Requirements.view.md\n(ART-009)", shape="tab"];
+	"ART-010" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Component.view.md\n(ART-010)", shape="tab"];
+	"ART-011" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Deployment.view.md\n(ART-011)", shape="tab"];
+	"ART-012" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Process.view.md\n(ART-012)", shape="tab"];
+	"ART-013" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: State_Machine.view.md\n(ART-013)", shape="tab"];
+	"ART-014" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: Threat_Model.view.md\n(ART-014)", shape="tab"];
+	"ART-015" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: ACT-001.md\n(ART-015)", shape="tab"];
+	"ART-016" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: AST-001.md\n(ART-016)", shape="tab"];
+	"ART-017" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: ATV-001.md\n(ART-017)", shape="tab"];
+	"ART-018" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: CAP-001.md\n(ART-018)", shape="tab"];
+	"ART-019" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: COM-001.md\n(ART-019)", shape="tab"];
+	"ART-020" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: CNS-001.md\n(ART-020)", shape="tab"];
+	"ART-021" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: FEA-001.md\n(ART-021)", shape="tab"];
+	"ART-022" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: PRO-001.md\n(ART-022)", shape="tab"];
+	"ART-023" [fillcolor="#1e293b", fontcolor="#FFFFFF", label="📁 Artifact: REQ-001.md\n(ART-023)", shape="tab"];
+}

@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.tauri.app/config/2",
+	"productName": "Aurora Editor",
+	"version": "0.1.0",
+	"identifier": "org.crystultima.aurora.editor",
+	"build": {
+		"beforeBuildCommand": "pnpm build",
+		"beforeDevCommand": "pnpm dev",
+		"devUrl": "http://localhost:5173",
+		"frontendDist": "../dist"
+	},
+	"bundle": {
+		"icon": [
+			"../../../assets/AURORA.16.png",
+			"../../../assets/AURORA.32.png",
+			"../../../assets/AURORA.64.png",
+			"../../../assets/AURORA.180.png",
+			"../../../assets/AURORA.192.png",
+			"../../../assets/AURORA.512.png",
+			"../../../assets/AURORA.1024.png"
+		]
+	},
+	"app": {
+		"security": {
+			"capabilities": ["default"],
+			"csp": null
+		},
+		"windows": [
+			{
+				"label": "main",
+				"title": "Aurora Editor",
+				"width": 1200,
+				"height": 800,
+				"resizable": true,
+				"fullscreen": false
+			}
+		]
+	}
+}

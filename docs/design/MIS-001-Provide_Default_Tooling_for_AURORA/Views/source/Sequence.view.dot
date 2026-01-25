@@ -1,0 +1,15 @@
+digraph "Sequence View" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
+	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"ATV-001" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Load Model\n(ATV-001)", shape="box"];
+	"ATV-002" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Validate Model\n(ATV-002)", shape="box"];
+	"ATV-003" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Render Views\n(ATV-003)", shape="box"];
+	"ATV-004" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Compact Model\n(ATV-004)", shape="box"];
+	"ATV-005" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Open Model in Tool\n(ATV-005)", shape="box"];
+	"ATV-006" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Navigate Model\n(ATV-006)", shape="box"];
+	"ATV-007" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Edit Cards and Links\n(ATV-007)", shape="box"];
+	"ATV-008" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Review Validation Diagnostics\n(ATV-008)", shape="box"];
+	"ATV-009" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Preview Output\n(ATV-009)", shape="box"];
+	"ATV-010" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Save Model Safely\n(ATV-010)", shape="box"];
+}

@@ -50,6 +50,56 @@ The canonical Aurora card schema is independently versioned; see `schemas/Aurora
 
 Aurora deliberately does not specify _any_ views, as _any_ view can be generated from the model. Our tooling does include a default set of views for convenience. Custom views can be created simply by choosing what card type (and subtypes) to include.
 
+Rendered view SVGs are generated under `docs/design/Views/` and the DOT sources live in `docs/design/Views/source/`.
+
+| View | SVG |
+| --- | --- |
+| Requirements View | [Requirements.view.svg](docs/design/Views/Requirements.view.svg) |
+| Class View | [Class.view.svg](docs/design/Views/Class.view.svg) |
+| Component View | [Component.view.svg](docs/design/Views/Component.view.svg) |
+| Deployment View | [Deployment.view.svg](docs/design/Views/Deployment.view.svg) |
+| Object View | [Object.view.svg](docs/design/Views/Object.view.svg) |
+| Package View | [Package.view.svg](docs/design/Views/Package.view.svg) |
+| Composite Structure View | [Composite_Structure.view.svg](docs/design/Views/Composite_Structure.view.svg) |
+| Use Case View | [Use_Case.view.svg](docs/design/Views/Use_Case.view.svg) |
+| Process (Activity) View | [Process_Activity.view.svg](docs/design/Views/Process_Activity.view.svg) |
+| State Machine View | [State_Machine.view.svg](docs/design/Views/State_Machine.view.svg) |
+| Sequence View | [Sequence.view.svg](docs/design/Views/Sequence.view.svg) |
+| Communication View | [Communication.view.svg](docs/design/Views/Communication.view.svg) |
+| Timing View | [Timing.view.svg](docs/design/Views/Timing.view.svg) |
+| Data Model View | [Data_Model.view.svg](docs/design/Views/Data_Model.view.svg) |
+| Executive Summary View | [Executive_Summary.view.svg](docs/design/Views/Executive_Summary.view.svg) |
+| Capability Map and Heatmap | [Capability_Map_and_Heatmap.view.svg](docs/design/Views/Capability_Map_and_Heatmap.view.svg) |
+| Value Stream View | [Value_Stream.view.svg](docs/design/Views/Value_Stream.view.svg) |
+| Initiative/Epic Portfolio View | [Initiative_Epic_Portfolio.view.svg](docs/design/Views/Initiative_Epic_Portfolio.view.svg) |
+| Roadmap View | [Roadmap.view.svg](docs/design/Views/Roadmap.view.svg) |
+| Decision Log View | [Decision_Log.view.svg](docs/design/Views/Decision_Log.view.svg) |
+| Context View (C4-Style / System Context) | [Context.view.svg](docs/design/Views/Context.view.svg) |
+| Domain and Bounded Context View (DDD) | [Domain_and_Bounded_Context.view.svg](docs/design/Views/Domain_and_Bounded_Context.view.svg) |
+| RACI / Ownership Matrix View | [RACI_Ownership_Matrix.view.svg](docs/design/Views/RACI_Ownership_Matrix.view.svg) |
+| Policy and Standards Compliance View | [Policy_and_Standards_Compliance.view.svg](docs/design/Views/Policy_and_Standards_Compliance.view.svg) |
+| Lifecycle/State View for Assets | [Lifecycle_State.view.svg](docs/design/Views/Lifecycle_State.view.svg) |
+| Threat Model View | [Threat_Model.view.svg](docs/design/Views/Threat_Model.view.svg) |
+| Security Architecture View | [Security_Architecture.view.svg](docs/design/Views/Security_Architecture.view.svg) |
+| Risk Register View (Architecture-Linked) | [Risk_Register.view.svg](docs/design/Views/Risk_Register.view.svg) |
+| Control Coverage View | [Control_Coverage.view.svg](docs/design/Views/Control_Coverage.view.svg) |
+| Privacy and Data Classification View | [Privacy_and_Data_Classification.view.svg](docs/design/Views/Privacy_and_Data_Classification.view.svg) |
+| Resilience View | [Resilience.view.svg](docs/design/Views/Resilience.view.svg) |
+| Abuse/Misuse Case View | [Abuse_Misuse_Case.view.svg](docs/design/Views/Abuse_Misuse_Case.view.svg) |
+| Constraints and Quality Attributes (NFR) View | [Constraints_and_Quality_Attributes_NFR.view.svg](docs/design/Views/Constraints_and_Quality_Attributes_NFR.view.svg) |
+| Reference Architecture / Patterns Library View | [Reference_Architecture_Patterns_Library.view.svg](docs/design/Views/Reference_Architecture_Patterns_Library.view.svg) |
+| Build and Release Pipeline View (DevSecOps) | [Build_and_Release_Pipeline.view.svg](docs/design/Views/Build_and_Release_Pipeline.view.svg) |
+| Environment View | [Environment.view.svg](docs/design/Views/Environment.view.svg) |
+| Configuration and Secrets View | [Configuration_and_Secrets.view.svg](docs/design/Views/Configuration_and_Secrets.view.svg) |
+| Observability View | [Observability.view.svg](docs/design/Views/Observability.view.svg) |
+| Runbook / Playbook Set View | [Runbook_Playbook_Set.view.svg](docs/design/Views/Runbook_Playbook_Set.view.svg) |
+| Operational Dependency View | [Operational_Dependency.view.svg](docs/design/Views/Operational_Dependency.view.svg) |
+| Change Impact View | [Change_Impact.view.svg](docs/design/Views/Change_Impact.view.svg) |
+| Cost Model / FinOps View | [Cost_Model_FinOps.view.svg](docs/design/Views/Cost_Model_FinOps.view.svg) |
+| Test Strategy and Traceability View | [Test_Strategy_and_Traceability.view.svg](docs/design/Views/Test_Strategy_and_Traceability.view.svg) |
+| Conformance Report View | [Conformance_Report.view.svg](docs/design/Views/Conformance_Report.view.svg) |
+| Fitness Function View | [Fitness_Function.view.svg](docs/design/Views/Fitness_Function.view.svg) |
+
 ### Default Views
 
 > **Note**: `boundary` cards are included in all views due to their special nature.

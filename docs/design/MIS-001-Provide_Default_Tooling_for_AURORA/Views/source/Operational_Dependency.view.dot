@@ -1,0 +1,21 @@
+digraph "Operational Dependency View" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
+	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"ACT-001" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label="👤 Actor: Architect\n(ACT-001)", shape="ellipse"];
+	"ACT-002" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label="👤 Actor: User\n(ACT-002)", shape="ellipse"];
+	"ACT-003" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label="👤 Actor: Malicious Workspace Author\n(ACT-003)", shape="ellipse"];
+	"RIS-001" [fillcolor="#881337", fontcolor="#FFFFFF", label="⚠️ Risk: Injected Content in Rendered Output\n(RIS-001)", shape="octagon"];
+	"RIS-002" [fillcolor="#881337", fontcolor="#FFFFFF", label="⚠️ Risk: Unintended File Modification\n(RIS-002)", shape="octagon"];
+	"RIS-003" [fillcolor="#881337", fontcolor="#FFFFFF", label="⚠️ Risk: Data Exposure from Untrusted Workspace\n(RIS-003)", shape="octagon"];
+	"SYS-001" [fillcolor="#172554", fontcolor="#FFFFFF", label="🗂️ System: Default Tooling Platform\n(SYS-001)", shape="folder"];
+	"THR-001" [fillcolor="#4c0519", fontcolor="#FFFFFF", label="🐞 Threat: Script Injection via Markdown\n(THR-001)", shape="octagon"];
+	"THR-002" [fillcolor="#4c0519", fontcolor="#FFFFFF", label="🐞 Threat: Path Traversal or Arbitrary Write\n(THR-002)", shape="octagon"];
+	"THR-003" [fillcolor="#4c0519", fontcolor="#FFFFFF", label="🐞 Threat: Untrusted Workspace Execution or Access\n(THR-003)", shape="octagon"];
+	"ACT-003" -> "THR-001" [label="presents"];
+	"ACT-003" -> "THR-002" [label="presents"];
+	"ACT-003" -> "THR-003" [label="presents"];
+	"THR-001" -> "RIS-001" [label="imposes"];
+	"THR-002" -> "RIS-002" [label="imposes"];
+	"THR-003" -> "RIS-003" [label="imposes"];
+}

@@ -1,0 +1,33 @@
+digraph "Context View (C4-Style / System Context)" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
+	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"APP-001" [fillcolor="#1e3a8a", fontcolor="#FFFFFF", label="🪟 Application: Command Line Tools\n(APP-001)", shape="component"];
+	"APP-002" [fillcolor="#1e3a8a", fontcolor="#FFFFFF", label="🪟 Application: Editor\n(APP-002)", shape="component"];
+	"APP-003" [fillcolor="#1e3a8a", fontcolor="#FFFFFF", label="🪟 Application: VSCode Extension\n(APP-003)", shape="component"];
+	"DEP-001" [fillcolor="#1e1b4b", fontcolor="#FFFFFF", label="☁️ Deployment: Local Development\n(DEP-001)", shape="box"];
+	"DEP-002" [fillcolor="#1e1b4b", fontcolor="#FFFFFF", label="☁️ Deployment: User Environment\n(DEP-002)", shape="box"];
+	"DTS-001" [fillcolor="#075985", fontcolor="#FFFFFF", label="🛢️ Data Store: Local File System\n(DTS-001)", shape="cylinder"];
+	"DTS-002" [fillcolor="#075985", fontcolor="#FFFFFF", label="🛢️ Data Store: Extension State Store\n(DTS-002)", shape="cylinder"];
+	"NOD-001" [fillcolor="#312e81", fontcolor="#FFFFFF", label="🖥️ Node: User Workstation\n(NOD-001)", shape="box"];
+	"NOD-002" [fillcolor="#312e81", fontcolor="#FFFFFF", label="🖥️ Node: VSCode Extension Host\n(NOD-002)", shape="box"];
+	"NOD-003" [fillcolor="#312e81", fontcolor="#FFFFFF", label="🖥️ Node: Webview Sandbox\n(NOD-003)", shape="box"];
+	"NOD-004" [fillcolor="#312e81", fontcolor="#FFFFFF", label="🖥️ Node: Tauri Runtime\n(NOD-004)", shape="box"];
+	"NOT-001" [fillcolor="#1f2937", fontcolor="#FFFFFF", label="🗒️ Note: Shareable\n(NOT-001)", shape="note"];
+	"SYS-001" [fillcolor="#172554", fontcolor="#FFFFFF", label="🗂️ System: Default Tooling Platform\n(SYS-001)", shape="folder"];
+	"APP-003" -> "NOT-001" [label="uses"];
+	"DEP-001" -> "NOD-001" [label="includes"];
+	"DEP-002" -> "NOD-001" [label="includes"];
+	"DEP-002" -> "NOD-002" [label="includes"];
+	"DEP-002" -> "NOD-003" [label="includes"];
+	"DEP-002" -> "NOD-004" [label="includes"];
+	"NOD-001" -> "APP-001" [label="hosts"];
+	"NOD-001" -> "APP-002" [label="hosts"];
+	"NOD-001" -> "DTS-001" [label="hosts"];
+	"NOD-002" -> "DTS-002" [label="hosts"];
+	"SYS-001" -> "APP-001" [label="integrates"];
+	"SYS-001" -> "APP-002" [label="integrates"];
+	"SYS-001" -> "APP-003" [label="integrates"];
+	"SYS-001" -> "DEP-001" [label="participates_in"];
+	"SYS-001" -> "DEP-002" [label="participates_in"];
+}

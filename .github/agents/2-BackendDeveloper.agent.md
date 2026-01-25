@@ -1,7 +1,7 @@
 ---
 name: BackendDeveloper
 description: Implements Rust services following architectural patterns defined by the Architect agent.
-model: GPT-5.1-Codex
+model: GPT-5.2-Codex
 handoffs:
     - agent: UIDeveloper
       label: -> UIDeveloper

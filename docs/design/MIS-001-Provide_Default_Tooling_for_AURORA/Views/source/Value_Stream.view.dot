@@ -1,0 +1,31 @@
+digraph "Value Stream View" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
+	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"ACT-001" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label="👤 Actor: Architect\n(ACT-001)", shape="ellipse"];
+	"ACT-002" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label="👤 Actor: User\n(ACT-002)", shape="ellipse"];
+	"ATV-001" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Load Model\n(ATV-001)", shape="box"];
+	"ATV-002" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Validate Model\n(ATV-002)", shape="box"];
+	"ATV-003" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Render Views\n(ATV-003)", shape="box"];
+	"ATV-004" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Compact Model\n(ATV-004)", shape="box"];
+	"ATV-005" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Open Model in Tool\n(ATV-005)", shape="box"];
+	"ATV-006" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Navigate Model\n(ATV-006)", shape="box"];
+	"ATV-007" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Edit Cards and Links\n(ATV-007)", shape="box"];
+	"ATV-008" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Review Validation Diagnostics\n(ATV-008)", shape="box"];
+	"ATV-009" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Preview Output\n(ATV-009)", shape="box"];
+	"ATV-010" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Save Model Safely\n(ATV-010)", shape="box"];
+	"PRO-001" [fillcolor="#2e1065", fontcolor="#FFFFFF", label="🔁 Process: Model Authoring Workflow\n(PRO-001)", shape="box"];
+	"PRO-002" [fillcolor="#2e1065", fontcolor="#FFFFFF", label="🔁 Process: In-Tool Model Editing Workflow\n(PRO-002)", shape="box"];
+	"PRO-001" -> "ACT-001" [label="involves"];
+	"PRO-001" -> "ATV-001" [label="includes"];
+	"PRO-001" -> "ATV-002" [label="includes"];
+	"PRO-001" -> "ATV-003" [label="includes"];
+	"PRO-001" -> "ATV-004" [label="includes"];
+	"PRO-002" -> "ACT-002" [label="involves"];
+	"PRO-002" -> "ATV-005" [label="includes"];
+	"PRO-002" -> "ATV-006" [label="includes"];
+	"PRO-002" -> "ATV-007" [label="includes"];
+	"PRO-002" -> "ATV-008" [label="includes"];
+	"PRO-002" -> "ATV-009" [label="includes"];
+	"PRO-002" -> "ATV-010" [label="includes"];
+}

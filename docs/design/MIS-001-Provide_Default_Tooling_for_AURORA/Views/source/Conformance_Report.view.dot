@@ -1,0 +1,29 @@
+digraph "Conformance Report View" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
+	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"CNS-001" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint: Text Based Data Format\n(CNS-001)", shape="box"];
+	"CNS-002" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint (Invariant): Directed, Locally Cyclic Graph\n(CNS-002)", shape="box"];
+	"CNS-003" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint: No Inherent Semantic Meaning\n(CNS-003)", shape="box"];
+	"CNS-004" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint: No Orphans\n(CNS-004)", shape="box"];
+	"REQ-001" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Boundary Cards\n(REQ-001)", shape="box"];
+	"REQ-002" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Note Cards\n(REQ-002)", shape="box"];
+	"REQ-003" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Load Models\n(REQ-003)", shape="box"];
+	"REQ-004" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Validate Models\n(REQ-004)", shape="box"];
+	"REQ-005" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Update Models\n(REQ-005)", shape="box"];
+	"REQ-006" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Save Models\n(REQ-006)", shape="box"];
+	"REQ-007" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Render Views\n(REQ-007)", shape="box"];
+	"REQ-008" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Compact Models\n(REQ-008)", shape="box"];
+	"REQ-009" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Browse and Search Models\n(REQ-009)", shape="box"];
+	"REQ-010" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Edit Models Interactively\n(REQ-010)", shape="box"];
+	"REQ-011" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Show Validation Diagnostics\n(REQ-011)", shape="box"];
+	"REQ-012" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Visualize Model Graph\n(REQ-012)", shape="box"];
+	"REQ-013" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Preview Rendered Markdown\n(REQ-013)", shape="box"];
+	"REQ-014" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Workspace Integration\n(REQ-014)", shape="box"];
+	"REQ-015" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Safe File Operations\n(REQ-015)", shape="box"];
+	"REQ-016" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Workspace Trust Gating\n(REQ-016)", shape="box"];
+	"REQ-017" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Sanitized Rendering\n(REQ-017)", shape="box"];
+	"REQ-018" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Store the Model in a Postable Format\n(REQ-018)", shape="box"];
+	"REQ-019" [fillcolor="#065f46", fontcolor="#FFFFFF", label="☑️ Requirement: Render Canonical View Set\n(REQ-019)", shape="box"];
+	"CNS-002" -> "CNS-004" [label="includes"];
+}

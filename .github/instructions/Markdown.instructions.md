@@ -6,7 +6,7 @@ applyTo: '*.md'
 
 This document defines formatting and style conventions for Markdown files.
 
-The source of truth for enforcement is `.markdownlint.json`.
+The source of truth for enforcement is `.markdownlint-cli2.jsonc`.
 
 ## Guidelines
 
@@ -20,7 +20,7 @@ The source of truth for enforcement is `.markdownlint.json`.
 - You MUST NOT manually align Markdown using spaces outside of tables. If you need alignment, use lists, tables, code blocks (tabs are fine in code), or omit the alignment.
 - You MUST end files with exactly one trailing newline.
 - You MUST avoid multiple blank lines together.
-- Unordered lists MUST use `-` for the first level and `+` for nested lists to match `.markdownlint.json` (`ul-style: sublist`).
+- Unordered lists MUST use `-` for the first level and `+` for nested lists to match `.markdownlint-cli2.jsonc` (`ul-style: sublist`).
 - Ordered lists MUST use sequential numbers.
 - You MUST use fenced code blocks with backticks.
 - You MUST include a language for all code blocks. Use `text` when no specific language applies.
@@ -39,5 +39,5 @@ The source of truth for enforcement is `.markdownlint.json`.
 
 ## Lists
 
-- This repository uses `.markdownlint.json` as the source of truth for list indentation and markers.
+- This repository uses `.markdownlint-cli2.jsonc` as the source of truth for list indentation and markers.
 - Unordered lists MUST follow the `sublist` behavior (`ul-style: sublist`). Nested list markers must differ from the parent list marker.

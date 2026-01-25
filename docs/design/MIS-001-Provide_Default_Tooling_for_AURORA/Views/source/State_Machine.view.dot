@@ -1,0 +1,24 @@
+digraph "State Machine View" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
+	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"ATV-001" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Load Model\n(ATV-001)", shape="box"];
+	"ATV-002" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Validate Model\n(ATV-002)", shape="box"];
+	"ATV-003" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Render Views\n(ATV-003)", shape="box"];
+	"ATV-004" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Compact Model\n(ATV-004)", shape="box"];
+	"ATV-005" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Open Model in Tool\n(ATV-005)", shape="box"];
+	"ATV-006" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Navigate Model\n(ATV-006)", shape="box"];
+	"ATV-007" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Edit Cards and Links\n(ATV-007)", shape="box"];
+	"ATV-008" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Review Validation Diagnostics\n(ATV-008)", shape="box"];
+	"ATV-009" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Preview Output\n(ATV-009)", shape="box"];
+	"ATV-010" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label="🪜 Activity: Save Model Safely\n(ATV-010)", shape="box"];
+	"CNS-001" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint: Text Based Data Format\n(CNS-001)", shape="box"];
+	"CNS-002" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint (Invariant): Directed, Locally Cyclic Graph\n(CNS-002)", shape="box"];
+	"CNS-003" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint: No Inherent Semantic Meaning\n(CNS-003)", shape="box"];
+	"CNS-004" [fillcolor="#854d0e", fontcolor="#FFFFFF", label="📏 Constraint: No Orphans\n(CNS-004)", shape="box"];
+	"CTL-001" [fillcolor="#713f12", fontcolor="#FFFFFF", label="🔒 Control: Workspace Trust Gate\n(CTL-001)", shape="octagon"];
+	"CTL-002" [fillcolor="#713f12", fontcolor="#FFFFFF", label="🔒 Control: Safe Path Handling and Atomic Writes\n(CTL-002)", shape="octagon"];
+	"CTL-003" [fillcolor="#713f12", fontcolor="#FFFFFF", label="🔒 Control: Content Sanitization\n(CTL-003)", shape="octagon"];
+	"CTL-004" [fillcolor="#713f12", fontcolor="#FFFFFF", label="🔒 Control: Least Privilege File Access\n(CTL-004)", shape="octagon"];
+	"CNS-002" -> "CNS-004" [label="includes"];
+}

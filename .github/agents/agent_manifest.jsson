@@ -21,7 +21,7 @@
 		{
 			"id": "backend",
 			"name": "BackendDeveloper",
-			"model": "GPT-5.1-Codex",
+			"model": "GPT-5.2-Codex",
 			"file": ".github/agents/2-BackendDeveloper.agent.md",
 			"scope": ["Rust services", "APIs"],
 			"ownedArtifacts": ["src/", "tools/aurora_cli/", "tools/aurora_lib/"]
@@ -29,7 +29,7 @@
 		{
 			"id": "ui",
 			"name": "UIDeveloper",
-			"model": "GPT-5.1-Codex",
+			"model": "GPT-5.2-Codex",
 			"file": ".github/agents/3-UIDeveloper.agent.md",
 			"scope": ["Svelte/Tauri UI", "Accessibility"],
 			"ownedArtifacts": ["tools/aurora_editor/"]
@@ -37,7 +37,7 @@
 		{
 			"id": "test",
 			"name": "TestDeveloper",
-			"model": "GPT-5.1-Codex",
+			"model": "GPT-5.2-Codex",
 			"file": ".github/agents/4-TestDeveloper.agent.md",
 			"scope": ["Unit tests", "Integration tests", "End-to-end"]
 		},

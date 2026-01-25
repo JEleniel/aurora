@@ -3,7 +3,7 @@ use std::path::{Path, PathBuf};
 
 use anyhow::{Context, Result, bail};
 use aurora_shared::{
-	AuroraModel, DiagnosticSeverity, ModelHome, RenderSummary, ValidationReport,
+	AuroraModel, Card, DiagnosticSeverity, ModelHome, RenderSummary, ValidationReport,
 	discover_model_homes, load_model, render_all, render_markdown, render_views, validate_model,
 	write_compact_model,
 };
@@ -137,7 +137,13 @@ fn run_render(homes: &[ModelHome], base_output: &Path, mode: RenderMode) -> Resu
 			continue;
 		}
 
-		let model_dir = base_output.join(model_output_dir(&model));
+		let mut model_dir = base_output.join(model_output_dir(&model));
+		if let Some(mission_dir) = mission_output_dir(&model) {
+			let candidate = base_output.join(&mission_dir);
+			if candidate.exists() {
+				model_dir = candidate;
+			}
+		}
 		fs::create_dir_all(&model_dir).with_context(|| {
 			format!(
 				"failed to create render output directory {}",
@@ -225,10 +231,18 @@ fn severity_label(severity: DiagnosticSeverity) -> &'static str {
 }
 
 fn model_output_dir(model: &AuroraModel) -> String {
-	if let Some(card) = model.iter_cards().find(|card| card.card_type == "Mission") {
+	if let Some(card) = mission_card(model) {
 		return format!("{}-{}", card.id, sanitize(&card.name));
 	}
 	"model".to_string()
+}
+
+fn mission_output_dir(model: &AuroraModel) -> Option<String> {
+	mission_card(model).map(|card| card.id.clone())
+}
+
+fn mission_card(model: &AuroraModel) -> Option<&Card> {
+	model.iter_cards().find(|card| card.card_type == "Mission")
 }
 
 fn sanitize(value: &str) -> String {

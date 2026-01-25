@@ -15,6 +15,20 @@ Instructions apply in the following precedence order (earlier entries override l
 
 If tooling limitations or system instructions prevent compliance, you MUST stop and notify the user of the conflict.
 
+## Request Checklist
+
+- Desired outcome and target locations:
+    - Architecture: `docs/design.aurora/`
+    - Separate subfolders per tool of `tools/*` with the Cargo workspace rooted at the top of the workspace
+    - Any dependency used in more than one project are in the workspace `Cargo.toml`
+    - User documentation: `docs/` starting with a `README.md`, well linked and indexed
+    - 90% unit test coverage with positive, negative, and adversarial tests
+- Constraints:
+    - All code must be secure by design, all inputs validated, etc.
+    - Self contained objects with internally maintained state are preferred over scattered functions.
+- Test/render expectations:
+    - All tests related to the code changes made pass. Other tests may fail, as in progress work is in progress.
+
 ## Agent Manifest
 
 - The canonical, machine-readable definition of every agent (model, scope, owned areas, deliverables, and review targets) lives in `.github/agents/agent_manifest.json`.
@@ -23,7 +37,7 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 ## General Coding Guidelines
 
 - You MUST use relative paths for local files unless absolutely necessary (e.g., system paths, tooling requirements, etc.). Links in documentation MUST be relative to the document.
-- You MUST conform to best practices for the language you are coding in. Language-specific configuration files (e.g., `rustfmt.toml`, `.markdownlint.json`, and `.prettierrc.json`) are authoritative and override general style rules.
+- You MUST conform to best practices for the language you are coding in. Language-specific configuration files (e.g., `rustfmt.toml`, `.markdownlint-cli2.jsonc`, and `.prettierrc.json`) are authoritative and override general style rules.
 - You MUST use tabs whenever possible for indentation unless the formatter and associated configuration specify otherwise. Do not fight the formatter. If a file could use tabs but has spaces for indentation, keep the file consistent and report the exception to the user.
 - You MUST organize code into logical modules that conform to the _single responsibility_ principle and the language-specific style. You SHOULD aim for a maximum of 20 lines per function, excluding boilerplate.
 - You SHOULD aim for a maximum of approximately 200 lines per file. Modules SHOULD only contain a single primary structure and supporting elements _for that module only_. Shared supporting elements MUST be placed in separate files.
@@ -61,6 +75,8 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 
 ## Work Tracking
 
+You MUST maintain a `.agents/MAP.md` with details to help you find your way around the code, documentation, and models as you work.
+You MUST NOT worry about formatting or linting the files in `.agents/` as they are for agent use only.
 The `.agents/PROGRESS.md` format has been deprecated, and split into a more organized, smaller format. It was previously located at Project Plan. If it is still there, move it to the new location, splitting it to the new format.
 
 - You MUST maintain the `.agents/PROGRESS.md` (Progress Plan) file to track progress.
@@ -125,7 +141,7 @@ See `.agents/PROJECT_BRIEF.md` for the authoritative ownership matrix, quick-sta
 - You MUST use the GitHub MCP for all GitHub interactions. If GitHub MCP is not available, stop and notify the user.
 - You MUST use the Mermaid.js MCP to create and validate Mermaid diagrams.
 - You MUST only run one command at a time; do not chain commands (e.g., `&&` or `;`).
-- You MUST use `markdownlint`, 'prettier', and language specific tools for formatting and linting.
+- You MUST use `markdownlint-cli2`, 'prettier', and language specific tools for formatting and linting.
 
 ## Additional Guidelines
 
