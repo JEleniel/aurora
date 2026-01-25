@@ -13,7 +13,7 @@ The source of truth for enforcement is `.markdownlint-cli2.jsonc`.
 - You MUST use only ATX headings (`#`, `##`, …) and do not indent them.
 - You MUST use a single H1.
 - You MUST increase heading levels one at a time; do not skip levels.
-    * Sibling headings must be unique.
+    + Sibling headings must be unique.
 - You MUST NOT use emphasis/strong as the entire heading text.
 - You MUST NOT hard-wrap lines in paragraphs.
 - You MUST NOT use extra spaces in prose (for example, multiple spaces between words). Tables are an exception where spacing inside cells may be used for readability or alignment.

@@ -5,12 +5,14 @@ applyTo: '*.json'
 
 # Agent Directives — JSON Formatting & Linting
 
-Purpose: These directives are written for an automated coding agent that creates or modifies JSON files in this repository. The repository's Prettier config (`.prettierrc.json`) is definitive for formatting; these directives cover content, validation, and conventions not enforced by Prettier.
+These directives are written for an automated coding agent that creates or modifies JSON files in this repository.
+
+The repository's Prettier config (`.prettierrc.json`) is definitive for formatting. These directives cover content, validation, and conventions not enforced by Prettier.
 
 ## Formatting & Content Rules
 
 - **Include `$schema` when available**: If a JSON Schema exists for the file being edited or created, include the `$schema` property as the first key in the file with the appropriate URL. If no specific schema is known, prefer widely used schemastore URLs (e.g., `https://json.schemastore.org/prettierrc` for Prettier config).
-- **Validate against schema (best-effort)**: When `$schema` is present or a known schema exists for a filename (e.g., `package.json`, `tsconfig.json`, `.prettierrc.json`, `.markdownlint-cli2.jsonc`) attempt to validate the JSON against that schema. Validation is best-effort: do not block or fail a proposed change solely because validation could not be performed (for example, if the schema is unreachable or private). Annotate the summary with the validation outcome if not successful:
+- **Validate against schema (best-effort)**: When `$schema` is present or a known schema exists for a filename (e.g., `package.json`, `tsconfig.json`, `.prettierrc.json`, `.markdownlint-cli2.jsonc`), attempt to validate the JSON against that schema. Validation is best-effort: do not block or fail a proposed change solely because validation could not be performed (for example, if the schema is unreachable or private). Annotate the summary with the validation outcome if not successful:
     + Inaccessible: The schema was not accessible and therefore the agent was unable to perform validation.
     + Issues: note validation errors and the specific issues found.
 - **No comments**: Do not add JavaScript-style comments to `.json` files. JSON must be valid JSON. Do not use `jsonc` or `jsonb`.

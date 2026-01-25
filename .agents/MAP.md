@@ -1,43 +1,73 @@
 # CODEMAP
 
-This file is for agents working in this repository. It’s a quick index of “where things live” so you can navigate fast.
+Quick index of “where things live” for agents working in this repository.
 
 ## Architecture model (Aurora)
 
 - Source-of-truth model home: `docs/design/aurora/`
-  - Root mission cards live directly under `docs/design/aurora/`.
-  - Mission-scoped cards live under `docs/design/aurora/<MISSION_ID>/` in per-card-type folders.
+    + Root mission cards live directly under `docs/design/aurora/` (for example `MIS-001-Provide_Default_Tooling_for_AURORA.jsjson`).
+    + Mission-scoped cards live under `docs/design/aurora/<MISSION_ID>/` in per-card-type folders.
+    + Folder names match `card_type` exactly (Title Case, spaces included, for example `Data Store/`).
+    + Compact, agent-friendly snapshot(s): `docs/design/aurora/AGENT-<MISSION_ID>.jsjson` (for example `AGENT-MIS-001.jsjson`).
+- Current mission (this repo):
+    + Source mission card: `docs/design/aurora/MIS-001-Provide_Default_Tooling_for_AURORA.jsjson`
+    + Compact export: `docs/design/aurora/AGENT-MIS-001.jsjson`
+    + Rendered docs + views: `docs/design/MIS-001-Provide_Default_Tooling_for_AURORA/`
 - Schemas:
-  - `docs/design/aurora/Aurora.schema.jsjson`
-  - `docs/design/aurora/Aurora.compact.schema.jsjson`
-  - Duplicates are also under `schemas/`.
+    + `docs/design/aurora/Aurora.schema.jsjson`
+    + `docs/design/aurora/Aurora.compact.schema.jsjson`
+    + Duplicates are also under `schemas/` (keep them in sync intentionally).
+    + Note: there is also an `Aurora.schema jsjson` file name with a space; prefer the canonical `Aurora.schema.jsjson`.
+
+## Finding things fast
+
+- Find a card by id (for example `REQ-014`):
+    + Source model: `docs/design/aurora/<MISSION_ID>/**/<CARD_ID>-*.jsjson`
+    + Rendered Markdown (if generated): `docs/design/<Rendered_Model_Name>/**/<CARD_ID>-*.md`
+- Find cards by type:
+    + Source model: `docs/design/aurora/<MISSION_ID>/<Card Type>/`
+    + Rendered Markdown: `docs/design/<Rendered_Model_Name>/<Card Type>/`
+- Find a view:
+    + SVG: `docs/design/<Rendered_Model_Name>/Views/<View_Name>.view.svg`
+    + DOT: `docs/design/<Rendered_Model_Name>/Views/source/<View_Name>.view.dot`
+    + Tip: if a view looks odd, inspect its `.view.dot` first; it’s the exact Graphviz input.
 
 ## Canonical registries (instructions)
 
 These define the vocabulary and view rules; prefer updating these over duplicating lists elsewhere:
 
-- Card palette: `.github/instructions/Card_Definitions.md`
-- View registry: `.github/instructions/View_Definitions.md`
-- Relationship verbs: `.github/instructions/Relationship_Definitions.md`
+- Card palette: `.github/instructions/details/Card_Definitions.md`
+- View registry: `.github/instructions/details/View_Definitions.md`
+- Relationship verbs: `.github/instructions/details/Relationship_Definitions.md`
 
 ## Rendering pipeline (Rust)
 
 - Shared library (rendering + model logic): `tools/aurora_shared/`
-  - View rendering entry points and Graphviz DOT/SVG generation live under `tools/aurora_shared/src/`.
-  - DOT styling conventions are documented in:
-    - `.github/instructions/Graphviz_View_Styling_Guide.md` (canonical)
+    + View rendering entry points and Graphviz DOT/SVG generation live under `tools/aurora_shared/src/`.
+    + DOT styling conventions are documented in:
+        - `.github/instructions/details/Graphviz_View_Styling_Guide.md` (canonical)
+        - `docs/design/Graphviz_View_Styling_Guide.md` (human-facing copy)
 - CLI (validate/render/compact/bump): `tools/aurora_cli/`
+    + Binary outputs typically appear at:
+        - `target/debug/aurora_cli`
+        - `target/release/aurora_cli`
+    + CLI reminder: global options come before the subcommand (see `docs/design/Model_Quickstart.md`).
+    + Common commands (examples):
+        - `aurora_cli -i docs/design/aurora validate`
+        - `aurora_cli -i docs/design/aurora render-all -o docs/design/`
+        - `aurora_cli -i docs/design/aurora compact -o docs/design/aurora/AGENT-<MISSION_ID>.jsjson`
 
 ## UI / editor
 
 - Svelte + Vite frontend: `tools/aurora_editor/`
 - Tauri backend: `tools/aurora_editor/src-tauri/`
+- VS Code host integration (Rust): `tools/aurora_vscode_host/`
 
 ## Documentation
 
 - Human-facing design docs: `docs/design/`
-  - Quickstart: `docs/design/Model_Quickstart.md`
-  - Request templates: `docs/design/How_to_Talk_to_the_Model.md`
+    + Quickstart: `docs/design/Model_Quickstart.md`
+    + Request templates: `docs/design/How_to_Talk_to_the_Model.md`
 
 ## Workspace root
 
@@ -47,6 +77,7 @@ These define the vocabulary and view rules; prefer updating these over duplicati
 ## Generated outputs
 
 - Render outputs commonly land under `docs/design/<Rendered_Model_Name>/`.
+    + Example in this repo: `docs/design/MIS-001-Provide_Default_Tooling_for_AURORA/`
 - Graphviz artifacts:
-  - SVG: `docs/design/<Rendered_Model_Name>/Views/*.view.svg`
-  - DOT source: `docs/design/<Rendered_Model_Name>/Views/source/*.view.dot`
+    + SVG: `docs/design/<Rendered_Model_Name>/Views/*.view.svg`
+    + DOT source: `docs/design/<Rendered_Model_Name>/Views/source/*.view.dot`

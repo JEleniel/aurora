@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Introduced initial `aurora_cli` application wiring with validation, render, and compact subcommands.
+- Added validation requiring `Asset (Secret)` cards to have an incoming `owns` relationship (preferably from an `Actor`).
 - Added file-system safe rendering helpers plus unit tests in `aurora_shared`.
 - Registered reverse-DNS `app_id` metadata for each tool crate and seeded placeholder libraries for editor and VS Code hosts.
 - Converted `aurora_editor_backend` into a Tauri project that exposes model discovery, load, validation, render, compact, and card-update commands for the forthcoming UI.
@@ -31,6 +32,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Expanded the Aurora Editor workspace path handling to trim whitespace, resolve `~/`, and accept absolute paths within the workspace root.
 - View rendering now writes DOT files to `Views/source/` and omits view Markdown outputs, leaving SVGs as the primary artifacts.
 - View rendering now emits HTML node labels that place card subtypes on their own parenthesized line and defaults to a white background with black edge lines/labels.
+- View rendering now uses Graphviz for layout only (`dot -Tplain`) and generates Aurora-owned, theme-aware SVG output (CSS variables + `prefers-color-scheme`) instead of relying on Graphviz's SVG styling.
+- View rendering now selects Graphviz layout engine per view: `osage` for the Requirements view, `dot` for all other views.
 
 ### Fixed
 
@@ -46,3 +49,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Ensured `Note` cards only render when linked from an in-view parent node.
 - Updated view connectivity checks to honor per-view root card types, preventing false orphan errors in cyclic flows.
 - Filtered view content to only include cards connected to the diagram roots, reducing unrelated nodes.
+- Corrected canonical instruction registry paths so view rendering loads definitions from `.github/instructions/details/`.

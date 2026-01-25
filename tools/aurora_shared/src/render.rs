@@ -1,9 +1,11 @@
+mod graphviz_plain;
+mod themed_svg;
+
 use std::collections::{BTreeMap, BTreeSet, HashMap};
 use std::env;
 use std::fs::{self, File};
 use std::io::{ErrorKind, Write};
 use std::path::{Path, PathBuf};
-use std::process::Command;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 use serde::Deserialize;
@@ -63,8 +65,8 @@ pub fn render_views(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Result
 	fs::create_dir_all(output_dir).map_err(|err| AuroraError::io(output_dir, err))?;
 
 	let instructions_root = resolve_instructions_root(model)?;
-	let palette = CardPalette::load(&instructions_root.join("Card_Definitions.md"))?;
-	let registry = ViewRegistry::load(&instructions_root.join("View_Definitions.md"))?;
+	let palette = CardPalette::load(&instructions_root.join("details/Card_Definitions.md"))?;
+	let registry = ViewRegistry::load(&instructions_root.join("details/View_Definitions.md"))?;
 	let graphviz = GraphvizConfig::from_model(model)?;
 
 	let mut views_written = 0usize;
@@ -75,12 +77,22 @@ pub fn render_views(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Result
 	for view in &registry.views {
 		let dot_path = view_source_dir.join(format!("{}.view.dot", view.slug));
 		let svg_path = views_dir.join(format!("{}.view.svg", view.slug));
+		let engine = graphviz_engine_for_view(view);
 
 		let nodes = collect_view_nodes(model, view);
+		let clusters = collect_boundary_clusters(&nodes);
 		validate_view_connectivity(view, &nodes)?;
 		let dot = build_dot(view, &nodes, &palette, &registry.card_colors, &graphviz);
 		write_text(&dot_path, dot)?;
-		render_svg(&dot_path, &svg_path, &graphviz)?;
+		render_svg(
+			&dot_path,
+			&svg_path,
+			&graphviz,
+			engine,
+			&nodes,
+			&registry.card_colors,
+			&clusters,
+		)?;
 		views_written += 1;
 	}
 
@@ -113,14 +125,12 @@ struct CardColor {
 #[derive(Debug, Clone)]
 struct CardPalette {
 	shapes: HashMap<String, String>,
-	icons: HashMap<String, String>,
 }
 
 impl CardPalette {
 	fn load(path: &Path) -> Result<Self> {
 		let contents = fs::read_to_string(path).map_err(|err| AuroraError::io(path, err))?;
 		let mut shapes = HashMap::new();
-		let mut icons = HashMap::new();
 		let mut in_table = false;
 		for line in contents.lines() {
 			let trimmed = line.trim();
@@ -159,26 +169,17 @@ impl CardPalette {
 			if !shape.is_empty() {
 				shapes.insert(card_type.clone(), shape.to_string());
 			}
-			let icon = cells[2].trim();
-			if !icon.is_empty() {
-				let symbol = icon_symbol(icon).unwrap_or(icon);
-				icons.insert(card_type.clone(), symbol.to_string());
-			}
 		}
 		if shapes.is_empty() {
 			return Err(AuroraError::InvalidInput {
 				message: format!("failed to parse card palette from {}", path.display()),
 			});
 		}
-		Ok(CardPalette { shapes, icons })
+		Ok(CardPalette { shapes })
 	}
 
 	fn shape_for(&self, card_type: &str) -> Option<&str> {
 		self.shapes.get(card_type).map(|value| value.as_str())
-	}
-
-	fn icon_for(&self, card_type: &str) -> Option<&str> {
-		self.icons.get(card_type).map(|value| value.as_str())
 	}
 }
 
@@ -618,44 +619,6 @@ fn expand_color_key(raw: &str) -> String {
 		.join(" ")
 }
 
-fn icon_symbol(name: &str) -> Option<&'static str> {
-	match name.trim().to_ascii_lowercase().as_str() {
-		"target" => Some("🎯"),
-		"compass" => Some("🧭"),
-		"checklist" => Some("☑️"),
-		"spark" => Some("✨"),
-		"star" => Some("⭐"),
-		"layers" => Some("🗂️"),
-		"app-window" => Some("🪟"),
-		"cube" => Some("🧊"),
-		"plug" => Some("🔌"),
-		"file-text" => Some("📄"),
-		"file" => Some("📁"),
-		"shield-key" => Some("🛡️"),
-		"database" => Some("🛢️"),
-		"cloud" => Some("☁️"),
-		"server" => Some("🖥️"),
-		"server-cog" => Some("🖥️⚙️"),
-		"workflow" => Some("🔁"),
-		"steps" => Some("🪜"),
-		"user" => Some("👤"),
-		"book" => Some("📘"),
-		"bolt" => Some("⚡"),
-		"timeline" => Some("🕒"),
-		"dot" => Some("•"),
-		"split" => Some("🔀"),
-		"lock" => Some("🔒"),
-		"ruler" => Some("📏"),
-		"alert-triangle" => Some("⚠️"),
-		"bug" => Some("🐞"),
-		"beaker" => Some("🧪"),
-		"note-sticky" => Some("🗒️"),
-		"braces" => Some("{}"),
-		"square-dashed" => Some("▫️"),
-		_ => None,
-	}
-}
-
 fn collect_view_nodes<'a>(model: &'a AuroraModel, view: &ViewSpec) -> BTreeMap<String, &'a Card> {
 	let mut nodes = BTreeMap::new();
 	for card in model.iter_cards() {
@@ -920,10 +883,7 @@ fn build_dot_with_edges(
 			continue;
 		}
 		let mut attrs = BTreeMap::new();
-		attrs.insert(
-			"label".to_string(),
-			node_label(card, palette.icon_for(&card.card_type)),
-		);
+		attrs.insert("label".to_string(), node_label(card));
 		let shape = palette
 			.shape_for(&card.card_type)
 			.or_else(|| config.shape_for(&card.card_type))
@@ -1064,62 +1024,99 @@ fn collect_boundary_clusters(nodes: &BTreeMap<String, &Card>) -> Vec<BoundaryClu
 	clusters
 }
 
-fn node_label(card: &Card, icon: Option<&str>) -> String {
+fn node_label(card: &Card) -> String {
 	let mut lines = Vec::new();
+
 	let mut type_line = String::new();
-	if let Some(symbol) = icon {
-		if !symbol.is_empty() {
-			type_line.push_str(&html_escape(symbol));
-			type_line.push(' ');
-		}
-	}
+	type_line.push_str("<B>");
 	type_line.push_str(&html_escape(&card.card_type));
-	type_line.push(':');
-	lines.push(type_line);
+	type_line.push_str("</B>");
 	if let Some(subtype) = card.card_subtype.as_deref() {
-		if !subtype.trim().is_empty() {
-			lines.push(format!("({})", html_escape(subtype)));
+		let subtype = subtype.trim();
+		if !subtype.is_empty() {
+			type_line.push(' ');
+			type_line.push('(');
+			type_line.push_str(&html_escape(subtype));
+			type_line.push(')');
 		}
 	}
+	lines.push(type_line);
 	lines.push(html_escape(&card.name));
-	lines.push(format!("({})", html_escape(&card.id)));
+
+	let description = card.description.trim();
+	if !description.is_empty() {
+		// Blank line between name and description.
+		lines.push(String::new());
+		for line in wrap_text(description, 56) {
+			lines.push(html_escape(&line));
+		}
+	}
+
 	format!("<<FONT>{}</FONT>>", lines.join("<br />"))
 }
 
-fn render_svg(dot_path: &Path, svg_path: &Path, config: &GraphvizConfig) -> Result<()> {
-	if let Some(parent) = svg_path.parent() {
-		fs::create_dir_all(parent).map_err(|err| AuroraError::io(parent, err))?;
-	}
-	let command = config.dot_command();
-	let output = Command::new(&command)
-		.arg("-Tsvg")
-		.arg(dot_path)
-		.arg("-o")
-		.arg(svg_path)
-		.output();
-	match output {
-		Ok(result) => {
-			if result.status.success() {
-				Ok(())
-			} else {
-				let stderr = String::from_utf8_lossy(&result.stderr);
-				Err(AuroraError::InvalidInput {
-					message: format!("Graphviz command '{}' failed: {}", command, stderr.trim()),
-				})
-			}
+fn wrap_text(text: &str, max_len: usize) -> Vec<String> {
+	let mut lines = Vec::new();
+	let mut current = String::new();
+	for word in text.split_whitespace() {
+		let extra = if current.is_empty() {
+			word.len()
+		} else {
+			word.len() + 1
+		};
+		if !current.is_empty() && current.len() + extra > max_len {
+			lines.push(current);
+			current = String::new();
 		}
-		Err(err) => {
-			if err.kind() == ErrorKind::NotFound {
-				Err(AuroraError::InvalidInput {
+		if !current.is_empty() {
+			current.push(' ');
+		}
+		current.push_str(word);
+	}
+	if !current.is_empty() {
+		lines.push(current);
+	}
+	if lines.is_empty() {
+		lines.push(text.trim().to_string());
+	}
+	lines
+}
+
+fn render_svg(
+	dot_path: &Path,
+	svg_path: &Path,
+	config: &GraphvizConfig,
+	engine: &str,
+	nodes: &BTreeMap<String, &Card>,
+	colors: &HashMap<String, CardColor>,
+	clusters: &[BoundaryCluster],
+) -> Result<()> {
+	let command = config.dot_command();
+	let layout = graphviz_plain::dot_plain_layout_with_engine(&command, dot_path, engine).map_err(
+		|err| {
+			if matches!(err, AuroraError::Io { ref source, .. } if source.kind() == ErrorKind::NotFound)
+			{
+				AuroraError::InvalidInput {
 					message: format!(
 						"command '{}' was not found. Install Graphviz (dot) to render views.",
 						command
 					),
-				})
+				}
 			} else {
-				Err(AuroraError::io(dot_path, err))
+				err
 			}
-		}
+		},
+	)?;
+
+	let svg = themed_svg::render_svg(&layout, nodes, colors, clusters);
+	write_text(svg_path, svg)
+}
+
+fn graphviz_engine_for_view(view: &ViewSpec) -> &'static str {
+	if view.slug.eq_ignore_ascii_case("Requirements") {
+		"osage"
+	} else {
+		"dot"
 	}
 }
 
@@ -1307,7 +1304,7 @@ mod tests {
 		assert!(dot_path.exists());
 		assert!(output.join("Views/Requirements.view.svg").exists());
 		let dot = std::fs::read_to_string(dot_path).expect("dot");
-		assert!(dot.contains("🎯 Mission:"));
+		assert!(dot.contains("<B>Mission</B>"));
 		assert!(dot.contains("<br />"));
 	}
 
@@ -1331,10 +1328,10 @@ mod tests {
 			source_path: None,
 			extra: BTreeMap::new(),
 		};
-		let label = node_label(&card, None);
+		let label = node_label(&card);
 		assert_eq!(
 			label,
-			"<<FONT>Component:<br />(struct)<br />Render Node<br />(COM-009)</FONT>>"
+			"<<FONT><B>Component</B> (struct)<br />Render Node<br /><br />Test card</FONT>>"
 		);
 	}
 
@@ -1358,10 +1355,10 @@ mod tests {
 			source_path: None,
 			extra: BTreeMap::new(),
 		};
-		let label = node_label(&card, None);
+		let label = node_label(&card);
 		assert_eq!(
 			label,
-			"<<FONT>Component:<br />Render View<br />(COM-010)</FONT>>"
+			"<<FONT><B>Component</B><br />Render View<br /><br />Test card</FONT>>"
 		);
 	}
 

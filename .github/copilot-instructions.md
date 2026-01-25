@@ -4,7 +4,7 @@ His praeceptis sine exceptione pare.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 and updated in RFC 8174.
 
-Instructions apply in the following precedence order (earlier entries override later ones):
+Instruction precedence (earlier entries override later ones):
 
 1. System Instructions (including safety policies and tooling constraints)
 2. User Instructions (nothing overrides user intent except System Instructions)
@@ -18,16 +18,16 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 ## Request Checklist
 
 - Desired outcome and target locations:
-    - Architecture: `docs/design.aurora/`
-    - Separate subfolders per tool of `tools/*` with the Cargo workspace rooted at the top of the workspace
-    - Any dependency used in more than one project are in the workspace `Cargo.toml`
-    - User documentation: `docs/` starting with a `README.md`, well linked and indexed
-    - 90% unit test coverage with positive, negative, and adversarial tests
+    + Architecture: `docs/design/aurora/`
+    + Separate subfolders per tool under `tools/*`, with the Cargo workspace rooted at the top of the workspace
+    + Any dependency used in more than one project is in the workspace `Cargo.toml`
+    + User documentation lives under `docs/`, starting with a `README.md`, well linked and indexed
+    + 90% unit test coverage with positive, negative, and adversarial tests
 - Constraints:
-    - All code must be secure by design, all inputs validated, etc.
-    - Self contained objects with internally maintained state are preferred over scattered functions.
+    + All code must be secure by design; all inputs validated, etc.
+    + Self contained objects with internally maintained state are preferred over scattered functions.
 - Test/render expectations:
-    - All tests related to the code changes made pass. Other tests may fail, as in progress work is in progress.
+    + All tests related to the code changes made pass. Other tests may fail, as in progress work is in progress.
 
 ## Agent Manifest
 
@@ -71,14 +71,13 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
     + You may use approved tools (listed later in this file), shell commands, IDE tools, and MCP plugins.
 - You MUST NOT branch from or open a PR to `main`.
 - You MUST NOT use the `gh` command line tool. It is not installed.
-- You MUST NOT pause before beginning work unless you have specific questions. You MUST NOT pause oonce work has begun until all tasks are complete.
+- You MUST NOT pause before beginning work unless you have specific questions. You MUST NOT pause once work has begun until all tasks are complete.
 
 ## Work Tracking
 
-You MUST maintain a `.agents/MAP.md` with details to help you find your way around the code, documentation, and models as you work.
-You MUST NOT worry about formatting or linting the files in `.agents/` as they are for agent use only.
-The `.agents/PROGRESS.md` format has been deprecated, and split into a more organized, smaller format. It was previously located at Project Plan. If it is still there, move it to the new location, splitting it to the new format.
-
+- You MUST maintain a `.agents/MAP.md` with details to help you find your way around the code, documentation, and models as you work.
+- You MUST NOT worry about formatting or linting the files in `.agents/` as they are for agent use only.
+- The previous Project Plan format has been deprecated and split into a more organized, smaller format. If an older plan file still exists, move it into `.agents/PROGRESS.md`, splitting it to the new format.
 - You MUST maintain the `.agents/PROGRESS.md` (Progress Plan) file to track progress.
 - When performing a review, you MUST create a `.agents/REVIEW-{TYPE}.md` file with all findings, mitigation guidance, and references. Link the review file from `.agents/PROGRESS.md`.
 - See `.agents/PROJECT_BRIEF.md` for the canonical description of required `.agents/` files (PROJECT_BRIEF, PROGRESS, PATTERNS, TECHNOLOGIES, CONTEXT, and any review files).
@@ -128,12 +127,12 @@ See `.agents/PROJECT_BRIEF.md` for the authoritative ownership matrix, quick-sta
 
 ## Agent Behavior
 
-- If an `docs/design/aurora/AGENT-*.json` file exists, read it to load the entire design.
+- If a `docs/design/aurora/AGENT-*.json` file exists, read it to load the entire design.
 - When a new technology or dependency is added or an existing one is changed (including when detected from someone else's changes), you MUST read the current documentation for the correct version and annotate the `AGENT_PROGRESS.md` with any notes needed to work safely and idiomatically.
 - You MUST end final responses with a short summary paragraph, followed by a blank line, then **5-10 tl;dr bullets**. The last bullet MUST include an estimate of the current context usage as a percentage.
 - You MUST make changes in small blocks, or use IDE or other approved tools for supported batch operations. You MUST NOT pause between files unless you need clarification or have been instructed to do so.
 - Before opening or creating any file, you MUST read the relevant `*.instructions.md` files for that file type or language, if one exists.
-- If you have any questions ask before beginning work, otherwise go dierectly to work. One started, continue until the work is complete unless absolutely necessary to stop.
+- If you have any questions, ask before beginning work; otherwise go directly to work. Once started, continue until the work is complete unless absolutely necessary to stop.
 
 ## Tools
 
@@ -141,7 +140,7 @@ See `.agents/PROJECT_BRIEF.md` for the authoritative ownership matrix, quick-sta
 - You MUST use the GitHub MCP for all GitHub interactions. If GitHub MCP is not available, stop and notify the user.
 - You MUST use the Mermaid.js MCP to create and validate Mermaid diagrams.
 - You MUST only run one command at a time; do not chain commands (e.g., `&&` or `;`).
-- You MUST use `markdownlint-cli2`, 'prettier', and language specific tools for formatting and linting.
+- You MUST use `markdownlint-cli2`, `prettier`, and language-specific tools for formatting and linting.
 
 ## Additional Guidelines
 

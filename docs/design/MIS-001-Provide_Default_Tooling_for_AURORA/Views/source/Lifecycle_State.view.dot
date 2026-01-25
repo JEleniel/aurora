@@ -2,7 +2,7 @@ digraph "Lifecycle/State View for Assets" {
 	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
 	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
 	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
-	"AST-001" [fillcolor="#334155", fontcolor="#FFFFFF", label="🛡️ Asset: Aurora Models\n(AST-001)", shape="box"];
-	"AST-002" [fillcolor="#334155", fontcolor="#FFFFFF", label="🛡️ Asset: Rendered Documentation Output\n(AST-002)", shape="box"];
-	"AST-003" [fillcolor="#334155", fontcolor="#FFFFFF", label="🛡️ Asset: User Workspace Content\n(AST-003)", shape="box"];
+	"AST-001" [fillcolor="#334155", fontcolor="#FFFFFF", label=<<FONT><B>Asset</B><br />Aurora Models<br /><br />Aurora model source files (cards and schema references)<br />that represent the authoritative architecture model<br />content.</FONT>>, shape="box"];
+	"AST-002" [fillcolor="#334155", fontcolor="#FFFFFF", label=<<FONT><B>Asset</B><br />Rendered Documentation Output<br /><br />Generated Markdown and view artifacts produced from<br />Aurora models (e.g., rendered card pages and view<br />markdown).</FONT>>, shape="box"];
+	"AST-003" [fillcolor="#334155", fontcolor="#FFFFFF", label=<<FONT><B>Asset</B><br />User Workspace Content<br /><br />The user’s workspace files and settings (including<br />source code and secrets) that tooling must not corrupt<br />or exfiltrate.</FONT>>, shape="box"];
 }

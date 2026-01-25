@@ -76,8 +76,28 @@ pub fn validate_model(model: &AuroraModel) -> ValidationReport {
 	if let Some(root_id) = mission_ids.first() {
 		check_reachability(model, root_id, &mut report);
 	}
+	check_secret_ownership(model, &mut report);
 
 	report
+}
+
+fn is_case_insensitive_match(value: &str, expected: &str) -> bool {
+	value.trim().eq_ignore_ascii_case(expected)
+}
+
+fn is_deleted(card: &Card) -> bool {
+	card.status
+		.as_deref()
+		.is_some_and(|status| is_case_insensitive_match(status, "Deleted"))
+}
+
+fn is_secret_asset(card: &Card) -> bool {
+	if !is_case_insensitive_match(&card.card_type, "Asset") {
+		return false;
+	}
+	card.card_subtype
+		.as_deref()
+		.is_some_and(|subtype| is_case_insensitive_match(subtype, "Secret"))
 }
 
 fn check_duplicate_ids(model: &AuroraModel, report: &mut ValidationReport) {
@@ -191,3 +211,49 @@ fn check_reachability(model: &AuroraModel, root_id: &str, report: &mut Validatio
 		}
 	}
 }
+
+fn check_secret_ownership(model: &AuroraModel, report: &mut ValidationReport) {
+	let mut owned_by_any: HashSet<String> = HashSet::new();
+	let mut owned_by_actor: HashSet<String> = HashSet::new();
+	for source in model.iter_cards() {
+		for link in &source.links {
+			if !is_case_insensitive_match(&link.relationship, "owns") {
+				continue;
+			}
+			owned_by_any.insert(link.target.clone());
+			if is_case_insensitive_match(&source.card_type, "Actor") {
+				owned_by_actor.insert(link.target.clone());
+			}
+		}
+	}
+
+	for card in model.iter_cards() {
+		if is_deleted(card) || !is_secret_asset(card) {
+			continue;
+		}
+
+		if !owned_by_any.contains(&card.id) {
+			report.diagnostics.push(
+				ValidationDiagnostic::error(
+					"SECRET_MISSING_OWNER",
+					"Secret assets must be owned via an incoming 'owns' relationship",
+				)
+				.with_card(card),
+			);
+			continue;
+		}
+
+		if !owned_by_actor.contains(&card.id) {
+			report.diagnostics.push(ValidationDiagnostic {
+				severity: DiagnosticSeverity::Warning,
+				code: "SECRET_OWNED_BY_NON_ACTOR",
+				message: "Secret assets should be owned by an Actor card".to_string(),
+				card_id: Some(card.id.clone()),
+				path: None,
+			});
+		}
+	}
+}
+
+#[cfg(test)]
+mod tests;
