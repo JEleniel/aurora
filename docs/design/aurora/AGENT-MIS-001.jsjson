@@ -781,7 +781,7 @@
     {
       "attributes": null,
       "card_type": "Story",
-      "description": "As an architect, I want to package an Aurora model into a single portable file (for example, a ZIP) so that I can transport it between instances and share it reliably. This card is retained as a tombstone for historical continuity and has been replaced by `STR-003`.",
+      "description": "As an architect, I want to package an Aurora model into a single portable file (for example, a ZIP) so that I can transport it between instances and share it reliably. This card is retained only as a legacy tombstone for historical continuity; it used a non-canonical prefix and has been superseded by `STR-004` (and the active story `STR-003`).",
       "id": "STO-001",
       "links": [
         {
@@ -790,6 +790,25 @@
         }
       ],
       "name": "Store the Model in a Postable Format",
+      "status": "Deleted"
+    },
+    {
+      "attributes": null,
+      "card_subtype": "Tombstone",
+      "card_type": "Story",
+      "description": "Legacy tombstone story retained for traceability. This supersedes the earlier `STO-001` story card, which used a non-canonical prefix. `STO-001` is retained as `Deleted` for historical continuity.",
+      "id": "STR-004",
+      "links": [
+        {
+          "relationship": "explains",
+          "target": "REQ-018"
+        },
+        {
+          "relationship": "includes",
+          "target": "STO-001"
+        }
+      ],
+      "name": "Store the Model in a Postable Format (Tombstone)",
       "status": "Deprecated"
     },
     {
@@ -830,7 +849,7 @@
         },
         {
           "relationship": "includes",
-          "target": "STO-001"
+          "target": "STR-004"
         }
       ],
       "name": "Store the Model in a Postable Format"
@@ -1323,6 +1342,10 @@
         },
         {
           "relationship": "drives",
+          "target": "CNS-005"
+        },
+        {
+          "relationship": "drives",
           "target": "REQ-001"
         },
         {
@@ -1453,6 +1476,44 @@
         }
       ],
       "name": "Produce Common Architectural Artifacts"
+    },
+    {
+      "attributes": {
+        "dot": {
+          "boundary_cluster": {
+            "color": "#000000",
+            "style": "dashed"
+          },
+          "card_type_symbols": {},
+          "edge_defaults": {
+            "color": "#000000",
+            "fontcolor": "#000000",
+            "fontname": "Inter",
+            "fontsize": "9"
+          },
+          "graph_defaults": {
+            "bgcolor": "#FFFFFF",
+            "fontname": "Inter",
+            "rankdir": "LR",
+            "splines": "spline"
+          },
+          "node_defaults": {
+            "color": "#111827",
+            "fillcolor": "#E5E7EB",
+            "fontcolor": "#111827",
+            "fontname": "Inter",
+            "fontsize": "11",
+            "shape": "box",
+            "style": "filled"
+          }
+        }
+      },
+      "card_subtype": "Graphviz",
+      "card_type": "Constraint",
+      "description": "Defines the canonical Graphviz DOT conventions (graph/node/edge defaults and boundary cluster styling) used when rendering Aurora views to DOT/SVG.",
+      "id": "CNS-005",
+      "links": [],
+      "name": "Graphviz DOT View Conventions"
     },
     {
       "attributes": null,
@@ -2173,6 +2234,7 @@
     },
     {
       "attributes": null,
+      "card_subtype": "struct",
       "card_type": "Component",
       "description": "Aurora model domain component representing a directed graph of cards and links.",
       "id": "COM-010",
@@ -2186,6 +2248,7 @@
     },
     {
       "attributes": null,
+      "card_subtype": "struct",
       "card_type": "Component",
       "description": "Aurora card domain component representing a single architectural element with links and audit trail.",
       "id": "COM-011",
@@ -2194,6 +2257,7 @@
     },
     {
       "attributes": null,
+      "card_subtype": "struct",
       "card_type": "Component",
       "description": "Core Aurora domain component providing the aggregate root for working with a set of models.",
       "id": "COM-009",
@@ -2458,6 +2522,22 @@
       "name": "Webview UI Host"
     },
     {
+      "attributes": {
+        "recursive": true
+      },
+      "card_subtype": "Trust",
+      "card_type": "Boundary",
+      "description": "Trust boundary for untrusted inputs and adversarial participants.",
+      "id": "BND-001",
+      "links": [
+        {
+          "relationship": "contains",
+          "target": "ACT-003"
+        }
+      ],
+      "name": "Untrusted"
+    },
+    {
       "attributes": null,
       "card_type": "Mission",
       "description": "Provide command line, GUI, and VSCode Extension tools for the AURORA architectural system.",
@@ -2512,6 +2592,10 @@
           "target": "ACT-003"
         },
         {
+          "relationship": "includes",
+          "target": "BND-001"
+        },
+        {
           "relationship": "necessitates",
           "target": "PRO-001"
         },
@@ -2523,5 +2607,5 @@
       "name": "Provide Default Tooling for AURORA"
     }
   ],
-  "generated_at": 1769339011
+  "generated_at": 1769359154
 }

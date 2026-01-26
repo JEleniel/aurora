@@ -44,6 +44,8 @@ These define the vocabulary and view rules; prefer updating these over duplicati
 
 - Shared library (rendering + model logic): `tools/aurora_shared/`
     + View rendering entry points and Graphviz DOT/SVG generation live under `tools/aurora_shared/src/`.
+    + SVG label layout and icon sizing are handled in `tools/aurora_shared/src/render/themed_svg.rs`.
+    + Graphviz HTML node labels (ID + type line) are generated in `tools/aurora_shared/src/render.rs` (`node_label`).
     + DOT styling conventions are documented in:
         - `.github/instructions/details/Graphviz_View_Styling_Guide.md` (canonical)
         - `docs/design/Graphviz_View_Styling_Guide.md` (human-facing copy)

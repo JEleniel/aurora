@@ -20,5 +20,6 @@ Provide command line, GUI, and VSCode Extension tools for the AURORA architectur
 - `involves` → `ACT-001`
 - `involves` → `ACT-002`
 - `involves` → `ACT-003`
+- `includes` → `BND-001`
 - `necessitates` → `PRO-001`
 - `necessitates` → `PRO-002`

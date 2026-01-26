@@ -10,32 +10,9 @@ svg[data-theme="light"]{--bg:#FFFFFF;--edge:#111827;--edgeLabel:#111827;--nodeSt
 .edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
 .node-label{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:11px;}
 .node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
+.node-shape-outline{fill:none;}
 .boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:2;stroke-dasharray:6 6;}
 .boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
-.card-type-risk .node-shape{fill:#9D3D5B;}
-svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
-.card-type-risk .node-label{--nodeText:#FFFFFF;}
-.card-type-mission .node-shape{fill:#30524A;}
-svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
-.card-type-mission .node-label{--nodeText:#FFFFFF;}
-.card-type-actor .node-shape{fill:#435432;}
-svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
-.card-type-actor .node-label{--nodeText:#FFFFFF;}
-.card-type-story .node-shape{fill:#5A723E;}
-svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
-.card-type-story .node-label{--nodeText:#FFFFFF;}
-.card-type-note .node-shape{fill:#47505B;}
-svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
-.card-type-note .node-label{--nodeText:#FFFFFF;}
-.card-type-node .node-shape{fill:#565498;}
-svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
-.card-type-node .node-label{--nodeText:#FFFFFF;}
 .card-type-control .node-shape{fill:#8B623D;}
 svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
@@ -44,6 +21,14 @@ svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
 .card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
 .card-type-condition .node-shape{fill:#644833;}
 svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
@@ -52,78 +37,94 @@ svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
 svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
 .card-type-state-machine .node-label{--nodeText:#FFFFFF;}
-.card-type-artifact .node-shape{fill:#47505E;}
-svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
-.card-type-artifact .node-label{--nodeText:#FFFFFF;}
-.card-type-data-store .node-shape{fill:#34779B;}
-svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
-.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
 .card-type-test .node-shape{fill:#30524A;}
 svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
 .card-type-test .node-label{--nodeText:#FFFFFF;}
-.card-type-process .node-shape{fill:#543B81;}
-svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
-.card-type-process .node-label{--nodeText:#FFFFFF;}
-.card-type-event .node-shape{fill:#7949C3;}
-svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
-.card-type-event .node-label{--nodeText:#FFFFFF;}
-.card-type-application .node-shape{fill:#475D9F;}
-svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
-.card-type-application .node-label{--nodeText:#FFFFFF;}
-.card-type-node-instance .node-shape{fill:#5B55B4;}
-svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
-.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
-.card-type-feature .node-shape{fill:#3E7253;}
-svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
-.card-type-feature .node-label{--nodeText:#FFFFFF;}
-.card-type-component .node-shape{fill:#4762BD;}
-svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
-.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
 .card-type-system .node-shape{fill:#414C73;}
 svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
 .card-type-system .node-label{--nodeText:#FFFFFF;}
-.card-type-interface .node-shape{fill:#34546A;}
-svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
-.card-type-interface .node-label{--nodeText:#FFFFFF;}
-.card-type-activity .node-shape{fill:#6C46A8;}
-svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
-.card-type-activity .node-label{--nodeText:#FFFFFF;}
-.card-type-constraint .node-shape{fill:#9B6D39;}
-svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
-.card-type-constraint .node-label{--nodeText:#FFFFFF;}
-.card-type-threat .node-shape{fill:#6C3242;}
-svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
-.card-type-threat .node-label{--nodeText:#FFFFFF;}
-.card-type-asset .node-shape{fill:#586374;}
-svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
-.card-type-asset .node-label{--nodeText:#FFFFFF;}
-.card-type-driver .node-shape{fill:#336E5E;}
-svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
-.card-type-driver .node-label{--nodeText:#FFFFFF;}
-.card-type-state .node-shape{fill:#8A438E;}
-svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
-.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
 .card-type-deployment .node-shape{fill:#47446B;}
 svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
 .card-type-deployment .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#9B6D39;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
+.card-type-interface .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
 .card-type-capability .node-shape{fill:#325440;}
 svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
@@ -263,9 +264,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <path class="edge-path" d="M 439.98 4099.84 L 445.14 4095.99 L 450.06 4091.82 L 454.67 4087.29 L 484.81 4057.68 L 450.15 4026.48 L 478.67 3995.29 L 487.75 3985.35 L 531.89 3970.83 L 584.97 3956.24" data-tail="FEA-015" data-head="REQ-017" />
 <text class="edge-label" x="509.34" y="3963.29" text-anchor="middle" dominant-baseline="middle">satisfies</text>
 <g class="node card-type-artifact" data-card-id="ART-001" data-layout-node="ART-001">
-<rect class="node-shape" x="18.00" y="4590.62" width="418.67" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 18.00 4604.62 L 18.00 4674.62 L 436.67 4674.62 L 436.67 4604.62 L 311.07 4604.62 L 311.07 4590.62 L 143.60 4590.62 L 143.60 4604.62 Z" />
 <text class="node-label" x="227.34" y="4604.62" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="227.34" dy="14.00">Aurora Schema</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">The Aurora JSON schema(s) that define valid card structure</tspan>
@@ -273,9 +274,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-002" data-layout-node="ART-002">
-<rect class="node-shape" x="22.00" y="4482.62" width="410.67" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 22.00 4496.62 L 22.00 4566.62 L 432.67 4566.62 L 432.67 4496.62 L 309.47 4496.62 L 309.47 4482.62 L 145.20 4482.62 L 145.20 4496.62 Z" />
 <text class="node-label" x="227.34" y="4496.62" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="227.34" dy="14.00">Aurora Tooling</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Default tooling suite for Aurora, including CLI, editor,</tspan>
@@ -283,9 +284,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-003" data-layout-node="ART-003">
-<rect class="node-shape" x="16.00" y="4374.62" width="422.67" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 16.00 4388.62 L 16.00 4458.62 L 438.67 4458.62 L 438.67 4388.62 L 311.87 4388.62 L 311.87 4374.62 L 142.80 4374.62 L 142.80 4388.62 Z" />
 <text class="node-label" x="227.34" y="4388.62" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="227.34" dy="14.00">Card Registry</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Canonical registries for card types, view definitions, and</tspan>
@@ -293,9 +294,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-004" data-layout-node="ART-004">
-<rect class="node-shape" x="564.00" y="949.30" width="486.66" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 564.00 963.30 L 564.00 1033.30 L 1050.66 1033.30 L 1050.66 963.30 L 904.66 963.30 L 904.66 949.30 L 710.00 949.30 L 710.00 963.30 Z" />
 <text class="node-label" x="807.33" y="963.30" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">Markdown Documentation</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Human-readable Markdown documentation generated from the model,</tspan>
@@ -303,9 +304,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-005" data-layout-node="ART-005">
-<rect class="node-shape" x="580.00" y="1057.30" width="454.67" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 580.00 1071.30 L 580.00 1141.30 L 1034.66 1141.30 L 1034.66 1071.30 L 898.26 1071.30 L 898.26 1057.30 L 716.40 1057.30 L 716.40 1071.30 Z" />
 <text class="node-label" x="807.33" y="1071.30" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">View Diagram Set</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">A set of rendered view diagrams (e.g., Mermaid) produced from an</tspan>
@@ -313,9 +314,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-006" data-layout-node="ART-006">
-<rect class="node-shape" x="588.00" y="4316.62" width="438.66" height="98.67" rx="6" ry="6" />
+<path class="node-shape" d="M 588.00 4330.62 L 588.00 4415.29 L 1026.66 4415.29 L 1026.66 4330.62 L 895.06 4330.62 L 895.06 4316.62 L 719.60 4316.62 L 719.60 4330.62 Z" />
 <text class="node-label" x="807.33" y="4330.96" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">Compact Model Format</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Compact, agent-friendly representation of the model (e.g.,</tspan>
@@ -324,9 +325,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-007" data-layout-node="ART-007">
-<rect class="node-shape" x="590.00" y="4207.96" width="434.67" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 590.00 4221.96 L 590.00 4291.96 L 1024.67 4291.96 L 1024.67 4221.96 L 894.26 4221.96 L 894.26 4207.96 L 720.40 4207.96 L 720.40 4221.96 Z" />
 <text class="node-label" x="807.33" y="4221.96" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">Validation Report</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Structured and/or human-readable validation report and</tspan>
@@ -334,9 +335,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-008" data-layout-node="ART-008">
-<rect class="node-shape" x="580.00" y="4099.96" width="454.67" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 580.00 4113.96 L 580.00 4183.96 L 1034.66 4183.96 L 1034.66 4113.96 L 898.26 4113.96 L 898.26 4099.96 L 716.40 4099.96 L 716.40 4113.96 Z" />
 <text class="node-label" x="807.33" y="4113.96" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">Webview Rendered Markdown</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Markdown content displayed inside a sandboxed webview</tspan>
@@ -344,36 +345,36 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-009" data-layout-node="ART-009">
-<rect class="node-shape" x="574.00" y="1165.30" width="466.67" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 574.00 1179.30 L 574.00 1249.30 L 1040.66 1249.30 L 1040.66 1179.30 L 900.66 1179.30 L 900.66 1165.30 L 714.00 1165.30 L 714.00 1179.30 Z" />
 <text class="node-label" x="807.33" y="1186.30" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">Requirements.view.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Requirements View Markdown generated from the Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-010" data-layout-node="ART-010">
-<rect class="node-shape" x="582.66" y="1273.30" width="449.34" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 582.66 1287.30 L 582.66 1357.30 L 1032.00 1357.30 L 1032.00 1287.30 L 897.20 1287.30 L 897.20 1273.30 L 717.46 1273.30 L 717.46 1287.30 Z" />
 <text class="node-label" x="807.33" y="1294.30" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">Component.view.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Component View Markdown generated from the Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-011" data-layout-node="ART-011">
-<rect class="node-shape" x="580.00" y="1381.30" width="454.67" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 580.00 1395.30 L 580.00 1465.30 L 1034.66 1465.30 L 1034.66 1395.30 L 898.26 1395.30 L 898.26 1381.30 L 716.40 1381.30 L 716.40 1395.30 Z" />
 <text class="node-label" x="807.33" y="1402.30" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">Deployment.view.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Deployment View Markdown generated from the Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-012" data-layout-node="ART-012">
-<rect class="node-shape" x="574.00" y="1489.30" width="466.67" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 574.00 1503.30 L 574.00 1573.30 L 1040.66 1573.30 L 1040.66 1503.30 L 900.66 1503.30 L 900.66 1489.30 L 714.00 1489.30 L 714.00 1503.30 Z" />
 <text class="node-label" x="807.33" y="1503.30" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">Process.view.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Process (Activity) View Markdown generated from the Aurora</tspan>
@@ -381,9 +382,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-013" data-layout-node="ART-013">
-<rect class="node-shape" x="572.00" y="1597.30" width="470.67" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 572.00 1611.30 L 572.00 1681.30 L 1042.67 1681.30 L 1042.67 1611.30 L 901.46 1611.30 L 901.46 1597.30 L 713.20 1597.30 L 713.20 1611.30 Z" />
 <text class="node-label" x="807.33" y="1611.30" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">State_Machine.view.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered State Machine View Markdown generated from the Aurora</tspan>
@@ -391,9 +392,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-014" data-layout-node="ART-014">
-<rect class="node-shape" x="576.00" y="-0.05" width="462.66" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 576.00 13.95 L 576.00 83.95 L 1038.66 83.95 L 1038.66 13.95 L 899.86 13.95 L 899.86 -0.05 L 714.80 -0.05 L 714.80 13.95 Z" />
 <text class="node-label" x="807.33" y="13.95" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">Threat_Model.view.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Threat Model View Markdown generated from the Aurora</tspan>
@@ -401,81 +402,81 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-015" data-layout-node="ART-015">
-<rect class="node-shape" x="652.67" y="108.66" width="309.33" height="69.33" rx="6" ry="6" />
+<path class="node-shape" d="M 652.67 122.53 L 652.67 177.99 L 962.00 177.99 L 962.00 122.53 L 869.20 122.53 L 869.20 108.66 L 745.46 108.66 L 745.46 122.53 Z" />
 <text class="node-label" x="807.33" y="122.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">ACT-001.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Actor card page for ACT-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-016" data-layout-node="ART-016">
-<rect class="node-shape" x="652.00" y="201.97" width="310.67" height="69.33" rx="6" ry="6" />
+<path class="node-shape" d="M 652.00 215.84 L 652.00 271.31 L 962.66 271.31 L 962.66 215.84 L 869.46 215.84 L 869.46 201.97 L 745.20 201.97 L 745.20 215.84 Z" />
 <text class="node-label" x="807.33" y="215.64" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">AST-001.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Asset card page for AST-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-017" data-layout-node="ART-017">
-<rect class="node-shape" x="644.66" y="295.29" width="325.33" height="69.33" rx="6" ry="6" />
+<path class="node-shape" d="M 644.66 309.15 L 644.66 364.62 L 970.00 364.62 L 970.00 309.15 L 872.40 309.15 L 872.40 295.29 L 742.26 295.29 L 742.26 309.15 Z" />
 <text class="node-label" x="807.33" y="308.95" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">ATV-001.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Activity card page for ATV-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-018" data-layout-node="ART-018">
-<rect class="node-shape" x="635.33" y="388.60" width="344.00" height="69.33" rx="6" ry="6" />
+<path class="node-shape" d="M 635.33 402.46 L 635.33 457.93 L 979.33 457.93 L 979.33 402.46 L 876.13 402.46 L 876.13 388.60 L 738.53 388.60 L 738.53 402.46 Z" />
 <text class="node-label" x="807.33" y="402.26" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">CAP-001.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Capability card page for CAP-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-019" data-layout-node="ART-019">
-<rect class="node-shape" x="626.66" y="482.01" width="361.33" height="69.33" rx="6" ry="6" />
+<path class="node-shape" d="M 626.66 495.87 L 626.66 551.34 L 988.00 551.34 L 988.00 495.87 L 879.60 495.87 L 879.60 482.01 L 735.06 482.01 L 735.06 495.87 Z" />
 <text class="node-label" x="807.33" y="495.67" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">COM-001.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Component card page for COM-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-020" data-layout-node="ART-020">
-<rect class="node-shape" x="633.33" y="575.32" width="348.00" height="69.33" rx="6" ry="6" />
+<path class="node-shape" d="M 633.33 589.18 L 633.33 644.65 L 981.33 644.65 L 981.33 589.18 L 876.93 589.18 L 876.93 575.32 L 737.73 575.32 L 737.73 589.18 Z" />
 <text class="node-label" x="807.33" y="588.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">CNS-001.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Constraint card page for CNS-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-021" data-layout-node="ART-021">
-<rect class="node-shape" x="644.66" y="668.63" width="325.33" height="69.33" rx="6" ry="6" />
+<path class="node-shape" d="M 644.66 682.50 L 644.66 737.96 L 970.00 737.96 L 970.00 682.50 L 872.40 682.50 L 872.40 668.63 L 742.26 668.63 L 742.26 682.50 Z" />
 <text class="node-label" x="807.33" y="682.30" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">FEA-001.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Feature card page for FEA-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-022" data-layout-node="ART-022">
-<rect class="node-shape" x="642.00" y="761.94" width="330.66" height="69.33" rx="6" ry="6" />
+<path class="node-shape" d="M 642.00 775.81 L 642.00 831.27 L 972.66 831.27 L 972.66 775.81 L 873.46 775.81 L 873.46 761.94 L 741.20 761.94 L 741.20 775.81 Z" />
 <text class="node-label" x="807.33" y="775.61" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">PRO-001.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Process card page for PRO-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-023" data-layout-node="ART-023">
-<rect class="node-shape" x="624.00" y="855.25" width="366.66" height="69.33" rx="6" ry="6" />
+<path class="node-shape" d="M 624.00 869.12 L 624.00 924.59 L 990.66 924.59 L 990.66 869.12 L 880.66 869.12 L 880.66 855.25 L 734.00 855.25 L 734.00 869.12 Z" />
 <text class="node-label" x="807.33" y="868.92" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Artifact</tspan>
+<tspan font-weight="700">📁 Artifact</tspan>
 <tspan x="807.33" dy="14.00">REQ-001.md</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Rendered Requirement card page for REQ-001.</tspan>
@@ -484,7 +485,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-driver" data-card-id="DRI-001" data-layout-node="DRI-001">
 <rect class="node-shape" x="30.00" y="1963.92" width="394.67" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="1977.92" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Driver</tspan>
+<tspan font-weight="700">🧭 Driver</tspan>
 <tspan x="227.34" dy="14.00">Produce Common Architectural Artifacts</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Produce the drawings, designs, and other artifacts</tspan>
@@ -494,7 +495,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-driver" data-card-id="DRI-002" data-layout-node="DRI-002">
 <rect class="node-shape" x="10.00" y="2631.98" width="434.67" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="2645.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Driver</tspan>
+<tspan font-weight="700">🧭 Driver</tspan>
 <tspan x="227.34" dy="14.00">Explain Entire Model in Simple Language</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">The entire model is expressible by listing the nodes and their</tspan>
@@ -504,7 +505,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-driver" data-card-id="DRI-003" data-layout-node="DRI-003">
 <rect class="node-shape" x="26.01" y="2219.95" width="402.66" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="2233.95" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Driver</tspan>
+<tspan font-weight="700">🧭 Driver</tspan>
 <tspan x="227.34" dy="14.00">One Model to Rule Them All</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">A single Aurora model captures every aspect of the</tspan>
@@ -514,7 +515,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-driver" data-card-id="DRI-004" data-layout-node="DRI-004">
 <rect class="node-shape" x="17.34" y="2982.58" width="420.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="2996.58" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Driver</tspan>
+<tspan font-weight="700">🧭 Driver</tspan>
 <tspan x="227.34" dy="14.00">Human and Agent Friendly</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Express the model in a form that is easy to parse and</tspan>
@@ -524,7 +525,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-001" data-layout-node="FEA-001">
 <rect class="node-shape" x="23.34" y="2479.92" width="408.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="2493.92" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Load Models</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Load Aurora model cards from disk into memory, preserving</tspan>
@@ -534,7 +535,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-002" data-layout-node="FEA-002">
 <rect class="node-shape" x="11.34" y="3990.62" width="432.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="4004.62" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Model Validation</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Validate Aurora models against schemas and invariants and</tspan>
@@ -544,7 +545,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-003" data-layout-node="FEA-003">
 <rect class="node-shape" x="26.01" y="2357.33" width="402.66" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="2371.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Update Models</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Create, edit, and delete Aurora cards and links with</tspan>
@@ -554,7 +555,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-004" data-layout-node="FEA-004">
 <rect class="node-shape" x="39.34" y="3233.33" width="376.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="3247.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Save Models</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Persist Aurora model cards and links to disk in a</tspan>
@@ -564,7 +565,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-005" data-layout-node="FEA-005">
 <rect class="node-shape" x="10.00" y="847.92" width="434.67" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="861.92" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Render Views</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Generate human-readable Markdown and Mermaid view documentation</tspan>
@@ -574,7 +575,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-006" data-layout-node="FEA-006">
 <rect class="node-shape" x="29.34" y="4266.62" width="396.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="4280.62" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Model Compaction</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Emit a compact representation of an Aurora model suitable</tspan>
@@ -584,7 +585,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-007" data-layout-node="FEA-007">
 <rect class="node-shape" x="16.67" y="3341.33" width="421.33" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="3355.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Browse and Search Models</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Browse, filter, and search cards and links in an Aurora model</tspan>
@@ -594,7 +595,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-008" data-layout-node="FEA-008">
 <rect class="node-shape" x="20.67" y="3665.33" width="413.34" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="3679.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Edit Models Interactively</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Interactive editing UI and operations for creating and</tspan>
@@ -604,7 +605,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-009" data-layout-node="FEA-009">
 <rect class="node-shape" x="10.00" y="3773.29" width="434.67" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="3787.29" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Show Validation Diagnostics</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Show schema and invariant validation diagnostics inline and in</tspan>
@@ -614,7 +615,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-010" data-layout-node="FEA-010">
 <rect class="node-shape" x="14.01" y="2083.92" width="426.66" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="2097.92" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Visualize Model Graph</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Provide an interactive graph visualization of the model with</tspan>
@@ -624,7 +625,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-011" data-layout-node="FEA-011">
 <rect class="node-shape" x="4.00" y="3449.33" width="446.67" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="3463.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Preview Rendered Markdown</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Preview and navigate rendered Markdown documentation from Aurora</tspan>
@@ -634,7 +635,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-012" data-layout-node="FEA-012">
 <rect class="node-shape" x="11.34" y="3881.29" width="432.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="3895.29" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Workspace Integration</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Integrate with the user workspace: open models, watch for</tspan>
@@ -644,7 +645,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-013" data-layout-node="FEA-013">
 <rect class="node-shape" x="28.00" y="3109.93" width="398.67" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="3131.26" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Safe File Operations</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Perform safe, constrained file operations with clear user</tspan>
@@ -654,7 +655,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-014" data-layout-node="FEA-014">
 <rect class="node-shape" x="41.34" y="3557.33" width="372.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="3571.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Workspace Trust Gating</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Respect workspace trust boundaries by limiting</tspan>
@@ -664,7 +665,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-015" data-layout-node="FEA-015">
 <rect class="node-shape" x="0.00" y="4099.96" width="454.67" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="227.34" y="4113.96" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="227.34" dy="14.00">Sanitized Rendering</tspan>
 <tspan x="227.34" dy="14.00">&#160;</tspan>
 <tspan x="227.34" dy="14.00">Render Markdown and webview content safely, preventing script</tspan>
@@ -674,7 +675,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-001" data-layout-node="REQ-001">
 <rect class="node-shape" x="598.00" y="2197.95" width="418.67" height="128.00" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="2212.95" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Boundary Cards</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">There must exist a special card, `Boundary`, with the</tspan>
@@ -687,7 +688,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-002" data-layout-node="REQ-002">
 <rect class="node-shape" x="586.00" y="2717.99" width="442.67" height="128.00" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="2739.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Note Cards</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">There must be a special card called `Note` that allows the</tspan>
@@ -699,7 +700,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-003" data-layout-node="REQ-003">
 <rect class="node-shape" x="594.00" y="2472.59" width="426.66" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="2493.92" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Load Models</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST be able to load one or more Aurora models from disk</tspan>
@@ -709,7 +710,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-004" data-layout-node="REQ-004">
 <rect class="node-shape" x="590.66" y="2992.62" width="433.33" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="3013.95" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Validate Models</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST validate Aurora models against the Aurora schema and</tspan>
@@ -719,7 +720,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-005" data-layout-node="REQ-005">
 <rect class="node-shape" x="596.00" y="2349.99" width="422.67" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="2364.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Update Models</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST support updating Aurora models, including</tspan>
@@ -730,7 +731,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-006" data-layout-node="REQ-006">
 <rect class="node-shape" x="600.66" y="3253.93" width="413.34" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="3275.26" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Save Models</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST persist Aurora models to disk in a stable,</tspan>
@@ -740,7 +741,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-007" data-layout-node="REQ-007">
 <rect class="node-shape" x="577.33" y="1705.30" width="460.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="1719.30" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Render Views</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST generate human-readable views (e.g., Mermaid diagrams</tspan>
@@ -750,7 +751,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-008" data-layout-node="REQ-008">
 <rect class="node-shape" x="584.00" y="3976.63" width="446.67" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="3990.96" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Compact Models</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST be able to emit a compact, machine-friendly</tspan>
@@ -761,7 +762,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-009" data-layout-node="REQ-009">
 <rect class="node-shape" x="586.00" y="3377.33" width="442.67" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="3391.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Browse and Search Models</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST enable users to browse and search the cards and links</tspan>
@@ -771,7 +772,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-010" data-layout-node="REQ-010">
 <rect class="node-shape" x="600.00" y="3608.65" width="414.66" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="3622.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Edit Models Interactively</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST enable users to create, edit, and delete cards</tspan>
@@ -782,7 +783,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-011" data-layout-node="REQ-011">
 <rect class="node-shape" x="604.67" y="2869.93" width="405.33" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="2884.26" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Show Validation Diagnostics</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST surface schema and invariant validation</tspan>
@@ -793,7 +794,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-012" data-layout-node="REQ-012">
 <rect class="node-shape" x="597.33" y="2075.34" width="420.00" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="2089.67" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Visualize Model Graph</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST provide a graph-based visualization of the model</tspan>
@@ -804,7 +805,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-013" data-layout-node="REQ-013">
 <rect class="node-shape" x="584.00" y="2595.27" width="446.67" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="2616.61" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Preview Rendered Markdown</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST allow users to preview and navigate the human-readable</tspan>
@@ -814,7 +815,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-014" data-layout-node="REQ-014">
 <rect class="node-shape" x="602.00" y="3731.29" width="410.67" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="3745.62" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Workspace Integration</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST integrate with the user’s workspace to open,</tspan>
@@ -825,7 +826,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-015" data-layout-node="REQ-015">
 <rect class="node-shape" x="610.00" y="3115.94" width="394.67" height="113.34" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="3137.61" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Safe File Operations</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST perform file operations safely (prevent</tspan>
@@ -836,7 +837,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-016" data-layout-node="REQ-016">
 <rect class="node-shape" x="608.66" y="3485.96" width="397.33" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="3507.30" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Workspace Trust Gating</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST respect workspace trust boundaries by limiting</tspan>
@@ -846,7 +847,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-017" data-layout-node="REQ-017">
 <rect class="node-shape" x="591.33" y="3853.96" width="432.00" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="3875.29" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Sanitized Rendering</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST render Markdown and any webview content safely by</tspan>
@@ -856,7 +857,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-018" data-layout-node="REQ-018">
 <rect class="node-shape" x="598.00" y="1813.93" width="418.67" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="1828.26" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Store the Model in a Postable Format</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST present the ability to compress the entire model</tspan>
@@ -867,7 +868,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-019" data-layout-node="REQ-019">
 <rect class="node-shape" x="595.33" y="1937.25" width="424.00" height="113.34" rx="6" ry="6" />
 <text class="node-label" x="807.33" y="1951.92" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="807.33" dy="14.00">Render Canonical View Set</tspan>
 <tspan x="807.33" dy="14.00">&#160;</tspan>
 <tspan x="807.33" dy="14.00">Tools MUST render every view defined in the canonical view</tspan>

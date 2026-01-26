@@ -10,32 +10,9 @@ svg[data-theme="light"]{--bg:#FFFFFF;--edge:#111827;--edgeLabel:#111827;--nodeSt
 .edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
 .node-label{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:11px;}
 .node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
+.node-shape-outline{fill:none;}
 .boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:2;stroke-dasharray:6 6;}
 .boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
-.card-type-risk .node-shape{fill:#9D3D5B;}
-svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
-.card-type-risk .node-label{--nodeText:#FFFFFF;}
-.card-type-mission .node-shape{fill:#30524A;}
-svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
-.card-type-mission .node-label{--nodeText:#FFFFFF;}
-.card-type-actor .node-shape{fill:#435432;}
-svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
-.card-type-actor .node-label{--nodeText:#FFFFFF;}
-.card-type-story .node-shape{fill:#5A723E;}
-svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
-.card-type-story .node-label{--nodeText:#FFFFFF;}
-.card-type-note .node-shape{fill:#47505B;}
-svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
-.card-type-note .node-label{--nodeText:#FFFFFF;}
-.card-type-node .node-shape{fill:#565498;}
-svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
-.card-type-node .node-label{--nodeText:#FFFFFF;}
 .card-type-control .node-shape{fill:#8B623D;}
 svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
@@ -44,6 +21,14 @@ svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
 .card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
 .card-type-condition .node-shape{fill:#644833;}
 svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
@@ -52,78 +37,94 @@ svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
 svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
 .card-type-state-machine .node-label{--nodeText:#FFFFFF;}
-.card-type-artifact .node-shape{fill:#47505E;}
-svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
-.card-type-artifact .node-label{--nodeText:#FFFFFF;}
-.card-type-data-store .node-shape{fill:#34779B;}
-svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
-.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
 .card-type-test .node-shape{fill:#30524A;}
 svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
 .card-type-test .node-label{--nodeText:#FFFFFF;}
-.card-type-process .node-shape{fill:#543B81;}
-svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
-.card-type-process .node-label{--nodeText:#FFFFFF;}
-.card-type-event .node-shape{fill:#7949C3;}
-svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
-.card-type-event .node-label{--nodeText:#FFFFFF;}
-.card-type-application .node-shape{fill:#475D9F;}
-svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
-.card-type-application .node-label{--nodeText:#FFFFFF;}
-.card-type-node-instance .node-shape{fill:#5B55B4;}
-svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
-.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
-.card-type-feature .node-shape{fill:#3E7253;}
-svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
-.card-type-feature .node-label{--nodeText:#FFFFFF;}
-.card-type-component .node-shape{fill:#4762BD;}
-svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
-.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
 .card-type-system .node-shape{fill:#414C73;}
 svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
 .card-type-system .node-label{--nodeText:#FFFFFF;}
-.card-type-interface .node-shape{fill:#34546A;}
-svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
-.card-type-interface .node-label{--nodeText:#FFFFFF;}
-.card-type-activity .node-shape{fill:#6C46A8;}
-svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
-.card-type-activity .node-label{--nodeText:#FFFFFF;}
-.card-type-constraint .node-shape{fill:#9B6D39;}
-svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
-.card-type-constraint .node-label{--nodeText:#FFFFFF;}
-.card-type-threat .node-shape{fill:#6C3242;}
-svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
-.card-type-threat .node-label{--nodeText:#FFFFFF;}
-.card-type-asset .node-shape{fill:#586374;}
-svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
-.card-type-asset .node-label{--nodeText:#FFFFFF;}
-.card-type-driver .node-shape{fill:#336E5E;}
-svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
-.card-type-driver .node-label{--nodeText:#FFFFFF;}
-.card-type-state .node-shape{fill:#8A438E;}
-svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
-.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
 .card-type-deployment .node-shape{fill:#47446B;}
 svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
 .card-type-deployment .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#9B6D39;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
+.card-type-interface .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
 .card-type-capability .node-shape{fill:#325440;}
 svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
@@ -187,7 +188,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-asset" data-card-id="AST-001" data-layout-node="AST-001">
 <rect class="node-shape" x="2379.60" y="1016.85" width="444.00" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="2601.60" y="1038.19" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Asset</tspan>
+<tspan font-weight="700">🛡️ Asset</tspan>
 <tspan x="2601.60" dy="14.00">Aurora Models</tspan>
 <tspan x="2601.60" dy="14.00">&#160;</tspan>
 <tspan x="2601.60" dy="14.00">Aurora model source files (cards and schema references) that</tspan>
@@ -197,7 +198,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-asset" data-card-id="AST-002" data-layout-node="AST-002">
 <rect class="node-shape" x="2387.60" y="240.87" width="428.00" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="2601.60" y="262.21" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Asset</tspan>
+<tspan font-weight="700">🛡️ Asset</tspan>
 <tspan x="2601.60" dy="14.00">Rendered Documentation Output</tspan>
 <tspan x="2601.60" dy="14.00">&#160;</tspan>
 <tspan x="2601.60" dy="14.00">Generated Markdown and view artifacts produced from Aurora</tspan>
@@ -207,7 +208,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-asset" data-card-id="AST-003" data-layout-node="AST-003">
 <rect class="node-shape" x="2388.27" y="687.52" width="426.66" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="2601.60" y="708.86" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Asset</tspan>
+<tspan font-weight="700">🛡️ Asset</tspan>
 <tspan x="2601.60" dy="14.00">User Workspace Content</tspan>
 <tspan x="2601.60" dy="14.00">&#160;</tspan>
 <tspan x="2601.60" dy="14.00">The user’s workspace files and settings (including source</tspan>
@@ -217,7 +218,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-control" data-card-id="CTL-001" data-layout-node="CTL-001">
 <polygon class="node-shape" points="473.98,451.13 650.71,492.00 650.71,549.80 473.98,590.67 224.04,590.67 47.31,549.80 47.31,492.00 224.04,451.13" />
 <text class="node-label" x="349.01" y="485.90" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="349.01" dy="14.00">Workspace Trust Gate</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Gate potentially unsafe operations (e.g., file writes, webview</tspan>
@@ -228,7 +229,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-control" data-card-id="CTL-002" data-layout-node="CTL-002">
 <polygon class="node-shape" points="477.10,1028.42 658.25,1069.29 658.25,1127.09 477.10,1167.96 220.92,1167.96 39.77,1127.09 39.77,1069.29 220.92,1028.42" />
 <text class="node-label" x="349.01" y="1063.19" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="349.01" dy="14.00">Safe Path Handling and Atomic Writes</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Constrain paths to the intended workspace/model roots, normalize and</tspan>
@@ -239,7 +240,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-control" data-card-id="CTL-003" data-layout-node="CTL-003">
 <polygon class="node-shape" points="482.57,5.78 671.45,46.65 671.45,104.45 482.57,145.32 215.45,145.32 26.57,104.45 26.57,46.65 215.45,5.78" />
 <text class="node-label" x="349.01" y="47.55" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="349.01" dy="14.00">Content Sanitization</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Sanitize rendered Markdown and webview content, restrict resource</tspan>
@@ -249,7 +250,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-control" data-card-id="CTL-004" data-layout-node="CTL-004">
 <polygon class="node-shape" points="1271.77,883.09 1455.13,923.96 1455.13,981.76 1271.77,1022.63 1012.46,1022.63 829.10,981.76 829.10,923.96 1012.46,883.09" />
 <text class="node-label" x="1142.11" y="924.86" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="1142.11" dy="14.00">Least Privilege File Access</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Minimize read/write permissions and scope operations to explicit</tspan>
@@ -259,7 +260,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-013" data-layout-node="FEA-013">
 <rect class="node-shape" x="149.67" y="1296.85" width="398.67" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="1318.19" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="349.01" dy="14.00">Safe File Operations</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Perform safe, constrained file operations with clear user</tspan>
@@ -269,7 +270,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-014" data-layout-node="FEA-014">
 <rect class="node-shape" x="163.01" y="700.19" width="372.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="714.19" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="349.01" dy="14.00">Workspace Trust Gating</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Respect workspace trust boundaries by limiting</tspan>
@@ -279,7 +280,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-015" data-layout-node="FEA-015">
 <rect class="node-shape" x="121.68" y="278.83" width="454.67" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="292.83" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="349.01" dy="14.00">Sanitized Rendering</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Render Markdown and webview content safely, preventing script</tspan>
@@ -289,7 +290,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-015" data-layout-node="REQ-015">
 <rect class="node-shape" x="944.78" y="1289.52" width="394.67" height="113.34" rx="6" ry="6" />
 <text class="node-label" x="1142.11" y="1311.19" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="1142.11" dy="14.00">Safe File Operations</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Tools MUST perform file operations safely (prevent</tspan>
@@ -300,7 +301,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-016" data-layout-node="REQ-016">
 <rect class="node-shape" x="943.44" y="692.85" width="397.33" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="1142.11" y="714.19" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="1142.11" dy="14.00">Workspace Trust Gating</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Tools MUST respect workspace trust boundaries by limiting</tspan>
@@ -310,7 +311,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-017" data-layout-node="REQ-017">
 <rect class="node-shape" x="926.11" y="271.50" width="432.00" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="1142.11" y="292.83" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="1142.11" dy="14.00">Sanitized Rendering</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Tools MUST render Markdown and any webview content safely by</tspan>
@@ -320,7 +321,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-risk" data-card-id="RIS-001" data-layout-node="RIS-001">
 <polygon class="node-shape" points="2051.07,230.81 2216.20,265.60 2216.20,314.81 2051.07,349.61 1817.54,349.61 1652.40,314.81 1652.40,265.60 1817.54,230.81" />
 <text class="node-label" x="1934.30" y="262.21" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Risk</tspan>
+<tspan font-weight="700">⚠️ Risk</tspan>
 <tspan x="1934.30" dy="14.00">Injected Content in Rendered Output</tspan>
 <tspan x="1934.30" dy="14.00">&#160;</tspan>
 <tspan x="1934.30" dy="14.00">Rendered output could contain unsafe content that misleads users or</tspan>
@@ -330,7 +331,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-risk" data-card-id="RIS-002" data-layout-node="RIS-002">
 <polygon class="node-shape" points="2049.12,1006.79 2211.49,1041.58 2211.49,1090.79 2049.12,1125.58 1819.49,1125.58 1657.12,1090.79 1657.12,1041.58 1819.49,1006.79" />
 <text class="node-label" x="1934.30" y="1038.19" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Risk</tspan>
+<tspan font-weight="700">⚠️ Risk</tspan>
 <tspan x="1934.30" dy="14.00">Unintended File Modification</tspan>
 <tspan x="1934.30" dy="14.00">&#160;</tspan>
 <tspan x="1934.30" dy="14.00">Tooling could overwrite or corrupt files outside the intended model</tspan>
@@ -340,7 +341,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-risk" data-card-id="RIS-003" data-layout-node="RIS-003">
 <polygon class="node-shape" points="2067.47,667.09 2255.80,707.96 2255.80,765.76 2067.47,806.63 1801.14,806.63 1612.81,765.76 1612.81,707.96 1801.14,667.09" />
 <text class="node-label" x="1934.30" y="708.86" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Risk</tspan>
+<tspan font-weight="700">⚠️ Risk</tspan>
 <tspan x="1934.30" dy="14.00">Data Exposure from Untrusted Workspace</tspan>
 <tspan x="1934.30" dy="14.00">&#160;</tspan>
 <tspan x="1934.30" dy="14.00">Operating against untrusted workspace content could lead to disclosure</tspan>
@@ -350,7 +351,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-threat" data-card-id="THR-001" data-layout-node="THR-001">
 <polygon class="node-shape" points="1268.25,101.78 1446.64,142.65 1446.64,200.45 1268.25,241.32 1015.97,241.32 837.59,200.45 837.59,142.65 1015.97,101.78" />
 <text class="node-label" x="1142.11" y="143.55" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Threat</tspan>
+<tspan font-weight="700">🐛 Threat</tspan>
 <tspan x="1142.11" dy="14.00">Script Injection via Markdown</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Untrusted content in model descriptions or rendered Markdown could</tspan>
@@ -360,7 +361,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-threat" data-card-id="THR-002" data-layout-node="THR-002">
 <polygon class="node-shape" points="1267.86,1120.42 1445.70,1161.29 1445.70,1219.09 1267.86,1259.96 1016.36,1259.96 838.53,1219.09 838.53,1161.29 1016.36,1120.42" />
 <text class="node-label" x="1142.11" y="1155.19" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Threat</tspan>
+<tspan font-weight="700">🐛 Threat</tspan>
 <tspan x="1142.11" dy="14.00">Path Traversal or Arbitrary Write</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">A crafted input path or unsafe write behavior could cause tooling to</tspan>
@@ -371,7 +372,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-threat" data-card-id="THR-003" data-layout-node="THR-003">
 <polygon class="node-shape" points="1269.81,523.09 1450.41,563.96 1450.41,621.76 1269.81,662.63 1014.41,662.63 833.81,621.76 833.81,563.96 1014.41,523.09" />
 <text class="node-label" x="1142.11" y="564.86" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Threat</tspan>
+<tspan font-weight="700">🐛 Threat</tspan>
 <tspan x="1142.11" dy="14.00">Untrusted Workspace Execution or Access</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Operating in an untrusted workspace could allow unsafe operations that</tspan>

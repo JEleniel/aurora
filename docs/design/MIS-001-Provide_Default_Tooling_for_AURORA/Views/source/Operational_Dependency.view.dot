@@ -2,20 +2,24 @@ digraph "Operational Dependency View" {
 	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
 	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
 	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
-	"ACT-001" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label=<<FONT><B>Actor</B><br />Architect<br /><br />Person responsible for authoring and maintaining the<br />Aurora model for a system.</FONT>>, shape="ellipse"];
-	"ACT-002" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label=<<FONT><B>Actor</B><br />User<br /><br />Person using Aurora tooling surfaces to browse, edit,<br />validate, and render models in a workspace.</FONT>>, shape="ellipse"];
-	"ACT-003" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label=<<FONT><B>Actor</B><br />Malicious Workspace Author<br /><br />Adversarial actor who crafts workspace content to<br />exploit tooling behavior.</FONT>>, shape="ellipse"];
-	"RIS-001" [fillcolor="#881337", fontcolor="#FFFFFF", label=<<FONT><B>Risk</B><br />Injected Content in Rendered Output<br /><br />Rendered output could contain unsafe content that<br />misleads users or executes in a webview context.</FONT>>, shape="octagon"];
-	"RIS-002" [fillcolor="#881337", fontcolor="#FFFFFF", label=<<FONT><B>Risk</B><br />Unintended File Modification<br /><br />Tooling could overwrite or corrupt files outside the<br />intended model output locations.</FONT>>, shape="octagon"];
-	"RIS-003" [fillcolor="#881337", fontcolor="#FFFFFF", label=<<FONT><B>Risk</B><br />Data Exposure from Untrusted Workspace<br /><br />Operating against untrusted workspace content could lead<br />to disclosure of sensitive data or unintended access<br />beyond user intent.</FONT>>, shape="octagon"];
-	"SYS-001" [fillcolor="#172554", fontcolor="#FFFFFF", label=<<FONT><B>System</B><br />Default Tooling Platform<br /><br />A bounded system that delivers the default Aurora<br />tooling surfaces: CLI, Editor, and VSCode Extension.</FONT>>, shape="folder"];
-	"THR-001" [fillcolor="#4c0519", fontcolor="#FFFFFF", label=<<FONT><B>Threat</B><br />Script Injection via Markdown<br /><br />Untrusted content in model descriptions or rendered<br />Markdown could inject script or unsafe resources into a<br />webview-based renderer.</FONT>>, shape="octagon"];
-	"THR-002" [fillcolor="#4c0519", fontcolor="#FFFFFF", label=<<FONT><B>Threat</B><br />Path Traversal or Arbitrary Write<br /><br />A crafted input path or unsafe write behavior could<br />cause tooling to write outside the intended<br />model/workspace directory, overwriting unrelated files.</FONT>>, shape="octagon"];
-	"THR-003" [fillcolor="#4c0519", fontcolor="#FFFFFF", label=<<FONT><B>Threat</B><br />Untrusted Workspace Execution or Access<br /><br />Operating in an untrusted workspace could allow unsafe<br />operations that lead to data exposure or unintended<br />execution paths.</FONT>>, shape="octagon"];
+	"ACT-001" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label=<<FONT><B>👤 Actor</B><br />Architect<br /><br />Person responsible for authoring and maintaining the<br />Aurora model for a system.</FONT>>, shape="ellipse"];
+	"ACT-002" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label=<<FONT><B>👤 Actor</B><br />User<br /><br />Person using Aurora tooling surfaces to browse, edit,<br />validate, and render models in a workspace.</FONT>>, shape="ellipse"];
+	"ACT-003" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label=<<FONT><B>👤 Actor</B><br />Malicious Workspace Author<br /><br />Adversarial actor who crafts workspace content to<br />exploit tooling behavior.</FONT>>, shape="ellipse"];
+	"RIS-001" [fillcolor="#881337", fontcolor="#FFFFFF", label=<<FONT><B>⚠️ Risk</B><br />Injected Content in Rendered Output<br /><br />Rendered output could contain unsafe content that<br />misleads users or executes in a webview context.</FONT>>, shape="octagon"];
+	"RIS-002" [fillcolor="#881337", fontcolor="#FFFFFF", label=<<FONT><B>⚠️ Risk</B><br />Unintended File Modification<br /><br />Tooling could overwrite or corrupt files outside the<br />intended model output locations.</FONT>>, shape="octagon"];
+	"RIS-003" [fillcolor="#881337", fontcolor="#FFFFFF", label=<<FONT><B>⚠️ Risk</B><br />Data Exposure from Untrusted Workspace<br /><br />Operating against untrusted workspace content could lead<br />to disclosure of sensitive data or unintended access<br />beyond user intent.</FONT>>, shape="octagon"];
+	"SYS-001" [fillcolor="#172554", fontcolor="#FFFFFF", label=<<FONT><B>🧱 System</B><br />Default Tooling Platform<br /><br />A bounded system that delivers the default Aurora<br />tooling surfaces: CLI, Editor, and VSCode Extension.</FONT>>, shape="folder"];
+	"THR-001" [fillcolor="#4c0519", fontcolor="#FFFFFF", label=<<FONT><B>🐛 Threat</B><br />Script Injection via Markdown<br /><br />Untrusted content in model descriptions or rendered<br />Markdown could inject script or unsafe resources into a<br />webview-based renderer.</FONT>>, shape="octagon"];
+	"THR-002" [fillcolor="#4c0519", fontcolor="#FFFFFF", label=<<FONT><B>🐛 Threat</B><br />Path Traversal or Arbitrary Write<br /><br />A crafted input path or unsafe write behavior could<br />cause tooling to write outside the intended<br />model/workspace directory, overwriting unrelated files.</FONT>>, shape="octagon"];
+	"THR-003" [fillcolor="#4c0519", fontcolor="#FFFFFF", label=<<FONT><B>🐛 Threat</B><br />Untrusted Workspace Execution or Access<br /><br />Operating in an untrusted workspace could allow unsafe<br />operations that lead to data exposure or unintended<br />execution paths.</FONT>>, shape="octagon"];
 	"ACT-003" -> "THR-001" [label="presents"];
 	"ACT-003" -> "THR-002" [label="presents"];
 	"ACT-003" -> "THR-003" [label="presents"];
 	"THR-001" -> "RIS-001" [label="imposes"];
 	"THR-002" -> "RIS-002" [label="imposes"];
 	"THR-003" -> "RIS-003" [label="imposes"];
+	subgraph "cluster_BND-001" {
+		graph [color="#000000", label="Untrusted (BND-001)", style="dashed"];
+		"ACT-003";
+	}
 }

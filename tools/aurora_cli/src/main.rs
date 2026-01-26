@@ -109,12 +109,15 @@ fn run_validate(homes: &[ModelHome]) -> Result<()> {
 	let mut failures = false;
 	for home in homes {
 		info!(path = %home.root().display(), "Validating model home");
-		let model = load_model(home)
-			.with_context(|| format!("failed to load model at {}", home.root().display()))?;
-		let report = validate_model(&model);
-		emit_report(home, &report);
-		if report.has_errors() {
-			failures = true;
+		let models = load_mission_models(home)?;
+		for model in models {
+			let label = model_label(&model);
+			info!(path = %home.root().display(), mission = %label, "Validating mission model");
+			let report = validate_model(&model);
+			emit_report(home, &model, &report);
+			if report.has_errors() {
+				failures = true;
+			}
 		}
 	}
 
@@ -128,33 +131,36 @@ fn run_render(homes: &[ModelHome], base_output: &Path, mode: RenderMode) -> Resu
 	let mut failures = false;
 	for home in homes {
 		info!(path = %home.root().display(), "Rendering model home");
-		let model = load_model(home)
-			.with_context(|| format!("failed to load model at {}", home.root().display()))?;
-		let report = validate_model(&model);
-		emit_report(home, &report);
-		if report.has_errors() {
-			failures = true;
-			continue;
-		}
-
-		let mut model_dir = base_output.join(model_output_dir(&model));
-		if let Some(mission_dir) = mission_output_dir(&model) {
-			let candidate = base_output.join(&mission_dir);
-			if candidate.exists() {
-				model_dir = candidate;
+		let models = load_mission_models(home)?;
+		for model in models {
+			let label = model_label(&model);
+			info!(path = %home.root().display(), mission = %label, "Rendering mission model");
+			let report = validate_model(&model);
+			emit_report(home, &model, &report);
+			if report.has_errors() {
+				failures = true;
+				continue;
 			}
-		}
-		fs::create_dir_all(&model_dir).with_context(|| {
-			format!(
-				"failed to create render output directory {}",
-				model_dir.display()
-			)
-		})?;
 
-		let summary = mode
-			.execute(&model, &model_dir)
-			.with_context(|| format!("failed to render model at {}", home.root().display()))?;
-		print_render_summary(&summary);
+			let mut model_dir = base_output.join(model_output_dir(&model));
+			if let Some(mission_dir) = mission_output_dir(&model) {
+				let candidate = base_output.join(&mission_dir);
+				if candidate.exists() {
+					model_dir = candidate;
+				}
+			}
+			fs::create_dir_all(&model_dir).with_context(|| {
+				format!(
+					"failed to create render output directory {}",
+					model_dir.display()
+				)
+			})?;
+
+			let summary = mode
+				.execute(&model, &model_dir)
+				.with_context(|| format!("failed to render model at {}", home.root().display()))?;
+			print_render_summary(&summary);
+		}
 	}
 
 	if failures {
@@ -164,29 +170,39 @@ fn run_render(homes: &[ModelHome], base_output: &Path, mode: RenderMode) -> Resu
 }
 
 fn run_compact(homes: &[ModelHome], output: Option<PathBuf>) -> Result<()> {
-	if output.is_some() && homes.len() > 1 {
-		bail!("--output can only be used when targeting a single model home");
+	let mut models_by_home = Vec::new();
+	let mut model_count = 0usize;
+	for home in homes {
+		let models = load_mission_models(home)?;
+		model_count = model_count.saturating_add(models.len());
+		models_by_home.push((home.clone(), models));
+	}
+
+	if output.is_some() && model_count > 1 {
+		bail!("--output can only be used when targeting a single mission model");
 	}
 
 	let mut failures = false;
-	for home in homes {
+	for (home, models) in models_by_home {
 		info!(path = %home.root().display(), "Writing compact model");
-		let model = load_model(home)
-			.with_context(|| format!("failed to load model at {}", home.root().display()))?;
-		let report = validate_model(&model);
-		emit_report(home, &report);
-		if report.has_errors() {
-			failures = true;
-			continue;
-		}
+		for model in models {
+			let label = model_label(&model);
+			info!(path = %home.root().display(), mission = %label, "Writing mission compact model");
+			let report = validate_model(&model);
+			emit_report(&home, &model, &report);
+			if report.has_errors() {
+				failures = true;
+				continue;
+			}
 
-		let path = write_compact_model(&model, output.clone()).with_context(|| {
-			format!(
-				"failed to write compact export for {}",
-				home.root().display()
-			)
-		})?;
-		println!("Wrote compact model to {}", path.display());
+			let path = write_compact_model(&model, output.clone()).with_context(|| {
+				format!(
+					"failed to write compact export for {}",
+					home.root().display()
+				)
+			})?;
+			println!("Wrote compact model to {}", path.display());
+		}
 	}
 
 	if failures {
@@ -199,13 +215,15 @@ fn unsupported_bump(level: &str) -> Result<()> {
 	bail!("Version bump commands are not implemented yet (requested {level} bump).");
 }
 
-fn emit_report(home: &ModelHome, report: &ValidationReport) {
-	println!("\nValidation report for {}", home.root().display());
+fn emit_report(home: &ModelHome, model: &AuroraModel, report: &ValidationReport) {
 	if report.diagnostics.is_empty() {
-		println!("  ✔ No issues found");
 		return;
 	}
-
+	println!(
+		"\nValidation report for {} :: {}",
+		home.root().display(),
+		model_label(model)
+	);
 	for diag in &report.diagnostics {
 		println!(
 			"  [{}] {}: {}",
@@ -245,6 +263,13 @@ fn mission_card(model: &AuroraModel) -> Option<&Card> {
 	model.iter_cards().find(|card| card.card_type == "Mission")
 }
 
+fn model_label(model: &AuroraModel) -> String {
+	if let Some(card) = mission_card(model) {
+		return format!("{} ({})", card.id, card.name);
+	}
+	"Unknown mission".to_string()
+}
+
 fn sanitize(value: &str) -> String {
 	value
 		.chars()
@@ -262,6 +287,12 @@ fn print_render_summary(summary: &RenderSummary) {
 		summary.views_written,
 		summary.output_dir.display()
 	);
+}
+
+fn load_mission_models(home: &ModelHome) -> Result<Vec<AuroraModel>> {
+	let model = load_model(home)
+		.with_context(|| format!("failed to load model at {}", home.root().display()))?;
+	Ok(model.split_by_mission())
 }
 
 #[derive(Debug, Clone, Copy)]

@@ -29,12 +29,17 @@
         - [Source: `tools/aurora_cli/src/main.rs`](../tools/aurora_cli/src/main.rs)
         - [Library & tests: `tools/aurora_shared/src/render.rs`](../tools/aurora_shared/src/render.rs)
     + Next Actions:
+        - Validate updated CLI render output after ID-prefixed headers and left-aligned icon labels; re-render artifacts if needed.
+        - Re-render views to confirm the dot-only layout selection matches expected output.
         - Keep the card/view output layout consistent across CLI, Editor, and VS Code (SVG-first view artifacts and DOT sources under `Views/source/`).
         - Align visual cues across hosts (Unicode icon prefixes, subtype line format, and the "Zoom & pan" link cue).
+        - Re-render views after SVG shape/icon updates to confirm Card_Definitions palette alignment.
         - Regenerate view artifacts any time the view renderer changes (to keep `docs/design/*/Views/` in sync).
         - Continue hardening the canonical view renderer with regression coverage around boundaries/notes/root filtering.
+        - Ensure boundary cluster DOT output uses graph attribute statements so Graphviz accepts clusters with multiple attributes.
         - Expand shared library coverage (schema validation, workspace packaging) so Editor/VSCode hosts can reuse the same logic.
         - Flesh out version bump workflows and additional CLI surfaces once shared semantics are defined.
+        - Keep multi-mission model home handling in the CLI covered with regression tests.
 
 - [ ] **BackendDeveloper** (APP-002) **Tauri Editor Backend**
     + Status: Coding
@@ -47,6 +52,7 @@
         - Wire up the UI to the expanded backend command surface (workspace setup, model operations, card CRUD).
         - Implement workspace watchers for live reload and diagnostics updates.
         - Add integration tests or a mocked Tauri command harness once system dependencies (webkit/libsoup) are available locally.
+        - Surface backend validation rollback errors in the editor UI when edits are rejected.
 
 - [ ] **UIDeveloper** (APP-002) **Tauri Editor UI**
     + Status: Coding
@@ -59,9 +65,11 @@
     + UI Notes:
         - Workspace connect + quick actions (validate/render/compact) are the primary flow.
         - Diagnostics + model home selection should remain the "always visible" feedback loop.
-        - Keep payload casing consistent with backend command schemas (camelCase).
+        - Keep payload casing consistent with backend command schemas (snake_case).
+        - Trim render output paths before invocation and surface guidance for ~ path handling.
     + Accessibility Notes:
         - Maintain keyboard-only parity and minimum hit-target sizing on core actions.
+        - Workspace and output path hints are plain text and readable at default zoom.
     + Dependency Notes:
         - Using Tauri v2 `invoke` via `@tauri-apps/api/core` and a permissive dev capability for local iteration.
     + Next Actions:

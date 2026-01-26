@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2823.55 1480.90" width="2823.55" height="1480.90" data-theme="dark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2823.55 1466.69" width="2823.55" height="1466.69" data-theme="dark">
 <defs>
 <style>
 svg{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}
@@ -10,32 +10,9 @@ svg[data-theme="light"]{--bg:#FFFFFF;--edge:#111827;--edgeLabel:#111827;--nodeSt
 .edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
 .node-label{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:11px;}
 .node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
+.node-shape-outline{fill:none;}
 .boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:2;stroke-dasharray:6 6;}
 .boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
-.card-type-risk .node-shape{fill:#9D3D5B;}
-svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
-.card-type-risk .node-label{--nodeText:#FFFFFF;}
-.card-type-mission .node-shape{fill:#30524A;}
-svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
-.card-type-mission .node-label{--nodeText:#FFFFFF;}
-.card-type-actor .node-shape{fill:#435432;}
-svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
-.card-type-actor .node-label{--nodeText:#FFFFFF;}
-.card-type-story .node-shape{fill:#5A723E;}
-svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
-.card-type-story .node-label{--nodeText:#FFFFFF;}
-.card-type-note .node-shape{fill:#47505B;}
-svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
-.card-type-note .node-label{--nodeText:#FFFFFF;}
-.card-type-node .node-shape{fill:#565498;}
-svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
-.card-type-node .node-label{--nodeText:#FFFFFF;}
 .card-type-control .node-shape{fill:#8B623D;}
 svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
@@ -44,6 +21,14 @@ svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
 .card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
 .card-type-condition .node-shape{fill:#644833;}
 svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
@@ -52,78 +37,94 @@ svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
 svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
 .card-type-state-machine .node-label{--nodeText:#FFFFFF;}
-.card-type-artifact .node-shape{fill:#47505E;}
-svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
-.card-type-artifact .node-label{--nodeText:#FFFFFF;}
-.card-type-data-store .node-shape{fill:#34779B;}
-svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
-.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
 .card-type-test .node-shape{fill:#30524A;}
 svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
 .card-type-test .node-label{--nodeText:#FFFFFF;}
-.card-type-process .node-shape{fill:#543B81;}
-svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
-.card-type-process .node-label{--nodeText:#FFFFFF;}
-.card-type-event .node-shape{fill:#7949C3;}
-svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
-.card-type-event .node-label{--nodeText:#FFFFFF;}
-.card-type-application .node-shape{fill:#475D9F;}
-svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
-.card-type-application .node-label{--nodeText:#FFFFFF;}
-.card-type-node-instance .node-shape{fill:#5B55B4;}
-svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
-.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
-.card-type-feature .node-shape{fill:#3E7253;}
-svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
-.card-type-feature .node-label{--nodeText:#FFFFFF;}
-.card-type-component .node-shape{fill:#4762BD;}
-svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
-.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
 .card-type-system .node-shape{fill:#414C73;}
 svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
 .card-type-system .node-label{--nodeText:#FFFFFF;}
-.card-type-interface .node-shape{fill:#34546A;}
-svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
-.card-type-interface .node-label{--nodeText:#FFFFFF;}
-.card-type-activity .node-shape{fill:#6C46A8;}
-svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
-.card-type-activity .node-label{--nodeText:#FFFFFF;}
-.card-type-constraint .node-shape{fill:#9B6D39;}
-svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
-.card-type-constraint .node-label{--nodeText:#FFFFFF;}
-.card-type-threat .node-shape{fill:#6C3242;}
-svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
-.card-type-threat .node-label{--nodeText:#FFFFFF;}
-.card-type-asset .node-shape{fill:#586374;}
-svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
-.card-type-asset .node-label{--nodeText:#FFFFFF;}
-.card-type-driver .node-shape{fill:#336E5E;}
-svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
-.card-type-driver .node-label{--nodeText:#FFFFFF;}
-.card-type-state .node-shape{fill:#8A438E;}
-svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
-.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
 .card-type-deployment .node-shape{fill:#47446B;}
 svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
 .card-type-deployment .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#9B6D39;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
+.card-type-interface .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
 .card-type-capability .node-shape{fill:#325440;}
 svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
@@ -134,66 +135,70 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </marker>
 </defs>
 <rect class="bg" x="0" y="0" width="100%" height="100%" />
-<path class="edge-path" d="M 553.67 888.48 L 601.08 898.16 L 651.36 908.62 L 698.02 918.71 L 734.27 926.55 L 752.91 911.37 L 779.35 937.38 L 811.10 968.63 L 772.35 1002.71 L 803.35 1034.72 L 820.05 1051.95 L 839.62 1066.13 L 860.76 1077.77" data-tail="ACT-003" data-head="THR-001" />
-<text class="edge-label" x="750.68" y="914.72" text-anchor="middle" dominant-baseline="middle">presents</text>
-<path class="edge-path" d="M 604.69 824.10 L 638.31 812.99 L 670.58 797.50 L 698.02 776.04 L 763.79 724.62 L 756.36 686.98 L 779.35 606.71 L 792.72 560.00 L 771.91 426.43 L 803.35 389.38 L 818.32 371.71 L 836.29 357.22 L 856.05 345.31" data-tail="ACT-003" data-head="THR-002" />
-<text class="edge-label" x="750.68" y="600.05" text-anchor="middle" dominant-baseline="middle">presents</text>
-<path class="edge-path" d="M 619.61 863.03 L 676.08 866.18 L 736.38 869.53 L 795.19 872.80" data-tail="ACT-003" data-head="THR-003" />
-<text class="edge-label" x="750.68" y="864.05" text-anchor="middle" dominant-baseline="middle">presents</text>
-<path class="edge-path" d="M 675.96 1031.56 L 903.36 1041.95 L 1212.96 1042.12 L 1480.99 993.38 L 1576.61 975.97 L 1678.85 940.44 L 1761.89 906.88" data-tail="CTL-001" data-head="RIS-003" />
-<text class="edge-label" x="1142.11" y="986.72" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 648.80 968.97 L 692.61 963.07 L 737.17 956.89 L 779.35 950.72 L 803.99 947.11 L 829.56 943.23 L 855.18 939.25" data-tail="CTL-001" data-head="THR-003" />
-<text class="edge-label" x="750.68" y="944.04" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 684.29 392.54 L 724.41 393.89 L 764.79 395.14 L 803.35 396.00 L 1079.42 402.82 L 1393.63 405.79 L 1620.38 407.04" data-tail="CTL-002" data-head="RIS-002" />
+<g class="boundary">
+<rect x="51.94" y="785.29" width="594.14" height="154.79" rx="8" ry="8" />
+<text class="boundary-label" x="59.94" y="799.29">Untrusted (BND-001)</text>
+</g>
+<path class="edge-path" d="M 563.41 900.88 L 608.17 910.33 L 654.86 921.25 L 698.02 933.35 L 735.01 943.73 L 754.83 933.10 L 779.35 962.69 L 822.24 1014.45 L 758.60 1061.86 L 803.35 1112.03 L 818.84 1129.39 L 837.24 1143.68 L 857.32 1155.43" data-tail="ACT-003" data-head="THR-001" />
+<text class="edge-label" x="750.68" y="932.03" text-anchor="middle" dominant-baseline="middle">presents</text>
+<path class="edge-path" d="M 616.07 880.27 L 688.59 879.04 L 754.16 870.24 L 779.35 845.36 L 815.44 809.70 L 771.65 428.93 L 803.35 389.38 L 817.44 371.71 L 834.52 357.22 L 853.43 345.31" data-tail="ACT-003" data-head="THR-002" />
+<text class="edge-label" x="750.68" y="838.68" text-anchor="middle" dominant-baseline="middle">presents</text>
+<path class="edge-path" d="M 612.18 882.46 L 649.05 884.69 L 686.47 886.64 L 722.02 888.02 L 745.88 888.95 L 770.52 889.70 L 795.33 890.31" data-tail="ACT-003" data-head="THR-003" />
+<text class="edge-label" x="750.68" y="881.36" text-anchor="middle" dominant-baseline="middle">presents</text>
+<path class="edge-path" d="M 675.85 1045.56 L 903.88 1054.70 L 1214.30 1051.44 L 1480.99 993.35 L 1585.44 970.59 L 1696.03 923.77 L 1781.57 881.91" data-tail="CTL-001" data-head="RIS-003" />
+<text class="edge-label" x="1142.11" y="986.69" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 675.93 991.21 L 710.92 986.70 L 745.93 981.65 L 779.35 976.02 L 820.05 969.17 L 863.02 960.48 L 904.57 951.31" data-tail="CTL-001" data-head="THR-003" />
+<text class="edge-label" x="750.68" y="969.35" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 684.21 390.14 L 724.34 392.45 L 764.76 394.46 L 803.35 396.00 L 1079.33 406.85 L 1393.44 409.34 L 1620.29 409.44" data-tail="CTL-002" data-head="RIS-002" />
 <text class="edge-label" x="1142.11" y="389.38" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 671.86 344.54 L 717.38 339.74 L 764.25 334.75 L 809.93 329.86" data-tail="CTL-002" data-head="THR-002" />
-<text class="edge-label" x="750.68" y="328.03" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 659.00 1445.14 L 888.54 1465.78 L 1207.97 1475.56 L 1480.99 1414.71 L 1602.43 1387.65 L 1729.73 1324.27 L 1818.24 1273.82" data-tail="CTL-003" data-head="RIS-001" />
-<text class="edge-label" x="1142.11" y="1408.05" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 685.61 1371.22 L 720.15 1356.85 L 752.40 1337.63 L 779.35 1312.05 L 808.75 1284.13 L 774.79 1252.82 L 803.35 1224.05 L 820.35 1206.92 L 840.18 1192.83 L 861.56 1181.24" data-tail="CTL-003" data-head="THR-001" />
-<text class="edge-label" x="750.68" y="1305.38" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 1369.73 598.46 L 1407.07 588.40 L 1445.18 577.63 L 1480.99 566.72 L 1575.94 537.72 L 1680.58 501.31 L 1765.25 470.59" data-tail="CTL-004" data-head="RIS-002" />
-<text class="edge-label" x="1533.60" y="537.38" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 1384.13 707.95 L 1476.58 728.41 L 1582.46 751.83 L 1676.35 772.62" data-tail="CTL-004" data-head="RIS-003" />
-<text class="edge-label" x="1533.60" y="730.71" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 683.86 335.52 L 722.14 332.16 L 761.21 328.61 L 799.59 325.15" data-tail="CTL-002" data-head="THR-002" />
+<text class="edge-label" x="750.68" y="321.31" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 605.71 1144.67 L 669.96 1133.89 L 738.95 1124.14 L 803.35 1118.69 L 1076.93 1095.50 L 1389.02 1105.25 L 1615.68 1118.83" data-tail="CTL-003" data-head="RIS-001" />
+<text class="edge-label" x="1142.11" y="1097.36" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 698.21 1200.72 L 731.52 1201.16 L 765.28 1201.62 L 798.54 1202.07" data-tail="CTL-003" data-head="THR-001" />
+<text class="edge-label" x="750.68" y="1194.69" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 1369.73 598.44 L 1407.07 588.37 L 1445.18 577.60 L 1480.99 566.69 L 1575.94 537.70 L 1680.58 501.22 L 1765.25 470.59" data-tail="CTL-004" data-head="RIS-002" />
+<text class="edge-label" x="1533.60" y="537.35" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 1405.82 702.98 L 1485.31 717.61 L 1572.86 733.74 L 1653.41 748.57" data-tail="CTL-004" data-head="RIS-003" />
+<text class="edge-label" x="1533.60" y="717.35" text-anchor="middle" dominant-baseline="middle">mitigates</text>
 <path class="edge-path" d="M 548.79 138.72 L 665.38 138.72 L 812.63 138.72 L 931.11 138.72" data-tail="FEA-013" data-head="REQ-015" />
 <text class="edge-label" x="750.68" y="132.00" text-anchor="middle" dominant-baseline="middle">satisfies</text>
-<path class="edge-path" d="M 521.18 89.38 L 747.17 32.74 L 1154.88 -39.26 L 1480.99 69.41 L 1637.18 121.44 L 1782.91 250.94 L 1864.70 333.89" data-tail="FEA-013" data-head="RIS-002" />
+<path class="edge-path" d="M 521.18 89.38 L 747.17 32.74 L 1154.88 -39.26 L 1480.99 69.31 L 1637.18 121.34 L 1782.91 250.85 L 1864.70 333.79" data-tail="FEA-013" data-head="RIS-002" />
 <text class="edge-label" x="1142.11" y="6.72" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 548.79 177.89 L 648.35 197.57 L 770.27 221.57 L 877.54 242.78" data-tail="FEA-013" data-head="THR-002" />
+<path class="edge-path" d="M 548.79 177.89 L 648.35 197.47 L 770.27 221.57 L 877.54 242.69" data-tail="FEA-013" data-head="THR-002" />
 <text class="edge-label" x="750.68" y="210.72" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 457.39 680.69 L 548.30 646.24 L 682.84 598.22 L 803.35 566.72 L 843.90 556.11 L 887.65 546.70 L 929.80 538.64" data-tail="FEA-014" data-head="REQ-016" />
-<text class="edge-label" x="750.68" y="568.05" text-anchor="middle" dominant-baseline="middle">satisfies</text>
-<path class="edge-path" d="M 535.46 736.69 L 617.51 742.80 L 715.24 749.94 L 803.35 756.05 L 1060.42 773.85 L 1350.53 792.65 L 1572.38 806.76" data-tail="FEA-014" data-head="RIS-003" />
-<text class="edge-label" x="1142.11" y="749.38" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 535.22 729.26 L 589.86 736.87 L 648.31 750.87 L 698.02 776.04 L 711.48 782.86 L 708.78 792.81 L 722.02 800.04 L 757.81 819.64 L 797.48 835.06 L 837.72 847.20" data-tail="FEA-014" data-head="THR-003" />
-<text class="edge-label" x="750.68" y="793.38" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 576.86 1270.61 L 682.08 1283.56 L 806.94 1298.94 L 912.39 1311.92" data-tail="FEA-015" data-head="REQ-017" />
-<text class="edge-label" x="750.68" y="1284.05" text-anchor="middle" dominant-baseline="middle">satisfies</text>
-<path class="edge-path" d="M 576.73 1243.72 L 805.04 1243.93 L 1167.55 1242.08 L 1480.99 1230.71 L 1524.58 1229.14 L 1570.56 1226.92 L 1615.78 1224.42" data-tail="FEA-015" data-head="RIS-001" />
-<text class="edge-label" x="1142.11" y="1224.05" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 576.86 1210.23 L 659.09 1198.44 L 753.32 1184.94 L 840.90 1172.38" data-tail="FEA-015" data-head="THR-001" />
-<text class="edge-label" x="750.68" y="1176.05" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 2239.20 1202.72 L 2284.51 1202.72 L 2330.50 1202.72 L 2373.79 1202.72" data-tail="RIS-001" data-head="AST-002" />
-<text class="edge-label" x="2330.88" y="1196.04" text-anchor="middle" dominant-baseline="middle">impacts</text>
-<path class="edge-path" d="M 2050.27 1138.32 L 2177.09 1067.06 L 2379.55 953.36 L 2500.22 885.57" data-tail="RIS-001" data-head="AST-003" />
-<text class="edge-label" x="2330.88" y="965.38" text-anchor="middle" dominant-baseline="middle">impacts</text>
+<path class="edge-path" d="M 470.81 666.00 L 561.45 635.48 L 689.15 594.77 L 803.35 566.69 L 843.92 556.71 L 887.60 547.60 L 929.64 539.63" data-tail="FEA-014" data-head="REQ-016" />
+<text class="edge-label" x="750.68" y="566.69" text-anchor="middle" dominant-baseline="middle">satisfies</text>
+<path class="edge-path" d="M 535.23 730.43 L 617.25 739.64 L 715.00 749.63 L 803.35 756.02 L 1060.03 774.60 L 1350.14 785.69 L 1572.10 792.09" data-tail="FEA-014" data-head="RIS-003" />
+<text class="edge-label" x="1142.11" y="749.36" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 535.19 702.26 L 591.48 708.36 L 650.88 723.48 L 698.02 756.02 L 716.34 768.68 L 704.20 786.65 L 722.02 800.03 L 745.21 817.43 L 793.09 832.77 L 848.49 845.68" data-tail="FEA-014" data-head="THR-003" />
+<text class="edge-label" x="750.68" y="793.35" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 576.86 1360.28 L 682.08 1370.93 L 806.94 1383.56 L 912.39 1394.24" data-tail="FEA-015" data-head="REQ-017" />
+<text class="edge-label" x="750.68" y="1370.69" text-anchor="middle" dominant-baseline="middle">satisfies</text>
+<path class="edge-path" d="M 576.59 1340.05 L 855.75 1341.90 L 1313.95 1339.62 L 1480.99 1308.02 L 1585.34 1288.27 L 1697.57 1247.64 L 1784.16 1211.76" data-tail="FEA-015" data-head="RIS-001" />
+<text class="edge-label" x="1142.11" y="1301.36" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 576.74 1303.32 L 617.16 1297.05 L 658.85 1290.44 L 698.02 1284.02 L 752.20 1275.14 L 810.05 1265.29 L 865.45 1255.69" data-tail="FEA-015" data-head="THR-001" />
+<text class="edge-label" x="750.68" y="1264.02" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 2239.20 1144.02 L 2284.51 1144.02 L 2330.50 1144.02 L 2373.79 1144.02" data-tail="RIS-001" data-head="AST-002" />
+<text class="edge-label" x="2330.88" y="1137.35" text-anchor="middle" dominant-baseline="middle">impacts</text>
+<path class="edge-path" d="M 2059.87 1079.72 L 2184.48 1015.24 L 2374.37 916.95 L 2492.64 855.70" data-tail="RIS-001" data-head="AST-003" />
+<text class="edge-label" x="2330.88" y="925.35" text-anchor="middle" dominant-baseline="middle">impacts</text>
 <path class="edge-path" d="M 2234.40 408.00 L 2278.46 408.00 L 2323.20 408.00 L 2365.73 408.00" data-tail="RIS-002" data-head="AST-001" />
 <text class="edge-label" x="2330.88" y="401.38" text-anchor="middle" dominant-baseline="middle">impacts</text>
-<path class="edge-path" d="M 2037.31 472.51 L 2166.43 554.34 L 2387.14 694.29 L 2510.40 772.41" data-tail="RIS-002" data-head="AST-003" />
-<text class="edge-label" x="2330.88" y="637.38" text-anchor="middle" dominant-baseline="middle">impacts</text>
-<path class="edge-path" d="M 2282.50 829.38 L 2313.70 829.38 L 2344.61 829.38 L 2374.27 829.38" data-tail="RIS-003" data-head="AST-003" />
-<text class="edge-label" x="2330.88" y="822.71" text-anchor="middle" dominant-baseline="middle">impacts</text>
-<path class="edge-path" d="M 1471.97 1159.89 L 1520.93 1164.44 L 1571.33 1169.12 L 1619.90 1173.64" data-tail="THR-001" data-head="RIS-001" />
-<text class="edge-label" x="1533.60" y="1157.38" text-anchor="middle" dominant-baseline="middle">imposes</text>
+<path class="edge-path" d="M 2044.61 472.32 L 2172.67 547.85 L 2383.10 671.97 L 2504.93 743.83" data-tail="RIS-002" data-head="AST-003" />
+<text class="edge-label" x="2330.88" y="621.35" text-anchor="middle" dominant-baseline="middle">impacts</text>
+<path class="edge-path" d="M 2282.50 800.03 L 2313.70 800.03 L 2344.61 800.03 L 2374.27 800.03" data-tail="RIS-003" data-head="AST-003" />
+<text class="edge-label" x="2330.88" y="793.35" text-anchor="middle" dominant-baseline="middle">impacts</text>
+<path class="edge-path" d="M 1471.97 1180.61 L 1519.58 1176.84 L 1568.54 1172.95 L 1615.87 1169.19" data-tail="THR-001" data-head="RIS-001" />
+<text class="edge-label" x="1533.60" y="1166.69" text-anchor="middle" dominant-baseline="middle">imposes</text>
 <path class="edge-path" d="M 1429.06 335.71 L 1506.14 346.75 L 1589.18 358.66 L 1665.22 369.60" data-tail="THR-002" data-head="RIS-002" />
 <text class="edge-label" x="1533.60" y="341.38" text-anchor="middle" dominant-baseline="middle">imposes</text>
-<path class="edge-path" d="M 1476.00 865.65 L 1508.06 863.11 L 1540.61 860.52 L 1572.96 857.96" data-tail="THR-003" data-head="RIS-003" />
-<text class="edge-label" x="1533.60" y="853.38" text-anchor="middle" dominant-baseline="middle">imposes</text>
+<path class="edge-path" d="M 1454.40 855.79 L 1502.11 850.23 L 1551.55 844.47 L 1599.74 838.86" data-tail="THR-003" data-head="RIS-003" />
+<text class="edge-label" x="1533.60" y="837.35" text-anchor="middle" dominant-baseline="middle">imposes</text>
 <g class="node card-type-actor" data-card-id="ACT-003" data-layout-node="ACT-003">
-<ellipse class="node-shape" cx="349.01" cy="848.04" rx="279.07" ry="59.40" />
-<text class="node-label" x="349.01" y="820.04" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Actor</tspan>
+<ellipse class="node-shape" cx="349.01" cy="862.68" rx="279.07" ry="59.40" />
+<text class="node-label" x="349.01" y="834.68" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">👤 Actor</tspan>
 <tspan x="349.01" dy="14.00">Malicious Workspace Author</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Adversarial actor who crafts workspace content to exploit tooling</tspan>
@@ -203,7 +208,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-asset" data-card-id="AST-001" data-layout-node="AST-001">
 <rect class="node-shape" x="2379.60" y="358.67" width="444.00" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="2601.60" y="380.00" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Asset</tspan>
+<tspan font-weight="700">🛡️ Asset</tspan>
 <tspan x="2601.60" dy="14.00">Aurora Models</tspan>
 <tspan x="2601.60" dy="14.00">&#160;</tspan>
 <tspan x="2601.60" dy="14.00">Aurora model source files (cards and schema references) that</tspan>
@@ -211,9 +216,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-asset" data-card-id="AST-002" data-layout-node="AST-002">
-<rect class="node-shape" x="2387.60" y="1153.38" width="428.00" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="2601.60" y="1174.72" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Asset</tspan>
+<rect class="node-shape" x="2387.60" y="1094.69" width="428.00" height="98.67" rx="6" ry="6" />
+<text class="node-label" x="2601.60" y="1116.02" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">🛡️ Asset</tspan>
 <tspan x="2601.60" dy="14.00">Rendered Documentation Output</tspan>
 <tspan x="2601.60" dy="14.00">&#160;</tspan>
 <tspan x="2601.60" dy="14.00">Generated Markdown and view artifacts produced from Aurora</tspan>
@@ -221,9 +226,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-asset" data-card-id="AST-003" data-layout-node="AST-003">
-<rect class="node-shape" x="2388.27" y="780.05" width="426.66" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="2601.60" y="801.38" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Asset</tspan>
+<rect class="node-shape" x="2388.27" y="750.69" width="426.66" height="98.67" rx="6" ry="6" />
+<text class="node-label" x="2601.60" y="772.03" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">🛡️ Asset</tspan>
 <tspan x="2601.60" dy="14.00">User Workspace Content</tspan>
 <tspan x="2601.60" dy="14.00">&#160;</tspan>
 <tspan x="2601.60" dy="14.00">The user’s workspace files and settings (including source</tspan>
@@ -231,9 +236,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-001" data-layout-node="CTL-001">
-<polygon class="node-shape" points="473.98,936.94 650.71,977.81 650.71,1035.61 473.98,1076.48 224.04,1076.48 47.31,1035.61 47.31,977.81 224.04,936.94" />
-<text class="node-label" x="349.01" y="971.71" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<polygon class="node-shape" points="473.98,951.58 650.71,992.45 650.71,1050.25 473.98,1091.12 224.04,1091.12 47.31,1050.25 47.31,992.45 224.04,951.58" />
+<text class="node-label" x="349.01" y="986.35" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="349.01" dy="14.00">Workspace Trust Gate</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Gate potentially unsafe operations (e.g., file writes, webview</tspan>
@@ -242,9 +247,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-002" data-layout-node="CTL-002">
-<polygon class="node-shape" points="477.10,308.95 658.25,349.82 658.25,407.62 477.10,448.49 220.92,448.49 39.77,407.62 39.77,349.82 220.92,308.95" />
-<text class="node-label" x="349.01" y="343.72" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<polygon class="node-shape" points="477.10,295.61 658.25,336.48 658.25,394.28 477.10,435.15 220.92,435.15 39.77,394.28 39.77,336.48 220.92,295.61" />
+<text class="node-label" x="349.01" y="330.38" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="349.01" dy="14.00">Safe Path Handling and Atomic Writes</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Constrain paths to the intended workspace/model roots, normalize and</tspan>
@@ -253,9 +258,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-003" data-layout-node="CTL-003">
-<polygon class="node-shape" points="482.57,1335.61 671.45,1376.48 671.45,1434.28 482.57,1475.15 215.45,1475.15 26.57,1434.28 26.57,1376.48 215.45,1335.61" />
-<text class="node-label" x="349.01" y="1377.38" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<polygon class="node-shape" points="482.57,1126.26 671.45,1167.13 671.45,1224.93 482.57,1265.80 215.45,1265.80 26.57,1224.93 26.57,1167.13 215.45,1126.26" />
+<text class="node-label" x="349.01" y="1168.03" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="349.01" dy="14.00">Content Sanitization</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Sanitize rendered Markdown and webview content, restrict resource</tspan>
@@ -263,9 +268,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-004" data-layout-node="CTL-004">
-<polygon class="node-shape" points="1271.77,584.94 1455.13,625.81 1455.13,683.61 1271.77,724.48 1012.46,724.48 829.10,683.61 829.10,625.81 1012.46,584.94" />
-<text class="node-label" x="1142.11" y="626.71" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<polygon class="node-shape" points="1271.77,584.92 1455.13,625.79 1455.13,683.59 1271.77,724.46 1012.46,724.46 829.10,683.59 829.10,625.79 1012.46,584.92" />
+<text class="node-label" x="1142.11" y="626.69" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="1142.11" dy="14.00">Least Privilege File Access</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Minimize read/write permissions and scope operations to explicit</tspan>
@@ -275,7 +280,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-feature" data-card-id="FEA-013" data-layout-node="FEA-013">
 <rect class="node-shape" x="149.67" y="89.39" width="398.67" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="110.72" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="349.01" dy="14.00">Safe File Operations</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Perform safe, constrained file operations with clear user</tspan>
@@ -283,9 +288,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-014" data-layout-node="FEA-014">
-<rect class="node-shape" x="163.01" y="680.72" width="372.00" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="349.01" y="694.72" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<rect class="node-shape" x="163.01" y="666.02" width="372.00" height="84.00" rx="6" ry="6" />
+<text class="node-label" x="349.01" y="680.02" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="349.01" dy="14.00">Workspace Trust Gating</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Respect workspace trust boundaries by limiting</tspan>
@@ -293,9 +298,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-015" data-layout-node="FEA-015">
-<rect class="node-shape" x="121.68" y="1200.71" width="454.67" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="349.01" y="1214.71" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Feature</tspan>
+<rect class="node-shape" x="121.68" y="1295.36" width="454.67" height="84.00" rx="6" ry="6" />
+<text class="node-label" x="349.01" y="1309.36" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">⭐ Feature</tspan>
 <tspan x="349.01" dy="14.00">Sanitized Rendering</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Render Markdown and webview content safely, preventing script</tspan>
@@ -305,7 +310,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-015" data-layout-node="REQ-015">
 <rect class="node-shape" x="944.78" y="82.05" width="394.67" height="113.34" rx="6" ry="6" />
 <text class="node-label" x="1142.11" y="103.72" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="1142.11" dy="14.00">Safe File Operations</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Tools MUST perform file operations safely (prevent</tspan>
@@ -316,7 +321,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-requirement" data-card-id="REQ-016" data-layout-node="REQ-016">
 <rect class="node-shape" x="943.44" y="456.01" width="397.33" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="1142.11" y="477.34" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="1142.11" dy="14.00">Workspace Trust Gating</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Tools MUST respect workspace trust boundaries by limiting</tspan>
@@ -324,9 +329,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-requirement" data-card-id="REQ-017" data-layout-node="REQ-017">
-<rect class="node-shape" x="926.11" y="1290.71" width="432.00" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="1142.11" y="1312.04" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Requirement</tspan>
+<rect class="node-shape" x="926.11" y="1368.02" width="432.00" height="98.67" rx="6" ry="6" />
+<text class="node-label" x="1142.11" y="1389.35" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">☑️ Requirement</tspan>
 <tspan x="1142.11" dy="14.00">Sanitized Rendering</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Tools MUST render Markdown and any webview content safely by</tspan>
@@ -334,9 +339,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-risk" data-card-id="RIS-001" data-layout-node="RIS-001">
-<polygon class="node-shape" points="2051.07,1143.32 2216.20,1178.11 2216.20,1227.32 2051.07,1262.11 1817.54,1262.11 1652.40,1227.32 1652.40,1178.11 1817.54,1143.32" />
-<text class="node-label" x="1934.30" y="1174.72" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Risk</tspan>
+<polygon class="node-shape" points="2051.07,1084.63 2216.20,1119.42 2216.20,1168.63 2051.07,1203.42 1817.54,1203.42 1652.40,1168.63 1652.40,1119.42 1817.54,1084.63" />
+<text class="node-label" x="1934.30" y="1116.02" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">⚠️ Risk</tspan>
 <tspan x="1934.30" dy="14.00">Injected Content in Rendered Output</tspan>
 <tspan x="1934.30" dy="14.00">&#160;</tspan>
 <tspan x="1934.30" dy="14.00">Rendered output could contain unsafe content that misleads users or</tspan>
@@ -346,7 +351,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-risk" data-card-id="RIS-002" data-layout-node="RIS-002">
 <polygon class="node-shape" points="2049.12,348.60 2211.49,383.40 2211.49,432.60 2049.12,467.40 1819.49,467.40 1657.12,432.60 1657.12,383.40 1819.49,348.60" />
 <text class="node-label" x="1934.30" y="380.00" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Risk</tspan>
+<tspan font-weight="700">⚠️ Risk</tspan>
 <tspan x="1934.30" dy="14.00">Unintended File Modification</tspan>
 <tspan x="1934.30" dy="14.00">&#160;</tspan>
 <tspan x="1934.30" dy="14.00">Tooling could overwrite or corrupt files outside the intended model</tspan>
@@ -354,9 +359,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-risk" data-card-id="RIS-003" data-layout-node="RIS-003">
-<polygon class="node-shape" points="2067.47,759.61 2255.80,800.48 2255.80,858.28 2067.47,899.15 1801.14,899.15 1612.81,858.28 1612.81,800.48 1801.14,759.61" />
-<text class="node-label" x="1934.30" y="801.38" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Risk</tspan>
+<polygon class="node-shape" points="2067.47,730.26 2255.80,771.13 2255.80,828.93 2067.47,869.80 1801.14,869.80 1612.81,828.93 1612.81,771.13 1801.14,730.26" />
+<text class="node-label" x="1934.30" y="772.03" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">⚠️ Risk</tspan>
 <tspan x="1934.30" dy="14.00">Data Exposure from Untrusted Workspace</tspan>
 <tspan x="1934.30" dy="14.00">&#160;</tspan>
 <tspan x="1934.30" dy="14.00">Operating against untrusted workspace content could lead to disclosure</tspan>
@@ -364,9 +369,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-threat" data-card-id="THR-001" data-layout-node="THR-001">
-<polygon class="node-shape" points="1268.25,1059.61 1446.64,1100.48 1446.64,1158.28 1268.25,1199.15 1015.97,1199.15 837.59,1158.28 837.59,1100.48 1015.97,1059.61" />
-<text class="node-label" x="1142.11" y="1101.38" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Threat</tspan>
+<polygon class="node-shape" points="1268.25,1136.92 1446.64,1177.79 1446.64,1235.59 1268.25,1276.46 1015.97,1276.46 837.59,1235.59 837.59,1177.79 1015.97,1136.92" />
+<text class="node-label" x="1142.11" y="1178.69" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">🐛 Threat</tspan>
 <tspan x="1142.11" dy="14.00">Script Injection via Markdown</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Untrusted content in model descriptions or rendered Markdown could</tspan>
@@ -376,7 +381,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-threat" data-card-id="THR-002" data-layout-node="THR-002">
 <polygon class="node-shape" points="1267.86,224.95 1445.70,265.82 1445.70,323.62 1267.86,364.49 1016.36,364.49 838.53,323.62 838.53,265.82 1016.36,224.95" />
 <text class="node-label" x="1142.11" y="259.72" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Threat</tspan>
+<tspan font-weight="700">🐛 Threat</tspan>
 <tspan x="1142.11" dy="14.00">Path Traversal or Arbitrary Write</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">A crafted input path or unsafe write behavior could cause tooling to</tspan>
@@ -385,9 +390,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-threat" data-card-id="THR-003" data-layout-node="THR-003">
-<polygon class="node-shape" points="1269.81,822.28 1450.41,863.15 1450.41,920.95 1269.81,961.82 1014.41,961.82 833.81,920.95 833.81,863.15 1014.41,822.28" />
-<text class="node-label" x="1142.11" y="864.05" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Threat</tspan>
+<polygon class="node-shape" points="1269.81,822.25 1450.41,863.12 1450.41,920.92 1269.81,961.79 1014.41,961.79 833.81,920.92 833.81,863.12 1014.41,822.25" />
+<text class="node-label" x="1142.11" y="864.02" text-anchor="middle" dominant-baseline="middle">
+<tspan font-weight="700">🐛 Threat</tspan>
 <tspan x="1142.11" dy="14.00">Untrusted Workspace Execution or Access</tspan>
 <tspan x="1142.11" dy="14.00">&#160;</tspan>
 <tspan x="1142.11" dy="14.00">Operating in an untrusted workspace could allow unsafe operations that</tspan>

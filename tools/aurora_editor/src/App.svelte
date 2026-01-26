@@ -307,10 +307,15 @@
 			setAction('warn', 'Workspace untrusted', 'Enable trust to render artifacts.');
 			return;
 		}
+		const normalizedOutput = outputDir.trim();
+		if (!normalizedOutput) {
+			setAction('warn', 'Output directory required', 'Enter a workspace-relative output directory.');
+			return;
+		}
 		isBusy = true;
 		setAction('neutral', 'Rendering views', 'Generating DOT, SVG, and Markdown output.');
 		try {
-			const summary = await renderAllAssets(selectedModelHome, outputDir);
+			const summary = await renderAllAssets(selectedModelHome, normalizedOutput);
 			setAction(
 				'good',
 				'Render complete',
@@ -438,6 +443,7 @@
 							bind:value={workspacePath}
 							on:keydown={handleWorkspaceKeydown}
 						/>
+						<p class="field__hint">Supports ~ paths and absolute workspace roots.</p>
 					</div>
 					<label class="toggle">
 						<input type="checkbox" bind:checked={workspaceTrusted} />
@@ -474,6 +480,9 @@
 						<div class="field">
 							<label for="output-dir">Render output directory</label>
 							<input id="output-dir" type="text" bind:value={outputDir} />
+							<p class="field__hint">
+								Use a workspace-relative path (~/ is supported within the workspace).
+							</p>
 						</div>
 						<div class="field">
 							<label for="compact-output">Compact export path (optional)</label>

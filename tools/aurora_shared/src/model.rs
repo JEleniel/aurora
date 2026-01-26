@@ -1,4 +1,4 @@
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{BTreeMap, BTreeSet, HashMap};
 use std::path::{Path, PathBuf};
 
 use serde::{Deserialize, Serialize};
@@ -122,6 +122,49 @@ impl AuroraModel {
 		self.cards.is_empty()
 	}
 
+	/// Split a model home into mission-scoped models when multiple missions exist.
+	pub fn split_by_mission(&self) -> Vec<AuroraModel> {
+		let mission_ids = collect_mission_ids(self);
+		if mission_ids.len() <= 1 {
+			return vec![self.clone()];
+		}
+
+		let mission_set: BTreeSet<String> = mission_ids.iter().cloned().collect();
+		let mut by_mission: BTreeMap<String, Vec<Card>> = BTreeMap::new();
+		for mission_id in &mission_ids {
+			let mut mission_cards = Vec::new();
+			for card in self.iter_cards() {
+				if card.card_type == "Mission" && card.id == *mission_id {
+					mission_cards.push(card.clone());
+					break;
+				}
+			}
+			by_mission.insert(mission_id.clone(), mission_cards);
+		}
+
+		let mut shared_cards = Vec::new();
+		for card in self.iter_cards().filter(|card| card.card_type != "Mission") {
+			if let Some(mission_id) = mission_id_for_card(card, &mission_set, self.home.root()) {
+				if let Some(cards) = by_mission.get_mut(&mission_id) {
+					cards.push(card.clone());
+				}
+			} else {
+				shared_cards.push(card.clone());
+			}
+		}
+
+		if !shared_cards.is_empty() {
+			for cards in by_mission.values_mut() {
+				cards.extend(shared_cards.iter().cloned());
+			}
+		}
+
+		by_mission
+			.into_iter()
+			.map(|(_, cards)| AuroraModel::new(self.home.clone(), cards))
+			.collect()
+	}
+
 	pub fn get(&self, id: &str) -> Option<&Card> {
 		self.index_by_id
 			.get(id)
@@ -133,3 +176,29 @@ impl AuroraModel {
 		&self.index_by_id
 	}
 }
+
+fn collect_mission_ids(model: &AuroraModel) -> Vec<String> {
+	let mut ids: BTreeSet<String> = BTreeSet::new();
+	for card in model.iter_cards() {
+		if card.card_type == "Mission" {
+			ids.insert(card.id.clone());
+		}
+	}
+	ids.into_iter().collect()
+}
+
+fn mission_id_for_card(card: &Card, mission_ids: &BTreeSet<String>, root: &Path) -> Option<String> {
+	let source = card.source_path()?;
+	let relative = source.strip_prefix(root).ok()?;
+	let mut components = relative.components();
+	let first = components.next()?;
+	let candidate = first.as_os_str().to_str()?;
+	if mission_ids.contains(candidate) {
+		Some(candidate.to_string())
+	} else {
+		None
+	}
+}
+
+#[cfg(test)]
+mod tests;

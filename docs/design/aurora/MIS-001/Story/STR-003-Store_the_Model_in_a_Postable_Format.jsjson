@@ -10,7 +10,7 @@
 			"relationship": "explains"
 		},
 		{
-			"target": "STO-001",
+			"target": "STR-004",
 			"relationship": "includes"
 		}
 	],

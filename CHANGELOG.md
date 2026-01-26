@@ -50,3 +50,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated view connectivity checks to honor per-view root card types, preventing false orphan errors in cyclic flows.
 - Filtered view content to only include cards connected to the diagram roots, reducing unrelated nodes.
 - Corrected canonical instruction registry paths so view rendering loads definitions from `.github/instructions/details/`.
+- Ensured SVG rendering applies Card_Definitions shape variants (component, folder, note, tab, cylinder, box3d, cds, record) and icon prefixes in DOT/SVG labels.
+- Rolled back editor card mutations that would introduce validation errors when the model was previously valid.
+- Corrected Aurora Editor frontend invoke payload casing for validation/render/export commands and added path normalization hints for workspace-relative output.
+- Updated aurora_cli to split model homes by mission so validation, rendering, and compact exports run per mission when multiple missions share a model home.
+- Corrected boundary cluster DOT output to emit graph attribute statements inside subgraphs, preventing Graphviz syntax errors when boundaries are present.
+- Updated rendered card Markdown headers to format as `ID: **Card Type**` and suppressed empty validation reports in the CLI.
+- Adjusted SVG node labels to left-align large icons and include the card ID before the bold card type.
+- Switched view layout selection to always use Graphviz `dot`.
+- Increased icon-to-text spacing in rendered view labels to approximately 1rem.
+- Fixed boundary `attributes.recursive` handling so boundaries include descendant nodes in view renders (with loop-safe traversal).

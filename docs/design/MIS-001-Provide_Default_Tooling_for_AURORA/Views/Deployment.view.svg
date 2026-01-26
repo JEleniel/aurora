@@ -10,32 +10,9 @@ svg[data-theme="light"]{--bg:#FFFFFF;--edge:#111827;--edgeLabel:#111827;--nodeSt
 .edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
 .node-label{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:11px;}
 .node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
+.node-shape-outline{fill:none;}
 .boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:2;stroke-dasharray:6 6;}
 .boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
-.card-type-risk .node-shape{fill:#9D3D5B;}
-svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
-.card-type-risk .node-label{--nodeText:#FFFFFF;}
-.card-type-mission .node-shape{fill:#30524A;}
-svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
-.card-type-mission .node-label{--nodeText:#FFFFFF;}
-.card-type-actor .node-shape{fill:#435432;}
-svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
-.card-type-actor .node-label{--nodeText:#FFFFFF;}
-.card-type-story .node-shape{fill:#5A723E;}
-svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
-.card-type-story .node-label{--nodeText:#FFFFFF;}
-.card-type-note .node-shape{fill:#47505B;}
-svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
-.card-type-note .node-label{--nodeText:#FFFFFF;}
-.card-type-node .node-shape{fill:#565498;}
-svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
-.card-type-node .node-label{--nodeText:#FFFFFF;}
 .card-type-control .node-shape{fill:#8B623D;}
 svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
@@ -44,6 +21,14 @@ svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
 .card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
 .card-type-condition .node-shape{fill:#644833;}
 svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
@@ -52,78 +37,94 @@ svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
 svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
 .card-type-state-machine .node-label{--nodeText:#FFFFFF;}
-.card-type-artifact .node-shape{fill:#47505E;}
-svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
-.card-type-artifact .node-label{--nodeText:#FFFFFF;}
-.card-type-data-store .node-shape{fill:#34779B;}
-svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
-.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
 .card-type-test .node-shape{fill:#30524A;}
 svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
 .card-type-test .node-label{--nodeText:#FFFFFF;}
-.card-type-process .node-shape{fill:#543B81;}
-svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
-.card-type-process .node-label{--nodeText:#FFFFFF;}
-.card-type-event .node-shape{fill:#7949C3;}
-svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
-.card-type-event .node-label{--nodeText:#FFFFFF;}
-.card-type-application .node-shape{fill:#475D9F;}
-svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
-.card-type-application .node-label{--nodeText:#FFFFFF;}
-.card-type-node-instance .node-shape{fill:#5B55B4;}
-svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
-.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
-.card-type-feature .node-shape{fill:#3E7253;}
-svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
-.card-type-feature .node-label{--nodeText:#FFFFFF;}
-.card-type-component .node-shape{fill:#4762BD;}
-svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
-.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
 .card-type-system .node-shape{fill:#414C73;}
 svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
 .card-type-system .node-label{--nodeText:#FFFFFF;}
-.card-type-interface .node-shape{fill:#34546A;}
-svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
-.card-type-interface .node-label{--nodeText:#FFFFFF;}
-.card-type-activity .node-shape{fill:#6C46A8;}
-svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
-.card-type-activity .node-label{--nodeText:#FFFFFF;}
-.card-type-constraint .node-shape{fill:#9B6D39;}
-svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
-.card-type-constraint .node-label{--nodeText:#FFFFFF;}
-.card-type-threat .node-shape{fill:#6C3242;}
-svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
-.card-type-threat .node-label{--nodeText:#FFFFFF;}
-.card-type-asset .node-shape{fill:#586374;}
-svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
-.card-type-asset .node-label{--nodeText:#FFFFFF;}
-.card-type-driver .node-shape{fill:#336E5E;}
-svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
-.card-type-driver .node-label{--nodeText:#FFFFFF;}
-.card-type-state .node-shape{fill:#8A438E;}
-svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
-.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
 .card-type-deployment .node-shape{fill:#47446B;}
 svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
 .card-type-deployment .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#9B6D39;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
+.card-type-interface .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
 .card-type-capability .node-shape{fill:#325440;}
 svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
@@ -247,9 +248,11 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <path class="edge-path" d="M 274.40 656.81 L 317.50 680.65 L 374.36 709.10 L 428.00 726.66 L 459.78 737.07 L 493.86 745.72 L 527.75 752.89" data-tail="SYS-001" data-head="DEP-002" />
 <text class="edge-label" x="472.67" y="719.99" text-anchor="middle" dominant-baseline="middle">participates_in</text>
 <g class="node card-type-application" data-card-id="APP-001" data-layout-node="APP-001">
-<rect class="node-shape" x="2031.36" y="34.69" width="457.33" height="128.00" rx="6" ry="6" />
+<rect class="node-shape" x="2031.36" y="34.69" width="457.33" height="128.00" rx="6.00" ry="6.00" />
+<rect class="node-shape node-shape-outline" x="2035.36" y="46.69" width="14.00" height="16.00" rx="2" ry="2" />
+<rect class="node-shape node-shape-outline" x="2035.36" y="134.69" width="14.00" height="16.00" rx="2" ry="2" />
 <text class="node-label" x="2260.03" y="49.69" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Application</tspan>
+<tspan font-weight="700">🪟 Application</tspan>
 <tspan x="2260.03" dy="14.00">Command Line Tools</tspan>
 <tspan x="2260.03" dy="14.00">&#160;</tspan>
 <tspan x="2260.03" dy="14.00">A deployable command-line application that validates, renders, and</tspan>
@@ -260,9 +263,11 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-application" data-card-id="APP-002" data-layout-node="APP-002">
-<rect class="node-shape" x="2045.37" y="529.28" width="429.33" height="128.00" rx="6" ry="6" />
+<rect class="node-shape" x="2045.37" y="529.28" width="429.33" height="128.00" rx="6.00" ry="6.00" />
+<rect class="node-shape node-shape-outline" x="2049.37" y="541.28" width="14.00" height="16.00" rx="2" ry="2" />
+<rect class="node-shape node-shape-outline" x="2049.37" y="629.28" width="14.00" height="16.00" rx="2" ry="2" />
 <text class="node-label" x="2260.03" y="551.28" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Application</tspan>
+<tspan font-weight="700">🪟 Application</tspan>
 <tspan x="2260.03" dy="14.00">Editor</tspan>
 <tspan x="2260.03" dy="14.00">&#160;</tspan>
 <tspan x="2260.03" dy="14.00">A deployable application that provides an interactive</tspan>
@@ -272,9 +277,11 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-application" data-card-id="APP-003" data-layout-node="APP-003">
-<rect class="node-shape" x="1109.29" y="950.66" width="434.67" height="128.00" rx="6" ry="6" />
+<rect class="node-shape" x="1109.29" y="950.66" width="434.67" height="128.00" rx="6.00" ry="6.00" />
+<rect class="node-shape node-shape-outline" x="1113.29" y="962.66" width="14.00" height="16.00" rx="2" ry="2" />
+<rect class="node-shape node-shape-outline" x="1113.29" y="1050.66" width="14.00" height="16.00" rx="2" ry="2" />
 <text class="node-label" x="1326.62" y="965.66" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Application</tspan>
+<tspan font-weight="700">🪟 Application</tspan>
 <tspan x="1326.62" dy="14.00">VSCode Extension</tspan>
 <tspan x="1326.62" dy="14.00">&#160;</tspan>
 <tspan x="1326.62" dy="14.00">A VS Code extension that enables authoring, validation, and</tspan>
@@ -285,9 +292,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-001" data-layout-node="COM-001">
-<rect class="node-shape" x="3722.67" y="546.02" width="452.00" height="113.34" rx="6" ry="6" />
+<rect class="node-shape" x="3722.67" y="546.02" width="452.00" height="113.34" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 3730.67 554.02 L 4166.67 554.02 L 4166.67 651.36" />
 <text class="node-label" x="3948.67" y="560.69" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="3948.67" dy="14.00">Shared Library</tspan>
 <tspan x="3948.67" dy="14.00">&#160;</tspan>
 <tspan x="3948.67" dy="14.00">Shared library component used across tooling surfaces to load,</tspan>
@@ -297,9 +305,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-002" data-layout-node="COM-002">
-<rect class="node-shape" x="2610.68" y="248.69" width="421.33" height="84.00" rx="6" ry="6" />
+<rect class="node-shape" x="2610.68" y="248.69" width="421.33" height="84.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2618.68 256.69 L 3024.01 256.69 L 3024.01 324.69" />
 <text class="node-label" x="2821.34" y="262.69" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="2821.34" dy="14.00">Tauri Svelte UI</tspan>
 <tspan x="2821.34" dy="14.00">&#160;</tspan>
 <tspan x="2821.34" dy="14.00">The Tauri/Svelte front-end UI component for the Editor</tspan>
@@ -307,9 +316,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-003" data-layout-node="COM-003">
-<rect class="node-shape" x="3163.97" y="157.97" width="432.00" height="84.00" rx="6" ry="6" />
+<rect class="node-shape" x="3163.97" y="157.97" width="432.00" height="84.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 3171.97 165.97 L 3587.97 165.97 L 3587.97 233.97" />
 <text class="node-label" x="3379.97" y="171.97" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="3379.97" dy="14.00">Tauri Rust Backend</tspan>
 <tspan x="3379.97" dy="14.00">&#160;</tspan>
 <tspan x="3379.97" dy="14.00">The Rust backend component for the Editor application, hosting</tspan>
@@ -317,9 +327,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-004" data-layout-node="COM-004">
-<rect class="node-shape" x="2602.01" y="640.67" width="438.66" height="84.00" rx="6" ry="6" />
+<rect class="node-shape" x="2602.01" y="640.67" width="438.66" height="84.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2610.01 648.67 L 3032.68 648.67 L 3032.68 716.67" />
 <text class="node-label" x="2821.34" y="654.67" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="2821.34" dy="14.00">Explorer Tree View</tspan>
 <tspan x="2821.34" dy="14.00">&#160;</tspan>
 <tspan x="2821.34" dy="14.00">Editor UI component that presents an explorer tree over the</tspan>
@@ -327,9 +338,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-005" data-layout-node="COM-005">
-<rect class="node-shape" x="2622.68" y="748.67" width="397.33" height="84.00" rx="6" ry="6" />
+<rect class="node-shape" x="2622.68" y="748.67" width="397.33" height="84.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2630.68 756.67 L 3012.01 756.67 L 3012.01 824.67" />
 <text class="node-label" x="2821.34" y="762.67" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="2821.34" dy="14.00">Mind-Map Like View</tspan>
 <tspan x="2821.34" dy="14.00">&#160;</tspan>
 <tspan x="2821.34" dy="14.00">Editor UI component that provides a mind-map-like</tspan>
@@ -337,9 +349,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-006" data-layout-node="COM-006">
-<rect class="node-shape" x="2613.35" y="856.67" width="416.00" height="84.00" rx="6" ry="6" />
+<rect class="node-shape" x="2613.35" y="856.67" width="416.00" height="84.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2621.35 864.67 L 3021.34 864.67 L 3021.34 932.67" />
 <text class="node-label" x="2821.34" y="870.67" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="2821.34" dy="14.00">Edit View</tspan>
 <tspan x="2821.34" dy="14.00">&#160;</tspan>
 <tspan x="2821.34" dy="14.00">Editor UI component for editing cards, attributes, and links</tspan>
@@ -347,9 +360,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-007" data-layout-node="COM-007">
-<rect class="node-shape" x="2590.68" y="480.62" width="461.34" height="84.00" rx="6" ry="6" />
+<rect class="node-shape" x="2590.68" y="480.62" width="461.34" height="84.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2598.68 488.62 L 3044.01 488.62 L 3044.01 556.62" />
 <text class="node-label" x="2821.34" y="494.62" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="2821.34" dy="14.00">Markdown View</tspan>
 <tspan x="2821.34" dy="14.00">&#160;</tspan>
 <tspan x="2821.34" dy="14.00">Editor UI component for viewing and editing human-readable Markdown</tspan>
@@ -357,9 +371,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-008" data-layout-node="COM-008">
-<rect class="node-shape" x="3155.30" y="1383.99" width="449.34" height="98.67" rx="6" ry="6" />
+<rect class="node-shape" x="3155.30" y="1383.99" width="449.34" height="98.67" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 3163.30 1391.99 L 3596.64 1391.99 L 3596.64 1474.66" />
 <text class="node-label" x="3379.97" y="1398.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="3379.97" dy="14.00">MCP Server</tspan>
 <tspan x="3379.97" dy="14.00">&#160;</tspan>
 <tspan x="3379.97" dy="14.00">Model Context Protocol (MCP) server component used by the VSCode</tspan>
@@ -368,9 +383,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-009" data-layout-node="COM-009">
-<rect class="node-shape" x="4273.37" y="560.69" width="438.66" height="84.00" rx="6" ry="6" />
+<rect class="node-shape" x="4273.37" y="560.69" width="438.66" height="84.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 4281.37 568.69 L 4704.04 568.69 L 4704.04 636.69" />
 <text class="node-label" x="4492.70" y="574.69" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan><tspan> (struct)</tspan>
+<tspan font-weight="700">🧊 Component</tspan><tspan> (struct)</tspan>
 <tspan x="4492.70" dy="14.00">Aurora</tspan>
 <tspan x="4492.70" dy="14.00">&#160;</tspan>
 <tspan x="4492.70" dy="14.00">Core Aurora domain component providing the aggregate root for</tspan>
@@ -378,9 +394,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-010" data-layout-node="COM-010">
-<rect class="node-shape" x="4821.36" y="560.69" width="444.00" height="84.00" rx="6" ry="6" />
+<rect class="node-shape" x="4821.36" y="560.69" width="444.00" height="84.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 4829.36 568.69 L 5257.36 568.69 L 5257.36 636.69" />
 <text class="node-label" x="5043.36" y="574.69" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan><tspan> (struct)</tspan>
+<tspan font-weight="700">🧊 Component</tspan><tspan> (struct)</tspan>
 <tspan x="5043.36" dy="14.00">Model</tspan>
 <tspan x="5043.36" dy="14.00">&#160;</tspan>
 <tspan x="5043.36" dy="14.00">Aurora model domain component representing a directed graph of</tspan>
@@ -388,9 +405,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-011" data-layout-node="COM-011">
-<rect class="node-shape" x="5374.68" y="520.66" width="414.66" height="84.00" rx="6" ry="6" />
+<rect class="node-shape" x="5374.68" y="520.66" width="414.66" height="84.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 5382.68 528.66 L 5781.35 528.66 L 5781.35 596.66" />
 <text class="node-label" x="5582.02" y="534.66" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan><tspan> (struct)</tspan>
+<tspan font-weight="700">🧊 Component</tspan><tspan> (struct)</tspan>
 <tspan x="5582.02" dy="14.00">Card</tspan>
 <tspan x="5582.02" dy="14.00">&#160;</tspan>
 <tspan x="5582.02" dy="14.00">Aurora card domain component representing a single</tspan>
@@ -398,9 +416,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-012" data-layout-node="COM-012">
-<rect class="node-shape" x="2612.68" y="357.32" width="417.33" height="98.67" rx="6" ry="6" />
+<rect class="node-shape" x="2612.68" y="357.32" width="417.33" height="98.67" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2620.68 365.32 L 3022.01 365.32 L 3022.01 447.99" />
 <text class="node-label" x="2821.34" y="371.66" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="2821.34" dy="14.00">Aurora CLI</tspan>
 <tspan x="2821.34" dy="14.00">&#160;</tspan>
 <tspan x="2821.34" dy="14.00">Command-line interface component that orchestrates</tspan>
@@ -409,9 +428,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-013" data-layout-node="COM-013">
-<rect class="node-shape" x="2600.01" y="1261.32" width="442.67" height="98.67" rx="6" ry="6" />
+<rect class="node-shape" x="2600.01" y="1261.32" width="442.67" height="98.67" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2608.01 1269.32 L 3034.68 1269.32 L 3034.68 1351.99" />
 <text class="node-label" x="2821.34" y="1275.66" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="2821.34" dy="14.00">VSCode Extension Host</tspan>
 <tspan x="2821.34" dy="14.00">&#160;</tspan>
 <tspan x="2821.34" dy="14.00">Extension host component responsible for activation, command</tspan>
@@ -420,9 +440,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-014" data-layout-node="COM-014">
-<rect class="node-shape" x="2028.03" y="1261.32" width="464.00" height="98.67" rx="6" ry="6" />
+<rect class="node-shape" x="2028.03" y="1261.32" width="464.00" height="98.67" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2036.03 1269.32 L 2484.03 1269.32 L 2484.03 1351.99" />
 <text class="node-label" x="2260.03" y="1282.66" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="2260.03" dy="14.00">Webview UI Host</tspan>
 <tspan x="2260.03" dy="14.00">&#160;</tspan>
 <tspan x="2260.03" dy="14.00">Webview UI component hosting interactive model browsing, editing,</tspan>
@@ -430,9 +451,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-015" data-layout-node="COM-015">
-<rect class="node-shape" x="3150.63" y="1016.00" width="458.67" height="98.67" rx="6" ry="6" />
+<rect class="node-shape" x="3150.63" y="1016.00" width="458.67" height="98.67" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 3158.63 1024.00 L 3601.30 1024.00 L 3601.30 1106.67" />
 <text class="node-label" x="3379.97" y="1037.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Component</tspan>
+<tspan font-weight="700">🧊 Component</tspan>
 <tspan x="3379.97" dy="14.00">Workspace Adapter</tspan>
 <tspan x="3379.97" dy="14.00">&#160;</tspan>
 <tspan x="3379.97" dy="14.00">Component that mediates workspace file operations (open, watch, and</tspan>
@@ -442,7 +464,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-deployment" data-card-id="DEP-001" data-layout-node="DEP-001">
 <rect class="node-shape" x="550.67" y="572.69" width="440.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="770.67" y="586.69" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Deployment</tspan>
+<tspan font-weight="700">☁️ Deployment</tspan>
 <tspan x="770.67" dy="14.00">Local Development</tspan>
 <tspan x="770.67" dy="14.00">&#160;</tspan>
 <tspan x="770.67" dy="14.00">A local development deployment where Aurora tooling is built and</tspan>
@@ -452,7 +474,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-deployment" data-card-id="DEP-002" data-layout-node="DEP-002">
 <rect class="node-shape" x="541.33" y="743.33" width="458.67" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="770.67" y="757.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Deployment</tspan>
+<tspan font-weight="700">☁️ Deployment</tspan>
 <tspan x="770.67" dy="14.00">User Environment</tspan>
 <tspan x="770.67" dy="14.00">&#160;</tspan>
 <tspan x="770.67" dy="14.00">A user workstation environment where the Editor, CLI, and VSCode</tspan>
@@ -460,9 +482,11 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-data-store" data-card-id="DTS-001" data-layout-node="DTS-001">
-<rect class="node-shape" x="3751.34" y="956.16" width="394.67" height="135.67" rx="6" ry="6" />
+<ellipse class="node-shape" cx="3948.67" cy="980.58" rx="197.33" ry="24.42" />
+<rect class="node-shape" x="3751.34" y="980.58" width="394.67" height="86.83" />
+<ellipse class="node-shape node-shape-outline" cx="3948.67" cy="1067.41" rx="197.33" ry="24.42" />
 <text class="node-label" x="3948.67" y="988.99" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Data Store</tspan>
+<tspan font-weight="700">🗄️ Data Store</tspan>
 <tspan x="3948.67" dy="14.00">Local File System</tspan>
 <tspan x="3948.67" dy="14.00">&#160;</tspan>
 <tspan x="3948.67" dy="14.00">Local file system (workspace) used as the primary</tspan>
@@ -471,9 +495,11 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-data-store" data-card-id="DTS-002" data-layout-node="DTS-002">
-<rect class="node-shape" x="3736.00" y="1233.49" width="425.34" height="135.67" rx="6" ry="6" />
+<ellipse class="node-shape" cx="3948.67" cy="1257.91" rx="212.67" ry="24.42" />
+<rect class="node-shape" x="3736.00" y="1257.91" width="425.34" height="86.83" />
+<ellipse class="node-shape node-shape-outline" cx="3948.67" cy="1344.74" rx="212.67" ry="24.42" />
 <text class="node-label" x="3948.67" y="1266.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Data Store</tspan>
+<tspan font-weight="700">🗄️ Data Store</tspan>
 <tspan x="3948.67" dy="14.00">Extension State Store</tspan>
 <tspan x="3948.67" dy="14.00">&#160;</tspan>
 <tspan x="3948.67" dy="14.00">VSCode extension storage for persisted settings and</tspan>
@@ -482,9 +508,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-interface" data-card-id="INT-001" data-layout-node="INT-001">
-<rect class="node-shape" x="3164.64" y="357.32" width="430.67" height="98.67" rx="6" ry="6" />
+<path class="node-shape" d="M 3164.64 357.32 L 3579.30 357.32 L 3595.30 373.32 L 3595.30 455.99 L 3164.64 455.99 Z" />
+<path class="node-shape node-shape-outline" d="M 3579.30 357.32 L 3579.30 373.32 L 3595.30 373.32" />
 <text class="node-label" x="3379.97" y="371.66" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Interface</tspan>
+<tspan font-weight="700">🔌 Interface</tspan>
 <tspan x="3379.97" dy="14.00">CLI Interface</tspan>
 <tspan x="3379.97" dy="14.00">&#160;</tspan>
 <tspan x="3379.97" dy="14.00">Command-line interface surface exposing Aurora model</tspan>
@@ -493,9 +520,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-interface" data-card-id="INT-002" data-layout-node="INT-002">
-<rect class="node-shape" x="3724.67" y="1511.33" width="448.00" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 3724.67 1511.33 L 4156.67 1511.33 L 4172.67 1527.33 L 4172.67 1595.33 L 3724.67 1595.33 Z" />
+<path class="node-shape node-shape-outline" d="M 4156.67 1511.33 L 4156.67 1527.33 L 4172.67 1527.33" />
 <text class="node-label" x="3948.67" y="1525.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Interface</tspan>
+<tspan font-weight="700">🔌 Interface</tspan>
 <tspan x="3948.67" dy="14.00">MCP Interface</tspan>
 <tspan x="3948.67" dy="14.00">&#160;</tspan>
 <tspan x="3948.67" dy="14.00">Model Context Protocol interface surface exposing Aurora</tspan>
@@ -503,9 +531,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-interface" data-card-id="INT-003" data-layout-node="INT-003">
-<rect class="node-shape" x="3727.34" y="5.29" width="442.67" height="98.67" rx="6" ry="6" />
+<path class="node-shape" d="M 3727.34 5.29 L 4154.00 5.29 L 4170.00 21.29 L 4170.00 103.96 L 3727.34 103.96 Z" />
+<path class="node-shape node-shape-outline" d="M 4154.00 5.29 L 4154.00 21.29 L 4170.00 21.29" />
 <text class="node-label" x="3948.67" y="19.62" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Interface</tspan>
+<tspan font-weight="700">🔌 Interface</tspan>
 <tspan x="3948.67" dy="14.00">Editor Backend API</tspan>
 <tspan x="3948.67" dy="14.00">&#160;</tspan>
 <tspan x="3948.67" dy="14.00">Native command interface between the Editor UI and the Tauri</tspan>
@@ -514,9 +543,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-interface" data-card-id="INT-004" data-layout-node="INT-004">
-<rect class="node-shape" x="3155.30" y="1138.66" width="449.34" height="98.67" rx="6" ry="6" />
+<path class="node-shape" d="M 3155.30 1138.66 L 3588.64 1138.66 L 3604.64 1154.66 L 3604.64 1237.32 L 3155.30 1237.32 Z" />
+<path class="node-shape node-shape-outline" d="M 3588.64 1138.66 L 3588.64 1154.66 L 3604.64 1154.66" />
 <text class="node-label" x="3379.97" y="1159.99" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Interface</tspan>
+<tspan font-weight="700">🔌 Interface</tspan>
 <tspan x="3379.97" dy="14.00">VSCode Webview Messaging API</tspan>
 <tspan x="3379.97" dy="14.00">&#160;</tspan>
 <tspan x="3379.97" dy="14.00">Message-based interface between VSCode extension host and webview</tspan>
@@ -524,9 +554,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-interface" data-card-id="INT-005" data-layout-node="INT-005">
-<rect class="node-shape" x="3166.64" y="1261.32" width="426.66" height="98.67" rx="6" ry="6" />
+<path class="node-shape" d="M 3166.64 1261.32 L 3577.30 1261.32 L 3593.30 1277.32 L 3593.30 1359.99 L 3166.64 1359.99 Z" />
+<path class="node-shape node-shape-outline" d="M 3577.30 1261.32 L 3577.30 1277.32 L 3593.30 1277.32" />
 <text class="node-label" x="3379.97" y="1275.66" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Interface</tspan>
+<tspan font-weight="700">🔌 Interface</tspan>
 <tspan x="3379.97" dy="14.00">VSCode Commands Interface</tspan>
 <tspan x="3379.97" dy="14.00">&#160;</tspan>
 <tspan x="3379.97" dy="14.00">VSCode command surface for invoking Aurora tooling actions</tspan>
@@ -537,7 +568,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-node" data-card-id="NOD-001" data-layout-node="NOD-001">
 <rect class="node-shape" x="1125.96" y="572.69" width="401.34" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="1326.62" y="586.69" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Node</tspan>
+<tspan font-weight="700">🖥️ Node</tspan>
 <tspan x="1326.62" dy="14.00">User Workstation</tspan>
 <tspan x="1326.62" dy="14.00">&#160;</tspan>
 <tspan x="1326.62" dy="14.00">A user workstation that hosts local CLI and desktop</tspan>
@@ -547,7 +578,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-node" data-card-id="NOD-002" data-layout-node="NOD-002">
 <rect class="node-shape" x="2054.70" y="1436.66" width="410.67" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="2260.03" y="1450.66" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Node</tspan>
+<tspan font-weight="700">🖥️ Node</tspan>
 <tspan x="2260.03" dy="14.00">VSCode Extension Host</tspan>
 <tspan x="2260.03" dy="14.00">&#160;</tspan>
 <tspan x="2260.03" dy="14.00">VSCode extension host runtime where the extension executes</tspan>
@@ -557,7 +588,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-node" data-card-id="NOD-003" data-layout-node="NOD-003">
 <rect class="node-shape" x="1125.29" y="1183.32" width="402.66" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="1326.62" y="1197.32" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Node</tspan>
+<tspan font-weight="700">🖥️ Node</tspan>
 <tspan x="1326.62" dy="14.00">Webview Sandbox</tspan>
 <tspan x="1326.62" dy="14.00">&#160;</tspan>
 <tspan x="1326.62" dy="14.00">Sandboxed webview runtime used for interactive UI surfaces</tspan>
@@ -567,7 +598,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-node" data-card-id="NOD-004" data-layout-node="NOD-004">
 <rect class="node-shape" x="1567.98" y="196.66" width="436.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="1785.98" y="210.66" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Node</tspan>
+<tspan font-weight="700">🖥️ Node</tspan>
 <tspan x="1785.98" dy="14.00">Tauri Runtime</tspan>
 <tspan x="1785.98" dy="14.00">&#160;</tspan>
 <tspan x="1785.98" dy="14.00">Desktop runtime environment hosting the Tauri backend used by</tspan>
@@ -575,9 +606,10 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-note" data-card-id="NOT-001" data-layout-node="NOT-001">
-<rect class="node-shape" x="2044.03" y="965.33" width="432.00" height="98.67" rx="6" ry="6" />
+<path class="node-shape" d="M 2044.03 965.33 L 2460.03 965.33 L 2476.03 981.33 L 2476.03 1064.00 L 2044.03 1064.00 Z" />
+<path class="node-shape node-shape-outline" d="M 2460.03 965.33 L 2460.03 981.33 L 2476.03 981.33" />
 <text class="node-label" x="2260.03" y="979.66" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Note</tspan>
+<tspan font-weight="700">🗒️ Note</tspan>
 <tspan x="2260.03" dy="14.00">Shareable</tspan>
 <tspan x="2260.03" dy="14.00">&#160;</tspan>
 <tspan x="2260.03" dy="14.00">Tooling surfaces should prioritize shareable, portable</tspan>
@@ -586,9 +618,9 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </text>
 </g>
 <g class="node card-type-system" data-card-id="SYS-001" data-layout-node="SYS-001">
-<rect class="node-shape" x="0.00" y="572.69" width="404.00" height="84.00" rx="6" ry="6" />
+<path class="node-shape" d="M 0.00 588.69 L 0.00 656.69 L 404.00 656.69 L 404.00 588.69 L 149.40 588.69 L 149.40 572.69 L 8.00 572.69 L 8.00 588.69 Z" />
 <text class="node-label" x="202.00" y="586.69" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">System</tspan>
+<tspan font-weight="700">🧱 System</tspan>
 <tspan x="202.00" dy="14.00">Default Tooling Platform</tspan>
 <tspan x="202.00" dy="14.00">&#160;</tspan>
 <tspan x="202.00" dy="14.00">A bounded system that delivers the default Aurora tooling</tspan>

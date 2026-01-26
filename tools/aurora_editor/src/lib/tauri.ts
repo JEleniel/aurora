@@ -97,14 +97,14 @@ export async function discoverModels(): Promise<ModelHomeInfo[]> {
 }
 
 export async function validateModelSnapshot(modelHome: string): Promise<ValidationReport> {
-	return invokeTauri('validate_model_snapshot', { modelHome });
+	return invokeTauri('validate_model_snapshot', { model_home: modelHome });
 }
 
 export async function renderAllAssets(modelHome: string, outputDir: string): Promise<RenderSummaryDto> {
 	return invokeTauri('render_all_assets', {
 		request: {
-			modelHome,
-			outputDir,
+			model_home: modelHome,
+			output_dir: outputDir,
 		},
 	});
 }
@@ -112,8 +112,8 @@ export async function renderAllAssets(modelHome: string, outputDir: string): Pro
 export async function writeCompactExport(modelHome: string, outputPath: string | null): Promise<string> {
 	return invokeTauri('write_compact_export', {
 		request: {
-			modelHome,
-			outputPath,
+			model_home: modelHome,
+			output_path: outputPath,
 		},
 	});
 }

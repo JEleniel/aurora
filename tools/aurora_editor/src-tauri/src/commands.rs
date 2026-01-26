@@ -4,8 +4,8 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use aurora_shared::{
-	AuroraModel, Card, ModelHome, discover_model_homes, load_model, render_all, render_markdown,
-	render_views, validate_model, write_compact_model,
+	AuroraModel, Card, DiagnosticSeverity, ModelHome, ValidationReport, discover_model_homes,
+	load_model, render_all, render_markdown, render_views, validate_model, write_compact_model,
 };
 use tauri::State;
 use tracing::error;
@@ -112,7 +112,7 @@ pub fn render_card_markdown(
 	to_render_summary(&workspace, summary)
 }
 
-/// Render view assets (DOT, SVG, Markdown) for the specified model home.
+/// Render view assets (DOT, SVG) for the specified model home.
 #[tauri::command]
 pub fn render_views_bundle(
 	state: State<'_, EditorState>,
@@ -180,11 +180,27 @@ pub fn create_card(
 			"Card path already exists; choose a new filename".to_string(),
 		));
 	}
+	let enforce_validation = should_enforce_validation(&workspace, &request.model_home);
 	let schema = schema_relative_path(model_home.root(), &card_path)
 		.map_err(|err| log_error("create_card", err))?;
 	let audit_trail = new_audit_trail(&request.editor);
 	let card = card_from_draft(&request.card, schema, audit_trail);
 	write_card(&card_path, &card, "create_card")?;
+	if enforce_validation {
+		match load_model_from_workspace(&workspace, &request.model_home) {
+			Ok(model) => {
+				let report = validate_model(&model);
+				if report.has_errors() {
+					rollback_create(&card_path, "create_card")?;
+					return Err(log_error("create_card", format_validation_errors(&report)));
+				}
+			}
+			Err(err) => {
+				rollback_create(&card_path, "create_card")?;
+				return Err(err);
+			}
+		}
+	}
 	card_record(&workspace, card, &card_path)
 }
 
@@ -201,6 +217,7 @@ pub fn update_card(
 	let card_path = resolve_card_path(&workspace, model_home.root(), &request.relative_path)?;
 	ensure_card_extension(&card_path, "update_card")?;
 	let mut existing = read_card(&card_path, "update_card")?;
+	let previous = existing.clone();
 	if existing.id != request.card.id {
 		return Err(log_error(
 			"update_card",
@@ -213,6 +230,7 @@ pub fn update_card(
 			"Card type changes require creating a new card".to_string(),
 		));
 	}
+	let enforce_validation = should_enforce_validation(&workspace, &request.model_home);
 	let schema = schema_relative_path(model_home.root(), &card_path)
 		.map_err(|err| log_error("update_card", err))?;
 	existing.schema = Some(schema);
@@ -232,6 +250,21 @@ pub fn update_card(
 	)
 	.map_err(|err| log_error("update_card", err))?;
 	write_card(&card_path, &existing, "update_card")?;
+	if enforce_validation {
+		match load_model_from_workspace(&workspace, &request.model_home) {
+			Ok(model) => {
+				let report = validate_model(&model);
+				if report.has_errors() {
+					rollback_card(&card_path, &previous, "update_card")?;
+					return Err(log_error("update_card", format_validation_errors(&report)));
+				}
+			}
+			Err(err) => {
+				rollback_card(&card_path, &previous, "update_card")?;
+				return Err(err);
+			}
+		}
+	}
 	card_record(&workspace, existing, &card_path)
 }
 
@@ -247,6 +280,8 @@ pub fn delete_card(
 	let card_path = resolve_card_path(&workspace, model_home.root(), &request.relative_path)?;
 	ensure_card_extension(&card_path, "delete_card")?;
 	let mut existing = read_card(&card_path, "delete_card")?;
+	let previous = existing.clone();
+	let enforce_validation = should_enforce_validation(&workspace, &request.model_home);
 	existing.status = Some("Deleted".to_string());
 	let bump = request.bump.unwrap_or(AuditBump::Major);
 	apply_audit_event(
@@ -257,6 +292,21 @@ pub fn delete_card(
 	)
 	.map_err(|err| log_error("delete_card", err))?;
 	write_card(&card_path, &existing, "delete_card")?;
+	if enforce_validation {
+		match load_model_from_workspace(&workspace, &request.model_home) {
+			Ok(model) => {
+				let report = validate_model(&model);
+				if report.has_errors() {
+					rollback_card(&card_path, &previous, "delete_card")?;
+					return Err(log_error("delete_card", format_validation_errors(&report)));
+				}
+			}
+			Err(err) => {
+				rollback_card(&card_path, &previous, "delete_card")?;
+				return Err(err);
+			}
+		}
+	}
 	card_record(&workspace, existing, &card_path)
 }
 
@@ -340,6 +390,46 @@ fn to_render_summary(
 		views_written: summary.views_written,
 		output_dir,
 	})
+}
+
+fn should_enforce_validation(workspace: &WorkspaceState, model_home: &str) -> bool {
+	match load_model_from_workspace(workspace, model_home) {
+		Ok(model) => !validate_model(&model).has_errors(),
+		Err(_) => false,
+	}
+}
+
+fn rollback_create(path: &Path, context: &str) -> Result<(), String> {
+	fs::remove_file(path).map_err(|err| {
+		log_error(
+			context,
+			format!("Failed to roll back {}: {err}", path.display()),
+		)
+	})
+}
+
+fn rollback_card(path: &Path, card: &Card, context: &str) -> Result<(), String> {
+	write_card(path, card, context)
+}
+
+fn format_validation_errors(report: &ValidationReport) -> String {
+	let errors = report
+		.diagnostics
+		.iter()
+		.filter(|diag| matches!(diag.severity, DiagnosticSeverity::Error));
+	let mut lines = Vec::new();
+	lines.push("Model validation failed after the edit".to_string());
+	for diagnostic in errors {
+		let mut line = format!("{}: {}", diagnostic.code, diagnostic.message);
+		if let Some(card_id) = &diagnostic.card_id {
+			line.push_str(&format!(" (card {card_id})"));
+		}
+		if let Some(path) = &diagnostic.path {
+			line.push_str(&format!(" at {path}"));
+		}
+		lines.push(line);
+	}
+	lines.join("\n")
 }
 
 fn card_from_draft(

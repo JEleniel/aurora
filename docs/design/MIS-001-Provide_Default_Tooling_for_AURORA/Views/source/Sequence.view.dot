@@ -2,14 +2,14 @@ digraph "Sequence View" {
 	graph [bgcolor="#FFFFFF", fontname="Inter", rankdir="LR", splines="spline"];
 	node [color="#111827", fillcolor="#E5E7EB", fontcolor="#111827", fontname="Inter", fontsize="11", shape="box", style="filled"];
 	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
-	"ATV-001" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><br />Load Model<br /><br />Load a model from disk into memory.</FONT>>, shape="box"];
-	"ATV-002" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><br />Validate Model<br /><br />Validate a model and review diagnostics.</FONT>>, shape="box"];
-	"ATV-003" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><br />Render Views<br /><br />Generate rendered views and Markdown documentation from<br />the model.</FONT>>, shape="box"];
-	"ATV-004" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><br />Compact Model<br /><br />Export a compact representation for machine agents.</FONT>>, shape="box"];
-	"ATV-005" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><br />Open Model in Tool<br /><br />Open an Aurora model in an interactive tooling surface.</FONT>>, shape="box"];
-	"ATV-006" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><br />Navigate Model<br /><br />Navigate the model by browsing, searching, and exploring<br />relationships.</FONT>>, shape="box"];
-	"ATV-007" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><br />Edit Cards and Links<br /><br />Create and update cards and links in the model.</FONT>>, shape="box"];
-	"ATV-008" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><br />Review Validation Diagnostics<br /><br />Review validation results, navigate to affected cards,<br />and apply fixes.</FONT>>, shape="box"];
-	"ATV-009" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><br />Preview Output<br /><br />Preview rendered views and Markdown representations of<br />the model.</FONT>>, shape="box"];
-	"ATV-010" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><br />Save Model Safely<br /><br />Save the model with safe file operations and optional<br />export formats.</FONT>>, shape="box"];
+	"ATV-001" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>👣 Activity</B><br />Load Model<br /><br />Load a model from disk into memory.</FONT>>, shape="box"];
+	"ATV-002" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>👣 Activity</B><br />Validate Model<br /><br />Validate a model and review diagnostics.</FONT>>, shape="box"];
+	"ATV-003" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>👣 Activity</B><br />Render Views<br /><br />Generate rendered views and Markdown documentation from<br />the model.</FONT>>, shape="box"];
+	"ATV-004" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>👣 Activity</B><br />Compact Model<br /><br />Export a compact representation for machine agents.</FONT>>, shape="box"];
+	"ATV-005" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>👣 Activity</B><br />Open Model in Tool<br /><br />Open an Aurora model in an interactive tooling surface.</FONT>>, shape="box"];
+	"ATV-006" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>👣 Activity</B><br />Navigate Model<br /><br />Navigate the model by browsing, searching, and exploring<br />relationships.</FONT>>, shape="box"];
+	"ATV-007" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>👣 Activity</B><br />Edit Cards and Links<br /><br />Create and update cards and links in the model.</FONT>>, shape="box"];
+	"ATV-008" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>👣 Activity</B><br />Review Validation Diagnostics<br /><br />Review validation results, navigate to affected cards,<br />and apply fixes.</FONT>>, shape="box"];
+	"ATV-009" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>👣 Activity</B><br />Preview Output<br /><br />Preview rendered views and Markdown representations of<br />the model.</FONT>>, shape="box"];
+	"ATV-010" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>👣 Activity</B><br />Save Model Safely<br /><br />Save the model with safe file operations and optional<br />export formats.</FONT>>, shape="box"];
 }

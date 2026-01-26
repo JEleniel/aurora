@@ -10,32 +10,9 @@ svg[data-theme="light"]{--bg:#FFFFFF;--edge:#111827;--edgeLabel:#111827;--nodeSt
 .edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
 .node-label{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:11px;}
 .node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
+.node-shape-outline{fill:none;}
 .boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:2;stroke-dasharray:6 6;}
 .boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
-.card-type-risk .node-shape{fill:#9D3D5B;}
-svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
-.card-type-risk .node-label{--nodeText:#FFFFFF;}
-.card-type-mission .node-shape{fill:#30524A;}
-svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
-.card-type-mission .node-label{--nodeText:#FFFFFF;}
-.card-type-actor .node-shape{fill:#435432;}
-svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
-.card-type-actor .node-label{--nodeText:#FFFFFF;}
-.card-type-story .node-shape{fill:#5A723E;}
-svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
-.card-type-story .node-label{--nodeText:#FFFFFF;}
-.card-type-note .node-shape{fill:#47505B;}
-svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
-.card-type-note .node-label{--nodeText:#FFFFFF;}
-.card-type-node .node-shape{fill:#565498;}
-svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
-.card-type-node .node-label{--nodeText:#FFFFFF;}
 .card-type-control .node-shape{fill:#8B623D;}
 svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
@@ -44,6 +21,14 @@ svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
 .card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
 .card-type-condition .node-shape{fill:#644833;}
 svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
@@ -52,78 +37,94 @@ svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
 svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
 .card-type-state-machine .node-label{--nodeText:#FFFFFF;}
-.card-type-artifact .node-shape{fill:#47505E;}
-svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
-.card-type-artifact .node-label{--nodeText:#FFFFFF;}
-.card-type-data-store .node-shape{fill:#34779B;}
-svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
-.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
 .card-type-test .node-shape{fill:#30524A;}
 svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
 .card-type-test .node-label{--nodeText:#FFFFFF;}
-.card-type-process .node-shape{fill:#543B81;}
-svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
-.card-type-process .node-label{--nodeText:#FFFFFF;}
-.card-type-event .node-shape{fill:#7949C3;}
-svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
-.card-type-event .node-label{--nodeText:#FFFFFF;}
-.card-type-application .node-shape{fill:#475D9F;}
-svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
-.card-type-application .node-label{--nodeText:#FFFFFF;}
-.card-type-node-instance .node-shape{fill:#5B55B4;}
-svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
-.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
-.card-type-feature .node-shape{fill:#3E7253;}
-svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
-.card-type-feature .node-label{--nodeText:#FFFFFF;}
-.card-type-component .node-shape{fill:#4762BD;}
-svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
-.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
 .card-type-system .node-shape{fill:#414C73;}
 svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
 .card-type-system .node-label{--nodeText:#FFFFFF;}
-.card-type-interface .node-shape{fill:#34546A;}
-svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
-.card-type-interface .node-label{--nodeText:#FFFFFF;}
-.card-type-activity .node-shape{fill:#6C46A8;}
-svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
-.card-type-activity .node-label{--nodeText:#FFFFFF;}
-.card-type-constraint .node-shape{fill:#9B6D39;}
-svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
-.card-type-constraint .node-label{--nodeText:#FFFFFF;}
-.card-type-threat .node-shape{fill:#6C3242;}
-svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
-.card-type-threat .node-label{--nodeText:#FFFFFF;}
-.card-type-asset .node-shape{fill:#586374;}
-svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
-.card-type-asset .node-label{--nodeText:#FFFFFF;}
-.card-type-driver .node-shape{fill:#336E5E;}
-svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
-.card-type-driver .node-label{--nodeText:#FFFFFF;}
-.card-type-state .node-shape{fill:#8A438E;}
-svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
-.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
 .card-type-deployment .node-shape{fill:#47446B;}
 svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
 .card-type-deployment .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#9B6D39;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
+.card-type-interface .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
 .card-type-capability .node-shape{fill:#325440;}
 svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
@@ -139,7 +140,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-activity" data-card-id="ATV-001" data-layout-node="ATV-001">
 <rect class="node-shape" x="201.01" y="2122.15" width="296.00" height="69.33" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="2135.82" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Activity</tspan>
+<tspan font-weight="700">👣 Activity</tspan>
 <tspan x="349.01" dy="14.00">Load Model</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Load a model from disk into memory.</tspan>
@@ -148,7 +149,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-activity" data-card-id="ATV-002" data-layout-node="ATV-002">
 <rect class="node-shape" x="187.01" y="2028.82" width="324.00" height="69.33" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="2042.49" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Activity</tspan>
+<tspan font-weight="700">👣 Activity</tspan>
 <tspan x="349.01" dy="14.00">Validate Model</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Validate a model and review diagnostics.</tspan>
@@ -157,7 +158,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-activity" data-card-id="ATV-003" data-layout-node="ATV-003">
 <rect class="node-shape" x="111.68" y="1920.15" width="474.66" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="1941.15" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Activity</tspan>
+<tspan font-weight="700">👣 Activity</tspan>
 <tspan x="349.01" dy="14.00">Render Views</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Generate rendered views and Markdown documentation from the model.</tspan>
@@ -166,7 +167,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-activity" data-card-id="ATV-004" data-layout-node="ATV-004">
 <rect class="node-shape" x="140.34" y="1826.16" width="417.33" height="69.33" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="1839.83" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Activity</tspan>
+<tspan font-weight="700">👣 Activity</tspan>
 <tspan x="349.01" dy="14.00">Compact Model</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Export a compact representation for machine agents.</tspan>
@@ -175,7 +176,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-activity" data-card-id="ATV-005" data-layout-node="ATV-005">
 <rect class="node-shape" x="133.01" y="1732.82" width="432.00" height="69.33" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="1746.48" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Activity</tspan>
+<tspan font-weight="700">👣 Activity</tspan>
 <tspan x="349.01" dy="14.00">Open Model in Tool</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Open an Aurora model in an interactive tooling surface.</tspan>
@@ -184,7 +185,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-activity" data-card-id="ATV-006" data-layout-node="ATV-006">
 <rect class="node-shape" x="123.01" y="1624.16" width="452.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="1638.16" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Activity</tspan>
+<tspan font-weight="700">👣 Activity</tspan>
 <tspan x="349.01" dy="14.00">Navigate Model</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Navigate the model by browsing, searching, and exploring</tspan>
@@ -194,7 +195,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-activity" data-card-id="ATV-007" data-layout-node="ATV-007">
 <rect class="node-shape" x="161.01" y="1530.15" width="376.00" height="69.33" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="1543.82" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Activity</tspan>
+<tspan font-weight="700">👣 Activity</tspan>
 <tspan x="349.01" dy="14.00">Edit Cards and Links</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Create and update cards and links in the model.</tspan>
@@ -203,7 +204,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-activity" data-card-id="ATV-008" data-layout-node="ATV-008">
 <rect class="node-shape" x="141.01" y="1421.49" width="416.00" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="1435.49" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Activity</tspan>
+<tspan font-weight="700">👣 Activity</tspan>
 <tspan x="349.01" dy="14.00">Review Validation Diagnostics</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Review validation results, navigate to affected cards, and</tspan>
@@ -213,7 +214,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-activity" data-card-id="ATV-009" data-layout-node="ATV-009">
 <rect class="node-shape" x="123.68" y="1313.49" width="450.66" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="1334.49" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Activity</tspan>
+<tspan font-weight="700">👣 Activity</tspan>
 <tspan x="349.01" dy="14.00">Preview Output</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Preview rendered views and Markdown representations of the model.</tspan>
@@ -222,7 +223,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-activity" data-card-id="ATV-010" data-layout-node="ATV-010">
 <rect class="node-shape" x="141.68" y="1205.49" width="414.66" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="1219.49" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Activity</tspan>
+<tspan font-weight="700">👣 Activity</tspan>
 <tspan x="349.01" dy="14.00">Save Model Safely</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Save the model with safe file operations and optional export</tspan>
@@ -232,7 +233,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-constraint" data-card-id="CNS-001" data-layout-node="CNS-001">
 <rect class="node-shape" x="125.67" y="1097.52" width="446.67" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="1111.52" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Constraint</tspan>
+<tspan font-weight="700">📏 Constraint</tspan>
 <tspan x="349.01" dy="14.00">Text Based Data Format</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">In order to remain human readable and editable, the data format</tspan>
@@ -242,7 +243,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-constraint" data-card-id="CNS-002" data-layout-node="CNS-002">
 <rect class="node-shape" x="127.68" y="944.87" width="442.67" height="128.00" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="966.86" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Constraint</tspan><tspan> (Invariant)</tspan>
+<tspan font-weight="700">📏 Constraint</tspan><tspan> (Invariant)</tspan>
 <tspan x="349.01" dy="14.00">Directed, Locally Cyclic Graph</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">The model must form a Directed Graph in which all paths start</tspan>
@@ -254,7 +255,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-constraint" data-card-id="CNS-003" data-layout-node="CNS-003">
 <rect class="node-shape" x="133.68" y="822.15" width="430.67" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="836.49" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Constraint</tspan>
+<tspan font-weight="700">📏 Constraint</tspan>
 <tspan x="349.01" dy="14.00">No Inherent Semantic Meaning</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">The nodes and edges of the model must not carry any semantic</tspan>
@@ -265,7 +266,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-constraint" data-card-id="CNS-004" data-layout-node="CNS-004">
 <rect class="node-shape" x="796.65" y="966.86" width="417.33" height="84.00" rx="6" ry="6" />
 <text class="node-label" x="1005.31" y="980.86" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Constraint</tspan>
+<tspan font-weight="700">📏 Constraint</tspan>
 <tspan x="1005.31" dy="14.00">No Orphans</tspan>
 <tspan x="1005.31" dy="14.00">&#160;</tspan>
 <tspan x="1005.31" dy="14.00">All cards other than `Mission` must have at least one</tspan>
@@ -275,7 +276,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-constraint" data-card-id="CNS-005" data-layout-node="CNS-005">
 <rect class="node-shape" x="130.34" y="699.47" width="437.34" height="98.67" rx="6" ry="6" />
 <text class="node-label" x="349.01" y="713.80" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Constraint</tspan><tspan> (Graphviz)</tspan>
+<tspan font-weight="700">📏 Constraint</tspan><tspan> (Graphviz)</tspan>
 <tspan x="349.01" dy="14.00">Graphviz DOT View Conventions</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Defines the canonical Graphviz DOT conventions (graph/node/edge</tspan>
@@ -286,7 +287,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-control" data-card-id="CTL-001" data-layout-node="CTL-001">
 <polygon class="node-shape" points="473.98,529.75 650.71,570.62 650.71,628.42 473.98,669.29 224.04,669.29 47.31,628.42 47.31,570.62 224.04,529.75" />
 <text class="node-label" x="349.01" y="564.52" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="349.01" dy="14.00">Workspace Trust Gate</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Gate potentially unsafe operations (e.g., file writes, webview</tspan>
@@ -297,7 +298,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-control" data-card-id="CTL-002" data-layout-node="CTL-002">
 <polygon class="node-shape" points="477.10,355.03 658.25,395.90 658.25,453.70 477.10,494.57 220.92,494.57 39.77,453.70 39.77,395.90 220.92,355.03" />
 <text class="node-label" x="349.01" y="389.80" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="349.01" dy="14.00">Safe Path Handling and Atomic Writes</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Constrain paths to the intended workspace/model roots, normalize and</tspan>
@@ -308,7 +309,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-control" data-card-id="CTL-003" data-layout-node="CTL-003">
 <polygon class="node-shape" points="482.57,180.41 671.45,221.28 671.45,279.08 482.57,319.95 215.45,319.95 26.57,279.08 26.57,221.28 215.45,180.41" />
 <text class="node-label" x="349.01" y="222.18" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="349.01" dy="14.00">Content Sanitization</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Sanitize rendered Markdown and webview content, restrict resource</tspan>
@@ -318,7 +319,7 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 <g class="node card-type-control" data-card-id="CTL-004" data-layout-node="CTL-004">
 <polygon class="node-shape" points="478.66,5.69 662.02,46.56 662.02,104.36 478.66,145.23 219.35,145.23 35.99,104.36 35.99,46.56 219.35,5.69" />
 <text class="node-label" x="349.01" y="47.46" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">Control</tspan>
+<tspan font-weight="700">🔒 Control</tspan>
 <tspan x="349.01" dy="14.00">Least Privilege File Access</tspan>
 <tspan x="349.01" dy="14.00">&#160;</tspan>
 <tspan x="349.01" dy="14.00">Minimize read/write permissions and scope operations to explicit</tspan>

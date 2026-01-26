@@ -9,4 +9,4 @@ As an architect, I want to package an Aurora model into a single portable file (
 ## Links
 
 - `explains` → `REQ-018`
-- `includes` → `STO-001`
+- `includes` → `STR-004`

@@ -1,4 +1,5 @@
 mod graphviz_plain;
+mod icons;
 mod themed_svg;
 
 use std::collections::{BTreeMap, BTreeSet, HashMap};
@@ -35,7 +36,7 @@ pub fn render_markdown(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Res
 	for card in model.iter_cards() {
 		let path = card_markdown_path(card, model, output_dir, mission_id.as_deref());
 		let mut buffer = String::new();
-		buffer.push_str(&format!("# {} ({})\n\n", card.id, card.card_type));
+		buffer.push_str(&format!("# {}: **{}**\n\n", card.id, card.card_type));
 		buffer.push_str(&format!("**Name:** {}\\\n\n", card.name));
 		buffer.push_str("## Description\n\n");
 		buffer.push_str(&card.description);
@@ -66,6 +67,7 @@ pub fn render_views(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Result
 
 	let instructions_root = resolve_instructions_root(model)?;
 	let palette = CardPalette::load(&instructions_root.join("details/Card_Definitions.md"))?;
+	let icon_glyphs = palette.icon_glyphs();
 	let registry = ViewRegistry::load(&instructions_root.join("details/View_Definitions.md"))?;
 	let graphviz = GraphvizConfig::from_model(model)?;
 
@@ -82,7 +84,14 @@ pub fn render_views(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Result
 		let nodes = collect_view_nodes(model, view);
 		let clusters = collect_boundary_clusters(&nodes);
 		validate_view_connectivity(view, &nodes)?;
-		let dot = build_dot(view, &nodes, &palette, &registry.card_colors, &graphviz);
+		let dot = build_dot(
+			view,
+			&nodes,
+			&palette,
+			&icon_glyphs,
+			&registry.card_colors,
+			&graphviz,
+		);
 		write_text(&dot_path, dot)?;
 		render_svg(
 			&dot_path,
@@ -90,6 +99,7 @@ pub fn render_views(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Result
 			&graphviz,
 			engine,
 			&nodes,
+			&icon_glyphs,
 			&registry.card_colors,
 			&clusters,
 		)?;
@@ -125,12 +135,14 @@ struct CardColor {
 #[derive(Debug, Clone)]
 struct CardPalette {
 	shapes: HashMap<String, String>,
+	icons: HashMap<String, String>,
 }
 
 impl CardPalette {
 	fn load(path: &Path) -> Result<Self> {
 		let contents = fs::read_to_string(path).map_err(|err| AuroraError::io(path, err))?;
 		let mut shapes = HashMap::new();
+		let mut icons = HashMap::new();
 		let mut in_table = false;
 		for line in contents.lines() {
 			let trimmed = line.trim();
@@ -169,17 +181,31 @@ impl CardPalette {
 			if !shape.is_empty() {
 				shapes.insert(card_type.clone(), shape.to_string());
 			}
+			let icon = cells[2].trim();
+			if !icon.is_empty() && !icon.eq_ignore_ascii_case("n/a") {
+				icons.insert(card_type.clone(), icon.to_string());
+			}
 		}
 		if shapes.is_empty() {
 			return Err(AuroraError::InvalidInput {
 				message: format!("failed to parse card palette from {}", path.display()),
 			});
 		}
-		Ok(CardPalette { shapes })
+		Ok(CardPalette { shapes, icons })
 	}
 
 	fn shape_for(&self, card_type: &str) -> Option<&str> {
 		self.shapes.get(card_type).map(|value| value.as_str())
+	}
+
+	fn icon_glyphs(&self) -> HashMap<String, String> {
+		let mut glyphs = HashMap::new();
+		for (card_type, icon) in &self.icons {
+			if let Some(glyph) = icons::icon_glyph(icon) {
+				glyphs.insert(card_type.clone(), glyph.to_string());
+			}
+		}
+		glyphs
 	}
 }
 
@@ -842,11 +868,12 @@ fn build_dot(
 	view: &ViewSpec,
 	nodes: &BTreeMap<String, &Card>,
 	palette: &CardPalette,
+	icons: &HashMap<String, String>,
 	colors: &HashMap<String, CardColor>,
 	config: &GraphvizConfig,
 ) -> String {
 	let edges = collect_edges(nodes);
-	build_dot_with_edges(view, nodes, &edges, palette, colors, config)
+	build_dot_with_edges(view, nodes, &edges, palette, icons, colors, config)
 }
 
 fn build_dot_with_edges(
@@ -854,6 +881,7 @@ fn build_dot_with_edges(
 	nodes: &BTreeMap<String, &Card>,
 	edges: &[EdgeSpec],
 	palette: &CardPalette,
+	icons: &HashMap<String, String>,
 	colors: &HashMap<String, CardColor>,
 	config: &GraphvizConfig,
 ) -> String {
@@ -883,7 +911,8 @@ fn build_dot_with_edges(
 			continue;
 		}
 		let mut attrs = BTreeMap::new();
-		attrs.insert("label".to_string(), node_label(card));
+		let icon = icons.get(&card.card_type).map(String::as_str);
+		attrs.insert("label".to_string(), node_label(card, icon));
 		let shape = palette
 			.shape_for(&card.card_type)
 			.or_else(|| config.shape_for(&card.card_type))
@@ -958,7 +987,7 @@ fn build_dot_with_edges(
 			.entry("label".to_string())
 			.or_insert(cluster.label.clone());
 		if !attrs.is_empty() {
-			lines.push(format!("\t\t{};", format_attributes(&attrs)));
+			lines.push(format!("\t\tgraph [{}];", format_attributes(&attrs)));
 		}
 		for member in cluster.members {
 			lines.push(format!("\t\t{};", dot_id(&member)));
@@ -993,25 +1022,28 @@ fn collect_edges(nodes: &BTreeMap<String, &Card>) -> Vec<EdgeSpec> {
 }
 
 fn collect_boundary_clusters(nodes: &BTreeMap<String, &Card>) -> Vec<BoundaryCluster> {
+	let adjacency = collect_view_adjacency(nodes);
 	let mut clusters = Vec::new();
 	for (id, card) in nodes {
 		if card.card_type != "Boundary" {
 			continue;
 		}
-		let mut members: Vec<String> = card
-			.links
-			.iter()
-			.filter(|link| link.relationship.eq_ignore_ascii_case("contains"))
-			.filter(|link| {
-				matches!(
-					nodes.get(&link.target),
-					Some(target_card) if target_card.card_type != "Boundary"
-				)
-			})
-			.map(|link| link.target.clone())
-			.collect();
-		members.sort();
-		members.dedup();
+		let recursive = boundary_recursive(card);
+		let mut members = BTreeSet::new();
+		for link in &card.links {
+			if !link.relationship.eq_ignore_ascii_case("contains") {
+				continue;
+			}
+			let target = match nodes.get(&link.target) {
+				Some(target_card) if target_card.card_type != "Boundary" => target_card,
+				_ => continue,
+			};
+			members.insert(target.id.clone());
+			if recursive {
+				include_descendants(&target.id, &adjacency, &mut members);
+			}
+		}
+		let members: Vec<String> = members.into_iter().collect();
 		if members.is_empty() {
 			continue;
 		}
@@ -1024,10 +1056,68 @@ fn collect_boundary_clusters(nodes: &BTreeMap<String, &Card>) -> Vec<BoundaryClu
 	clusters
 }
 
-fn node_label(card: &Card) -> String {
+fn collect_view_adjacency(nodes: &BTreeMap<String, &Card>) -> HashMap<String, Vec<String>> {
+	let mut adjacency: HashMap<String, Vec<String>> = HashMap::new();
+	for (id, card) in nodes {
+		if card.card_type == "Boundary" {
+			continue;
+		}
+		for link in &card.links {
+			let target = match nodes.get(&link.target) {
+				Some(target_card) if target_card.card_type != "Boundary" => target_card,
+				_ => continue,
+			};
+			adjacency
+				.entry(id.clone())
+				.or_default()
+				.push(target.id.clone());
+		}
+	}
+	adjacency
+}
+
+fn include_descendants(
+	root: &str,
+	adjacency: &HashMap<String, Vec<String>>,
+	members: &mut BTreeSet<String>,
+) {
+	let mut visited = BTreeSet::new();
+	let mut stack = vec![root.to_string()];
+	while let Some(node) = stack.pop() {
+		if !visited.insert(node.clone()) {
+			continue;
+		}
+		if let Some(children) = adjacency.get(&node) {
+			for child in children {
+				if !visited.contains(child) {
+					stack.push(child.clone());
+				}
+			}
+		}
+	}
+	for id in visited {
+		members.insert(id);
+	}
+}
+
+fn boundary_recursive(card: &Card) -> bool {
+	card.attributes
+		.get("recursive")
+		.and_then(|value| value.as_bool())
+		.or_else(|| {
+			card.attributes
+				.get("inherited")
+				.and_then(|value| value.as_bool())
+		})
+		.unwrap_or(false)
+}
+
+fn node_label(card: &Card, icon: Option<&str>) -> String {
 	let mut lines = Vec::new();
 
 	let mut type_line = String::new();
+	type_line.push_str(&html_escape(&card.id));
+	type_line.push_str(": ");
 	type_line.push_str("<B>");
 	type_line.push_str(&html_escape(&card.card_type));
 	type_line.push_str("</B>");
@@ -1052,7 +1142,26 @@ fn node_label(card: &Card) -> String {
 		}
 	}
 
-	format!("<<FONT>{}</FONT>>", lines.join("<br />"))
+	let text_block = lines
+		.into_iter()
+		.map(|line| {
+			if line.is_empty() {
+				"&#160;".to_string()
+			} else {
+				line
+			}
+		})
+		.collect::<Vec<_>>()
+		.join("<BR/>");
+	if let Some(icon) = icon {
+		let icon_font_size = 33;
+		return format!(
+			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"{icon_font_size}\">{}</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT>{}</FONT></TD></TR></TABLE>>",
+			html_escape(icon),
+			text_block
+		);
+	}
+	format!("<<FONT>{}</FONT>>", text_block)
 }
 
 fn wrap_text(text: &str, max_len: usize) -> Vec<String> {
@@ -1088,6 +1197,7 @@ fn render_svg(
 	config: &GraphvizConfig,
 	engine: &str,
 	nodes: &BTreeMap<String, &Card>,
+	icons: &HashMap<String, String>,
 	colors: &HashMap<String, CardColor>,
 	clusters: &[BoundaryCluster],
 ) -> Result<()> {
@@ -1108,16 +1218,12 @@ fn render_svg(
 		},
 	)?;
 
-	let svg = themed_svg::render_svg(&layout, nodes, colors, clusters);
+	let svg = themed_svg::render_svg(&layout, nodes, icons, colors, clusters);
 	write_text(svg_path, svg)
 }
 
-fn graphviz_engine_for_view(view: &ViewSpec) -> &'static str {
-	if view.slug.eq_ignore_ascii_case("Requirements") {
-		"osage"
-	} else {
-		"dot"
-	}
+fn graphviz_engine_for_view(_view: &ViewSpec) -> &'static str {
+	"dot"
 }
 
 fn format_attributes(attrs: &BTreeMap<String, String>) -> String {
@@ -1272,6 +1378,7 @@ mod tests {
 	use crate::discovery::ModelHome;
 	use crate::model::{AuditTrail, AuroraModel, Card, Link};
 	use serde_json::Value;
+	use serde_json::json;
 	use std::collections::BTreeMap;
 	use std::env;
 	use std::path::{Path, PathBuf};
@@ -1304,8 +1411,251 @@ mod tests {
 		assert!(dot_path.exists());
 		assert!(output.join("Views/Requirements.view.svg").exists());
 		let dot = std::fs::read_to_string(dot_path).expect("dot");
-		assert!(dot.contains("<B>Mission</B>"));
-		assert!(dot.contains("<br />"));
+		assert!(dot.contains("MIS-001: <B>Mission</B>"));
+		assert!(dot.contains("POINT-SIZE=\"33\">🎯"));
+		assert!(dot.contains("<BR/>"));
+	}
+
+	#[test]
+	fn boundary_cluster_uses_graph_attributes() {
+		let actor = Card {
+			schema: None,
+			id: "ACT-001".into(),
+			card_type: "Actor".into(),
+			card_subtype: None,
+			name: "Architect".into(),
+			description: "Test actor".into(),
+			status: None,
+			links: Vec::new(),
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: Value::Null,
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+		let boundary = Card {
+			schema: None,
+			id: "BND-001".into(),
+			card_type: "Boundary".into(),
+			card_subtype: Some("Trust".into()),
+			name: "Untrusted".into(),
+			description: "Test boundary".into(),
+			status: None,
+			links: vec![Link {
+				target: "ACT-001".into(),
+				relationship: "contains".into(),
+			}],
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: Value::Null,
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+		let mut nodes = BTreeMap::new();
+		nodes.insert(actor.id.clone(), &actor);
+		nodes.insert(boundary.id.clone(), &boundary);
+		let view = ViewSpec {
+			name: "Use Case".into(),
+			slug: "Use_Case".into(),
+			root_card_types: std::collections::BTreeSet::new(),
+			card_types: std::collections::BTreeSet::new(),
+			include_all: false,
+		};
+		let palette = CardPalette {
+			shapes: std::collections::HashMap::new(),
+			icons: std::collections::HashMap::new(),
+		};
+		let icons = std::collections::HashMap::new();
+		let colors = std::collections::HashMap::new();
+		let config = GraphvizConfig::default();
+
+		let dot = build_dot(&view, &nodes, &palette, &icons, &colors, &config);
+		assert!(dot.contains("subgraph \"cluster_BND-001\" {"));
+		assert!(dot.contains("\t\tgraph ["));
+		assert!(dot.contains("label=\"Untrusted (BND-001)\""));
+	}
+
+	#[test]
+	fn boundary_recursive_includes_descendants() {
+		let parent = Card {
+			schema: None,
+			id: "COM-100".into(),
+			card_type: "Component".into(),
+			card_subtype: None,
+			name: "Parent".into(),
+			description: "Parent node".into(),
+			status: None,
+			links: vec![Link {
+				target: "COM-101".into(),
+				relationship: "uses".into(),
+			}],
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: Value::Null,
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+		let child = Card {
+			schema: None,
+			id: "COM-101".into(),
+			card_type: "Component".into(),
+			card_subtype: None,
+			name: "Child".into(),
+			description: "Child node".into(),
+			status: None,
+			links: vec![Link {
+				target: "COM-102".into(),
+				relationship: "uses".into(),
+			}],
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: Value::Null,
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+		let grandchild = Card {
+			schema: None,
+			id: "COM-102".into(),
+			card_type: "Component".into(),
+			card_subtype: None,
+			name: "Grandchild".into(),
+			description: "Grandchild node".into(),
+			status: None,
+			links: Vec::new(),
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: Value::Null,
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+		let boundary = Card {
+			schema: None,
+			id: "BND-010".into(),
+			card_type: "Boundary".into(),
+			card_subtype: None,
+			name: "Recursive".into(),
+			description: "Recursive boundary".into(),
+			status: None,
+			links: vec![Link {
+				target: "COM-100".into(),
+				relationship: "contains".into(),
+			}],
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: json!({"recursive": true}),
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+		let mut nodes = BTreeMap::new();
+		nodes.insert(parent.id.clone(), &parent);
+		nodes.insert(child.id.clone(), &child);
+		nodes.insert(grandchild.id.clone(), &grandchild);
+		nodes.insert(boundary.id.clone(), &boundary);
+		let clusters = collect_boundary_clusters(&nodes);
+		assert_eq!(clusters.len(), 1);
+		let members = clusters[0]
+			.members
+			.iter()
+			.cloned()
+			.collect::<BTreeSet<String>>();
+		assert!(members.contains("COM-100"));
+		assert!(members.contains("COM-101"));
+		assert!(members.contains("COM-102"));
+	}
+
+	#[test]
+	fn boundary_non_recursive_only_contains_direct_targets() {
+		let parent = Card {
+			schema: None,
+			id: "COM-200".into(),
+			card_type: "Component".into(),
+			card_subtype: None,
+			name: "Parent".into(),
+			description: "Parent node".into(),
+			status: None,
+			links: vec![Link {
+				target: "COM-201".into(),
+				relationship: "uses".into(),
+			}],
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: Value::Null,
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+		let child = Card {
+			schema: None,
+			id: "COM-201".into(),
+			card_type: "Component".into(),
+			card_subtype: None,
+			name: "Child".into(),
+			description: "Child node".into(),
+			status: None,
+			links: Vec::new(),
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: Value::Null,
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+		let boundary = Card {
+			schema: None,
+			id: "BND-020".into(),
+			card_type: "Boundary".into(),
+			card_subtype: None,
+			name: "Direct".into(),
+			description: "Direct boundary".into(),
+			status: None,
+			links: vec![Link {
+				target: "COM-200".into(),
+				relationship: "contains".into(),
+			}],
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: Value::Null,
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+		let mut nodes = BTreeMap::new();
+		nodes.insert(parent.id.clone(), &parent);
+		nodes.insert(child.id.clone(), &child);
+		nodes.insert(boundary.id.clone(), &boundary);
+		let clusters = collect_boundary_clusters(&nodes);
+		assert_eq!(clusters.len(), 1);
+		let members = clusters[0]
+			.members
+			.iter()
+			.cloned()
+			.collect::<BTreeSet<String>>();
+		assert!(members.contains("COM-200"));
+		assert!(!members.contains("COM-201"));
 	}
 
 	#[test]
@@ -1328,10 +1678,10 @@ mod tests {
 			source_path: None,
 			extra: BTreeMap::new(),
 		};
-		let label = node_label(&card);
+		let label = node_label(&card, Some("🧊"));
 		assert_eq!(
 			label,
-			"<<FONT><B>Component</B> (struct)<br />Render Node<br /><br />Test card</FONT>>"
+			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"33\">🧊</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT>COM-009: <B>Component</B> (struct)<BR/>Render Node<BR/>&#160;<BR/>Test card</FONT></TD></TR></TABLE>>"
 		);
 	}
 
@@ -1355,10 +1705,10 @@ mod tests {
 			source_path: None,
 			extra: BTreeMap::new(),
 		};
-		let label = node_label(&card);
+		let label = node_label(&card, Some("🧊"));
 		assert_eq!(
 			label,
-			"<<FONT><B>Component</B><br />Render View<br /><br />Test card</FONT>>"
+			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"33\">🧊</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT>COM-010: <B>Component</B><BR/>Render View<BR/>&#160;<BR/>Test card</FONT></TD></TR></TABLE>>"
 		);
 	}
 

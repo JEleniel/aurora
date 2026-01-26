@@ -18,6 +18,7 @@ const LINE_HEIGHT_PX: f64 = 14.0;
 pub(super) fn render_svg(
 	layout: &PlainGraph,
 	nodes: &BTreeMap<String, &Card>,
+	icons: &std::collections::HashMap<String, String>,
 	colors: &std::collections::HashMap<String, CardColor>,
 	clusters: &[BoundaryCluster],
 ) -> String {
@@ -62,7 +63,8 @@ pub(super) fn render_svg(
 	// Nodes.
 	for (id, card) in nodes {
 		if let Some(node) = layout.nodes.get(id) {
-			svg.push_str(&node_svg(layout, node, card));
+			let icon = icons.get(&card.card_type).map(String::as_str);
+			svg.push_str(&node_svg(layout, node, card, icon));
 		}
 	}
 
@@ -92,10 +94,15 @@ fn svg_style(colors: &std::collections::HashMap<String, CardColor>) -> String {
 	css.push_str(&format!(
 		".edge-label{{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:{EDGE_FONT_SIZE_PX}px;}}\n"
 	));
+	let icon_font_size = LINE_HEIGHT_PX * 3.0;
+	css.push_str(&format!(
+		".node-icon{{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:{icon_font_size}px;}}\n"
+	));
 	css.push_str(&format!(
 		".node-label{{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:{NODE_FONT_SIZE_PX}px;}}\n"
 	));
 	css.push_str(".node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}\n");
+	css.push_str(".node-shape-outline{fill:none;}\n");
 	css.push_str(
 		".boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:2;stroke-dasharray:6 6;}\n",
 	);
@@ -125,7 +132,7 @@ fn svg_style(colors: &std::collections::HashMap<String, CardColor>) -> String {
 	css
 }
 
-fn node_svg(layout: &PlainGraph, node: &PlainNode, card: &Card) -> String {
+fn node_svg(layout: &PlainGraph, node: &PlainNode, card: &Card, icon: Option<&str>) -> String {
 	let rect = node_rect(layout, node);
 	let card_class = format!("card-type-{}", css_slug(&card.card_type));
 	let mut group = String::new();
@@ -136,7 +143,7 @@ fn node_svg(layout: &PlainGraph, node: &PlainNode, card: &Card) -> String {
 	));
 
 	group.push_str(&shape_svg(&node.shape, &rect));
-	group.push_str(&text_svg(&rect, card));
+	group.push_str(&text_svg(&rect, card, icon));
 	group.push_str("</g>\n");
 	group
 }
@@ -223,6 +230,14 @@ fn shape_svg(shape: &str, rect: &SvgRect) -> String {
 			format!("<path class=\"node-shape\" d=\"{d}\" />\n")
 		}
 		"octagon" | "doubleoctagon" | "hexagon" => polygon_svg(shape, rect),
+		"box3d" => box3d_svg(rect),
+		"component" => component_svg(rect),
+		"folder" => folder_svg(rect),
+		"note" => note_svg(rect),
+		"tab" => tab_svg(rect),
+		"cylinder" => cylinder_svg(rect),
+		"cds" => cds_svg(rect),
+		"record" => record_svg(rect),
 		_ => format!(
 			"<rect class=\"node-shape\" x=\"{x:.2}\" y=\"{y:.2}\" width=\"{w:.2}\" height=\"{h:.2}\" rx=\"6\" ry=\"6\" />\n",
 			x = rect.x,
@@ -254,10 +269,196 @@ fn polygon_svg(shape: &str, rect: &SvgRect) -> String {
 		let points_inner =
 			regular_polygon_points(cx, cy, (rx - inset).max(0.0), (ry - inset).max(0.0), 8);
 		out.push_str(&format!(
-			"<polygon class=\"node-shape\" points=\"{}\" fill=\"none\" stroke-width=\"1\" />\n",
+			"<polygon class=\"node-shape node-shape-outline\" points=\"{}\" stroke-width=\"1\" />\n",
 			points_inner
 		));
 	}
+	out
+}
+
+fn rect_svg(rect: &SvgRect, rx: f64, ry: f64) -> String {
+	format!(
+		"<rect class=\"node-shape\" x=\"{x:.2}\" y=\"{y:.2}\" width=\"{w:.2}\" height=\"{h:.2}\" rx=\"{rx:.2}\" ry=\"{ry:.2}\" />\n",
+		x = rect.x,
+		y = rect.y,
+		w = rect.w,
+		h = rect.h,
+		rx = rx,
+		ry = ry
+	)
+}
+
+fn record_svg(rect: &SvgRect) -> String {
+	rect_svg(rect, 0.0, 0.0)
+}
+
+fn cds_svg(rect: &SvgRect) -> String {
+	let cut = (rect.w.min(rect.h) * 0.12).clamp(6.0, 14.0);
+	let x0 = rect.x;
+	let y0 = rect.y;
+	let x1 = rect.x + rect.w;
+	let y1 = rect.y + rect.h;
+	let points = [
+		format!("{:.2},{:.2}", x0 + cut, y0),
+		format!("{:.2},{:.2}", x1 - cut, y0),
+		format!("{:.2},{:.2}", x1, y0 + cut),
+		format!("{:.2},{:.2}", x1, y1 - cut),
+		format!("{:.2},{:.2}", x1 - cut, y1),
+		format!("{:.2},{:.2}", x0 + cut, y1),
+		format!("{:.2},{:.2}", x0, y1 - cut),
+		format!("{:.2},{:.2}", x0, y0 + cut),
+	]
+	.join(" ");
+	format!("<polygon class=\"node-shape\" points=\"{points}\" />\n")
+}
+
+fn box3d_svg(rect: &SvgRect) -> String {
+	let mut out = rect_svg(rect, 6.0, 6.0);
+	let inset = (rect.w.min(rect.h) * 0.12).clamp(4.0, 8.0);
+	let x0 = rect.x + inset;
+	let y0 = rect.y + inset;
+	let x1 = rect.x + rect.w - inset;
+	let y1 = rect.y + rect.h - inset;
+	let d = format!(
+		"M {x0:.2} {y0:.2} L {x1:.2} {y0:.2} L {x1:.2} {y1:.2}",
+		x0 = x0,
+		y0 = y0,
+		x1 = x1,
+		y1 = y1
+	);
+	out.push_str(&format!(
+		"<path class=\"node-shape node-shape-outline\" d=\"{d}\" />\n"
+	));
+	out
+}
+
+fn component_svg(rect: &SvgRect) -> String {
+	let mut out = rect_svg(rect, 6.0, 6.0);
+	let ear_w = (rect.w * 0.12).clamp(6.0, 14.0);
+	let ear_h = (rect.h * 0.18).clamp(8.0, 16.0);
+	let gap = (rect.h * 0.12).clamp(6.0, 12.0);
+	let x = rect.x + 4.0;
+	let y_top = rect.y + gap;
+	let y_bottom = rect.y + rect.h - gap - ear_h;
+	for y in [y_top, y_bottom] {
+		out.push_str(&format!(
+			"<rect class=\"node-shape node-shape-outline\" x=\"{x:.2}\" y=\"{y:.2}\" width=\"{w:.2}\" height=\"{h:.2}\" rx=\"2\" ry=\"2\" />\n",
+			x = x,
+			y = y,
+			w = ear_w,
+			h = ear_h
+		));
+	}
+	out
+}
+
+fn folder_svg(rect: &SvgRect) -> String {
+	let tab_h = (rect.h * 0.22).clamp(8.0, 16.0);
+	let tab_w = (rect.w * 0.35).clamp(18.0, rect.w * 0.6);
+	let tab_x = rect.x + 8.0;
+	let tab_right = (tab_x + tab_w).min(rect.x + rect.w - 8.0);
+	let x0 = rect.x;
+	let y0 = rect.y;
+	let x1 = rect.x + rect.w;
+	let y1 = rect.y + rect.h;
+	let y_tab = y0 + tab_h;
+	let d = format!(
+		"M {x0:.2} {y_tab:.2} L {x0:.2} {y1:.2} L {x1:.2} {y1:.2} L {x1:.2} {y_tab:.2} L {tab_right:.2} {y_tab:.2} L {tab_right:.2} {y0:.2} L {tab_x:.2} {y0:.2} L {tab_x:.2} {y_tab:.2} Z",
+		x0 = x0,
+		y_tab = y_tab,
+		y1 = y1,
+		x1 = x1,
+		tab_right = tab_right,
+		y0 = y0,
+		tab_x = tab_x
+	);
+	format!("<path class=\"node-shape\" d=\"{d}\" />\n")
+}
+
+fn tab_svg(rect: &SvgRect) -> String {
+	let tab_h = (rect.h * 0.2).clamp(6.0, 14.0);
+	let tab_w = (rect.w * 0.4).clamp(20.0, rect.w * 0.7);
+	let tab_x = rect.x + ((rect.w - tab_w) / 2.0);
+	let tab_right = tab_x + tab_w;
+	let x0 = rect.x;
+	let y0 = rect.y;
+	let x1 = rect.x + rect.w;
+	let y1 = rect.y + rect.h;
+	let y_tab = y0 + tab_h;
+	let d = format!(
+		"M {x0:.2} {y_tab:.2} L {x0:.2} {y1:.2} L {x1:.2} {y1:.2} L {x1:.2} {y_tab:.2} L {tab_right:.2} {y_tab:.2} L {tab_right:.2} {y0:.2} L {tab_x:.2} {y0:.2} L {tab_x:.2} {y_tab:.2} Z",
+		x0 = x0,
+		y_tab = y_tab,
+		y1 = y1,
+		x1 = x1,
+		tab_right = tab_right,
+		y0 = y0,
+		tab_x = tab_x
+	);
+	format!("<path class=\"node-shape\" d=\"{d}\" />\n")
+}
+
+fn note_svg(rect: &SvgRect) -> String {
+	let fold = (rect.w.min(rect.h) * 0.2).clamp(6.0, 16.0);
+	let x0 = rect.x;
+	let y0 = rect.y;
+	let x1 = rect.x + rect.w;
+	let y1 = rect.y + rect.h;
+	let fold_x = x1 - fold;
+	let fold_y = y0 + fold;
+	let d = format!(
+		"M {x0:.2} {y0:.2} L {fold_x:.2} {y0:.2} L {x1:.2} {fold_y:.2} L {x1:.2} {y1:.2} L {x0:.2} {y1:.2} Z",
+		x0 = x0,
+		y0 = y0,
+		fold_x = fold_x,
+		x1 = x1,
+		fold_y = fold_y,
+		y1 = y1
+	);
+	let fold_line = format!(
+		"M {fold_x:.2} {y0:.2} L {fold_x:.2} {fold_y:.2} L {x1:.2} {fold_y:.2}",
+		fold_x = fold_x,
+		y0 = y0,
+		fold_y = fold_y,
+		x1 = x1
+	);
+	let mut out = String::new();
+	out.push_str(&format!("<path class=\"node-shape\" d=\"{d}\" />\n"));
+	out.push_str(&format!(
+		"<path class=\"node-shape node-shape-outline\" d=\"{fold_line}\" />\n"
+	));
+	out
+}
+
+fn cylinder_svg(rect: &SvgRect) -> String {
+	let rx = rect.w / 2.0;
+	let ry = (rect.h * 0.18).clamp(6.0, rect.h / 2.5);
+	let cx = rect.x + rx;
+	let top_y = rect.y + ry;
+	let body_h = (rect.h - (2.0 * ry)).max(0.0);
+	let bottom_y = rect.y + rect.h - ry;
+	let mut out = String::new();
+	out.push_str(&format!(
+		"<ellipse class=\"node-shape\" cx=\"{cx:.2}\" cy=\"{top_y:.2}\" rx=\"{rx:.2}\" ry=\"{ry:.2}\" />\n",
+		cx = cx,
+		top_y = top_y,
+		rx = rx,
+		ry = ry
+	));
+	out.push_str(&format!(
+		"<rect class=\"node-shape\" x=\"{x:.2}\" y=\"{y:.2}\" width=\"{w:.2}\" height=\"{h:.2}\" />\n",
+		x = rect.x,
+		y = rect.y + ry,
+		w = rect.w,
+		h = body_h
+	));
+	out.push_str(&format!(
+		"<ellipse class=\"node-shape node-shape-outline\" cx=\"{cx:.2}\" cy=\"{bottom_y:.2}\" rx=\"{rx:.2}\" ry=\"{ry:.2}\" />\n",
+		cx = cx,
+		bottom_y = bottom_y,
+		rx = rx,
+		ry = ry
+	));
 	out
 }
 
@@ -275,8 +476,7 @@ fn regular_polygon_points(cx: f64, cy: f64, rx: f64, ry: f64, sides: usize) -> S
 	pts.join(" ")
 }
 
-fn text_svg(rect: &SvgRect, card: &Card) -> String {
-	let cx = rect.x + (rect.w / 2.0);
+fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
 	let cy = rect.y + (rect.h / 2.0);
 	let subtype = card
 		.card_subtype
@@ -284,9 +484,18 @@ fn text_svg(rect: &SvgRect, card: &Card) -> String {
 		.map(str::trim)
 		.filter(|value| !value.is_empty());
 	let description = card.description.trim();
-
-	let max_chars = ((rect.w - 16.0) / (NODE_FONT_SIZE_PX * 0.60)).floor() as usize;
-	let max_chars = max_chars.clamp(24, 72);
+	let left_pad = 10.0;
+	let right_pad = 10.0;
+	let icon_font_size = LINE_HEIGHT_PX * 3.0;
+	let icon_width = if icon.is_some() {
+		icon_font_size + 16.0
+	} else {
+		0.0
+	};
+	let text_x = rect.x + left_pad + icon_width;
+	let available_width = (rect.w - left_pad - right_pad - icon_width).max(0.0);
+	let max_chars = (available_width / (NODE_FONT_SIZE_PX * 0.60)).floor() as usize;
+	let max_chars = max_chars.clamp(18, 72);
 	let mut description_lines = Vec::new();
 	if !description.is_empty() {
 		description_lines = wrap_text(description, max_chars);
@@ -297,18 +506,31 @@ fn text_svg(rect: &SvgRect, card: &Card) -> String {
 		line_count += 1; // blank line
 		line_count += description_lines.len();
 	}
-	let total_h = (line_count as f64 - 1.0).max(0.0) * LINE_HEIGHT_PX;
+	let block_lines = line_count.max(3usize);
+	let total_h = (block_lines as f64 - 1.0).max(0.0) * LINE_HEIGHT_PX;
 	let start_y = cy - (total_h / 2.0);
 	let mut text = String::new();
+	if let Some(icon) = icon {
+		let icon_top = start_y - (LINE_HEIGHT_PX / 2.0);
+		text.push_str(&format!(
+			"<text class=\"node-icon\" x=\"{x:.2}\" y=\"{y:.2}\" text-anchor=\"start\" dominant-baseline=\"hanging\">{icon}</text>\n",
+			x = rect.x + left_pad,
+			y = icon_top,
+			icon = escape_xml(icon)
+		));
+	}
 	text.push_str(&format!(
-		"<text class=\"node-label\" x=\"{x:.2}\" y=\"{y:.2}\" text-anchor=\"middle\" dominant-baseline=\"middle\">\n",
-		x = cx,
+		"<text class=\"node-label\" x=\"{x:.2}\" y=\"{y:.2}\" text-anchor=\"start\" dominant-baseline=\"middle\">\n",
+		x = text_x,
 		y = start_y
 	));
-	// Line 1: **card_type** (subtype)
+	// Line 1: id + **card_type** (subtype)
+	let id_label = format!("{}: ", card.id);
 	text.push_str(&format!(
-		"<tspan font-weight=\"700\">{}</tspan>",
-		escape_xml(&card.card_type)
+		"<tspan x=\"{x:.2}\">{id_label}</tspan><tspan font-weight=\"700\">{card_type}</tspan>",
+		x = text_x,
+		id_label = escape_xml(&id_label),
+		card_type = escape_xml(&card.card_type)
 	));
 	if let Some(subtype) = subtype {
 		text.push_str(&format!(
@@ -321,7 +543,7 @@ fn text_svg(rect: &SvgRect, card: &Card) -> String {
 	// Line 2: name
 	text.push_str(&format!(
 		"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\">{line}</tspan>\n",
-		x = cx,
+		x = text_x,
 		dy = LINE_HEIGHT_PX,
 		line = escape_xml(&card.name)
 	));
@@ -330,13 +552,13 @@ fn text_svg(rect: &SvgRect, card: &Card) -> String {
 	if !description_lines.is_empty() {
 		text.push_str(&format!(
 			"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\">&#160;</tspan>\n",
-			x = cx,
+			x = text_x,
 			dy = LINE_HEIGHT_PX
 		));
 		for line in &description_lines {
 			text.push_str(&format!(
 				"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\">{line}</tspan>\n",
-				x = cx,
+				x = text_x,
 				dy = LINE_HEIGHT_PX,
 				line = escape_xml(line)
 			));
@@ -489,7 +711,10 @@ mod tests {
 			w: 400.0,
 			h: 200.0,
 		};
-		let svg = text_svg(&rect, &card);
+		let svg = text_svg(&rect, &card, Some("✨"));
+		assert!(svg.contains("class=\"node-icon\""));
+		assert!(svg.contains(">✨<"));
+		assert!(svg.contains("CAP-001: "));
 		assert!(svg.contains("<tspan font-weight=\"700\">Capability</tspan>"));
 		assert!(svg.contains("(struct)"));
 		assert!(svg.contains("Model IO"));
