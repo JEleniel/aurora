@@ -1,4 +1,4 @@
-# ART-012 (Artifact)
+# ART-012: **Artifact**
 
 **Name:** Process.view.md\
 

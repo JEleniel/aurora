@@ -1,4 +1,4 @@
-# APP-002 (Application)
+# APP-002: **Application**
 
 **Name:** Editor\
 

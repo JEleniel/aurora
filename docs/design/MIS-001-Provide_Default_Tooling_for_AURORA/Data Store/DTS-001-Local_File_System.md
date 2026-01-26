@@ -1,4 +1,4 @@
-# DTS-001 (Data Store)
+# DTS-001: **Data Store**
 
 **Name:** Local File System\
 

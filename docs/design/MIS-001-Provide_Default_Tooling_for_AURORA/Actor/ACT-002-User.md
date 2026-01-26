@@ -1,4 +1,4 @@
-# ACT-002 (Actor)
+# ACT-002: **Actor**
 
 **Name:** User\
 

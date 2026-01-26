@@ -1,4 +1,4 @@
-# REQ-002 (Requirement)
+# REQ-002: **Requirement**
 
 **Name:** Note Cards\
 

@@ -1,4 +1,4 @@
-# TES-003 (Test)
+# TES-003: **Test**
 
 **Name:** Compact Command\
 

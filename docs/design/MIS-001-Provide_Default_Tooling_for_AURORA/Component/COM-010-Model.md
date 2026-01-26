@@ -1,4 +1,4 @@
-# COM-010 (Component)
+# COM-010: **Component**
 
 **Name:** Model\
 

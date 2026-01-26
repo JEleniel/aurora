@@ -1,4 +1,4 @@
-# NOD-004 (Node)
+# NOD-004: **Node**
 
 **Name:** Tauri Runtime\
 

@@ -1,4 +1,4 @@
-# COM-012 (Component)
+# COM-012: **Component**
 
 **Name:** Aurora CLI\
 

@@ -1,4 +1,4 @@
-# INT-001 (Interface)
+# INT-001: **Interface**
 
 **Name:** CLI Interface\
 

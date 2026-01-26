@@ -1,4 +1,4 @@
-# ART-007 (Artifact)
+# ART-007: **Artifact**
 
 **Name:** Validation Report\
 

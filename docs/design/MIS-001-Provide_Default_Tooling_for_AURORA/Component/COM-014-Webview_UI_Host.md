@@ -1,4 +1,4 @@
-# COM-014 (Component)
+# COM-014: **Component**
 
 **Name:** Webview UI Host\
 

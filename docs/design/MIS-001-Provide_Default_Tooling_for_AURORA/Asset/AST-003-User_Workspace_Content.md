@@ -1,4 +1,4 @@
-# AST-003 (Asset)
+# AST-003: **Asset**
 
 **Name:** User Workspace Content\
 

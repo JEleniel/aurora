@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2040.67 995.33" width="2040.67" height="995.33" data-theme="dark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2528.06 1373.38" width="2528.06" height="1373.38" data-theme="dark">
 <defs>
 <style>
 svg{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}
@@ -8,11 +8,48 @@ svg[data-theme="light"]{--bg:#FFFFFF;--edge:#111827;--edgeLabel:#111827;--nodeSt
 .edge-path{fill:none;stroke:var(--edge);stroke-width:1.2;marker-end:url(#arrow);}
 .edge-arrow{fill:var(--edge);}
 .edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
+.node-icon{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:42px;}
 .node-label{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:11px;}
 .node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
 .node-shape-outline{fill:none;}
 .boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:2;stroke-dasharray:6 6;}
 .boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.card-type-capability .node-shape{fill:#325440;}
+svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
+.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
+.card-type-interface .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-system .node-shape{fill:#414C73;}
+svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
+.card-type-system .node-label{--nodeText:#FFFFFF;}
+.card-type-test .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
+.card-type-test .node-label{--nodeText:#FFFFFF;}
+.card-type-deployment .node-shape{fill:#47446B;}
+svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
+.card-type-deployment .node-label{--nodeText:#FFFFFF;}
 .card-type-control .node-shape{fill:#8B623D;}
 svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
@@ -21,266 +58,240 @@ svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
 .card-type-requirement .node-label{--nodeText:#FFFFFF;}
-.card-type-asset .node-shape{fill:#586374;}
-svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
-.card-type-asset .node-label{--nodeText:#FFFFFF;}
-.card-type-state .node-shape{fill:#8A438E;}
-svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
-.card-type-state .node-label{--nodeText:#FFFFFF;}
-.card-type-condition .node-shape{fill:#644833;}
-svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
-.card-type-condition .node-label{--nodeText:#FFFFFF;}
-.card-type-state-machine .node-shape{fill:#6B316E;}
-svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
-.card-type-state-machine .node-label{--nodeText:#FFFFFF;}
-.card-type-story .node-shape{fill:#5A723E;}
-svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
-.card-type-story .node-label{--nodeText:#FFFFFF;}
-.card-type-test .node-shape{fill:#30524A;}
-svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
-.card-type-test .node-label{--nodeText:#FFFFFF;}
-.card-type-risk .node-shape{fill:#9D3D5B;}
-svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
-.card-type-risk .node-label{--nodeText:#FFFFFF;}
-.card-type-system .node-shape{fill:#414C73;}
-svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
-.card-type-system .node-label{--nodeText:#FFFFFF;}
-.card-type-component .node-shape{fill:#4762BD;}
-svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
-.card-type-component .node-label{--nodeText:#FFFFFF;}
-.card-type-data-store .node-shape{fill:#34779B;}
-svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
-.card-type-data-store .node-label{--nodeText:#FFFFFF;}
-.card-type-artifact .node-shape{fill:#47505E;}
-svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
-.card-type-artifact .node-label{--nodeText:#FFFFFF;}
-.card-type-deployment .node-shape{fill:#47446B;}
-svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
-.card-type-deployment .node-label{--nodeText:#FFFFFF;}
 .card-type-threat .node-shape{fill:#6C3242;}
 svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
 .card-type-threat .node-label{--nodeText:#FFFFFF;}
-.card-type-event .node-shape{fill:#7949C3;}
-svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
-.card-type-event .node-label{--nodeText:#FFFFFF;}
-.card-type-constraint .node-shape{fill:#9B6D39;}
-svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
-.card-type-constraint .node-label{--nodeText:#FFFFFF;}
-.card-type-mission .node-shape{fill:#30524A;}
-svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
-.card-type-mission .node-label{--nodeText:#FFFFFF;}
-.card-type-driver .node-shape{fill:#336E5E;}
-svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
-.card-type-driver .node-label{--nodeText:#FFFFFF;}
-.card-type-actor .node-shape{fill:#435432;}
-svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
-.card-type-actor .node-label{--nodeText:#FFFFFF;}
-.card-type-interface .node-shape{fill:#34546A;}
-svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
-.card-type-interface .node-label{--nodeText:#FFFFFF;}
-.card-type-node .node-shape{fill:#565498;}
-svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
-.card-type-node .node-label{--nodeText:#FFFFFF;}
-.card-type-feature .node-shape{fill:#3E7253;}
-svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
-.card-type-feature .node-label{--nodeText:#FFFFFF;}
-.card-type-application .node-shape{fill:#475D9F;}
-svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
-.card-type-application .node-label{--nodeText:#FFFFFF;}
-.card-type-process .node-shape{fill:#543B81;}
-svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
-.card-type-process .node-label{--nodeText:#FFFFFF;}
-.card-type-activity .node-shape{fill:#6C46A8;}
-svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
-.card-type-activity .node-label{--nodeText:#FFFFFF;}
-.card-type-note .node-shape{fill:#47505B;}
-svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
-.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
 .card-type-node-instance .node-shape{fill:#5B55B4;}
 svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
 .card-type-node-instance .node-label{--nodeText:#FFFFFF;}
-.card-type-capability .node-shape{fill:#325440;}
-svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
-.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#9B6D39;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-condition .node-shape{fill:#644833;}
+svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
+.card-type-condition .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-state-machine .node-shape{fill:#6B316E;}
+svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
+.card-type-state-machine .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
 </style>
 <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
   <path d="M 0 0 L 10 5 L 0 10 z" class="edge-arrow" />
 </marker>
 </defs>
 <rect class="bg" x="0" y="0" width="100%" height="100%" />
-<path class="edge-path" d="M 675.59 572.65 L 713.12 572.90 L 751.54 573.16 L 789.49 573.41" data-tail="CTL-001" data-head="RIS-003" />
-<text class="edge-label" x="750.68" y="566.48" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 590.80 867.28 L 697.33 844.02 L 821.90 816.81 L 926.40 793.99" data-tail="CTL-002" data-head="RIS-002" />
-<text class="edge-label" x="750.68" y="821.15" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 698.18 399.29 L 742.84 399.73 L 788.37 400.20 L 832.51 400.64" data-tail="CTL-003" data-head="RIS-001" />
-<text class="edge-label" x="750.68" y="393.15" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 688.31 745.14 L 737.79 745.14 L 788.57 745.14 L 837.51 745.14" data-tail="CTL-004" data-head="RIS-002" />
-<text class="edge-label" x="750.68" y="738.48" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 596.25 693.07 L 688.74 673.49 L 794.22 651.15 L 888.12 631.27" data-tail="CTL-004" data-head="RIS-003" />
-<text class="edge-label" x="750.68" y="649.14" text-anchor="middle" dominant-baseline="middle">mitigates</text>
-<path class="edge-path" d="M 1456.32 403.81 L 1501.54 403.81 L 1547.52 403.81 L 1590.82 403.81" data-tail="RIS-001" data-head="AST-002" />
-<text class="edge-label" x="1548.00" y="397.14" text-anchor="middle" dominant-baseline="middle">impacts</text>
-<path class="edge-path" d="M 1355.90 451.91 L 1403.14 463.38 L 1453.06 475.80 L 1499.33 487.81 L 1541.57 498.76 L 1586.78 510.98 L 1629.50 522.75" data-tail="RIS-001" data-head="AST-003" />
-<text class="edge-label" x="1548.00" y="489.15" text-anchor="middle" dominant-baseline="middle">impacts</text>
-<path class="edge-path" d="M 1451.42 745.14 L 1495.49 745.14 L 1540.32 745.14 L 1582.75 745.14" data-tail="RIS-002" data-head="AST-001" />
-<text class="edge-label" x="1548.00" y="738.48" text-anchor="middle" dominant-baseline="middle">impacts</text>
-<path class="edge-path" d="M 1358.30 698.31 L 1404.77 687.34 L 1453.82 675.45 L 1499.33 663.81 L 1541.86 652.95 L 1587.36 640.71 L 1630.27 628.90" data-tail="RIS-002" data-head="AST-003" />
-<text class="edge-label" x="1548.00" y="639.81" text-anchor="middle" dominant-baseline="middle">impacts</text>
-<path class="edge-path" d="M 1499.62 575.81 L 1530.72 575.81 L 1561.63 575.81 L 1591.30 575.81" data-tail="RIS-003" data-head="AST-003" />
-<text class="edge-label" x="1548.00" y="569.15" text-anchor="middle" dominant-baseline="middle">impacts</text>
+<path class="edge-path" d="M 859.21 787.47 C 897.02 787.67 935.44 787.88 973.54 788.08" data-tail="CTL-001" data-head="RIS-003" />
+<text class="edge-label" x="934.37" y="781.20" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 749.28 1190.26 C 871.88 1160.33 1012.42 1126.03 1133.47 1096.48" data-tail="CTL-002" data-head="RIS-002" />
+<text class="edge-label" x="934.37" y="1138.54" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 881.73 548.78 C 926.35 549.14 971.52 549.51 1015.87 549.87" data-tail="CTL-003" data-head="RIS-001" />
+<text class="edge-label" x="934.37" y="542.53" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 871.71 1025.20 C 921.33 1025.20 971.81 1025.20 1021.06 1025.20" data-tail="CTL-004" data-head="RIS-002" />
+<text class="edge-label" x="934.37" y="1018.54" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 754.34 950.72 C 863.63 924.63 986.59 895.28 1097.18 868.89" data-tail="CTL-004" data-head="RIS-003" />
+<text class="edge-label" x="934.37" y="901.20" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 1823.90 553.20 C 1869.22 553.20 1914.72 553.20 1958.30 553.20" data-tail="RIS-001" data-head="AST-002" />
+<text class="edge-label" x="1915.39" y="546.54" text-anchor="middle" dominant-baseline="middle">impacts</text>
+<path class="edge-path" d="M 1700.06 623.87 C 1755.36 638.82 1812.96 654.84 1866.72 670.54 C 1914.82 684.60 1966.08 700.35 2014.85 715.71" data-tail="RIS-001" data-head="AST-003" />
+<text class="edge-label" x="1915.39" y="673.20" text-anchor="middle" dominant-baseline="middle">impacts</text>
+<path class="edge-path" d="M 1819.10 1025.20 C 1863.07 1025.20 1907.33 1025.20 1949.86 1025.20" data-tail="RIS-002" data-head="AST-001" />
+<text class="edge-label" x="1915.39" y="1018.54" text-anchor="middle" dominant-baseline="middle">impacts</text>
+<path class="edge-path" d="M 1701.89 955.97 C 1756.61 941.46 1813.63 925.90 1866.72 910.54 C 1915.01 896.57 1966.46 880.82 2015.33 865.43" data-tail="RIS-002" data-head="AST-003" />
+<text class="edge-label" x="1915.39" y="882.54" text-anchor="middle" dominant-baseline="middle">impacts</text>
+<path class="edge-path" d="M 1866.91 790.54 C 1898.02 790.54 1928.93 790.54 1958.88 790.54" data-tail="RIS-003" data-head="AST-003" />
+<text class="edge-label" x="1915.39" y="783.87" text-anchor="middle" dominant-baseline="middle">impacts</text>
 <g class="node card-type-asset" data-card-id="AST-001" data-layout-node="AST-001">
-<rect class="node-shape" x="1596.62" y="695.81" width="444.00" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="1818.62" y="717.14" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🛡️ Asset</tspan>
-<tspan x="1818.62" dy="14.00">Aurora Models</tspan>
-<tspan x="1818.62" dy="14.00">&#160;</tspan>
-<tspan x="1818.62" dy="14.00">Aurora model source files (cards and schema references) that</tspan>
-<tspan x="1818.62" dy="14.00">represent the authoritative architecture model content.</tspan>
+<rect class="node-shape" x="1964.02" y="954.54" width="564.00" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="1974.02" y="990.20" text-anchor="start" dominant-baseline="hanging">🛡️</text>
+<text class="node-label" x="2032.02" y="997.20" text-anchor="start" dominant-baseline="middle">
+<tspan x="2032.02">AST-001: </tspan><tspan font-weight="700">Asset</tspan>
+<tspan x="2032.02" dy="14.00">Aurora Models</tspan>
+<tspan x="2032.02" dy="14.00">&#160;</tspan>
+<tspan x="2032.02" dy="14.00">Aurora model source files (cards and schema references) that represent</tspan>
+<tspan x="2032.02" dy="14.00">the authoritative architecture model content.</tspan>
 </text>
 </g>
 <g class="node card-type-asset" data-card-id="AST-002" data-layout-node="AST-002">
-<rect class="node-shape" x="1604.63" y="354.48" width="428.00" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="1818.62" y="375.81" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🛡️ Asset</tspan>
-<tspan x="1818.62" dy="14.00">Rendered Documentation Output</tspan>
-<tspan x="1818.62" dy="14.00">&#160;</tspan>
-<tspan x="1818.62" dy="14.00">Generated Markdown and view artifacts produced from Aurora</tspan>
-<tspan x="1818.62" dy="14.00">models (e.g., rendered card pages and view markdown).</tspan>
+<rect class="node-shape" x="1972.02" y="482.53" width="548.00" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="1982.02" y="518.20" text-anchor="start" dominant-baseline="hanging">🛡️</text>
+<text class="node-label" x="2040.02" y="525.20" text-anchor="start" dominant-baseline="middle">
+<tspan x="2040.02">AST-002: </tspan><tspan font-weight="700">Asset</tspan>
+<tspan x="2040.02" dy="14.00">Rendered Documentation Output</tspan>
+<tspan x="2040.02" dy="14.00">&#160;</tspan>
+<tspan x="2040.02" dy="14.00">Generated Markdown and view artifacts produced from Aurora models</tspan>
+<tspan x="2040.02" dy="14.00">(e.g., rendered card pages and view markdown).</tspan>
 </text>
 </g>
 <g class="node card-type-asset" data-card-id="AST-003" data-layout-node="AST-003">
-<rect class="node-shape" x="1605.29" y="526.47" width="426.66" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="1818.62" y="547.81" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🛡️ Asset</tspan>
-<tspan x="1818.62" dy="14.00">User Workspace Content</tspan>
-<tspan x="1818.62" dy="14.00">&#160;</tspan>
-<tspan x="1818.62" dy="14.00">The user’s workspace files and settings (including source</tspan>
-<tspan x="1818.62" dy="14.00">code and secrets) that tooling must not corrupt or exfiltrate.</tspan>
+<rect class="node-shape" x="1972.68" y="719.88" width="546.66" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="1982.68" y="755.54" text-anchor="start" dominant-baseline="hanging">🛡️</text>
+<text class="node-label" x="2040.68" y="762.54" text-anchor="start" dominant-baseline="middle">
+<tspan x="2040.68">AST-003: </tspan><tspan font-weight="700">Asset</tspan>
+<tspan x="2040.68" dy="14.00">User Workspace Content</tspan>
+<tspan x="2040.68" dy="14.00">&#160;</tspan>
+<tspan x="2040.68" dy="14.00">The user’s workspace files and settings (including source code and</tspan>
+<tspan x="2040.68" dy="14.00">secrets) that tooling must not corrupt or exfiltrate.</tspan>
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-001" data-layout-node="CTL-001">
-<polygon class="node-shape" points="473.98,500.71 650.71,541.58 650.71,599.38 473.98,640.25 224.04,640.25 47.31,599.38 47.31,541.58 224.04,500.71" />
-<text class="node-label" x="349.01" y="535.48" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🔒 Control</tspan>
-<tspan x="349.01" dy="14.00">Workspace Trust Gate</tspan>
-<tspan x="349.01" dy="14.00">&#160;</tspan>
-<tspan x="349.01" dy="14.00">Gate potentially unsafe operations (e.g., file writes, webview</tspan>
-<tspan x="349.01" dy="14.00">rendering, executing tools) behind workspace trust checks and explicit</tspan>
-<tspan x="349.01" dy="14.00">user consent.</tspan>
+<polygon class="node-shape" points="600.97,685.26 827.40,743.81 827.40,826.60 600.97,885.14 280.74,885.14 54.30,826.60 54.30,743.81 280.74,685.26" />
+<text class="node-icon" x="32.45" y="743.20" text-anchor="start" dominant-baseline="hanging">🔒</text>
+<text class="node-label" x="90.45" y="750.20" text-anchor="start" dominant-baseline="middle">
+<tspan x="90.45">CTL-001: </tspan><tspan font-weight="700">Control</tspan>
+<tspan x="90.45" dy="14.00">Workspace Trust Gate</tspan>
+<tspan x="90.45" dy="14.00">&#160;</tspan>
+<tspan x="90.45" dy="14.00">Gate potentially unsafe operations (e.g., file writes, webview</tspan>
+<tspan x="90.45" dy="14.00">rendering, executing tools) behind workspace trust checks and explicit</tspan>
+<tspan x="90.45" dy="14.00">user consent.</tspan>
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-002" data-layout-node="CTL-002">
-<polygon class="node-shape" points="477.10,850.04 658.25,890.91 658.25,948.71 477.10,989.58 220.92,989.58 39.77,948.71 39.77,890.91 220.92,850.04" />
-<text class="node-label" x="349.01" y="884.81" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🔒 Control</tspan>
-<tspan x="349.01" dy="14.00">Safe Path Handling and Atomic Writes</tspan>
-<tspan x="349.01" dy="14.00">&#160;</tspan>
-<tspan x="349.01" dy="14.00">Constrain paths to the intended workspace/model roots, normalize and</tspan>
-<tspan x="349.01" dy="14.00">validate paths, and use atomic write patterns to prevent partial writes</tspan>
-<tspan x="349.01" dy="14.00">and clobbering.</tspan>
+<polygon class="node-shape" points="604.09,1165.26 834.95,1223.81 834.95,1306.60 604.09,1365.14 277.61,1365.14 46.76,1306.60 46.76,1223.81 277.61,1165.26" />
+<text class="node-icon" x="24.28" y="1223.20" text-anchor="start" dominant-baseline="hanging">🔒</text>
+<text class="node-label" x="82.28" y="1230.20" text-anchor="start" dominant-baseline="middle">
+<tspan x="82.28">CTL-002: </tspan><tspan font-weight="700">Control</tspan>
+<tspan x="82.28" dy="14.00">Safe Path Handling and Atomic Writes</tspan>
+<tspan x="82.28" dy="14.00">&#160;</tspan>
+<tspan x="82.28" dy="14.00">Constrain paths to the intended workspace/model roots, normalize and</tspan>
+<tspan x="82.28" dy="14.00">validate paths, and use atomic write patterns to prevent partial writes</tspan>
+<tspan x="82.28" dy="14.00">and clobbering.</tspan>
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-003" data-layout-node="CTL-003">
-<polygon class="node-shape" points="482.57,326.04 671.45,366.91 671.45,424.71 482.57,465.58 215.45,465.58 26.57,424.71 26.57,366.91 215.45,326.04" />
-<text class="node-label" x="349.01" y="367.81" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🔒 Control</tspan>
-<tspan x="349.01" dy="14.00">Content Sanitization</tspan>
-<tspan x="349.01" dy="14.00">&#160;</tspan>
-<tspan x="349.01" dy="14.00">Sanitize rendered Markdown and webview content, restrict resource</tspan>
-<tspan x="349.01" dy="14.00">loading, and disable script execution to prevent injection.</tspan>
+<polygon class="node-shape" points="609.56,445.26 848.14,503.81 848.14,586.60 609.56,645.14 272.14,645.14 33.56,586.60 33.56,503.81 272.14,445.26" />
+<text class="node-icon" x="10.00" y="510.20" text-anchor="start" dominant-baseline="hanging">🔒</text>
+<text class="node-label" x="68.00" y="517.20" text-anchor="start" dominant-baseline="middle">
+<tspan x="68.00">CTL-003: </tspan><tspan font-weight="700">Control</tspan>
+<tspan x="68.00" dy="14.00">Content Sanitization</tspan>
+<tspan x="68.00" dy="14.00">&#160;</tspan>
+<tspan x="68.00" dy="14.00">Sanitize rendered Markdown and webview content, restrict resource</tspan>
+<tspan x="68.00" dy="14.00">loading, and disable script execution to prevent injection.</tspan>
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-004" data-layout-node="CTL-004">
-<polygon class="node-shape" points="478.66,675.37 662.02,716.24 662.02,774.04 478.66,814.91 219.35,814.91 35.99,774.04 35.99,716.24 219.35,675.37" />
-<text class="node-label" x="349.01" y="717.14" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🔒 Control</tspan>
-<tspan x="349.01" dy="14.00">Least Privilege File Access</tspan>
-<tspan x="349.01" dy="14.00">&#160;</tspan>
-<tspan x="349.01" dy="14.00">Minimize read/write permissions and scope operations to explicit</tspan>
-<tspan x="349.01" dy="14.00">user-selected paths; avoid reading or writing unrelated workspace files.</tspan>
+<polygon class="node-shape" points="605.65,925.26 838.72,983.81 838.72,1066.60 605.65,1125.14 276.05,1125.14 42.99,1066.60 42.99,983.81 276.05,925.26" />
+<text class="node-icon" x="20.20" y="990.20" text-anchor="start" dominant-baseline="hanging">🔒</text>
+<text class="node-label" x="78.20" y="997.20" text-anchor="start" dominant-baseline="middle">
+<tspan x="78.20">CTL-004: </tspan><tspan font-weight="700">Control</tspan>
+<tspan x="78.20" dy="14.00">Least Privilege File Access</tspan>
+<tspan x="78.20" dy="14.00">&#160;</tspan>
+<tspan x="78.20" dy="14.00">Minimize read/write permissions and scope operations to explicit</tspan>
+<tspan x="78.20" dy="14.00">user-selected paths; avoid reading or writing unrelated workspace files.</tspan>
 </text>
 </g>
 <g class="node card-type-data-store" data-card-id="DTS-001" data-layout-node="DTS-001">
-<ellipse class="node-shape" cx="349.01" cy="184.39" rx="197.33" ry="24.42" />
-<rect class="node-shape" x="151.68" y="184.39" width="394.67" height="86.83" />
-<ellipse class="node-shape node-shape-outline" cx="349.01" cy="271.22" rx="197.33" ry="24.42" />
-<text class="node-label" x="349.01" y="192.81" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🗄️ Data Store</tspan>
-<tspan x="349.01" dy="14.00">Local File System</tspan>
-<tspan x="349.01" dy="14.00">&#160;</tspan>
-<tspan x="349.01" dy="14.00">Local file system (workspace) used as the primary</tspan>
-<tspan x="349.01" dy="14.00">persistence mechanism for Aurora model files and</tspan>
-<tspan x="349.01" dy="14.00">generated outputs.</tspan>
+<ellipse class="node-shape" cx="440.85" cy="253.65" rx="257.33" ry="34.98" />
+<rect class="node-shape" x="183.52" y="253.65" width="514.67" height="124.37" />
+<ellipse class="node-shape node-shape-outline" cx="440.85" cy="378.03" rx="257.33" ry="34.98" />
+<text class="node-icon" x="193.52" y="280.84" text-anchor="start" dominant-baseline="hanging">🗄️</text>
+<text class="node-label" x="251.52" y="287.84" text-anchor="start" dominant-baseline="middle">
+<tspan x="251.52">DTS-001: </tspan><tspan font-weight="700">Data Store</tspan>
+<tspan x="251.52" dy="14.00">Local File System</tspan>
+<tspan x="251.52" dy="14.00">&#160;</tspan>
+<tspan x="251.52" dy="14.00">Local file system (workspace) used as the primary persistence</tspan>
+<tspan x="251.52" dy="14.00">mechanism for Aurora model files and generated outputs.</tspan>
 </text>
 </g>
 <g class="node card-type-data-store" data-card-id="DTS-002" data-layout-node="DTS-002">
-<ellipse class="node-shape" cx="349.01" cy="24.40" rx="212.67" ry="24.42" />
-<rect class="node-shape" x="136.34" y="24.40" width="425.34" height="86.83" />
-<ellipse class="node-shape node-shape-outline" cx="349.01" cy="111.23" rx="212.67" ry="24.42" />
-<text class="node-label" x="349.01" y="32.81" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🗄️ Data Store</tspan>
-<tspan x="349.01" dy="14.00">Extension State Store</tspan>
-<tspan x="349.01" dy="14.00">&#160;</tspan>
-<tspan x="349.01" dy="14.00">VSCode extension storage for persisted settings and</tspan>
-<tspan x="349.01" dy="14.00">non-source-of-truth state (cache, UI state, last-opened model,</tspan>
-<tspan x="349.01" dy="14.00">etc.).</tspan>
+<ellipse class="node-shape" cx="440.85" cy="35.06" rx="272.67" ry="34.98" />
+<rect class="node-shape" x="168.18" y="35.06" width="545.34" height="124.37" />
+<ellipse class="node-shape node-shape-outline" cx="440.85" cy="159.43" rx="272.67" ry="34.98" />
+<text class="node-icon" x="178.18" y="62.25" text-anchor="start" dominant-baseline="hanging">🗄️</text>
+<text class="node-label" x="236.18" y="69.25" text-anchor="start" dominant-baseline="middle">
+<tspan x="236.18">DTS-002: </tspan><tspan font-weight="700">Data Store</tspan>
+<tspan x="236.18" dy="14.00">Extension State Store</tspan>
+<tspan x="236.18" dy="14.00">&#160;</tspan>
+<tspan x="236.18" dy="14.00">VSCode extension storage for persisted settings and</tspan>
+<tspan x="236.18" dy="14.00">non-source-of-truth state (cache, UI state, last-opened model, etc.).</tspan>
 </text>
 </g>
 <g class="node card-type-risk" data-card-id="RIS-001" data-layout-node="RIS-001">
-<polygon class="node-shape" points="1268.09,344.42 1433.23,379.21 1433.23,428.42 1268.09,463.21 1034.56,463.21 869.43,428.42 869.43,379.21 1034.56,344.42" />
-<text class="node-label" x="1151.33" y="375.81" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⚠️ Risk</tspan>
-<tspan x="1151.33" dy="14.00">Injected Content in Rendered Output</tspan>
-<tspan x="1151.33" dy="14.00">&#160;</tspan>
-<tspan x="1151.33" dy="14.00">Rendered output could contain unsafe content that misleads users or</tspan>
-<tspan x="1151.33" dy="14.00">executes in a webview context.</tspan>
+<polygon class="node-shape" points="1578.76,463.63 1793.60,516.10 1793.60,590.30 1578.76,642.77 1274.93,642.77 1060.10,590.30 1060.10,516.10 1274.93,463.63" />
+<text class="node-icon" x="1039.88" y="518.20" text-anchor="start" dominant-baseline="hanging">⚠️</text>
+<text class="node-label" x="1097.88" y="525.20" text-anchor="start" dominant-baseline="middle">
+<tspan x="1097.88">RIS-001: </tspan><tspan font-weight="700">Risk</tspan>
+<tspan x="1097.88" dy="14.00">Injected Content in Rendered Output</tspan>
+<tspan x="1097.88" dy="14.00">&#160;</tspan>
+<tspan x="1097.88" dy="14.00">Rendered output could contain unsafe content that misleads users or</tspan>
+<tspan x="1097.88" dy="14.00">executes in a webview context.</tspan>
 </text>
 </g>
 <g class="node card-type-risk" data-card-id="RIS-002" data-layout-node="RIS-002">
-<polygon class="node-shape" points="1266.14,685.75 1428.51,720.54 1428.51,769.75 1266.14,804.54 1036.51,804.54 874.14,769.75 874.14,720.54 1036.51,685.75" />
-<text class="node-label" x="1151.33" y="717.14" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⚠️ Risk</tspan>
-<tspan x="1151.33" dy="14.00">Unintended File Modification</tspan>
-<tspan x="1151.33" dy="14.00">&#160;</tspan>
-<tspan x="1151.33" dy="14.00">Tooling could overwrite or corrupt files outside the intended model</tspan>
-<tspan x="1151.33" dy="14.00">output locations.</tspan>
+<polygon class="node-shape" points="1576.81,935.64 1788.89,988.10 1788.89,1062.30 1576.81,1114.77 1276.89,1114.77 1064.81,1062.30 1064.81,988.10 1276.89,935.64" />
+<text class="node-icon" x="1044.98" y="990.20" text-anchor="start" dominant-baseline="hanging">⚠️</text>
+<text class="node-label" x="1102.98" y="997.20" text-anchor="start" dominant-baseline="middle">
+<tspan x="1102.98">RIS-002: </tspan><tspan font-weight="700">Risk</tspan>
+<tspan x="1102.98" dy="14.00">Unintended File Modification</tspan>
+<tspan x="1102.98" dy="14.00">&#160;</tspan>
+<tspan x="1102.98" dy="14.00">Tooling could overwrite or corrupt files outside the intended model</tspan>
+<tspan x="1102.98" dy="14.00">output locations.</tspan>
 </text>
 </g>
 <g class="node card-type-risk" data-card-id="RIS-003" data-layout-node="RIS-003">
-<polygon class="node-shape" points="1284.50,506.04 1472.82,546.91 1472.82,604.71 1284.50,645.58 1018.16,645.58 829.83,604.71 829.83,546.91 1018.16,506.04" />
-<text class="node-label" x="1151.33" y="547.81" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⚠️ Risk</tspan>
-<tspan x="1151.33" dy="14.00">Data Exposure from Untrusted Workspace</tspan>
-<tspan x="1151.33" dy="14.00">&#160;</tspan>
-<tspan x="1151.33" dy="14.00">Operating against untrusted workspace content could lead to disclosure</tspan>
-<tspan x="1151.33" dy="14.00">of sensitive data or unintended access beyond user intent.</tspan>
+<polygon class="node-shape" points="1595.16,690.60 1833.20,749.14 1833.20,831.94 1595.16,890.48 1258.53,890.48 1020.50,831.94 1020.50,749.14 1258.53,690.60" />
+<text class="node-icon" x="997.02" y="755.54" text-anchor="start" dominant-baseline="hanging">⚠️</text>
+<text class="node-label" x="1055.02" y="762.54" text-anchor="start" dominant-baseline="middle">
+<tspan x="1055.02">RIS-003: </tspan><tspan font-weight="700">Risk</tspan>
+<tspan x="1055.02" dy="14.00">Data Exposure from Untrusted Workspace</tspan>
+<tspan x="1055.02" dy="14.00">&#160;</tspan>
+<tspan x="1055.02" dy="14.00">Operating against untrusted workspace content could lead to disclosure</tspan>
+<tspan x="1055.02" dy="14.00">of sensitive data or unintended access beyond user intent.</tspan>
 </text>
 </g>
 </svg>

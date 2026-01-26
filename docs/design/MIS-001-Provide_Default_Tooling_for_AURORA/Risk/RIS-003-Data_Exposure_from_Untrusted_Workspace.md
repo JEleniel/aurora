@@ -1,4 +1,4 @@
-# RIS-003 (Risk)
+# RIS-003: **Risk**
 
 **Name:** Data Exposure from Untrusted Workspace\
 

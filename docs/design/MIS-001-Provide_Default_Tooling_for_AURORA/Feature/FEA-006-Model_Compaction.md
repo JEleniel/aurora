@@ -1,4 +1,4 @@
-# FEA-006 (Feature)
+# FEA-006: **Feature**
 
 **Name:** Model Compaction\
 

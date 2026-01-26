@@ -1,4 +1,4 @@
-# REQ-017 (Requirement)
+# REQ-017: **Requirement**
 
 **Name:** Sanitized Rendering\
 

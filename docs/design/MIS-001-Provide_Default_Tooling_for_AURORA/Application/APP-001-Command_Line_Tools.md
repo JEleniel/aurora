@@ -1,4 +1,4 @@
-# APP-001 (Application)
+# APP-001: **Application**
 
 **Name:** Command Line Tools\
 

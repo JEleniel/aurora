@@ -1,4 +1,4 @@
-# REQ-016 (Requirement)
+# REQ-016: **Requirement**
 
 **Name:** Workspace Trust Gating\
 

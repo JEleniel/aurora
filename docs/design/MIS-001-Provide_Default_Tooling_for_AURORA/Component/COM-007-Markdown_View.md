@@ -1,4 +1,4 @@
-# COM-007 (Component)
+# COM-007: **Component**
 
 **Name:** Markdown View\
 

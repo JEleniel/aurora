@@ -1,4 +1,4 @@
-# REQ-008 (Requirement)
+# REQ-008: **Requirement**
 
 **Name:** Compact Models\
 

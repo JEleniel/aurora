@@ -1,4 +1,4 @@
-# DEP-001 (Deployment)
+# DEP-001: **Deployment**
 
 **Name:** Local Development\
 

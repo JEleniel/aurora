@@ -1,4 +1,4 @@
-# FEA-011 (Feature)
+# FEA-011: **Feature**
 
 **Name:** Preview Rendered Markdown\
 

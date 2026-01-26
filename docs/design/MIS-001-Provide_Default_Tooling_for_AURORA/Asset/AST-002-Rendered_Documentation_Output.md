@@ -1,4 +1,4 @@
-# AST-002 (Asset)
+# AST-002: **Asset**
 
 **Name:** Rendered Documentation Output\
 

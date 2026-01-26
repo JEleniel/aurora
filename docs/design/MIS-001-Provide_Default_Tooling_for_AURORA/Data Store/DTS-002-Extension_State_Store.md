@@ -1,4 +1,4 @@
-# DTS-002 (Data Store)
+# DTS-002: **Data Store**
 
 **Name:** Extension State Store\
 

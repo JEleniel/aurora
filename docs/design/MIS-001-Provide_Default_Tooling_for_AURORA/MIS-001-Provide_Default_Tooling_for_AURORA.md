@@ -1,4 +1,4 @@
-# MIS-001 (Mission)
+# MIS-001: **Mission**
 
 **Name:** Provide Default Tooling for AURORA\
 

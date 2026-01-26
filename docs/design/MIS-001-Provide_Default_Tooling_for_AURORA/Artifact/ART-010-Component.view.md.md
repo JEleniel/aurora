@@ -1,4 +1,4 @@
-# ART-010 (Artifact)
+# ART-010: **Artifact**
 
 **Name:** Component.view.md\
 

@@ -1,4 +1,4 @@
-# CNS-003 (Constraint)
+# CNS-003: **Constraint**
 
 **Name:** No Inherent Semantic Meaning\
 

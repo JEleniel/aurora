@@ -1,4 +1,4 @@
-# CTL-002 (Control)
+# CTL-002: **Control**
 
 **Name:** Safe Path Handling and Atomic Writes\
 

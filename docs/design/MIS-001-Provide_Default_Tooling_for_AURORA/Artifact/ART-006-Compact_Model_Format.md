@@ -1,4 +1,4 @@
-# ART-006 (Artifact)
+# ART-006: **Artifact**
 
 **Name:** Compact Model Format\
 

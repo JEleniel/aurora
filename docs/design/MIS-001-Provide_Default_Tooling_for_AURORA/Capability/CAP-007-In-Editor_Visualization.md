@@ -1,4 +1,4 @@
-# CAP-007 (Capability)
+# CAP-007: **Capability**
 
 **Name:** In-Editor Visualization\
 

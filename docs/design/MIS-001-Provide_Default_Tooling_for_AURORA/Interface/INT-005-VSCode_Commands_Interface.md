@@ -1,4 +1,4 @@
-# INT-005 (Interface)
+# INT-005: **Interface**
 
 **Name:** VSCode Commands Interface\
 

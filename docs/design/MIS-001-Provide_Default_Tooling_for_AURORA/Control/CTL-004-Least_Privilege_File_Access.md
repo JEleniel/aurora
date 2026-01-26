@@ -1,4 +1,4 @@
-# CTL-004 (Control)
+# CTL-004: **Control**
 
 **Name:** Least Privilege File Access\
 

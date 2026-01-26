@@ -1,4 +1,4 @@
-# CNS-002 (Constraint)
+# CNS-002: **Constraint**
 
 **Name:** Directed, Locally Cyclic Graph\
 

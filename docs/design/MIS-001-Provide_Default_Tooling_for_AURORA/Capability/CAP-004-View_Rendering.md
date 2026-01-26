@@ -1,4 +1,4 @@
-# CAP-004 (Capability)
+# CAP-004: **Capability**
 
 **Name:** View Rendering\
 

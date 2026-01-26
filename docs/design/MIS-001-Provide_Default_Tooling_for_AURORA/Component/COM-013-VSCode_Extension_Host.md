@@ -1,4 +1,4 @@
-# COM-013 (Component)
+# COM-013: **Component**
 
 **Name:** VSCode Extension Host\
 

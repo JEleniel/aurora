@@ -1,4 +1,4 @@
-# ART-001 (Artifact)
+# ART-001: **Artifact**
 
 **Name:** Aurora Schema\
 

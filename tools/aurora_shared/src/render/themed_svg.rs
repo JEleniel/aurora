@@ -170,14 +170,35 @@ fn edge_svg(layout: &PlainGraph, edge: &PlainEdge) -> String {
 
 fn edge_path_d(layout: &PlainGraph, points: &[Point]) -> String {
 	let mut d = String::new();
-	let mut iter = points.iter();
-	if let Some(first) = iter.next() {
-		let p = to_svg_point(layout, *first);
-		d.push_str(&format!("M {x:.2} {y:.2}", x = p.x, y = p.y));
+	if points.is_empty() {
+		return d;
 	}
-	for point in iter {
-		let p = to_svg_point(layout, *point);
-		d.push_str(&format!(" L {x:.2} {y:.2}", x = p.x, y = p.y));
+	let svg_points = points
+		.iter()
+		.copied()
+		.map(|point| to_svg_point(layout, point))
+		.collect::<Vec<_>>();
+	let start = svg_points[0];
+	d.push_str(&format!("M {x:.2} {y:.2}", x = start.x, y = start.y));
+	let has_bezier_points = svg_points.len() >= 4 && (svg_points.len() - 1) % 3 == 0;
+	if has_bezier_points {
+		for chunk in svg_points[1..].chunks(3) {
+			if let [c1, c2, end] = chunk {
+				d.push_str(&format!(
+					" C {x1:.2} {y1:.2} {x2:.2} {y2:.2} {x3:.2} {y3:.2}",
+					x1 = c1.x,
+					y1 = c1.y,
+					x2 = c2.x,
+					y2 = c2.y,
+					x3 = end.x,
+					y3 = end.y
+				));
+			}
+		}
+		return d;
+	}
+	for point in svg_points.iter().skip(1) {
+		d.push_str(&format!(" L {x:.2} {y:.2}", x = point.x, y = point.y));
 	}
 	d
 }
@@ -677,13 +698,13 @@ fn brighten_channel(value: u8, amount: f32) -> u8 {
 
 #[cfg(test)]
 mod tests {
-	use std::collections::BTreeMap;
+	use std::collections::{BTreeMap, HashMap};
 
 	use serde_json::Value;
 
 	use crate::model::{AuditTrail, Card};
-
-	use super::{SvgRect, text_svg};
+	use super::{SvgRect, edge_path_d, text_svg};
+	use super::super::graphviz_plain::{PlainGraph, Point};
 
 	#[test]
 	fn node_text_uses_svg_tspans_and_requested_format() {
@@ -720,5 +741,24 @@ mod tests {
 		assert!(svg.contains("Model IO"));
 		assert!(svg.contains("This is a test description."));
 		assert!(!svg.contains("<br"));
+	}
+
+	#[test]
+	fn edge_path_uses_bezier_curves() {
+		let layout = PlainGraph {
+			width_in: 2.0,
+			height_in: 2.0,
+			nodes: HashMap::new(),
+			edges: Vec::new(),
+		};
+		let points = vec![
+			Point { x_in: 0.2, y_in: 0.2 },
+			Point { x_in: 0.6, y_in: 0.4 },
+			Point { x_in: 1.2, y_in: 0.8 },
+			Point { x_in: 1.6, y_in: 1.4 },
+		];
+		let path = edge_path_d(&layout, &points);
+		assert!(path.contains(" C "));
+		assert!(!path.contains(" L "));
 	}
 }

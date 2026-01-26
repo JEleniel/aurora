@@ -1,4 +1,4 @@
-# CAP-002 (Capability)
+# CAP-002: **Capability**
 
 **Name:** Model Validation\
 

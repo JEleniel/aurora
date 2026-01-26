@@ -1,4 +1,4 @@
-# CAP-001 (Capability)
+# CAP-001: **Capability**
 
 **Name:** Model IO\
 

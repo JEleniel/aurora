@@ -1,4 +1,4 @@
-# ATV-006 (Activity)
+# ATV-006: **Activity**
 
 **Name:** Navigate Model\
 

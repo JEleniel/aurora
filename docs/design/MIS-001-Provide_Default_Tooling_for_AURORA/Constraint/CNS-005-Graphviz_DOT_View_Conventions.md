@@ -1,4 +1,4 @@
-# CNS-005 (Constraint)
+# CNS-005: **Constraint**
 
 **Name:** Graphviz DOT View Conventions\
 

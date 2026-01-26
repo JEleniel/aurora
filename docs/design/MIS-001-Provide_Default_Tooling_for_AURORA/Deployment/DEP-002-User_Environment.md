@@ -1,4 +1,4 @@
-# DEP-002 (Deployment)
+# DEP-002: **Deployment**
 
 **Name:** User Environment\
 

@@ -1,4 +1,4 @@
-# NOD-001 (Node)
+# NOD-001: **Node**
 
 **Name:** User Workstation\
 

@@ -1,4 +1,4 @@
-# RIS-001 (Risk)
+# RIS-001: **Risk**
 
 **Name:** Injected Content in Rendered Output\
 

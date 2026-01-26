@@ -1,4 +1,4 @@
-# COM-004 (Component)
+# COM-004: **Component**
 
 **Name:** Explorer Tree View\
 

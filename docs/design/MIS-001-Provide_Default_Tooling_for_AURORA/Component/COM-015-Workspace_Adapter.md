@@ -1,4 +1,4 @@
-# COM-015 (Component)
+# COM-015: **Component**
 
 **Name:** Workspace Adapter\
 

@@ -1,4 +1,4 @@
-# CTL-001 (Control)
+# CTL-001: **Control**
 
 **Name:** Workspace Trust Gate\
 

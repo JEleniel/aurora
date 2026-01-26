@@ -1,4 +1,4 @@
-# ATV-005 (Activity)
+# ATV-005: **Activity**
 
 **Name:** Open Model in Tool\
 

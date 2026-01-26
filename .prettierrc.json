@@ -37,6 +37,6 @@
 	"singleAttributePerLine": false,
 	"singleQuote": true,
 	"tabWidth": 4,
-	"trailingComma": "all",
+	"trailingComma": "none",
 	"useTabs": true
 }

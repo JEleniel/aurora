@@ -1,4 +1,4 @@
-# PRO-002 (Process)
+# PRO-002: **Process**
 
 **Name:** In-Tool Model Editing Workflow\
 

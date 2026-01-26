@@ -1,4 +1,4 @@
-# ART-003 (Artifact)
+# ART-003: **Artifact**
 
 **Name:** Card Registry\
 

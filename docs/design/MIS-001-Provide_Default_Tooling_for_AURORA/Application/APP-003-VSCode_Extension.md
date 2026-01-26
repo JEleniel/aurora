@@ -1,4 +1,4 @@
-# APP-003 (Application)
+# APP-003: **Application**
 
 **Name:** VSCode Extension\
 

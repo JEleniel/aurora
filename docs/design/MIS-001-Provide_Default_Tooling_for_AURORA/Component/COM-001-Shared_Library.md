@@ -1,4 +1,4 @@
-# COM-001 (Component)
+# COM-001: **Component**
 
 **Name:** Shared Library\
 

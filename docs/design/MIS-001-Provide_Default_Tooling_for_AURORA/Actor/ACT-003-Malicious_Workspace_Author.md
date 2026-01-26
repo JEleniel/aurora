@@ -1,4 +1,4 @@
-# ACT-003 (Actor)
+# ACT-003: **Actor**
 
 **Name:** Malicious Workspace Author\
 

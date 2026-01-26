@@ -1,4 +1,4 @@
-# COM-005 (Component)
+# COM-005: **Component**
 
 **Name:** Mind-Map Like View\
 

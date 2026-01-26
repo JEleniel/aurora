@@ -1,4 +1,4 @@
-# STR-002 (Story)
+# STR-002: **Story**
 
 **Name:** Edit Aurora Model in Tools\
 

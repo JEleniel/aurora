@@ -1,4 +1,4 @@
-# INT-002 (Interface)
+# INT-002: **Interface**
 
 **Name:** MCP Interface\
 

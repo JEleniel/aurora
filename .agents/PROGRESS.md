@@ -28,6 +28,7 @@
     + Links:
         - [Source: `tools/aurora_cli/src/main.rs`](../tools/aurora_cli/src/main.rs)
         - [Library & tests: `tools/aurora_shared/src/render.rs`](../tools/aurora_shared/src/render.rs)
+    + Updates: Added Everything View parsing coverage, switched default Graphviz splines to curved, and render spline edges as cubic Bezier paths.
     + Next Actions:
         - Validate updated CLI render output after ID-prefixed headers and left-aligned icon labels; re-render artifacts if needed.
         - Re-render views to confirm the dot-only layout selection matches expected output.
@@ -64,14 +65,19 @@
         - [`src/lib/components`](../tools/aurora_editor/src/lib/components)
     + UI Notes:
         - Workspace connect + quick actions (validate/render/compact) are the primary flow.
+        - Prefer TailwindCSS for styling, falling back to custom CSS only when needed.
         - Diagnostics + model home selection should remain the "always visible" feedback loop.
         - Keep payload casing consistent with backend command schemas (snake_case).
         - Trim render output paths before invocation and surface guidance for ~ path handling.
+        - Workspace selection uses the folder dialog and auto-connects to discover model homes; default output path is `docs/design/`.
+        - Header is condensed to a 4rem bar with a 2.4rem H1; status pills are right-aligned and stacked content is minimized.
     + Accessibility Notes:
         - Maintain keyboard-only parity and minimum hit-target sizing on core actions.
         - Workspace and output path hints are plain text and readable at default zoom.
     + Dependency Notes:
         - Using Tauri v2 `invoke` via `@tauri-apps/api/core` and a permissive dev capability for local iteration.
+        - Keep `@tailwindcss/vite` and `tailwindcss` declared locally to avoid cross-package Vite type conflicts.
+        - Use `@tauri-apps/plugin-dialog` with the matching Rust plugin to drive workspace folder selection.
     + Next Actions:
         - Add keyboard navigation and status announcements for validation events.
         - Populate the left navigation with live model inventory and recent activity.

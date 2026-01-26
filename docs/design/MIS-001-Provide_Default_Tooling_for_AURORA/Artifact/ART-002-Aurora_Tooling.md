@@ -1,4 +1,4 @@
-# ART-002 (Artifact)
+# ART-002: **Artifact**
 
 **Name:** Aurora Tooling\
 

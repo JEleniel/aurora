@@ -1,4 +1,4 @@
-# TES-001 (Test)
+# TES-001: **Test**
 
 **Name:** Validate Model Command\
 

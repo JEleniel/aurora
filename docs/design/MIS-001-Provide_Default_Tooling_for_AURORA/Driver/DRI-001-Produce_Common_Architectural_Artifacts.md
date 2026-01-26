@@ -1,4 +1,4 @@
-# DRI-001 (Driver)
+# DRI-001: **Driver**
 
 **Name:** Produce Common Architectural Artifacts\
 

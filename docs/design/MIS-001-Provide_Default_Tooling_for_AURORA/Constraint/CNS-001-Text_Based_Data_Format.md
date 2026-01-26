@@ -1,4 +1,4 @@
-# CNS-001 (Constraint)
+# CNS-001: **Constraint**
 
 **Name:** Text Based Data Format\
 

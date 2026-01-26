@@ -1,4 +1,4 @@
-# COM-008 (Component)
+# COM-008: **Component**
 
 **Name:** MCP Server\
 

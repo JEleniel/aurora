@@ -1,4 +1,4 @@
-# ART-004 (Artifact)
+# ART-004: **Artifact**
 
 **Name:** Markdown Documentation\
 

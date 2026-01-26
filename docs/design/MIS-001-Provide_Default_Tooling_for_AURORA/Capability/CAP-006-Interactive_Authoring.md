@@ -1,4 +1,4 @@
-# CAP-006 (Capability)
+# CAP-006: **Capability**
 
 **Name:** Interactive Authoring\
 

@@ -1,4 +1,4 @@
-# COM-011 (Component)
+# COM-011: **Component**
 
 **Name:** Card\
 

@@ -1,4 +1,4 @@
-# CNS-004 (Constraint)
+# CNS-004: **Constraint**
 
 **Name:** No Orphans\
 

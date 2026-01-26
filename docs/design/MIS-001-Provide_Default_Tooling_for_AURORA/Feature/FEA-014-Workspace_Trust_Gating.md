@@ -1,4 +1,4 @@
-# FEA-014 (Feature)
+# FEA-014: **Feature**
 
 **Name:** Workspace Trust Gating\
 

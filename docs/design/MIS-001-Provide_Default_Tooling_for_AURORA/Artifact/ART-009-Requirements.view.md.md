@@ -1,4 +1,4 @@
-# ART-009 (Artifact)
+# ART-009: **Artifact**
 
 **Name:** Requirements.view.md\
 

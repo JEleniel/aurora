@@ -1,4 +1,4 @@
-# INT-003 (Interface)
+# INT-003: **Interface**
 
 **Name:** Editor Backend API\
 

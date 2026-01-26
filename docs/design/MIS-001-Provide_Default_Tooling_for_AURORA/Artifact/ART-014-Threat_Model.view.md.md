@@ -1,4 +1,4 @@
-# ART-014 (Artifact)
+# ART-014: **Artifact**
 
 **Name:** Threat_Model.view.md\
 

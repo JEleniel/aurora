@@ -1,4 +1,4 @@
-# ART-005 (Artifact)
+# ART-005: **Artifact**
 
 **Name:** View Diagram Set\
 

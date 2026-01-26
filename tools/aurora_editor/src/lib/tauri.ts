@@ -1,4 +1,5 @@
 import { invoke } from '@tauri-apps/api/core';
+import { open } from '@tauri-apps/plugin-dialog';
 
 type TauriWindow = Window & {
 	__TAURI_INTERNALS__?: unknown;
@@ -90,10 +91,24 @@ export async function discoverModels(): Promise<ModelHomeInfo[]> {
 				: false;
 			return {
 				root,
-				has_schema: hasSchema,
+				has_schema: hasSchema
 			};
 		})
 		.filter((entry) => entry.root.length > 0);
+}
+
+export async function chooseWorkspaceFolder(): Promise<string | null> {
+	assertTauriAvailable();
+	const selection = await open({
+		title: 'Select workspace folder',
+		directory: true,
+		recursive: true,
+		multiple: false
+	});
+	if (Array.isArray(selection)) {
+		return selection[0] ?? null;
+	}
+	return typeof selection === 'string' ? selection : null;
 }
 
 export async function validateModelSnapshot(modelHome: string): Promise<ValidationReport> {
@@ -104,8 +119,8 @@ export async function renderAllAssets(modelHome: string, outputDir: string): Pro
 	return invokeTauri('render_all_assets', {
 		request: {
 			model_home: modelHome,
-			output_dir: outputDir,
-		},
+			output_dir: outputDir
+		}
 	});
 }
 
@@ -113,7 +128,7 @@ export async function writeCompactExport(modelHome: string, outputPath: string |
 	return invokeTauri('write_compact_export', {
 		request: {
 			model_home: modelHome,
-			output_path: outputPath,
-		},
+			output_path: outputPath
+		}
 	});
 }

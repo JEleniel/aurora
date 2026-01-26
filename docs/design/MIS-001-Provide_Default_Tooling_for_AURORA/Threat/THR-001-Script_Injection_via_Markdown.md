@@ -1,4 +1,4 @@
-# THR-001 (Threat)
+# THR-001: **Threat**
 
 **Name:** Script Injection via Markdown\
 

@@ -1,4 +1,4 @@
-# REQ-001 (Requirement)
+# REQ-001: **Requirement**
 
 **Name:** Boundary Cards\
 

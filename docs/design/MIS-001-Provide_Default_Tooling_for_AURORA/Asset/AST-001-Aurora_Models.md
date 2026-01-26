@@ -1,4 +1,4 @@
-# AST-001 (Asset)
+# AST-001: **Asset**
 
 **Name:** Aurora Models\
 

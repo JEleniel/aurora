@@ -1,4 +1,4 @@
-# RIS-002 (Risk)
+# RIS-002: **Risk**
 
 **Name:** Unintended File Modification\
 

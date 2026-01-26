@@ -1,4 +1,4 @@
-# CAP-009 (Capability)
+# CAP-009: **Capability**
 
 **Name:** Safe and Trusted Operation\
 

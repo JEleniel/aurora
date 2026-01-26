@@ -286,7 +286,7 @@ impl Default for GraphvizConfig {
 			graph_defaults: BTreeMap::from([
 				("rankdir".to_string(), "LR".to_string()),
 				("bgcolor".to_string(), "#FFFFFF".to_string()),
-				("splines".to_string(), "spline".to_string()),
+				("splines".to_string(), "curved".to_string()),
 				("fontname".to_string(), "Inter".to_string()),
 			]),
 			node_defaults: BTreeMap::from([
@@ -530,6 +530,9 @@ fn parse_card_type_cell(cell: &str) -> CardTypeList {
 		.map(|segment| segment.trim())
 	{
 		if part.is_empty() || part == "-" {
+			continue;
+		}
+		if part.eq_ignore_ascii_case("none") || part.eq_ignore_ascii_case("n/a") {
 			continue;
 		}
 		if part.eq_ignore_ascii_case("All card types") {
@@ -1414,6 +1417,28 @@ mod tests {
 		assert!(dot.contains("MIS-001: <B>Mission</B>"));
 		assert!(dot.contains("POINT-SIZE=\"33\">🎯"));
 		assert!(dot.contains("<BR/>"));
+	}
+
+	#[test]
+	fn parse_view_table_supports_everything_view() -> Result<()> {
+		let contents = r#"
+# View Definitions
+
+## Views
+
+| View | Description | Root cards (selectable) | Included card types | Supporting card types | Notes |
+| --- | --- | --- | --- | --- | --- |
+| Everything View | Full-model overview. | Mission | All card types | None | Use for full-model rendering. |
+"#;
+		let views = parse_view_table(contents, Path::new("View_Definitions.md"))?;
+		assert_eq!(views.len(), 1);
+		let view = &views[0];
+		assert_eq!(view.name, "Everything View");
+		assert_eq!(view.slug, "Everything");
+		assert!(view.include_all);
+		assert!(view.root_card_types.contains("Mission"));
+		assert!(view.card_types.is_empty());
+		Ok(())
 	}
 
 	#[test]

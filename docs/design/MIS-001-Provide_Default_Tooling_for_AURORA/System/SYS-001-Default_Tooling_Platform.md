@@ -1,4 +1,4 @@
-# SYS-001 (System)
+# SYS-001: **System**
 
 **Name:** Default Tooling Platform\
 

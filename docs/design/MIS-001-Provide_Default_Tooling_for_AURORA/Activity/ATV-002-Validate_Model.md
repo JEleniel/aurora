@@ -1,4 +1,4 @@
-# ATV-002 (Activity)
+# ATV-002: **Activity**
 
 **Name:** Validate Model\
 

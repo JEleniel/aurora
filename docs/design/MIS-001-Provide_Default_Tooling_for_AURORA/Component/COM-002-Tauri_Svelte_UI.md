@@ -1,4 +1,4 @@
-# COM-002 (Component)
+# COM-002: **Component**
 
 **Name:** Tauri Svelte UI\
 

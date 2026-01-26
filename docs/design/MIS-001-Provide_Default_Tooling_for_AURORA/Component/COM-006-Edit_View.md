@@ -1,4 +1,4 @@
-# COM-006 (Component)
+# COM-006: **Component**
 
 **Name:** Edit View\
 

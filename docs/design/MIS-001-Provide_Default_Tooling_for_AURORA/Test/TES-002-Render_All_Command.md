@@ -1,4 +1,4 @@
-# TES-002 (Test)
+# TES-002: **Test**
 
 **Name:** Render All Command\
 

@@ -1,4 +1,4 @@
-# CAP-008 (Capability)
+# CAP-008: **Capability**
 
 **Name:** Workspace Integration\
 

@@ -1,4 +1,4 @@
-# CAP-003 (Capability)
+# CAP-003: **Capability**
 
 **Name:** Model Update\
 

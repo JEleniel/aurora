@@ -1,4 +1,4 @@
-# THR-002 (Threat)
+# THR-002: **Threat**
 
 **Name:** Path Traversal or Arbitrary Write\
 

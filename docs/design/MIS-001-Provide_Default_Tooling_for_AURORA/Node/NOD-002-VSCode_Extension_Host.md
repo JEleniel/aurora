@@ -1,4 +1,4 @@
-# NOD-002 (Node)
+# NOD-002: **Node**
 
 **Name:** VSCode Extension Host\
 

@@ -1,4 +1,4 @@
-# INT-004 (Interface)
+# INT-004: **Interface**
 
 **Name:** VSCode Webview Messaging API\
 

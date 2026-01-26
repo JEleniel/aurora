@@ -1,4 +1,4 @@
-# FEA-015 (Feature)
+# FEA-015: **Feature**
 
 **Name:** Sanitized Rendering\
 

@@ -1,4 +1,4 @@
-# BND-001 (Boundary)
+# BND-001: **Boundary**
 
 **Name:** Untrusted\
 

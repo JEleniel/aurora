@@ -1,4 +1,4 @@
-# CAP-005 (Capability)
+# CAP-005: **Capability**
 
 **Name:** Model Compaction\
 

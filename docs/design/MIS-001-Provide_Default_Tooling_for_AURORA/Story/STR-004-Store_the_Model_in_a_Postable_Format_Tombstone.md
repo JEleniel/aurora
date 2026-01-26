@@ -1,4 +1,4 @@
-# STR-004 (Story)
+# STR-004: **Story**
 
 **Name:** Store the Model in a Postable Format (Tombstone)\
 

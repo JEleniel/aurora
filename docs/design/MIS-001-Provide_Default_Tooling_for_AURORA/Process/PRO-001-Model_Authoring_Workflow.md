@@ -1,4 +1,4 @@
-# PRO-001 (Process)
+# PRO-001: **Process**
 
 **Name:** Model Authoring Workflow\
 

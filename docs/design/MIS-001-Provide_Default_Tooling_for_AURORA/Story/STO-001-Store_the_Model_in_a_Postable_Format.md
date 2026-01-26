@@ -1,4 +1,4 @@
-# STO-001 (Story)
+# STO-001: **Story**
 
 **Name:** Store the Model in a Postable Format\
 

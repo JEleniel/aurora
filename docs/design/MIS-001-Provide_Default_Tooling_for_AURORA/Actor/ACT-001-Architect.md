@@ -1,4 +1,4 @@
-# ACT-001 (Actor)
+# ACT-001: **Actor**
 
 **Name:** Architect\
 

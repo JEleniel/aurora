@@ -1,4 +1,4 @@
-# THR-003 (Threat)
+# THR-003: **Threat**
 
 **Name:** Untrusted Workspace Execution or Access\
 

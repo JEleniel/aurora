@@ -1,4 +1,4 @@
-# NOT-001 (Note)
+# NOT-001: **Note**
 
 **Name:** Shareable\
 

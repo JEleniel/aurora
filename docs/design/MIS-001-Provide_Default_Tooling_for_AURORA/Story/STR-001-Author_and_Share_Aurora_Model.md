@@ -1,4 +1,4 @@
-# STR-001 (Story)
+# STR-001: **Story**
 
 **Name:** Author and Share Aurora Model\
 

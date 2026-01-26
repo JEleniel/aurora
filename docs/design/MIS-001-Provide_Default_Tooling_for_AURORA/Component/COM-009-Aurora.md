@@ -1,4 +1,4 @@
-# COM-009 (Component)
+# COM-009: **Component**
 
 **Name:** Aurora\
 

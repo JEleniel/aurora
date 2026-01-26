@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4209.70 1797.98" width="4209.70" height="1797.98" data-theme="dark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5212.80 2483.33" width="5212.80" height="2483.33" data-theme="dark">
 <defs>
 <style>
 svg{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}
@@ -8,11 +8,48 @@ svg[data-theme="light"]{--bg:#FFFFFF;--edge:#111827;--edgeLabel:#111827;--nodeSt
 .edge-path{fill:none;stroke:var(--edge);stroke-width:1.2;marker-end:url(#arrow);}
 .edge-arrow{fill:var(--edge);}
 .edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
+.node-icon{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:42px;}
 .node-label{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:11px;}
 .node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
 .node-shape-outline{fill:none;}
 .boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:2;stroke-dasharray:6 6;}
 .boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.card-type-capability .node-shape{fill:#325440;}
+svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
+.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
+.card-type-interface .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-system .node-shape{fill:#414C73;}
+svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
+.card-type-system .node-label{--nodeText:#FFFFFF;}
+.card-type-test .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
+.card-type-test .node-label{--nodeText:#FFFFFF;}
+.card-type-deployment .node-shape{fill:#47446B;}
+svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
+.card-type-deployment .node-label{--nodeText:#FFFFFF;}
 .card-type-control .node-shape{fill:#8B623D;}
 svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
@@ -21,114 +58,78 @@ svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
 .card-type-requirement .node-label{--nodeText:#FFFFFF;}
-.card-type-asset .node-shape{fill:#586374;}
-svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
-.card-type-asset .node-label{--nodeText:#FFFFFF;}
-.card-type-state .node-shape{fill:#8A438E;}
-svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
-.card-type-state .node-label{--nodeText:#FFFFFF;}
-.card-type-condition .node-shape{fill:#644833;}
-svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
-.card-type-condition .node-label{--nodeText:#FFFFFF;}
-.card-type-state-machine .node-shape{fill:#6B316E;}
-svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
-.card-type-state-machine .node-label{--nodeText:#FFFFFF;}
-.card-type-story .node-shape{fill:#5A723E;}
-svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
-.card-type-story .node-label{--nodeText:#FFFFFF;}
-.card-type-test .node-shape{fill:#30524A;}
-svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
-.card-type-test .node-label{--nodeText:#FFFFFF;}
-.card-type-risk .node-shape{fill:#9D3D5B;}
-svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
-.card-type-risk .node-label{--nodeText:#FFFFFF;}
-.card-type-system .node-shape{fill:#414C73;}
-svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
-.card-type-system .node-label{--nodeText:#FFFFFF;}
-.card-type-component .node-shape{fill:#4762BD;}
-svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
-.card-type-component .node-label{--nodeText:#FFFFFF;}
-.card-type-data-store .node-shape{fill:#34779B;}
-svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
-.card-type-data-store .node-label{--nodeText:#FFFFFF;}
-.card-type-artifact .node-shape{fill:#47505E;}
-svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
-.card-type-artifact .node-label{--nodeText:#FFFFFF;}
-.card-type-deployment .node-shape{fill:#47446B;}
-svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
-.card-type-deployment .node-label{--nodeText:#FFFFFF;}
 .card-type-threat .node-shape{fill:#6C3242;}
 svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
 .card-type-threat .node-label{--nodeText:#FFFFFF;}
-.card-type-event .node-shape{fill:#7949C3;}
-svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
-.card-type-event .node-label{--nodeText:#FFFFFF;}
-.card-type-constraint .node-shape{fill:#9B6D39;}
-svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
-.card-type-constraint .node-label{--nodeText:#FFFFFF;}
-.card-type-mission .node-shape{fill:#30524A;}
-svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
-.card-type-mission .node-label{--nodeText:#FFFFFF;}
-.card-type-driver .node-shape{fill:#336E5E;}
-svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
-.card-type-driver .node-label{--nodeText:#FFFFFF;}
-.card-type-actor .node-shape{fill:#435432;}
-svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
-.card-type-actor .node-label{--nodeText:#FFFFFF;}
-.card-type-interface .node-shape{fill:#34546A;}
-svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
-.card-type-interface .node-label{--nodeText:#FFFFFF;}
-.card-type-node .node-shape{fill:#565498;}
-svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
-.card-type-node .node-label{--nodeText:#FFFFFF;}
-.card-type-feature .node-shape{fill:#3E7253;}
-svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
-.card-type-feature .node-label{--nodeText:#FFFFFF;}
-.card-type-application .node-shape{fill:#475D9F;}
-svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
-.card-type-application .node-label{--nodeText:#FFFFFF;}
-.card-type-process .node-shape{fill:#543B81;}
-svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
-.card-type-process .node-label{--nodeText:#FFFFFF;}
-.card-type-activity .node-shape{fill:#6C46A8;}
-svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
-.card-type-activity .node-label{--nodeText:#FFFFFF;}
-.card-type-note .node-shape{fill:#47505B;}
-svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
-.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
 .card-type-node-instance .node-shape{fill:#5B55B4;}
 svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
 .card-type-node-instance .node-label{--nodeText:#FFFFFF;}
-.card-type-capability .node-shape{fill:#325440;}
-svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
-.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#9B6D39;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-condition .node-shape{fill:#644833;}
+svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
+.card-type-condition .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-state-machine .node-shape{fill:#6B316E;}
+svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
+.card-type-state-machine .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
 </style>
 <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
   <path d="M 0 0 L 10 5 L 0 10 z" class="edge-arrow" />
@@ -136,582 +137,622 @@ svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
 </defs>
 <rect class="bg" x="0" y="0" width="100%" height="100%" />
 <g class="boundary">
-<rect x="3.33" y="1339.26" width="594.14" height="154.79" rx="8" ry="8" />
-<text class="boundary-label" x="11.33" y="1353.26">Untrusted (BND-001)</text>
+<rect x="3.33" y="1849.09" width="763.85" height="215.14" rx="8" ry="8" />
+<text class="boundary-label" x="11.33" y="1863.09">Untrusted (BND-001)</text>
 </g>
-<path class="edge-path" d="M 538.42 1524.94 L 582.79 1518.49 L 629.07 1511.77 L 673.08 1505.38" data-tail="ACT-001" data-head="STR-001" />
-<text class="edge-label" x="637.07" y="1500.65" text-anchor="middle" dominant-baseline="middle">desires</text>
-<path class="edge-path" d="M 515.46 1599.44 L 565.19 1608.77 L 618.34 1618.74 L 668.72 1628.21" data-tail="ACT-001" data-head="STR-003" />
-<text class="edge-label" x="637.07" y="1611.32" text-anchor="middle" dominant-baseline="middle">desires</text>
-<path class="edge-path" d="M 2337.02 158.02 L 2366.88 158.02 L 2396.93 158.02 L 2426.02 158.02" data-tail="ACT-002" data-head="STR-002" />
-<text class="edge-label" x="2382.43" y="151.30" text-anchor="middle" dominant-baseline="middle">desires</text>
-<path class="edge-path" d="M 2193.89 1203.50 L 2267.04 1195.63 L 2356.80 1185.96 L 2437.54 1177.27" data-tail="ATV-001" data-head="FEA-001" />
-<text class="edge-label" x="2382.43" y="1176.65" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2208.00 1474.07 L 2274.62 1474.66 L 2353.06 1475.34 L 2425.44 1475.98" data-tail="ATV-002" data-head="FEA-002" />
-<text class="edge-label" x="2382.43" y="1469.98" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2283.36 1578.66 L 2329.54 1579.57 L 2377.92 1580.52 L 2423.81 1581.44" data-tail="ATV-003" data-head="FEA-005" />
-<text class="edge-label" x="2382.43" y="1572.65" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2254.56 1371.73 L 2315.62 1371.47 L 2382.43 1371.18 L 2443.68 1370.91" data-tail="ATV-004" data-head="FEA-006" />
-<text class="edge-label" x="2382.43" y="1364.65" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2241.50 956.76 L 2276.35 969.84 L 2310.05 987.86 L 2337.02 1012.65 L 2357.76 1031.70 L 2341.25 1051.31 L 2361.02 1071.32 L 2383.68 1094.15 L 2397.22 1089.28 L 2427.74 1099.32 L 2436.96 1102.35 L 2446.46 1105.30 L 2456.06 1108.15" data-tail="ATV-005" data-head="FEA-001" />
-<text class="edge-label" x="2382.43" y="1064.65" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2261.76 921.98 L 2314.75 921.98 L 2371.68 921.98 L 2425.25 921.98" data-tail="ATV-005" data-head="FEA-012" />
-<text class="edge-label" x="2382.43" y="915.32" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2272.13 746.02 L 2323.78 755.23 L 2378.78 765.02 L 2430.34 774.24" data-tail="ATV-006" data-head="FEA-007" />
-<text class="edge-label" x="2382.43" y="756.67" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2272.13 705.98 L 2323.01 705.98 L 2377.06 705.98 L 2428.03 705.98" data-tail="ATV-006" data-head="FEA-010" />
-<text class="edge-label" x="2382.43" y="699.36" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2234.02 427.20 L 2297.57 420.38 L 2369.09 412.61 L 2434.85 405.60" data-tail="ATV-007" data-head="FEA-008" />
-<text class="edge-label" x="2382.43" y="404.64" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2234.11 430.66 L 2269.25 423.55 L 2304.96 413.57 L 2337.02 399.36 L 2384.06 378.43 L 2381.38 349.73 L 2427.74 327.36 L 2432.06 325.25 L 2436.38 323.23 L 2440.90 321.31" data-tail="ATV-007" data-head="FEA-009" />
-<text class="edge-label" x="2382.43" y="336.67" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2254.18 321.41 L 2308.80 314.88 L 2368.13 307.87 L 2423.90 301.25" data-tail="ATV-008" data-head="FEA-009" />
-<text class="edge-label" x="2382.43" y="299.33" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2238.14 614.69 L 2305.44 629.47 L 2381.18 646.08 L 2449.44 661.06" data-tail="ATV-009" data-head="FEA-010" />
-<text class="edge-label" x="2382.43" y="636.67" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2271.26 582.05 L 2319.07 583.97 L 2369.66 586.08 L 2417.95 588.10" data-tail="ATV-009" data-head="FEA-011" />
-<text class="edge-label" x="2382.43" y="580.61" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2271.26 542.11 L 2317.82 535.78 L 2367.07 529.06 L 2414.21 522.62" data-tail="ATV-009" data-head="FEA-015" />
-<text class="edge-label" x="2382.43" y="520.61" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2213.76 1109.38 L 2256.48 1124.94 L 2300.54 1145.62 L 2337.02 1172.65 L 2351.33 1183.24 L 2345.95 1195.20 L 2361.02 1204.65 L 2389.06 1222.20 L 2421.22 1234.57 L 2453.86 1243.24" data-tail="ATV-010" data-head="FEA-004" />
-<text class="edge-label" x="2382.43" y="1197.98" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2238.53 1109.32 L 2274.82 1124.43 L 2309.86 1144.91 L 2337.02 1172.65 L 2360.26 1196.35 L 2344.13 1214.82 L 2361.02 1243.32 L 2383.39 1280.78 L 2390.11 1293.24 L 2427.74 1315.32 L 2433.02 1318.44 L 2438.59 1321.40 L 2444.16 1324.18" data-tail="ATV-010" data-head="FEA-006" />
-<text class="edge-label" x="2382.43" y="1236.65" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2253.31 1057.34 L 2314.08 1054.41 L 2380.70 1051.18 L 2441.86 1048.22" data-tail="ATV-010" data-head="FEA-013" />
-<text class="edge-label" x="2382.43" y="1044.65" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 3328.22 440.45 L 3363.94 423.84 L 3402.43 403.87 L 3435.74 381.98 L 3473.28 357.31 L 3471.94 336.19 L 3511.68 315.36 L 3537.22 302.02 L 3564.77 290.69 L 3592.90 280.99" data-tail="CAP-009" data-head="CTL-001" />
-<text class="edge-label" x="3473.76" y="326.02" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 3415.30 462.34 L 3457.63 456.77 L 3503.14 450.72 L 3548.26 444.67" data-tail="CAP-009" data-head="CTL-002" />
-<text class="edge-label" x="3473.76" y="448.61" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 3415.30 518.02 L 3455.81 523.49 L 3499.10 529.34 L 3542.30 535.20" data-tail="CAP-009" data-head="CTL-003" />
-<text class="edge-label" x="3473.76" y="520.61" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 3279.74 539.42 L 3339.55 578.59 L 3428.06 632.16 L 3511.68 665.95 L 3540.10 677.47 L 3570.43 687.74 L 3600.86 696.86" data-tail="CAP-009" data-head="CTL-004" />
-<text class="edge-label" x="3473.76" y="640.61" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2859.17 1176.65 L 2897.09 1180.89 L 2937.02 1185.35 L 2975.71 1189.68" data-tail="FEA-001" data-head="CAP-001" />
-<text class="edge-label" x="2929.73" y="1176.65" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2871.26 1477.99 L 2904.00 1477.99 L 2937.89 1477.99 L 2971.01 1477.99" data-tail="FEA-002" data-head="CAP-002" />
-<text class="edge-label" x="2929.73" y="1471.32" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2843.33 1246.09 L 2885.95 1242.46 L 2931.74 1238.56 L 2975.90 1234.81" data-tail="FEA-004" data-head="CAP-001" />
-<text class="edge-label" x="2929.73" y="1231.32" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2872.42 1585.99 L 2902.37 1585.99 L 2933.28 1585.99 L 2963.62 1585.99" data-tail="FEA-005" data-head="CAP-004" />
-<text class="edge-label" x="2929.73" y="1579.32" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2853.31 1367.12 L 2900.54 1366.43 L 2951.04 1365.69 L 2998.66 1365.00" data-tail="FEA-006" data-head="CAP-005" />
-<text class="edge-label" x="2929.73" y="1359.32" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2865.79 772.80 L 2904.38 765.12 L 2944.80 757.25 L 2983.78 749.57" data-tail="FEA-007" data-head="CAP-007" />
-<text class="edge-label" x="2929.73" y="751.30" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2862.05 369.50 L 2892.58 367.01 L 2923.68 364.03 L 2953.06 360.67 L 2959.97 359.81 L 2966.98 359.04 L 2974.08 358.08" data-tail="FEA-008" data-head="CAP-006" />
-<text class="edge-label" x="2929.73" y="353.95" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2872.42 292.32 L 2905.82 295.20 L 2940.38 298.18 L 2974.08 300.96" data-tail="FEA-009" data-head="CAP-006" />
-<text class="edge-label" x="2929.73" y="290.02" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2868.48 705.98 L 2906.11 705.98 L 2945.47 705.98 L 2983.30 705.98" data-tail="FEA-010" data-head="CAP-007" />
-<text class="edge-label" x="2929.73" y="699.36" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2870.11 640.03 L 2907.36 647.42 L 2946.24 655.01 L 2983.68 662.40" data-tail="FEA-011" data-head="CAP-007" />
-<text class="edge-label" x="2929.73" y="643.30" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2871.26 921.98 L 2907.65 921.98 L 2945.47 921.98 L 2982.05 921.98" data-tail="FEA-012" data-head="CAP-008" />
-<text class="edge-label" x="2929.73" y="915.32" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2854.75 1000.50 L 2865.02 993.42 L 2874.43 985.09 L 2882.40 975.32 L 2930.88 915.97 L 2863.20 694.56 L 2906.40 631.30 L 2932.13 593.66 L 2970.53 565.82 L 3011.42 545.28" data-tail="FEA-013" data-head="CAP-009" />
-<text class="edge-label" x="2929.73" y="580.61" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2841.12 65.18 L 2856.67 73.15 L 2870.78 83.42 L 2882.40 96.67 L 2915.04 133.82 L 2880.19 276.00 L 2906.40 317.95 L 2919.36 338.78 L 2935.39 330.34 L 2953.06 347.33 L 2966.59 360.29 L 2962.75 369.89 L 2977.06 381.98 L 3001.15 402.43 L 3029.76 420.00 L 3058.46 434.59" data-tail="FEA-014" data-head="CAP-009" />
-<text class="edge-label" x="2929.73" y="311.33" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 2882.69 489.98 L 2916.19 489.98 L 2950.66 489.98 L 2983.97 489.98" data-tail="FEA-015" data-head="CAP-009" />
-<text class="edge-label" x="2929.73" y="483.36" text-anchor="middle" dominant-baseline="middle">enables</text>
-<path class="edge-path" d="M 1285.44 1514.71 L 1232.74 1527.72 L 1172.64 1540.44 L 1117.06 1547.32 L 946.93 1568.33 L 755.32 1572.15 L 600.61 1570.34" data-tail="PRO-001" data-head="ACT-001" />
-<text class="edge-label" x="899.73" y="1540.65" text-anchor="middle" dominant-baseline="middle">involves</text>
-<path class="edge-path" d="M 1523.14 1430.60 L 1586.50 1400.19 L 1675.10 1358.85 L 1754.40 1325.98 L 1812.10 1302.09 L 1877.28 1277.87 L 1931.23 1258.55" data-tail="PRO-001" data-head="ATV-001" />
-<text class="edge-label" x="1705.06" y="1331.32" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1622.59 1472.65 L 1701.22 1472.65 L 1792.42 1472.65 L 1869.79 1472.65" data-tail="PRO-001" data-head="ATV-002" />
-<text class="edge-label" x="1705.06" y="1465.99" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1622.59 1503.60 L 1676.93 1512.67 L 1737.31 1522.74 L 1795.01 1532.37" data-tail="PRO-001" data-head="ATV-003" />
-<text class="edge-label" x="1705.06" y="1507.32" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1622.59 1442.10 L 1685.86 1431.68 L 1757.28 1419.92 L 1823.14 1409.08" data-tail="PRO-001" data-head="ATV-004" />
-<text class="edge-label" x="1705.06" y="1419.32" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1467.84 453.89 L 1508.54 392.93 L 1586.21 290.50 L 1679.71 236.64 L 1711.97 218.11 L 1748.16 203.90 L 1784.83 193.06" data-tail="PRO-002" data-head="ACT-002" />
-<text class="edge-label" x="1705.06" y="208.61" text-anchor="middle" dominant-baseline="middle">involves</text>
-<path class="edge-path" d="M 1492.70 553.06 L 1554.43 606.91 L 1658.02 694.08 L 1754.40 759.36 L 1822.18 805.15 L 1903.78 850.12 L 1963.10 881.10" data-tail="PRO-002" data-head="ATV-005" />
-<text class="edge-label" x="1705.06" y="701.95" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1556.64 552.77 L 1615.58 576.38 L 1688.26 604.13 L 1754.40 626.02 L 1790.78 638.02 L 1830.14 649.73 L 1867.78 660.29" data-tail="PRO-002" data-head="ATV-006" />
-<text class="edge-label" x="1705.06" y="595.30" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1646.50 484.03 L 1710.53 478.08 L 1780.80 471.65 L 1844.16 465.79" data-tail="PRO-002" data-head="ATV-007" />
-<text class="edge-label" x="1705.06" y="471.36" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1576.51 453.98 L 1631.52 435.65 L 1695.46 415.68 L 1754.40 400.61 L 1776.96 394.94 L 1800.58 389.47 L 1824.19 384.48" data-tail="PRO-002" data-head="ATV-008" />
-<text class="edge-label" x="1705.06" y="401.95" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1646.50 527.23 L 1698.24 533.09 L 1753.92 539.52 L 1806.91 545.57" data-tail="PRO-002" data-head="ATV-009" />
-<text class="edge-label" x="1705.06" y="525.98" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1457.76 552.86 L 1499.81 647.42 L 1603.97 854.28 L 1754.40 968.65 L 1782.53 990.06 L 1815.65 1007.00 L 1849.25 1020.36" data-tail="PRO-002" data-head="ATV-010" />
-<text class="edge-label" x="1705.06" y="901.99" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1112.64 1472.65 L 1153.15 1472.65 L 1195.39 1472.65 L 1235.52 1472.65" data-tail="STR-001" data-head="PRO-001" />
-<text class="edge-label" x="1166.40" y="1465.99" text-anchor="middle" dominant-baseline="middle">explains</text>
-<path class="edge-path" d="M 2471.81 207.36 L 2403.46 225.89 L 2341.06 242.59 L 2337.02 243.36 L 2081.09 288.00 L 1999.78 205.73 L 1754.40 291.36 L 1658.21 324.86 L 1563.07 394.56 L 1502.40 444.96" data-tail="STR-002" data-head="PRO-002" />
-<text class="edge-label" x="2045.76" y="236.64" text-anchor="middle" dominant-baseline="middle">explains</text>
-<path class="edge-path" d="M 1117.25 1685.37 L 1145.18 1687.18 L 1173.79 1689.04 L 1202.02 1690.88" data-tail="STR-003" data-head="STR-004" />
-<text class="edge-label" x="1166.40" y="1680.65" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1655.90 1710.79 L 1707.36 1711.92 L 1762.37 1713.13 L 1814.40 1714.27" data-tail="STR-004" data-head="STO-001" />
-<text class="edge-label" x="1705.06" y="1704.65" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 706.98 2112.66 C 752.06 2106.10 798.15 2099.39 842.52 2092.92" data-tail="ACT-001" data-head="STR-001" />
+<text class="edge-label" x="806.77" y="2088.66" text-anchor="middle" dominant-baseline="middle">desires</text>
+<path class="edge-path" d="M 681.79 2214.53 C 733.32 2224.17 786.89 2234.19 838.27 2243.80" data-tail="ACT-001" data-head="STR-003" />
+<text class="edge-label" x="806.77" y="2229.99" text-anchor="middle" dominant-baseline="middle">desires</text>
+<path class="edge-path" d="M 2916.86 221.95 C 2946.43 221.95 2976.10 221.95 3005.09 221.95" data-tail="ACT-002" data-head="STR-002" />
+<text class="edge-label" x="2961.79" y="215.33" text-anchor="middle" dominant-baseline="middle">desires</text>
+<path class="edge-path" d="M 2748.48 1665.77 C 2831.33 1656.07 2928.00 1644.75 3016.80 1634.35" data-tail="ATV-001" data-head="FEA-001" />
+<text class="edge-label" x="2961.79" y="1635.33" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2762.50 2052.12 C 2838.43 2052.38 2924.54 2052.69 3004.99 2052.97" data-tail="ATV-002" data-head="FEA-002" />
+<text class="edge-label" x="2961.79" y="2047.32" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2838.14 2199.01 C 2892.48 2199.69 2949.31 2200.39 3003.46 2201.07" data-tail="ATV-003" data-head="FEA-005" />
+<text class="edge-label" x="2961.79" y="2192.66" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2809.25 1906.76 C 2878.56 1906.27 2953.25 1905.74 3022.75 1905.24" data-tail="ATV-004" data-head="FEA-006" />
+<text class="edge-label" x="2961.79" y="1899.33" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2789.47 1340.83 C 2836.03 1360.42 2881.15 1386.72 2916.48 1421.95 C 2938.37 1443.84 2920.61 1463.62 2940.48 1487.33 C 2962.46 1513.54 2975.52 1512.86 3007.10 1526.00 C 3013.54 1528.66 3020.16 1531.26 3026.78 1533.78" data-tail="ATV-005" data-head="FEA-001" />
+<text class="edge-label" x="2961.79" y="1480.70" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2816.64 1284.67 C 2877.79 1284.67 2942.69 1284.67 3004.32 1284.67" data-tail="ATV-005" data-head="FEA-012" />
+<text class="edge-label" x="2961.79" y="1277.95" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2826.82 1040.54 C 2887.01 1052.54 2950.37 1065.31 3010.46 1077.31" data-tail="ATV-006" data-head="FEA-007" />
+<text class="edge-label" x="2961.79" y="1061.95" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2826.82 983.33 C 2885.86 983.33 2948.06 983.33 3007.20 983.33" data-tail="ATV-006" data-head="FEA-010" />
+<text class="edge-label" x="2961.79" y="976.70" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2788.70 580.51 C 2860.99 573.50 2940.38 565.73 3014.50 558.53" data-tail="ATV-007" data-head="FEA-008" />
+<text class="edge-label" x="2961.79" y="557.95" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2788.70 578.59 C 2832.58 568.51 2876.93 554.59 2916.48 535.30 C 2964.77 511.78 2959.68 480.58 3007.10 455.33 C 3010.56 453.50 3014.11 451.68 3017.66 449.95" data-tail="ATV-007" data-head="FEA-009" />
+<text class="edge-label" x="2961.79" y="467.33" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2808.67 432.19 C 2871.74 425.57 2939.23 418.37 3003.17 411.55" data-tail="ATV-008" data-head="FEA-009" />
+<text class="edge-label" x="2961.79" y="410.02" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2788.22 853.44 C 2866.85 873.70 2954.11 896.06 3033.60 916.61" data-tail="ATV-009" data-head="FEA-010" />
+<text class="edge-label" x="2961.79" y="892.70" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2825.76 806.11 C 2881.92 809.28 2941.06 812.64 2997.60 815.90" data-tail="ATV-009" data-head="FEA-011" />
+<text class="edge-label" x="2961.79" y="807.36" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2825.76 749.18 C 2880.58 741.31 2938.18 732.96 2993.47 725.09" data-tail="ATV-009" data-head="FEA-015" />
+<text class="edge-label" x="2961.79" y="723.36" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2808.00 1560.19 C 2846.69 1576.38 2884.32 1596.64 2916.48 1622.00 C 2932.32 1634.52 2924.16 1648.66 2940.48 1660.67 C 2968.32 1681.22 3000.48 1697.19 3033.70 1709.60" data-tail="ATV-010" data-head="FEA-004" />
+<text class="edge-label" x="2961.79" y="1653.99" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2808.10 1549.82 C 2848.42 1567.32 2886.43 1590.71 2916.48 1622.00 C 2943.36 1650.01 2925.70 1670.09 2940.48 1706.00 C 2963.90 1762.90 2958.72 1789.40 3007.10 1827.33 C 3012.77 1831.72 3018.62 1835.86 3024.58 1839.75" data-tail="ATV-010" data-head="FEA-006" />
+<text class="edge-label" x="2961.79" y="1699.32" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2807.62 1478.69 C 2877.02 1473.60 2951.90 1468.13 3021.60 1463.04" data-tail="ATV-010" data-head="FEA-013" />
+<text class="edge-label" x="2961.79" y="1461.98" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 4116.67 611.23 C 4162.94 586.27 4212.86 556.22 4255.10 523.30 C 4294.18 492.96 4288.80 467.52 4331.14 441.98 C 4361.57 423.65 4394.88 408.00 4429.15 394.75" data-tail="CAP-009" data-head="CTL-001" />
+<text class="edge-label" x="4293.12" y="455.33" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 4234.66 642.05 C 4280.74 635.14 4329.41 627.94 4377.89 620.64" data-tail="CAP-009" data-head="CTL-002" />
+<text class="edge-label" x="4293.12" y="627.36" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 4234.66 721.92 C 4278.14 728.45 4323.94 735.26 4369.63 742.08" data-tail="CAP-009" data-head="CTL-003" />
+<text class="edge-label" x="4293.12" y="724.70" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 4056.67 752.74 C 4127.62 805.82 4231.10 876.77 4331.14 921.98 C 4366.08 937.82 4403.62 951.94 4441.44 964.42" data-tail="CAP-009" data-head="CTL-004" />
+<text class="edge-label" x="4293.12" y="895.30" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 3558.62 1641.30 C 3596.93 1647.02 3636.48 1652.95 3675.26 1658.75" data-tail="FEA-001" data-head="CAP-001" />
+<text class="edge-label" x="3629.09" y="1643.33" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3570.62 2054.00 C 3603.55 2054.00 3637.34 2054.00 3670.46 2054.00" data-tail="FEA-002" data-head="CAP-002" />
+<text class="edge-label" x="3629.09" y="2047.32" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3542.88 1733.94 C 3586.08 1730.67 3631.30 1727.24 3675.46 1723.89" data-tail="FEA-004" data-head="CAP-001" />
+<text class="edge-label" x="3629.09" y="1719.33" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3572.16 2204.66 C 3602.02 2204.66 3632.54 2204.66 3662.78 2204.66" data-tail="FEA-005" data-head="CAP-004" />
+<text class="edge-label" x="3629.09" y="2198.00" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3552.86 1900.25 C 3600.48 1899.69 3650.30 1899.09 3698.21 1898.52" data-tail="FEA-006" data-head="CAP-005" />
+<text class="edge-label" x="3629.09" y="1892.66" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3565.34 1073.28 C 3604.13 1064.54 3644.16 1055.52 3683.14 1046.69" data-tail="FEA-007" data-head="CAP-007" />
+<text class="edge-label" x="3629.09" y="1048.70" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3561.50 495.26 C 3598.18 490.37 3636.00 485.18 3673.15 480.19" data-tail="FEA-008" data-head="CAP-006" />
+<text class="edge-label" x="3629.09" y="476.64" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3571.87 402.91 C 3599.14 405.22 3626.30 407.62 3652.51 410.02 C 3659.33 410.59 3666.24 411.26 3673.25 411.94" data-tail="FEA-009" data-head="CAP-006" />
+<text class="edge-label" x="3629.09" y="400.70" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3568.22 983.33 C 3606.05 983.33 3645.02 983.33 3682.94 983.33" data-tail="FEA-010" data-head="CAP-007" />
+<text class="edge-label" x="3629.09" y="976.70" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3576.96 895.97 C 3611.90 903.94 3647.71 912.00 3682.75 919.87" data-tail="FEA-011" data-head="CAP-007" />
+<text class="edge-label" x="3629.09" y="897.98" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3570.62 1284.67 C 3607.20 1284.67 3644.83 1284.67 3681.50 1284.67" data-tail="FEA-012" data-head="CAP-008" />
+<text class="edge-label" x="3629.09" y="1277.95" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3554.02 1386.82 C 3564.29 1378.85 3573.60 1369.73 3581.76 1359.36 C 3647.04 1276.61 3550.56 975.65 3605.76 885.98 C 3639.46 831.36 3693.50 789.98 3749.57 759.26" data-tail="FEA-013" data-head="CAP-009" />
+<text class="edge-label" x="3629.09" y="828.67" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3540.77 104.26 C 3556.13 113.76 3570.05 125.38 3581.76 139.30 C 3622.66 188.06 3576.77 368.06 3605.76 424.70 C 3618.24 448.99 3636.48 442.56 3652.51 464.64 C 3668.93 487.49 3657.70 502.27 3676.51 523.30 C 3705.12 555.46 3741.89 582.43 3779.52 604.51" data-tail="FEA-014" data-head="CAP-009" />
+<text class="edge-label" x="3629.09" y="417.98" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 3582.24 681.98 C 3615.74 681.98 3649.92 681.98 3683.33 681.98" data-tail="FEA-015" data-head="CAP-009" />
+<text class="edge-label" x="3629.09" y="675.36" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 1571.81 2114.72 C 1518.43 2128.05 1460.93 2140.22 1406.78 2147.33 C 1197.12 2174.83 961.15 2179.30 768.97 2176.22" data-tail="PRO-001" data-head="ACT-001" />
+<text class="edge-label" x="1129.44" y="2140.67" text-anchor="middle" dominant-baseline="middle">involves</text>
+<path class="edge-path" d="M 1891.78 1987.95 C 1966.46 1944.07 2069.86 1885.70 2164.13 1840.67 C 2231.71 1808.35 2308.22 1776.76 2374.37 1750.92" data-tail="PRO-001" data-head="ATV-001" />
+<text class="edge-label" x="2114.78" y="1850.00" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 2032.51 2051.33 C 2119.78 2051.33 2217.79 2051.33 2304.10 2051.33" data-tail="PRO-001" data-head="ATV-002" />
+<text class="edge-label" x="2114.78" y="2044.67" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 2032.51 2098.38 C 2095.49 2110.44 2164.03 2123.56 2229.79 2136.14" data-tail="PRO-001" data-head="ATV-003" />
+<text class="edge-label" x="2114.78" y="2103.33" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 2032.51 2004.71 C 2104.51 1991.06 2183.71 1976.04 2257.73 1962.00" data-tail="PRO-001" data-head="ATV-004" />
+<text class="edge-label" x="2114.78" y="1982.00" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 1824.48 633.79 C 1873.82 548.26 1968.38 406.46 2089.44 329.95 C 2126.02 306.91 2167.10 288.67 2209.25 274.46" data-tail="PRO-002" data-head="ACT-002" />
+<text class="edge-label" x="2114.78" y="299.33" text-anchor="middle" dominant-baseline="middle">involves</text>
+<path class="edge-path" d="M 1853.47 775.39 C 1926.05 850.18 2047.30 969.50 2164.13 1058.02 C 2245.82 1119.84 2345.38 1179.46 2421.41 1221.98" data-tail="PRO-002" data-head="ATV-005" />
+<text class="edge-label" x="2114.78" y="999.36" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 1944.29 775.39 C 2011.39 804.48 2090.98 837.70 2164.13 864.67 C 2212.03 882.34 2263.97 899.81 2313.41 915.74" data-tail="PRO-002" data-head="ATV-006" />
+<text class="edge-label" x="2114.78" y="830.02" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 2056.22 668.83 C 2128.61 659.23 2206.85 648.86 2278.75 639.26" data-tail="PRO-002" data-head="ATV-007" />
+<text class="edge-label" x="2114.78" y="653.95" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 1925.95 633.89 C 1995.94 600.58 2083.01 562.56 2164.13 536.64 C 2194.37 526.94 2226.53 518.21 2258.59 510.43" data-tail="PRO-002" data-head="ATV-008" />
+<text class="edge-label" x="2114.78" y="540.67" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 2056.22 735.26 C 2116.32 742.08 2180.35 749.28 2241.50 756.29" data-tail="PRO-002" data-head="ATV-009" />
+<text class="edge-label" x="2114.78" y="734.02" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 1810.08 775.49 C 1856.83 907.01 1974.05 1190.40 2164.13 1352.64 C 2200.99 1384.13 2245.44 1409.28 2290.66 1429.15" data-tail="PRO-002" data-head="ATV-010" />
+<text class="edge-label" x="2114.78" y="1275.36" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 1402.18 2051.33 C 1442.78 2051.33 1484.64 2051.33 1524.96 2051.33" data-tail="STR-001" data-head="PRO-001" />
+<text class="edge-label" x="1456.13" y="2044.67" text-anchor="middle" dominant-baseline="middle">explains</text>
+<path class="edge-path" d="M 3045.22 292.70 C 3032.35 296.64 3019.58 300.67 3007.10 304.70 C 2966.40 317.66 2958.34 328.13 2916.48 336.67 C 2752.32 370.18 2319.46 321.98 2164.13 384.67 C 2037.41 435.84 1922.40 547.01 1853.57 623.81" data-tail="STR-002" data-head="PRO-002" />
+<text class="edge-label" x="2540.26" y="329.95" text-anchor="middle" dominant-baseline="middle">explains</text>
+<path class="edge-path" d="M 1406.88 2328.42 C 1435.01 2331.52 1463.62 2334.68 1491.94 2337.79" data-tail="STR-003" data-head="STR-004" />
+<text class="edge-label" x="1456.13" y="2324.66" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 2065.82 2374.94 C 2125.63 2376.00 2188.99 2377.12 2249.28 2378.19" data-tail="STR-004" data-head="STO-001" />
+<text class="edge-label" x="2114.78" y="2368.67" text-anchor="middle" dominant-baseline="middle">includes</text>
 <g class="node card-type-actor" data-card-id="ACT-001" data-layout-node="ACT-001">
-<ellipse class="node-shape" cx="300.40" cy="1559.32" rx="291.33" ry="59.40" />
-<text class="node-label" x="300.40" y="1531.32" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👤 Actor</tspan>
-<tspan x="300.40" dy="14.00">Architect</tspan>
-<tspan x="300.40" dy="14.00">&#160;</tspan>
-<tspan x="300.40" dy="14.00">Person responsible for authoring and maintaining the Aurora model for a</tspan>
-<tspan x="300.40" dy="14.00">system.</tspan>
+<ellipse class="node-shape" cx="385.26" cy="2159.33" rx="376.18" ry="89.57" />
+<text class="node-icon" x="19.08" y="2124.33" text-anchor="start" dominant-baseline="hanging">👤</text>
+<text class="node-label" x="77.08" y="2131.33" text-anchor="start" dominant-baseline="middle">
+<tspan x="77.08">ACT-001: </tspan><tspan font-weight="700">Actor</tspan>
+<tspan x="77.08" dy="14.00">Architect</tspan>
+<tspan x="77.08" dy="14.00">&#160;</tspan>
+<tspan x="77.08" dy="14.00">Person responsible for authoring and maintaining the Aurora model for a</tspan>
+<tspan x="77.08" dy="14.00">system.</tspan>
 </text>
 </g>
 <g class="node card-type-actor" data-card-id="ACT-002" data-layout-node="ACT-002">
-<ellipse class="node-shape" cx="2045.76" cy="158.02" rx="291.33" ry="59.40" />
-<text class="node-label" x="2045.76" y="130.02" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👤 Actor</tspan>
-<tspan x="2045.76" dy="14.00">User</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">Person using Aurora tooling surfaces to browse, edit, validate, and</tspan>
-<tspan x="2045.76" dy="14.00">render models in a workspace.</tspan>
+<ellipse class="node-shape" cx="2540.26" cy="221.95" rx="376.18" ry="89.57" />
+<text class="node-icon" x="2174.08" y="186.95" text-anchor="start" dominant-baseline="hanging">👤</text>
+<text class="node-label" x="2232.08" y="193.95" text-anchor="start" dominant-baseline="middle">
+<tspan x="2232.08">ACT-002: </tspan><tspan font-weight="700">Actor</tspan>
+<tspan x="2232.08" dy="14.00">User</tspan>
+<tspan x="2232.08" dy="14.00">&#160;</tspan>
+<tspan x="2232.08" dy="14.00">Person using Aurora tooling surfaces to browse, edit, validate, and</tspan>
+<tspan x="2232.08" dy="14.00">render models in a workspace.</tspan>
 </text>
 </g>
 <g class="node card-type-actor" data-card-id="ACT-003" data-layout-node="ACT-003">
-<ellipse class="node-shape" cx="300.40" cy="1416.65" rx="279.07" ry="59.40" />
-<text class="node-label" x="300.40" y="1388.65" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👤 Actor</tspan>
-<tspan x="300.40" dy="14.00">Malicious Workspace Author</tspan>
-<tspan x="300.40" dy="14.00">&#160;</tspan>
-<tspan x="300.40" dy="14.00">Adversarial actor who crafts workspace content to exploit tooling</tspan>
-<tspan x="300.40" dy="14.00">behavior.</tspan>
+<ellipse class="node-shape" cx="385.26" cy="1956.66" rx="363.93" ry="89.57" />
+<text class="node-icon" x="31.33" y="1921.66" text-anchor="start" dominant-baseline="hanging">👤</text>
+<text class="node-label" x="89.33" y="1928.66" text-anchor="start" dominant-baseline="middle">
+<tspan x="89.33">ACT-003: </tspan><tspan font-weight="700">Actor</tspan>
+<tspan x="89.33" dy="14.00">Malicious Workspace Author</tspan>
+<tspan x="89.33" dy="14.00">&#160;</tspan>
+<tspan x="89.33" dy="14.00">Adversarial actor who crafts workspace content to exploit tooling</tspan>
+<tspan x="89.33" dy="14.00">behavior.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-001" data-layout-node="ATV-001">
-<rect class="node-shape" x="1897.76" y="1184.65" width="296.00" height="69.33" rx="6" ry="6" />
-<text class="node-label" x="2045.76" y="1198.32" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👣 Activity</tspan>
-<tspan x="2045.76" dy="14.00">Load Model</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">Load a model from disk into memory.</tspan>
+<rect class="node-shape" x="2332.26" y="1633.99" width="416.00" height="112.00" rx="6" ry="6" />
+<text class="node-icon" x="2342.26" y="1661.99" text-anchor="start" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2400.26" y="1668.99" text-anchor="start" dominant-baseline="middle">
+<tspan x="2400.26">ATV-001: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2400.26" dy="14.00">Load Model</tspan>
+<tspan x="2400.26" dy="14.00">&#160;</tspan>
+<tspan x="2400.26" dy="14.00">Load a model from disk into memory.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-002" data-layout-node="ATV-002">
-<rect class="node-shape" x="1883.76" y="1437.98" width="324.00" height="69.33" rx="6" ry="6" />
-<text class="node-label" x="2045.76" y="1451.65" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👣 Activity</tspan>
-<tspan x="2045.76" dy="14.00">Validate Model</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">Validate a model and review diagnostics.</tspan>
+<rect class="node-shape" x="2318.26" y="1995.33" width="444.00" height="112.00" rx="6" ry="6" />
+<text class="node-icon" x="2328.26" y="2023.33" text-anchor="start" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2386.26" y="2030.33" text-anchor="start" dominant-baseline="middle">
+<tspan x="2386.26">ATV-002: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2386.26" dy="14.00">Validate Model</tspan>
+<tspan x="2386.26" dy="14.00">&#160;</tspan>
+<tspan x="2386.26" dy="14.00">Validate a model and review diagnostics.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-003" data-layout-node="ATV-003">
-<rect class="node-shape" x="1808.43" y="1531.99" width="474.66" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2045.76" y="1552.99" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👣 Activity</tspan>
-<tspan x="2045.76" dy="14.00">Render Views</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">Generate rendered views and Markdown documentation from the model.</tspan>
+<rect class="node-shape" x="2242.92" y="2132.00" width="594.66" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="2252.92" y="2167.33" text-anchor="start" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2310.92" y="2174.33" text-anchor="start" dominant-baseline="middle">
+<tspan x="2310.92">ATV-003: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2310.92" dy="14.00">Render Views</tspan>
+<tspan x="2310.92" dy="14.00">&#160;</tspan>
+<tspan x="2310.92" dy="14.00">Generate rendered views and Markdown documentation from the model.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-004" data-layout-node="ATV-004">
-<rect class="node-shape" x="1837.09" y="1337.98" width="417.33" height="69.33" rx="6" ry="6" />
-<text class="node-label" x="2045.76" y="1351.65" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👣 Activity</tspan>
-<tspan x="2045.76" dy="14.00">Compact Model</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">Export a compact representation for machine agents.</tspan>
+<rect class="node-shape" x="2271.59" y="1852.66" width="537.33" height="112.00" rx="6" ry="6" />
+<text class="node-icon" x="2281.59" y="1880.66" text-anchor="start" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2339.59" y="1887.66" text-anchor="start" dominant-baseline="middle">
+<tspan x="2339.59">ATV-004: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2339.59" dy="14.00">Compact Model</tspan>
+<tspan x="2339.59" dy="14.00">&#160;</tspan>
+<tspan x="2339.59" dy="14.00">Export a compact representation for machine agents.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-005" data-layout-node="ATV-005">
-<rect class="node-shape" x="1829.76" y="887.32" width="432.00" height="69.33" rx="6" ry="6" />
-<text class="node-label" x="2045.76" y="900.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👣 Activity</tspan>
-<tspan x="2045.76" dy="14.00">Open Model in Tool</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">Open an Aurora model in an interactive tooling surface.</tspan>
+<rect class="node-shape" x="2264.26" y="1228.67" width="552.00" height="112.00" rx="6" ry="6" />
+<text class="node-icon" x="2274.26" y="1256.67" text-anchor="start" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2332.26" y="1263.67" text-anchor="start" dominant-baseline="middle">
+<tspan x="2332.26">ATV-005: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2332.26" dy="14.00">Open Model in Tool</tspan>
+<tspan x="2332.26" dy="14.00">&#160;</tspan>
+<tspan x="2332.26" dy="14.00">Open an Aurora model in an interactive tooling surface.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-006" data-layout-node="ATV-006">
-<rect class="node-shape" x="1819.76" y="663.98" width="452.00" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2045.76" y="677.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👣 Activity</tspan>
-<tspan x="2045.76" dy="14.00">Navigate Model</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">Navigate the model by browsing, searching, and exploring</tspan>
-<tspan x="2045.76" dy="14.00">relationships.</tspan>
+<rect class="node-shape" x="2254.26" y="920.00" width="572.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="2264.26" y="955.33" text-anchor="start" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2322.26" y="962.33" text-anchor="start" dominant-baseline="middle">
+<tspan x="2322.26">ATV-006: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2322.26" dy="14.00">Navigate Model</tspan>
+<tspan x="2322.26" dy="14.00">&#160;</tspan>
+<tspan x="2322.26" dy="14.00">Navigate the model by browsing, searching, and exploring relationships.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-007" data-layout-node="ATV-007">
-<rect class="node-shape" x="1857.76" y="412.69" width="376.00" height="69.33" rx="6" ry="6" />
-<text class="node-label" x="2045.76" y="426.36" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👣 Activity</tspan>
-<tspan x="2045.76" dy="14.00">Edit Cards and Links</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">Create and update cards and links in the model.</tspan>
+<rect class="node-shape" x="2292.25" y="548.70" width="496.00" height="112.00" rx="6" ry="6" />
+<text class="node-icon" x="2302.25" y="576.70" text-anchor="start" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2360.25" y="583.70" text-anchor="start" dominant-baseline="middle">
+<tspan x="2360.25">ATV-007: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2360.25" dy="14.00">Edit Cards and Links</tspan>
+<tspan x="2360.25" dy="14.00">&#160;</tspan>
+<tspan x="2360.25" dy="14.00">Create and update cards and links in the model.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-008" data-layout-node="ATV-008">
-<rect class="node-shape" x="1837.76" y="303.98" width="416.00" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2045.76" y="317.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👣 Activity</tspan>
-<tspan x="2045.76" dy="14.00">Review Validation Diagnostics</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">Review validation results, navigate to affected cards, and</tspan>
-<tspan x="2045.76" dy="14.00">apply fixes.</tspan>
+<rect class="node-shape" x="2272.26" y="397.37" width="536.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="2282.26" y="425.70" text-anchor="start" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2340.26" y="432.70" text-anchor="start" dominant-baseline="middle">
+<tspan x="2340.26">ATV-008: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2340.26" dy="14.00">Review Validation Diagnostics</tspan>
+<tspan x="2340.26" dy="14.00">&#160;</tspan>
+<tspan x="2340.26" dy="14.00">Review validation results, navigate to affected cards, and apply</tspan>
+<tspan x="2340.26" dy="14.00">fixes.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-009" data-layout-node="ATV-009">
-<rect class="node-shape" x="1820.43" y="530.64" width="450.66" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2045.76" y="551.64" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👣 Activity</tspan>
-<tspan x="2045.76" dy="14.00">Preview Output</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">Preview rendered views and Markdown representations of the model.</tspan>
+<rect class="node-shape" x="2254.92" y="726.65" width="570.66" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="2264.92" y="761.98" text-anchor="start" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2322.92" y="768.98" text-anchor="start" dominant-baseline="middle">
+<tspan x="2322.92">ATV-009: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2322.92" dy="14.00">Preview Output</tspan>
+<tspan x="2322.92" dy="14.00">&#160;</tspan>
+<tspan x="2322.92" dy="14.00">Preview rendered views and Markdown representations of the model.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-010" data-layout-node="ATV-010">
-<rect class="node-shape" x="1838.43" y="1025.32" width="414.66" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2045.76" y="1039.32" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">👣 Activity</tspan>
-<tspan x="2045.76" dy="14.00">Save Model Safely</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">Save the model with safe file operations and optional export</tspan>
-<tspan x="2045.76" dy="14.00">formats.</tspan>
+<rect class="node-shape" x="2272.92" y="1434.65" width="534.66" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="2282.92" y="1469.98" text-anchor="start" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2340.92" y="1476.98" text-anchor="start" dominant-baseline="middle">
+<tspan x="2340.92">ATV-010: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2340.92" dy="14.00">Save Model Safely</tspan>
+<tspan x="2340.92" dy="14.00">&#160;</tspan>
+<tspan x="2340.92" dy="14.00">Save the model with safe file operations and optional export formats.</tspan>
 </text>
 </g>
 <g class="node card-type-capability" data-card-id="CAP-001" data-layout-node="CAP-001">
-<rect class="node-shape" x="2989.73" y="1173.32" width="433.33" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="3206.40" y="1187.32" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">✨ Capability</tspan>
-<tspan x="3206.40" dy="14.00">Model IO</tspan>
-<tspan x="3206.40" dy="14.00">&#160;</tspan>
-<tspan x="3206.40" dy="14.00">Ability to load and save Aurora models from and to disk in</tspan>
-<tspan x="3206.40" dy="14.00">stable formats.</tspan>
+<rect class="node-shape" x="3689.09" y="1638.66" width="553.33" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3699.09" y="1666.99" text-anchor="start" dominant-baseline="hanging">✨</text>
+<text class="node-label" x="3757.09" y="1673.99" text-anchor="start" dominant-baseline="middle">
+<tspan x="3757.09">CAP-001: </tspan><tspan font-weight="700">Capability</tspan>
+<tspan x="3757.09" dy="14.00">Model IO</tspan>
+<tspan x="3757.09" dy="14.00">&#160;</tspan>
+<tspan x="3757.09" dy="14.00">Ability to load and save Aurora models from and to disk in stable</tspan>
+<tspan x="3757.09" dy="14.00">formats.</tspan>
 </text>
 </g>
 <g class="node card-type-capability" data-card-id="CAP-002" data-layout-node="CAP-002">
-<rect class="node-shape" x="2985.07" y="1435.99" width="442.67" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="3206.40" y="1449.99" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">✨ Capability</tspan>
-<tspan x="3206.40" dy="14.00">Model Validation</tspan>
-<tspan x="3206.40" dy="14.00">&#160;</tspan>
-<tspan x="3206.40" dy="14.00">Ability to validate Aurora models for schema correctness and</tspan>
-<tspan x="3206.40" dy="14.00">structural invariants with actionable diagnostics.</tspan>
+<rect class="node-shape" x="3684.43" y="1990.67" width="562.67" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3694.43" y="2019.00" text-anchor="start" dominant-baseline="hanging">✨</text>
+<text class="node-label" x="3752.43" y="2026.00" text-anchor="start" dominant-baseline="middle">
+<tspan x="3752.43">CAP-002: </tspan><tspan font-weight="700">Capability</tspan>
+<tspan x="3752.43" dy="14.00">Model Validation</tspan>
+<tspan x="3752.43" dy="14.00">&#160;</tspan>
+<tspan x="3752.43" dy="14.00">Ability to validate Aurora models for schema correctness and structural</tspan>
+<tspan x="3752.43" dy="14.00">invariants with actionable diagnostics.</tspan>
 </text>
 </g>
 <g class="node card-type-capability" data-card-id="CAP-004" data-layout-node="CAP-004">
-<rect class="node-shape" x="2977.07" y="1543.99" width="458.67" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="3206.40" y="1557.99" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">✨ Capability</tspan>
-<tspan x="3206.40" dy="14.00">View Rendering</tspan>
-<tspan x="3206.40" dy="14.00">&#160;</tspan>
-<tspan x="3206.40" dy="14.00">Ability to render human-readable views and documentation from</tspan>
-<tspan x="3206.40" dy="14.00">Aurora models.</tspan>
+<rect class="node-shape" x="3676.43" y="2141.33" width="578.67" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3686.43" y="2169.66" text-anchor="start" dominant-baseline="hanging">✨</text>
+<text class="node-label" x="3744.43" y="2176.66" text-anchor="start" dominant-baseline="middle">
+<tspan x="3744.43">CAP-004: </tspan><tspan font-weight="700">Capability</tspan>
+<tspan x="3744.43" dy="14.00">View Rendering</tspan>
+<tspan x="3744.43" dy="14.00">&#160;</tspan>
+<tspan x="3744.43" dy="14.00">Ability to render human-readable views and documentation from Aurora</tspan>
+<tspan x="3744.43" dy="14.00">models.</tspan>
 </text>
 </g>
 <g class="node card-type-capability" data-card-id="CAP-005" data-layout-node="CAP-005">
-<rect class="node-shape" x="3012.40" y="1312.65" width="388.00" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="3206.40" y="1326.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">✨ Capability</tspan>
-<tspan x="3206.40" dy="14.00">Model Compaction</tspan>
-<tspan x="3206.40" dy="14.00">&#160;</tspan>
-<tspan x="3206.40" dy="14.00">Ability to emit a compact, machine-friendly</tspan>
-<tspan x="3206.40" dy="14.00">representation of an Aurora model for agents and</tspan>
-<tspan x="3206.40" dy="14.00">interchange.</tspan>
+<rect class="node-shape" x="3711.76" y="1824.66" width="508.00" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="3721.76" y="1860.33" text-anchor="start" dominant-baseline="hanging">✨</text>
+<text class="node-label" x="3779.76" y="1867.33" text-anchor="start" dominant-baseline="middle">
+<tspan x="3779.76">CAP-005: </tspan><tspan font-weight="700">Capability</tspan>
+<tspan x="3779.76" dy="14.00">Model Compaction</tspan>
+<tspan x="3779.76" dy="14.00">&#160;</tspan>
+<tspan x="3779.76" dy="14.00">Ability to emit a compact, machine-friendly representation of an</tspan>
+<tspan x="3779.76" dy="14.00">Aurora model for agents and interchange.</tspan>
 </text>
 </g>
 <g class="node card-type-capability" data-card-id="CAP-006" data-layout-node="CAP-006">
-<rect class="node-shape" x="2987.73" y="271.31" width="437.34" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="3206.40" y="292.64" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">✨ Capability</tspan>
-<tspan x="3206.40" dy="14.00">Interactive Authoring</tspan>
-<tspan x="3206.40" dy="14.00">&#160;</tspan>
-<tspan x="3206.40" dy="14.00">Ability to author and modify Aurora models interactively with</tspan>
-<tspan x="3206.40" dy="14.00">guardrails, validation feedback, and consistent persistence.</tspan>
+<rect class="node-shape" x="3687.09" y="369.97" width="557.34" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="3697.09" y="405.64" text-anchor="start" dominant-baseline="hanging">✨</text>
+<text class="node-label" x="3755.09" y="412.64" text-anchor="start" dominant-baseline="middle">
+<tspan x="3755.09">CAP-006: </tspan><tspan font-weight="700">Capability</tspan>
+<tspan x="3755.09" dy="14.00">Interactive Authoring</tspan>
+<tspan x="3755.09" dy="14.00">&#160;</tspan>
+<tspan x="3755.09" dy="14.00">Ability to author and modify Aurora models interactively with</tspan>
+<tspan x="3755.09" dy="14.00">guardrails, validation feedback, and consistent persistence.</tspan>
 </text>
 </g>
 <g class="node card-type-capability" data-card-id="CAP-007" data-layout-node="CAP-007">
-<rect class="node-shape" x="2997.07" y="663.98" width="418.67" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="3206.40" y="677.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">✨ Capability</tspan>
-<tspan x="3206.40" dy="14.00">In-Editor Visualization</tspan>
-<tspan x="3206.40" dy="14.00">&#160;</tspan>
-<tspan x="3206.40" dy="14.00">Ability to visualize, navigate, and comprehend Aurora models</tspan>
-<tspan x="3206.40" dy="14.00">inside interactive tooling surfaces.</tspan>
+<rect class="node-shape" x="3696.43" y="920.00" width="538.67" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3706.43" y="948.33" text-anchor="start" dominant-baseline="hanging">✨</text>
+<text class="node-label" x="3764.43" y="955.33" text-anchor="start" dominant-baseline="middle">
+<tspan x="3764.43">CAP-007: </tspan><tspan font-weight="700">Capability</tspan>
+<tspan x="3764.43" dy="14.00">In-Editor Visualization</tspan>
+<tspan x="3764.43" dy="14.00">&#160;</tspan>
+<tspan x="3764.43" dy="14.00">Ability to visualize, navigate, and comprehend Aurora models inside</tspan>
+<tspan x="3764.43" dy="14.00">interactive tooling surfaces.</tspan>
 </text>
 </g>
 <g class="node card-type-capability" data-card-id="CAP-008" data-layout-node="CAP-008">
-<rect class="node-shape" x="2995.73" y="872.65" width="421.33" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="3206.40" y="886.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">✨ Capability</tspan>
-<tspan x="3206.40" dy="14.00">Workspace Integration</tspan>
-<tspan x="3206.40" dy="14.00">&#160;</tspan>
-<tspan x="3206.40" dy="14.00">Ability to integrate Aurora tooling with workspace file</tspan>
-<tspan x="3206.40" dy="14.00">systems, editors, and automation loops (open, watch, save,</tspan>
-<tspan x="3206.40" dy="14.00">refresh).</tspan>
+<rect class="node-shape" x="3695.09" y="1214.01" width="541.33" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="3705.09" y="1249.67" text-anchor="start" dominant-baseline="hanging">✨</text>
+<text class="node-label" x="3763.09" y="1256.67" text-anchor="start" dominant-baseline="middle">
+<tspan x="3763.09">CAP-008: </tspan><tspan font-weight="700">Capability</tspan>
+<tspan x="3763.09" dy="14.00">Workspace Integration</tspan>
+<tspan x="3763.09" dy="14.00">&#160;</tspan>
+<tspan x="3763.09" dy="14.00">Ability to integrate Aurora tooling with workspace file systems,</tspan>
+<tspan x="3763.09" dy="14.00">editors, and automation loops (open, watch, save, refresh).</tspan>
 </text>
 </g>
 <g class="node card-type-capability" data-card-id="CAP-009" data-layout-node="CAP-009">
-<rect class="node-shape" x="2997.73" y="440.65" width="417.33" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="3206.40" y="454.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">✨ Capability</tspan>
-<tspan x="3206.40" dy="14.00">Safe and Trusted Operation</tspan>
-<tspan x="3206.40" dy="14.00">&#160;</tspan>
-<tspan x="3206.40" dy="14.00">Ability to operate safely against untrusted workspace</tspan>
-<tspan x="3206.40" dy="14.00">content, including safe file operations, trust gating, and</tspan>
-<tspan x="3206.40" dy="14.00">sanitized rendering.</tspan>
+<rect class="node-shape" x="3697.09" y="611.32" width="537.33" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="3707.09" y="639.98" text-anchor="start" dominant-baseline="hanging">✨</text>
+<text class="node-label" x="3765.09" y="646.98" text-anchor="start" dominant-baseline="middle">
+<tspan x="3765.09">CAP-009: </tspan><tspan font-weight="700">Capability</tspan>
+<tspan x="3765.09" dy="14.00">Safe and Trusted Operation</tspan>
+<tspan x="3765.09" dy="14.00">&#160;</tspan>
+<tspan x="3765.09" dy="14.00">Ability to operate safely against untrusted workspace content,</tspan>
+<tspan x="3765.09" dy="14.00">including safe file operations, trust gating, and sanitized</tspan>
+<tspan x="3765.09" dy="14.00">rendering.</tspan>
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-001" data-layout-node="CTL-001">
-<polygon class="node-shape" points="3985.70,158.90 4162.44,199.77 4162.44,257.57 3985.70,298.44 3735.77,298.44 3559.04,257.57 3559.04,199.77 3735.77,158.90" />
-<text class="node-label" x="3860.74" y="193.67" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🔒 Control</tspan>
-<tspan x="3860.74" dy="14.00">Workspace Trust Gate</tspan>
-<tspan x="3860.74" dy="14.00">&#160;</tspan>
-<tspan x="3860.74" dy="14.00">Gate potentially unsafe operations (e.g., file writes, webview</tspan>
-<tspan x="3860.74" dy="14.00">rendering, executing tools) behind workspace trust checks and explicit</tspan>
-<tspan x="3860.74" dy="14.00">user consent.</tspan>
+<polygon class="node-shape" points="4932.08,222.05 5158.52,280.59 5158.52,363.38 4932.08,421.92 4611.85,421.92 4385.42,363.38 4385.42,280.59 4611.85,222.05" />
+<text class="node-icon" x="4363.57" y="279.98" text-anchor="start" dominant-baseline="hanging">🔒</text>
+<text class="node-label" x="4421.57" y="286.98" text-anchor="start" dominant-baseline="middle">
+<tspan x="4421.57">CTL-001: </tspan><tspan font-weight="700">Control</tspan>
+<tspan x="4421.57" dy="14.00">Workspace Trust Gate</tspan>
+<tspan x="4421.57" dy="14.00">&#160;</tspan>
+<tspan x="4421.57" dy="14.00">Gate potentially unsafe operations (e.g., file writes, webview</tspan>
+<tspan x="4421.57" dy="14.00">rendering, executing tools) behind workspace trust checks and explicit</tspan>
+<tspan x="4421.57" dy="14.00">user consent.</tspan>
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-002" data-layout-node="CTL-002">
-<polygon class="node-shape" points="3988.83,333.53 4169.98,374.40 4169.98,432.20 3988.83,473.07 3732.64,473.07 3551.50,432.20 3551.50,374.40 3732.64,333.53" />
-<text class="node-label" x="3860.74" y="368.30" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🔒 Control</tspan>
-<tspan x="3860.74" dy="14.00">Safe Path Handling and Atomic Writes</tspan>
-<tspan x="3860.74" dy="14.00">&#160;</tspan>
-<tspan x="3860.74" dy="14.00">Constrain paths to the intended workspace/model roots, normalize and</tspan>
-<tspan x="3860.74" dy="14.00">validate paths, and use atomic write patterns to prevent partial writes</tspan>
-<tspan x="3860.74" dy="14.00">and clobbering.</tspan>
+<polygon class="node-shape" points="4935.21,462.05 5166.06,520.59 5166.06,603.38 4935.21,661.92 4608.73,661.92 4377.87,603.38 4377.87,520.59 4608.73,462.05" />
+<text class="node-icon" x="4355.40" y="519.98" text-anchor="start" dominant-baseline="hanging">🔒</text>
+<text class="node-label" x="4413.40" y="526.98" text-anchor="start" dominant-baseline="middle">
+<tspan x="4413.40">CTL-002: </tspan><tspan font-weight="700">Control</tspan>
+<tspan x="4413.40" dy="14.00">Safe Path Handling and Atomic Writes</tspan>
+<tspan x="4413.40" dy="14.00">&#160;</tspan>
+<tspan x="4413.40" dy="14.00">Constrain paths to the intended workspace/model roots, normalize and</tspan>
+<tspan x="4413.40" dy="14.00">validate paths, and use atomic write patterns to prevent partial writes</tspan>
+<tspan x="4413.40" dy="14.00">and clobbering.</tspan>
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-003" data-layout-node="CTL-003">
-<polygon class="node-shape" points="3994.30,508.25 4183.18,549.12 4183.18,606.92 3994.30,647.79 3727.18,647.79 3538.29,606.92 3538.29,549.12 3727.18,508.25" />
-<text class="node-label" x="3860.74" y="550.02" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🔒 Control</tspan>
-<tspan x="3860.74" dy="14.00">Content Sanitization</tspan>
-<tspan x="3860.74" dy="14.00">&#160;</tspan>
-<tspan x="3860.74" dy="14.00">Sanitize rendered Markdown and webview content, restrict resource</tspan>
-<tspan x="3860.74" dy="14.00">loading, and disable script execution to prevent injection.</tspan>
+<polygon class="node-shape" points="4940.67,702.05 5179.26,760.59 5179.26,843.38 4940.67,901.92 4603.26,901.92 4364.67,843.38 4364.67,760.59 4603.26,702.05" />
+<text class="node-icon" x="4341.12" y="766.98" text-anchor="start" dominant-baseline="hanging">🔒</text>
+<text class="node-label" x="4399.12" y="773.98" text-anchor="start" dominant-baseline="middle">
+<tspan x="4399.12">CTL-003: </tspan><tspan font-weight="700">Control</tspan>
+<tspan x="4399.12" dy="14.00">Content Sanitization</tspan>
+<tspan x="4399.12" dy="14.00">&#160;</tspan>
+<tspan x="4399.12" dy="14.00">Sanitize rendered Markdown and webview content, restrict resource</tspan>
+<tspan x="4399.12" dy="14.00">loading, and disable script execution to prevent injection.</tspan>
 </text>
 </g>
 <g class="node card-type-control" data-card-id="CTL-004" data-layout-node="CTL-004">
-<polygon class="node-shape" points="3990.39,682.87 4173.75,723.74 4173.75,781.54 3990.39,822.41 3731.08,822.41 3547.72,781.54 3547.72,723.74 3731.08,682.87" />
-<text class="node-label" x="3860.74" y="724.64" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🔒 Control</tspan>
-<tspan x="3860.74" dy="14.00">Least Privilege File Access</tspan>
-<tspan x="3860.74" dy="14.00">&#160;</tspan>
-<tspan x="3860.74" dy="14.00">Minimize read/write permissions and scope operations to explicit</tspan>
-<tspan x="3860.74" dy="14.00">user-selected paths; avoid reading or writing unrelated workspace files.</tspan>
+<polygon class="node-shape" points="4936.77,942.05 5169.83,1000.59 5169.83,1083.38 4936.77,1141.92 4607.17,1141.92 4374.10,1083.38 4374.10,1000.59 4607.17,942.05" />
+<text class="node-icon" x="4351.32" y="1006.98" text-anchor="start" dominant-baseline="hanging">🔒</text>
+<text class="node-label" x="4409.32" y="1013.98" text-anchor="start" dominant-baseline="middle">
+<tspan x="4409.32">CTL-004: </tspan><tspan font-weight="700">Control</tspan>
+<tspan x="4409.32" dy="14.00">Least Privilege File Access</tspan>
+<tspan x="4409.32" dy="14.00">&#160;</tspan>
+<tspan x="4409.32" dy="14.00">Minimize read/write permissions and scope operations to explicit</tspan>
+<tspan x="4409.32" dy="14.00">user-selected paths; avoid reading or writing unrelated workspace files.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-001" data-layout-node="FEA-001">
-<rect class="node-shape" x="2451.07" y="1111.99" width="408.00" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="1125.99" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Load Models</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Load Aurora model cards from disk into memory, preserving</tspan>
-<tspan x="2655.07" dy="14.00">identifiers, links, and schema references.</tspan>
+<rect class="node-shape" x="3030.43" y="1538.66" width="528.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3040.43" y="1566.99" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3098.43" y="1573.99" text-anchor="start" dominant-baseline="middle">
+<tspan x="3098.43">FEA-001: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3098.43" dy="14.00">Load Models</tspan>
+<tspan x="3098.43" dy="14.00">&#160;</tspan>
+<tspan x="3098.43" dy="14.00">Load Aurora model cards from disk into memory, preserving</tspan>
+<tspan x="3098.43" dy="14.00">identifiers, links, and schema references.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-002" data-layout-node="FEA-002">
-<rect class="node-shape" x="2439.07" y="1435.99" width="432.00" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="1449.99" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Model Validation</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Validate Aurora models against schemas and invariants and</tspan>
-<tspan x="2655.07" dy="14.00">produce actionable diagnostics.</tspan>
+<rect class="node-shape" x="3018.43" y="1990.67" width="552.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3028.43" y="2019.00" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3086.43" y="2026.00" text-anchor="start" dominant-baseline="middle">
+<tspan x="3086.43">FEA-002: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3086.43" dy="14.00">Model Validation</tspan>
+<tspan x="3086.43" dy="14.00">&#160;</tspan>
+<tspan x="3086.43" dy="14.00">Validate Aurora models against schemas and invariants and produce</tspan>
+<tspan x="3086.43" dy="14.00">actionable diagnostics.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-004" data-layout-node="FEA-004">
-<rect class="node-shape" x="2467.07" y="1219.99" width="376.00" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="1233.99" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Save Models</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Persist Aurora model cards and links to disk in a</tspan>
-<tspan x="2655.07" dy="14.00">stable, reviewable format.</tspan>
+<rect class="node-shape" x="3046.43" y="1689.33" width="496.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3056.43" y="1717.66" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3114.43" y="1724.66" text-anchor="start" dominant-baseline="middle">
+<tspan x="3114.43">FEA-004: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3114.43" dy="14.00">Save Models</tspan>
+<tspan x="3114.43" dy="14.00">&#160;</tspan>
+<tspan x="3114.43" dy="14.00">Persist Aurora model cards and links to disk in a stable,</tspan>
+<tspan x="3114.43" dy="14.00">reviewable format.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-005" data-layout-node="FEA-005">
-<rect class="node-shape" x="2437.74" y="1543.99" width="434.67" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="1557.99" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Render Views</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Generate human-readable Markdown and Mermaid view documentation</tspan>
-<tspan x="2655.07" dy="14.00">from Aurora models.</tspan>
+<rect class="node-shape" x="3017.10" y="2141.33" width="554.67" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3027.10" y="2169.66" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3085.10" y="2176.66" text-anchor="start" dominant-baseline="middle">
+<tspan x="3085.10">FEA-005: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3085.10" dy="14.00">Render Views</tspan>
+<tspan x="3085.10" dy="14.00">&#160;</tspan>
+<tspan x="3085.10" dy="14.00">Generate human-readable Markdown and Mermaid view documentation from</tspan>
+<tspan x="3085.10" dy="14.00">Aurora models.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-006" data-layout-node="FEA-006">
-<rect class="node-shape" x="2457.07" y="1327.99" width="396.00" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="1341.99" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Model Compaction</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Emit a compact representation of an Aurora model suitable</tspan>
-<tspan x="2655.07" dy="14.00">for machine agents and interchange.</tspan>
+<rect class="node-shape" x="3036.43" y="1839.99" width="516.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3046.43" y="1868.32" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3104.43" y="1875.32" text-anchor="start" dominant-baseline="middle">
+<tspan x="3104.43">FEA-006: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3104.43" dy="14.00">Model Compaction</tspan>
+<tspan x="3104.43" dy="14.00">&#160;</tspan>
+<tspan x="3104.43" dy="14.00">Emit a compact representation of an Aurora model suitable for</tspan>
+<tspan x="3104.43" dy="14.00">machine agents and interchange.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-007" data-layout-node="FEA-007">
-<rect class="node-shape" x="2444.40" y="771.98" width="421.33" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="785.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Browse and Search Models</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Browse, filter, and search cards and links in an Aurora model</tspan>
-<tspan x="2655.07" dy="14.00">with fast navigation primitives.</tspan>
+<rect class="node-shape" x="3023.76" y="1070.62" width="541.33" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3033.76" y="1098.95" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3091.76" y="1105.95" text-anchor="start" dominant-baseline="middle">
+<tspan x="3091.76">FEA-007: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3091.76" dy="14.00">Browse and Search Models</tspan>
+<tspan x="3091.76" dy="14.00">&#160;</tspan>
+<tspan x="3091.76" dy="14.00">Browse, filter, and search cards and links in an Aurora model with</tspan>
+<tspan x="3091.76" dy="14.00">fast navigation primitives.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-008" data-layout-node="FEA-008">
-<rect class="node-shape" x="2448.40" y="339.98" width="413.34" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="353.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Edit Models Interactively</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Interactive editing UI and operations for creating and</tspan>
-<tspan x="2655.07" dy="14.00">updating cards and links with immediate feedback.</tspan>
+<rect class="node-shape" x="3027.76" y="468.03" width="533.34" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3037.76" y="496.36" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3095.76" y="503.36" text-anchor="start" dominant-baseline="middle">
+<tspan x="3095.76">FEA-008: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3095.76" dy="14.00">Edit Models Interactively</tspan>
+<tspan x="3095.76" dy="14.00">&#160;</tspan>
+<tspan x="3095.76" dy="14.00">Interactive editing UI and operations for creating and updating</tspan>
+<tspan x="3095.76" dy="14.00">cards and links with immediate feedback.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-009" data-layout-node="FEA-009">
-<rect class="node-shape" x="2437.74" y="231.98" width="434.67" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="245.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Show Validation Diagnostics</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Show schema and invariant validation diagnostics inline and in</tspan>
-<tspan x="2655.07" dy="14.00">structured panels.</tspan>
+<rect class="node-shape" x="3017.10" y="317.31" width="554.67" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3027.10" y="345.64" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3085.10" y="352.64" text-anchor="start" dominant-baseline="middle">
+<tspan x="3085.10">FEA-009: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3085.10" dy="14.00">Show Validation Diagnostics</tspan>
+<tspan x="3085.10" dy="14.00">&#160;</tspan>
+<tspan x="3085.10" dy="14.00">Show schema and invariant validation diagnostics inline and in</tspan>
+<tspan x="3085.10" dy="14.00">structured panels.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-010" data-layout-node="FEA-010">
-<rect class="node-shape" x="2441.74" y="663.98" width="426.66" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="677.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Visualize Model Graph</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Provide an interactive graph visualization of the model with</tspan>
-<tspan x="2655.07" dy="14.00">zoom, pan, and focus-on-card navigation.</tspan>
+<rect class="node-shape" x="3021.10" y="920.00" width="546.66" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3031.10" y="948.33" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3089.10" y="955.33" text-anchor="start" dominant-baseline="middle">
+<tspan x="3089.10">FEA-010: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3089.10" dy="14.00">Visualize Model Graph</tspan>
+<tspan x="3089.10" dy="14.00">&#160;</tspan>
+<tspan x="3089.10" dy="14.00">Provide an interactive graph visualization of the model with zoom, pan,</tspan>
+<tspan x="3089.10" dy="14.00">and focus-on-card navigation.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-011" data-layout-node="FEA-011">
-<rect class="node-shape" x="2431.74" y="555.98" width="446.67" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="569.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Preview Rendered Markdown</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Preview and navigate rendered Markdown documentation from Aurora</tspan>
-<tspan x="2655.07" dy="14.00">models inside tooling.</tspan>
+<rect class="node-shape" x="3011.10" y="769.37" width="566.67" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3021.10" y="797.70" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3079.10" y="804.70" text-anchor="start" dominant-baseline="middle">
+<tspan x="3079.10">FEA-011: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3079.10" dy="14.00">Preview Rendered Markdown</tspan>
+<tspan x="3079.10" dy="14.00">&#160;</tspan>
+<tspan x="3079.10" dy="14.00">Preview and navigate rendered Markdown documentation from Aurora models</tspan>
+<tspan x="3079.10" dy="14.00">inside tooling.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-012" data-layout-node="FEA-012">
-<rect class="node-shape" x="2439.07" y="879.98" width="432.00" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="893.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Workspace Integration</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Integrate with the user workspace: open models, watch for</tspan>
-<tspan x="2655.07" dy="14.00">changes, and keep views in sync.</tspan>
+<rect class="node-shape" x="3018.43" y="1221.34" width="552.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3028.43" y="1249.67" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3086.43" y="1256.67" text-anchor="start" dominant-baseline="middle">
+<tspan x="3086.43">FEA-012: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3086.43" dy="14.00">Workspace Integration</tspan>
+<tspan x="3086.43" dy="14.00">&#160;</tspan>
+<tspan x="3086.43" dy="14.00">Integrate with the user workspace: open models, watch for changes, and</tspan>
+<tspan x="3086.43" dy="14.00">keep views in sync.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-013" data-layout-node="FEA-013">
-<rect class="node-shape" x="2455.74" y="988.65" width="398.67" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="1009.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Safe File Operations</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Perform safe, constrained file operations with clear user</tspan>
-<tspan x="2655.07" dy="14.00">intent boundaries and reliable persistence semantics.</tspan>
+<rect class="node-shape" x="3035.10" y="1372.69" width="518.67" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="3045.10" y="1408.36" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3103.10" y="1415.36" text-anchor="start" dominant-baseline="middle">
+<tspan x="3103.10">FEA-013: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3103.10" dy="14.00">Safe File Operations</tspan>
+<tspan x="3103.10" dy="14.00">&#160;</tspan>
+<tspan x="3103.10" dy="14.00">Perform safe, constrained file operations with clear user intent</tspan>
+<tspan x="3103.10" dy="14.00">boundaries and reliable persistence semantics.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-014" data-layout-node="FEA-014">
-<rect class="node-shape" x="2469.07" y="-0.05" width="372.00" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="13.95" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Workspace Trust Gating</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Respect workspace trust boundaries by limiting</tspan>
-<tspan x="2655.07" dy="14.00">operations when the workspace is untrusted.</tspan>
+<rect class="node-shape" x="3048.43" y="0.03" width="492.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3058.43" y="28.36" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3116.43" y="35.36" text-anchor="start" dominant-baseline="middle">
+<tspan x="3116.43">FEA-014: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3116.43" dy="14.00">Workspace Trust Gating</tspan>
+<tspan x="3116.43" dy="14.00">&#160;</tspan>
+<tspan x="3116.43" dy="14.00">Respect workspace trust boundaries by limiting operations when</tspan>
+<tspan x="3116.43" dy="14.00">the workspace is untrusted.</tspan>
 </text>
 </g>
 <g class="node card-type-feature" data-card-id="FEA-015" data-layout-node="FEA-015">
-<rect class="node-shape" x="2427.74" y="447.98" width="454.67" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="2655.07" y="461.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">⭐ Feature</tspan>
-<tspan x="2655.07" dy="14.00">Sanitized Rendering</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">Render Markdown and webview content safely, preventing script</tspan>
-<tspan x="2655.07" dy="14.00">injection and unsafe resource access.</tspan>
+<rect class="node-shape" x="3007.10" y="618.65" width="574.67" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3017.10" y="646.98" text-anchor="start" dominant-baseline="hanging">⭐</text>
+<text class="node-label" x="3075.10" y="653.98" text-anchor="start" dominant-baseline="middle">
+<tspan x="3075.10">FEA-015: </tspan><tspan font-weight="700">Feature</tspan>
+<tspan x="3075.10" dy="14.00">Sanitized Rendering</tspan>
+<tspan x="3075.10" dy="14.00">&#160;</tspan>
+<tspan x="3075.10" dy="14.00">Render Markdown and webview content safely, preventing script injection</tspan>
+<tspan x="3075.10" dy="14.00">and unsafe resource access.</tspan>
 </text>
 </g>
 <g class="node card-type-process" data-card-id="PRO-001" data-layout-node="PRO-001">
-<rect class="node-shape" x="1249.11" y="1430.65" width="373.33" height="84.00" rx="6" ry="6" />
-<text class="node-label" x="1435.78" y="1444.65" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🔁 Process</tspan>
-<tspan x="1435.78" dy="14.00">Model Authoring Workflow</tspan>
-<tspan x="1435.78" dy="14.00">&#160;</tspan>
-<tspan x="1435.78" dy="14.00">A repeatable workflow for authoring, validating,</tspan>
-<tspan x="1435.78" dy="14.00">rendering, and exporting an Aurora model.</tspan>
+<rect class="node-shape" x="1538.74" y="1988.00" width="493.33" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="1548.74" y="2016.33" text-anchor="start" dominant-baseline="hanging">🔁</text>
+<text class="node-label" x="1606.74" y="2023.33" text-anchor="start" dominant-baseline="middle">
+<tspan x="1606.74">PRO-001: </tspan><tspan font-weight="700">Process</tspan>
+<tspan x="1606.74" dy="14.00">Model Authoring Workflow</tspan>
+<tspan x="1606.74" dy="14.00">&#160;</tspan>
+<tspan x="1606.74" dy="14.00">A repeatable workflow for authoring, validating, rendering,</tspan>
+<tspan x="1606.74" dy="14.00">and exporting an Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-process" data-card-id="PRO-002" data-layout-node="PRO-002">
-<rect class="node-shape" x="1225.11" y="453.99" width="421.33" height="98.67" rx="6" ry="6" />
-<text class="node-label" x="1435.78" y="475.33" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">🔁 Process</tspan>
-<tspan x="1435.78" dy="14.00">In-Tool Model Editing Workflow</tspan>
-<tspan x="1435.78" dy="14.00">&#160;</tspan>
-<tspan x="1435.78" dy="14.00">A repeatable workflow for interactively opening, navigating,</tspan>
-<tspan x="1435.78" dy="14.00">editing, validating, previewing, and saving an Aurora model.</tspan>
+<rect class="node-shape" x="1514.74" y="633.97" width="541.33" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="1524.74" y="669.64" text-anchor="start" dominant-baseline="hanging">🔁</text>
+<text class="node-label" x="1582.74" y="676.64" text-anchor="start" dominant-baseline="middle">
+<tspan x="1582.74">PRO-002: </tspan><tspan font-weight="700">Process</tspan>
+<tspan x="1582.74" dy="14.00">In-Tool Model Editing Workflow</tspan>
+<tspan x="1582.74" dy="14.00">&#160;</tspan>
+<tspan x="1582.74" dy="14.00">A repeatable workflow for interactively opening, navigating, editing,</tspan>
+<tspan x="1582.74" dy="14.00">validating, previewing, and saving an Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-story" data-card-id="STO-001" data-layout-node="STO-001">
-<polygon class="node-shape" points="1842.43,1640.65 2249.09,1640.65 2263.09,1654.65 2263.09,1783.98 2249.09,1797.98 1842.43,1797.98 1828.43,1783.98 1828.43,1654.65" />
-<text class="node-label" x="2045.76" y="1663.32" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">📖 Story</tspan>
-<tspan x="2045.76" dy="14.00">Store the Model in a Postable Format</tspan>
-<tspan x="2045.76" dy="14.00">&#160;</tspan>
-<tspan x="2045.76" dy="14.00">As an architect, I want to package an Aurora model into a</tspan>
-<tspan x="2045.76" dy="14.00">single portable file (for example, a ZIP) so that I can</tspan>
-<tspan x="2045.76" dy="14.00">transport it between instances and share it reliably. This card</tspan>
-<tspan x="2045.76" dy="14.00">is retained only as a legacy tombstone for historical</tspan>
-<tspan x="2045.76" dy="14.00">continuity; it used a non-canonical prefix and has been</tspan>
-<tspan x="2045.76" dy="14.00">superseded by `STR-004` (and the active story `STR-003`).</tspan>
+<polygon class="node-shape" points="2276.92,2283.33 2803.59,2283.33 2817.59,2297.33 2817.59,2469.32 2803.59,2483.32 2276.92,2483.32 2262.92,2469.32 2262.92,2297.33" />
+<text class="node-icon" x="2272.92" y="2327.32" text-anchor="start" dominant-baseline="hanging">📖</text>
+<text class="node-label" x="2330.92" y="2334.32" text-anchor="start" dominant-baseline="middle">
+<tspan x="2330.92">STO-001: </tspan><tspan font-weight="700">Story</tspan>
+<tspan x="2330.92" dy="14.00">Store the Model in a Postable Format</tspan>
+<tspan x="2330.92" dy="14.00">&#160;</tspan>
+<tspan x="2330.92" dy="14.00">As an architect, I want to package an Aurora model into a single</tspan>
+<tspan x="2330.92" dy="14.00">portable file (for example, a ZIP) so that I can transport it between</tspan>
+<tspan x="2330.92" dy="14.00">instances and share it reliably. This card is retained only as a legacy</tspan>
+<tspan x="2330.92" dy="14.00">tombstone for historical continuity; it used a non-canonical prefix and</tspan>
+<tspan x="2330.92" dy="14.00">has been superseded by `STR-004` (and the active story `STR-003`).</tspan>
 </text>
 </g>
 <g class="node card-type-story" data-card-id="STR-001" data-layout-node="STR-001">
-<polygon class="node-shape" points="698.90,1423.32 1100.56,1423.32 1112.40,1435.16 1112.40,1510.14 1100.56,1521.98 698.90,1521.98 687.06,1510.14 687.06,1435.16" />
-<text class="node-label" x="899.73" y="1437.65" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">📖 Story</tspan>
-<tspan x="899.73" dy="14.00">Author and Share Aurora Model</tspan>
-<tspan x="899.73" dy="14.00">&#160;</tspan>
-<tspan x="899.73" dy="14.00">As an architect, I want to author, validate, render, and share</tspan>
-<tspan x="899.73" dy="14.00">an Aurora model so that stakeholders and tools have a</tspan>
-<tspan x="899.73" dy="14.00">consistent source of truth.</tspan>
+<polygon class="node-shape" points="870.77,1980.66 1388.11,1980.66 1402.11,1994.66 1402.11,2107.99 1388.11,2121.99 870.77,2121.99 856.77,2107.99 856.77,1994.66" />
+<text class="node-icon" x="866.77" y="2009.33" text-anchor="start" dominant-baseline="hanging">📖</text>
+<text class="node-label" x="924.77" y="2016.33" text-anchor="start" dominant-baseline="middle">
+<tspan x="924.77">STR-001: </tspan><tspan font-weight="700">Story</tspan>
+<tspan x="924.77" dy="14.00">Author and Share Aurora Model</tspan>
+<tspan x="924.77" dy="14.00">&#160;</tspan>
+<tspan x="924.77" dy="14.00">As an architect, I want to author, validate, render, and share an</tspan>
+<tspan x="924.77" dy="14.00">Aurora model so that stakeholders and tools have a consistent source</tspan>
+<tspan x="924.77" dy="14.00">of truth.</tspan>
 </text>
 </g>
 <g class="node card-type-story" data-card-id="STR-002" data-layout-node="STR-002">
-<polygon class="node-shape" points="2451.58,108.68 2858.56,108.68 2870.40,120.52 2870.40,195.51 2858.56,207.35 2451.58,207.35 2439.74,195.51 2439.74,120.52" />
-<text class="node-label" x="2655.07" y="123.02" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">📖 Story</tspan>
-<tspan x="2655.07" dy="14.00">Edit Aurora Model in Tools</tspan>
-<tspan x="2655.07" dy="14.00">&#160;</tspan>
-<tspan x="2655.07" dy="14.00">As a user, I want to browse, edit, validate, and preview an</tspan>
-<tspan x="2655.07" dy="14.00">Aurora model inside the tooling surfaces so that I can iterate</tspan>
-<tspan x="2655.07" dy="14.00">quickly and confidently.</tspan>
+<polygon class="node-shape" points="3033.10,151.29 3555.76,151.29 3569.76,165.29 3569.76,278.62 3555.76,292.62 3033.10,292.62 3019.10,278.62 3019.10,165.29" />
+<text class="node-icon" x="3029.10" y="179.95" text-anchor="start" dominant-baseline="hanging">📖</text>
+<text class="node-label" x="3087.10" y="186.95" text-anchor="start" dominant-baseline="middle">
+<tspan x="3087.10">STR-002: </tspan><tspan font-weight="700">Story</tspan>
+<tspan x="3087.10" dy="14.00">Edit Aurora Model in Tools</tspan>
+<tspan x="3087.10" dy="14.00">&#160;</tspan>
+<tspan x="3087.10" dy="14.00">As a user, I want to browse, edit, validate, and preview an Aurora</tspan>
+<tspan x="3087.10" dy="14.00">model inside the tooling surfaces so that I can iterate quickly and</tspan>
+<tspan x="3087.10" dy="14.00">confidently.</tspan>
 </text>
 </g>
 <g class="node card-type-story" data-card-id="STR-003" data-layout-node="STR-003">
-<polygon class="node-shape" points="696.00,1614.65 1103.47,1614.65 1117.07,1628.25 1117.07,1714.39 1103.47,1727.99 696.00,1727.99 682.40,1714.39 682.40,1628.25" />
-<text class="node-label" x="899.73" y="1636.32" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">📖 Story</tspan>
-<tspan x="899.73" dy="14.00">Store the Model in a Postable Format</tspan>
-<tspan x="899.73" dy="14.00">&#160;</tspan>
-<tspan x="899.73" dy="14.00">As an architect, I want to package an Aurora model into a</tspan>
-<tspan x="899.73" dy="14.00">single portable file (for example, a ZIP) so that I can</tspan>
-<tspan x="899.73" dy="14.00">transport it between instances and share it reliably.</tspan>
+<polygon class="node-shape" points="866.11,2219.99 1392.77,2219.99 1406.77,2233.99 1406.77,2361.99 1392.77,2375.99 866.11,2375.99 852.11,2361.99 852.11,2233.99" />
+<text class="node-icon" x="862.11" y="2255.99" text-anchor="start" dominant-baseline="hanging">📖</text>
+<text class="node-label" x="920.11" y="2262.99" text-anchor="start" dominant-baseline="middle">
+<tspan x="920.11">STR-003: </tspan><tspan font-weight="700">Story</tspan>
+<tspan x="920.11" dy="14.00">Store the Model in a Postable Format</tspan>
+<tspan x="920.11" dy="14.00">&#160;</tspan>
+<tspan x="920.11" dy="14.00">As an architect, I want to package an Aurora model into a single</tspan>
+<tspan x="920.11" dy="14.00">portable file (for example, a ZIP) so that I can transport it between</tspan>
+<tspan x="920.11" dy="14.00">instances and share it reliably.</tspan>
 </text>
 </g>
 <g class="node card-type-story" data-card-id="STR-004" data-layout-node="STR-004">
-<polygon class="node-shape" points="1229.38,1649.32 1642.17,1649.32 1655.77,1662.92 1655.77,1749.05 1642.17,1762.65 1229.38,1762.65 1215.78,1749.05 1215.78,1662.92" />
-<text class="node-label" x="1435.78" y="1663.98" text-anchor="middle" dominant-baseline="middle">
-<tspan font-weight="700">📖 Story</tspan><tspan> (Tombstone)</tspan>
-<tspan x="1435.78" dy="14.00">Store the Model in a Postable Format (Tombstone)</tspan>
-<tspan x="1435.78" dy="14.00">&#160;</tspan>
-<tspan x="1435.78" dy="14.00">Legacy tombstone story retained for traceability. This</tspan>
-<tspan x="1435.78" dy="14.00">supersedes the earlier `STO-001` story card, which used a</tspan>
-<tspan x="1435.78" dy="14.00">non-canonical prefix. `STO-001` is retained as `Deleted` for</tspan>
-<tspan x="1435.78" dy="14.00">historical continuity.</tspan>
+<polygon class="node-shape" points="1519.41,2291.99 2051.41,2291.99 2065.41,2305.99 2065.41,2433.99 2051.41,2447.99 1519.41,2447.99 1505.41,2433.99 1505.41,2305.99" />
+<text class="node-icon" x="1515.41" y="2327.99" text-anchor="start" dominant-baseline="hanging">📖</text>
+<text class="node-label" x="1573.41" y="2334.99" text-anchor="start" dominant-baseline="middle">
+<tspan x="1573.41">STR-004: </tspan><tspan font-weight="700">Story</tspan><tspan> (Tombstone)</tspan>
+<tspan x="1573.41" dy="14.00">Store the Model in a Postable Format (Tombstone)</tspan>
+<tspan x="1573.41" dy="14.00">&#160;</tspan>
+<tspan x="1573.41" dy="14.00">Legacy tombstone story retained for traceability. This supersedes the</tspan>
+<tspan x="1573.41" dy="14.00">earlier `STO-001` story card, which used a non-canonical prefix.</tspan>
+<tspan x="1573.41" dy="14.00">`STO-001` is retained as `Deleted` for historical continuity.</tspan>
 </text>
 </g>
 </svg>

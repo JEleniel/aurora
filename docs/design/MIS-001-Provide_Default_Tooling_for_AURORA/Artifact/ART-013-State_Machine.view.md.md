@@ -1,4 +1,4 @@
-# ART-013 (Artifact)
+# ART-013: **Artifact**
 
 **Name:** State_Machine.view.md\
 

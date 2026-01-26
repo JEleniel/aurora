@@ -1,4 +1,4 @@
-# REQ-018 (Requirement)
+# REQ-018: **Requirement**
 
 **Name:** Store the Model in a Postable Format\
 

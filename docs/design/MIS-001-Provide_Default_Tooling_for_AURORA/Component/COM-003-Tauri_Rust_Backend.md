@@ -1,4 +1,4 @@
-# COM-003 (Component)
+# COM-003: **Component**
 
 **Name:** Tauri Rust Backend\
 

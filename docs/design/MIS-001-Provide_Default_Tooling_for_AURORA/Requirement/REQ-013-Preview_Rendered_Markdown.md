@@ -1,4 +1,4 @@
-# REQ-013 (Requirement)
+# REQ-013: **Requirement**
 
 **Name:** Preview Rendered Markdown\
 

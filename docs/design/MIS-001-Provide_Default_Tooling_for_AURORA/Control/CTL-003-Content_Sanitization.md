@@ -1,4 +1,4 @@
-# CTL-003 (Control)
+# CTL-003: **Control**
 
 **Name:** Content Sanitization\
 

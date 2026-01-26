@@ -1,4 +1,4 @@
-# ATV-004 (Activity)
+# ATV-004: **Activity**
 
 **Name:** Compact Model\
 

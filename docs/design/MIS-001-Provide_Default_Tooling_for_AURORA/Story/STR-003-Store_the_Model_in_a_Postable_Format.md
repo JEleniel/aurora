@@ -1,4 +1,4 @@
-# STR-003 (Story)
+# STR-003: **Story**
 
 **Name:** Store the Model in a Postable Format\
 

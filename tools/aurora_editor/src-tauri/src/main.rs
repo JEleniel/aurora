@@ -16,6 +16,7 @@ fn main() -> Result<()> {
 	init_tracing()?;
 	tauri::Builder::default()
 		.manage(EditorState::new())
+		.plugin(tauri_plugin_dialog::init())
 		.invoke_handler(tauri::generate_handler![
 			commands::health_check,
 			commands::set_workspace,

@@ -1,4 +1,4 @@
-# ART-008 (Artifact)
+# ART-008: **Artifact**
 
 **Name:** Webview Rendered Markdown\
 
