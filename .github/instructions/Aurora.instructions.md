@@ -205,7 +205,21 @@ In general, a view should display the `card_type`, `card_subtype`, and `name` fi
 
 ### `aurora_cli`
 
-Inputs and outputs are not required. When the model is at `docs/design/aurora/` and the output is `docs/design/`, this is the usual layout.
+Inputs and outputs are not required. When the model is at `docs/design/aurora/` and the output is `docs/design/`, this is the usual layout. The CLI defaults to  `docs/design/aurora/` for input.
+
+**Simple Validation**:
+
+```text
+aurora_cli validate
+```
+
+**Simple Generation**:
+
+```text
+aurora_cli render-all -o docs/design/
+```
+
+**Other Commands**:
 
 ```text
 aurora_cli [OPTIONS] <COMMAND>

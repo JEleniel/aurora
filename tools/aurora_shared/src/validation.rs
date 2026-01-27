@@ -1,4 +1,7 @@
-use std::collections::{HashSet, VecDeque};
+use std::collections::{HashMap, HashSet, VecDeque};
+use std::env;
+use std::fs;
+use std::path::{Path, PathBuf};
 
 use serde::Serialize;
 
@@ -33,6 +36,16 @@ impl ValidationDiagnostic {
 		}
 	}
 
+	fn warning(code: &'static str, message: impl Into<String>) -> Self {
+		ValidationDiagnostic {
+			severity: DiagnosticSeverity::Warning,
+			code,
+			message: message.into(),
+			card_id: None,
+			path: None,
+		}
+	}
+
 	fn with_card(mut self, card: &Card) -> Self {
 		self.card_id = Some(card.id.clone());
 		self
@@ -60,6 +73,14 @@ impl ValidationReport {
 
 /// Validate an Aurora model according to basic invariants.
 pub fn validate_model(model: &AuroraModel) -> ValidationReport {
+	validate_model_with_instructions(model, None)
+}
+
+/// Validate an Aurora model while overriding the instructions registry root.
+pub fn validate_model_with_instructions(
+	model: &AuroraModel,
+	instructions_root: Option<&Path>,
+) -> ValidationReport {
 	let mut report = ValidationReport::default();
 	if model.is_empty() {
 		report.diagnostics.push(ValidationDiagnostic::error(
@@ -77,6 +98,7 @@ pub fn validate_model(model: &AuroraModel) -> ValidationReport {
 		check_reachability(model, root_id, &mut report);
 	}
 	check_secret_ownership(model, &mut report);
+	check_matrix_compliance(model, &mut report, instructions_root);
 
 	report
 }
@@ -253,6 +275,319 @@ fn check_secret_ownership(model: &AuroraModel, report: &mut ValidationReport) {
 			});
 		}
 	}
+}
+
+#[derive(Debug, Clone)]
+struct RelationshipRule {
+	sources: HashSet<String>,
+	targets: HashSet<String>,
+}
+
+#[derive(Debug, Clone)]
+struct MatrixRegistry {
+	card_types: HashSet<String>,
+	relationships: HashMap<String, RelationshipRule>,
+}
+
+fn check_matrix_compliance(
+	model: &AuroraModel,
+	report: &mut ValidationReport,
+	instructions_root: Option<&Path>,
+) {
+	let registry = match load_matrix_registry(model, instructions_root) {
+		Ok(Some(registry)) => registry,
+		Ok(None) => return,
+		Err(message) => {
+			report.diagnostics.push(ValidationDiagnostic::warning(
+				"RELATIONSHIP_MATRIX_UNAVAILABLE",
+				message,
+			));
+			return;
+		}
+	};
+
+	for card in model.iter_cards() {
+		let card_type = canonical_card_type(&card.card_type);
+		if !registry.card_types.contains(&card_type) {
+			report.diagnostics.push(
+				ValidationDiagnostic::warning(
+					"UNKNOWN_CARD_TYPE",
+					format!(
+						"Card type '{}' is not listed in Card_Definitions.md",
+						card.card_type
+					),
+				)
+				.with_card(card)
+				.with_path("card_type"),
+			);
+		}
+	}
+
+	for card in model.iter_cards() {
+		let source_type = canonical_card_type(&card.card_type);
+		let source_known = registry.card_types.contains(&source_type);
+		for (idx, link) in card.links.iter().enumerate() {
+			let relationship = normalize_relationship(&link.relationship);
+			if relationship.is_empty() {
+				continue;
+			}
+			let rule = match registry.relationships.get(&relationship) {
+				Some(rule) => rule,
+				None => {
+					report.diagnostics.push(
+						ValidationDiagnostic::warning(
+							"UNKNOWN_RELATIONSHIP",
+							format!(
+								"Relationship '{}' is not defined in Relationships_Matrix.md",
+								link.relationship
+							),
+						)
+						.with_card(card)
+						.with_path(format!("links[{idx}].relationship")),
+					);
+					continue;
+				}
+			};
+
+			if source_known && !rule.sources.contains(&source_type) {
+				report.diagnostics.push(
+					ValidationDiagnostic::warning(
+						"RELATIONSHIP_SOURCE_NOT_ALLOWED",
+						format!(
+							"Relationship '{}' does not allow source card type '{}'",
+							link.relationship, card.card_type
+						),
+					)
+					.with_card(card)
+					.with_path(format!("links[{idx}].relationship")),
+				);
+			}
+
+			if let Some(target_card) = model.get(&link.target) {
+				let target_type = canonical_card_type(&target_card.card_type);
+				let target_known = registry.card_types.contains(&target_type);
+				if target_known && !rule.targets.contains(&target_type) {
+					report.diagnostics.push(
+						ValidationDiagnostic::warning(
+							"RELATIONSHIP_TARGET_NOT_ALLOWED",
+							format!(
+								"Relationship '{}' does not allow target card type '{}'",
+								link.relationship, target_card.card_type
+							),
+						)
+						.with_card(card)
+						.with_path(format!("links[{idx}].target")),
+					);
+				}
+			}
+		}
+	}
+}
+
+fn load_matrix_registry(
+	model: &AuroraModel,
+	instructions_root: Option<&Path>,
+) -> Result<Option<MatrixRegistry>, String> {
+	let instructions_root = if let Some(path) = instructions_root {
+		if path.is_dir() {
+			path.to_path_buf()
+		} else {
+			return Err(format!(
+				"Instructions root {} is not a directory",
+				path.display()
+			));
+		}
+	} else {
+		match resolve_instructions_root(model) {
+			Some(path) => path,
+			None => return Ok(None),
+		}
+	};
+	let card_defs = instructions_root.join("details/Card_Definitions.md");
+	let matrix_path = instructions_root.join("details/Relationships_Matrix.md");
+	let card_types = load_card_types(&card_defs)?;
+	if card_types.is_empty() {
+		return Err(format!(
+			"No card types were parsed from {}",
+			card_defs.display()
+		));
+	}
+	let relationships = load_relationships(&matrix_path, &card_types)?;
+	Ok(Some(MatrixRegistry {
+		card_types,
+		relationships,
+	}))
+}
+
+fn resolve_instructions_root(model: &AuroraModel) -> Option<PathBuf> {
+	if let Ok(value) = env::var("AURORA_INSTRUCTIONS_ROOT") {
+		if !value.trim().is_empty() {
+			let path = PathBuf::from(value);
+			if path.is_dir() {
+				return Some(path);
+			}
+		}
+	}
+	let mut current = Some(model.home().root().to_path_buf());
+	while let Some(dir) = current {
+		let candidate = dir.join(".github/instructions");
+		if candidate.is_dir() {
+			return Some(candidate);
+		}
+		current = dir.parent().map(|parent| parent.to_path_buf());
+	}
+	None
+}
+
+fn load_card_types(path: &Path) -> Result<HashSet<String>, String> {
+	let contents = fs::read_to_string(path)
+		.map_err(|err| format!("Failed to read {}: {err}", path.display()))?;
+	let mut card_types = HashSet::new();
+	let mut in_table = false;
+	for line in contents.lines() {
+		let trimmed = line.trim();
+		if trimmed.starts_with("| Card type |") {
+			in_table = true;
+			continue;
+		}
+		if !in_table {
+			continue;
+		}
+		if trimmed.starts_with("| ---") {
+			continue;
+		}
+		if trimmed.is_empty() {
+			if !card_types.is_empty() {
+				break;
+			}
+			continue;
+		}
+		if !trimmed.starts_with('|') {
+			if !card_types.is_empty() {
+				break;
+			}
+			continue;
+		}
+		let cells: Vec<String> = trimmed
+			.trim_matches('|')
+			.split('|')
+			.map(|cell| cell.trim().to_string())
+			.collect();
+		if cells.is_empty() {
+			continue;
+		}
+		let card_type = canonical_card_type(&cells[0]);
+		if !card_type.is_empty() {
+			card_types.insert(card_type);
+		}
+	}
+	Ok(card_types)
+}
+
+fn load_relationships(
+	path: &Path,
+	card_types: &HashSet<String>,
+) -> Result<HashMap<String, RelationshipRule>, String> {
+	let contents = fs::read_to_string(path)
+		.map_err(|err| format!("Failed to read {}: {err}", path.display()))?;
+	let mut relationships = HashMap::new();
+	let mut in_table = false;
+	for line in contents.lines() {
+		let trimmed = line.trim();
+		if trimmed.starts_with("| Relationship |") {
+			in_table = true;
+			continue;
+		}
+		if !in_table {
+			continue;
+		}
+		if trimmed.starts_with("| ---") {
+			continue;
+		}
+		if trimmed.is_empty() {
+			if !relationships.is_empty() {
+				break;
+			}
+			continue;
+		}
+		if !trimmed.starts_with('|') {
+			if !relationships.is_empty() {
+				break;
+			}
+			continue;
+		}
+		let cells: Vec<String> = trimmed
+			.trim_matches('|')
+			.split('|')
+			.map(|cell| cell.trim().to_string())
+			.collect();
+		if cells.len() < 5 {
+			continue;
+		}
+		let verb = normalize_relationship(&cells[0]);
+		if verb.is_empty() {
+			continue;
+		}
+		let sources = parse_card_type_cell(&cells[3], card_types);
+		let targets = parse_card_type_cell(&cells[4], card_types);
+		relationships.insert(verb, RelationshipRule { sources, targets });
+	}
+	Ok(relationships)
+}
+
+fn parse_card_type_cell(cell: &str, all_card_types: &HashSet<String>) -> HashSet<String> {
+	let trimmed = cell.trim().trim_matches('`');
+	if trimmed.is_empty() {
+		return HashSet::new();
+	}
+	let lower = trimmed.to_ascii_lowercase();
+	if lower.starts_with("all card types") {
+		let mut allowed = all_card_types.clone();
+		let except_marker = "except";
+		if let Some(index) = lower.find(except_marker) {
+			let rest = &trimmed[index + except_marker.len()..];
+			for part in split_card_type_list(rest) {
+				let normalized = canonical_card_type(part);
+				if !normalized.is_empty() {
+					allowed.remove(&normalized);
+				}
+			}
+		}
+		return allowed;
+	}
+
+	let mut types = HashSet::new();
+	for part in split_card_type_list(trimmed) {
+		let normalized = canonical_card_type(part);
+		if !normalized.is_empty() {
+			types.insert(normalized);
+		}
+	}
+	types
+}
+
+fn split_card_type_list(value: &str) -> impl Iterator<Item = &str> {
+	value
+		.split(|ch| ch == ',' || ch == ';' || ch == '\n')
+		.map(|segment| segment.trim())
+		.filter(|segment| !segment.is_empty())
+}
+
+fn normalize_relationship(value: &str) -> String {
+	value.trim().trim_matches('`').to_ascii_lowercase()
+}
+
+fn canonical_card_type(value: &str) -> String {
+	normalize_card_type(value).to_ascii_lowercase()
+}
+
+fn normalize_card_type(value: &str) -> String {
+	let trimmed = value.trim().trim_matches('`');
+	let base = match trimmed.split_once('(') {
+		Some((head, _)) => head.trim(),
+		None => trimmed,
+	};
+	base.trim().to_string()
 }
 
 #[cfg(test)]

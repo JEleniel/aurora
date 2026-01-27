@@ -6,7 +6,6 @@
 # Project specific
 # Add files and directories specific to your project that should be ignored here
 
-# AGENT: Add node exclusiong here
 # Node
 node_modules/
 .npm/
@@ -23,8 +22,6 @@ pnpm-debug.log*
 .svelte-kit/
 .svelte-kit
 .svelte-devtools
-
-# AGENT: End of edit area.
 
 # Rust
 .analyze/
@@ -69,6 +66,7 @@ crates-io-index/
 
 #Ignore IDE specific AI instructions
 .github/instructions/IDE.instructions.md
+.github/*.sh
 
 # Archive Files
 *.7z

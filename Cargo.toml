@@ -1,10 +1,5 @@
 [workspace]
-members = [
-	"tools/aurora_cli",
-	"tools/aurora_editor/src-tauri",
-	"tools/aurora_shared",
-	"tools/aurora_vscode_host",
-]
+members = ["tools/aurora_cli", "tools/aurora_shared"]
 resolver = "3"
 
 [workspace.package]

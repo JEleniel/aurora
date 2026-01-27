@@ -1,8 +1,6 @@
-# Relationship Definitions
+# Relationships Matrix
 
-This page defines the canonical set of Aurora relationship verbs. Each relationship is listed with its typical intent and the allowed source and target card types. Relationship verbs are lowercase, active phrases. Notes are attached without a verb and are not listed in this table.
-
-## Relationships
+This matrix is derived from the canonical card palette in `.github/instructions/details/Card_Definitions.md` and the relationship registry in `.github/instructions/details/Relationship_Definitions.md`. Use it as a quick reference for allowed relationships, including the expected source and target card types. Relationship verbs are lowercase, active phrases; notes attach without a verb and are not listed here.
 
 | Relationship | Category | Description | Source card types | Target card types | Notes |
 | --- | --- | --- | --- | --- | --- |

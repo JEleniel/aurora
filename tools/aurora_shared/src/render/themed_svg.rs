@@ -14,6 +14,8 @@ const PX_PER_IN: f64 = 96.0;
 const NODE_FONT_SIZE_PX: f64 = 11.0;
 const EDGE_FONT_SIZE_PX: f64 = 9.0;
 const LINE_HEIGHT_PX: f64 = 14.0;
+const BOUNDARY_PAD_PX: f64 = 18.0;
+const BOUNDARY_MIN_PAD_PX: f64 = 0.0;
 
 pub(super) fn render_svg(
 	layout: &PlainGraph,
@@ -37,22 +39,20 @@ pub(super) fn render_svg(
 	svg.push_str("<rect class=\"bg\" x=\"0\" y=\"0\" width=\"100%\" height=\"100%\" />\n");
 
 	// Boundaries first, so they render behind nodes.
-	for cluster in clusters {
-		if let Some(rect) = cluster_rect(layout, cluster) {
-			svg.push_str(&format!(
-				"<g class=\"boundary\">\n<rect x=\"{x:.2}\" y=\"{y:.2}\" width=\"{w:.2}\" height=\"{h:.2}\" rx=\"8\" ry=\"8\" />\n",
-				x = rect.x,
-				y = rect.y,
-				w = rect.w,
-				h = rect.h
-			));
-			svg.push_str(&format!(
-				"<text class=\"boundary-label\" x=\"{x:.2}\" y=\"{y:.2}\">{label}</text>\n</g>\n",
-				x = rect.x + 8.0,
-				y = rect.y + 14.0,
-				label = escape_xml(&cluster.label)
-			));
-		}
+	for (cluster, rect) in resolve_boundary_rects(layout, clusters) {
+		svg.push_str(&format!(
+			"<g class=\"boundary\">\n<rect x=\"{x:.2}\" y=\"{y:.2}\" width=\"{w:.2}\" height=\"{h:.2}\" rx=\"8\" ry=\"8\" />\n",
+			x = rect.x,
+			y = rect.y,
+			w = rect.w,
+			h = rect.h
+		));
+		svg.push_str(&format!(
+			"<text class=\"boundary-label\" x=\"{x:.2}\" y=\"{y:.2}\">{label}</text>\n</g>\n",
+			x = rect.x + 8.0,
+			y = rect.y + 14.0,
+			label = escape_xml(&cluster.label)
+		));
 	}
 
 	// Edges.
@@ -515,6 +515,7 @@ fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
 	};
 	let text_x = rect.x + left_pad + icon_width;
 	let available_width = (rect.w - left_pad - right_pad - icon_width).max(0.0);
+	let text_center_x = text_x + (available_width / 2.0);
 	let max_chars = (available_width / (NODE_FONT_SIZE_PX * 0.60)).floor() as usize;
 	let max_chars = max_chars.clamp(18, 72);
 	let mut description_lines = Vec::new();
@@ -533,23 +534,24 @@ fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
 	let mut text = String::new();
 	if let Some(icon) = icon {
 		let icon_top = start_y - (LINE_HEIGHT_PX / 2.0);
+		let icon_center_x = rect.x + left_pad + (icon_width / 2.0);
 		text.push_str(&format!(
-			"<text class=\"node-icon\" x=\"{x:.2}\" y=\"{y:.2}\" text-anchor=\"start\" dominant-baseline=\"hanging\">{icon}</text>\n",
-			x = rect.x + left_pad,
+			"<text class=\"node-icon\" x=\"{x:.2}\" y=\"{y:.2}\" text-anchor=\"middle\" dominant-baseline=\"hanging\">{icon}</text>\n",
+			x = icon_center_x,
 			y = icon_top,
 			icon = escape_xml(icon)
 		));
 	}
 	text.push_str(&format!(
-		"<text class=\"node-label\" x=\"{x:.2}\" y=\"{y:.2}\" text-anchor=\"start\" dominant-baseline=\"middle\">\n",
-		x = text_x,
+		"<text class=\"node-label\" x=\"{x:.2}\" y=\"{y:.2}\" text-anchor=\"middle\" dominant-baseline=\"middle\">\n",
+		x = text_center_x,
 		y = start_y
 	));
 	// Line 1: id + **card_type** (subtype)
 	let id_label = format!("{}: ", card.id);
 	text.push_str(&format!(
 		"<tspan x=\"{x:.2}\">{id_label}</tspan><tspan font-weight=\"700\">{card_type}</tspan>",
-		x = text_x,
+		x = text_center_x,
 		id_label = escape_xml(&id_label),
 		card_type = escape_xml(&card.card_type)
 	));
@@ -564,7 +566,7 @@ fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
 	// Line 2: name
 	text.push_str(&format!(
 		"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\">{line}</tspan>\n",
-		x = text_x,
+		x = text_center_x,
 		dy = LINE_HEIGHT_PX,
 		line = escape_xml(&card.name)
 	));
@@ -573,13 +575,13 @@ fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
 	if !description_lines.is_empty() {
 		text.push_str(&format!(
 			"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\">&#160;</tspan>\n",
-			x = text_x,
+			x = text_center_x,
 			dy = LINE_HEIGHT_PX
 		));
 		for line in &description_lines {
 			text.push_str(&format!(
 				"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\">{line}</tspan>\n",
-				x = text_x,
+				x = text_center_x,
 				dy = LINE_HEIGHT_PX,
 				line = escape_xml(line)
 			));
@@ -623,7 +625,80 @@ struct SvgPoint {
 	y: f64,
 }
 
-fn cluster_rect(layout: &PlainGraph, cluster: &BoundaryCluster) -> Option<SvgRect> {
+struct BoundaryLayout<'a> {
+	cluster: &'a BoundaryCluster,
+	base_rect: SvgRect,
+	pad: f64,
+}
+
+fn resolve_boundary_rects<'a>(
+	layout: &PlainGraph,
+	clusters: &'a [BoundaryCluster],
+) -> Vec<(&'a BoundaryCluster, SvgRect)> {
+	let mut layouts = Vec::new();
+	for cluster in clusters {
+		if let Some(base_rect) = cluster_base_rect(layout, cluster) {
+			layouts.push(BoundaryLayout {
+				cluster,
+				base_rect,
+				pad: BOUNDARY_PAD_PX,
+			});
+		}
+	}
+
+	for i in 0..layouts.len() {
+		for j in (i + 1)..layouts.len() {
+			if clusters_share_members(layouts[i].cluster, layouts[j].cluster) {
+				continue;
+			}
+			let rect_i = apply_cluster_pad(&layouts[i].base_rect, layouts[i].pad);
+			let rect_j = apply_cluster_pad(&layouts[j].base_rect, layouts[j].pad);
+			if rects_overlap(&rect_i, &rect_j) {
+				layouts[i].pad = BOUNDARY_MIN_PAD_PX;
+				layouts[j].pad = BOUNDARY_MIN_PAD_PX;
+			}
+		}
+	}
+
+	layouts
+		.into_iter()
+		.map(|layout| {
+			let rect = apply_cluster_pad(&layout.base_rect, layout.pad);
+			(layout.cluster, rect)
+		})
+		.collect()
+}
+
+fn clusters_share_members(a: &BoundaryCluster, b: &BoundaryCluster) -> bool {
+	let (small, large) = if a.members.len() <= b.members.len() {
+		(a, b)
+	} else {
+		(b, a)
+	};
+	for member in &small.members {
+		if large.members.iter().any(|other| other == member) {
+			return true;
+		}
+	}
+	false
+}
+
+fn rects_overlap(a: &SvgRect, b: &SvgRect) -> bool {
+	let x_overlap = a.x < (b.x + b.w) && (a.x + a.w) > b.x;
+	let y_overlap = a.y < (b.y + b.h) && (a.y + a.h) > b.y;
+	x_overlap && y_overlap
+}
+
+fn apply_cluster_pad(rect: &SvgRect, pad: f64) -> SvgRect {
+	SvgRect {
+		x: (rect.x - pad).max(0.0),
+		y: (rect.y - pad).max(0.0),
+		w: rect.w + (2.0 * pad),
+		h: rect.h + (2.0 * pad),
+	}
+}
+
+fn cluster_base_rect(layout: &PlainGraph, cluster: &BoundaryCluster) -> Option<SvgRect> {
 	let mut min_x: Option<f64> = None;
 	let mut min_y: Option<f64> = None;
 	let mut max_x: Option<f64> = None;
@@ -643,12 +718,11 @@ fn cluster_rect(layout: &PlainGraph, cluster: &BoundaryCluster) -> Option<SvgRec
 		_ => return None,
 	};
 
-	let pad = 18.0;
 	Some(SvgRect {
-		x: (min_x - pad).max(0.0),
-		y: (min_y - pad).max(0.0),
-		w: (max_x - min_x) + (2.0 * pad),
-		h: (max_y - min_y) + (2.0 * pad),
+		x: min_x,
+		y: min_y,
+		w: max_x - min_x,
+		h: max_y - min_y,
 	})
 }
 
@@ -702,9 +776,11 @@ mod tests {
 
 	use serde_json::Value;
 
+	use super::super::graphviz_plain::{PlainGraph, PlainNode, Point};
+	use super::{
+		BoundaryCluster, SvgRect, edge_path_d, rects_overlap, resolve_boundary_rects, text_svg,
+	};
 	use crate::model::{AuditTrail, Card};
-	use super::{SvgRect, edge_path_d, text_svg};
-	use super::super::graphviz_plain::{PlainGraph, Point};
 
 	#[test]
 	fn node_text_uses_svg_tspans_and_requested_format() {
@@ -752,13 +828,87 @@ mod tests {
 			edges: Vec::new(),
 		};
 		let points = vec![
-			Point { x_in: 0.2, y_in: 0.2 },
-			Point { x_in: 0.6, y_in: 0.4 },
-			Point { x_in: 1.2, y_in: 0.8 },
-			Point { x_in: 1.6, y_in: 1.4 },
+			Point {
+				x_in: 0.2,
+				y_in: 0.2,
+			},
+			Point {
+				x_in: 0.6,
+				y_in: 0.4,
+			},
+			Point {
+				x_in: 1.2,
+				y_in: 0.8,
+			},
+			Point {
+				x_in: 1.6,
+				y_in: 1.4,
+			},
 		];
 		let path = edge_path_d(&layout, &points);
 		assert!(path.contains(" C "));
 		assert!(!path.contains(" L "));
+	}
+
+	#[test]
+	fn boundary_rects_avoid_overlap_for_disjoint_members() {
+		let mut nodes = HashMap::new();
+		nodes.insert(
+			"COM-001".to_string(),
+			PlainNode {
+				name: "COM-001".into(),
+				center: Point {
+					x_in: 1.0,
+					y_in: 1.0,
+				},
+				width_in: 1.0,
+				height_in: 0.6,
+				shape: "box".into(),
+			},
+		);
+		nodes.insert(
+			"COM-002".to_string(),
+			PlainNode {
+				name: "COM-002".into(),
+				center: Point {
+					x_in: 2.2,
+					y_in: 1.0,
+				},
+				width_in: 1.0,
+				height_in: 0.6,
+				shape: "box".into(),
+			},
+		);
+		let layout = PlainGraph {
+			width_in: 4.0,
+			height_in: 3.0,
+			nodes,
+			edges: Vec::new(),
+		};
+		let clusters = vec![
+			BoundaryCluster {
+				id: "BND-001".into(),
+				label: "Cluster One".into(),
+				members: vec!["COM-001".into()],
+			},
+			BoundaryCluster {
+				id: "BND-002".into(),
+				label: "Cluster Two".into(),
+				members: vec!["COM-002".into()],
+			},
+		];
+
+		let rects = resolve_boundary_rects(&layout, &clusters);
+		let rect_a = rects
+			.iter()
+			.find(|(cluster, _)| cluster.id == "BND-001")
+			.map(|(_, rect)| *rect)
+			.expect("cluster one rect");
+		let rect_b = rects
+			.iter()
+			.find(|(cluster, _)| cluster.id == "BND-002")
+			.map(|(_, rect)| *rect)
+			.expect("cluster two rect");
+		assert!(!rects_overlap(&rect_a, &rect_b));
 	}
 }

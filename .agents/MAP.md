@@ -39,6 +39,7 @@ These define the vocabulary and view rules; prefer updating these over duplicati
 - Card palette: `.github/instructions/details/Card_Definitions.md`
 - View registry: `.github/instructions/details/View_Definitions.md`
 - Relationship verbs: `.github/instructions/details/Relationship_Definitions.md`
+- Relationship matrix (derived): `.github/instructions/details/Relationships_Matrix.md`
 
 ## Rendering pipeline (Rust)
 

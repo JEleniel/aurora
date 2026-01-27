@@ -2,6 +2,7 @@
 
 - [ ] **Architect** (MIS-001) **Provide Default Tooling for AURORA**
     + Status: Design
+    + Updates: Refined relationship guidance (validates targets, includes/uses notes), refreshed the matrix at `.github/instructions/details/Relationships_Matrix.md`, and added new `persists to`, `provides`, and `reverse proxies` entries plus Application support in `limits`.
     + Links:
         - [Aurora Mission Card (source)](../docs/design/aurora/MIS-001-Provide_Default_Tooling_for_AURORA.jsjson)
         - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-001/)
@@ -28,7 +29,7 @@
     + Links:
         - [Source: `tools/aurora_cli/src/main.rs`](../tools/aurora_cli/src/main.rs)
         - [Library & tests: `tools/aurora_shared/src/render.rs`](../tools/aurora_shared/src/render.rs)
-    + Updates: Added Everything View parsing coverage, switched default Graphviz splines to curved, and render spline edges as cubic Bezier paths.
+    + Updates: Added matrix-based validation warnings, completion summaries in the CLI, Everything View dashed-edge styling with regression coverage, new validation tests for updated relationship matrix rules, a CLI instructions-root override with reporting, plus centered SVG node labels and disjoint-boundary overlap avoidance in the SVG renderer with regression coverage.
     + Next Actions:
         - Validate updated CLI render output after ID-prefixed headers and left-aligned icon labels; re-render artifacts if needed.
         - Re-render views to confirm the dot-only layout selection matches expected output.

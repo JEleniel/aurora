@@ -2,7 +2,7 @@ mod graphviz_plain;
 mod icons;
 mod themed_svg;
 
-use std::collections::{BTreeMap, BTreeSet, HashMap};
+use std::collections::{BTreeMap, BTreeSet, HashMap, VecDeque};
 use std::env;
 use std::fs::{self, File};
 use std::io::{ErrorKind, Write};
@@ -66,6 +66,25 @@ pub fn render_views(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Result
 	fs::create_dir_all(output_dir).map_err(|err| AuroraError::io(output_dir, err))?;
 
 	let instructions_root = resolve_instructions_root(model)?;
+	render_views_with_root(model, output_dir, &instructions_root)
+}
+
+/// Render the canonical view set using a caller-provided instructions registry root.
+pub fn render_views_with_instructions(
+	model: &AuroraModel,
+	output_dir: impl AsRef<Path>,
+	instructions_root: impl AsRef<Path>,
+) -> Result<RenderSummary> {
+	let output_dir = output_dir.as_ref();
+	fs::create_dir_all(output_dir).map_err(|err| AuroraError::io(output_dir, err))?;
+	render_views_with_root(model, output_dir, instructions_root.as_ref())
+}
+
+fn render_views_with_root(
+	model: &AuroraModel,
+	output_dir: &Path,
+	instructions_root: &Path,
+) -> Result<RenderSummary> {
 	let palette = CardPalette::load(&instructions_root.join("details/Card_Definitions.md"))?;
 	let icon_glyphs = palette.icon_glyphs();
 	let registry = ViewRegistry::load(&instructions_root.join("details/View_Definitions.md"))?;
@@ -118,6 +137,22 @@ pub fn render_all(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Result<R
 	let output_dir = output_dir.as_ref();
 	let cards = render_markdown(model, output_dir)?;
 	let views = render_views(model, output_dir)?;
+	Ok(RenderSummary {
+		cards_written: cards.cards_written,
+		views_written: views.views_written,
+		output_dir: output_dir.to_path_buf(),
+	})
+}
+
+/// Render both card markdown and relationship views with a caller-provided instructions root.
+pub fn render_all_with_instructions(
+	model: &AuroraModel,
+	output_dir: impl AsRef<Path>,
+	instructions_root: impl AsRef<Path>,
+) -> Result<RenderSummary> {
+	let output_dir = output_dir.as_ref();
+	let cards = render_markdown(model, output_dir)?;
+	let views = render_views_with_instructions(model, output_dir, instructions_root)?;
 	Ok(RenderSummary {
 		cards_written: cards.cards_written,
 		views_written: views.views_written,
@@ -889,6 +924,11 @@ fn build_dot_with_edges(
 	config: &GraphvizConfig,
 ) -> String {
 	let mut lines = Vec::new();
+	let direct_edges = if is_everything_view(view) {
+		direct_edges_from_mission(nodes, edges)
+	} else {
+		None
+	};
 	lines.push(format!("digraph \"{}\" {{", dot_escape(&view.name)));
 	if !config.graph_defaults.is_empty() {
 		lines.push(format!(
@@ -962,6 +1002,12 @@ fn build_dot_with_edges(
 		if !edge.label.is_empty() {
 			attrs.insert("label".to_string(), edge.label.clone());
 		}
+		if let Some(ref direct_edges) = direct_edges {
+			let key = (edge.source.clone(), edge.target.clone(), edge.label.clone());
+			if !direct_edges.contains(&key) {
+				attrs.insert("style".to_string(), "dashed".to_string());
+			}
+		}
 		if attrs.is_empty() {
 			lines.push(format!(
 				"\t{} -> {};",
@@ -1002,6 +1048,10 @@ fn build_dot_with_edges(
 	lines.join("\n")
 }
 
+fn is_everything_view(view: &ViewSpec) -> bool {
+	view.slug == "Everything" || view.name.eq_ignore_ascii_case("Everything View")
+}
+
 fn collect_edges(nodes: &BTreeMap<String, &Card>) -> Vec<EdgeSpec> {
 	let mut edges = Vec::new();
 	for (id, card) in nodes {
@@ -1022,6 +1072,42 @@ fn collect_edges(nodes: &BTreeMap<String, &Card>) -> Vec<EdgeSpec> {
 		}
 	}
 	edges
+}
+
+fn direct_edges_from_mission(
+	nodes: &BTreeMap<String, &Card>,
+	edges: &[EdgeSpec],
+) -> Option<BTreeSet<(String, String, String)>> {
+	let mission_id = nodes
+		.values()
+		.find(|card| card.card_type == "Mission")
+		.map(|card| card.id.clone())?;
+
+	let mut adjacency: HashMap<String, Vec<&EdgeSpec>> = HashMap::new();
+	for edge in edges {
+		adjacency.entry(edge.source.clone()).or_default().push(edge);
+	}
+
+	let mut direct_edges = BTreeSet::new();
+	let mut visited = BTreeSet::new();
+	let mut queue = VecDeque::new();
+	visited.insert(mission_id.clone());
+	queue.push_back(mission_id);
+
+	while let Some(node) = queue.pop_front() {
+		if let Some(outgoing) = adjacency.get(&node) {
+			for edge in outgoing {
+				if visited.contains(&edge.target) {
+					continue;
+				}
+				visited.insert(edge.target.clone());
+				direct_edges.insert((edge.source.clone(), edge.target.clone(), edge.label.clone()));
+				queue.push_back(edge.target.clone());
+			}
+		}
+	}
+
+	Some(direct_edges)
 }
 
 fn collect_boundary_clusters(nodes: &BTreeMap<String, &Card>) -> Vec<BoundaryCluster> {
@@ -1439,6 +1525,100 @@ mod tests {
 		assert!(view.root_card_types.contains("Mission"));
 		assert!(view.card_types.is_empty());
 		Ok(())
+	}
+
+	#[test]
+	fn everything_view_dashes_alternate_paths() {
+		let mission = Card {
+			schema: None,
+			id: "MIS-001".into(),
+			card_type: "Mission".into(),
+			card_subtype: None,
+			name: "Mission".into(),
+			description: "Test mission".into(),
+			status: None,
+			links: vec![
+				Link {
+					target: "DRI-001".into(),
+					relationship: "establishes".into(),
+				},
+				Link {
+					target: "REQ-001".into(),
+					relationship: "drives".into(),
+				},
+			],
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: Value::Null,
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+		let driver = Card {
+			schema: None,
+			id: "DRI-001".into(),
+			card_type: "Driver".into(),
+			card_subtype: None,
+			name: "Driver".into(),
+			description: "Test driver".into(),
+			status: None,
+			links: vec![Link {
+				target: "REQ-001".into(),
+				relationship: "drives".into(),
+			}],
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: Value::Null,
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+		let requirement = Card {
+			schema: None,
+			id: "REQ-001".into(),
+			card_type: "Requirement".into(),
+			card_subtype: None,
+			name: "Requirement".into(),
+			description: "Test requirement".into(),
+			status: None,
+			links: Vec::new(),
+			audit_trail: AuditTrail {
+				version: "1.0.0".into(),
+				hash: None,
+				history: Vec::new(),
+			},
+			attributes: Value::Null,
+			source_path: None,
+			extra: BTreeMap::new(),
+		};
+
+		let mut nodes = BTreeMap::new();
+		nodes.insert(mission.id.clone(), &mission);
+		nodes.insert(driver.id.clone(), &driver);
+		nodes.insert(requirement.id.clone(), &requirement);
+
+		let view = ViewSpec {
+			name: "Everything View".into(),
+			slug: "Everything".into(),
+			root_card_types: BTreeSet::new(),
+			card_types: BTreeSet::new(),
+			include_all: true,
+		};
+		let palette = CardPalette {
+			shapes: std::collections::HashMap::new(),
+			icons: std::collections::HashMap::new(),
+		};
+		let icons = std::collections::HashMap::new();
+		let colors = std::collections::HashMap::new();
+		let config = GraphvizConfig::default();
+
+		let dot = build_dot(&view, &nodes, &palette, &icons, &colors, &config);
+		assert!(dot.contains("\"DRI-001\" -> \"REQ-001\" [label=\"drives\", style=\"dashed\"];"));
+		assert!(dot.contains("\"MIS-001\" -> \"REQ-001\" [label=\"drives\"];"));
 	}
 
 	#[test]

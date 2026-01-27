@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Introduced initial `aurora_cli` application wiring with validation, render, and compact subcommands.
 - Added validation requiring `Asset (Secret)` cards to have an incoming `owns` relationship (preferably from an `Actor`).
+- Added validation test coverage for new relationship matrix entries (`persists to`, `provides`, `reverse proxies`) and `limits` on Applications.
+- Added an `aurora_cli --instructions-root` override plus validation output that reports which instructions registry was used.
 - Added file-system safe rendering helpers plus unit tests in `aurora_shared`.
 - Added Everything View rendering support so the CLI view pipeline can include full-model diagrams.
 - Registered reverse-DNS `app_id` metadata for each tool crate and seeded placeholder libraries for editor and VS Code hosts.
@@ -68,3 +70,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Switched view layout selection to always use Graphviz `dot`.
 - Increased icon-to-text spacing in rendered view labels to approximately 1rem.
 - Fixed boundary `attributes.recursive` handling so boundaries include descendant nodes in view renders (with loop-safe traversal).
+- Added validation warnings for relationships and card types that do not match the canonical relationships matrix without blocking validation.
+- Ensured `aurora_cli` always prints completion summaries for validate/render/compact workflows and annotated CLI help with default paths.
+- Updated the Everything View renderer to show only the most direct Mission paths as solid edges and dash alternate paths.
+- Centered SVG node labels to remove excessive right-side whitespace in rendered shapes.
+- Adjusted boundary rendering to avoid overlaps between disjoint boundaries and added overlap regression coverage.
