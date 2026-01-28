@@ -8,4 +8,4 @@ A crafted input path or unsafe write behavior could cause tooling to write outsi
 
 ## Links
 
-- `imposes` → `RIS-002`
+- `presents` → `RIS-002`

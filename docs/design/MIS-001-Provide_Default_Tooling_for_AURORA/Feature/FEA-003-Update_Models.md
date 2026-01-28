@@ -9,4 +9,3 @@ Create, edit, and delete Aurora cards and links with invariant-preserving operat
 ## Links
 
 - `enables` → `CAP-003`
-- `satisfies` → `REQ-005`

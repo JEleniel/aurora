@@ -8,6 +8,7 @@ Constrain paths to the intended workspace/model roots, normalize and validate pa
 
 ## Links
 
-- `governs` → `COM-015`
-- `mitigates` → `THR-002`
+- `uses` → `COM-015`
 - `mitigates` → `RIS-002`
+- `protects` → `AST-001`
+- `protects` → `AST-003`

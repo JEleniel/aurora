@@ -8,4 +8,4 @@ Untrusted content in model descriptions or rendered Markdown could inject script
 
 ## Links
 
-- `imposes` → `RIS-001`
+- `presents` → `RIS-001`

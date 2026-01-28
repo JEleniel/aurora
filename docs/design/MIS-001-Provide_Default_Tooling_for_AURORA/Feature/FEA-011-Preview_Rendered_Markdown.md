@@ -9,5 +9,3 @@ Preview and navigate rendered Markdown documentation from Aurora models inside t
 ## Links
 
 - `enables` → `CAP-007`
-- `satisfies` → `REQ-013`
-- `generates` → `ART-008`

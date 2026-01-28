@@ -8,8 +8,6 @@ Express the model in a form that is easy to parse and understand for both humans
 
 ## Links
 
-- `drives` → `CNS-001`
-- `drives` → `CNS-005`
 - `drives` → `REQ-001`
 - `drives` → `REQ-002`
 - `drives` → `REQ-003`

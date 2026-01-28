@@ -7,17 +7,22 @@
 	"links": [
 		{
 			"target": "PRO-002",
-			"relationship": "explains"
+			"relationship": "uses"
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.1.0",
 		"hash": null,
 		"history": [
 			{
 				"editor": "GitHub Copilot (Architect agent)",
 				"timestamp": "2026-01-24T01:45:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-28T00:00:00Z",
+				"event": "edited"
 			}
 		]
 	}

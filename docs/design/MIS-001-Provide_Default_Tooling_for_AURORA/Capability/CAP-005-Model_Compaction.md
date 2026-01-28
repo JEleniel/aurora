@@ -9,3 +9,4 @@ Ability to emit a compact, machine-friendly representation of an Aurora model fo
 ## Links
 
 - `satisfies` → `REQ-008`
+- `runs` → `PRO-001`

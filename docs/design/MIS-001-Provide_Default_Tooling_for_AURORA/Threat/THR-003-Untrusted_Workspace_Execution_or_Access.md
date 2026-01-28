@@ -8,4 +8,4 @@ Operating in an untrusted workspace could allow unsafe operations that lead to d
 
 ## Links
 
-- `imposes` → `RIS-003`
+- `presents` → `RIS-003`

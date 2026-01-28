@@ -12,4 +12,12 @@ digraph "Sequence View" {
 	"ATV-008" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="33">👣</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT>ATV-008: <B>Activity</B><BR/>Review Validation Diagnostics<BR/>&#160;<BR/>Review validation results, navigate to affected cards,<BR/>and apply fixes.</FONT></TD></TR></TABLE>>, shape="box"];
 	"ATV-009" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="33">👣</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT>ATV-009: <B>Activity</B><BR/>Preview Output<BR/>&#160;<BR/>Preview rendered views and Markdown representations of<BR/>the model.</FONT></TD></TR></TABLE>>, shape="box"];
 	"ATV-010" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="33">👣</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT>ATV-010: <B>Activity</B><BR/>Save Model Safely<BR/>&#160;<BR/>Save the model with safe file operations and optional<BR/>export formats.</FONT></TD></TR></TABLE>>, shape="box"];
+	"ATV-001" -> "ATV-002" [label="triggers"];
+	"ATV-002" -> "ATV-003" [label="triggers"];
+	"ATV-003" -> "ATV-004" [label="triggers"];
+	"ATV-005" -> "ATV-006" [label="triggers"];
+	"ATV-006" -> "ATV-007" [label="triggers"];
+	"ATV-007" -> "ATV-008" [label="triggers"];
+	"ATV-008" -> "ATV-009" [label="triggers"];
+	"ATV-009" -> "ATV-010" [label="triggers"];
 }

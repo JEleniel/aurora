@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5906.69 4200.00" width="5906.69" height="4200.00" data-theme="dark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5849.38 4508.74" width="5849.38" height="4508.74" data-theme="dark">
 <defs>
 <style>
 svg{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}
@@ -14,38 +14,6 @@ svg[data-theme="light"]{--bg:#FFFFFF;--edge:#111827;--edgeLabel:#111827;--nodeSt
 .node-shape-outline{fill:none;}
 .boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:2;stroke-dasharray:6 6;}
 .boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
-.card-type-capability .node-shape{fill:#325440;}
-svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
-.card-type-capability .node-label{--nodeText:#FFFFFF;}
-.card-type-asset .node-shape{fill:#586374;}
-svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
-.card-type-asset .node-label{--nodeText:#FFFFFF;}
-.card-type-application .node-shape{fill:#475D9F;}
-svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
-.card-type-application .node-label{--nodeText:#FFFFFF;}
-.card-type-state .node-shape{fill:#8A438E;}
-svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
-.card-type-state .node-label{--nodeText:#FFFFFF;}
-.card-type-interface .node-shape{fill:#34546A;}
-svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
-.card-type-interface .node-label{--nodeText:#FFFFFF;}
-.card-type-process .node-shape{fill:#543B81;}
-svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
-.card-type-process .node-label{--nodeText:#FFFFFF;}
-.card-type-system .node-shape{fill:#414C73;}
-svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
-.card-type-system .node-label{--nodeText:#FFFFFF;}
-.card-type-test .node-shape{fill:#30524A;}
-svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
-.card-type-test .node-label{--nodeText:#FFFFFF;}
 .card-type-deployment .node-shape{fill:#47446B;}
 svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
@@ -54,62 +22,66 @@ svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
 svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
 .card-type-control .node-label{--nodeText:#FFFFFF;}
-.card-type-requirement .node-shape{fill:#337C67;}
-svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
-.card-type-requirement .node-label{--nodeText:#FFFFFF;}
-.card-type-threat .node-shape{fill:#6C3242;}
-svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
-.card-type-threat .node-label{--nodeText:#FFFFFF;}
-.card-type-risk .node-shape{fill:#9D3D5B;}
-svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
-.card-type-risk .node-label{--nodeText:#FFFFFF;}
-.card-type-node-instance .node-shape{fill:#5B55B4;}
-svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
-.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
-.card-type-note .node-shape{fill:#47505B;}
-svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
-.card-type-note .node-label{--nodeText:#FFFFFF;}
 .card-type-actor .node-shape{fill:#435432;}
 svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
 .card-type-actor .node-label{--nodeText:#FFFFFF;}
-.card-type-story .node-shape{fill:#5A723E;}
-svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
-.card-type-story .node-label{--nodeText:#FFFFFF;}
-.card-type-constraint .node-shape{fill:#9B6D39;}
-svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
-.card-type-constraint .node-label{--nodeText:#FFFFFF;}
 .card-type-component .node-shape{fill:#4762BD;}
 svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
 .card-type-component .node-label{--nodeText:#FFFFFF;}
-.card-type-feature .node-shape{fill:#3E7253;}
-svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
-.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
+.card-type-requirement .node-shape{fill:#337C67;}
+svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
+.card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-test .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
+.card-type-test .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
 .card-type-mission .node-shape{fill:#30524A;}
 svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
 .card-type-mission .node-label{--nodeText:#FFFFFF;}
-.card-type-node .node-shape{fill:#565498;}
-svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
-.card-type-node .node-label{--nodeText:#FFFFFF;}
-.card-type-condition .node-shape{fill:#644833;}
-svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
-.card-type-condition .node-label{--nodeText:#FFFFFF;}
 .card-type-activity .node-shape{fill:#6C46A8;}
 svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
 .card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
+.card-type-interface .node-label{--nodeText:#FFFFFF;}
+.card-type-system .node-shape{fill:#414C73;}
+svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
+.card-type-system .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-capability .node-shape{fill:#325440;}
+svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
+.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#9B6D39;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
 .card-type-data-store .node-shape{fill:#34779B;}
 svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
@@ -122,660 +94,789 @@ svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
 svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
 .card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
 .card-type-state-machine .node-shape{fill:#6B316E;}
 svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
 .card-type-state-machine .node-label{--nodeText:#FFFFFF;}
-.card-type-artifact .node-shape{fill:#47505E;}
-svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
-.card-type-artifact .node-label{--nodeText:#FFFFFF;}
+.card-type-class .node-shape{fill:#3A4150;}
+svg[data-theme="light"] .card-type-class .node-shape{fill:#0f172a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-class .node-shape{fill:#0f172a;}}
+.card-type-class .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-adr .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-adr .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-adr .node-shape{fill:#1f2937;}}
+.card-type-adr .node-label{--nodeText:#FFFFFF;}
+.card-type-condition .node-shape{fill:#644833;}
+svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
+.card-type-condition .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
 </style>
 <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
   <path d="M 0 0 L 10 5 L 0 10 z" class="edge-arrow" />
 </marker>
 </defs>
 <rect class="bg" x="0" y="0" width="100%" height="100%" />
-<path class="edge-path" d="M 2338.46 413.95 C 2409.31 331.20 2527.58 208.22 2656.03 138.05 C 2660.45 135.55 2664.96 133.25 2669.47 130.94" data-tail="APP-001" data-head="ART-001" />
-<text class="edge-label" x="2606.69" y="146.02" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2406.62 413.76 C 2478.72 371.52 2569.82 322.46 2656.03 288.67 C 2661.70 286.37 2667.55 284.26 2673.50 282.05" data-tail="APP-001" data-head="ART-002" />
-<text class="edge-label" x="2606.69" y="296.64" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2557.44 442.46 C 2593.54 435.26 2630.50 427.97 2666.59 420.77" data-tail="APP-001" data-head="ART-003" />
-<text class="edge-label" x="2606.69" y="422.02" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2516.06 584.74 C 2562.14 598.18 2610.14 610.46 2656.03 619.30 C 2953.73 676.80 3038.78 614.11 3336.00 674.02 C 3362.02 679.20 3388.90 686.02 3415.49 693.50" data-tail="APP-001" data-head="COM-001" />
-<text class="edge-label" x="2951.33" y="612.67" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 2557.44 509.47 C 2594.40 510.82 2632.13 512.16 2668.99 513.41" data-tail="APP-001" data-head="COM-012" />
-<text class="edge-label" x="2606.69" y="504.67" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1093.63 813.89 C 1126.66 794.69 1159.58 772.70 1188.00 748.70 C 1248.00 698.02 1226.69 644.26 1297.34 609.98 C 1530.91 496.70 1622.02 597.89 1881.31 609.98 C 2397.60 634.18 2996.16 697.82 3346.27 738.82" data-tail="APP-002" data-head="COM-001" />
-<text class="edge-label" x="2268.67" y="609.98" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1092.67 813.89 C 1131.46 797.47 1172.64 781.44 1212.00 768.67 C 1241.86 758.98 1273.54 750.05 1305.12 741.98" data-tail="APP-002" data-head="COM-002" />
-<text class="edge-label" x="1242.62" y="744.67" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1185.31 840.10 C 1222.85 833.47 1260.96 827.62 1297.34 823.30 C 1525.34 796.32 1785.41 786.72 1978.75 783.65" data-tail="APP-002" data-head="COM-003" />
-<text class="edge-label" x="1589.38" y="779.33" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 976.99 984.86 C 1046.98 1070.88 1165.92 1201.06 1297.34 1275.36 C 1301.28 1277.57 1305.22 1279.68 1309.25 1281.79" data-tail="APP-002" data-head="COM-004" />
-<text class="edge-label" x="1242.62" y="1212.67" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1185.50 960.29 C 1228.80 969.98 1273.54 979.97 1316.83 989.57" data-tail="APP-002" data-head="COM-005" />
-<text class="edge-label" x="1242.62" y="964.70" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1185.50 899.33 C 1225.63 899.33 1267.01 899.33 1307.33 899.33" data-tail="APP-002" data-head="COM-006" />
-<text class="edge-label" x="1242.62" y="892.70" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1018.08 984.77 C 1073.18 1025.57 1143.26 1072.22 1212.00 1103.33 C 1236.19 1114.27 1261.73 1124.16 1287.74 1132.99" data-tail="APP-002" data-head="COM-007" />
-<text class="edge-label" x="1242.62" y="1096.70" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1188.29 1466.21 C 1383.46 1470.62 1650.14 1466.30 1881.31 1425.98 C 2510.69 1316.26 2656.61 1221.41 3246.62 976.70 C 3329.18 942.43 3418.08 898.18 3490.94 859.87" data-tail="APP-003" data-head="COM-001" />
-<text class="edge-label" x="2268.67" y="1255.30" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1188.38 1411.20 C 1223.81 1405.92 1260.19 1400.45 1295.90 1395.17" data-tail="APP-003" data-head="COM-004" />
-<text class="edge-label" x="1242.62" y="1392.67" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 956.47 1367.23 C 1006.18 1281.22 1095.36 1152.67 1212.00 1089.98 C 1244.16 1072.70 1280.16 1061.09 1316.74 1053.41" data-tail="APP-003" data-head="COM-005" />
-<text class="edge-label" x="1242.62" y="1060.70" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 966.62 1367.23 C 1022.88 1282.08 1115.90 1149.89 1212.00 1048.70 C 1236.38 1023.07 1247.14 1021.82 1273.34 998.02 C 1284.48 987.84 1284.19 981.50 1297.34 974.02 C 1301.18 971.81 1305.12 969.70 1309.06 967.58" data-tail="APP-003" data-head="COM-006" />
-<text class="edge-label" x="1242.62" y="991.30" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1080.48 1367.14 C 1146.91 1335.55 1224.67 1301.18 1297.34 1275.36 C 1304.16 1272.86 1311.07 1270.56 1318.18 1268.16" data-tail="APP-003" data-head="COM-007" />
-<text class="edge-label" x="1242.62" y="1280.64" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1188.19 1470.34 C 1196.26 1470.72 1204.22 1471.01 1212.00 1471.30 C 1717.63 1491.74 2306.69 1499.14 2652.77 1501.82" data-tail="APP-003" data-head="COM-008" />
-<text class="edge-label" x="1930.66" y="1485.98" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 960.00 1538.30 C 1022.50 1640.06 1142.40 1804.61 1297.34 1872.67 C 1526.40 1973.38 1815.74 1939.39 2018.59 1893.12" data-tail="APP-003" data-head="COM-013" />
-<text class="edge-label" x="1589.38" y="1866.05" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1029.02 1538.21 C 1103.04 1589.09 1202.30 1651.78 1297.34 1694.02 C 1302.53 1696.32 1307.81 1698.53 1313.09 1700.74" data-tail="APP-003" data-head="COM-014" />
-<text class="edge-label" x="1242.62" y="1650.05" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 946.55 1538.02 C 1000.51 1657.73 1117.73 1869.31 1297.34 1944.67 C 1738.66 2129.86 2306.02 2097.02 2648.16 2051.62" data-tail="APP-003" data-head="COM-015" />
-<text class="edge-label" x="1930.66" y="2073.98" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1188.10 1529.47 C 1196.16 1531.49 1204.13 1533.41 1212.00 1535.33 C 1240.32 1542.14 1269.98 1548.77 1299.65 1555.20" data-tail="APP-003" data-head="NOT-001" />
-<text class="edge-label" x="1242.62" y="1528.70" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 3226.37 3621.23 C 3233.38 3617.29 3240.10 3613.10 3246.62 3608.67 C 3409.54 3498.20 3530.11 3298.15 3593.76 3173.86" data-tail="ART-009" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="3532.67" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3230.40 3771.96 C 3235.97 3768.40 3241.44 3764.64 3246.62 3760.67 C 3445.34 3610.33 3560.74 3330.03 3612.19 3174.91" data-tail="ART-010" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="3682.00" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3230.78 3922.52 C 3236.26 3918.99 3241.54 3915.26 3246.62 3911.34 C 3487.78 3726.10 3589.06 3359.06 3626.11 3175.10" data-tail="ART-011" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="3836.67" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3230.88 4073.26 C 3236.26 4069.71 3241.54 4065.96 3246.62 4062.00 C 3531.17 3841.00 3612.96 3385.31 3635.90 3175.20" data-tail="ART-012" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="3976.67" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3230.78 2221.54 C 3236.26 2224.99 3241.54 2228.74 3246.62 2232.67 C 3483.94 2414.30 3586.75 2773.15 3625.06 2954.40" data-tail="ART-013" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="2258.02" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3227.33 2372.06 C 3234.05 2376.00 3240.48 2380.22 3246.62 2384.64 C 3444.67 2527.10 3559.97 2800.99 3611.62 2954.11" data-tail="ART-014" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="2403.36" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3166.08 3506.62 C 3194.21 3497.79 3221.76 3486.67 3246.62 3472.67 C 3379.10 3398.14 3495.84 3266.19 3568.13 3172.51" data-tail="ART-015" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="3414.00" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3166.94 2483.14 C 3195.07 2492.54 3222.53 2504.74 3246.62 2520.67 C 3411.17 2629.15 3531.46 2830.37 3594.53 2955.26" data-tail="ART-016" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="2534.02" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3174.24 2625.31 C 3199.49 2633.76 3224.16 2644.03 3246.62 2656.70 C 3379.10 2731.20 3495.84 2863.10 3568.13 2956.80" data-tail="ART-017" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="2664.67" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3183.65 2769.41 C 3205.34 2776.13 3226.66 2783.90 3246.62 2792.64 C 3343.78 2835.26 3442.37 2902.37 3517.06 2959.30" data-tail="ART-018" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="2802.05" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3192.29 2913.98 C 3210.72 2918.69 3229.06 2923.58 3246.62 2928.67 C 3290.59 2941.25 3336.86 2955.74 3381.60 2970.53" data-tail="ART-019" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="2931.36" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3185.47 3019.58 C 3246.34 3025.54 3312.38 3032.06 3374.98 3038.21" data-tail="ART-020" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="3020.64" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3174.43 3110.88 C 3238.27 3104.64 3308.54 3097.73 3374.88 3091.20" data-tail="ART-021" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="3088.70" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3176.83 3219.36 C 3200.45 3213.41 3224.16 3207.07 3246.62 3200.64 C 3290.59 3188.16 3336.86 3173.57 3381.60 3158.78" data-tail="ART-022" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="3165.98" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3194.88 3356.34 C 3212.64 3350.47 3230.11 3343.93 3246.62 3336.66 C 3343.78 3294.05 3442.37 3226.94 3517.06 3170.02" data-tail="ART-023" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="3288.66" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3932.16 823.58 C 3960.19 828.29 3988.70 833.18 4016.93 837.89" data-tail="COM-001" data-head="COM-009" />
-<text class="edge-label" x="3981.31" y="821.95" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 3932.26 786.14 C 4153.92 794.59 4460.54 806.30 4684.70 814.75" data-tail="COM-001" data-head="COM-010" />
-<text class="edge-label" x="4310.02" y="783.36" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 3932.26 762.34 C 4255.10 749.66 4796.83 734.30 5262.62 749.95 C 5293.54 751.01 5325.79 752.54 5357.86 754.37" data-tail="COM-001" data-head="COM-011" />
-<text class="edge-label" x="4644.00" y="738.05" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 1860.00 724.70 C 1899.17 730.37 1939.49 736.13 1978.94 741.89" data-tail="COM-002" data-head="COM-003" />
-<text class="edge-label" x="1930.66" y="725.95" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2544.86 781.73 C 2776.70 780.38 3107.90 778.46 3346.18 777.02" data-tail="COM-003" data-head="COM-001" />
-<text class="edge-label" x="2951.33" y="771.36" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2545.15 828.10 C 2581.73 834.05 2619.36 840.19 2656.22 846.14" data-tail="COM-003" data-head="INT-003" />
-<text class="edge-label" x="2606.69" y="830.02" text-anchor="middle" dominant-baseline="middle">exposes</text>
-<path class="edge-path" d="M 3236.06 1478.78 C 3272.06 1466.88 3306.53 1450.27 3336.00 1427.33 C 3517.82 1285.63 3597.70 1010.59 3628.32 867.26" data-tail="COM-008" data-head="COM-001" />
-<text class="edge-label" x="3303.36" y="1420.70" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 3236.16 1503.36 C 3273.02 1503.36 3310.94 1503.36 3348.00 1503.36" data-tail="COM-008" data-head="INT-002" />
-<text class="edge-label" x="3303.36" y="1496.64" text-anchor="middle" dominant-baseline="middle">exposes</text>
-<path class="edge-path" d="M 4589.76 861.79 C 4621.25 858.91 4653.41 855.94 4685.09 853.06" data-tail="COM-009" data-head="COM-010" />
-<text class="edge-label" x="4644.00" y="848.64" text-anchor="middle" dominant-baseline="middle">comprises</text>
-<path class="edge-path" d="M 5263.10 804.29 C 5294.59 801.89 5326.66 799.39 5358.14 796.99" data-tail="COM-010" data-head="COM-011" />
-<text class="edge-label" x="5317.34" y="792.67" text-anchor="middle" dominant-baseline="middle">comprises</text>
-<path class="edge-path" d="M 3220.22 576.38 C 3259.58 586.85 3299.23 598.94 3336.00 612.67 C 3392.26 633.60 3451.10 662.69 3502.27 690.53" data-tail="COM-012" data-head="COM-001" />
-<text class="edge-label" x="3303.36" y="585.98" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 3220.22 523.30 C 3265.06 523.30 3311.71 523.30 3357.02 523.30" data-tail="COM-012" data-head="INT-001" />
-<text class="edge-label" x="3303.36" y="516.67" text-anchor="middle" dominant-baseline="middle">exposes</text>
-<path class="edge-path" d="M 2369.95 1748.54 C 2445.60 1697.66 2553.60 1630.37 2656.03 1586.02 C 2661.50 1583.62 2667.07 1581.31 2672.74 1579.01" data-tail="COM-013" data-head="COM-008" />
-<text class="edge-label" x="2606.69" y="1595.33" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2537.28 1890.05 C 2580.77 1901.57 2625.98 1913.57 2669.76 1925.18" data-tail="COM-013" data-head="COM-015" />
-<text class="edge-label" x="2606.69" y="1898.02" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 2550.05 1825.34 C 2583.94 1826.11 2618.69 1826.88 2652.86 1827.55" data-tail="COM-013" data-head="INT-004" />
-<text class="edge-label" x="2606.69" y="1820.64" text-anchor="middle" dominant-baseline="middle">exposes</text>
-<path class="edge-path" d="M 2550.05 1757.28 C 2587.87 1748.93 2626.66 1740.29 2664.58 1731.94" data-tail="COM-013" data-head="INT-005" />
-<text class="edge-label" x="2606.69" y="1733.95" text-anchor="middle" dominant-baseline="middle">exposes</text>
-<path class="edge-path" d="M 1881.60 1795.01 C 1912.03 1796.93 1942.94 1798.85 1973.38 1800.77" data-tail="COM-014" data-head="COM-013" />
-<text class="edge-label" x="1930.66" y="1791.36" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 3234.62 1928.16 C 3238.75 1924.51 3242.78 1920.67 3246.62 1916.64 C 3400.80 1755.17 3289.82 1639.30 3360.00 1427.33 C 3428.35 1220.83 3537.41 989.86 3598.75 865.82" data-tail="COM-015" data-head="COM-001" />
-<text class="edge-label" x="3303.36" y="1548.67" text-anchor="middle" dominant-baseline="middle">uses</text>
-<path class="edge-path" d="M 3230.59 2070.24 C 3236.06 2073.98 3241.44 2077.82 3246.62 2082.05 C 3523.78 2302.94 3609.22 2747.33 3634.46 2954.11" data-tail="COM-015" data-head="DTS-001" />
-<text class="edge-label" x="3303.36" y="2112.67" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 3241.15 1999.30 C 3280.22 1999.30 3320.45 1999.30 3359.52 1999.30" data-tail="COM-015" data-head="DTS-002" />
-<text class="edge-label" x="3303.36" y="1992.67" text-anchor="middle" dominant-baseline="middle">persists_to</text>
-<path class="edge-path" d="M 404.51 835.87 C 586.86 757.25 916.04 626.11 1212.00 566.02 C 1462.66 515.04 1753.06 499.87 1965.70 496.51" data-tail="SYS-001" data-head="APP-001" />
-<text class="edge-label" x="1242.62" y="549.98" text-anchor="middle" dominant-baseline="middle">integrates</text>
-<path class="edge-path" d="M 524.23 899.33 C 556.54 899.33 589.72 899.33 622.40 899.33" data-tail="SYS-001" data-head="APP-002" />
-<text class="edge-label" x="578.67" y="892.70" text-anchor="middle" dominant-baseline="middle">integrates</text>
-<path class="edge-path" d="M 337.44 962.78 C 450.54 1059.65 666.93 1245.02 798.68 1357.92" data-tail="SYS-001" data-head="APP-003" />
-<text class="edge-label" x="578.67" y="1154.02" text-anchor="middle" dominant-baseline="middle">integrates</text>
+<path class="edge-path" d="M 1878.14 2259.36 C 1916.64 2255.23 1956.19 2250.91 1994.69 2246.69" data-tail="APP-001" data-head="ART-001" />
+<text class="edge-label" x="1936.03" y="2245.34" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 1878.14 2322.53 C 1918.18 2326.94 1959.26 2331.55 1999.10 2335.97" data-tail="APP-001" data-head="ART-002" />
+<text class="edge-label" x="1936.03" y="2320.03" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 1611.74 2204.74 C 1654.85 2047.30 1768.32 1712.74 1990.66 1536.00 C 1992.77 1534.37 1994.88 1532.74 1997.09 1531.10" data-tail="APP-001" data-head="ART-003" />
+<text class="edge-label" x="1936.03" y="1560.00" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 1705.25 2376.10 C 1895.52 2512.90 2293.54 2778.53 2674.66 2902.66 C 2932.80 2986.75 3041.66 2846.02 3281.38 2973.31 C 3440.83 3058.08 3564.00 3235.78 3628.03 3343.78" data-tail="APP-001" data-head="COM-001" />
+<text class="edge-label" x="2620.03" y="2865.31" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 1677.89 2205.22 C 1811.33 2074.56 2064.29 1826.69 2194.56 1699.10" data-tail="APP-001" data-head="COM-012" />
+<text class="edge-label" x="1936.03" y="1927.97" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 992.74 3191.90 C 1064.83 3122.69 1177.34 3031.20 1297.34 2995.97 C 1482.53 2941.73 3106.37 2997.12 3281.38 3070.66 C 3419.71 3128.83 3540.58 3257.57 3611.14 3344.93" data-tail="APP-002" data-head="COM-001" />
+<text class="edge-label" x="2277.98" y="2969.38" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 1185.50 3216.38 C 1224.77 3207.65 1265.38 3198.62 1304.83 3189.79" data-tail="APP-002" data-head="COM-002" />
+<text class="edge-label" x="1242.62" y="3190.66" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 1021.63 3192.00 C 1095.07 3140.35 1196.54 3079.30 1297.34 3052.03 C 1536.67 2987.14 1820.16 3020.06 2020.32 3060.67" data-tail="APP-002" data-head="COM-003" />
+<text class="edge-label" x="1589.38" y="3007.97" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 1102.75 3362.78 C 1182.05 3399.55 1259.04 3437.47 1273.34 3451.97 C 1291.20 3470.21 1277.76 3487.68 1297.34 3504.00 C 1298.50 3504.96 1299.65 3505.92 1300.80 3506.88" data-tail="APP-002" data-head="COM-004" />
+<text class="edge-label" x="1242.62" y="3410.69" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 976.61 3362.88 C 1046.30 3449.28 1165.44 3580.32 1297.34 3654.67 C 1304.16 3658.53 1311.17 3662.18 1318.37 3665.65" data-tail="APP-002" data-head="COM-005" />
+<text class="edge-label" x="1242.62" y="3600.01" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 1185.50 3277.34 C 1225.63 3277.34 1267.01 3277.34 1307.33 3277.34" data-tail="APP-002" data-head="COM-006" />
+<text class="edge-label" x="1242.62" y="3270.72" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 1185.50 3332.83 C 1215.17 3339.17 1244.93 3345.60 1273.34 3352.03 C 1287.07 3355.10 1301.18 3358.27 1315.39 3361.54" data-tail="APP-002" data-head="COM-007" />
+<text class="edge-label" x="1242.62" y="3331.97" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 1188.29 3830.68 C 1310.69 3830.68 1456.51 3830.68 1588.03 3830.68 C 1588.03 3830.68 1588.03 3830.68 2979.36 3830.68 C 3227.90 3830.68 3468.77 3637.68 3591.84 3520.70" data-tail="APP-003" data-head="COM-001" />
+<text class="edge-label" x="2277.98" y="3824.01" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 1082.50 3745.13 C 1148.54 3714.03 1225.44 3680.28 1297.34 3654.67 C 1305.31 3651.83 1313.47 3649.05 1321.73 3646.32" data-tail="APP-003" data-head="COM-004" />
+<text class="edge-label" x="1242.62" y="3658.68" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 1188.38 3789.24 C 1230.72 3782.90 1274.40 3776.36 1316.54 3770.04" data-tail="APP-003" data-head="COM-005" />
+<text class="edge-label" x="1242.62" y="3769.34" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 953.90 3745.32 C 1004.16 3650.30 1096.22 3497.18 1212.00 3398.69 C 1235.04 3379.10 1247.04 3384.29 1273.34 3369.31 C 1284.48 3362.98 1285.63 3358.56 1297.34 3353.38 C 1303.20 3350.69 1309.15 3348.19 1315.20 3345.70" data-tail="APP-003" data-head="COM-006" />
+<text class="edge-label" x="1242.62" y="3362.69" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 970.56 3745.18 C 1024.80 3672.75 1111.97 3571.80 1212.00 3514.66 C 1235.14 3501.50 1260.10 3490.27 1285.82 3480.77" data-tail="APP-003" data-head="COM-007" />
+<text class="edge-label" x="1242.62" y="3480.00" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 947.16 3916.24 C 1001.76 4036.00 1119.46 4248.46 1297.34 4333.34 C 1742.40 4545.70 2330.78 4522.04 2679.94 4481.30" data-tail="APP-003" data-head="COM-008" />
+<text class="edge-label" x="1936.03" y="4485.34" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 960.00 3916.31 C 1022.50 4018.05 1142.40 4182.58 1297.34 4250.68 C 1512.67 4345.32 1781.18 4337.31 1982.59 4309.93" data-tail="APP-003" data-head="COM-013" />
+<text class="edge-label" x="1589.38" y="4244.01" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 992.64 3916.38 C 1048.99 3971.09 1128.77 4038.96 1212.00 4078.68 C 1234.75 4089.54 1259.04 4098.85 1283.90 4106.84" data-tail="APP-003" data-head="COM-014" />
+<text class="edge-label" x="1242.62" y="4072.01" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 1046.21 3916.17 C 1117.73 3956.70 1209.02 4000.69 1297.34 4021.34 C 1550.50 4080.55 2264.45 4017.34 2675.33 3973.40" data-tail="APP-003" data-head="COM-015" />
+<text class="edge-label" x="1936.03" y="4026.67" text-anchor="middle" dominant-baseline="middle">comprises</text>
+<path class="edge-path" d="M 1188.38 3874.84 C 1225.15 3880.70 1262.88 3886.73 1299.74 3892.63" data-tail="APP-003" data-head="NOT-001" />
+<text class="edge-label" x="1242.62" y="3874.68" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 3262.27 2311.20 C 3268.80 2307.26 3275.23 2303.14 3281.38 2298.72 C 3478.18 2155.97 3592.61 1882.85 3643.97 1730.21" data-tail="ART-009" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="2224.03" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3263.04 2462.21 C 3269.28 2458.18 3275.42 2453.86 3281.38 2449.34 C 3516.67 2267.81 3618.91 1911.17 3657.02 1730.50" data-tail="ART-010" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="2377.34" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3265.54 609.98 C 3270.91 613.54 3276.19 617.38 3281.38 621.31 C 3564.86 843.74 3645.60 1299.46 3668.16 1509.50" data-tail="ART-011" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="652.03" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3265.44 760.70 C 3270.91 764.26 3276.19 768.00 3281.38 772.03 C 3521.86 958.08 3621.98 1325.38 3658.46 1509.50" data-tail="ART-012" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="798.72" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3265.34 911.52 C 3270.82 915.07 3276.19 918.72 3281.38 922.66 C 3480.10 1073.38 3594.34 1354.85 3644.93 1510.08" data-tail="ART-013" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="943.97" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3260.83 1062.05 C 3267.84 1065.98 3274.75 1070.21 3281.38 1074.72 C 3444.19 1184.93 3563.62 1385.57 3626.50 1510.37" data-tail="ART-014" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="1089.31" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3192.67 1174.27 C 3223.58 1183.49 3254.02 1195.30 3281.38 1210.66 C 3413.76 1285.15 3529.82 1417.92 3601.34 1512.00" data-tail="ART-015" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="1219.97" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3193.44 1316.06 C 3223.58 1324.42 3253.63 1334.50 3281.38 1346.69 C 3378.53 1389.31 3476.83 1457.09 3551.04 1514.50" data-tail="ART-016" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="1357.34" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3200.64 1461.50 C 3228.00 1468.13 3255.36 1475.23 3281.38 1482.72 C 3326.21 1495.49 3373.44 1510.46 3419.04 1525.82" data-tail="ART-017" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="1486.66" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3210.05 1573.63 C 3273.12 1579.87 3342.05 1586.78 3407.14 1593.22" data-tail="ART-018" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="1577.38" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3218.78 1663.78 C 3279.46 1658.02 3344.93 1651.68 3406.85 1645.82" data-tail="ART-019" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="1645.34" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3212.06 1772.93 C 3235.49 1767.07 3259.01 1761.02 3281.38 1754.69 C 3324.48 1742.50 3369.98 1728.29 3413.95 1713.89" data-tail="ART-020" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="1725.31" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3201.02 1918.94 C 3228.58 1911.07 3255.94 1901.76 3281.38 1890.72 C 3377.86 1848.67 3475.49 1782.05 3549.60 1725.41" data-tail="ART-021" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="1843.97" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3203.33 2059.68 C 3230.50 2051.04 3257.18 2040.19 3281.38 2026.66 C 3413.28 1952.83 3529.15 1821.22 3600.86 1727.71" data-tail="ART-022" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="1970.69" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3221.57 2192.93 C 3242.69 2184.77 3262.94 2174.78 3281.38 2162.69 C 3445.34 2054.88 3564.67 1854.14 3627.07 1729.34" data-tail="ART-023" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="2089.34" text-anchor="middle" dominant-baseline="middle">persists to</text>
+<path class="edge-path" d="M 3964.13 3483.26 C 3984.67 3486.91 4005.50 3490.56 4026.14 3494.21" data-tail="COM-001" data-head="COM-009" />
+<text class="edge-label" x="4002.05" y="3482.69" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 3964.13 3444.67 C 4171.30 3452.83 4451.04 3463.97 4660.51 3472.32" data-tail="COM-001" data-head="COM-010" />
+<text class="edge-label" x="4319.33" y="3439.97" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 3964.32 3420.38 C 4276.99 3408.10 4793.76 3393.79 5238.62 3409.34 C 5258.78 3410.02 5279.62 3410.98 5300.45 3412.13" data-tail="COM-001" data-head="COM-011" />
+<text class="edge-label" x="4636.70" y="3396.00" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 1860.29 3126.72 C 1902.34 3126.72 1945.82 3126.72 1988.16 3126.72" data-tail="COM-002" data-head="COM-003" />
+<text class="edge-label" x="1936.03" y="3120.00" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2554.46 3096.00 C 2760.00 3082.75 3044.93 3084.77 3281.38 3162.72 C 3396.00 3200.45 3507.74 3282.43 3583.01 3346.27" data-tail="COM-003" data-head="COM-001" />
+<text class="edge-label" x="2978.02" y="3082.66" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2554.46 3173.47 C 2596.70 3180.67 2640.48 3188.16 2683.20 3195.36" data-tail="COM-003" data-head="INT-003" />
+<text class="edge-label" x="2620.03" y="3174.72" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 1880.06 3427.97 C 1912.13 3427.97 1944.77 3427.97 1976.93 3427.97" data-tail="COM-007" data-head="ART-008" />
+<text class="edge-label" x="1936.03" y="3421.34" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 3262.75 4369.06 C 3269.28 4363.79 3275.52 4358.12 3281.38 4352.01 C 3405.02 4221.82 3332.16 4133.32 3367.97 3957.34 C 3379.58 3900.62 3369.22 3882.56 3391.97 3829.34 C 3441.70 3713.17 3530.21 3597.88 3595.39 3521.95" data-tail="COM-008" data-head="COM-001" />
+<text class="edge-label" x="3336.67" y="3950.68" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 3262.94 4434.68 C 3301.63 4434.68 3341.28 4434.68 3380.16 4434.68" data-tail="COM-008" data-head="INT-002" />
+<text class="edge-label" x="3336.67" y="4428.01" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 4599.07 3518.40 C 4619.52 3516.48 4640.26 3514.46 4660.80 3512.45" data-tail="COM-009" data-head="COM-010" />
+<text class="edge-label" x="4636.70" y="3508.03" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 5238.82 3461.18 C 5259.46 3459.46 5280.29 3457.82 5300.93 3456.10" data-tail="COM-010" data-head="COM-011" />
+<text class="edge-label" x="5276.64" y="3449.38" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2330.98 1689.41 C 2398.37 1785.79 2513.47 1966.37 2565.31 2140.03 C 2625.41 2341.34 2508.19 2471.71 2674.66 2599.97 C 2676.86 2601.70 2679.07 2603.33 2681.28 2604.96" data-tail="COM-012" data-head="ART-004" />
+<text class="edge-label" x="2620.03" y="2484.00" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2331.94 1689.60 C 2400.10 1785.89 2515.87 1965.98 2565.31 2140.03 C 2620.90 2335.20 2533.92 2400.77 2589.31 2596.03 C 2610.91 2672.06 2612.06 2703.74 2674.66 2752.03 C 2676.29 2753.28 2677.92 2754.43 2679.55 2755.68" data-tail="COM-012" data-head="ART-005" />
+<text class="edge-label" x="2620.03" y="2589.31" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2547.17 1554.53 C 2553.79 1548.48 2559.84 1541.86 2565.31 1534.66 C 2606.59 1480.70 2572.13 377.76 2589.31 312.00 C 2609.66 234.53 2612.06 203.23 2674.66 153.31 C 2678.69 150.14 2682.82 147.07 2687.04 144.10" data-tail="COM-012" data-head="ART-006" />
+<text class="edge-label" x="2620.03" y="170.69" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2547.17 1554.53 C 2553.70 1548.48 2559.84 1541.86 2565.31 1534.66 C 2601.12 1487.90 2575.10 531.84 2589.31 474.72 C 2609.76 392.93 2608.90 357.98 2674.66 305.38 C 2679.26 301.73 2683.97 298.18 2688.77 294.91" data-tail="COM-012" data-head="ART-007" />
+<text class="edge-label" x="2620.03" y="324.00" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2318.50 1689.50 C 2412.77 1859.52 2646.62 2278.18 2674.66 2298.72 C 2677.15 2300.45 2679.65 2302.27 2682.24 2304.00" data-tail="COM-012" data-head="ART-009" />
+<text class="edge-label" x="2620.03" y="2167.97" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2328.48 1689.70 C 2393.28 1786.85 2505.98 1968.58 2565.31 2140.03 C 2586.53 2201.28 2568.86 2222.40 2589.31 2284.03 C 2615.42 2362.46 2609.86 2397.98 2674.66 2449.34 C 2677.06 2451.26 2679.55 2453.09 2682.05 2454.91" data-tail="COM-012" data-head="ART-010" />
+<text class="edge-label" x="2620.03" y="2277.31" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2547.07 1554.43 C 2553.70 1548.38 2559.84 1541.86 2565.31 1534.66 C 2591.14 1501.34 2578.18 816.67 2589.31 775.97 C 2610.14 700.32 2612.35 669.12 2674.66 621.31 C 2676.29 620.06 2677.92 618.91 2679.55 617.66" data-tail="COM-012" data-head="ART-011" />
+<text class="edge-label" x="2620.03" y="637.34" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2546.98 1554.43 C 2553.60 1548.38 2559.74 1541.86 2565.31 1534.66 C 2606.88 1481.38 2571.17 991.78 2589.31 926.69 C 2610.43 851.04 2612.35 819.84 2674.66 772.03 C 2676.29 770.78 2677.92 769.54 2679.55 768.38" data-tail="COM-012" data-head="ART-012" />
+<text class="edge-label" x="2620.03" y="787.97" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2546.88 1554.34 C 2553.50 1548.29 2559.74 1541.76 2565.31 1534.66 C 2596.99 1494.62 2575.20 1125.02 2589.31 1075.97 C 2610.91 1001.09 2612.74 970.08 2674.66 922.66 C 2676.29 921.41 2677.92 920.26 2679.55 919.01" data-tail="COM-012" data-head="ART-013" />
+<text class="edge-label" x="2620.03" y="938.69" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2546.69 1554.14 C 2553.41 1548.19 2559.65 1541.76 2565.31 1534.66 C 2610.53 1478.78 2567.04 1280.35 2589.31 1212.00 C 2611.58 1143.65 2616.67 1117.06 2674.66 1074.72 C 2677.15 1072.90 2679.65 1071.07 2682.24 1069.34" data-tail="COM-012" data-head="ART-014" />
+<text class="edge-label" x="2620.03" y="1087.97" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2546.78 1553.18 C 2553.41 1547.52 2559.65 1541.38 2565.31 1534.66 C 2592.29 1503.07 2575.49 1388.45 2589.31 1349.38 C 2613.50 1281.12 2615.81 1252.70 2674.66 1210.66 C 2697.41 1194.43 2723.42 1181.95 2750.30 1172.45" data-tail="COM-012" data-head="ART-015" />
+<text class="edge-label" x="2620.03" y="1224.00" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2547.26 1549.44 C 2553.50 1544.83 2559.55 1539.94 2565.31 1534.66 C 2586.62 1515.36 2575.97 1500.10 2589.31 1474.66 C 2621.18 1414.18 2618.30 1385.38 2674.66 1346.69 C 2697.41 1331.04 2723.23 1318.94 2749.92 1309.63" data-tail="COM-012" data-head="ART-016" />
+<text class="edge-label" x="2620.03" y="1361.38" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2528.93 1547.90 C 2541.31 1543.58 2553.50 1539.17 2565.31 1534.66 C 2615.62 1515.46 2623.78 1500.29 2674.66 1482.72 C 2696.26 1475.23 2718.91 1468.42 2741.76 1462.18" data-tail="COM-012" data-head="ART-017" />
+<text class="edge-label" x="2620.03" y="1486.66" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2546.98 1592.54 C 2607.84 1586.69 2672.16 1580.35 2732.06 1574.50" data-tail="COM-012" data-head="ART-018" />
+<text class="edge-label" x="2620.03" y="1576.03" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2546.98 1644.77 C 2605.06 1650.43 2666.30 1656.38 2723.81 1662.05" data-tail="COM-012" data-head="ART-019" />
+<text class="edge-label" x="2620.03" y="1644.00" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2471.04 1689.41 C 2535.26 1711.78 2607.65 1735.68 2674.66 1754.69 C 2692.80 1759.87 2711.71 1764.86 2730.72 1769.66" data-tail="COM-012" data-head="ART-020" />
+<text class="edge-label" x="2620.03" y="1725.31" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2361.98 1689.60 C 2438.30 1751.62 2557.34 1839.36 2674.66 1890.72 C 2696.06 1900.03 2718.91 1908.19 2742.05 1915.20" data-tail="COM-012" data-head="ART-021" />
+<text class="edge-label" x="2620.03" y="1843.97" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2327.52 1689.60 C 2394.34 1782.14 2523.94 1942.08 2674.66 2026.66 C 2695.01 2038.08 2717.18 2047.58 2739.94 2055.55" data-tail="COM-012" data-head="ART-022" />
+<text class="edge-label" x="2620.03" y="1970.69" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2310.24 1689.79 C 2365.44 1807.68 2492.26 2042.69 2674.66 2162.69 C 2689.34 2172.29 2705.18 2180.64 2721.70 2187.74" data-tail="COM-012" data-head="ART-023" />
+<text class="edge-label" x="2620.03" y="2089.34" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 2547.17 1554.53 C 2553.70 1548.48 2559.84 1541.86 2565.31 1534.66 C 2596.13 1494.62 2576.06 674.11 2589.31 625.34 C 2609.95 549.60 2613.02 519.26 2674.66 470.69 C 2679.84 466.56 2685.22 462.72 2690.78 458.98" data-tail="COM-012" data-head="INT-001" />
+<text class="edge-label" x="2620.03" y="486.72" text-anchor="middle" dominant-baseline="middle">calls</text>
+<path class="edge-path" d="M 2545.44 4320.07 C 2595.07 4333.26 2647.01 4347.07 2697.02 4360.36" data-tail="COM-013" data-head="COM-008" />
+<text class="edge-label" x="2620.03" y="4329.34" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2503.30 4178.66 C 2556.67 4153.66 2609.86 4120.90 2650.66 4078.68 C 2669.86 4058.81 2653.92 4039.57 2674.66 4021.34 C 2676.00 4020.18 2677.34 4019.04 2678.69 4017.91" data-tail="COM-013" data-head="COM-015" />
+<text class="edge-label" x="2620.03" y="4072.01" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2559.46 4257.38 C 2598.91 4258.51 2639.62 4259.67 2679.36 4260.82" data-tail="COM-013" data-head="INT-004" />
+<text class="edge-label" x="2620.03" y="4252.01" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 2559.46 4190.97 C 2602.66 4181.95 2647.39 4172.63 2690.78 4163.60" data-tail="COM-013" data-head="INT-005" />
+<text class="edge-label" x="2620.03" y="4165.34" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 1881.60 4194.83 C 1915.10 4199.45 1949.28 4204.17 1982.88 4208.80" data-tail="COM-014" data-head="COM-013" />
+<text class="edge-label" x="1936.03" y="4192.01" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 3267.55 3908.05 C 3302.98 3897.00 3337.44 3882.26 3367.97 3862.68 C 3367.97 3862.68 3521.95 3648.55 3612.38 3522.72" data-tail="COM-015" data-head="COM-001" />
+<text class="edge-label" x="3336.67" y="3856.01" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 3021.22 3867.74 C 3085.44 3756.30 3208.51 3531.84 3281.38 3328.03 C 3490.27 2743.58 3617.18 2006.40 3660.19 1730.69" data-tail="COM-015" data-head="DTS-001" />
+<text class="edge-label" x="3336.67" y="3094.66" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 3267.46 3938.68 C 3308.45 3938.68 3350.50 3938.68 3391.39 3938.68" data-tail="COM-015" data-head="DTS-002" />
+<text class="edge-label" x="3336.67" y="3932.01" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 348.72 3213.70 C 575.73 3044.64 1195.10 2583.36 1462.37 2384.26" data-tail="SYS-001" data-head="APP-001" />
+<text class="edge-label" x="910.67" y="2585.38" text-anchor="middle" dominant-baseline="middle">integrates</text>
+<path class="edge-path" d="M 524.23 3277.34 C 556.54 3277.34 589.72 3277.34 622.40 3277.34" data-tail="SYS-001" data-head="APP-002" />
+<text class="edge-label" x="578.67" y="3270.72" text-anchor="middle" dominant-baseline="middle">integrates</text>
+<path class="edge-path" d="M 337.44 3340.80 C 450.54 3437.66 666.93 3623.05 798.68 3735.90" data-tail="SYS-001" data-head="APP-003" />
+<text class="edge-label" x="578.67" y="3530.69" text-anchor="middle" dominant-baseline="middle">integrates</text>
 <g class="node card-type-application" data-card-id="APP-001" data-layout-node="APP-001">
-<rect class="node-shape" x="1980.00" y="413.96" width="577.33" height="170.67" rx="6.00" ry="6.00" />
-<rect class="node-shape node-shape-outline" x="1984.00" y="425.96" width="14.00" height="16.00" rx="2" ry="2" />
-<rect class="node-shape node-shape-outline" x="1984.00" y="556.63" width="14.00" height="16.00" rx="2" ry="2" />
-<text class="node-icon" x="1990.00" y="450.30" text-anchor="start" dominant-baseline="hanging">🪟</text>
-<text class="node-label" x="2048.00" y="457.30" text-anchor="start" dominant-baseline="middle">
-<tspan x="2048.00">APP-001: </tspan><tspan font-weight="700">Application</tspan>
-<tspan x="2048.00" dy="14.00">Command Line Tools</tspan>
-<tspan x="2048.00" dy="14.00">&#160;</tspan>
-<tspan x="2048.00" dy="14.00">A deployable command-line application that validates, renders, and</tspan>
-<tspan x="2048.00" dy="14.00">manages Aurora models. The CLI is optimized for deterministic,</tspan>
-<tspan x="2048.00" dy="14.00">automatable workflows (local scripting and CI), and delegates model</tspan>
-<tspan x="2048.00" dy="14.00">semantics (parsing, invariants, rendering) to the shared library.</tspan>
+<rect class="node-shape" x="1300.71" y="2205.32" width="577.33" height="170.67" rx="6.00" ry="6.00" />
+<rect class="node-shape node-shape-outline" x="1304.71" y="2217.32" width="14.00" height="16.00" rx="2" ry="2" />
+<rect class="node-shape node-shape-outline" x="1304.71" y="2347.99" width="14.00" height="16.00" rx="2" ry="2" />
+<text class="node-icon" x="1339.71" y="2241.66" text-anchor="middle" dominant-baseline="hanging">🪟</text>
+<text class="node-label" x="1618.38" y="2248.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1618.38">APP-001: </tspan><tspan font-weight="700">Application</tspan>
+<tspan x="1618.38" dy="14.00">Command Line Tools</tspan>
+<tspan x="1618.38" dy="14.00">&#160;</tspan>
+<tspan x="1618.38" dy="14.00">A deployable command-line application that validates, renders, and</tspan>
+<tspan x="1618.38" dy="14.00">manages Aurora models. The CLI is optimized for deterministic,</tspan>
+<tspan x="1618.38" dy="14.00">automatable workflows (local scripting and CI), and delegates model</tspan>
+<tspan x="1618.38" dy="14.00">semantics (parsing, invariants, rendering) to the shared library.</tspan>
 </text>
 </g>
 <g class="node card-type-application" data-card-id="APP-002" data-layout-node="APP-002">
-<rect class="node-shape" x="636.00" y="813.99" width="549.33" height="170.67" rx="6.00" ry="6.00" />
-<rect class="node-shape node-shape-outline" x="640.00" y="825.99" width="14.00" height="16.00" rx="2" ry="2" />
-<rect class="node-shape node-shape-outline" x="640.00" y="956.66" width="14.00" height="16.00" rx="2" ry="2" />
-<text class="node-icon" x="646.00" y="850.33" text-anchor="start" dominant-baseline="hanging">🪟</text>
-<text class="node-label" x="704.00" y="857.33" text-anchor="start" dominant-baseline="middle">
-<tspan x="704.00">APP-002: </tspan><tspan font-weight="700">Application</tspan>
-<tspan x="704.00" dy="14.00">Editor</tspan>
-<tspan x="704.00" dy="14.00">&#160;</tspan>
-<tspan x="704.00" dy="14.00">A deployable application that provides an interactive experience for</tspan>
-<tspan x="704.00" dy="14.00">creating, editing, and navigating Aurora models. The Editor focuses on</tspan>
-<tspan x="704.00" dy="14.00">discoverability and safe, incremental iteration with immediate</tspan>
-<tspan x="704.00" dy="14.00">validation feedback.</tspan>
+<rect class="node-shape" x="636.00" y="3192.01" width="549.33" height="170.67" rx="6.00" ry="6.00" />
+<rect class="node-shape node-shape-outline" x="640.00" y="3204.01" width="14.00" height="16.00" rx="2" ry="2" />
+<rect class="node-shape node-shape-outline" x="640.00" y="3334.68" width="14.00" height="16.00" rx="2" ry="2" />
+<text class="node-icon" x="675.00" y="3228.34" text-anchor="middle" dominant-baseline="hanging">🪟</text>
+<text class="node-label" x="939.67" y="3235.34" text-anchor="middle" dominant-baseline="middle">
+<tspan x="939.67">APP-002: </tspan><tspan font-weight="700">Application</tspan>
+<tspan x="939.67" dy="14.00">Editor</tspan>
+<tspan x="939.67" dy="14.00">&#160;</tspan>
+<tspan x="939.67" dy="14.00">A deployable application that provides an interactive experience for</tspan>
+<tspan x="939.67" dy="14.00">creating, editing, and navigating Aurora models. The Editor focuses on</tspan>
+<tspan x="939.67" dy="14.00">discoverability and safe, incremental iteration with immediate</tspan>
+<tspan x="939.67" dy="14.00">validation feedback.</tspan>
 </text>
 </g>
 <g class="node card-type-application" data-card-id="APP-003" data-layout-node="APP-003">
-<rect class="node-shape" x="633.33" y="1367.34" width="554.67" height="170.67" rx="6.00" ry="6.00" />
-<rect class="node-shape node-shape-outline" x="637.33" y="1379.34" width="14.00" height="16.00" rx="2" ry="2" />
-<rect class="node-shape node-shape-outline" x="637.33" y="1510.01" width="14.00" height="16.00" rx="2" ry="2" />
-<text class="node-icon" x="643.33" y="1403.67" text-anchor="start" dominant-baseline="hanging">🪟</text>
-<text class="node-label" x="701.33" y="1410.67" text-anchor="start" dominant-baseline="middle">
-<tspan x="701.33">APP-003: </tspan><tspan font-weight="700">Application</tspan>
-<tspan x="701.33" dy="14.00">VSCode Extension</tspan>
-<tspan x="701.33" dy="14.00">&#160;</tspan>
-<tspan x="701.33" dy="14.00">A VS Code extension that enables authoring, validation, and</tspan>
-<tspan x="701.33" dy="14.00">visualization of Aurora models within the editor. It provides</tspan>
-<tspan x="701.33" dy="14.00">trust-aware workspace integration, webview-based UI experiences, and</tspan>
-<tspan x="701.33" dy="14.00">(optionally) an MCP server surface for other in-editor tooling.</tspan>
+<rect class="node-shape" x="633.33" y="3745.34" width="554.67" height="170.67" rx="6.00" ry="6.00" />
+<rect class="node-shape node-shape-outline" x="637.33" y="3757.34" width="14.00" height="16.00" rx="2" ry="2" />
+<rect class="node-shape node-shape-outline" x="637.33" y="3888.01" width="14.00" height="16.00" rx="2" ry="2" />
+<text class="node-icon" x="672.33" y="3781.68" text-anchor="middle" dominant-baseline="hanging">🪟</text>
+<text class="node-label" x="939.67" y="3788.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="939.67">APP-003: </tspan><tspan font-weight="700">Application</tspan>
+<tspan x="939.67" dy="14.00">VSCode Extension</tspan>
+<tspan x="939.67" dy="14.00">&#160;</tspan>
+<tspan x="939.67" dy="14.00">A VS Code extension that enables authoring, validation, and</tspan>
+<tspan x="939.67" dy="14.00">visualization of Aurora models within the editor. It provides</tspan>
+<tspan x="939.67" dy="14.00">trust-aware workspace integration, webview-based UI experiences, and</tspan>
+<tspan x="939.67" dy="14.00">(optionally) an MCP server surface for other in-editor tooling.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-001" data-layout-node="ART-001">
-<path class="node-shape" d="M 2682.00 14.03 L 2682.00 126.69 L 3220.66 126.69 L 3220.66 14.03 L 3059.06 14.03 L 3059.06 0.03 L 2843.59 0.03 L 2843.59 14.03 Z" />
-<text class="node-icon" x="2692.00" y="28.36" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2750.00" y="35.36" text-anchor="start" dominant-baseline="middle">
-<tspan x="2750.00">ART-001: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2750.00" dy="14.00">Aurora Schema</tspan>
-<tspan x="2750.00" dy="14.00">&#160;</tspan>
-<tspan x="2750.00" dy="14.00">The Aurora JSON schema(s) that define valid card structure and</tspan>
-<tspan x="2750.00" dy="14.00">related invariants for validation tooling.</tspan>
+<path class="node-shape" d="M 2008.65 2166.64 L 2008.65 2279.30 L 2547.32 2279.30 L 2547.32 2166.64 L 2385.72 2166.64 L 2385.72 2152.64 L 2170.25 2152.64 L 2170.25 2166.64 Z" />
+<text class="node-icon" x="2047.65" y="2180.97" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="2306.98" y="2187.97" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2306.98">ART-001: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="2306.98" dy="14.00">Aurora Schema</tspan>
+<tspan x="2306.98" dy="14.00">&#160;</tspan>
+<tspan x="2306.98" dy="14.00">The Aurora JSON schema(s) that define valid card structure and</tspan>
+<tspan x="2306.98" dy="14.00">related invariants for validation tooling.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-002" data-layout-node="ART-002">
-<path class="node-shape" d="M 2685.99 164.65 L 2685.99 277.32 L 3216.66 277.32 L 3216.66 164.65 L 3057.46 164.65 L 3057.46 150.65 L 2845.19 150.65 L 2845.19 164.65 Z" />
-<text class="node-icon" x="2695.99" y="178.98" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2753.99" y="185.98" text-anchor="start" dominant-baseline="middle">
-<tspan x="2753.99">ART-002: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2753.99" dy="14.00">Aurora Tooling</tspan>
-<tspan x="2753.99" dy="14.00">&#160;</tspan>
-<tspan x="2753.99" dy="14.00">Default tooling suite for Aurora, including CLI, editor, and VS Code</tspan>
-<tspan x="2753.99" dy="14.00">extension surfaces.</tspan>
+<path class="node-shape" d="M 2012.65 2317.36 L 2012.65 2430.02 L 2543.32 2430.02 L 2543.32 2317.36 L 2384.12 2317.36 L 2384.12 2303.36 L 2171.85 2303.36 L 2171.85 2317.36 Z" />
+<text class="node-icon" x="2051.65" y="2331.69" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="2306.98" y="2338.69" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2306.98">ART-002: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="2306.98" dy="14.00">Aurora Tooling</tspan>
+<tspan x="2306.98" dy="14.00">&#160;</tspan>
+<tspan x="2306.98" dy="14.00">Default tooling suite for Aurora, including CLI, editor, and VS Code</tspan>
+<tspan x="2306.98" dy="14.00">extension surfaces.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-003" data-layout-node="ART-003">
-<path class="node-shape" d="M 2679.99 315.37 L 2679.99 428.04 L 3222.66 428.04 L 3222.66 315.37 L 3059.86 315.37 L 3059.86 301.37 L 2842.79 301.37 L 2842.79 315.37 Z" />
-<text class="node-icon" x="2689.99" y="329.70" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2747.99" y="336.70" text-anchor="start" dominant-baseline="middle">
-<tspan x="2747.99">ART-003: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2747.99" dy="14.00">Card Registry</tspan>
-<tspan x="2747.99" dy="14.00">&#160;</tspan>
-<tspan x="2747.99" dy="14.00">Canonical registries for card types, view definitions, and</tspan>
-<tspan x="2747.99" dy="14.00">relationship definitions used by the Aurora model.</tspan>
+<path class="node-shape" d="M 2006.65 1410.64 L 2006.65 1523.30 L 2549.32 1523.30 L 2549.32 1410.64 L 2386.52 1410.64 L 2386.52 1396.64 L 2169.45 1396.64 L 2169.45 1410.64 Z" />
+<text class="node-icon" x="2045.65" y="1424.97" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="2306.98" y="1431.97" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2306.98">ART-003: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="2306.98" dy="14.00">Card Registry</tspan>
+<tspan x="2306.98" dy="14.00">&#160;</tspan>
+<tspan x="2306.98" dy="14.00">Canonical registries for card types, view definitions, and</tspan>
+<tspan x="2306.98" dy="14.00">relationship definitions used by the Aurora model.</tspan>
+</text>
+</g>
+<g class="node card-type-artifact" data-card-id="ART-004" data-layout-node="ART-004">
+<path class="node-shape" d="M 2674.68 2626.67 L 2674.68 2739.33 L 3281.35 2739.33 L 3281.35 2626.67 L 3099.35 2626.67 L 3099.35 2612.67 L 2856.68 2612.67 L 2856.68 2626.67 Z" />
+<text class="node-icon" x="2713.68" y="2641.00" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="2648.00" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-004: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">Markdown Documentation</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Human-readable Markdown documentation generated from the model,</tspan>
+<tspan x="3007.02" dy="14.00">including card pages and indexes.</tspan>
+</text>
+</g>
+<g class="node card-type-artifact" data-card-id="ART-005" data-layout-node="ART-005">
+<path class="node-shape" d="M 2690.68 2777.39 L 2690.68 2890.05 L 3265.35 2890.05 L 3265.35 2777.39 L 3092.95 2777.39 L 3092.95 2763.39 L 2863.08 2763.39 L 2863.08 2777.39 Z" />
+<text class="node-icon" x="2729.68" y="2791.72" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="2798.72" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-005: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">View Diagram Set</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">A set of rendered view diagrams (e.g., Mermaid) produced from an Aurora</tspan>
+<tspan x="3007.02" dy="14.00">model.</tspan>
+</text>
+</g>
+<g class="node card-type-artifact" data-card-id="ART-006" data-layout-node="ART-006">
+<path class="node-shape" d="M 2698.68 13.99 L 2698.68 141.32 L 3257.35 141.32 L 3257.35 13.99 L 3089.75 13.99 L 3089.75 -0.01 L 2866.28 -0.01 L 2866.28 13.99 Z" />
+<text class="node-icon" x="2737.68" y="35.66" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="42.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-006: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">Compact Model Format</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Compact, agent-friendly representation of the model (e.g.,</tspan>
+<tspan x="3007.02" dy="14.00">AGENT-&lt;MISSION_ID&gt;.jsjson) used for interchange and machine consumption.</tspan>
+</text>
+</g>
+<g class="node card-type-artifact" data-card-id="ART-007" data-layout-node="ART-007">
+<path class="node-shape" d="M 2700.68 180.01 L 2700.68 292.68 L 3255.35 292.68 L 3255.35 180.01 L 3088.95 180.01 L 3088.95 166.01 L 2867.08 166.01 L 2867.08 180.01 Z" />
+<text class="node-icon" x="2739.68" y="194.34" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="201.34" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-007: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">Validation Report</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Structured and/or human-readable validation report and diagnostics</tspan>
+<tspan x="3007.02" dy="14.00">output for a model.</tspan>
+</text>
+</g>
+<g class="node card-type-artifact" data-card-id="ART-008" data-layout-node="ART-008">
+<path class="node-shape" d="M 1990.65 3378.64 L 1990.65 3491.30 L 2565.32 3491.30 L 2565.32 3378.64 L 2392.92 3378.64 L 2392.92 3364.64 L 2163.05 3364.64 L 2163.05 3378.64 Z" />
+<text class="node-icon" x="2029.65" y="3392.97" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="2306.98" y="3399.97" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2306.98">ART-008: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="2306.98" dy="14.00">Webview Rendered Markdown</tspan>
+<tspan x="2306.98" dy="14.00">&#160;</tspan>
+<tspan x="2306.98" dy="14.00">Rendered Markdown content displayed inside a sandboxed webview (e.g., VS</tspan>
+<tspan x="2306.98" dy="14.00">Code or Tauri webview).</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-009" data-layout-node="ART-009">
-<path class="node-shape" d="M 2658.00 3635.33 L 2658.00 3747.99 L 3244.66 3747.99 L 3244.66 3635.33 L 3068.66 3635.33 L 3068.66 3621.33 L 2833.99 3621.33 L 2833.99 3635.33 Z" />
-<text class="node-icon" x="2668.00" y="3656.66" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2726.00" y="3663.66" text-anchor="start" dominant-baseline="middle">
-<tspan x="2726.00">ART-009: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2726.00" dy="14.00">Requirements.view.md</tspan>
-<tspan x="2726.00" dy="14.00">&#160;</tspan>
-<tspan x="2726.00" dy="14.00">Rendered Requirements View Markdown generated from the Aurora model.</tspan>
+<path class="node-shape" d="M 2684.68 2325.32 L 2684.68 2437.99 L 3271.35 2437.99 L 3271.35 2325.32 L 3095.35 2325.32 L 3095.35 2311.32 L 2860.68 2311.32 L 2860.68 2325.32 Z" />
+<text class="node-icon" x="2723.68" y="2346.66" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="2353.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-009: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">Requirements.view.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Requirements View Markdown generated from the Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-010" data-layout-node="ART-010">
-<path class="node-shape" d="M 2666.66 3786.00 L 2666.66 3898.67 L 3236.00 3898.67 L 3236.00 3786.00 L 3065.20 3786.00 L 3065.20 3772.00 L 2837.46 3772.00 L 2837.46 3786.00 Z" />
-<text class="node-icon" x="2676.66" y="3807.33" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2734.66" y="3814.33" text-anchor="start" dominant-baseline="middle">
-<tspan x="2734.66">ART-010: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2734.66" dy="14.00">Component.view.md</tspan>
-<tspan x="2734.66" dy="14.00">&#160;</tspan>
-<tspan x="2734.66" dy="14.00">Rendered Component View Markdown generated from the Aurora model.</tspan>
+<path class="node-shape" d="M 2693.35 2476.04 L 2693.35 2588.71 L 3262.68 2588.71 L 3262.68 2476.04 L 3091.88 2476.04 L 3091.88 2462.04 L 2864.15 2462.04 L 2864.15 2476.04 Z" />
+<text class="node-icon" x="2732.35" y="2497.38" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="2504.38" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-010: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">Component.view.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Component View Markdown generated from the Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-011" data-layout-node="ART-011">
-<path class="node-shape" d="M 2664.00 3936.67 L 2664.00 4049.33 L 3238.66 4049.33 L 3238.66 3936.67 L 3066.26 3936.67 L 3066.26 3922.67 L 2836.39 3922.67 L 2836.39 3936.67 Z" />
-<text class="node-icon" x="2674.00" y="3958.00" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2732.00" y="3965.00" text-anchor="start" dominant-baseline="middle">
-<tspan x="2732.00">ART-011: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2732.00" dy="14.00">Deployment.view.md</tspan>
-<tspan x="2732.00" dy="14.00">&#160;</tspan>
-<tspan x="2732.00" dy="14.00">Rendered Deployment View Markdown generated from the Aurora model.</tspan>
+<path class="node-shape" d="M 2690.68 497.39 L 2690.68 610.05 L 3265.35 610.05 L 3265.35 497.39 L 3092.95 497.39 L 3092.95 483.39 L 2863.08 483.39 L 2863.08 497.39 Z" />
+<text class="node-icon" x="2729.68" y="518.72" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="525.72" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-011: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">Deployment.view.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Deployment View Markdown generated from the Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-012" data-layout-node="ART-012">
-<path class="node-shape" d="M 2658.00 4087.34 L 2658.00 4200.00 L 3244.66 4200.00 L 3244.66 4087.34 L 3068.66 4087.34 L 3068.66 4073.34 L 2833.99 4073.34 L 2833.99 4087.34 Z" />
-<text class="node-icon" x="2668.00" y="4101.67" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2726.00" y="4108.67" text-anchor="start" dominant-baseline="middle">
-<tspan x="2726.00">ART-012: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2726.00" dy="14.00">Process.view.md</tspan>
-<tspan x="2726.00" dy="14.00">&#160;</tspan>
-<tspan x="2726.00" dy="14.00">Rendered Process (Activity) View Markdown generated from the Aurora</tspan>
-<tspan x="2726.00" dy="14.00">model.</tspan>
+<path class="node-shape" d="M 2684.68 648.01 L 2684.68 760.68 L 3271.35 760.68 L 3271.35 648.01 L 3095.35 648.01 L 3095.35 634.01 L 2860.68 634.01 L 2860.68 648.01 Z" />
+<text class="node-icon" x="2723.68" y="662.34" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="669.34" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-012: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">Process.view.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Process (Activity) View Markdown generated from the Aurora</tspan>
+<tspan x="3007.02" dy="14.00">model.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-013" data-layout-node="ART-013">
-<path class="node-shape" d="M 2655.99 2108.65 L 2655.99 2221.32 L 3246.66 2221.32 L 3246.66 2108.65 L 3069.46 2108.65 L 3069.46 2094.65 L 2833.19 2094.65 L 2833.19 2108.65 Z" />
-<text class="node-icon" x="2665.99" y="2129.98" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2723.99" y="2136.98" text-anchor="start" dominant-baseline="middle">
-<tspan x="2723.99">ART-013: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2723.99" dy="14.00">State_Machine.view.md</tspan>
-<tspan x="2723.99" dy="14.00">&#160;</tspan>
-<tspan x="2723.99" dy="14.00">Rendered State Machine View Markdown generated from the Aurora model.</tspan>
+<path class="node-shape" d="M 2682.68 798.64 L 2682.68 911.30 L 3273.35 911.30 L 3273.35 798.64 L 3096.15 798.64 L 3096.15 784.64 L 2859.88 784.64 L 2859.88 798.64 Z" />
+<text class="node-icon" x="2721.68" y="819.97" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="826.97" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-013: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">State_Machine.view.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered State Machine View Markdown generated from the Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-014" data-layout-node="ART-014">
-<path class="node-shape" d="M 2660.00 2259.37 L 2660.00 2372.04 L 3242.66 2372.04 L 3242.66 2259.37 L 3067.86 2259.37 L 3067.86 2245.37 L 2834.80 2245.37 L 2834.80 2259.37 Z" />
-<text class="node-icon" x="2670.00" y="2280.70" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2728.00" y="2287.70" text-anchor="start" dominant-baseline="middle">
-<tspan x="2728.00">ART-014: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2728.00" dy="14.00">Threat_Model.view.md</tspan>
-<tspan x="2728.00" dy="14.00">&#160;</tspan>
-<tspan x="2728.00" dy="14.00">Rendered Threat Model View Markdown generated from the Aurora model.</tspan>
+<path class="node-shape" d="M 2686.68 949.36 L 2686.68 1062.02 L 3269.35 1062.02 L 3269.35 949.36 L 3094.55 949.36 L 3094.55 935.36 L 2861.48 935.36 L 2861.48 949.36 Z" />
+<text class="node-icon" x="2725.68" y="970.69" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="977.69" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-014: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">Threat_Model.view.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Threat Model View Markdown generated from the Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-015" data-layout-node="ART-015">
-<path class="node-shape" d="M 2736.66 3498.66 L 2736.66 3596.66 L 3165.99 3596.66 L 3165.99 3498.66 L 3037.19 3498.66 L 3037.19 3484.66 L 2865.46 3484.66 L 2865.46 3498.66 Z" />
-<text class="node-icon" x="2746.66" y="3512.66" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2804.66" y="3519.66" text-anchor="start" dominant-baseline="middle">
-<tspan x="2804.66">ART-015: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2804.66" dy="14.00">ACT-001.md</tspan>
-<tspan x="2804.66" dy="14.00">&#160;</tspan>
-<tspan x="2804.66" dy="14.00">Rendered Actor card page for ACT-001.</tspan>
+<path class="node-shape" d="M 2763.35 1100.69 L 2763.35 1198.69 L 3192.68 1198.69 L 3192.68 1100.69 L 3063.88 1100.69 L 3063.88 1086.69 L 2892.15 1086.69 L 2892.15 1100.69 Z" />
+<text class="node-icon" x="2802.35" y="1114.69" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="1121.69" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-015: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">ACT-001.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Actor card page for ACT-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-016" data-layout-node="ART-016">
-<path class="node-shape" d="M 2736.00 2410.70 L 2736.00 2508.71 L 3166.66 2508.71 L 3166.66 2410.70 L 3037.46 2410.70 L 3037.46 2396.70 L 2865.19 2396.70 L 2865.19 2410.70 Z" />
-<text class="node-icon" x="2746.00" y="2424.70" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2804.00" y="2431.70" text-anchor="start" dominant-baseline="middle">
-<tspan x="2804.00">ART-016: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2804.00" dy="14.00">AST-001.md</tspan>
-<tspan x="2804.00" dy="14.00">&#160;</tspan>
-<tspan x="2804.00" dy="14.00">Rendered Asset card page for AST-001.</tspan>
+<path class="node-shape" d="M 2762.68 1236.72 L 2762.68 1334.72 L 3193.35 1334.72 L 3193.35 1236.72 L 3064.15 1236.72 L 3064.15 1222.72 L 2891.88 1222.72 L 2891.88 1236.72 Z" />
+<text class="node-icon" x="2801.68" y="1250.72" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="1257.72" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-016: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">AST-001.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Asset card page for AST-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-017" data-layout-node="ART-017">
-<path class="node-shape" d="M 2728.66 2546.64 L 2728.66 2644.64 L 3174.00 2644.64 L 3174.00 2546.64 L 3040.39 2546.64 L 3040.39 2532.64 L 2862.26 2532.64 L 2862.26 2546.64 Z" />
-<text class="node-icon" x="2738.66" y="2560.64" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2796.66" y="2567.64" text-anchor="start" dominant-baseline="middle">
-<tspan x="2796.66">ART-017: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2796.66" dy="14.00">ATV-001.md</tspan>
-<tspan x="2796.66" dy="14.00">&#160;</tspan>
-<tspan x="2796.66" dy="14.00">Rendered Activity card page for ATV-001.</tspan>
+<path class="node-shape" d="M 2755.35 1372.65 L 2755.35 1470.66 L 3200.68 1470.66 L 3200.68 1372.65 L 3067.08 1372.65 L 3067.08 1358.65 L 2888.95 1358.65 L 2888.95 1372.65 Z" />
+<text class="node-icon" x="2794.35" y="1386.66" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="1393.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-017: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">ATV-001.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Activity card page for ATV-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-018" data-layout-node="ART-018">
-<path class="node-shape" d="M 2719.33 2682.67 L 2719.33 2780.67 L 3183.33 2780.67 L 3183.33 2682.67 L 3044.13 2682.67 L 3044.13 2668.67 L 2858.53 2668.67 L 2858.53 2682.67 Z" />
-<text class="node-icon" x="2729.33" y="2696.67" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2787.33" y="2703.67" text-anchor="start" dominant-baseline="middle">
-<tspan x="2787.33">ART-018: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2787.33" dy="14.00">CAP-001.md</tspan>
-<tspan x="2787.33" dy="14.00">&#160;</tspan>
-<tspan x="2787.33" dy="14.00">Rendered Capability card page for CAP-001.</tspan>
+<path class="node-shape" d="M 2746.02 1508.69 L 2746.02 1606.69 L 3210.01 1606.69 L 3210.01 1508.69 L 3070.82 1508.69 L 3070.82 1494.69 L 2885.22 1494.69 L 2885.22 1508.69 Z" />
+<text class="node-icon" x="2785.02" y="1522.69" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="1529.69" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-018: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">CAP-001.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Capability card page for CAP-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-019" data-layout-node="ART-019">
-<path class="node-shape" d="M 2710.66 2818.70 L 2710.66 2916.71 L 3192.00 2916.71 L 3192.00 2818.70 L 3047.59 2818.70 L 3047.59 2804.70 L 2855.06 2804.70 L 2855.06 2818.70 Z" />
-<text class="node-icon" x="2720.66" y="2832.70" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2778.66" y="2839.70" text-anchor="start" dominant-baseline="middle">
-<tspan x="2778.66">ART-019: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2778.66" dy="14.00">COM-001.md</tspan>
-<tspan x="2778.66" dy="14.00">&#160;</tspan>
-<tspan x="2778.66" dy="14.00">Rendered Component card page for COM-001.</tspan>
+<path class="node-shape" d="M 2737.35 1644.72 L 2737.35 1742.72 L 3218.68 1742.72 L 3218.68 1644.72 L 3074.28 1644.72 L 3074.28 1630.72 L 2881.75 1630.72 L 2881.75 1644.72 Z" />
+<text class="node-icon" x="2776.35" y="1658.72" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="1665.72" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-019: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">COM-001.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Component card page for COM-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-020" data-layout-node="ART-020">
-<path class="node-shape" d="M 2717.33 2954.64 L 2717.33 3052.64 L 3185.33 3052.64 L 3185.33 2954.64 L 3044.93 2954.64 L 3044.93 2940.64 L 2857.73 2940.64 L 2857.73 2954.64 Z" />
-<text class="node-icon" x="2727.33" y="2968.64" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2785.33" y="2975.64" text-anchor="start" dominant-baseline="middle">
-<tspan x="2785.33">ART-020: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2785.33" dy="14.00">CNS-001.md</tspan>
-<tspan x="2785.33" dy="14.00">&#160;</tspan>
-<tspan x="2785.33" dy="14.00">Rendered Constraint card page for CNS-001.</tspan>
+<path class="node-shape" d="M 2744.02 1780.65 L 2744.02 1878.66 L 3212.02 1878.66 L 3212.02 1780.65 L 3071.62 1780.65 L 3071.62 1766.65 L 2884.42 1766.65 L 2884.42 1780.65 Z" />
+<text class="node-icon" x="2783.02" y="1794.66" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="1801.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-020: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">CNS-001.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Constraint card page for CNS-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-021" data-layout-node="ART-021">
-<path class="node-shape" d="M 2728.66 3090.67 L 2728.66 3188.67 L 3174.00 3188.67 L 3174.00 3090.67 L 3040.39 3090.67 L 3040.39 3076.67 L 2862.26 3076.67 L 2862.26 3090.67 Z" />
-<text class="node-icon" x="2738.66" y="3104.67" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2796.66" y="3111.67" text-anchor="start" dominant-baseline="middle">
-<tspan x="2796.66">ART-021: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2796.66" dy="14.00">FEA-001.md</tspan>
-<tspan x="2796.66" dy="14.00">&#160;</tspan>
-<tspan x="2796.66" dy="14.00">Rendered Feature card page for FEA-001.</tspan>
+<path class="node-shape" d="M 2755.35 1916.69 L 2755.35 2014.69 L 3200.68 2014.69 L 3200.68 1916.69 L 3067.08 1916.69 L 3067.08 1902.69 L 2888.95 1902.69 L 2888.95 1916.69 Z" />
+<text class="node-icon" x="2794.35" y="1930.69" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="1937.69" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-021: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">FEA-001.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Feature card page for FEA-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-022" data-layout-node="ART-022">
-<path class="node-shape" d="M 2726.00 3226.66 L 2726.00 3324.67 L 3176.66 3324.67 L 3176.66 3226.66 L 3041.46 3226.66 L 3041.46 3212.66 L 2861.20 3212.66 L 2861.20 3226.66 Z" />
-<text class="node-icon" x="2736.00" y="3240.67" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2794.00" y="3247.67" text-anchor="start" dominant-baseline="middle">
-<tspan x="2794.00">ART-022: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2794.00" dy="14.00">PRO-001.md</tspan>
-<tspan x="2794.00" dy="14.00">&#160;</tspan>
-<tspan x="2794.00" dy="14.00">Rendered Process card page for PRO-001.</tspan>
+<path class="node-shape" d="M 2752.68 2052.72 L 2752.68 2150.72 L 3203.35 2150.72 L 3203.35 2052.72 L 3068.15 2052.72 L 3068.15 2038.72 L 2887.88 2038.72 L 2887.88 2052.72 Z" />
+<text class="node-icon" x="2791.68" y="2066.72" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="2073.72" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-022: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">PRO-001.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Process card page for PRO-001.</tspan>
 </text>
 </g>
 <g class="node card-type-artifact" data-card-id="ART-023" data-layout-node="ART-023">
-<path class="node-shape" d="M 2708.00 3362.67 L 2708.00 3460.67 L 3194.66 3460.67 L 3194.66 3362.67 L 3048.66 3362.67 L 3048.66 3348.67 L 2854.00 3348.67 L 2854.00 3362.67 Z" />
-<text class="node-icon" x="2718.00" y="3376.67" text-anchor="start" dominant-baseline="hanging">📁</text>
-<text class="node-label" x="2776.00" y="3383.67" text-anchor="start" dominant-baseline="middle">
-<tspan x="2776.00">ART-023: </tspan><tspan font-weight="700">Artifact</tspan>
-<tspan x="2776.00" dy="14.00">REQ-001.md</tspan>
-<tspan x="2776.00" dy="14.00">&#160;</tspan>
-<tspan x="2776.00" dy="14.00">Rendered Requirement card page for REQ-001.</tspan>
+<path class="node-shape" d="M 2734.68 2188.65 L 2734.68 2286.66 L 3221.35 2286.66 L 3221.35 2188.65 L 3075.35 2188.65 L 3075.35 2174.65 L 2880.68 2174.65 L 2880.68 2188.65 Z" />
+<text class="node-icon" x="2773.68" y="2202.66" text-anchor="middle" dominant-baseline="hanging">📁</text>
+<text class="node-label" x="3007.02" y="2209.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">ART-023: </tspan><tspan font-weight="700">Artifact</tspan>
+<tspan x="3007.02" dy="14.00">REQ-001.md</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Rendered Requirement card page for REQ-001.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-001" data-layout-node="COM-001">
-<rect class="node-shape" x="3359.99" y="697.30" width="572.00" height="156.00" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 3367.99 705.30 L 3923.98 705.30 L 3923.98 845.30" />
-<text class="node-icon" x="3369.99" y="733.30" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="3427.99" y="740.30" text-anchor="start" dominant-baseline="middle">
-<tspan x="3427.99">COM-001: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="3427.99" dy="14.00">Shared Library</tspan>
-<tspan x="3427.99" dy="14.00">&#160;</tspan>
-<tspan x="3427.99" dy="14.00">Shared library component used across tooling surfaces to load, validate,</tspan>
-<tspan x="3427.99" dy="14.00">update, and save Aurora models. It is the implementation home for common</tspan>
-<tspan x="3427.99" dy="14.00">parsing, invariants, deterministic rendering, and safe write semantics.</tspan>
+<rect class="node-shape" x="3391.95" y="3355.34" width="572.00" height="156.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 3399.95 3363.34 L 3955.95 3363.34 L 3955.95 3503.34" />
+<text class="node-icon" x="3430.95" y="3391.34" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="3706.95" y="3398.34" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3706.95">COM-001: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="3706.95" dy="14.00">Shared Library</tspan>
+<tspan x="3706.95" dy="14.00">&#160;</tspan>
+<tspan x="3706.95" dy="14.00">Shared library component used across tooling surfaces to load, validate,</tspan>
+<tspan x="3706.95" dy="14.00">update, and save Aurora models. It is the implementation home for common</tspan>
+<tspan x="3706.95" dy="14.00">parsing, invariants, deterministic rendering, and safe write semantics.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-002" data-layout-node="COM-002">
-<rect class="node-shape" x="1318.71" y="622.68" width="541.33" height="126.66" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 1326.71 630.68 L 1852.04 630.68 L 1852.04 741.35" />
-<text class="node-icon" x="1328.71" y="658.02" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="1386.71" y="665.02" text-anchor="start" dominant-baseline="middle">
-<tspan x="1386.71">COM-002: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="1386.71" dy="14.00">Tauri Svelte UI</tspan>
-<tspan x="1386.71" dy="14.00">&#160;</tspan>
-<tspan x="1386.71" dy="14.00">The Tauri/Svelte front-end UI component for the Editor application.</tspan>
+<rect class="node-shape" x="1318.71" y="3063.39" width="541.33" height="126.66" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 1326.71 3071.39 L 1852.04 3071.39 L 1852.04 3182.05" />
+<text class="node-icon" x="1357.71" y="3098.72" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="1618.38" y="3105.72" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1618.38">COM-002: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="1618.38" dy="14.00">Tauri Svelte UI</tspan>
+<tspan x="1618.38" dy="14.00">&#160;</tspan>
+<tspan x="1618.38" dy="14.00">The Tauri/Svelte front-end UI component for the Editor application.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-003" data-layout-node="COM-003">
-<rect class="node-shape" x="1992.67" y="720.03" width="552.00" height="126.66" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 2000.67 728.03 L 2536.67 728.03 L 2536.67 838.69" />
-<text class="node-icon" x="2002.67" y="748.36" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="2060.67" y="755.36" text-anchor="start" dominant-baseline="middle">
-<tspan x="2060.67">COM-003: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="2060.67" dy="14.00">Tauri Rust Backend</tspan>
-<tspan x="2060.67" dy="14.00">&#160;</tspan>
-<tspan x="2060.67" dy="14.00">The Rust backend component for the Editor application, hosting the</tspan>
-<tspan x="2060.67" dy="14.00">native Tauri commands and integrations.</tspan>
+<rect class="node-shape" x="2001.98" y="3063.39" width="552.00" height="126.66" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2009.98 3071.39 L 2545.98 3071.39 L 2545.98 3182.05" />
+<text class="node-icon" x="2040.98" y="3091.72" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="2306.98" y="3098.72" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2306.98">COM-003: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="2306.98" dy="14.00">Tauri Rust Backend</tspan>
+<tspan x="2306.98" dy="14.00">&#160;</tspan>
+<tspan x="2306.98" dy="14.00">The Rust backend component for the Editor application, hosting the</tspan>
+<tspan x="2306.98" dy="14.00">native Tauri commands and integrations.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-004" data-layout-node="COM-004">
-<rect class="node-shape" x="1310.04" y="1287.96" width="558.66" height="126.66" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 1318.04 1295.96 L 1860.71 1295.96 L 1860.71 1406.63" />
-<text class="node-icon" x="1320.04" y="1316.30" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="1378.04" y="1323.30" text-anchor="start" dominant-baseline="middle">
-<tspan x="1378.04">COM-004: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="1378.04" dy="14.00">Explorer Tree View</tspan>
-<tspan x="1378.04" dy="14.00">&#160;</tspan>
-<tspan x="1378.04" dy="14.00">Editor UI component that presents an explorer tree over the Aurora</tspan>
-<tspan x="1378.04" dy="14.00">model.</tspan>
+<rect class="node-shape" x="1310.04" y="3515.35" width="558.66" height="126.66" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 1318.04 3523.35 L 1860.71 3523.35 L 1860.71 3634.01" />
+<text class="node-icon" x="1349.04" y="3543.68" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="1618.38" y="3550.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1618.38">COM-004: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="1618.38" dy="14.00">Explorer Tree View</tspan>
+<tspan x="1618.38" dy="14.00">&#160;</tspan>
+<tspan x="1618.38" dy="14.00">Editor UI component that presents an explorer tree over the Aurora</tspan>
+<tspan x="1618.38" dy="14.00">model.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-005" data-layout-node="COM-005">
-<rect class="node-shape" x="1330.71" y="986.72" width="517.33" height="126.66" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 1338.71 994.72 L 1840.04 994.72 L 1840.04 1105.38" />
-<text class="node-icon" x="1340.71" y="1015.05" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="1398.71" y="1022.05" text-anchor="start" dominant-baseline="middle">
-<tspan x="1398.71">COM-005: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="1398.71" dy="14.00">Mind-Map Like View</tspan>
-<tspan x="1398.71" dy="14.00">&#160;</tspan>
-<tspan x="1398.71" dy="14.00">Editor UI component that provides a mind-map-like visualization</tspan>
-<tspan x="1398.71" dy="14.00">for navigating the Aurora model.</tspan>
+<rect class="node-shape" x="1330.71" y="3666.01" width="517.33" height="126.66" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 1338.71 3674.01 L 1840.04 3674.01 L 1840.04 3784.67" />
+<text class="node-icon" x="1369.71" y="3694.34" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="1618.38" y="3701.34" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1618.38">COM-005: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="1618.38" dy="14.00">Mind-Map Like View</tspan>
+<tspan x="1618.38" dy="14.00">&#160;</tspan>
+<tspan x="1618.38" dy="14.00">Editor UI component that provides a mind-map-like visualization</tspan>
+<tspan x="1618.38" dy="14.00">for navigating the Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-006" data-layout-node="COM-006">
-<rect class="node-shape" x="1321.38" y="836.00" width="536.00" height="126.66" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 1329.38 844.00 L 1849.37 844.00 L 1849.37 954.66" />
-<text class="node-icon" x="1331.38" y="864.33" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="1389.38" y="871.33" text-anchor="start" dominant-baseline="middle">
-<tspan x="1389.38">COM-006: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="1389.38" dy="14.00">Edit View</tspan>
-<tspan x="1389.38" dy="14.00">&#160;</tspan>
-<tspan x="1389.38" dy="14.00">Editor UI component for editing cards, attributes, and links in an</tspan>
-<tspan x="1389.38" dy="14.00">Aurora model.</tspan>
+<rect class="node-shape" x="1321.38" y="3214.01" width="536.00" height="126.66" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 1329.38 3222.01 L 1849.37 3222.01 L 1849.37 3332.68" />
+<text class="node-icon" x="1360.38" y="3242.34" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="1618.38" y="3249.34" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1618.38">COM-006: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="1618.38" dy="14.00">Edit View</tspan>
+<tspan x="1618.38" dy="14.00">&#160;</tspan>
+<tspan x="1618.38" dy="14.00">Editor UI component for editing cards, attributes, and links in an</tspan>
+<tspan x="1618.38" dy="14.00">Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-007" data-layout-node="COM-007">
-<rect class="node-shape" x="1298.71" y="1137.34" width="581.34" height="126.66" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 1306.71 1145.34 L 1872.04 1145.34 L 1872.04 1256.00" />
-<text class="node-icon" x="1308.71" y="1165.67" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="1366.71" y="1172.67" text-anchor="start" dominant-baseline="middle">
-<tspan x="1366.71">COM-007: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="1366.71" dy="14.00">Markdown View</tspan>
-<tspan x="1366.71" dy="14.00">&#160;</tspan>
-<tspan x="1366.71" dy="14.00">Editor UI component for viewing and editing human-readable Markdown</tspan>
-<tspan x="1366.71" dy="14.00">renderings of the Aurora model.</tspan>
+<rect class="node-shape" x="1298.71" y="3364.64" width="581.34" height="126.66" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 1306.71 3372.64 L 1872.04 3372.64 L 1872.04 3483.30" />
+<text class="node-icon" x="1337.71" y="3392.97" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="1618.38" y="3399.97" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1618.38">COM-007: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="1618.38" dy="14.00">Markdown View</tspan>
+<tspan x="1618.38" dy="14.00">&#160;</tspan>
+<tspan x="1618.38" dy="14.00">Editor UI component for viewing and editing human-readable Markdown</tspan>
+<tspan x="1618.38" dy="14.00">renderings of the Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-008" data-layout-node="COM-008">
-<rect class="node-shape" x="2666.66" y="1432.69" width="569.34" height="141.33" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 2674.66 1440.69 L 3228.00 1440.69 L 3228.00 1566.03" />
-<text class="node-icon" x="2676.66" y="1468.36" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="2734.66" y="1475.36" text-anchor="start" dominant-baseline="middle">
-<tspan x="2734.66">COM-008: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="2734.66" dy="14.00">MCP Server</tspan>
-<tspan x="2734.66" dy="14.00">&#160;</tspan>
-<tspan x="2734.66" dy="14.00">Model Context Protocol (MCP) server component used by the VSCode</tspan>
-<tspan x="2734.66" dy="14.00">extension to expose Aurora model operations via the shared library.</tspan>
+<rect class="node-shape" x="2693.35" y="4364.01" width="569.34" height="141.33" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2701.35 4372.01 L 3254.68 4372.01 L 3254.68 4497.34" />
+<text class="node-icon" x="2732.35" y="4399.68" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="3007.02" y="4406.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">COM-008: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="3007.02" dy="14.00">MCP Server</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Model Context Protocol (MCP) server component used by the VSCode</tspan>
+<tspan x="3007.02" dy="14.00">extension to expose Aurora model operations via the shared library.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-009" data-layout-node="COM-009">
-<rect class="node-shape" x="4030.68" y="824.00" width="558.66" height="126.66" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 4038.68 832.00 L 4581.35 832.00 L 4581.35 942.66" />
-<text class="node-icon" x="4040.68" y="852.33" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="4098.68" y="859.33" text-anchor="start" dominant-baseline="middle">
-<tspan x="4098.68">COM-009: </tspan><tspan font-weight="700">Component</tspan><tspan> (struct)</tspan>
-<tspan x="4098.68" dy="14.00">Aurora</tspan>
-<tspan x="4098.68" dy="14.00">&#160;</tspan>
-<tspan x="4098.68" dy="14.00">Core Aurora domain component providing the aggregate root for working</tspan>
-<tspan x="4098.68" dy="14.00">with a set of models.</tspan>
+<rect class="node-shape" x="4040.00" y="3482.04" width="558.66" height="126.66" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 4048.00 3490.04 L 4590.66 3490.04 L 4590.66 3600.71" />
+<text class="node-icon" x="4079.00" y="3510.38" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="4348.33" y="3517.38" text-anchor="middle" dominant-baseline="middle">
+<tspan x="4348.33">COM-009: </tspan><tspan font-weight="700">Component</tspan><tspan> (struct)</tspan>
+<tspan x="4348.33" dy="14.00">Aurora</tspan>
+<tspan x="4348.33" dy="14.00">&#160;</tspan>
+<tspan x="4348.33" dy="14.00">Core Aurora domain component providing the aggregate root for working</tspan>
+<tspan x="4348.33" dy="14.00">with a set of models.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-010" data-layout-node="COM-010">
-<rect class="node-shape" x="4698.67" y="762.65" width="564.00" height="126.66" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 4706.67 770.65 L 5254.67 770.65 L 5254.67 881.32" />
-<text class="node-icon" x="4708.67" y="790.98" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="4766.67" y="797.98" text-anchor="start" dominant-baseline="middle">
-<tspan x="4766.67">COM-010: </tspan><tspan font-weight="700">Component</tspan><tspan> (struct)</tspan>
-<tspan x="4766.67" dy="14.00">Model</tspan>
-<tspan x="4766.67" dy="14.00">&#160;</tspan>
-<tspan x="4766.67" dy="14.00">Aurora model domain component representing a directed graph of cards and</tspan>
-<tspan x="4766.67" dy="14.00">links.</tspan>
+<rect class="node-shape" x="4674.67" y="3420.70" width="564.00" height="126.66" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 4682.67 3428.70 L 5230.67 3428.70 L 5230.67 3539.36" />
+<text class="node-icon" x="4713.67" y="3449.03" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="4985.67" y="3456.03" text-anchor="middle" dominant-baseline="middle">
+<tspan x="4985.67">COM-010: </tspan><tspan font-weight="700">Component</tspan><tspan> (struct)</tspan>
+<tspan x="4985.67" dy="14.00">Model</tspan>
+<tspan x="4985.67" dy="14.00">&#160;</tspan>
+<tspan x="4985.67" dy="14.00">Aurora model domain component representing a directed graph of cards and</tspan>
+<tspan x="4985.67" dy="14.00">links.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-011" data-layout-node="COM-011">
-<rect class="node-shape" x="5372.00" y="711.96" width="534.66" height="126.66" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 5380.00 719.96 L 5898.66 719.96 L 5898.66 830.63" />
-<text class="node-icon" x="5382.00" y="740.30" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="5440.00" y="747.30" text-anchor="start" dominant-baseline="middle">
-<tspan x="5440.00">COM-011: </tspan><tspan font-weight="700">Component</tspan><tspan> (struct)</tspan>
-<tspan x="5440.00" dy="14.00">Card</tspan>
-<tspan x="5440.00" dy="14.00">&#160;</tspan>
-<tspan x="5440.00" dy="14.00">Aurora card domain component representing a single architectural</tspan>
-<tspan x="5440.00" dy="14.00">element with links and audit trail.</tspan>
+<rect class="node-shape" x="5314.68" y="3370.01" width="534.66" height="126.66" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 5322.68 3378.01 L 5841.35 3378.01 L 5841.35 3488.68" />
+<text class="node-icon" x="5353.68" y="3398.34" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="5611.02" y="3405.34" text-anchor="middle" dominant-baseline="middle">
+<tspan x="5611.02">COM-011: </tspan><tspan font-weight="700">Component</tspan><tspan> (struct)</tspan>
+<tspan x="5611.02" dy="14.00">Card</tspan>
+<tspan x="5611.02" dy="14.00">&#160;</tspan>
+<tspan x="5611.02" dy="14.00">Aurora card domain component representing a single architectural</tspan>
+<tspan x="5611.02" dy="14.00">element with links and audit trail.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-012" data-layout-node="COM-012">
-<rect class="node-shape" x="2682.66" y="452.63" width="537.33" height="141.33" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 2690.66 460.63 L 3211.99 460.63 L 3211.99 585.96" />
-<text class="node-icon" x="2692.66" y="488.30" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="2750.66" y="495.30" text-anchor="start" dominant-baseline="middle">
-<tspan x="2750.66">COM-012: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="2750.66" dy="14.00">Aurora CLI</tspan>
-<tspan x="2750.66" dy="14.00">&#160;</tspan>
-<tspan x="2750.66" dy="14.00">Command-line interface component that orchestrates validation, view</tspan>
-<tspan x="2750.66" dy="14.00">rendering, and compact export for Aurora models.</tspan>
+<rect class="node-shape" x="2009.32" y="1547.99" width="537.33" height="141.33" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2017.32 1555.99 L 2538.65 1555.99 L 2538.65 1681.32" />
+<text class="node-icon" x="2048.32" y="1583.66" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="2306.98" y="1590.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2306.98">COM-012: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="2306.98" dy="14.00">Aurora CLI</tspan>
+<tspan x="2306.98" dy="14.00">&#160;</tspan>
+<tspan x="2306.98" dy="14.00">Command-line interface component that orchestrates validation, view</tspan>
+<tspan x="2306.98" dy="14.00">rendering, and compact export for Aurora models.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-013" data-layout-node="COM-013">
-<rect class="node-shape" x="1987.34" y="1748.63" width="562.67" height="141.33" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 1995.34 1756.63 L 2542.00 1756.63 L 2542.00 1881.96" />
-<text class="node-icon" x="1997.34" y="1777.30" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="2055.34" y="1784.30" text-anchor="start" dominant-baseline="middle">
-<tspan x="2055.34">COM-013: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="2055.34" dy="14.00">VSCode Extension Host</tspan>
-<tspan x="2055.34" dy="14.00">&#160;</tspan>
-<tspan x="2055.34" dy="14.00">Extension host component responsible for activation, command</tspan>
-<tspan x="2055.34" dy="14.00">registration, workspace integration, and coordinating model operations</tspan>
-<tspan x="2055.34" dy="14.00">for the VSCode extension.</tspan>
+<rect class="node-shape" x="1996.65" y="4178.68" width="562.67" height="141.33" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2004.65 4186.68 L 2551.32 4186.68 L 2551.32 4312.01" />
+<text class="node-icon" x="2035.65" y="4207.34" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="2306.98" y="4214.34" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2306.98">COM-013: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="2306.98" dy="14.00">VSCode Extension Host</tspan>
+<tspan x="2306.98" dy="14.00">&#160;</tspan>
+<tspan x="2306.98" dy="14.00">Extension host component responsible for activation, command</tspan>
+<tspan x="2306.98" dy="14.00">registration, workspace integration, and coordinating model operations</tspan>
+<tspan x="2306.98" dy="14.00">for the VSCode extension.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-014" data-layout-node="COM-014">
-<rect class="node-shape" x="1297.38" y="1706.01" width="584.00" height="141.33" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 1305.38 1714.01 L 1873.37 1714.01 L 1873.37 1839.34" />
-<text class="node-icon" x="1307.38" y="1741.67" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="1365.38" y="1748.67" text-anchor="start" dominant-baseline="middle">
-<tspan x="1365.38">COM-014: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="1365.38" dy="14.00">Webview UI Host</tspan>
-<tspan x="1365.38" dy="14.00">&#160;</tspan>
-<tspan x="1365.38" dy="14.00">Webview UI component hosting interactive model browsing, editing,</tspan>
-<tspan x="1365.38" dy="14.00">visualization, and preview experiences within VSCode.</tspan>
+<rect class="node-shape" x="1297.38" y="4084.01" width="584.00" height="141.33" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 1305.38 4092.01 L 1873.37 4092.01 L 1873.37 4217.34" />
+<text class="node-icon" x="1336.38" y="4119.68" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="1618.38" y="4126.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1618.38">COM-014: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="1618.38" dy="14.00">Webview UI Host</tspan>
+<tspan x="1618.38" dy="14.00">&#160;</tspan>
+<tspan x="1618.38" dy="14.00">Webview UI component hosting interactive model browsing, editing,</tspan>
+<tspan x="1618.38" dy="14.00">visualization, and preview experiences within VSCode.</tspan>
 </text>
 </g>
 <g class="node card-type-component" data-card-id="COM-015" data-layout-node="COM-015">
-<rect class="node-shape" x="2661.99" y="1928.63" width="578.67" height="141.33" rx="6.00" ry="6.00" />
-<path class="node-shape node-shape-outline" d="M 2669.99 1936.63 L 3232.66 1936.63 L 3232.66 2061.96" />
-<text class="node-icon" x="2671.99" y="1964.30" text-anchor="start" dominant-baseline="hanging">🧊</text>
-<text class="node-label" x="2729.99" y="1971.30" text-anchor="start" dominant-baseline="middle">
-<tspan x="2729.99">COM-015: </tspan><tspan font-weight="700">Component</tspan>
-<tspan x="2729.99" dy="14.00">Workspace Adapter</tspan>
-<tspan x="2729.99" dy="14.00">&#160;</tspan>
-<tspan x="2729.99" dy="14.00">Component that mediates workspace file operations (open, watch, and</tspan>
-<tspan x="2729.99" dy="14.00">save) with safe defaults and trust-aware behaviors.</tspan>
+<rect class="node-shape" x="2688.68" y="3868.01" width="578.67" height="141.33" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 2696.68 3876.01 L 3259.35 3876.01 L 3259.35 4001.34" />
+<text class="node-icon" x="2727.68" y="3903.68" text-anchor="middle" dominant-baseline="hanging">🧊</text>
+<text class="node-label" x="3007.02" y="3910.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">COM-015: </tspan><tspan font-weight="700">Component</tspan>
+<tspan x="3007.02" dy="14.00">Workspace Adapter</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Component that mediates workspace file operations (open, watch, and</tspan>
+<tspan x="3007.02" dy="14.00">save) with safe defaults and trust-aware behaviors.</tspan>
 </text>
 </g>
 <g class="node card-type-data-store" data-card-id="DTS-001" data-layout-node="DTS-001">
-<ellipse class="node-shape" cx="3645.98" cy="3002.52" rx="257.33" ry="34.98" />
-<rect class="node-shape" x="3388.65" y="3002.52" width="514.67" height="124.37" />
-<ellipse class="node-shape node-shape-outline" cx="3645.98" cy="3126.89" rx="257.33" ry="34.98" />
-<text class="node-icon" x="3398.65" y="3029.70" text-anchor="start" dominant-baseline="hanging">🗄️</text>
-<text class="node-label" x="3456.65" y="3036.70" text-anchor="start" dominant-baseline="middle">
-<tspan x="3456.65">DTS-001: </tspan><tspan font-weight="700">Data Store</tspan>
-<tspan x="3456.65" dy="14.00">Local File System</tspan>
-<tspan x="3456.65" dy="14.00">&#160;</tspan>
-<tspan x="3456.65" dy="14.00">Local file system (workspace) used as the primary persistence</tspan>
-<tspan x="3456.65" dy="14.00">mechanism for Aurora model files and generated outputs.</tspan>
+<ellipse class="node-shape" cx="3677.95" cy="1557.81" rx="257.33" ry="34.98" />
+<rect class="node-shape" x="3420.62" y="1557.81" width="514.67" height="124.37" />
+<ellipse class="node-shape node-shape-outline" cx="3677.95" cy="1682.19" rx="257.33" ry="34.98" />
+<text class="node-icon" x="3459.62" y="1585.00" text-anchor="middle" dominant-baseline="hanging">🗄️</text>
+<text class="node-label" x="3706.95" y="1592.00" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3706.95">DTS-001: </tspan><tspan font-weight="700">Data Store</tspan>
+<tspan x="3706.95" dy="14.00">Local File System</tspan>
+<tspan x="3706.95" dy="14.00">&#160;</tspan>
+<tspan x="3706.95" dy="14.00">Local file system (workspace) used as the primary persistence</tspan>
+<tspan x="3706.95" dy="14.00">mechanism for Aurora model files and generated outputs.</tspan>
 </text>
 </g>
 <g class="node card-type-data-store" data-card-id="DTS-002" data-layout-node="DTS-002">
-<ellipse class="node-shape" cx="3645.98" cy="1937.11" rx="272.67" ry="34.98" />
-<rect class="node-shape" x="3373.32" y="1937.11" width="545.34" height="124.37" />
-<ellipse class="node-shape node-shape-outline" cx="3645.98" cy="2061.48" rx="272.67" ry="34.98" />
-<text class="node-icon" x="3383.32" y="1964.30" text-anchor="start" dominant-baseline="hanging">🗄️</text>
-<text class="node-label" x="3441.32" y="1971.30" text-anchor="start" dominant-baseline="middle">
-<tspan x="3441.32">DTS-002: </tspan><tspan font-weight="700">Data Store</tspan>
-<tspan x="3441.32" dy="14.00">Extension State Store</tspan>
-<tspan x="3441.32" dy="14.00">&#160;</tspan>
-<tspan x="3441.32" dy="14.00">VSCode extension storage for persisted settings and</tspan>
-<tspan x="3441.32" dy="14.00">non-source-of-truth state (cache, UI state, last-opened model, etc.).</tspan>
+<ellipse class="node-shape" cx="3677.95" cy="3876.49" rx="272.67" ry="34.98" />
+<rect class="node-shape" x="3405.28" y="3876.49" width="545.34" height="124.37" />
+<ellipse class="node-shape node-shape-outline" cx="3677.95" cy="4000.86" rx="272.67" ry="34.98" />
+<text class="node-icon" x="3444.28" y="3903.68" text-anchor="middle" dominant-baseline="hanging">🗄️</text>
+<text class="node-label" x="3706.95" y="3910.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3706.95">DTS-002: </tspan><tspan font-weight="700">Data Store</tspan>
+<tspan x="3706.95" dy="14.00">Extension State Store</tspan>
+<tspan x="3706.95" dy="14.00">&#160;</tspan>
+<tspan x="3706.95" dy="14.00">VSCode extension storage for persisted settings and</tspan>
+<tspan x="3706.95" dy="14.00">non-source-of-truth state (cache, UI state, last-opened model, etc.).</tspan>
 </text>
 </g>
 <g class="node card-type-interface" data-card-id="INT-001" data-layout-node="INT-001">
-<path class="node-shape" d="M 3370.65 452.63 L 3905.32 452.63 L 3921.32 468.63 L 3921.32 593.96 L 3370.65 593.96 Z" />
-<path class="node-shape node-shape-outline" d="M 3905.32 452.63 L 3905.32 468.63 L 3921.32 468.63" />
-<text class="node-icon" x="3380.65" y="488.30" text-anchor="start" dominant-baseline="hanging">🔌</text>
-<text class="node-label" x="3438.65" y="495.30" text-anchor="start" dominant-baseline="middle">
-<tspan x="3438.65">INT-001: </tspan><tspan font-weight="700">Interface</tspan>
-<tspan x="3438.65" dy="14.00">CLI Interface</tspan>
-<tspan x="3438.65" dy="14.00">&#160;</tspan>
-<tspan x="3438.65" dy="14.00">Command-line interface surface exposing Aurora model operations as</tspan>
-<tspan x="3438.65" dy="14.00">subcommands (validate, render-all, compact, etc.).</tspan>
+<path class="node-shape" d="M 2702.68 317.37 L 3237.35 317.37 L 3253.35 333.37 L 3253.35 458.70 L 2702.68 458.70 Z" />
+<path class="node-shape node-shape-outline" d="M 3237.35 317.37 L 3237.35 333.37 L 3253.35 333.37" />
+<text class="node-icon" x="2741.68" y="353.03" text-anchor="middle" dominant-baseline="hanging">🔌</text>
+<text class="node-label" x="3007.02" y="360.03" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">INT-001: </tspan><tspan font-weight="700">Interface</tspan>
+<tspan x="3007.02" dy="14.00">CLI Interface</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Command-line interface surface exposing Aurora model operations as</tspan>
+<tspan x="3007.02" dy="14.00">subcommands (validate, render-all, compact, etc.).</tspan>
 </text>
 </g>
 <g class="node card-type-interface" data-card-id="INT-002" data-layout-node="INT-002">
-<path class="node-shape" d="M 3361.98 1440.03 L 3913.99 1440.03 L 3929.99 1456.03 L 3929.99 1566.69 L 3361.98 1566.69 Z" />
-<path class="node-shape node-shape-outline" d="M 3913.99 1440.03 L 3913.99 1456.03 L 3929.99 1456.03" />
-<text class="node-icon" x="3371.98" y="1468.36" text-anchor="start" dominant-baseline="hanging">🔌</text>
-<text class="node-label" x="3429.98" y="1475.36" text-anchor="start" dominant-baseline="middle">
-<tspan x="3429.98">INT-002: </tspan><tspan font-weight="700">Interface</tspan>
-<tspan x="3429.98" dy="14.00">MCP Interface</tspan>
-<tspan x="3429.98" dy="14.00">&#160;</tspan>
-<tspan x="3429.98" dy="14.00">Model Context Protocol interface surface exposing Aurora operations to</tspan>
-<tspan x="3429.98" dy="14.00">in-editor tooling via an MCP server.</tspan>
+<path class="node-shape" d="M 3393.95 4371.34 L 3945.95 4371.34 L 3961.95 4387.34 L 3961.95 4498.01 L 3393.95 4498.01 Z" />
+<path class="node-shape node-shape-outline" d="M 3945.95 4371.34 L 3945.95 4387.34 L 3961.95 4387.34" />
+<text class="node-icon" x="3432.95" y="4399.68" text-anchor="middle" dominant-baseline="hanging">🔌</text>
+<text class="node-label" x="3706.95" y="4406.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3706.95">INT-002: </tspan><tspan font-weight="700">Interface</tspan>
+<tspan x="3706.95" dy="14.00">MCP Interface</tspan>
+<tspan x="3706.95" dy="14.00">&#160;</tspan>
+<tspan x="3706.95" dy="14.00">Model Context Protocol interface surface exposing Aurora operations to</tspan>
+<tspan x="3706.95" dy="14.00">in-editor tooling via an MCP server.</tspan>
 </text>
 </g>
 <g class="node card-type-interface" data-card-id="INT-003" data-layout-node="INT-003">
-<path class="node-shape" d="M 2670.00 823.29 L 3216.66 823.29 L 3232.66 839.29 L 3232.66 964.62 L 2670.00 964.62 Z" />
-<path class="node-shape node-shape-outline" d="M 3216.66 823.29 L 3216.66 839.29 L 3232.66 839.29" />
-<text class="node-icon" x="2680.00" y="851.95" text-anchor="start" dominant-baseline="hanging">🔌</text>
-<text class="node-label" x="2738.00" y="858.95" text-anchor="start" dominant-baseline="middle">
-<tspan x="2738.00">INT-003: </tspan><tspan font-weight="700">Interface</tspan>
-<tspan x="2738.00" dy="14.00">Editor Backend API</tspan>
-<tspan x="2738.00" dy="14.00">&#160;</tspan>
-<tspan x="2738.00" dy="14.00">Native command interface between the Editor UI and the Tauri Rust</tspan>
-<tspan x="2738.00" dy="14.00">backend for model operations (load, validate, update, render previews,</tspan>
-<tspan x="2738.00" dy="14.00">save).</tspan>
+<path class="node-shape" d="M 2696.68 3174.71 L 3243.35 3174.71 L 3259.35 3190.71 L 3259.35 3316.04 L 2696.68 3316.04 Z" />
+<path class="node-shape node-shape-outline" d="M 3243.35 3174.71 L 3243.35 3190.71 L 3259.35 3190.71" />
+<text class="node-icon" x="2735.68" y="3203.38" text-anchor="middle" dominant-baseline="hanging">🔌</text>
+<text class="node-label" x="3007.02" y="3210.38" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">INT-003: </tspan><tspan font-weight="700">Interface</tspan>
+<tspan x="3007.02" dy="14.00">Editor Backend API</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Native command interface between the Editor UI and the Tauri Rust</tspan>
+<tspan x="3007.02" dy="14.00">backend for model operations (load, validate, update, render previews,</tspan>
+<tspan x="3007.02" dy="14.00">save).</tspan>
 </text>
 </g>
 <g class="node card-type-interface" data-card-id="INT-004" data-layout-node="INT-004">
-<path class="node-shape" d="M 2666.66 1763.32 L 3220.00 1763.32 L 3236.00 1779.32 L 3236.00 1904.65 L 2666.66 1904.65 Z" />
-<path class="node-shape node-shape-outline" d="M 3220.00 1763.32 L 3220.00 1779.32 L 3236.00 1779.32" />
-<text class="node-icon" x="2676.66" y="1798.98" text-anchor="start" dominant-baseline="hanging">🔌</text>
-<text class="node-label" x="2734.66" y="1805.98" text-anchor="start" dominant-baseline="middle">
-<tspan x="2734.66">INT-004: </tspan><tspan font-weight="700">Interface</tspan>
-<tspan x="2734.66" dy="14.00">VSCode Webview Messaging API</tspan>
-<tspan x="2734.66" dy="14.00">&#160;</tspan>
-<tspan x="2734.66" dy="14.00">Message-based interface between VSCode extension host and webview UI for</tspan>
-<tspan x="2734.66" dy="14.00">model navigation, editing, and preview rendering.</tspan>
+<path class="node-shape" d="M 2693.35 4198.68 L 3246.68 4198.68 L 3262.68 4214.68 L 3262.68 4340.01 L 2693.35 4340.01 Z" />
+<path class="node-shape node-shape-outline" d="M 3246.68 4198.68 L 3246.68 4214.68 L 3262.68 4214.68" />
+<text class="node-icon" x="2732.35" y="4234.34" text-anchor="middle" dominant-baseline="hanging">🔌</text>
+<text class="node-label" x="3007.02" y="4241.34" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">INT-004: </tspan><tspan font-weight="700">Interface</tspan>
+<tspan x="3007.02" dy="14.00">VSCode Webview Messaging API</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">Message-based interface between VSCode extension host and webview UI for</tspan>
+<tspan x="3007.02" dy="14.00">model navigation, editing, and preview rendering.</tspan>
 </text>
 </g>
 <g class="node card-type-interface" data-card-id="INT-005" data-layout-node="INT-005">
-<path class="node-shape" d="M 2678.00 1598.01 L 3208.66 1598.01 L 3224.66 1614.01 L 3224.66 1739.34 L 2678.00 1739.34 Z" />
-<path class="node-shape node-shape-outline" d="M 3208.66 1598.01 L 3208.66 1614.01 L 3224.66 1614.01" />
-<text class="node-icon" x="2688.00" y="1626.67" text-anchor="start" dominant-baseline="hanging">🔌</text>
-<text class="node-label" x="2746.00" y="1633.67" text-anchor="start" dominant-baseline="middle">
-<tspan x="2746.00">INT-005: </tspan><tspan font-weight="700">Interface</tspan>
-<tspan x="2746.00" dy="14.00">VSCode Commands Interface</tspan>
-<tspan x="2746.00" dy="14.00">&#160;</tspan>
-<tspan x="2746.00" dy="14.00">VSCode command surface for invoking Aurora tooling actions (validate,</tspan>
-<tspan x="2746.00" dy="14.00">render, open views, export compact, etc.) from the command palette and</tspan>
-<tspan x="2746.00" dy="14.00">context menus.</tspan>
+<path class="node-shape" d="M 2704.68 4033.34 L 3235.35 4033.34 L 3251.35 4049.34 L 3251.35 4174.68 L 2704.68 4174.68 Z" />
+<path class="node-shape node-shape-outline" d="M 3235.35 4033.34 L 3235.35 4049.34 L 3251.35 4049.34" />
+<text class="node-icon" x="2743.68" y="4062.01" text-anchor="middle" dominant-baseline="hanging">🔌</text>
+<text class="node-label" x="3007.02" y="4069.01" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3007.02">INT-005: </tspan><tspan font-weight="700">Interface</tspan>
+<tspan x="3007.02" dy="14.00">VSCode Commands Interface</tspan>
+<tspan x="3007.02" dy="14.00">&#160;</tspan>
+<tspan x="3007.02" dy="14.00">VSCode command surface for invoking Aurora tooling actions (validate,</tspan>
+<tspan x="3007.02" dy="14.00">render, open views, export compact, etc.) from the command palette and</tspan>
+<tspan x="3007.02" dy="14.00">context menus.</tspan>
 </text>
 </g>
 <g class="node card-type-note" data-card-id="NOT-001" data-layout-node="NOT-001">
-<path class="node-shape" d="M 1313.38 1540.69 L 1849.38 1540.69 L 1865.38 1556.69 L 1865.38 1682.03 L 1313.38 1682.03 Z" />
-<path class="node-shape node-shape-outline" d="M 1849.38 1540.69 L 1849.38 1556.69 L 1865.38 1556.69" />
-<text class="node-icon" x="1323.38" y="1569.36" text-anchor="start" dominant-baseline="hanging">🗒️</text>
-<text class="node-label" x="1381.38" y="1576.36" text-anchor="start" dominant-baseline="middle">
-<tspan x="1381.38">NOT-001: </tspan><tspan font-weight="700">Note</tspan>
-<tspan x="1381.38" dy="14.00">Shareable</tspan>
-<tspan x="1381.38" dy="14.00">&#160;</tspan>
-<tspan x="1381.38" dy="14.00">Tooling surfaces should prioritize shareable, portable artifacts (e.g.,</tspan>
-<tspan x="1381.38" dy="14.00">rendered views and model packages) without compromising workspace trust</tspan>
-<tspan x="1381.38" dy="14.00">and path safety.</tspan>
+<path class="node-shape" d="M 1313.38 3868.01 L 1849.38 3868.01 L 1865.38 3884.01 L 1865.38 4009.34 L 1313.38 4009.34 Z" />
+<path class="node-shape node-shape-outline" d="M 1849.38 3868.01 L 1849.38 3884.01 L 1865.38 3884.01" />
+<text class="node-icon" x="1352.38" y="3896.68" text-anchor="middle" dominant-baseline="hanging">🗒️</text>
+<text class="node-label" x="1618.38" y="3903.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1618.38">NOT-001: </tspan><tspan font-weight="700">Note</tspan>
+<tspan x="1618.38" dy="14.00">Shareable</tspan>
+<tspan x="1618.38" dy="14.00">&#160;</tspan>
+<tspan x="1618.38" dy="14.00">Tooling surfaces should prioritize shareable, portable artifacts (e.g.,</tspan>
+<tspan x="1618.38" dy="14.00">rendered views and model packages) without compromising workspace trust</tspan>
+<tspan x="1618.38" dy="14.00">and path safety.</tspan>
 </text>
 </g>
 <g class="node card-type-system" data-card-id="SYS-001" data-layout-node="SYS-001">
-<path class="node-shape" d="M 0.00 852.00 L 0.00 962.66 L 524.00 962.66 L 524.00 852.00 L 191.40 852.00 L 191.40 836.00 L 8.00 836.00 L 8.00 852.00 Z" />
-<text class="node-icon" x="10.00" y="864.33" text-anchor="start" dominant-baseline="hanging">🧱</text>
-<text class="node-label" x="68.00" y="871.33" text-anchor="start" dominant-baseline="middle">
-<tspan x="68.00">SYS-001: </tspan><tspan font-weight="700">System</tspan>
-<tspan x="68.00" dy="14.00">Default Tooling Platform</tspan>
-<tspan x="68.00" dy="14.00">&#160;</tspan>
-<tspan x="68.00" dy="14.00">A bounded system that delivers the default Aurora tooling surfaces:</tspan>
-<tspan x="68.00" dy="14.00">CLI, Editor, and VSCode Extension.</tspan>
+<path class="node-shape" d="M 0.00 3230.01 L 0.00 3340.68 L 524.00 3340.68 L 524.00 3230.01 L 191.40 3230.01 L 191.40 3214.01 L 8.00 3214.01 L 8.00 3230.01 Z" />
+<text class="node-icon" x="39.00" y="3242.34" text-anchor="middle" dominant-baseline="hanging">🧱</text>
+<text class="node-label" x="291.00" y="3249.34" text-anchor="middle" dominant-baseline="middle">
+<tspan x="291.00">SYS-001: </tspan><tspan font-weight="700">System</tspan>
+<tspan x="291.00" dy="14.00">Default Tooling Platform</tspan>
+<tspan x="291.00" dy="14.00">&#160;</tspan>
+<tspan x="291.00" dy="14.00">A bounded system that delivers the default Aurora tooling surfaces:</tspan>
+<tspan x="291.00" dy="14.00">CLI, Editor, and VSCode Extension.</tspan>
 </text>
 </g>
 </svg>

@@ -8,7 +8,6 @@ The entire model is expressible by listing the nodes and their relationships in 
 
 ## Links
 
-- `drives` → `CNS-002`
 - `drives` → `REQ-001`
 - `drives` → `REQ-004`
 - `drives` → `REQ-011`

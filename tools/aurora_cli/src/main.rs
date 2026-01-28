@@ -28,6 +28,8 @@ struct Cli {
 	input: PathBuf,
 
 	/// Override the instructions directory used for validation and rendering.
+	/// Expected to contain details/Card_Definitions.md, details/Matrix_View.md,
+	/// details/Relationships_Matrix.md, and details/View_Definitions.md.
 	#[arg(long, value_name = "DIR")]
 	instructions_root: Option<PathBuf>,
 
@@ -431,13 +433,13 @@ fn log_instructions_root(home: &ModelHome, instructions_root: Option<&Path>) {
 			info!(
 				path = %home.root().display(),
 				instructions = %path.display(),
-				"Using instructions registry"
+				"Using instructions registry (card, matrix, relationships, views)"
 			);
 		}
 		None => {
 			info!(
 				path = %home.root().display(),
-				"No .github/instructions found for relationship validation"
+				"No .github/instructions found for matrix relationship validation"
 			);
 		}
 	}

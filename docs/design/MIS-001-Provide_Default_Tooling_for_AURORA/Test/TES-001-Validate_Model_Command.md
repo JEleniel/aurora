@@ -8,4 +8,4 @@ Verify that the validate command detects schema/invariant violations and succeed
 
 ## Links
 
-- `validates` → `FEA-002`
+- `uses` → `FEA-002`

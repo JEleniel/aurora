@@ -8,7 +8,8 @@ Sanitize rendered Markdown and webview content, restrict resource loading, and d
 
 ## Links
 
-- `governs` → `COM-007`
-- `governs` → `COM-014`
-- `mitigates` → `THR-001`
+- `uses` → `COM-007`
+- `uses` → `COM-014`
 - `mitigates` → `RIS-001`
+- `protects` → `AST-002`
+- `protects` → `AST-003`

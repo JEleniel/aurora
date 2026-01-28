@@ -7,17 +7,22 @@
 	"links": [
 		{
 			"target": "DTS-001",
-			"relationship": "persists_to"
+			"relationship": "persists to"
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.0.1",
 		"hash": null,
 		"history": [
 			{
 				"editor": "GitHub Copilot (Architect agent)",
 				"timestamp": "2026-01-24T01:25:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-28T00:00:00Z",
+				"event": "edited"
 			}
 		]
 	}

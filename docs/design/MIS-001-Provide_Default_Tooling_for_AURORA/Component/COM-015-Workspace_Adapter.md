@@ -11,5 +11,5 @@ Component that mediates workspace file operations (open, watch, and save) with s
 - `implements` → `FEA-012`
 - `implements` → `FEA-013`
 - `uses` → `COM-001`
-- `persists_to` → `DTS-001`
-- `persists_to` → `DTS-002`
+- `uses` → `DTS-001`
+- `uses` → `DTS-002`

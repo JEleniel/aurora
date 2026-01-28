@@ -8,4 +8,4 @@ Operating against untrusted workspace content could lead to disclosure of sensit
 
 ## Links
 
-- `impacts` → `AST-003`
+- `uses` → `AST-003`

@@ -9,4 +9,3 @@ Persist Aurora model cards and links to disk in a stable, reviewable format.
 ## Links
 
 - `enables` → `CAP-001`
-- `satisfies` → `REQ-006`

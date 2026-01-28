@@ -10,3 +10,4 @@ Create and update cards and links in the model.
 
 - `uses` → `FEA-008`
 - `uses` → `FEA-009`
+- `triggers` → `ATV-008`

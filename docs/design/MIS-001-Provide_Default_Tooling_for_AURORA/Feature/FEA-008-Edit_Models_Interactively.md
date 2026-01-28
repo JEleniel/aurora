@@ -9,4 +9,3 @@ Interactive editing UI and operations for creating and updating cards and links 
 ## Links
 
 - `enables` → `CAP-006`
-- `satisfies` → `REQ-010`

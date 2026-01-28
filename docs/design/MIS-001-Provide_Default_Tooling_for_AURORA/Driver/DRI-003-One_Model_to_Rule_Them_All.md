@@ -8,6 +8,4 @@ A single Aurora model captures every aspect of the architecture in one cohesive 
 
 ## Links
 
-- `drives` → `CNS-002`
-- `drives` → `CNS-003`
 - `drives` → `REQ-001`

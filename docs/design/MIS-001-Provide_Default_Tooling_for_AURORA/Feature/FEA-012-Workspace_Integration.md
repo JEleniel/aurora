@@ -9,4 +9,3 @@ Integrate with the user workspace: open models, watch for changes, and keep view
 ## Links
 
 - `enables` → `CAP-008`
-- `satisfies` → `REQ-014`

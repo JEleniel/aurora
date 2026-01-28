@@ -15,9 +15,9 @@ digraph "Operational Dependency View" {
 	"ACT-003" -> "THR-001" [label="presents"];
 	"ACT-003" -> "THR-002" [label="presents"];
 	"ACT-003" -> "THR-003" [label="presents"];
-	"THR-001" -> "RIS-001" [label="imposes"];
-	"THR-002" -> "RIS-002" [label="imposes"];
-	"THR-003" -> "RIS-003" [label="imposes"];
+	"THR-001" -> "RIS-001" [label="presents"];
+	"THR-002" -> "RIS-002" [label="presents"];
+	"THR-003" -> "RIS-003" [label="presents"];
 	subgraph "cluster_BND-001" {
 		graph [color="#000000", label="Untrusted (BND-001)", style="dashed"];
 		"ACT-003";

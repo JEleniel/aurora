@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Introduced initial `aurora_cli` application wiring with validation, render, and compact subcommands.
 - Added validation requiring `Asset (Secret)` cards to have an incoming `owns` relationship (preferably from an `Actor`).
-- Added validation test coverage for new relationship matrix entries (`persists to`, `provides`, `reverse proxies`) and `limits` on Applications.
+- Added validation test coverage for canonical Relationships Matrix verbs and source/target constraints.
 - Added an `aurora_cli --instructions-root` override plus validation output that reports which instructions registry was used.
 - Added file-system safe rendering helpers plus unit tests in `aurora_shared`.
 - Added Everything View rendering support so the CLI view pipeline can include full-model diagrams.
@@ -30,6 +30,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated the Aurora Editor Tauri configuration to the v2 schema (`build.devUrl`, `build.frontendDist`, `app` root) and adjusted build hooks so `tauri:dev` validates.
 - Aligned the Aurora Editor Tauri Rust crates and npm packages to v2.5.3 (latest crates.io release) to resolve CLI version mismatches.
 - Wired the Aurora Editor bundle icons to the curated Aurora PNG assets under `assets/`.
+- Updated aurora_shared validation fixtures to align with the canonical relationships matrix.
+- Added a standalone `tools/aurora_shared/Cargo.lock` to support independent builds after splitting Rust projects.
+- Updated aurora_cli help/logging to reference the canonical instruction registry files (card, matrix, relationships, views).
 - Refined the Aurora Editor UI header layout with a 16px base font, a 4rem header bar, right-aligned status pills, and reduced top spacing above workspace controls.
 - Added local `@tailwindcss/vite` and `tailwindcss` dev dependencies for the Aurora Editor so Vite plugin types resolve consistently.
 - Switched Aurora Editor workspace selection to the Tauri folder dialog, auto-connecting and discovering model homes with the default output path set to `docs/design/`.
@@ -44,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - View rendering now selects Graphviz layout engine per view: `osage` for the Requirements view, `dot` for all other views.
 - View rendering now defaults to curved Graphviz splines for smoother edges.
 - View rendering now converts Graphviz plain spline control points into cubic Bezier SVG paths for smoother edges.
+- Expanded aurora_shared validation fixtures to cover `Application implements Test`, `Component implements Class`, `Artifact persists to Data Store`, and `uses` relationships per the canonical matrix.
 
 ### Fixed
 

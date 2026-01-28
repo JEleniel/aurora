@@ -8,5 +8,5 @@ Tooling could overwrite or corrupt files outside the intended model output locat
 
 ## Links
 
-- `impacts` → `AST-001`
-- `impacts` → `AST-003`
+- `uses` → `AST-001`
+- `uses` → `AST-003`

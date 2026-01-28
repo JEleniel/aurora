@@ -8,4 +8,4 @@ The model must form a Directed Graph in which all paths start from a root card (
 
 ## Links
 
-- `includes` → `CNS-004`
+- `uses` → `CNS-004`

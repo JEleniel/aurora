@@ -8,4 +8,4 @@ Verify that render-all produces rendered card markdown and view files for a vali
 
 ## Links
 
-- `validates` → `FEA-005`
+- `uses` → `FEA-005`

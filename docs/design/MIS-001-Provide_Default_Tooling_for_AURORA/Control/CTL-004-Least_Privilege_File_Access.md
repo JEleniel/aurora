@@ -8,7 +8,9 @@ Minimize read/write permissions and scope operations to explicit user-selected p
 
 ## Links
 
-- `governs` → `COM-013`
-- `governs` → `COM-015`
+- `uses` → `COM-013`
+- `uses` → `COM-015`
 - `mitigates` → `RIS-002`
 - `mitigates` → `RIS-003`
+- `protects` → `AST-001`
+- `protects` → `AST-003`

@@ -18,52 +18,24 @@
 			"relationship": "integrates"
 		},
 		{
-			"target": "DEP-001",
-			"relationship": "participates_in"
+			"target": "CTL-001",
+			"relationship": "imposes"
 		},
 		{
-			"target": "DEP-002",
-			"relationship": "participates_in"
+			"target": "CTL-002",
+			"relationship": "imposes"
 		},
 		{
-			"target": "CAP-001",
-			"relationship": "enables"
+			"target": "CTL-003",
+			"relationship": "imposes"
 		},
 		{
-			"target": "CAP-002",
-			"relationship": "enables"
-		},
-		{
-			"target": "CAP-003",
-			"relationship": "enables"
-		},
-		{
-			"target": "CAP-004",
-			"relationship": "enables"
-		},
-		{
-			"target": "CAP-005",
-			"relationship": "enables"
-		},
-		{
-			"target": "CAP-006",
-			"relationship": "enables"
-		},
-		{
-			"target": "CAP-007",
-			"relationship": "enables"
-		},
-		{
-			"target": "CAP-008",
-			"relationship": "enables"
-		},
-		{
-			"target": "CAP-009",
-			"relationship": "enables"
+			"target": "CTL-004",
+			"relationship": "imposes"
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.1.0",
 		"hash": null,
 		"history": [
 			{
@@ -74,6 +46,11 @@
 			{
 				"editor": "GitHub Copilot (Architect agent)",
 				"timestamp": "2026-01-24T01:00:00Z",
+				"event": "edited"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-27T23:45:00Z",
 				"event": "edited"
 			}
 		]

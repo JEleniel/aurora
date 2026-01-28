@@ -9,4 +9,3 @@ Load Aurora model cards from disk into memory, preserving identifiers, links, an
 ## Links
 
 - `enables` → `CAP-001`
-- `satisfies` → `REQ-003`

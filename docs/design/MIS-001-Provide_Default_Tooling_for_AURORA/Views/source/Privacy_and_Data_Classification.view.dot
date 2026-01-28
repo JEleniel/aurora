@@ -14,14 +14,21 @@ digraph "Privacy and Data Classification View" {
 	"RIS-001" [fillcolor="#881337", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="33">⚠️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT>RIS-001: <B>Risk</B><BR/>Injected Content in Rendered Output<BR/>&#160;<BR/>Rendered output could contain unsafe content that<BR/>misleads users or executes in a webview context.</FONT></TD></TR></TABLE>>, shape="octagon"];
 	"RIS-002" [fillcolor="#881337", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="33">⚠️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT>RIS-002: <B>Risk</B><BR/>Unintended File Modification<BR/>&#160;<BR/>Tooling could overwrite or corrupt files outside the<BR/>intended model output locations.</FONT></TD></TR></TABLE>>, shape="octagon"];
 	"RIS-003" [fillcolor="#881337", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="33">⚠️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT>RIS-003: <B>Risk</B><BR/>Data Exposure from Untrusted Workspace<BR/>&#160;<BR/>Operating against untrusted workspace content could lead<BR/>to disclosure of sensitive data or unintended access<BR/>beyond user intent.</FONT></TD></TR></TABLE>>, shape="octagon"];
+	"CTL-001" -> "AST-003" [label="protects"];
 	"CTL-001" -> "RIS-003" [label="mitigates"];
+	"CTL-002" -> "AST-001" [label="protects"];
+	"CTL-002" -> "AST-003" [label="protects"];
 	"CTL-002" -> "RIS-002" [label="mitigates"];
+	"CTL-003" -> "AST-002" [label="protects"];
+	"CTL-003" -> "AST-003" [label="protects"];
 	"CTL-003" -> "RIS-001" [label="mitigates"];
+	"CTL-004" -> "AST-001" [label="protects"];
+	"CTL-004" -> "AST-003" [label="protects"];
 	"CTL-004" -> "RIS-002" [label="mitigates"];
 	"CTL-004" -> "RIS-003" [label="mitigates"];
-	"RIS-001" -> "AST-002" [label="impacts"];
-	"RIS-001" -> "AST-003" [label="impacts"];
-	"RIS-002" -> "AST-001" [label="impacts"];
-	"RIS-002" -> "AST-003" [label="impacts"];
-	"RIS-003" -> "AST-003" [label="impacts"];
+	"RIS-001" -> "AST-002" [label="uses"];
+	"RIS-001" -> "AST-003" [label="uses"];
+	"RIS-002" -> "AST-001" [label="uses"];
+	"RIS-002" -> "AST-003" [label="uses"];
+	"RIS-003" -> "AST-003" [label="uses"];
 }

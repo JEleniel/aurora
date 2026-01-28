@@ -8,24 +8,21 @@
 		{
 			"target": "CAP-002",
 			"relationship": "enables"
-		},
-		{
-			"target": "REQ-004",
-			"relationship": "satisfies"
-		},
-		{
-			"target": "ART-007",
-			"relationship": "generates"
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.1.0",
 		"hash": null,
 		"history": [
 			{
 				"editor": "GitHub Copilot (Architect agent)",
 				"timestamp": "2026-01-24T01:20:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-27T23:50:00Z",
+				"event": "edited"
 			}
 		]
 	}

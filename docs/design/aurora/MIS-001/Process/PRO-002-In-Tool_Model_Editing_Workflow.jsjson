@@ -7,41 +7,26 @@
 	"links": [
 		{
 			"target": "ACT-002",
-			"relationship": "involves"
+			"relationship": "uses"
 		},
 		{
 			"target": "ATV-005",
-			"relationship": "includes"
-		},
-		{
-			"target": "ATV-006",
-			"relationship": "includes"
-		},
-		{
-			"target": "ATV-007",
-			"relationship": "includes"
-		},
-		{
-			"target": "ATV-008",
-			"relationship": "includes"
-		},
-		{
-			"target": "ATV-009",
-			"relationship": "includes"
-		},
-		{
-			"target": "ATV-010",
-			"relationship": "includes"
+			"relationship": "starts with"
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.1.0",
 		"hash": null,
 		"history": [
 			{
 				"editor": "GitHub Copilot (Architect agent)",
 				"timestamp": "2026-01-24T01:45:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-28T00:00:00Z",
+				"event": "edited"
 			}
 		]
 	}

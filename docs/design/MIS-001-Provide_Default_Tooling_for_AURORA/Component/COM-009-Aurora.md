@@ -8,4 +8,4 @@ Core Aurora domain component providing the aggregate root for working with a set
 
 ## Links
 
-- `comprises` → `COM-010`
+- `uses` → `COM-010`

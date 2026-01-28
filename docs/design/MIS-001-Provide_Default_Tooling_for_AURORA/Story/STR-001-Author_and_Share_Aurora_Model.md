@@ -8,4 +8,8 @@ As an architect, I want to author, validate, render, and share an Aurora model s
 
 ## Links
 
-- `explains` → `PRO-001`
+- `uses` → `PRO-001`
+- `implies` → `CNS-001`
+- `implies` → `CNS-002`
+- `implies` → `CNS-003`
+- `implies` → `CNS-005`

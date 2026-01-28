@@ -16,10 +16,10 @@ A deployable application that provides an interactive experience for creating, e
 - `implements` → `FEA-012`
 - `implements` → `FEA-013`
 - `implements` → `FEA-015`
-- `includes` → `COM-001`
-- `includes` → `COM-002`
-- `includes` → `COM-003`
-- `includes` → `COM-004`
-- `includes` → `COM-005`
-- `includes` → `COM-006`
-- `includes` → `COM-007`
+- `comprises` → `COM-001`
+- `comprises` → `COM-002`
+- `comprises` → `COM-003`
+- `comprises` → `COM-004`
+- `comprises` → `COM-005`
+- `comprises` → `COM-006`
+- `comprises` → `COM-007`

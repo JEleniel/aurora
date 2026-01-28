@@ -8,4 +8,4 @@ As a user, I want to browse, edit, validate, and preview an Aurora model inside 
 
 ## Links
 
-- `explains` → `PRO-002`
+- `uses` → `PRO-002`

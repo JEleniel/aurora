@@ -10,3 +10,4 @@ Navigate the model by browsing, searching, and exploring relationships.
 
 - `uses` → `FEA-007`
 - `uses` → `FEA-010`
+- `triggers` → `ATV-007`

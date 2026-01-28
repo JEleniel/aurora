@@ -14,6 +14,6 @@ Shared library component used across tooling surfaces to load, validate, update,
 - `implements` → `FEA-004`
 - `implements` → `FEA-005`
 - `implements` → `FEA-006`
-- `includes` → `COM-009`
-- `includes` → `COM-010`
-- `includes` → `COM-011`
+- `uses` → `COM-009`
+- `uses` → `COM-010`
+- `uses` → `COM-011`

@@ -8,8 +8,5 @@ A repeatable workflow for authoring, validating, rendering, and exporting an Aur
 
 ## Links
 
-- `involves` → `ACT-001`
-- `includes` → `ATV-001`
-- `includes` → `ATV-002`
-- `includes` → `ATV-003`
-- `includes` → `ATV-004`
+- `uses` → `ACT-001`
+- `starts with` → `ATV-001`

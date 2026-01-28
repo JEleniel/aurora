@@ -7,11 +7,11 @@
 	"links": [
 		{
 			"target": "NOD-001",
-			"relationship": "includes"
+			"relationship": "deploys"
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.1.0",
 		"hash": null,
 		"history": [
 			{
@@ -22,6 +22,11 @@
 			{
 				"editor": "GitHub Copilot (Architect agent)",
 				"timestamp": "2026-01-24T01:35:00Z",
+				"event": "edited"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-27T23:45:00Z",
 				"event": "edited"
 			}
 		]

@@ -6,11 +6,11 @@
 	"description": "A user workstation that hosts local CLI and desktop tooling and provides workspace file system access.",
 	"links": [
 		{
-			"target": "APP-001",
+			"target": "COM-012",
 			"relationship": "hosts"
 		},
 		{
-			"target": "APP-002",
+			"target": "COM-002",
 			"relationship": "hosts"
 		},
 		{
@@ -19,13 +19,18 @@
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.1.0",
 		"hash": null,
 		"history": [
 			{
 				"editor": "GitHub Copilot (Architect agent)",
 				"timestamp": "2026-01-24T00:45:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-27T23:45:00Z",
+				"event": "edited"
 			}
 		]
 	}

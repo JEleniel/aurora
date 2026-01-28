@@ -12,4 +12,4 @@ The Rust backend component for the Editor application, hosting the native Tauri 
 - `implements` → `FEA-012`
 - `implements` → `FEA-013`
 - `uses` → `COM-001`
-- `exposes` → `INT-003`
+- `uses` → `INT-003`

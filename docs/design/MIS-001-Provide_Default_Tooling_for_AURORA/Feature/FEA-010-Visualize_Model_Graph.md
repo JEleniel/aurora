@@ -9,4 +9,3 @@ Provide an interactive graph visualization of the model with zoom, pan, and focu
 ## Links
 
 - `enables` → `CAP-007`
-- `satisfies` → `REQ-012`

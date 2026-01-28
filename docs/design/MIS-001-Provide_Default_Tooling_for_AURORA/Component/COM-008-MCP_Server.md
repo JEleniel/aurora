@@ -9,4 +9,4 @@ Model Context Protocol (MCP) server component used by the VSCode extension to ex
 ## Links
 
 - `uses` → `COM-001`
-- `exposes` → `INT-002`
+- `uses` → `INT-002`

@@ -8,4 +8,4 @@ A local development deployment where Aurora tooling is built and run during deve
 
 ## Links
 
-- `includes` → `NOD-001`
+- `deploys` → `NOD-001`

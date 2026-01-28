@@ -1,10 +1,26 @@
 [package]
 name = "aurora_cli"
-version = "0.1.0"
-edition = "2024"
-authors = ["Aurora Architects"]
 description = "Aurora command-line interface"
+edition = "2024"
+version = "1.0.0"
+repository = "https://github.com/JEleniel/aurora"
 license = "MIT OR Apache-2.0"
+keywords = [
+	"architecture",
+	"design",
+	"documentation",
+	"diagram",
+	"flowchart",
+	"modeling",
+	"UML",
+	"SysML",
+	"DSL",
+]
+categories = [
+	"development-tools::documentation",
+	"development-tools::diagramming",
+]
+publish = false
 
 [[bin]]
 name = "aurora_cli"

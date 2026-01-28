@@ -7,11 +7,11 @@
 	"links": [
 		{
 			"target": "COM-013",
-			"relationship": "governs"
+			"relationship": "uses"
 		},
 		{
 			"target": "COM-015",
-			"relationship": "governs"
+			"relationship": "uses"
 		},
 		{
 			"target": "RIS-002",
@@ -20,16 +20,29 @@
 		{
 			"target": "RIS-003",
 			"relationship": "mitigates"
+		},
+		{
+			"target": "AST-001",
+			"relationship": "protects"
+		},
+		{
+			"target": "AST-003",
+			"relationship": "protects"
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.1.0",
 		"hash": null,
 		"history": [
 			{
 				"editor": "GitHub Copilot (Architect agent)",
 				"timestamp": "2026-01-24T01:40:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-28T00:00:00Z",
+				"event": "edited"
 			}
 		]
 	}

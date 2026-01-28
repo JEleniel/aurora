@@ -8,4 +8,4 @@ Verify that compact export emits a compact model representation conforming to th
 
 ## Links
 
-- `validates` → `FEA-006`
+- `uses` → `FEA-006`

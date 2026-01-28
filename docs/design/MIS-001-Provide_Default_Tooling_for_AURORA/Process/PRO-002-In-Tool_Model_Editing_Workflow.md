@@ -8,10 +8,5 @@ A repeatable workflow for interactively opening, navigating, editing, validating
 
 ## Links
 
-- `involves` → `ACT-002`
-- `includes` → `ATV-005`
-- `includes` → `ATV-006`
-- `includes` → `ATV-007`
-- `includes` → `ATV-008`
-- `includes` → `ATV-009`
-- `includes` → `ATV-010`
+- `uses` → `ACT-002`
+- `starts with` → `ATV-005`

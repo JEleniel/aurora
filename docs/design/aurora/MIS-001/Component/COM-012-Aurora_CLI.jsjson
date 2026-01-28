@@ -6,22 +6,123 @@
 	"description": "Command-line interface component that orchestrates validation, view rendering, and compact export for Aurora models.",
 	"links": [
 		{
-			"target": "COM-001",
-			"relationship": "uses"
+			"target": "INT-001",
+			"relationship": "calls"
 		},
 		{
-			"target": "INT-001",
-			"relationship": "exposes"
+			"target": "FEA-001",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-002",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-003",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-004",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-005",
+			"relationship": "implements"
+		},
+		{
+			"target": "FEA-006",
+			"relationship": "implements"
+		},
+		{
+			"target": "ART-004",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-005",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-006",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-007",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-009",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-010",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-011",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-012",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-013",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-014",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-015",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-016",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-017",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-018",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-019",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-020",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-021",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-022",
+			"relationship": "generates"
+		},
+		{
+			"target": "ART-023",
+			"relationship": "generates"
 		}
 	],
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.1.0",
 		"hash": null,
 		"history": [
 			{
 				"editor": "GitHub Copilot (Architect agent)",
 				"timestamp": "2026-01-24T00:25:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-27T23:52:00Z",
+				"event": "edited"
 			}
 		]
 	}

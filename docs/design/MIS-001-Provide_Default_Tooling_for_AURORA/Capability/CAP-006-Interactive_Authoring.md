@@ -10,3 +10,4 @@ Ability to author and modify Aurora models interactively with guardrails, valida
 
 - `satisfies` → `REQ-010`
 - `satisfies` → `REQ-011`
+- `runs` → `PRO-002`

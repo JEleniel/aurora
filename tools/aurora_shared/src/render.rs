@@ -85,9 +85,12 @@ fn render_views_with_root(
 	output_dir: &Path,
 	instructions_root: &Path,
 ) -> Result<RenderSummary> {
-	let palette = CardPalette::load(&instructions_root.join("details/Card_Definitions.md"))?;
+	let palette = CardPalette::load(&instructions_root.join("details/1a-Card_Definitions.md"))?;
 	let icon_glyphs = palette.icon_glyphs();
-	let registry = ViewRegistry::load(&instructions_root.join("details/View_Definitions.md"))?;
+	let registry = ViewRegistry::load(
+		&instructions_root.join("details/2-View_Definitions.md"),
+		&instructions_root.join("details/2a-View_Styling_Guide.md"),
+	)?;
 	let graphviz = GraphvizConfig::from_model(model)?;
 
 	let mut views_written = 0usize;

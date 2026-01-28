@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1392.38 1818.91" width="1392.38" height="1818.91" data-theme="dark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5351.04 660.90" width="5351.04" height="660.90" data-theme="dark">
 <defs>
 <style>
 svg{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}
@@ -14,38 +14,6 @@ svg[data-theme="light"]{--bg:#FFFFFF;--edge:#111827;--edgeLabel:#111827;--nodeSt
 .node-shape-outline{fill:none;}
 .boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:2;stroke-dasharray:6 6;}
 .boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
-.card-type-capability .node-shape{fill:#325440;}
-svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
-.card-type-capability .node-label{--nodeText:#FFFFFF;}
-.card-type-asset .node-shape{fill:#586374;}
-svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
-.card-type-asset .node-label{--nodeText:#FFFFFF;}
-.card-type-application .node-shape{fill:#475D9F;}
-svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
-.card-type-application .node-label{--nodeText:#FFFFFF;}
-.card-type-state .node-shape{fill:#8A438E;}
-svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
-.card-type-state .node-label{--nodeText:#FFFFFF;}
-.card-type-interface .node-shape{fill:#34546A;}
-svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
-.card-type-interface .node-label{--nodeText:#FFFFFF;}
-.card-type-process .node-shape{fill:#543B81;}
-svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
-.card-type-process .node-label{--nodeText:#FFFFFF;}
-.card-type-system .node-shape{fill:#414C73;}
-svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
-.card-type-system .node-label{--nodeText:#FFFFFF;}
-.card-type-test .node-shape{fill:#30524A;}
-svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
-.card-type-test .node-label{--nodeText:#FFFFFF;}
 .card-type-deployment .node-shape{fill:#47446B;}
 svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
@@ -54,62 +22,66 @@ svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
 svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
 .card-type-control .node-label{--nodeText:#FFFFFF;}
-.card-type-requirement .node-shape{fill:#337C67;}
-svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
-.card-type-requirement .node-label{--nodeText:#FFFFFF;}
-.card-type-threat .node-shape{fill:#6C3242;}
-svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
-.card-type-threat .node-label{--nodeText:#FFFFFF;}
-.card-type-risk .node-shape{fill:#9D3D5B;}
-svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
-.card-type-risk .node-label{--nodeText:#FFFFFF;}
-.card-type-node-instance .node-shape{fill:#5B55B4;}
-svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
-.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
-.card-type-note .node-shape{fill:#47505B;}
-svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
-.card-type-note .node-label{--nodeText:#FFFFFF;}
 .card-type-actor .node-shape{fill:#435432;}
 svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
 .card-type-actor .node-label{--nodeText:#FFFFFF;}
-.card-type-story .node-shape{fill:#5A723E;}
-svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
-.card-type-story .node-label{--nodeText:#FFFFFF;}
-.card-type-constraint .node-shape{fill:#9B6D39;}
-svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
-.card-type-constraint .node-label{--nodeText:#FFFFFF;}
 .card-type-component .node-shape{fill:#4762BD;}
 svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
 .card-type-component .node-label{--nodeText:#FFFFFF;}
-.card-type-feature .node-shape{fill:#3E7253;}
-svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
-.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
+.card-type-requirement .node-shape{fill:#337C67;}
+svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
+.card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-test .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
+.card-type-test .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
 .card-type-mission .node-shape{fill:#30524A;}
 svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
 .card-type-mission .node-label{--nodeText:#FFFFFF;}
-.card-type-node .node-shape{fill:#565498;}
-svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
-.card-type-node .node-label{--nodeText:#FFFFFF;}
-.card-type-condition .node-shape{fill:#644833;}
-svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
-.card-type-condition .node-label{--nodeText:#FFFFFF;}
 .card-type-activity .node-shape{fill:#6C46A8;}
 svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
 .card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#082f49;}}
+.card-type-interface .node-label{--nodeText:#FFFFFF;}
+.card-type-system .node-shape{fill:#414C73;}
+svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
+.card-type-system .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-capability .node-shape{fill:#325440;}
+svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
+.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#9B6D39;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#854d0e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#854d0e;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
 .card-type-data-store .node-shape{fill:#34779B;}
 svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
@@ -122,187 +94,262 @@ svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
 svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
 .card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
 .card-type-state-machine .node-shape{fill:#6B316E;}
 svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
 @media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
 .card-type-state-machine .node-label{--nodeText:#FFFFFF;}
-.card-type-artifact .node-shape{fill:#47505E;}
-svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
-@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
-.card-type-artifact .node-label{--nodeText:#FFFFFF;}
+.card-type-class .node-shape{fill:#3A4150;}
+svg[data-theme="light"] .card-type-class .node-shape{fill:#0f172a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-class .node-shape{fill:#0f172a;}}
+.card-type-class .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-adr .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-adr .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-adr .node-shape{fill:#1f2937;}}
+.card-type-adr .node-label{--nodeText:#FFFFFF;}
+.card-type-condition .node-shape{fill:#644833;}
+svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
+.card-type-condition .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
 </style>
 <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
   <path d="M 0 0 L 10 5 L 0 10 z" class="edge-arrow" />
 </marker>
 </defs>
 <rect class="bg" x="0" y="0" width="100%" height="100%" />
-<path class="edge-path" d="M 371.05 1411.35 C 443.33 1367.15 544.89 1309.47 640.00 1270.92 C 670.61 1258.50 703.24 1247.14 735.98 1236.85" data-tail="PRO-001" data-head="ACT-001" />
-<text class="edge-label" x="590.67" y="1276.24" text-anchor="middle" dominant-baseline="middle">involves</text>
-<path class="edge-path" d="M 517.44 1429.44 C 558.36 1421.89 600.37 1414.17 640.00 1406.91 C 690.02 1397.75 743.80 1387.97 794.57 1378.75" data-tail="PRO-001" data-head="ATV-001" />
-<text class="edge-label" x="590.67" y="1405.57" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 517.81 1474.92 C 602.25 1474.92 696.51 1474.92 780.06 1474.92" data-tail="PRO-001" data-head="ATV-002" />
-<text class="edge-label" x="590.67" y="1468.24" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 517.81 1522.56 C 577.76 1534.19 642.66 1546.76 705.16 1558.88" data-tail="PRO-001" data-head="ATV-003" />
-<text class="edge-label" x="590.67" y="1526.91" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 357.79 1538.41 C 429.62 1588.48 536.69 1656.12 640.00 1694.91 C 669.94 1706.15 701.92 1715.57 734.13 1723.45" data-tail="PRO-001" data-head="ATV-004" />
-<text class="edge-label" x="590.67" y="1660.24" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 326.23 476.16 C 391.88 395.33 509.94 264.77 640.00 190.94 C 665.28 176.54 692.68 164.16 720.76 153.50" data-tail="PRO-002" data-head="ACT-002" />
-<text class="edge-label" x="590.67" y="206.88" text-anchor="middle" dominant-baseline="middle">involves</text>
-<path class="edge-path" d="M 368.20 476.16 C 439.73 427.01 541.56 363.84 640.00 326.88 C 667.64 316.51 697.05 307.68 726.75 300.19" data-tail="PRO-002" data-head="ATV-005" />
-<text class="edge-label" x="590.67" y="333.60" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 541.76 494.59 C 598.55 483.65 658.78 471.94 716.55 460.70" data-tail="PRO-002" data-head="ATV-006" />
-<text class="edge-label" x="590.67" y="477.60" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 541.76 546.91 C 611.02 546.91 685.38 546.91 754.18 546.91" data-tail="PRO-002" data-head="ATV-007" />
-<text class="edge-label" x="590.67" y="540.29" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 541.76 599.23 C 604.53 611.33 671.50 624.38 734.71 636.58" data-tail="PRO-002" data-head="ATV-008" />
-<text class="edge-label" x="590.67" y="600.29" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 370.02 617.57 C 441.61 666.05 542.76 728.06 640.00 765.60 C 664.76 775.10 690.92 783.55 717.45 790.94" data-tail="PRO-002" data-head="ATV-009" />
-<text class="edge-label" x="590.67" y="732.29" text-anchor="middle" dominant-baseline="middle">includes</text>
-<path class="edge-path" d="M 321.69 617.76 C 385.29 702.72 503.69 842.88 640.00 916.24 C 669.55 932.15 702.05 944.74 735.17 954.69" data-tail="PRO-002" data-head="ATV-010" />
-<text class="edge-label" x="590.67" y="865.57" text-anchor="middle" dominant-baseline="middle">includes</text>
+<path class="edge-path" d="M 1893.79 597.57 C 1991.14 597.57 2107.58 597.57 2208.10 597.57" data-tail="ATV-001" data-head="ATV-002" />
+<text class="edge-label" x="2109.70" y="590.90" text-anchor="middle" dominant-baseline="middle">triggers</text>
+<path class="edge-path" d="M 2666.11 597.57 C 2712.67 597.57 2762.50 597.57 2811.65 597.57" data-tail="ATV-002" data-head="ATV-003" />
+<text class="edge-label" x="2777.66" y="590.90" text-anchor="middle" dominant-baseline="middle">triggers</text>
+<path class="edge-path" d="M 3420.77 597.57 C 3447.94 597.57 3475.49 597.57 3502.56 597.57" data-tail="ATV-003" data-head="ATV-004" />
+<text class="edge-label" x="3468.38" y="590.90" text-anchor="middle" dominant-baseline="middle">triggers</text>
+<path class="edge-path" d="M 1961.76 258.90 C 2020.99 258.90 2083.87 258.90 2143.97 258.90" data-tail="ATV-005" data-head="ATV-006" />
+<text class="edge-label" x="2109.70" y="252.24" text-anchor="middle" dominant-baseline="middle">triggers</text>
+<path class="edge-path" d="M 2730.05 258.90 C 2773.34 258.90 2817.89 258.90 2860.70 258.90" data-tail="ATV-006" data-head="ATV-007" />
+<text class="edge-label" x="2777.66" y="252.24" text-anchor="middle" dominant-baseline="middle">triggers</text>
+<path class="edge-path" d="M 3371.23 258.90 C 3414.34 258.90 3459.46 258.90 3503.33 258.90" data-tail="ATV-007" data-head="ATV-008" />
+<text class="edge-label" x="3468.38" y="252.24" text-anchor="middle" dominant-baseline="middle">triggers</text>
+<path class="edge-path" d="M 4053.41 258.90 C 4080.67 258.90 4108.42 258.90 4135.97 258.90" data-tail="ATV-008" data-head="ATV-009" />
+<text class="edge-label" x="4101.70" y="252.24" text-anchor="middle" dominant-baseline="middle">triggers</text>
+<path class="edge-path" d="M 4720.61 258.90 C 4747.68 258.90 4775.14 258.90 4802.21 258.90" data-tail="ATV-009" data-head="ATV-010" />
+<text class="edge-label" x="4768.32" y="252.24" text-anchor="middle" dominant-baseline="middle">triggers</text>
+<path class="edge-path" d="M 579.07 438.00 C 607.68 441.61 636.60 445.27 664.89 448.84" data-tail="CAP-004" data-head="PRO-001" />
+<text class="edge-label" x="616.67" y="434.90" text-anchor="middle" dominant-baseline="middle">runs</text>
+<path class="edge-path" d="M 543.71 528.81 C 583.64 523.84 624.98 518.71 665.04 513.73" data-tail="CAP-005" data-head="PRO-001" />
+<text class="edge-label" x="616.67" y="510.90" text-anchor="middle" dominant-baseline="middle">runs</text>
+<path class="edge-path" d="M 568.45 165.57 C 592.57 165.57 616.99 165.57 641.16 165.57" data-tail="CAP-006" data-head="PRO-002" />
+<text class="edge-label" x="616.67" y="158.90" text-anchor="middle" dominant-baseline="middle">runs</text>
+<path class="edge-path" d="M 1172.06 464.29 C 1216.61 461.16 1263.94 457.82 1311.17 454.49" data-tail="PRO-001" data-head="ACT-001" />
+<text class="edge-label" x="1252.70" y="449.57" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 1172.06 519.15 C 1265.95 533.53 1372.42 549.83 1463.90 563.83" data-tail="PRO-001" data-head="ATV-001" />
+<text class="edge-label" x="1252.70" y="521.57" text-anchor="middle" dominant-baseline="middle">starts with</text>
+<path class="edge-path" d="M 1196.45 138.51 C 1238.02 134.33 1281.50 129.96 1324.70 125.64" data-tail="PRO-002" data-head="ACT-002" />
+<text class="edge-label" x="1252.70" y="124.23" text-anchor="middle" dominant-baseline="middle">uses</text>
+<path class="edge-path" d="M 1196.45 198.81 C 1261.06 206.76 1330.27 215.30 1395.74 223.36" data-tail="PRO-002" data-head="ATV-005" />
+<text class="edge-label" x="1252.70" y="196.23" text-anchor="middle" dominant-baseline="middle">starts with</text>
 <g class="node card-type-actor" data-card-id="ACT-001" data-layout-node="ACT-001">
-<ellipse class="node-shape" cx="1016.16" cy="1169.58" rx="376.18" ry="89.57" />
-<text class="node-icon" x="649.98" y="1134.58" text-anchor="start" dominant-baseline="hanging">👤</text>
-<text class="node-label" x="707.98" y="1141.58" text-anchor="start" dominant-baseline="middle">
-<tspan x="707.98">ACT-001: </tspan><tspan font-weight="700">Actor</tspan>
-<tspan x="707.98" dy="14.00">Architect</tspan>
-<tspan x="707.98" dy="14.00">&#160;</tspan>
-<tspan x="707.98" dy="14.00">Person responsible for authoring and maintaining the Aurora model for a</tspan>
-<tspan x="707.98" dy="14.00">system.</tspan>
+<ellipse class="node-shape" cx="1685.47" cy="428.24" rx="376.18" ry="89.57" />
+<text class="node-icon" x="1348.29" y="393.24" text-anchor="middle" dominant-baseline="hanging">👤</text>
+<text class="node-label" x="1714.47" y="400.24" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1714.47">ACT-001: </tspan><tspan font-weight="700">Actor</tspan>
+<tspan x="1714.47" dy="14.00">Architect</tspan>
+<tspan x="1714.47" dy="14.00">&#160;</tspan>
+<tspan x="1714.47" dy="14.00">Person responsible for authoring and maintaining the Aurora model for a</tspan>
+<tspan x="1714.47" dy="14.00">system.</tspan>
 </text>
 </g>
 <g class="node card-type-actor" data-card-id="ACT-002" data-layout-node="ACT-002">
-<ellipse class="node-shape" cx="1016.16" cy="89.57" rx="376.18" ry="89.57" />
-<text class="node-icon" x="649.98" y="54.57" text-anchor="start" dominant-baseline="hanging">👤</text>
-<text class="node-label" x="707.98" y="61.57" text-anchor="start" dominant-baseline="middle">
-<tspan x="707.98">ACT-002: </tspan><tspan font-weight="700">Actor</tspan>
-<tspan x="707.98" dy="14.00">User</tspan>
-<tspan x="707.98" dy="14.00">&#160;</tspan>
-<tspan x="707.98" dy="14.00">Person using Aurora tooling surfaces to browse, edit, validate, and</tspan>
-<tspan x="707.98" dy="14.00">render models in a workspace.</tspan>
+<ellipse class="node-shape" cx="1685.47" cy="89.57" rx="376.18" ry="89.57" />
+<text class="node-icon" x="1348.29" y="54.57" text-anchor="middle" dominant-baseline="hanging">👤</text>
+<text class="node-label" x="1714.47" y="61.57" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1714.47">ACT-002: </tspan><tspan font-weight="700">Actor</tspan>
+<tspan x="1714.47" dy="14.00">User</tspan>
+<tspan x="1714.47" dy="14.00">&#160;</tspan>
+<tspan x="1714.47" dy="14.00">Person using Aurora tooling surfaces to browse, edit, validate, and</tspan>
+<tspan x="1714.47" dy="14.00">render models in a workspace.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-001" data-layout-node="ATV-001">
-<rect class="node-shape" x="808.16" y="1282.91" width="416.00" height="112.00" rx="6" ry="6" />
-<text class="node-icon" x="818.16" y="1310.91" text-anchor="start" dominant-baseline="hanging">👣</text>
-<text class="node-label" x="876.16" y="1317.91" text-anchor="start" dominant-baseline="middle">
-<tspan x="876.16">ATV-001: </tspan><tspan font-weight="700">Activity</tspan>
-<tspan x="876.16" dy="14.00">Load Model</tspan>
-<tspan x="876.16" dy="14.00">&#160;</tspan>
-<tspan x="876.16" dy="14.00">Load a model from disk into memory.</tspan>
+<rect class="node-shape" x="1477.47" y="541.57" width="416.00" height="112.00" rx="6" ry="6" />
+<text class="node-icon" x="1516.47" y="569.57" text-anchor="middle" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="1714.47" y="576.57" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1714.47">ATV-001: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="1714.47" dy="14.00">Load Model</tspan>
+<tspan x="1714.47" dy="14.00">&#160;</tspan>
+<tspan x="1714.47" dy="14.00">Load a model from disk into memory.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-002" data-layout-node="ATV-002">
-<rect class="node-shape" x="794.16" y="1418.91" width="444.00" height="112.00" rx="6" ry="6" />
-<text class="node-icon" x="804.16" y="1446.92" text-anchor="start" dominant-baseline="hanging">👣</text>
-<text class="node-label" x="862.16" y="1453.92" text-anchor="start" dominant-baseline="middle">
-<tspan x="862.16">ATV-002: </tspan><tspan font-weight="700">Activity</tspan>
-<tspan x="862.16" dy="14.00">Validate Model</tspan>
-<tspan x="862.16" dy="14.00">&#160;</tspan>
-<tspan x="862.16" dy="14.00">Validate a model and review diagnostics.</tspan>
+<rect class="node-shape" x="2221.68" y="541.57" width="444.00" height="112.00" rx="6" ry="6" />
+<text class="node-icon" x="2260.68" y="569.57" text-anchor="middle" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2472.68" y="576.57" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2472.68">ATV-002: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2472.68" dy="14.00">Validate Model</tspan>
+<tspan x="2472.68" dy="14.00">&#160;</tspan>
+<tspan x="2472.68" dy="14.00">Validate a model and review diagnostics.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-003" data-layout-node="ATV-003">
-<rect class="node-shape" x="718.83" y="1555.58" width="594.66" height="126.66" rx="6" ry="6" />
-<text class="node-icon" x="728.83" y="1590.92" text-anchor="start" dominant-baseline="hanging">👣</text>
-<text class="node-label" x="786.83" y="1597.92" text-anchor="start" dominant-baseline="middle">
-<tspan x="786.83">ATV-003: </tspan><tspan font-weight="700">Activity</tspan>
-<tspan x="786.83" dy="14.00">Render Views</tspan>
-<tspan x="786.83" dy="14.00">&#160;</tspan>
-<tspan x="786.83" dy="14.00">Generate rendered views and Markdown documentation from the model.</tspan>
+<rect class="node-shape" x="2825.74" y="534.24" width="594.66" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="2864.74" y="569.57" text-anchor="middle" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="3152.07" y="576.57" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3152.07">ATV-003: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="3152.07" dy="14.00">Render Views</tspan>
+<tspan x="3152.07" dy="14.00">&#160;</tspan>
+<tspan x="3152.07" dy="14.00">Generate rendered views and Markdown documentation from the model.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-004" data-layout-node="ATV-004">
-<rect class="node-shape" x="747.49" y="1706.91" width="537.33" height="112.00" rx="6" ry="6" />
-<text class="node-icon" x="757.49" y="1734.91" text-anchor="start" dominant-baseline="hanging">👣</text>
-<text class="node-label" x="815.49" y="1741.91" text-anchor="start" dominant-baseline="middle">
-<tspan x="815.49">ATV-004: </tspan><tspan font-weight="700">Activity</tspan>
-<tspan x="815.49" dy="14.00">Compact Model</tspan>
-<tspan x="815.49" dy="14.00">&#160;</tspan>
-<tspan x="815.49" dy="14.00">Export a compact representation for machine agents.</tspan>
+<rect class="node-shape" x="3516.33" y="541.57" width="537.33" height="112.00" rx="6" ry="6" />
+<text class="node-icon" x="3555.33" y="569.57" text-anchor="middle" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="3813.99" y="576.57" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3813.99">ATV-004: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="3813.99" dy="14.00">Compact Model</tspan>
+<tspan x="3813.99" dy="14.00">&#160;</tspan>
+<tspan x="3813.99" dy="14.00">Export a compact representation for machine agents.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-005" data-layout-node="ATV-005">
-<rect class="node-shape" x="740.16" y="202.91" width="552.00" height="112.00" rx="6" ry="6" />
-<text class="node-icon" x="750.16" y="230.91" text-anchor="start" dominant-baseline="hanging">👣</text>
-<text class="node-label" x="808.16" y="237.91" text-anchor="start" dominant-baseline="middle">
-<tspan x="808.16">ATV-005: </tspan><tspan font-weight="700">Activity</tspan>
-<tspan x="808.16" dy="14.00">Open Model in Tool</tspan>
-<tspan x="808.16" dy="14.00">&#160;</tspan>
-<tspan x="808.16" dy="14.00">Open an Aurora model in an interactive tooling surface.</tspan>
+<rect class="node-shape" x="1409.47" y="202.90" width="552.00" height="112.00" rx="6" ry="6" />
+<text class="node-icon" x="1448.47" y="230.90" text-anchor="middle" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="1714.47" y="237.90" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1714.47">ATV-005: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="1714.47" dy="14.00">Open Model in Tool</tspan>
+<tspan x="1714.47" dy="14.00">&#160;</tspan>
+<tspan x="1714.47" dy="14.00">Open an Aurora model in an interactive tooling surface.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-006" data-layout-node="ATV-006">
-<rect class="node-shape" x="730.16" y="339.58" width="572.00" height="126.66" rx="6" ry="6" />
-<text class="node-icon" x="740.16" y="374.91" text-anchor="start" dominant-baseline="hanging">👣</text>
-<text class="node-label" x="798.16" y="381.91" text-anchor="start" dominant-baseline="middle">
-<tspan x="798.16">ATV-006: </tspan><tspan font-weight="700">Activity</tspan>
-<tspan x="798.16" dy="14.00">Navigate Model</tspan>
-<tspan x="798.16" dy="14.00">&#160;</tspan>
-<tspan x="798.16" dy="14.00">Navigate the model by browsing, searching, and exploring relationships.</tspan>
+<rect class="node-shape" x="2157.68" y="195.57" width="572.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="2196.68" y="230.90" text-anchor="middle" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="2472.68" y="237.90" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2472.68">ATV-006: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="2472.68" dy="14.00">Navigate Model</tspan>
+<tspan x="2472.68" dy="14.00">&#160;</tspan>
+<tspan x="2472.68" dy="14.00">Navigate the model by browsing, searching, and exploring relationships.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-007" data-layout-node="ATV-007">
-<rect class="node-shape" x="768.16" y="490.91" width="496.00" height="112.00" rx="6" ry="6" />
-<text class="node-icon" x="778.16" y="518.91" text-anchor="start" dominant-baseline="hanging">👣</text>
-<text class="node-label" x="836.16" y="525.91" text-anchor="start" dominant-baseline="middle">
-<tspan x="836.16">ATV-007: </tspan><tspan font-weight="700">Activity</tspan>
-<tspan x="836.16" dy="14.00">Edit Cards and Links</tspan>
-<tspan x="836.16" dy="14.00">&#160;</tspan>
-<tspan x="836.16" dy="14.00">Create and update cards and links in the model.</tspan>
+<rect class="node-shape" x="2875.07" y="202.90" width="496.00" height="112.00" rx="6" ry="6" />
+<text class="node-icon" x="2914.07" y="230.90" text-anchor="middle" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="3152.07" y="237.90" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3152.07">ATV-007: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="3152.07" dy="14.00">Edit Cards and Links</tspan>
+<tspan x="3152.07" dy="14.00">&#160;</tspan>
+<tspan x="3152.07" dy="14.00">Create and update cards and links in the model.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-008" data-layout-node="ATV-008">
-<rect class="node-shape" x="748.16" y="627.58" width="536.00" height="126.66" rx="6" ry="6" />
-<text class="node-icon" x="758.16" y="655.91" text-anchor="start" dominant-baseline="hanging">👣</text>
-<text class="node-label" x="816.16" y="662.91" text-anchor="start" dominant-baseline="middle">
-<tspan x="816.16">ATV-008: </tspan><tspan font-weight="700">Activity</tspan>
-<tspan x="816.16" dy="14.00">Review Validation Diagnostics</tspan>
-<tspan x="816.16" dy="14.00">&#160;</tspan>
-<tspan x="816.16" dy="14.00">Review validation results, navigate to affected cards, and apply</tspan>
-<tspan x="816.16" dy="14.00">fixes.</tspan>
+<rect class="node-shape" x="3516.99" y="195.57" width="536.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3555.99" y="223.90" text-anchor="middle" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="3813.99" y="230.90" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3813.99">ATV-008: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="3813.99" dy="14.00">Review Validation Diagnostics</tspan>
+<tspan x="3813.99" dy="14.00">&#160;</tspan>
+<tspan x="3813.99" dy="14.00">Review validation results, navigate to affected cards, and apply</tspan>
+<tspan x="3813.99" dy="14.00">fixes.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-009" data-layout-node="ATV-009">
-<rect class="node-shape" x="730.83" y="778.20" width="570.66" height="126.66" rx="6" ry="6" />
-<text class="node-icon" x="740.83" y="813.54" text-anchor="start" dominant-baseline="hanging">👣</text>
-<text class="node-label" x="798.83" y="820.54" text-anchor="start" dominant-baseline="middle">
-<tspan x="798.83">ATV-009: </tspan><tspan font-weight="700">Activity</tspan>
-<tspan x="798.83" dy="14.00">Preview Output</tspan>
-<tspan x="798.83" dy="14.00">&#160;</tspan>
-<tspan x="798.83" dy="14.00">Preview rendered views and Markdown representations of the model.</tspan>
+<rect class="node-shape" x="4149.68" y="195.57" width="570.66" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="4188.68" y="230.90" text-anchor="middle" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="4464.01" y="237.90" text-anchor="middle" dominant-baseline="middle">
+<tspan x="4464.01">ATV-009: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="4464.01" dy="14.00">Preview Output</tspan>
+<tspan x="4464.01" dy="14.00">&#160;</tspan>
+<tspan x="4464.01" dy="14.00">Preview rendered views and Markdown representations of the model.</tspan>
 </text>
 </g>
 <g class="node card-type-activity" data-card-id="ATV-010" data-layout-node="ATV-010">
-<rect class="node-shape" x="748.83" y="928.92" width="534.66" height="126.66" rx="6" ry="6" />
-<text class="node-icon" x="758.83" y="964.25" text-anchor="start" dominant-baseline="hanging">👣</text>
-<text class="node-label" x="816.83" y="971.25" text-anchor="start" dominant-baseline="middle">
-<tspan x="816.83">ATV-010: </tspan><tspan font-weight="700">Activity</tspan>
-<tspan x="816.83" dy="14.00">Save Model Safely</tspan>
-<tspan x="816.83" dy="14.00">&#160;</tspan>
-<tspan x="816.83" dy="14.00">Save the model with safe file operations and optional export formats.</tspan>
+<rect class="node-shape" x="4816.35" y="195.57" width="534.66" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="4855.35" y="230.90" text-anchor="middle" dominant-baseline="hanging">👣</text>
+<text class="node-label" x="5112.68" y="237.90" text-anchor="middle" dominant-baseline="middle">
+<tspan x="5112.68">ATV-010: </tspan><tspan font-weight="700">Activity</tspan>
+<tspan x="5112.68" dy="14.00">Save Model Safely</tspan>
+<tspan x="5112.68" dy="14.00">&#160;</tspan>
+<tspan x="5112.68" dy="14.00">Save the model with safe file operations and optional export formats.</tspan>
+</text>
+</g>
+<g class="node card-type-capability" data-card-id="CAP-004" data-layout-node="CAP-004">
+<rect class="node-shape" x="0.00" y="338.24" width="578.67" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="39.00" y="366.57" text-anchor="middle" dominant-baseline="hanging">✨</text>
+<text class="node-label" x="318.33" y="373.57" text-anchor="middle" dominant-baseline="middle">
+<tspan x="318.33">CAP-004: </tspan><tspan font-weight="700">Capability</tspan>
+<tspan x="318.33" dy="14.00">View Rendering</tspan>
+<tspan x="318.33" dy="14.00">&#160;</tspan>
+<tspan x="318.33" dy="14.00">Ability to render human-readable views and documentation from Aurora</tspan>
+<tspan x="318.33" dy="14.00">models.</tspan>
+</text>
+</g>
+<g class="node card-type-capability" data-card-id="CAP-005" data-layout-node="CAP-005">
+<rect class="node-shape" x="35.33" y="489.57" width="508.00" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="74.33" y="525.24" text-anchor="middle" dominant-baseline="hanging">✨</text>
+<text class="node-label" x="318.33" y="532.24" text-anchor="middle" dominant-baseline="middle">
+<tspan x="318.33">CAP-005: </tspan><tspan font-weight="700">Capability</tspan>
+<tspan x="318.33" dy="14.00">Model Compaction</tspan>
+<tspan x="318.33" dy="14.00">&#160;</tspan>
+<tspan x="318.33" dy="14.00">Ability to emit a compact, machine-friendly representation of an</tspan>
+<tspan x="318.33" dy="14.00">Aurora model for agents and interchange.</tspan>
+</text>
+</g>
+<g class="node card-type-capability" data-card-id="CAP-006" data-layout-node="CAP-006">
+<rect class="node-shape" x="10.67" y="94.91" width="557.34" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="49.67" y="130.57" text-anchor="middle" dominant-baseline="hanging">✨</text>
+<text class="node-label" x="318.33" y="137.57" text-anchor="middle" dominant-baseline="middle">
+<tspan x="318.33">CAP-006: </tspan><tspan font-weight="700">Capability</tspan>
+<tspan x="318.33" dy="14.00">Interactive Authoring</tspan>
+<tspan x="318.33" dy="14.00">&#160;</tspan>
+<tspan x="318.33" dy="14.00">Ability to author and modify Aurora models interactively with</tspan>
+<tspan x="318.33" dy="14.00">guardrails, validation feedback, and consistent persistence.</tspan>
 </text>
 </g>
 <g class="node card-type-process" data-card-id="PRO-001" data-layout-node="PRO-001">
-<rect class="node-shape" x="24.00" y="1411.58" width="493.33" height="126.66" rx="6" ry="6" />
-<text class="node-icon" x="34.00" y="1439.92" text-anchor="start" dominant-baseline="hanging">🔁</text>
-<text class="node-label" x="92.00" y="1446.92" text-anchor="start" dominant-baseline="middle">
-<tspan x="92.00">PRO-001: </tspan><tspan font-weight="700">Process</tspan>
-<tspan x="92.00" dy="14.00">Model Authoring Workflow</tspan>
-<tspan x="92.00" dy="14.00">&#160;</tspan>
-<tspan x="92.00" dy="14.00">A repeatable workflow for authoring, validating, rendering,</tspan>
-<tspan x="92.00" dy="14.00">and exporting an Aurora model.</tspan>
+<rect class="node-shape" x="678.67" y="418.23" width="493.33" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="717.67" y="446.56" text-anchor="middle" dominant-baseline="hanging">🔁</text>
+<text class="node-label" x="954.33" y="453.56" text-anchor="middle" dominant-baseline="middle">
+<tspan x="954.33">PRO-001: </tspan><tspan font-weight="700">Process</tspan>
+<tspan x="954.33" dy="14.00">Model Authoring Workflow</tspan>
+<tspan x="954.33" dy="14.00">&#160;</tspan>
+<tspan x="954.33" dy="14.00">A repeatable workflow for authoring, validating, rendering,</tspan>
+<tspan x="954.33" dy="14.00">and exporting an Aurora model.</tspan>
 </text>
 </g>
 <g class="node card-type-process" data-card-id="PRO-002" data-layout-node="PRO-002">
-<rect class="node-shape" x="-0.00" y="476.25" width="541.33" height="141.33" rx="6" ry="6" />
-<text class="node-icon" x="10.00" y="511.91" text-anchor="start" dominant-baseline="hanging">🔁</text>
-<text class="node-label" x="68.00" y="518.91" text-anchor="start" dominant-baseline="middle">
-<tspan x="68.00">PRO-002: </tspan><tspan font-weight="700">Process</tspan>
-<tspan x="68.00" dy="14.00">In-Tool Model Editing Workflow</tspan>
-<tspan x="68.00" dy="14.00">&#160;</tspan>
-<tspan x="68.00" dy="14.00">A repeatable workflow for interactively opening, navigating, editing,</tspan>
-<tspan x="68.00" dy="14.00">validating, previewing, and saving an Aurora model.</tspan>
+<rect class="node-shape" x="654.67" y="94.91" width="541.33" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="693.67" y="130.57" text-anchor="middle" dominant-baseline="hanging">🔁</text>
+<text class="node-label" x="954.33" y="137.57" text-anchor="middle" dominant-baseline="middle">
+<tspan x="954.33">PRO-002: </tspan><tspan font-weight="700">Process</tspan>
+<tspan x="954.33" dy="14.00">In-Tool Model Editing Workflow</tspan>
+<tspan x="954.33" dy="14.00">&#160;</tspan>
+<tspan x="954.33" dy="14.00">A repeatable workflow for interactively opening, navigating, editing,</tspan>
+<tspan x="954.33" dy="14.00">validating, previewing, and saving an Aurora model.</tspan>
 </text>
 </g>
 </svg>

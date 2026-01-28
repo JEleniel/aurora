@@ -53,6 +53,10 @@
         {
           "relationship": "satisfies",
           "target": "REQ-011"
+        },
+        {
+          "relationship": "runs",
+          "target": "PRO-002"
         }
       ],
       "name": "Interactive Authoring"
@@ -124,6 +128,10 @@
         {
           "relationship": "satisfies",
           "target": "REQ-007"
+        },
+        {
+          "relationship": "runs",
+          "target": "PRO-001"
         }
       ],
       "name": "View Rendering"
@@ -193,6 +201,10 @@
         {
           "relationship": "satisfies",
           "target": "REQ-008"
+        },
+        {
+          "relationship": "runs",
+          "target": "PRO-001"
         }
       ],
       "name": "Model Compaction"
@@ -206,14 +218,6 @@
         {
           "relationship": "enables",
           "target": "CAP-007"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-013"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-008"
         }
       ],
       "name": "Preview Rendered Markdown"
@@ -227,22 +231,6 @@
         {
           "relationship": "enables",
           "target": "CAP-009"
-        },
-        {
-          "relationship": "mitigates",
-          "target": "THR-001"
-        },
-        {
-          "relationship": "mitigates",
-          "target": "RIS-001"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-017"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-008"
         }
       ],
       "name": "Sanitized Rendering"
@@ -256,10 +244,6 @@
         {
           "relationship": "enables",
           "target": "CAP-007"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-012"
         }
       ],
       "name": "Visualize Model Graph"
@@ -273,82 +257,6 @@
         {
           "relationship": "enables",
           "target": "CAP-004"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-007"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-018"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-004"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-005"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-009"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-010"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-011"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-012"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-013"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-014"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-015"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-016"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-017"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-018"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-019"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-020"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-021"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-022"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-023"
         }
       ],
       "name": "Render Views"
@@ -362,18 +270,6 @@
         {
           "relationship": "enables",
           "target": "CAP-009"
-        },
-        {
-          "relationship": "mitigates",
-          "target": "THR-002"
-        },
-        {
-          "relationship": "mitigates",
-          "target": "RIS-002"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-015"
         }
       ],
       "name": "Safe File Operations"
@@ -387,14 +283,6 @@
         {
           "relationship": "enables",
           "target": "CAP-002"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-004"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-007"
         }
       ],
       "name": "Model Validation"
@@ -408,10 +296,6 @@
         {
           "relationship": "enables",
           "target": "CAP-007"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-009"
         }
       ],
       "name": "Browse and Search Models"
@@ -425,18 +309,6 @@
         {
           "relationship": "enables",
           "target": "CAP-009"
-        },
-        {
-          "relationship": "mitigates",
-          "target": "THR-003"
-        },
-        {
-          "relationship": "mitigates",
-          "target": "RIS-003"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-016"
         }
       ],
       "name": "Workspace Trust Gating"
@@ -450,10 +322,6 @@
         {
           "relationship": "enables",
           "target": "CAP-008"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-014"
         }
       ],
       "name": "Workspace Integration"
@@ -467,14 +335,6 @@
         {
           "relationship": "enables",
           "target": "CAP-006"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-011"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-007"
         }
       ],
       "name": "Show Validation Diagnostics"
@@ -488,10 +348,6 @@
         {
           "relationship": "enables",
           "target": "CAP-006"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-010"
         }
       ],
       "name": "Edit Models Interactively"
@@ -505,10 +361,6 @@
         {
           "relationship": "enables",
           "target": "CAP-001"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-003"
         }
       ],
       "name": "Load Models"
@@ -522,14 +374,6 @@
         {
           "relationship": "enables",
           "target": "CAP-005"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-008"
-        },
-        {
-          "relationship": "generates",
-          "target": "ART-006"
         }
       ],
       "name": "Model Compaction"
@@ -543,10 +387,6 @@
         {
           "relationship": "enables",
           "target": "CAP-003"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-005"
         }
       ],
       "name": "Update Models"
@@ -560,10 +400,6 @@
         {
           "relationship": "enables",
           "target": "CAP-001"
-        },
-        {
-          "relationship": "satisfies",
-          "target": "REQ-006"
         }
       ],
       "name": "Save Models"
@@ -626,7 +462,7 @@
       "id": "TES-002",
       "links": [
         {
-          "relationship": "validates",
+          "relationship": "uses",
           "target": "FEA-005"
         }
       ],
@@ -639,7 +475,7 @@
       "id": "TES-001",
       "links": [
         {
-          "relationship": "validates",
+          "relationship": "uses",
           "target": "FEA-002"
         }
       ],
@@ -652,7 +488,7 @@
       "id": "TES-003",
       "links": [
         {
-          "relationship": "validates",
+          "relationship": "uses",
           "target": "FEA-006"
         }
       ],
@@ -665,11 +501,11 @@
       "id": "CTL-004",
       "links": [
         {
-          "relationship": "governs",
+          "relationship": "uses",
           "target": "COM-013"
         },
         {
-          "relationship": "governs",
+          "relationship": "uses",
           "target": "COM-015"
         },
         {
@@ -679,6 +515,14 @@
         {
           "relationship": "mitigates",
           "target": "RIS-003"
+        },
+        {
+          "relationship": "protects",
+          "target": "AST-001"
+        },
+        {
+          "relationship": "protects",
+          "target": "AST-003"
         }
       ],
       "name": "Least Privilege File Access"
@@ -690,20 +534,20 @@
       "id": "CTL-001",
       "links": [
         {
-          "relationship": "governs",
+          "relationship": "uses",
           "target": "COM-013"
         },
         {
-          "relationship": "governs",
+          "relationship": "uses",
           "target": "COM-015"
         },
         {
           "relationship": "mitigates",
-          "target": "THR-003"
+          "target": "RIS-003"
         },
         {
-          "relationship": "mitigates",
-          "target": "RIS-003"
+          "relationship": "protects",
+          "target": "AST-003"
         }
       ],
       "name": "Workspace Trust Gate"
@@ -715,20 +559,24 @@
       "id": "CTL-003",
       "links": [
         {
-          "relationship": "governs",
+          "relationship": "uses",
           "target": "COM-007"
         },
         {
-          "relationship": "governs",
+          "relationship": "uses",
           "target": "COM-014"
         },
         {
           "relationship": "mitigates",
-          "target": "THR-001"
+          "target": "RIS-001"
         },
         {
-          "relationship": "mitigates",
-          "target": "RIS-001"
+          "relationship": "protects",
+          "target": "AST-002"
+        },
+        {
+          "relationship": "protects",
+          "target": "AST-003"
         }
       ],
       "name": "Content Sanitization"
@@ -740,16 +588,20 @@
       "id": "CTL-002",
       "links": [
         {
-          "relationship": "governs",
+          "relationship": "uses",
           "target": "COM-015"
         },
         {
           "relationship": "mitigates",
-          "target": "THR-002"
+          "target": "RIS-002"
         },
         {
-          "relationship": "mitigates",
-          "target": "RIS-002"
+          "relationship": "protects",
+          "target": "AST-001"
+        },
+        {
+          "relationship": "protects",
+          "target": "AST-003"
         }
       ],
       "name": "Safe Path Handling and Atomic Writes"
@@ -785,7 +637,7 @@
       "id": "STO-001",
       "links": [
         {
-          "relationship": "explains",
+          "relationship": "uses",
           "target": "REQ-018"
         }
       ],
@@ -796,15 +648,15 @@
       "attributes": null,
       "card_subtype": "Tombstone",
       "card_type": "Story",
-      "description": "Legacy tombstone story retained for traceability. This supersedes the earlier `STO-001` story card, which used a non-canonical prefix. `STO-001` is retained as `Deleted` for historical continuity.",
+      "description": "Legacy tombstone story retained for traceability. This existed to record the transition away from a non-canonical Story prefix. The legacy card is `STO-001` (status: Deleted). The active story is `STR-003`.",
       "id": "STR-004",
       "links": [
         {
-          "relationship": "explains",
+          "relationship": "uses",
           "target": "REQ-018"
         },
         {
-          "relationship": "includes",
+          "relationship": "uses",
           "target": "STO-001"
         }
       ],
@@ -818,7 +670,7 @@
       "id": "STR-002",
       "links": [
         {
-          "relationship": "explains",
+          "relationship": "uses",
           "target": "PRO-002"
         }
       ],
@@ -831,8 +683,24 @@
       "id": "STR-001",
       "links": [
         {
-          "relationship": "explains",
+          "relationship": "uses",
           "target": "PRO-001"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-001"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-002"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-003"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-005"
         }
       ],
       "name": "Author and Share Aurora Model"
@@ -844,15 +712,31 @@
       "id": "STR-003",
       "links": [
         {
-          "relationship": "explains",
+          "relationship": "uses",
           "target": "REQ-018"
         },
         {
-          "relationship": "includes",
+          "relationship": "uses",
           "target": "STR-004"
         }
       ],
       "name": "Store the Model in a Postable Format"
+    },
+    {
+      "attributes": {
+        "recursive": true
+      },
+      "card_subtype": "Trust",
+      "card_type": "Boundary",
+      "description": "Trust boundary for untrusted inputs and adversarial participants.",
+      "id": "BND-001",
+      "links": [
+        {
+          "relationship": "contains",
+          "target": "ACT-003"
+        }
+      ],
+      "name": "Untrusted"
     },
     {
       "attributes": null,
@@ -877,7 +761,7 @@
       "id": "THR-002",
       "links": [
         {
-          "relationship": "imposes",
+          "relationship": "presents",
           "target": "RIS-002"
         }
       ],
@@ -890,7 +774,7 @@
       "id": "THR-003",
       "links": [
         {
-          "relationship": "imposes",
+          "relationship": "presents",
           "target": "RIS-003"
         }
       ],
@@ -903,7 +787,7 @@
       "id": "THR-001",
       "links": [
         {
-          "relationship": "imposes",
+          "relationship": "presents",
           "target": "RIS-001"
         }
       ],
@@ -918,6 +802,10 @@
         {
           "relationship": "uses",
           "target": "FEA-005"
+        },
+        {
+          "relationship": "triggers",
+          "target": "ATV-004"
         }
       ],
       "name": "Render Views"
@@ -931,6 +819,10 @@
         {
           "relationship": "uses",
           "target": "FEA-009"
+        },
+        {
+          "relationship": "triggers",
+          "target": "ATV-009"
         }
       ],
       "name": "Review Validation Diagnostics"
@@ -944,6 +836,10 @@
         {
           "relationship": "uses",
           "target": "FEA-001"
+        },
+        {
+          "relationship": "triggers",
+          "target": "ATV-002"
         }
       ],
       "name": "Load Model"
@@ -961,6 +857,10 @@
         {
           "relationship": "uses",
           "target": "FEA-012"
+        },
+        {
+          "relationship": "triggers",
+          "target": "ATV-006"
         }
       ],
       "name": "Open Model in Tool"
@@ -978,6 +878,10 @@
         {
           "relationship": "uses",
           "target": "FEA-009"
+        },
+        {
+          "relationship": "triggers",
+          "target": "ATV-008"
         }
       ],
       "name": "Edit Cards and Links"
@@ -1008,6 +912,10 @@
         {
           "relationship": "uses",
           "target": "FEA-010"
+        },
+        {
+          "relationship": "triggers",
+          "target": "ATV-007"
         }
       ],
       "name": "Navigate Model"
@@ -1021,6 +929,10 @@
         {
           "relationship": "uses",
           "target": "FEA-002"
+        },
+        {
+          "relationship": "triggers",
+          "target": "ATV-003"
         }
       ],
       "name": "Validate Model"
@@ -1063,6 +975,10 @@
         {
           "relationship": "uses",
           "target": "FEA-015"
+        },
+        {
+          "relationship": "triggers",
+          "target": "ATV-010"
         }
       ],
       "name": "Preview Output"
@@ -1074,11 +990,11 @@
       "id": "RIS-002",
       "links": [
         {
-          "relationship": "impacts",
+          "relationship": "uses",
           "target": "AST-001"
         },
         {
-          "relationship": "impacts",
+          "relationship": "uses",
           "target": "AST-003"
         }
       ],
@@ -1091,11 +1007,11 @@
       "id": "RIS-001",
       "links": [
         {
-          "relationship": "impacts",
+          "relationship": "uses",
           "target": "AST-002"
         },
         {
-          "relationship": "impacts",
+          "relationship": "uses",
           "target": "AST-003"
         }
       ],
@@ -1108,7 +1024,7 @@
       "id": "RIS-003",
       "links": [
         {
-          "relationship": "impacts",
+          "relationship": "uses",
           "target": "AST-003"
         }
       ],
@@ -1133,48 +1049,20 @@
           "target": "APP-003"
         },
         {
-          "relationship": "participates_in",
-          "target": "DEP-001"
+          "relationship": "imposes",
+          "target": "CTL-001"
         },
         {
-          "relationship": "participates_in",
-          "target": "DEP-002"
+          "relationship": "imposes",
+          "target": "CTL-002"
         },
         {
-          "relationship": "enables",
-          "target": "CAP-001"
+          "relationship": "imposes",
+          "target": "CTL-003"
         },
         {
-          "relationship": "enables",
-          "target": "CAP-002"
-        },
-        {
-          "relationship": "enables",
-          "target": "CAP-003"
-        },
-        {
-          "relationship": "enables",
-          "target": "CAP-004"
-        },
-        {
-          "relationship": "enables",
-          "target": "CAP-005"
-        },
-        {
-          "relationship": "enables",
-          "target": "CAP-006"
-        },
-        {
-          "relationship": "enables",
-          "target": "CAP-007"
-        },
-        {
-          "relationship": "enables",
-          "target": "CAP-008"
-        },
-        {
-          "relationship": "enables",
-          "target": "CAP-009"
+          "relationship": "imposes",
+          "target": "CTL-004"
         }
       ],
       "name": "Default Tooling Platform"
@@ -1186,32 +1074,12 @@
       "id": "PRO-002",
       "links": [
         {
-          "relationship": "involves",
+          "relationship": "uses",
           "target": "ACT-002"
         },
         {
-          "relationship": "includes",
+          "relationship": "starts with",
           "target": "ATV-005"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-006"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-007"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-008"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-009"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-010"
         }
       ],
       "name": "In-Tool Model Editing Workflow"
@@ -1223,24 +1091,12 @@
       "id": "PRO-001",
       "links": [
         {
-          "relationship": "involves",
+          "relationship": "uses",
           "target": "ACT-001"
         },
         {
-          "relationship": "includes",
+          "relationship": "starts with",
           "target": "ATV-001"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-002"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-003"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-004"
         }
       ],
       "name": "Model Authoring Workflow"
@@ -1253,11 +1109,11 @@
       "links": [
         {
           "relationship": "hosts",
-          "target": "APP-001"
+          "target": "COM-012"
         },
         {
           "relationship": "hosts",
-          "target": "APP-002"
+          "target": "COM-002"
         },
         {
           "relationship": "hosts",
@@ -1317,14 +1173,6 @@
       "links": [
         {
           "relationship": "drives",
-          "target": "CNS-002"
-        },
-        {
-          "relationship": "drives",
-          "target": "CNS-003"
-        },
-        {
-          "relationship": "drives",
           "target": "REQ-001"
         }
       ],
@@ -1336,14 +1184,6 @@
       "description": "Express the model in a form that is easy to parse and understand for both humans and machine agents.",
       "id": "DRI-004",
       "links": [
-        {
-          "relationship": "drives",
-          "target": "CNS-001"
-        },
-        {
-          "relationship": "drives",
-          "target": "CNS-005"
-        },
         {
           "relationship": "drives",
           "target": "REQ-001"
@@ -1425,10 +1265,6 @@
       "description": "The entire model is expressible by listing the nodes and their relationships in simple sentences.",
       "id": "DRI-002",
       "links": [
-        {
-          "relationship": "drives",
-          "target": "CNS-002"
-        },
         {
           "relationship": "drives",
           "target": "REQ-001"
@@ -1523,7 +1359,7 @@
       "id": "CNS-002",
       "links": [
         {
-          "relationship": "includes",
+          "relationship": "uses",
           "target": "CNS-004"
         }
       ],
@@ -1568,19 +1404,19 @@
       "id": "DEP-002",
       "links": [
         {
-          "relationship": "includes",
+          "relationship": "deploys",
           "target": "NOD-001"
         },
         {
-          "relationship": "includes",
+          "relationship": "deploys",
           "target": "NOD-002"
         },
         {
-          "relationship": "includes",
+          "relationship": "deploys",
           "target": "NOD-003"
         },
         {
-          "relationship": "includes",
+          "relationship": "deploys",
           "target": "NOD-004"
         }
       ],
@@ -1593,7 +1429,7 @@
       "id": "DEP-001",
       "links": [
         {
-          "relationship": "includes",
+          "relationship": "deploys",
           "target": "NOD-001"
         }
       ],
@@ -1801,31 +1637,31 @@
           "target": "FEA-015"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-001"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-002"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-003"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-004"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-005"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-006"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-007"
         }
       ],
@@ -1874,39 +1710,39 @@
           "target": "FEA-015"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-001"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-008"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-013"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-014"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-015"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-004"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-005"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-006"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-007"
         },
         {
@@ -1939,23 +1775,23 @@
           "target": "FEA-006"
         },
         {
-          "relationship": "includes",
+          "relationship": "implements",
           "target": "TES-001"
         },
         {
-          "relationship": "includes",
+          "relationship": "implements",
           "target": "TES-002"
         },
         {
-          "relationship": "includes",
+          "relationship": "implements",
           "target": "TES-003"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-001"
         },
         {
-          "relationship": "includes",
+          "relationship": "comprises",
           "target": "COM-012"
         },
         {
@@ -1980,7 +1816,7 @@
       "id": "ART-018",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -1993,7 +1829,7 @@
       "id": "ART-017",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2022,7 +1858,7 @@
       "id": "ART-010",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2035,7 +1871,7 @@
       "id": "ART-011",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2048,7 +1884,7 @@
       "id": "ART-009",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2061,7 +1897,7 @@
       "id": "ART-013",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2082,7 +1918,7 @@
       "id": "ART-016",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2119,7 +1955,7 @@
       "id": "ART-019",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2132,7 +1968,7 @@
       "id": "ART-022",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2145,7 +1981,7 @@
       "id": "ART-023",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2166,7 +2002,7 @@
       "id": "ART-020",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2179,7 +2015,7 @@
       "id": "ART-015",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2192,7 +2028,7 @@
       "id": "ART-014",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2205,7 +2041,7 @@
       "id": "ART-012",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2226,7 +2062,7 @@
       "id": "ART-021",
       "links": [
         {
-          "relationship": "persists_to",
+          "relationship": "persists to",
           "target": "DTS-001"
         }
       ],
@@ -2240,7 +2076,7 @@
       "id": "COM-010",
       "links": [
         {
-          "relationship": "comprises",
+          "relationship": "uses",
           "target": "COM-011"
         }
       ],
@@ -2263,7 +2099,7 @@
       "id": "COM-009",
       "links": [
         {
-          "relationship": "comprises",
+          "relationship": "uses",
           "target": "COM-010"
         }
       ],
@@ -2282,6 +2118,10 @@
         {
           "relationship": "implements",
           "target": "FEA-015"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-008"
         }
       ],
       "name": "Markdown View"
@@ -2306,12 +2146,108 @@
       "id": "COM-012",
       "links": [
         {
-          "relationship": "uses",
-          "target": "COM-001"
+          "relationship": "calls",
+          "target": "INT-001"
         },
         {
-          "relationship": "exposes",
-          "target": "INT-001"
+          "relationship": "implements",
+          "target": "FEA-001"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-002"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-003"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-004"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-005"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-006"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-004"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-005"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-006"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-007"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-009"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-010"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-011"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-012"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-013"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-014"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-015"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-016"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-017"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-018"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-019"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-020"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-021"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-022"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-023"
         }
       ],
       "name": "Aurora CLI"
@@ -2352,7 +2288,7 @@
           "target": "COM-001"
         },
         {
-          "relationship": "exposes",
+          "relationship": "uses",
           "target": "INT-003"
         }
       ],
@@ -2390,11 +2326,11 @@
           "target": "COM-015"
         },
         {
-          "relationship": "exposes",
+          "relationship": "uses",
           "target": "INT-004"
         },
         {
-          "relationship": "exposes",
+          "relationship": "uses",
           "target": "INT-005"
         }
       ],
@@ -2444,15 +2380,15 @@
           "target": "FEA-006"
         },
         {
-          "relationship": "includes",
+          "relationship": "uses",
           "target": "COM-009"
         },
         {
-          "relationship": "includes",
+          "relationship": "uses",
           "target": "COM-010"
         },
         {
-          "relationship": "includes",
+          "relationship": "uses",
           "target": "COM-011"
         }
       ],
@@ -2469,7 +2405,7 @@
           "target": "COM-001"
         },
         {
-          "relationship": "exposes",
+          "relationship": "uses",
           "target": "INT-002"
         }
       ],
@@ -2494,11 +2430,11 @@
           "target": "COM-001"
         },
         {
-          "relationship": "persists_to",
+          "relationship": "uses",
           "target": "DTS-001"
         },
         {
-          "relationship": "persists_to",
+          "relationship": "uses",
           "target": "DTS-002"
         }
       ],
@@ -2520,22 +2456,6 @@
         }
       ],
       "name": "Webview UI Host"
-    },
-    {
-      "attributes": {
-        "recursive": true
-      },
-      "card_subtype": "Trust",
-      "card_type": "Boundary",
-      "description": "Trust boundary for untrusted inputs and adversarial participants.",
-      "id": "BND-001",
-      "links": [
-        {
-          "relationship": "contains",
-          "target": "ACT-003"
-        }
-      ],
-      "name": "Untrusted"
     },
     {
       "attributes": null,
@@ -2597,15 +2517,15 @@
         },
         {
           "relationship": "necessitates",
-          "target": "PRO-001"
+          "target": "DEP-001"
         },
         {
           "relationship": "necessitates",
-          "target": "PRO-002"
+          "target": "DEP-002"
         }
       ],
       "name": "Provide Default Tooling for AURORA"
     }
   ],
-  "generated_at": 1769359154
+  "generated_at": 1769560847
 }

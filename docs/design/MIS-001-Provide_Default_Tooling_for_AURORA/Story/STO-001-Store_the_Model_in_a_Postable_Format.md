@@ -8,4 +8,4 @@ As an architect, I want to package an Aurora model into a single portable file (
 
 ## Links
 
-- `explains` → `REQ-018`
+- `uses` → `REQ-018`

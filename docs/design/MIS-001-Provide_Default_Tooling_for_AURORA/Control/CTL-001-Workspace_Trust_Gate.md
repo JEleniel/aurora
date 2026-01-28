@@ -8,7 +8,7 @@ Gate potentially unsafe operations (e.g., file writes, webview rendering, execut
 
 ## Links
 
-- `governs` → `COM-013`
-- `governs` → `COM-015`
-- `mitigates` → `THR-003`
+- `uses` → `COM-013`
+- `uses` → `COM-015`
 - `mitigates` → `RIS-003`
+- `protects` → `AST-003`

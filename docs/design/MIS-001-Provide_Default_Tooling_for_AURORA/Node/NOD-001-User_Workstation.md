@@ -8,6 +8,6 @@ A user workstation that hosts local CLI and desktop tooling and provides workspa
 
 ## Links
 
-- `hosts` → `APP-001`
-- `hosts` → `APP-002`
+- `hosts` → `COM-012`
+- `hosts` → `COM-002`
 - `hosts` → `DTS-001`

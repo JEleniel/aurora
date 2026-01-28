@@ -29,7 +29,7 @@
     + Links:
         - [Source: `tools/aurora_cli/src/main.rs`](../tools/aurora_cli/src/main.rs)
         - [Library & tests: `tools/aurora_shared/src/render.rs`](../tools/aurora_shared/src/render.rs)
-    + Updates: Added matrix-based validation warnings, completion summaries in the CLI, Everything View dashed-edge styling with regression coverage, new validation tests for updated relationship matrix rules, a CLI instructions-root override with reporting, plus centered SVG node labels and disjoint-boundary overlap avoidance in the SVG renderer with regression coverage.
+    + Updates: Added matrix-based validation warnings, completion summaries in the CLI, Everything View dashed-edge styling with regression coverage, new validation tests for updated relationship matrix rules, a CLI instructions-root override with reporting, plus centered SVG node labels and disjoint-boundary overlap avoidance in the SVG renderer with regression coverage. Aligned validation fixtures with the canonical relationships matrix (including `Application implements Test`, `Component implements Class`, `Artifact persists to Data Store`, and `uses`), added a standalone aurora_shared lockfile, and clarified CLI help/logging around the canonical registry files.
     + Next Actions:
         - Validate updated CLI render output after ID-prefixed headers and left-aligned icon labels; re-render artifacts if needed.
         - Re-render views to confirm the dot-only layout selection matches expected output.

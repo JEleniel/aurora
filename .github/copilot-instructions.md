@@ -48,6 +48,9 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 - No global variables; global constants are allowed only in a dedicated constants file.
 - Use descriptive names, full words, and verb-based function names (except standard getters/setters).
 - Tests must prove behavior. Do not write null tests that only call functions without validation.
+- You MUST NOT disable checks or tests (e.g., `// @ts-nocheck`, `#[allow(...)]`). Fix the underlying issue instead.
+- Unimplemented paths must still fail fast and clearly communicate intent (`todo!`, `unimplemented!`, etc.).
+- Do not label code “production ready”; rely on the review + release process instead.
 
 ## Security by Default
 

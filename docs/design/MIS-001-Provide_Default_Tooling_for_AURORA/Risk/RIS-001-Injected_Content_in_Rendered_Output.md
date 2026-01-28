@@ -8,5 +8,5 @@ Rendered output could contain unsafe content that misleads users or executes in 
 
 ## Links
 
-- `impacts` → `AST-002`
-- `impacts` → `AST-003`
+- `uses` → `AST-002`
+- `uses` → `AST-003`

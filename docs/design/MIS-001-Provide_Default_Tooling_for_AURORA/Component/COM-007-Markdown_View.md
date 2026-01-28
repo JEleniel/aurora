@@ -10,3 +10,4 @@ Editor UI component for viewing and editing human-readable Markdown renderings o
 
 - `implements` → `FEA-011`
 - `implements` → `FEA-015`
+- `generates` → `ART-008`

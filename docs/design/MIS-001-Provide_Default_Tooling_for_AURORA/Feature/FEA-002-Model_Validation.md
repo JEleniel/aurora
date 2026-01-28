@@ -9,5 +9,3 @@ Validate Aurora models against schemas and invariants and produce actionable dia
 ## Links
 
 - `enables` → `CAP-002`
-- `satisfies` → `REQ-004`
-- `generates` → `ART-007`

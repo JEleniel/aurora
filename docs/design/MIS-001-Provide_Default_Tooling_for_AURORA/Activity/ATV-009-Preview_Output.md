@@ -11,3 +11,4 @@ Preview rendered views and Markdown representations of the model.
 - `uses` → `FEA-011`
 - `uses` → `FEA-010`
 - `uses` → `FEA-015`
+- `triggers` → `ATV-010`

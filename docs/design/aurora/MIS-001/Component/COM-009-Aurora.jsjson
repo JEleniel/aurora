@@ -8,11 +8,11 @@
 	"links": [
 		{
 			"target": "COM-010",
-			"relationship": "comprises"
+			"relationship": "uses"
 		}
 	],
 	"audit_trail": {
-		"version": "1.1.1",
+		"version": "1.2.0",
 		"hash": null,
 		"history": [
 			{
@@ -29,6 +29,11 @@
 				"editor": "GitHub Copilot (Architect agent)",
 				"timestamp": "2026-01-24T00:25:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "GitHub Copilot (Architect agent)",
+				"timestamp": "2026-01-28T00:00:00Z",
+				"event": "edited"
 			}
 		]
 	}

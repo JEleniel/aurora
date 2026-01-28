@@ -8,7 +8,7 @@ A user workstation environment where the Editor, CLI, and VSCode extension execu
 
 ## Links
 
-- `includes` → `NOD-001`
-- `includes` → `NOD-002`
-- `includes` → `NOD-003`
-- `includes` → `NOD-004`
+- `deploys` → `NOD-001`
+- `deploys` → `NOD-002`
+- `deploys` → `NOD-003`
+- `deploys` → `NOD-004`

@@ -74,7 +74,11 @@ These define the vocabulary and view rules; prefer updating these over duplicati
 
 ## Workspace root
 
-- Cargo workspace root: `Cargo.toml`
+- Cargo workspaces are split per tool; there is no root `Cargo.toml`.
+    + CLI crate: `tools/aurora_cli/Cargo.toml`
+    + Shared library: `tools/aurora_shared/Cargo.toml`
+    + VS Code host: `tools/aurora_vscode_host/Cargo.toml`
+    + Each Rust tool now maintains its own `Cargo.lock` (for example `tools/aurora_shared/Cargo.lock`).
 - Changelog (Keep a Changelog): `CHANGELOG.md`
 
 ## Generated outputs

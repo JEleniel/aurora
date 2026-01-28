@@ -10,3 +10,4 @@ Open an Aurora model in an interactive tooling surface.
 
 - `uses` → `FEA-001`
 - `uses` → `FEA-012`
+- `triggers` → `ATV-006`

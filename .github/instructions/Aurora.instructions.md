@@ -1,12 +1,12 @@
 ---
-applyTo: '**/*'
+applyTo: '**/aurora/**/*'
 ---
 
 # Aurora Machine Agent Instruction
 
 ## Model Overview
 
-**Version**: 2.0.0
+**Version**: 2.1.0
 
 Aurora is a deterministic architectural model where architectural elements are cards, relationships between cards are links, and the model forms a directed graph. The model is designed so that any interpretation (such as view diagrams) can be generated from the model, and for direct machine consumption by LLMs, agents, reasoners, and automated tools. The model invariants guarantee unambiguous interpretation and reasoning about the model.
 
@@ -16,17 +16,19 @@ Semantics are derived from the invariant rules: cards and relationship verbs are
 
 ## Canonical registries
 
-These files are the canonical registries for the Aurora vocabulary and should be updated instead of duplicating lists in this document:
+Even though Aurora is designed to allow any element and any relationship, by default we include a set of cards and relationships covering all common architectural elements. These files are the canonical registries for the Aurora vocabulary and should be updated instead of duplicating lists in this document:
 
-- [Card Definitions](details/Card_Definitions.md)
-- [View Definitions](details/View_Definitions.md)
-- [Relationship Definitions](details/Relationship_Definitions.md)
+- The canonical relationships are defined in [1-Relationship_Matrix.md](details/1-Relationship_Matrix.md)
+    + The Card acronyms are expanded in [1a-Card_Definitions](details/1a-Card_Definitions.md)
+    + The Relationship verbs are described in [1b-Relationship_Definitions.md](details/1b-Relationship_Definitions.md)
+- The canonical Views are defined in [2-View_Definitions.md](details/2-View_Definitions.md)
+    + A Styling Guide for views is included in [2a-View_Styling_Guide](details/2a-View_Styling_Guide.md)
 
 ## Models
 
 The model is the central piece of the architecture: a collection of cards connected by links, starting from a `Mission` card. Cards are nouns (elements of the design). Links describe how elements relate and interact, and are tagged with verbs (for human convenience).
 
-Any pair of cards in the model can be described using simple sentences:
+Any pair of cards in the model can be described using simple sentences of the form `element verb element`:
 
 **Examples**:
 
@@ -34,16 +36,6 @@ Any pair of cards in the model can be described using simple sentences:
 The mission "Drive Excellence" is "Drive excellence in operations by streamlining processes, integrating automation, and formalizing documentation".
 
 The mission establishes the driver "Operational Friction Elimination" which is "Eliminate non-value-adding manual effort by enforcing end-to-end process automation, standardized workflows, and machine-verifiable documentation across all operational domains".
-
-"Operational Friction Elimination" drives the requirement "Define a Deterministic Modeling Framework" which is "Design a framework for documenting deterministic process models with measurable latency and failure semantics".
-
-The capability "Deterministic Process Authoring & Validation Workflow" which is "A machine-verifiable, executable representation of every operational workflow with deterministic guarantees" satisfies the requirement "Define a Deterministic Modeling Framework".
-
-The feature "Deterministic Workflow Modeling Engine (DWME)" which is "Software tools to create, manage, and render machine-verifiable executable representations of operational workflows" satisfies the requirement "Define a Deterministic Modeling Framework" and enables the capability "Deterministic Process Authoring & Validation Workflow".
-
-The mission necessitates the system "Workflow Model Tooling" which integrates the application "Workflow Modeler".
-
-Workflow Modeler implements the feature "Deterministic Workflow Modeling Engine".
 ```
 
 **These result in a model that looks like this**:
@@ -51,57 +43,39 @@ Workflow Modeler implements the feature "Deterministic Workflow Modeling Engine"
 ```mermaid
 %%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
 graph LR
-	drive_excellence(("`Mission:<br />Drive Excellence`"))
+	drive_excellence(("`Mission:<br />Drive Excellence`")) -- drives -->
 	operational_friction_elimination(["`Driver:<br />Operational Friction Elimination`"])
-	define_a_deterministic_modeling_framework(["`Requirement:<br />Define a Deterministic Modeling Framework`"])
-	deterministic_process_authoring(["`Capability:<br />Deterministic Process Authoring & Validation Workflow`"])
-	deterministic_workflow_modeling_engine(["`Feature:<br />Deterministic Workflow Modeling Engine (DWME)`"])
-	workflow__model_tooling["`System:<br />Workflow Model Tooling`"]@{shape: div-rect}
-	workflow_modeler["`Application:<br />Workflow Modeler`"]@{shape: lin-rect}
-
-	drive_excellence -- establishes --> operational_friction_elimination
-	operational_friction_elimination -- drives --> define_a_deterministic_modeling_framework
-	deterministic_process_authoring -- satisfies --> define_a_deterministic_modeling_framework
-	deterministic_workflow_modeling_engine -- satisfies --> define_a_deterministic_modeling_framework
-	deterministic_workflow_modeling_engine -- enables --> deterministic_process_authoring
-	drive_excellence -- necessitates --> workflow__model_tooling
-	workflow__model_tooling -- integrates --> workflow_modeler
-	workflow_modeler -- implements --> deterministic_workflow_modeling_engine
 ```
 
 ### Cards
 
-A card contains information about an element of the model and links to other elements. See [Model Overview](#model-overview) for determinism and semantics. Cards also have an `attributes` property for additional arbitrary information. Card files should be "pretty printed" using `prettier`.
+A card contains information about an element of the model and links to other elements. See [Model Overview](#model-overview) for determinism and semantics. Cards also have an `attributes` property for additional arbitrary information. Card files should be "pretty printed" using `prettier`, with the exception of the Compressed Model. The Compressed Model should be compacted to remove extraneous white space.
 
 Each card is comprised of:
 
-| Field          | Required | Meaning                           |
-| -------------- | -------- | --------------------------------- |
-| `$schema`      | Yes      | Schema reference.                 |
-| `id`           | Yes      | Stable unique identifier.         |
-| `card_type`    | Yes      | Card type (title case).           |
-| `card_subtype` | No       | Optional card type refinement.    |
-| `name`         | Yes      | Human-readable name (title case). |
-| `description`  | Yes      | Card description.                 |
-| `status`       | No       | Optional lifecycle status.        |
-| `links`        | No       | Outgoing relationship links.      |
-| `audit_trail`  | Yes      | Semver audit history.             |
-| `attributes`   | No       | Additional optional data.         |
+| Field          | Required | Meaning                                                                         |
+| -------------- | -------- | ------------------------------------------------------------------------------- |
+| `$schema`      | Yes      | Schema reference (relative path to the schema file in Model Home).              |
+| `id`           | Yes      | Stable unique identifier. See [IDs, Files, and Layouts](#ids-files-and-layouts) |
+| `card_type`    | Yes      | Card type (title case) See [Canonical Registries](#canonical-registries)        |
+| `card_subtype` | No       | Optional card type refinement.                                                  |
+| `name`         | Yes      | Human-readable name (title case).                                               |
+| `description`  | Yes      | Card description.                                                               |
+| `status`       | No       | Optional lifecycle status.                                                      |
+| `links`        | No       | Outgoing relationship links.                                                    |
+| `audit_trail`  | Yes      | Semver, hash, & audit history.                                                  |
+| `attributes`   | No       | Additional optional data.                                                       |
 
-Field semantics:
+**Notes**:
 
-- `$schema`: Relative link to the Aurora schema file included with the model(s) in the model home.
-- `id`: Unique (to the model) identifier with a `card_type` prefix and sequential integer. Once issued, the `id` MUST NOT change; if `card_type` changes, issue a new card and move the original to `status` "Deleted" with an audit history entry.
-- `card_type`: Architectural element represented by the card in title case. See [Card Definitions](details/Card_Definitions.md).
-- `card_subtype`: Optional refinement of the `card_type` in title case.
-- `name`: Concise human-readable name for the card in title case.
-- `description`: Details regarding the element the card represents.
-- `status`: Status of an implementable element such as a `Feature`. Recommended lifecycle: "Proposed", "Design", "Implementation", "Released", "Deprecated", "Deleted"; extend consistently per `card_type`.
-- `links`: Pointers to other cards establishing relationships (`target` is the destination card `id`; `relationship` is a human-readable verb).
-- `audit_trail`: Semver audit: major for meaning changes or `Deleted`, minor for non-meaning updates, patch for typos; include history entries with `editor`, RFC3339 `timestamp`, and `event` (`created`, `edited`, `deleted`); optional SHA256 `hash` uses `null` placeholder for calculation.
-- `attributes`: Arbitrary optional key-value pairs providing additional data; the value can be any valid JSON value, including objects.
+- Once issued, the `id` MUST NOT change; to change `id` or if `card_type` changes, issue a new card and move the original to `status` "Deleted" with an audit history entry.
+- Any lifecycle can applied to an implementable element, and can be used for Aurora. The included lifecycle is: "Proposed", "Design", "Implementation", "Released", "Deprecated", "Deleted"
+- The Audit History includes a semver version number specific to the card as well as an audit history. Semver audit: major for meaning changes or `Deleted`, minor for non-meaning updates, patch for typos; include history entries with `editor`, RFC3339 `timestamp`, and `event` (`created`, `edited`, `deleted`). Hash is reserved for future use.
+- Attributes are arbitrary optional key-value pairs providing additional data; the value can be any valid JSON value, including objects.
 
-### IDs, files, and layout
+### IDs, Files, and Layouts
+
+IDs are, by default, a three letter acronym for the `card_type` (see [Canonical Registries](#canonical-registries)) followed by a serially issued integer. Since each model is in a separate folder, each model has its own set of numbers.
 
 #### Example IDs
 
@@ -109,18 +83,19 @@ Field semantics:
 - DRI-001
 - DRI-002
 
-#### File format and naming rules
+### File format and naming rules
 
 - You MUST use the extension `jsjson`. JSJSON files are functionally identical to JSON files.
-- Any time the `name` property is used in a file name, the spaces MUST be replaced with underscores (`Sanitized_Name`).
+- Any time the `name` property is used in a file name, special characters MUST be stripped, and the spaces MUST be replaced with underscores (`Sanitized_Name`).
+- All card files MUST be named `<id>-<Sanitized_Name>.jsjson`, e.g. `MIS-001-Do_Something.jsjson`
 
-#### Model layout rules
+### Model layout rules
 
-- Model home: `aurora/` contains `Aurora.schema.jsjson`, `Aurora.compact.schema.jsjson`, and root `Mission` card files. Mission cards are placed in the model home to provide a consistent, easy-to-find starting point.
-- Root `Mission` file name: `MIS-###-<Sanitized_Name>.jsjson`, using sequential numbering per card type.
-- Mission home: `aurora/<MISSION_ID>/` with subfolders per `card_type`; all other cards are stored as `<CARD_ID>-<Sanitized_Name>.jsjson`.
-- All cards conform to `Aurora.schema.jsjson`; if missing, copy `.github/instructions/details/Aurora.schema.jsjson` before creating the first `Mission` card.
-- Optional compact model: `AGENT-<MISSION_ID>.jsjson` in the model home, conforming to `Aurora.compact.schema.jsjson`, with a top-level `cards` array and `audit_trail` removed; copy `.github/instructions/details/Aurora.compact.schema.jsjson` if missing. The compact file should not be "pretty-printed" to save whitespace.
+- Model home: Always an `aurora/` folder containing `Aurora.schema.jsjson`, and `Aurora.compact.schema.jsjson`. Mission cards are placed in the model home to provide a consistent, easy-to-find starting point. Multiple Models may share a Model Home.
+- Root `Mission` cards. Mission numbering increases monotonically per model Multiple Mission cards and Models may share a Model Home. (e.g., `MIS-...`, `MIS-002...`)
+- Each Model has a Mission home, a subfolder named for the Mission card ID, e.g., `aurora/<MISSION_ID>/` with a subfolders per `card_type`. Each card is stored according to type.
+- All cards conform to `<model home>/Aurora.schema.jsjson`; if missing, copy `.github/instructions/details/Aurora.schema.jsjson` before creating the first `Mission` card.
+- Optional compact model: There may also be an `AGENT-<MISSION_ID>.jsjson` in the Model Home, conforming to `<model home>/Aurora.compact.schema.jsjson`, with a top-level `cards` array and `audit_trail` removed; copy `.github/instructions/details/Aurora.compact.schema.jsjson` if missing. The compact file should not be "pretty-printed" to save whitespace.
 - The model home may be stored as a ZIP file if the folder structure is preserved.
 
 **Example Folder and File Structure**:
@@ -142,38 +117,13 @@ aurora
 ... etc
 ```
 
-#### Common Cards
+## Views
 
-The canonical card palette, prefixes, and common subuses (subtypes) are defined in [Card Definitions](details/Card_Definitions.md).
+Views (see [Canonical Registries](#canonical-registries)) are generated by selecting a set of card types (and optionally subtypes) to include and rendering a diagram showing those cards, and the links between them. Views always include the `Boundary` and `Note` cards that have incoming links from other graph cards. Views **do not change the model**; they change what part of and how the model is viewed. One model, many views.
 
-#### Common Relationships
+In general, a view should display the `card_type`, `card_subtype`, and `name` fields as the text for each node.
 
-Relationship verbs are descriptive (see [Model Overview](#model-overview)). The canonical registry of relationships (including allowed source and target card types, and the full list of verbs defined or used by Aurora) is [Relationship Definitions](details/Relationship_Definitions.md).
-
-#### Special cards
-
-Each special card follows the standard card fields plus the exceptions noted below.
-
-##### `Mission`
-
-- Purpose: Root of the model that captures the overarching purpose.
-- Required fields: Standard card fields.
-- Allowed links: Outgoing only; no incoming links.
-
-##### `Boundary` (BND)
-
-- Purpose: Logical grouping of other cards.
-- Required fields: Standard card fields; optional `attributes.recursive` boolean (default false).
-- Allowed links: Parent includes the `Boundary`; the `Boundary` contains a single target card, in parallel to another link between parent and target.
-- Exception: When `recursive` is true, the boundary includes all descendants of the target in the current view; traversal must avoid loops.
-
-##### `Note` (NOT)
-
-- Purpose: Annotation on another card; does not add new model elements.
-- Required fields: Standard card fields.
-- Allowed links: Incoming only; always a leaf node.
-
-### Logical Structure
+## Logical Structure
 
 The logical structure of Aurora is designed to be easily extended to meet the needs of any architecture. While the structure and rules here are inviolate, they do not limit what is represented in the model and impose only necessary limitations on links.
 
@@ -195,34 +145,30 @@ By using `Boundary` cards and card subtypes almost any structure can be mapped o
 
 7. **Annotative Cards**: The `Boundary` and `Note` cards are not semantically meaningful in the graph; the `Boundary` exists to delineate logical segments, and the `Note` exists to provide additional information for implementers.
 
-## Views
-
-Views are generated by selecting a set of card types (and optionally subtypes) to include and rendering a diagram showing those cards, and the links between them. Views always include the `Boundary` and `Note` cards that have incoming links from other graph cards. Views **do not change the model**; they change what part of and how the model is viewed. One model, many views.
-
-In general, a view should display the `card_type`, `card_subtype`, and `name` fields as the text for each node.
-
 ## Default Tooling
 
 ### `aurora_cli`
 
-Inputs and outputs are not required. When the model is at `docs/design/aurora/` and the output is `docs/design/`, this is the usual layout. The CLI defaults to  `docs/design/aurora/` for input.
+The `aurora_cli` tool (if installed) is provided to assist in validating the model, rendering the human readable cards, rendering the SVG views, and generating the compact model. The `-i` input must come before the `command` and the `-o` output after it, e.g., `aurora_cli -i docs/design/aurora/ render-all -o docs/design/`. The `bump*` commands are provided for humans to bump the version and add an audit entry.
 
 **Simple Validation**:
 
-```text
+This will, when run from the root of a repository, look in docs/design/aurora/ and validate all models found:
+
+```bash
 aurora_cli validate
 ```
 
-**Simple Generation**:
+**Generate Human Readable Cards & SVG Diagrams**:
 
-```text
+```bash
 aurora_cli render-all -o docs/design/
 ```
 
 **Other Commands**:
 
 ```text
-aurora_cli [OPTIONS] <COMMAND>
+aurora_cli [-i <input_path>] <COMMAND> [-o <output_path>]
 
 Commands:
   validate
