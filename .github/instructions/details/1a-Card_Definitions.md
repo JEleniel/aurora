@@ -1,6 +1,6 @@
 # Card Definitions
 
-This page defines the Aurora card palette and how each card is typically used, including the common subuses (subtypes) referenced in [View Definitions](View_Definitions.md). This is the canonical list.
+This page defines the Aurora card palette and how each card is typically used.
 
 ## Cards
 

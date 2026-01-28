@@ -10,7 +10,6 @@ This document defines formatting and style conventions for all Rust source code.
 
 - **Edition (Required)**: Always use the Rust 2024 (or newer) edition style guide, unless the existing code uses an older version, in which case notify the user and get permission before using the older style. You MUST NOT use `mod.rs` files.
 - **Organization**: Organize code into logical modules that conform to the _single responsibility_ principle and the Rust 2024 style. Minimize top-level `*.rs` files by using modules.
-- **Minimize Lines per File**: Aim for a maximum of approximately 200 lines per file. Modules SHOULD only contain a single primary structure and supporting elements _for that module only_. Shared supporting elements MUST be placed in separate files.
 - **Indentation (Accessibility)**: Prefer hard tabs for indentation, unless `rustfmt.toml` specifies otherwise. `cargo fmt` is the source of truth; if this repo includes a `rustfmt.toml`, it MUST be treated as authoritative. If creating or modifying Rust code and the `rustfmt.toml` is missing, stop and notify the user.
 - **Line Endings**: You MUST use POSIX-style newlines (`\n`).
 - **Comment Formatting**:
@@ -31,7 +30,12 @@ This document defines formatting and style conventions for all Rust source code.
 - You SHOULD use `mcp_cargo-mcp_*` for Rust cargo operations when available. If it is not available, use the standard `cargo` CLI.
 - Use `cargo` tools (`fmt`, `clippy`, etc.) to enforce code quality. You MUST fix all warnings and errors in the code you write.
 - Unimplemented code paths MUST fail fast and be explicit (prefer `todo!();`, `unimplemented!();`, or similar). Unused variables must be prefixed with an underscore (`_`). Both unimplemented code and unused variables MUST include a comment explaining the intended future use or implementation.
-- You MUST NOT use `unwrap`, `expect`, `panic`, or similar unless explicitly instructed by the user. You MUST use `thiserror` and `anyhow` for error handling:
+- You MUST NOT use `unwrap`, `expect`, `panic`, or similar in non-test code unless explicitly instructed by the user.
+    + **Test-scoped exception**: In unit tests (`#[cfg(test)]`), integration tests (`tests/`), and doctests, `unwrap`/`expect` are allowed when they improve clarity and a failure represents a test failure.
+        * Prefer `expect("...")` with a short, specific message over bare `unwrap()`.
+        * Avoid `unwrap`/`expect` in shared helper code that is compiled into non-test builds.
+    + **Panics in tests**: Using `panic!` directly is allowed only when the test is explicitly verifying panic behavior; otherwise prefer assertion macros (`assert!`, `assert_eq!`, etc.) and propagate errors with `?` when practical.
+- You MUST use `thiserror` and `anyhow` for error handling:
     + Library functions MUST return a well typed `thiserror::Error`.
     + Executables and application boundaries MUST log the errors and exit with an error specific exit code. Prefer `anyhow` for ergonomic context (`anyhow::Context`) and `anyhow::Result`.
     + Use the `?` shorthand and `#[from]` construct to map errors into `thiserror` enums.

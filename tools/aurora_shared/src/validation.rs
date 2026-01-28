@@ -1,11 +1,10 @@
 use std::collections::{HashMap, HashSet, VecDeque};
-use std::env;
-use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
 use serde::Serialize;
 
 use crate::model::{AuroraModel, Card};
+use crate::registry;
 
 /// Severity levels emitted by the validator.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
@@ -76,7 +75,7 @@ pub fn validate_model(model: &AuroraModel) -> ValidationReport {
 	validate_model_with_instructions(model, None)
 }
 
-/// Validate an Aurora model while overriding the instructions registry root.
+/// Validate an Aurora model (embedded registries; instructions root ignored).
 pub fn validate_model_with_instructions(
 	model: &AuroraModel,
 	instructions_root: Option<&Path>,
@@ -313,7 +312,7 @@ fn check_matrix_compliance(
 				ValidationDiagnostic::warning(
 					"UNKNOWN_CARD_TYPE",
 					format!(
-						"Card type '{}' is not listed in Card_Definitions.md",
+						"Card type '{}' is not listed in 1a-Card_Definitions.md",
 						card.card_type
 					),
 				)
@@ -338,7 +337,7 @@ fn check_matrix_compliance(
 						ValidationDiagnostic::warning(
 							"UNKNOWN_RELATIONSHIP",
 							format!(
-								"Relationship '{}' is not defined in Relationships_Matrix.md",
+								"Relationship '{}' is not defined in the embedded relationship registry",
 								link.relationship
 							),
 						)
@@ -385,63 +384,30 @@ fn check_matrix_compliance(
 }
 
 fn load_matrix_registry(
-	model: &AuroraModel,
-	instructions_root: Option<&Path>,
+	_model: &AuroraModel,
+	_instructions_root: Option<&Path>,
 ) -> Result<Option<MatrixRegistry>, String> {
-	let instructions_root = if let Some(path) = instructions_root {
-		if path.is_dir() {
-			path.to_path_buf()
-		} else {
-			return Err(format!(
-				"Instructions root {} is not a directory",
-				path.display()
-			));
-		}
-	} else {
-		match resolve_instructions_root(model) {
-			Some(path) => path,
-			None => return Ok(None),
-		}
-	};
-	let card_defs = instructions_root.join("details/Card_Definitions.md");
-	let matrix_path = instructions_root.join("details/Relationships_Matrix.md");
-	let card_types = load_card_types(&card_defs)?;
+	let card_types = load_card_types(registry::CARD_DEFINITIONS)?;
 	if card_types.is_empty() {
-		return Err(format!(
-			"No card types were parsed from {}",
-			card_defs.display()
-		));
+		return Err("No card types were parsed from the embedded registry".to_string());
 	}
-	let relationships = load_relationships(&matrix_path, &card_types)?;
+	let mut relationships = load_relationships(registry::RELATIONSHIP_DEFINITIONS, &card_types)?;
+	if let Some(rule) = relationships.get("transistions to").cloned() {
+		relationships
+			.entry("transitions to".to_string())
+			.or_insert(rule);
+	}
+	if let Some(rule) = relationships.get_mut("ends with") {
+		if rule.targets.is_empty() {
+			rule.targets.insert(canonical_card_type("Boundary"));
+		}
+	}
 	Ok(Some(MatrixRegistry {
 		card_types,
 		relationships,
 	}))
 }
-
-fn resolve_instructions_root(model: &AuroraModel) -> Option<PathBuf> {
-	if let Ok(value) = env::var("AURORA_INSTRUCTIONS_ROOT") {
-		if !value.trim().is_empty() {
-			let path = PathBuf::from(value);
-			if path.is_dir() {
-				return Some(path);
-			}
-		}
-	}
-	let mut current = Some(model.home().root().to_path_buf());
-	while let Some(dir) = current {
-		let candidate = dir.join(".github/instructions");
-		if candidate.is_dir() {
-			return Some(candidate);
-		}
-		current = dir.parent().map(|parent| parent.to_path_buf());
-	}
-	None
-}
-
-fn load_card_types(path: &Path) -> Result<HashSet<String>, String> {
-	let contents = fs::read_to_string(path)
-		.map_err(|err| format!("Failed to read {}: {err}", path.display()))?;
+fn load_card_types(contents: &str) -> Result<HashSet<String>, String> {
 	let mut card_types = HashSet::new();
 	let mut in_table = false;
 	for line in contents.lines() {
@@ -485,11 +451,9 @@ fn load_card_types(path: &Path) -> Result<HashSet<String>, String> {
 }
 
 fn load_relationships(
-	path: &Path,
+	contents: &str,
 	card_types: &HashSet<String>,
 ) -> Result<HashMap<String, RelationshipRule>, String> {
-	let contents = fs::read_to_string(path)
-		.map_err(|err| format!("Failed to read {}: {err}", path.display()))?;
 	let mut relationships = HashMap::new();
 	let mut in_table = false;
 	for line in contents.lines() {
@@ -537,11 +501,15 @@ fn load_relationships(
 
 fn parse_card_type_cell(cell: &str, all_card_types: &HashSet<String>) -> HashSet<String> {
 	let trimmed = cell.trim().trim_matches('`');
-	if trimmed.is_empty() {
+	if trimmed.is_empty()
+		|| trimmed.eq_ignore_ascii_case("none")
+		|| trimmed.eq_ignore_ascii_case("n/a")
+		|| trimmed == "-"
+	{
 		return HashSet::new();
 	}
 	let lower = trimmed.to_ascii_lowercase();
-	if lower.starts_with("all card types") {
+	if lower.starts_with("all card types") || lower.starts_with("all cards") {
 		let mut allowed = all_card_types.clone();
 		let except_marker = "except";
 		if let Some(index) = lower.find(except_marker) {

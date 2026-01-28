@@ -28,7 +28,8 @@ They complement Prettier's YAML formatting (see `.prettierrc.json`) by enforcing
 
 ## Validation & Schema
 
-- **Schema Validation**: If a schema (JSON Schema for YAML or a dedicated YAML schema) exists for the file type (e.g., `kubernetes` resources, `github` workflows) and the schema is accessible or can be downloaded, validate the YAML against that schema and fail changes that do not validate.
+- **Schema Validation (best-effort)**: If a schema (JSON Schema for YAML or a dedicated YAML schema) exists for the file type (e.g., `kubernetes` resources, `github` workflows) and the schema is accessible (or can be reliably downloaded), validate the YAML against that schema and fix any validation errors.
+    + If schema validation cannot be performed (for example, the schema is unreachable, private, or tooling is unavailable), do not block the change solely for that reason; add a note for human review.
 - **Sorting of Keys**: YAML files are often consumed by human-editable manifests; do **not** change key order when editing existing files. Preserve the existing order to avoid noisy diffs. Only reorder keys when a schema explicitly requires a specific order and document the reason in the PR.
 
 ## Exception Handling and Human Review

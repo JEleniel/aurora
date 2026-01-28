@@ -70,8 +70,9 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 - You MUST NOT write or execute custom scripts, or run Python, Perl, or Node ad-hoc.
     + Any multi-line terminal input (anything that contains a newline, including heredocs) is a script.
     + A series of commands joined using pipeline (`|`) is a single instruction for this purpose and is allowed.
-    + Do not use command chaining operators such as `&&` or `;`.
+    + Do not use shell backgrounding (`&`) or command chaining operators such as `&&` or `;`.
     + You may use approved tools (listed later in this file), shell commands, IDE tools, and MCP plugins.
+- You MUST NOT use `true` (including patterns like `|| true`) to mask failures or override exit codes.
 - You MUST NOT branch from or open a PR to `main`.
 - You MUST NOT use the `gh` command line tool. It is not installed.
 - You MUST NOT pause before beginning work unless you have specific questions. You MUST NOT pause once work has begun until all tasks are complete.
@@ -131,7 +132,7 @@ See `.agents/PROJECT_BRIEF.md` for the authoritative ownership matrix, quick-sta
 ## Agent Behavior
 
 - If a `docs/design/aurora/AGENT-*.json` file exists, read it to load the entire design.
-- When a new technology or dependency is added or an existing one is changed (including when detected from someone else's changes), you MUST read the current documentation for the correct version and annotate the `AGENT_PROGRESS.md` with any notes needed to work safely and idiomatically.
+- When a new technology or dependency is added or an existing one is changed (including when detected from someone else's changes), you MUST read the current documentation for the correct version and annotate the `./agents/PROGRESS.md.md` with any notes needed to work safely and idiomatically.
 - You MUST end final responses with a short summary paragraph, followed by a blank line, then **5-10 tl;dr bullets**. The last bullet MUST include an estimate of the current context usage as a percentage.
 - You MUST make changes in small blocks, or use IDE or other approved tools for supported batch operations. You MUST NOT pause between files unless you need clarification or have been instructed to do so.
 - Before opening or creating any file, you MUST read the relevant `*.instructions.md` files for that file type or language, if one exists.
@@ -142,7 +143,7 @@ See `.agents/PROJECT_BRIEF.md` for the authoritative ownership matrix, quick-sta
 - You SHOULD use MCP interaction instead of command line or shell tools when possible.
 - You MUST use the GitHub MCP for all GitHub interactions. If GitHub MCP is not available, stop and notify the user.
 - You MUST use the Mermaid.js MCP to create and validate Mermaid diagrams.
-- You MUST only run one command at a time; do not chain commands (e.g., `&&` or `;`).
+- You MUST only run one command at a time; do not use shell backgrounding (`&`) or command chaining (e.g., `&&` or `;`). Pipelines (`|`) are allowed.
 - You MUST use `markdownlint-cli2`, `prettier`, and language-specific tools for formatting and linting.
 
 ## Additional Guidelines

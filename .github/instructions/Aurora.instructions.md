@@ -16,7 +16,9 @@ Semantics are derived from the invariant rules: cards and relationship verbs are
 
 ## Canonical registries
 
-Even though Aurora is designed to allow any element and any relationship, by default we include a set of cards and relationships covering all common architectural elements. These files are the canonical registries for the Aurora vocabulary and should be updated instead of duplicating lists in this document:
+Even though Aurora is designed to allow any element and any relationship, by default we include a set of cards and relationships covering all common architectural elements. These files are the canonical registries for the Aurora vocabulary and should be updated instead of duplicating lists in this document.
+
+**Note**: File paths below are relative to this instruction file's location (`.github/instructions/`).
 
 - The canonical relationships are defined in [1-Relationship_Matrix.md](details/1-Relationship_Matrix.md)
     + The Card acronyms are expanded in [1a-Card_Definitions](details/1a-Card_Definitions.md)
@@ -86,17 +88,19 @@ IDs are, by default, a three letter acronym for the `card_type` (see [Canonical 
 ### File format and naming rules
 
 - You MUST use the extension `jsjson`. JSJSON files are functionally identical to JSON files.
+    + Treat `.jsjson` as **strict JSON** (RFC 8259): double quotes, no comments, no trailing commas, UTF-8, and a single trailing newline.
+    + Formatting and content rules should match the repository's JSON conventions for `*.json` files, except where this document explicitly overrides them (for example, the compact model whitespace guidance).
 - Any time the `name` property is used in a file name, special characters MUST be stripped, and the spaces MUST be replaced with underscores (`Sanitized_Name`).
 - All card files MUST be named `<id>-<Sanitized_Name>.jsjson`, e.g. `MIS-001-Do_Something.jsjson`
 
 ### Model layout rules
 
-- Model home: Always an `aurora/` folder containing `Aurora.schema.jsjson`, and `Aurora.compact.schema.jsjson`. Mission cards are placed in the model home to provide a consistent, easy-to-find starting point. Multiple Models may share a Model Home.
-- Root `Mission` cards. Mission numbering increases monotonically per model Multiple Mission cards and Models may share a Model Home. (e.g., `MIS-...`, `MIS-002...`)
+- Model Home: Always an `aurora/` folder containing `Aurora.schema.jsjson`, and `Aurora.compact.schema.jsjson`. Mission cards are placed in the Model Home to provide a consistent, easy-to-find starting point. Multiple Models may share a Model Home.
+- Root `Mission` cards. Mission numbering increases monotonically per model. Multiple Mission cards and Models may share a Model Home. (e.g., `MIS-...`, `MIS-002...`)
 - Each Model has a Mission home, a subfolder named for the Mission card ID, e.g., `aurora/<MISSION_ID>/` with a subfolders per `card_type`. Each card is stored according to type.
-- All cards conform to `<model home>/Aurora.schema.jsjson`; if missing, copy `.github/instructions/details/Aurora.schema.jsjson` before creating the first `Mission` card.
-- Optional compact model: There may also be an `AGENT-<MISSION_ID>.jsjson` in the Model Home, conforming to `<model home>/Aurora.compact.schema.jsjson`, with a top-level `cards` array and `audit_trail` removed; copy `.github/instructions/details/Aurora.compact.schema.jsjson` if missing. The compact file should not be "pretty-printed" to save whitespace.
-- The model home may be stored as a ZIP file if the folder structure is preserved.
+- All cards conform to `<Model Home>/Aurora.schema.jsjson`; if missing, copy `.github/instructions/details/Aurora.schema.jsjson` before creating the first `Mission` card.
+- Optional compact model: There may also be an `AGENT-<MISSION_ID>.jsjson` in the Model Home, conforming to `<Model Home>/Aurora.compact.schema.jsjson`, with a top-level `cards` array and `audit_trail` removed; copy `.github/instructions/details/Aurora.compact.schema.jsjson` if missing. The compact file should not be "pretty-printed" to save whitespace.
+- The Model Home may be stored as a ZIP file if the folder structure is preserved.
 
 **Example Folder and File Structure**:
 

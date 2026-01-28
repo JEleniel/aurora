@@ -1,7 +1,4 @@
 use std::collections::BTreeMap;
-use std::env;
-use std::path::{Path, PathBuf};
-use std::sync::{Mutex, OnceLock};
 
 use serde_json::Value;
 
@@ -59,44 +56,6 @@ fn has_diagnostic(
 		.diagnostics
 		.iter()
 		.any(|diag| diag.code == code && diag.severity == severity)
-}
-
-fn instructions_fixture_dir() -> Result<PathBuf> {
-	let crate_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-	for ancestor in crate_dir.ancestors() {
-		let candidate = ancestor.join(".github/instructions");
-		if candidate.is_dir() {
-			return Ok(candidate);
-		}
-	}
-	Err(std::io::Error::new(
-		std::io::ErrorKind::NotFound,
-		"Unable to locate .github/instructions",
-	)
-	.into())
-}
-
-fn env_guard() -> &'static Mutex<()> {
-	static GUARD: OnceLock<Mutex<()>> = OnceLock::new();
-	GUARD.get_or_init(|| Mutex::new(()))
-}
-
-fn set_instruction_env(path: &Path) {
-	// SAFETY: Tests guard env mutation and restore values after each use.
-	unsafe {
-		env::set_var("AURORA_INSTRUCTIONS_ROOT", path);
-	}
-}
-
-fn restore_instruction_env(previous: Option<String>) {
-	// SAFETY: Tests guard env mutation and restore values after each use.
-	unsafe {
-		if let Some(value) = previous {
-			env::set_var("AURORA_INSTRUCTIONS_ROOT", value);
-		} else {
-			env::remove_var("AURORA_INSTRUCTIONS_ROOT");
-		}
-	}
 }
 
 #[test]
@@ -176,13 +135,6 @@ fn secret_owned_by_non_actor_emits_warning_only() -> Result<()> {
 
 #[test]
 fn unknown_relationship_warns_against_matrix() -> Result<()> {
-	let _guard = env_guard()
-		.lock()
-		.map_err(|_| std::io::Error::new(std::io::ErrorKind::Other, "env guard poisoned"))?;
-	let instructions = instructions_fixture_dir()?;
-	let original = env::var("AURORA_INSTRUCTIONS_ROOT").ok();
-	set_instruction_env(&instructions);
-
 	let cards = vec![
 		card(
 			"MIS-001",
@@ -194,8 +146,6 @@ fn unknown_relationship_warns_against_matrix() -> Result<()> {
 	];
 	let model = model_with_cards(cards)?;
 	let report = crate::validate_model(&model);
-
-	restore_instruction_env(original);
 	assert!(has_diagnostic(
 		&report,
 		"UNKNOWN_RELATIONSHIP",
@@ -206,13 +156,6 @@ fn unknown_relationship_warns_against_matrix() -> Result<()> {
 
 #[test]
 fn relationship_source_mismatch_warns_against_matrix() -> Result<()> {
-	let _guard = env_guard()
-		.lock()
-		.map_err(|_| std::io::Error::new(std::io::ErrorKind::Other, "env guard poisoned"))?;
-	let instructions = instructions_fixture_dir()?;
-	let original = env::var("AURORA_INSTRUCTIONS_ROOT").ok();
-	set_instruction_env(&instructions);
-
 	let cards = vec![
 		card(
 			"MIS-001",
@@ -225,8 +168,6 @@ fn relationship_source_mismatch_warns_against_matrix() -> Result<()> {
 	];
 	let model = model_with_cards(cards)?;
 	let report = crate::validate_model(&model);
-
-	restore_instruction_env(original);
 	assert!(has_diagnostic(
 		&report,
 		"RELATIONSHIP_SOURCE_NOT_ALLOWED",
@@ -237,13 +178,6 @@ fn relationship_source_mismatch_warns_against_matrix() -> Result<()> {
 
 #[test]
 fn new_relationships_allowed_by_matrix() -> Result<()> {
-	let _guard = env_guard()
-		.lock()
-		.map_err(|_| std::io::Error::new(std::io::ErrorKind::Other, "env guard poisoned"))?;
-	let instructions = instructions_fixture_dir()?;
-	let original = env::var("AURORA_INSTRUCTIONS_ROOT").ok();
-	set_instruction_env(&instructions);
-
 	let cards = vec![
 		card(
 			"MIS-001",
@@ -395,8 +329,6 @@ fn new_relationships_allowed_by_matrix() -> Result<()> {
 	];
 	let model = model_with_cards(cards)?;
 	let report = crate::validate_model(&model);
-
-	restore_instruction_env(original);
 	for code in [
 		"UNKNOWN_RELATIONSHIP",
 		"RELATIONSHIP_SOURCE_NOT_ALLOWED",

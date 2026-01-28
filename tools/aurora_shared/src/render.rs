@@ -3,7 +3,6 @@ mod icons;
 mod themed_svg;
 
 use std::collections::{BTreeMap, BTreeSet, HashMap, VecDeque};
-use std::env;
 use std::fs::{self, File};
 use std::io::{ErrorKind, Write};
 use std::path::{Path, PathBuf};
@@ -14,8 +13,8 @@ use serde_json::json;
 
 use crate::errors::{AuroraError, Result};
 use crate::model::{AuroraModel, Card};
+use crate::registry;
 
-const INSTRUCTIONS_DIR_ENV: &str = "AURORA_INSTRUCTIONS_ROOT";
 const DOT_COMMAND_ENV: &str = "AURORA_DOT_COMMAND";
 
 /// Summary information produced by rendering helpers.
@@ -64,33 +63,22 @@ pub fn render_markdown(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Res
 pub fn render_views(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Result<RenderSummary> {
 	let output_dir = output_dir.as_ref();
 	fs::create_dir_all(output_dir).map_err(|err| AuroraError::io(output_dir, err))?;
-
-	let instructions_root = resolve_instructions_root(model)?;
-	render_views_with_root(model, output_dir, &instructions_root)
+	render_views_with_registry(model, output_dir)
 }
 
-/// Render the canonical view set using a caller-provided instructions registry root.
+/// Render the canonical view set (embedded registries; instructions root ignored).
 pub fn render_views_with_instructions(
 	model: &AuroraModel,
 	output_dir: impl AsRef<Path>,
-	instructions_root: impl AsRef<Path>,
+	_instructions_root: impl AsRef<Path>,
 ) -> Result<RenderSummary> {
-	let output_dir = output_dir.as_ref();
-	fs::create_dir_all(output_dir).map_err(|err| AuroraError::io(output_dir, err))?;
-	render_views_with_root(model, output_dir, instructions_root.as_ref())
+	render_views(model, output_dir)
 }
 
-fn render_views_with_root(
-	model: &AuroraModel,
-	output_dir: &Path,
-	instructions_root: &Path,
-) -> Result<RenderSummary> {
-	let palette = CardPalette::load(&instructions_root.join("details/1a-Card_Definitions.md"))?;
+fn render_views_with_registry(model: &AuroraModel, output_dir: &Path) -> Result<RenderSummary> {
+	let palette = CardPalette::embedded()?;
 	let icon_glyphs = palette.icon_glyphs();
-	let registry = ViewRegistry::load(
-		&instructions_root.join("details/2-View_Definitions.md"),
-		&instructions_root.join("details/2a-View_Styling_Guide.md"),
-	)?;
+	let registry = ViewRegistry::embedded()?;
 	let graphviz = GraphvizConfig::from_model(model)?;
 
 	let mut views_written = 0usize;
@@ -147,20 +135,13 @@ pub fn render_all(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Result<R
 	})
 }
 
-/// Render both card markdown and relationship views with a caller-provided instructions root.
+/// Render both card markdown and relationship views (embedded registries; instructions root ignored).
 pub fn render_all_with_instructions(
 	model: &AuroraModel,
 	output_dir: impl AsRef<Path>,
-	instructions_root: impl AsRef<Path>,
+	_instructions_root: impl AsRef<Path>,
 ) -> Result<RenderSummary> {
-	let output_dir = output_dir.as_ref();
-	let cards = render_markdown(model, output_dir)?;
-	let views = render_views_with_instructions(model, output_dir, instructions_root)?;
-	Ok(RenderSummary {
-		cards_written: cards.cards_written,
-		views_written: views.views_written,
-		output_dir: output_dir.to_path_buf(),
-	})
+	render_all(model, output_dir)
 }
 
 #[derive(Debug, Clone, Default)]
@@ -177,15 +158,34 @@ struct CardPalette {
 }
 
 impl CardPalette {
-	fn load(path: &Path) -> Result<Self> {
-		let contents = fs::read_to_string(path).map_err(|err| AuroraError::io(path, err))?;
+	fn embedded() -> Result<Self> {
+		Self::from_markdown(registry::CARD_DEFINITIONS)
+	}
+
+	fn from_markdown(contents: &str) -> Result<Self> {
 		let mut shapes = HashMap::new();
 		let mut icons = HashMap::new();
 		let mut in_table = false;
+		let mut card_type_idx = None;
+		let mut shape_idx = None;
+		let mut icon_idx = None;
 		for line in contents.lines() {
 			let trimmed = line.trim();
 			if trimmed.starts_with("| Card type |") {
 				in_table = true;
+				let header_cells = parse_table_row(trimmed);
+				for (idx, cell) in header_cells.iter().enumerate() {
+					let lower = cell.to_ascii_lowercase();
+					if lower.starts_with("card type") {
+						card_type_idx = Some(idx);
+					}
+					if lower.starts_with("shape") {
+						shape_idx = Some(idx);
+					}
+					if lower.starts_with("icon") {
+						icon_idx = Some(idx);
+					}
+				}
 				continue;
 			}
 			if !in_table {
@@ -203,30 +203,37 @@ impl CardPalette {
 			if !trimmed.starts_with('|') {
 				continue;
 			}
-			let cells: Vec<String> = trimmed
-				.trim_matches('|')
-				.split('|')
-				.map(|cell| cell.trim().to_string())
-				.collect();
-			if cells.len() < 3 {
+			let cells = parse_table_row(trimmed);
+			if cells.is_empty() {
 				continue;
 			}
-			let card_type = normalize_card_type(&cells[0]);
+			let card_cell = match card_type_idx.and_then(|idx| cells.get(idx)) {
+				Some(value) => value.as_str(),
+				None => cells.first().map(String::as_str).unwrap_or(""),
+			};
+			let card_type = normalize_card_type(card_cell);
 			if card_type.is_empty() {
 				continue;
 			}
-			let shape = cells[1].trim();
-			if !shape.is_empty() {
-				shapes.insert(card_type.clone(), shape.to_string());
+			if let Some(idx) = shape_idx {
+				if let Some(shape_cell) = cells.get(idx) {
+					if let Some(shape) = normalize_shape(shape_cell) {
+						shapes.insert(card_type.clone(), shape);
+					}
+				}
 			}
-			let icon = cells[2].trim();
-			if !icon.is_empty() && !icon.eq_ignore_ascii_case("n/a") {
-				icons.insert(card_type.clone(), icon.to_string());
+			if let Some(idx) = icon_idx {
+				if let Some(icon_cell) = cells.get(idx) {
+					let icon = icon_cell.trim();
+					if !icon.is_empty() && !icon.eq_ignore_ascii_case("n/a") {
+						icons.insert(card_type.clone(), icon.to_string());
+					}
+				}
 			}
 		}
 		if shapes.is_empty() {
 			return Err(AuroraError::InvalidInput {
-				message: format!("failed to parse card palette from {}", path.display()),
+				message: "failed to parse card palette from registry data".to_string(),
 			});
 		}
 		Ok(CardPalette { shapes, icons })
@@ -247,6 +254,29 @@ impl CardPalette {
 	}
 }
 
+fn parse_table_row(trimmed: &str) -> Vec<String> {
+	trimmed
+		.trim_matches('|')
+		.split('|')
+		.map(|cell| cell.trim().to_string())
+		.collect()
+}
+
+fn normalize_shape(value: &str) -> Option<String> {
+	let trimmed = value.trim();
+	if trimmed.is_empty() || trimmed.eq_ignore_ascii_case("n/a") {
+		return None;
+	}
+	let lower = trimmed.to_ascii_lowercase();
+	let normalized = match lower.as_str() {
+		"rounded box" => "box",
+		"double-octagon" | "double octagon" => "doubleoctagon",
+		"cluster (dashed)" => "cluster",
+		_ => trimmed,
+	};
+	Some(normalized.to_string())
+}
+
 #[derive(Debug, Clone)]
 struct ViewRegistry {
 	views: Vec<ViewSpec>,
@@ -257,22 +287,34 @@ struct ViewRegistry {
 struct ViewSpec {
 	name: String,
 	slug: String,
-	root_card_types: BTreeSet<String>,
-	card_types: BTreeSet<String>,
+	root_card_types: Vec<CardTypeFilter>,
+	card_types: Vec<CardTypeFilter>,
 	include_all: bool,
 }
 
 impl ViewSpec {
-	fn includes_card_type(&self, card_type: &str) -> bool {
-		self.include_all || self.card_types.contains(card_type)
+	fn includes_card(&self, card: &Card) -> bool {
+		self.include_all || self.card_types.iter().any(|filter| filter.matches(card))
 	}
 }
 
 impl ViewRegistry {
-	fn load(path: &Path) -> Result<Self> {
-		let contents = fs::read_to_string(path).map_err(|err| AuroraError::io(path, err))?;
-		let views = parse_view_table(&contents, path)?;
-		let card_colors = parse_color_section(&contents);
+	fn embedded() -> Result<Self> {
+		Self::from_markdown(
+			registry::VIEW_DEFINITIONS,
+			registry::VIEW_STYLING,
+			"embedded",
+		)
+	}
+
+	fn from_markdown(
+		view_contents: &str,
+		style_contents: &str,
+		source: impl Into<String>,
+	) -> Result<Self> {
+		let source = source.into();
+		let views = parse_view_table(view_contents, Path::new(&source))?;
+		let card_colors = parse_color_section(style_contents);
 		Ok(ViewRegistry { views, card_colors })
 	}
 }
@@ -332,9 +374,9 @@ impl Default for GraphvizConfig {
 				("shape".to_string(), "box".to_string()),
 				("fontname".to_string(), "Inter".to_string()),
 				("fontsize".to_string(), "11".to_string()),
-				("color".to_string(), "#111827".to_string()),
-				("fillcolor".to_string(), "#E5E7EB".to_string()),
-				("fontcolor".to_string(), "#111827".to_string()),
+				("color".to_string(), "#000000".to_string()),
+				("fillcolor".to_string(), "#FFFFFF".to_string()),
+				("fontcolor".to_string(), "#000000".to_string()),
 			]),
 			edge_defaults: BTreeMap::from([
 				("fontname".to_string(), "Inter".to_string()),
@@ -345,7 +387,8 @@ impl Default for GraphvizConfig {
 			card_symbols: HashMap::new(),
 			boundary_cluster: BTreeMap::from([
 				("style".to_string(), "dashed".to_string()),
-				("color".to_string(), "#6B7280".to_string()),
+				("color".to_string(), "#000000".to_string()),
+				("penwidth".to_string(), "4".to_string()),
 			]),
 		}
 	}
@@ -424,8 +467,39 @@ impl GraphvizConfig {
 
 #[derive(Debug, Clone)]
 struct CardTypeList {
-	card_types: BTreeSet<String>,
+	card_types: Vec<CardTypeFilter>,
 	include_all: bool,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+struct CardTypeFilter {
+	card_type: String,
+	card_subtype: Option<String>,
+}
+
+impl CardTypeFilter {
+	fn new(card_type: &str, card_subtype: Option<&str>) -> Self {
+		CardTypeFilter {
+			card_type: card_type.trim().to_string(),
+			card_subtype: card_subtype
+				.map(|value| value.trim().to_string())
+				.filter(|value| !value.is_empty()),
+		}
+	}
+
+	fn matches(&self, card: &Card) -> bool {
+		if !card.card_type.eq_ignore_ascii_case(&self.card_type) {
+			return false;
+		}
+		match &self.card_subtype {
+			Some(subtype) => card
+				.card_subtype
+				.as_deref()
+				.map(|value| value.trim())
+				.is_some_and(|value| value.eq_ignore_ascii_case(subtype)),
+			None => true,
+		}
+	}
 }
 
 #[derive(Debug, Clone)]
@@ -433,6 +507,7 @@ struct EdgeSpec {
 	source: String,
 	target: String,
 	label: String,
+	dotted: bool,
 }
 
 #[derive(Debug, Clone)]
@@ -440,55 +515,6 @@ struct BoundaryCluster {
 	id: String,
 	label: String,
 	members: Vec<String>,
-}
-
-fn resolve_instructions_root(model: &AuroraModel) -> Result<PathBuf> {
-	if let Some(path) = instructions_override()? {
-		return Ok(path);
-	}
-	let mut current = Some(model.home().root().to_path_buf());
-	while let Some(dir) = current {
-		let candidate = dir.join(".github/instructions");
-		if candidate.is_dir() {
-			return Ok(candidate);
-		}
-		current = dir.parent().map(|parent| parent.to_path_buf());
-	}
-	Err(AuroraError::InvalidInput {
-		message: format!(
-			"Unable to locate .github/instructions above {}",
-			model.home().root().display()
-		),
-	})
-}
-
-fn instructions_override() -> Result<Option<PathBuf>> {
-	match env::var(INSTRUCTIONS_DIR_ENV) {
-		Ok(value) => {
-			if value.trim().is_empty() {
-				return Ok(None);
-			}
-			let path = PathBuf::from(value);
-			if path.is_dir() {
-				Ok(Some(path))
-			} else {
-				Err(AuroraError::InvalidInput {
-					message: format!(
-						"{}={} is not a directory",
-						INSTRUCTIONS_DIR_ENV,
-						path.display()
-					),
-				})
-			}
-		}
-		Err(env::VarError::NotPresent) => Ok(None),
-		Err(env::VarError::NotUnicode(value)) => Err(AuroraError::InvalidInput {
-			message: format!(
-				"{} contains invalid UTF-8: {:?}",
-				INSTRUCTIONS_DIR_ENV, value
-			),
-		}),
-	}
 }
 
 fn normalize_card_type(value: &str) -> String {
@@ -562,7 +588,7 @@ fn parse_view_table(contents: &str, source: &Path) -> Result<Vec<ViewSpec>> {
 
 fn parse_card_type_cell(cell: &str) -> CardTypeList {
 	let mut include_all = false;
-	let mut card_types = BTreeSet::new();
+	let mut card_types = Vec::new();
 	for part in cell
 		.split(|ch| ch == ',' || ch == '\n' || ch == ';')
 		.map(|segment| segment.trim())
@@ -577,12 +603,32 @@ fn parse_card_type_cell(cell: &str) -> CardTypeList {
 			include_all = true;
 			continue;
 		}
-		card_types.insert(normalize_card_type(part));
+		if let Some(filter) = parse_card_type_filter(part) {
+			card_types.push(filter);
+		}
 	}
 	CardTypeList {
 		card_types,
 		include_all,
 	}
+}
+
+fn parse_card_type_filter(value: &str) -> Option<CardTypeFilter> {
+	let trimmed = value.trim().trim_matches('`');
+	if trimmed.is_empty() {
+		return None;
+	}
+	let (card_type, subtype) = match trimmed.split_once('(') {
+		Some((head, rest)) => {
+			let subtype = rest.trim().trim_end_matches(')').trim();
+			(head.trim(), Some(subtype))
+		}
+		None => (trimmed, None),
+	};
+	if card_type.is_empty() {
+		return None;
+	}
+	Some(CardTypeFilter::new(card_type, subtype))
 }
 
 fn slugify_view_name(name: &str) -> String {
@@ -616,15 +662,18 @@ fn parse_color_section(contents: &str) -> HashMap<String, CardColor> {
 	let mut in_section = false;
 	for line in contents.lines() {
 		let trimmed = line.trim();
-		if trimmed.eq_ignore_ascii_case("## Canonical Color by Card Type") {
+		if trimmed.eq_ignore_ascii_case("### Card Type Styling")
+			|| trimmed.eq_ignore_ascii_case("## Card Type Styling")
+		{
 			in_section = true;
 			continue;
 		}
 		if !in_section {
 			continue;
 		}
-		if trimmed.starts_with("## ")
-			&& !trimmed.eq_ignore_ascii_case("## Canonical Color by Card Type")
+		if trimmed.starts_with('#')
+			&& !trimmed.eq_ignore_ascii_case("### Card Type Styling")
+			&& !trimmed.eq_ignore_ascii_case("## Card Type Styling")
 		{
 			break;
 		}
@@ -666,6 +715,9 @@ fn expand_color_key(raw: &str) -> String {
 	if sanitized.contains(' ') {
 		return normalize_card_type(sanitized);
 	}
+	if let Some(expanded) = acronym_to_card_type(sanitized) {
+		return expanded.to_string();
+	}
 	sanitized
 		.split('_')
 		.filter(|segment| !segment.is_empty())
@@ -686,13 +738,51 @@ fn expand_color_key(raw: &str) -> String {
 		.join(" ")
 }
 
+fn acronym_to_card_type(value: &str) -> Option<&'static str> {
+	match value.trim().to_ascii_uppercase().as_str() {
+		"ACT" => Some("Actor"),
+		"ADR" => Some("ADR"),
+		"APP" => Some("Application"),
+		"ART" => Some("Artifact"),
+		"AST" => Some("Asset"),
+		"ATV" => Some("Activity"),
+		"BND" => Some("Boundary"),
+		"CAP" => Some("Capability"),
+		"CLS" => Some("Class"),
+		"COM" => Some("Component"),
+		"CON" => Some("Condition"),
+		"CNS" => Some("Constraint"),
+		"CTL" => Some("Control"),
+		"DEP" => Some("Deployment"),
+		"DRI" => Some("Driver"),
+		"DTS" => Some("Data Store"),
+		"EVT" => Some("Event"),
+		"FEA" => Some("Feature"),
+		"INT" => Some("Interface"),
+		"MIS" => Some("Mission"),
+		"NIN" => Some("Node Instance"),
+		"NOD" => Some("Node"),
+		"NOT" => Some("Note"),
+		"PRO" => Some("Process"),
+		"REQ" => Some("Requirement"),
+		"RIS" => Some("Risk"),
+		"STA" => Some("State"),
+		"STM" => Some("State Machine"),
+		"STR" => Some("Story"),
+		"SYS" => Some("System"),
+		"TES" => Some("Test"),
+		"THR" => Some("Threat"),
+		_ => None,
+	}
+}
+
 fn collect_view_nodes<'a>(model: &'a AuroraModel, view: &ViewSpec) -> BTreeMap<String, &'a Card> {
 	let mut nodes = BTreeMap::new();
 	for card in model.iter_cards() {
 		if is_annotation(card) {
 			continue;
 		}
-		if view.includes_card_type(&card.card_type) {
+		if view.includes_card(card) {
 			nodes.insert(card.id.clone(), card);
 		}
 	}
@@ -744,7 +834,11 @@ fn collect_root_nodes_by_type(view: &ViewSpec, nodes: &BTreeMap<String, &Card>) 
 		if card.card_type == "Boundary" {
 			continue;
 		}
-		if view.root_card_types.contains(&card.card_type) {
+		if view
+			.root_card_types
+			.iter()
+			.any(|filter| filter.matches(card))
+		{
 			roots.push(id.clone());
 		}
 	}
@@ -1005,11 +1099,18 @@ fn build_dot_with_edges(
 		if !edge.label.is_empty() {
 			attrs.insert("label".to_string(), edge.label.clone());
 		}
+		let mut styles = Vec::new();
+		if edge.dotted {
+			styles.push("dotted");
+		}
 		if let Some(ref direct_edges) = direct_edges {
 			let key = (edge.source.clone(), edge.target.clone(), edge.label.clone());
 			if !direct_edges.contains(&key) {
-				attrs.insert("style".to_string(), "dashed".to_string());
+				styles.push("dashed");
 			}
+		}
+		if !styles.is_empty() {
+			attrs.insert("style".to_string(), styles.join(","));
 		}
 		if attrs.is_empty() {
 			lines.push(format!(
@@ -1070,6 +1171,7 @@ fn collect_edges(nodes: &BTreeMap<String, &Card>) -> Vec<EdgeSpec> {
 					source: id.clone(),
 					target: link.target.clone(),
 					label: link.relationship.clone(),
+					dotted: target.card_type == "Note" || card.card_type == "Note",
 				});
 			}
 		}
@@ -1208,11 +1310,8 @@ fn node_label(card: &Card, icon: Option<&str>) -> String {
 	let mut lines = Vec::new();
 
 	let mut type_line = String::new();
-	type_line.push_str(&html_escape(&card.id));
-	type_line.push_str(": ");
 	type_line.push_str("<B>");
 	type_line.push_str(&html_escape(&card.card_type));
-	type_line.push_str("</B>");
 	if let Some(subtype) = card.card_subtype.as_deref() {
 		let subtype = subtype.trim();
 		if !subtype.is_empty() {
@@ -1222,16 +1321,24 @@ fn node_label(card: &Card, icon: Option<&str>) -> String {
 			type_line.push(')');
 		}
 	}
+	type_line.push_str("</B>");
 	lines.push(type_line);
-	lines.push(html_escape(&card.name));
+	lines.push(format!("<B>{}</B>", html_escape(&card.id)));
 
+	// Blank line between header and details.
+	lines.push(String::new());
+
+	let name = card.name.trim();
 	let description = card.description.trim();
-	if !description.is_empty() {
-		// Blank line between name and description.
-		lines.push(String::new());
-		for line in wrap_text(description, 56) {
-			lines.push(html_escape(&line));
-		}
+	let detail = if description.is_empty() {
+		name.to_string()
+	} else if name.is_empty() {
+		description.to_string()
+	} else {
+		format!("{name} — {description}")
+	};
+	for line in wrap_text(&detail, 56) {
+		lines.push(html_escape(&line));
 	}
 
 	let text_block = lines
@@ -1246,7 +1353,7 @@ fn node_label(card: &Card, icon: Option<&str>) -> String {
 		.collect::<Vec<_>>()
 		.join("<BR/>");
 	if let Some(icon) = icon {
-		let icon_font_size = 33;
+		let icon_font_size = 44;
 		return format!(
 			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"{icon_font_size}\">{}</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT>{}</FONT></TD></TR></TABLE>>",
 			html_escape(icon),
@@ -1469,12 +1576,10 @@ mod tests {
 	use super::*;
 	use crate::discovery::ModelHome;
 	use crate::model::{AuditTrail, AuroraModel, Card, Link};
-	use serde_json::Value;
 	use serde_json::json;
+	use serde_json::Value;
 	use std::collections::BTreeMap;
-	use std::env;
 	use std::path::{Path, PathBuf};
-	use std::sync::{Mutex, OnceLock};
 	use tempfile::TempDir;
 
 	#[test]
@@ -1490,12 +1595,7 @@ mod tests {
 	fn render_views_emits_dot_and_svg_sources_only() {
 		let (tmp, model) = sample_model();
 		let output = tmp.path().join("views");
-		let instructions = instructions_fixture_dir();
-		let _guard = env_guard().lock().unwrap();
-		let original = env::var(INSTRUCTIONS_DIR_ENV).ok();
-		set_instruction_env(&instructions);
 		let summary = render_views(&model, &output).expect("view render should succeed");
-		restore_instruction_env(original);
 		assert!(summary.views_written > 0);
 		let requirements_md = output.join("Views/Requirements.view.md");
 		assert!(!requirements_md.exists());
@@ -1503,8 +1603,9 @@ mod tests {
 		assert!(dot_path.exists());
 		assert!(output.join("Views/Requirements.view.svg").exists());
 		let dot = std::fs::read_to_string(dot_path).expect("dot");
-		assert!(dot.contains("MIS-001: <B>Mission</B>"));
-		assert!(dot.contains("POINT-SIZE=\"33\">🎯"));
+		assert!(dot.contains("<B>Mission</B>"));
+		assert!(dot.contains("<B>MIS-001</B>"));
+		assert!(dot.contains("POINT-SIZE=\"44\">🎯"));
 		assert!(dot.contains("<BR/>"));
 	}
 
@@ -1525,7 +1626,10 @@ mod tests {
 		assert_eq!(view.name, "Everything View");
 		assert_eq!(view.slug, "Everything");
 		assert!(view.include_all);
-		assert!(view.root_card_types.contains("Mission"));
+		assert!(view
+			.root_card_types
+			.iter()
+			.any(|filter| filter.card_type == "Mission"));
 		assert!(view.card_types.is_empty());
 		Ok(())
 	}
@@ -1607,8 +1711,8 @@ mod tests {
 		let view = ViewSpec {
 			name: "Everything View".into(),
 			slug: "Everything".into(),
-			root_card_types: BTreeSet::new(),
-			card_types: BTreeSet::new(),
+			root_card_types: Vec::new(),
+			card_types: Vec::new(),
 			include_all: true,
 		};
 		let palette = CardPalette {
@@ -1671,8 +1775,8 @@ mod tests {
 		let view = ViewSpec {
 			name: "Use Case".into(),
 			slug: "Use_Case".into(),
-			root_card_types: std::collections::BTreeSet::new(),
-			card_types: std::collections::BTreeSet::new(),
+			root_card_types: Vec::new(),
+			card_types: Vec::new(),
 			include_all: false,
 		};
 		let palette = CardPalette {
@@ -1889,7 +1993,7 @@ mod tests {
 		let label = node_label(&card, Some("🧊"));
 		assert_eq!(
 			label,
-			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"33\">🧊</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT>COM-009: <B>Component</B> (struct)<BR/>Render Node<BR/>&#160;<BR/>Test card</FONT></TD></TR></TABLE>>"
+			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"44\">🧊</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT><B>Component (struct)</B><BR/><B>COM-009</B><BR/>&#160;<BR/>Render Node — Test card</FONT></TD></TR></TABLE>>"
 		);
 	}
 
@@ -1916,7 +2020,7 @@ mod tests {
 		let label = node_label(&card, Some("🧊"));
 		assert_eq!(
 			label,
-			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"33\">🧊</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT>COM-010: <B>Component</B><BR/>Render View<BR/>&#160;<BR/>Test card</FONT></TD></TR></TABLE>>"
+			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"44\">🧊</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT><B>Component</B><BR/><B>COM-010</B><BR/>&#160;<BR/>Render View — Test card</FONT></TD></TR></TABLE>>"
 		);
 	}
 
@@ -1968,12 +2072,11 @@ mod tests {
 			extra: BTreeMap::new(),
 		};
 		let model = AuroraModel::new(home, vec![mission, note]);
-		let mut card_types = BTreeSet::new();
-		card_types.insert("Mission".into());
+		let card_types = vec![CardTypeFilter::new("Mission", None)];
 		let view = ViewSpec {
 			name: "Mission Only".into(),
 			slug: "Mission_Only".into(),
-			root_card_types: BTreeSet::new(),
+			root_card_types: Vec::new(),
 			card_types,
 			include_all: false,
 		};
@@ -2031,13 +2134,14 @@ mod tests {
 			extra: BTreeMap::new(),
 		};
 		let model = AuroraModel::new(home, vec![mission, note]);
-		let mut card_types = BTreeSet::new();
-		card_types.insert("Mission".into());
-		card_types.insert("Note".into());
+		let card_types = vec![
+			CardTypeFilter::new("Mission", None),
+			CardTypeFilter::new("Note", None),
+		];
 		let view = ViewSpec {
 			name: "Mission and Note".into(),
 			slug: "Mission_and_Note".into(),
-			root_card_types: BTreeSet::new(),
+			root_card_types: Vec::new(),
 			card_types,
 			include_all: false,
 		};
@@ -2083,37 +2187,5 @@ mod tests {
 		};
 		let model = AuroraModel::new(home, vec![card]);
 		(tmp_dir, model)
-	}
-
-	fn instructions_fixture_dir() -> PathBuf {
-		let crate_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-		for ancestor in crate_dir.ancestors() {
-			let candidate = ancestor.join(".github/instructions");
-			if candidate.is_dir() {
-				return candidate;
-			}
-		}
-		panic!("Unable to locate .github/instructions for tests");
-	}
-
-	fn env_guard() -> &'static Mutex<()> {
-		static GUARD: OnceLock<Mutex<()>> = OnceLock::new();
-		GUARD.get_or_init(|| Mutex::new(()))
-	}
-
-	fn set_instruction_env(path: &Path) {
-		unsafe {
-			env::set_var(INSTRUCTIONS_DIR_ENV, path);
-		}
-	}
-
-	fn restore_instruction_env(previous: Option<String>) {
-		unsafe {
-			if let Some(value) = previous {
-				env::set_var(INSTRUCTIONS_DIR_ENV, value);
-			} else {
-				env::remove_var(INSTRUCTIONS_DIR_ENV);
-			}
-		}
 	}
 }

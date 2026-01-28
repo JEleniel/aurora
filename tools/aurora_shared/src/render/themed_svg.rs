@@ -29,7 +29,7 @@ pub(super) fn render_svg(
 
 	let mut svg = String::new();
 	svg.push_str(&format!(
-		"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 {width:.2} {height:.2}\" width=\"{width:.2}\" height=\"{height:.2}\" data-theme=\"dark\">\n"
+		"<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 {width:.2} {height:.2}\" width=\"{width:.2}\" height=\"{height:.2}\" data-theme=\"light\">\n"
 	));
 	svg.push_str("<defs>\n");
 	svg.push_str(&svg_style(colors));
@@ -57,7 +57,7 @@ pub(super) fn render_svg(
 
 	// Edges.
 	for edge in &layout.edges {
-		svg.push_str(&edge_svg(layout, edge));
+		svg.push_str(&edge_svg(layout, edge, nodes));
 	}
 
 	// Nodes.
@@ -79,32 +79,32 @@ fn svg_markers() -> &'static str {
 fn svg_style(colors: &std::collections::HashMap<String, CardColor>) -> String {
 	let mut css = String::new();
 	css.push_str("<style>\n");
-	// Dark by default. VS Code's SVG preview does not reliably map editor theme →
-	// `prefers-color-scheme`, so we allow an explicit SVG attribute to force the theme.
+	// Light by default to match the canonical styling guide.
 	css.push_str(
-		"svg{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}\n",
+		"svg{--bg:#FFFFFF;--edge:#000000;--edgeLabel:#000000;--nodeStroke:#000000;--boundary:#000000;}\n",
 	);
-	css.push_str("svg[data-theme=\"light\"]{--bg:#FFFFFF;--edge:#111827;--edgeLabel:#111827;--nodeStroke:#111827;--boundary:#6B7280;}\n");
-	css.push_str("@media (prefers-color-scheme: light){svg:not([data-theme=\"dark\"]){--bg:#FFFFFF;--edge:#111827;--edgeLabel:#111827;--nodeStroke:#111827;--boundary:#6B7280;}}\n");
+	css.push_str("svg[data-theme=\"dark\"]{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}\n");
+	css.push_str("@media (prefers-color-scheme: dark){svg:not([data-theme=\"light\"]){--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}}\n");
 	css.push_str(".bg{fill:var(--bg);}\n");
 	css.push_str(
 		".edge-path{fill:none;stroke:var(--edge);stroke-width:1.2;marker-end:url(#arrow);}\n",
 	);
+	css.push_str(".edge-path.note-edge{stroke-dasharray:2 4;stroke-linecap:round;}\n");
 	css.push_str(".edge-arrow{fill:var(--edge);}\n");
 	css.push_str(&format!(
 		".edge-label{{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:{EDGE_FONT_SIZE_PX}px;}}\n"
 	));
-	let icon_font_size = LINE_HEIGHT_PX * 3.0;
+	let icon_font_size = LINE_HEIGHT_PX * 4.0;
 	css.push_str(&format!(
-		".node-icon{{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:{icon_font_size}px;}}\n"
+		".node-icon{{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:{icon_font_size}px;}}\n"
 	));
 	css.push_str(&format!(
-		".node-label{{fill:var(--nodeText,#FFFFFF);font-family:Inter,system-ui,sans-serif;font-size:{NODE_FONT_SIZE_PX}px;}}\n"
+		".node-label{{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:{NODE_FONT_SIZE_PX}px;}}\n"
 	));
 	css.push_str(".node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}\n");
 	css.push_str(".node-shape-outline{fill:none;}\n");
 	css.push_str(
-		".boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:2;stroke-dasharray:6 6;}\n",
+		".boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:4;stroke-dasharray:5 5;}\n",
 	);
 	css.push_str(
 		".boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}\n",
@@ -148,11 +148,22 @@ fn node_svg(layout: &PlainGraph, node: &PlainNode, card: &Card, icon: Option<&st
 	group
 }
 
-fn edge_svg(layout: &PlainGraph, edge: &PlainEdge) -> String {
+fn edge_svg(layout: &PlainGraph, edge: &PlainEdge, nodes: &BTreeMap<String, &Card>) -> String {
 	let mut out = String::new();
 	let d = edge_path_d(layout, &edge.points);
+	let is_note_edge = nodes
+		.get(&edge.head)
+		.is_some_and(|card| card.card_type == "Note")
+		|| nodes
+			.get(&edge.tail)
+			.is_some_and(|card| card.card_type == "Note");
+	let class = if is_note_edge {
+		"edge-path note-edge"
+	} else {
+		"edge-path"
+	};
 	out.push_str(&format!(
-		"<path class=\"edge-path\" d=\"{d}\" data-tail=\"{tail}\" data-head=\"{head}\" />\n",
+		"<path class=\"{class}\" d=\"{d}\" data-tail=\"{tail}\" data-head=\"{head}\" />\n",
 		tail = escape_xml(&edge.tail),
 		head = escape_xml(&edge.head)
 	));
@@ -507,7 +518,7 @@ fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
 	let description = card.description.trim();
 	let left_pad = 10.0;
 	let right_pad = 10.0;
-	let icon_font_size = LINE_HEIGHT_PX * 3.0;
+	let icon_font_size = LINE_HEIGHT_PX * 4.0;
 	let icon_width = if icon.is_some() {
 		icon_font_size + 16.0
 	} else {
@@ -518,16 +529,19 @@ fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
 	let text_center_x = text_x + (available_width / 2.0);
 	let max_chars = (available_width / (NODE_FONT_SIZE_PX * 0.60)).floor() as usize;
 	let max_chars = max_chars.clamp(18, 72);
-	let mut description_lines = Vec::new();
-	if !description.is_empty() {
-		description_lines = wrap_text(description, max_chars);
+	let detail = if description.is_empty() {
+		card.name.trim().to_string()
+	} else if card.name.trim().is_empty() {
+		description.to_string()
+	} else {
+		format!("{} — {}", card.name.trim(), description)
+	};
+	let mut detail_lines = wrap_text(&detail, max_chars);
+	if detail_lines.is_empty() {
+		detail_lines.push(String::new());
 	}
 
-	let mut line_count = 2usize; // type line + name
-	if !description_lines.is_empty() {
-		line_count += 1; // blank line
-		line_count += description_lines.len();
-	}
+	let line_count = 2usize + 1 + detail_lines.len(); // type + id + blank + details
 	let block_lines = line_count.max(3usize);
 	let total_h = (block_lines as f64 - 1.0).max(0.0) * LINE_HEIGHT_PX;
 	let start_y = cy - (total_h / 2.0);
@@ -547,45 +561,43 @@ fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
 		x = text_center_x,
 		y = start_y
 	));
-	// Line 1: id + **card_type** (subtype)
-	let id_label = format!("{}: ", card.id);
-	text.push_str(&format!(
-		"<tspan x=\"{x:.2}\">{id_label}</tspan><tspan font-weight=\"700\">{card_type}</tspan>",
-		x = text_center_x,
-		id_label = escape_xml(&id_label),
-		card_type = escape_xml(&card.card_type)
-	));
+	// Line 1: card_type (subtype)
+	let mut type_label = card.card_type.clone();
 	if let Some(subtype) = subtype {
-		text.push_str(&format!(
-			"<tspan>{}</tspan>",
-			escape_xml(&format!(" ({subtype})"))
-		));
+		type_label.push(' ');
+		type_label.push('(');
+		type_label.push_str(subtype);
+		type_label.push(')');
 	}
-	text.push_str("\n");
-
-	// Line 2: name
 	text.push_str(&format!(
-		"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\">{line}</tspan>\n",
+		"<tspan x=\"{x:.2}\" font-weight=\"700\">{line}</tspan>\n",
+		x = text_center_x,
+		line = escape_xml(&type_label)
+	));
+
+	// Line 2: id
+	text.push_str(&format!(
+		"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\" font-weight=\"700\">{line}</tspan>\n",
 		x = text_center_x,
 		dy = LINE_HEIGHT_PX,
-		line = escape_xml(&card.name)
+		line = escape_xml(&card.id)
 	));
 
-	// Blank line + description
-	if !description_lines.is_empty() {
+	// Line 3: blank
+	text.push_str(&format!(
+		"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\">&#160;</tspan>\n",
+		x = text_center_x,
+		dy = LINE_HEIGHT_PX
+	));
+
+	// Line 4+: name + description detail
+	for line in &detail_lines {
 		text.push_str(&format!(
-			"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\">&#160;</tspan>\n",
+			"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\">{line}</tspan>\n",
 			x = text_center_x,
-			dy = LINE_HEIGHT_PX
+			dy = LINE_HEIGHT_PX,
+			line = escape_xml(line)
 		));
-		for line in &description_lines {
-			text.push_str(&format!(
-				"<tspan x=\"{x:.2}\" dy=\"{dy:.2}\">{line}</tspan>\n",
-				x = text_center_x,
-				dy = LINE_HEIGHT_PX,
-				line = escape_xml(line)
-			));
-		}
 	}
 	text.push_str("</text>\n");
 	text
@@ -778,7 +790,7 @@ mod tests {
 
 	use super::super::graphviz_plain::{PlainGraph, PlainNode, Point};
 	use super::{
-		BoundaryCluster, SvgRect, edge_path_d, rects_overlap, resolve_boundary_rects, text_svg,
+		edge_path_d, rects_overlap, resolve_boundary_rects, text_svg, BoundaryCluster, SvgRect,
 	};
 	use crate::model::{AuditTrail, Card};
 
@@ -811,11 +823,9 @@ mod tests {
 		let svg = text_svg(&rect, &card, Some("✨"));
 		assert!(svg.contains("class=\"node-icon\""));
 		assert!(svg.contains(">✨<"));
-		assert!(svg.contains("CAP-001: "));
-		assert!(svg.contains("<tspan font-weight=\"700\">Capability</tspan>"));
-		assert!(svg.contains("(struct)"));
-		assert!(svg.contains("Model IO"));
-		assert!(svg.contains("This is a test description."));
+		assert!(svg.contains("font-weight=\"700\">Capability (struct)"));
+		assert!(svg.contains("font-weight=\"700\">CAP-001"));
+		assert!(svg.contains("Model IO — This is a test description."));
 		assert!(!svg.contains("<br"));
 	}
 

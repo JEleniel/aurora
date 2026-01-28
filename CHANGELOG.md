@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated aurora_shared validation fixtures to align with the canonical relationships matrix.
 - Added a standalone `tools/aurora_shared/Cargo.lock` to support independent builds after splitting Rust projects.
 - Updated aurora_cli help/logging to reference the canonical instruction registry files (card, matrix, relationships, views).
+- Stabilized the Aurora Editor UI Tauri command contract with typed DTOs, centralized command names, and wrappers for the full backend command surface.
 - Refined the Aurora Editor UI header layout with a 16px base font, a 4rem header bar, right-aligned status pills, and reduced top spacing above workspace controls.
 - Added local `@tailwindcss/vite` and `tailwindcss` dev dependencies for the Aurora Editor so Vite plugin types resolve consistently.
 - Switched Aurora Editor workspace selection to the Tauri folder dialog, auto-connecting and discovering model homes with the default output path set to `docs/design/`.
@@ -48,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - View rendering now defaults to curved Graphviz splines for smoother edges.
 - View rendering now converts Graphviz plain spline control points into cubic Bezier SVG paths for smoother edges.
 - Expanded aurora_shared validation fixtures to cover `Application implements Test`, `Component implements Class`, `Artifact persists to Data Store`, and `uses` relationships per the canonical matrix.
+- Embedded the canonical instruction registries (card definitions, relationships, view definitions, styling guide) directly into `aurora_shared` so CLI validation/rendering no longer require external files at runtime.
 
 ### Fixed
 
