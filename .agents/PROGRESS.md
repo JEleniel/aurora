@@ -74,60 +74,60 @@
         - REQ-018: “postable” model packaging (ZIP example) (not implemented; compact export exists but is not ZIP).
     + Implementation checkpoints (step-by-step):
         - [ ] **BackendDeveloper** (APP-002-BE-01) **Stabilize the command contract**
-            * Status: completed
-            * Owner: BackendDeveloper
-            * Links:
+            + Status: completed
+            + Owner: BackendDeveloper
+            + Links:
                 - [`src-tauri/src/types.rs`](../tools/aurora_editor/src-tauri/src/types.rs)
                 - [`src/lib/tauri.ts`](../tools/aurora_editor/src/lib/tauri.ts)
-            * Next Action: Keep the typed command contract in `src/lib/tauri.ts` aligned with backend DTOs as new commands are added.
+            + Next Action: Keep the typed command contract in `src/lib/tauri.ts` aligned with backend DTOs as new commands are added.
         - [ ] **BackendDeveloper** (APP-002-BE-02) **Add “preview-first” rendering commands**
-            * Status: pending
-            * Owner: BackendDeveloper
-            * Links:
+            + Status: pending
+            + Owner: BackendDeveloper
+            + Links:
                 - [Design: REQ-013 Preview Rendered Markdown](../docs/design/aurora/MIS-001/Requirement/REQ-013-Preview_Rendered_Markdown.jsjson)
                 - [Design: REQ-017 Sanitized Rendering](../docs/design/aurora/MIS-001/Requirement/REQ-017-Sanitized_Rendering.jsjson)
-            * Next Action: Add backend commands that return render output as data (strings / structured payload) suitable for in-app preview (avoid “write to disk then read” as the primary UX path).
+            + Next Action: Add backend commands that return render output as data (strings / structured payload) suitable for in-app preview (avoid “write to disk then read” as the primary UX path).
         - [ ] **BackendDeveloper** (APP-002-BE-03) **Workspace watchers + event stream**
-            * Status: pending
-            * Owner: BackendDeveloper
-            * Links:
+            + Status: pending
+            + Owner: BackendDeveloper
+            + Links:
                 - [Design: REQ-014 Workspace Integration](../docs/design/aurora/MIS-001/Requirement/REQ-014-Workspace_Integration.jsjson)
-            * Next Action: Implement a watcher that tracks changes under the active workspace/model home and emits events to the UI (model-homes changed, snapshot stale, validation stale). Keep watcher scope constrained to the workspace root.
+            + Next Action: Implement a watcher that tracks changes under the active workspace/model home and emits events to the UI (model-homes changed, snapshot stale, validation stale). Keep watcher scope constrained to the workspace root.
         - [ ] **BackendDeveloper** (APP-002-BE-04) **Diagnostics enrichment and navigation hooks**
-            * Status: pending
-            * Owner: BackendDeveloper
-            * Links:
+            + Status: pending
+            + Owner: BackendDeveloper
+            + Links:
                 - [Design: REQ-011 Show Validation Diagnostics](../docs/design/aurora/MIS-001/Requirement/REQ-011-Show_Validation_Diagnostics.jsjson)
-            * Next Action: Ensure diagnostics always include enough context for UI navigation (card id when possible, relative path when possible). Add helper endpoints for “diagnostics for card” or “open card by id” flows if needed.
+            + Next Action: Ensure diagnostics always include enough context for UI navigation (card id when possible, relative path when possible). Add helper endpoints for “diagnostics for card” or “open card by id” flows if needed.
         - [ ] **BackendDeveloper** (APP-002-BE-05) **Editing guardrails + rollback UX**
-            * Status: pending
-            * Owner: BackendDeveloper
-            * Links:
+            + Status: pending
+            + Owner: BackendDeveloper
+            + Links:
                 - [Design: REQ-010 Edit Models Interactively](../docs/design/aurora/MIS-001/Requirement/REQ-010-Edit_Models_Interactively.jsjson)
                 - [`create_card/update_card/delete_card`](../tools/aurora_editor/src-tauri/src/commands.rs)
-            * Next Action: Make edit failures “actionable” for UI (structured error response including validation errors). Confirm rollback paths are fully atomic and cannot leave partial writes.
+            + Next Action: Make edit failures “actionable” for UI (structured error response including validation errors). Confirm rollback paths are fully atomic and cannot leave partial writes.
         - [ ] **BackendDeveloper** (APP-002-BE-06) **ZIP export/import for postable models**
-            * Status: pending
-            * Owner: BackendDeveloper
-            * Links:
+            + Status: pending
+            + Owner: BackendDeveloper
+            + Links:
                 - [Design: REQ-018 Store the Model in a Postable Format](../docs/design/aurora/MIS-001/Requirement/REQ-018-Store_the_Model_in_a_Postable_Format.jsjson)
                 - [`write_compact_model`](../tools/aurora_shared/src/render.rs)
-            * Next Action: Implement a ZIP (or equivalent archive) export in `aurora_shared` and expose it via the editor backend (trust-gated). Ensure safe path handling (no traversal, no symlink escape) and deterministic archive contents.
+            + Next Action: Implement a ZIP (or equivalent archive) export in `aurora_shared` and expose it via the editor backend (trust-gated). Ensure safe path handling (no traversal, no symlink escape) and deterministic archive contents.
         - [ ] **BackendDeveloper** (APP-002-BE-07) **Security posture for webview rendering**
-            * Status: pending
-            * Owner: BackendDeveloper
-            * Links:
+            + Status: pending
+            + Owner: BackendDeveloper
+            + Links:
                 - [Design: REQ-016 Workspace Trust Gating](../docs/design/aurora/MIS-001/Requirement/REQ-016-Workspace_Trust_Gating.jsjson)
                 - [Design: REQ-017 Sanitized Rendering](../docs/design/aurora/MIS-001/Requirement/REQ-017-Sanitized_Rendering.jsjson)
                 - [`tauri.conf.json`](../tools/aurora_editor/src-tauri/tauri.conf.json)
-            * Next Action: Replace `csp: null` with a locked-down CSP for non-dev builds and define a minimal capability set for the editor webview. Document which operations are blocked in “untrusted” mode.
+            + Next Action: Replace `csp: null` with a locked-down CSP for non-dev builds and define a minimal capability set for the editor webview. Document which operations are blocked in “untrusted” mode.
         - [ ] **BackendDeveloper** (APP-002-BE-08) **Backend test strategy (unit-first)**
-            * Status: pending
-            * Owner: BackendDeveloper
-            * Links:
+            + Status: pending
+            + Owner: BackendDeveloper
+            + Links:
                 - [`tools/aurora_shared/src/validation.rs`](../tools/aurora_shared/src/validation.rs)
                 - [`tools/aurora_editor/src-tauri/src/workspace.rs`](../tools/aurora_editor/src-tauri/src/workspace.rs)
-            * Next Action: Add focused unit tests around the editor backend’s workspace path safety helpers, trust gating, and edit rollback behavior. Prefer tests that don’t require a full Tauri runtime.
+            + Next Action: Add focused unit tests around the editor backend’s workspace path safety helpers, trust gating, and edit rollback behavior. Prefer tests that don’t require a full Tauri runtime.
 
 - [ ] **UIDeveloper** (APP-002) **Tauri Editor UI**
     + Status: implementation
@@ -159,64 +159,64 @@
         - Use `@tauri-apps/plugin-dialog` with the matching Rust plugin to drive workspace folder selection.
     + Implementation checkpoints (step-by-step):
         - [ ] **UIDeveloper** (APP-002-UI-01) **Promote “model snapshot” to a first-class UI state**
-            * Status: pending
-            * Owner: UIDeveloper
-            * Links:
+            + Status: pending
+            + Owner: UIDeveloper
+            + Links:
                 - [`load_model_snapshot` command](../tools/aurora_editor/src-tauri/src/commands.rs)
-            * Next Action: Add a shared store that holds (workspace, trust, selected model home, model snapshot, validation report, last render/export results) and refreshes deterministically.
+            + Next Action: Add a shared store that holds (workspace, trust, selected model home, model snapshot, validation report, last render/export results) and refreshes deterministically.
         - [ ] **UIDeveloper** (APP-002-UI-02) **Explorer Tree View (browse + search)**
-            * Status: pending
-            * Owner: UIDeveloper
-            * Links:
+            + Status: pending
+            + Owner: UIDeveloper
+            + Links:
                 - [Design: COM-004 Explorer Tree View](../docs/design/aurora/MIS-001/Component/COM-004-Explorer_Tree_View.jsjson)
                 - [Design: FEA-007 Browse and Search Models](../docs/design/aurora/MIS-001/Feature/FEA-007-Browse_and_Search_Models.jsjson)
-            * Next Action: Render a tree/list grouped by card_type (and optionally folder path) with search/filter. Selecting a card should update the “focused card” across all panes.
+            + Next Action: Render a tree/list grouped by card_type (and optionally folder path) with search/filter. Selecting a card should update the “focused card” across all panes.
         - [ ] **UIDeveloper** (APP-002-UI-03) **Diagnostics UX that users can act on**
-            * Status: pending
-            * Owner: UIDeveloper
-            * Links:
+            + Status: pending
+            + Owner: UIDeveloper
+            + Links:
                 - [Design: REQ-011 Show Validation Diagnostics](../docs/design/aurora/MIS-001/Requirement/REQ-011-Show_Validation_Diagnostics.jsjson)
-            * Next Action: Replace the “top 3 findings” summary with a full diagnostics list, severity filtering, and click-to-focus-card (or click-to-open-path) behavior.
+            + Next Action: Replace the “top 3 findings” summary with a full diagnostics list, severity filtering, and click-to-focus-card (or click-to-open-path) behavior.
         - [ ] **UIDeveloper** (APP-002-UI-04) **Edit View (card CRUD + link editing)**
-            * Status: pending
-            * Owner: UIDeveloper
-            * Links:
+            + Status: pending
+            + Owner: UIDeveloper
+            + Links:
                 - [Design: COM-006 Edit View](../docs/design/aurora/MIS-001/Component/COM-006-Edit_View.jsjson)
                 - [Design: REQ-010 Edit Models Interactively](../docs/design/aurora/MIS-001/Requirement/REQ-010-Edit_Models_Interactively.jsjson)
-            * Next Action: Implement an edit form for the focused card (including links + attributes). Hook it to backend create/update/delete and surface rollback/validation errors inline.
+            + Next Action: Implement an edit form for the focused card (including links + attributes). Hook it to backend create/update/delete and surface rollback/validation errors inline.
         - [ ] **UIDeveloper** (APP-002-UI-05) **Mind-map / graph navigation view**
-            * Status: pending
-            * Owner: UIDeveloper
-            * Links:
+            + Status: pending
+            + Owner: UIDeveloper
+            + Links:
                 - [Design: COM-005 Mind-Map Like View](../docs/design/aurora/MIS-001/Component/COM-005-Mind-Map_Like_View.jsjson)
                 - [Design: REQ-012 Visualize Model Graph](../docs/design/aurora/MIS-001/Requirement/REQ-012-Visualize_Model_Graph.jsjson)
-            * Next Action: Add an interactive graph view (zoom/pan + focus-on-card + neighbor expansion). Keep it driven from the model snapshot to avoid backend coupling.
+            + Next Action: Add an interactive graph view (zoom/pan + focus-on-card + neighbor expansion). Keep it driven from the model snapshot to avoid backend coupling.
         - [ ] **UIDeveloper** (APP-002-UI-06) **Markdown View with sanitization**
-            * Status: pending
-            * Owner: UIDeveloper
-            * Links:
+            + Status: pending
+            + Owner: UIDeveloper
+            + Links:
                 - [Design: COM-007 Markdown View](../docs/design/aurora/MIS-001/Component/COM-007-Markdown_View.jsjson)
                 - [Design: REQ-013 Preview Rendered Markdown](../docs/design/aurora/MIS-001/Requirement/REQ-013-Preview_Rendered_Markdown.jsjson)
                 - [Design: REQ-017 Sanitized Rendering](../docs/design/aurora/MIS-001/Requirement/REQ-017-Sanitized_Rendering.jsjson)
-            * Next Action: Render Markdown previews in-app using a sanitizer-first pipeline. Navigation between cards should work from markdown links (at minimum: resolve `CARD_ID` links).
+            + Next Action: Render Markdown previews in-app using a sanitizer-first pipeline. Navigation between cards should work from markdown links (at minimum: resolve `CARD_ID` links).
         - [ ] **UIDeveloper** (APP-002-UI-07) **Trust gating UX**
-            * Status: pending
-            * Owner: UIDeveloper
-            * Links:
+            + Status: pending
+            + Owner: UIDeveloper
+            + Links:
                 - [Design: REQ-016 Workspace Trust Gating](../docs/design/aurora/MIS-001/Requirement/REQ-016-Workspace_Trust_Gating.jsjson)
-            * Next Action: Make trust state always visible and enforce it consistently (disable/hide render/export/edit actions when untrusted; show explicit rationale).
+            + Next Action: Make trust state always visible and enforce it consistently (disable/hide render/export/edit actions when untrusted; show explicit rationale).
         - [ ] **UIDeveloper** (APP-002-UI-08) **Accessibility + keyboard-first navigation**
-            * Status: pending
-            * Owner: UIDeveloper
-            * Links:
+            + Status: pending
+            + Owner: UIDeveloper
+            + Links:
                 - [Design: REQ-010 Edit Models Interactively](../docs/design/aurora/MIS-001/Requirement/REQ-010-Edit_Models_Interactively.jsjson)
-            * Next Action: Ensure full keyboard parity for: model selection, search, focus card, edit/save, diagnostics navigation, and graph interactions.
+            + Next Action: Ensure full keyboard parity for: model selection, search, focus card, edit/save, diagnostics navigation, and graph interactions.
         - [ ] **UIDeveloper** (APP-002-UI-09) **Polish + end-to-end acceptance checks**
-            * Status: pending
-            * Owner: UIDeveloper
-            * Links:
+            + Status: pending
+            + Owner: UIDeveloper
+            + Links:
                 - [Rendered model output](../docs/design/MIS-001-Provide_Default_Tooling_for_AURORA/)
-            * Next Action: Validate the full user flow against the MIS-001 model: connect workspace → select model home → browse → validate → fix issues → render views → preview markdown → export compact/zip.
+            + Next Action: Validate the full user flow against the MIS-001 model: connect workspace → select model home → browse → validate → fix issues → render views → preview markdown → export compact/zip.
 
     + Notes / risks:
         - The source model references `docs/design/Editor.md` via `APP-002.attributes.design_docs`, but that file is currently missing in-repo. Treat the Aurora cards and rendered output as authoritative until the design sketch is added.
