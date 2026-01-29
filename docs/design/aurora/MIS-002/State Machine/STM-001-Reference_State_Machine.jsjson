@@ -3,15 +3,20 @@
 	"id": "STM-001",
 	"card_type": "State Machine",
 	"name": "Reference State Machine",
-	"description": "State machine run by capability/component and starting in a defined initial state.",
+	"description": "State machine that starts in a defined initial state.",
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.0.1",
 		"hash": null,
 		"history": [
 			{
 				"editor": "Architect",
 				"timestamp": "2026-01-29T00:00:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T11:48:14Z",
+				"event": "edited"
 			}
 		]
 	},

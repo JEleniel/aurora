@@ -4,10 +4,8 @@
 
 ## Description
 
-State that transitions to a state, a condition, and an event in the reference model.
+State that transitions to another state in the relationship-matrix reference model.
 
 ## Links
 
 - `transitions to` → `STA-002`
-- `transitions to` → `CON-001`
-- `transitions to` → `EVT-002`

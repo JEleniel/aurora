@@ -4,9 +4,9 @@
 
 ## Description
 
-System that integrates an application and imposes a control.
+System that integrates an application and enforces a control.
 
 ## Links
 
 - `integrates` → `APP-001`
-- `imposes` → `CTL-001`
+- `enforces` → `CTL-001`

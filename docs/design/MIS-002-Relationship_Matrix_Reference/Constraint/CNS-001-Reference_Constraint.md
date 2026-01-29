@@ -4,8 +4,8 @@
 
 ## Description
 
-Constraint implied by a story and limiting a requirement in the reference model.
+Constraint implied by a story in the relationship-matrix reference model.
 
 ## Links
 
-- `limits` → `REQ-001`
+_No outgoing links._

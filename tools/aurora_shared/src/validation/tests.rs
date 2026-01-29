@@ -253,7 +253,12 @@ fn new_relationships_allowed_by_matrix() -> Result<()> {
 		),
 		card("ATV-002", "Activity", None, Vec::new()),
 		card("CON-001", "Condition", None, Vec::new()),
-		card("EVT-001", "Event", None, vec![link("STA-002", "transitions to")]),
+		card(
+			"EVT-001",
+			"Event",
+			None,
+			vec![link("STA-002", "transitions to")],
+		),
 		card(
 			"PRD-001",
 			"Predicate",
@@ -292,12 +297,7 @@ fn new_relationships_allowed_by_matrix() -> Result<()> {
 			],
 		),
 		card("STR-001", "Story", None, vec![link("CNS-001", "implies")]),
-		card(
-			"CNS-001",
-			"Constraint",
-			None,
-			Vec::new(),
-		),
+		card("CNS-001", "Constraint", None, Vec::new()),
 		card("ADR-001", "ADR", None, vec![link("REQ-001", "documents")]),
 		card(
 			"CTL-001",

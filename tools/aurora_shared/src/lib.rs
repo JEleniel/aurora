@@ -8,14 +8,14 @@ mod registry;
 mod render;
 mod validation;
 
-pub use discovery::{discover_model_homes, load_model, ModelHome};
+pub use discovery::{ModelHome, discover_model_homes, load_model};
 pub use errors::{AuroraError, Result};
 pub use model::{AuditEvent, AuditTrail, AuroraModel, Card, Link};
 pub use render::{
-	render_all, render_all_with_instructions, render_markdown, render_views,
-	render_views_with_instructions, write_compact_model, RenderSummary,
+	RenderSummary, render_all, render_all_with_instructions, render_markdown, render_views,
+	render_views_with_instructions, write_compact_model,
 };
 pub use validation::{
-	validate_model, validate_model_with_instructions, DiagnosticSeverity, ValidationDiagnostic,
-	ValidationReport,
+	DiagnosticSeverity, ValidationDiagnostic, ValidationReport, validate_model,
+	validate_model_with_instructions,
 };

@@ -4,7 +4,7 @@
 
 ## Description
 
-State machine run by capability/component and starting in a defined initial state.
+State machine that starts in a defined initial state.
 
 ## Links
 

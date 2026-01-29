@@ -4,13 +4,10 @@
 
 ## Description
 
-Activity that receives an event and triggers downstream activities, events, conditions, actors, and states.
+Activity that leads to another activity, emits an event, and evaluates a condition.
 
 ## Links
 
-- `receives` → `EVT-001`
-- `triggers` → `ATV-002`
-- `triggers` → `EVT-002`
-- `triggers` → `CON-001`
-- `triggers` → `ACT-002`
-- `triggers` → `STA-001`
+- `leads` → `ATV-002`
+- `emits` → `EVT-001`
+- `evaluates` → `CON-001`

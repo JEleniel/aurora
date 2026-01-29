@@ -3,15 +3,25 @@
 	"id": "MIS-002",
 	"card_type": "Mission",
 	"name": "Relationship Matrix Reference",
-	"description": "Reference Aurora model encoding the requested relationship matrix as concrete card links for tooling and diagram validation.",
+	"description": "Reference Aurora model encoding the canonical relationship registry as concrete card links for tooling and diagram validation.",
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.0.2",
 		"hash": null,
 		"history": [
 			{
 				"editor": "Architect",
 				"timestamp": "2026-01-29T00:00:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T11:48:14Z",
+				"event": "edited"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T11:54:01Z",
+				"event": "edited"
 			}
 		]
 	},
@@ -21,24 +31,24 @@
 			"target": "DRI-001"
 		},
 		{
-			"relationship": "notes",
-			"target": "NOT-900"
-		},
-		{
 			"relationship": "involves",
 			"target": "ACT-001"
 		},
 		{
-			"relationship": "necessitates",
+			"relationship": "involves",
+			"target": "ACT-002"
+		},
+		{
+			"relationship": "includes",
+			"target": "BND-001"
+		},
+		{
+			"relationship": "requires",
 			"target": "SYS-001"
 		},
 		{
-			"relationship": "necessitates",
+			"relationship": "requires",
 			"target": "APP-001"
-		},
-		{
-			"relationship": "necessitates",
-			"target": "DEP-001"
 		}
 	]
 }

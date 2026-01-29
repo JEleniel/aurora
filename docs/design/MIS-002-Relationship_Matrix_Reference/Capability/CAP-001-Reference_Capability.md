@@ -4,10 +4,9 @@
 
 ## Description
 
-Capability used to satisfy a requirement and to run both a process and a state machine.
+Capability used to satisfy a requirement and necessitate a process.
 
 ## Links
 
-- `runs` → `PRO-001`
-- `runs` → `STM-001`
+- `necessitates` → `PRO-001`
 - `satisfies` → `REQ-001`

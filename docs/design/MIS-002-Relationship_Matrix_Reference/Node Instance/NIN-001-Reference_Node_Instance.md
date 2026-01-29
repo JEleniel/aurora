@@ -4,9 +4,8 @@
 
 ## Description
 
-Concrete runtime realization of a node hosting a component and data store.
+Concrete runtime realization of a node.
 
 ## Links
 
-- `hosts` → `COM-001`
-- `hosts` → `DTS-001`
+_No outgoing links._

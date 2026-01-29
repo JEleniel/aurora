@@ -4,8 +4,8 @@
 
 ## Description
 
-Deployment that deploys a node in the relationship-matrix reference model.
+Deployment that provisions a node in the relationship-matrix reference model.
 
 ## Links
 
-- `deploys` → `NOD-001`
+- `provisions` → `NOD-001`

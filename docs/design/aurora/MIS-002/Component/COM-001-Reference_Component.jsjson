@@ -3,21 +3,26 @@
 	"id": "COM-001",
 	"card_type": "Component",
 	"name": "Reference Component",
-	"description": "Component used to exercise interface calls, artifact generation, implementation links, and execution links.",
+	"description": "Component used to exercise interface invocation, artifact generation, feature implementation, test fulfillment, class realization, control enforcement, and state machine execution.",
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.0.1",
 		"hash": null,
 		"history": [
 			{
 				"editor": "Architect",
 				"timestamp": "2026-01-29T00:00:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T11:48:14Z",
+				"event": "edited"
 			}
 		]
 	},
 	"links": [
 		{
-			"relationship": "calls",
+			"relationship": "invokes",
 			"target": "INT-001"
 		},
 		{
@@ -26,26 +31,22 @@
 		},
 		{
 			"relationship": "implements",
-			"target": "TES-001"
-		},
-		{
-			"relationship": "implements",
 			"target": "FEA-001"
 		},
 		{
-			"relationship": "implements",
+			"relationship": "fulfills",
+			"target": "TES-001"
+		},
+		{
+			"relationship": "realizes",
 			"target": "CLS-001"
 		},
 		{
-			"relationship": "implements",
+			"relationship": "enforces",
 			"target": "CTL-001"
 		},
 		{
-			"relationship": "runs",
-			"target": "PRO-001"
-		},
-		{
-			"relationship": "runs",
+			"relationship": "executes",
 			"target": "STM-001"
 		}
 	]

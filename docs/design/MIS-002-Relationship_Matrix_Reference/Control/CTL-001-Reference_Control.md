@@ -4,9 +4,9 @@
 
 ## Description
 
-Control that mitigates risk and protects an asset in the reference model.
+Control that mitigates risk and safeguards an asset in the relationship-matrix reference model.
 
 ## Links
 
 - `mitigates` → `RIS-001`
-- `protects` → `AST-001`
+- `safeguards` → `AST-001`

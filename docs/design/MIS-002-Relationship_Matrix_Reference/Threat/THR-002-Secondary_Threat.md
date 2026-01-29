@@ -4,7 +4,7 @@
 
 ## Description
 
-Secondary threat used as the target of Threat presents Threat in the reference model.
+Secondary threat used as a target for actor threat presentation in the reference model.
 
 ## Links
 

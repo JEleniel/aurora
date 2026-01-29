@@ -57,11 +57,123 @@ pub fn render_markdown(model: &AuroraModel, output_dir: impl AsRef<Path>) -> Res
 		cards_written += 1;
 	}
 
+	render_executive_summary(model, output_dir)?;
+
 	Ok(RenderSummary {
 		cards_written,
 		views_written: 0,
 		output_dir: output_dir.to_path_buf(),
 	})
+}
+
+fn render_executive_summary(model: &AuroraModel, output_dir: &Path) -> Result<()> {
+	let mission = match mission_card(model) {
+		Some(card) => card,
+		None => return Ok(()),
+	};
+	let path = executive_summary_path(output_dir, &mission.id);
+	let summary = build_executive_summary(model, mission);
+	write_text(&path, summary)
+}
+
+fn executive_summary_path(output_root: &Path, mission_id: &str) -> PathBuf {
+	output_root.join(format!("{mission_id}-Executive_Summary.md"))
+}
+
+fn build_executive_summary(model: &AuroraModel, mission: &Card) -> String {
+	let mut drivers = collect_cards_by_type(model, "Driver");
+	drivers.sort_by(|left, right| left.id.cmp(&right.id));
+	let mut requirements = collect_cards_by_type(model, "Requirement");
+	requirements.sort_by(|left, right| left.id.cmp(&right.id));
+
+	let mut buffer = String::new();
+	buffer.push_str(&format!("# {} Executive Summary\n\n", mission.id));
+	buffer.push_str(&format!(
+		"This executive summary captures the mission intent plus {} and {}.\n\n",
+		format_count(drivers.len(), "driver", "drivers"),
+		format_count(requirements.len(), "requirement", "requirements")
+	));
+
+	buffer.push_str("## Mission\n\n");
+	buffer.push_str(&format!("- **ID:** `{}`\n", mission.id));
+	buffer.push_str(&format!(
+		"- **Name:** {}\n",
+		normalize_summary_text(&mission.name)
+	));
+	let description = normalize_summary_text(&mission.description);
+	if description.is_empty() {
+		buffer.push_str("- **Description:** No description provided.\n\n");
+	} else {
+		buffer.push_str(&format!("- **Description:** {}\n\n", description));
+	}
+
+	buffer.push_str("## Drivers\n\n");
+	if drivers.is_empty() {
+		buffer.push_str("_No drivers recorded for this mission._\n\n");
+	} else {
+		for driver in drivers {
+			buffer.push_str(&format!(
+				"- `{}` — {}\n",
+				driver.id,
+				card_summary_line(driver)
+			));
+		}
+		buffer.push('\n');
+	}
+
+	buffer.push_str("## Requirements\n\n");
+	if requirements.is_empty() {
+		buffer.push_str("_No requirements recorded for this mission._\n");
+	} else {
+		for requirement in requirements {
+			buffer.push_str(&format!(
+				"- `{}` — {}\n",
+				requirement.id,
+				card_summary_line(requirement)
+			));
+		}
+	}
+	buffer
+}
+
+fn collect_cards_by_type<'a>(model: &'a AuroraModel, card_type: &str) -> Vec<&'a Card> {
+	model
+		.iter_cards()
+		.filter(|card| card.card_type.eq_ignore_ascii_case(card_type))
+		.collect()
+}
+
+fn card_summary_line(card: &Card) -> String {
+	let name = normalize_summary_text(&card.name);
+	let description = normalize_summary_text(&card.description);
+	match (name.is_empty(), description.is_empty()) {
+		(false, false) => {
+			if name.ends_with(['.', '!', '?']) {
+				format!("{name} {description}")
+			} else {
+				format!("{name}. {description}")
+			}
+		}
+		(false, true) => name,
+		(true, false) => description,
+		(true, true) => "No summary available.".to_string(),
+	}
+}
+
+fn normalize_summary_text(value: &str) -> String {
+	value
+		.split_whitespace()
+		.filter(|segment| !segment.is_empty())
+		.collect::<Vec<_>>()
+		.join(" ")
+}
+
+fn format_count(count: usize, singular: &str, plural: &str) -> String {
+	if count == 1 {
+		format!("1 {singular}")
+	} else {
+		format!("{count} {plural}")
+	}
 }
 
 /// Render the canonical view set (DOT → SVG) defined by the registry.
@@ -92,33 +204,57 @@ fn render_views_with_registry(model: &AuroraModel, output_dir: &Path) -> Result<
 	let view_source_dir = views_dir.join("source");
 	fs::create_dir_all(&view_source_dir).map_err(|err| AuroraError::io(&view_source_dir, err))?;
 	for view in &registry.views {
-		let dot_path = view_source_dir.join(format!("{}.view.dot", view.slug));
-		let svg_path = views_dir.join(format!("{}.view.svg", view.slug));
-		let engine = graphviz_engine_for_view(view);
+		let legacy_dot = view_source_dir.join(format!("{}.view.dot", view.slug));
+		let legacy_svg = views_dir.join(format!("{}.view.svg", view.slug));
+		remove_if_exists(&legacy_dot)?;
+		remove_if_exists(&legacy_svg)?;
 
-		let nodes = collect_view_nodes(model, view);
-		let clusters = collect_boundary_clusters(&nodes);
-		validate_view_connectivity(view, &nodes)?;
-		let dot = build_dot(
-			view,
-			&nodes,
-			&palette,
-			&icon_glyphs,
-			&registry.card_colors,
-			&graphviz,
-		);
-		write_text(&dot_path, dot)?;
-		render_svg(
-			&dot_path,
-			&svg_path,
-			&graphviz,
-			engine,
-			&nodes,
-			&icon_glyphs,
-			&registry.card_colors,
-			&clusters,
-		)?;
-		views_written += 1;
+		let base_nodes = collect_view_base_nodes(model, view);
+		let root_ids = collect_view_root_ids(view, &base_nodes);
+		if root_ids.is_empty() {
+			continue;
+		}
+		let engine = graphviz_engine_for_view(view);
+		for root_id in root_ids {
+			let nodes = collect_view_nodes_for_root(model, view, &base_nodes, &root_id);
+			if nodes.is_empty() {
+				continue;
+			}
+			let view_name = format!("{} ({})", view.name, root_id);
+			let view_instance = ViewSpec {
+				name: view_name,
+				slug: view.slug.clone(),
+				root_card_types: view.root_card_types.clone(),
+				card_types: view.card_types.clone(),
+				include_all: view.include_all,
+			};
+			let file_base = format!("{}_View-{}", view.slug, root_id);
+			let dot_path = view_source_dir.join(format!("{file_base}.view.dot"));
+			let svg_path = views_dir.join(format!("{file_base}.view.svg"));
+
+			let clusters = collect_boundary_clusters(&nodes);
+			validate_view_connectivity(&view_instance, &nodes)?;
+			let dot = build_dot(
+				&view_instance,
+				&nodes,
+				&palette,
+				&icon_glyphs,
+				&registry.card_colors,
+				&graphviz,
+			);
+			write_text(&dot_path, dot)?;
+			render_svg(
+				&dot_path,
+				&svg_path,
+				&graphviz,
+				engine,
+				&nodes,
+				&icon_glyphs,
+				&registry.card_colors,
+				&clusters,
+			)?;
+			views_written += 1;
+		}
 	}
 
 	Ok(RenderSummary {
@@ -659,7 +795,19 @@ fn card_colors_from_definitions(definitions: &[CardDefinition]) -> HashMap<Strin
 	colors
 }
 
+#[cfg(test)]
 fn collect_view_nodes<'a>(model: &'a AuroraModel, view: &ViewSpec) -> BTreeMap<String, &'a Card> {
+	let nodes = collect_view_base_nodes(model, view);
+	let nodes = filter_nodes_by_roots(view, nodes);
+	let mut with_annotations = nodes.clone();
+	include_annotations_for_view(model, &mut with_annotations, &nodes);
+	with_annotations
+}
+
+fn collect_view_base_nodes<'a>(
+	model: &'a AuroraModel,
+	view: &ViewSpec,
+) -> BTreeMap<String, &'a Card> {
 	let mut nodes = BTreeMap::new();
 	for card in model.iter_cards() {
 		if is_annotation(card) {
@@ -669,7 +817,35 @@ fn collect_view_nodes<'a>(model: &'a AuroraModel, view: &ViewSpec) -> BTreeMap<S
 			nodes.insert(card.id.clone(), card);
 		}
 	}
-	let nodes = filter_nodes_by_roots(view, nodes);
+	nodes
+}
+
+fn collect_view_root_ids(view: &ViewSpec, nodes: &BTreeMap<String, &Card>) -> Vec<String> {
+	let node_ids = collect_diagram_node_ids(nodes);
+	if node_ids.is_empty() {
+		return Vec::new();
+	}
+	let edges = collect_edges(nodes);
+	let incoming = collect_incoming_counts(&node_ids, &edges);
+	let mut roots = collect_root_nodes_by_type(view, nodes);
+	if roots.is_empty() {
+		roots = collect_root_nodes(&node_ids, &incoming);
+	}
+	roots.sort();
+	roots
+}
+
+fn collect_view_nodes_for_root<'a>(
+	model: &'a AuroraModel,
+	view: &ViewSpec,
+	base_nodes: &BTreeMap<String, &'a Card>,
+	root_id: &str,
+) -> BTreeMap<String, &'a Card> {
+	if !base_nodes.contains_key(root_id) {
+		return BTreeMap::new();
+	}
+	let roots = vec![root_id.to_string()];
+	let nodes = filter_nodes_by_explicit_roots(view, base_nodes.clone(), &roots);
 	let mut with_annotations = nodes.clone();
 	include_annotations_for_view(model, &mut with_annotations, &nodes);
 	with_annotations
@@ -797,6 +973,7 @@ fn collect_connected_nodes(roots: &[String], edges: &[EdgeSpec]) -> BTreeSet<Str
 	connected
 }
 
+#[cfg(test)]
 fn filter_nodes_by_roots<'a>(
 	view: &ViewSpec,
 	nodes: BTreeMap<String, &'a Card>,
@@ -815,6 +992,25 @@ fn filter_nodes_by_roots<'a>(
 		return nodes;
 	}
 	let reachable = collect_connected_nodes(&roots, &edges);
+	let mut filtered = BTreeMap::new();
+	for (id, card) in nodes {
+		if reachable.contains(&id) {
+			filtered.insert(id, card);
+		}
+	}
+	filtered
+}
+
+fn filter_nodes_by_explicit_roots<'a>(
+	_view: &ViewSpec,
+	nodes: BTreeMap<String, &'a Card>,
+	roots: &[String],
+) -> BTreeMap<String, &'a Card> {
+	if roots.is_empty() {
+		return nodes;
+	}
+	let edges = collect_edges(&nodes);
+	let reachable = collect_connected_nodes(roots, &edges);
 	let mut filtered = BTreeMap::new();
 	for (id, card) in nodes {
 		if reachable.contains(&id) {
@@ -1351,6 +1547,10 @@ fn mission_identifier(model: &AuroraModel) -> Option<String> {
 		.map(|card| card.id.clone())
 }
 
+fn mission_card(model: &AuroraModel) -> Option<&Card> {
+	model.iter_cards().find(|card| card.card_type == "Mission")
+}
+
 fn card_markdown_path(
 	card: &Card,
 	model: &AuroraModel,
@@ -1371,6 +1571,13 @@ fn card_markdown_path(
 	}
 	let file_name = format!("{}-{}.md", card.id, card.name.replace(' ', "_"));
 	output_root.join(file_name)
+}
+
+fn remove_if_exists(path: &Path) -> Result<()> {
+	if path.exists() {
+		fs::remove_file(path).map_err(|err| AuroraError::io(path, err))?;
+	}
+	Ok(())
 }
 
 /// Write a compact single-file representation of the model for agent consumption.
@@ -1475,6 +1682,7 @@ mod tests {
 		let summary = render_markdown(&model, &output).expect("render should succeed");
 		assert_eq!(summary.cards_written, 1);
 		assert!(output.join("MIS-001-Provide_Default_Tooling.md").exists());
+		assert!(output.join("MIS-001-Executive_Summary.md").exists());
 	}
 
 	#[test]
@@ -1483,11 +1691,19 @@ mod tests {
 		let output = tmp.path().join("views");
 		let summary = render_views(&model, &output).expect("view render should succeed");
 		assert!(summary.views_written > 0);
-		let requirements_md = output.join("Views/Requirements.view.md");
+		let requirements_md = output.join("Views/Requirements_View-MIS-001.view.md");
 		assert!(!requirements_md.exists());
-		let dot_path = output.join("Views/source/Requirements.view.dot");
+		let legacy_dot = output.join("Views/source/Requirements.view.dot");
+		let legacy_svg = output.join("Views/Requirements.view.svg");
+		assert!(!legacy_dot.exists());
+		assert!(!legacy_svg.exists());
+		let dot_path = output.join("Views/source/Requirements_View-MIS-001.view.dot");
 		assert!(dot_path.exists());
-		assert!(output.join("Views/Requirements.view.svg").exists());
+		assert!(
+			output
+				.join("Views/Requirements_View-MIS-001.view.svg")
+				.exists()
+		);
 		let dot = std::fs::read_to_string(dot_path).expect("dot");
 		assert!(dot.contains("<B>Mission</B>"));
 		assert!(dot.contains("<B>MIS-001</B>"));

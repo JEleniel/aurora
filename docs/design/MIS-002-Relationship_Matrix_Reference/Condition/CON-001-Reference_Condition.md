@@ -4,10 +4,8 @@
 
 ## Description
 
-Condition used to exercise condition transitions to condition/state/event.
+Condition evaluated by an activity in the relationship-matrix reference model.
 
 ## Links
 
-- `transitions to` → `CON-002`
-- `transitions to` → `STA-002`
-- `transitions to` → `EVT-002`
+_No outgoing links._

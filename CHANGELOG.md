@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added an `aurora_cli --instructions-root` override plus validation output that reports which instructions registry was used.
 - Added file-system safe rendering helpers plus unit tests in `aurora_shared`.
 - Added Everything View rendering support so the CLI view pipeline can include full-model diagrams.
+- Added mission executive summary markdown output (`MIS-XXX-Executive_Summary.md`) to the render pipeline.
 - Registered reverse-DNS `app_id` metadata for each tool crate and seeded placeholder libraries for editor and VS Code hosts.
 - Converted `aurora_editor_backend` into a Tauri project that exposes model discovery, load, validation, render, compact, and card-update commands for the forthcoming UI.
 - Added Tauri editor backend commands for workspace configuration, model operations, and audit-aware card CRUD with trust gating.
@@ -48,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - View rendering now selects Graphviz layout engine per view: `osage` for the Requirements view, `dot` for all other views.
 - View rendering now defaults to curved Graphviz splines for smoother edges.
 - View rendering now converts Graphviz plain spline control points into cubic Bezier SVG paths for smoother edges.
+- View rendering now emits per-root view artifacts using `<View>_View-<ROOT>.view.svg`/`.view.dot` naming instead of single aggregated views.
 - Expanded aurora_shared validation fixtures to cover `Application implements Test`, `Component implements Class`, `Artifact persists to Data Store`, and `uses` relationships per the canonical matrix.
 - Embedded the canonical instruction registries (card definitions, relationships, view definitions, styling guide) directly into `aurora_shared` so CLI validation/rendering no longer require external files at runtime.
 - Reduced SVG shape sizes for State (50%) and Event/Condition/Actor/Mission (25%) to better balance text proportions.

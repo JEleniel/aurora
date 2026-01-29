@@ -4,13 +4,13 @@
 
 ## Description
 
-Reference Aurora model encoding the requested relationship matrix as concrete card links for tooling and diagram validation.
+Reference Aurora model encoding the canonical relationship registry as concrete card links for tooling and diagram validation.
 
 ## Links
 
 - `establishes` → `DRI-001`
-- `notes` → `NOT-900`
 - `involves` → `ACT-001`
-- `necessitates` → `SYS-001`
-- `necessitates` → `APP-001`
-- `necessitates` → `DEP-001`
+- `involves` → `ACT-002`
+- `includes` → `BND-001`
+- `requires` → `SYS-001`
+- `requires` → `APP-001`

@@ -3,15 +3,20 @@
 	"id": "SYS-001",
 	"card_type": "System",
 	"name": "Reference System",
-	"description": "System that integrates an application and imposes a control.",
+	"description": "System that integrates an application and enforces a control.",
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.0.1",
 		"hash": null,
 		"history": [
 			{
 				"editor": "Architect",
 				"timestamp": "2026-01-29T00:00:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T11:48:14Z",
+				"event": "edited"
 			}
 		]
 	},
@@ -21,7 +26,7 @@
 			"target": "APP-001"
 		},
 		{
-			"relationship": "imposes",
+			"relationship": "enforces",
 			"target": "CTL-001"
 		}
 	]

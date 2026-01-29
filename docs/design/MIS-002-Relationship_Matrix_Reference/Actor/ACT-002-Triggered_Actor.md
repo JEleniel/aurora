@@ -4,7 +4,7 @@
 
 ## Description
 
-Secondary actor used as the target of Activity/Event trigger relationships in the reference model.
+Secondary actor involved in the relationship-matrix reference model.
 
 ## Links
 

@@ -4,9 +4,8 @@
 
 ## Description
 
-Threat presented by an actor that can present other threats and risks.
+Threat presented by an actor that raises a risk.
 
 ## Links
 
-- `presents` → `THR-002`
-- `presents` → `RIS-001`
+- `raises` → `RIS-001`

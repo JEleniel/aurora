@@ -4,7 +4,7 @@
 
 ## Description
 
-Risk presented by actors/threats and mitigated by controls in the reference model.
+Risk raised by threats and mitigated by controls in the relationship-matrix reference model.
 
 ## Links
 

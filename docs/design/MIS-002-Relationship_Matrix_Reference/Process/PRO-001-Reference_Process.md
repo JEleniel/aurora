@@ -4,8 +4,8 @@
 
 ## Description
 
-Process started with an activity and run by both a capability and a component.
+Process necessitated by a capability in the relationship-matrix reference model.
 
 ## Links
 
-- `starts with` → `ATV-001`
+_No outgoing links._

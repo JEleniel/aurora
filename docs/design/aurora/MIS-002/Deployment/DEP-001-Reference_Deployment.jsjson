@@ -3,21 +3,26 @@
 	"id": "DEP-001",
 	"card_type": "Deployment",
 	"name": "Reference Deployment",
-	"description": "Deployment that deploys a node in the relationship-matrix reference model.",
+	"description": "Deployment that provisions a node in the relationship-matrix reference model.",
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.0.1",
 		"hash": null,
 		"history": [
 			{
 				"editor": "Architect",
 				"timestamp": "2026-01-29T00:00:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T11:48:14Z",
+				"event": "edited"
 			}
 		]
 	},
 	"links": [
 		{
-			"relationship": "deploys",
+			"relationship": "provisions",
 			"target": "NOD-001"
 		}
 	]

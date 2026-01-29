@@ -3,15 +3,25 @@
 	"id": "ACT-001",
 	"card_type": "Actor",
 	"name": "Reference Actor",
-	"description": "Actor exercising desire/make/own/perform/present/implement relationships in the reference model.",
+	"description": "Actor exercising desire/own/perform/present relationships in the reference model.",
 	"audit_trail": {
-		"version": "1.0.0",
+		"version": "1.0.2",
 		"hash": null,
 		"history": [
 			{
 				"editor": "Architect",
 				"timestamp": "2026-01-29T00:00:00Z",
 				"event": "created"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T11:48:14Z",
+				"event": "edited"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T11:54:01Z",
+				"event": "edited"
 			}
 		]
 	},
@@ -19,10 +29,6 @@
 		{
 			"relationship": "desires",
 			"target": "STR-001"
-		},
-		{
-			"relationship": "makes",
-			"target": "ADR-001"
 		},
 		{
 			"relationship": "owns",
@@ -38,23 +44,7 @@
 		},
 		{
 			"relationship": "presents",
-			"target": "RIS-001"
-		},
-		{
-			"relationship": "implements",
-			"target": "TES-001"
-		},
-		{
-			"relationship": "implements",
-			"target": "FEA-001"
-		},
-		{
-			"relationship": "implements",
-			"target": "CLS-001"
-		},
-		{
-			"relationship": "implements",
-			"target": "CTL-001"
+			"target": "THR-002"
 		}
 	]
 }

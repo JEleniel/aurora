@@ -1,0 +1,413 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4776.38 1449.31" width="4776.38" height="1449.31" data-theme="light">
+<defs>
+<style>
+svg{--bg:#FFFFFF;--edge:#000000;--edgeLabel:#000000;--nodeStroke:#000000;--boundary:#000000;}
+svg[data-theme="dark"]{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}
+@media (prefers-color-scheme: dark){svg:not([data-theme="light"]){--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}}
+.bg{fill:var(--bg);}
+.edge-path{fill:none;stroke:var(--edge);stroke-width:1.2;marker-end:url(#arrow);}
+.edge-path.note-edge{stroke-dasharray:2 4;stroke-linecap:round;}
+.edge-arrow{fill:var(--edge);}
+.edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
+.node-icon{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:42px;}
+.node-label{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
+.node-shape-outline{fill:none;}
+.boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:4;stroke-dasharray:5 5;}
+.boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#082f49;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-trigger .node-shape{fill:#90593A;}
+svg[data-theme="light"] .card-type-trigger .node-shape{fill:#78350f;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-trigger .node-shape{fill:#78350f;}}
+.card-type-trigger .node-label{--nodeText:#FFFFFF;}
+.card-type-system .node-shape{fill:#414C73;}
+svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
+.card-type-system .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#3B4897;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#102080;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#102080;}}
+.card-type-interface .node-label{--nodeText:#000000;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
+.card-type-deployment .node-shape{fill:#47446B;}
+svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
+.card-type-deployment .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-adr .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-adr .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-adr .node-shape{fill:#1f2937;}}
+.card-type-adr .node-label{--nodeText:#FFFFFF;}
+.card-type-class .node-shape{fill:#3A4150;}
+svg[data-theme="light"] .card-type-class .node-shape{fill:#0f172a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-class .node-shape{fill:#0f172a;}}
+.card-type-class .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-state-machine .node-shape{fill:#6B316E;}
+svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
+.card-type-state-machine .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-boundary .node-shape{fill:#FFFFFF;}
+svg[data-theme="light"] .card-type-boundary .node-shape{fill:#FFFFFF;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-boundary .node-shape{fill:#FFFFFF;}}
+.card-type-boundary .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-predicate .node-shape{fill:#76459D;}
+svg[data-theme="light"] .card-type-predicate .node-shape{fill:#581c87;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-predicate .node-shape{fill:#581c87;}}
+.card-type-predicate .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-condition .node-shape{fill:#644833;}
+svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
+.card-type-condition .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-capability .node-shape{fill:#325440;}
+svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
+.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
+.card-type-control .node-shape{fill:#8B623D;}
+svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
+.card-type-control .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
+.card-type-test .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
+.card-type-test .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-requirement .node-shape{fill:#337C67;}
+svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
+.card-type-requirement .node-label{--nodeText:#FFFFFF;}
+</style>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+  <path d="M 0 0 L 10 5 L 0 10 z" class="edge-arrow" />
+</marker>
+</defs>
+<rect class="bg" x="0" y="0" width="100%" height="100%" />
+<g class="boundary">
+<rect x="970.64" y="977.32" width="596.00" height="318.66" rx="8" ry="8" />
+<text class="boundary-label" x="978.64" y="991.32">Reference Boundary (BND-001)</text>
+</g>
+<path class="edge-path" d="M 1548.64 1241.23 C 1927.39 1277.17 2624.83 1328.86 4232.41 1298.46" data-tail="ADR-001" data-head="REQ-001" />
+<text class="edge-label" x="2739.84" y="1290.64" text-anchor="middle" dominant-baseline="middle">documents</text>
+<path class="edge-path" d="M 1363.59 995.32 C 1478.50 918.67 1670.21 789.91 1809.84 696.64" data-tail="APP-001" data-head="COM-001" />
+<text class="edge-label" x="1603.30" y="813.31" text-anchor="middle" dominant-baseline="middle">composes</text>
+<path class="edge-path" d="M 3006.51 439.71 C 3131.42 453.31 3279.84 469.54 3420.37 484.83" data-tail="ART-001" data-head="AST-001" />
+<text class="edge-label" x="3221.76" y="453.31" text-anchor="middle" dominant-baseline="middle">is</text>
+<path class="edge-path" d="M 3006.51 377.55 C 3135.36 361.54 3289.34 342.34 3432.37 324.54" data-tail="ART-001" data-head="DTS-001" />
+<text class="edge-label" x="3221.76" y="341.28" text-anchor="middle" dominant-baseline="middle">persists</text>
+<path class="edge-path" d="M 3953.04 1079.98 C 4039.87 1079.98 4136.64 1079.98 4238.41 1079.98" data-tail="CAP-001" data-head="PRO-001" />
+<text class="edge-label" x="4171.10" y="1073.31" text-anchor="middle" dominant-baseline="middle">necessitates</text>
+<path class="edge-path" d="M 3935.03 1143.31 C 4025.76 1167.19 4128.86 1194.43 4236.02 1222.65" data-tail="CAP-001" data-head="REQ-001" />
+<text class="edge-label" x="4171.10" y="1193.31" text-anchor="middle" dominant-baseline="middle">satisfies</text>
+<path class="edge-path" d="M 2163.03 540.64 C 2211.07 524.79 2264.83 509.04 2315.33 495.97 C 2361.60 484.03 2411.04 472.70 2473.17 460.99" data-tail="COM-001" data-head="ART-001" />
+<text class="edge-label" x="2255.33" y="498.64" text-anchor="middle" dominant-baseline="middle">generates</text>
+<path class="edge-path" d="M 1965.97 696.64 C 2022.91 809.55 2146.08 1016.23 2315.33 1119.97 C 2366.50 1151.31 2427.07 1170.86 2499.84 1177.64" data-tail="COM-001" data-head="CLS-001" />
+<text class="edge-label" x="2255.33" y="1041.31" text-anchor="middle" dominant-baseline="middle">realizes</text>
+<path class="edge-path" d="M 2195.29 618.64 C 2229.79 618.64 2265.41 618.64 2421.45 618.64" data-tail="COM-001" data-head="CTL-001" />
+<text class="edge-label" x="2255.33" y="611.98" text-anchor="middle" dominant-baseline="middle">enforces</text>
+<path class="edge-path" d="M 1993.13 696.64 C 2061.98 777.39 2183.04 900.52 2315.33 965.31 C 2358.53 986.48 2406.82 1001.89 2468.51 1009.44" data-tail="COM-001" data-head="FEA-001" />
+<text class="edge-label" x="2255.33" y="909.31" text-anchor="middle" dominant-baseline="middle">implements</text>
+<path class="edge-path" d="M 1958.57 540.64 C 2008.99 417.50 2127.46 183.46 2315.33 87.94 C 2640.96 -77.47 3711.17 43.10 4237.75 117.16" data-tail="COM-001" data-head="INT-001" />
+<text class="edge-label" x="3221.76" y="6.62" text-anchor="middle" dominant-baseline="middle">invokes</text>
+<path class="edge-path" d="M 2012.97 540.64 C 2086.27 474.43 2200.90 382.18 2315.33 325.34 C 2359.68 303.26 2408.83 284.83 2458.15 273.19" data-tail="COM-001" data-head="TES-001" />
+<text class="edge-label" x="2255.33" y="337.34" text-anchor="middle" dominant-baseline="middle">fulfills</text>
+<path class="edge-path" d="M 3058.23 583.95 C 3243.94 563.71 3329.38 554.38 3420.37 544.47" data-tail="CTL-001" data-head="AST-001" />
+<text class="edge-label" x="3221.76" y="557.31" text-anchor="middle" dominant-baseline="middle">safeguards</text>
+<path class="edge-path" d="M 3058.23 673.33 C 3178.56 694.00 3262.75 708.52 3382.86 729.15" data-tail="CTL-001" data-head="RIS-001" />
+<text class="edge-label" x="3221.76" y="689.31" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 1526.64 1401.38 L 1894.85 1433.82 L 2591.14 1463.02 L 3164.35 1331.98 L 3191.04 1325.89 L 3193.06 1307.53 L 3220.42 1306.65 L 3223.01 1306.65 L 3565.44 1303.80 L 3959.33 1299.55 L 4232.41 1296.43" data-tail="DRI-001" data-head="REQ-001" />
+<text class="edge-label" x="2739.84" y="1325.31" text-anchor="middle" dominant-baseline="middle">drives</text>
+<path class="edge-path" d="M 3956.37 247.61 C 4042.18 233.09 4137.41 216.86 4237.75 199.86" data-tail="DTS-001" data-head="INT-001" />
+<text class="edge-label" x="4171.10" y="201.31" text-anchor="middle" dominant-baseline="middle">exposes</text>
+<path class="edge-path" d="M 3011.17 1053.25 C 3139.97 1058.28 3293.38 1064.30 3435.70 1069.87" data-tail="FEA-001" data-head="CAP-001" />
+<text class="edge-label" x="3221.76" y="1054.65" text-anchor="middle" dominant-baseline="middle">enables</text>
+<path class="edge-path" d="M 682.82 1172.29 C 857.53 1138.40 922.82 1125.70 997.31 1111.25" data-tail="MIS-002" data-head="APP-001" />
+<text class="edge-label" x="931.33" y="1114.65" text-anchor="middle" dominant-baseline="middle">requires</text>
+<path class="edge-path" d="M 682.82 1266.88 C 863.91 1301.43 933.33 1314.72 1010.64 1329.46" data-tail="MIS-002" data-head="DRI-001" />
+<text class="edge-label" x="931.33" y="1301.31" text-anchor="middle" dominant-baseline="middle">establishes</text>
+<path class="edge-path" d="M 3051.34 830.25 C 3191.71 819.86 3228.77 817.11 3382.86 805.71" data-tail="THR-001" data-head="RIS-001" />
+<text class="edge-label" x="3221.76" y="809.31" text-anchor="middle" dominant-baseline="middle">raises</text>
+<g class="node card-type-adr" data-card-id="ADR-001" data-layout-node="ADR-001">
+<path class="node-shape" d="M 988.64 1151.32 L 1532.64 1151.32 L 1548.64 1167.32 L 1548.64 1277.98 L 988.64 1277.98 Z" />
+<path class="node-shape node-shape-outline" d="M 1532.64 1151.32 L 1532.64 1167.32 L 1548.64 1167.32" />
+<text class="node-icon" x="1037.64" y="1214.65" text-anchor="middle" dominant-baseline="middle" font-size="42.00">📄</text>
+<text class="node-label" x="1301.64" y="1186.65" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1301.64" font-weight="700">ADR</tspan>
+<tspan x="1301.64" dy="14.00" font-weight="700">ADR-001</tspan>
+<tspan x="1301.64" dy="14.00">&#160;</tspan>
+<tspan x="1301.64" dy="14.00">Reference ADR — Architectural Decision Record made by an actor and</tspan>
+<tspan x="1301.64" dy="14.00">documenting a requirement.</tspan>
+</text>
+</g>
+<g class="node card-type-application" data-card-id="APP-001" data-layout-node="APP-001">
+<rect class="node-shape" x="997.31" y="995.32" width="542.67" height="126.66" rx="6.00" ry="6.00" />
+<rect class="node-shape node-shape-outline" x="1001.31" y="1007.32" width="14.00" height="16.00" rx="2" ry="2" />
+<rect class="node-shape node-shape-outline" x="1001.31" y="1093.98" width="14.00" height="16.00" rx="2" ry="2" />
+<text class="node-icon" x="1046.31" y="1058.65" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🪟</text>
+<text class="node-label" x="1301.64" y="1030.65" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1301.64" font-weight="700">Application</tspan>
+<tspan x="1301.64" dy="14.00" font-weight="700">APP-001</tspan>
+<tspan x="1301.64" dy="14.00">&#160;</tspan>
+<tspan x="1301.64" dy="14.00">Reference Application — Application that composes a component in</tspan>
+<tspan x="1301.64" dy="14.00">the relationship-matrix reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-artifact" data-card-id="ART-001" data-layout-node="ART-001">
+<path class="node-shape" d="M 2473.17 354.02 L 2473.17 481.35 L 3006.51 481.35 L 3006.51 354.02 L 2846.51 354.02 L 2846.51 340.02 L 2633.17 340.02 L 2633.17 354.02 Z" />
+<text class="node-icon" x="2522.17" y="410.69" text-anchor="middle" dominant-baseline="middle" font-size="42.00">📁</text>
+<text class="node-label" x="2772.84" y="382.69" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2772.84" font-weight="700">Artifact</tspan>
+<tspan x="2772.84" dy="14.00" font-weight="700">ART-001</tspan>
+<tspan x="2772.84" dy="14.00">&#160;</tspan>
+<tspan x="2772.84" dy="14.00">Reference Artifact — Artifact generated by a component, classified</tspan>
+<tspan x="2772.84" dy="14.00">as an asset, and persisted to a data store.</tspan>
+</text>
+</g>
+<g class="node card-type-asset" data-card-id="AST-001" data-layout-node="AST-001">
+<rect class="node-shape" x="3420.37" y="443.98" width="548.00" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="3469.37" y="514.65" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🛡️</text>
+<text class="node-label" x="3727.37" y="486.65" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3727.37" font-weight="700">Asset</tspan>
+<tspan x="3727.37" dy="14.00" font-weight="700">AST-001</tspan>
+<tspan x="3727.37" dy="14.00">&#160;</tspan>
+<tspan x="3727.37" dy="14.00">Reference Asset — Asset owned by an actor, protected by a control,</tspan>
+<tspan x="3727.37" dy="14.00">and derived from an artifact in the reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-capability" data-card-id="CAP-001" data-layout-node="CAP-001">
+<rect class="node-shape" x="3435.70" y="1016.65" width="517.33" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="3484.70" y="1079.98" text-anchor="middle" dominant-baseline="middle" font-size="42.00">✨</text>
+<text class="node-label" x="3727.37" y="1051.98" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3727.37" font-weight="700">Capability</tspan>
+<tspan x="3727.37" dy="14.00" font-weight="700">CAP-001</tspan>
+<tspan x="3727.37" dy="14.00">&#160;</tspan>
+<tspan x="3727.37" dy="14.00">Reference Capability — Capability used to satisfy a requirement</tspan>
+<tspan x="3727.37" dy="14.00">and necessitate a process.</tspan>
+</text>
+</g>
+<g class="node card-type-class" data-card-id="CLS-001" data-layout-node="CLS-001">
+<rect class="node-shape" x="2499.84" y="1135.98" width="480.00" height="128.00" rx="0.00" ry="0.00" />
+<text class="node-icon" x="2548.84" y="1199.98" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧩</text>
+<text class="node-label" x="2772.84" y="1171.98" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2772.84" font-weight="700">Class</tspan>
+<tspan x="2772.84" dy="14.00" font-weight="700">CLS-001</tspan>
+<tspan x="2772.84" dy="14.00">&#160;</tspan>
+<tspan x="2772.84" dy="14.00">Reference Class — Class target for implement relationships</tspan>
+<tspan x="2772.84" dy="14.00">in the reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-001" data-layout-node="COM-001">
+<rect class="node-shape" x="1657.96" y="540.64" width="537.33" height="156.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 1665.96 548.64 L 2187.29 548.64 L 2187.29 688.64" />
+<text class="node-icon" x="1706.96" y="618.64" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="1959.62" y="576.64" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1959.62" font-weight="700">Component</tspan>
+<tspan x="1959.62" dy="14.00" font-weight="700">COM-001</tspan>
+<tspan x="1959.62" dy="14.00">&#160;</tspan>
+<tspan x="1959.62" dy="14.00">Reference Component — Component used to exercise interface</tspan>
+<tspan x="1959.62" dy="14.00">invocation, artifact generation, feature implementation, test</tspan>
+<tspan x="1959.62" dy="14.00">fulfillment, class realization, control enforcement, and state</tspan>
+<tspan x="1959.62" dy="14.00">machine execution.</tspan>
+</text>
+</g>
+<g class="node card-type-control" data-card-id="CTL-001" data-layout-node="CTL-001">
+<polygon class="node-shape" points="2861.68,518.70 3034.00,577.25 3034.00,660.04 2861.68,718.58 2618.00,718.58 2445.68,660.04 2445.68,577.25 2618.00,518.70" />
+<text class="node-icon" x="2512.45" y="618.64" text-anchor="middle" dominant-baseline="middle" font-size="31.50">🔒</text>
+<text class="node-label" x="2783.34" y="590.64" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2783.34" font-weight="700">Control</tspan>
+<tspan x="2783.34" dy="14.00" font-weight="700">CTL-001</tspan>
+<tspan x="2783.34" dy="14.00">&#160;</tspan>
+<tspan x="2783.34" dy="14.00">Reference Control — Control that mitigates risk and safeguards an</tspan>
+<tspan x="2783.34" dy="14.00">asset in the relationship-matrix reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-driver" data-card-id="DRI-001" data-layout-node="DRI-001">
+<rect class="node-shape" x="1010.64" y="1307.98" width="516.00" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="1059.64" y="1378.65" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧭</text>
+<text class="node-label" x="1301.64" y="1350.65" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1301.64" font-weight="700">Driver</tspan>
+<tspan x="1301.64" dy="14.00" font-weight="700">DRI-001</tspan>
+<tspan x="1301.64" dy="14.00">&#160;</tspan>
+<tspan x="1301.64" dy="14.00">Reference Driver — Motivation used to drive a downstream</tspan>
+<tspan x="1301.64" dy="14.00">requirement in the relationship-matrix reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-data-store" data-card-id="DTS-001" data-layout-node="DTS-001">
+<ellipse class="node-shape" cx="3694.37" cy="236.20" rx="262.00" ry="31.35" />
+<rect class="node-shape" x="3432.37" y="236.20" width="524.00" height="111.46" />
+<ellipse class="node-shape node-shape-outline" cx="3694.37" cy="347.67" rx="262.00" ry="31.35" />
+<text class="node-icon" x="3481.37" y="291.94" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🗄️</text>
+<text class="node-label" x="3727.37" y="263.94" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3727.37" font-weight="700">Data Store</tspan>
+<tspan x="3727.37" dy="14.00" font-weight="700">DTS-001</tspan>
+<tspan x="3727.37" dy="14.00">&#160;</tspan>
+<tspan x="3727.37" dy="14.00">Reference Data Store — Data store that exposes an interface and</tspan>
+<tspan x="3727.37" dy="14.00">receives persisted artifacts.</tspan>
+</text>
+</g>
+<g class="node card-type-feature" data-card-id="FEA-001" data-layout-node="FEA-001">
+<rect class="node-shape" x="2468.51" y="979.32" width="542.67" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="2517.51" y="1042.65" text-anchor="middle" dominant-baseline="middle" font-size="42.00">⭐</text>
+<text class="node-label" x="2772.84" y="1014.65" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2772.84" font-weight="700">Feature</tspan>
+<tspan x="2772.84" dy="14.00" font-weight="700">FEA-001</tspan>
+<tspan x="2772.84" dy="14.00">&#160;</tspan>
+<tspan x="2772.84" dy="14.00">Reference Feature — Feature that enables a capability in the</tspan>
+<tspan x="2772.84" dy="14.00">relationship-matrix reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-interface" data-card-id="INT-001" data-layout-node="INT-001">
+<path class="node-shape" d="M 4237.75 91.32 L 4755.08 91.32 L 4771.08 107.32 L 4771.08 217.99 L 4237.75 217.99 Z" />
+<path class="node-shape node-shape-outline" d="M 4755.08 91.32 L 4755.08 107.32 L 4771.08 107.32" />
+<text class="node-icon" x="4286.75" y="154.66" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🔌</text>
+<text class="node-label" x="4537.42" y="126.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="4537.42" font-weight="700">Interface</tspan>
+<tspan x="4537.42" dy="14.00" font-weight="700">INT-001</tspan>
+<tspan x="4537.42" dy="14.00">&#160;</tspan>
+<tspan x="4537.42" dy="14.00">Reference Interface — Interface that can be called by a component</tspan>
+<tspan x="4537.42" dy="14.00">and exposed by a data store.</tspan>
+</text>
+</g>
+<g class="node card-type-mission" data-card-id="MIS-002" data-layout-node="MIS-002">
+<polygon class="node-shape" points="531.07,1141.33 664.10,1187.40 664.10,1252.56 531.07,1298.63 342.93,1298.63 209.90,1252.56 209.90,1187.40 342.93,1141.33" />
+<polygon class="node-shape node-shape-outline" points="528.77,1146.87 658.56,1189.70 658.56,1250.26 528.77,1293.08 345.23,1293.08 215.44,1250.26 215.44,1189.70 345.23,1146.87" stroke-width="1" />
+<text class="node-icon" x="282.19" y="1219.98" text-anchor="middle" dominant-baseline="middle" font-size="31.50">🎯</text>
+<text class="node-label" x="480.50" y="1184.98" text-anchor="middle" dominant-baseline="middle">
+<tspan x="480.50" font-weight="700">Mission</tspan>
+<tspan x="480.50" dy="14.00" font-weight="700">MIS-002</tspan>
+<tspan x="480.50" dy="14.00">&#160;</tspan>
+<tspan x="480.50" dy="14.00">Relationship Matrix Reference — Reference Aurora model encoding the</tspan>
+<tspan x="480.50" dy="14.00">canonical relationship registry as concrete card links for tooling and</tspan>
+<tspan x="480.50" dy="14.00">diagram validation.</tspan>
+</text>
+</g>
+<g class="node card-type-process" data-card-id="PRO-001" data-layout-node="PRO-001">
+<rect class="node-shape" x="4238.41" y="1016.65" width="532.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="4287.41" y="1079.98" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🔁</text>
+<text class="node-label" x="4537.42" y="1051.98" text-anchor="middle" dominant-baseline="middle">
+<tspan x="4537.42" font-weight="700">Process</tspan>
+<tspan x="4537.42" dy="14.00" font-weight="700">PRO-001</tspan>
+<tspan x="4537.42" dy="14.00">&#160;</tspan>
+<tspan x="4537.42" dy="14.00">Reference Process — Process necessitated by a capability in the</tspan>
+<tspan x="4537.42" dy="14.00">relationship-matrix reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-requirement" data-card-id="REQ-001" data-layout-node="REQ-001">
+<rect class="node-shape" x="4232.41" y="1222.65" width="544.00" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="4281.41" y="1293.31" text-anchor="middle" dominant-baseline="middle" font-size="42.00">☑️</text>
+<text class="node-label" x="4537.42" y="1258.31" text-anchor="middle" dominant-baseline="middle">
+<tspan x="4537.42" font-weight="700">Requirement</tspan>
+<tspan x="4537.42" dy="14.00" font-weight="700">REQ-001</tspan>
+<tspan x="4537.42" dy="14.00">&#160;</tspan>
+<tspan x="4537.42" dy="14.00">Reference Requirement — Requirement referenced by multiple rules</tspan>
+<tspan x="4537.42" dy="14.00">(driven by driver, satisfied by capability, documented by ADR, limited</tspan>
+<tspan x="4537.42" dy="14.00">by constraint).</tspan>
+</text>
+</g>
+<g class="node card-type-risk" data-card-id="RIS-001" data-layout-node="RIS-001">
+<polygon class="node-shape" points="3813.58,693.08 3982.16,745.55 3982.16,819.75 3813.58,872.22 3575.16,872.22 3406.58,819.75 3406.58,745.55 3575.16,693.08" />
+<text class="node-icon" x="3473.86" y="782.65" text-anchor="middle" dominant-baseline="middle" font-size="31.50">⚠️</text>
+<text class="node-label" x="3737.87" y="754.65" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3737.87" font-weight="700">Risk</tspan>
+<tspan x="3737.87" dy="14.00" font-weight="700">RIS-001</tspan>
+<tspan x="3737.87" dy="14.00">&#160;</tspan>
+<tspan x="3737.87" dy="14.00">Reference Risk — Risk raised by threats and mitigated by controls in</tspan>
+<tspan x="3737.87" dy="14.00">the relationship-matrix reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-test" data-card-id="TES-001" data-layout-node="TES-001">
+<polygon class="node-shape" points="2880.69,117.12 3021.53,206.69 2880.69,296.25 2598.99,296.25 2458.15,206.69 2598.99,117.12" />
+<text class="node-icon" x="2570.15" y="206.69" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧪</text>
+<text class="node-label" x="2793.84" y="178.69" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2793.84" font-weight="700">Test</tspan>
+<tspan x="2793.84" dy="14.00" font-weight="700">TES-001</tspan>
+<tspan x="2793.84" dy="14.00">&#160;</tspan>
+<tspan x="2793.84" dy="14.00">Reference Test — Test target for implement relationships in the</tspan>
+<tspan x="2793.84" dy="14.00">reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-threat" data-card-id="THR-001" data-layout-node="THR-001">
+<polygon class="node-shape" points="2859.05,763.75 3027.63,816.22 3027.63,890.41 2859.05,942.88 2620.63,942.88 2452.05,890.41 2452.05,816.22 2620.63,763.75" />
+<text class="node-icon" x="2519.34" y="853.32" text-anchor="middle" dominant-baseline="middle" font-size="31.50">🐛</text>
+<text class="node-label" x="2783.34" y="832.32" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2783.34" font-weight="700">Threat</tspan>
+<tspan x="2783.34" dy="14.00" font-weight="700">THR-001</tspan>
+<tspan x="2783.34" dy="14.00">&#160;</tspan>
+<tspan x="2783.34" dy="14.00">Reference Threat — Threat presented by an actor that raises a risk.</tspan>
+</text>
+</g>
+</svg>

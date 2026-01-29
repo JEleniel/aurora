@@ -45,15 +45,15 @@
 
 - [ ] **Architect** (MIS-002) **Relationship Matrix Reference**
     + Status: Design
-    + Updates: Added a minimal reference model under `docs/design/aurora/` that encodes the requested relationship matrix as concrete card links (intended as a vocabulary/edge-case fixture for validation and rendering).
+    + Updates: Updated the MIS-002 reference model under `docs/design/aurora/` to use only canonical relationship verbs/directions (per the embedded registry) and ensured all cards remain reachable from the mission root. Validation now succeeds with 0 warnings/0 info and `render-all` generates the full rendered docs + views.
     + Links:
         - [Aurora Mission Card (source)](../docs/design/aurora/MIS-002-Relationship_Matrix_Reference.jsjson)
         - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-002/)
         - [Rendered Model Output (docs + views)](../docs/design/MIS-002-Relationship_Matrix_Reference/)
         - [Design Index](../docs/design/README.md)
     + Next Actions:
-        - Decide whether MIS-002 should validate cleanly against the embedded registries (update the model’s verbs/card pairs) or should instead drive updates to the embedded relationship registry.
-        - Address a Graphviz “bad label format” failure observed when rendering the “Entire Model” view (icon label contained `{}` for `Class`), so `aurora_cli render-all` succeeds end-to-end.
+        - Keep MIS-002 aligned with any future changes to the embedded registries (cards/relationships/views) and re-run `aurora_cli render-all` after model updates.
+        - Optional: prune now-redundant “secondary” cards/links if the goal shifts from coverage-fixture to minimal example, while preserving validator reachability.
 
 - [ ] **BackendDeveloper** (APP-002) **Tauri Editor Backend**
     + Status: implementation

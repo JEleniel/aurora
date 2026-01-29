@@ -4,12 +4,8 @@
 
 ## Description
 
-Application that comprises a component and implements test/feature/class/control.
+Application that composes a component in the relationship-matrix reference model.
 
 ## Links
 
-- `comprises` → `COM-001`
-- `implements` → `TES-001`
-- `implements` → `FEA-001`
-- `implements` → `CLS-001`
-- `implements` → `CTL-001`
+- `composes` → `COM-001`
