@@ -1,0 +1,28 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "FEA-005",
+	"card_type": "Feature",
+	"name": "Render All Artifacts",
+	"description": "Render both card Markdown and view diagrams for each mission-scoped model into the chosen output directory.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "enables",
+			"target": "CAP-004"
+		},
+		{
+			"relationship": "enables",
+			"target": "CAP-005"
+		}
+	]
+}

@@ -1,0 +1,6 @@
+digraph "Compliance Governance (REQ-003)" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"REQ-003" [fillcolor="#065f46", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">☑️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Requirement</B><BR/><B>REQ-003</B><BR/>&#160;<BR/>Validate Models and Emit Diagnostics — The tooling<BR/>SHALL validate loaded models for core invariants (unique<BR/>ids, at least one Mission, valid link targets,<BR/>reachability from the mission root) and SHALL emit<BR/>structured diagnostics with severity<BR/>(error|warning|info). Validation SHALL fail the command<BR/>when errors are present and SHOULD still surface<BR/>warnings (e.g., relationship matrix compliance).</FONT></TD></TR></TABLE>>, shape="box"];
+}

@@ -1,0 +1,10 @@
+digraph "System Structure" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", nodesep="0.2", rankdir="LR", ranksep="0.3", splines="curved"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"SYS-004" [fillcolor="#172554", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🧱</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>System</B><BR/><B>SYS-004</B><BR/>&#160;<BR/>Aurora Framework — A mission-scoped specification of<BR/>Aurora as an architectural modeling framework, including<BR/>its card schema, canonical registries, invariants, and<BR/>style rules for deterministic storage and rendering.</FONT></TD></TR></TABLE>>, shape="folder"];
+	subgraph "cluster_BND-004" {
+		graph [color="#000000", label="Aurora Style Specification (BND-004)", penwidth="4", style="dashed"];
+		"SYS-004";
+	}
+}

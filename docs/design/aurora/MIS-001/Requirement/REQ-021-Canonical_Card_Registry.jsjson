@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "REQ-021",
+	"card_type": "Requirement",
+	"name": "Canonical Card Registry",
+	"description": "Aurora tooling and documentation SHALL use a canonical registry of card types (and optional subtypes) to support consistent rendering, validation, and communication across tools.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

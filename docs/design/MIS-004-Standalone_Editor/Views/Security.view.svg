@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1411.30 1145.95" width="1411.30" height="1145.95" data-theme="light">
+<defs>
+<style>
+svg{--bg:#FFFFFF;--edge:#000000;--edgeLabel:#000000;--nodeStroke:#000000;--boundary:#000000;}
+svg[data-theme="dark"]{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}
+@media (prefers-color-scheme: dark){svg:not([data-theme="light"]){--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}}
+.bg{fill:var(--bg);}
+.edge-path{fill:none;stroke:var(--edge);stroke-width:1.2;marker-end:url(#arrow);}
+.edge-path.note-edge{stroke-dasharray:2 4;stroke-linecap:round;}
+.edge-arrow{fill:var(--edge);}
+.edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
+.node-icon{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:42px;}
+.node-label{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
+.node-shape-outline{fill:none;}
+.boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:4;stroke-dasharray:5 5;}
+.boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-system .node-shape{fill:#414C73;}
+svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
+.card-type-system .node-label{--nodeText:#FFFFFF;}
+.card-type-boundary .node-shape{fill:#FFFFFF;}
+svg[data-theme="light"] .card-type-boundary .node-shape{fill:#FFFFFF;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-boundary .node-shape{fill:#FFFFFF;}}
+.card-type-boundary .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
+.card-type-adr .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-adr .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-adr .node-shape{fill:#1f2937;}}
+.card-type-adr .node-label{--nodeText:#FFFFFF;}
+.card-type-deployment .node-shape{fill:#47446B;}
+svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
+.card-type-deployment .node-label{--nodeText:#FFFFFF;}
+.card-type-test .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
+.card-type-test .node-label{--nodeText:#FFFFFF;}
+.card-type-condition .node-shape{fill:#644833;}
+svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
+.card-type-condition .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#3B4897;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#102080;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#102080;}}
+.card-type-interface .node-label{--nodeText:#000000;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-capability .node-shape{fill:#325440;}
+svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
+.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#082f49;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-predicate .node-shape{fill:#76459D;}
+svg[data-theme="light"] .card-type-predicate .node-shape{fill:#581c87;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-predicate .node-shape{fill:#581c87;}}
+.card-type-predicate .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-trigger .node-shape{fill:#90593A;}
+svg[data-theme="light"] .card-type-trigger .node-shape{fill:#78350f;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-trigger .node-shape{fill:#78350f;}}
+.card-type-trigger .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-class .node-shape{fill:#3A4150;}
+svg[data-theme="light"] .card-type-class .node-shape{fill:#0f172a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-class .node-shape{fill:#0f172a;}}
+.card-type-class .node-label{--nodeText:#FFFFFF;}
+.card-type-requirement .node-shape{fill:#337C67;}
+svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
+.card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
+.card-type-state-machine .node-shape{fill:#6B316E;}
+svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
+.card-type-state-machine .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-control .node-shape{fill:#8B623D;}
+svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
+.card-type-control .node-label{--nodeText:#FFFFFF;}
+</style>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+  <path d="M 0 0 L 10 5 L 0 10 z" class="edge-arrow" />
+</marker>
+</defs>
+<rect class="bg" x="0" y="0" width="100%" height="100%" />
+<path class="edge-path" d="M 598.40 927.35 C 745.32 977.25 817.16 978.81 950.36 927.35" data-tail="COM-007" data-head="INT-003" />
+<text class="edge-label" x="817.98" y="850.01" text-anchor="middle" dominant-baseline="middle">invokes</text>
+<path class="edge-path" d="M 554.08 86.64 C 683.97 24.77 757.46 1.82 861.28 22.88" data-tail="COM-011" data-head="INT-004" />
+<text class="edge-label" x="817.98" y="71.33" text-anchor="middle" dominant-baseline="middle">invokes</text>
+<path class="edge-path" d="M 667.66 107.93 C 779.96 84.96 850.22 103.78 985.01 174.68" data-tail="COM-011" data-head="INT-005" />
+<text class="edge-label" x="817.98" y="246.01" text-anchor="middle" dominant-baseline="middle">invokes</text>
+<g class="node card-type-actor" data-card-id="ACT-004" data-layout-node="ACT-004">
+<ellipse class="node-shape" cx="390.33" cy="1046.02" rx="219.56" ry="74.95" />
+<text class="node-icon" x="214.52" y="1046.02" text-anchor="middle" dominant-baseline="middle" font-size="31.50">👤</text>
+<text class="node-label" x="418.08" y="1018.02" text-anchor="middle" dominant-baseline="middle">
+<tspan x="418.08" font-weight="700">Actor</tspan>
+<tspan x="418.08" dy="14.00" font-weight="700">ACT-004</tspan>
+<tspan x="418.08" dy="14.00">&#160;</tspan>
+<tspan x="418.08" dy="14.00">Model Author — Human operator responsible for navigating, editing, and</tspan>
+<tspan x="418.08" dy="14.00">validating Aurora models within the standalone editor.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-007" data-layout-node="COM-007">
+<rect class="node-shape" x="126.33" y="786.02" width="528.00" height="141.33" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 134.33 794.02 L 646.33 794.02 L 646.33 919.35" />
+<text class="node-icon" x="175.33" y="856.68" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="423.33" y="828.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="423.33" font-weight="700">Component</tspan>
+<tspan x="423.33" dy="14.00" font-weight="700">COM-007</tspan>
+<tspan x="423.33" dy="14.00">&#160;</tspan>
+<tspan x="423.33" dy="14.00">Dioxus App Shell — Top-level Dioxus component that owns the UI</tspan>
+<tspan x="423.33" dy="14.00">shell layout and routes focus/selection changes between panes.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-008" data-layout-node="COM-008">
+<rect class="node-shape" x="113.66" y="610.68" width="553.33" height="156.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 121.66 618.68 L 658.99 618.68 L 658.99 758.68" />
+<text class="node-icon" x="162.66" y="688.68" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="423.33" y="653.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="423.33" font-weight="700">Component</tspan>
+<tspan x="423.33" dy="14.00" font-weight="700">COM-008</tspan>
+<tspan x="423.33" dy="14.00">&#160;</tspan>
+<tspan x="423.33" dy="14.00">Explorer Tree Pane — Left navigation pane that presents a tree view</tspan>
+<tspan x="423.33" dy="14.00">derived from shortest paths from the mission root, enabling fast card</tspan>
+<tspan x="423.33" dy="14.00">discovery and focus changes.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-009" data-layout-node="COM-009">
+<rect class="node-shape" x="106.32" y="436.01" width="568.00" height="156.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 114.32 444.01 L 666.33 444.01 L 666.33 584.01" />
+<text class="node-icon" x="155.32" y="514.01" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="423.33" y="479.01" text-anchor="middle" dominant-baseline="middle">
+<tspan x="423.33" font-weight="700">Component</tspan>
+<tspan x="423.33" dy="14.00" font-weight="700">COM-009</tspan>
+<tspan x="423.33" dy="14.00">&#160;</tspan>
+<tspan x="423.33" dy="14.00">Brain Graph Pane — Central pane that renders a mind-map /</tspan>
+<tspan x="423.33" dy="14.00">TheBrain-style context graph with the focused card centered and related</tspan>
+<tspan x="423.33" dy="14.00">cards positioned by relationship role.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-010" data-layout-node="COM-010">
+<rect class="node-shape" x="114.99" y="261.35" width="550.67" height="156.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 122.99 269.35 L 657.66 269.35 L 657.66 409.35" />
+<text class="node-icon" x="163.99" y="339.35" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="423.33" y="304.35" text-anchor="middle" dominant-baseline="middle">
+<tspan x="423.33" font-weight="700">Component</tspan>
+<tspan x="423.33" dy="14.00" font-weight="700">COM-010</tspan>
+<tspan x="423.33" dy="14.00">&#160;</tspan>
+<tspan x="423.33" dy="14.00">Inspector Pane — Right pane that splits vertically: top half edits</tspan>
+<tspan x="423.33" dy="14.00">the focused card; bottom half shows a rendered Markdown-style preview</tspan>
+<tspan x="423.33" dy="14.00">(and links) with a tab to reveal audit details.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-011" data-layout-node="COM-011">
+<rect class="node-shape" x="112.99" y="86.64" width="554.67" height="156.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 120.99 94.64 L 659.66 94.64 L 659.66 234.64" />
+<text class="node-icon" x="161.99" y="164.64" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="423.33" y="129.64" text-anchor="middle" dominant-baseline="middle">
+<tspan x="423.33" font-weight="700">Component</tspan>
+<tspan x="423.33" dy="14.00" font-weight="700">COM-011</tspan>
+<tspan x="423.33" dy="14.00">&#160;</tspan>
+<tspan x="423.33" dy="14.00">Model Session and Persistence — In-memory model session that loads a</tspan>
+<tspan x="423.33" dy="14.00">workspace model home, computes shortest paths, validates changes, and</tspan>
+<tspan x="423.33" dy="14.00">persists updated card files using aurora_shared semantics.</tspan>
+</text>
+</g>
+<g class="node card-type-interface" data-card-id="INT-003" data-layout-node="INT-003">
+<path class="node-shape" d="M 855.28 786.02 L 1395.28 786.02 L 1411.28 802.02 L 1411.28 927.35 L 855.28 927.35 Z" />
+<path class="node-shape node-shape-outline" d="M 1395.28 786.02 L 1395.28 802.02 L 1411.28 802.02" />
+<text class="node-icon" x="904.28" y="856.68" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🔌</text>
+<text class="node-label" x="1166.28" y="821.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1166.28" font-weight="700">Interface</tspan>
+<tspan x="1166.28" dy="14.00" font-weight="700">INT-003</tspan>
+<tspan x="1166.28" dy="14.00">&#160;</tspan>
+<tspan x="1166.28" dy="14.00">Dioxus UI Framework API — UI framework interface used to declare</tspan>
+<tspan x="1166.28" dy="14.00">layouts, render widgets, and process user events for the standalone</tspan>
+<tspan x="1166.28" dy="14.00">editor.</tspan>
+</text>
+</g>
+<g class="node card-type-interface" data-card-id="INT-004" data-layout-node="INT-004">
+<path class="node-shape" d="M 861.28 0.05 L 1389.28 0.05 L 1405.28 16.05 L 1405.28 156.05 L 861.28 156.05 Z" />
+<path class="node-shape node-shape-outline" d="M 1389.28 0.05 L 1389.28 16.05 L 1405.28 16.05" />
+<text class="node-icon" x="910.28" y="78.05" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🔌</text>
+<text class="node-label" x="1166.28" y="43.05" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1166.28" font-weight="700">Interface</tspan>
+<tspan x="1166.28" dy="14.00" font-weight="700">INT-004</tspan>
+<tspan x="1166.28" dy="14.00">&#160;</tspan>
+<tspan x="1166.28" dy="14.00">aurora_shared Domain API — Public domain interface (Rust API) for</tspan>
+<tspan x="1166.28" dy="14.00">discovering model homes, loading cards, validating invariants, and</tspan>
+<tspan x="1166.28" dy="14.00">rendering Markdown-style representations.</tspan>
+</text>
+</g>
+<g class="node card-type-interface" data-card-id="INT-005" data-layout-node="INT-005">
+<path class="node-shape" d="M 883.28 174.68 L 1367.28 174.68 L 1383.28 190.68 L 1383.28 330.68 L 883.28 330.68 Z" />
+<path class="node-shape node-shape-outline" d="M 1367.28 174.68 L 1367.28 190.68 L 1383.28 190.68" />
+<text class="node-icon" x="932.28" y="252.68" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🔌</text>
+<text class="node-label" x="1166.28" y="217.68" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1166.28" font-weight="700">Interface</tspan>
+<tspan x="1166.28" dy="14.00" font-weight="700">INT-005</tspan>
+<tspan x="1166.28" dy="14.00">&#160;</tspan>
+<tspan x="1166.28" dy="14.00">Local Filesystem API — Contract for reading and writing</tspan>
+<tspan x="1166.28" dy="14.00">Aurora model files on the local filesystem (open, read, write,</tspan>
+<tspan x="1166.28" dy="14.00">atomic replace, and directory enumeration).</tspan>
+</text>
+</g>
+</svg>

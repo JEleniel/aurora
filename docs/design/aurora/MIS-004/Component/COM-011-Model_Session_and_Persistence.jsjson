@@ -1,0 +1,36 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "COM-011",
+	"card_type": "Component",
+	"name": "Model Session and Persistence",
+	"description": "In-memory model session that loads a workspace model home, computes shortest paths, validates changes, and persists updated card files using aurora_shared semantics.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "implements",
+			"target": "FEA-015"
+		},
+		{
+			"relationship": "invokes",
+			"target": "INT-004"
+		},
+		{
+			"relationship": "invokes",
+			"target": "INT-005"
+		},
+		{
+			"relationship": "generates",
+			"target": "ART-005"
+		}
+	]
+}

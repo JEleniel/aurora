@@ -1,0 +1,6 @@
+digraph "Compliance Governance (REQ-004)" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"REQ-004" [fillcolor="#065f46", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">☑️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Requirement</B><BR/><B>REQ-004</B><BR/>&#160;<BR/>Render Card Markdown — The tooling SHALL render<BR/>per-card Markdown documentation and a mission executive<BR/>summary into a user-specified output directory. Rendered<BR/>files SHOULD mirror the source card layout (card-type<BR/>subfolders) and MUST be produced only after the model<BR/>validates without errors.</FONT></TD></TR></TABLE>>, shape="box"];
+}

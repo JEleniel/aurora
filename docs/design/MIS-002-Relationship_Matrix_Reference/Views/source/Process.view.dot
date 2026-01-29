@@ -1,0 +1,8 @@
+digraph "Process" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", nodesep="0.2", rankdir="LR", ranksep="0.3", splines="curved"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"CAP-001" [fillcolor="#052e16", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">✨</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Capability</B><BR/><B>CAP-001</B><BR/>&#160;<BR/>Reference Capability — Capability used to satisfy a<BR/>requirement and necessitate a process.</FONT></TD></TR></TABLE>>, shape="box"];
+	"PRO-001" [fillcolor="#2e1065", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🔁</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Process</B><BR/><B>PRO-001</B><BR/>&#160;<BR/>Reference Process — Process necessitated by a<BR/>capability in the relationship-matrix reference model.</FONT></TD></TR></TABLE>>, shape="box"];
+	"CAP-001" -> "PRO-001" [label="necessitates"];
+}

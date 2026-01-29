@@ -1,0 +1,6 @@
+digraph "Process (CAP-008)" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"CAP-008" [fillcolor="#052e16", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">✨</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Capability</B><BR/><B>CAP-008</B><BR/>&#160;<BR/>Registry Backed Tooling — Ability to validate and<BR/>render using embedded canonical registries for card<BR/>definitions, relationship rules, and view<BR/>specifications.</FONT></TD></TR></TABLE>>, shape="box"];
+}

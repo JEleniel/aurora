@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ART-007",
+	"card_type": "Artifact",
+	"name": "Aurora Compact Schema",
+	"description": "The canonical JSON Schema that defines compact, agent-friendly exports (AGENT-<MISSION_ID>.jsjson) which omit audit_trail and store cards in a top-level array. In this repository it is stored at docs/design/aurora/Aurora.compact.schema.jsjson.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

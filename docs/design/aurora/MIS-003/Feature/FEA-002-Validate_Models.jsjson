@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "FEA-002",
+	"card_type": "Feature",
+	"name": "Validate Models",
+	"description": "Validate one or more mission-scoped models (discovered from an input path) and emit diagnostics; fail the command if errors are present.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "enables",
+			"target": "CAP-002"
+		},
+		{
+			"relationship": "enables",
+			"target": "CAP-003"
+		},
+		{
+			"relationship": "enables",
+			"target": "CAP-008"
+		}
+	]
+}

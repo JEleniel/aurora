@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "DTS-002",
+	"card_type": "Data Store",
+	"name": "Repository File System",
+	"description": "Filesystem-backed store that holds Aurora source cards (docs/design/aurora/), rendered artifacts (docs/design/*), and compact exports (AGENT-*.jsjson).",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

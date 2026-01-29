@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "COM-004",
+	"card_type": "Component",
+	"name": "Validation Engine",
+	"description": "Validator that checks structural invariants (duplicate ids, mission presence, link targets, reachability) plus policy checks (secret asset ownership) and relationship-matrix compliance using embedded registries.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "implements",
+			"target": "FEA-002"
+		}
+	]
+}

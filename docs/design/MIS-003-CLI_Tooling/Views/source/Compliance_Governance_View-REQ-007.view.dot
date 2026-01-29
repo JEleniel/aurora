@@ -1,0 +1,6 @@
+digraph "Compliance Governance (REQ-007)" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"REQ-007" [fillcolor="#065f46", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">☑️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Requirement</B><BR/><B>REQ-007</B><BR/>&#160;<BR/>Bump Model Audit Versions — The CLI SHOULD support<BR/>bumping model audit trail versions (patch, minor, major)<BR/>with deterministic edits to affected cards and an<BR/>appended audit history entry. The current aurora_cli<BR/>surface exposes bump commands but does not yet implement<BR/>them.</FONT></TD></TR></TABLE>>, shape="box"];
+}

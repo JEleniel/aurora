@@ -1,28 +1,17 @@
 # Progress Plan
 
-- [ ] **Architect** (MIS-001) **Provide Default Tooling for AURORA**
+- [ ] **Architect** (MIS-001) **Agent-Unified Representation of Requirements and Architecture (Aurora)**
     + Status: Design
-    + Updates: Refined relationship guidance (validates targets, includes/uses notes), refreshed the matrix at `.github/instructions/details/Relationships_Matrix.md`, and added new `persists to`, `provides`, and `reverse proxies` entries plus Application support in `limits`.
+    + Updates: Created a new MIS-001 mission model under `docs/design/aurora/` that documents the Aurora style (invariants, serialization/layout rules, audit trail rules, and canonical registries) and regenerated compact + rendered outputs via `aurora_cli`.
     + Links:
-        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-001-Provide_Default_Tooling_for_AURORA.jsjson)
+        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-001-AgentUnified_Representation_of_Requirements_and_Architecture_Aurora.jsjson)
         - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-001/)
         - [Compact Export (agent snapshot)](../docs/design/aurora/AGENT-MIS-001.jsjson)
-        - [Rendered Model Output (docs + views)](../docs/design/MIS-001-Provide_Default_Tooling_for_AURORA/)
-        - [SYS-001 Default Tooling Platform](../docs/design/aurora/MIS-001/System/SYS-001-Default_Tooling_Platform.jsjson)
-        - [APP-001 Command Line Tools](../docs/design/aurora/MIS-001/Application/APP-001-Command_Line_Tools.jsjson)
-        - [APP-002 Editor](../docs/design/aurora/MIS-001/Application/APP-002-Editor.jsjson)
-        - [APP-003 VSCode Extension](../docs/design/aurora/MIS-001/Application/APP-003-VSCode_Extension.jsjson)
-        - [Design Sketch: CLI (APP-001)](../docs/design/CLI.md)
-        - [Design Sketch: Editor (APP-002)](../docs/design/Editor.md)
-        - [Design Sketch: VS Code Extension (APP-003)](../docs/design/VSCode_Extension.md)
-        - [Card Definitions](../.github/instructions/details/Card_Definitions.md)
-        - [View Definitions](../.github/instructions/details/View_Definitions.md)
-        - [Relationship Definitions](../.github/instructions/details/Relationship_Definitions.md)
+        - [Rendered Model Output (docs + views)](../docs/design/MIS-001-Agent-Unified_Representation_of_Requirements_and_Architecture__Aurora_/)
+        - [Design Index](../docs/design/README.md)
     + Next Actions:
-        - Keep derived artifacts (`docs/design/MIS-001-Provide_Default_Tooling_for_AURORA/**` and `docs/design/aurora/AGENT-MIS-001.jsjson`) synchronized with the source model (`docs/design/aurora/**`) by re-running `aurora_cli` after model edits.
-        - Keep the canonical view renderer aligned with the current artifact contract (SVG-first view artifacts with DOT sources under `Views/source/`; no per-view Markdown embedding).
-        - Reconcile supported card types in the Editor/VSCode tooling surfaces vs. newly added security/runtime card types (AST/THR/RIS/CTL/DEP/NOD/DTS).
-        - Continue decomposing Editor and VSCode Extension into concrete implementation tasks, interfaces, and tests.
+        - Keep derived artifacts (`docs/design/MIS-001-*/**` and `docs/design/aurora/AGENT-MIS-001.jsjson`) synchronized with the source model (`docs/design/aurora/**`) by re-running `aurora_cli` after model edits.
+        - If/when “default tooling” (CLI/editor/extension) is reintroduced as a dedicated mission, assign it a new Mission id to avoid identifier collision and update plan links accordingly.
 
 - [ ] **BackendDeveloper** (APP-001) **Bootstrap Aurora CLI and shared tooling**
     + Status: Coding
@@ -54,6 +43,33 @@
     + Next Actions:
         - Keep MIS-002 aligned with any future changes to the embedded registries (cards/relationships/views) and re-run `aurora_cli render-all` after model updates.
         - Optional: prune now-redundant “secondary” cards/links if the goal shifts from coverage-fixture to minimal example, while preserving validator reachability.
+
+- [ ] **Architect** (MIS-003) **CLI Tooling**
+    + Status: Design
+    + Updates: Added a reverse-engineered CLI tooling mission model (MIS-003) based on `aurora_cli` and `aurora_shared`, plus regenerated rendered docs and views.
+    + Links:
+        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-003-CLI_Tooling.jsjson)
+        - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-003/)
+        - [Rendered Model Output (docs + views)](../docs/design/MIS-003-CLI_Tooling/)
+        - [Design Index](../docs/design/README.md)
+    + Next Actions:
+        - Keep derived artifacts (`docs/design/MIS-003-CLI_Tooling/**`) synchronized with the source model (`docs/design/aurora/MIS-003/**`) by re-running `aurora_cli` after model edits.
+        - Decide and document semantics for the (currently unimplemented) audit bump commands (scope: which cards to bump; audit entry editor/timestamp; deterministic ordering).
+        - Confirm whether compact export formatting should be compacted (minified) or remains pretty-printed; align implementation and documentation when bump commands are implemented.
+
+- [ ] **Architect** (MIS-004) **Standalone Editor**
+    + Status: Design
+    + Updates: Added a new mission model (MIS-004) that specifies a Dioxus-based standalone Aurora editor with a three-pane UI (explorer tree, brain-style graph, and inspector with edit + Markdown preview + audit tab) and explicit reuse of aurora_shared semantics.
+    + Links:
+        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-004-Standalone_Editor.jsjson)
+        - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-004/)
+        - [Compact Export (agent snapshot)](../docs/design/aurora/AGENT-MIS-004.jsjson)
+        - [Rendered Model Output (docs + views)](../docs/design/MIS-004-Standalone_Editor/)
+        - [Design Index](../docs/design/README.md)
+    + Next Actions:
+        - Keep derived artifacts (`docs/design/MIS-004-Standalone_Editor/**` and `docs/design/aurora/AGENT-MIS-004.jsjson`) synchronized with the source model (`docs/design/aurora/MIS-004/**`) by re-running `aurora_cli` after model edits.
+        - Decide and document concrete interaction semantics for the Brain Graph pane (exact placement rules for parent/siblings/children, and click/keyboard navigation).
+        - Define editing guardrails (which fields are editable by default, link editing UX, and how audit trail edits are applied deterministically).
 
 - [ ] **BackendDeveloper** (APP-002) **Tauri Editor Backend**
     + Status: implementation

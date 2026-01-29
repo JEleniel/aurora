@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "INT-003",
+	"card_type": "Interface",
+	"name": "Dioxus UI Framework API",
+	"description": "UI framework interface used to declare layouts, render widgets, and process user events for the standalone editor.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

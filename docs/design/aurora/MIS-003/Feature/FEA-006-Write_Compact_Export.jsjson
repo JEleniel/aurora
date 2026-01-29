@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "FEA-006",
+	"card_type": "Feature",
+	"name": "Write Compact Export",
+	"description": "Write a compact, single-file mission snapshot (AGENT-<MISSION_ID>.jsjson by default) for agent consumption.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "enables",
+			"target": "CAP-006"
+		}
+	]
+}

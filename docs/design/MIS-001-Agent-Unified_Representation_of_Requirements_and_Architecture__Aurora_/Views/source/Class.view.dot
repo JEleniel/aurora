@@ -1,0 +1,18 @@
+digraph "Class" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", nodesep="0.2", rankdir="LR", ranksep="0.3", splines="curved"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"ART-006" [fillcolor="#1e293b", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">📁</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Artifact</B><BR/><B>ART-006</B><BR/>&#160;<BR/>Aurora Card Schema — The canonical JSON Schema that<BR/>defines the required structure for full Aurora card<BR/>files (including audit_trail). In this repository it is<BR/>stored at docs/design/aurora/Aurora.schema.jsjson.</FONT></TD></TR></TABLE>>, shape="tab"];
+	"ART-007" [fillcolor="#1e293b", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">📁</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Artifact</B><BR/><B>ART-007</B><BR/>&#160;<BR/>Aurora Compact Schema — The canonical JSON Schema that<BR/>defines compact, agent-friendly exports<BR/>(AGENT-&lt;MISSION_ID&gt;.jsjson) which omit audit_trail and<BR/>store cards in a top-level array. In this repository it<BR/>is stored at<BR/>docs/design/aurora/Aurora.compact.schema.jsjson.</FONT></TD></TR></TABLE>>, shape="tab"];
+	"ART-008" [fillcolor="#1e293b", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">📁</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Artifact</B><BR/><B>ART-008</B><BR/>&#160;<BR/>Canonical Card Definitions — The canonical registry<BR/>that defines the Aurora card palette (card types,<BR/>acronyms, shapes, and typical usage) for validation and<BR/>rendering.</FONT></TD></TR></TABLE>>, shape="tab"];
+	"ART-009" [fillcolor="#1e293b", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">📁</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Artifact</B><BR/><B>ART-009</B><BR/>&#160;<BR/>Canonical Relationship Definitions — The canonical<BR/>registry that defines relationship verbs and their<BR/>allowed source/target card types to enable deterministic<BR/>validation and consistent view semantics.</FONT></TD></TR></TABLE>>, shape="tab"];
+	"ART-010" [fillcolor="#1e293b", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">📁</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Artifact</B><BR/><B>ART-010</B><BR/>&#160;<BR/>Canonical View Definitions — The canonical registry<BR/>that defines standard Aurora views (roots and included<BR/>card types) used by tooling as convenient default<BR/>projections of the model.</FONT></TD></TR></TABLE>>, shape="tab"];
+	subgraph "cluster_BND-004" {
+		graph [color="#000000", label="Aurora Style Specification (BND-004)", penwidth="4", style="dashed"];
+		"ART-006";
+		"ART-007";
+		"ART-008";
+		"ART-009";
+		"ART-010";
+	}
+}

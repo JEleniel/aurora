@@ -8,6 +8,12 @@ applyTo: '**/aurora/**/*'
 
 **Version**: 2.1.0
 
+## Not the Architect? Read This First
+
+If you are not the Architect read [Aurora.compact.instructions.md](Aurora.compact.instructions.md) and disregard these.
+
+## Overview
+
 Aurora is a deterministic architectural model where architectural elements are cards, relationships between cards are links, and the model forms a directed graph. The model is designed so that any interpretation (such as view diagrams) can be generated from the model, and for direct machine consumption by LLMs, agents, reasoners, and automated tools. The model invariants guarantee unambiguous interpretation and reasoning about the model.
 
 Semantics are derived from the invariant rules: cards and relationship verbs are descriptive only, and meaning comes from interpretation (views, impact analysis, traceability).
@@ -16,7 +22,7 @@ Semantics are derived from the invariant rules: cards and relationship verbs are
 
 ## Canonical registries
 
-Even though Aurora is designed to allow any element and any relationship, by default we include a set of cards and relationships covering all common architectural elements. These files are the canonical registries for the Aurora vocabulary and should be updated instead of duplicating lists in this document.
+You MUST conform to the cards, relationships, and views in the canonical docuemtns below.
 
 **Note**: File paths below are relative to this instruction file's location (`.github/instructions/`).
 

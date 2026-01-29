@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "DRI-007",
+	"card_type": "Driver",
+	"name": "Machine and Human Readable Source of Truth",
+	"description": "Ensure Aurora models remain directly interpretable by expert practitioners while staying friendly to machine parsing, tooling, and agent consumption.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "drives",
+			"target": "REQ-016"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-017"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-024"
+		}
+	]
+}

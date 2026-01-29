@@ -31,7 +31,6 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 
 ## Agent Manifest
 
-- The canonical, machine-readable definition of every agent (model, scope, owned areas, deliverables, and review targets) lives in `.github/agents/agent_manifest.json`.
 - Each `.agent.md` file may focus on responsibilities and nuances; defer to the manifest for metadata instead of duplicating it elsewhere.
 
 ## General Coding Guidelines
@@ -131,7 +130,7 @@ See `.agents/PROJECT_BRIEF.md` for the authoritative ownership matrix, quick-sta
 
 ## Agent Behavior
 
-- If a `docs/design/aurora/AGENT-*.json` file exists, read it to load the entire design.
+- If a `docs/design/aurora/AGENT-*.json` file exists, read it to load the entire design. Except for the Architect, you do not need to read the entire model.
 - When a new technology or dependency is added or an existing one is changed (including when detected from someone else's changes), you MUST read the current documentation for the correct version and annotate the `./agents/PROGRESS.md.md` with any notes needed to work safely and idiomatically.
 - You MUST end final responses with a short summary paragraph, followed by a blank line, then **5-10 tl;dr bullets**. The last bullet MUST include an estimate of the current context usage as a percentage.
 - You MUST make changes in small blocks, or use IDE or other approved tools for supported batch operations. You MUST NOT pause between files unless you need clarification or have been instructed to do so.
@@ -151,4 +150,3 @@ See `.agents/PROJECT_BRIEF.md` for the authoritative ownership matrix, quick-sta
 - You MUST NOT rely solely on git status or diffs to determine what has changed. You MUST track your own changes and ensure that you understand the full context of the project.
 - Other agents and collaborators are also working on this project. Any changes you do not recognize were made by them. You MUST NOT revert changes you did not make.
 - You MUST NOT pause or ask permission before making changes unless you are unsure about the requirements, need clarification, or have been instructed to do so.
-- YAML linting instructions exist in both `.github/instructions/YAML.instructions.md` and `.github/instructions/YML.instructions.md`. The `.yml` variant references the `.yaml` document because the `applyTo` parser accepts only one extension per file.

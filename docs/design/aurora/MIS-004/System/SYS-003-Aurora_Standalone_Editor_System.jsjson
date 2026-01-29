@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "SYS-003",
+	"card_type": "System",
+	"name": "Aurora Standalone Editor System",
+	"description": "Bounded system that provides a desktop UI for exploring and editing Aurora models with a three-pane workflow (navigation, graph context, inspector).",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "integrates",
+			"target": "APP-004"
+		}
+	]
+}

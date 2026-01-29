@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "REQ-028",
+	"card_type": "Requirement",
+	"name": "Semantics Derived from Invariants",
+	"description": "Aurora card and relationship labels SHALL be treated as descriptive metadata; the meaning of the architecture SHALL be derived from the model’s invariant rules and the current view’s inclusion/projection of card types and links.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

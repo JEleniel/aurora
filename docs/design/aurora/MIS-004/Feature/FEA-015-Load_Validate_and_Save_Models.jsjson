@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "FEA-015",
+	"card_type": "Feature",
+	"name": "Load, Validate, and Save Models",
+	"description": "Load Aurora models from a chosen workspace, validate invariants on every change, and persist edits back to JSJSON card files using shared aurora_shared semantics.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "enables",
+			"target": "CAP-014"
+		}
+	]
+}

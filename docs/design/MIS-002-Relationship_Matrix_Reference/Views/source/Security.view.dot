@@ -1,0 +1,21 @@
+digraph "Security" {
+	graph [bgcolor="#FFFFFF", fontname="Inter", nodesep="0.2", rankdir="LR", ranksep="0.3", splines="curved"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"ACT-001" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">👤</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Actor</B><BR/><B>ACT-001</B><BR/>&#160;<BR/>Reference Actor — Actor exercising<BR/>desire/own/perform/present relationships in the<BR/>reference model.</FONT></TD></TR></TABLE>>, shape="ellipse"];
+	"AST-001" [fillcolor="#334155", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🛡️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Asset</B><BR/><B>AST-001</B><BR/>&#160;<BR/>Reference Asset — Asset owned by an actor, protected<BR/>by a control, and derived from an artifact in the<BR/>reference model.</FONT></TD></TR></TABLE>>, shape="box"];
+	"COM-001" [fillcolor="#1e40af", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🧊</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Component</B><BR/><B>COM-001</B><BR/>&#160;<BR/>Reference Component — Component used to exercise<BR/>interface invocation, artifact generation, feature<BR/>implementation, test fulfillment, class realization,<BR/>control enforcement, and state machine execution.</FONT></TD></TR></TABLE>>, shape="box3d"];
+	"CTL-001" [fillcolor="#713f12", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🔒</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Control</B><BR/><B>CTL-001</B><BR/>&#160;<BR/>Reference Control — Control that mitigates risk and<BR/>safeguards an asset in the relationship-matrix reference<BR/>model.</FONT></TD></TR></TABLE>>, shape="octagon"];
+	"INT-001" [fillcolor="#102080", fontcolor="#000000", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🔌</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Interface</B><BR/><B>INT-001</B><BR/>&#160;<BR/>Reference Interface — Interface that can be called by<BR/>a component and exposed by a data store.</FONT></TD></TR></TABLE>>, shape="note"];
+	"RIS-001" [fillcolor="#881337", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">⚠️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Risk</B><BR/><B>RIS-001</B><BR/>&#160;<BR/>Reference Risk — Risk raised by threats and mitigated<BR/>by controls in the relationship-matrix reference model.</FONT></TD></TR></TABLE>>, shape="octagon"];
+	"THR-001" [fillcolor="#4c0519", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🐛</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Threat</B><BR/><B>THR-001</B><BR/>&#160;<BR/>Reference Threat — Threat presented by an actor that<BR/>raises a risk.</FONT></TD></TR></TABLE>>, shape="octagon"];
+	"THR-002" [fillcolor="#4c0519", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🐛</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Threat</B><BR/><B>THR-002</B><BR/>&#160;<BR/>Secondary Threat — Secondary threat used as a target<BR/>for actor threat presentation in the reference model.</FONT></TD></TR></TABLE>>, shape="octagon"];
+	"ACT-001" -> "AST-001" [label="owns"];
+	"ACT-001" -> "THR-001" [label="presents"];
+	"ACT-001" -> "THR-002" [label="presents"];
+	"COM-001" -> "CTL-001" [label="enforces"];
+	"COM-001" -> "INT-001" [label="invokes"];
+	"CTL-001" -> "AST-001" [label="safeguards"];
+	"CTL-001" -> "RIS-001" [label="mitigates"];
+	"THR-001" -> "RIS-001" [label="raises"];
+}

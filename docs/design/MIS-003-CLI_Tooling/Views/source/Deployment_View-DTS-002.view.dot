@@ -1,0 +1,10 @@
+digraph "Deployment (DTS-002)" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"DTS-002" [fillcolor="#075985", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🗄️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Data Store</B><BR/><B>DTS-002</B><BR/>&#160;<BR/>Repository File System — Filesystem-backed store that<BR/>holds Aurora source cards (docs/design/aurora/),<BR/>rendered artifacts (docs/design/*), and compact exports<BR/>(AGENT-*.jsjson).</FONT></TD></TR></TABLE>>, shape="cylinder"];
+	subgraph "cluster_BND-002" {
+		graph [color="#000000", label="Local Workspace (BND-002)", penwidth="4", style="dashed"];
+		"DTS-002";
+	}
+}

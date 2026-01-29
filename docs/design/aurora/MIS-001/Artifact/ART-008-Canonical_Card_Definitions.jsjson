@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ART-008",
+	"card_type": "Artifact",
+	"name": "Canonical Card Definitions",
+	"description": "The canonical registry that defines the Aurora card palette (card types, acronyms, shapes, and typical usage) for validation and rendering.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}
