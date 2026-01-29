@@ -1,0 +1,60 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ACT-001",
+	"card_type": "Actor",
+	"name": "Reference Actor",
+	"description": "Actor exercising desire/make/own/perform/present/implement relationships in the reference model.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "desires",
+			"target": "STR-001"
+		},
+		{
+			"relationship": "makes",
+			"target": "ADR-001"
+		},
+		{
+			"relationship": "owns",
+			"target": "AST-001"
+		},
+		{
+			"relationship": "performs",
+			"target": "ATV-001"
+		},
+		{
+			"relationship": "presents",
+			"target": "THR-001"
+		},
+		{
+			"relationship": "presents",
+			"target": "RIS-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "TES-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "CLS-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "CTL-001"
+		}
+	]
+}

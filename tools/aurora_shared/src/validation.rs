@@ -4,7 +4,7 @@ use std::path::Path;
 use serde::Serialize;
 
 use crate::model::{AuroraModel, Card};
-use crate::registry;
+use crate::registry::{CardDefinition, RelationshipDefinition};
 
 /// Severity levels emitted by the validator.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
@@ -97,7 +97,8 @@ pub fn validate_model_with_instructions(
 		check_reachability(model, root_id, &mut report);
 	}
 	check_secret_ownership(model, &mut report);
-	check_matrix_compliance(model, &mut report, instructions_root);
+	let _ = instructions_root;
+	check_matrix_compliance(model, &mut report);
 
 	report
 }
@@ -288,12 +289,8 @@ struct MatrixRegistry {
 	relationships: HashMap<String, RelationshipRule>,
 }
 
-fn check_matrix_compliance(
-	model: &AuroraModel,
-	report: &mut ValidationReport,
-	instructions_root: Option<&Path>,
-) {
-	let registry = match load_matrix_registry(model, instructions_root) {
+fn check_matrix_compliance(model: &AuroraModel, report: &mut ValidationReport) {
+	let registry = match load_matrix_registry(model) {
 		Ok(Some(registry)) => registry,
 		Ok(None) => return,
 		Err(message) => {
@@ -312,7 +309,7 @@ fn check_matrix_compliance(
 				ValidationDiagnostic::warning(
 					"UNKNOWN_CARD_TYPE",
 					format!(
-						"Card type '{}' is not listed in 1a-Card_Definitions.md",
+						"Card type '{}' is not listed in the registry definitions",
 						card.card_type
 					),
 				)
@@ -383,162 +380,92 @@ fn check_matrix_compliance(
 	}
 }
 
-fn load_matrix_registry(
-	_model: &AuroraModel,
-	_instructions_root: Option<&Path>,
-) -> Result<Option<MatrixRegistry>, String> {
-	let card_types = load_card_types(registry::CARD_DEFINITIONS)?;
+fn load_matrix_registry(_model: &AuroraModel) -> Result<Option<MatrixRegistry>, String> {
+	let card_types = load_card_types_from_registry();
 	if card_types.is_empty() {
-		return Err("No card types were parsed from the embedded registry".to_string());
+		return Err("No card types were loaded from the registry".to_string());
 	}
-	let mut relationships = load_relationships(registry::RELATIONSHIP_DEFINITIONS, &card_types)?;
-	if let Some(rule) = relationships.get("transistions to").cloned() {
+	let mut relationships = load_relationships_from_registry(&card_types);
+	if let Some(rule) = relationships.get("transitions to").cloned() {
 		relationships
-			.entry("transitions to".to_string())
+			.entry("transistions to".to_string())
 			.or_insert(rule);
-	}
-	if let Some(rule) = relationships.get_mut("ends with") {
-		if rule.targets.is_empty() {
-			rule.targets.insert(canonical_card_type("Boundary"));
-		}
 	}
 	Ok(Some(MatrixRegistry {
 		card_types,
 		relationships,
 	}))
 }
-fn load_card_types(contents: &str) -> Result<HashSet<String>, String> {
+
+fn load_card_types_from_registry() -> HashSet<String> {
 	let mut card_types = HashSet::new();
-	let mut in_table = false;
-	for line in contents.lines() {
-		let trimmed = line.trim();
-		if trimmed.starts_with("| Card type |") {
-			in_table = true;
-			continue;
-		}
-		if !in_table {
-			continue;
-		}
-		if trimmed.starts_with("| ---") {
-			continue;
-		}
-		if trimmed.is_empty() {
-			if !card_types.is_empty() {
-				break;
-			}
-			continue;
-		}
-		if !trimmed.starts_with('|') {
-			if !card_types.is_empty() {
-				break;
-			}
-			continue;
-		}
-		let cells: Vec<String> = trimmed
-			.trim_matches('|')
-			.split('|')
-			.map(|cell| cell.trim().to_string())
-			.collect();
-		if cells.is_empty() {
-			continue;
-		}
-		let card_type = canonical_card_type(&cells[0]);
+	for definition in CardDefinition::get_all() {
+		let card_type = canonical_card_type(definition.card_type);
 		if !card_type.is_empty() {
 			card_types.insert(card_type);
 		}
 	}
-	Ok(card_types)
+	card_types
 }
 
-fn load_relationships(
-	contents: &str,
+fn load_relationships_from_registry(
 	card_types: &HashSet<String>,
-) -> Result<HashMap<String, RelationshipRule>, String> {
+) -> HashMap<String, RelationshipRule> {
 	let mut relationships = HashMap::new();
-	let mut in_table = false;
-	for line in contents.lines() {
-		let trimmed = line.trim();
-		if trimmed.starts_with("| Relationship |") {
-			in_table = true;
-			continue;
-		}
-		if !in_table {
-			continue;
-		}
-		if trimmed.starts_with("| ---") {
-			continue;
-		}
-		if trimmed.is_empty() {
-			if !relationships.is_empty() {
-				break;
-			}
-			continue;
-		}
-		if !trimmed.starts_with('|') {
-			if !relationships.is_empty() {
-				break;
-			}
-			continue;
-		}
-		let cells: Vec<String> = trimmed
-			.trim_matches('|')
-			.split('|')
-			.map(|cell| cell.trim().to_string())
-			.collect();
-		if cells.len() < 5 {
-			continue;
-		}
-		let verb = normalize_relationship(&cells[0]);
+	for definition in RelationshipDefinition::get_all() {
+		let verb = normalize_relationship(definition.relationship);
 		if verb.is_empty() {
 			continue;
 		}
-		let sources = parse_card_type_cell(&cells[3], card_types);
-		let targets = parse_card_type_cell(&cells[4], card_types);
-		relationships.insert(verb, RelationshipRule { sources, targets });
+		let sources = expand_card_type_set(definition.source_card_types, card_types);
+		let targets = expand_card_type_set(definition.target_card_types, card_types);
+		let entry = relationships
+			.entry(verb)
+			.or_insert_with(|| RelationshipRule {
+				sources: HashSet::new(),
+				targets: HashSet::new(),
+			});
+		entry.sources.extend(sources);
+		entry.targets.extend(targets);
 	}
-	Ok(relationships)
+	relationships
 }
 
-fn parse_card_type_cell(cell: &str, all_card_types: &HashSet<String>) -> HashSet<String> {
-	let trimmed = cell.trim().trim_matches('`');
-	if trimmed.is_empty()
-		|| trimmed.eq_ignore_ascii_case("none")
-		|| trimmed.eq_ignore_ascii_case("n/a")
-		|| trimmed == "-"
-	{
-		return HashSet::new();
-	}
-	let lower = trimmed.to_ascii_lowercase();
-	if lower.starts_with("all card types") || lower.starts_with("all cards") {
-		let mut allowed = all_card_types.clone();
-		let except_marker = "except";
-		if let Some(index) = lower.find(except_marker) {
-			let rest = &trimmed[index + except_marker.len()..];
-			for part in split_card_type_list(rest) {
-				let normalized = canonical_card_type(part);
-				if !normalized.is_empty() {
-					allowed.remove(&normalized);
-				}
-			}
-		}
-		return allowed;
-	}
-
+fn expand_card_type_set(
+	entries: &[&'static str],
+	all_card_types: &HashSet<String>,
+) -> HashSet<String> {
 	let mut types = HashSet::new();
-	for part in split_card_type_list(trimmed) {
-		let normalized = canonical_card_type(part);
+	let mut exclude = HashSet::new();
+	let mut include_all = false;
+	for entry in entries {
+		let trimmed = entry.trim();
+		if trimmed.is_empty() {
+			continue;
+		}
+		if trimmed == "*" {
+			include_all = true;
+			continue;
+		}
+		if let Some(rest) = trimmed.strip_prefix('!') {
+			let normalized = canonical_card_type(rest);
+			if !normalized.is_empty() {
+				exclude.insert(normalized);
+			}
+			continue;
+		}
+		let normalized = canonical_card_type(trimmed);
 		if !normalized.is_empty() {
 			types.insert(normalized);
 		}
 	}
+	if include_all || (!exclude.is_empty() && types.is_empty()) {
+		types = all_card_types.clone();
+	}
+	for entry in exclude {
+		types.remove(&entry);
+	}
 	types
-}
-
-fn split_card_type_list(value: &str) -> impl Iterator<Item = &str> {
-	value
-		.split(|ch| ch == ',' || ch == ';' || ch == '\n')
-		.map(|segment| segment.trim())
-		.filter(|segment| !segment.is_empty())
 }
 
 fn normalize_relationship(value: &str) -> String {

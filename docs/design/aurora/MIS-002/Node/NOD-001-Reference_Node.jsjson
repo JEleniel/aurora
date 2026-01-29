@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "NOD-001",
+	"card_type": "Node",
+	"name": "Reference Node",
+	"description": "Node that hosts a component and data store and instantiates a node instance.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "hosts",
+			"target": "COM-001"
+		},
+		{
+			"relationship": "hosts",
+			"target": "DTS-001"
+		},
+		{
+			"relationship": "instantiates",
+			"target": "NIN-001"
+		}
+	]
+}

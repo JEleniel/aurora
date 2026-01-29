@@ -29,7 +29,7 @@
     + Links:
         - [Source: `tools/aurora_cli/src/main.rs`](../tools/aurora_cli/src/main.rs)
         - [Library & tests: `tools/aurora_shared/src/render.rs`](../tools/aurora_shared/src/render.rs)
-    + Updates: Added matrix-based validation warnings, completion summaries in the CLI, Everything View dashed-edge styling with regression coverage, new validation tests for updated relationship matrix rules, a CLI instructions-root override with reporting, plus centered SVG node labels and disjoint-boundary overlap avoidance in the SVG renderer with regression coverage. Aligned validation fixtures with the canonical relationships matrix (including `Application implements Test`, `Component implements Class`, `Artifact persists to Data Store`, and `uses`), added a standalone aurora_shared lockfile, and clarified CLI help/logging around the canonical registry files. Embedded the canonical registries directly in `aurora_shared`, removed the CLI's dependency on external instruction files, and aligned view rendering with the styling guide (label ordering, icon sizing, colors, dotted note edges, and subtype-aware view filtering).
+    + Updates: Added matrix-based validation warnings, completion summaries in the CLI, Everything View dashed-edge styling with regression coverage, new validation tests for updated relationship matrix rules, a CLI instructions-root override with reporting, plus centered SVG node labels and disjoint-boundary overlap avoidance in the SVG renderer with regression coverage. Aligned validation fixtures with the canonical relationships matrix (including `Application implements Test`, `Component implements Class`, `Artifact persists to Data Store`, and `uses`), added a standalone aurora_shared lockfile, and clarified CLI help/logging around the canonical registry files. Embedded the canonical registries directly in `aurora_shared`, removed the CLI's dependency on external instruction files, and aligned view rendering with the styling guide (label ordering, icon sizing, colors, dotted note edges, and subtype-aware view filtering). Refined SVG layout again by restoring curved splines with relaxed spacing, narrowing hexagons, shifting diamond/hexagon icon offsets, and making State nodes slightly larger and circular.
     + Next Actions:
         - Re-render views to reflect embedded registries, updated label ordering, and dotted note edges; confirm SVG output matches styling guide.
         - Re-render views to confirm the dot-only layout selection matches expected output.
@@ -42,6 +42,18 @@
         - Expand shared library coverage (schema validation, workspace packaging) so Editor/VSCode hosts can reuse the same logic.
         - Flesh out version bump workflows and additional CLI surfaces once shared semantics are defined.
         - Keep multi-mission model home handling in the CLI covered with regression tests.
+
+- [ ] **Architect** (MIS-002) **Relationship Matrix Reference**
+    + Status: Design
+    + Updates: Added a minimal reference model under `docs/design/aurora/` that encodes the requested relationship matrix as concrete card links (intended as a vocabulary/edge-case fixture for validation and rendering).
+    + Links:
+        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-002-Relationship_Matrix_Reference.jsjson)
+        - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-002/)
+        - [Rendered Model Output (docs + views)](../docs/design/MIS-002-Relationship_Matrix_Reference/)
+        - [Design Index](../docs/design/README.md)
+    + Next Actions:
+        - Decide whether MIS-002 should validate cleanly against the embedded registries (update the model’s verbs/card pairs) or should instead drive updates to the embedded relationship registry.
+        - Address a Graphviz “bad label format” failure observed when rendering the “Entire Model” view (icon label contained `{}` for `Class`), so `aurora_cli render-all` succeeds end-to-end.
 
 - [ ] **BackendDeveloper** (APP-002) **Tauri Editor Backend**
     + Status: implementation

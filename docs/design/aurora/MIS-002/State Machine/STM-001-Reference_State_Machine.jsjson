@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "STM-001",
+	"card_type": "State Machine",
+	"name": "Reference State Machine",
+	"description": "State machine run by capability/component and starting in a defined initial state.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "starts in",
+			"target": "STA-001"
+		}
+	]
+}

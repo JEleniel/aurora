@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "CON-001",
+	"card_type": "Condition",
+	"name": "Reference Condition",
+	"description": "Condition used to exercise condition transitions to condition/state/event.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "transitions to",
+			"target": "CON-002"
+		},
+		{
+			"relationship": "transitions to",
+			"target": "STA-002"
+		},
+		{
+			"relationship": "transitions to",
+			"target": "EVT-002"
+		}
+	]
+}

@@ -50,6 +50,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - View rendering now converts Graphviz plain spline control points into cubic Bezier SVG paths for smoother edges.
 - Expanded aurora_shared validation fixtures to cover `Application implements Test`, `Component implements Class`, `Artifact persists to Data Store`, and `uses` relationships per the canonical matrix.
 - Embedded the canonical instruction registries (card definitions, relationships, view definitions, styling guide) directly into `aurora_shared` so CLI validation/rendering no longer require external files at runtime.
+- Reduced SVG shape sizes for State (50%) and Event/Condition/Actor/Mission (25%) to better balance text proportions.
+- Centered SVG node icons vertically, shifted them right by 1rem, reduced icon/text spacing, widened State icons, moved octagon icons one icon-width to the right, and scaled oval/octagon widths; corrected Interface label color for legibility on light fills.
+- Further refined SVG geometry by narrowing hexagons, making State nodes circular with a slight size increase, and moving diamond/hexagon icons further inward.
+- Snapped edge paths to the scaled shape boundaries (eliminating arrow gaps) and tuned default layout spacing (nodesep/ranksep).
+- Restored curved spline routing while keeping edge concentration for shared incoming/outgoing lines.
 
 ### Fixed
 
@@ -77,6 +82,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Increased icon-to-text spacing in rendered view labels to approximately 1rem.
 - Fixed boundary `attributes.recursive` handling so boundaries include descendant nodes in view renders (with loop-safe traversal).
 - Added validation warnings for relationships and card types that do not match the canonical relationships matrix without blocking validation.
+- Ensured validation ignores instruction-root parameters and always uses embedded registries for matrix checks.
+- Replaced the Class icon glyph to avoid Graphviz HTML-label parsing errors in view rendering.
+- Reduced icon sizing in view layout/rendering to bring node shapes closer to text size.
 - Ensured `aurora_cli` always prints completion summaries for validate/render/compact workflows and annotated CLI help with default paths.
 - Updated the Everything View renderer to show only the most direct Mission paths as solid edges and dash alternate paths.
 - Centered SVG node labels to remove excessive right-side whitespace in rendered shapes.

@@ -14,6 +14,9 @@ const PX_PER_IN: f64 = 96.0;
 const NODE_FONT_SIZE_PX: f64 = 11.0;
 const EDGE_FONT_SIZE_PX: f64 = 9.0;
 const LINE_HEIGHT_PX: f64 = 14.0;
+const ICON_SCALE: f64 = 3.0;
+const ICON_OFFSET_PX: f64 = 16.0;
+const ICON_GAP_PX: f64 = 8.0;
 const BOUNDARY_PAD_PX: f64 = 18.0;
 const BOUNDARY_MIN_PAD_PX: f64 = 0.0;
 
@@ -94,7 +97,7 @@ fn svg_style(colors: &std::collections::HashMap<String, CardColor>) -> String {
 	css.push_str(&format!(
 		".edge-label{{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:{EDGE_FONT_SIZE_PX}px;}}\n"
 	));
-	let icon_font_size = LINE_HEIGHT_PX * 4.0;
+	let icon_font_size = LINE_HEIGHT_PX * ICON_SCALE;
 	css.push_str(&format!(
 		".node-icon{{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:{icon_font_size}px;}}\n"
 	));
@@ -134,6 +137,7 @@ fn svg_style(colors: &std::collections::HashMap<String, CardColor>) -> String {
 
 fn node_svg(layout: &PlainGraph, node: &PlainNode, card: &Card, icon: Option<&str>) -> String {
 	let rect = node_rect(layout, node);
+	let shape_rect = shape_rect_for_card(&rect, &card.card_type, &node.shape);
 	let card_class = format!("card-type-{}", css_slug(&card.card_type));
 	let mut group = String::new();
 	group.push_str(&format!(
@@ -142,15 +146,81 @@ fn node_svg(layout: &PlainGraph, node: &PlainNode, card: &Card, icon: Option<&st
 		layout_node = escape_xml(&node.name)
 	));
 
-	group.push_str(&shape_svg(&node.shape, &rect));
-	group.push_str(&text_svg(&rect, card, icon));
+	group.push_str(&shape_svg(&node.shape, &shape_rect));
+	group.push_str(&text_svg(&rect, &shape_rect, card, &node.shape, icon));
 	group.push_str("</g>\n");
 	group
 }
 
+fn shape_rect_for_card(rect: &SvgRect, card_type: &str, shape: &str) -> SvgRect {
+	let scale = shape_scale_for_card_type(card_type);
+	let mut out = scale_rect(rect, scale, scale);
+	let width_scale = shape_width_scale_for_shape(shape);
+	if card_type != "State" && (width_scale - 1.0).abs() >= f64::EPSILON {
+		out = scale_rect(&out, width_scale, 1.0);
+	}
+	if card_type == "State" && matches!(shape, "circle" | "ellipse") {
+		out = circle_rect(&out);
+	}
+	out
+}
+
+fn shape_scale_for_card_type(card_type: &str) -> f64 {
+	match card_type {
+		"State" => 0.55,
+		"Event" | "Condition" | "Actor" | "Mission" => 0.75,
+		_ => 1.0,
+	}
+}
+
+fn shape_width_scale_for_shape(shape: &str) -> f64 {
+	match shape {
+		"octagon" | "doubleoctagon" | "hexagon" => 0.75,
+		"ellipse" | "circle" => 0.75,
+		_ => 1.0,
+	}
+}
+
+fn scale_rect(rect: &SvgRect, scale_x: f64, scale_y: f64) -> SvgRect {
+	if (scale_x - 1.0).abs() < f64::EPSILON && (scale_y - 1.0).abs() < f64::EPSILON {
+		return *rect;
+	}
+	let w = (rect.w * scale_x).max(0.0);
+	let h = (rect.h * scale_y).max(0.0);
+	let dx = (rect.w - w) / 2.0;
+	let dy = (rect.h - h) / 2.0;
+	SvgRect {
+		x: rect.x + dx,
+		y: rect.y + dy,
+		w,
+		h,
+	}
+}
+
+fn circle_rect(rect: &SvgRect) -> SvgRect {
+	let size = rect.w.min(rect.h);
+	let dx = (rect.w - size) / 2.0;
+	let dy = (rect.h - size) / 2.0;
+	SvgRect {
+		x: rect.x + dx,
+		y: rect.y + dy,
+		w: size,
+		h: size,
+	}
+}
+
 fn edge_svg(layout: &PlainGraph, edge: &PlainEdge, nodes: &BTreeMap<String, &Card>) -> String {
 	let mut out = String::new();
-	let d = edge_path_d(layout, &edge.points);
+	let svg_points = edge
+		.points
+		.iter()
+		.copied()
+		.map(|point| to_svg_point(layout, point))
+		.collect::<Vec<_>>();
+	let tail_rect = node_shape_rect(layout, &edge.tail, nodes);
+	let head_rect = node_shape_rect(layout, &edge.head, nodes);
+	let adjusted_points = adjust_edge_points(&svg_points, tail_rect.as_ref(), head_rect.as_ref());
+	let d = edge_path_d_svg(&adjusted_points);
 	let is_note_edge = nodes
 		.get(&edge.head)
 		.is_some_and(|card| card.card_type == "Note")
@@ -179,21 +249,107 @@ fn edge_svg(layout: &PlainGraph, edge: &PlainEdge, nodes: &BTreeMap<String, &Car
 	out
 }
 
-fn edge_path_d(layout: &PlainGraph, points: &[Point]) -> String {
+fn node_shape_rect(
+	layout: &PlainGraph,
+	node_id: &str,
+	nodes: &BTreeMap<String, &Card>,
+) -> Option<SvgRect> {
+	let card = nodes.get(node_id)?;
+	let node = layout.nodes.get(node_id)?;
+	let rect = node_rect(layout, node);
+	Some(shape_rect_for_card(&rect, &card.card_type, &node.shape))
+}
+
+fn adjust_edge_points(
+	points: &[SvgPoint],
+	tail_rect: Option<&SvgRect>,
+	head_rect: Option<&SvgRect>,
+) -> Vec<SvgPoint> {
+	let mut adjusted = points.to_vec();
+	if adjusted.len() < 2 {
+		return adjusted;
+	}
+	if let Some(rect) = tail_rect {
+		let center = rect_center(rect);
+		let target = adjusted[1];
+		adjusted[0] = intersect_ray_with_rect(center, target, rect);
+	}
+	if let Some(rect) = head_rect {
+		let center = rect_center(rect);
+		let target = adjusted[adjusted.len() - 2];
+		let last = adjusted.len() - 1;
+		adjusted[last] = intersect_ray_with_rect(center, target, rect);
+	}
+	adjusted
+}
+
+fn rect_center(rect: &SvgRect) -> SvgPoint {
+	SvgPoint {
+		x: rect.x + (rect.w / 2.0),
+		y: rect.y + (rect.h / 2.0),
+	}
+}
+
+fn intersect_ray_with_rect(center: SvgPoint, target: SvgPoint, rect: &SvgRect) -> SvgPoint {
+	let dx = target.x - center.x;
+	let dy = target.y - center.y;
+	if dx.abs() < f64::EPSILON && dy.abs() < f64::EPSILON {
+		return center;
+	}
+	let mut best: Option<(f64, SvgPoint)> = None;
+	let rect_left = rect.x;
+	let rect_right = rect.x + rect.w;
+	let rect_top = rect.y;
+	let rect_bottom = rect.y + rect.h;
+
+	if dx.abs() >= f64::EPSILON {
+		for x in [rect_left, rect_right] {
+			let t = (x - center.x) / dx;
+			if t > 0.0 {
+				let y = center.y + (t * dy);
+				if y >= rect_top && y <= rect_bottom {
+					best = pick_closer_intersection(best, t, SvgPoint { x, y });
+				}
+			}
+		}
+	}
+
+	if dy.abs() >= f64::EPSILON {
+		for y in [rect_top, rect_bottom] {
+			let t = (y - center.y) / dy;
+			if t > 0.0 {
+				let x = center.x + (t * dx);
+				if x >= rect_left && x <= rect_right {
+					best = pick_closer_intersection(best, t, SvgPoint { x, y });
+				}
+			}
+		}
+	}
+
+	best.map(|(_, point)| point).unwrap_or(target)
+}
+
+fn pick_closer_intersection(
+	current: Option<(f64, SvgPoint)>,
+	candidate_t: f64,
+	candidate: SvgPoint,
+) -> Option<(f64, SvgPoint)> {
+	match current {
+		Some((t, point)) if t <= candidate_t => Some((t, point)),
+		_ => Some((candidate_t, candidate)),
+	}
+}
+
+fn edge_path_d_svg(points: &[SvgPoint]) -> String {
 	let mut d = String::new();
 	if points.is_empty() {
 		return d;
 	}
-	let svg_points = points
-		.iter()
-		.copied()
-		.map(|point| to_svg_point(layout, point))
-		.collect::<Vec<_>>();
-	let start = svg_points[0];
+	let start = points[0];
 	d.push_str(&format!("M {x:.2} {y:.2}", x = start.x, y = start.y));
-	let has_bezier_points = svg_points.len() >= 4 && (svg_points.len() - 1) % 3 == 0;
+	let has_bezier_points = points.len() >= 4 && (points.len() - 1) % 3 == 0;
 	if has_bezier_points {
-		for chunk in svg_points[1..].chunks(3) {
+		for chunk in points[1..].chunks(3) {
 			if let [c1, c2, end] = chunk {
 				d.push_str(&format!(
 					" C {x1:.2} {y1:.2} {x2:.2} {y2:.2} {x3:.2} {y3:.2}",
@@ -208,7 +364,7 @@ fn edge_path_d(layout: &PlainGraph, points: &[Point]) -> String {
 		}
 		return d;
 	}
-	for point in svg_points.iter().skip(1) {
+	for point in points.iter().skip(1) {
 		d.push_str(&format!(" L {x:.2} {y:.2}", x = point.x, y = point.y));
 	}
 	d
@@ -508,7 +664,13 @@ fn regular_polygon_points(cx: f64, cy: f64, rx: f64, ry: f64, sides: usize) -> S
 	pts.join(" ")
 }
 
-fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
+fn text_svg(
+	rect: &SvgRect,
+	shape_rect: &SvgRect,
+	card: &Card,
+	shape: &str,
+	icon: Option<&str>,
+) -> String {
 	let cy = rect.y + (rect.h / 2.0);
 	let subtype = card
 		.card_subtype
@@ -516,14 +678,17 @@ fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
 		.map(str::trim)
 		.filter(|value| !value.is_empty());
 	let description = card.description.trim();
-	let left_pad = 10.0;
-	let right_pad = 10.0;
-	let icon_font_size = LINE_HEIGHT_PX * 4.0;
+	let left_pad = 8.0;
+	let right_pad = 8.0;
+	let icon_scale = icon_scale_for_card_type(&card.card_type);
+	let icon_font_size = LINE_HEIGHT_PX * ICON_SCALE * icon_scale;
+	let icon_offset_extra = icon_offset_for_shape(shape, icon_font_size);
 	let icon_width = if icon.is_some() {
-		icon_font_size + 16.0
+		icon_font_size + ICON_GAP_PX + ICON_OFFSET_PX + icon_offset_extra
 	} else {
 		0.0
 	};
+	let icon_left = shape_rect.x + left_pad + ICON_OFFSET_PX + icon_offset_extra;
 	let text_x = rect.x + left_pad + icon_width;
 	let available_width = (rect.w - left_pad - right_pad - icon_width).max(0.0);
 	let text_center_x = text_x + (available_width / 2.0);
@@ -547,12 +712,13 @@ fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
 	let start_y = cy - (total_h / 2.0);
 	let mut text = String::new();
 	if let Some(icon) = icon {
-		let icon_top = start_y - (LINE_HEIGHT_PX / 2.0);
-		let icon_center_x = rect.x + left_pad + (icon_width / 2.0);
+		let icon_center_x = icon_left + ((icon_width - ICON_OFFSET_PX) / 2.0);
+		let icon_center_y = shape_rect.y + (shape_rect.h / 2.0);
 		text.push_str(&format!(
-			"<text class=\"node-icon\" x=\"{x:.2}\" y=\"{y:.2}\" text-anchor=\"middle\" dominant-baseline=\"hanging\">{icon}</text>\n",
+			"<text class=\"node-icon\" x=\"{x:.2}\" y=\"{y:.2}\" text-anchor=\"middle\" dominant-baseline=\"middle\" font-size=\"{size:.2}\">{icon}</text>\n",
 			x = icon_center_x,
-			y = icon_top,
+			y = icon_center_y,
+			size = icon_font_size,
 			icon = escape_xml(icon)
 		));
 	}
@@ -603,6 +769,22 @@ fn text_svg(rect: &SvgRect, card: &Card, icon: Option<&str>) -> String {
 	text
 }
 
+fn icon_scale_for_card_type(card_type: &str) -> f64 {
+	match card_type {
+		"State" => 0.7,
+		"Event" | "Condition" | "Actor" | "Mission" => 0.75,
+		"Control" | "Risk" | "Threat" | "State Machine" => 0.75,
+		_ => 1.0,
+	}
+}
+
+fn icon_offset_for_shape(shape: &str, icon_width: f64) -> f64 {
+	match shape {
+		"octagon" | "doubleoctagon" | "hexagon" => icon_width,
+		"diamond" => icon_width * 1.5,
+		_ => 0.0,
+	}
+}
 #[derive(Debug, Clone, Copy)]
 struct SvgRect {
 	x: f64,
@@ -790,7 +972,8 @@ mod tests {
 
 	use super::super::graphviz_plain::{PlainGraph, PlainNode, Point};
 	use super::{
-		edge_path_d, rects_overlap, resolve_boundary_rects, text_svg, BoundaryCluster, SvgRect,
+		BoundaryCluster, SvgRect, edge_path_d_svg, rects_overlap, resolve_boundary_rects, text_svg,
+		to_svg_point,
 	};
 	use crate::model::{AuditTrail, Card};
 
@@ -820,7 +1003,7 @@ mod tests {
 			w: 400.0,
 			h: 200.0,
 		};
-		let svg = text_svg(&rect, &card, Some("✨"));
+		let svg = text_svg(&rect, &rect, &card, "box", Some("✨"));
 		assert!(svg.contains("class=\"node-icon\""));
 		assert!(svg.contains(">✨<"));
 		assert!(svg.contains("font-weight=\"700\">Capability (struct)"));
@@ -855,7 +1038,12 @@ mod tests {
 				y_in: 1.4,
 			},
 		];
-		let path = edge_path_d(&layout, &points);
+		let svg_points = points
+			.iter()
+			.copied()
+			.map(|point| to_svg_point(&layout, point))
+			.collect::<Vec<_>>();
+		let path = edge_path_d_svg(&svg_points);
 		assert!(path.contains(" C "));
 		assert!(!path.contains(" L "));
 	}

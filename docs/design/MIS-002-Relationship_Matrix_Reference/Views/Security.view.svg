@@ -1,0 +1,271 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2724.38 759.33" width="2724.38" height="759.33" data-theme="light">
+<defs>
+<style>
+svg{--bg:#FFFFFF;--edge:#000000;--edgeLabel:#000000;--nodeStroke:#000000;--boundary:#000000;}
+svg[data-theme="dark"]{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}
+@media (prefers-color-scheme: dark){svg:not([data-theme="light"]){--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}}
+.bg{fill:var(--bg);}
+.edge-path{fill:none;stroke:var(--edge);stroke-width:1.2;marker-end:url(#arrow);}
+.edge-path.note-edge{stroke-dasharray:2 4;stroke-linecap:round;}
+.edge-arrow{fill:var(--edge);}
+.edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
+.node-icon{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:42px;}
+.node-label{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
+.node-shape-outline{fill:none;}
+.boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:4;stroke-dasharray:5 5;}
+.boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-class .node-shape{fill:#3A4150;}
+svg[data-theme="light"] .card-type-class .node-shape{fill:#0f172a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-class .node-shape{fill:#0f172a;}}
+.card-type-class .node-label{--nodeText:#FFFFFF;}
+.card-type-capability .node-shape{fill:#325440;}
+svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
+.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
+.card-type-predicate .node-shape{fill:#76459D;}
+svg[data-theme="light"] .card-type-predicate .node-shape{fill:#581c87;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-predicate .node-shape{fill:#581c87;}}
+.card-type-predicate .node-label{--nodeText:#FFFFFF;}
+.card-type-system .node-shape{fill:#414C73;}
+svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
+.card-type-system .node-label{--nodeText:#FFFFFF;}
+.card-type-deployment .node-shape{fill:#47446B;}
+svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
+.card-type-deployment .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
+.card-type-requirement .node-shape{fill:#337C67;}
+svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
+.card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-boundary .node-shape{fill:#FFFFFF;}
+svg[data-theme="light"] .card-type-boundary .node-shape{fill:#FFFFFF;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-boundary .node-shape{fill:#FFFFFF;}}
+.card-type-boundary .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-adr .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-adr .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-adr .node-shape{fill:#1f2937;}}
+.card-type-adr .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#082f49;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-control .node-shape{fill:#8B623D;}
+svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
+.card-type-control .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-test .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
+.card-type-test .node-label{--nodeText:#FFFFFF;}
+.card-type-state-machine .node-shape{fill:#6B316E;}
+svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
+.card-type-state-machine .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
+.card-type-condition .node-shape{fill:#644833;}
+svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
+.card-type-condition .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-trigger .node-shape{fill:#90593A;}
+svg[data-theme="light"] .card-type-trigger .node-shape{fill:#78350f;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-trigger .node-shape{fill:#78350f;}}
+.card-type-trigger .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#3B4897;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#102080;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#102080;}}
+.card-type-interface .node-label{--nodeText:#000000;}
+</style>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+  <path d="M 0 0 L 10 5 L 0 10 z" class="edge-arrow" />
+</marker>
+</defs>
+<rect class="bg" x="0" y="0" width="100%" height="100%" />
+<path class="edge-path" d="M 630.51 211.05 C 1255.58 10.16 1715.42 22.33 2019.73 47.76" data-tail="ACT-001" data-head="AST-001" />
+<text class="edge-label" x="1342.37" y="21.33" text-anchor="middle" dominant-baseline="middle">owns</text>
+<path class="edge-path" d="M 630.51 284.00 C 847.83 284.00 889.03 284.00 1043.11 284.00" data-tail="ACT-001" data-head="CTL-001" />
+<text class="edge-label" x="867.04" y="277.33" text-anchor="middle" dominant-baseline="middle">implements</text>
+<path class="edge-path" d="M 551.70 209.04 L 660.99 153.76 L 766.04 111.82 L 865.71 92.00 L 868.38 92.00 L 894.60 86.78 L 900.57 101.60 L 927.04 105.33 L 1329.02 162.08 L 1438.56 90.76 L 1839.07 157.33 L 1902.24 167.83 L 1969.15 183.76 L 1979.93 187.09" data-tail="ACT-001" data-head="RIS-001" />
+<text class="edge-label" x="1342.37" y="98.67" text-anchor="middle" dominant-baseline="middle">presents</text>
+<path class="edge-path" d="M 630.51 337.80 C 803.77 378.87 927.19 408.23 1030.86 432.81" data-tail="ACT-001" data-head="THR-001" />
+<text class="edge-label" x="867.04" y="382.67" text-anchor="middle" dominant-baseline="middle">presents</text>
+<path class="edge-path" d="M 672.19 513.69 C 750.83 498.18 833.96 467.12 903.04 422.67 C 916.83 413.80 913.17 403.39 927.04 394.67 C 954.70 377.26 985.06 362.57 1043.11 349.81" data-tail="COM-001" data-head="CTL-001" />
+<text class="edge-label" x="867.04" y="416.00" text-anchor="middle" dominant-baseline="middle">implements</text>
+<path class="edge-path" d="M 672.19 603.66 C 794.51 620.50 938.92 640.44 1075.70 659.28" data-tail="COM-001" data-head="INT-001" />
+<text class="edge-label" x="867.04" y="621.33" text-anchor="middle" dominant-baseline="middle">calls</text>
+<path class="edge-path" d="M 1641.63 216.92 C 1754.40 191.64 1889.57 161.25 2019.73 132.08" data-tail="CTL-001" data-head="AST-001" />
+<text class="edge-label" x="1810.37" y="170.67" text-anchor="middle" dominant-baseline="middle">protects</text>
+<path class="edge-path" d="M 1641.63 284.00 C 1781.09 284.00 1821.70 284.00 1979.93 284.00" data-tail="CTL-001" data-head="RIS-001" />
+<text class="edge-label" x="1810.37" y="277.33" text-anchor="middle" dominant-baseline="middle">mitigates</text>
+<path class="edge-path" d="M 1653.87 433.79 C 1747.30 411.93 1873.44 382.33 1979.93 357.42" data-tail="THR-001" data-head="RIS-001" />
+<text class="edge-label" x="1810.37" y="389.33" text-anchor="middle" dominant-baseline="middle">presents</text>
+<path class="edge-path" d="M 1653.87 506.67 C 1788.19 506.67 1818.91 506.67 1970.74 506.67" data-tail="THR-001" data-head="THR-002" />
+<text class="edge-label" x="1810.37" y="500.00" text-anchor="middle" dominant-baseline="middle">presents</text>
+<g class="node card-type-actor" data-card-id="ACT-001" data-layout-node="ACT-001">
+<ellipse class="node-shape" cx="403.53" cy="284.00" rx="226.98" ry="74.95" />
+<text class="node-icon" x="220.30" y="284.00" text-anchor="middle" dominant-baseline="middle" font-size="31.50">👤</text>
+<text class="node-label" x="431.28" y="249.00" text-anchor="middle" dominant-baseline="middle">
+<tspan x="431.28" font-weight="700">Actor</tspan>
+<tspan x="431.28" dy="14.00" font-weight="700">ACT-001</tspan>
+<tspan x="431.28" dy="14.00">&#160;</tspan>
+<tspan x="431.28" dy="14.00">Reference Actor — Actor exercising</tspan>
+<tspan x="431.28" dy="14.00">desire/make/own/perform/present/implement relationships in the reference</tspan>
+<tspan x="431.28" dy="14.00">model.</tspan>
+</text>
+</g>
+<g class="node card-type-asset" data-card-id="AST-001" data-layout-node="AST-001">
+<rect class="node-shape" x="2019.73" y="-0.00" width="548.00" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="2068.73" y="70.67" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🛡️</text>
+<text class="node-label" x="2326.73" y="42.67" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2326.73" font-weight="700">Asset</tspan>
+<tspan x="2326.73" dy="14.00" font-weight="700">AST-001</tspan>
+<tspan x="2326.73" dy="14.00">&#160;</tspan>
+<tspan x="2326.73" dy="14.00">Reference Asset — Asset owned by an actor, protected by a control,</tspan>
+<tspan x="2326.73" dy="14.00">and derived from an artifact in the reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-001" data-layout-node="COM-001">
+<rect class="node-shape" x="134.86" y="496.00" width="537.33" height="141.33" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 142.86 504.00 L 664.19 504.00 L 664.19 629.33" />
+<text class="node-icon" x="183.86" y="566.67" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="436.53" y="538.67" text-anchor="middle" dominant-baseline="middle">
+<tspan x="436.53" font-weight="700">Component</tspan>
+<tspan x="436.53" dy="14.00" font-weight="700">COM-001</tspan>
+<tspan x="436.53" dy="14.00">&#160;</tspan>
+<tspan x="436.53" dy="14.00">Reference Component — Component used to exercise interface calls,</tspan>
+<tspan x="436.53" dy="14.00">artifact generation, implementation links, and execution links.</tspan>
+</text>
+</g>
+<g class="node card-type-control" data-card-id="CTL-001" data-layout-node="CTL-001">
+<polygon class="node-shape" points="1456.89,194.43 1618.85,246.90 1618.85,321.10 1456.89,373.56 1227.85,373.56 1065.89,321.10 1065.89,246.90 1227.85,194.43" />
+<text class="node-icon" x="1134.11" y="284.00" text-anchor="middle" dominant-baseline="middle" font-size="31.50">🔒</text>
+<text class="node-label" x="1385.87" y="256.00" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1385.87" font-weight="700">Control</tspan>
+<tspan x="1385.87" dy="14.00" font-weight="700">CTL-001</tspan>
+<tspan x="1385.87" dy="14.00">&#160;</tspan>
+<tspan x="1385.87" dy="14.00">Reference Control — Control that mitigates risk and protects an asset</tspan>
+<tspan x="1385.87" dy="14.00">in the reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-interface" data-card-id="INT-001" data-layout-node="INT-001">
+<path class="node-shape" d="M 1075.70 632.67 L 1593.04 632.67 L 1609.04 648.67 L 1609.04 759.33 L 1075.70 759.33 Z" />
+<path class="node-shape node-shape-outline" d="M 1593.04 632.67 L 1593.04 648.67 L 1609.04 648.67" />
+<text class="node-icon" x="1124.70" y="696.00" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🔌</text>
+<text class="node-label" x="1375.37" y="668.00" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1375.37" font-weight="700">Interface</tspan>
+<tspan x="1375.37" dy="14.00" font-weight="700">INT-001</tspan>
+<tspan x="1375.37" dy="14.00">&#160;</tspan>
+<tspan x="1375.37" dy="14.00">Reference Interface — Interface that can be called by a component</tspan>
+<tspan x="1375.37" dy="14.00">and exposed by a data store.</tspan>
+</text>
+</g>
+<g class="node card-type-risk" data-card-id="RIS-001" data-layout-node="RIS-001">
+<polygon class="node-shape" points="2413.81,194.43 2583.64,246.90 2583.64,321.10 2413.81,373.56 2173.64,373.56 2003.81,321.10 2003.81,246.90 2173.64,194.43" />
+<text class="node-icon" x="2070.93" y="284.00" text-anchor="middle" dominant-baseline="middle" font-size="31.50">⚠️</text>
+<text class="node-label" x="2337.23" y="256.00" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2337.23" font-weight="700">Risk</tspan>
+<tspan x="2337.23" dy="14.00" font-weight="700">RIS-001</tspan>
+<tspan x="2337.23" dy="14.00">&#160;</tspan>
+<tspan x="2337.23" dy="14.00">Reference Risk — Risk presented by actors/threats and mitigated by</tspan>
+<tspan x="2337.23" dy="14.00">controls in the reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-threat" data-card-id="THR-001" data-layout-node="THR-001">
+<polygon class="node-shape" points="1461.58,417.10 1630.16,469.57 1630.16,543.77 1461.58,596.23 1223.16,596.23 1054.58,543.77 1054.58,469.57 1223.16,417.10" />
+<text class="node-icon" x="1121.86" y="506.67" text-anchor="middle" dominant-baseline="middle" font-size="31.50">🐛</text>
+<text class="node-label" x="1385.87" y="478.67" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1385.87" font-weight="700">Threat</tspan>
+<tspan x="1385.87" dy="14.00" font-weight="700">THR-001</tspan>
+<tspan x="1385.87" dy="14.00">&#160;</tspan>
+<tspan x="1385.87" dy="14.00">Reference Threat — Threat presented by an actor that can present other</tspan>
+<tspan x="1385.87" dy="14.00">threats and risks.</tspan>
+</text>
+</g>
+<g class="node card-type-threat" data-card-id="THR-002" data-layout-node="THR-002">
+<polygon class="node-shape" points="2417.33,417.10 2592.13,469.57 2592.13,543.77 2417.33,596.23 2170.13,596.23 1995.33,543.77 1995.33,469.57 2170.13,417.10" />
+<text class="node-icon" x="2061.74" y="506.67" text-anchor="middle" dominant-baseline="middle" font-size="31.50">🐛</text>
+<text class="node-label" x="2337.23" y="478.67" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2337.23" font-weight="700">Threat</tspan>
+<tspan x="2337.23" dy="14.00" font-weight="700">THR-002</tspan>
+<tspan x="2337.23" dy="14.00">&#160;</tspan>
+<tspan x="2337.23" dy="14.00">Secondary Threat — Secondary threat used as the target of Threat</tspan>
+<tspan x="2337.23" dy="14.00">presents Threat in the reference model.</tspan>
+</text>
+</g>
+</svg>

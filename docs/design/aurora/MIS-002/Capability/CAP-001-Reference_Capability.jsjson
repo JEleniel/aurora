@@ -1,0 +1,32 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "CAP-001",
+	"card_type": "Capability",
+	"name": "Reference Capability",
+	"description": "Capability used to satisfy a requirement and to run both a process and a state machine.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "runs",
+			"target": "PRO-001"
+		},
+		{
+			"relationship": "runs",
+			"target": "STM-001"
+		},
+		{
+			"relationship": "satisfies",
+			"target": "REQ-001"
+		}
+	]
+}

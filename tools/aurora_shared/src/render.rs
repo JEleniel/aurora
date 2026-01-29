@@ -2,20 +2,25 @@ mod graphviz_plain;
 mod icons;
 mod themed_svg;
 
-use std::collections::{BTreeMap, BTreeSet, HashMap, VecDeque};
-use std::fs::{self, File};
+use std::env;
+use std::fs::{self};
 use std::io::{ErrorKind, Write};
 use std::path::{Path, PathBuf};
 use std::time::{SystemTime, UNIX_EPOCH};
+use std::{
+	collections::{BTreeMap, BTreeSet, HashMap, VecDeque},
+	fs::File,
+};
 
 use serde::Deserialize;
 use serde_json::json;
 
 use crate::errors::{AuroraError, Result};
 use crate::model::{AuroraModel, Card};
-use crate::registry;
+use crate::registry::{CardDefinition, ViewDefinition};
 
 const DOT_COMMAND_ENV: &str = "AURORA_DOT_COMMAND";
+const ICON_POINT_SIZE: i32 = 32;
 
 /// Summary information produced by rendering helpers.
 #[derive(Debug, Clone)]
@@ -148,7 +153,6 @@ pub fn render_all_with_instructions(
 struct CardColor {
 	fill: Option<String>,
 	font: Option<String>,
-	stroke: Option<String>,
 }
 
 #[derive(Debug, Clone)]
@@ -159,81 +163,28 @@ struct CardPalette {
 
 impl CardPalette {
 	fn embedded() -> Result<Self> {
-		Self::from_markdown(registry::CARD_DEFINITIONS)
+		Self::from_definitions(CardDefinition::get_all())
 	}
 
-	fn from_markdown(contents: &str) -> Result<Self> {
+	fn from_definitions(definitions: &[CardDefinition]) -> Result<Self> {
 		let mut shapes = HashMap::new();
 		let mut icons = HashMap::new();
-		let mut in_table = false;
-		let mut card_type_idx = None;
-		let mut shape_idx = None;
-		let mut icon_idx = None;
-		for line in contents.lines() {
-			let trimmed = line.trim();
-			if trimmed.starts_with("| Card type |") {
-				in_table = true;
-				let header_cells = parse_table_row(trimmed);
-				for (idx, cell) in header_cells.iter().enumerate() {
-					let lower = cell.to_ascii_lowercase();
-					if lower.starts_with("card type") {
-						card_type_idx = Some(idx);
-					}
-					if lower.starts_with("shape") {
-						shape_idx = Some(idx);
-					}
-					if lower.starts_with("icon") {
-						icon_idx = Some(idx);
-					}
-				}
-				continue;
-			}
-			if !in_table {
-				continue;
-			}
-			if trimmed.starts_with("| ---") {
-				continue;
-			}
-			if trimmed.is_empty() {
-				if !shapes.is_empty() {
-					break;
-				}
-				continue;
-			}
-			if !trimmed.starts_with('|') {
-				continue;
-			}
-			let cells = parse_table_row(trimmed);
-			if cells.is_empty() {
-				continue;
-			}
-			let card_cell = match card_type_idx.and_then(|idx| cells.get(idx)) {
-				Some(value) => value.as_str(),
-				None => cells.first().map(String::as_str).unwrap_or(""),
-			};
-			let card_type = normalize_card_type(card_cell);
+		for definition in definitions {
+			let card_type = normalize_card_type(definition.card_type);
 			if card_type.is_empty() {
 				continue;
 			}
-			if let Some(idx) = shape_idx {
-				if let Some(shape_cell) = cells.get(idx) {
-					if let Some(shape) = normalize_shape(shape_cell) {
-						shapes.insert(card_type.clone(), shape);
-					}
-				}
+			if let Some(shape) = normalize_shape(definition.shape) {
+				shapes.insert(card_type.clone(), shape);
 			}
-			if let Some(idx) = icon_idx {
-				if let Some(icon_cell) = cells.get(idx) {
-					let icon = icon_cell.trim();
-					if !icon.is_empty() && !icon.eq_ignore_ascii_case("n/a") {
-						icons.insert(card_type.clone(), icon.to_string());
-					}
-				}
+			let icon = definition.icon.trim();
+			if !icon.is_empty() && !icon.eq_ignore_ascii_case("n/a") {
+				icons.insert(card_type.clone(), icon.to_string());
 			}
 		}
 		if shapes.is_empty() {
 			return Err(AuroraError::InvalidInput {
-				message: "failed to parse card palette from registry data".to_string(),
+				message: "failed to load card palette from registry data".to_string(),
 			});
 		}
 		Ok(CardPalette { shapes, icons })
@@ -253,15 +204,6 @@ impl CardPalette {
 		glyphs
 	}
 }
-
-fn parse_table_row(trimmed: &str) -> Vec<String> {
-	trimmed
-		.trim_matches('|')
-		.split('|')
-		.map(|cell| cell.trim().to_string())
-		.collect()
-}
-
 fn normalize_shape(value: &str) -> Option<String> {
 	let trimmed = value.trim();
 	if trimmed.is_empty() || trimmed.eq_ignore_ascii_case("n/a") {
@@ -300,21 +242,13 @@ impl ViewSpec {
 
 impl ViewRegistry {
 	fn embedded() -> Result<Self> {
-		Self::from_markdown(
-			registry::VIEW_DEFINITIONS,
-			registry::VIEW_STYLING,
-			"embedded",
-		)
-	}
-
-	fn from_markdown(
-		view_contents: &str,
-		style_contents: &str,
-		source: impl Into<String>,
-	) -> Result<Self> {
-		let source = source.into();
-		let views = parse_view_table(view_contents, Path::new(&source))?;
-		let card_colors = parse_color_section(style_contents);
+		let views = view_specs_from_definitions(ViewDefinition::get_all());
+		if views.is_empty() {
+			return Err(AuroraError::InvalidInput {
+				message: "failed to load view registry from embedded definitions".to_string(),
+			});
+		}
+		let card_colors = card_colors_from_definitions(CardDefinition::get_all());
 		Ok(ViewRegistry { views, card_colors })
 	}
 }
@@ -366,7 +300,10 @@ impl Default for GraphvizConfig {
 			graph_defaults: BTreeMap::from([
 				("rankdir".to_string(), "LR".to_string()),
 				("bgcolor".to_string(), "#FFFFFF".to_string()),
-				("splines".to_string(), "curved".to_string()),
+				("splines".to_string(), "spline".to_string()),
+				("concentrate".to_string(), "true".to_string()),
+				("nodesep".to_string(), "0.3".to_string()),
+				("ranksep".to_string(), "0.5".to_string()),
 				("fontname".to_string(), "Inter".to_string()),
 			]),
 			node_defaults: BTreeMap::from([
@@ -465,6 +402,7 @@ impl GraphvizConfig {
 	}
 }
 
+#[cfg(test)]
 #[derive(Debug, Clone)]
 struct CardTypeList {
 	card_types: Vec<CardTypeFilter>,
@@ -526,6 +464,7 @@ fn normalize_card_type(value: &str) -> String {
 	base.trim().to_string()
 }
 
+#[cfg(test)]
 fn parse_view_table(contents: &str, source: &Path) -> Result<Vec<ViewSpec>> {
 	let mut views = Vec::new();
 	let mut in_table = false;
@@ -586,6 +525,49 @@ fn parse_view_table(contents: &str, source: &Path) -> Result<Vec<ViewSpec>> {
 	Ok(views)
 }
 
+fn view_specs_from_definitions(definitions: &[ViewDefinition]) -> Vec<ViewSpec> {
+	definitions
+		.iter()
+		.filter_map(|definition| {
+			let name = definition.name.trim();
+			if name.is_empty() {
+				return None;
+			}
+			let name = name.to_string();
+			let slug = slugify_view_name(&name);
+			let root_card_types = card_type_filters_from_list(definition.root_card_types);
+			let mut card_types = card_type_filters_from_list(definition.include_card_types);
+			card_types.extend(card_type_filters_from_list(definition.optional_card_types));
+			let include_all = definition
+				.include_card_types
+				.iter()
+				.chain(definition.optional_card_types.iter())
+				.any(|value| is_all_card_types_marker(value));
+			Some(ViewSpec {
+				name,
+				slug,
+				root_card_types,
+				card_types,
+				include_all,
+			})
+		})
+		.collect()
+}
+
+fn card_type_filters_from_list(values: &[&'static str]) -> Vec<CardTypeFilter> {
+	values
+		.iter()
+		.filter_map(|value| parse_card_type_filter(value))
+		.collect()
+}
+
+fn is_all_card_types_marker(value: &str) -> bool {
+	value.trim().eq_ignore_ascii_case("all card types")
+		|| value.trim().eq_ignore_ascii_case("all cards")
+		|| value.trim() == "*"
+}
+
+#[cfg(test)]
 fn parse_card_type_cell(cell: &str) -> CardTypeList {
 	let mut include_all = false;
 	let mut card_types = Vec::new();
@@ -657,123 +639,24 @@ fn slugify_view_name(name: &str) -> String {
 	}
 }
 
-fn parse_color_section(contents: &str) -> HashMap<String, CardColor> {
+fn card_colors_from_definitions(definitions: &[CardDefinition]) -> HashMap<String, CardColor> {
 	let mut colors = HashMap::new();
-	let mut in_section = false;
-	for line in contents.lines() {
-		let trimmed = line.trim();
-		if trimmed.eq_ignore_ascii_case("### Card Type Styling")
-			|| trimmed.eq_ignore_ascii_case("## Card Type Styling")
-		{
-			in_section = true;
+	for definition in definitions {
+		let card_type = normalize_card_type(definition.card_type);
+		if card_type.is_empty() {
 			continue;
 		}
-		if !in_section {
-			continue;
+		let fill = definition.fill.trim();
+		let font = definition.color.trim();
+		let entry = colors.entry(card_type).or_insert_with(CardColor::default);
+		if !fill.is_empty() {
+			entry.fill = Some(fill.to_string());
 		}
-		if trimmed.starts_with('#')
-			&& !trimmed.eq_ignore_ascii_case("### Card Type Styling")
-			&& !trimmed.eq_ignore_ascii_case("## Card Type Styling")
-		{
-			break;
-		}
-		if trimmed.is_empty() {
-			continue;
-		}
-		if !trimmed.starts_with('-') {
-			continue;
-		}
-		let entry = trimmed.trim_start_matches('-').trim();
-		let (raw_key, rest) = match entry.split_once(':') {
-			Some(parts) => parts,
-			None => continue,
-		};
-		let card_type = expand_color_key(raw_key.trim());
-		let color = colors.entry(card_type).or_insert_with(CardColor::default);
-		for part in rest.split(',') {
-			let fragment = part.trim().trim_end_matches(';').trim();
-			if fragment.is_empty() {
-				continue;
-			}
-			if let Some((prop, value)) = fragment.split_once(':') {
-				let prop = prop.trim().to_lowercase();
-				let value = value.trim().to_string();
-				match prop.as_str() {
-					"fill" => color.fill = Some(value),
-					"color" | "fontcolor" => color.font = Some(value),
-					"stroke" | "stroke-color" => color.stroke = Some(value),
-					_ => {}
-				}
-			}
+		if !font.is_empty() {
+			entry.font = Some(font.to_string());
 		}
 	}
 	colors
-}
-
-fn expand_color_key(raw: &str) -> String {
-	let sanitized = raw.trim().trim_matches('`');
-	if sanitized.contains(' ') {
-		return normalize_card_type(sanitized);
-	}
-	if let Some(expanded) = acronym_to_card_type(sanitized) {
-		return expanded.to_string();
-	}
-	sanitized
-		.split('_')
-		.filter(|segment| !segment.is_empty())
-		.map(|segment| {
-			let mut chars = segment.chars();
-			match chars.next() {
-				Some(first) => {
-					let mut word = String::from(first.to_ascii_uppercase());
-					for ch in chars {
-						word.push(ch.to_ascii_lowercase());
-					}
-					word
-				}
-				None => String::new(),
-			}
-		})
-		.collect::<Vec<String>>()
-		.join(" ")
-}
-
-fn acronym_to_card_type(value: &str) -> Option<&'static str> {
-	match value.trim().to_ascii_uppercase().as_str() {
-		"ACT" => Some("Actor"),
-		"ADR" => Some("ADR"),
-		"APP" => Some("Application"),
-		"ART" => Some("Artifact"),
-		"AST" => Some("Asset"),
-		"ATV" => Some("Activity"),
-		"BND" => Some("Boundary"),
-		"CAP" => Some("Capability"),
-		"CLS" => Some("Class"),
-		"COM" => Some("Component"),
-		"CON" => Some("Condition"),
-		"CNS" => Some("Constraint"),
-		"CTL" => Some("Control"),
-		"DEP" => Some("Deployment"),
-		"DRI" => Some("Driver"),
-		"DTS" => Some("Data Store"),
-		"EVT" => Some("Event"),
-		"FEA" => Some("Feature"),
-		"INT" => Some("Interface"),
-		"MIS" => Some("Mission"),
-		"NIN" => Some("Node Instance"),
-		"NOD" => Some("Node"),
-		"NOT" => Some("Note"),
-		"PRO" => Some("Process"),
-		"REQ" => Some("Requirement"),
-		"RIS" => Some("Risk"),
-		"STA" => Some("State"),
-		"STM" => Some("State Machine"),
-		"STR" => Some("Story"),
-		"SYS" => Some("System"),
-		"TES" => Some("Test"),
-		"THR" => Some("Threat"),
-		_ => None,
-	}
 }
 
 fn collect_view_nodes<'a>(model: &'a AuroraModel, view: &ViewSpec) -> BTreeMap<String, &'a Card> {
@@ -1153,7 +1036,10 @@ fn build_dot_with_edges(
 }
 
 fn is_everything_view(view: &ViewSpec) -> bool {
-	view.slug == "Everything" || view.name.eq_ignore_ascii_case("Everything View")
+	view.slug == "Everything"
+		|| view.name.eq_ignore_ascii_case("Everything View")
+		|| view.name.eq_ignore_ascii_case("Entire Model")
+		|| view.slug == "Entire_Model"
 }
 
 fn collect_edges(nodes: &BTreeMap<String, &Card>) -> Vec<EdgeSpec> {
@@ -1353,7 +1239,7 @@ fn node_label(card: &Card, icon: Option<&str>) -> String {
 		.collect::<Vec<_>>()
 		.join("<BR/>");
 	if let Some(icon) = icon {
-		let icon_font_size = 44;
+		let icon_font_size = ICON_POINT_SIZE;
 		return format!(
 			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"{icon_font_size}\">{}</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT>{}</FONT></TD></TR></TABLE>>",
 			html_escape(icon),
@@ -1576,8 +1462,8 @@ mod tests {
 	use super::*;
 	use crate::discovery::ModelHome;
 	use crate::model::{AuditTrail, AuroraModel, Card, Link};
-	use serde_json::json;
 	use serde_json::Value;
+	use serde_json::json;
 	use std::collections::BTreeMap;
 	use std::path::{Path, PathBuf};
 	use tempfile::TempDir;
@@ -1605,7 +1491,7 @@ mod tests {
 		let dot = std::fs::read_to_string(dot_path).expect("dot");
 		assert!(dot.contains("<B>Mission</B>"));
 		assert!(dot.contains("<B>MIS-001</B>"));
-		assert!(dot.contains("POINT-SIZE=\"44\">🎯"));
+		assert!(dot.contains("POINT-SIZE=\"32\">🎯"));
 		assert!(dot.contains("<BR/>"));
 	}
 
@@ -1626,10 +1512,11 @@ mod tests {
 		assert_eq!(view.name, "Everything View");
 		assert_eq!(view.slug, "Everything");
 		assert!(view.include_all);
-		assert!(view
-			.root_card_types
-			.iter()
-			.any(|filter| filter.card_type == "Mission"));
+		assert!(
+			view.root_card_types
+				.iter()
+				.any(|filter| filter.card_type == "Mission")
+		);
 		assert!(view.card_types.is_empty());
 		Ok(())
 	}
@@ -1993,7 +1880,7 @@ mod tests {
 		let label = node_label(&card, Some("🧊"));
 		assert_eq!(
 			label,
-			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"44\">🧊</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT><B>Component (struct)</B><BR/><B>COM-009</B><BR/>&#160;<BR/>Render Node — Test card</FONT></TD></TR></TABLE>>"
+			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"32\">🧊</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT><B>Component (struct)</B><BR/><B>COM-009</B><BR/>&#160;<BR/>Render Node — Test card</FONT></TD></TR></TABLE>>"
 		);
 	}
 
@@ -2020,7 +1907,7 @@ mod tests {
 		let label = node_label(&card, Some("🧊"));
 		assert_eq!(
 			label,
-			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"44\">🧊</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT><B>Component</B><BR/><B>COM-010</B><BR/>&#160;<BR/>Render View — Test card</FONT></TD></TR></TABLE>>"
+			"<<TABLE BORDER=\"0\" CELLBORDER=\"0\" CELLSPACING=\"16\" CELLPADDING=\"0\"><TR><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT POINT-SIZE=\"32\">🧊</FONT></TD><TD ALIGN=\"LEFT\" VALIGN=\"TOP\"><FONT><B>Component</B><BR/><B>COM-010</B><BR/>&#160;<BR/>Render View — Test card</FONT></TD></TR></TABLE>>"
 		);
 	}
 

@@ -1,0 +1,4 @@
+[workspace]
+members = ["tools/aurora_shared", "tools/aurora_cli"]
+edition = "2021"
+resolver = "3"

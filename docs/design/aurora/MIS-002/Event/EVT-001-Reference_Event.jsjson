@@ -1,0 +1,40 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "EVT-001",
+	"card_type": "Event",
+	"name": "Reference Event",
+	"description": "Event that triggers activities, events, conditions, actors, and states in the reference model.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "triggers",
+			"target": "ATV-002"
+		},
+		{
+			"relationship": "triggers",
+			"target": "EVT-002"
+		},
+		{
+			"relationship": "triggers",
+			"target": "CON-001"
+		},
+		{
+			"relationship": "triggers",
+			"target": "ACT-002"
+		},
+		{
+			"relationship": "triggers",
+			"target": "STA-001"
+		}
+	]
+}

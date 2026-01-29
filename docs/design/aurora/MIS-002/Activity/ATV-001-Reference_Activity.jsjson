@@ -1,0 +1,44 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "ATV-001",
+	"card_type": "Activity",
+	"name": "Reference Activity",
+	"description": "Activity that receives an event and triggers downstream activities, events, conditions, actors, and states.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "receives",
+			"target": "EVT-001"
+		},
+		{
+			"relationship": "triggers",
+			"target": "ATV-002"
+		},
+		{
+			"relationship": "triggers",
+			"target": "EVT-002"
+		},
+		{
+			"relationship": "triggers",
+			"target": "CON-001"
+		},
+		{
+			"relationship": "triggers",
+			"target": "ACT-002"
+		},
+		{
+			"relationship": "triggers",
+			"target": "STA-001"
+		}
+	]
+}

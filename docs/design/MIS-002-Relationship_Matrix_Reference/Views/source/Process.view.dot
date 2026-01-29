@@ -1,0 +1,16 @@
+digraph "Process" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"ATV-001" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><BR/><B>ATV-001</B><BR/>&#160;<BR/>Reference Activity — Activity that receives an event<BR/>and triggers downstream activities, events, conditions,<BR/>actors, and states.</FONT>>, shape="box"];
+	"ATV-002" [fillcolor="#4c1d95", fontcolor="#FFFFFF", label=<<FONT><B>Activity</B><BR/><B>ATV-002</B><BR/>&#160;<BR/>Triggered Activity — Secondary activity used as the<BR/>target of Activity/Event triggers in the reference<BR/>model.</FONT>>, shape="box"];
+	"CAP-001" [fillcolor="#052e16", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">✨</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Capability</B><BR/><B>CAP-001</B><BR/>&#160;<BR/>Reference Capability — Capability used to satisfy a<BR/>requirement and to run both a process and a state<BR/>machine.</FONT></TD></TR></TABLE>>, shape="box"];
+	"CON-001" [fillcolor="#422006", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🔀</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Condition</B><BR/><B>CON-001</B><BR/>&#160;<BR/>Reference Condition — Condition used to exercise<BR/>condition transitions to condition/state/event.</FONT></TD></TR></TABLE>>, shape="diamond"];
+	"CON-002" [fillcolor="#422006", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🔀</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Condition</B><BR/><B>CON-002</B><BR/>&#160;<BR/>Secondary Condition — Secondary condition used as a<BR/>target of Condition transitions to Condition.</FONT></TD></TR></TABLE>>, shape="diamond"];
+	"PRO-001" [fillcolor="#2e1065", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🔁</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Process</B><BR/><B>PRO-001</B><BR/>&#160;<BR/>Reference Process — Process started with an activity<BR/>and run by both a capability and a component.</FONT></TD></TR></TABLE>>, shape="box"];
+	"ATV-001" -> "ATV-002" [label="triggers"];
+	"ATV-001" -> "CON-001" [label="triggers"];
+	"CAP-001" -> "PRO-001" [label="runs"];
+	"CON-001" -> "CON-002" [label="transitions to"];
+	"PRO-001" -> "ATV-001" [label="starts with"];
+}

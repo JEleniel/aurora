@@ -1,0 +1,235 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3990.62 381.33" width="3990.62" height="381.33" data-theme="light">
+<defs>
+<style>
+svg{--bg:#FFFFFF;--edge:#000000;--edgeLabel:#000000;--nodeStroke:#000000;--boundary:#000000;}
+svg[data-theme="dark"]{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}
+@media (prefers-color-scheme: dark){svg:not([data-theme="light"]){--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}}
+.bg{fill:var(--bg);}
+.edge-path{fill:none;stroke:var(--edge);stroke-width:1.2;marker-end:url(#arrow);}
+.edge-path.note-edge{stroke-dasharray:2 4;stroke-linecap:round;}
+.edge-arrow{fill:var(--edge);}
+.edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
+.node-icon{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:42px;}
+.node-label{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
+.node-shape-outline{fill:none;}
+.boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:4;stroke-dasharray:5 5;}
+.boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-class .node-shape{fill:#3A4150;}
+svg[data-theme="light"] .card-type-class .node-shape{fill:#0f172a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-class .node-shape{fill:#0f172a;}}
+.card-type-class .node-label{--nodeText:#FFFFFF;}
+.card-type-capability .node-shape{fill:#325440;}
+svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
+.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
+.card-type-predicate .node-shape{fill:#76459D;}
+svg[data-theme="light"] .card-type-predicate .node-shape{fill:#581c87;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-predicate .node-shape{fill:#581c87;}}
+.card-type-predicate .node-label{--nodeText:#FFFFFF;}
+.card-type-system .node-shape{fill:#414C73;}
+svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
+.card-type-system .node-label{--nodeText:#FFFFFF;}
+.card-type-deployment .node-shape{fill:#47446B;}
+svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
+.card-type-deployment .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
+.card-type-requirement .node-shape{fill:#337C67;}
+svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
+.card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-boundary .node-shape{fill:#FFFFFF;}
+svg[data-theme="light"] .card-type-boundary .node-shape{fill:#FFFFFF;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-boundary .node-shape{fill:#FFFFFF;}}
+.card-type-boundary .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-adr .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-adr .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-adr .node-shape{fill:#1f2937;}}
+.card-type-adr .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#082f49;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-control .node-shape{fill:#8B623D;}
+svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
+.card-type-control .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-test .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
+.card-type-test .node-label{--nodeText:#FFFFFF;}
+.card-type-state-machine .node-shape{fill:#6B316E;}
+svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
+.card-type-state-machine .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
+.card-type-condition .node-shape{fill:#644833;}
+svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
+.card-type-condition .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-trigger .node-shape{fill:#90593A;}
+svg[data-theme="light"] .card-type-trigger .node-shape{fill:#78350f;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-trigger .node-shape{fill:#78350f;}}
+.card-type-trigger .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#3B4897;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#102080;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#102080;}}
+.card-type-interface .node-label{--nodeText:#000000;}
+</style>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+  <path d="M 0 0 L 10 5 L 0 10 z" class="edge-arrow" />
+</marker>
+</defs>
+<rect class="bg" x="0" y="0" width="100%" height="100%" />
+<path class="edge-path" d="M 1670.70 125.09 C 1790.78 110.04 1939.39 91.34 2072.63 74.65" data-tail="ATV-001" data-head="ATV-002" />
+<text class="edge-label" x="1718.69" y="113.33" text-anchor="middle" dominant-baseline="middle">triggers</text>
+<path class="edge-path" d="M 1670.70 178.89 C 1748.16 188.59 1837.15 199.79 1893.64 206.87" data-tail="ATV-001" data-head="CON-001" />
+<text class="edge-label" x="1718.69" y="174.66" text-anchor="middle" dominant-baseline="middle">triggers</text>
+<path class="edge-path" d="M 517.33 152.00 C 538.21 152.00 559.04 152.00 593.34 152.00" data-tail="CAP-001" data-head="PRO-001" />
+<text class="edge-label" x="555.33" y="145.33" text-anchor="middle" dominant-baseline="middle">runs</text>
+<path class="edge-path" d="M 2655.61 254.67 C 2820.77 254.67 2859.07 254.67 3045.62 254.67" data-tail="CON-001" data-head="CON-002" />
+<text class="edge-label" x="2846.69" y="248.00" text-anchor="middle" dominant-baseline="middle">transitions to</text>
+<path class="edge-path" d="M 1128.00 152.00 C 1161.50 152.00 1195.10 152.00 1241.37 152.00" data-tail="PRO-001" data-head="ATV-001" />
+<text class="edge-label" x="1184.64" y="145.33" text-anchor="middle" dominant-baseline="middle">starts with</text>
+<g class="node card-type-activity" data-card-id="ATV-001" data-layout-node="ATV-001">
+<rect class="node-shape" x="1241.37" y="102.66" width="429.33" height="98.67" rx="6" ry="6" />
+<text class="node-label" x="1456.03" y="117.00" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1456.03" font-weight="700">Activity</tspan>
+<tspan x="1456.03" dy="14.00" font-weight="700">ATV-001</tspan>
+<tspan x="1456.03" dy="14.00">&#160;</tspan>
+<tspan x="1456.03" dy="14.00">Reference Activity — Activity that receives an event and</tspan>
+<tspan x="1456.03" dy="14.00">triggers downstream activities, events, conditions, actors,</tspan>
+<tspan x="1456.03" dy="14.00">and states.</tspan>
+</text>
+</g>
+<g class="node card-type-activity" data-card-id="ATV-002" data-layout-node="ATV-002">
+<rect class="node-shape" x="2072.63" y="0.00" width="404.00" height="98.67" rx="6" ry="6" />
+<text class="node-label" x="2274.62" y="21.33" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2274.62" font-weight="700">Activity</tspan>
+<tspan x="2274.62" dy="14.00" font-weight="700">ATV-002</tspan>
+<tspan x="2274.62" dy="14.00">&#160;</tspan>
+<tspan x="2274.62" dy="14.00">Triggered Activity — Secondary activity used as the</tspan>
+<tspan x="2274.62" dy="14.00">target of Activity/Event triggers in the reference model.</tspan>
+</text>
+</g>
+<g class="node card-type-capability" data-card-id="CAP-001" data-layout-node="CAP-001">
+<rect class="node-shape" x="-0.00" y="81.33" width="517.33" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="49.00" y="152.00" text-anchor="middle" dominant-baseline="middle" font-size="42.00">✨</text>
+<text class="node-label" x="291.66" y="124.00" text-anchor="middle" dominant-baseline="middle">
+<tspan x="291.66" font-weight="700">Capability</tspan>
+<tspan x="291.66" dy="14.00" font-weight="700">CAP-001</tspan>
+<tspan x="291.66" dy="14.00">&#160;</tspan>
+<tspan x="291.66" dy="14.00">Reference Capability — Capability used to satisfy a requirement</tspan>
+<tspan x="291.66" dy="14.00">and to run both a process and a state machine.</tspan>
+</text>
+</g>
+<g class="node card-type-condition" data-card-id="CON-001" data-layout-node="CON-001">
+<path class="node-shape" d="M 2274.62 159.67 L 2655.61 254.67 L 2274.62 349.67 L 1893.64 254.67 Z" />
+<text class="node-icon" x="2008.26" y="254.67" text-anchor="middle" dominant-baseline="middle" font-size="31.50">🔀</text>
+<text class="node-label" x="2326.00" y="226.67" text-anchor="middle" dominant-baseline="middle">
+<tspan x="2326.00" font-weight="700">Condition</tspan>
+<tspan x="2326.00" dy="14.00" font-weight="700">CON-001</tspan>
+<tspan x="2326.00" dy="14.00">&#160;</tspan>
+<tspan x="2326.00" dy="14.00">Reference Condition — Condition used to exercise condition transitions</tspan>
+<tspan x="2326.00" dy="14.00">to condition/state/event.</tspan>
+</text>
+</g>
+<g class="node card-type-condition" data-card-id="CON-002" data-layout-node="CON-002">
+<path class="node-shape" d="M 3450.62 159.67 L 3855.62 254.67 L 3450.62 349.67 L 3045.62 254.67 Z" />
+<text class="node-icon" x="3160.25" y="254.67" text-anchor="middle" dominant-baseline="middle" font-size="31.50">🔀</text>
+<text class="node-label" x="3502.00" y="226.67" text-anchor="middle" dominant-baseline="middle">
+<tspan x="3502.00" font-weight="700">Condition</tspan>
+<tspan x="3502.00" dy="14.00" font-weight="700">CON-002</tspan>
+<tspan x="3502.00" dy="14.00">&#160;</tspan>
+<tspan x="3502.00" dy="14.00">Secondary Condition — Secondary condition used as a target of</tspan>
+<tspan x="3502.00" dy="14.00">Condition transitions to Condition.</tspan>
+</text>
+</g>
+<g class="node card-type-process" data-card-id="PRO-001" data-layout-node="PRO-001">
+<rect class="node-shape" x="593.34" y="88.67" width="534.66" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="642.34" y="152.00" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🔁</text>
+<text class="node-label" x="893.67" y="124.00" text-anchor="middle" dominant-baseline="middle">
+<tspan x="893.67" font-weight="700">Process</tspan>
+<tspan x="893.67" dy="14.00" font-weight="700">PRO-001</tspan>
+<tspan x="893.67" dy="14.00">&#160;</tspan>
+<tspan x="893.67" dy="14.00">Reference Process — Process started with an activity and run by</tspan>
+<tspan x="893.67" dy="14.00">both a capability and a component.</tspan>
+</text>
+</g>
+</svg>

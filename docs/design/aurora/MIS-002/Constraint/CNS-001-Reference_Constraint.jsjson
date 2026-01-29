@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "CNS-001",
+	"card_type": "Constraint",
+	"name": "Reference Constraint",
+	"description": "Constraint implied by a story and limiting a requirement in the reference model.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "limits",
+			"target": "REQ-001"
+		}
+	]
+}

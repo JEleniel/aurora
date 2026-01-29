@@ -33,7 +33,7 @@ pub(super) fn icon_glyph(icon_name: &str) -> Option<&'static str> {
 		"bug" => Some("🐛"),
 		"beaker" => Some("🧪"),
 		"note-sticky" => Some("🗒️"),
-		"braces" => Some("{}"),
+		"braces" => Some("🧩"),
 		"square-dashed" => Some("⬚"),
 		_ => None,
 	}

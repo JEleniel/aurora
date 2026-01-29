@@ -1,0 +1,10 @@
+digraph "Compliance Governance" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"ADR-001" [fillcolor="#1f2937", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">📄</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>ADR</B><BR/><B>ADR-001</B><BR/>&#160;<BR/>Reference ADR — Architectural Decision Record made by<BR/>an actor and documenting a requirement.</FONT></TD></TR></TABLE>>, shape="note"];
+	"CNS-001" [fillcolor="#082f49", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">📏</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Constraint</B><BR/><B>CNS-001</B><BR/>&#160;<BR/>Reference Constraint — Constraint implied by a story<BR/>and limiting a requirement in the reference model.</FONT></TD></TR></TABLE>>, shape="box"];
+	"REQ-001" [fillcolor="#065f46", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">☑️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Requirement</B><BR/><B>REQ-001</B><BR/>&#160;<BR/>Reference Requirement — Requirement referenced by<BR/>multiple rules (driven by driver, satisfied by<BR/>capability, documented by ADR, limited by constraint).</FONT></TD></TR></TABLE>>, shape="box"];
+	"ADR-001" -> "REQ-001" [label="documents"];
+	"CNS-001" -> "REQ-001" [label="limits"];
+}

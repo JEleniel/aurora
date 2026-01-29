@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "PRO-001",
+	"card_type": "Process",
+	"name": "Reference Process",
+	"description": "Process started with an activity and run by both a capability and a component.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "starts with",
+			"target": "ATV-001"
+		}
+	]
+}

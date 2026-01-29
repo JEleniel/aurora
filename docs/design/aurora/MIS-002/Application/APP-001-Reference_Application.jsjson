@@ -1,0 +1,40 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "APP-001",
+	"card_type": "Application",
+	"name": "Reference Application",
+	"description": "Application that comprises a component and implements test/feature/class/control.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "comprises",
+			"target": "COM-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "TES-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "CLS-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "CTL-001"
+		}
+	]
+}

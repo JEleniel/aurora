@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "DEP-001",
+	"card_type": "Deployment",
+	"name": "Reference Deployment",
+	"description": "Deployment that deploys a node in the relationship-matrix reference model.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "deploys",
+			"target": "NOD-001"
+		}
+	]
+}

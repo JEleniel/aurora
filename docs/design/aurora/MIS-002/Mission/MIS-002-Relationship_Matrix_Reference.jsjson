@@ -1,0 +1,25 @@
+{
+	"$schema": "../../Aurora.schema.jsjson",
+	"id": "NOT-900",
+	"card_type": "Note",
+	"name": "Legacy Duplicate File Placeholder",
+	"description": "Placeholder for a duplicate mission file path that cannot be deleted in this environment. Tooling should treat this as a Note; the real mission card lives at `docs/design/aurora/MIS-002-Relationship_Matrix_Reference.jsjson`.",
+	"status": "Deleted",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "deleted"
+			}
+		]
+	},
+	"links": []
+}

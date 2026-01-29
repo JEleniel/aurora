@@ -20,11 +20,9 @@ Even though Aurora is designed to allow any element and any relationship, by def
 
 **Note**: File paths below are relative to this instruction file's location (`.github/instructions/`).
 
-- The canonical relationships are defined in [1-Relationship_Matrix.md](details/1-Relationship_Matrix.md)
-    + The Card acronyms are expanded in [1a-Card_Definitions](details/1a-Card_Definitions.md)
-    + The Relationship verbs are described in [1b-Relationship_Definitions.md](details/1b-Relationship_Definitions.md)
-- The canonical Views are defined in [2-View_Definitions.md](details/2-View_Definitions.md)
-    + A Styling Guide for views is included in [2a-View_Styling_Guide](details/2a-View_Styling_Guide.md)
+- The canonical Cards are in [1-Card_Definitions.md](details/1-Card_Definitions.md)
+- The canonical Relationships are in [2-Relationship_Definitions.md](details/2-Relationship_Definitions.md)
+- The canonical Views are in [3-View_Definitions.md](details/3-View_Definitions.md)
 
 ## Models
 
