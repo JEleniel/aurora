@@ -1,45 +1,47 @@
-# Relationships Matrix
+# Relationship Definitions
 
-This matrix is derived from [1-Relationship_Matrix.md](1-Relationship_Matrix.md) which is canonical. Card names are from [1a-Card_Definitions.md](1a-Card_Definitions.md). Use it as a quick reference for the relationships used by the canonical matrix view, including the expected source and target card types. Relationship verbs are lowercase, active phrases; notes attach without a verb and are not listed here.
+This page defines the canonical relationship registry used by Aurora tooling.
 
-| Relationship               | Category                     | Description                                          | Source card types               | Target card types                        | Notes                                                                                                                                                      |
-| -------------------------- | ---------------------------- | ---------------------------------------------------- | ------------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `calls`                    | Runtime and Topology         | Invokes a contract.                                  | Component                       | Interface                                | Components call interfaces (no passive form).                                                                                                              |
-| `comprises`                | Realization                  | Composition from application to component.           | Application                     | Component                                | Applications comprise components.                                                                                                                          |
-| `contains`                 | Containment and Composition  | Structural containment.                              | Boundary                        | All card types                           | Only boundaries contain other elements; a boundary must contain a target.                                                                                  |
-| `deploys`                  | Runtime and Topology         | Provides runtime nodes for a deployment environment. | Deployment                      | Node                                     | In the canonical matrix view: `Deployment deploys Node`.                                                                                                   |
-| `desires`                  | Behavior and Flow            | Actor has a story or goal.                           | Actor                           | Story                                    | Used to avoid orphan stories and to tie goals to roles.                                                                                                    |
-| `documents`                | Decision                     | Records a decision tied to a need.                   | ADR                             | Requirement                              | In the canonical matrix view: `ADR documents Requirement`.                                                                                                 |
-| `drives`                   | Motivation                   | Influences a downstream need.                        | Driver                          | Requirement                              | Drivers drive requirements.                                                                                                                                |
-| `enables`                  | Realization                  | Makes another feasible.                              | Feature                         | Capability                               | Features enable capabilities.                                                                                                                              |
-| `ends with`                | Containment and Composition  | Ends a Boundary zone                                 | All cards except Mission        | None                                     | This indicated the end of recursion when rendering a Boundary of the same name.                                                                            |
-| `establishes`              | Motivation                   | Introduces a downstream motivation element.          | Mission                         | Driver                                   | Common: `Mission establishes Driver`.                                                                                                                      |
-| `exposes`                  | Realization                  | Provides an interface.                               | Data Store                      | Interface                                | This direction matches the canonical matrix view.                                                                                                          |
-| `generates`                | Realization                  | Produces an artifact.                                | Component                       | Artifact                                 | In the canonical matrix view, `dte` is an `Artifact (Data Entity)`.                                                                                        |
-| `hosts`                    | Runtime and Topology         | Runtime host relationship.                           | Node; Node Instance             | Component; Data Store                    | Nodes and node instances host runtime elements.                                                                                                            |
-| `implements`               | Realization                  | Realizes an element.                                 | Application; Component; Actor   | Test; Feature; Class; Control            | In the canonical matrix view: `Application implements Test`, `Component implements Feature`, `Component implements Class`, and `Actor implements Control`. |
-| `implies`                  | Behavior and Flow            | Story suggests a constraint.                         | Story                           | Constraint                               | Used when a narrative implies a policy/NFR.                                                                                                                |
-| `imposes`                  | Risk and Control             | Applies a control.                                   | System                          | Control                                  | In the canonical matrix view: `System imposes Control`.                                                                                                    |
-| `includes`                 | Containment and Composition  | Membership without containment.                      | All card types                  | Boundary                                 | In the canonical matrix view, `*` (wildcard) may include `BND`.                                                                                            |
-| `instantiates`             | Runtime and Topology         | Creates a runtime instance.                          | Node                            | Node Instance                            | Used for logical-to-concrete mapping.                                                                                                                      |
-| `integrates`               | Realization                  | Pulls together sub-elements.                         | System                          | Application                              | In the canonical matrix view: `System integrates Application`.                                                                                             |
-| `involves`                 | Behavior and Flow            | Includes an actor in a flow.                         | Mission                         | Actor                                    | Missions involve actors.                                                                                                                                   |
-| `is`                       | Typing and Classification    | Classifies or types an element as another.           | Artifact                        | Asset                                    | In the canonical matrix view: `Artifact (Data Entity) is Asset`.                                                                                           |
-| `limits`                   | Risk and Control             | Bounds allowable behavior.                           | Constraint                      | Requirement                              | In the canonical matrix view, constraints limit requirements.                                                                                              |
-| `makes`                    | Decision                     | Creates or authors a decision record.                | Actor                           | ADR                                      | In the canonical matrix view: `Actor makes ADR`.                                                                                                           |
-| `mitigates`                | Risk and Control             | Reduces risk.                                        | Control                         | Risk                                     | In the canonical matrix view: `Control mitigates Risk`.                                                                                                    |
-| `necessitates`             | Motivation                   | Higher-level goal requires an element.               | Mission                         | System; Application; Deployment          | In the canonical matrix view, `MIS` necessitates multiple element types.                                                                                   |
-| `owns`                     | Ownership and Accountability | Responsible owner (execution).                       | Actor                           | Asset                                    | In the canonical matrix view, this expresses asset ownership.                                                                                              |
-| `performs`                 | Behavior and Flow            | Executes an activity.                                | Actor                           | Activity                                 | In the canonical matrix view: `Actor performs Activity`.                                                                                                   |
-| `persists to`              | Runtime and Topology         | Persists an artifact to durable storage.             | Artifact                        | Data Store                               | In the canonical matrix view: `DTE persists to DTS`.                                                                                                       |
-| `presents`                 | Risk and Control             | Introduces/presents a downstream element.            | Actor; Threat                   | Threat; Risk                             | In the canonical matrix view: threat actors present threats; threats present risks.                                                                        |
-| `protects`                 | Risk and Control             | Protects an asset.                                   | Control                         | Asset                                    | In the canonical matrix view: `Control protects Asset`.                                                                                                    |
-| `receives`                 | Behavior and Flow            | Receives an event/trigger.                           | Activity                        | Event                                    | In the canonical matrix view: `Activity receives trg` where `trg` is a generic `Event`.                                                                    |
-| `runs`                     | Behavior and Flow            | Executes or operates a model.                        | Capability; Component           | Process; State Machine                   | In the canonical matrix view: `Capability runs Process` and `Component runs State Machine`.                                                                |
-| `satisfies`                | Realization                  | Fulfills a need.                                     | Capability                      | Requirement                              | Capabilities satisfy requirements.                                                                                                                         |
-| `starts in`                | Behavior and Flow            | Initial state of a state machine.                    | State Machine                   | State                                    | In the canonical matrix view: `State Machine starts in State`.                                                                                             |
-| `starts with`              | Behavior and Flow            | Trigger for a process.                               | Process                         | Activity                                 | In the canonical matrix view: `Process starts with Activity`.                                                                                              |
-| `transistions to`          | Behavior and Flow            | State transistions to a next element.                | State                           | State; Condition; Event                  |                                                                                                                                                            |
-| `transitions (true/false)` | Behavior and Flow            | Conditional transition based on predicate outcome.   | Condition                       | Condition; State; Event                  | Spelling matches the canonical matrix view.                                                                                                                |
-| `triggers`                 | Behavior and Flow            | Causally triggers another element.                   | Activity; Event                 | Activity; Event; Condition; Actor; State | The canonical matrix view uses `triggers` across multiple element types.                                                                                   |
-| `uses`                     | Meta                         | General dependency/association edge.                 | All card types (except Mission) | All card types                           | This is the canonical matrix view “catch all” for representing a relationship without additional semantics.                                                |
+## Relationships
+
+| Relationship | Description | Source card types | Target card types |
+| --- | --- | --- | --- |
+| `invokes` | Invokes an interface by contract. | `Component` | `Interface` |
+| `composes` | Defines a composition relationship. | `Application` | `Component` |
+| `contains` | Defines boundary containment. | `Boundary` | `!Mission` |
+| `provisions` | Provisions runtime infrastructure. | `Deployment` | `Node` |
+| `desires` | Expresses a goal or story. | `Actor` | `Story` |
+| `documents` | Records a decision tied to a requirement. | `ADR` | `Requirement` |
+| `drives` | Influences a downstream requirement. | `Driver` | `Requirement` |
+| `enables` | Makes a capability feasible. | `Feature` | `Capability` |
+| `establishes` | Introduces a downstream driver. | `Mission` | `Driver` |
+| `exposes` | Publishes an interface. | `Data Store` | `Interface` |
+| `generates` | Produces an artifact. | `Component` | `Artifact` |
+| `instantiates` | Creates a runtime instance. | `Node` | `Node Instance` |
+| `hosts` | Hosts a runtime component. | `Node` | `Component` |
+| `hosts` | Hosts a runtime data store. | `Node` | `Data Store` |
+| `implements` | Implements a feature. | `Component` | `Feature` |
+| `realizes` | Realizes a class definition. | `Component` | `Class` |
+| `fulfills` | Fulfills a test. | `Component` | `Test` |
+| `enforces` | Applies a control. | `Component`, `System` | `Control` |
+| `implies` | Implies a constraint. | `Story` | `Constraint` |
+| `includes` | Scopes an element within a boundary. | `*` | `Boundary` |
+| `integrates` | Integrates applications into a system. | `System` | `Application` |
+| `involves` | Includes an actor in a mission. | `Mission` | `Actor` |
+| `is` | Classifies an artifact as an asset. | `Artifact` | `Asset` |
+| `mitigates` | Reduces a risk. | `Control` | `Risk` |
+| `requires` | Requires a system or application. | `Mission` | `System`, `Application` |
+| `owns` | Defines ownership responsibility. | `Actor` | `Asset` |
+| `performs` | Executes an activity. | `Actor` | `Activity` |
+| `persists` | Persists an artifact to storage. | `Artifact` | `Data Store` |
+| `presents` | Introduces a threat. | `Actor` | `Threat` |
+| `raises` | Raises a risk. | `Threat` | `Risk` |
+| `safeguards` | Protects an asset. | `Control` | `Asset` |
+| `necessitates` | Necessitates a process. | `Capability` | `Process` |
+| `executes` | Executes and owns a state machine. | `Component` | `State Machine` |
+| `satisfies` | Satisfies a requirement. | `Capability` | `Requirement` |
+| `starts in` | Defines the initial state. | `State Machine` | `State` |
+| `transitions to` | Transitions to a next state. | `State`, `Predicate`, `Event` | `State` |
+| `evaluates` | Evaluates a condition. | `Activity` | `Condition` |
+| `emits` | Emits an event. | `Activity` | `Event` |
+| `leads` | Leads to another activity. | `Activity` | `Activity` |
