@@ -1694,11 +1694,7 @@ mod tests {
 		assert!(!legacy_per_root.exists());
 		let dot_path = output.join("Views/source/Entire_Model_View.view.dot");
 		assert!(dot_path.exists());
-		assert!(
-			output
-				.join("Views/Entire_Model_View.view.svg")
-				.exists()
-		);
+		assert!(output.join("Views/Entire_Model_View.view.svg").exists());
 		let dot = std::fs::read_to_string(dot_path).expect("dot");
 		assert!(dot.contains("<B>Mission</B>"));
 		assert!(dot.contains("<B>MIS-001</B>"));
