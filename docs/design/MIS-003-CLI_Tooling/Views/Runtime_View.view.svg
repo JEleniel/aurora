@@ -1,0 +1,267 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1195.97 913.33" width="1195.97" height="913.33" data-theme="light">
+<defs>
+<style>
+svg{--bg:#FFFFFF;--edge:#000000;--edgeLabel:#000000;--nodeStroke:#000000;--boundary:#000000;}
+svg[data-theme="dark"]{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}
+@media (prefers-color-scheme: dark){svg:not([data-theme="light"]){--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}}
+.bg{fill:var(--bg);}
+.edge-path{fill:none;stroke:var(--edge);stroke-width:1.2;marker-end:url(#arrow);}
+.edge-path.note-edge{stroke-dasharray:2 4;stroke-linecap:round;}
+.edge-arrow{fill:var(--edge);}
+.edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
+.node-icon{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:42px;}
+.node-label{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
+.node-shape-outline{fill:none;}
+.boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:4;stroke-dasharray:5 5;}
+.boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.card-type-condition .node-shape{fill:#644833;}
+svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
+.card-type-condition .node-label{--nodeText:#FFFFFF;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-capability .node-shape{fill:#325440;}
+svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
+.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#3B4897;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#102080;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#102080;}}
+.card-type-interface .node-label{--nodeText:#000000;}
+.card-type-deployment .node-shape{fill:#47446B;}
+svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
+.card-type-deployment .node-label{--nodeText:#FFFFFF;}
+.card-type-system .node-shape{fill:#414C73;}
+svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
+.card-type-system .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-predicate .node-shape{fill:#76459D;}
+svg[data-theme="light"] .card-type-predicate .node-shape{fill:#581c87;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-predicate .node-shape{fill:#581c87;}}
+.card-type-predicate .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-requirement .node-shape{fill:#337C67;}
+svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
+.card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
+.card-type-state-machine .node-shape{fill:#6B316E;}
+svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
+.card-type-state-machine .node-label{--nodeText:#FFFFFF;}
+.card-type-boundary .node-shape{fill:#FFFFFF;}
+svg[data-theme="light"] .card-type-boundary .node-shape{fill:#FFFFFF;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-boundary .node-shape{fill:#FFFFFF;}}
+.card-type-boundary .node-label{--nodeText:#FFFFFF;}
+.card-type-adr .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-adr .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-adr .node-shape{fill:#1f2937;}}
+.card-type-adr .node-label{--nodeText:#FFFFFF;}
+.card-type-class .node-shape{fill:#3A4150;}
+svg[data-theme="light"] .card-type-class .node-shape{fill:#0f172a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-class .node-shape{fill:#0f172a;}}
+.card-type-class .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-test .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
+.card-type-test .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#082f49;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-control .node-shape{fill:#8B623D;}
+svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
+.card-type-control .node-label{--nodeText:#FFFFFF;}
+.card-type-trigger .node-shape{fill:#90593A;}
+svg[data-theme="light"] .card-type-trigger .node-shape{fill:#78350f;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-trigger .node-shape{fill:#78350f;}}
+.card-type-trigger .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+</style>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+  <path d="M 0 0 L 10 5 L 0 10 z" class="edge-arrow" />
+</marker>
+</defs>
+<rect class="bg" x="0" y="0" width="100%" height="100%" />
+<path class="edge-path" d="M 542.67 835.33 C 578.35 835.33 614.81 835.33 664.00 835.33" data-tail="APP-002" data-head="COM-002" />
+<text class="edge-label" x="595.33" y="828.67" text-anchor="middle" dominant-baseline="middle">composes</text>
+<path class="edge-path" d="M 397.67 296.67 C 468.81 256.88 562.04 208.23 648.00 171.33 C 655.92 167.93 664.01 164.57 689.56 156.00" data-tail="APP-003" data-head="COM-003" />
+<text class="edge-label" x="595.33" y="179.34" text-anchor="middle" dominant-baseline="middle">composes</text>
+<path class="edge-path" d="M 537.34 328.10 C 576.12 322.38 615.74 316.51 668.00 308.80" data-tail="APP-003" data-head="COM-004" />
+<text class="edge-label" x="595.33" y="310.00" text-anchor="middle" dominant-baseline="middle">composes</text>
+<path class="edge-path" d="M 537.34 407.11 C 569.61 411.94 602.36 416.86 648.00 423.69" data-tail="APP-003" data-head="COM-005" />
+<text class="edge-label" x="595.33" y="407.34" text-anchor="middle" dominant-baseline="middle">composes</text>
+<path class="edge-path" d="M 403.02 438.00 C 473.56 475.85 564.42 521.48 648.00 556.67 C 656.21 560.12 664.60 563.55 689.75 572.00" data-tail="APP-003" data-head="COM-006" />
+<text class="edge-label" x="595.33" y="518.00" text-anchor="middle" dominant-baseline="middle">composes</text>
+<g class="node card-type-application" data-card-id="APP-002" data-layout-node="APP-002">
+<rect class="node-shape" x="0.00" y="757.33" width="542.67" height="156.00" rx="6.00" ry="6.00" />
+<rect class="node-shape node-shape-outline" x="4.00" y="769.33" width="14.00" height="16.00" rx="2" ry="2" />
+<rect class="node-shape node-shape-outline" x="4.00" y="885.33" width="14.00" height="16.00" rx="2" ry="2" />
+<text class="node-icon" x="49.00" y="835.33" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🪟</text>
+<text class="node-label" x="304.33" y="800.33" text-anchor="middle" dominant-baseline="middle">
+<tspan x="304.33" font-weight="700">Application</tspan>
+<tspan x="304.33" dy="14.00" font-weight="700">APP-002</tspan>
+<tspan x="304.33" dy="14.00">&#160;</tspan>
+<tspan x="304.33" dy="14.00">aurora_cli — Command-line interface that discovers Aurora model</tspan>
+<tspan x="304.33" dy="14.00">homes, validates mission-scoped models, renders Markdown + SVG views,</tspan>
+<tspan x="304.33" dy="14.00">and writes compact agent exports.</tspan>
+</text>
+</g>
+<g class="node card-type-application" data-card-id="APP-003" data-layout-node="APP-003">
+<rect class="node-shape" x="5.33" y="296.67" width="532.00" height="141.33" rx="6.00" ry="6.00" />
+<rect class="node-shape node-shape-outline" x="9.33" y="308.67" width="14.00" height="16.00" rx="2" ry="2" />
+<rect class="node-shape node-shape-outline" x="9.33" y="410.00" width="14.00" height="16.00" rx="2" ry="2" />
+<text class="node-icon" x="54.33" y="367.33" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🪟</text>
+<text class="node-label" x="304.33" y="332.33" text-anchor="middle" dominant-baseline="middle">
+<tspan x="304.33" font-weight="700">Application</tspan>
+<tspan x="304.33" dy="14.00" font-weight="700">APP-003</tspan>
+<tspan x="304.33" dy="14.00">&#160;</tspan>
+<tspan x="304.33" dy="14.00">aurora_shared — Shared domain library that implements model</tspan>
+<tspan x="304.33" dy="14.00">discovery, parsing, validation, rendering, and compact export</tspan>
+<tspan x="304.33" dy="14.00">helpers for Aurora tooling surfaces.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-002" data-layout-node="COM-002">
+<rect class="node-shape" x="664.00" y="757.33" width="516.00" height="156.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 672.00 765.33 L 1172.00 765.33 L 1172.00 905.33" />
+<text class="node-icon" x="713.00" y="835.33" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="955.00" y="793.33" text-anchor="middle" dominant-baseline="middle">
+<tspan x="955.00" font-weight="700">Component</tspan>
+<tspan x="955.00" dy="14.00" font-weight="700">COM-002</tspan>
+<tspan x="955.00" dy="14.00">&#160;</tspan>
+<tspan x="955.00" dy="14.00">CLI Command Runner — CLI entrypoint and command dispatcher</tspan>
+<tspan x="955.00" dy="14.00">(clap subcommands) that orchestrates discovery, validation,</tspan>
+<tspan x="955.00" dy="14.00">rendering, and compact export workflows and reports diagnostics</tspan>
+<tspan x="955.00" dy="14.00">and summaries.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-003" data-layout-node="COM-003">
+<rect class="node-shape" x="663.34" y="0.00" width="517.33" height="156.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 671.34 8.00 L 1172.67 8.00 L 1172.67 148.00" />
+<text class="node-icon" x="712.34" y="78.00" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="955.00" y="36.00" text-anchor="middle" dominant-baseline="middle">
+<tspan x="955.00" font-weight="700">Component</tspan>
+<tspan x="955.00" dy="14.00" font-weight="700">COM-003</tspan>
+<tspan x="955.00" dy="14.00">&#160;</tspan>
+<tspan x="955.00" dy="14.00">Model Discovery and Loading — Discovery and parsing layer that</tspan>
+<tspan x="955.00" dy="14.00">locates model homes (schema-based), loads card files</tspan>
+<tspan x="955.00" dy="14.00">(JSON/JSJSON) from disk, and builds a searchable AuroraModel</tspan>
+<tspan x="955.00" dy="14.00">index.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-004" data-layout-node="COM-004">
+<rect class="node-shape" x="668.00" y="186.00" width="508.00" height="170.67" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 676.00 194.00 L 1168.00 194.00 L 1168.00 348.67" />
+<text class="node-icon" x="717.00" y="271.33" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="955.00" y="229.33" text-anchor="middle" dominant-baseline="middle">
+<tspan x="955.00" font-weight="700">Component</tspan>
+<tspan x="955.00" dy="14.00" font-weight="700">COM-004</tspan>
+<tspan x="955.00" dy="14.00">&#160;</tspan>
+<tspan x="955.00" dy="14.00">Validation Engine — Validator that checks structural</tspan>
+<tspan x="955.00" dy="14.00">invariants (duplicate ids, mission presence, link targets,</tspan>
+<tspan x="955.00" dy="14.00">reachability) plus policy checks (secret asset ownership) and</tspan>
+<tspan x="955.00" dy="14.00">relationship-matrix compliance using embedded registries.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-005" data-layout-node="COM-005">
+<rect class="node-shape" x="648.00" y="386.67" width="548.00" height="156.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 656.00 394.67 L 1188.00 394.67 L 1188.00 534.67" />
+<text class="node-icon" x="697.00" y="464.67" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="955.00" y="429.67" text-anchor="middle" dominant-baseline="middle">
+<tspan x="955.00" font-weight="700">Component</tspan>
+<tspan x="955.00" dy="14.00" font-weight="700">COM-005</tspan>
+<tspan x="955.00" dy="14.00">&#160;</tspan>
+<tspan x="955.00" dy="14.00">Rendering Engine — Renderer that produces per-card Markdown</tspan>
+<tspan x="955.00" dy="14.00">documentation, executive summaries, canonical view DOT sources, and</tspan>
+<tspan x="955.00" dy="14.00">themed SVG diagrams; also writes compact agent exports.</tspan>
+</text>
+</g>
+<g class="node card-type-component" data-card-id="COM-006" data-layout-node="COM-006">
+<rect class="node-shape" x="669.34" y="572.00" width="505.33" height="156.00" rx="6.00" ry="6.00" />
+<path class="node-shape node-shape-outline" d="M 677.34 580.00 L 1166.67 580.00 L 1166.67 720.00" />
+<text class="node-icon" x="718.34" y="650.00" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧊</text>
+<text class="node-label" x="955.00" y="608.00" text-anchor="middle" dominant-baseline="middle">
+<tspan x="955.00" font-weight="700">Component</tspan>
+<tspan x="955.00" dy="14.00" font-weight="700">COM-006</tspan>
+<tspan x="955.00" dy="14.00">&#160;</tspan>
+<tspan x="955.00" dy="14.00">Embedded Registries — Compile-time canonical registries for</tspan>
+<tspan x="955.00" dy="14.00">card definitions (palette), relationship definitions (matrix</tspan>
+<tspan x="955.00" dy="14.00">rules), and view definitions (canonical view set) used by</tspan>
+<tspan x="955.00" dy="14.00">validation and rendering.</tspan>
+</text>
+</g>
+</svg>

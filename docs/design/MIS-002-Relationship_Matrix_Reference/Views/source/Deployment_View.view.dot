@@ -1,0 +1,21 @@
+digraph "Deployment" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"APP-001" [fillcolor="#1e3a8a", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🪟</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Application</B><BR/><B>APP-001</B><BR/>&#160;<BR/>Reference Application — Application that composes a<BR/>component in the relationship-matrix reference model.</FONT></TD></TR></TABLE>>, shape="component"];
+	"COM-001" [fillcolor="#1e40af", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🧊</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Component</B><BR/><B>COM-001</B><BR/>&#160;<BR/>Reference Component — Component used to exercise<BR/>interface invocation, artifact generation, feature<BR/>implementation, test fulfillment, class realization,<BR/>control enforcement, and state machine execution.</FONT></TD></TR></TABLE>>, shape="box3d"];
+	"DEP-001" [fillcolor="#1e1b4b", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">☁️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Deployment</B><BR/><B>DEP-001</B><BR/>&#160;<BR/>Reference Deployment — Deployment that provisions a<BR/>node in the relationship-matrix reference model.</FONT></TD></TR></TABLE>>, shape="box"];
+	"DTS-001" [fillcolor="#075985", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🗄️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Data Store</B><BR/><B>DTS-001</B><BR/>&#160;<BR/>Reference Data Store — Data store that exposes an<BR/>interface and receives persisted artifacts.</FONT></TD></TR></TABLE>>, shape="cylinder"];
+	"NIN-001" [fillcolor="#3730a3", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🖥️⚙️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Node Instance</B><BR/><B>NIN-001</B><BR/>&#160;<BR/>Reference Node Instance — Concrete runtime realization<BR/>of a node.</FONT></TD></TR></TABLE>>, shape="box"];
+	"NOD-001" [fillcolor="#312e81", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🖥️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Node</B><BR/><B>NOD-001</B><BR/>&#160;<BR/>Reference Node — Node that hosts a component and data<BR/>store and instantiates a node instance.</FONT></TD></TR></TABLE>>, shape="box"];
+	"APP-001" -> "COM-001" [label="composes"];
+	"DEP-001" -> "NOD-001" [label="provisions"];
+	"NOD-001" -> "COM-001" [label="hosts"];
+	"NOD-001" -> "DTS-001" [label="hosts"];
+	"NOD-001" -> "NIN-001" [label="instantiates"];
+	subgraph "cluster_BND-001" {
+		graph [color="#000000", label="Reference Boundary (BND-001)", penwidth="4", style="dashed"];
+		"APP-001";
+		"DEP-001";
+	}
+}

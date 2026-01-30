@@ -211,50 +211,56 @@ fn render_views_with_registry(model: &AuroraModel, output_dir: &Path) -> Result<
 
 		let base_nodes = collect_view_base_nodes(model, view);
 		let root_ids = collect_view_root_ids(view, &base_nodes);
-		if root_ids.is_empty() {
+		if root_ids.is_empty() && !is_everything_view(view) {
 			continue;
 		}
-		let engine = graphviz_engine_for_view(view);
-		for root_id in root_ids {
-			let nodes = collect_view_nodes_for_root(model, view, &base_nodes, &root_id);
-			if nodes.is_empty() {
-				continue;
-			}
-			let view_name = format!("{} ({})", view.name, root_id);
-			let view_instance = ViewSpec {
-				name: view_name,
-				slug: view.slug.clone(),
-				root_card_types: view.root_card_types.clone(),
-				card_types: view.card_types.clone(),
-				include_all: view.include_all,
-			};
-			let file_base = format!("{}_View-{}", view.slug, root_id);
-			let dot_path = view_source_dir.join(format!("{file_base}.view.dot"));
-			let svg_path = views_dir.join(format!("{file_base}.view.svg"));
-
-			let clusters = collect_boundary_clusters(&nodes);
-			validate_view_connectivity(&view_instance, &nodes)?;
-			let dot = build_dot(
-				&view_instance,
-				&nodes,
-				&palette,
-				&icon_glyphs,
-				&registry.card_colors,
-				&graphviz,
-			);
-			write_text(&dot_path, dot)?;
-			render_svg(
-				&dot_path,
-				&svg_path,
-				&graphviz,
-				engine,
-				&nodes,
-				&icon_glyphs,
-				&registry.card_colors,
-				&clusters,
-			)?;
-			views_written += 1;
+		for root_id in &root_ids {
+			let legacy_file_base = format!("{}_View-{}", view.slug, root_id);
+			let legacy_dot = view_source_dir.join(format!("{legacy_file_base}.view.dot"));
+			let legacy_svg = views_dir.join(format!("{legacy_file_base}.view.svg"));
+			remove_if_exists(&legacy_dot)?;
+			remove_if_exists(&legacy_svg)?;
 		}
+		let engine = graphviz_engine_for_view(view);
+		let nodes = if root_ids.is_empty() {
+			base_nodes.clone()
+		} else {
+			filter_nodes_by_explicit_roots(view, base_nodes.clone(), &root_ids)
+		};
+		if nodes.is_empty() && !is_everything_view(view) {
+			continue;
+		}
+		if nodes.len() <= 1 && !is_everything_view(view) {
+			continue;
+		}
+		let mut nodes_with_annotations = nodes.clone();
+		include_annotations_for_view(model, &mut nodes_with_annotations, &nodes);
+		let file_base = format!("{}_View", view.slug);
+		let dot_path = view_source_dir.join(format!("{file_base}.view.dot"));
+		let svg_path = views_dir.join(format!("{file_base}.view.svg"));
+
+		let clusters = collect_boundary_clusters(&nodes_with_annotations);
+		validate_view_connectivity(view, &nodes_with_annotations)?;
+		let dot = build_dot(
+			view,
+			&nodes_with_annotations,
+			&palette,
+			&icon_glyphs,
+			&registry.card_colors,
+			&graphviz,
+		);
+		write_text(&dot_path, dot)?;
+		render_svg(
+			&dot_path,
+			&svg_path,
+			&graphviz,
+			engine,
+			&nodes_with_annotations,
+			&icon_glyphs,
+			&registry.card_colors,
+			&clusters,
+		)?;
+		views_written += 1;
 	}
 
 	Ok(RenderSummary {
@@ -835,22 +841,6 @@ fn collect_view_root_ids(view: &ViewSpec, nodes: &BTreeMap<String, &Card>) -> Ve
 	roots
 }
 
-fn collect_view_nodes_for_root<'a>(
-	model: &'a AuroraModel,
-	view: &ViewSpec,
-	base_nodes: &BTreeMap<String, &'a Card>,
-	root_id: &str,
-) -> BTreeMap<String, &'a Card> {
-	if !base_nodes.contains_key(root_id) {
-		return BTreeMap::new();
-	}
-	let roots = vec![root_id.to_string()];
-	let nodes = filter_nodes_by_explicit_roots(view, base_nodes.clone(), &roots);
-	let mut with_annotations = nodes.clone();
-	include_annotations_for_view(model, &mut with_annotations, &nodes);
-	with_annotations
-}
-
 fn validate_view_connectivity(view: &ViewSpec, nodes: &BTreeMap<String, &Card>) -> Result<()> {
 	let node_ids = collect_diagram_node_ids(nodes);
 	if node_ids.is_empty() {
@@ -1235,6 +1225,7 @@ fn is_everything_view(view: &ViewSpec) -> bool {
 	view.slug == "Everything"
 		|| view.name.eq_ignore_ascii_case("Everything View")
 		|| view.name.eq_ignore_ascii_case("Entire Model")
+		|| view.name.eq_ignore_ascii_case("Enitire Model")
 		|| view.slug == "Entire_Model"
 }
 
@@ -1690,18 +1681,22 @@ mod tests {
 		let (tmp, model) = sample_model();
 		let output = tmp.path().join("views");
 		let summary = render_views(&model, &output).expect("view render should succeed");
-		assert!(summary.views_written > 0);
-		let requirements_md = output.join("Views/Requirements_View-MIS-001.view.md");
+		assert_eq!(summary.views_written, 1);
+		let requirements_md = output.join("Views/Requirements_View.view.md");
 		assert!(!requirements_md.exists());
+		let entire_md = output.join("Views/Entire_Model_View.view.md");
+		assert!(!entire_md.exists());
 		let legacy_dot = output.join("Views/source/Requirements.view.dot");
 		let legacy_svg = output.join("Views/Requirements.view.svg");
 		assert!(!legacy_dot.exists());
 		assert!(!legacy_svg.exists());
-		let dot_path = output.join("Views/source/Requirements_View-MIS-001.view.dot");
+		let legacy_per_root = output.join("Views/source/Requirements_View-MIS-001.view.dot");
+		assert!(!legacy_per_root.exists());
+		let dot_path = output.join("Views/source/Entire_Model_View.view.dot");
 		assert!(dot_path.exists());
 		assert!(
 			output
-				.join("Views/Requirements_View-MIS-001.view.svg")
+				.join("Views/Entire_Model_View.view.svg")
 				.exists()
 		);
 		let dot = std::fs::read_to_string(dot_path).expect("dot");

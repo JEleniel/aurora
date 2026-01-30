@@ -1,6 +1,0 @@
-digraph "Compliance Governance (REQ-006)" {
-	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
-	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
-	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
-	"REQ-006" [fillcolor="#065f46", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">☑️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Requirement</B><BR/><B>REQ-006</B><BR/>&#160;<BR/>Write Compact Agent Export — The tooling SHALL<BR/>generate a single-file compact export suitable for agent<BR/>consumption (AGENT-&lt;MISSION_ID&gt;.jsjson by default) by<BR/>removing non-essential fields (e.g., $schema, audit<BR/>trail metadata) while preserving the card graph<BR/>structure.</FONT></TD></TR></TABLE>>, shape="box"];
-}

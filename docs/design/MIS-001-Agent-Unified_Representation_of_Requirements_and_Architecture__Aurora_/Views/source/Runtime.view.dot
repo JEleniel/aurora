@@ -1,5 +1,0 @@
-digraph "Runtime" {
-	graph [bgcolor="#FFFFFF", fontname="Inter", nodesep="0.2", rankdir="LR", ranksep="0.3", splines="curved"];
-	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
-	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
-}

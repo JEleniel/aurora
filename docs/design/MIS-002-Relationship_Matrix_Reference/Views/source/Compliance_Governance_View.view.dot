@@ -1,0 +1,12 @@
+digraph "Compliance Governance" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"ADR-001" [fillcolor="#1f2937", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">📄</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>ADR</B><BR/><B>ADR-001</B><BR/>&#160;<BR/>Reference ADR — Architectural Decision Record made by<BR/>an actor and documenting a requirement.</FONT></TD></TR></TABLE>>, shape="note"];
+	"REQ-001" [fillcolor="#065f46", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">☑️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Requirement</B><BR/><B>REQ-001</B><BR/>&#160;<BR/>Reference Requirement — Requirement referenced by<BR/>multiple rules (driven by driver, satisfied by<BR/>capability, documented by ADR, limited by constraint).</FONT></TD></TR></TABLE>>, shape="box"];
+	"ADR-001" -> "REQ-001" [label="documents"];
+	subgraph "cluster_BND-001" {
+		graph [color="#000000", label="Reference Boundary (BND-001)", penwidth="4", style="dashed"];
+		"ADR-001";
+	}
+}

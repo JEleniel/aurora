@@ -27,9 +27,10 @@ Quick index of “where things live” for agents working in this repository.
 - Find cards by type:
     + Source model: `docs/design/aurora/<MISSION_ID>/<Card Type>/`
     + Rendered Markdown: `docs/design/<Rendered_Model_Name>/<Card Type>/`
+
 - Find a view:
-    + SVG: `docs/design/<Rendered_Model_Name>/Views/<View>_View-<ROOT>.view.svg`
-    + DOT: `docs/design/<Rendered_Model_Name>/Views/source/<View>_View-<ROOT>.view.dot`
+    + SVG: `docs/design/<Rendered_Model_Name>/Views/<View>_View.view.svg`
+    + DOT: `docs/design/<Rendered_Model_Name>/Views/source/<View>_View.view.dot`
     + Tip: if a view looks odd, inspect its `.view.dot` first; it’s the exact Graphviz input.
 
 ## Canonical registries (instructions)
@@ -87,5 +88,5 @@ These define the vocabulary and view rules; prefer updating these over duplicati
 - Render outputs commonly land under `docs/design/<Rendered_Model_Name>/`.
     + Example in this repo: `docs/design/MIS-001-Provide_Default_Tooling_for_AURORA/`
 - Graphviz artifacts:
-    + SVG: `docs/design/<Rendered_Model_Name>/Views/<View>_View-<ROOT>.view.svg`
-    + DOT source: `docs/design/<Rendered_Model_Name>/Views/source/<View>_View-<ROOT>.view.dot`
+    + SVG: `docs/design/<Rendered_Model_Name>/Views/<View>_View.view.svg`
+    + DOT source: `docs/design/<Rendered_Model_Name>/Views/source/<View>_View.view.dot`

@@ -49,7 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - View rendering now selects Graphviz layout engine per view: `osage` for the Requirements view, `dot` for all other views.
 - View rendering now defaults to curved Graphviz splines for smoother edges.
 - View rendering now converts Graphviz plain spline control points into cubic Bezier SVG paths for smoother edges.
-- View rendering now emits per-root view artifacts using `<View>_View-<ROOT>.view.svg`/`.view.dot` naming instead of single aggregated views.
+- View rendering now emits a single view per type using `<View>_View.view.svg`/`.view.dot` naming, skipping empty or single-card views except for the Entire Model view.
 - Expanded aurora_shared validation fixtures to cover `Application implements Test`, `Component implements Class`, `Artifact persists to Data Store`, and `uses` relationships per the canonical matrix.
 - Embedded the canonical instruction registries (card definitions, relationships, view definitions, styling guide) directly into `aurora_shared` so CLI validation/rendering no longer require external files at runtime.
 - Reduced SVG shape sizes for State (50%) and Event/Condition/Actor/Mission (25%) to better balance text proportions.

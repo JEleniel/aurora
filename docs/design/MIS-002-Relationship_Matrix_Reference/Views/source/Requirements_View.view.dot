@@ -1,0 +1,18 @@
+digraph "Requirements" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"ADR-001" [fillcolor="#1f2937", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">📄</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>ADR</B><BR/><B>ADR-001</B><BR/>&#160;<BR/>Reference ADR — Architectural Decision Record made by<BR/>an actor and documenting a requirement.</FONT></TD></TR></TABLE>>, shape="note"];
+	"CAP-001" [fillcolor="#052e16", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">✨</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Capability</B><BR/><B>CAP-001</B><BR/>&#160;<BR/>Reference Capability — Capability used to satisfy a<BR/>requirement and necessitate a process.</FONT></TD></TR></TABLE>>, shape="box"];
+	"DRI-001" [fillcolor="#064e3b", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🧭</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Driver</B><BR/><B>DRI-001</B><BR/>&#160;<BR/>Reference Driver — Motivation used to drive a<BR/>downstream requirement in the relationship-matrix<BR/>reference model.</FONT></TD></TR></TABLE>>, shape="box"];
+	"MIS-002" [fillcolor="#022c22", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🎯</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Mission</B><BR/><B>MIS-002</B><BR/>&#160;<BR/>Relationship Matrix Reference — Reference Aurora model<BR/>encoding the canonical relationship registry as concrete<BR/>card links for tooling and diagram validation.</FONT></TD></TR></TABLE>>, shape="doubleoctagon"];
+	"REQ-001" [fillcolor="#065f46", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">☑️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Requirement</B><BR/><B>REQ-001</B><BR/>&#160;<BR/>Reference Requirement — Requirement referenced by<BR/>multiple rules (driven by driver, satisfied by<BR/>capability, documented by ADR, limited by constraint).</FONT></TD></TR></TABLE>>, shape="box"];
+	"ADR-001" -> "REQ-001" [label="documents"];
+	"CAP-001" -> "REQ-001" [label="satisfies"];
+	"DRI-001" -> "REQ-001" [label="drives"];
+	"MIS-002" -> "DRI-001" [label="establishes"];
+	subgraph "cluster_BND-001" {
+		graph [color="#000000", label="Reference Boundary (BND-001)", penwidth="4", style="dashed"];
+		"ADR-001";
+	}
+}

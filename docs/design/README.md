@@ -7,7 +7,7 @@ This folder contains the _rendered_ (human-readable) Aurora design artifacts pro
 - Source model home: [`aurora/`](aurora/)
 - Per-model source cards live under `aurora/<MISSION_ID>/...`
 - Rendered output is written under `docs/design/<MISSION_NAME>/...`
-- View SVGs are emitted per root card under `docs/design/<MISSION_NAME>/Views/` using `<View>_View-<ROOT>.view.svg` naming (DOT sources live under `Views/source/`).
+- View SVGs are emitted per view type under `docs/design/<MISSION_NAME>/Views/` using `<View>_View.view.svg` naming (DOT sources live under `Views/source/`).
 
 ## Models
 

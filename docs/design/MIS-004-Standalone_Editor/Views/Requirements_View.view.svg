@@ -1,0 +1,389 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2056.32 1402.66" width="2056.32" height="1402.66" data-theme="light">
+<defs>
+<style>
+svg{--bg:#FFFFFF;--edge:#000000;--edgeLabel:#000000;--nodeStroke:#000000;--boundary:#000000;}
+svg[data-theme="dark"]{--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}
+@media (prefers-color-scheme: dark){svg:not([data-theme="light"]){--bg:#000000;--edge:#FFFFFF;--edgeLabel:#FFFFFF;--nodeStroke:#FFFFFF;--boundary:#FFFFFF;}}
+.bg{fill:var(--bg);}
+.edge-path{fill:none;stroke:var(--edge);stroke-width:1.2;marker-end:url(#arrow);}
+.edge-path.note-edge{stroke-dasharray:2 4;stroke-linecap:round;}
+.edge-arrow{fill:var(--edge);}
+.edge-label{fill:var(--edgeLabel);font-family:Inter,system-ui,sans-serif;font-size:9px;}
+.node-icon{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:42px;}
+.node-label{fill:var(--nodeText,#000000);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.node-shape{stroke:var(--nodeStroke);stroke-width:1.4;}
+.node-shape-outline{fill:none;}
+.boundary rect{fill:transparent;stroke:var(--boundary);stroke-width:4;stroke-dasharray:5 5;}
+.boundary-label{fill:var(--boundary);font-family:Inter,system-ui,sans-serif;font-size:11px;}
+.card-type-asset .node-shape{fill:#586374;}
+svg[data-theme="light"] .card-type-asset .node-shape{fill:#334155;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-asset .node-shape{fill:#334155;}}
+.card-type-asset .node-label{--nodeText:#FFFFFF;}
+.card-type-control .node-shape{fill:#8B623D;}
+svg[data-theme="light"] .card-type-control .node-shape{fill:#713f12;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-control .node-shape{fill:#713f12;}}
+.card-type-control .node-label{--nodeText:#FFFFFF;}
+.card-type-feature .node-shape{fill:#3E7253;}
+svg[data-theme="light"] .card-type-feature .node-shape{fill:#14532d;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-feature .node-shape{fill:#14532d;}}
+.card-type-feature .node-label{--nodeText:#FFFFFF;}
+.card-type-state .node-shape{fill:#8A438E;}
+svg[data-theme="light"] .card-type-state .node-shape{fill:#701a75;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state .node-shape{fill:#701a75;}}
+.card-type-state .node-label{--nodeText:#FFFFFF;}
+.card-type-node .node-shape{fill:#565498;}
+svg[data-theme="light"] .card-type-node .node-shape{fill:#312e81;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node .node-shape{fill:#312e81;}}
+.card-type-node .node-label{--nodeText:#FFFFFF;}
+.card-type-trigger .node-shape{fill:#90593A;}
+svg[data-theme="light"] .card-type-trigger .node-shape{fill:#78350f;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-trigger .node-shape{fill:#78350f;}}
+.card-type-trigger .node-label{--nodeText:#FFFFFF;}
+.card-type-interface .node-shape{fill:#3B4897;}
+svg[data-theme="light"] .card-type-interface .node-shape{fill:#102080;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-interface .node-shape{fill:#102080;}}
+.card-type-interface .node-label{--nodeText:#000000;}
+.card-type-mission .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-mission .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-mission .node-shape{fill:#022c22;}}
+.card-type-mission .node-label{--nodeText:#FFFFFF;}
+.card-type-adr .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-adr .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-adr .node-shape{fill:#1f2937;}}
+.card-type-adr .node-label{--nodeText:#FFFFFF;}
+.card-type-condition .node-shape{fill:#644833;}
+svg[data-theme="light"] .card-type-condition .node-shape{fill:#422006;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-condition .node-shape{fill:#422006;}}
+.card-type-condition .node-label{--nodeText:#FFFFFF;}
+.card-type-class .node-shape{fill:#3A4150;}
+svg[data-theme="light"] .card-type-class .node-shape{fill:#0f172a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-class .node-shape{fill:#0f172a;}}
+.card-type-class .node-label{--nodeText:#FFFFFF;}
+.card-type-activity .node-shape{fill:#6C46A8;}
+svg[data-theme="light"] .card-type-activity .node-shape{fill:#4c1d95;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-activity .node-shape{fill:#4c1d95;}}
+.card-type-activity .node-label{--nodeText:#FFFFFF;}
+.card-type-state-machine .node-shape{fill:#6B316E;}
+svg[data-theme="light"] .card-type-state-machine .node-shape{fill:#4a044e;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-state-machine .node-shape{fill:#4a044e;}}
+.card-type-state-machine .node-label{--nodeText:#FFFFFF;}
+.card-type-event .node-shape{fill:#7949C3;}
+svg[data-theme="light"] .card-type-event .node-shape{fill:#5b21b6;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-event .node-shape{fill:#5b21b6;}}
+.card-type-event .node-label{--nodeText:#FFFFFF;}
+.card-type-data-store .node-shape{fill:#34779B;}
+svg[data-theme="light"] .card-type-data-store .node-shape{fill:#075985;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-data-store .node-shape{fill:#075985;}}
+.card-type-data-store .node-label{--nodeText:#FFFFFF;}
+.card-type-capability .node-shape{fill:#325440;}
+svg[data-theme="light"] .card-type-capability .node-shape{fill:#052e16;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-capability .node-shape{fill:#052e16;}}
+.card-type-capability .node-label{--nodeText:#FFFFFF;}
+.card-type-deployment .node-shape{fill:#47446B;}
+svg[data-theme="light"] .card-type-deployment .node-shape{fill:#1e1b4b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-deployment .node-shape{fill:#1e1b4b;}}
+.card-type-deployment .node-label{--nodeText:#FFFFFF;}
+.card-type-threat .node-shape{fill:#6C3242;}
+svg[data-theme="light"] .card-type-threat .node-shape{fill:#4c0519;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-threat .node-shape{fill:#4c0519;}}
+.card-type-threat .node-label{--nodeText:#FFFFFF;}
+.card-type-requirement .node-shape{fill:#337C67;}
+svg[data-theme="light"] .card-type-requirement .node-shape{fill:#065f46;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-requirement .node-shape{fill:#065f46;}}
+.card-type-requirement .node-label{--nodeText:#FFFFFF;}
+.card-type-system .node-shape{fill:#414C73;}
+svg[data-theme="light"] .card-type-system .node-shape{fill:#172554;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-system .node-shape{fill:#172554;}}
+.card-type-system .node-label{--nodeText:#FFFFFF;}
+.card-type-application .node-shape{fill:#475D9F;}
+svg[data-theme="light"] .card-type-application .node-shape{fill:#1e3a8a;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-application .node-shape{fill:#1e3a8a;}}
+.card-type-application .node-label{--nodeText:#FFFFFF;}
+.card-type-boundary .node-shape{fill:#FFFFFF;}
+svg[data-theme="light"] .card-type-boundary .node-shape{fill:#FFFFFF;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-boundary .node-shape{fill:#FFFFFF;}}
+.card-type-boundary .node-label{--nodeText:#FFFFFF;}
+.card-type-component .node-shape{fill:#4762BD;}
+svg[data-theme="light"] .card-type-component .node-shape{fill:#1e40af;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-component .node-shape{fill:#1e40af;}}
+.card-type-component .node-label{--nodeText:#FFFFFF;}
+.card-type-node-instance .node-shape{fill:#5B55B4;}
+svg[data-theme="light"] .card-type-node-instance .node-shape{fill:#3730a3;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-node-instance .node-shape{fill:#3730a3;}}
+.card-type-node-instance .node-label{--nodeText:#FFFFFF;}
+.card-type-process .node-shape{fill:#543B81;}
+svg[data-theme="light"] .card-type-process .node-shape{fill:#2e1065;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-process .node-shape{fill:#2e1065;}}
+.card-type-process .node-label{--nodeText:#FFFFFF;}
+.card-type-predicate .node-shape{fill:#76459D;}
+svg[data-theme="light"] .card-type-predicate .node-shape{fill:#581c87;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-predicate .node-shape{fill:#581c87;}}
+.card-type-predicate .node-label{--nodeText:#FFFFFF;}
+.card-type-risk .node-shape{fill:#9D3D5B;}
+svg[data-theme="light"] .card-type-risk .node-shape{fill:#881337;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-risk .node-shape{fill:#881337;}}
+.card-type-risk .node-label{--nodeText:#FFFFFF;}
+.card-type-actor .node-shape{fill:#435432;}
+svg[data-theme="light"] .card-type-actor .node-shape{fill:#1a2e05;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-actor .node-shape{fill:#1a2e05;}}
+.card-type-actor .node-label{--nodeText:#FFFFFF;}
+.card-type-story .node-shape{fill:#5A723E;}
+svg[data-theme="light"] .card-type-story .node-shape{fill:#365314;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-story .node-shape{fill:#365314;}}
+.card-type-story .node-label{--nodeText:#FFFFFF;}
+.card-type-test .node-shape{fill:#30524A;}
+svg[data-theme="light"] .card-type-test .node-shape{fill:#022c22;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-test .node-shape{fill:#022c22;}}
+.card-type-test .node-label{--nodeText:#FFFFFF;}
+.card-type-driver .node-shape{fill:#336E5E;}
+svg[data-theme="light"] .card-type-driver .node-shape{fill:#064e3b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-driver .node-shape{fill:#064e3b;}}
+.card-type-driver .node-label{--nodeText:#FFFFFF;}
+.card-type-note .node-shape{fill:#47505B;}
+svg[data-theme="light"] .card-type-note .node-shape{fill:#1f2937;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-note .node-shape{fill:#1f2937;}}
+.card-type-note .node-label{--nodeText:#FFFFFF;}
+.card-type-constraint .node-shape{fill:#34546A;}
+svg[data-theme="light"] .card-type-constraint .node-shape{fill:#082f49;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-constraint .node-shape{fill:#082f49;}}
+.card-type-constraint .node-label{--nodeText:#FFFFFF;}
+.card-type-artifact .node-shape{fill:#47505E;}
+svg[data-theme="light"] .card-type-artifact .node-shape{fill:#1e293b;}
+@media (prefers-color-scheme: light){svg:not([data-theme="dark"]) .card-type-artifact .node-shape{fill:#1e293b;}}
+.card-type-artifact .node-label{--nodeText:#FFFFFF;}
+</style>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+  <path d="M 0 0 L 10 5 L 0 10 z" class="edge-arrow" />
+</marker>
+</defs>
+<rect class="bg" x="0" y="0" width="100%" height="100%" />
+<path class="edge-path" d="M 1408.99 957.58 C 1447.01 957.09 1486.56 956.58 1538.90 955.91" data-tail="CAP-009" data-head="REQ-009" />
+<text class="edge-label" x="1483.58" y="949.99" text-anchor="middle" dominant-baseline="middle">satisfies</text>
+<path class="edge-path" d="M 1408.99 1024.78 C 1452.67 1036.43 1498.37 1048.66 1555.90 1063.99" data-tail="CAP-009" data-head="REQ-013" />
+<text class="edge-label" x="1483.58" y="1032.65" text-anchor="middle" dominant-baseline="middle">satisfies</text>
+<path class="edge-path" d="M 1432.32 77.22 C 1462.56 77.28 1493.38 77.38 1537.57 77.46" data-tail="CAP-010" data-head="REQ-010" />
+<text class="edge-label" x="1483.58" y="71.33" text-anchor="middle" dominant-baseline="middle">satisfies</text>
+<path class="edge-path" d="M 1424.32 268.99 C 1456.80 270.72 1489.82 272.45 1535.57 274.89" data-tail="CAP-011" data-head="REQ-011" />
+<text class="edge-label" x="1483.58" y="264.67" text-anchor="middle" dominant-baseline="middle">satisfies</text>
+<path class="edge-path" d="M 1412.32 780.63 C 1447.68 779.27 1483.97 777.87 1533.57 775.97" data-tail="CAP-012" data-head="REQ-015" />
+<text class="edge-label" x="1483.58" y="771.32" text-anchor="middle" dominant-baseline="middle">satisfies</text>
+<path class="edge-path" d="M 1436.32 578.75 C 1463.04 574.70 1490.21 570.59 1530.90 564.42" data-tail="CAP-013" data-head="REQ-012" />
+<text class="edge-label" x="1483.58" y="563.32" text-anchor="middle" dominant-baseline="middle">satisfies</text>
+<path class="edge-path" d="M 1426.32 1316.41 C 1459.01 1315.36 1492.32 1314.29 1538.90 1312.80" data-tail="CAP-014" data-head="REQ-014" />
+<text class="edge-label" x="1483.58" y="1307.32" text-anchor="middle" dominant-baseline="middle">satisfies</text>
+<path class="edge-path" d="M 1412.41 518.64 C 1427.52 523.47 1432.03 528.58 1436.26 533.99 C 1472.64 580.68 1432.70 746.92 1460.26 799.32 C 1476.10 829.46 1499.90 853.70 1562.10 874.66" data-tail="DRI-004" data-head="REQ-009" />
+<text class="edge-label" x="1483.58" y="792.65" text-anchor="middle" dominant-baseline="middle">drives</text>
+<path class="edge-path" d="M 1410.43 362.64 C 1426.37 357.50 1431.46 352.61 1436.26 347.33 C 1465.92 314.78 1438.66 289.63 1460.26 251.33 C 1482.14 212.64 1493.76 204.96 1530.91 180.67 C 1540.61 174.34 1550.78 168.19 1583.71 155.95" data-tail="DRI-004" data-head="REQ-010" />
+<text class="edge-label" x="1483.58" y="191.33" text-anchor="middle" dominant-baseline="middle">drives</text>
+<path class="edge-path" d="M 1428.99 377.30 C 1459.87 369.79 1491.17 362.11 1535.57 351.33" data-tail="DRI-004" data-head="REQ-011" />
+<text class="edge-label" x="1483.58" y="353.95" text-anchor="middle" dominant-baseline="middle">drives</text>
+<path class="edge-path" d="M 1428.99 475.67 C 1458.24 479.60 1488.00 483.60 1530.90 489.36" data-tail="DRI-004" data-head="REQ-012" />
+<text class="edge-label" x="1483.58" y="473.99" text-anchor="middle" dominant-baseline="middle">drives</text>
+<path class="edge-path" d="M 1409.30 518.64 C 1425.02 523.73 1430.78 528.71 1436.26 533.99 C 1457.38 554.30 1440.67 573.60 1460.26 595.32 C 1491.17 629.58 1530.62 657.98 1603.68 687.99" data-tail="DRI-004" data-head="REQ-015" />
+<text class="edge-label" x="1483.58" y="588.65" text-anchor="middle" dominant-baseline="middle">drives</text>
+<path class="edge-path" d="M 1428.32 1134.33 C 1461.98 1133.68 1496.16 1133.03 1543.57 1132.12" data-tail="DRI-005" data-head="REQ-013" />
+<text class="edge-label" x="1483.58" y="1127.32" text-anchor="middle" dominant-baseline="middle">drives</text>
+<path class="edge-path" d="M 1428.32 1208.05 C 1460.74 1216.62 1493.47 1225.32 1538.90 1237.33" data-tail="DRI-005" data-head="REQ-014" />
+<text class="edge-label" x="1483.58" y="1209.99" text-anchor="middle" dominant-baseline="middle">drives</text>
+<path class="edge-path" d="M 567.67 697.77 C 690.18 631.73 799.20 577.21 900.28 533.99 C 908.20 530.60 916.28 527.24 941.32 518.64" data-tail="MIS-004" data-head="DRI-004" />
+<text class="edge-label" x="844.28" y="540.65" text-anchor="middle" dominant-baseline="middle">establishes</text>
+<path class="edge-path" d="M 569.79 884.87 C 691.30 949.58 799.78 1003.27 900.28 1045.99 C 908.47 1049.47 916.84 1052.93 941.26 1061.32" data-tail="MIS-004" data-head="DRI-005" />
+<text class="edge-label" x="844.28" y="1001.99" text-anchor="middle" dominant-baseline="middle">establishes</text>
+<g class="node card-type-capability" data-card-id="CAP-009" data-layout-node="CAP-009">
+<rect class="node-shape" x="927.65" y="889.99" width="481.33" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="976.65" y="960.65" text-anchor="middle" dominant-baseline="middle" font-size="42.00">✨</text>
+<text class="node-label" x="1201.32" y="925.65" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1201.32" font-weight="700">Capability</tspan>
+<tspan x="1201.32" dy="14.00" font-weight="700">CAP-009</tspan>
+<tspan x="1201.32" dy="14.00">&#160;</tspan>
+<tspan x="1201.32" dy="14.00">Desktop UI Shell — Ability to present a desktop</tspan>
+<tspan x="1201.32" dy="14.00">application UI with a stable three-pane layout and shared</tspan>
+<tspan x="1201.32" dy="14.00">selection state.</tspan>
+</text>
+</g>
+<g class="node card-type-capability" data-card-id="CAP-010" data-layout-node="CAP-010">
+<rect class="node-shape" x="904.32" y="6.04" width="528.00" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="953.32" y="76.70" text-anchor="middle" dominant-baseline="middle" font-size="42.00">✨</text>
+<text class="node-label" x="1201.32" y="48.70" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1201.32" font-weight="700">Capability</tspan>
+<tspan x="1201.32" dy="14.00" font-weight="700">CAP-010</tspan>
+<tspan x="1201.32" dy="14.00">&#160;</tspan>
+<tspan x="1201.32" dy="14.00">Navigation and Focus Management — Ability to navigate the model</tspan>
+<tspan x="1201.32" dy="14.00">by card id and keep the focused card synchronized across panes.</tspan>
+</text>
+</g>
+<g class="node card-type-capability" data-card-id="CAP-011" data-layout-node="CAP-011">
+<rect class="node-shape" x="912.32" y="177.36" width="512.00" height="156.00" rx="6" ry="6" />
+<text class="node-icon" x="961.32" y="255.36" text-anchor="middle" dominant-baseline="middle" font-size="42.00">✨</text>
+<text class="node-label" x="1201.32" y="220.36" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1201.32" font-weight="700">Capability</tspan>
+<tspan x="1201.32" dy="14.00" font-weight="700">CAP-011</tspan>
+<tspan x="1201.32" dy="14.00">&#160;</tspan>
+<tspan x="1201.32" dy="14.00">Context Graph Visualization — Ability to visualize a local</tspan>
+<tspan x="1201.32" dy="14.00">subgraph around the focused card (including parent, siblings, and</tspan>
+<tspan x="1201.32" dy="14.00">children) and navigate by clicking nodes.</tspan>
+</text>
+</g>
+<g class="node card-type-capability" data-card-id="CAP-012" data-layout-node="CAP-012">
+<rect class="node-shape" x="924.32" y="719.33" width="488.00" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="973.32" y="789.99" text-anchor="middle" dominant-baseline="middle" font-size="42.00">✨</text>
+<text class="node-label" x="1201.32" y="754.99" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1201.32" font-weight="700">Capability</tspan>
+<tspan x="1201.32" dy="14.00" font-weight="700">CAP-012</tspan>
+<tspan x="1201.32" dy="14.00">&#160;</tspan>
+<tspan x="1201.32" dy="14.00">Interactive Card Editing — Ability to edit card fields and</tspan>
+<tspan x="1201.32" dy="14.00">links interactively while maintaining model invariants and</tspan>
+<tspan x="1201.32" dy="14.00">persisting changes safely.</tspan>
+</text>
+</g>
+<g class="node card-type-capability" data-card-id="CAP-013" data-layout-node="CAP-013">
+<rect class="node-shape" x="900.32" y="548.66" width="536.00" height="141.33" rx="6" ry="6" />
+<text class="node-icon" x="949.32" y="619.32" text-anchor="middle" dominant-baseline="middle" font-size="42.00">✨</text>
+<text class="node-label" x="1201.32" y="584.32" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1201.32" font-weight="700">Capability</tspan>
+<tspan x="1201.32" dy="14.00" font-weight="700">CAP-013</tspan>
+<tspan x="1201.32" dy="14.00">&#160;</tspan>
+<tspan x="1201.32" dy="14.00">Markdown Preview and Audit View — Ability to render the focused</tspan>
+<tspan x="1201.32" dy="14.00">card as a readable Markdown-style document with link list, and to</tspan>
+<tspan x="1201.32" dy="14.00">inspect audit trail history.</tspan>
+</text>
+</g>
+<g class="node card-type-capability" data-card-id="CAP-014" data-layout-node="CAP-014">
+<rect class="node-shape" x="910.32" y="1246.66" width="516.00" height="156.00" rx="6" ry="6" />
+<text class="node-icon" x="959.32" y="1324.66" text-anchor="middle" dominant-baseline="middle" font-size="42.00">✨</text>
+<text class="node-label" x="1201.32" y="1289.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1201.32" font-weight="700">Capability</tspan>
+<tspan x="1201.32" dy="14.00" font-weight="700">CAP-014</tspan>
+<tspan x="1201.32" dy="14.00">&#160;</tspan>
+<tspan x="1201.32" dy="14.00">aurora_shared Integration — Ability to reuse aurora_shared for</tspan>
+<tspan x="1201.32" dy="14.00">model discovery/loading, validation, rendering, and file layout</tspan>
+<tspan x="1201.32" dy="14.00">conventions to keep editor behavior consistent with CLI tooling.</tspan>
+</text>
+</g>
+<g class="node card-type-driver" data-card-id="DRI-004" data-layout-node="DRI-004">
+<rect class="node-shape" x="907.65" y="362.64" width="521.34" height="156.00" rx="6" ry="6" />
+<text class="node-icon" x="956.65" y="440.64" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧭</text>
+<text class="node-label" x="1201.32" y="405.64" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1201.32" font-weight="700">Driver</tspan>
+<tspan x="1201.32" dy="14.00" font-weight="700">DRI-004</tspan>
+<tspan x="1201.32" dy="14.00">&#160;</tspan>
+<tspan x="1201.32" dy="14.00">Visual Model Authoring — Enable rapid comprehension and editing</tspan>
+<tspan x="1201.32" dy="14.00">of an Aurora model through a visual, multi-pane editor that</tspan>
+<tspan x="1201.32" dy="14.00">reduces cognitive load and navigation friction.</tspan>
+</text>
+</g>
+<g class="node card-type-driver" data-card-id="DRI-005" data-layout-node="DRI-005">
+<rect class="node-shape" x="908.32" y="1061.32" width="520.00" height="156.00" rx="6" ry="6" />
+<text class="node-icon" x="957.32" y="1139.32" text-anchor="middle" dominant-baseline="middle" font-size="42.00">🧭</text>
+<text class="node-label" x="1201.32" y="1097.32" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1201.32" font-weight="700">Driver</tspan>
+<tspan x="1201.32" dy="14.00" font-weight="700">DRI-005</tspan>
+<tspan x="1201.32" dy="14.00">&#160;</tspan>
+<tspan x="1201.32" dy="14.00">Reuse Shared Aurora Semantics — Minimize duplicated logic and</tspan>
+<tspan x="1201.32" dy="14.00">inconsistencies across tooling surfaces by reusing the</tspan>
+<tspan x="1201.32" dy="14.00">aurora_shared library for model discovery, parsing, validation,</tspan>
+<tspan x="1201.32" dy="14.00">and rendering.</tspan>
+</text>
+</g>
+<g class="node card-type-mission" data-card-id="MIS-004" data-layout-node="MIS-004">
+<polygon class="node-shape" points="478.98,704.89 598.96,755.52 598.96,827.12 478.98,877.75 309.30,877.75 189.31,827.12 189.31,755.52 309.30,704.89" />
+<polygon class="node-shape node-shape-outline" points="476.68,710.43 593.42,757.81 593.42,824.82 476.68,872.20 311.59,872.20 194.85,824.82 194.85,757.81 311.59,710.43" stroke-width="1" />
+<text class="node-icon" x="263.44" y="791.32" text-anchor="middle" dominant-baseline="middle" font-size="31.50">🎯</text>
+<text class="node-label" x="437.64" y="756.32" text-anchor="middle" dominant-baseline="middle">
+<tspan x="437.64" font-weight="700">Mission</tspan>
+<tspan x="437.64" dy="14.00" font-weight="700">MIS-004</tspan>
+<tspan x="437.64" dy="14.00">&#160;</tspan>
+<tspan x="437.64" dy="14.00">Standalone Editor — Provide a standalone application capable of</tspan>
+<tspan x="437.64" dy="14.00">creating and manipulating Aurora models visually, reusing the</tspan>
+<tspan x="437.64" dy="14.00">aurora_shared library to facilitate development.</tspan>
+</text>
+</g>
+<g class="node card-type-requirement" data-card-id="REQ-009" data-layout-node="REQ-009">
+<rect class="node-shape" x="1538.90" y="874.66" width="509.34" height="156.00" rx="6" ry="6" />
+<text class="node-icon" x="1587.90" y="952.66" text-anchor="middle" dominant-baseline="middle" font-size="42.00">☑️</text>
+<text class="node-label" x="1826.57" y="917.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1826.57" font-weight="700">Requirement</tspan>
+<tspan x="1826.57" dy="14.00" font-weight="700">REQ-009</tspan>
+<tspan x="1826.57" dy="14.00">&#160;</tspan>
+<tspan x="1826.57" dy="14.00">Three Pane Layout — The editor SHALL present a three-pane</tspan>
+<tspan x="1826.57" dy="14.00">layout (similar to Visual Studio or Obsidian): left navigation</tspan>
+<tspan x="1826.57" dy="14.00">tree, central graph view, and right inspector.</tspan>
+</text>
+</g>
+<g class="node card-type-requirement" data-card-id="REQ-010" data-layout-node="REQ-010">
+<rect class="node-shape" x="1537.57" y="-0.05" width="512.00" height="156.00" rx="6" ry="6" />
+<text class="node-icon" x="1586.57" y="77.95" text-anchor="middle" dominant-baseline="middle" font-size="42.00">☑️</text>
+<text class="node-label" x="1826.57" y="42.95" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1826.57" font-weight="700">Requirement</tspan>
+<tspan x="1826.57" dy="14.00" font-weight="700">REQ-010</tspan>
+<tspan x="1826.57" dy="14.00">&#160;</tspan>
+<tspan x="1826.57" dy="14.00">Shortest Path Tree Navigation — The editor SHALL provide a</tspan>
+<tspan x="1826.57" dy="14.00">left-pane tree view for navigation, where the tree is derived</tspan>
+<tspan x="1826.57" dy="14.00">from a chosen shortest path from the mission root to each card.</tspan>
+</text>
+</g>
+<g class="node card-type-requirement" data-card-id="REQ-011" data-layout-node="REQ-011">
+<rect class="node-shape" x="1535.57" y="196.00" width="516.00" height="185.34" rx="6" ry="6" />
+<text class="node-icon" x="1584.57" y="288.67" text-anchor="middle" dominant-baseline="middle" font-size="42.00">☑️</text>
+<text class="node-label" x="1826.57" y="232.67" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1826.57" font-weight="700">Requirement</tspan>
+<tspan x="1826.57" dy="14.00" font-weight="700">REQ-011</tspan>
+<tspan x="1826.57" dy="14.00">&#160;</tspan>
+<tspan x="1826.57" dy="14.00">Brain Style Graph Navigation — The editor SHALL provide a</tspan>
+<tspan x="1826.57" dy="14.00">central mind-map / TheBrain style view with the focused card</tspan>
+<tspan x="1826.57" dy="14.00">centered. The view SHALL show the parent (from the chosen</tspan>
+<tspan x="1826.57" dy="14.00">shortest-path chain), and MAY show siblings (same card_type)</tspan>
+<tspan x="1826.57" dy="14.00">linked from that parent even if they are not linked to the</tspan>
+<tspan x="1826.57" dy="14.00">focused card.</tspan>
+</text>
+</g>
+<g class="node card-type-requirement" data-card-id="REQ-012" data-layout-node="REQ-012">
+<rect class="node-shape" x="1530.90" y="431.99" width="525.33" height="185.34" rx="6" ry="6" />
+<text class="node-icon" x="1579.90" y="524.66" text-anchor="middle" dominant-baseline="middle" font-size="42.00">☑️</text>
+<text class="node-label" x="1826.57" y="475.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1826.57" font-weight="700">Requirement</tspan>
+<tspan x="1826.57" dy="14.00" font-weight="700">REQ-012</tspan>
+<tspan x="1826.57" dy="14.00">&#160;</tspan>
+<tspan x="1826.57" dy="14.00">Edit, Preview, and Audit Inspector — The editor SHALL provide a</tspan>
+<tspan x="1826.57" dy="14.00">right-pane inspector: the top half edits the focused card; the</tspan>
+<tspan x="1826.57" dy="14.00">bottom half renders a Markdown-style view of the card (including</tspan>
+<tspan x="1826.57" dy="14.00">links). The bottom half SHALL provide a tab to reveal the card’s</tspan>
+<tspan x="1826.57" dy="14.00">audit trail details.</tspan>
+</text>
+</g>
+<g class="node card-type-requirement" data-card-id="REQ-013" data-layout-node="REQ-013">
+<rect class="node-shape" x="1543.57" y="1063.99" width="500.00" height="126.66" rx="6" ry="6" />
+<text class="node-icon" x="1592.57" y="1127.32" text-anchor="middle" dominant-baseline="middle" font-size="42.00">☑️</text>
+<text class="node-label" x="1826.57" y="1099.32" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1826.57" font-weight="700">Requirement</tspan>
+<tspan x="1826.57" dy="14.00" font-weight="700">REQ-013</tspan>
+<tspan x="1826.57" dy="14.00">&#160;</tspan>
+<tspan x="1826.57" dy="14.00">Dioxus UI — The standalone editor SHOULD be implemented using</tspan>
+<tspan x="1826.57" dy="14.00">Dioxus as the primary UI library.</tspan>
+</text>
+</g>
+<g class="node card-type-requirement" data-card-id="REQ-014" data-layout-node="REQ-014">
+<rect class="node-shape" x="1538.90" y="1226.66" width="509.34" height="156.00" rx="6" ry="6" />
+<text class="node-icon" x="1587.90" y="1304.66" text-anchor="middle" dominant-baseline="middle" font-size="42.00">☑️</text>
+<text class="node-label" x="1826.57" y="1269.66" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1826.57" font-weight="700">Requirement</tspan>
+<tspan x="1826.57" dy="14.00" font-weight="700">REQ-014</tspan>
+<tspan x="1826.57" dy="14.00">&#160;</tspan>
+<tspan x="1826.57" dy="14.00">Reuse aurora_shared — The editor SHALL reuse aurora_shared for</tspan>
+<tspan x="1826.57" dy="14.00">model discovery/loading and validation/rendering semantics to</tspan>
+<tspan x="1826.57" dy="14.00">stay consistent with other Aurora tooling.</tspan>
+</text>
+</g>
+<g class="node card-type-requirement" data-card-id="REQ-015" data-layout-node="REQ-015">
+<rect class="node-shape" x="1533.57" y="687.99" width="520.00" height="156.00" rx="6" ry="6" />
+<text class="node-icon" x="1582.57" y="765.99" text-anchor="middle" dominant-baseline="middle" font-size="42.00">☑️</text>
+<text class="node-label" x="1826.57" y="730.99" text-anchor="middle" dominant-baseline="middle">
+<tspan x="1826.57" font-weight="700">Requirement</tspan>
+<tspan x="1826.57" dy="14.00" font-weight="700">REQ-015</tspan>
+<tspan x="1826.57" dy="14.00">&#160;</tspan>
+<tspan x="1826.57" dy="14.00">Safe Workspace Persistence — The editor SHALL persist edits to</tspan>
+<tspan x="1826.57" dy="14.00">model files in a safe manner that avoids partial writes and</tspan>
+<tspan x="1826.57" dy="14.00">preserves schema validity (e.g., atomic replace per card file).</tspan>
+</text>
+</g>
+</svg>

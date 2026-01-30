@@ -1,0 +1,16 @@
+digraph "Process" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"CAP-015" [fillcolor="#052e16", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">✨</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Capability</B><BR/><B>CAP-015</B><BR/>&#160;<BR/>Deterministic Model Invariants — Ability to define and<BR/>enforce mission-rooted graph invariants so any tool can<BR/>traverse, validate, and interpret the model<BR/>deterministically.</FONT></TD></TR></TABLE>>, shape="box"];
+	"CAP-016" [fillcolor="#052e16", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">✨</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Capability</B><BR/><B>CAP-016</B><BR/>&#160;<BR/>Canonical Registries — Ability to define and<BR/>distribute canonical registries for card types,<BR/>relationship verbs, and views so multiple tools produce<BR/>consistent validation and renderings.</FONT></TD></TR></TABLE>>, shape="box"];
+	"CAP-017" [fillcolor="#052e16", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">✨</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Capability</B><BR/><B>CAP-017</B><BR/>&#160;<BR/>Model Layout and Serialization — Ability to persist<BR/>Aurora cards in a stable, tooling-friendly directory and<BR/>filename layout, with schema references and encoding<BR/>rules suitable for reliable diffs and automated<BR/>ingestion.</FONT></TD></TR></TABLE>>, shape="box"];
+	"CAP-018" [fillcolor="#052e16", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">✨</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Capability</B><BR/><B>CAP-018</B><BR/>&#160;<BR/>View Projection and Rendering — Ability to select card<BR/>types for a view and render the resulting subgraph as<BR/>navigable documentation and diagrams without altering<BR/>the underlying model.</FONT></TD></TR></TABLE>>, shape="box"];
+	subgraph "cluster_BND-004" {
+		graph [color="#000000", label="Aurora Style Specification (BND-004)", penwidth="4", style="dashed"];
+		"CAP-015";
+		"CAP-016";
+		"CAP-017";
+		"CAP-018";
+	}
+}

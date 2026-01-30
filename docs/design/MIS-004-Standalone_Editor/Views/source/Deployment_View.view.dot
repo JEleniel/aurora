@@ -1,0 +1,21 @@
+digraph "Deployment" {
+	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
+	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
+	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
+	"APP-004" [fillcolor="#1e3a8a", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🪟</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Application</B><BR/><B>APP-004</B><BR/>&#160;<BR/>aurora_editor — Standalone desktop application (built<BR/>with Dioxus) for browsing and editing Aurora models,<BR/>including live validation and Markdown-style previews.</FONT></TD></TR></TABLE>>, shape="component"];
+	"COM-007" [fillcolor="#1e40af", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🧊</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Component</B><BR/><B>COM-007</B><BR/>&#160;<BR/>Dioxus App Shell — Top-level Dioxus component that<BR/>owns the UI shell layout and routes focus/selection<BR/>changes between panes.</FONT></TD></TR></TABLE>>, shape="box3d"];
+	"COM-008" [fillcolor="#1e40af", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🧊</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Component</B><BR/><B>COM-008</B><BR/>&#160;<BR/>Explorer Tree Pane — Left navigation pane that<BR/>presents a tree view derived from shortest paths from<BR/>the mission root, enabling fast card discovery and focus<BR/>changes.</FONT></TD></TR></TABLE>>, shape="box3d"];
+	"COM-009" [fillcolor="#1e40af", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🧊</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Component</B><BR/><B>COM-009</B><BR/>&#160;<BR/>Brain Graph Pane — Central pane that renders a<BR/>mind-map / TheBrain-style context graph with the focused<BR/>card centered and related cards positioned by<BR/>relationship role.</FONT></TD></TR></TABLE>>, shape="box3d"];
+	"COM-010" [fillcolor="#1e40af", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🧊</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Component</B><BR/><B>COM-010</B><BR/>&#160;<BR/>Inspector Pane — Right pane that splits vertically:<BR/>top half edits the focused card; bottom half shows a<BR/>rendered Markdown-style preview (and links) with a tab<BR/>to reveal audit details.</FONT></TD></TR></TABLE>>, shape="box3d"];
+	"COM-011" [fillcolor="#1e40af", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🧊</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Component</B><BR/><B>COM-011</B><BR/>&#160;<BR/>Model Session and Persistence — In-memory model<BR/>session that loads a workspace model home, computes<BR/>shortest paths, validates changes, and persists updated<BR/>card files using aurora_shared semantics.</FONT></TD></TR></TABLE>>, shape="box3d"];
+	"DTS-003" [fillcolor="#075985", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🗄️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Data Store</B><BR/><B>DTS-003</B><BR/>&#160;<BR/>Workspace File System — Filesystem-backed store<BR/>holding Aurora model source files (Mission card plus<BR/>per-card JSJSON files) within a user-selected workspace.</FONT></TD></TR></TABLE>>, shape="cylinder"];
+	"APP-004" -> "COM-007" [label="composes"];
+	"APP-004" -> "COM-008" [label="composes"];
+	"APP-004" -> "COM-009" [label="composes"];
+	"APP-004" -> "COM-010" [label="composes"];
+	"APP-004" -> "COM-011" [label="composes"];
+	subgraph "cluster_BND-003" {
+		graph [color="#000000", label="Local Workstation (BND-003)", penwidth="4", style="dashed"];
+		"DTS-003";
+	}
+}
