@@ -39,7 +39,7 @@ You implement applications, front and back end, following the architectural patt
 ## Acceptance Criteria
 
 - Implementation matches the architecture-defined contracts (especially `interface` cards) without ad-hoc redesign.
-- All tests for the task are passing (including new tests added by the Test Developer). Unrelated tests may be failing due to other work in progress.
+- All tests for the task are passing (including new tests added by the Test Developer). Unrelated tests may be failing due to other work in progress. You MUST run tests.
 - Error handling is intentional and consistent with repository standards (no unchecked failures unless justified).
 - Logging is appropriate for the boundary and does not leak secrets.
 - Code passes formatting, linting, security, and code quality checks with zero issues.

@@ -1,18 +1,14 @@
 ---
-applyTo: "**/aurora/AGENT-MIS-*.jsjson"
+applyTo: "**/AGENT-MIS-*.jsjson"
 ---
 
 # Aurora Compact Model Instructions (Read-Only)
 
 This instruction exists to help agents consume Aurora models safely and efficiently.
 
-## Architect? Read This First
-
-If you are the Architect, read and follow [Aurora.instructions.md](Aurora.instructions.md) instead of this document.
-
 ## What to use
 
-Before you perform and work, you MUST understand the compact Aurora Model rlevant to your work:
+Before you perform and work, you MUST understand the compact Aurora Model(s) rlevant to your work:
 
 - `docs/design/aurora/AGENT-MIS-*.jsjson`
 

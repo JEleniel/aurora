@@ -69,7 +69,3 @@ The following libraries are approved for use; always use the latest stable relea
 ## Acceptance Criteria
 
 - All `cargo` check tools (`clippy`, `fmt`, `check`, `test`) pass.
-
-## References
-
-- See [model.rs](rust_example/model.rs) and [model/card.rs](rust_example/model/card.rs) for examples of good code.

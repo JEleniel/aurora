@@ -38,7 +38,7 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 - You MUST use relative paths for local files unless absolutely necessary (e.g., system paths, tooling requirements, etc.). Links in documentation MUST be relative to the document.
 - You MUST conform to best practices for the language you are coding in. Language-specific configuration files (e.g., `rustfmt.toml`, `.markdownlint-cli2.jsonc`, and `.prettierrc.json`) are authoritative and override general style rules.
 - You MUST use tabs whenever possible for indentation unless the formatter and associated configuration specify otherwise. Do not fight the formatter. If a file could use tabs but has spaces for indentation, keep the file consistent and report the exception to the user.
-- You MUST organize code into logical modules that conform to the _single responsibility_ principle and the language-specific style. You SHOULD aim for a maximum of 20 lines per function, excluding boilerplate.
+- You MUST organize code into logical modules that conform to the _single responsibility_ principle and the language-specific style. You SHOULD aim for a maximum of 20 lines per function, excluding boilerplate. You SHOULD aim for a maximum of ~200 lines per file.
 - You SHOULD aim for a maximum of approximately 200 lines per file. Modules SHOULD only contain a single primary structure and supporting elements _for that module only_. Shared supporting elements MUST be placed in separate files.
 - You MUST use POSIX-style newlines (`\n`).
 - You MUST use uppercase for hex literals. Other uses of hexadecimal should be consistent with idiomatic styles.
