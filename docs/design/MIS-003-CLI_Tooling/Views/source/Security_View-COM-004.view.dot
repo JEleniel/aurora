@@ -1,6 +1,0 @@
-digraph "Security (COM-004)" {
-	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
-	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
-	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
-	"COM-004" [fillcolor="#1e40af", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">🧊</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Component</B><BR/><B>COM-004</B><BR/>&#160;<BR/>Validation Engine — Validator that checks structural<BR/>invariants (duplicate ids, mission presence, link<BR/>targets, reachability) plus policy checks (secret asset<BR/>ownership) and relationship-matrix compliance using<BR/>embedded registries.</FONT></TD></TR></TABLE>>, shape="box3d"];
-}

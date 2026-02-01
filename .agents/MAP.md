@@ -45,7 +45,7 @@ These define the vocabulary and view rules; prefer updating these over duplicati
 
 - Shared library (rendering + model logic): `tools/aurora_shared/`
     + View rendering entry points and Graphviz DOT/SVG generation live under `tools/aurora_shared/src/`.
-    + SVG label layout and icon sizing are handled in `tools/aurora_shared/src/render/themed_svg.rs`.
+    + DOT JSON → SVG rendering helpers live in `tools/aurora_shared/src/render/svg.rs`.
     + Graphviz HTML node labels (ID + type line) are generated in `tools/aurora_shared/src/render.rs` (`node_label`).
     + Embedded registries (card definitions, relationship rules, view definitions, styling guide) live in `tools/aurora_shared/src/registry.rs` and are compiled into the CLI.
     + DOT styling conventions are documented in:
@@ -63,9 +63,8 @@ These define the vocabulary and view rules; prefer updating these over duplicati
 
 ## UI / editor
 
-- Svelte + Vite frontend: `tools/aurora_editor/`
-- Tauri backend: `tools/aurora_editor/src-tauri/`
-- VS Code host integration (Rust): `tools/aurora_vscode_host/`
+- Dioxus desktop editor (Rust): `tools/aurora_editor/`
+    + Entry point: `tools/aurora_editor/src/main.rs`
 
 ## Documentation
 
@@ -75,11 +74,10 @@ These define the vocabulary and view rules; prefer updating these over duplicati
 
 ## Workspace root
 
-- Cargo workspaces are split per tool; there is no root `Cargo.toml`.
+- Rust workspace root: `Cargo.toml`
     + CLI crate: `tools/aurora_cli/Cargo.toml`
     + Shared library: `tools/aurora_shared/Cargo.toml`
-    + VS Code host: `tools/aurora_vscode_host/Cargo.toml`
-    + Each Rust tool now maintains its own `Cargo.lock` (for example `tools/aurora_shared/Cargo.lock`).
+    + Editor crate: `tools/aurora_editor/Cargo.toml`
 - Changelog (Keep a Changelog): `CHANGELOG.md`
 
 ## Generated outputs

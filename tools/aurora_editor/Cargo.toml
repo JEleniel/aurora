@@ -1,26 +1,26 @@
 [package]
 name = "aurora_editor"
 version = "0.1.0"
-edition = "2024"
-authors = ["Aurora Architects"]
+edition = { workspace = true }
 description = "Standalone Aurora editor built with Dioxus"
-license = "MIT OR Apache-2.0"
-repository = "https://github.com/JEleniel/aurora"
-publish = false
+publish = { workspace = true }
+license = { workspace = true }
+repository = { workspace = true }
 
 [package.metadata]
 app_id = "org.crystultima.aurora.editor"
 
 [dependencies]
-aurora_shared = { path = "../aurora_shared" }
-anyhow = "1.0"
-thiserror = "1.0"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-tracing = "0.1"
-tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
-dioxus = "0.5"
-dioxus-desktop = "0.5"
+aurora_shared = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+dioxus = { workspace = true }
+dioxus-desktop = { workspace = true }
+base64 = { workspace = true }
 
-[lints.rust]
-unsafe_code = "forbid"
+[lints]
+workspace = true

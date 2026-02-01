@@ -1,6 +1,0 @@
-digraph "Use Case" {
-	graph [bgcolor="#FFFFFF", fontname="Inter", nodesep="0.2", rankdir="LR", ranksep="0.3", splines="curved"];
-	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
-	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
-	"ACT-004" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">👤</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Actor</B><BR/><B>ACT-004</B><BR/>&#160;<BR/>Model Author — Human operator responsible for<BR/>navigating, editing, and validating Aurora models within<BR/>the standalone editor.</FONT></TD></TR></TABLE>>, shape="ellipse"];
-}

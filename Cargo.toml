@@ -1,4 +1,42 @@
 [workspace]
-members = ["tools/aurora_shared", "tools/aurora_cli"]
-edition = "2021"
+members = ["tools/aurora_cli", "tools/aurora_editor", "tools/aurora_shared"]
 resolver = "3"
+
+[workspace.package]
+edition = "2024"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/JEleniel/aurora"
+publish = false
+keywords = [
+	"architecture",
+	"design",
+	"documentation",
+	"diagram",
+	"flowchart",
+	"modeling",
+	"UML",
+	"SysML",
+	"DSL",
+]
+categories = [
+	"development-tools::documentation",
+	"development-tools::diagramming",
+]
+
+[workspace.dependencies]
+anyhow = "1.0"
+aurora_shared = { path = "tools/aurora_shared" }
+base64 = "0.22"
+dioxus = "0.7"
+dioxus-desktop = "0.7"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+clap = { version = "4.5", features = ["derive"] }
+chrono = { version = "0.4", features = ["serde"] }
+jsonschema = { version = "0.4" }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"

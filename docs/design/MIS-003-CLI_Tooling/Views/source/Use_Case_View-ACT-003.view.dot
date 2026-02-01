@@ -1,6 +1,0 @@
-digraph "Use Case (ACT-003)" {
-	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
-	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
-	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
-	"ACT-003" [fillcolor="#1a2e05", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">👤</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Actor</B><BR/><B>ACT-003</B><BR/>&#160;<BR/>Architect — Human operator responsible for authoring<BR/>Aurora models and running CLI tooling (validate, render,<BR/>compact) to maintain deterministic design artifacts.</FONT></TD></TR></TABLE>>, shape="ellipse"];
-}

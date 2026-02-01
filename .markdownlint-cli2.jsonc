@@ -5,24 +5,24 @@
 		"blanks-around-lists": true,
 		"blanks-around-tables": true,
 		"code-block-style": {
-			"style": "fenced",
+			"style": "fenced"
 		},
 		"code-fence-style": {
-			"style": "backtick",
+			"style": "backtick"
 		},
 		"commands-show-output": true,
 		"emphasis-style": {
-			"style": "underscore",
+			"style": "underscore"
 		},
 		"fenced-code-language": true,
 		"first-line-heading": true,
 		"heading-increment": true,
 		"heading-start-left": true,
 		"heading-style": {
-			"style": "atx",
+			"style": "atx"
 		},
 		"hr-style": {
-			"style": "consistent",
+			"style": "consistent"
 		},
 		"line-length": false,
 		"link-fragments": true,
@@ -32,20 +32,20 @@
 			"collapsed": false,
 			"full": true,
 			"inline": true,
-			"shortcut": false,
+			"shortcut": false
 		},
 		"list-indent": true,
 		"list-marker-space": {
 			"ol_multi": 1,
 			"ol_single": 1,
 			"ul_multi": 1,
-			"ul_single": 1,
+			"ul_single": 1
 		},
 		"no-alt-text": true,
 		"no-bare-urls": true,
 		"no-blanks-blockquote": true,
 		"no-duplicate-heading": {
-			"siblings_only": true,
+			"siblings_only": true
 		},
 		"no-emphasis-as-heading": true,
 		"no-empty-links": true,
@@ -62,28 +62,29 @@
 		"no-trailing-punctuation": true,
 		"no-trailing-spaces": {
 			"br_spaces": 0,
-			"strict": true,
+			"strict": true
 		},
 		"ol-prefix": {
-			"style": "ordered",
+			"style": "ordered"
 		},
 		"reference-links-images": true,
 		"single-h1": true,
 		"single-title": true,
 		"single-trailing-newline": true,
 		"strong-style": {
-			"style": "asterisk",
+			"style": "asterisk"
 		},
 		"table-column-count": true,
 		"table-pipe-style": {
-			"style": "leading_and_trailing",
+			"style": "leading_and_trailing"
 		},
 		"ul-indent": {
-			"indent": 4,
+			"indent": 4
 		},
 		"ul-style": {
-			"style": "sublist",
+			"style": "sublist"
 		},
+		"MD060": false
 	},
-	"fix": true,
+	"fix": true
 }

@@ -1,26 +1,13 @@
 [package]
 name = "aurora_cli"
 description = "Aurora command-line interface"
-edition = "2024"
+edition = { workspace = true }
 version = "1.0.0"
-repository = "https://github.com/JEleniel/aurora"
-license = "MIT OR Apache-2.0"
-keywords = [
-	"architecture",
-	"design",
-	"documentation",
-	"diagram",
-	"flowchart",
-	"modeling",
-	"UML",
-	"SysML",
-	"DSL",
-]
-categories = [
-	"development-tools::documentation",
-	"development-tools::diagramming",
-]
-publish = false
+repository = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+keywords = { workspace = true }
+categories = { workspace = true }
 
 [[bin]]
 name = "aurora_cli"
@@ -30,13 +17,14 @@ path = "src/main.rs"
 app_id = "org.crystultima.aurora.cli"
 
 [dependencies]
-aurora_shared = { path = "../aurora_shared" }
-anyhow = "1.0"
-clap = { version = "4.5", features = ["derive"] }
-tracing = "0.1"
-tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
-serde_json = "1.0"
-env = "1.0.1"
+aurora_shared = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+serde_json = { workspace = true }
+jsonschema = { workspace = true }
+thiserror = { workspace = true }
 
-[lints.rust]
-unsafe_code = "forbid"
+[lints]
+workspace = true

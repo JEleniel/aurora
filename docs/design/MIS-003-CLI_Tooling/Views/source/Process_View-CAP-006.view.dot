@@ -1,6 +1,0 @@
-digraph "Process (CAP-006)" {
-	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
-	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
-	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
-	"CAP-006" [fillcolor="#052e16", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">✨</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Capability</B><BR/><B>CAP-006</B><BR/>&#160;<BR/>Compact Agent Export — Ability to write a compact,<BR/>single-file snapshot of a mission-scoped model for agent<BR/>consumption.</FONT></TD></TR></TABLE>>, shape="box"];
-}

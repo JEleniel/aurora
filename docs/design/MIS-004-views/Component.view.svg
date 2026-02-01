@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1730.50" height="140.00" viewBox="0 0 1730.50 140.00">
+<defs>
+	<symbol id="box" overflow="visible" viewBox="0,0,160,100">
+		<rect x="1" y="1" width="158" height="98" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="double-box" overflow="visible" viewBox="0,0,160,100">
+		<rect x="1" y="1" width="158" height="98" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<rect x="11" y="11" width="138" height="78" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="card" overflow="visible"  viewBox="0,0,160,100">
+		<path d="M1 99L159 99L159 35L125 1L1 1L1 99Z" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<path d="M125 1V35H159" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="class" overflow="visible" viewBox="0,0,160,100">
+		<rect x="1" y="1" width="158" height="98" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<line x1="1" y1="25" x2="159" y2="25" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="component" overflow="visible" viewBox="0,0,160,100">
+		<rect x="11" y="1" width="158" height="98" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<rect x="1" y="20" width="30" height="20" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<rect x="1" y="60" width="30" height="20" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="deployment" overflow="visible" viewBox="0,0,160,100">
+		<rect x="1" y="1" width="158" height="98" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<rect x="11" y="11" width="10" height="20" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<rect x="11" y="41" width="10" height="20" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<rect x="11" y="71" width="10" height="20" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<rect x="141" y="11" width="10" height="20" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<rect x="141" y="41" width="10" height="20" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<rect x="141" y="71" width="10" height="20" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="diamond" overflow="visible"  viewBox="0,0,160,100">
+		<path d="M1 49L80 99L159 49L80 1L1 49Z" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="cylinder" overflow="visible"  viewBox="0,0,160,100">
+		<ellipse cx="80" cy="20" rx="79" ry="9" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<path d="M1 21V90" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<path d="M159 21V90" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<path d="M1 90A80 10 0 0 0 159 90" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="document" overflow="visible" viewBox="0,0,160,100">
+		<path d="M1 90V1H159V90" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<path d="M1 90A40 10 0 0 0 80 90" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<path d="M159 90A40 10 0 0 0 80 90" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="folder" overflow="visible" viewBox="0,0,160,100">
+		<path d="M1 99V15L10 1H50L60 15H159V99Z" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="octagon" overflow="visible" viewBox="0,0,160,100">
+		<path d="M1 31V70L31 99H129L159 70V30L129 1H31Z" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="oval" overflow="visible" viewBox="0,0,160,100">
+		<ellipse rx="79" ry="49" cx="80" cy="50" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="rounded-rectangle" overflow="visible" viewBox="0,0,160,100">
+		<rect x="1" y="1" width="158" height="98"
+		rx="30" ry="30" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="ruler" overflow="visible" viewBox="0,0,160,100">
+		<rect x="1" y="1" width="158" height="98" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<path d="M10 1V5M20 1V10M30 1V5M40 1V15M50 1V5M60 1V10M70 1V5M80 1V15M90 1V5M100 1V10M110 1V5M120 1V15M130 1V5M140 1V10M150 1V5" stroke="#FFFFFF" stroke-width="2" />
+		<path d="M1 20H159" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="interface" overflow="visible" viewBox="0,0,160,100">
+		<path d="M41 99V1H31V99H119A50 50 0 0 0 119 1H41" stroke="#FFFFFF" stroke-width="2" />
+		<rect x="1" y="20" width="30" height="10" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+		<rect x="1" y="70" width="30" height="10" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+	<symbol id="trapezoid" overflow="visible" viewBox="0,0,160,100">
+	    <path d="M 0,100 20,0 h 120 l 20,100 z" fill="#00000000" stroke="#FFFFFF" stroke-width="2" />
+	</symbol>
+</defs>
+
+<rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">\N</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">invokes</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">\N</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">implements</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">\N</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">generates</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">implements</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">composes</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">composes</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">composes</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">invokes</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">\N</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">implements</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">\N</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">implements</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">implements</text><rect x="16.00" y="24.00" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="40.00" text-anchor="start" font-family="&quot;Noto Sans&quot;, Roboto, Verdana, system-ui, sans-serif" font-size="16.00" fill="#111827" dominant-baseline="middle">implements</text><path d="M 99.73 42.89 C 72.91 56.06 72.30 82.40 97.90 96.17 L 107.13 100.16" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 104.46 45.94 C 89.76 58.18 88.78 78.05 101.51 91.31 L 109.42 97.57" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 112.38 48.83 C 105.46 59.04 104.30 73.10 108.90 84.60 L 114.13 93.51" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 122.61 50.88 C 119.62 59.53 118.89 70.43 120.43 80.18 L 122.98 90.14" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 134.02 51.94 C 133.19 59.77 132.95 69.25 133.31 78.02 L 134.04 88.21" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 145.78 51.94 C 146.61 59.77 146.84 69.25 146.49 78.02 L 145.76 88.21" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 157.18 50.88 C 160.17 59.53 160.90 70.43 159.37 80.18 L 156.81 90.14" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 167.42 48.83 C 174.33 59.04 175.49 73.10 170.89 84.60 L 165.67 93.51" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 175.33 45.94 C 190.03 58.18 191.01 78.05 178.29 91.31 L 170.38 97.57" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 180.07 42.89 C 206.88 56.06 207.49 82.40 181.90 96.17 L 172.67 100.16" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 276.61 51.94 C 282.62 61.40 291.30 73.26 299.54 83.38 L 306.00 91.03" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 288.06 51.59 C 295.16 59.92 303.03 70.20 309.49 79.51 L 315.18 88.04" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 316.76 46.72 C 371.67 60.44 461.56 82.92 512.18 95.57 L 522.06 98.04" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 264.09 51.94 C 261.35 59.94 258.01 69.67 254.95 78.60 L 251.65 88.21" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 544.02 51.94 C 543.19 59.77 542.95 69.25 543.31 78.02 L 544.04 88.21" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 555.78 51.94 C 556.61 59.77 556.84 69.25 556.49 78.02 L 555.76 88.21" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 660.89 49.50 C 637.70 61.10 605.24 77.33 581.41 89.24 L 572.42 93.74" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 777.94 45.99 C 770.28 47.99 762.35 50.06 754.90 52.00 C 696.35 67.22 628.37 84.78 587.27 95.37 L 577.42 97.91" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 389.93 50.88 C 377.16 61.04 360.50 74.29 346.86 85.14 L 338.83 91.53" fill="none" stroke="#000000" stroke-width="2.00" /><path d="M 438.91 49.50 C 462.10 61.10 494.56 77.33 518.38 89.24 L 527.37 93.74" fill="none" stroke="#000000" stroke-width="2.00" /></svg>

@@ -35,6 +35,7 @@ pub(super) fn icon_glyph(icon_name: &str) -> Option<&'static str> {
 		"note-sticky" => Some("🗒️"),
 		"braces" => Some("🧩"),
 		"square-dashed" => Some("⬚"),
+		"question" => Some("❓"),
 		_ => None,
 	}
 }

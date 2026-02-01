@@ -1,0 +1,866 @@
+[
+	{
+		"source_card_type": "Activity",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Activity",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Activity",
+		"target_card_type": "Activity",
+		"relationship": "leads",
+		"description": "Leads to another activity."
+	},
+	{
+		"source_card_type": "Activity",
+		"target_card_type": "Condition",
+		"relationship": "evaluates",
+		"description": "Evaluates a condition."
+	},
+	{
+		"source_card_type": "Activity",
+		"target_card_type": "Event",
+		"relationship": "emits",
+		"description": "Emits an event."
+	},
+	{
+		"source_card_type": "Actor",
+		"target_card_type": "Activity",
+		"relationship": "performs",
+		"description": "Executes an activity."
+	},
+	{
+		"source_card_type": "Actor",
+		"target_card_type": "Asset",
+		"relationship": "owns",
+		"description": "Defines ownership responsibility."
+	},
+	{
+		"source_card_type": "Actor",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Actor",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Actor",
+		"target_card_type": "Story",
+		"relationship": "desires",
+		"description": "Expresses a goal or story."
+	},
+	{
+		"source_card_type": "Actor",
+		"target_card_type": "Threat",
+		"relationship": "presents",
+		"description": "Introduces a threat."
+	},
+	{
+		"source_card_type": "ADR",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "ADR",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "ADR",
+		"target_card_type": "Requirement",
+		"relationship": "documents",
+		"description": "Records a decision tied to a requirement."
+	},
+	{
+		"source_card_type": "Application",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Application",
+		"target_card_type": "Component",
+		"relationship": "composes",
+		"description": "Defines a composition relationship."
+	},
+	{
+		"source_card_type": "Application",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Artifact",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Artifact",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Artifact",
+		"target_card_type": "Asset",
+		"relationship": "is",
+		"description": "Classifies an artifact as an asset."
+	},
+	{
+		"source_card_type": "Artifact",
+		"target_card_type": "Data Store",
+		"relationship": "persists",
+		"description": "Persists an artifact to storage."
+	},
+	{
+		"source_card_type": "Asset",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Asset",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Activity",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Actor",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "ADR",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Application",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Artifact",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Asset",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Boundary",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Capability",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Class",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Component",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Condition",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Constraint",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Control",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Data Store",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Deployment",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Driver",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Event",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Feature",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Interface",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Node",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Node Instance",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Note",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Predicate",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Process",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Requirement",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Risk",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "State",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "State Machine",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Story",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "System",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Test",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Threat",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Boundary",
+		"target_card_type": "Trigger",
+		"relationship": "contains",
+		"description": "Defines boundary containment."
+	},
+	{
+		"source_card_type": "Capability",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Capability",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Capability",
+		"target_card_type": "Process",
+		"relationship": "necessitates",
+		"description": "Necessitates a process."
+	},
+	{
+		"source_card_type": "Capability",
+		"target_card_type": "Requirement",
+		"relationship": "satisfies",
+		"description": "Satisfies a requirement."
+	},
+	{
+		"source_card_type": "Class",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Class",
+		"target_card_type": "Class",
+		"relationship": "is a",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Class",
+		"target_card_type": "Class",
+		"relationship": "aggregates",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Class",
+		"target_card_type": "Class",
+		"relationship": "composes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Class",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Component",
+		"target_card_type": "Artifact",
+		"relationship": "generates",
+		"description": "Produces an artifact."
+	},
+	{
+		"source_card_type": "Component",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Component",
+		"target_card_type": "Class",
+		"relationship": "realizes",
+		"description": "Realizes a class definition."
+	},
+	{
+		"source_card_type": "Component",
+		"target_card_type": "Feature",
+		"relationship": "implements",
+		"description": "Implements a feature."
+	},
+	{
+		"source_card_type": "Component",
+		"target_card_type": "Interface",
+		"relationship": "invokes",
+		"description": "Invokes an interface by contract."
+	},
+	{
+		"source_card_type": "Component",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Component",
+		"target_card_type": "State Machine",
+		"relationship": "executes",
+		"description": "Executes and owns a state machine."
+	},
+	{
+		"source_card_type": "Component",
+		"target_card_type": "Test",
+		"relationship": "fulfills",
+		"description": "Fulfills a test."
+	},
+	{
+		"source_card_type": "Component",
+		"target_card_type": "Control",
+		"relationship": "enforces",
+		"description": "Applies a control."
+	},
+	{
+		"source_card_type": "Application",
+		"target_card_type": "Control",
+		"relationship": "enforces",
+		"description": "Applies a control."
+	},
+	{
+		"source_card_type": "Condition",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Condition",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Constraint",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Constraint",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Control",
+		"target_card_type": "Asset",
+		"relationship": "safeguards",
+		"description": "Protects an asset."
+	},
+	{
+		"source_card_type": "Control",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Control",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Control",
+		"target_card_type": "Risk",
+		"relationship": "mitigates",
+		"description": "Reduces a risk."
+	},
+	{
+		"source_card_type": "Data Store",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Data Store",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Data Store",
+		"target_card_type": "Interface",
+		"relationship": "exposes",
+		"description": "Publishes an interface."
+	},
+	{
+		"source_card_type": "Deployment",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Deployment",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Deployment",
+		"target_card_type": "Node",
+		"relationship": "provisions",
+		"description": "Provisions runtime infrastructure."
+	},
+	{
+		"source_card_type": "Driver",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Driver",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Driver",
+		"target_card_type": "Requirement",
+		"relationship": "drives",
+		"description": "Influences a downstream requirement."
+	},
+	{
+		"source_card_type": "Event",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Event",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Feature",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Feature",
+		"target_card_type": "Capability",
+		"relationship": "enables",
+		"description": "Makes a capability feasible."
+	},
+	{
+		"source_card_type": "Feature",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Interface",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Interface",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Mission",
+		"target_card_type": "Actor",
+		"relationship": "involves",
+		"description": "Includes an actor in a mission."
+	},
+	{
+		"source_card_type": "Mission",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Mission",
+		"target_card_type": "Driver",
+		"relationship": "establishes",
+		"description": "Introduces a downstream driver."
+	},
+	{
+		"source_card_type": "Mission",
+		"target_card_type": "System",
+		"relationship": "requires",
+		"description": "Requires a system or application."
+	},
+	{
+		"source_card_type": "Mission",
+		"target_card_type": "Application",
+		"relationship": "requires",
+		"description": "Requires a system or application."
+	},
+	{
+		"source_card_type": "Node",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Node",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Node",
+		"target_card_type": "Component",
+		"relationship": "hosts",
+		"description": "Hosts a runtime component."
+	},
+	{
+		"source_card_type": "Node",
+		"target_card_type": "Data Store",
+		"relationship": "hosts",
+		"description": "Hosts a runtime data store."
+	},
+	{
+		"source_card_type": "Node",
+		"target_card_type": "Node Instance",
+		"relationship": "instantiates",
+		"description": "Creates a runtime instance."
+	},
+	{
+		"source_card_type": "Node Instance",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Node Instance",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Note",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Note",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Predicate",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Predicate",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Process",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Process",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Requirement",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Requirement",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Risk",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Risk",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "State",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "State",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "State Machine",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "State Machine",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "State Machine",
+		"target_card_type": "State",
+		"relationship": "starts in",
+		"description": "Defines the initial state."
+	},
+	{
+		"source_card_type": "State",
+		"target_card_type": "State",
+		"relationship": "transitions to",
+		"description": "Transitions to a next state."
+	},
+	{
+		"source_card_type": "Predicate",
+		"target_card_type": "State",
+		"relationship": "transitions to",
+		"description": "Transitions to a next state."
+	},
+	{
+		"source_card_type": "Event",
+		"target_card_type": "State",
+		"relationship": "transitions to",
+		"description": "Transitions to a next state."
+	},
+	{
+		"source_card_type": "Story",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Story",
+		"target_card_type": "Constraint",
+		"relationship": "implies",
+		"description": "Implies a constraint."
+	},
+	{
+		"source_card_type": "Story",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "System",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "System",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "System",
+		"target_card_type": "Application",
+		"relationship": "integrates",
+		"description": "Integrates applications into a system."
+	},
+	{
+		"source_card_type": "Test",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Test",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Threat",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Threat",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	},
+	{
+		"source_card_type": "Threat",
+		"target_card_type": "Risk",
+		"relationship": "raises",
+		"description": "Raises a risk."
+	},
+	{
+		"source_card_type": "Trigger",
+		"target_card_type": "Boundary",
+		"relationship": "includes",
+		"description": "Scopes an element within a boundary."
+	},
+	{
+		"source_card_type": "Trigger",
+		"target_card_type": "Note",
+		"relationship": "",
+		"description": "Annotates an element"
+	}
+]

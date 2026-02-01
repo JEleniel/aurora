@@ -24,6 +24,10 @@
 		{
 			"relationship": "composes",
 			"target": "COM-001"
+		},
+				{
+			"relationship": "enforces",
+			"target": "CTL-001"
 		}
 	]
 }

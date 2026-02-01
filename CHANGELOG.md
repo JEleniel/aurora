@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added a Dioxus-based `aurora_editor` crate with model loading, navigation tree, context view, and read-only inspector panes.
+- Added clickable context and diagnostics panels in the Aurora editor to surface validation issues and jump to related cards.
+- Added an SVG-based context graph in the Aurora editor that renders card shapes/icons and link lines centered on the focused card.
+- Added public `CardDefinition` and icon glyph helpers in `aurora_shared` to support editor graph rendering.
 - Introduced initial `aurora_cli` application wiring with validation, render, and compact subcommands.
 - Added validation requiring `Asset (Secret)` cards to have an incoming `owns` relationship (preferably from an `Actor`).
 - Added validation test coverage for canonical Relationships Matrix verbs and source/target constraints.
@@ -16,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added file-system safe rendering helpers plus unit tests in `aurora_shared`.
 - Added Everything View rendering support so the CLI view pipeline can include full-model diagrams.
 - Added mission executive summary markdown output (`MIS-XXX-Executive_Summary.md`) to the render pipeline.
+- Added DOT JSON → SVG rendering helpers in `aurora_shared` for Diagram-based SVG output.
 - Registered reverse-DNS `app_id` metadata for each tool crate and seeded placeholder libraries for editor and VS Code hosts.
 - Converted `aurora_editor_backend` into a Tauri project that exposes model discovery, load, validation, render, compact, and card-update commands for the forthcoming UI.
 - Added Tauri editor backend commands for workspace configuration, model operations, and audit-aware card CRUD with trust gating.
@@ -26,6 +31,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Refined the standalone Aurora editor layout with a labeled model selector, smaller navigation typography, tree lines, and a split editor/inspector pane.
+- Adjusted the standalone editor pane widths to 25%/50%/25% and moved diagnostics into the inspector pane.
+- Made the mindmap pane fill the center column height and added emoji-capable font fallbacks for graph icons.
+- Added mindmap zoom controls with scroll-based panning and tightened layout sizing for the header and control rows.
+- Fixed the editor CSS layout after an accidental corruption of the global styles.
+- Embedded Aurora logo assets as data URLs in the standalone editor to avoid file-based loading.
+- Refactored the standalone editor UI into smaller modules under `tools/aurora_editor/src/app/`.
+- Added Aurora logo imagery to the standalone editor header and empty states.
 - Reorganized the Aurora Editor project so the Tauri backend crate now lives under `tools/aurora_editor/src-tauri`, matching the standard Tauri folder layout and colocating static assets with the host project.
 - Aligned the Aurora Editor frontend and Tauri build commands with the upgraded Svelte 5/Tauri v2 stack and pnpm workflow.
 - Updated the Aurora Editor Tauri configuration to the v2 schema (`build.devUrl`, `build.frontendDist`, `app` root) and adjusted build hooks so `tauri:dev` validates.

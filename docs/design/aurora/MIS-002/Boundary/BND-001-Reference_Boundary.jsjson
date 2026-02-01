@@ -48,10 +48,6 @@
 		},
 		{
 			"relationship": "contains",
-			"target": "NOT-900"
-		},
-		{
-			"relationship": "contains",
 			"target": "EVT-002"
 		},
 		{

@@ -1,5 +1,28 @@
 # Progress Plan
 
+- [ ] **GeneralDeveloper** (APP-004) **Standalone Editor Scaffolding**
+    + Status: Implementation
+    + Updates: Added a new `tools/aurora_editor` crate (Dioxus desktop) with model loading, mission selection, shortest-path tree navigation, an SVG context graph with shapes/icons and link lines, clickable context lists, diagnostics panel, plus an editor/inspector split with draft editing fields, labeled navigation controls, and Aurora logo assets in the UI. Refactored the standalone editor UI into smaller modules under `tools/aurora_editor/src/app/` and adjusted the pane layout to a 25%/50%/25% split with diagnostics moved into the inspector pane. The mindmap pane now fills the center column height and uses icon fallbacks for graph glyphs, plus zoom controls with scroll-based panning and tighter layout sizing for the header and control rows, and the global editor CSS has been corrected after a layout regression. Logo assets are now embedded as data URLs using a base64 helper to avoid file-based loading.
+    + Links:
+        - [`tools/aurora_editor/Cargo.toml`](../tools/aurora_editor/Cargo.toml)
+        - [`tools/aurora_editor/src/main.rs`](../tools/aurora_editor/src/main.rs)
+        - [`tools/aurora_editor/src/app.rs`](../tools/aurora_editor/src/app.rs)
+        - [`tools/aurora_editor/src/model.rs`](../tools/aurora_editor/src/model.rs)
+        - [`tools/aurora_editor/src/state.rs`](../tools/aurora_editor/src/state.rs)
+    + Next Actions:
+        - Add edit/save workflows with safe atomic writes and audit trail updates.
+        - Add unit tests for tree construction, context selection, and search filtering.
+
+- [ ] **GeneralDeveloper** (LIB-001) **DOT JSON SVG renderer**
+    + Status: Implementation
+    + Updates: Added DOT JSON → SVG rendering helpers with configurable options, basic shape/edge rendering, and unit tests for SVG output.
+    + Links:
+        - [`tools/aurora_shared/src/render/svg.rs`](../tools/aurora_shared/src/render/svg.rs)
+        - [`tools/aurora_shared/src/render.rs`](../tools/aurora_shared/src/render.rs)
+    + Next Actions:
+        - Expand edge label placement tests when additional label metadata is available.
+        - Confirm diagram styling against the Graphviz styling guide as the view pipeline evolves.
+
 - [ ] **Architect** (MIS-001) **Agent-Unified Representation of Requirements and Architecture (Aurora)**
     + Status: Design
     + Updates: Created a new MIS-001 mission model under `docs/design/aurora/` that documents the Aurora style (invariants, serialization/layout rules, audit trail rules, and canonical registries) and regenerated compact + rendered outputs via `aurora_cli`.

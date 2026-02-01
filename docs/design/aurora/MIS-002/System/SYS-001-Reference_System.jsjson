@@ -24,10 +24,6 @@
 		{
 			"relationship": "integrates",
 			"target": "APP-001"
-		},
-		{
-			"relationship": "enforces",
-			"target": "CTL-001"
 		}
 	]
 }

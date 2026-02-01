@@ -15,50 +15,32 @@ Instruction precedence (earlier entries override later ones):
 
 If tooling limitations or system instructions prevent compliance, you MUST stop and notify the user of the conflict.
 
-## Request Checklist
+## Common Project Folders
 
-- Desired outcome and target locations:
-    + Architecture: `docs/design/aurora/`
-    + Separate subfolders per tool under `tools/*`, with the Cargo workspace rooted at the top of the workspace
-    + Any dependency used in more than one project is in the workspace `Cargo.toml`
-    + User documentation lives under `docs/`, starting with a `README.md`, well linked and indexed
-    + 90% unit test coverage with positive, negative, and adversarial tests
-- Constraints:
-    + All code must be secure by design; all inputs validated, etc.
-    + Self contained objects with internally maintained state are preferred over scattered functions.
-- Test/render expectations:
-    + All tests related to the code changes made pass. Other tests may fail, as in progress work is in progress.
+- User documentation is at `docs/` and starts with `docs/README.md`
+- Design documentation is at `docs/design/`
+- Agent notes are at `.agents/`
+- Working assets (styles, images) are at `assets/`
+- Dot (`.`) folders should generally be ignored
 
-## Agent Manifest
-
-- Each `.agent.md` file may focus on responsibilities and nuances; defer to the manifest for metadata instead of duplicating it elsewhere.
-
-## General Coding Guidelines
+## Coding Guidelines
 
 - You MUST use relative paths for local files unless absolutely necessary (e.g., system paths, tooling requirements, etc.). Links in documentation MUST be relative to the document.
 - You MUST conform to best practices for the language you are coding in. Language-specific configuration files (e.g., `rustfmt.toml`, `.markdownlint-cli2.jsonc`, and `.prettierrc.json`) are authoritative and override general style rules.
 - You MUST use tabs whenever possible for indentation unless the formatter and associated configuration specify otherwise. Do not fight the formatter. If a file could use tabs but has spaces for indentation, keep the file consistent and report the exception to the user.
 - You MUST organize code into logical modules that conform to the _single responsibility_ principle and the language-specific style. You SHOULD aim for a maximum of 20 lines per function, excluding boilerplate. You SHOULD aim for a maximum of ~200 lines per file.
+    + Self contained objects with internally maintained state are preferred over scattered functions.
 - You SHOULD aim for a maximum of approximately 200 lines per file. Modules SHOULD only contain a single primary structure and supporting elements _for that module only_. Shared supporting elements MUST be placed in separate files.
 - You MUST use POSIX-style newlines (`\n`).
 - You MUST use uppercase for hex literals. Other uses of hexadecimal should be consistent with idiomatic styles.
-- Apply OWASP guidance and secure-by-design principles.
-- Apply Twelve-Factor App principles.
+- Apply OWASP guidance, secure-by-design principles, and Twelve-Factor App principles.
 - No global variables; global constants are allowed only in a dedicated constants file.
 - Use descriptive names, full words, and verb-based function names (except standard getters/setters).
 - Tests must prove behavior. Do not write null tests that only call functions without validation.
 - You MUST NOT disable checks or tests (e.g., `// @ts-nocheck`, `#[allow(...)]`). Fix the underlying issue instead.
 - Unimplemented paths must still fail fast and clearly communicate intent (`todo!`, `unimplemented!`, etc.).
-- Do not label code “production ready”; rely on the review + release process instead.
 
-## Security by Default
-
-- Prefer secure defaults over optional hardening.
-- Validate all external inputs at trust boundaries.
-- Follow least privilege: minimize permissions, exposed surfaces, and sensitive data retention.
-- Never log secrets or sensitive payloads.
-
-## Logging
+### Logging
 
 - Use structured, leveled logs where possible.
 - `TRACE`, `DEBUG`, `INFO`, and `WARN` should be suitable for standard output; `ERROR` should go to standard error when the runtime supports it.
@@ -80,8 +62,7 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 
 - You MUST maintain a `.agents/MAP.md` with details to help you find your way around the code, documentation, and models as you work.
 - You MUST NOT worry about formatting or linting the files in `.agents/` as they are for agent use only.
-- The previous Project Plan format has been deprecated and split into a more organized, smaller format. If an older plan file still exists, move it into `.agents/PROGRESS.md`, splitting it to the new format.
-- You MUST maintain the `.agents/PROGRESS.md` (Progress Plan) file to track progress.
+- You MUST track your progress in the `.agents/PROGRESS.md` (Progress Plan).
 - When performing a review, you MUST create a `.agents/REVIEW-{TYPE}.md` file with all findings, mitigation guidance, and references. Link the review file from `.agents/PROGRESS.md`.
 - See `.agents/PROJECT_BRIEF.md` for the canonical description of required `.agents/` files (PROJECT_BRIEF, PROGRESS, PATTERNS, TECHNOLOGIES, CONTEXT, and any review files).
 
@@ -90,10 +71,6 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 The Planner owns the plan structure, but all agents must follow the same format when updating Project Plan:
 
 - Add new work items using a stable identifier, short title, and explicit **Status**.
-- Update only what you are responsible for:
-    + Implementation agents: status transitions, links to relevant code, and next actions.
-    + Review agents: findings, severity, and required next actions.
-    + Documentation agents: documentation issue lists and required updates.
 - Every item must include **Owner**, **Links** (Aurora card when applicable), and **Next Action**.
 
 **Example Project Plan Feature Entry:**
@@ -114,22 +91,15 @@ You MUST maintain a `CHANGELOG.md` file in the root of the repository that follo
 
 ### Inline Comment Instructions and Edit Areas
 
-Some files may have inline comments that start with `AGENT:` that provide specific instructions or mark areas where edits are allowed. You MUST follow these instructions exactly unless the user instructs otherwise and only make the instructed changes in the designated areas. The edit area will end with another `AGENT:` comment stating `End of edit area.`. Remove the contents when you finish the edits.
+Some files may have inline comments that start with `AGENT:` that provide specific instructions or mark areas where edits are allowed. You MUST follow these instructions in accordance with the instruction priorities. The edit area will end with another `AGENT:` comment stating `End of edit area.`. Remove the comments when you finish the edits.
 
 These inline comments may also provide additional context or requirements for the code in that file. You MUST read and understand these comments before making any changes.
 
-The inline comments do not override direct instructions from the user. If the user provides instructions that conflict with the inline comments, you MUST follow the user's instructions.
-
-## Project Structure & Ownership
-
-See `.agents/PROJECT_BRIEF.md` for the authoritative ownership matrix, quick-start checklist, and required coordination files. Highlights:
+## Agent Behavior
 
 - You MUST NOT modify `.github/` on any files in it unless explicitly instructed.
 - Respect role ownership for `docs/`, `docs/design/`, `tools/`, and language-specific source trees; work inside those areas only when acting in that role.
 - You MAY update `.agents/*` and `CHANGELOG.md` as required by these instructions.
-
-## Agent Behavior
-
 - If a `docs/design/aurora/AGENT-*.json` file exists, read it to load the entire design. Except for the Architect, you do not need to read the entire model.
 - When a new technology or dependency is added or an existing one is changed (including when detected from someone else's changes), you MUST read the current documentation for the correct version and annotate the `./agents/PROGRESS.md.md` with any notes needed to work safely and idiomatically.
 - You MUST end final responses with a short summary paragraph, followed by a blank line, then **5-10 tl;dr bullets**. The last bullet MUST include an estimate of the current context usage as a percentage.

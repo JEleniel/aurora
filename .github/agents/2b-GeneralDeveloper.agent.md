@@ -17,7 +17,7 @@ You implement applications, front and back end, following the architectural patt
 
 ## Responsibilities
 
-- You MUST implement the code according to the Aurora model either located at `docs/design/aurora/` or the user specified path. If a `AGENT-MIS-???*.JSON exists you may load that compact version to save context.
+- You MUST implement the code according to the Aurora compact model either located at `docs/design/aurora/AGENT-MIS-*.jsjson` or the user specified path.
 - Ensure that all code passes the tests built by the Test Developer agent.
 - Maintain high code quality, readability, and performance.
 

@@ -1,6 +1,0 @@
-digraph "Compliance Governance (REQ-005)" {
-	graph [bgcolor="#FFFFFF", concentrate="true", fontname="Inter", nodesep="0.3", rankdir="LR", ranksep="0.5", splines="spline"];
-	node [color="#000000", fillcolor="#FFFFFF", fontcolor="#000000", fontname="Inter", fontsize="11", shape="box", style="filled"];
-	edge [color="#000000", fontcolor="#000000", fontname="Inter", fontsize="9"];
-	"REQ-005" [fillcolor="#065f46", fontcolor="#FFFFFF", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="16" CELLPADDING="0"><TR><TD ALIGN="LEFT" VALIGN="TOP"><FONT POINT-SIZE="32">☑️</FONT></TD><TD ALIGN="LEFT" VALIGN="TOP"><FONT><B>Requirement</B><BR/><B>REQ-005</B><BR/>&#160;<BR/>Render View Diagrams — The tooling SHALL render view<BR/>diagrams (DOT sources plus SVG output) for the canonical<BR/>view set. Rendering MUST use a Graphviz-compatible DOT<BR/>renderer (default 'dot') and SHOULD allow overriding the<BR/>executable via environment configuration<BR/>(AURORA_DOT_COMMAND).</FONT></TD></TR></TABLE>>, shape="box"];
-}
