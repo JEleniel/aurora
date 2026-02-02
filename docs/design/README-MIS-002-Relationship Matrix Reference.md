@@ -5,25 +5,25 @@
 Reference Aurora model encoding the canonical relationship registry as concrete card links for tooling and diagram validation.
 
 ## Views
-![Use_Case.view.svg](MIS-002-views/Use_Case.view.svg)
-
-![Requirements.view.svg](MIS-002-views/Requirements.view.svg)
-
-![Entire_Model.view.svg](MIS-002-views/Entire_Model.view.svg)
-
-![State_Machine.view.svg](MIS-002-views/State_Machine.view.svg)
-
 ![Security.view.svg](MIS-002-views/Security.view.svg)
 
-![Deployment.view.svg](MIS-002-views/Deployment.view.svg)
-
-![Compliance_Governance.view.svg](MIS-002-views/Compliance_Governance.view.svg)
+![Traceability.view.svg](MIS-002-views/Traceability.view.svg)
 
 ![Process.view.svg](MIS-002-views/Process.view.svg)
 
 ![Component.view.svg](MIS-002-views/Component.view.svg)
 
-![Traceability.view.svg](MIS-002-views/Traceability.view.svg)
+![Compliance_Governance.view.svg](MIS-002-views/Compliance_Governance.view.svg)
+
+![Requirements.view.svg](MIS-002-views/Requirements.view.svg)
+
+![State_Machine.view.svg](MIS-002-views/State_Machine.view.svg)
+
+![Deployment.view.svg](MIS-002-views/Deployment.view.svg)
+
+![Entire_Model.view.svg](MIS-002-views/Entire_Model.view.svg)
+
+![Use_Case.view.svg](MIS-002-views/Use_Case.view.svg)
 ## Card Index
 
 ### ADR
@@ -72,9 +72,9 @@ Reference Aurora model encoding the canonical relationship registry as concrete 
 
 ### Condition
 
-- **[CON-001 - Reference Condition](MIS-002/Condition/CON-001.md)**: Condition evaluated by an activity in the relationship-matrix reference model.
-
 - **[CON-002 - Secondary Condition](MIS-002/Condition/CON-002.md)**: Secondary condition used as a target of Condition transitions to Condition.
+
+- **[CON-001 - Reference Condition](MIS-002/Condition/CON-001.md)**: Condition evaluated by an activity in the relationship-matrix reference model.
 
 ### Constraint
 
@@ -140,9 +140,9 @@ Reference Aurora model encoding the canonical relationship registry as concrete 
 
 ### State
 
-- **[STA-001 - Reference State](MIS-002/State/STA-001.md)**: State that transitions to another state in the relationship-matrix reference model.
-
 - **[STA-002 - Secondary State](MIS-002/State/STA-002.md)**: Secondary state used as a target of State/Condition transitions in the reference model.
+
+- **[STA-001 - Reference State](MIS-002/State/STA-001.md)**: State that transitions to another state in the relationship-matrix reference model.
 
 ### State Machine
 
@@ -162,8 +162,8 @@ Reference Aurora model encoding the canonical relationship registry as concrete 
 
 ### Threat
 
-- **[THR-002 - Secondary Threat](MIS-002/Threat/THR-002.md)**: Secondary threat used as a target for actor threat presentation in the reference model.
-
 - **[THR-001 - Reference Threat](MIS-002/Threat/THR-001.md)**: Threat presented by an actor that raises a risk.
+
+- **[THR-002 - Secondary Threat](MIS-002/Threat/THR-002.md)**: Secondary threat used as a target for actor threat presentation in the reference model.
 
 ### Trigger

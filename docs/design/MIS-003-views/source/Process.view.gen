@@ -3,277 +3,24 @@
   "directed": true,
   "strict": false,
   "_subgraph_cnt": 0,
-  "bb": "0,0,6001.5,197.31",
+  "bb": "0,0,6000.1,197.31",
   "rankdir": null,
   "fontname": "Noto Sans",
-  "fontsize": "12",
+  "fontsize": "12.0",
   "label": null,
   "objects": [
     {
       "_gvid": 0,
-      "name": "CAP_003",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Model Validation</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to validate Aurora model invariants and provide actionable diagnostics b<BR/>efore any downstream rendering/export steps.<BR/></FONT>\n\t\t\t",
-      "pos": "415.07,142.15",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "height": "1.5321",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#052e16",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            415.07,
-            142.15,
-            415.14,
-            55.31
-          ]
-        }
-      ],
-      "fillcolor": "#052e16",
-      "style": "filled",
-      "icon": "spark",
-      "href": "../MIS-003-views/Model_Validation.view.svg",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            375.07,
-            166.95
-          ],
-          "text": "Capability",
-          "width": 80.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            348.57,
-            152.95
-          ],
-          "text": "Model Validation",
-          "width": 133.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            129.57,
-            124.95
-          ],
-          "text": "Ability to validate Aurora model invariants and provide actionable diagnostics b",
-          "width": 571.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            248.07,
-            110.95
-          ],
-          "text": "efore any downstream rendering/export steps.",
-          "width": 334.0
-        }
-      ],
-      "svg_shape": "rounded-rectangle",
-      "width": "11.53"
-    },
-    {
-      "_gvid": 1,
-      "name": "CAP_002",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Model Discovery and Loading</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to locate Aurora model homes from a user-provided path and load all card<BR/> JSON/JSJSON files into an indexed in-memory model.<BR/></FONT>\n\t\t\t",
-      "pos": "1270.1,142.15",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "fillcolor": "#052e16",
-      "height": "1.5321",
-      "svg_shape": "rounded-rectangle",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#052e16",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            1270.07,
-            142.15,
-            421.37,
-            55.31
-          ]
-        }
-      ],
-      "href": "../MIS-003-views/Model_Discovery_and_Loading.view.svg",
-      "icon": "spark",
-      "style": "filled",
-      "width": "11.707",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1230.07,
-            166.95
-          ],
-          "text": "Capability",
-          "width": 80.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1154.57,
-            152.95
-          ],
-          "text": "Model Discovery and Loading",
-          "width": 231.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            980.07,
-            124.95
-          ],
-          "text": "Ability to locate Aurora model homes from a user-provided path and load all card",
-          "width": 580.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1078.57,
-            110.95
-          ],
-          "text": " JSON/JSJSON files into an indexed in-memory model.",
-          "width": 383.0
-        }
-      ]
-    },
-    {
-      "_gvid": 2,
       "name": "CAP_005",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>View Rendering</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to render canonical Aurora views by generating DOT sources and producing<BR/> SVG diagrams using a Graphviz-compatible renderer.<BR/></FONT>\n\t\t\t",
-      "pos": "2141.1,142.15",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/><B>View Rendering</B><BR/><BR/>Ability to render canonical Aurora views by generating DOT sources and producing<BR/> SVG diagrams using a Graphviz-compatible renderer.<BR/></FONT>",
+      "pos": "432.04,142.15",
+      "width": "12.001",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
+      "style": "filled",
       "_draw_": [
         {
           "color": "#000000",
@@ -288,18 +35,13 @@
         {
           "op": "E",
           "rect": [
-            2141.07,
+            432.04,
             142.15,
             432.08,
             55.31
           ]
         }
       ],
-      "fillcolor": "#052e16",
-      "height": "1.5321",
-      "style": "filled",
-      "width": "12.001",
-      "svg_shape": "rounded-rectangle",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -319,7 +61,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2101.07,
+            392.04,
             166.95
           ],
           "text": "Capability",
@@ -339,7 +81,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2078.57,
+            369.54,
             152.95
           ],
           "text": "View Rendering",
@@ -363,7 +105,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1843.57,
+            134.54,
             124.95
           ],
           "text": "Ability to render canonical Aurora views by generating DOT sources and producing",
@@ -383,29 +125,48 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1948.07,
+            239.04,
             110.95
           ],
           "text": " SVG diagrams using a Graphviz-compatible renderer.",
           "width": 386.0
         }
       ],
-      "icon": "spark",
       "href": "../MIS-003-views/View_Rendering.view.svg"
     },
     {
-      "_gvid": 3,
-      "name": "CAP_006",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Compact Agent Export</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to write a compact, single-file snapshot of a mission-scoped model for a<BR/>gent consumption.<BR/></FONT>\n\t\t\t",
-      "pos": "3000.1,142.15",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "icon": "spark",
-      "fillcolor": "#052e16",
-      "width": "11.353",
+      "_gvid": 1,
+      "name": "CAP_002",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/><B>Model Discovery and Loading</B><BR/><BR/>Ability to locate Aurora model homes from a user-provided path and load all card<BR/> JSON/JSJSON files into an indexed in-memory model.<BR/></FONT>",
+      "pos": "1303,142.15",
+      "width": "11.707",
       "height": "1.5321",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1303.04,
+            142.15,
+            421.37,
+            55.31
+          ]
+        }
+      ],
+      "style": "filled",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -425,7 +186,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2960.07,
+            1263.04,
             166.95
           ],
           "text": "Capability",
@@ -445,11 +206,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2911.57,
+            1187.54,
             152.95
           ],
-          "text": "Compact Agent Export",
-          "width": 177.0
+          "text": "Model Discovery and Loading",
+          "width": 231.0
         },
         {
           "face": "Times-Roman",
@@ -469,11 +230,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2719.07,
+            1013.04,
             124.95
           ],
-          "text": "Ability to write a compact, single-file snapshot of a mission-scoped model for a",
-          "width": 562.0
+          "text": "Ability to locate Aurora model homes from a user-provided path and load all card",
+          "width": 580.0
         },
         {
           "face": "Times-Roman",
@@ -489,52 +250,26 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2933.57,
+            1111.54,
             110.95
           ],
-          "text": "gent consumption.",
-          "width": 133.0
+          "text": " JSON/JSJSON files into an indexed in-memory model.",
+          "width": 383.0
         }
       ],
-      "style": "filled",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#052e16",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            3000.07,
-            142.15,
-            408.92,
-            55.31
-          ]
-        }
-      ],
-      "svg_shape": "rounded-rectangle",
-      "href": "../MIS-003-views/Compact_Agent_Export.view.svg"
+      "href": "../MIS-003-views/Model_Discovery_and_Loading.view.svg"
     },
     {
-      "_gvid": 4,
+      "_gvid": 2,
       "name": "CAP_008",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Registry Backed Tooling</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to validate and render using embedded canonical registries for card defi<BR/>nitions, relationship rules, and view specifications.<BR/></FONT>\n\t\t\t",
-      "pos": "3840.1,142.15",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/><B>Registry Backed Tooling</B><BR/><BR/>Ability to validate and render using embedded canonical registries for card defi<BR/>nitions, relationship rules, and view specifications.<BR/></FONT>",
+      "pos": "2156,142.15",
       "width": "11.49",
-      "style": "filled",
-      "icon": "spark",
+      "height": "1.5321",
+      "color": null,
       "fillcolor": "#052e16",
-      "href": "../MIS-003-views/Registry_Backed_Tooling.view.svg",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -554,7 +289,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3800.07,
+            2116.04,
             166.95
           ],
           "text": "Capability",
@@ -574,7 +309,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3744.07,
+            2060.04,
             152.95
           ],
           "text": "Registry Backed Tooling",
@@ -598,7 +333,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3555.57,
+            1871.54,
             124.95
           ],
           "text": "Ability to validate and render using embedded canonical registries for card defi",
@@ -618,13 +353,15 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3658.57,
+            1974.54,
             110.95
           ],
           "text": "nitions, relationship rules, and view specifications.",
           "width": 363.0
         }
       ],
+      "href": "../MIS-003-views/Registry_Backed_Tooling.view.svg",
+      "style": "filled",
       "_draw_": [
         {
           "color": "#000000",
@@ -639,26 +376,25 @@
         {
           "op": "E",
           "rect": [
-            3840.07,
+            2156.04,
             142.15,
             413.81,
             55.31
           ]
         }
-      ],
-      "height": "1.5321",
-      "svg_shape": "rounded-rectangle"
+      ]
     },
     {
-      "_gvid": 5,
-      "name": "CAP_007",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Audit Version Bumping</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to update card audit trail versions (patch/minor/major) and append an au<BR/>dit event in a deterministic, tool-driven manner.<BR/></FONT>\n\t\t\t",
-      "pos": "4689.1,142.15",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "_gvid": 3,
+      "name": "CAP_004",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/><B>Markdown Rendering</B><BR/><BR/>Ability to render human-readable Markdown documentation for every card plus a mi<BR/>ssion-level executive summary.<BR/></FONT>",
+      "pos": "3026,142.15",
+      "width": "12.178",
       "height": "1.5321",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
       "_draw_": [
         {
           "color": "#000000",
@@ -673,18 +409,14 @@
         {
           "op": "E",
           "rect": [
-            4689.07,
+            3026.04,
             142.15,
-            417.39,
+            438.31,
             55.31
           ]
         }
       ],
-      "fillcolor": "#052e16",
-      "href": "../MIS-003-views/Audit_Version_Bumping.view.svg",
-      "icon": "spark",
-      "style": "filled",
-      "width": "11.589",
+      "href": "../MIS-003-views/Markdown_Rendering.view.svg",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -704,7 +436,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4649.07,
+            2986.04,
             166.95
           ],
           "text": "Capability",
@@ -724,111 +456,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4597.07,
-            152.95
-          ],
-          "text": "Audit Version Bumping",
-          "width": 184.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            4402.07,
-            124.95
-          ],
-          "text": "Ability to update card audit trail versions (patch/minor/major) and append an au",
-          "width": 574.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            4517.57,
-            110.95
-          ],
-          "text": "dit event in a deterministic, tool-driven manner.",
-          "width": 343.0
-        }
-      ],
-      "svg_shape": "rounded-rectangle"
-    },
-    {
-      "_gvid": 6,
-      "name": "CAP_004",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Markdown Rendering</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to render human-readable Markdown documentation for every card plus a mi<BR/>ssion-level executive summary.<BR/></FONT>\n\t\t\t",
-      "pos": "5563.1,142.15",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "height": "1.5321",
-      "icon": "spark",
-      "svg_shape": "rounded-rectangle",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            5523.07,
-            166.95
-          ],
-          "text": "Capability",
-          "width": 80.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            5477.07,
+            2940.04,
             152.95
           ],
           "text": "Markdown Rendering",
@@ -852,7 +480,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            5261.07,
+            2724.04,
             124.95
           ],
           "text": "Ability to render human-readable Markdown documentation for every card plus a mi",
@@ -872,13 +500,151 @@
           "align": "l",
           "op": "T",
           "pt": [
-            5452.07,
+            2915.04,
             110.95
           ],
           "text": "ssion-level executive summary.",
           "width": 222.0
         }
       ],
+      "style": "filled"
+    },
+    {
+      "_gvid": 4,
+      "name": "CAP_006",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/><B>Compact Agent Export</B><BR/><BR/>Ability to write a compact, single-file snapshot of a mission-scoped model for a<BR/>gent consumption.<BR/></FONT>",
+      "pos": "3891,142.15",
+      "width": "11.353",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3891.04,
+            142.15,
+            408.92,
+            55.31
+          ]
+        }
+      ],
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3851.04,
+            166.95
+          ],
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3802.54,
+            152.95
+          ],
+          "text": "Compact Agent Export",
+          "width": 177.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3610.04,
+            124.95
+          ],
+          "text": "Ability to write a compact, single-file snapshot of a mission-scoped model for a",
+          "width": 562.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3824.54,
+            110.95
+          ],
+          "text": "gent consumption.",
+          "width": 133.0
+        }
+      ],
+      "href": "../MIS-003-views/Compact_Agent_Export.view.svg"
+    },
+    {
+      "_gvid": 5,
+      "name": "CAP_007",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/><B>Audit Version Bumping</B><BR/><BR/>Ability to update card audit trail versions (patch/minor/major) and append an au<BR/>dit event in a deterministic, tool-driven manner.<BR/></FONT>",
+      "pos": "4735,142.15",
+      "width": "11.589",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
       "style": "filled",
       "_draw_": [
         {
@@ -894,26 +660,241 @@
         {
           "op": "E",
           "rect": [
-            5563.07,
+            4735.04,
             142.15,
-            438.31,
+            417.39,
             55.31
           ]
         }
       ],
+      "href": "../MIS-003-views/Audit_Version_Bumping.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4695.04,
+            166.95
+          ],
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4643.04,
+            152.95
+          ],
+          "text": "Audit Version Bumping",
+          "width": 184.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4448.04,
+            124.95
+          ],
+          "text": "Ability to update card audit trail versions (patch/minor/major) and append an au",
+          "width": 574.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4563.54,
+            110.95
+          ],
+          "text": "dit event in a deterministic, tool-driven manner.",
+          "width": 343.0
+        }
+      ]
+    },
+    {
+      "_gvid": 6,
+      "name": "CAP_003",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/><B>Model Validation</B><BR/><BR/>Ability to validate Aurora model invariants and provide actionable diagnostics b<BR/>efore any downstream rendering/export steps.<BR/></FONT>",
+      "pos": "5585,142.15",
+      "width": "11.53",
+      "height": "1.5321",
+      "color": null,
       "fillcolor": "#052e16",
-      "href": "../MIS-003-views/Markdown_Rendering.view.svg",
-      "width": "12.178"
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5545.04,
+            166.95
+          ],
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5518.54,
+            152.95
+          ],
+          "text": "Model Validation",
+          "width": 133.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5299.54,
+            124.95
+          ],
+          "text": "Ability to validate Aurora model invariants and provide actionable diagnostics b",
+          "width": 571.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5418.04,
+            110.95
+          ],
+          "text": "efore any downstream rendering/export steps.",
+          "width": 334.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            5585.04,
+            142.15,
+            415.14,
+            55.31
+          ]
+        }
+      ],
+      "style": "filled",
+      "href": "../MIS-003-views/Model_Validation.view.svg"
     },
     {
       "_gvid": 7,
-      "name": "REQ_003",
-      "bb": null,
+      "name": "REQ_005",
       "label": "\\N",
-      "pos": "415.07,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "432.04,18",
+      "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -929,15 +910,13 @@
           "align": "c",
           "op": "T",
           "pt": [
-            415.07,
+            432.04,
             14.3
           ],
-          "text": "REQ_003",
+          "text": "REQ_005",
           "width": 67.0
         }
       ],
-      "width": "1.4985",
-      "height": "0.5",
       "_draw_": [
         {
           "color": "#000000",
@@ -947,7 +926,7 @@
         {
           "op": "e",
           "rect": [
-            415.07,
+            432.04,
             18.0,
             53.89,
             18.0
@@ -958,12 +937,14 @@
     {
       "_gvid": 8,
       "name": "REQ_002",
-      "bb": null,
       "label": "\\N",
-      "pos": "1270.1,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "1303,18",
+      "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_draw_": [
         {
           "color": "#000000",
@@ -973,7 +954,7 @@
         {
           "op": "e",
           "rect": [
-            1270.07,
+            1303.04,
             18.0,
             53.89,
             18.0
@@ -995,143 +976,41 @@
           "align": "c",
           "op": "T",
           "pt": [
-            1270.07,
+            1303.04,
             14.3
           ],
           "text": "REQ_002",
           "width": 67.0
         }
-      ],
-      "height": "0.5",
-      "width": "1.4985"
+      ]
     },
     {
       "_gvid": 9,
-      "name": "REQ_005",
-      "bb": null,
-      "label": "\\N",
-      "pos": "2141.1,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            2141.07,
-            18.0,
-            53.89,
-            18.0
-          ]
-        }
-      ],
-      "width": "1.4985",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            2141.07,
-            14.3
-          ],
-          "text": "REQ_005",
-          "width": 67.0
-        }
-      ],
-      "height": "0.5"
-    },
-    {
-      "_gvid": 10,
-      "name": "REQ_006",
-      "bb": null,
-      "label": "\\N",
-      "pos": "3000.1,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            3000.07,
-            14.3
-          ],
-          "text": "REQ_006",
-          "width": 67.0
-        }
-      ],
-      "width": "1.4985",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            3000.07,
-            18.0,
-            53.89,
-            18.0
-          ]
-        }
-      ],
-      "height": "0.5"
-    },
-    {
-      "_gvid": 11,
       "name": "REQ_008",
-      "bb": null,
       "label": "\\N",
-      "pos": "3840.1,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            3840.07,
-            18.0,
-            53.89,
-            18.0
-          ]
-        }
-      ],
+      "pos": "2156,18",
       "width": "1.4985",
       "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            2156.04,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1147,7 +1026,7 @@
           "align": "c",
           "op": "T",
           "pt": [
-            3840.07,
+            2156.04,
             14.3
           ],
           "text": "REQ_008",
@@ -1156,14 +1035,32 @@
       ]
     },
     {
-      "_gvid": 12,
-      "name": "REQ_007",
-      "bb": null,
+      "_gvid": 10,
+      "name": "REQ_004",
       "label": "\\N",
-      "pos": "4689.1,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "3026,18",
+      "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            3026.04,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1179,15 +1076,25 @@
           "align": "c",
           "op": "T",
           "pt": [
-            4689.07,
+            3026.04,
             14.3
           ],
-          "text": "REQ_007",
+          "text": "REQ_004",
           "width": 67.0
         }
-      ],
-      "height": "0.5",
+      ]
+    },
+    {
+      "_gvid": 11,
+      "name": "REQ_006",
+      "label": "\\N",
+      "pos": "3891,18",
       "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_draw_": [
         {
           "color": "#000000",
@@ -1197,7 +1104,79 @@
         {
           "op": "e",
           "rect": [
-            4689.07,
+            3891.04,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            3891.04,
+            14.3
+          ],
+          "text": "REQ_006",
+          "width": 67.0
+        }
+      ]
+    },
+    {
+      "_gvid": 12,
+      "name": "REQ_007",
+      "label": "\\N",
+      "pos": "4735,18",
+      "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            4735.04,
+            14.3
+          ],
+          "text": "REQ_007",
+          "width": 67.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            4735.04,
             18.0,
             53.89,
             18.0
@@ -1207,15 +1186,37 @@
     },
     {
       "_gvid": 13,
-      "name": "REQ_004",
-      "bb": null,
+      "name": "REQ_003",
       "label": "\\N",
-      "pos": "5563.1,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "height": "0.5",
+      "pos": "5585,18",
       "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            5585.04,
+            14.3
+          ],
+          "text": "REQ_003",
+          "width": 67.0
+        }
+      ],
       "_draw_": [
         {
           "color": "#000000",
@@ -1225,33 +1226,11 @@
         {
           "op": "e",
           "rect": [
-            5563.07,
+            5585.04,
             18.0,
             53.89,
             18.0
           ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            5563.07,
-            14.3
-          ],
-          "text": "REQ_004",
-          "width": 67.0
         }
       ]
     }
@@ -1261,7 +1240,7 @@
       "tail": 0,
       "head": 7,
       "_gvid": 0,
-      "pos": "e,415.07,36.065 415.07,86.864 415.07,72.814 415.07,58.279 415.07,46.282",
+      "pos": "e,432.04,36.065 432.04,86.864 432.04,72.814 432.04,58.279 432.04,46.282",
       "label": "satisfies",
       "arrowhead": null,
       "color": null,
@@ -1281,42 +1260,14 @@
           "align": "c",
           "op": "T",
           "pt": [
-            444.57,
+            461.54,
             57.8
           ],
           "text": "satisfies",
           "width": 59.0
         }
       ],
-      "lp": "444.57,61.5",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              415.07,
-              86.86
-            ],
-            [
-              415.07,
-              72.81
-            ],
-            [
-              415.07,
-              58.28
-            ],
-            [
-              415.07,
-              46.28
-            ]
-          ]
-        }
-      ],
+      "lp": "461.54,61.5",
       "_hdraw_": [
         {
           "op": "S",
@@ -1336,16 +1287,44 @@
           "op": "P",
           "points": [
             [
-              418.57,
+              435.54,
               46.07
             ],
             [
-              415.07,
+              432.04,
               36.07
             ],
             [
-              411.57,
+              428.54,
               46.07
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              432.04,
+              86.86
+            ],
+            [
+              432.04,
+              72.81
+            ],
+            [
+              432.04,
+              58.28
+            ],
+            [
+              432.04,
+              46.28
             ]
           ]
         }
@@ -1355,62 +1334,12 @@
       "tail": 1,
       "head": 8,
       "_gvid": 1,
-      "pos": "e,1270.1,36.065 1270.1,86.864 1270.1,72.814 1270.1,58.279 1270.1,46.282",
+      "pos": "e,1303,36.065 1303,86.864 1303,72.814 1303,58.279 1303,46.282",
       "label": "satisfies",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1299.57,
-            57.8
-          ],
-          "text": "satisfies",
-          "width": 59.0
-        }
-      ],
-      "lp": "1299.6,61.5",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              1270.07,
-              86.86
-            ],
-            [
-              1270.07,
-              72.81
-            ],
-            [
-              1270.07,
-              58.28
-            ],
-            [
-              1270.07,
-              46.28
-            ]
-          ]
-        }
-      ],
+      "lp": "1332.5,61.5",
       "_hdraw_": [
         {
           "op": "S",
@@ -1430,18 +1359,68 @@
           "op": "P",
           "points": [
             [
-              1273.57,
+              1306.54,
               46.07
             ],
             [
-              1270.07,
+              1303.04,
               36.07
             ],
             [
-              1266.57,
+              1299.54,
               46.07
             ]
           ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1303.04,
+              86.86
+            ],
+            [
+              1303.04,
+              72.81
+            ],
+            [
+              1303.04,
+              58.28
+            ],
+            [
+              1303.04,
+              46.28
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1332.54,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
         }
       ]
     },
@@ -1449,11 +1428,12 @@
       "tail": 2,
       "head": 9,
       "_gvid": 2,
-      "pos": "e,2141.1,36.065 2141.1,86.864 2141.1,72.814 2141.1,58.279 2141.1,46.282",
+      "pos": "e,2156,36.065 2156,86.864 2156,72.814 2156,58.279 2156,46.282",
       "label": "satisfies",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "lp": "2185.5,61.5",
       "_hdraw_": [
         {
           "op": "S",
@@ -1473,15 +1453,15 @@
           "op": "P",
           "points": [
             [
-              2144.57,
+              2159.54,
               46.07
             ],
             [
-              2141.07,
+              2156.04,
               36.07
             ],
             [
-              2137.57,
+              2152.54,
               46.07
             ]
           ]
@@ -1497,19 +1477,19 @@
           "op": "b",
           "points": [
             [
-              2141.07,
+              2156.04,
               86.86
             ],
             [
-              2141.07,
+              2156.04,
               72.81
             ],
             [
-              2141.07,
+              2156.04,
               58.28
             ],
             [
-              2141.07,
+              2156.04,
               46.28
             ]
           ]
@@ -1530,47 +1510,52 @@
           "align": "c",
           "op": "T",
           "pt": [
-            2170.57,
+            2185.54,
             57.8
           ],
           "text": "satisfies",
           "width": 59.0
         }
-      ],
-      "lp": "2170.6,61.5"
+      ]
     },
     {
       "tail": 3,
       "head": 10,
       "_gvid": 3,
-      "pos": "e,3000.1,36.065 3000.1,86.864 3000.1,72.814 3000.1,58.279 3000.1,46.282",
+      "pos": "e,3026,36.065 3026,86.864 3026,72.814 3026,58.279 3026,46.282",
       "label": "satisfies",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "lp": "3029.6,61.5",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
+      "_draw_": [
         {
           "color": "#000000",
           "grad": "none",
           "op": "c"
         },
         {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            3029.57,
-            57.8
-          ],
-          "text": "satisfies",
-          "width": 59.0
+          "op": "b",
+          "points": [
+            [
+              3026.04,
+              86.86
+            ],
+            [
+              3026.04,
+              72.81
+            ],
+            [
+              3026.04,
+              58.28
+            ],
+            [
+              3026.04,
+              46.28
+            ]
+          ]
         }
       ],
+      "lp": "3055.5,61.5",
       "_hdraw_": [
         {
           "op": "S",
@@ -1590,46 +1575,40 @@
           "op": "P",
           "points": [
             [
-              3003.57,
+              3029.54,
               46.07
             ],
             [
-              3000.07,
+              3026.04,
               36.07
             ],
             [
-              2996.57,
+              3022.54,
               46.07
             ]
           ]
         }
       ],
-      "_draw_": [
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
         {
           "color": "#000000",
           "grad": "none",
           "op": "c"
         },
         {
-          "op": "b",
-          "points": [
-            [
-              3000.07,
-              86.86
-            ],
-            [
-              3000.07,
-              72.81
-            ],
-            [
-              3000.07,
-              58.28
-            ],
-            [
-              3000.07,
-              46.28
-            ]
-          ]
+          "align": "c",
+          "op": "T",
+          "pt": [
+            3055.54,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
         }
       ]
     },
@@ -1637,12 +1616,11 @@
       "tail": 4,
       "head": 11,
       "_gvid": 4,
-      "pos": "e,3840.1,36.065 3840.1,86.864 3840.1,72.814 3840.1,58.279 3840.1,46.282",
+      "pos": "e,3891,36.065 3891,86.864 3891,72.814 3891,58.279 3891,46.282",
       "label": "satisfies",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "lp": "3869.6,61.5",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1658,41 +1636,14 @@
           "align": "c",
           "op": "T",
           "pt": [
-            3869.57,
+            3920.54,
             57.8
           ],
           "text": "satisfies",
           "width": 59.0
         }
       ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              3840.07,
-              86.86
-            ],
-            [
-              3840.07,
-              72.81
-            ],
-            [
-              3840.07,
-              58.28
-            ],
-            [
-              3840.07,
-              46.28
-            ]
-          ]
-        }
-      ],
+      "lp": "3920.5,61.5",
       "_hdraw_": [
         {
           "op": "S",
@@ -1712,16 +1663,44 @@
           "op": "P",
           "points": [
             [
-              3843.57,
+              3894.54,
               46.07
             ],
             [
-              3840.07,
+              3891.04,
               36.07
             ],
             [
-              3836.57,
+              3887.54,
               46.07
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              3891.04,
+              86.86
+            ],
+            [
+              3891.04,
+              72.81
+            ],
+            [
+              3891.04,
+              58.28
+            ],
+            [
+              3891.04,
+              46.28
             ]
           ]
         }
@@ -1731,11 +1710,12 @@
       "tail": 5,
       "head": 12,
       "_gvid": 5,
-      "pos": "e,4689.1,36.065 4689.1,86.864 4689.1,72.814 4689.1,58.279 4689.1,46.282",
+      "pos": "e,4735,36.065 4735,86.864 4735,72.814 4735,58.279 4735,46.282",
       "label": "satisfies",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "lp": "4764.5,61.5",
       "_draw_": [
         {
           "color": "#000000",
@@ -1746,44 +1726,22 @@
           "op": "b",
           "points": [
             [
-              4689.07,
+              4735.04,
               86.86
             ],
             [
-              4689.07,
+              4735.04,
               72.81
             ],
             [
-              4689.07,
+              4735.04,
               58.28
             ],
             [
-              4689.07,
+              4735.04,
               46.28
             ]
           ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            4718.57,
-            57.8
-          ],
-          "text": "satisfies",
-          "width": 59.0
         }
       ],
       "_hdraw_": [
@@ -1805,82 +1763,52 @@
           "op": "P",
           "points": [
             [
-              4692.57,
+              4738.54,
               46.07
             ],
             [
-              4689.07,
+              4735.04,
               36.07
             ],
             [
-              4685.57,
+              4731.54,
               46.07
             ]
           ]
         }
       ],
-      "lp": "4718.6,61.5"
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            4764.54,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ]
     },
     {
       "tail": 6,
       "head": 13,
       "_gvid": 6,
-      "pos": "e,5563.1,36.065 5563.1,86.864 5563.1,72.814 5563.1,58.279 5563.1,46.282",
+      "pos": "e,5585,36.065 5585,86.864 5585,72.814 5585,58.279 5585,46.282",
       "label": "satisfies",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              5563.07,
-              86.86
-            ],
-            [
-              5563.07,
-              72.81
-            ],
-            [
-              5563.07,
-              58.28
-            ],
-            [
-              5563.07,
-              46.28
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            5592.57,
-            57.8
-          ],
-          "text": "satisfies",
-          "width": 59.0
-        }
-      ],
-      "lp": "5592.6,61.5",
       "_hdraw_": [
         {
           "op": "S",
@@ -1900,22 +1828,74 @@
           "op": "P",
           "points": [
             [
-              5566.57,
+              5588.54,
               46.07
             ],
             [
-              5563.07,
+              5585.04,
               36.07
             ],
             [
-              5559.57,
+              5581.54,
               46.07
             ]
           ]
         }
-      ]
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            5614.54,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              5585.04,
+              86.86
+            ],
+            [
+              5585.04,
+              72.81
+            ],
+            [
+              5585.04,
+              58.28
+            ],
+            [
+              5585.04,
+              46.28
+            ]
+          ]
+        }
+      ],
+      "lp": "5614.5,61.5"
     }
   ],
+  "fontcolor": "#FFFFFF",
   "xdotversion": "1.7",
   "_draw_": [
     {
@@ -1940,15 +1920,14 @@
           197.31
         ],
         [
-          6001.48,
+          6000.11,
           197.31
         ],
         [
-          6001.48,
+          6000.11,
           0.0
         ]
       ]
     }
-  ],
-  "fontcolor": "#FFFFFF"
+  ]
 }

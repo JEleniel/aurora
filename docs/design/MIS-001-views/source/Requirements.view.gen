@@ -3,154 +3,22 @@
   "directed": true,
   "strict": false,
   "_subgraph_cnt": 0,
-  "bb": "0,0,11402,650.71",
+  "bb": "0,0,11401,650.71",
   "rankdir": null,
   "fontname": "Noto Sans",
-  "fontsize": "12",
+  "fontsize": "12.0",
   "label": null,
   "objects": [
     {
       "_gvid": 0,
-      "name": "REQ_025",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Model Integrity Validation</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora models SHALL be machine-validatable for integrity: every non-Mission, non<BR/>-Note card SHALL have at least one incoming link; every card SHALL be reachable <BR/>from the Mission; and all links[].target values SHALL reference an existing card<BR/> id.<BR/></FONT>\n\t\t\t",
-      "pos": "7481.8,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            7429.3,
-            123.65
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            7377.8,
-            109.65
-          ],
-          "text": "Model Integrity Validation",
-          "width": 208.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            7184.3,
-            81.65
-          ],
-          "text": "Aurora models SHALL be machine-validatable for integrity: every non-Mission, non",
-          "width": 595.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            7184.3,
-            67.65
-          ],
-          "text": "-Note card SHALL have at least one incoming link; every card SHALL be reachable ",
-          "width": 595.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            7195.3,
-            53.65
-          ],
-          "text": "from the Mission; and all links[].target values SHALL reference an existing card",
-          "width": 573.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            7470.3,
-            39.65
-          ],
-          "text": " id.",
-          "width": 23.0
-        }
-      ],
+      "name": "REQ_022",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Canonical Relationship Registry</B><BR/><BR/>Aurora tooling and documentation SHALL use a canonical registry of relationship <BR/>verbs, including allowed source and target card types, to enable deterministic v<BR/>alidation and interoperable views.<BR/></FONT>",
+      "pos": "4795.6,84.853",
+      "width": "11.824",
+      "height": "1.8071",
+      "color": null,
       "fillcolor": "#065f46",
       "svg_shape": "rounded-rectangle",
-      "height": "2.082",
       "icon": "checklist",
       "style": "filled",
       "_draw_": [
@@ -167,50 +35,13 @@
         {
           "op": "E",
           "rect": [
-            7481.8,
-            84.85,
-            432.08,
-            74.91
-          ]
-        }
-      ],
-      "width": "12.001",
-      "href": "../MIS-001-views/Model_Integrity_Validation.view.svg"
-    },
-    {
-      "_gvid": 1,
-      "name": "REQ_022",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Canonical Relationship Registry</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora tooling and documentation SHALL use a canonical registry of relationship <BR/>verbs, including allowed source and target card types, to enable deterministic v<BR/>alidation and interoperable views.<BR/></FONT>\n\t\t\t",
-      "pos": "3099.8,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "fillcolor": "#065f46",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            3099.8,
+            4795.56,
             84.85,
             425.86,
             65.11
           ]
         }
       ],
-      "height": "1.8071",
-      "icon": "checklist",
-      "style": "filled",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -230,7 +61,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3047.3,
+            4743.06,
             116.65
           ],
           "text": "Requirement",
@@ -250,7 +81,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2972.3,
+            4668.06,
             102.65
           ],
           "text": "Canonical Relationship Registry",
@@ -274,7 +105,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2806.8,
+            4502.56,
             74.65
           ],
           "text": "Aurora tooling and documentation SHALL use a canonical registry of relationship ",
@@ -294,7 +125,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2813.3,
+            4509.06,
             60.65
           ],
           "text": "verbs, including allowed source and target card types, to enable deterministic v",
@@ -314,141 +145,26 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2977.8,
+            4673.56,
             46.65
           ],
           "text": "alidation and interoperable views.",
           "width": 244.0
         }
       ],
-      "href": "../MIS-001-views/Canonical_Relationship_Registry.view.svg",
-      "width": "11.824",
-      "svg_shape": "rounded-rectangle"
+      "href": "../MIS-001-views/Canonical_Relationship_Registry.view.svg"
     },
     {
-      "_gvid": 2,
-      "name": "REQ_018",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Single Root Mission</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tEach Aurora model SHALL start with exactly one Mission card that serves as the r<BR/>oot of the directed graph. The Mission card SHALL only have outgoing links and S<BR/>HALL provide a consistent starting point for traversal and view generation.<BR/></FONT>\n\t\t\t",
-      "pos": "8361.8,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "_gvid": 1,
+      "name": "REQ_027",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Audit Trail and Versioning</B><BR/><BR/>All Aurora cards SHALL include an audit_trail with a per-card SemVer version, an<BR/> optional SHA256 hash (nullable), and a chronological history of created/edited/<BR/>deleted events including editor identity and RFC3339 timestamps.<BR/></FONT>",
+      "pos": "423.56,84.853",
+      "width": "11.765",
       "height": "1.8071",
-      "icon": "checklist",
-      "svg_shape": "rounded-rectangle",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            8309.3,
-            116.65
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            8282.8,
-            102.65
-          ],
-          "text": "Single Root Mission",
-          "width": 158.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            8065.8,
-            74.65
-          ],
-          "text": "Each Aurora model SHALL start with exactly one Mission card that serves as the r",
-          "width": 592.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            8067.8,
-            60.65
-          ],
-          "text": "oot of the directed graph. The Mission card SHALL only have outgoing links and S",
-          "width": 588.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            8091.3,
-            46.65
-          ],
-          "text": "HALL provide a consistent starting point for traversal and view generation.",
-          "width": 541.0
-        }
-      ],
+      "color": null,
       "fillcolor": "#065f46",
-      "href": "../MIS-001-views/Single_Root_Mission.view.svg",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
       "_draw_": [
         {
           "color": "#000000",
@@ -463,32 +179,15 @@
         {
           "op": "E",
           "rect": [
-            8361.8,
+            423.56,
             84.85,
-            429.84,
+            423.61,
             65.11
           ]
         }
       ],
-      "width": "11.942",
-      "style": "filled"
-    },
-    {
-      "_gvid": 3,
-      "name": "REQ_024",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Schema Referencing Rules</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAll Aurora card files SHALL include a $schema field referencing the applicable A<BR/>urora schema using a relative path from the card file to the Model Home schema f<BR/>ile.<BR/></FONT>\n\t\t\t",
-      "pos": "427.8,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "height": "1.8071",
-      "href": "../MIS-001-views/Schema_Referencing_Rules.view.svg",
-      "icon": "checklist",
+      "href": "../MIS-001-views/Audit_Trail_and_Versioning.view.svg",
       "style": "filled",
-      "svg_shape": "rounded-rectangle",
-      "width": "11.883",
-      "fillcolor": "#065f46",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -508,7 +207,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            375.3,
+            371.06,
             116.65
           ],
           "text": "Requirement",
@@ -528,11 +227,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            321.3,
+            319.56,
             102.65
           ],
-          "text": "Schema Referencing Rules",
-          "width": 213.0
+          "text": "Audit Trail and Versioning",
+          "width": 208.0
         },
         {
           "face": "Times-Roman",
@@ -552,11 +251,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            140.8,
+            132.06,
             74.65
           ],
-          "text": "All Aurora card files SHALL include a $schema field referencing the applicable A",
-          "width": 574.0
+          "text": "All Aurora cards SHALL include an audit_trail with a per-card SemVer version, an",
+          "width": 583.0
         },
         {
           "face": "Times-Roman",
@@ -572,11 +271,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            133.3,
+            139.06,
             60.65
           ],
-          "text": "urora schema using a relative path from the card file to the Model Home schema f",
-          "width": 589.0
+          "text": " optional SHA256 hash (nullable), and a chronological history of created/edited/",
+          "width": 569.0
         },
         {
           "face": "Times-Roman",
@@ -592,13 +291,137 @@
           "align": "l",
           "op": "T",
           "pt": [
-            416.8,
+            184.56,
             46.65
           ],
-          "text": "ile.",
-          "width": 22.0
+          "text": "deleted events including editor identity and RFC3339 timestamps.",
+          "width": 478.0
+        }
+      ]
+    },
+    {
+      "_gvid": 2,
+      "name": "REQ_019",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Directed Graph with Local Cycles</B><BR/><BR/>All Aurora links SHALL lead away from the Mission card. Local cycles MAY exist w<BR/>ithin bounded subgraphs (for example state machines) as long as no link creates <BR/>a path back to the Mission.<BR/></FONT>",
+      "pos": "1293.6,84.853",
+      "width": "11.903",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "href": "../MIS-001-views/Directed_Graph_with_Local_Cycles.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1241.06,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1163.06,
+            102.65
+          ],
+          "text": "Directed Graph with Local Cycles",
+          "width": 261.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            998.56,
+            74.65
+          ],
+          "text": "All Aurora links SHALL lead away from the Mission card. Local cycles MAY exist w",
+          "width": 590.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1003.06,
+            60.65
+          ],
+          "text": "ithin bounded subgraphs (for example state machines) as long as no link creates ",
+          "width": 581.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1196.56,
+            46.65
+          ],
+          "text": "a path back to the Mission.",
+          "width": 194.0
         }
       ],
+      "style": "filled",
       "_draw_": [
         {
           "color": "#000000",
@@ -613,343 +436,312 @@
         {
           "op": "E",
           "rect": [
-            427.8,
+            1293.56,
             84.85,
-            427.6,
+            428.51,
             65.11
           ]
         }
       ]
     },
     {
+      "_gvid": 3,
+      "name": "MIS_001",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Mission</B><BR/><B>Agent-Unified Representation of Requirements and Architecture (Aurora)</B><BR/><BR/>A rigorous, MBSE-class architectural modeling framework designed for equal reada<BR/>bility by human engineers, machine learning (&quot;AI&quot;) agents, and computer programs<BR/>. It provides a lightweight but complete representational schema that captures r<BR/>equirements, behavior, structure, interfaces, constraints, and traceability in a<BR/> single, coherent model. The objective is a common architectural language that s<BR/>upports automated reasoning, validation, and lifecycle tooling while remaining d<BR/>irectly interpretable by expert practitioners.\n\nBecause it is designed to be rea<BR/>dable by machine agents as well as humans, Aurora artifacts can be generated by <BR/>machine learning models, consumed by coding agents, and used to automatically ge<BR/>nerate views of the architecture.<BR/></FONT>",
+      "pos": "8360.6,516.36",
+      "width": "12.139",
+      "height": "3.732",
+      "color": null,
+      "fillcolor": "#022c22",
+      "svg_shape": "octagon",
+      "icon": "target",
+      "href": "../MIS-001-views/Agent-Unified_Representation_of_Requirements_and_Architecture_(Aurora).view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#022c22",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            8360.56,
+            516.36,
+            436.98,
+            134.2
+          ]
+        }
+      ],
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8329.06,
+            597.16
+          ],
+          "text": "Mission",
+          "width": 63.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8069.06,
+            583.16
+          ],
+          "text": "Agent-Unified Representation of Requirements and Architecture (Aurora)",
+          "width": 583.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8060.56,
+            555.16
+          ],
+          "text": "A rigorous, MBSE-class architectural modeling framework designed for equal reada",
+          "width": 600.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8061.56,
+            541.16
+          ],
+          "text": "bility by human engineers, machine learning (\"AI\") agents, and computer programs",
+          "width": 598.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8072.06,
+            527.16
+          ],
+          "text": ". It provides a lightweight but complete representational schema that captures r",
+          "width": 577.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8081.56,
+            513.16
+          ],
+          "text": "equirements, behavior, structure, interfaces, constraints, and traceability in a",
+          "width": 558.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8071.56,
+            499.16
+          ],
+          "text": " single, coherent model. The objective is a common architectural language that s",
+          "width": 578.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8072.06,
+            485.16
+          ],
+          "text": "upports automated reasoning, validation, and lifecycle tooling while remaining d",
+          "width": 577.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8087.06,
+            471.16
+          ],
+          "text": "irectly interpretable by expert practitioners.Because it is designed to be rea",
+          "width": 547.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8065.56,
+            457.16
+          ],
+          "text": "dable by machine agents as well as humans, Aurora artifacts can be generated by ",
+          "width": 590.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8059.56,
+            443.16
+          ],
+          "text": "machine learning models, consumed by coding agents, and used to automatically ge",
+          "width": 602.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8243.06,
+            429.16
+          ],
+          "text": "nerate views of the architecture.",
+          "width": 235.0
+        }
+      ]
+    },
+    {
       "_gvid": 4,
-      "name": "REQ_016",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Strict JSJSON Card Encoding</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora card files SHALL be stored as strict JSON (RFC 8259) using the .jsjson ex<BR/>tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa<BR/>ctly one trailing newline.<BR/></FONT>\n\t\t\t",
-      "pos": "1308.8,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1256.3,
-            116.65
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1195.3,
-            102.65
-          ],
-          "text": "Strict JSJSON Card Encoding",
-          "width": 227.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1018.8,
-            74.65
-          ],
-          "text": "Aurora card files SHALL be stored as strict JSON (RFC 8259) using the .jsjson ex",
-          "width": 580.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1009.3,
-            60.65
-          ],
-          "text": "tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa",
-          "width": 599.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1219.8,
-            46.65
-          ],
-          "text": "ctly one trailing newline.",
-          "width": 178.0
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            1308.8,
-            84.85,
-            434.74,
-            65.11
-          ]
-        }
-      ],
-      "style": "filled",
-      "fillcolor": "#065f46",
-      "height": "1.8071",
-      "width": "12.08",
-      "icon": "checklist",
-      "svg_shape": "rounded-rectangle",
-      "href": "../MIS-001-views/Strict_JSJSON_Card_Encoding.view.svg"
-    },
-    {
-      "_gvid": 5,
-      "name": "REQ_028",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Semantics Derived from Invariants</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora card and relationship labels SHALL be treated as descriptive metadata; th<BR/>e meaning of the architecture SHALL be derived from the model’s invariant rules <BR/>and the current view’s inclusion/projection of card types and links.<BR/></FONT>\n\t\t\t",
-      "pos": "9235.8,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "svg_shape": "rounded-rectangle",
-      "href": "../MIS-001-views/Semantics_Derived_from_Invariants.view.svg",
-      "width": "11.844",
-      "fillcolor": "#065f46",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            9183.3,
-            116.65
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            9097.8,
-            102.65
-          ],
-          "text": "Semantics Derived from Invariants",
-          "width": 276.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            8942.8,
-            74.65
-          ],
-          "text": "Aurora card and relationship labels SHALL be treated as descriptive metadata; th",
-          "width": 586.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            8942.3,
-            60.65
-          ],
-          "text": "e meaning of the architecture SHALL be derived from the model’s invariant rules ",
-          "width": 587.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            8996.8,
-            46.65
-          ],
-          "text": "and the current view’s inclusion/projection of card types and links.",
-          "width": 478.0
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            9235.8,
-            84.85,
-            426.27,
-            65.11
-          ]
-        }
-      ],
-      "style": "filled",
-      "height": "1.8071",
-      "icon": "checklist"
-    },
-    {
-      "_gvid": 6,
       "name": "REQ_020",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Boundary and Note Semantics</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tBoundary cards SHALL be used to group related cards for rendering and navigation<BR/>; they may have a subtype such as End to limit recursion. Note cards SHALL be us<BR/>ed only as annotative leaves (incoming links only) and SHALL NOT introduce new s<BR/>tructural model elements.<BR/></FONT>\n\t\t\t",
-      "pos": "3979.8,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "height": "2.082",
-      "icon": "checklist",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Boundary and Note Semantics</B><BR/><BR/>Boundary cards SHALL be used to group related cards for rendering and navigation<BR/>; they may have a subtype such as End to limit recursion. Note cards SHALL be us<BR/>ed only as annotative leaves (incoming links only) and SHALL NOT introduce new s<BR/>tructural model elements.<BR/></FONT>",
+      "pos": "5675.6,84.853",
       "width": "12.119",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            3979.8,
-            84.85,
-            436.07,
-            74.91
-          ]
-        }
-      ],
+      "height": "2.082",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "href": "../MIS-001-views/Boundary_and_Note_Semantics.view.svg",
+      "style": "filled",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -969,7 +761,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3927.3,
+            5623.06,
             123.65
           ],
           "text": "Requirement",
@@ -989,7 +781,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3860.3,
+            5556.06,
             109.65
           ],
           "text": "Boundary and Note Semantics",
@@ -1013,7 +805,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3679.3,
+            5375.06,
             81.65
           ],
           "text": "Boundary cards SHALL be used to group related cards for rendering and navigation",
@@ -1033,7 +825,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3684.3,
+            5380.06,
             67.65
           ],
           "text": "; they may have a subtype such as End to limit recursion. Note cards SHALL be us",
@@ -1053,7 +845,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3682.3,
+            5378.06,
             53.65
           ],
           "text": "ed only as annotative leaves (incoming links only) and SHALL NOT introduce new s",
@@ -1073,32 +865,47 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3886.3,
+            5582.06,
             39.65
           ],
           "text": "tructural model elements.",
           "width": 187.0
         }
       ],
-      "svg_shape": "rounded-rectangle",
-      "style": "filled",
-      "href": "../MIS-001-views/Boundary_and_Note_Semantics.view.svg",
-      "fillcolor": "#065f46"
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            5675.56,
+            84.85,
+            436.07,
+            74.91
+          ]
+        }
+      ]
     },
     {
-      "_gvid": 7,
-      "name": "DRI_007",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Driver</B><BR/>\n\t\t\t\t<B>Machine and Human Readable Source of Truth</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tEnsure Aurora models remain directly interpretable by expert practitioners while<BR/> staying friendly to machine parsing, tooling, and agent consumption.<BR/></FONT>\n\t\t\t",
-      "pos": "1758.8,275.86",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "svg_shape": "rounded-rectangle",
-      "fillcolor": "#064e3b",
-      "href": "../MIS-001-views/Machine_and_Human_Readable_Source_of_Truth.view.svg",
-      "width": "11.824",
+      "_gvid": 5,
+      "name": "DRI_006",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Driver</B><BR/><B>Deterministic Architectural Language</B><BR/><BR/>Enable unambiguous interpretation and automated reasoning by enforcing determini<BR/>stic model structure and traversal rules rooted at the Mission card.<BR/></FONT>",
+      "pos": "2609.6,275.86",
+      "width": "12.296",
       "height": "1.5321",
+      "color": null,
+      "fillcolor": "#064e3b",
+      "svg_shape": "rounded-rectangle",
+      "icon": "compass",
+      "href": "../MIS-001-views/Deterministic_Architectural_Language.view.svg",
       "style": "filled",
       "_ldraw_": [
         {
@@ -1119,7 +926,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1733.8,
+            2584.56,
             300.66
           ],
           "text": "Driver",
@@ -1139,11 +946,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1573.8,
+            2459.06,
             286.66
           ],
-          "text": "Machine and Human Readable Source of Truth",
-          "width": 370.0
+          "text": "Deterministic Architectural Language",
+          "width": 301.0
         },
         {
           "face": "Times-Roman",
@@ -1163,11 +970,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1465.8,
+            2304.56,
             258.66
           ],
-          "text": "Ensure Aurora models remain directly interpretable by expert practitioners while",
-          "width": 586.0
+          "text": "Enable unambiguous interpretation and automated reasoning by enforcing determini",
+          "width": 610.0
         },
         {
           "face": "Times-Roman",
@@ -1183,14 +990,13 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1509.3,
+            2367.56,
             244.66
           ],
-          "text": " staying friendly to machine parsing, tooling, and agent consumption.",
-          "width": 499.0
+          "text": "stic model structure and traversal rules rooted at the Mission card.",
+          "width": 484.0
         }
       ],
-      "icon": "compass",
       "_draw_": [
         {
           "color": "#000000",
@@ -1205,30 +1011,315 @@
         {
           "op": "E",
           "rect": [
-            1758.8,
+            2609.56,
             275.86,
-            425.86,
+            442.8,
             55.31
           ]
         }
       ]
     },
     {
+      "_gvid": 6,
+      "name": "REQ_018",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Single Root Mission</B><BR/><BR/>Each Aurora model SHALL start with exactly one Mission card that serves as the r<BR/>oot of the directed graph. The Mission card SHALL only have outgoing links and S<BR/>HALL provide a consistent starting point for traversal and view generation.<BR/></FONT>",
+      "pos": "2169.6,84.853",
+      "width": "11.942",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2117.06,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2090.56,
+            102.65
+          ],
+          "text": "Single Root Mission",
+          "width": 158.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1873.56,
+            74.65
+          ],
+          "text": "Each Aurora model SHALL start with exactly one Mission card that serves as the r",
+          "width": 592.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1875.56,
+            60.65
+          ],
+          "text": "oot of the directed graph. The Mission card SHALL only have outgoing links and S",
+          "width": 588.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1899.06,
+            46.65
+          ],
+          "text": "HALL provide a consistent starting point for traversal and view generation.",
+          "width": 541.0
+        }
+      ],
+      "style": "filled",
+      "href": "../MIS-001-views/Single_Root_Mission.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            2169.56,
+            84.85,
+            429.84,
+            65.11
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 7,
+      "name": "REQ_016",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Strict JSJSON Card Encoding</B><BR/><BR/>Aurora card files SHALL be stored as strict JSON (RFC 8259) using the .jsjson ex<BR/>tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa<BR/>ctly one trailing newline.<BR/></FONT>",
+      "pos": "9180.6,84.853",
+      "width": "12.08",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "href": "../MIS-001-views/Strict_JSJSON_Card_Encoding.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9128.06,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9067.06,
+            102.65
+          ],
+          "text": "Strict JSJSON Card Encoding",
+          "width": 227.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8890.56,
+            74.65
+          ],
+          "text": "Aurora card files SHALL be stored as strict JSON (RFC 8259) using the .jsjson ex",
+          "width": 580.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8881.06,
+            60.65
+          ],
+          "text": "tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa",
+          "width": 599.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9091.56,
+            46.65
+          ],
+          "text": "ctly one trailing newline.",
+          "width": 178.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            9180.56,
+            84.85,
+            434.74,
+            65.11
+          ]
+        }
+      ],
+      "style": "filled"
+    },
+    {
       "_gvid": 8,
       "name": "DRI_008",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Driver</B><BR/>\n\t\t\t\t<B>Canonical Registries and View Definitions</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tProvide a stable, shared vocabulary for cards, relationship verbs, and views so <BR/>validation and rendering can be deterministic and portable across tools.<BR/></FONT>\n\t\t\t",
-      "pos": "5080.8,275.86",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "href": "../MIS-001-views/Canonical_Registries_and_View_Definitions.view.svg",
-      "fillcolor": "#064e3b",
-      "height": "1.5321",
-      "style": "filled",
-      "icon": "compass",
-      "svg_shape": "rounded-rectangle",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Driver</B><BR/><B>Canonical Registries and View Definitions</B><BR/><BR/>Provide a stable, shared vocabulary for cards, relationship verbs, and views so <BR/>validation and rendering can be deterministic and portable across tools.<BR/></FONT>",
+      "pos": "6885.6,275.86",
       "width": "11.471",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#064e3b",
+      "svg_shape": "rounded-rectangle",
+      "icon": "compass",
       "_draw_": [
         {
           "color": "#000000",
@@ -1243,7 +1334,7 @@
         {
           "op": "E",
           "rect": [
-            5080.8,
+            6885.56,
             275.86,
             412.9,
             55.31
@@ -1269,7 +1360,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            5055.8,
+            6860.56,
             300.66
           ],
           "text": "Driver",
@@ -1289,7 +1380,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4915.3,
+            6720.06,
             286.66
           ],
           "text": "Canonical Registries and View Definitions",
@@ -1313,7 +1404,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4796.8,
+            6601.56,
             258.66
           ],
           "text": "Provide a stable, shared vocabulary for cards, relationship verbs, and views so ",
@@ -1333,465 +1424,27 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4822.3,
+            6627.06,
             244.66
           ],
           "text": "validation and rendering can be deterministic and portable across tools.",
           "width": 517.0
         }
-      ]
+      ],
+      "style": "filled",
+      "href": "../MIS-001-views/Canonical_Registries_and_View_Definitions.view.svg"
     },
     {
       "_gvid": 9,
-      "name": "MIS_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Mission</B><BR/>\n\t\t\t\t<B>Agent-Unified Representation of Requirements and Architecture (Aurora)</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tA rigorous, MBSE-class architectural modeling framework designed for equal reada<BR/>bility by human engineers, machine learning (&quot;AI&quot;) agents, and computer programs<BR/>. It provides a lightweight but complete representational schema that captures r<BR/>equirements, behavior, structure, interfaces, constraints, and traceability in a<BR/> single, coherent model. The objective is a common architectural language that s<BR/>upports automated reasoning, validation, and lifecycle tooling while remaining d<BR/>irectly interpretable by expert practitioners.\n\nBecause it is designed to be rea<BR/>dable by machine agents as well as humans, Aurora artifacts can be generated by <BR/>machine learning models, consumed by coding agents, and used to automatically ge<BR/>nerate views of the architecture.<BR/></FONT>\n\t\t\t",
-      "pos": "7267.8,516.36",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "height": "3.732",
-      "svg_shape": "octagon",
-      "width": "12.139",
-      "fillcolor": "#022c22",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#022c22",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            7267.8,
-            516.36,
-            436.98,
-            134.2
-          ]
-        }
-      ],
-      "href": "../MIS-001-views/Agent-Unified_Representation_of_Requirements_and_Architecture_(Aurora).view.svg",
-      "icon": "target",
-      "style": "filled",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            7236.3,
-            597.16
-          ],
-          "text": "Mission",
-          "width": 63.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            6976.3,
-            583.16
-          ],
-          "text": "Agent-Unified Representation of Requirements and Architecture (Aurora)",
-          "width": 583.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            6967.8,
-            555.16
-          ],
-          "text": "A rigorous, MBSE-class architectural modeling framework designed for equal reada",
-          "width": 600.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            6968.8,
-            541.16
-          ],
-          "text": "bility by human engineers, machine learning (\"AI\") agents, and computer programs",
-          "width": 598.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            6979.3,
-            527.16
-          ],
-          "text": ". It provides a lightweight but complete representational schema that captures r",
-          "width": 577.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            6988.8,
-            513.16
-          ],
-          "text": "equirements, behavior, structure, interfaces, constraints, and traceability in a",
-          "width": 558.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            6978.8,
-            499.16
-          ],
-          "text": " single, coherent model. The objective is a common architectural language that s",
-          "width": 578.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            6979.3,
-            485.16
-          ],
-          "text": "upports automated reasoning, validation, and lifecycle tooling while remaining d",
-          "width": 577.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            6994.3,
-            471.16
-          ],
-          "text": "irectly interpretable by expert practitioners.Because it is designed to be rea",
-          "width": 547.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            6972.8,
-            457.16
-          ],
-          "text": "dable by machine agents as well as humans, Aurora artifacts can be generated by ",
-          "width": 590.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            6966.8,
-            443.16
-          ],
-          "text": "machine learning models, consumed by coding agents, and used to automatically ge",
-          "width": 602.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            7150.3,
-            429.16
-          ],
-          "text": "nerate views of the architecture.",
-          "width": 235.0
-        }
-      ]
-    },
-    {
-      "_gvid": 10,
-      "name": "REQ_026",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Views as Projections</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tViews SHALL be treated as projections of a single underlying model graph by sele<BR/>cting a set of card types (and optional subtypes) and rendering only those cards<BR/> and the links between them; views SHALL NOT change the underlying model.<BR/></FONT>\n\t\t\t",
-      "pos": "4861.8,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            4809.3,
-            116.65
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            4781.3,
-            102.65
-          ],
-          "text": "Views as Projections",
-          "width": 161.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            4567.3,
-            74.65
-          ],
-          "text": "Views SHALL be treated as projections of a single underlying model graph by sele",
-          "width": 589.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            4575.3,
-            60.65
-          ],
-          "text": "cting a set of card types (and optional subtypes) and rendering only those cards",
-          "width": 573.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            4580.8,
-            46.65
-          ],
-          "text": " and the links between them; views SHALL NOT change the underlying model.",
-          "width": 562.0
-        }
-      ],
-      "href": "../MIS-001-views/Views_as_Projections.view.svg",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            4861.8,
-            84.85,
-            427.6,
-            65.11
-          ]
-        }
-      ],
-      "fillcolor": "#065f46",
-      "height": "1.8071",
-      "width": "11.883",
-      "style": "filled",
-      "icon": "checklist",
-      "svg_shape": "rounded-rectangle"
-    },
-    {
-      "_gvid": 11,
-      "name": "REQ_019",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Directed Graph with Local Cycles</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAll Aurora links SHALL lead away from the Mission card. Local cycles MAY exist w<BR/>ithin bounded subgraphs (for example state machines) as long as no link creates <BR/>a path back to the Mission.<BR/></FONT>\n\t\t\t",
-      "pos": "10109,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "height": "1.8071",
-      "fillcolor": "#065f46",
-      "href": "../MIS-001-views/Directed_Graph_with_Local_Cycles.view.svg",
-      "style": "filled",
+      "name": "DRI_007",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Driver</B><BR/><B>Machine and Human Readable Source of Truth</B><BR/><BR/>Ensure Aurora models remain directly interpretable by expert practitioners while<BR/> staying friendly to machine parsing, tooling, and agent consumption.<BR/></FONT>",
+      "pos": "9180.6,275.86",
+      "width": "11.824",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#064e3b",
       "svg_shape": "rounded-rectangle",
-      "width": "11.903",
+      "icon": "compass",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1811,297 +1464,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            10056.3,
-            116.65
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            9978.3,
-            102.65
-          ],
-          "text": "Directed Graph with Local Cycles",
-          "width": 261.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            9813.8,
-            74.65
-          ],
-          "text": "All Aurora links SHALL lead away from the Mission card. Local cycles MAY exist w",
-          "width": 590.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            9818.3,
-            60.65
-          ],
-          "text": "ithin bounded subgraphs (for example state machines) as long as no link creates ",
-          "width": 581.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            10011.8,
-            46.65
-          ],
-          "text": "a path back to the Mission.",
-          "width": 194.0
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            10108.8,
-            84.85,
-            428.51,
-            65.11
-          ]
-        }
-      ],
-      "icon": "checklist"
-    },
-    {
-      "_gvid": 12,
-      "name": "REQ_027",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Audit Trail and Versioning</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAll Aurora cards SHALL include an audit_trail with a per-card SemVer version, an<BR/> optional SHA256 hash (nullable), and a chronological history of created/edited/<BR/>deleted events including editor identity and RFC3339 timestamps.<BR/></FONT>\n\t\t\t",
-      "pos": "10979,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "width": "11.765",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            10926.3,
-            116.65
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            10874.8,
-            102.65
-          ],
-          "text": "Audit Trail and Versioning",
-          "width": 208.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            10687.3,
-            74.65
-          ],
-          "text": "All Aurora cards SHALL include an audit_trail with a per-card SemVer version, an",
-          "width": 583.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            10694.3,
-            60.65
-          ],
-          "text": " optional SHA256 hash (nullable), and a chronological history of created/edited/",
-          "width": 569.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            10739.8,
-            46.65
-          ],
-          "text": "deleted events including editor identity and RFC3339 timestamps.",
-          "width": 478.0
-        }
-      ],
-      "svg_shape": "rounded-rectangle",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            10978.8,
-            84.85,
-            423.61,
-            65.11
-          ]
-        }
-      ],
-      "style": "filled",
-      "height": "1.8071",
-      "href": "../MIS-001-views/Audit_Trail_and_Versioning.view.svg",
-      "icon": "checklist",
-      "fillcolor": "#065f46"
-    },
-    {
-      "_gvid": 13,
-      "name": "DRI_006",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Driver</B><BR/>\n\t\t\t\t<B>Deterministic Architectural Language</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tEnable unambiguous interpretation and automated reasoning by enforcing determini<BR/>stic model structure and traversal rules rooted at the Mission card.<BR/></FONT>\n\t\t\t",
-      "pos": "8361.8,275.86",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            8336.8,
+            9155.56,
             300.66
           ],
           "text": "Driver",
@@ -2121,11 +1484,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            8211.3,
+            8995.56,
             286.66
           ],
-          "text": "Deterministic Architectural Language",
-          "width": 301.0
+          "text": "Machine and Human Readable Source of Truth",
+          "width": 370.0
         },
         {
           "face": "Times-Roman",
@@ -2145,184 +1508,10 @@
           "align": "l",
           "op": "T",
           "pt": [
-            8056.8,
+            8887.56,
             258.66
           ],
-          "text": "Enable unambiguous interpretation and automated reasoning by enforcing determini",
-          "width": 610.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            8119.8,
-            244.66
-          ],
-          "text": "stic model structure and traversal rules rooted at the Mission card.",
-          "width": 484.0
-        }
-      ],
-      "style": "filled",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#064e3b",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            8361.8,
-            275.86,
-            442.8,
-            55.31
-          ]
-        }
-      ],
-      "height": "1.5321",
-      "href": "../MIS-001-views/Deterministic_Architectural_Language.view.svg",
-      "fillcolor": "#064e3b",
-      "icon": "compass",
-      "svg_shape": "rounded-rectangle",
-      "width": "12.296"
-    },
-    {
-      "_gvid": 14,
-      "name": "REQ_023",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Canonical View Registry</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora tooling and documentation SHALL use a canonical registry of view definiti<BR/>ons that declare which card types are included and what root types anchor each v<BR/>iew.<BR/></FONT>\n\t\t\t",
-      "pos": "5732.8,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "svg_shape": "rounded-rectangle",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            5732.8,
-            84.85,
-            425.86,
-            65.11
-          ]
-        }
-      ],
-      "height": "1.8071",
-      "icon": "checklist",
-      "fillcolor": "#065f46",
-      "style": "filled",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            5680.3,
-            116.65
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            5637.3,
-            102.65
-          ],
-          "text": "Canonical View Registry",
-          "width": 191.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            5440.8,
-            74.65
-          ],
-          "text": "Aurora tooling and documentation SHALL use a canonical registry of view definiti",
-          "width": 584.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            5439.8,
-            60.65
-          ],
-          "text": "ons that declare which card types are included and what root types anchor each v",
+          "text": "Ensure Aurora models remain directly interpretable by expert practitioners while",
           "width": 586.0
         },
         {
@@ -2339,25 +1528,15 @@
           "align": "l",
           "op": "T",
           "pt": [
-            5718.8,
-            46.65
+            8931.06,
+            244.66
           ],
-          "text": "iew.",
-          "width": 28.0
+          "text": " staying friendly to machine parsing, tooling, and agent consumption.",
+          "width": 499.0
         }
       ],
-      "width": "11.824",
-      "href": "../MIS-001-views/Canonical_View_Registry.view.svg"
-    },
-    {
-      "_gvid": 15,
-      "name": "REQ_017",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Identifiers, Filenames, and Model Layout</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o<BR/>nce issued. Card files SHALL be named &lt;id&gt;-&lt;Sanitized_Name&gt;.jsjson, where specia<BR/>l characters are stripped and spaces are replaced with underscores. Models SHALL<BR/> follow the Model Home and Mission folder layout conventions so tools can discov<BR/>er, validate, and render deterministically.<BR/></FONT>\n\t\t\t",
-      "pos": "2208.8,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "href": "../MIS-001-views/Machine_and_Human_Readable_Source_of_Truth.view.svg",
+      "style": "filled",
       "_draw_": [
         {
           "color": "#000000",
@@ -2365,21 +1544,32 @@
           "op": "c"
         },
         {
-          "color": "#065f46",
+          "color": "#064e3b",
           "grad": "none",
           "op": "C"
         },
         {
           "op": "E",
           "rect": [
-            2208.8,
-            84.85,
-            446.78,
-            84.71
+            9180.56,
+            275.86,
+            425.86,
+            55.31
           ]
         }
-      ],
-      "height": "2.357",
+      ]
+    },
+    {
+      "_gvid": 10,
+      "name": "REQ_021",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Canonical Card Registry</B><BR/><BR/>Aurora tooling and documentation SHALL use a canonical registry of card types (a<BR/>nd optional subtypes) to support consistent rendering, validation, and communica<BR/>tion across tools.<BR/></FONT>",
+      "pos": "6557.6,84.853",
+      "width": "11.883",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
       "style": "filled",
       "_ldraw_": [
         {
@@ -2400,172 +1590,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2156.3,
-            130.65
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2047.3,
-            116.65
-          ],
-          "text": "Identifiers, Filenames, and Model Layout",
-          "width": 323.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1908.3,
-            88.65
-          ],
-          "text": "Aurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o",
-          "width": 601.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1900.8,
-            74.65
-          ],
-          "text": "nce issued. Card files SHALL be named <id>-<Sanitized_Name>.jsjson, where specia",
-          "width": 616.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1909.8,
-            60.65
-          ],
-          "text": "l characters are stripped and spaces are replaced with underscores. Models SHALL",
-          "width": 598.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1916.3,
-            46.65
-          ],
-          "text": " follow the Model Home and Mission folder layout conventions so tools can discov",
-          "width": 585.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2061.3,
-            32.65
-          ],
-          "text": "er, validate, and render deterministically.",
-          "width": 295.0
-        }
-      ],
-      "icon": "checklist",
-      "fillcolor": "#065f46",
-      "svg_shape": "rounded-rectangle",
-      "href": "../MIS-001-views/Identifiers,_Filenames,_and_Model_Layout.view.svg",
-      "width": "12.414"
-    },
-    {
-      "_gvid": 16,
-      "name": "REQ_021",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Canonical Card Registry</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora tooling and documentation SHALL use a canonical registry of card types (a<BR/>nd optional subtypes) to support consistent rendering, validation, and communica<BR/>tion across tools.<BR/></FONT>\n\t\t\t",
-      "pos": "6603.8,84.853",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            6551.3,
+            6505.06,
             116.65
           ],
           "text": "Requirement",
@@ -2585,7 +1610,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            6507.8,
+            6461.56,
             102.65
           ],
           "text": "Canonical Card Registry",
@@ -2609,7 +1634,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            6309.3,
+            6263.06,
             74.65
           ],
           "text": "Aurora tooling and documentation SHALL use a canonical registry of card types (a",
@@ -2629,7 +1654,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            6310.3,
+            6264.06,
             60.65
           ],
           "text": "nd optional subtypes) to support consistent rendering, validation, and communica",
@@ -2649,18 +1674,14 @@
           "align": "l",
           "op": "T",
           "pt": [
-            6542.8,
+            6496.56,
             46.65
           ],
           "text": "tion across tools.",
           "width": 122.0
         }
       ],
-      "svg_shape": "rounded-rectangle",
       "href": "../MIS-001-views/Canonical_Card_Registry.view.svg",
-      "height": "1.8071",
-      "style": "filled",
-      "fillcolor": "#065f46",
       "_draw_": [
         {
           "color": "#000000",
@@ -2675,26 +1696,25 @@
         {
           "op": "E",
           "rect": [
-            6603.8,
+            6557.56,
             84.85,
             427.6,
             65.11
           ]
         }
-      ],
-      "icon": "checklist",
-      "width": "11.883"
+      ]
     },
     {
-      "_gvid": 17,
-      "name": "SYS_004",
-      "bb": null,
-      "label": "\\N",
-      "pos": "8873.8,275.86",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "width": "1.4263",
+      "_gvid": 11,
+      "name": "REQ_023",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Canonical View Registry</B><BR/><BR/>Aurora tooling and documentation SHALL use a canonical registry of view definiti<BR/>ons that declare which card types are included and what root types anchor each v<BR/>iew.<BR/></FONT>",
+      "pos": "7428.6,84.853",
+      "width": "11.824",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -2702,21 +1722,929 @@
           "size": 14.0
         },
         {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            7376.06,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            7333.06,
+            102.65
+          ],
+          "text": "Canonical View Registry",
+          "width": 191.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            7136.56,
+            74.65
+          ],
+          "text": "Aurora tooling and documentation SHALL use a canonical registry of view definiti",
+          "width": 584.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            7135.56,
+            60.65
+          ],
+          "text": "ons that declare which card types are included and what root types anchor each v",
+          "width": 586.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            7414.56,
+            46.65
+          ],
+          "text": "iew.",
+          "width": 28.0
+        }
+      ],
+      "href": "../MIS-001-views/Canonical_View_Registry.view.svg",
+      "_draw_": [
+        {
           "color": "#000000",
           "grad": "none",
           "op": "c"
         },
         {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            8873.8,
-            272.16
-          ],
-          "text": "SYS_004",
-          "width": 63.0
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            7428.56,
+            84.85,
+            425.86,
+            65.11
+          ]
         }
       ],
+      "style": "filled"
+    },
+    {
+      "_gvid": 12,
+      "name": "REQ_025",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Model Integrity Validation</B><BR/><BR/>Aurora models SHALL be machine-validatable for integrity: every non-Mission, non<BR/>-Note card SHALL have at least one incoming link; every card SHALL be reachable <BR/>from the Mission; and all links[].target values SHALL reference an existing card<BR/> id.<BR/></FONT>",
+      "pos": "3049.6,84.853",
+      "width": "12.001",
+      "height": "2.082",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "style": "filled",
+      "href": "../MIS-001-views/Model_Integrity_Validation.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2997.06,
+            123.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2945.56,
+            109.65
+          ],
+          "text": "Model Integrity Validation",
+          "width": 208.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2752.06,
+            81.65
+          ],
+          "text": "Aurora models SHALL be machine-validatable for integrity: every non-Mission, non",
+          "width": 595.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2752.06,
+            67.65
+          ],
+          "text": "-Note card SHALL have at least one incoming link; every card SHALL be reachable ",
+          "width": 595.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2763.06,
+            53.65
+          ],
+          "text": "from the Mission; and all links[].target values SHALL reference an existing card",
+          "width": 573.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3038.06,
+            39.65
+          ],
+          "text": " id.",
+          "width": 23.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3049.56,
+            84.85,
+            432.08,
+            74.91
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 13,
+      "name": "REQ_026",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Views as Projections</B><BR/><BR/>Views SHALL be treated as projections of a single underlying model graph by sele<BR/>cting a set of card types (and optional subtypes) and rendering only those cards<BR/> and the links between them; views SHALL NOT change the underlying model.<BR/></FONT>",
+      "pos": "8299.6,84.853",
+      "width": "11.883",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            8299.56,
+            84.85,
+            427.6,
+            65.11
+          ]
+        }
+      ],
+      "style": "filled",
+      "href": "../MIS-001-views/Views_as_Projections.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8247.06,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8219.06,
+            102.65
+          ],
+          "text": "Views as Projections",
+          "width": 161.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8005.06,
+            74.65
+          ],
+          "text": "Views SHALL be treated as projections of a single underlying model graph by sele",
+          "width": 589.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8013.06,
+            60.65
+          ],
+          "text": "cting a set of card types (and optional subtypes) and rendering only those cards",
+          "width": 573.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8018.56,
+            46.65
+          ],
+          "text": " and the links between them; views SHALL NOT change the underlying model.",
+          "width": 562.0
+        }
+      ]
+    },
+    {
+      "_gvid": 14,
+      "name": "REQ_017",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Identifiers, Filenames, and Model Layout</B><BR/><BR/>Aurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o<BR/>nce issued. Card files SHALL be named &lt;id&gt;-&lt;Sanitized_Name&gt;.jsjson, where specia<BR/>l characters are stripped and spaces are replaced with underscores. Models SHALL<BR/> follow the Model Home and Mission folder layout conventions so tools can discov<BR/>er, validate, and render deterministically.<BR/></FONT>",
+      "pos": "10081,84.853",
+      "width": "12.414",
+      "height": "2.357",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            10080.56,
+            84.85,
+            446.78,
+            84.71
+          ]
+        }
+      ],
+      "href": "../MIS-001-views/Identifiers,_Filenames,_and_Model_Layout.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10028.06,
+            130.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9919.06,
+            116.65
+          ],
+          "text": "Identifiers, Filenames, and Model Layout",
+          "width": 323.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9780.06,
+            88.65
+          ],
+          "text": "Aurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o",
+          "width": 601.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9772.56,
+            74.65
+          ],
+          "text": "nce issued. Card files SHALL be named <id>-<Sanitized_Name>.jsjson, where specia",
+          "width": 616.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9781.56,
+            60.65
+          ],
+          "text": "l characters are stripped and spaces are replaced with underscores. Models SHALL",
+          "width": 598.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9788.06,
+            46.65
+          ],
+          "text": " follow the Model Home and Mission folder layout conventions so tools can discov",
+          "width": 585.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9933.06,
+            32.65
+          ],
+          "text": "er, validate, and render deterministically.",
+          "width": 295.0
+        }
+      ]
+    },
+    {
+      "_gvid": 15,
+      "name": "REQ_028",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Semantics Derived from Invariants</B><BR/><BR/>Aurora card and relationship labels SHALL be treated as descriptive metadata; th<BR/>e meaning of the architecture SHALL be derived from the model’s invariant rules <BR/>and the current view’s inclusion/projection of card types and links.<BR/></FONT>",
+      "pos": "3925.6,84.853",
+      "width": "11.844",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3925.56,
+            84.85,
+            426.27,
+            65.11
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3873.06,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3787.56,
+            102.65
+          ],
+          "text": "Semantics Derived from Invariants",
+          "width": 276.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3632.56,
+            74.65
+          ],
+          "text": "Aurora card and relationship labels SHALL be treated as descriptive metadata; th",
+          "width": 586.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3632.06,
+            60.65
+          ],
+          "text": "e meaning of the architecture SHALL be derived from the model’s invariant rules ",
+          "width": 587.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3686.56,
+            46.65
+          ],
+          "text": "and the current view’s inclusion/projection of card types and links.",
+          "width": 478.0
+        }
+      ],
+      "href": "../MIS-001-views/Semantics_Derived_from_Invariants.view.svg"
+    },
+    {
+      "_gvid": 16,
+      "name": "REQ_024",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Schema Referencing Rules</B><BR/><BR/>All Aurora card files SHALL include a $schema field referencing the applicable A<BR/>urora schema using a relative path from the card file to the Model Home schema f<BR/>ile.<BR/></FONT>",
+      "pos": "10974,84.853",
+      "width": "11.883",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            10973.56,
+            84.85,
+            427.6,
+            65.11
+          ]
+        }
+      ],
+      "href": "../MIS-001-views/Schema_Referencing_Rules.view.svg",
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10921.06,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10867.06,
+            102.65
+          ],
+          "text": "Schema Referencing Rules",
+          "width": 213.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10686.56,
+            74.65
+          ],
+          "text": "All Aurora card files SHALL include a $schema field referencing the applicable A",
+          "width": 574.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10679.06,
+            60.65
+          ],
+          "text": "urora schema using a relative path from the card file to the Model Home schema f",
+          "width": 589.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10962.56,
+            46.65
+          ],
+          "text": "ile.",
+          "width": 22.0
+        }
+      ]
+    },
+    {
+      "_gvid": 17,
+      "name": "SYS_004",
+      "label": "\\N",
+      "pos": "9675.6,275.86",
+      "width": "1.4263",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_draw_": [
         {
           "color": "#000000",
@@ -2726,859 +2654,47 @@
         {
           "op": "e",
           "rect": [
-            8873.8,
+            9675.56,
             275.86,
             51.19,
             18.0
           ]
         }
       ],
-      "height": "0.5"
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            9675.56,
+            272.16
+          ],
+          "text": "SYS_004",
+          "width": 63.0
+        }
+      ]
     }
   ],
   "edges": [
     {
-      "tail": 7,
-      "head": 3,
+      "tail": 3,
+      "head": 5,
       "_gvid": 0,
-      "pos": "e,680,137.47 1425.8,241.5 1257.3,223.14 1049.7,198.29 864.8,169.71 808.06,160.94 747.42,150.19 689.95,139.36",
-      "label": "drives",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              1425.81,
-              241.5
-            ],
-            [
-              1257.29,
-              223.14
-            ],
-            [
-              1049.75,
-              198.29
-            ],
-            [
-              864.8,
-              169.71
-            ],
-            [
-              808.06,
-              160.94
-            ],
-            [
-              747.42,
-              150.19
-            ],
-            [
-              689.95,
-              139.36
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1108.3,
-            191.51
-          ],
-          "text": "drives",
-          "width": 45.0
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              690.48,
-              135.89
-            ],
-            [
-              680.0,
-              137.47
-            ],
-            [
-              689.18,
-              142.77
-            ]
-          ]
-        }
-      ],
-      "lp": "1108.3,195.21"
-    },
-    {
-      "tail": 7,
-      "head": 4,
-      "_gvid": 1,
-      "pos": "e,1452.8,146.33 1635.2,222.96 1581.8,200.5 1518.6,173.97 1462.2,150.27",
-      "label": "drives",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              1463.37,
-              146.98
-            ],
-            [
-              1452.8,
-              146.33
-            ],
-            [
-              1460.66,
-              153.43
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1597.3,
-            191.51
-          ],
-          "text": "drives",
-          "width": 45.0
-        }
-      ],
-      "lp": "1597.3,195.21",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              1635.24,
-              222.96
-            ],
-            [
-              1581.76,
-              200.5
-            ],
-            [
-              1518.6,
-              173.97
-            ],
-            [
-              1462.16,
-              150.27
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "tail": 7,
-      "head": 15,
-      "_gvid": 2,
-      "pos": "e,2026.5,162.43 1882.4,222.96 1924,205.48 1971.5,185.54 2017.1,166.38",
-      "label": "drives",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              1882.36,
-              222.96
-            ],
-            [
-              1923.98,
-              205.48
-            ],
-            [
-              1971.47,
-              185.54
-            ],
-            [
-              2017.08,
-              166.38
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1980.3,
-            191.51
-          ],
-          "text": "drives",
-          "width": 45.0
-        }
-      ],
-      "lp": "1980.3,195.21",
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              2018.62,
-              169.53
-            ],
-            [
-              2026.48,
-              162.43
-            ],
-            [
-              2015.91,
-              163.07
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "tail": 8,
-      "head": 1,
-      "_gvid": 3,
-      "pos": "e,3343.4,138.26 4682.7,261.2 4369.7,247.22 3923.1,220.15 3534.8,169.71 3475.7,162.03 3412.6,151.33 3353.3,140.13",
-      "label": "drives",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "lp": "3809.3,195.21",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              4682.7,
-              261.2
-            ],
-            [
-              4369.69,
-              247.22
-            ],
-            [
-              3923.13,
-              220.15
-            ],
-            [
-              3534.8,
-              169.71
-            ],
-            [
-              3475.74,
-              162.03
-            ],
-            [
-              3412.6,
-              151.33
-            ],
-            [
-              3353.26,
-              140.13
-            ]
-          ]
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              3353.87,
-              136.68
-            ],
-            [
-              3343.39,
-              138.26
-            ],
-            [
-              3352.56,
-              143.56
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            3809.3,
-            191.51
-          ],
-          "text": "drives",
-          "width": 45.0
-        }
-      ]
-    },
-    {
-      "tail": 8,
-      "head": 6,
-      "_gvid": 4,
-      "pos": "e,4267.4,141.24 4813.6,233.72 4694.5,214.95 4552.5,191.97 4424.8,169.71 4377.2,161.4 4326.7,152.25 4277.6,143.13",
-      "label": "drives",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            4627.3,
-            191.51
-          ],
-          "text": "drives",
-          "width": 45.0
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              4277.91,
-              139.63
-            ],
-            [
-              4267.44,
-              141.24
-            ],
-            [
-              4276.64,
-              146.51
-            ]
-          ]
-        }
-      ],
-      "lp": "4627.3,195.21",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              4813.62,
-              233.72
-            ],
-            [
-              4694.48,
-              214.95
-            ],
-            [
-              4552.49,
-              191.97
-            ],
-            [
-              4424.8,
-              169.71
-            ],
-            [
-              4377.16,
-              161.4
-            ],
-            [
-              4326.72,
-              152.25
-            ],
-            [
-              4277.58,
-              143.13
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "tail": 8,
-      "head": 10,
-      "_gvid": 5,
-      "pos": "e,4935,149.01 5018.6,221.2 4995,200.83 4967.8,177.32 4942.7,155.67",
-      "label": "drives",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "lp": "5014.3,195.21",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            5014.3,
-            191.51
-          ],
-          "text": "drives",
-          "width": 45.0
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              4944.84,
-              152.9
-            ],
-            [
-              4934.98,
-              149.01
-            ],
-            [
-              4940.26,
-              158.19
-            ]
-          ]
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              5018.63,
-              221.2
-            ],
-            [
-              4995.02,
-              200.83
-            ],
-            [
-              4967.78,
-              177.32
-            ],
-            [
-              4942.69,
-              155.67
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "tail": 8,
-      "head": 14,
-      "_gvid": 6,
-      "pos": "e,5536.9,142.65 5250.8,225.57 5335.4,201.06 5438.2,171.24 5527.2,145.46",
-      "label": "drives",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "lp": "5390.3,195.21",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              5250.83,
-              225.57
-            ],
-            [
-              5335.38,
-              201.06
-            ],
-            [
-              5438.24,
-              171.24
-            ],
-            [
-              5527.19,
-              145.46
-            ]
-          ]
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              5528.23,
-              148.8
-            ],
-            [
-              5536.86,
-              142.65
-            ],
-            [
-              5526.28,
-              142.08
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            5390.3,
-            191.51
-          ],
-          "text": "drives",
-          "width": 45.0
-        }
-      ]
-    },
-    {
-      "tail": 8,
-      "head": 16,
-      "_gvid": 7,
-      "pos": "e,6355.2,137.83 5440.1,248.6 5652.4,230.97 5926.1,204.56 6167.8,169.71 6225.4,161.4 6287,150.7 6345.1,139.74",
-      "label": "drives",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "lp": "6043.3,195.21",
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              6346.01,
-              143.13
-            ],
-            [
-              6355.18,
-              137.83
-            ],
-            [
-              6344.7,
-              136.25
-            ]
-          ]
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              5440.13,
-              248.6
-            ],
-            [
-              5652.4,
-              230.97
-            ],
-            [
-              5926.08,
-              204.56
-            ],
-            [
-              6167.8,
-              169.71
-            ],
-            [
-              6225.41,
-              161.4
-            ],
-            [
-              6286.96,
-              150.7
-            ],
-            [
-              6345.12,
-              139.74
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            6043.3,
-            191.51
-          ],
-          "text": "drives",
-          "width": 45.0
-        }
-      ]
-    },
-    {
-      "tail": 9,
-      "head": 7,
-      "_gvid": 8,
-      "pos": "e,2160.5,294.25 6835.5,496.65 5799.4,451.79 3185.4,338.62 2170.6,294.69",
+      "pos": "e,3027.2,294.18 7927.7,497.41 6858.3,453.06 4101.3,338.73 3037.3,294.6",
       "label": "establishes",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              2170.68,
-              291.19
-            ],
-            [
-              2160.53,
-              294.25
-            ],
-            [
-              2170.37,
-              298.18
-            ]
-          ]
-        }
-      ],
       "_draw_": [
         {
           "color": "#000000",
@@ -3589,20 +2705,20 @@
           "op": "b",
           "points": [
             [
-              6835.52,
-              496.65
+              7927.71,
+              497.41
             ],
             [
-              5799.45,
-              451.79
+              6858.33,
+              453.06
             ],
             [
-              3185.42,
-              338.62
+              4101.35,
+              338.73
             ],
             [
-              2170.55,
-              294.69
+              3037.33,
+              294.6
             ]
           ]
         }
@@ -3622,24 +2738,108 @@
           "align": "c",
           "op": "T",
           "pt": [
-            3739.3,
+            4675.06,
             352.81
           ],
           "text": "establishes",
           "width": 81.0
         }
       ],
-      "lp": "3739.3,356.51"
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              3037.36,
+              291.1
+            ],
+            [
+              3027.22,
+              294.18
+            ],
+            [
+              3037.07,
+              298.09
+            ]
+          ]
+        }
+      ],
+      "lp": "4675.1,356.51"
     },
     {
-      "tail": 9,
+      "tail": 3,
       "head": 8,
-      "_gvid": 9,
-      "pos": "e,5397.4,311.38 6856.8,470.54 6437,424.77 5793.8,354.62 5407.6,312.5",
+      "_gvid": 1,
+      "pos": "e,7145,318.81 7974.9,453.01 7717.3,411.35 7384.7,357.57 7155.2,320.46",
       "label": "establishes",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            7446.06,
+            352.81
+          ],
+          "text": "establishes",
+          "width": 81.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              7974.94,
+              453.01
+            ],
+            [
+              7717.26,
+              411.35
+            ],
+            [
+              7384.72,
+              357.57
+            ],
+            [
+              7155.18,
+              320.46
+            ]
+          ]
+        }
+      ],
+      "lp": "7446.1,356.51",
       "_hdraw_": [
         {
           "op": "S",
@@ -3659,216 +2859,124 @@
           "op": "P",
           "points": [
             [
-              5407.69,
-              308.99
+              7155.44,
+              316.95
             ],
             [
-              5397.37,
-              311.38
+              7145.01,
+              318.81
             ],
             [
-              5406.93,
-              315.95
+              7154.32,
+              323.86
             ]
           ]
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              6856.76,
-              470.54
-            ],
-            [
-              6437.05,
-              424.77
-            ],
-            [
-              5793.85,
-              354.62
-            ],
-            [
-              5407.58,
-              312.5
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            5891.3,
-            352.81
-          ],
-          "text": "establishes",
-          "width": 81.0
-        }
-      ],
-      "lp": "5891.3,356.51"
-    },
-    {
-      "tail": 9,
-      "head": 13,
-      "_gvid": 10,
-      "pos": "e,8145.4,324.05 7623,437.93 7791.3,401.23 7987.4,358.48 8135.2,326.25",
-      "label": "establishes",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "lp": "8049.3,356.51",
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              8136.33,
-              329.6
-            ],
-            [
-              8145.35,
-              324.05
-            ],
-            [
-              8134.84,
-              322.76
-            ]
-          ]
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              7622.99,
-              437.93
-            ],
-            [
-              7791.32,
-              401.23
-            ],
-            [
-              7987.4,
-              358.48
-            ],
-            [
-              8135.24,
-              326.25
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            8049.3,
-            352.81
-          ],
-          "text": "establishes",
-          "width": 81.0
         }
       ]
     },
     {
-      "tail": 9,
+      "tail": 3,
+      "head": 9,
+      "_gvid": 2,
+      "pos": "e,9010,326.48 8676.4,423.49 8786.1,391.59 8905.3,356.91 9000.3,329.3",
+      "label": "establishes",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            8956.06,
+            352.81
+          ],
+          "text": "establishes",
+          "width": 81.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              8676.42,
+              423.49
+            ],
+            [
+              8786.12,
+              391.59
+            ],
+            [
+              8905.32,
+              356.91
+            ],
+            [
+              9000.27,
+              329.3
+            ]
+          ]
+        }
+      ],
+      "lp": "8956.1,356.51",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              9001.34,
+              332.63
+            ],
+            [
+              9009.96,
+              326.48
+            ],
+            [
+              8999.38,
+              325.91
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 3,
       "head": 17,
-      "_gvid": 11,
-      "pos": "e,8860.6,293.31 7698.7,493.18 8085.5,468 8621.1,418.58 8813.8,331.01 8829.1,324.08 8843.1,311.83 8853.8,300.73",
+      "_gvid": 3,
+      "pos": "e,9662.1,293.43 8781.5,479.88 9087,449.22 9471,399.08 9615.6,331.01 9630.6,323.92 9644.6,311.78 9655.3,300.78",
       "label": "requires",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "lp": "8778.3,356.51",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              7698.7,
-              493.18
-            ],
-            [
-              8085.48,
-              468.0
-            ],
-            [
-              8621.08,
-              418.58
-            ],
-            [
-              8813.8,
-              331.01
-            ],
-            [
-              8829.06,
-              324.08
-            ],
-            [
-              8843.14,
-              311.83
-            ],
-            [
-              8853.82,
-              300.73
-            ]
-          ]
-        }
-      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -3888,20 +2996,61 @@
           "op": "P",
           "points": [
             [
-              8856.45,
-              303.04
+              9657.87,
+              303.14
             ],
             [
-              8860.64,
-              293.31
+              9662.11,
+              293.43
             ],
             [
-              8851.3,
-              298.3
+              9652.74,
+              298.37
             ]
           ]
         }
       ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              8781.52,
+              479.88
+            ],
+            [
+              9087.01,
+              449.22
+            ],
+            [
+              9470.98,
+              399.08
+            ],
+            [
+              9615.56,
+              331.01
+            ],
+            [
+              9630.62,
+              323.92
+            ],
+            [
+              9644.6,
+              311.78
+            ],
+            [
+              9655.28,
+              300.78
+            ]
+          ]
+        }
+      ],
+      "lp": "9593.1,356.51",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -3917,7 +3066,7 @@
           "align": "c",
           "op": "T",
           "pt": [
-            8778.3,
+            9593.06,
             352.81
           ],
           "text": "requires",
@@ -3926,14 +3075,88 @@
       ]
     },
     {
-      "tail": 13,
-      "head": 0,
-      "_gvid": 12,
-      "pos": "e,7750.4,143.55 8143.1,227.9 8027.4,203.04 7884.1,172.25 7760.4,145.7",
+      "tail": 5,
+      "head": 1,
+      "_gvid": 4,
+      "pos": "e,664.28,138.4 2175.6,264.75 1819.7,252.65 1303.5,226.35 855.56,169.71 796.5,162.24 733.38,151.55 674.13,140.29",
       "label": "drives",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              674.76,
+              136.85
+            ],
+            [
+              664.28,
+              138.4
+            ],
+            [
+              673.44,
+              143.72
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2175.59,
+              264.75
+            ],
+            [
+              1819.73,
+              252.65
+            ],
+            [
+              1303.48,
+              226.35
+            ],
+            [
+              855.56,
+              169.71
+            ],
+            [
+              796.5,
+              162.24
+            ],
+            [
+              733.38,
+              151.55
+            ],
+            [
+              674.13,
+              140.29
+            ]
+          ]
+        }
+      ],
+      "lp": "1164.1,195.21",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -3949,14 +3172,57 @@
           "align": "c",
           "op": "T",
           "pt": [
-            8023.3,
+            1164.06,
             191.51
           ],
           "text": "drives",
           "width": 45.0
         }
+      ]
+    },
+    {
+      "tail": 5,
+      "head": 2,
+      "_gvid": 5,
+      "pos": "e,1546.1,137.44 2272,240.11 2108.2,221.82 1908.7,197.42 1730.6,169.71 1673.9,160.89 1613.4,150.15 1556,139.32",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "1970.1,195.21",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1556.54,
+              135.86
+            ],
+            [
+              1546.06,
+              137.44
+            ],
+            [
+              1555.24,
+              142.74
+            ]
+          ]
+        }
       ],
-      "lp": "8023.3,195.21",
       "_draw_": [
         {
           "color": "#000000",
@@ -3967,20 +3233,315 @@
           "op": "b",
           "points": [
             [
-              8143.14,
-              227.9
+              2272.0,
+              240.11
             ],
             [
-              8027.42,
-              203.04
+              2108.18,
+              221.82
             ],
             [
-              7884.07,
-              172.25
+              1908.71,
+              197.42
             ],
             [
-              7760.45,
-              145.7
+              1730.56,
+              169.71
+            ],
+            [
+              1673.91,
+              160.89
+            ],
+            [
+              1613.39,
+              150.15
+            ],
+            [
+              1555.99,
+              139.32
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1970.06,
+            191.51
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ]
+    },
+    {
+      "tail": 5,
+      "head": 6,
+      "_gvid": 6,
+      "pos": "e,2310.4,146.35 2488.2,222.71 2436.1,200.35 2374.8,174 2319.9,150.42",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "2452.1,195.21",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2320.97,
+              147.09
+            ],
+            [
+              2310.4,
+              146.35
+            ],
+            [
+              2318.21,
+              153.52
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2488.16,
+              222.71
+            ],
+            [
+              2436.1,
+              200.35
+            ],
+            [
+              2374.75,
+              174.0
+            ],
+            [
+              2319.86,
+              150.42
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2452.06,
+            191.51
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ]
+    },
+    {
+      "tail": 5,
+      "head": 12,
+      "_gvid": 7,
+      "pos": "e,2889.4,154.65 2731,222.71 2777.1,202.91 2830.4,179.98 2880.2,158.62",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2730.95,
+              222.71
+            ],
+            [
+              2777.05,
+              202.91
+            ],
+            [
+              2830.43,
+              179.98
+            ],
+            [
+              2880.16,
+              158.62
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2826.06,
+            191.51
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2881.6,
+              161.81
+            ],
+            [
+              2889.4,
+              154.65
+            ],
+            [
+              2878.83,
+              155.38
+            ]
+          ]
+        }
+      ],
+      "lp": "2826.1,195.21"
+    },
+    {
+      "tail": 5,
+      "head": 15,
+      "_gvid": 8,
+      "pos": "e,3674.2,137.48 2947.6,240.24 3111.9,221.97 3311.9,197.55 3490.6,169.71 3546.9,160.92 3607.2,150.18 3664.3,139.36",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "3370.1,195.21",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            3370.06,
+            191.51
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2947.63,
+              240.24
+            ],
+            [
+              3111.88,
+              221.97
+            ],
+            [
+              3311.91,
+              197.55
+            ],
+            [
+              3490.56,
+              169.71
+            ],
+            [
+              3546.95,
+              160.92
+            ],
+            [
+              3607.2,
+              150.18
+            ],
+            [
+              3664.33,
+              139.36
             ]
           ]
         }
@@ -4004,30 +3565,64 @@
           "op": "P",
           "points": [
             [
-              7760.96,
-              142.23
+              3665.05,
+              142.78
             ],
             [
-              7750.45,
-              143.55
+              3674.22,
+              137.48
             ],
             [
-              7759.49,
-              149.08
+              3663.74,
+              135.91
             ]
           ]
         }
       ]
     },
     {
-      "tail": 13,
-      "head": 2,
-      "_gvid": 13,
-      "pos": "e,8361.8,150.06 8361.8,220.7 8361.8,201.85 8361.8,180.36 8361.8,160.17",
+      "tail": 8,
+      "head": 0,
+      "_gvid": 9,
+      "pos": "e,5038.6,138.34 6482.9,263.57 6146.9,250.73 5656.1,224.01 5230.6,169.71 5171.3,162.14 5107.9,151.45 5048.5,140.22",
       "label": "drives",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              5049.03,
+              136.77
+            ],
+            [
+              5038.55,
+              138.34
+            ],
+            [
+              5047.72,
+              143.65
+            ]
+          ]
+        }
+      ],
+      "lp": "5523.1,195.21",
       "_draw_": [
         {
           "color": "#000000",
@@ -4038,184 +3633,612 @@
           "op": "b",
           "points": [
             [
-              8361.8,
+              6482.89,
+              263.57
+            ],
+            [
+              6146.92,
+              250.73
+            ],
+            [
+              5656.08,
+              224.01
+            ],
+            [
+              5230.56,
+              169.71
+            ],
+            [
+              5171.3,
+              162.14
+            ],
+            [
+              5107.95,
+              151.45
+            ],
+            [
+              5048.45,
+              140.22
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            5523.06,
+            191.51
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ]
+    },
+    {
+      "tail": 8,
+      "head": 4,
+      "_gvid": 10,
+      "pos": "e,5960.4,141.69 6588.5,237.52 6446.6,218.79 6274.5,194.78 6120.6,169.71 6071.9,161.78 6020.4,152.71 5970.3,143.53",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            6353.06,
+            191.51
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              6588.51,
+              237.52
+            ],
+            [
+              6446.62,
+              218.79
+            ],
+            [
+              6274.54,
+              194.78
+            ],
+            [
+              6120.56,
+              169.71
+            ],
+            [
+              6071.91,
+              161.78
+            ],
+            [
+              6020.4,
+              152.71
+            ],
+            [
+              5970.35,
+              143.53
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              5970.82,
+              140.06
+            ],
+            [
+              5960.36,
+              141.69
+            ],
+            [
+              5969.56,
+              146.94
+            ]
+          ]
+        }
+      ],
+      "lp": "6353.1,195.21"
+    },
+    {
+      "tail": 8,
+      "head": 10,
+      "_gvid": 11,
+      "pos": "e,6665.3,147.94 6793.8,221.96 6756.7,200.59 6713.4,175.67 6674.1,153.04",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "6774.1,195.21",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              6675.72,
+              149.9
+            ],
+            [
+              6665.31,
+              147.94
+            ],
+            [
+              6672.23,
+              155.97
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              6793.75,
+              221.96
+            ],
+            [
+              6756.67,
+              200.59
+            ],
+            [
+              6713.42,
+              175.67
+            ],
+            [
+              6674.15,
+              153.04
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            6774.06,
+            191.51
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ]
+    },
+    {
+      "tail": 8,
+      "head": 11,
+      "_gvid": 12,
+      "pos": "e,7259.5,144.68 7031.1,224.21 7098.4,200.77 7179,172.7 7250,147.99",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "7147.1,195.21",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              7031.07,
+              224.21
+            ],
+            [
+              7098.42,
+              200.77
+            ],
+            [
+              7179.05,
+              172.7
+            ],
+            [
+              7250.04,
+              147.99
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            7147.06,
+            191.51
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              7251.25,
+              151.28
+            ],
+            [
+              7259.54,
+              144.68
+            ],
+            [
+              7248.94,
+              144.67
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 8,
+      "head": 13,
+      "_gvid": 13,
+      "pos": "e,8049.4,137.64 7228.2,245.04 7416.2,226.9 7653.3,201.17 7863.6,169.71 7920.7,161.16 7981.7,150.43 8039.4,139.54",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            7754.06,
+            191.51
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "lp": "7754.1,195.21",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              7228.17,
+              245.04
+            ],
+            [
+              7416.23,
+              226.9
+            ],
+            [
+              7653.29,
+              201.17
+            ],
+            [
+              7863.56,
+              169.71
+            ],
+            [
+              7920.67,
+              161.16
+            ],
+            [
+              7981.69,
+              150.43
+            ],
+            [
+              8039.45,
+              139.54
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              8040.26,
+              142.94
+            ],
+            [
+              8049.44,
+              137.64
+            ],
+            [
+              8038.96,
+              136.07
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 9,
+      "head": 7,
+      "_gvid": 14,
+      "pos": "e,9180.6,150.06 9180.6,220.7 9180.6,201.85 9180.6,180.36 9180.6,160.17",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              9184.06,
+              160.06
+            ],
+            [
+              9180.56,
+              150.06
+            ],
+            [
+              9177.06,
+              160.06
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            9203.06,
+            191.51
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "lp": "9203.1,195.21",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              9180.56,
               220.7
             ],
             [
-              8361.8,
+              9180.56,
               201.85
             ],
             [
-              8361.8,
+              9180.56,
               180.36
             ],
             [
-              8361.8,
+              9180.56,
               160.17
             ]
           ]
         }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              8365.3,
-              160.06
-            ],
-            [
-              8361.8,
-              150.06
-            ],
-            [
-              8358.3,
-              160.06
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            8384.3,
-            191.51
-          ],
-          "text": "drives",
-          "width": 45.0
-        }
-      ],
-      "lp": "8384.3,195.21"
+      ]
     },
     {
-      "tail": 13,
-      "head": 5,
-      "_gvid": 14,
-      "pos": "e,8993.1,138.34 8579.5,227.77 8702,201.29 8855.4,168.11 8983.2,140.49",
-      "label": "drives",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              8579.53,
-              227.77
-            ],
-            [
-              8701.98,
-              201.29
-            ],
-            [
-              8855.43,
-              168.11
-            ],
-            [
-              8983.15,
-              140.49
-            ]
-          ]
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              8984.05,
-              143.88
-            ],
-            [
-              8993.08,
-              138.34
-            ],
-            [
-              8982.57,
-              137.04
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            8769.3,
-            191.51
-          ],
-          "text": "drives",
-          "width": 45.0
-        }
-      ],
-      "lp": "8769.3,195.21"
-    },
-    {
-      "tail": 13,
-      "head": 11,
+      "tail": 9,
+      "head": 14,
       "_gvid": 15,
-      "pos": "e,9864.7,138.39 8666.7,235.81 8715.8,230.25 8766.2,224.97 8813.8,220.71 9193.8,186.66 9292.2,217.01 9670.8,169.71 9730.7,162.23 9794.6,151.53 9854.7,140.27",
+      "pos": "e,9783.2,148.29 9400.7,228.62 9512.8,205.08 9650.9,176.08 9773.3,150.37",
       "label": "drives",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            9600.06,
+            191.51
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              9400.72,
+              228.62
+            ],
+            [
+              9512.82,
+              205.08
+            ],
+            [
+              9650.94,
+              176.08
+            ],
+            [
+              9773.33,
+              150.37
+            ]
+          ]
+        }
+      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -4235,101 +4258,27 @@
           "op": "P",
           "points": [
             [
-              9855.53,
-              143.68
+              9774.17,
+              153.77
             ],
             [
-              9864.71,
-              138.39
+              9783.24,
+              148.29
             ],
             [
-              9854.23,
-              136.8
+              9772.74,
+              146.92
             ]
           ]
         }
       ],
-      "lp": "9512.3,195.21",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              8666.67,
-              235.81
-            ],
-            [
-              8715.82,
-              230.25
-            ],
-            [
-              8766.18,
-              224.97
-            ],
-            [
-              8813.8,
-              220.71
-            ],
-            [
-              9193.84,
-              186.66
-            ],
-            [
-              9292.18,
-              217.01
-            ],
-            [
-              9670.8,
-              169.71
-            ],
-            [
-              9730.66,
-              162.23
-            ],
-            [
-              9794.65,
-              151.53
-            ],
-            [
-              9854.72,
-              140.27
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            9512.3,
-            191.51
-          ],
-          "text": "drives",
-          "width": 45.0
-        }
-      ]
+      "lp": "9600.1,195.21"
     },
     {
-      "tail": 13,
-      "head": 12,
+      "tail": 9,
+      "head": 16,
       "_gvid": 16,
-      "pos": "e,10742,138.81 8660.2,235.07 8711.3,229.41 8764,224.3 8813.8,220.71 9135.3,197.51 9216.6,211.98 9538.8,202.71 9986.9,189.81 10101,219.9 10547,169.71 10607,162.9 10672,152.22 10732,140.74",
+      "pos": "e,10731,138.47 9472.7,235.69 9520.4,230.11 9569.3,224.86 9615.6,220.71 10024,184.03 10130,219.78 10537,169.71 10596,162.33 10661,151.65 10721,140.36",
       "label": "drives",
       "arrowhead": null,
       "color": null,
@@ -4344,61 +4293,48 @@
           "op": "b",
           "points": [
             [
-              8660.17,
-              235.07
+              9472.75,
+              235.69
             ],
             [
-              8711.34,
-              229.41
+              9520.42,
+              230.11
             ],
             [
-              8764.04,
-              224.3
+              9569.32,
+              224.86
             ],
             [
-              8813.8,
+              9615.56,
               220.71
             ],
             [
-              9135.29,
-              197.51
+              10023.87,
+              184.03
             ],
             [
-              9216.61,
-              211.98
+              10129.67,
+              219.78
             ],
             [
-              9538.8,
-              202.71
-            ],
-            [
-              9986.85,
-              189.81
-            ],
-            [
-              10101.38,
-              219.9
-            ],
-            [
-              10546.8,
+              10536.56,
               169.71
             ],
             [
-              10607.21,
-              162.9
+              10596.48,
+              162.33
             ],
             [
-              10671.8,
-              152.22
+              10660.54,
+              151.65
             ],
             [
-              10732.14,
-              140.74
+              10720.63,
+              140.36
             ]
           ]
         }
       ],
-      "lp": "10377,195.21",
       "_hdraw_": [
         {
           "op": "S",
@@ -4418,16 +4354,16 @@
           "op": "P",
           "points": [
             [
-              10733.01,
-              144.13
+              10721.45,
+              143.76
             ],
             [
-              10742.17,
-              138.81
+              10730.62,
+              138.47
             ],
             [
-              10731.69,
-              137.26
+              10720.15,
+              136.89
             ]
           ]
         }
@@ -4447,15 +4383,18 @@
           "align": "c",
           "op": "T",
           "pt": [
-            10377.3,
+            10384.06,
             191.51
           ],
           "text": "drives",
           "width": 45.0
         }
-      ]
+      ],
+      "lp": "10384,195.21"
     }
   ],
+  "fontcolor": "#FFFFFF",
+  "xdotversion": "1.7",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -4479,16 +4418,14 @@
           650.71
         ],
         [
-          11402.36,
+          11401.36,
           650.71
         ],
         [
-          11402.36,
+          11401.36,
           0.0
         ]
       ]
     }
-  ],
-  "fontcolor": "#FFFFFF",
-  "xdotversion": "1.7"
+  ]
 }

@@ -1,110 +1,75 @@
 digraph {
-					fontname="Noto Sans";
-					fontcolor="#FFFFFF";
-					fontsize=12;
-				REQ_015[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
-				<B>Safe Workspace Persistence</B><BR/>
-				<BR/>
-				The editor SHALL persist edits to model files in a safe manner that avoids parti<BR/>al writes and preserves schema validity (e.g., atomic replace per card file).<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Safe_Workspace_Persistence.view.svg";
-			style=filled;
-			fillcolor="#065f46";
-			svg_shape="rounded-rectangle";
-			icon="checklist";
-		];
-		REQ_012[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
-				<B>Edit, Preview, and Audit Inspector</B><BR/>
-				<BR/>
-				The editor SHALL provide a right-pane inspector: the top half edits the focused <BR/>card; the bottom half renders a Markdown-style view of the card (including links<BR/>). The bottom half SHALL provide a tab to reveal the card’s audit trail details.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Edit,_Preview,_and_Audit_Inspector.view.svg";
-			style=filled;
-			fillcolor="#065f46";
-			svg_shape="rounded-rectangle";
-			icon="checklist";
-		];
-		REQ_009[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
-				<B>Three Pane Layout</B><BR/>
-				<BR/>
-				The editor SHALL present a three-pane layout (similar to Visual Studio or Obsidi<BR/>an): left navigation tree, central graph view, and right inspector.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Three_Pane_Layout.view.svg";
-			style=filled;
-			fillcolor="#065f46";
-			svg_shape="rounded-rectangle";
-			icon="checklist";
-		];
-		REQ_013[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
-				<B>Dioxus UI</B><BR/>
-				<BR/>
-				The standalone editor SHOULD be implemented using Dioxus as the primary UI libra<BR/>ry.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Dioxus_UI.view.svg";
-			style=filled;
-			fillcolor="#065f46";
-			svg_shape="rounded-rectangle";
-			icon="checklist";
-		];
-		REQ_010[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
-				<B>Shortest Path Tree Navigation</B><BR/>
-				<BR/>
-				The editor SHALL provide a left-pane tree view for navigation, where the tree is<BR/> derived from a chosen shortest path from the mission root to each card.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Shortest_Path_Tree_Navigation.view.svg";
-			style=filled;
-			fillcolor="#065f46";
-			svg_shape="rounded-rectangle";
-			icon="checklist";
-		];
-		REQ_014[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
-				<B>Reuse aurora_shared</B><BR/>
-				<BR/>
-				The editor SHALL reuse aurora_shared for model discovery/loading and validation/<BR/>rendering semantics to stay consistent with other Aurora tooling.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Reuse_aurora_shared.view.svg";
-			style=filled;
-			fillcolor="#065f46";
-			svg_shape="rounded-rectangle";
-			icon="checklist";
-		];
-		REQ_011[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
-				<B>Brain Style Graph Navigation</B><BR/>
-				<BR/>
-				The editor SHALL provide a central mind-map / TheBrain style view with the focus<BR/>ed card centered. The view SHALL show the parent (from the chosen shortest-path <BR/>chain), and MAY show siblings (same card_type) linked from that parent even if t<BR/>hey are not linked to the focused card.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Brain_Style_Graph_Navigation.view.svg";
-			style=filled;
-			fillcolor="#065f46";
-			svg_shape="rounded-rectangle";
-			icon="checklist";
-		];
-		}
+	fontname="Noto Sans";
+	fontcolor="#FFFFFF";
+	fontsize=12.0;
+	REQ_014[
+		label=<<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/><B>Reuse aurora_shared</B><BR/><BR/>The editor SHALL reuse aurora_shared for model discovery/loading and validation/<BR/>rendering semantics to stay consistent with other Aurora tooling.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Reuse_aurora_shared.view.svg";
+		style=filled;
+		fillcolor="#065f46";
+		svg_shape="rounded-rectangle";
+		icon="checklist";
+	];
+	REQ_010[
+		label=<<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/><B>Shortest Path Tree Navigation</B><BR/><BR/>The editor SHALL provide a left-pane tree view for navigation, where the tree is<BR/> derived from a chosen shortest path from the mission root to each card.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Shortest_Path_Tree_Navigation.view.svg";
+		style=filled;
+		fillcolor="#065f46";
+		svg_shape="rounded-rectangle";
+		icon="checklist";
+	];
+	REQ_011[
+		label=<<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/><B>Brain Style Graph Navigation</B><BR/><BR/>The editor SHALL provide a central mind-map / TheBrain style view with the focus<BR/>ed card centered. The view SHALL show the parent (from the chosen shortest-path <BR/>chain), and MAY show siblings (same card_type) linked from that parent even if t<BR/>hey are not linked to the focused card.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Brain_Style_Graph_Navigation.view.svg";
+		style=filled;
+		fillcolor="#065f46";
+		svg_shape="rounded-rectangle";
+		icon="checklist";
+	];
+	REQ_013[
+		label=<<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/><B>Dioxus UI</B><BR/><BR/>The standalone editor SHOULD be implemented using Dioxus as the primary UI libra<BR/>ry.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Dioxus_UI.view.svg";
+		style=filled;
+		fillcolor="#065f46";
+		svg_shape="rounded-rectangle";
+		icon="checklist";
+	];
+	REQ_012[
+		label=<<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/><B>Edit, Preview, and Audit Inspector</B><BR/><BR/>The editor SHALL provide a right-pane inspector: the top half edits the focused <BR/>card; the bottom half renders a Markdown-style view of the card (including links<BR/>). The bottom half SHALL provide a tab to reveal the card’s audit trail details.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Edit,_Preview,_and_Audit_Inspector.view.svg";
+		style=filled;
+		fillcolor="#065f46";
+		svg_shape="rounded-rectangle";
+		icon="checklist";
+	];
+	REQ_009[
+		label=<<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/><B>Three Pane Layout</B><BR/><BR/>The editor SHALL present a three-pane layout (similar to Visual Studio or Obsidi<BR/>an): left navigation tree, central graph view, and right inspector.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Three_Pane_Layout.view.svg";
+		style=filled;
+		fillcolor="#065f46";
+		svg_shape="rounded-rectangle";
+		icon="checklist";
+	];
+	REQ_015[
+		label=<<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/><B>Safe Workspace Persistence</B><BR/><BR/>The editor SHALL persist edits to model files in a safe manner that avoids parti<BR/>al writes and preserves schema validity (e.g., atomic replace per card file).<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Safe_Workspace_Persistence.view.svg";
+		style=filled;
+		fillcolor="#065f46";
+		svg_shape="rounded-rectangle";
+		icon="checklist";
+	];
+}

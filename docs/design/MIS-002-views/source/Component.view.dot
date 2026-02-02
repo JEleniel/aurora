@@ -1,74 +1,54 @@
 digraph {
-					fontname="Noto Sans";
-					fontcolor="#FFFFFF";
-					fontsize=12;
-				INT_001[
-			label=<
-				<FONT COLOR="#000000"><B>Interface</B><BR/>
-				<B>Reference Interface</B><BR/>
-				<BR/>
-				Interface that can be called by a component and exposed by a data store.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-002-views/Reference_Interface.view.svg";
-			style=filled;
-			fillcolor="#102080";
-			svg_shape="interface";
-			icon="plug";
-		];
-		CLS_001[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Class</B><BR/>
-				<B>Reference Class</B><BR/>
-				<BR/>
-				Class target for implement relationships in the reference model.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-002-views/Reference_Class.view.svg";
-			style=filled;
-			fillcolor="#0f172a";
-			svg_shape="class";
-			icon="braces";
-		];
-		APP_001[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Application</B><BR/>
-				<B>Reference Application</B><BR/>
-				<BR/>
-				Application that composes a component in the relationship-matrix reference model<BR/>.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-002-views/Reference_Application.view.svg";
-			style=filled;
-			fillcolor="#1e3a8a";
-			svg_shape="box";
-			icon="app-window";
-		];
-		COM_001[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Component</B><BR/>
-				<B>Reference Component</B><BR/>
-				<BR/>
-				Component used to exercise interface invocation, artifact generation, feature im<BR/>plementation, test fulfillment, class realization, control enforcement, and stat<BR/>e machine execution.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-002-views/Reference_Component.view.svg";
-			style=filled;
-			fillcolor="#1e40af";
-			svg_shape="component";
-			icon="cube";
-		];
-			APP_001 -> COM_001 [label="composes"];
-									APP_001 -> CTL_001 [label="enforces"];
-									COM_001 -> INT_001 [label="invokes"];
-									COM_001 -> ART_001 [label="generates"];
-									COM_001 -> FEA_001 [label="implements"];
-									COM_001 -> TES_001 [label="fulfills"];
-									COM_001 -> CLS_001 [label="realizes"];
-									COM_001 -> CTL_001 [label="enforces"];
-									COM_001 -> STM_001 [label="executes"];
-								}
+	fontname="Noto Sans";
+	fontcolor="#FFFFFF";
+	fontsize=12.0;
+	CLS_001[
+		label=<<FONT COLOR="#FFFFFF"><B>Class</B><BR/><B>Reference Class</B><BR/><BR/>Class target for implement relationships in the reference model.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-002-views/Reference_Class.view.svg";
+		style=filled;
+		fillcolor="#0f172a";
+		svg_shape="class";
+		icon="braces";
+	];
+	COM_001[
+		label=<<FONT COLOR="#FFFFFF"><B>Component</B><BR/><B>Reference Component</B><BR/><BR/>Component used to exercise interface invocation, artifact generation, feature im<BR/>plementation, test fulfillment, class realization, control enforcement, and stat<BR/>e machine execution.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-002-views/Reference_Component.view.svg";
+		style=filled;
+		fillcolor="#1e40af";
+		svg_shape="component";
+		icon="cube";
+	];
+	INT_001[
+		label=<<FONT COLOR="#000000"><B>Interface</B><BR/><B>Reference Interface</B><BR/><BR/>Interface that can be called by a component and exposed by a data store.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-002-views/Reference_Interface.view.svg";
+		style=filled;
+		fillcolor="#102080";
+		svg_shape="interface";
+		icon="plug";
+	];
+	APP_001[
+		label=<<FONT COLOR="#FFFFFF"><B>Application</B><BR/><B>Reference Application</B><BR/><BR/>Application that composes a component in the relationship-matrix reference model<BR/>.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-002-views/Reference_Application.view.svg";
+		style=filled;
+		fillcolor="#1e3a8a";
+		svg_shape="box";
+		icon="app-window";
+	];
+	COM_001 -> INT_001 [label="invokes"];
+	COM_001 -> ART_001 [label="generates"];
+	COM_001 -> FEA_001 [label="implements"];
+	COM_001 -> TES_001 [label="fulfills"];
+	COM_001 -> CLS_001 [label="realizes"];
+	COM_001 -> CTL_001 [label="enforces"];
+	COM_001 -> STM_001 [label="executes"];
+	APP_001 -> COM_001 [label="composes"];
+	APP_001 -> CTL_001 [label="enforces"];
+}

@@ -6,19 +6,20 @@
   "bb": "0,0,1011.2,232.02",
   "rankdir": null,
   "fontname": "Noto Sans",
-  "fontsize": "12",
+  "fontsize": "12.0",
   "label": null,
   "objects": [
     {
       "_gvid": 0,
       "name": "PRO_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Process</B><BR/>\n\t\t\t\t<B>Reference Process</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tProcess necessitated by a capability in the relationship-matrix reference model.<BR/></FONT>\n\t\t\t",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Process</B><BR/><B>Reference Process</B><BR/><BR/>Process necessitated by a capability in the relationship-matrix reference model.<BR/></FONT>",
       "pos": "415.78,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "style": "filled",
+      "width": "11.549",
+      "height": "1.2571",
+      "color": null,
+      "fillcolor": "#2e1065",
+      "svg_shape": "box",
+      "icon": "workflow",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -89,6 +90,8 @@
           "width": 572.0
         }
       ],
+      "href": "../MIS-002-views/Reference_Process.view.svg",
+      "style": "filled",
       "_draw_": [
         {
           "color": "#000000",
@@ -109,50 +112,19 @@
             45.01
           ]
         }
-      ],
-      "width": "11.549",
-      "icon": "workflow",
-      "fillcolor": "#2e1065",
-      "height": "1.2571",
-      "svg_shape": "box",
-      "href": "../MIS-002-views/Reference_Process.view.svg"
+      ]
     },
     {
       "_gvid": 1,
       "name": "CAP_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Reference Capability</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tCapability used to satisfy a requirement and necessitate a process.<BR/></FONT>\n\t\t\t",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/><B>Reference Capability</B><BR/><BR/>Capability used to satisfy a requirement and necessitate a process.<BR/></FONT>",
       "pos": "659.78,186.76",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#052e16",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            659.78,
-            186.76,
-            351.36,
-            45.01
-          ]
-        }
-      ],
-      "icon": "spark",
-      "style": "filled",
-      "svg_shape": "rounded-rectangle",
-      "height": "1.2571",
-      "fillcolor": "#052e16",
       "width": "9.762",
+      "height": "1.2571",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
       "href": "../MIS-002-views/Reference_Capability.view.svg",
       "_ldraw_": [
         {
@@ -223,19 +195,41 @@
           "text": "Capability used to satisfy a requirement and necessitate a process.",
           "width": 481.0
         }
+      ],
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            659.78,
+            186.76,
+            351.36,
+            45.01
+          ]
+        }
       ]
     },
     {
       "_gvid": 2,
       "name": "REQ_001",
-      "bb": null,
       "label": "\\N",
       "pos": "903.78,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
       "width": "1.4985",
       "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_draw_": [
         {
           "color": "#000000",
@@ -347,6 +341,7 @@
           ]
         }
       ],
+      "lp": "590.28,116.01",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -368,8 +363,7 @@
           "text": "necessitates",
           "width": 89.0
         }
-      ],
-      "lp": "590.28,116.01"
+      ]
     },
     {
       "tail": 1,
@@ -380,39 +374,6 @@
       "arrowhead": null,
       "color": null,
       "style": null,
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              876.88,
-              70.59
-            ],
-            [
-              882.94,
-              61.9
-            ],
-            [
-              872.79,
-              64.91
-            ]
-          ]
-        }
-      ],
       "_draw_": [
         {
           "color": "#000000",
@@ -475,10 +436,42 @@
           "width": 59.0
         }
       ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              876.88,
+              70.59
+            ],
+            [
+              882.94,
+              61.9
+            ],
+            [
+              872.79,
+              64.91
+            ]
+          ]
+        }
+      ],
       "lp": "836.28,116.01"
     }
   ],
-  "fontcolor": "#FFFFFF",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -512,5 +505,6 @@
       ]
     }
   ],
+  "fontcolor": "#FFFFFF",
   "xdotversion": "1.7"
 }

@@ -6,43 +6,19 @@
   "bb": "0,0,830.14,110.31",
   "rankdir": null,
   "fontname": "Noto Sans",
-  "fontsize": "12",
+  "fontsize": "12.0",
   "label": null,
   "objects": [
     {
       "_gvid": 0,
       "name": "REQ_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Reference Requirement</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tRequirement referenced by multiple rules (driven by driver, satisfied by capabil<BR/>ity, documented by ADR, limited by constraint).<BR/></FONT>\n\t\t\t",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Reference Requirement</B><BR/><BR/>Requirement referenced by multiple rules (driven by driver, satisfied by capabil<BR/>ity, documented by ADR, limited by constraint).<BR/></FONT>",
       "pos": "415.07,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "href": "../MIS-002-views/Reference_Requirement.view.svg",
       "width": "11.53",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            415.07,
-            55.15,
-            415.14,
-            55.31
-          ]
-        }
-      ],
-      "style": "filled",
+      "height": "1.5321",
+      "color": null,
       "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
       "icon": "checklist",
       "_ldraw_": [
         {
@@ -134,11 +110,33 @@
           "width": 340.0
         }
       ],
-      "svg_shape": "rounded-rectangle",
-      "height": "1.5321"
+      "style": "filled",
+      "href": "../MIS-002-views/Reference_Requirement.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            415.07,
+            55.15,
+            415.14,
+            55.31
+          ]
+        }
+      ]
     }
   ],
   "edges": [],
+  "xdotversion": "1.7",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -172,6 +170,5 @@
       ]
     }
   ],
-  "xdotversion": "1.7",
   "fontcolor": "#FFFFFF"
 }

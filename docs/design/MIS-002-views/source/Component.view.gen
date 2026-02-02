@@ -3,98 +3,23 @@
   "directed": true,
   "strict": false,
   "_subgraph_cnt": 0,
-  "bb": "0,0,2504.6,432.93",
+  "bb": "0,0,2162.6,432.93",
   "rankdir": null,
   "fontname": "Noto Sans",
-  "fontsize": "12",
+  "fontsize": "12.0",
   "label": null,
   "objects": [
     {
       "_gvid": 0,
-      "name": "INT_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#000000\"><B>Interface</B><BR/>\n\t\t\t\t<B>Reference Interface</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tInterface that can be called by a component and exposed by a data store.<BR/></FONT>\n\t\t\t",
-      "pos": "1428.6,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "width": "10.607",
-      "style": "filled",
-      "href": "../MIS-002-views/Reference_Interface.view.svg",
-      "icon": "plug",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1392.13,
-            63.05
-          ],
-          "text": "Interface",
-          "width": 73.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1349.63,
-            49.05
-          ],
-          "text": "Reference Interface",
-          "width": 158.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1166.63,
-            21.05
-          ],
-          "text": "Interface that can be called by a component and exposed by a data store.",
-          "width": 524.0
-        }
-      ],
+      "name": "CLS_001",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Class</B><BR/><B>Reference Class</B><BR/><BR/>Class target for implement relationships in the reference model.<BR/></FONT>",
+      "pos": "582,45.255",
+      "width": "9.3888",
       "height": "1.2571",
-      "fillcolor": "#102080",
-      "svg_shape": "interface",
+      "color": null,
+      "fillcolor": "#0f172a",
+      "svg_shape": "class",
+      "icon": "braces",
       "_draw_": [
         {
           "color": "#000000",
@@ -102,32 +27,20 @@
           "op": "c"
         },
         {
-          "color": "#102080",
+          "color": "#0f172a",
           "grad": "none",
           "op": "C"
         },
         {
           "op": "E",
           "rect": [
-            1428.63,
+            582.0,
             45.25,
-            381.68,
+            337.99,
             45.01
           ]
         }
-      ]
-    },
-    {
-      "_gvid": 1,
-      "name": "CLS_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Class</B><BR/>\n\t\t\t\t<B>Reference Class</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tClass target for implement relationships in the reference model.<BR/></FONT>\n\t\t\t",
-      "pos": "2166.6,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "width": "9.3888",
-      "svg_shape": "class",
+      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -147,7 +60,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2145.13,
+            560.5,
             63.05
           ],
           "text": "Class",
@@ -167,7 +80,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2103.13,
+            518.5,
             49.05
           ],
           "text": "Reference Class",
@@ -191,50 +104,27 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1935.63,
+            351.0,
             21.05
           ],
           "text": "Class target for implement relationships in the reference model.",
           "width": 462.0
         }
       ],
-      "fillcolor": "#0f172a",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#0f172a",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            2166.63,
-            45.25,
-            337.99,
-            45.01
-          ]
-        }
-      ],
-      "height": "1.2571",
       "href": "../MIS-002-views/Reference_Class.view.svg",
-      "icon": "braces",
       "style": "filled"
     },
     {
-      "_gvid": 2,
-      "name": "APP_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Application</B><BR/>\n\t\t\t\t<B>Reference Application</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tApplication that composes a component in the relationship-matrix reference model<BR/>.<BR/></FONT>\n\t\t\t",
-      "pos": "430.63,377.77",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "fillcolor": "#1e3a8a",
+      "_gvid": 1,
+      "name": "COM_001",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Component</B><BR/><B>Reference Component</B><BR/><BR/>Component used to exercise interface invocation, artifact generation, feature im<BR/>plementation, test fulfillment, class realization, control enforcement, and stat<BR/>e machine execution.<BR/></FONT>",
+      "pos": "1219,206.56",
+      "width": "11.628",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#1e40af",
+      "svg_shape": "component",
+      "icon": "cube",
       "_draw_": [
         {
           "color": "#000000",
@@ -242,129 +132,22 @@
           "op": "c"
         },
         {
-          "color": "#1e3a8a",
+          "color": "#1e40af",
           "grad": "none",
           "op": "C"
         },
         {
           "op": "E",
           "rect": [
-            430.63,
-            377.77,
-            430.76,
-            55.31
+            1219.0,
+            206.56,
+            418.71,
+            65.11
           ]
         }
       ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            385.63,
-            402.57
-          ],
-          "text": "Application",
-          "width": 90.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            343.13,
-            388.57
-          ],
-          "text": "Reference Application",
-          "width": 175.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            134.13,
-            360.57
-          ],
-          "text": "Application that composes a component in the relationship-matrix reference model",
-          "width": 593.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            428.13,
-            346.57
-          ],
-          "text": ".",
-          "width": 5.0
-        }
-      ],
       "style": "filled",
-      "href": "../MIS-002-views/Reference_Application.view.svg",
-      "icon": "app-window",
-      "svg_shape": "box",
-      "width": "11.962",
-      "height": "1.5321"
-    },
-    {
-      "_gvid": 3,
-      "name": "COM_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Component</B><BR/>\n\t\t\t\t<B>Reference Component</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tComponent used to exercise interface invocation, artifact generation, feature im<BR/>plementation, test fulfillment, class realization, control enforcement, and stat<BR/>e machine execution.<BR/></FONT>\n\t\t\t",
-      "pos": "912.63,206.56",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "svg_shape": "component",
-      "width": "11.628",
-      "icon": "cube",
+      "href": "../MIS-002-views/Reference_Component.view.svg",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -384,7 +167,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            867.13,
+            1173.5,
             238.36
           ],
           "text": "Component",
@@ -404,7 +187,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            824.63,
+            1131.0,
             224.36
           ],
           "text": "Reference Component",
@@ -428,7 +211,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            624.63,
+            931.0,
             196.36
           ],
           "text": "Component used to exercise interface invocation, artifact generation, feature im",
@@ -448,7 +231,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            634.63,
+            941.0,
             182.36
           ],
           "text": "plementation, test fulfillment, class realization, control enforcement, and stat",
@@ -468,13 +251,26 @@
           "align": "l",
           "op": "T",
           "pt": [
-            837.13,
+            1143.5,
             168.36
           ],
           "text": "e machine execution.",
           "width": 151.0
         }
-      ],
+      ]
+    },
+    {
+      "_gvid": 2,
+      "name": "INT_001",
+      "label": "<FONT COLOR=\"#000000\"><B>Interface</B><BR/><B>Reference Interface</B><BR/><BR/>Interface that can be called by a component and exposed by a data store.<BR/></FONT>",
+      "pos": "1446,45.255",
+      "width": "10.607",
+      "height": "1.2571",
+      "color": null,
+      "fillcolor": "#102080",
+      "svg_shape": "interface",
+      "icon": "plug",
+      "href": "../MIS-002-views/Reference_Interface.view.svg",
       "style": "filled",
       "_draw_": [
         {
@@ -483,33 +279,20 @@
           "op": "c"
         },
         {
-          "color": "#1e40af",
+          "color": "#102080",
           "grad": "none",
           "op": "C"
         },
         {
           "op": "E",
           "rect": [
-            912.63,
-            206.56,
-            418.71,
-            65.11
+            1446.0,
+            45.25,
+            381.68,
+            45.01
           ]
         }
       ],
-      "fillcolor": "#1e40af",
-      "href": "../MIS-002-views/Reference_Component.view.svg",
-      "height": "1.8071"
-    },
-    {
-      "_gvid": 4,
-      "name": "CTL_001",
-      "bb": null,
-      "label": "\\N",
-      "pos": "481.63,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -522,17 +305,168 @@
           "op": "c"
         },
         {
-          "align": "c",
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
           "op": "T",
           "pt": [
-            481.63,
-            41.55
+            1409.5,
+            63.05
           ],
-          "text": "CTL_001",
-          "width": 63.0
+          "text": "Interface",
+          "width": 73.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1367.0,
+            49.05
+          ],
+          "text": "Reference Interface",
+          "width": 158.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1184.0,
+            21.05
+          ],
+          "text": "Interface that can be called by a component and exposed by a data store.",
+          "width": 524.0
+        }
+      ]
+    },
+    {
+      "_gvid": 3,
+      "name": "APP_001",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Application</B><BR/><B>Reference Application</B><BR/><BR/>Application that composes a component in the relationship-matrix reference model<BR/>.<BR/></FONT>",
+      "pos": "1732,377.77",
+      "width": "11.962",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#1e3a8a",
+      "svg_shape": "box",
+      "icon": "app-window",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1687.0,
+            402.57
+          ],
+          "text": "Application",
+          "width": 90.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1644.5,
+            388.57
+          ],
+          "text": "Reference Application",
+          "width": 175.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1435.5,
+            360.57
+          ],
+          "text": "Application that composes a component in the relationship-matrix reference model",
+          "width": 593.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1729.5,
+            346.57
+          ],
+          "text": ".",
+          "width": 5.0
         }
       ],
-      "height": "0.5",
+      "href": "../MIS-002-views/Reference_Application.view.svg",
+      "style": "filled",
       "_draw_": [
         {
           "color": "#000000",
@@ -540,26 +474,32 @@
           "op": "c"
         },
         {
-          "op": "e",
+          "color": "#1e3a8a",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
           "rect": [
-            481.63,
-            45.25,
-            51.19,
-            18.0
+            1732.0,
+            377.77,
+            430.76,
+            55.31
           ]
         }
-      ],
-      "width": "1.4263"
+      ]
     },
     {
-      "_gvid": 5,
+      "_gvid": 4,
       "name": "ART_001",
-      "bb": null,
       "label": "\\N",
-      "pos": "606.63,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "1898,45.255",
+      "width": "1.4443",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -575,15 +515,13 @@
           "align": "c",
           "op": "T",
           "pt": [
-            606.63,
+            1898.0,
             41.55
           ],
           "text": "ART_001",
           "width": 64.0
         }
       ],
-      "width": "1.4443",
-      "height": "0.5",
       "_draw_": [
         {
           "color": "#000000",
@@ -593,7 +531,57 @@
         {
           "op": "e",
           "rect": [
-            606.63,
+            1898.0,
+            45.25,
+            51.99,
+            18.0
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 5,
+      "name": "FEA_001",
+      "label": "\\N",
+      "pos": "51.995,45.255",
+      "width": "1.4443",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            52.0,
+            41.55
+          ],
+          "text": "FEA_001",
+          "width": 64.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            52.0,
             45.25,
             51.99,
             18.0
@@ -603,13 +591,15 @@
     },
     {
       "_gvid": 6,
-      "name": "FEA_001",
-      "bb": null,
+      "name": "TES_001",
       "label": "\\N",
-      "pos": "728.63,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "174,45.255",
+      "width": "1.4443",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_draw_": [
         {
           "color": "#000000",
@@ -619,14 +609,13 @@
         {
           "op": "e",
           "rect": [
-            728.63,
+            174.0,
             45.25,
             51.99,
             18.0
           ]
         }
       ],
-      "height": "0.5",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -642,74 +631,25 @@
           "align": "c",
           "op": "T",
           "pt": [
-            728.63,
-            41.55
-          ],
-          "text": "FEA_001",
-          "width": 64.0
-        }
-      ],
-      "width": "1.4443"
-    },
-    {
-      "_gvid": 7,
-      "name": "TES_001",
-      "bb": null,
-      "label": "\\N",
-      "pos": "850.63,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "width": "1.4443",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            850.63,
+            174.0,
             41.55
           ],
           "text": "TES_001",
           "width": 64.0
         }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            850.63,
-            45.25,
-            51.99,
-            18.0
-          ]
-        }
-      ],
-      "height": "0.5"
+      ]
     },
     {
-      "_gvid": 8,
-      "name": "STM_001",
-      "bb": null,
+      "_gvid": 7,
+      "name": "CTL_001",
       "label": "\\N",
-      "pos": "974.63,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "2019,45.255",
+      "width": "1.4263",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -725,11 +665,11 @@
           "align": "c",
           "op": "T",
           "pt": [
-            974.63,
+            2019.0,
             41.55
           ],
-          "text": "STM_001",
-          "width": 67.0
+          "text": "CTL_001",
+          "width": 63.0
         }
       ],
       "_draw_": [
@@ -741,321 +681,76 @@
         {
           "op": "e",
           "rect": [
-            974.63,
+            2019.0,
+            45.25,
+            51.19,
+            18.0
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 8,
+      "name": "STM_001",
+      "label": "\\N",
+      "pos": "992,45.255",
+      "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            992.0,
             45.25,
             53.89,
             18.0
           ]
         }
       ],
-      "height": "0.5",
-      "width": "1.4985"
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            992.0,
+            41.55
+          ],
+          "text": "STM_001",
+          "width": 67.0
+        }
+      ]
     }
   ],
   "edges": [
     {
-      "tail": 2,
-      "head": 3,
-      "_gvid": 0,
-      "pos": "e,745.24,266.33 575.9,325.77 626.13,308.14 682.99,288.18 735.49,269.75",
-      "label": "composes",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              575.9,
-              325.77
-            ],
-            [
-              626.13,
-              308.14
-            ],
-            [
-              682.99,
-              288.18
-            ],
-            [
-              735.49,
-              269.75
-            ]
-          ]
-        }
-      ],
-      "lp": "706.63,297.12",
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              736.96,
-              272.94
-            ],
-            [
-              745.24,
-              266.33
-            ],
-            [
-              734.64,
-              266.34
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            706.63,
-            293.42
-          ],
-          "text": "composes",
-          "width": 70.0
-        }
-      ]
-    },
-    {
-      "tail": 2,
-      "head": 4,
-      "_gvid": 1,
-      "pos": "e,467.6,62.804 419.94,322.4 412.54,273.98 406.74,201.71 423.63,141.51 430.95,115.4 447.63,89.34 461.23,71.098",
-      "label": "enforces",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            454.13,
-            202.86
-          ],
-          "text": "enforces",
-          "width": 61.0
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              419.94,
-              322.4
-            ],
-            [
-              412.54,
-              273.98
-            ],
-            [
-              406.74,
-              201.71
-            ],
-            [
-              423.63,
-              141.51
-            ],
-            [
-              430.95,
-              115.4
-            ],
-            [
-              447.63,
-              89.34
-            ],
-            [
-              461.23,
-              71.1
-            ]
-          ]
-        }
-      ],
-      "lp": "454.13,206.56",
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              464.28,
-              72.87
-            ],
-            [
-              467.6,
-              62.8
-            ],
-            [
-              458.73,
-              68.6
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "tail": 3,
+      "tail": 1,
       "head": 0,
-      "_gvid": 2,
-      "pos": "e,1294.2,87.754 1098.6,148.16 1159.7,129.28 1226.7,108.59 1284.3,90.809",
-      "label": "invokes",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "lp": "1244.1,116.01",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1244.13,
-            112.31
-          ],
-          "text": "invokes",
-          "width": 55.0
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              1098.55,
-              148.16
-            ],
-            [
-              1159.71,
-              129.28
-            ],
-            [
-              1226.73,
-              108.59
-            ],
-            [
-              1284.32,
-              90.81
-            ]
-          ]
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              1285.69,
-              94.05
-            ],
-            [
-              1294.21,
-              87.75
-            ],
-            [
-              1283.63,
-              87.36
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "tail": 3,
-      "head": 1,
-      "_gvid": 3,
-      "pos": "e,1925.4,77.047 1234,164.85 1407.5,142.86 1625.3,115.23 1819.6,90.51 1850.6,86.569 1883.2,82.425 1915.4,78.319",
+      "_gvid": 0,
+      "pos": "e,738.74,85.454 1000.7,150.96 918.12,130.32 825.58,107.17 748.53,87.905",
       "label": "realizes",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "lp": "909,116.01",
       "_draw_": [
         {
           "color": "#000000",
@@ -1066,37 +761,24 @@
           "op": "b",
           "points": [
             [
-              1234.02,
-              164.85
+              1000.67,
+              150.96
             ],
             [
-              1407.46,
-              142.86
+              918.12,
+              130.32
             ],
             [
-              1625.27,
-              115.23
+              825.58,
+              107.17
             ],
             [
-              1819.63,
-              90.51
-            ],
-            [
-              1850.61,
-              86.57
-            ],
-            [
-              1883.15,
-              82.43
-            ],
-            [
-              1915.37,
-              78.32
+              748.53,
+              87.91
             ]
           ]
         }
       ],
-      "lp": "1698.6,116.01",
       "_hdraw_": [
         {
           "op": "S",
@@ -1116,16 +798,16 @@
           "op": "P",
           "points": [
             [
-              1915.88,
-              81.78
+              749.29,
+              84.49
             ],
             [
-              1925.36,
-              77.05
+              738.74,
+              85.45
             ],
             [
-              1915.0,
-              74.84
+              747.59,
+              91.28
             ]
           ]
         }
@@ -1145,7 +827,7 @@
           "align": "c",
           "op": "T",
           "pt": [
-            1698.63,
+            909.0,
             112.31
           ],
           "text": "realizes",
@@ -1154,11 +836,11 @@
       ]
     },
     {
-      "tail": 3,
-      "head": 4,
-      "_gvid": 4,
-      "pos": "e,502.45,61.811 684.97,151.92 637.19,135.86 588.37,115.63 545.63,90.51 533.87,83.597 521.42,75.25 510.67,67.677",
-      "label": "enforces",
+      "tail": 1,
+      "head": 2,
+      "_gvid": 1,
+      "pos": "e,1383.6,90.009 1308.4,142.83 1330.6,127.23 1354.1,110.71 1375.3,95.84",
+      "label": "invokes",
       "arrowhead": null,
       "color": null,
       "style": null,
@@ -1181,21 +863,49 @@
           "op": "P",
           "points": [
             [
-              512.62,
-              64.77
+              1377.47,
+              98.62
             ],
             [
-              502.45,
-              61.81
+              1383.65,
+              90.01
             ],
             [
-              508.55,
-              70.47
+              1373.45,
+              92.89
             ]
           ]
         }
       ],
-      "lp": "632.13,116.01",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1308.39,
+              142.83
+            ],
+            [
+              1330.62,
+              127.23
+            ],
+            [
+              1354.15,
+              110.71
+            ],
+            [
+              1375.34,
+              95.84
+            ]
+          ]
+        }
+      ],
+      "lp": "1379.5,116.01",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1211,7 +921,370 @@
           "align": "c",
           "op": "T",
           "pt": [
-            632.13,
+            1379.5,
+            112.31
+          ],
+          "text": "invokes",
+          "width": 55.0
+        }
+      ]
+    },
+    {
+      "tail": 1,
+      "head": 4,
+      "_gvid": 2,
+      "pos": "e,1880.4,62.329 1562.6,169.39 1654.1,152.34 1751.4,127.29 1837,90.51 1849.6,85.089 1862.1,76.675 1872.5,68.634",
+      "label": "generates",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "1825,116.01",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1562.55,
+              169.39
+            ],
+            [
+              1654.15,
+              152.34
+            ],
+            [
+              1751.39,
+              127.29
+            ],
+            [
+              1837.0,
+              90.51
+            ],
+            [
+              1849.61,
+              85.09
+            ],
+            [
+              1862.13,
+              76.68
+            ],
+            [
+              1872.52,
+              68.63
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1825.0,
+            112.31
+          ],
+          "text": "generates",
+          "width": 72.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1874.76,
+              71.33
+            ],
+            [
+              1880.35,
+              62.33
+            ],
+            [
+              1870.37,
+              65.87
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 1,
+      "head": 5,
+      "_gvid": 3,
+      "pos": "e,70.841,62.108 805.45,196.38 620.45,186.06 400.64,165.18 206,123.51 163.11,114.33 151.81,110.93 113,90.51 101.24,84.323 89.205,76.08 78.971,68.385",
+      "label": "implements",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            248.5,
+            112.31
+          ],
+          "text": "implements",
+          "width": 85.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              80.9,
+              65.45
+            ],
+            [
+              70.84,
+              62.11
+            ],
+            [
+              76.62,
+              70.99
+            ]
+          ]
+        }
+      ],
+      "lp": "248.5,116.01",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              805.45,
+              196.38
+            ],
+            [
+              620.45,
+              186.06
+            ],
+            [
+              400.64,
+              165.18
+            ],
+            [
+              206.0,
+              123.51
+            ],
+            [
+              163.11,
+              114.33
+            ],
+            [
+              151.81,
+              110.93
+            ],
+            [
+              113.0,
+              90.51
+            ],
+            [
+              101.24,
+              84.32
+            ],
+            [
+              89.21,
+              76.08
+            ],
+            [
+              78.97,
+              68.39
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 1,
+      "head": 6,
+      "_gvid": 4,
+      "pos": "e,191.22,62.486 835.03,180.64 607.17,161.98 342.4,132.42 235,90.51 222.11,85.481 209.46,77.057 199.05,68.9",
+      "label": "fulfills",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "374.5,116.01",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              835.03,
+              180.64
+            ],
+            [
+              607.17,
+              161.98
+            ],
+            [
+              342.4,
+              132.42
+            ],
+            [
+              235.0,
+              90.51
+            ],
+            [
+              222.11,
+              85.48
+            ],
+            [
+              209.46,
+              77.06
+            ],
+            [
+              199.05,
+              68.9
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            374.5,
+            112.31
+          ],
+          "text": "fulfills",
+          "width": 45.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              201.18,
+              66.12
+            ],
+            [
+              191.22,
+              62.49
+            ],
+            [
+              196.74,
+              71.53
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 1,
+      "head": 7,
+      "_gvid": 5,
+      "pos": "e,2000.5,62.146 1579.4,173.46 1673.1,161.39 1773.4,145.15 1865,123.51 1908.1,113.33 1919.9,111.21 1959,90.51 1970.6,84.363 1982.5,76.128 1992.5,68.429",
+      "label": "enforces",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "1949.5,116.01",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1949.5,
             112.31
           ],
           "text": "enforces",
@@ -1228,82 +1301,44 @@
           "op": "b",
           "points": [
             [
-              684.97,
-              151.92
+              1579.35,
+              173.46
             ],
             [
-              637.19,
-              135.86
+              1673.06,
+              161.39
             ],
             [
-              588.37,
-              115.63
+              1773.4,
+              145.15
             ],
             [
-              545.63,
+              1865.0,
+              123.51
+            ],
+            [
+              1908.09,
+              113.33
+            ],
+            [
+              1919.86,
+              111.21
+            ],
+            [
+              1959.0,
               90.51
             ],
             [
-              533.87,
-              83.6
+              1970.62,
+              84.36
             ],
             [
-              521.42,
-              75.25
+              1982.46,
+              76.13
             ],
             [
-              510.67,
-              67.68
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "tail": 3,
-      "head": 5,
-      "_gvid": 5,
-      "pos": "e,622.85,62.581 744.76,146.93 729.18,139.7 713.9,131.88 699.63,123.51 674.04,108.5 648.35,86.512 630.48,69.829",
-      "label": "generates",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              744.76,
-              146.93
-            ],
-            [
-              729.18,
-              139.7
-            ],
-            [
-              713.9,
-              131.88
-            ],
-            [
-              699.63,
-              123.51
-            ],
-            [
-              674.04,
-              108.5
-            ],
-            [
-              648.35,
-              86.51
-            ],
-            [
-              630.48,
-              69.83
+              1992.52,
+              68.43
             ]
           ]
         }
@@ -1327,253 +1362,70 @@
           "op": "P",
           "points": [
             [
-              632.51,
-              66.93
+              1994.81,
+              71.08
             ],
             [
-              622.85,
-              62.58
+              2000.51,
+              62.15
             ],
             [
-              627.69,
-              72.0
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            735.63,
-            112.31
-          ],
-          "text": "generates",
-          "width": 72.0
-        }
-      ],
-      "lp": "735.63,116.01"
-    },
-    {
-      "tail": 3,
-      "head": 6,
-      "_gvid": 6,
-      "pos": "e,738.96,62.936 811.1,143.27 802.88,136.94 794.94,130.32 787.63,123.51 770.95,107.98 755.46,87.349 744.54,71.312",
-      "label": "implements",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "lp": "830.13,116.01",
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              747.41,
-              69.32
-            ],
-            [
-              738.96,
-              62.94
-            ],
-            [
-              741.59,
-              73.2
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            830.13,
-            112.31
-          ],
-          "text": "implements",
-          "width": 85.0
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              811.1,
-              143.27
-            ],
-            [
-              802.88,
-              136.94
-            ],
-            [
-              794.94,
-              130.32
-            ],
-            [
-              787.63,
-              123.51
-            ],
-            [
-              770.95,
-              107.98
-            ],
-            [
-              755.46,
-              87.35
-            ],
-            [
-              744.54,
-              71.31
+              1990.48,
+              65.58
             ]
           ]
         }
       ]
     },
     {
-      "tail": 3,
-      "head": 7,
-      "_gvid": 7,
-      "pos": "e,857.25,63.261 887.59,141.23 878.24,117.22 868.15,91.277 860.88,72.584",
-      "label": "fulfills",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              864.14,
-              71.31
-            ],
-            [
-              857.25,
-              63.26
-            ],
-            [
-              857.61,
-              73.85
-            ]
-          ]
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              887.59,
-              141.23
-            ],
-            [
-              878.24,
-              117.22
-            ],
-            [
-              868.15,
-              91.28
-            ],
-            [
-              860.88,
-              72.58
-            ]
-          ]
-        }
-      ],
-      "lp": "903.13,116.01",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            903.13,
-            112.31
-          ],
-          "text": "fulfills",
-          "width": 45.0
-        }
-      ]
-    },
-    {
-      "tail": 3,
+      "tail": 1,
       "head": 8,
-      "_gvid": 8,
-      "pos": "e,968.01,63.261 937.67,141.23 947.01,117.22 957.11,91.277 964.38,72.584",
+      "_gvid": 6,
+      "pos": "e,1014.2,61.824 1129.6,142.88 1105.4,125.89 1079.2,107.5 1055,90.51 1044.4,83.07 1032.8,74.923 1022.5,67.671",
       "label": "executes",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1129.62,
+              142.88
+            ],
+            [
+              1105.4,
+              125.89
+            ],
+            [
+              1079.19,
+              107.5
+            ],
+            [
+              1055.0,
+              90.51
+            ],
+            [
+              1044.4,
+              83.07
+            ],
+            [
+              1032.8,
+              74.92
+            ],
+            [
+              1022.47,
+              67.67
+            ]
+          ]
+        }
+      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -1593,48 +1445,21 @@
           "op": "P",
           "points": [
             [
-              967.64,
-              73.85
+              1024.35,
+              64.71
             ],
             [
-              968.01,
-              63.26
+              1014.15,
+              61.82
             ],
             [
-              961.12,
-              71.31
+              1020.32,
+              70.44
             ]
           ]
         }
       ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              937.67,
-              141.23
-            ],
-            [
-              947.01,
-              117.22
-            ],
-            [
-              957.11,
-              91.28
-            ],
-            [
-              964.38,
-              72.58
-            ]
-          ]
-        }
-      ],
+      "lp": "1132,116.01",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1650,18 +1475,216 @@
           "align": "c",
           "op": "T",
           "pt": [
-            980.63,
+            1132.0,
             112.31
           ],
           "text": "executes",
           "width": 64.0
         }
+      ]
+    },
+    {
+      "tail": 3,
+      "head": 1,
+      "_gvid": 7,
+      "pos": "e,1395.1,265.64 1578.4,326.12 1523.9,308.12 1461.9,287.67 1404.9,268.89",
+      "label": "composes",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1541.0,
+            293.42
+          ],
+          "text": "composes",
+          "width": 70.0
+        }
       ],
-      "lp": "980.63,116.01"
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1405.67,
+              265.45
+            ],
+            [
+              1395.08,
+              265.64
+            ],
+            [
+              1403.48,
+              272.1
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1578.43,
+              326.12
+            ],
+            [
+              1523.87,
+              308.12
+            ],
+            [
+              1461.87,
+              287.67
+            ],
+            [
+              1404.91,
+              268.89
+            ]
+          ]
+        }
+      ],
+      "lp": "1541,297.12"
+    },
+    {
+      "tail": 3,
+      "head": 7,
+      "_gvid": 8,
+      "pos": "e,2013.2,63.444 1797.3,323.04 1852.4,275.1 1930.7,200.72 1984,123.51 1994.8,107.9 2003.6,88.446 2009.6,72.964",
+      "label": "enforces",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1797.27,
+              323.04
+            ],
+            [
+              1852.42,
+              275.1
+            ],
+            [
+              1930.7,
+              200.72
+            ],
+            [
+              1984.0,
+              123.51
+            ],
+            [
+              1994.77,
+              107.9
+            ],
+            [
+              2003.56,
+              88.45
+            ],
+            [
+              2009.64,
+              72.96
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2012.97,
+              74.04
+            ],
+            [
+              2013.23,
+              63.44
+            ],
+            [
+              2006.43,
+              71.56
+            ]
+          ]
+        }
+      ],
+      "lp": "1998.5,206.56",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1998.5,
+            202.86
+          ],
+          "text": "enforces",
+          "width": 61.0
+        }
+      ]
     }
   ],
   "xdotversion": "1.7",
-  "fontcolor": "#FFFFFF",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -1685,14 +1708,15 @@
           432.93
         ],
         [
-          2504.63,
+          2162.62,
           432.93
         ],
         [
-          2504.63,
+          2162.62,
           0.0
         ]
       ]
     }
-  ]
+  ],
+  "fontcolor": "#FFFFFF"
 }

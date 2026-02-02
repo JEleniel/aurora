@@ -6,20 +6,20 @@
   "bb": "0,0,855.6,110.31",
   "rankdir": null,
   "fontname": "Noto Sans",
-  "fontsize": "12",
+  "fontsize": "12.0",
   "label": null,
   "objects": [
     {
       "_gvid": 0,
       "name": "ACT_004",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Actor</B><BR/>\n\t\t\t\t<B>Model Author</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tHuman operator responsible for navigating, editing, and validating Aurora models<BR/> within the standalone editor.<BR/></FONT>\n\t\t\t",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Actor</B><BR/><B>Model Author</B><BR/><BR/>Human operator responsible for navigating, editing, and validating Aurora models<BR/> within the standalone editor.<BR/></FONT>",
       "pos": "427.8,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "svg_shape": "ellipse",
+      "width": "11.883",
       "height": "1.5321",
+      "color": null,
+      "fillcolor": "#1a2e05",
+      "svg_shape": "ellipse",
+      "icon": "user",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -110,7 +110,8 @@
           "width": 211.0
         }
       ],
-      "width": "11.883",
+      "href": "../MIS-004-views/Model_Author.view.svg",
+      "style": "filled",
       "_draw_": [
         {
           "color": "#000000",
@@ -131,16 +132,10 @@
             55.31
           ]
         }
-      ],
-      "fillcolor": "#1a2e05",
-      "href": "../MIS-004-views/Model_Author.view.svg",
-      "icon": "user",
-      "style": "filled"
+      ]
     }
   ],
   "edges": [],
-  "fontcolor": "#FFFFFF",
-  "xdotversion": "1.7",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -173,5 +168,7 @@
         ]
       ]
     }
-  ]
+  ],
+  "xdotversion": "1.7",
+  "fontcolor": "#FFFFFF"
 }

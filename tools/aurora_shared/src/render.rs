@@ -106,11 +106,7 @@ fn render_views(model: &Model, path: &PathBuf) -> Result<(), RenderError> {
 			}
 
 			let mut dot: String = String::from(
-				r##"digraph {
-					fontname="Noto Sans";
-					fontcolor="#FFFFFF";
-					fontsize=12;
-				"##,
+				"digraph {\n\tfontname=\"Noto Sans\";\n\tfontcolor=\"#FFFFFF\";\n\tfontsize=12.0;\n",
 			);
 			dot.push_str(&render_dot_nodes(model, &nodes)?);
 			dot.push_str(&render_dot_links(view, model, &nodes)?);
@@ -279,11 +275,7 @@ fn render_dot_nodes(model: &Model, nodes: &CardSet) -> Result<String, RenderErro
 			}
 			dot.push_str(
 				format!(
-					r#"subgraph cluster_{} {{
-						label=<{}<B>{}</B>>
-						clusterrank=local;
-						style=dashed;
-					"#,
+					"\tsubgraph cluster_{} {{\n\t\tlabel=<{}<B>{}</B>>\n\tclusterrank=local;\n\tstyle=dashed;\n",
 					id.replace("-", "_"),
 					if let Some(subtype) = &model
 						.cards
@@ -341,8 +333,7 @@ fn render_dot_links(
 					if link.target.starts_with("NOT") {
 						dot.push_str(
 							format!(
-								r#"	{} -> {} [style="dotted"];
-								"#,
+								"\t{} -> {} [style=\"dotted\"];\n",
 								card.id.replace("-", "_"),
 								link.target.replace("-", "_"),
 							)
@@ -353,8 +344,7 @@ fn render_dot_links(
 					} else {
 						dot.push_str(
 							format!(
-								r#"	{} -> {} [label="{}"];
-								"#,
+								"\t{} -> {} [label=\"{}\"];\n",
 								card.id.replace("-", "_"),
 								link.target.replace("-", "_"),
 								link.relationship,
@@ -401,22 +391,7 @@ fn dot_to_json(dot_src: &str) -> Result<Diagram, RenderError> {
 
 fn render_node(card: &Card, md_url: &str) -> String {
 	format!(
-		r#"{}[
-			label=<
-				<FONT COLOR="{}"><B>{}</B>{}<BR/>
-				<B>{}</B><BR/>
-				<BR/>
-				{}</FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="{}";
-			style=filled;
-			fillcolor="{}";
-			svg_shape="{}";
-			icon="{}";
-		];
-		"#,
+		"\t{}[\n\t\tlabel=<<FONT COLOR=\"{}\"><B>{}</B>{}<BR/><B>{}</B><BR/><BR/>{}</FONT>>\n\t\theight=1.0;\n\t\twidth=1.6;\n\t\thref=\"{}\";\n\t\tstyle=filled;\n\t\tfillcolor=\"{}\";\n\t\tsvg_shape=\"{}\";\n\t\ticon=\"{}\";\n\t];\n",
 		card.id.replace("-", "_"),
 		CardDefinition::get_color(&card.card_type),
 		card.card_type,

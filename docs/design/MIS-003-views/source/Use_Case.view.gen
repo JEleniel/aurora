@@ -6,18 +6,19 @@
   "bb": "0,0,868.33,110.31",
   "rankdir": null,
   "fontname": "Noto Sans",
-  "fontsize": "12",
+  "fontsize": "12.0",
   "label": null,
   "objects": [
     {
       "_gvid": 0,
       "name": "ACT_003",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Actor</B><BR/>\n\t\t\t\t<B>Architect</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tHuman operator responsible for authoring Aurora models and running CLI tooling (<BR/>validate, render, compact) to maintain deterministic design artifacts.<BR/></FONT>\n\t\t\t",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Actor</B><BR/><B>Architect</B><BR/><BR/>Human operator responsible for authoring Aurora models and running CLI tooling (<BR/>validate, render, compact) to maintain deterministic design artifacts.<BR/></FONT>",
       "pos": "434.16,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "width": "12.06",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#1a2e05",
+      "svg_shape": "ellipse",
       "icon": "user",
       "_draw_": [
         {
@@ -40,6 +41,7 @@
           ]
         }
       ],
+      "href": "../MIS-003-views/Architect.view.svg",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -130,16 +132,11 @@
           "width": 494.0
         }
       ],
-      "style": "filled",
-      "fillcolor": "#1a2e05",
-      "href": "../MIS-003-views/Architect.view.svg",
-      "svg_shape": "ellipse",
-      "height": "1.5321",
-      "width": "12.06"
+      "style": "filled"
     }
   ],
   "edges": [],
-  "fontcolor": "#FFFFFF",
+  "xdotversion": "1.7",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -173,5 +170,5 @@
       ]
     }
   ],
-  "xdotversion": "1.7"
+  "fontcolor": "#FFFFFF"
 }

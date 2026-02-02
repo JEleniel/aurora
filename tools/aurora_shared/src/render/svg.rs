@@ -2,6 +2,7 @@
 
 use crate::render::{
 	dot::BoundingBox,
+	dot::pts_to_pixels,
 	geometry::{GeometryError, Point},
 };
 use crate::render::{
@@ -46,7 +47,7 @@ impl Default for SvgRenderOptions {
 		Self {
 			padding: 16.0,
 			font_family: "\"Noto Sans\", Roboto, Verdana, system-ui, sans-serif".to_string(),
-			font_size: 16.0,
+			font_size: 12.0,
 			node_stroke: "#FFF000000FFF".to_string(),
 			node_fill: "#00000000".to_string(),
 			edge_stroke: "#000000".to_string(),
@@ -124,7 +125,7 @@ impl SvgRenderer {
 	/// Render the diagram into an SVG document.
 	pub fn render(&self, diagram: &Diagram) -> Result<SvgDocument, SvgError> {
 		let bounds = diagram.bounding_box()?;
-		let transform = Transform::new(
+		let transform = Transform::from_dot(
 			bounds.expect("The diagram is boundless"),
 			self.options.padding,
 		);
@@ -136,7 +137,6 @@ impl SvgRenderer {
 		}
 
 		for object in &diagram.objects {
-			trace!("Rendering object: {:?}", object);
 			if let Object::Subgraph(subgraph) = object {
 				render_subgraph(
 					subgraph,
@@ -176,7 +176,7 @@ struct Transform {
 }
 
 impl Transform {
-	fn new(bounds: crate::render::dot::BoundingBox, padding: f32) -> Self {
+	pub fn new(bounds: crate::render::dot::BoundingBox, padding: f32) -> Self {
 		let width = (bounds.xmax - bounds.xmin) + padding * 2.0;
 		let height = (bounds.ymax - bounds.ymin) + padding * 2.0;
 		Self {
@@ -186,6 +186,16 @@ impl Transform {
 			width,
 			height,
 		}
+	}
+
+	pub fn from_dot(bounds: BoundingBox, padding: f32) -> Self {
+		let new_bounds = BoundingBox {
+			xmin: pts_to_pixels(bounds.xmin),
+			ymin: pts_to_pixels(bounds.ymin),
+			xmax: pts_to_pixels(bounds.xmax),
+			ymax: pts_to_pixels(bounds.ymax),
+		};
+		Self::new(new_bounds, padding)
 	}
 
 	fn map_point(&self, point: &Point) -> Point {
@@ -560,7 +570,7 @@ fn parse_node_dimension(value: &Option<String>, name: &str, axis: &str) -> Resul
 			name, axis, raw
 		)));
 	}
-	Ok(size)
+	Ok(size * 10.0)
 }
 
 fn attr_as_string(attrs: &HashMap<String, Value>, key: &str) -> Option<String> {

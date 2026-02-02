@@ -6,46 +6,20 @@
   "bb": "0,0,1470.4,432.93",
   "rankdir": null,
   "fontname": "Noto Sans",
-  "fontsize": "12",
+  "fontsize": "12.0",
   "label": null,
   "objects": [
     {
       "_gvid": 0,
       "name": "DRI_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Driver</B><BR/>\n\t\t\t\t<B>Reference Driver</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tMotivation used to drive a downstream requirement in the relationship-matrix ref<BR/>erence model.<BR/></FONT>\n\t\t\t",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Driver</B><BR/><B>Reference Driver</B><BR/><BR/>Motivation used to drive a downstream requirement in the relationship-matrix ref<BR/>erence model.<BR/></FONT>",
       "pos": "427.09,216.46",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "height": "1.5321",
-      "svg_shape": "rounded-rectangle",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#064e3b",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            427.09,
-            216.46,
-            427.19,
-            55.31
-          ]
-        }
-      ],
-      "style": "filled",
-      "fillcolor": "#064e3b",
-      "icon": "compass",
-      "href": "../MIS-002-views/Reference_Driver.view.svg",
       "width": "11.864",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#064e3b",
+      "svg_shape": "rounded-rectangle",
+      "icon": "compass",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -135,20 +109,43 @@
           "text": "erence model.",
           "width": 101.0
         }
-      ]
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#064e3b",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            427.09,
+            216.46,
+            427.19,
+            55.31
+          ]
+        }
+      ],
+      "href": "../MIS-002-views/Reference_Driver.view.svg",
+      "style": "filled"
     },
     {
       "_gvid": 1,
       "name": "MIS_002",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Mission</B><BR/>\n\t\t\t\t<B>Relationship Matrix Reference</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tReference Aurora model encoding the canonical relationship registry as concrete <BR/>card links for tooling and diagram validation.<BR/></FONT>\n\t\t\t",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Mission</B><BR/><B>Relationship Matrix Reference</B><BR/><BR/>Reference Aurora model encoding the canonical relationship registry as concrete <BR/>card links for tooling and diagram validation.<BR/></FONT>",
       "pos": "1046.1,377.77",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "fillcolor": "#022c22",
-      "height": "1.5321",
       "width": "11.785",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#022c22",
+      "svg_shape": "octagon",
+      "icon": "target",
+      "style": "filled",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -239,9 +236,7 @@
           "width": 323.0
         }
       ],
-      "icon": "target",
       "href": "../MIS-002-views/Relationship_Matrix_Reference.view.svg",
-      "style": "filled",
       "_draw_": [
         {
           "color": "#000000",
@@ -262,18 +257,21 @@
             55.31
           ]
         }
-      ],
-      "svg_shape": "octagon"
+      ]
     },
     {
       "_gvid": 2,
       "name": "REQ_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Reference Requirement</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tRequirement referenced by multiple rules (driven by driver, satisfied by capabil<BR/>ity, documented by ADR, limited by constraint).<BR/></FONT>\n\t\t\t",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Reference Requirement</B><BR/><BR/>Requirement referenced by multiple rules (driven by driver, satisfied by capabil<BR/>ity, documented by ADR, limited by constraint).<BR/></FONT>",
       "pos": "427.09,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "width": "11.53",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "href": "../MIS-002-views/Reference_Requirement.view.svg",
+      "style": "filled",
       "_draw_": [
         {
           "color": "#000000",
@@ -295,10 +293,6 @@
           ]
         }
       ],
-      "fillcolor": "#065f46",
-      "style": "filled",
-      "height": "1.5321",
-      "svg_shape": "rounded-rectangle",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -388,21 +382,19 @@
           "text": "ity, documented by ADR, limited by constraint).",
           "width": 340.0
         }
-      ],
-      "icon": "checklist",
-      "width": "11.53",
-      "href": "../MIS-002-views/Reference_Requirement.view.svg"
+      ]
     },
     {
       "_gvid": 3,
       "name": "ACT_001",
-      "bb": null,
       "label": "\\N",
       "pos": "924.09,216.46",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "width": "1.4443",
       "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -440,18 +432,35 @@
             18.0
           ]
         }
-      ],
-      "width": "1.4443"
+      ]
     },
     {
       "_gvid": 4,
       "name": "ACT_002",
-      "bb": null,
       "label": "\\N",
       "pos": "1046.1,216.46",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "width": "1.4443",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            1046.09,
+            216.46,
+            51.99,
+            18.0
+          ]
+        }
+      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -473,35 +482,19 @@
           "text": "ACT_002",
           "width": 64.0
         }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            1046.09,
-            216.46,
-            51.99,
-            18.0
-          ]
-        }
-      ],
-      "height": "0.5",
-      "width": "1.4443"
+      ]
     },
     {
       "_gvid": 5,
       "name": "SYS_001",
-      "bb": null,
       "label": "\\N",
       "pos": "1167.1,216.46",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "width": "1.4263",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_draw_": [
         {
           "color": "#000000",
@@ -539,19 +532,35 @@
           "text": "SYS_001",
           "width": 63.0
         }
-      ],
-      "width": "1.4263",
-      "height": "0.5"
+      ]
     },
     {
       "_gvid": 6,
       "name": "APP_001",
-      "bb": null,
       "label": "\\N",
       "pos": "1288.1,216.46",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "width": "1.4443",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            1288.09,
+            216.46,
+            51.99,
+            18.0
+          ]
+        }
+      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -573,25 +582,7 @@
           "text": "APP_001",
           "width": 64.0
         }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            1288.09,
-            216.46,
-            51.99,
-            18.0
-          ]
-        }
-      ],
-      "height": "0.5",
-      "width": "1.4443"
+      ]
     }
   ],
   "edges": [
@@ -632,6 +623,29 @@
           ]
         }
       ],
+      "lp": "449.59,135.81",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            449.59,
+            132.11
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -664,7 +678,17 @@
             ]
           ]
         }
-      ],
+      ]
+    },
+    {
+      "tail": 1,
+      "head": 0,
+      "_gvid": 1,
+      "pos": "e,615.77,266.02 857.85,328.32 784.41,309.42 700.15,287.74 625.73,268.59",
+      "label": "establishes",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -680,24 +704,14 @@
           "align": "c",
           "op": "T",
           "pt": [
-            449.59,
-            132.11
+            796.59,
+            293.42
           ],
-          "text": "drives",
-          "width": 45.0
+          "text": "establishes",
+          "width": 81.0
         }
       ],
-      "lp": "449.59,135.81"
-    },
-    {
-      "tail": 1,
-      "head": 0,
-      "_gvid": 1,
-      "pos": "e,615.77,266.02 857.85,328.32 784.41,309.42 700.15,287.74 625.73,268.59",
-      "label": "establishes",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
+      "lp": "796.59,297.12",
       "_draw_": [
         {
           "color": "#000000",
@@ -758,29 +772,6 @@
             ]
           ]
         }
-      ],
-      "lp": "796.59,297.12",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            796.59,
-            293.42
-          ],
-          "text": "establishes",
-          "width": 81.0
-        }
       ]
     },
     {
@@ -792,29 +783,6 @@
       "arrowhead": null,
       "color": null,
       "style": null,
-      "lp": "1012.6,297.12",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1012.59,
-            293.42
-          ],
-          "text": "involves",
-          "width": 59.0
-        }
-      ],
       "_draw_": [
         {
           "color": "#000000",
@@ -887,7 +855,30 @@
             ]
           ]
         }
-      ]
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1012.59,
+            293.42
+          ],
+          "text": "involves",
+          "width": 59.0
+        }
+      ],
+      "lp": "1012.6,297.12"
     },
     {
       "tail": 1,
@@ -898,6 +889,56 @@
       "arrowhead": null,
       "color": null,
       "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1046.09,
+              322.39
+            ],
+            [
+              1046.09,
+              296.29
+            ],
+            [
+              1046.09,
+              266.16
+            ],
+            [
+              1046.09,
+              244.9
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1075.59,
+            293.42
+          ],
+          "text": "involves",
+          "width": 59.0
+        }
+      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -931,57 +972,7 @@
           ]
         }
       ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              1046.09,
-              322.39
-            ],
-            [
-              1046.09,
-              296.29
-            ],
-            [
-              1046.09,
-              266.16
-            ],
-            [
-              1046.09,
-              244.9
-            ]
-          ]
-        }
-      ],
-      "lp": "1075.6,297.12",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1075.59,
-            293.42
-          ],
-          "text": "involves",
-          "width": 59.0
-        }
-      ]
+      "lp": "1075.6,297.12"
     },
     {
       "tail": 1,
@@ -992,6 +983,7 @@
       "arrowhead": null,
       "color": null,
       "style": null,
+      "lp": "1150.6,297.12",
       "_hdraw_": [
         {
           "op": "S",
@@ -1047,7 +1039,6 @@
           "width": 61.0
         }
       ],
-      "lp": "1150.6,297.12",
       "_draw_": [
         {
           "color": "#000000",
@@ -1098,10 +1089,12 @@
       "arrowhead": null,
       "color": null,
       "style": null,
-      "_hdraw_": [
+      "lp": "1235.6,297.12",
+      "_ldraw_": [
         {
-          "op": "S",
-          "style": "solid"
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
         },
         {
           "color": "#000000",
@@ -1109,29 +1102,16 @@
           "op": "c"
         },
         {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              1265.37,
-              242.92
-            ],
-            [
-              1270.46,
-              233.63
-            ],
-            [
-              1260.68,
-              237.72
-            ]
-          ]
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1235.59,
+            293.42
+          ],
+          "text": "requires",
+          "width": 61.0
         }
       ],
-      "lp": "1235.6,297.12",
       "_draw_": [
         {
           "color": "#000000",
@@ -1184,11 +1164,10 @@
           ]
         }
       ],
-      "_ldraw_": [
+      "_hdraw_": [
         {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
+          "op": "S",
+          "style": "solid"
         },
         {
           "color": "#000000",
@@ -1196,18 +1175,31 @@
           "op": "c"
         },
         {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1235.59,
-            293.42
-          ],
-          "text": "requires",
-          "width": 61.0
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1265.37,
+              242.92
+            ],
+            [
+              1270.46,
+              233.63
+            ],
+            [
+              1260.68,
+              237.72
+            ]
+          ]
         }
       ]
     }
   ],
+  "fontcolor": "#FFFFFF",
   "xdotversion": "1.7",
   "_draw_": [
     {
@@ -1241,6 +1233,5 @@
         ]
       ]
     }
-  ],
-  "fontcolor": "#FFFFFF"
+  ]
 }

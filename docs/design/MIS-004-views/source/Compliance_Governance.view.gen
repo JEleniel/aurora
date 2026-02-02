@@ -3,706 +3,23 @@
   "directed": true,
   "strict": false,
   "_subgraph_cnt": 0,
-  "bb": "0,0,6064.5,149.91",
+  "bb": "0,0,6064.6,149.91",
   "rankdir": null,
   "fontname": "Noto Sans",
-  "fontsize": "12",
+  "fontsize": "12.0",
   "label": null,
   "objects": [
     {
       "_gvid": 0,
-      "name": "REQ_015",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Safe Workspace Persistence</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL persist edits to model files in a safe manner that avoids parti<BR/>al writes and preserves schema validity (e.g., atomic replace per card file).<BR/></FONT>\n\t\t\t",
-      "pos": "413.66,74.953",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "svg_shape": "rounded-rectangle",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            413.66,
-            74.95,
-            413.81,
-            55.31
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            361.16,
-            99.75
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            303.66,
-            85.75
-          ],
-          "text": "Safe Workspace Persistence",
-          "width": 220.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            129.16,
-            57.75
-          ],
-          "text": "The editor SHALL persist edits to model files in a safe manner that avoids parti",
-          "width": 569.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            146.16,
-            43.75
-          ],
-          "text": "al writes and preserves schema validity (e.g., atomic replace per card file).",
-          "width": 535.0
-        }
-      ],
-      "fillcolor": "#065f46",
-      "href": "../MIS-004-views/Safe_Workspace_Persistence.view.svg",
-      "width": "11.49",
-      "style": "filled",
-      "height": "1.5321",
-      "icon": "checklist"
-    },
-    {
-      "_gvid": 1,
-      "name": "REQ_012",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Edit, Preview, and Audit Inspector</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL provide a right-pane inspector: the top half edits the focused <BR/>card; the bottom half renders a Markdown-style view of the card (including links<BR/>). The bottom half SHALL provide a tab to reveal the card’s audit trail details.<BR/></FONT>\n\t\t\t",
-      "pos": "1264.7,74.953",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1212.16,
-            106.75
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1130.66,
-            92.75
-          ],
-          "text": "Edit, Preview, and Audit Inspector",
-          "width": 268.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            978.66,
-            64.75
-          ],
-          "text": "The editor SHALL provide a right-pane inspector: the top half edits the focused ",
-          "width": 572.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            976.16,
-            50.75
-          ],
-          "text": "card; the bottom half renders a Markdown-style view of the card (including links",
-          "width": 577.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            986.16,
-            36.75
-          ],
-          "text": "). The bottom half SHALL provide a tab to reveal the card’s audit trail details.",
-          "width": 557.0
-        }
-      ],
-      "width": "11.648",
-      "height": "1.8071",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            1264.66,
-            74.95,
-            419.13,
-            65.11
-          ]
-        }
-      ],
-      "href": "../MIS-004-views/Edit,_Preview,_and_Audit_Inspector.view.svg",
-      "style": "filled",
-      "fillcolor": "#065f46",
-      "icon": "checklist",
-      "svg_shape": "rounded-rectangle"
-    },
-    {
-      "_gvid": 2,
-      "name": "REQ_009",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Three Pane Layout</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL present a three-pane layout (similar to Visual Studio or Obsidi<BR/>an): left navigation tree, central graph view, and right inspector.<BR/></FONT>\n\t\t\t",
-      "pos": "2121.7,74.953",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "style": "filled",
-      "icon": "checklist",
-      "width": "11.648",
-      "href": "../MIS-004-views/Three_Pane_Layout.view.svg",
-      "fillcolor": "#065f46",
-      "svg_shape": "rounded-rectangle",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            2121.66,
-            74.95,
-            419.13,
-            55.31
-          ]
-        }
-      ],
-      "height": "1.5321",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2069.16,
-            99.75
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2047.66,
-            85.75
-          ],
-          "text": "Three Pane Layout",
-          "width": 148.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1833.16,
-            57.75
-          ],
-          "text": "The editor SHALL present a three-pane layout (similar to Visual Studio or Obsidi",
-          "width": 577.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1891.66,
-            43.75
-          ],
-          "text": "an): left navigation tree, central graph view, and right inspector.",
-          "width": 460.0
-        }
-      ]
-    },
-    {
-      "_gvid": 3,
-      "name": "REQ_013",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Dioxus UI</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe standalone editor SHOULD be implemented using Dioxus as the primary UI libra<BR/>ry.<BR/></FONT>\n\t\t\t",
-      "pos": "3002.7,74.953",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "fillcolor": "#065f46",
-      "style": "filled",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2950.16,
-            99.75
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2964.16,
-            85.75
-          ],
-          "text": "Dioxus UI",
-          "width": 77.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2696.66,
-            57.75
-          ],
-          "text": "The standalone editor SHOULD be implemented using Dioxus as the primary UI libra",
-          "width": 612.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2993.66,
-            43.75
-          ],
-          "text": "ry.",
-          "width": 18.0
-        }
-      ],
-      "href": "../MIS-004-views/Dioxus_UI.view.svg",
-      "width": "12.335",
-      "icon": "checklist",
-      "height": "1.5321",
-      "svg_shape": "rounded-rectangle",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            3002.66,
-            74.95,
-            444.13,
-            55.31
-          ]
-        }
-      ]
-    },
-    {
-      "_gvid": 4,
-      "name": "REQ_010",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Shortest Path Tree Navigation</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL provide a left-pane tree view for navigation, where the tree is<BR/> derived from a chosen shortest path from the mission root to each card.<BR/></FONT>\n\t\t\t",
-      "pos": "3881.7,74.953",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "width": "11.589",
-      "height": "1.5321",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            3829.16,
-            99.75
-          ],
-          "text": "Requirement",
-          "width": 105.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            3762.16,
-            85.75
-          ],
-          "text": "Shortest Path Tree Navigation",
-          "width": 239.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            3594.66,
-            57.75
-          ],
-          "text": "The editor SHALL provide a left-pane tree view for navigation, where the tree is",
-          "width": 574.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            3621.66,
-            43.75
-          ],
-          "text": " derived from a chosen shortest path from the mission root to each card.",
-          "width": 520.0
-        }
-      ],
-      "fillcolor": "#065f46",
-      "icon": "checklist",
-      "style": "filled",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            3881.66,
-            74.95,
-            417.39,
-            55.31
-          ]
-        }
-      ],
-      "href": "../MIS-004-views/Shortest_Path_Tree_Navigation.view.svg",
-      "svg_shape": "rounded-rectangle"
-    },
-    {
-      "_gvid": 5,
       "name": "REQ_014",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Reuse aurora_shared</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL reuse aurora_shared for model discovery/loading and validation/<BR/>rendering semantics to stay consistent with other Aurora tooling.<BR/></FONT>\n\t\t\t",
-      "pos": "4746.7,74.953",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "height": "1.5321",
-      "icon": "checklist",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#065f46",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            4746.66,
-            74.95,
-            429.84,
-            55.31
-          ]
-        }
-      ],
-      "svg_shape": "rounded-rectangle",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Reuse aurora_shared</B><BR/><BR/>The editor SHALL reuse aurora_shared for model discovery/loading and validation/<BR/>rendering semantics to stay consistent with other Aurora tooling.<BR/></FONT>",
+      "pos": "429.92,74.953",
       "width": "11.942",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -722,7 +39,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4694.16,
+            377.42,
             99.75
           ],
           "text": "Requirement",
@@ -742,7 +59,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4663.16,
+            346.42,
             85.75
           ],
           "text": "Reuse aurora_shared",
@@ -766,7 +83,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4450.66,
+            133.92,
             57.75
           ],
           "text": "The editor SHALL reuse aurora_shared for model discovery/loading and validation/",
@@ -786,26 +103,70 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4512.16,
+            195.42,
             43.75
           ],
           "text": "rendering semantics to stay consistent with other Aurora tooling.",
           "width": 469.0
         }
       ],
-      "fillcolor": "#065f46",
+      "href": "../MIS-004-views/Reuse_aurora_shared.view.svg",
       "style": "filled",
-      "href": "../MIS-004-views/Reuse_aurora_shared.view.svg"
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            429.92,
+            74.95,
+            429.84,
+            55.31
+          ]
+        }
+      ]
     },
     {
-      "_gvid": 6,
-      "name": "REQ_011",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Brain Style Graph Navigation</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL provide a central mind-map / TheBrain style view with the focus<BR/>ed card centered. The view SHALL show the parent (from the chosen shortest-path <BR/>chain), and MAY show siblings (same card_type) linked from that parent even if t<BR/>hey are not linked to the focused card.<BR/></FONT>\n\t\t\t",
-      "pos": "5629.7,74.953",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "_gvid": 1,
+      "name": "REQ_010",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Shortest Path Tree Navigation</B><BR/><BR/>The editor SHALL provide a left-pane tree view for navigation, where the tree is<BR/> derived from a chosen shortest path from the mission root to each card.<BR/></FONT>",
+      "pos": "1294.9,74.953",
+      "width": "11.589",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "href": "../MIS-004-views/Shortest_Path_Tree_Navigation.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1294.92,
+            74.95,
+            417.39,
+            55.31
+          ]
+        }
+      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -825,7 +186,110 @@
           "align": "l",
           "op": "T",
           "pt": [
-            5577.16,
+            1242.42,
+            99.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1175.42,
+            85.75
+          ],
+          "text": "Shortest Path Tree Navigation",
+          "width": 239.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1007.92,
+            57.75
+          ],
+          "text": "The editor SHALL provide a left-pane tree view for navigation, where the tree is",
+          "width": 574.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1034.92,
+            43.75
+          ],
+          "text": " derived from a chosen shortest path from the mission root to each card.",
+          "width": 520.0
+        }
+      ],
+      "style": "filled"
+    },
+    {
+      "_gvid": 2,
+      "name": "REQ_011",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Brain Style Graph Navigation</B><BR/><BR/>The editor SHALL provide a central mind-map / TheBrain style view with the focus<BR/>ed card centered. The view SHALL show the parent (from the chosen shortest-path <BR/>chain), and MAY show siblings (same card_type) linked from that parent even if t<BR/>hey are not linked to the focused card.<BR/></FONT>",
+      "pos": "2164.9,74.953",
+      "width": "12.08",
+      "height": "2.082",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2112.42,
             113.75
           ],
           "text": "Requirement",
@@ -845,7 +309,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            5513.66,
+            2048.92,
             99.75
           ],
           "text": "Brain Style Graph Navigation",
@@ -869,7 +333,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            5334.16,
+            1869.42,
             71.75
           ],
           "text": "The editor SHALL provide a central mind-map / TheBrain style view with the focus",
@@ -889,7 +353,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            5330.16,
+            1865.42,
             57.75
           ],
           "text": "ed card centered. The view SHALL show the parent (from the chosen shortest-path ",
@@ -909,7 +373,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            5339.66,
+            1874.92,
             43.75
           ],
           "text": "chain), and MAY show siblings (same card_type) linked from that parent even if t",
@@ -929,7 +393,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            5491.66,
+            2026.92,
             29.75
           ],
           "text": "hey are not linked to the focused card.",
@@ -938,11 +402,6 @@
       ],
       "href": "../MIS-004-views/Brain_Style_Graph_Navigation.view.svg",
       "style": "filled",
-      "svg_shape": "rounded-rectangle",
-      "icon": "checklist",
-      "height": "2.082",
-      "fillcolor": "#065f46",
-      "width": "12.08",
       "_draw_": [
         {
           "color": "#000000",
@@ -957,13 +416,533 @@
         {
           "op": "E",
           "rect": [
-            5629.66,
+            2164.92,
             74.95,
             434.74,
             74.91
           ]
         }
       ]
+    },
+    {
+      "_gvid": 3,
+      "name": "REQ_013",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Dioxus UI</B><BR/><BR/>The standalone editor SHOULD be implemented using Dioxus as the primary UI libra<BR/>ry.<BR/></FONT>",
+      "pos": "3061.9,74.953",
+      "width": "12.335",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3009.42,
+            99.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3023.42,
+            85.75
+          ],
+          "text": "Dioxus UI",
+          "width": 77.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2755.92,
+            57.75
+          ],
+          "text": "The standalone editor SHOULD be implemented using Dioxus as the primary UI libra",
+          "width": 612.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3052.92,
+            43.75
+          ],
+          "text": "ry.",
+          "width": 18.0
+        }
+      ],
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3061.92,
+            74.95,
+            444.13,
+            55.31
+          ]
+        }
+      ],
+      "href": "../MIS-004-views/Dioxus_UI.view.svg"
+    },
+    {
+      "_gvid": 4,
+      "name": "REQ_012",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Edit, Preview, and Audit Inspector</B><BR/><BR/>The editor SHALL provide a right-pane inspector: the top half edits the focused <BR/>card; the bottom half renders a Markdown-style view of the card (including links<BR/>). The bottom half SHALL provide a tab to reveal the card’s audit trail details.<BR/></FONT>",
+      "pos": "3942.9,74.953",
+      "width": "11.648",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3942.92,
+            74.95,
+            419.13,
+            65.11
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3890.42,
+            106.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3808.92,
+            92.75
+          ],
+          "text": "Edit, Preview, and Audit Inspector",
+          "width": 268.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3656.92,
+            64.75
+          ],
+          "text": "The editor SHALL provide a right-pane inspector: the top half edits the focused ",
+          "width": 572.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3654.42,
+            50.75
+          ],
+          "text": "card; the bottom half renders a Markdown-style view of the card (including links",
+          "width": 577.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3664.42,
+            36.75
+          ],
+          "text": "). The bottom half SHALL provide a tab to reveal the card’s audit trail details.",
+          "width": 557.0
+        }
+      ],
+      "href": "../MIS-004-views/Edit,_Preview,_and_Audit_Inspector.view.svg"
+    },
+    {
+      "_gvid": 5,
+      "name": "REQ_009",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Three Pane Layout</B><BR/><BR/>The editor SHALL present a three-pane layout (similar to Visual Studio or Obsidi<BR/>an): left navigation tree, central graph view, and right inspector.<BR/></FONT>",
+      "pos": "4799.9,74.953",
+      "width": "11.648",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            4799.92,
+            74.95,
+            419.13,
+            55.31
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4747.42,
+            99.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4725.92,
+            85.75
+          ],
+          "text": "Three Pane Layout",
+          "width": 148.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4511.42,
+            57.75
+          ],
+          "text": "The editor SHALL present a three-pane layout (similar to Visual Studio or Obsidi",
+          "width": 577.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4569.92,
+            43.75
+          ],
+          "text": "an): left navigation tree, central graph view, and right inspector.",
+          "width": 460.0
+        }
+      ],
+      "href": "../MIS-004-views/Three_Pane_Layout.view.svg",
+      "style": "filled"
+    },
+    {
+      "_gvid": 6,
+      "name": "REQ_015",
+      "label": "<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/><B>Safe Workspace Persistence</B><BR/><BR/>The editor SHALL persist edits to model files in a safe manner that avoids parti<BR/>al writes and preserves schema validity (e.g., atomic replace per card file).<BR/></FONT>",
+      "pos": "5650.9,74.953",
+      "width": "11.49",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5598.42,
+            99.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5540.92,
+            85.75
+          ],
+          "text": "Safe Workspace Persistence",
+          "width": 220.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5366.42,
+            57.75
+          ],
+          "text": "The editor SHALL persist edits to model files in a safe manner that avoids parti",
+          "width": 569.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5383.42,
+            43.75
+          ],
+          "text": "al writes and preserves schema validity (e.g., atomic replace per card file).",
+          "width": 535.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            5650.92,
+            74.95,
+            413.81,
+            55.31
+          ]
+        }
+      ],
+      "style": "filled",
+      "href": "../MIS-004-views/Safe_Workspace_Persistence.view.svg"
     }
   ],
   "edges": [],
@@ -990,16 +969,16 @@
           149.91
         ],
         [
-          6064.53,
+          6064.58,
           149.91
         ],
         [
-          6064.53,
+          6064.58,
           0.0
         ]
       ]
     }
   ],
-  "xdotversion": "1.7",
-  "fontcolor": "#FFFFFF"
+  "fontcolor": "#FFFFFF",
+  "xdotversion": "1.7"
 }

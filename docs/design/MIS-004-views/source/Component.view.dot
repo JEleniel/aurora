@@ -1,155 +1,110 @@
 digraph {
-					fontname="Noto Sans";
-					fontcolor="#FFFFFF";
-					fontsize=12;
-				COM_008[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Component</B><BR/>
-				<B>Explorer Tree Pane</B><BR/>
-				<BR/>
-				Left navigation pane that presents a tree view derived from shortest paths from <BR/>the mission root, enabling fast card discovery and focus changes.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Explorer_Tree_Pane.view.svg";
-			style=filled;
-			fillcolor="#1e40af";
-			svg_shape="component";
-			icon="cube";
-		];
-		COM_011[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Component</B><BR/>
-				<B>Model Session and Persistence</B><BR/>
-				<BR/>
-				In-memory model session that loads a workspace model home, computes shortest pat<BR/>hs, validates changes, and persists updated card files using aurora_shared seman<BR/>tics.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Model_Session_and_Persistence.view.svg";
-			style=filled;
-			fillcolor="#1e40af";
-			svg_shape="component";
-			icon="cube";
-		];
-		COM_010[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Component</B><BR/>
-				<B>Inspector Pane</B><BR/>
-				<BR/>
-				Right pane that splits vertically: top half edits the focused card; bottom half <BR/>shows a rendered Markdown-style preview (and links) with a tab to reveal audit d<BR/>etails.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Inspector_Pane.view.svg";
-			style=filled;
-			fillcolor="#1e40af";
-			svg_shape="component";
-			icon="cube";
-		];
-		COM_009[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Component</B><BR/>
-				<B>Brain Graph Pane</B><BR/>
-				<BR/>
-				Central pane that renders a mind-map / TheBrain-style context graph with the foc<BR/>used card centered and related cards positioned by relationship role.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Brain_Graph_Pane.view.svg";
-			style=filled;
-			fillcolor="#1e40af";
-			svg_shape="component";
-			icon="cube";
-		];
-		INT_004[
-			label=<
-				<FONT COLOR="#000000"><B>Interface</B><BR/>
-				<B>aurora_shared Domain API</B><BR/>
-				<BR/>
-				Public domain interface (Rust API) for discovering model homes, loading cards, v<BR/>alidating invariants, and rendering Markdown-style representations.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/aurora_shared_Domain_API.view.svg";
-			style=filled;
-			fillcolor="#102080";
-			svg_shape="interface";
-			icon="plug";
-		];
-		INT_005[
-			label=<
-				<FONT COLOR="#000000"><B>Interface</B><BR/>
-				<B>Local Filesystem API</B><BR/>
-				<BR/>
-				Contract for reading and writing Aurora model files on the local filesystem (ope<BR/>n, read, write, atomic replace, and directory enumeration).<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Local_Filesystem_API.view.svg";
-			style=filled;
-			fillcolor="#102080";
-			svg_shape="interface";
-			icon="plug";
-		];
-		APP_004[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Application</B><BR/>
-				<B>aurora_editor</B><BR/>
-				<BR/>
-				Standalone desktop application (built with Dioxus) for browsing and editing Auro<BR/>ra models, including live validation and Markdown-style previews.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/aurora_editor.view.svg";
-			style=filled;
-			fillcolor="#1e3a8a";
-			svg_shape="box";
-			icon="app-window";
-		];
-		INT_003[
-			label=<
-				<FONT COLOR="#000000"><B>Interface</B><BR/>
-				<B>Dioxus UI Framework API</B><BR/>
-				<BR/>
-				UI framework interface used to declare layouts, render widgets, and process user<BR/> events for the standalone editor.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Dioxus_UI_Framework_API.view.svg";
-			style=filled;
-			fillcolor="#102080";
-			svg_shape="interface";
-			icon="plug";
-		];
-		COM_007[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Component</B><BR/>
-				<B>Dioxus App Shell</B><BR/>
-				<BR/>
-				Top-level Dioxus component that owns the UI shell layout and routes focus/select<BR/>ion changes between panes.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-004-views/Dioxus_App_Shell.view.svg";
-			style=filled;
-			fillcolor="#1e40af";
-			svg_shape="component";
-			icon="cube";
-		];
-			COM_008 -> FEA_011 [label="implements"];
-									COM_011 -> FEA_015 [label="implements"];
-									COM_011 -> INT_004 [label="invokes"];
-									COM_011 -> INT_005 [label="invokes"];
-									COM_011 -> ART_005 [label="generates"];
-									COM_010 -> FEA_013 [label="implements"];
-									COM_010 -> FEA_014 [label="implements"];
-									COM_009 -> FEA_012 [label="implements"];
-									APP_004 -> COM_007 [label="composes"];
-									APP_004 -> COM_008 [label="composes"];
-									APP_004 -> COM_009 [label="composes"];
-									APP_004 -> COM_010 [label="composes"];
-									APP_004 -> COM_011 [label="composes"];
-									COM_007 -> FEA_010 [label="implements"];
-									COM_007 -> INT_003 [label="invokes"];
-								}
+	fontname="Noto Sans";
+	fontcolor="#FFFFFF";
+	fontsize=12.0;
+	COM_007[
+		label=<<FONT COLOR="#FFFFFF"><B>Component</B><BR/><B>Dioxus App Shell</B><BR/><BR/>Top-level Dioxus component that owns the UI shell layout and routes focus/select<BR/>ion changes between panes.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Dioxus_App_Shell.view.svg";
+		style=filled;
+		fillcolor="#1e40af";
+		svg_shape="component";
+		icon="cube";
+	];
+	INT_003[
+		label=<<FONT COLOR="#000000"><B>Interface</B><BR/><B>Dioxus UI Framework API</B><BR/><BR/>UI framework interface used to declare layouts, render widgets, and process user<BR/> events for the standalone editor.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Dioxus_UI_Framework_API.view.svg";
+		style=filled;
+		fillcolor="#102080";
+		svg_shape="interface";
+		icon="plug";
+	];
+	COM_008[
+		label=<<FONT COLOR="#FFFFFF"><B>Component</B><BR/><B>Explorer Tree Pane</B><BR/><BR/>Left navigation pane that presents a tree view derived from shortest paths from <BR/>the mission root, enabling fast card discovery and focus changes.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Explorer_Tree_Pane.view.svg";
+		style=filled;
+		fillcolor="#1e40af";
+		svg_shape="component";
+		icon="cube";
+	];
+	INT_005[
+		label=<<FONT COLOR="#000000"><B>Interface</B><BR/><B>Local Filesystem API</B><BR/><BR/>Contract for reading and writing Aurora model files on the local filesystem (ope<BR/>n, read, write, atomic replace, and directory enumeration).<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Local_Filesystem_API.view.svg";
+		style=filled;
+		fillcolor="#102080";
+		svg_shape="interface";
+		icon="plug";
+	];
+	APP_004[
+		label=<<FONT COLOR="#FFFFFF"><B>Application</B><BR/><B>aurora_editor</B><BR/><BR/>Standalone desktop application (built with Dioxus) for browsing and editing Auro<BR/>ra models, including live validation and Markdown-style previews.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/aurora_editor.view.svg";
+		style=filled;
+		fillcolor="#1e3a8a";
+		svg_shape="box";
+		icon="app-window";
+	];
+	COM_009[
+		label=<<FONT COLOR="#FFFFFF"><B>Component</B><BR/><B>Brain Graph Pane</B><BR/><BR/>Central pane that renders a mind-map / TheBrain-style context graph with the foc<BR/>used card centered and related cards positioned by relationship role.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Brain_Graph_Pane.view.svg";
+		style=filled;
+		fillcolor="#1e40af";
+		svg_shape="component";
+		icon="cube";
+	];
+	INT_004[
+		label=<<FONT COLOR="#000000"><B>Interface</B><BR/><B>aurora_shared Domain API</B><BR/><BR/>Public domain interface (Rust API) for discovering model homes, loading cards, v<BR/>alidating invariants, and rendering Markdown-style representations.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/aurora_shared_Domain_API.view.svg";
+		style=filled;
+		fillcolor="#102080";
+		svg_shape="interface";
+		icon="plug";
+	];
+	COM_010[
+		label=<<FONT COLOR="#FFFFFF"><B>Component</B><BR/><B>Inspector Pane</B><BR/><BR/>Right pane that splits vertically: top half edits the focused card; bottom half <BR/>shows a rendered Markdown-style preview (and links) with a tab to reveal audit d<BR/>etails.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Inspector_Pane.view.svg";
+		style=filled;
+		fillcolor="#1e40af";
+		svg_shape="component";
+		icon="cube";
+	];
+	COM_011[
+		label=<<FONT COLOR="#FFFFFF"><B>Component</B><BR/><B>Model Session and Persistence</B><BR/><BR/>In-memory model session that loads a workspace model home, computes shortest pat<BR/>hs, validates changes, and persists updated card files using aurora_shared seman<BR/>tics.<BR/></FONT>>
+		height=1.0;
+		width=1.6;
+		href="../MIS-004-views/Model_Session_and_Persistence.view.svg";
+		style=filled;
+		fillcolor="#1e40af";
+		svg_shape="component";
+		icon="cube";
+	];
+	COM_007 -> FEA_010 [label="implements"];
+	COM_007 -> INT_003 [label="invokes"];
+	COM_008 -> FEA_011 [label="implements"];
+	APP_004 -> COM_007 [label="composes"];
+	APP_004 -> COM_008 [label="composes"];
+	APP_004 -> COM_009 [label="composes"];
+	APP_004 -> COM_010 [label="composes"];
+	APP_004 -> COM_011 [label="composes"];
+	COM_009 -> FEA_012 [label="implements"];
+	COM_010 -> FEA_013 [label="implements"];
+	COM_010 -> FEA_014 [label="implements"];
+	COM_011 -> FEA_015 [label="implements"];
+	COM_011 -> INT_004 [label="invokes"];
+	COM_011 -> INT_005 [label="invokes"];
+	COM_011 -> ART_005 [label="generates"];
+}
