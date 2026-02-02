@@ -79,6 +79,9 @@ impl SvgDocument {
 
 	/// Push a raw SVG element into the document.
 	pub fn push(&mut self, element: String) {
+		if element.contains("use\"") {
+			trace!("Adding SVG element: {}", &element);
+		}
 		self.elements.push(element);
 	}
 
@@ -121,7 +124,6 @@ impl SvgRenderer {
 	/// Render the diagram into an SVG document.
 	pub fn render(&self, diagram: &Diagram) -> Result<SvgDocument, SvgError> {
 		let bounds = diagram.bounding_box()?;
-		trace!("Diagram bounds: {:?}", bounds);
 		let transform = Transform::new(
 			bounds.expect("The diagram is boundless"),
 			self.options.padding,
@@ -132,7 +134,6 @@ impl SvgRenderer {
 		if let Some(color) = &self.options.background {
 			document.push(render_background(&transform, color));
 		}
-		trace!("New document created");
 
 		for object in &diagram.objects {
 			trace!("Rendering object: {:?}", object);
@@ -144,24 +145,18 @@ impl SvgRenderer {
 					&font_style,
 					&mut document,
 				)?;
+			} else {
+				if let Object::Node(node) = object {
+					trace!("Rendering node: {}", node.name);
+					render_node(node, &transform, &self.options, &font_style, &mut document)?;
+				}
 			}
 		}
-		trace!("Subgraphs rendered");
 
 		for edge in &diagram.edges {
 			render_edge(edge, &transform, &self.options, &font_style, &mut document)?;
 		}
-		trace!("Edges rendered");
 
-		for object in &diagram.objects {
-			if let Object::Node(node) = object {
-				render_node(node, &transform, &self.options, &font_style, &mut document)?;
-			}
-		}
-		trace!(
-			"\n---Document---\n{}\n---End Document---",
-			document.to_svg_string()
-		);
 		Ok(document)
 	}
 
@@ -307,7 +302,6 @@ fn render_subgraph(
 			ymax: 100.0,
 		});
 	}
-	trace!("Subgraph bounds {:?}", bounds);
 	let (x, y, width, height) = rect_from_bounds(transform, &bounds.expect("Out of bounds?"));
 	let mut rect = format!(
 		"<rect x=\"{}\" y=\"{}\" width=\"{}\" height=\"{}\" fill=\"none\" stroke=\"{}\" stroke-width=\"{}\"",

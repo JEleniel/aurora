@@ -1,0 +1,2330 @@
+{
+  "name": "%3",
+  "directed": true,
+  "strict": false,
+  "_subgraph_cnt": 0,
+  "bb": "0,0,3373.9,217.11",
+  "rankdir": null,
+  "fontname": "Noto Sans",
+  "fontsize": "12",
+  "label": null,
+  "objects": [
+    {
+      "_gvid": 0,
+      "name": "CAP_018",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>View Projection and Rendering</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to select card types for a view and render the resulting subgraph as nav<BR/>igable documentation and diagrams without altering the underlying model.<BR/></FONT>\n\t\t\t",
+      "pos": "413.66,152.05",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "fillcolor": "#052e16",
+      "icon": "spark",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            413.66,
+            152.05,
+            413.81,
+            55.31
+          ]
+        }
+      ],
+      "height": "1.5321",
+      "width": "11.49",
+      "href": "../MIS-001-views/View_Projection_and_Rendering.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            373.66,
+            176.85
+          ],
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            291.66,
+            162.85
+          ],
+          "text": "View Projection and Rendering",
+          "width": 244.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            129.16,
+            134.85
+          ],
+          "text": "Ability to select card types for a view and render the resulting subgraph as nav",
+          "width": 569.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            144.16,
+            120.85
+          ],
+          "text": "igable documentation and diagrams without altering the underlying model.",
+          "width": 539.0
+        }
+      ],
+      "style": "filled",
+      "svg_shape": "rounded-rectangle"
+    },
+    {
+      "_gvid": 1,
+      "name": "CAP_015",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Deterministic Model Invariants</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to define and enforce mission-rooted graph invariants so any tool can tr<BR/>averse, validate, and interpret the model deterministically.<BR/></FONT>\n\t\t\t",
+      "pos": "1255.7,152.05",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "width": "11.392",
+      "fillcolor": "#052e16",
+      "height": "1.5321",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1215.66,
+            176.85
+          ],
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1131.16,
+            162.85
+          ],
+          "text": "Deterministic Model Invariants",
+          "width": 249.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            973.66,
+            134.85
+          ],
+          "text": "Ability to define and enforce mission-rooted graph invariants so any tool can tr",
+          "width": 564.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1045.16,
+            120.85
+          ],
+          "text": "averse, validate, and interpret the model deterministically.",
+          "width": 421.0
+        }
+      ],
+      "icon": "spark",
+      "style": "filled",
+      "href": "../MIS-001-views/Deterministic_Model_Invariants.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1255.66,
+            152.05,
+            410.24,
+            55.31
+          ]
+        }
+      ],
+      "svg_shape": "rounded-rectangle"
+    },
+    {
+      "_gvid": 2,
+      "name": "CAP_017",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Model Layout and Serialization</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to persist Aurora cards in a stable, tooling-friendly directory and file<BR/>name layout, with schema references and encoding rules suitable for reliable dif<BR/>fs and automated ingestion.<BR/></FONT>\n\t\t\t",
+      "pos": "2102.7,152.05",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "icon": "spark",
+      "href": "../MIS-001-views/Model_Layout_and_Serialization.view.svg",
+      "fillcolor": "#052e16",
+      "height": "1.8071",
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2062.66,
+            183.85
+          ],
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1980.16,
+            169.85
+          ],
+          "text": "Model Layout and Serialization",
+          "width": 245.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1832.16,
+            141.85
+          ],
+          "text": "Ability to persist Aurora cards in a stable, tooling-friendly directory and file",
+          "width": 541.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1814.66,
+            127.85
+          ],
+          "text": "name layout, with schema references and encoding rules suitable for reliable dif",
+          "width": 576.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2002.66,
+            113.85
+          ],
+          "text": "fs and automated ingestion.",
+          "width": 200.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            2102.66,
+            152.05,
+            418.71,
+            65.11
+          ]
+        }
+      ],
+      "svg_shape": "rounded-rectangle",
+      "width": "11.628"
+    },
+    {
+      "_gvid": 3,
+      "name": "CAP_016",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Canonical Registries</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to define and distribute canonical registries for card types, relationsh<BR/>ip verbs, and views so multiple tools produce consistent validation and renderin<BR/>gs.<BR/></FONT>\n\t\t\t",
+      "pos": "2956.7,152.05",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "href": "../MIS-001-views/Canonical_Registries.view.svg",
+      "fillcolor": "#052e16",
+      "width": "11.589",
+      "height": "1.8071",
+      "svg_shape": "rounded-rectangle",
+      "style": "filled",
+      "icon": "spark",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            2956.66,
+            152.05,
+            417.39,
+            65.11
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2916.66,
+            183.85
+          ],
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2874.66,
+            169.85
+          ],
+          "text": "Canonical Registries",
+          "width": 164.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2681.66,
+            141.85
+          ],
+          "text": "Ability to define and distribute canonical registries for card types, relationsh",
+          "width": 550.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2669.66,
+            127.85
+          ],
+          "text": "ip verbs, and views so multiple tools produce consistent validation and renderin",
+          "width": 574.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2945.66,
+            113.85
+          ],
+          "text": "gs.",
+          "width": 22.0
+        }
+      ]
+    },
+    {
+      "_gvid": 4,
+      "name": "REQ_026",
+      "bb": null,
+      "label": "\\N",
+      "pos": "413.66,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "height": "0.5",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            413.66,
+            14.3
+          ],
+          "text": "REQ_026",
+          "width": 67.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            413.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "width": "1.4985"
+    },
+    {
+      "_gvid": 5,
+      "name": "REQ_018",
+      "bb": null,
+      "label": "\\N",
+      "pos": "1003.7,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            1003.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "height": "0.5",
+      "width": "1.4985",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1003.66,
+            14.3
+          ],
+          "text": "REQ_018",
+          "width": 67.0
+        }
+      ]
+    },
+    {
+      "_gvid": 6,
+      "name": "REQ_019",
+      "bb": null,
+      "label": "\\N",
+      "pos": "1129.7,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "width": "1.4985",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            1129.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "height": "0.5",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1129.66,
+            14.3
+          ],
+          "text": "REQ_019",
+          "width": 67.0
+        }
+      ]
+    },
+    {
+      "_gvid": 7,
+      "name": "REQ_028",
+      "bb": null,
+      "label": "\\N",
+      "pos": "1255.7,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "height": "0.5",
+      "width": "1.4985",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            1255.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1255.66,
+            14.3
+          ],
+          "text": "REQ_028",
+          "width": 67.0
+        }
+      ]
+    },
+    {
+      "_gvid": 8,
+      "name": "REQ_025",
+      "bb": null,
+      "label": "\\N",
+      "pos": "1381.7,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1381.66,
+            14.3
+          ],
+          "text": "REQ_025",
+          "width": 67.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            1381.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "width": "1.4985",
+      "height": "0.5"
+    },
+    {
+      "_gvid": 9,
+      "name": "REQ_027",
+      "bb": null,
+      "label": "\\N",
+      "pos": "1507.7,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1507.66,
+            14.3
+          ],
+          "text": "REQ_027",
+          "width": 67.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            1507.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "height": "0.5",
+      "width": "1.4985"
+    },
+    {
+      "_gvid": 10,
+      "name": "REQ_016",
+      "bb": null,
+      "label": "\\N",
+      "pos": "1976.7,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "height": "0.5",
+      "width": "1.4985",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            1976.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1976.66,
+            14.3
+          ],
+          "text": "REQ_016",
+          "width": 67.0
+        }
+      ]
+    },
+    {
+      "_gvid": 11,
+      "name": "REQ_017",
+      "bb": null,
+      "label": "\\N",
+      "pos": "2102.7,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            2102.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2102.66,
+            14.3
+          ],
+          "text": "REQ_017",
+          "width": 67.0
+        }
+      ],
+      "height": "0.5",
+      "width": "1.4985"
+    },
+    {
+      "_gvid": 12,
+      "name": "REQ_024",
+      "bb": null,
+      "label": "\\N",
+      "pos": "2228.7,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2228.66,
+            14.3
+          ],
+          "text": "REQ_024",
+          "width": 67.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            2228.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "height": "0.5",
+      "width": "1.4985"
+    },
+    {
+      "_gvid": 13,
+      "name": "REQ_021",
+      "bb": null,
+      "label": "\\N",
+      "pos": "2830.7,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            2830.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2830.66,
+            14.3
+          ],
+          "text": "REQ_021",
+          "width": 67.0
+        }
+      ],
+      "width": "1.4985",
+      "height": "0.5"
+    },
+    {
+      "_gvid": 14,
+      "name": "REQ_022",
+      "bb": null,
+      "label": "\\N",
+      "pos": "2956.7,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            2956.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "height": "0.5",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2956.66,
+            14.3
+          ],
+          "text": "REQ_022",
+          "width": 67.0
+        }
+      ],
+      "width": "1.4985"
+    },
+    {
+      "_gvid": 15,
+      "name": "REQ_023",
+      "bb": null,
+      "label": "\\N",
+      "pos": "3082.7,18",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            3082.66,
+            14.3
+          ],
+          "text": "REQ_023",
+          "width": 67.0
+        }
+      ],
+      "height": "0.5",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            3082.66,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
+      "width": "1.4985"
+    }
+  ],
+  "edges": [
+    {
+      "tail": 0,
+      "head": 4,
+      "_gvid": 0,
+      "pos": "e,413.66,36.012 413.66,96.58 413.66,79.256 413.66,60.836 413.66,46.294",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              413.66,
+              96.58
+            ],
+            [
+              413.66,
+              79.26
+            ],
+            [
+              413.66,
+              60.84
+            ],
+            [
+              413.66,
+              46.29
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            443.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "lp": "443.16,61.5",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              417.16,
+              46.01
+            ],
+            [
+              413.66,
+              36.01
+            ],
+            [
+              410.16,
+              46.01
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 1,
+      "head": 5,
+      "_gvid": 1,
+      "pos": "e,1031.5,33.564 1155.3,98.483 1114.8,77.234 1070.5,54.043 1040.3,38.226",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1122.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "lp": "1122.2,61.5",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1155.34,
+              98.48
+            ],
+            [
+              1114.79,
+              77.23
+            ],
+            [
+              1070.53,
+              54.04
+            ],
+            [
+              1040.35,
+              38.23
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1041.93,
+              35.11
+            ],
+            [
+              1031.45,
+              33.56
+            ],
+            [
+              1038.68,
+              41.31
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 1,
+      "head": 6,
+      "_gvid": 2,
+      "pos": "e,1145.4,35.519 1204,96.961 1186.1,78.159 1166.9,58.02 1152.5,42.921",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1204.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1204.04,
+              96.96
+            ],
+            [
+              1186.1,
+              78.16
+            ],
+            [
+              1166.89,
+              58.02
+            ],
+            [
+              1152.48,
+              42.92
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1154.85,
+              40.34
+            ],
+            [
+              1145.42,
+              35.52
+            ],
+            [
+              1149.79,
+              45.17
+            ]
+          ]
+        }
+      ],
+      "lp": "1204.2,61.5"
+    },
+    {
+      "tail": 1,
+      "head": 7,
+      "_gvid": 3,
+      "pos": "e,1255.7,36.012 1255.7,96.58 1255.7,79.256 1255.7,60.836 1255.7,46.294",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1285.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1259.16,
+              46.01
+            ],
+            [
+              1255.66,
+              36.01
+            ],
+            [
+              1252.16,
+              46.01
+            ]
+          ]
+        }
+      ],
+      "lp": "1285.2,61.5",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1255.66,
+              96.58
+            ],
+            [
+              1255.66,
+              79.26
+            ],
+            [
+              1255.66,
+              60.84
+            ],
+            [
+              1255.66,
+              46.29
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 1,
+      "head": 8,
+      "_gvid": 4,
+      "pos": "e,1365.9,35.519 1307.3,96.961 1325.2,78.159 1344.4,58.02 1358.8,42.921",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1378.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1361.52,
+              45.17
+            ],
+            [
+              1365.9,
+              35.52
+            ],
+            [
+              1356.46,
+              40.34
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1307.27,
+              96.96
+            ],
+            [
+              1325.21,
+              78.16
+            ],
+            [
+              1344.43,
+              58.02
+            ],
+            [
+              1358.83,
+              42.92
+            ]
+          ]
+        }
+      ],
+      "lp": "1378.2,61.5"
+    },
+    {
+      "tail": 1,
+      "head": 9,
+      "_gvid": 5,
+      "pos": "e,1479.9,33.564 1356,98.483 1396.5,77.234 1440.8,54.043 1471,38.226",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "1470.2,61.5",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1470.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1472.63,
+              41.31
+            ],
+            [
+              1479.86,
+              33.56
+            ],
+            [
+              1469.38,
+              35.11
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1355.98,
+              98.48
+            ],
+            [
+              1396.53,
+              77.23
+            ],
+            [
+              1440.78,
+              54.04
+            ],
+            [
+              1470.97,
+              38.23
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 2,
+      "head": 10,
+      "_gvid": 6,
+      "pos": "e,1992.3,35.346 2041.9,87.348 2026.7,71.399 2011.3,55.27 1999.3,42.688",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2001.69,
+              40.16
+            ],
+            [
+              1992.25,
+              35.35
+            ],
+            [
+              1996.62,
+              45.0
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2051.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "lp": "2051.2,61.5",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2041.87,
+              87.35
+            ],
+            [
+              2026.65,
+              71.4
+            ],
+            [
+              2011.26,
+              55.27
+            ],
+            [
+              1999.26,
+              42.69
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 2,
+      "head": 11,
+      "_gvid": 7,
+      "pos": "e,2102.7,36.049 2102.7,86.961 2102.7,72.572 2102.7,58.06 2102.7,46.162",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "2132.2,61.5",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2132.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2102.66,
+              86.96
+            ],
+            [
+              2102.66,
+              72.57
+            ],
+            [
+              2102.66,
+              58.06
+            ],
+            [
+              2102.66,
+              46.16
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2106.16,
+              46.05
+            ],
+            [
+              2102.66,
+              36.05
+            ],
+            [
+              2099.16,
+              46.05
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 2,
+      "head": 12,
+      "_gvid": 8,
+      "pos": "e,2213.1,35.346 2163.4,87.348 2178.7,71.399 2194.1,55.27 2206.1,42.688",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "2225.2,61.5",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2163.44,
+              87.35
+            ],
+            [
+              2178.66,
+              71.4
+            ],
+            [
+              2194.05,
+              55.27
+            ],
+            [
+              2206.06,
+              42.69
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2225.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2208.69,
+              45.0
+            ],
+            [
+              2213.06,
+              35.35
+            ],
+            [
+              2203.63,
+              40.16
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 3,
+      "head": 13,
+      "_gvid": 9,
+      "pos": "e,2846.3,35.346 2895.9,87.348 2880.7,71.399 2865.3,55.27 2853.3,42.688",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "2905.2,61.5",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2855.69,
+              40.16
+            ],
+            [
+              2846.25,
+              35.35
+            ],
+            [
+              2850.62,
+              45.0
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2895.87,
+              87.35
+            ],
+            [
+              2880.65,
+              71.4
+            ],
+            [
+              2865.26,
+              55.27
+            ],
+            [
+              2853.26,
+              42.69
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2905.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ]
+    },
+    {
+      "tail": 3,
+      "head": 14,
+      "_gvid": 10,
+      "pos": "e,2956.7,36.049 2956.7,86.961 2956.7,72.572 2956.7,58.06 2956.7,46.162",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2960.16,
+              46.05
+            ],
+            [
+              2956.66,
+              36.05
+            ],
+            [
+              2953.16,
+              46.05
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2956.66,
+              86.96
+            ],
+            [
+              2956.66,
+              72.57
+            ],
+            [
+              2956.66,
+              58.06
+            ],
+            [
+              2956.66,
+              46.16
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2986.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "lp": "2986.2,61.5"
+    },
+    {
+      "tail": 3,
+      "head": 15,
+      "_gvid": 11,
+      "pos": "e,3067.1,35.346 3017.4,87.348 3032.7,71.399 3048.1,55.27 3060.1,42.688",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              3017.44,
+              87.35
+            ],
+            [
+              3032.66,
+              71.4
+            ],
+            [
+              3048.05,
+              55.27
+            ],
+            [
+              3060.06,
+              42.69
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              3062.69,
+              45.0
+            ],
+            [
+              3067.06,
+              35.35
+            ],
+            [
+              3057.63,
+              40.16
+            ]
+          ]
+        }
+      ],
+      "lp": "3078.2,61.5",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            3078.16,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ]
+    }
+  ],
+  "_draw_": [
+    {
+      "color": "#fffffe00",
+      "grad": "none",
+      "op": "c"
+    },
+    {
+      "color": "#ffffff",
+      "grad": "none",
+      "op": "C"
+    },
+    {
+      "op": "P",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          217.11
+        ],
+        [
+          3373.85,
+          217.11
+        ],
+        [
+          3373.85,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "xdotversion": "1.7",
+  "fontcolor": "#FFFFFF"
+}

@@ -72,6 +72,7 @@ impl Aurora {
 			models.len(),
 			model_home.display()
 		);
+		models.sort_by(|a, b| a.root_card.id.cmp(&b.root_card.id));
 
 		Ok(Aurora {
 			model_home,

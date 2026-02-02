@@ -1,0 +1,602 @@
+{
+  "name": "%3",
+  "directed": true,
+  "strict": false,
+  "_subgraph_cnt": 0,
+  "bb": "0,0,830.14,413.13",
+  "rankdir": null,
+  "fontname": "Noto Sans",
+  "fontsize": "12",
+  "label": null,
+  "objects": [
+    {
+      "_gvid": 0,
+      "name": "STA_001",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>State</B><BR/>\n\t\t\t\t<B>Reference State</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tState that transitions to another state in the relationship-matrix reference mod<BR/>el.<BR/></FONT>\n\t\t\t",
+      "pos": "415.07,216.46",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "height": "1.5321",
+      "href": "../MIS-002-views/Reference_State.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#701a75",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            415.07,
+            216.46,
+            413.81,
+            55.31
+          ]
+        }
+      ],
+      "svg_shape": "circle",
+      "icon": "dot",
+      "fillcolor": "#701a75",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            394.07,
+            241.26
+          ],
+          "text": "State",
+          "width": 42.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            351.57,
+            227.26
+          ],
+          "text": "Reference State",
+          "width": 127.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            130.57,
+            199.26
+          ],
+          "text": "State that transitions to another state in the relationship-matrix reference mod",
+          "width": 569.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            406.07,
+            185.26
+          ],
+          "text": "el.",
+          "width": 18.0
+        }
+      ],
+      "width": "11.49",
+      "style": "filled"
+    },
+    {
+      "_gvid": 1,
+      "name": "STM_001",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>State Machine</B><BR/>\n\t\t\t\t<B>Reference State Machine</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tState machine that starts in a defined initial state.<BR/></FONT>\n\t\t\t",
+      "pos": "415.07,367.87",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "href": "../MIS-002-views/Reference_State_Machine.view.svg",
+      "height": "1.2571",
+      "width": "7.4246",
+      "icon": "timeline",
+      "fillcolor": "#4a044e",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            357.57,
+            385.67
+          ],
+          "text": "State Machine",
+          "width": 115.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            315.57,
+            371.67
+          ],
+          "text": "Reference State Machine",
+          "width": 199.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            234.07,
+            343.67
+          ],
+          "text": "State machine that starts in a defined initial state.",
+          "width": 362.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#4a044e",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            415.07,
+            367.87,
+            267.07,
+            45.01
+          ]
+        }
+      ],
+      "style": "filled",
+      "svg_shape": "octagon"
+    },
+    {
+      "_gvid": 2,
+      "name": "STA_002",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>State</B><BR/>\n\t\t\t\t<B>Secondary State</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tSecondary state used as a target of State/Condition transitions in the reference<BR/> model.<BR/></FONT>\n\t\t\t",
+      "pos": "415.07,55.154",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "height": "1.5321",
+      "fillcolor": "#701a75",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#701a75",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            415.07,
+            55.15,
+            415.14,
+            55.31
+          ]
+        }
+      ],
+      "svg_shape": "circle",
+      "style": "filled",
+      "icon": "dot",
+      "href": "../MIS-002-views/Secondary_State.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            394.07,
+            79.95
+          ],
+          "text": "State",
+          "width": 42.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            351.57,
+            65.95
+          ],
+          "text": "Secondary State",
+          "width": 127.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            129.57,
+            37.95
+          ],
+          "text": "Secondary state used as a target of State/Condition transitions in the reference",
+          "width": 571.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            388.57,
+            23.95
+          ],
+          "text": " model.",
+          "width": 53.0
+        }
+      ],
+      "width": "11.53"
+    }
+  ],
+  "edges": [
+    {
+      "tail": 0,
+      "head": 2,
+      "_gvid": 0,
+      "pos": "e,415.07,110.56 415.07,161.08 415.07,148.08 415.07,134.08 415.07,120.67",
+      "label": "transitions to",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              415.07,
+              161.08
+            ],
+            [
+              415.07,
+              148.08
+            ],
+            [
+              415.07,
+              134.08
+            ],
+            [
+              415.07,
+              120.67
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              418.57,
+              120.56
+            ],
+            [
+              415.07,
+              110.56
+            ],
+            [
+              411.57,
+              120.56
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            463.57,
+            132.11
+          ],
+          "text": "transitions to",
+          "width": 97.0
+        }
+      ],
+      "lp": "463.57,135.81"
+    },
+    {
+      "tail": 1,
+      "head": 0,
+      "_gvid": 1,
+      "pos": "e,415.07,271.76 415.07,322.45 415.07,309.77 415.07,295.69 415.07,282.06",
+      "label": "starts in",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              415.07,
+              322.45
+            ],
+            [
+              415.07,
+              309.77
+            ],
+            [
+              415.07,
+              295.69
+            ],
+            [
+              415.07,
+              282.06
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            445.57,
+            293.42
+          ],
+          "text": "starts in",
+          "width": 61.0
+        }
+      ],
+      "lp": "445.57,297.12",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              418.57,
+              281.76
+            ],
+            [
+              415.07,
+              271.76
+            ],
+            [
+              411.57,
+              281.76
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "xdotversion": "1.7",
+  "_draw_": [
+    {
+      "color": "#fffffe00",
+      "grad": "none",
+      "op": "c"
+    },
+    {
+      "color": "#ffffff",
+      "grad": "none",
+      "op": "C"
+    },
+    {
+      "op": "P",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          413.13
+        ],
+        [
+          830.14,
+          413.13
+        ],
+        [
+          830.14,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "fontcolor": "#FFFFFF"
+}

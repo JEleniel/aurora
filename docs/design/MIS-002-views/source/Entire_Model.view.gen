@@ -1,0 +1,1386 @@
+{
+  "name": "%3",
+  "directed": true,
+  "strict": false,
+  "_subgraph_cnt": 0,
+  "bb": "0,0,1856.8,432.93",
+  "rankdir": null,
+  "fontname": "Noto Sans",
+  "fontsize": "12",
+  "label": null,
+  "objects": [
+    {
+      "_gvid": 0,
+      "name": "MIS_002",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Mission</B><BR/>\n\t\t\t\t<B>Relationship Matrix Reference</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tReference Aurora model encoding the canonical relationship registry as concrete <BR/>card links for tooling and diagram validation.<BR/></FONT>\n\t\t\t",
+      "pos": "810.73,377.77",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            779.23,
+            402.57
+          ],
+          "text": "Mission",
+          "width": 63.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            689.23,
+            388.57
+          ],
+          "text": "Relationship Matrix Reference",
+          "width": 243.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            518.73,
+            360.57
+          ],
+          "text": "Reference Aurora model encoding the canonical relationship registry as concrete ",
+          "width": 584.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            649.23,
+            346.57
+          ],
+          "text": "card links for tooling and diagram validation.",
+          "width": 323.0
+        }
+      ],
+      "height": "1.5321",
+      "href": "../MIS-002-views/Relationship_Matrix_Reference.view.svg",
+      "fillcolor": "#022c22",
+      "icon": "target",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#022c22",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            810.73,
+            377.77,
+            424.03,
+            55.31
+          ]
+        }
+      ],
+      "style": "filled",
+      "svg_shape": "octagon",
+      "width": "11.785"
+    },
+    {
+      "_gvid": 1,
+      "name": "SYS_001",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>System</B><BR/>\n\t\t\t\t<B>Reference System</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tSystem that integrates an application and enforces a control.<BR/></FONT>\n\t\t\t",
+      "pos": "321.73,216.46",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#172554",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            321.73,
+            216.46,
+            321.97,
+            45.01
+          ]
+        }
+      ],
+      "fillcolor": "#172554",
+      "href": "../MIS-002-views/Reference_System.view.svg",
+      "width": "8.937",
+      "height": "1.2571",
+      "icon": "layers",
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            292.73,
+            234.26
+          ],
+          "text": "System",
+          "width": 58.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            250.73,
+            220.26
+          ],
+          "text": "Reference System",
+          "width": 142.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            102.23,
+            192.26
+          ],
+          "text": "System that integrates an application and enforces a control.",
+          "width": 439.0
+        }
+      ],
+      "svg_shape": "folder"
+    },
+    {
+      "_gvid": 2,
+      "name": "REQ_001",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Reference Requirement</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tRequirement referenced by multiple rules (driven by driver, satisfied by capabil<BR/>ity, documented by ADR, limited by constraint).<BR/></FONT>\n\t\t\t",
+      "pos": "1429.7,55.154",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1377.23,
+            79.95
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1334.73,
+            65.95
+          ],
+          "text": "Reference Requirement",
+          "width": 190.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1144.23,
+            37.95
+          ],
+          "text": "Requirement referenced by multiple rules (driven by driver, satisfied by capabil",
+          "width": 571.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1259.73,
+            23.95
+          ],
+          "text": "ity, documented by ADR, limited by constraint).",
+          "width": 340.0
+        }
+      ],
+      "height": "1.5321",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1429.73,
+            55.15,
+            415.14,
+            55.31
+          ]
+        }
+      ],
+      "icon": "checklist",
+      "width": "11.53",
+      "svg_shape": "rounded-rectangle",
+      "fillcolor": "#065f46",
+      "style": "filled",
+      "href": "../MIS-002-views/Reference_Requirement.view.svg"
+    },
+    {
+      "_gvid": 3,
+      "name": "DRI_001",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Driver</B><BR/>\n\t\t\t\t<B>Reference Driver</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tMotivation used to drive a downstream requirement in the relationship-matrix ref<BR/>erence model.<BR/></FONT>\n\t\t\t",
+      "pos": "1429.7,216.46",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "fillcolor": "#064e3b",
+      "svg_shape": "rounded-rectangle",
+      "height": "1.5321",
+      "icon": "compass",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#064e3b",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1429.73,
+            216.46,
+            427.19,
+            55.31
+          ]
+        }
+      ],
+      "style": "filled",
+      "href": "../MIS-002-views/Reference_Driver.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1404.73,
+            241.26
+          ],
+          "text": "Driver",
+          "width": 50.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1362.23,
+            227.26
+          ],
+          "text": "Reference Driver",
+          "width": 135.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1135.73,
+            199.26
+          ],
+          "text": "Motivation used to drive a downstream requirement in the relationship-matrix ref",
+          "width": 588.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1379.23,
+            185.26
+          ],
+          "text": "erence model.",
+          "width": 101.0
+        }
+      ],
+      "width": "11.864"
+    },
+    {
+      "_gvid": 4,
+      "name": "ACT_001",
+      "bb": null,
+      "label": "\\N",
+      "pos": "810.73,216.46",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "width": "1.4443",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            810.73,
+            216.46,
+            51.99,
+            18.0
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            810.73,
+            212.76
+          ],
+          "text": "ACT_001",
+          "width": 64.0
+        }
+      ],
+      "height": "0.5"
+    },
+    {
+      "_gvid": 5,
+      "name": "ACT_002",
+      "bb": null,
+      "label": "\\N",
+      "pos": "932.73,216.46",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "width": "1.4443",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            932.73,
+            212.76
+          ],
+          "text": "ACT_002",
+          "width": 64.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            932.73,
+            216.46,
+            51.99,
+            18.0
+          ]
+        }
+      ],
+      "height": "0.5"
+    },
+    {
+      "_gvid": 6,
+      "name": "APP_001",
+      "bb": null,
+      "label": "\\N",
+      "pos": "500.73,55.154",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            500.73,
+            51.45
+          ],
+          "text": "APP_001",
+          "width": 64.0
+        }
+      ],
+      "height": "0.5",
+      "width": "1.4443",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            500.73,
+            55.15,
+            51.99,
+            18.0
+          ]
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "tail": 0,
+      "head": 1,
+      "_gvid": 0,
+      "pos": "e,446.87,258.23 656.01,326.37 592,305.51 518.46,281.55 456.68,261.43",
+      "label": "requires",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              656.01,
+              326.37
+            ],
+            [
+              592.0,
+              305.51
+            ],
+            [
+              518.46,
+              281.55
+            ],
+            [
+              456.68,
+              261.43
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            612.23,
+            293.42
+          ],
+          "text": "requires",
+          "width": 61.0
+        }
+      ],
+      "lp": "612.23,297.12",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              457.46,
+              258.0
+            ],
+            [
+              446.87,
+              258.23
+            ],
+            [
+              455.29,
+              264.66
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 0,
+      "head": 3,
+      "_gvid": 1,
+      "pos": "e,1241.1,266.02 998.98,328.32 1072.4,309.42 1156.7,287.74 1231.1,268.59",
+      "label": "establishes",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1232.24,
+              271.9
+            ],
+            [
+              1241.05,
+              266.02
+            ],
+            [
+              1230.5,
+              265.13
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              998.98,
+              328.32
+            ],
+            [
+              1072.42,
+              309.42
+            ],
+            [
+              1156.68,
+              287.74
+            ],
+            [
+              1231.09,
+              268.59
+            ]
+          ]
+        }
+      ],
+      "lp": "1179.2,297.12",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1179.23,
+            293.42
+          ],
+          "text": "establishes",
+          "width": 81.0
+        }
+      ]
+    },
+    {
+      "tail": 0,
+      "head": 4,
+      "_gvid": 2,
+      "pos": "e,810.73,234.66 810.73,322.39 810.73,296.29 810.73,266.16 810.73,244.9",
+      "label": "involves",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              814.23,
+              244.66
+            ],
+            [
+              810.73,
+              234.66
+            ],
+            [
+              807.23,
+              244.66
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              810.73,
+              322.39
+            ],
+            [
+              810.73,
+              296.29
+            ],
+            [
+              810.73,
+              266.16
+            ],
+            [
+              810.73,
+              244.9
+            ]
+          ]
+        }
+      ],
+      "lp": "840.23,297.12",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            840.23,
+            293.42
+          ],
+          "text": "involves",
+          "width": 59.0
+        }
+      ]
+    },
+    {
+      "tail": 0,
+      "head": 5,
+      "_gvid": 3,
+      "pos": "e,922.23,234.27 859.27,322.6 864.26,316.62 869.17,310.55 873.73,304.62 889.21,284.53 905.25,260.6 916.69,242.9",
+      "label": "involves",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "913.23,297.12",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              859.27,
+              322.6
+            ],
+            [
+              864.26,
+              316.62
+            ],
+            [
+              869.17,
+              310.55
+            ],
+            [
+              873.73,
+              304.62
+            ],
+            [
+              889.21,
+              284.53
+            ],
+            [
+              905.25,
+              260.6
+            ],
+            [
+              916.69,
+              242.9
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              919.78,
+              244.58
+            ],
+            [
+              922.23,
+              234.27
+            ],
+            [
+              913.88,
+              240.8
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            913.23,
+            293.42
+          ],
+          "text": "involves",
+          "width": 59.0
+        }
+      ]
+    },
+    {
+      "tail": 0,
+      "head": 6,
+      "_gvid": 4,
+      "pos": "e,531.46,69.867 735.56,323.25 718.32,308.14 701.36,290.59 688.73,271.62 660.15,228.69 683.55,202.66 652.73,161.31 623.46,122.04 575.05,92.21 540.74,74.529",
+      "label": "requires",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              735.56,
+              323.25
+            ],
+            [
+              718.32,
+              308.14
+            ],
+            [
+              701.36,
+              290.59
+            ],
+            [
+              688.73,
+              271.62
+            ],
+            [
+              660.15,
+              228.69
+            ],
+            [
+              683.55,
+              202.66
+            ],
+            [
+              652.73,
+              161.31
+            ],
+            [
+              623.46,
+              122.04
+            ],
+            [
+              575.05,
+              92.21
+            ],
+            [
+              540.74,
+              74.53
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            719.23,
+            212.76
+          ],
+          "text": "requires",
+          "width": 61.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              541.97,
+              71.23
+            ],
+            [
+              531.46,
+              69.87
+            ],
+            [
+              538.83,
+              77.48
+            ]
+          ]
+        }
+      ],
+      "lp": "719.23,216.46"
+    },
+    {
+      "tail": 1,
+      "head": 6,
+      "_gvid": 5,
+      "pos": "e,482.66,72.236 371.12,171.51 404.84,141.5 448.13,102.97 475.16,78.914",
+      "label": "integrates",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              371.12,
+              171.51
+            ],
+            [
+              404.84,
+              141.5
+            ],
+            [
+              448.13,
+              102.97
+            ],
+            [
+              475.16,
+              78.91
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              477.52,
+              81.5
+            ],
+            [
+              482.66,
+              72.24
+            ],
+            [
+              472.87,
+              76.27
+            ]
+          ]
+        }
+      ],
+      "lp": "453.73,135.81",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            453.73,
+            132.11
+          ],
+          "text": "integrates",
+          "width": 74.0
+        }
+      ]
+    },
+    {
+      "tail": 3,
+      "head": 2,
+      "_gvid": 6,
+      "pos": "e,1429.7,110.56 1429.7,161.08 1429.7,148.08 1429.7,134.08 1429.7,120.67",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1452.23,
+            132.11
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "lp": "1452.2,135.81",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1429.73,
+              161.08
+            ],
+            [
+              1429.73,
+              148.08
+            ],
+            [
+              1429.73,
+              134.08
+            ],
+            [
+              1429.73,
+              120.67
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1433.23,
+              120.56
+            ],
+            [
+              1429.73,
+              110.56
+            ],
+            [
+              1426.23,
+              120.56
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "xdotversion": "1.7",
+  "fontcolor": "#FFFFFF",
+  "_draw_": [
+    {
+      "color": "#fffffe00",
+      "grad": "none",
+      "op": "c"
+    },
+    {
+      "color": "#ffffff",
+      "grad": "none",
+      "op": "C"
+    },
+    {
+      "op": "P",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          432.93
+        ],
+        [
+          1856.83,
+          432.93
+        ],
+        [
+          1856.83,
+          0.0
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+digraph {
+					fontname="Noto Sans";
+					fontcolor="#FFFFFF";
+					fontsize=12;
+				MIS_002[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Mission</B><BR/>
+				<B>Relationship Matrix Reference</B><BR/>
+				<BR/>
+				Reference Aurora model encoding the canonical relationship registry as concrete <BR/>card links for tooling and diagram validation.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-002-views/Relationship_Matrix_Reference.view.svg";
+			style=filled;
+			fillcolor="#022c22";
+			svg_shape="octagon";
+			icon="target";
+		];
+		SYS_001[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>System</B><BR/>
+				<B>Reference System</B><BR/>
+				<BR/>
+				System that integrates an application and enforces a control.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-002-views/Reference_System.view.svg";
+			style=filled;
+			fillcolor="#172554";
+			svg_shape="folder";
+			icon="layers";
+		];
+		REQ_001[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Reference Requirement</B><BR/>
+				<BR/>
+				Requirement referenced by multiple rules (driven by driver, satisfied by capabil<BR/>ity, documented by ADR, limited by constraint).<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-002-views/Reference_Requirement.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		DRI_001[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Driver</B><BR/>
+				<B>Reference Driver</B><BR/>
+				<BR/>
+				Motivation used to drive a downstream requirement in the relationship-matrix ref<BR/>erence model.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-002-views/Reference_Driver.view.svg";
+			style=filled;
+			fillcolor="#064e3b";
+			svg_shape="rounded-rectangle";
+			icon="compass";
+		];
+			MIS_002 -> DRI_001 [label="establishes"];
+									MIS_002 -> ACT_001 [label="involves"];
+									MIS_002 -> ACT_002 [label="involves"];
+									MIS_002 -> SYS_001 [label="requires"];
+									MIS_002 -> APP_001 [label="requires"];
+									SYS_001 -> APP_001 [label="integrates"];
+									DRI_001 -> REQ_001 [label="drives"];
+								}

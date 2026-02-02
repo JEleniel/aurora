@@ -1,0 +1,1225 @@
+{
+  "name": "%3",
+  "directed": true,
+  "strict": false,
+  "_subgraph_cnt": 0,
+  "bb": "0,0,6239.1,169.71",
+  "rankdir": null,
+  "fontname": "Noto Sans",
+  "fontsize": "12",
+  "label": null,
+  "objects": [
+    {
+      "_gvid": 0,
+      "name": "REQ_002",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Discover and Load Models</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe tooling SHALL discover one or more Aurora model homes from an input path (fi<BR/>le, model-home directory, or ancestor directory) and load all card files under e<BR/>ach model home. Discovery is schema-based (presence of Aurora.schema.*), support<BR/>s a direct child &apos;aurora/&apos; folder, and bounds directory walking (max depth) for <BR/>predictable performance.<BR/></FONT>\n\t\t\t",
+      "pos": "437.7,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            437.7,
+            84.85,
+            437.9,
+            84.71
+          ]
+        }
+      ],
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "style": "filled",
+      "width": "12.158",
+      "fillcolor": "#065f46",
+      "href": "../MIS-003-views/Discover_and_Load_Models.view.svg",
+      "height": "2.357",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            385.2,
+            130.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            335.2,
+            116.65
+          ],
+          "text": "Discover and Load Models",
+          "width": 205.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            137.7,
+            88.65
+          ],
+          "text": "The tooling SHALL discover one or more Aurora model homes from an input path (fi",
+          "width": 600.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            158.7,
+            74.65
+          ],
+          "text": "le, model-home directory, or ancestor directory) and load all card files under e",
+          "width": 558.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            136.2,
+            60.65
+          ],
+          "text": "ach model home. Discovery is schema-based (presence of Aurora.schema.*), support",
+          "width": 603.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            159.7,
+            46.65
+          ],
+          "text": "s a direct child 'aurora/' folder, and bounds directory walking (max depth) for ",
+          "width": 556.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            347.2,
+            32.65
+          ],
+          "text": "predictable performance.",
+          "width": 181.0
+        }
+      ]
+    },
+    {
+      "_gvid": 1,
+      "name": "REQ_003",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Validate Models and Emit Diagnostics</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe tooling SHALL validate loaded models for core invariants (unique ids, at lea<BR/>st one Mission, valid link targets, reachability from the mission root) and SHAL<BR/>L emit structured diagnostics with severity (error|warning|info). Validation SHA<BR/>LL fail the command when errors are present and SHOULD still surface warnings (e<BR/>.g., relationship matrix compliance).<BR/></FONT>\n\t\t\t",
+      "pos": "1330.7,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1278.2,
+            130.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1181.7,
+            116.65
+          ],
+          "text": "Validate Models and Emit Diagnostics",
+          "width": 298.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1044.2,
+            88.65
+          ],
+          "text": "The tooling SHALL validate loaded models for core invariants (unique ids, at lea",
+          "width": 573.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1046.7,
+            74.65
+          ],
+          "text": "st one Mission, valid link targets, reachability from the mission root) and SHAL",
+          "width": 568.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1044.2,
+            60.65
+          ],
+          "text": "L emit structured diagnostics with severity (error|warning|info). Validation SHA",
+          "width": 573.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1029.2,
+            46.65
+          ],
+          "text": "LL fail the command when errors are present and SHOULD still surface warnings (e",
+          "width": 603.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1201.2,
+            32.65
+          ],
+          "text": ".g., relationship matrix compliance).",
+          "width": 259.0
+        }
+      ],
+      "style": "filled",
+      "icon": "checklist",
+      "height": "2.357",
+      "svg_shape": "rounded-rectangle",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1330.7,
+            84.85,
+            437.9,
+            84.71
+          ]
+        }
+      ],
+      "width": "12.158",
+      "href": "../MIS-003-views/Validate_Models_and_Emit_Diagnostics.view.svg",
+      "fillcolor": "#065f46"
+    },
+    {
+      "_gvid": 2,
+      "name": "REQ_007",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Bump Model Audit Versions</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe CLI SHOULD support bumping model audit trail versions (patch, minor, major) <BR/>with deterministic edits to affected cards and an appended audit history entry. <BR/>The current aurora_cli surface exposes bump commands but does not yet implement <BR/>them.<BR/></FONT>\n\t\t\t",
+      "pos": "2228.7,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "style": "filled",
+      "href": "../MIS-003-views/Bump_Model_Audit_Versions.view.svg",
+      "height": "2.082",
+      "svg_shape": "rounded-rectangle",
+      "fillcolor": "#065f46",
+      "icon": "checklist",
+      "width": "12.296",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            2228.7,
+            84.85,
+            442.8,
+            74.91
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2176.2,
+            123.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2118.7,
+            109.65
+          ],
+          "text": "Bump Model Audit Versions",
+          "width": 220.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1928.2,
+            81.65
+          ],
+          "text": "The CLI SHOULD support bumping model audit trail versions (patch, minor, major) ",
+          "width": 601.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1944.7,
+            67.65
+          ],
+          "text": "with deterministic edits to affected cards and an appended audit history entry. ",
+          "width": 568.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1923.7,
+            53.65
+          ],
+          "text": "The current aurora_cli surface exposes bump commands but does not yet implement ",
+          "width": 610.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2207.7,
+            39.65
+          ],
+          "text": "them.",
+          "width": 42.0
+        }
+      ]
+    },
+    {
+      "_gvid": 3,
+      "name": "REQ_004",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Render Card Markdown</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe tooling SHALL render per-card Markdown documentation and a mission executive<BR/> summary into a user-specified output directory. Rendered files SHOULD mirror th<BR/>e source card layout (card-type subfolders) and MUST be produced only after the <BR/>model validates without errors.<BR/></FONT>\n\t\t\t",
+      "pos": "3138.7,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3138.7,
+            84.85,
+            449.03,
+            74.91
+          ]
+        }
+      ],
+      "fillcolor": "#065f46",
+      "height": "2.082",
+      "href": "../MIS-003-views/Render_Card_Markdown.view.svg",
+      "style": "filled",
+      "svg_shape": "rounded-rectangle",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3086.2,
+            123.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3044.7,
+            109.65
+          ],
+          "text": "Render Card Markdown",
+          "width": 188.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2829.2,
+            81.65
+          ],
+          "text": "The tooling SHALL render per-card Markdown documentation and a mission executive",
+          "width": 619.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2842.7,
+            67.65
+          ],
+          "text": " summary into a user-specified output directory. Rendered files SHOULD mirror th",
+          "width": 592.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2845.7,
+            53.65
+          ],
+          "text": "e source card layout (card-type subfolders) and MUST be produced only after the ",
+          "width": 586.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3025.7,
+            39.65
+          ],
+          "text": "model validates without errors.",
+          "width": 226.0
+        }
+      ],
+      "icon": "checklist",
+      "width": "12.473"
+    },
+    {
+      "_gvid": 4,
+      "name": "REQ_006",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Write Compact Agent Export</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe tooling SHALL generate a single-file compact export suitable for agent consu<BR/>mption (AGENT-&lt;MISSION_ID&gt;.jsjson by default) by removing non-essential fields (<BR/>e.g., $schema, audit trail metadata) while preserving the card graph structure.<BR/></FONT>\n\t\t\t",
+      "pos": "4043.7,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3991.2,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3931.2,
+            102.65
+          ],
+          "text": "Write Compact Agent Export",
+          "width": 225.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3752.7,
+            74.65
+          ],
+          "text": "The tooling SHALL generate a single-file compact export suitable for agent consu",
+          "width": 582.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3742.2,
+            60.65
+          ],
+          "text": "mption (AGENT-<MISSION_ID>.jsjson by default) by removing non-essential fields (",
+          "width": 603.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3760.2,
+            46.65
+          ],
+          "text": "e.g., $schema, audit trail metadata) while preserving the card graph structure.",
+          "width": 567.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            4043.7,
+            84.85,
+            437.9,
+            65.11
+          ]
+        }
+      ],
+      "href": "../MIS-003-views/Write_Compact_Agent_Export.view.svg",
+      "icon": "checklist",
+      "height": "1.8071",
+      "svg_shape": "rounded-rectangle",
+      "style": "filled",
+      "fillcolor": "#065f46",
+      "width": "12.158"
+    },
+    {
+      "_gvid": 5,
+      "name": "REQ_005",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Render View Diagrams</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe tooling SHALL render view diagrams (DOT sources plus SVG output) for the can<BR/>onical view set. Rendering MUST use a Graphviz-compatible DOT renderer (default <BR/>&apos;dot&apos;) and SHOULD allow overriding the executable via environment configuration <BR/>(AURORA_DOT_COMMAND).<BR/></FONT>\n\t\t\t",
+      "pos": "4938.7,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "svg_shape": "rounded-rectangle",
+      "href": "../MIS-003-views/Render_View_Diagrams.view.svg",
+      "width": "12.198",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            4938.7,
+            84.85,
+            439.23,
+            74.91
+          ]
+        }
+      ],
+      "height": "2.082",
+      "icon": "checklist",
+      "fillcolor": "#065f46",
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4886.2,
+            123.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4848.7,
+            109.65
+          ],
+          "text": "Render View Diagrams",
+          "width": 180.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4636.2,
+            81.65
+          ],
+          "text": "The tooling SHALL render view diagrams (DOT sources plus SVG output) for the can",
+          "width": 605.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4638.2,
+            67.65
+          ],
+          "text": "onical view set. Rendering MUST use a Graphviz-compatible DOT renderer (default ",
+          "width": 601.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4642.7,
+            53.65
+          ],
+          "text": "'dot') and SHOULD allow overriding the executable via environment configuration ",
+          "width": 592.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4834.7,
+            39.65
+          ],
+          "text": "(AURORA_DOT_COMMAND).",
+          "width": 208.0
+        }
+      ]
+    },
+    {
+      "_gvid": 6,
+      "name": "REQ_008",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Embed Canonical Registries</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe tooling SHALL embed canonical registries for card types, relationship verbs,<BR/> and view definitions so validation and rendering can operate deterministically <BR/>without depending on external instruction files at runtime.<BR/></FONT>\n\t\t\t",
+      "pos": "5817.7,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "href": "../MIS-003-views/Embed_Canonical_Registries.view.svg",
+      "svg_shape": "rounded-rectangle",
+      "fillcolor": "#065f46",
+      "width": "11.707",
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            5817.7,
+            84.85,
+            421.37,
+            65.11
+          ]
+        }
+      ],
+      "height": "1.8071",
+      "icon": "checklist",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5765.2,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5706.2,
+            102.65
+          ],
+          "text": "Embed Canonical Registries",
+          "width": 223.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5527.7,
+            74.65
+          ],
+          "text": "The tooling SHALL embed canonical registries for card types, relationship verbs,",
+          "width": 580.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5533.7,
+            60.65
+          ],
+          "text": " and view definitions so validation and rendering can operate deterministically ",
+          "width": 568.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5607.2,
+            46.65
+          ],
+          "text": "without depending on external instruction files at runtime.",
+          "width": 421.0
+        }
+      ]
+    }
+  ],
+  "edges": [],
+  "xdotversion": "1.7",
+  "_draw_": [
+    {
+      "color": "#fffffe00",
+      "grad": "none",
+      "op": "c"
+    },
+    {
+      "color": "#ffffff",
+      "grad": "none",
+      "op": "C"
+    },
+    {
+      "op": "P",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          169.71
+        ],
+        [
+          6239.13,
+          169.71
+        ],
+        [
+          6239.13,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "fontcolor": "#FFFFFF"
+}

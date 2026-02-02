@@ -1,0 +1,20 @@
+digraph {
+					fontname="Noto Sans";
+					fontcolor="#FFFFFF";
+					fontsize=12;
+				ACT_003[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Actor</B><BR/>
+				<B>Architect</B><BR/>
+				<BR/>
+				Human operator responsible for authoring Aurora models and running CLI tooling (<BR/>validate, render, compact) to maintain deterministic design artifacts.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-003-views/Architect.view.svg";
+			style=filled;
+			fillcolor="#1a2e05";
+			svg_shape="ellipse";
+			icon="user";
+		];
+		}

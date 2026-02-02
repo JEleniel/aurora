@@ -22,4 +22,6 @@ pub enum RenderError {
 	SerdeError(#[from] serde_json::Error),
 	#[error("An SVG rendering error has occurred: {0}")]
 	SvgError(#[from] SvgError),
+	#[error("Card not found: {0}")]
+	CardNotFound(String),
 }

@@ -11,7 +11,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::path::PathBuf;
 use thiserror::Error;
-use tracing::{debug, info};
+use tracing::debug;
 
 const CARD_MARKDOWN_TEMPLATE: &str = include_str!("card.template.md");
 
@@ -46,26 +46,11 @@ impl Card {
 		let card_json: serde_json::Value = serde_json::from_str(&data)
 			.map_err(|e| CardError::ParseError(path.display().to_string(), e))?;
 		let validation_errors = Self::validate_against_schema(&card_json, card_schema)?;
-		if validation_errors.len() > 0 {
-			return Ok(Card {
-				schema: None,
-				id: String::new(),
-				card_type: String::new(),
-				card_subtype: None,
-				name: String::new(),
-				status: None,
-				description: String::new(),
-				attributes: Vec::new(),
-				links: Vec::new(),
-				audit_trail: AuditTrail::default(),
-				source_path: path.clone(),
-				validation_errors,
-			});
-		}
 
 		let mut card: Card = serde_json::from_str(&data)
 			.map_err(|e| CardError::ParseError(path.display().to_string(), e))?;
 		card.source_path = path.clone();
+		card.validation_errors = validation_errors;
 		Ok(card)
 	}
 
@@ -209,4 +194,6 @@ pub enum CardError {
 	InvalidFilename(String),
 	#[error("Schema compilation error: {0}")]
 	SchemaCompilationError(#[from] CompilationError),
+	#[error("Card not found: {0}")]
+	CardNotFound(String),
 }

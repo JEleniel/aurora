@@ -1,0 +1,2053 @@
+{
+  "name": "%3",
+  "directed": true,
+  "strict": false,
+  "_subgraph_cnt": 0,
+  "bb": "0,0,11402,169.71",
+  "rankdir": null,
+  "fontname": "Noto Sans",
+  "fontsize": "12",
+  "label": null,
+  "objects": [
+    {
+      "_gvid": 0,
+      "name": "REQ_018",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Single Root Mission</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tEach Aurora model SHALL start with exactly one Mission card that serves as the r<BR/>oot of the directed graph. The Mission card SHALL only have outgoing links and S<BR/>HALL provide a consistent starting point for traversal and view generation.<BR/></FONT>\n\t\t\t",
+      "pos": "429.92,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "icon": "checklist",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            429.92,
+            84.85,
+            429.84,
+            65.11
+          ]
+        }
+      ],
+      "fillcolor": "#065f46",
+      "href": "../MIS-001-views/Single_Root_Mission.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            377.42,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            350.92,
+            102.65
+          ],
+          "text": "Single Root Mission",
+          "width": 158.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            133.92,
+            74.65
+          ],
+          "text": "Each Aurora model SHALL start with exactly one Mission card that serves as the r",
+          "width": 592.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            135.92,
+            60.65
+          ],
+          "text": "oot of the directed graph. The Mission card SHALL only have outgoing links and S",
+          "width": 588.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            159.42,
+            46.65
+          ],
+          "text": "HALL provide a consistent starting point for traversal and view generation.",
+          "width": 541.0
+        }
+      ],
+      "style": "filled",
+      "height": "1.8071",
+      "svg_shape": "rounded-rectangle",
+      "width": "11.942"
+    },
+    {
+      "_gvid": 1,
+      "name": "REQ_027",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Audit Trail and Versioning</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAll Aurora cards SHALL include an audit_trail with a per-card SemVer version, an<BR/> optional SHA256 hash (nullable), and a chronological history of created/edited/<BR/>deleted events including editor identity and RFC3339 timestamps.<BR/></FONT>\n\t\t\t",
+      "pos": "1300.9,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1300.92,
+            84.85,
+            423.61,
+            65.11
+          ]
+        }
+      ],
+      "height": "1.8071",
+      "href": "../MIS-001-views/Audit_Trail_and_Versioning.view.svg",
+      "svg_shape": "rounded-rectangle",
+      "width": "11.765",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1248.42,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1196.92,
+            102.65
+          ],
+          "text": "Audit Trail and Versioning",
+          "width": 208.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1009.42,
+            74.65
+          ],
+          "text": "All Aurora cards SHALL include an audit_trail with a per-card SemVer version, an",
+          "width": 583.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1016.42,
+            60.65
+          ],
+          "text": " optional SHA256 hash (nullable), and a chronological history of created/edited/",
+          "width": 569.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1061.92,
+            46.65
+          ],
+          "text": "deleted events including editor identity and RFC3339 timestamps.",
+          "width": 478.0
+        }
+      ],
+      "fillcolor": "#065f46",
+      "icon": "checklist"
+    },
+    {
+      "_gvid": 2,
+      "name": "REQ_022",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Canonical Relationship Registry</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora tooling and documentation SHALL use a canonical registry of relationship <BR/>verbs, including allowed source and target card types, to enable deterministic v<BR/>alidation and interoperable views.<BR/></FONT>\n\t\t\t",
+      "pos": "2167.9,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "width": "11.824",
+      "icon": "checklist",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            2167.92,
+            84.85,
+            425.86,
+            65.11
+          ]
+        }
+      ],
+      "fillcolor": "#065f46",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2115.42,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2040.42,
+            102.65
+          ],
+          "text": "Canonical Relationship Registry",
+          "width": 255.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1874.92,
+            74.65
+          ],
+          "text": "Aurora tooling and documentation SHALL use a canonical registry of relationship ",
+          "width": 586.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1881.42,
+            60.65
+          ],
+          "text": "verbs, including allowed source and target card types, to enable deterministic v",
+          "width": 573.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2045.92,
+            46.65
+          ],
+          "text": "alidation and interoperable views.",
+          "width": 244.0
+        }
+      ],
+      "style": "filled",
+      "href": "../MIS-001-views/Canonical_Relationship_Registry.view.svg",
+      "height": "1.8071",
+      "svg_shape": "rounded-rectangle"
+    },
+    {
+      "_gvid": 3,
+      "name": "REQ_024",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Schema Referencing Rules</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAll Aurora card files SHALL include a $schema field referencing the applicable A<BR/>urora schema using a relative path from the card file to the Model Home schema f<BR/>ile.<BR/></FONT>\n\t\t\t",
+      "pos": "3038.9,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3038.92,
+            84.85,
+            427.6,
+            65.11
+          ]
+        }
+      ],
+      "style": "filled",
+      "icon": "checklist",
+      "svg_shape": "rounded-rectangle",
+      "fillcolor": "#065f46",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2986.42,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2932.42,
+            102.65
+          ],
+          "text": "Schema Referencing Rules",
+          "width": 213.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2751.92,
+            74.65
+          ],
+          "text": "All Aurora card files SHALL include a $schema field referencing the applicable A",
+          "width": 574.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2744.42,
+            60.65
+          ],
+          "text": "urora schema using a relative path from the card file to the Model Home schema f",
+          "width": 589.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3027.92,
+            46.65
+          ],
+          "text": "ile.",
+          "width": 22.0
+        }
+      ],
+      "width": "11.883",
+      "height": "1.8071",
+      "href": "../MIS-001-views/Schema_Referencing_Rules.view.svg"
+    },
+    {
+      "_gvid": 4,
+      "name": "REQ_016",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Strict JSJSON Card Encoding</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora card files SHALL be stored as strict JSON (RFC 8259) using the .jsjson ex<BR/>tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa<BR/>ctly one trailing newline.<BR/></FONT>\n\t\t\t",
+      "pos": "3919.9,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "width": "12.08",
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3867.42,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3806.42,
+            102.65
+          ],
+          "text": "Strict JSJSON Card Encoding",
+          "width": 227.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3629.92,
+            74.65
+          ],
+          "text": "Aurora card files SHALL be stored as strict JSON (RFC 8259) using the .jsjson ex",
+          "width": 580.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3620.42,
+            60.65
+          ],
+          "text": "tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa",
+          "width": 599.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3830.92,
+            46.65
+          ],
+          "text": "ctly one trailing newline.",
+          "width": 178.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3919.92,
+            84.85,
+            434.74,
+            65.11
+          ]
+        }
+      ],
+      "height": "1.8071",
+      "icon": "checklist",
+      "href": "../MIS-001-views/Strict_JSJSON_Card_Encoding.view.svg"
+    },
+    {
+      "_gvid": 5,
+      "name": "REQ_025",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Model Integrity Validation</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora models SHALL be machine-validatable for integrity: every non-Mission, non<BR/>-Note card SHALL have at least one incoming link; every card SHALL be reachable <BR/>from the Mission; and all links[].target values SHALL reference an existing card<BR/> id.<BR/></FONT>\n\t\t\t",
+      "pos": "4804.9,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "icon": "checklist",
+      "svg_shape": "rounded-rectangle",
+      "href": "../MIS-001-views/Model_Integrity_Validation.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            4804.92,
+            84.85,
+            432.08,
+            74.91
+          ]
+        }
+      ],
+      "style": "filled",
+      "fillcolor": "#065f46",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4752.42,
+            123.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4700.92,
+            109.65
+          ],
+          "text": "Model Integrity Validation",
+          "width": 208.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4507.42,
+            81.65
+          ],
+          "text": "Aurora models SHALL be machine-validatable for integrity: every non-Mission, non",
+          "width": 595.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4507.42,
+            67.65
+          ],
+          "text": "-Note card SHALL have at least one incoming link; every card SHALL be reachable ",
+          "width": 595.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4518.42,
+            53.65
+          ],
+          "text": "from the Mission; and all links[].target values SHALL reference an existing card",
+          "width": 573.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4793.42,
+            39.65
+          ],
+          "text": " id.",
+          "width": 23.0
+        }
+      ],
+      "height": "2.082",
+      "width": "12.001"
+    },
+    {
+      "_gvid": 6,
+      "name": "REQ_021",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Canonical Card Registry</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora tooling and documentation SHALL use a canonical registry of card types (a<BR/>nd optional subtypes) to support consistent rendering, validation, and communica<BR/>tion across tools.<BR/></FONT>\n\t\t\t",
+      "pos": "5682.9,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5630.42,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5586.92,
+            102.65
+          ],
+          "text": "Canonical Card Registry",
+          "width": 192.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5388.42,
+            74.65
+          ],
+          "text": "Aurora tooling and documentation SHALL use a canonical registry of card types (a",
+          "width": 589.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5389.42,
+            60.65
+          ],
+          "text": "nd optional subtypes) to support consistent rendering, validation, and communica",
+          "width": 587.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5621.92,
+            46.65
+          ],
+          "text": "tion across tools.",
+          "width": 122.0
+        }
+      ],
+      "icon": "checklist",
+      "svg_shape": "rounded-rectangle",
+      "fillcolor": "#065f46",
+      "width": "11.883",
+      "style": "filled",
+      "height": "1.8071",
+      "href": "../MIS-001-views/Canonical_Card_Registry.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            5682.92,
+            84.85,
+            427.6,
+            65.11
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 7,
+      "name": "REQ_020",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Boundary and Note Semantics</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tBoundary cards SHALL be used to group related cards for rendering and navigation<BR/>; they may have a subtype such as End to limit recursion. Note cards SHALL be us<BR/>ed only as annotative leaves (incoming links only) and SHALL NOT introduce new s<BR/>tructural model elements.<BR/></FONT>\n\t\t\t",
+      "pos": "6564.9,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "fillcolor": "#065f46",
+      "height": "2.082",
+      "href": "../MIS-001-views/Boundary_and_Note_Semantics.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            6564.92,
+            84.85,
+            436.07,
+            74.91
+          ]
+        }
+      ],
+      "icon": "checklist",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            6512.42,
+            123.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            6445.42,
+            109.65
+          ],
+          "text": "Boundary and Note Semantics",
+          "width": 239.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            6264.42,
+            81.65
+          ],
+          "text": "Boundary cards SHALL be used to group related cards for rendering and navigation",
+          "width": 601.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            6269.42,
+            67.65
+          ],
+          "text": "; they may have a subtype such as End to limit recursion. Note cards SHALL be us",
+          "width": 591.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            6267.42,
+            53.65
+          ],
+          "text": "ed only as annotative leaves (incoming links only) and SHALL NOT introduce new s",
+          "width": 595.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            6471.42,
+            39.65
+          ],
+          "text": "tructural model elements.",
+          "width": 187.0
+        }
+      ],
+      "width": "12.119",
+      "svg_shape": "rounded-rectangle",
+      "style": "filled"
+    },
+    {
+      "_gvid": 8,
+      "name": "REQ_028",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Semantics Derived from Invariants</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora card and relationship labels SHALL be treated as descriptive metadata; th<BR/>e meaning of the architecture SHALL be derived from the model’s invariant rules <BR/>and the current view’s inclusion/projection of card types and links.<BR/></FONT>\n\t\t\t",
+      "pos": "7445.9,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "fillcolor": "#065f46",
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            7445.92,
+            84.85,
+            426.27,
+            65.11
+          ]
+        }
+      ],
+      "height": "1.8071",
+      "width": "11.844",
+      "svg_shape": "rounded-rectangle",
+      "href": "../MIS-001-views/Semantics_Derived_from_Invariants.view.svg",
+      "icon": "checklist",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            7393.42,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            7307.92,
+            102.65
+          ],
+          "text": "Semantics Derived from Invariants",
+          "width": 276.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            7152.92,
+            74.65
+          ],
+          "text": "Aurora card and relationship labels SHALL be treated as descriptive metadata; th",
+          "width": 586.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            7152.42,
+            60.65
+          ],
+          "text": "e meaning of the architecture SHALL be derived from the model’s invariant rules ",
+          "width": 587.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            7206.92,
+            46.65
+          ],
+          "text": "and the current view’s inclusion/projection of card types and links.",
+          "width": 478.0
+        }
+      ]
+    },
+    {
+      "_gvid": 9,
+      "name": "REQ_017",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Identifiers, Filenames, and Model Layout</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o<BR/>nce issued. Card files SHALL be named &lt;id&gt;-&lt;Sanitized_Name&gt;.jsjson, where specia<BR/>l characters are stripped and spaces are replaced with underscores. Models SHALL<BR/> follow the Model Home and Mission folder layout conventions so tools can discov<BR/>er, validate, and render deterministically.<BR/></FONT>\n\t\t\t",
+      "pos": "8336.9,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "height": "2.357",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            8336.92,
+            84.85,
+            446.78,
+            84.71
+          ]
+        }
+      ],
+      "icon": "checklist",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8284.42,
+            130.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8175.42,
+            116.65
+          ],
+          "text": "Identifiers, Filenames, and Model Layout",
+          "width": 323.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8036.42,
+            88.65
+          ],
+          "text": "Aurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o",
+          "width": 601.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8028.92,
+            74.65
+          ],
+          "text": "nce issued. Card files SHALL be named <id>-<Sanitized_Name>.jsjson, where specia",
+          "width": 616.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8037.92,
+            60.65
+          ],
+          "text": "l characters are stripped and spaces are replaced with underscores. Models SHALL",
+          "width": 598.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8044.42,
+            46.65
+          ],
+          "text": " follow the Model Home and Mission folder layout conventions so tools can discov",
+          "width": 585.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8189.42,
+            32.65
+          ],
+          "text": "er, validate, and render deterministically.",
+          "width": 295.0
+        }
+      ],
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "href": "../MIS-001-views/Identifiers,_Filenames,_and_Model_Layout.view.svg",
+      "width": "12.414",
+      "style": "filled"
+    },
+    {
+      "_gvid": 10,
+      "name": "REQ_026",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Views as Projections</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tViews SHALL be treated as projections of a single underlying model graph by sele<BR/>cting a set of card types (and optional subtypes) and rendering only those cards<BR/> and the links between them; views SHALL NOT change the underlying model.<BR/></FONT>\n\t\t\t",
+      "pos": "9229.9,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9177.42,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9149.42,
+            102.65
+          ],
+          "text": "Views as Projections",
+          "width": 161.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8935.42,
+            74.65
+          ],
+          "text": "Views SHALL be treated as projections of a single underlying model graph by sele",
+          "width": 589.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8943.42,
+            60.65
+          ],
+          "text": "cting a set of card types (and optional subtypes) and rendering only those cards",
+          "width": 573.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            8948.92,
+            46.65
+          ],
+          "text": " and the links between them; views SHALL NOT change the underlying model.",
+          "width": 562.0
+        }
+      ],
+      "icon": "checklist",
+      "style": "filled",
+      "fillcolor": "#065f46",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            9229.92,
+            84.85,
+            427.6,
+            65.11
+          ]
+        }
+      ],
+      "svg_shape": "rounded-rectangle",
+      "width": "11.883",
+      "height": "1.8071",
+      "href": "../MIS-001-views/Views_as_Projections.view.svg"
+    },
+    {
+      "_gvid": 11,
+      "name": "REQ_019",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Directed Graph with Local Cycles</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAll Aurora links SHALL lead away from the Mission card. Local cycles MAY exist w<BR/>ithin bounded subgraphs (for example state machines) as long as no link creates <BR/>a path back to the Mission.<BR/></FONT>\n\t\t\t",
+      "pos": "10104,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "href": "../MIS-001-views/Directed_Graph_with_Local_Cycles.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            10103.92,
+            84.85,
+            428.51,
+            65.11
+          ]
+        }
+      ],
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10051.42,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9973.42,
+            102.65
+          ],
+          "text": "Directed Graph with Local Cycles",
+          "width": 261.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9808.92,
+            74.65
+          ],
+          "text": "All Aurora links SHALL lead away from the Mission card. Local cycles MAY exist w",
+          "width": 590.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            9813.42,
+            60.65
+          ],
+          "text": "ithin bounded subgraphs (for example state machines) as long as no link creates ",
+          "width": 581.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10006.92,
+            46.65
+          ],
+          "text": "a path back to the Mission.",
+          "width": 194.0
+        }
+      ],
+      "width": "11.903",
+      "height": "1.8071",
+      "fillcolor": "#065f46"
+    },
+    {
+      "_gvid": 12,
+      "name": "REQ_023",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Canonical View Registry</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora tooling and documentation SHALL use a canonical registry of view definiti<BR/>ons that declare which card types are included and what root types anchor each v<BR/>iew.<BR/></FONT>\n\t\t\t",
+      "pos": "10976,84.853",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "height": "1.8071",
+      "fillcolor": "#065f46",
+      "width": "11.824",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10923.42,
+            116.65
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10880.42,
+            102.65
+          ],
+          "text": "Canonical View Registry",
+          "width": 191.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10683.92,
+            74.65
+          ],
+          "text": "Aurora tooling and documentation SHALL use a canonical registry of view definiti",
+          "width": 584.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10682.92,
+            60.65
+          ],
+          "text": "ons that declare which card types are included and what root types anchor each v",
+          "width": 586.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            10961.92,
+            46.65
+          ],
+          "text": "iew.",
+          "width": 28.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            10975.92,
+            84.85,
+            425.86,
+            65.11
+          ]
+        }
+      ],
+      "href": "../MIS-001-views/Canonical_View_Registry.view.svg",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "style": "filled"
+    }
+  ],
+  "edges": [],
+  "xdotversion": "1.7",
+  "fontcolor": "#FFFFFF",
+  "_draw_": [
+    {
+      "color": "#fffffe00",
+      "grad": "none",
+      "op": "c"
+    },
+    {
+      "color": "#ffffff",
+      "grad": "none",
+      "op": "C"
+    },
+    {
+      "op": "P",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          169.71
+        ],
+        [
+          11401.6,
+          169.71
+        ],
+        [
+          11401.6,
+          0.0
+        ]
+      ]
+    }
+  ]
+}

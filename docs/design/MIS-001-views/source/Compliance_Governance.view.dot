@@ -1,0 +1,200 @@
+digraph {
+					fontname="Noto Sans";
+					fontcolor="#FFFFFF";
+					fontsize=12;
+				REQ_017[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Identifiers, Filenames, and Model Layout</B><BR/>
+				<BR/>
+				Aurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o<BR/>nce issued. Card files SHALL be named &lt;id&gt;-&lt;Sanitized_Name&gt;.jsjson, where specia<BR/>l characters are stripped and spaces are replaced with underscores. Models SHALL<BR/> follow the Model Home and Mission folder layout conventions so tools can discov<BR/>er, validate, and render deterministically.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Identifiers,_Filenames,_and_Model_Layout.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_028[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Semantics Derived from Invariants</B><BR/>
+				<BR/>
+				Aurora card and relationship labels SHALL be treated as descriptive metadata; th<BR/>e meaning of the architecture SHALL be derived from the model’s invariant rules <BR/>and the current view’s inclusion/projection of card types and links.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Semantics_Derived_from_Invariants.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_023[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Canonical View Registry</B><BR/>
+				<BR/>
+				Aurora tooling and documentation SHALL use a canonical registry of view definiti<BR/>ons that declare which card types are included and what root types anchor each v<BR/>iew.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Canonical_View_Registry.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_018[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Single Root Mission</B><BR/>
+				<BR/>
+				Each Aurora model SHALL start with exactly one Mission card that serves as the r<BR/>oot of the directed graph. The Mission card SHALL only have outgoing links and S<BR/>HALL provide a consistent starting point for traversal and view generation.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Single_Root_Mission.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_019[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Directed Graph with Local Cycles</B><BR/>
+				<BR/>
+				All Aurora links SHALL lead away from the Mission card. Local cycles MAY exist w<BR/>ithin bounded subgraphs (for example state machines) as long as no link creates <BR/>a path back to the Mission.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Directed_Graph_with_Local_Cycles.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_025[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Model Integrity Validation</B><BR/>
+				<BR/>
+				Aurora models SHALL be machine-validatable for integrity: every non-Mission, non<BR/>-Note card SHALL have at least one incoming link; every card SHALL be reachable <BR/>from the Mission; and all links[].target values SHALL reference an existing card<BR/> id.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Model_Integrity_Validation.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_026[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Views as Projections</B><BR/>
+				<BR/>
+				Views SHALL be treated as projections of a single underlying model graph by sele<BR/>cting a set of card types (and optional subtypes) and rendering only those cards<BR/> and the links between them; views SHALL NOT change the underlying model.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Views_as_Projections.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_024[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Schema Referencing Rules</B><BR/>
+				<BR/>
+				All Aurora card files SHALL include a $schema field referencing the applicable A<BR/>urora schema using a relative path from the card file to the Model Home schema f<BR/>ile.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Schema_Referencing_Rules.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_022[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Canonical Relationship Registry</B><BR/>
+				<BR/>
+				Aurora tooling and documentation SHALL use a canonical registry of relationship <BR/>verbs, including allowed source and target card types, to enable deterministic v<BR/>alidation and interoperable views.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Canonical_Relationship_Registry.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_027[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Audit Trail and Versioning</B><BR/>
+				<BR/>
+				All Aurora cards SHALL include an audit_trail with a per-card SemVer version, an<BR/> optional SHA256 hash (nullable), and a chronological history of created/edited/<BR/>deleted events including editor identity and RFC3339 timestamps.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Audit_Trail_and_Versioning.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_020[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Boundary and Note Semantics</B><BR/>
+				<BR/>
+				Boundary cards SHALL be used to group related cards for rendering and navigation<BR/>; they may have a subtype such as End to limit recursion. Note cards SHALL be us<BR/>ed only as annotative leaves (incoming links only) and SHALL NOT introduce new s<BR/>tructural model elements.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Boundary_and_Note_Semantics.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_021[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Canonical Card Registry</B><BR/>
+				<BR/>
+				Aurora tooling and documentation SHALL use a canonical registry of card types (a<BR/>nd optional subtypes) to support consistent rendering, validation, and communica<BR/>tion across tools.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Canonical_Card_Registry.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_016[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Strict JSJSON Card Encoding</B><BR/>
+				<BR/>
+				Aurora card files SHALL be stored as strict JSON (RFC 8259) using the .jsjson ex<BR/>tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa<BR/>ctly one trailing newline.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Strict_JSJSON_Card_Encoding.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		}

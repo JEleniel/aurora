@@ -1,0 +1,2862 @@
+{
+  "name": "%3",
+  "directed": true,
+  "strict": false,
+  "_subgraph_cnt": 0,
+  "bb": "0,0,6308.5,492.32",
+  "rankdir": null,
+  "fontname": "Noto Sans",
+  "fontsize": "12",
+  "label": null,
+  "objects": [
+    {
+      "_gvid": 0,
+      "name": "REQ_010",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Shortest Path Tree Navigation</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL provide a left-pane tree view for navigation, where the tree is<BR/> derived from a chosen shortest path from the mission root to each card.<BR/></FONT>\n\t\t\t",
+      "pos": "2444.2,74.953",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2391.66,
+            99.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2324.66,
+            85.75
+          ],
+          "text": "Shortest Path Tree Navigation",
+          "width": 239.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2157.16,
+            57.75
+          ],
+          "text": "The editor SHALL provide a left-pane tree view for navigation, where the tree is",
+          "width": 574.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2184.16,
+            43.75
+          ],
+          "text": " derived from a chosen shortest path from the mission root to each card.",
+          "width": 520.0
+        }
+      ],
+      "icon": "checklist",
+      "style": "filled",
+      "width": "11.589",
+      "fillcolor": "#065f46",
+      "svg_shape": "rounded-rectangle",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            2444.16,
+            74.95,
+            417.39,
+            55.31
+          ]
+        }
+      ],
+      "height": "1.5321",
+      "href": "../MIS-004-views/Shortest_Path_Tree_Navigation.view.svg"
+    },
+    {
+      "_gvid": 1,
+      "name": "REQ_011",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Brain Style Graph Navigation</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL provide a central mind-map / TheBrain style view with the focus<BR/>ed card centered. The view SHALL show the parent (from the chosen shortest-path <BR/>chain), and MAY show siblings (same card_type) linked from that parent even if t<BR/>hey are not linked to the focused card.<BR/></FONT>\n\t\t\t",
+      "pos": "3314.2,74.953",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "width": "12.08",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3261.66,
+            113.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3198.16,
+            99.75
+          ],
+          "text": "Brain Style Graph Navigation",
+          "width": 232.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3018.66,
+            71.75
+          ],
+          "text": "The editor SHALL provide a central mind-map / TheBrain style view with the focus",
+          "width": 591.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3014.66,
+            57.75
+          ],
+          "text": "ed card centered. The view SHALL show the parent (from the chosen shortest-path ",
+          "width": 599.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3024.16,
+            43.75
+          ],
+          "text": "chain), and MAY show siblings (same card_type) linked from that parent even if t",
+          "width": 580.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3176.16,
+            29.75
+          ],
+          "text": "hey are not linked to the focused card.",
+          "width": 276.0
+        }
+      ],
+      "svg_shape": "rounded-rectangle",
+      "fillcolor": "#065f46",
+      "icon": "checklist",
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3314.16,
+            74.95,
+            434.74,
+            74.91
+          ]
+        }
+      ],
+      "height": "2.082",
+      "href": "../MIS-004-views/Brain_Style_Graph_Navigation.view.svg"
+    },
+    {
+      "_gvid": 2,
+      "name": "REQ_015",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Safe Workspace Persistence</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL persist edits to model files in a safe manner that avoids parti<BR/>al writes and preserves schema validity (e.g., atomic replace per card file).<BR/></FONT>\n\t\t\t",
+      "pos": "4181.2,74.953",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            4181.16,
+            74.95,
+            413.81,
+            55.31
+          ]
+        }
+      ],
+      "fillcolor": "#065f46",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4128.66,
+            99.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4071.16,
+            85.75
+          ],
+          "text": "Safe Workspace Persistence",
+          "width": 220.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3896.66,
+            57.75
+          ],
+          "text": "The editor SHALL persist edits to model files in a safe manner that avoids parti",
+          "width": 569.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3913.66,
+            43.75
+          ],
+          "text": "al writes and preserves schema validity (e.g., atomic replace per card file).",
+          "width": 535.0
+        }
+      ],
+      "href": "../MIS-004-views/Safe_Workspace_Persistence.view.svg",
+      "style": "filled",
+      "height": "1.5321",
+      "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
+      "width": "11.49"
+    },
+    {
+      "_gvid": 3,
+      "name": "SYS_003",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>System</B><BR/>\n\t\t\t\t<B>Aurora Standalone Editor System</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tBounded system that provides a desktop UI for exploring and editing Aurora model<BR/>s with a three-pane workflow (navigation, graph context, inspector).<BR/></FONT>\n\t\t\t",
+      "pos": "434.16,265.96",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "height": "1.5321",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            405.16,
+            290.76
+          ],
+          "text": "System",
+          "width": 58.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            303.16,
+            276.76
+          ],
+          "text": "Aurora Standalone Editor System",
+          "width": 262.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            135.16,
+            248.76
+          ],
+          "text": "Bounded system that provides a desktop UI for exploring and editing Aurora model",
+          "width": 598.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            190.66,
+            234.76
+          ],
+          "text": "s with a three-pane workflow (navigation, graph context, inspector).",
+          "width": 487.0
+        }
+      ],
+      "icon": "layers",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#172554",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            434.16,
+            265.96,
+            434.33,
+            55.31
+          ]
+        }
+      ],
+      "style": "filled",
+      "width": "12.06",
+      "svg_shape": "folder",
+      "fillcolor": "#172554",
+      "href": "../MIS-004-views/Aurora_Standalone_Editor_System.view.svg"
+    },
+    {
+      "_gvid": 4,
+      "name": "REQ_009",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Three Pane Layout</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL present a three-pane layout (similar to Visual Studio or Obsidi<BR/>an): left navigation tree, central graph view, and right inspector.<BR/></FONT>\n\t\t\t",
+      "pos": "5032.2,74.953",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "width": "11.648",
+      "style": "filled",
+      "href": "../MIS-004-views/Three_Pane_Layout.view.svg",
+      "icon": "checklist",
+      "fillcolor": "#065f46",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4979.66,
+            99.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4958.16,
+            85.75
+          ],
+          "text": "Three Pane Layout",
+          "width": 148.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4743.66,
+            57.75
+          ],
+          "text": "The editor SHALL present a three-pane layout (similar to Visual Studio or Obsidi",
+          "width": 577.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4802.16,
+            43.75
+          ],
+          "text": "an): left navigation tree, central graph view, and right inspector.",
+          "width": 460.0
+        }
+      ],
+      "svg_shape": "rounded-rectangle",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            5032.16,
+            74.95,
+            419.13,
+            55.31
+          ]
+        }
+      ],
+      "height": "1.5321"
+    },
+    {
+      "_gvid": 5,
+      "name": "REQ_014",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Reuse aurora_shared</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL reuse aurora_shared for model discovery/loading and validation/<BR/>rendering semantics to stay consistent with other Aurora tooling.<BR/></FONT>\n\t\t\t",
+      "pos": "673.16,74.953",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "style": "filled",
+      "svg_shape": "rounded-rectangle",
+      "fillcolor": "#065f46",
+      "href": "../MIS-004-views/Reuse_aurora_shared.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            673.16,
+            74.95,
+            429.84,
+            55.31
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            620.66,
+            99.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            589.66,
+            85.75
+          ],
+          "text": "Reuse aurora_shared",
+          "width": 167.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            377.16,
+            57.75
+          ],
+          "text": "The editor SHALL reuse aurora_shared for model discovery/loading and validation/",
+          "width": 592.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            438.66,
+            43.75
+          ],
+          "text": "rendering semantics to stay consistent with other Aurora tooling.",
+          "width": 469.0
+        }
+      ],
+      "height": "1.5321",
+      "width": "11.942",
+      "icon": "checklist"
+    },
+    {
+      "_gvid": 6,
+      "name": "REQ_013",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Dioxus UI</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe standalone editor SHOULD be implemented using Dioxus as the primary UI libra<BR/>ry.<BR/></FONT>\n\t\t\t",
+      "pos": "1565.2,74.953",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "fillcolor": "#065f46",
+      "icon": "checklist",
+      "svg_shape": "rounded-rectangle",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1512.66,
+            99.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1526.66,
+            85.75
+          ],
+          "text": "Dioxus UI",
+          "width": 77.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1259.16,
+            57.75
+          ],
+          "text": "The standalone editor SHOULD be implemented using Dioxus as the primary UI libra",
+          "width": 612.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1556.16,
+            43.75
+          ],
+          "text": "ry.",
+          "width": 18.0
+        }
+      ],
+      "height": "1.5321",
+      "style": "filled",
+      "href": "../MIS-004-views/Dioxus_UI.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1565.16,
+            74.95,
+            444.13,
+            55.31
+          ]
+        }
+      ],
+      "width": "12.335"
+    },
+    {
+      "_gvid": 7,
+      "name": "MIS_004",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Mission</B><BR/>\n\t\t\t\t<B>Standalone Editor</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tProvide a standalone application capable of creating and manipulating Aurora mod<BR/>els visually, reusing the aurora_shared library to facilitate development.<BR/></FONT>\n\t\t\t",
+      "pos": "2658.2,437.17",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#022c22",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            2658.16,
+            437.17,
+            430.76,
+            55.31
+          ]
+        }
+      ],
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2626.66,
+            461.97
+          ],
+          "text": "Mission",
+          "width": 63.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2587.16,
+            447.97
+          ],
+          "text": "Standalone Editor",
+          "width": 142.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2361.66,
+            419.97
+          ],
+          "text": "Provide a standalone application capable of creating and manipulating Aurora mod",
+          "width": 593.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2400.16,
+            405.97
+          ],
+          "text": "els visually, reusing the aurora_shared library to facilitate development.",
+          "width": 516.0
+        }
+      ],
+      "fillcolor": "#022c22",
+      "width": "11.962",
+      "height": "1.5321",
+      "icon": "target",
+      "href": "../MIS-004-views/Standalone_Editor.view.svg",
+      "svg_shape": "octagon"
+    },
+    {
+      "_gvid": 8,
+      "name": "DRI_005",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Driver</B><BR/>\n\t\t\t\t<B>Reuse Shared Aurora Semantics</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tMinimize duplicated logic and inconsistencies across tooling surfaces by reusing<BR/> the aurora_shared library for model discovery, parsing, validation, and renderi<BR/>ng.<BR/></FONT>\n\t\t\t",
+      "pos": "1565.2,265.96",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "svg_shape": "rounded-rectangle",
+      "fillcolor": "#064e3b",
+      "height": "1.8071",
+      "width": "11.648",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#064e3b",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1565.16,
+            265.96,
+            419.13,
+            65.11
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1540.16,
+            297.76
+          ],
+          "text": "Driver",
+          "width": 50.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1438.16,
+            283.76
+          ],
+          "text": "Reuse Shared Aurora Semantics",
+          "width": 254.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1276.66,
+            255.76
+          ],
+          "text": "Minimize duplicated logic and inconsistencies across tooling surfaces by reusing",
+          "width": 577.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1282.16,
+            241.76
+          ],
+          "text": " the aurora_shared library for model discovery, parsing, validation, and renderi",
+          "width": 566.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1553.66,
+            227.76
+          ],
+          "text": "ng.",
+          "width": 23.0
+        }
+      ],
+      "icon": "compass",
+      "style": "filled",
+      "href": "../MIS-004-views/Reuse_Shared_Aurora_Semantics.view.svg"
+    },
+    {
+      "_gvid": 9,
+      "name": "REQ_012",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Edit, Preview, and Audit Inspector</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe editor SHALL provide a right-pane inspector: the top half edits the focused <BR/>card; the bottom half renders a Markdown-style view of the card (including links<BR/>). The bottom half SHALL provide a tab to reveal the card’s audit trail details.<BR/></FONT>\n\t\t\t",
+      "pos": "5889.2,74.953",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "icon": "checklist",
+      "style": "filled",
+      "href": "../MIS-004-views/Edit,_Preview,_and_Audit_Inspector.view.svg",
+      "fillcolor": "#065f46",
+      "height": "1.8071",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#065f46",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            5889.16,
+            74.95,
+            419.13,
+            65.11
+          ]
+        }
+      ],
+      "svg_shape": "rounded-rectangle",
+      "width": "11.648",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5836.66,
+            106.75
+          ],
+          "text": "Requirement",
+          "width": 105.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5755.16,
+            92.75
+          ],
+          "text": "Edit, Preview, and Audit Inspector",
+          "width": 268.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5603.16,
+            64.75
+          ],
+          "text": "The editor SHALL provide a right-pane inspector: the top half edits the focused ",
+          "width": 572.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5600.66,
+            50.75
+          ],
+          "text": "card; the bottom half renders a Markdown-style view of the card (including links",
+          "width": 577.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            5610.66,
+            36.75
+          ],
+          "text": "). The bottom half SHALL provide a tab to reveal the card’s audit trail details.",
+          "width": 557.0
+        }
+      ]
+    },
+    {
+      "_gvid": 10,
+      "name": "DRI_004",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Driver</B><BR/>\n\t\t\t\t<B>Visual Model Authoring</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tEnable rapid comprehension and editing of an Aurora model through a visual, mult<BR/>i-pane editor that reduces cognitive load and navigation friction.<BR/></FONT>\n\t\t\t",
+      "pos": "3314.2,265.96",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3289.16,
+            290.76
+          ],
+          "text": "Driver",
+          "width": 50.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3220.66,
+            276.76
+          ],
+          "text": "Visual Model Authoring",
+          "width": 187.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3016.66,
+            248.76
+          ],
+          "text": "Enable rapid comprehension and editing of an Aurora model through a visual, mult",
+          "width": 595.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3083.66,
+            234.76
+          ],
+          "text": "i-pane editor that reduces cognitive load and navigation friction.",
+          "width": 461.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#064e3b",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3314.16,
+            265.96,
+            432.08,
+            55.31
+          ]
+        }
+      ],
+      "svg_shape": "rounded-rectangle",
+      "height": "1.5321",
+      "icon": "compass",
+      "fillcolor": "#064e3b",
+      "width": "12.001",
+      "href": "../MIS-004-views/Visual_Model_Authoring.view.svg"
+    },
+    {
+      "_gvid": 11,
+      "name": "APP_004",
+      "bb": null,
+      "label": "\\N",
+      "pos": "173.16,74.953",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            173.16,
+            71.25
+          ],
+          "text": "APP_004",
+          "width": 64.0
+        }
+      ],
+      "height": "0.5",
+      "width": "1.4443",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            173.16,
+            74.95,
+            51.99,
+            18.0
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 12,
+      "name": "ACT_004",
+      "bb": null,
+      "label": "\\N",
+      "pos": "3816.2,265.96",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            3816.16,
+            265.96,
+            51.99,
+            18.0
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            3816.16,
+            262.26
+          ],
+          "text": "ACT_004",
+          "width": 64.0
+        }
+      ],
+      "height": "0.5",
+      "width": "1.4443"
+    }
+  ],
+  "edges": [
+    {
+      "tail": 3,
+      "head": 11,
+      "_gvid": 0,
+      "pos": "e,184.31,92.707 326.71,212.51 295.33,194.77 262.01,173.43 234.16,149.91 217.37,135.72 201.67,116.49 190.4,101.19",
+      "label": "integrates",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              192.98,
+              98.78
+            ],
+            [
+              184.31,
+              92.71
+            ],
+            [
+              187.3,
+              102.87
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            312.16,
+            171.71
+          ],
+          "text": "integrates",
+          "width": 74.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              326.71,
+              212.51
+            ],
+            [
+              295.33,
+              194.77
+            ],
+            [
+              262.01,
+              173.43
+            ],
+            [
+              234.16,
+              149.91
+            ],
+            [
+              217.37,
+              135.72
+            ],
+            [
+              201.67,
+              116.49
+            ],
+            [
+              190.4,
+              101.19
+            ]
+          ]
+        }
+      ],
+      "lp": "312.16,175.41"
+    },
+    {
+      "tail": 7,
+      "head": 3,
+      "_gvid": 1,
+      "pos": "e,777.74,299.78 2274.7,411.98 1967.1,392.02 1524.2,362.02 1137.2,331.01 1023.5,321.91 899.53,310.95 787.82,300.7",
+      "label": "requires",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              788.02,
+              297.21
+            ],
+            [
+              777.74,
+              299.78
+            ],
+            [
+              787.38,
+              304.18
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2274.73,
+              411.98
+            ],
+            [
+              1967.07,
+              392.02
+            ],
+            [
+              1524.19,
+              362.02
+            ],
+            [
+              1137.16,
+              331.01
+            ],
+            [
+              1023.47,
+              321.91
+            ],
+            [
+              899.53,
+              310.95
+            ],
+            [
+              787.82,
+              300.7
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1585.66,
+            352.81
+          ],
+          "text": "requires",
+          "width": 61.0
+        }
+      ],
+      "lp": "1585.7,356.51"
+    },
+    {
+      "tail": 7,
+      "head": 8,
+      "_gvid": 2,
+      "pos": "e,1859.2,312.48 2387.3,394.23 2230.2,369.91 2031.8,339.21 1869.4,314.05",
+      "label": "establishes",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "2217.7,356.51",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1869.62,
+              310.55
+            ],
+            [
+              1859.2,
+              312.48
+            ],
+            [
+              1868.55,
+              317.47
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2217.66,
+            352.81
+          ],
+          "text": "establishes",
+          "width": 81.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2387.28,
+              394.23
+            ],
+            [
+              2230.15,
+              369.91
+            ],
+            [
+              2031.84,
+              339.21
+            ],
+            [
+              1869.36,
+              314.05
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 7,
+      "head": 10,
+      "_gvid": 3,
+      "pos": "e,3125.5,315.61 2846.6,387.57 2930.9,365.82 3030.3,340.18 3115.7,318.14",
+      "label": "establishes",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2846.59,
+              387.57
+            ],
+            [
+              2930.88,
+              365.82
+            ],
+            [
+              3030.29,
+              340.18
+            ],
+            [
+              3115.73,
+              318.14
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              3116.73,
+              321.5
+            ],
+            [
+              3125.54,
+              315.61
+            ],
+            [
+              3114.98,
+              314.72
+            ]
+          ]
+        }
+      ],
+      "lp": "3026.7,356.51",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            3026.66,
+            352.81
+          ],
+          "text": "establishes",
+          "width": 81.0
+        }
+      ]
+    },
+    {
+      "tail": 7,
+      "head": 12,
+      "_gvid": 4,
+      "pos": "e,3805.4,283.85 3080,425.94 3337.3,413.92 3638.4,387.79 3755.2,331.01 3773,322.34 3788.4,306.11 3799.2,292.15",
+      "label": "involves",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              3079.96,
+              425.94
+            ],
+            [
+              3337.27,
+              413.92
+            ],
+            [
+              3638.44,
+              387.79
+            ],
+            [
+              3755.16,
+              331.01
+            ],
+            [
+              3773.0,
+              322.34
+            ],
+            [
+              3788.37,
+              306.11
+            ],
+            [
+              3799.22,
+              292.15
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              3802.23,
+              293.97
+            ],
+            [
+              3805.37,
+              283.85
+            ],
+            [
+              3796.61,
+              289.8
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            3737.66,
+            352.81
+          ],
+          "text": "involves",
+          "width": 59.0
+        }
+      ],
+      "lp": "3737.7,356.51"
+    },
+    {
+      "tail": 8,
+      "head": 5,
+      "_gvid": 5,
+      "pos": "e,892.41,122.41 1320.2,213.06 1189.8,185.42 1030.3,151.64 902.35,124.52",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1320.24,
+              213.06
+            ],
+            [
+              1189.8,
+              185.42
+            ],
+            [
+              1030.34,
+              151.64
+            ],
+            [
+              902.35,
+              124.52
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1195.66,
+            171.71
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              902.92,
+              121.06
+            ],
+            [
+              892.41,
+              122.41
+            ],
+            [
+              901.47,
+              127.91
+            ]
+          ]
+        }
+      ],
+      "lp": "1195.7,175.41"
+    },
+    {
+      "tail": 8,
+      "head": 6,
+      "_gvid": 6,
+      "pos": "e,1565.2,130.27 1565.2,200.71 1565.2,181.21 1565.2,159.78 1565.2,140.27",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1565.16,
+              200.71
+            ],
+            [
+              1565.16,
+              181.21
+            ],
+            [
+              1565.16,
+              159.78
+            ],
+            [
+              1565.16,
+              140.27
+            ]
+          ]
+        }
+      ],
+      "lp": "1587.7,175.41",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1587.66,
+            171.71
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1568.66,
+              140.27
+            ],
+            [
+              1565.16,
+              130.27
+            ],
+            [
+              1561.66,
+              140.27
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 10,
+      "head": 0,
+      "_gvid": 7,
+      "pos": "e,2658,122.41 3098.5,218.12 2967.5,189.64 2800.4,153.34 2667.9,124.55",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2668.5,
+              121.11
+            ],
+            [
+              2657.99,
+              122.41
+            ],
+            [
+              2667.01,
+              127.95
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              3098.55,
+              218.12
+            ],
+            [
+              2967.47,
+              189.64
+            ],
+            [
+              2800.39,
+              153.34
+            ],
+            [
+              2667.87,
+              124.55
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2954.66,
+            171.71
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "lp": "2954.7,175.41"
+    },
+    {
+      "tail": 10,
+      "head": 1,
+      "_gvid": 8,
+      "pos": "e,3314.2,150.2 3314.2,210.8 3314.2,195.02 3314.2,177.4 3314.2,160.23",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              3314.16,
+              210.8
+            ],
+            [
+              3314.16,
+              195.02
+            ],
+            [
+              3314.16,
+              177.4
+            ],
+            [
+              3314.16,
+              160.23
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              3317.66,
+              160.2
+            ],
+            [
+              3314.16,
+              150.2
+            ],
+            [
+              3310.66,
+              160.2
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            3336.66,
+            171.71
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "lp": "3336.7,175.41"
+    },
+    {
+      "tail": 10,
+      "head": 2,
+      "_gvid": 9,
+      "pos": "e,3968.6,122.3 3529.3,218.06 3660.1,189.55 3826.7,153.23 3958.7,124.44",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            3769.66,
+            171.71
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              3529.31,
+              218.06
+            ],
+            [
+              3660.07,
+              189.55
+            ],
+            [
+              3826.69,
+              153.23
+            ],
+            [
+              3958.74,
+              124.44
+            ]
+          ]
+        }
+      ],
+      "lp": "3769.7,175.41",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              3959.56,
+              127.85
+            ],
+            [
+              3968.59,
+              122.3
+            ],
+            [
+              3958.07,
+              121.01
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 10,
+      "head": 4,
+      "_gvid": 10,
+      "pos": "e,4799.9,120.92 3580.7,222.55 3638.2,214.45 3698.6,206.7 3755.2,200.91 4131.2,162.37 4228.7,193.49 4604.2,149.91 4664.6,142.9 4729.4,132.97 4789.8,122.65",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              4790.62,
+              126.06
+            ],
+            [
+              4799.89,
+              120.92
+            ],
+            [
+              4789.44,
+              119.16
+            ]
+          ]
+        }
+      ],
+      "lp": "4429.7,175.41",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            4429.66,
+            171.71
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              3580.74,
+              222.55
+            ],
+            [
+              3638.16,
+              214.45
+            ],
+            [
+              3698.6,
+              206.7
+            ],
+            [
+              3755.16,
+              200.91
+            ],
+            [
+              4131.21,
+              162.37
+            ],
+            [
+              4228.67,
+              193.49
+            ],
+            [
+              4604.16,
+              149.91
+            ],
+            [
+              4664.56,
+              142.9
+            ],
+            [
+              4729.38,
+              132.97
+            ],
+            [
+              4789.83,
+              122.65
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 10,
+      "head": 9,
+      "_gvid": 11,
+      "pos": "e,5631.3,126.32 3574.5,221.93 3633.7,213.59 3696.5,205.9 3755.2,200.91 4065.7,174.46 4144.6,192.03 4456.2,182.91 4902.4,169.84 5016,195.27 5460.2,149.91 5512.5,144.56 5568.2,136.64 5621.4,127.96",
+      "label": "drives",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              3574.45,
+              221.93
+            ],
+            [
+              3633.7,
+              213.59
+            ],
+            [
+              3696.48,
+              205.9
+            ],
+            [
+              3755.16,
+              200.91
+            ],
+            [
+              4065.7,
+              174.46
+            ],
+            [
+              4144.64,
+              192.03
+            ],
+            [
+              4456.16,
+              182.91
+            ],
+            [
+              4902.44,
+              169.84
+            ],
+            [
+              5016.01,
+              195.27
+            ],
+            [
+              5460.16,
+              149.91
+            ],
+            [
+              5512.54,
+              144.56
+            ],
+            [
+              5568.18,
+              136.64
+            ],
+            [
+              5621.43,
+              127.96
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            5270.66,
+            171.71
+          ],
+          "text": "drives",
+          "width": 45.0
+        }
+      ],
+      "lp": "5270.7,175.41",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              5622.04,
+              131.4
+            ],
+            [
+              5631.34,
+              126.32
+            ],
+            [
+              5620.91,
+              124.49
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "xdotversion": "1.7",
+  "_draw_": [
+    {
+      "color": "#fffffe00",
+      "grad": "none",
+      "op": "c"
+    },
+    {
+      "color": "#ffffff",
+      "grad": "none",
+      "op": "C"
+    },
+    {
+      "op": "P",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          492.32
+        ],
+        [
+          6308.48,
+          492.32
+        ],
+        [
+          6308.48,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "fontcolor": "#FFFFFF"
+}

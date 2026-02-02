@@ -8,10 +8,7 @@ pub use card::*;
 
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
-use std::{
-	collections::{BTreeMap, HashSet},
-	fs,
-};
+use std::{collections::HashSet, fs};
 use std::{ffi::OsStr, path::PathBuf};
 use thiserror::Error;
 use tracing::{debug, trace};
@@ -23,7 +20,7 @@ const MODEL_MARKDOWN_TEMPLATE: &str = include_str!("model.template.md");
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Model {
 	pub root_card: Card,
-	pub cards: BTreeMap<String, Card>,
+	pub cards: Vec<Card>,
 	pub mission_home: PathBuf,
 }
 
@@ -37,8 +34,9 @@ impl Model {
 			.to_path_buf()
 			.clone();
 		mission_home.push(root_card.id.as_str());
-		let mut cards = BTreeMap::new();
-		let mut folders_to_visit = vec![mission_home.clone()];
+
+		let mut cards: Vec<Card> = Vec::new();
+		let mut folders_to_visit: Vec<PathBuf> = vec![mission_home.clone()];
 		while !folders_to_visit.is_empty() {
 			if let Some(current_folder) = folders_to_visit.pop() {
 				debug!("Scanning {}", current_folder.display());
@@ -51,7 +49,7 @@ impl Model {
 					} else {
 						debug!("Loading card from {}", entry.path().display());
 						let card = Card::try_load(&entry.path(), card_schema)?;
-						cards.insert(card.id.clone(), card);
+						cards.push(card);
 					}
 				}
 			}
@@ -89,7 +87,7 @@ impl Model {
 			}
 		}
 
-		for card in self.cards.values() {
+		for card in &self.cards {
 			if card.validation_errors.is_empty() {
 				continue;
 			}
@@ -104,7 +102,7 @@ impl Model {
 	pub fn validate_registry(&self) -> Vec<String> {
 		let mut warnings: Vec<String> = Vec::new();
 
-		for card in self.cards.values() {
+		for card in &self.cards {
 			warnings.extend(card.check_registry());
 		}
 		warnings
@@ -126,7 +124,7 @@ impl Model {
 		));
 		self.root_card.write(&mission_path);
 
-		for card in self.cards.values() {
+		for card in &self.cards {
 			let mut card_path = self.mission_home.clone();
 			card_path.push(self.root_card.id.as_str());
 			card_path.push(&card.card_type);
@@ -195,7 +193,7 @@ impl Model {
 		for card_type in card_types {
 			index.push_str(format!("### {}\n\n", card_type).as_str());
 
-			for card in self.cards.values().filter(|c| c.card_type == card_type) {
+			for card in self.cards.iter().filter(|c| c.card_type == card_type) {
 				let card_link = format!(
 					"- **[{} - {}]({}/{}/{}.md)**: {}\n\n",
 					card.id,
@@ -215,7 +213,7 @@ impl Model {
 
 		self.root_card.write_markdown(mission_md_path);
 
-		for card in self.cards.values() {
+		for card in &self.cards {
 			let mut card_path = path.clone();
 			card_path.push(self.root_card.id.as_str());
 			card_path.push(&card.card_type);
@@ -233,7 +231,7 @@ impl Model {
 				"$schema": "Aurora.compact.schema.jsjson",
 				"cards": [
 					self.root_card.get_compact(),
-					for card in self.cards.values() {
+					for card in &self.cards {
 						card.get_compact();
 					}
 				]
@@ -244,18 +242,28 @@ impl Model {
 
 	/// Test Invariant 1: Only one mission at the root
 	fn validate_single_mission(&self) -> Vec<String> {
-		self.cards
-			.keys()
-			.filter(|c| c.starts_with("MIS"))
-			.cloned()
-			.map(|c| format!("Extra mission card: {}", c))
-			.collect()
+		let missions: Vec<&Card> = self
+			.cards
+			.iter()
+			.filter(|c| c.id.starts_with("MIS"))
+			.collect();
+		let mut results: Vec<String> = Vec::new();
+		if missions.len() > 0 {
+			for mission in missions {
+				results.push(format!(
+					"Model {}: extra Mission card at {}",
+					self.root_card.id,
+					mission.source_path.display()
+				));
+			}
+		}
+		results
 	}
 
 	/// Test Invariant 2a: All cards lead away from Mission
 	fn validate_no_mission_incoming_links(&self) -> Vec<String> {
 		self.cards
-			.values()
+			.iter()
 			.map(|c| c.links.iter().map(|l| l.target.clone()))
 			.flatten()
 			.filter(|target_id| *target_id == self.root_card.id)
@@ -269,7 +277,7 @@ impl Model {
 		let mut errors: Vec<String> = Vec::new();
 
 		let mut left: HashSet<String> = HashSet::new();
-		for card_id in self.cards.keys() {
+		for card_id in self.cards.iter().map(|c| c.id.clone()) {
 			left.insert(card_id.clone());
 		}
 
@@ -277,7 +285,7 @@ impl Model {
 			left.remove(&link.target);
 		}
 
-		for card in self.cards.values() {
+		for card in &self.cards {
 			for link in &card.links {
 				left.remove(&link.target);
 			}
@@ -291,9 +299,11 @@ impl Model {
 	/// Test Invariant 6: No broken links
 	fn validate_broken_links(&self) -> Vec<String> {
 		let mut errors: Vec<String> = Vec::new();
-		for card in self.cards.values() {
+		for card in &self.cards {
 			for link in &card.links {
-				if link.target != self.root_card.id && !self.cards.contains_key(&link.target) {
+				if link.target != self.root_card.id
+					&& !self.cards.iter().filter(|c| c.id == link.target).count() == 0
+				{
 					errors.push(format!(
 						"Card {} has a broken link to {}.",
 						card.id, link.target
@@ -309,15 +319,15 @@ impl Model {
 		let mut errors: Vec<String> = Vec::new();
 
 		// At least one outgoing link with 'contains' relationship
-		for card in self
+		for card in &self
 			.cards
-			.values()
+			.iter()
 			.filter(|c| c.card_type == "Boundary")
 			.collect::<Vec<_>>()
 		{
 			if card.links.is_empty() {
 				errors.push(format!(
-					"Special card {} of type Boundary must have at least one outgoing link.",
+					"Special Boundary card {} must have at least one outgoing link.",
 					card.id
 				));
 			}
@@ -328,7 +338,7 @@ impl Model {
 				.count() > 0
 			{
 				errors.push(format!(
-					"Special card {} of type Boundary can only have 'contains' outgoing relationships.",
+					"Special Boundary card {} can only have 'contains' outgoing relationships.",
 					card.id
 				));
 			}
@@ -336,13 +346,13 @@ impl Model {
 			// No incoming links except 'includes' relationships
 			if self
 				.cards
-				.values()
+				.iter()
 				.flat_map(|c| c.links.iter())
 				.filter(|l| l.target == card.id)
 				.any(|l| l.relationship != "includes")
 			{
 				errors.push(format!(
-					"Special card {} of type Boundary can only have 'includes' incoming relationships.",
+					"Special Boundary card {} can only have 'includes' incoming relationships.",
 					card.id
 				));
 			}
@@ -356,26 +366,26 @@ impl Model {
 		let mut errors: Vec<String> = Vec::new();
 		for card in self
 			.cards
-			.values()
+			.iter()
 			.filter(|c| c.card_type == "Note")
 			.collect::<Vec<_>>()
 		{
 			if !card.links.is_empty() {
 				errors.push(format!(
-					"Special card {} of type Note should not have links.",
+					"Special card Note {} should not have outgoing links.",
 					card.id
 				));
 			}
 			let incoming: usize = self
 				.cards
-				.values()
+				.iter()
 				.map(|c| c.links.iter().map(|l| l.target.clone()))
 				.flatten()
 				.filter(|target_id| *target_id == card.id)
 				.count();
 			if incoming > 1 {
 				errors.push(format!(
-					"Special card {} of type Note should not have more than one incoming link.",
+					"Special card Note {} should not have more than one incoming link.",
 					card.id
 				));
 			}

@@ -7,6 +7,10 @@ Reference Aurora model encoding the canonical relationship registry as concrete 
 ## Views
 ![Use_Case.view.svg](MIS-002-views/Use_Case.view.svg)
 
+![Requirements.view.svg](MIS-002-views/Requirements.view.svg)
+
+![Entire_Model.view.svg](MIS-002-views/Entire_Model.view.svg)
+
 ![State_Machine.view.svg](MIS-002-views/State_Machine.view.svg)
 
 ![Security.view.svg](MIS-002-views/Security.view.svg)
@@ -28,9 +32,9 @@ Reference Aurora model encoding the canonical relationship registry as concrete 
 
 ### Activity
 
-- **[ATV-001 - Reference Activity](MIS-002/Activity/ATV-001.md)**: Activity that leads to another activity, emits an event, and evaluates a condition.
-
 - **[ATV-002 - Triggered Activity](MIS-002/Activity/ATV-002.md)**: Secondary activity used as the target of Activity/Event triggers in the reference model.
+
+- **[ATV-001 - Reference Activity](MIS-002/Activity/ATV-001.md)**: Activity that leads to another activity, emits an event, and evaluates a condition.
 
 ### Actor
 
@@ -94,9 +98,9 @@ Reference Aurora model encoding the canonical relationship registry as concrete 
 
 ### Event
 
-- **[EVT-001 - Reference Event](MIS-002/Event/EVT-001.md)**: Event that transitions to a state in the relationship-matrix reference model.
-
 - **[EVT-002 - Triggered Event](MIS-002/Event/EVT-002.md)**: Secondary event used as a target of transitions/triggers in the reference model.
+
+- **[EVT-001 - Reference Event](MIS-002/Event/EVT-001.md)**: Event that transitions to a state in the relationship-matrix reference model.
 
 ### Feature
 
@@ -158,8 +162,8 @@ Reference Aurora model encoding the canonical relationship registry as concrete 
 
 ### Threat
 
-- **[THR-001 - Reference Threat](MIS-002/Threat/THR-001.md)**: Threat presented by an actor that raises a risk.
-
 - **[THR-002 - Secondary Threat](MIS-002/Threat/THR-002.md)**: Secondary threat used as a target for actor threat presentation in the reference model.
+
+- **[THR-001 - Reference Threat](MIS-002/Threat/THR-001.md)**: Threat presented by an actor that raises a risk.
 
 ### Trigger

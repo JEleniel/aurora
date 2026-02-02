@@ -1,0 +1,66 @@
+digraph {
+					fontname="Noto Sans";
+					fontcolor="#FFFFFF";
+					fontsize=12;
+				THR_002[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Threat</B><BR/>
+				<B>Secondary Threat</B><BR/>
+				<BR/>
+				Secondary threat used as a target for actor threat presentation in the reference<BR/> model.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-002-views/Secondary_Threat.view.svg";
+			style=filled;
+			fillcolor="#4c0519";
+			svg_shape="octagon";
+			icon="bug";
+		];
+		RIS_001[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Risk</B><BR/>
+				<B>Reference Risk</B><BR/>
+				<BR/>
+				Risk raised by threats and mitigated by controls in the relationship-matrix refe<BR/>rence model.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-002-views/Reference_Risk.view.svg";
+			style=filled;
+			fillcolor="#881337";
+			svg_shape="octagon";
+			icon="alert-triangle";
+		];
+		AST_001[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Asset</B><BR/>
+				<B>Reference Asset</B><BR/>
+				<BR/>
+				Asset owned by an actor, protected by a control, and derived from an artifact in<BR/> the reference model.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-002-views/Reference_Asset.view.svg";
+			style=filled;
+			fillcolor="#334155";
+			svg_shape="box";
+			icon="shield-key";
+		];
+		THR_001[
+			label=<
+				<FONT COLOR="#FFFFFF"><B>Threat</B><BR/>
+				<B>Reference Threat</B><BR/>
+				<BR/>
+				Threat presented by an actor that raises a risk.<BR/></FONT>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-002-views/Reference_Threat.view.svg";
+			style=filled;
+			fillcolor="#4c0519";
+			svg_shape="octagon";
+			icon="bug";
+		];
+			THR_001 -> RIS_001 [label="raises"];
+								}

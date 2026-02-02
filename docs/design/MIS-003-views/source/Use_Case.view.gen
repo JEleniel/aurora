@@ -1,0 +1,177 @@
+{
+  "name": "%3",
+  "directed": true,
+  "strict": false,
+  "_subgraph_cnt": 0,
+  "bb": "0,0,868.33,110.31",
+  "rankdir": null,
+  "fontname": "Noto Sans",
+  "fontsize": "12",
+  "label": null,
+  "objects": [
+    {
+      "_gvid": 0,
+      "name": "ACT_003",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Actor</B><BR/>\n\t\t\t\t<B>Architect</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tHuman operator responsible for authoring Aurora models and running CLI tooling (<BR/>validate, render, compact) to maintain deterministic design artifacts.<BR/></FONT>\n\t\t\t",
+      "pos": "434.16,55.154",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "icon": "user",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#1a2e05",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            434.16,
+            55.15,
+            434.33,
+            55.31
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            412.66,
+            79.95
+          ],
+          "text": "Actor",
+          "width": 43.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            397.66,
+            65.95
+          ],
+          "text": "Architect",
+          "width": 73.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            135.16,
+            37.95
+          ],
+          "text": "Human operator responsible for authoring Aurora models and running CLI tooling (",
+          "width": 598.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            187.16,
+            23.95
+          ],
+          "text": "validate, render, compact) to maintain deterministic design artifacts.",
+          "width": 494.0
+        }
+      ],
+      "style": "filled",
+      "fillcolor": "#1a2e05",
+      "href": "../MIS-003-views/Architect.view.svg",
+      "svg_shape": "ellipse",
+      "height": "1.5321",
+      "width": "12.06"
+    }
+  ],
+  "edges": [],
+  "fontcolor": "#FFFFFF",
+  "_draw_": [
+    {
+      "color": "#fffffe00",
+      "grad": "none",
+      "op": "c"
+    },
+    {
+      "color": "#ffffff",
+      "grad": "none",
+      "op": "C"
+    },
+    {
+      "op": "P",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          110.31
+        ],
+        [
+          868.33,
+          110.31
+        ],
+        [
+          868.33,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "xdotversion": "1.7"
+}

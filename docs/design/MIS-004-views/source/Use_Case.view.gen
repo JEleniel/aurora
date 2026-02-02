@@ -1,0 +1,177 @@
+{
+  "name": "%3",
+  "directed": true,
+  "strict": false,
+  "_subgraph_cnt": 0,
+  "bb": "0,0,855.6,110.31",
+  "rankdir": null,
+  "fontname": "Noto Sans",
+  "fontsize": "12",
+  "label": null,
+  "objects": [
+    {
+      "_gvid": 0,
+      "name": "ACT_004",
+      "bb": null,
+      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Actor</B><BR/>\n\t\t\t\t<B>Model Author</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tHuman operator responsible for navigating, editing, and validating Aurora models<BR/> within the standalone editor.<BR/></FONT>\n\t\t\t",
+      "pos": "427.8,55.154",
+      "nodes": null,
+      "edges": null,
+      "subgraphs": null,
+      "svg_shape": "ellipse",
+      "height": "1.5321",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            406.3,
+            79.95
+          ],
+          "text": "Actor",
+          "width": 43.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            373.3,
+            65.95
+          ],
+          "text": "Model Author",
+          "width": 109.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            133.3,
+            37.95
+          ],
+          "text": "Human operator responsible for navigating, editing, and validating Aurora models",
+          "width": 589.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#ffffff",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            322.3,
+            23.95
+          ],
+          "text": " within the standalone editor.",
+          "width": 211.0
+        }
+      ],
+      "width": "11.883",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#1a2e05",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            427.8,
+            55.15,
+            427.6,
+            55.31
+          ]
+        }
+      ],
+      "fillcolor": "#1a2e05",
+      "href": "../MIS-004-views/Model_Author.view.svg",
+      "icon": "user",
+      "style": "filled"
+    }
+  ],
+  "edges": [],
+  "fontcolor": "#FFFFFF",
+  "xdotversion": "1.7",
+  "_draw_": [
+    {
+      "color": "#fffffe00",
+      "grad": "none",
+      "op": "c"
+    },
+    {
+      "color": "#ffffff",
+      "grad": "none",
+      "op": "C"
+    },
+    {
+      "op": "P",
+      "points": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          110.31
+        ],
+        [
+          855.6,
+          110.31
+        ],
+        [
+          855.6,
+          0.0
+        ]
+      ]
+    }
+  ]
+}
