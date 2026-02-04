@@ -1,0 +1,2 @@
+**/*.svg merge=ours
+**/*.md merge=ours
