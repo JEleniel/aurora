@@ -12,14 +12,16 @@
     {
       "_gvid": 0,
       "name": "REQ_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Requirement</B><BR/>\n\t\t\t\t<B>Reference Requirement</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tRequirement referenced by multiple rules (driven by driver, satisfied by capabil<BR/>ity, documented by ADR, limited by constraint).<BR/></FONT>\n\t\t\t",
+      "label": "\n\t\t\t\t<B>Requirement</B><BR/>\n\t\t\t\t<B>Reference Requirement</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tRequirement referenced by multiple rules (driven by driver, satisfied by capabil<BR/>ity, documented by ADR, limited by constraint).<BR/>\n\t\t\t",
       "pos": "415.07,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "width": "11.53",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#065f46",
       "svg_shape": "rounded-rectangle",
+      "icon": "checklist",
       "style": "filled",
+      "href": "../MIS-002-views/Reference_Requirement.view.svg",
       "_draw_": [
         {
           "color": "#000000",
@@ -41,7 +43,6 @@
           ]
         }
       ],
-      "height": "1.5321",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -49,7 +50,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -73,7 +74,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -93,7 +94,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -117,7 +118,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -131,14 +132,11 @@
           "text": "ity, documented by ADR, limited by constraint).",
           "width": 340.0
         }
-      ],
-      "fillcolor": "#065f46",
-      "href": "../MIS-002-views/Reference_Requirement.view.svg",
-      "width": "11.53",
-      "icon": "checklist"
+      ]
     }
   ],
   "edges": [],
+  "xdotversion": "1.7",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -172,6 +170,5 @@
       ]
     }
   ],
-  "fontcolor": "#FFFFFF",
-  "xdotversion": "1.7"
+  "fontcolor": "#FFFFFF"
 }

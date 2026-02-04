@@ -16,7 +16,7 @@ use std::{
 	path::PathBuf,
 	process::{Command, Stdio},
 };
-pub use svg::{SvgDocument, SvgError, SvgRenderOptions, SvgRenderer};
+pub use svg::{SvgError, SvgRenderer};
 use tracing::{debug, info};
 
 /// Represents a set of cards to render, possibly nested within boundaries.
@@ -403,10 +403,10 @@ fn render_node(card: &Card, md_url: &str) -> String {
 	format!(
 		r#"{}[
 			label=<
-				<FONT COLOR="{}"><B>{}</B>{}<BR/>
+				<B>{}</B>{}<BR/>
 				<B>{}</B><BR/>
 				<BR/>
-				{}</FONT>
+				{}
 			>
 			height=1.0;
 			width=1.6;
@@ -418,7 +418,6 @@ fn render_node(card: &Card, md_url: &str) -> String {
 		];
 		"#,
 		card.id.replace("-", "_"),
-		CardDefinition::get_color(&card.card_type),
 		card.card_type,
 		if let Some(subtype) = &card.card_subtype {
 			format!("<BR/><I>{}</I>", subtype)

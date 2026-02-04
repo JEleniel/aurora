@@ -71,4 +71,10 @@
 	</symbol>
 </defs>
 
-<rect x="16.00" y="26.31" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="9.51" text-anchor="start" font-family="Noto Sans" font-size="12.00" fill="#111827" dominant-baseline="middle">&lt;FONT COLOR=&quot;#FFFFFF&quot;&gt;&lt;B&gt;Actor&lt;/B&gt;</text><text x="22.00" y="23.91" text-anchor="start" font-family="Noto Sans" font-size="12.00" fill="#111827" dominant-baseline="middle">&lt;B&gt;Architect&lt;/B&gt;</text><text x="22.00" y="38.31" text-anchor="start" font-family="Noto Sans" font-size="12.00" fill="#111827" dominant-baseline="middle">Human operator responsible for authoring Aurora models and running CLI tooling (</text><text x="22.00" y="52.71" text-anchor="start" font-family="Noto Sans" font-size="12.00" fill="#111827" dominant-baseline="middle">validate, render, compact) to maintain deterministic design artifacts.</text><text x="22.00" y="67.11" text-anchor="start" font-family="Noto Sans" font-size="12.00" fill="#111827" dominant-baseline="middle">&lt;/FONT&gt;</text></svg>
+<use href="#ellipse" x="-353.84" y="-30.98" width="1608.00" height="204.28" fill="#1a2e05" stroke="#FFFFFF" stroke-width="2.00" />
+<text x="-289.84" y="71.16" font-size="48">👤</text>
+<text x="450.16" y="49.56" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Actor</B></text>
+<text x="450.16" y="63.96" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Architect</B></text>
+<text x="450.16" y="78.36" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">Human operator responsible for authoring Aurora models and running CLI tooling (</text>
+<text x="450.16" y="92.76" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">validate, render, compact) to maintain deterministic design artifacts.</text>
+</svg>

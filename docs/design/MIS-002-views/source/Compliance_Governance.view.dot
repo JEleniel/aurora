@@ -4,10 +4,10 @@ digraph {
 					fontsize=12;
 				REQ_001[
 			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Requirement</B><BR/>
 				<B>Reference Requirement</B><BR/>
 				<BR/>
-				Requirement referenced by multiple rules (driven by driver, satisfied by capabil<BR/>ity, documented by ADR, limited by constraint).<BR/></FONT>
+				Requirement referenced by multiple rules (driven by driver, satisfied by capabil<BR/>ity, documented by ADR, limited by constraint).<BR/>
 			>
 			height=1.0;
 			width=1.6;

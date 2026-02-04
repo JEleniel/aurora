@@ -3,7 +3,7 @@
   "directed": true,
   "strict": false,
   "_subgraph_cnt": 0,
-  "bb": "0,0,5063.7,217.11",
+  "bb": "0,0,5063,217.11",
   "rankdir": null,
   "fontname": "Noto Sans",
   "fontsize": "12",
@@ -11,419 +11,15 @@
   "objects": [
     {
       "_gvid": 0,
-      "name": "CAP_013",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Markdown Preview and Audit View</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to render the focused card as a readable Markdown-style document with li<BR/>nk list, and to inspect audit trail history.<BR/></FONT>\n\t\t\t",
-      "pos": "424.97,152.05",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "height": "1.5321",
-      "fillcolor": "#052e16",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            384.97,
-            176.85
-          ],
-          "text": "Capability",
-          "width": 80.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            288.97,
-            162.85
-          ],
-          "text": "Markdown Preview and Audit View",
-          "width": 272.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            132.47,
-            134.85
-          ],
-          "text": "Ability to render the focused card as a readable Markdown-style document with li",
-          "width": 585.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            280.97,
-            120.85
-          ],
-          "text": "nk list, and to inspect audit trail history.",
-          "width": 288.0
-        }
-      ],
-      "width": "11.805",
-      "href": "../MIS-004-views/Markdown_Preview_and_Audit_View.view.svg",
-      "svg_shape": "rounded-rectangle",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#052e16",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            424.97,
-            152.05,
-            424.94,
-            55.31
-          ]
-        }
-      ],
-      "icon": "spark",
-      "style": "filled"
-    },
-    {
-      "_gvid": 1,
-      "name": "CAP_011",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Context Graph Visualization</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to visualize a local subgraph around the focused card (including parent,<BR/> siblings, and children) and navigate by clicking nodes.<BR/></FONT>\n\t\t\t",
-      "pos": "1279,152.05",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1238.97,
-            176.85
-          ],
-          "text": "Capability",
-          "width": 80.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1167.47,
-            162.85
-          ],
-          "text": "Context Graph Visualization",
-          "width": 223.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            996.47,
-            134.85
-          ],
-          "text": "Ability to visualize a local subgraph around the focused card (including parent,",
-          "width": 565.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1082.47,
-            120.85
-          ],
-          "text": " siblings, and children) and navigate by clicking nodes.",
-          "width": 393.0
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#052e16",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            1278.97,
-            152.05,
-            410.66,
-            55.31
-          ]
-        }
-      ],
-      "height": "1.5321",
-      "icon": "spark",
-      "style": "filled",
-      "width": "11.412",
-      "fillcolor": "#052e16",
-      "href": "../MIS-004-views/Context_Graph_Visualization.view.svg",
-      "svg_shape": "rounded-rectangle"
-    },
-    {
-      "_gvid": 2,
-      "name": "CAP_014",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>aurora_shared Integration</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to reuse aurora_shared for model discovery/loading, validation, renderin<BR/>g, and file layout conventions to keep editor behavior consistent with CLI tooli<BR/>ng.<BR/></FONT>\n\t\t\t",
-      "pos": "2122,152.05",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#052e16",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            2121.97,
-            152.05,
-            414.23,
-            65.11
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2081.97,
-            183.85
-          ],
-          "text": "Capability",
-          "width": 80.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2017.47,
-            169.85
-          ],
-          "text": "aurora_shared Integration",
-          "width": 209.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1836.97,
-            141.85
-          ],
-          "text": "Ability to reuse aurora_shared for model discovery/loading, validation, renderin",
-          "width": 570.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1841.97,
-            127.85
-          ],
-          "text": "g, and file layout conventions to keep editor behavior consistent with CLI tooli",
-          "width": 560.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2110.47,
-            113.85
-          ],
-          "text": "ng.",
-          "width": 23.0
-        }
-      ],
-      "href": "../MIS-004-views/aurora_shared_Integration.view.svg",
-      "svg_shape": "rounded-rectangle",
-      "style": "filled",
-      "width": "11.51",
-      "height": "1.8071",
-      "fillcolor": "#052e16",
-      "icon": "spark"
-    },
-    {
-      "_gvid": 3,
       "name": "CAP_012",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Interactive Card Editing</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to edit card fields and links interactively while maintaining model inva<BR/>riants and persisting changes safely.<BR/></FONT>\n\t\t\t",
-      "pos": "2959,152.05",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "label": "\n\t\t\t\t<B>Capability</B><BR/>\n\t\t\t\t<B>Interactive Card Editing</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to edit card fields and links interactively while maintaining model inva<BR/>riants and persisting changes safely.<BR/>\n\t\t\t",
+      "pos": "404.47,152.05",
+      "width": "11.235",
+      "height": "1.5321",
+      "color": null,
       "fillcolor": "#052e16",
-      "style": "filled",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
       "_draw_": [
         {
           "color": "#000000",
@@ -438,18 +34,14 @@
         {
           "op": "E",
           "rect": [
-            2958.97,
+            404.47,
             152.05,
             404.43,
             55.31
           ]
         }
       ],
-      "svg_shape": "rounded-rectangle",
-      "height": "1.5321",
-      "width": "11.235",
-      "icon": "spark",
-      "href": "../MIS-004-views/Interactive_Card_Editing.view.svg",
+      "style": "filled",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -457,7 +49,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -469,7 +61,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2918.97,
+            364.47,
             176.85
           ],
           "text": "Capability",
@@ -481,7 +73,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -489,7 +81,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2862.97,
+            308.47,
             162.85
           ],
           "text": "Interactive Card Editing",
@@ -501,7 +93,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -513,7 +105,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2680.97,
+            126.47,
             134.85
           ],
           "text": "Ability to edit card fields and links interactively while maintaining model inva",
@@ -525,7 +117,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -533,169 +125,38 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2827.97,
+            273.47,
             120.85
           ],
           "text": "riants and persisting changes safely.",
           "width": 262.0
         }
-      ]
+      ],
+      "href": "../MIS-004-views/Interactive_Card_Editing.view.svg"
     },
     {
-      "_gvid": 4,
-      "name": "CAP_009",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Desktop UI Shell</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to present a desktop application UI with a stable three-pane layout and <BR/>shared selection state.<BR/></FONT>\n\t\t\t",
-      "pos": "3793,152.05",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "_gvid": 1,
+      "name": "CAP_010",
+      "label": "\n\t\t\t\t<B>Capability</B><BR/>\n\t\t\t\t<B>Navigation and Focus Management</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to navigate the model by card id and keep the focused card synchronized <BR/>across panes.<BR/>\n\t\t\t",
+      "pos": "1247.5,152.05",
+      "width": "11.687",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
       "_ldraw_": [
         {
           "face": "Times-Roman",
           "op": "F",
           "size": 14.0
         },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            3752.97,
-            176.85
-          ],
-          "text": "Capability",
-          "width": 80.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            3726.47,
-            162.85
-          ],
-          "text": "Desktop UI Shell",
-          "width": 133.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            3509.97,
-            134.85
-          ],
-          "text": "Ability to present a desktop application UI with a stable three-pane layout and ",
-          "width": 566.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            3711.47,
-            120.85
-          ],
-          "text": "shared selection state.",
-          "width": 163.0
-        }
-      ],
-      "style": "filled",
-      "href": "../MIS-004-views/Desktop_UI_Shell.view.svg",
-      "svg_shape": "rounded-rectangle",
-      "width": "11.432",
-      "height": "1.5321",
-      "fillcolor": "#052e16",
-      "_draw_": [
         {
           "color": "#000000",
           "grad": "none",
           "op": "c"
         },
         {
-          "color": "#052e16",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            3792.97,
-            152.05,
-            411.57,
-            55.31
-          ]
-        }
-      ],
-      "icon": "spark"
-    },
-    {
-      "_gvid": 5,
-      "name": "CAP_010",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Navigation and Focus Management</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to navigate the model by card id and keep the focused card synchronized <BR/>across panes.<BR/></FONT>\n\t\t\t",
-      "pos": "4643,152.05",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "icon": "spark",
-      "fillcolor": "#052e16",
-      "style": "filled",
-      "width": "11.687",
-      "href": "../MIS-004-views/Navigation_and_Focus_Management.view.svg",
-      "height": "1.5321",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
           "fontchar": 1,
           "op": "t"
         },
@@ -703,7 +164,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4602.97,
+            1207.47,
             176.85
           ],
           "text": "Capability",
@@ -715,7 +176,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -723,7 +184,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4503.97,
+            1108.47,
             162.85
           ],
           "text": "Navigation and Focus Management",
@@ -735,7 +196,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -747,7 +208,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4353.47,
+            957.97,
             134.85
           ],
           "text": "Ability to navigate the model by card id and keep the focused card synchronized ",
@@ -759,7 +220,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -767,7 +228,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4594.47,
+            1198.97,
             120.85
           ],
           "text": "across panes.",
@@ -788,25 +249,27 @@
         {
           "op": "E",
           "rect": [
-            4642.97,
+            1247.47,
             152.05,
             420.96,
             55.31
           ]
         }
       ],
-      "svg_shape": "rounded-rectangle"
+      "style": "filled",
+      "href": "../MIS-004-views/Navigation_and_Focus_Management.view.svg"
     },
     {
-      "_gvid": 6,
-      "name": "REQ_012",
-      "bb": null,
-      "label": "\\N",
-      "pos": "424.97,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "width": "1.4985",
+      "_gvid": 2,
+      "name": "CAP_013",
+      "label": "\n\t\t\t\t<B>Capability</B><BR/>\n\t\t\t\t<B>Markdown Preview and Audit View</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to render the focused card as a readable Markdown-style document with li<BR/>nk list, and to inspect audit trail history.<BR/>\n\t\t\t",
+      "pos": "2111.5,152.05",
+      "width": "11.805",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -819,17 +282,84 @@
           "op": "c"
         },
         {
-          "align": "c",
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
           "op": "T",
           "pt": [
-            424.97,
-            14.3
+            2071.47,
+            176.85
           ],
-          "text": "REQ_012",
-          "width": 67.0
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1975.47,
+            162.85
+          ],
+          "text": "Markdown Preview and Audit View",
+          "width": 272.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1818.97,
+            134.85
+          ],
+          "text": "Ability to render the focused card as a readable Markdown-style document with li",
+          "width": 585.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1967.47,
+            120.85
+          ],
+          "text": "nk list, and to inspect audit trail history.",
+          "width": 288.0
         }
       ],
-      "height": "0.5",
       "_draw_": [
         {
           "color": "#000000",
@@ -837,25 +367,429 @@
           "op": "c"
         },
         {
-          "op": "e",
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
           "rect": [
-            424.97,
-            18.0,
-            53.89,
-            18.0
+            2111.47,
+            152.05,
+            424.94,
+            55.31
+          ]
+        }
+      ],
+      "href": "../MIS-004-views/Markdown_Preview_and_Audit_View.view.svg",
+      "style": "filled"
+    },
+    {
+      "_gvid": 3,
+      "name": "CAP_014",
+      "label": "\n\t\t\t\t<B>Capability</B><BR/>\n\t\t\t\t<B>aurora_shared Integration</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to reuse aurora_shared for model discovery/loading, validation, renderin<BR/>g, and file layout conventions to keep editor behavior consistent with CLI tooli<BR/>ng.<BR/>\n\t\t\t",
+      "pos": "2968.5,152.05",
+      "width": "11.51",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            2968.47,
+            152.05,
+            414.23,
+            65.11
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2928.47,
+            183.85
+          ],
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2863.97,
+            169.85
+          ],
+          "text": "aurora_shared Integration",
+          "width": 209.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2683.47,
+            141.85
+          ],
+          "text": "Ability to reuse aurora_shared for model discovery/loading, validation, renderin",
+          "width": 570.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2688.47,
+            127.85
+          ],
+          "text": "g, and file layout conventions to keep editor behavior consistent with CLI tooli",
+          "width": 560.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2956.97,
+            113.85
+          ],
+          "text": "ng.",
+          "width": 23.0
+        }
+      ],
+      "style": "filled",
+      "href": "../MIS-004-views/aurora_shared_Integration.view.svg"
+    },
+    {
+      "_gvid": 4,
+      "name": "CAP_011",
+      "label": "\n\t\t\t\t<B>Capability</B><BR/>\n\t\t\t\t<B>Context Graph Visualization</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to visualize a local subgraph around the focused card (including parent,<BR/> siblings, and children) and navigate by clicking nodes.<BR/>\n\t\t\t",
+      "pos": "3811.5,152.05",
+      "width": "11.412",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
+      "href": "../MIS-004-views/Context_Graph_Visualization.view.svg",
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3771.47,
+            176.85
+          ],
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3699.97,
+            162.85
+          ],
+          "text": "Context Graph Visualization",
+          "width": 223.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3528.97,
+            134.85
+          ],
+          "text": "Ability to visualize a local subgraph around the focused card (including parent,",
+          "width": 565.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3614.97,
+            120.85
+          ],
+          "text": " siblings, and children) and navigate by clicking nodes.",
+          "width": 393.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3811.47,
+            152.05,
+            410.66,
+            55.31
           ]
         }
       ]
     },
     {
-      "_gvid": 7,
-      "name": "REQ_011",
-      "bb": null,
+      "_gvid": 5,
+      "name": "CAP_009",
+      "label": "\n\t\t\t\t<B>Capability</B><BR/>\n\t\t\t\t<B>Desktop UI Shell</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to present a desktop application UI with a stable three-pane layout and <BR/>shared selection state.<BR/>\n\t\t\t",
+      "pos": "4651.5,152.05",
+      "width": "11.432",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4611.47,
+            176.85
+          ],
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4584.97,
+            162.85
+          ],
+          "text": "Desktop UI Shell",
+          "width": 133.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4368.47,
+            134.85
+          ],
+          "text": "Ability to present a desktop application UI with a stable three-pane layout and ",
+          "width": 566.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4569.97,
+            120.85
+          ],
+          "text": "shared selection state.",
+          "width": 163.0
+        }
+      ],
+      "href": "../MIS-004-views/Desktop_UI_Shell.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            4651.47,
+            152.05,
+            411.57,
+            55.31
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 6,
+      "name": "REQ_015",
       "label": "\\N",
-      "pos": "1279,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "404.47,18",
+      "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_draw_": [
         {
           "color": "#000000",
@@ -865,14 +799,13 @@
         {
           "op": "e",
           "rect": [
-            1278.97,
+            404.47,
             18.0,
             53.89,
             18.0
           ]
         }
       ],
-      "width": "1.4985",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -888,24 +821,75 @@
           "align": "c",
           "op": "T",
           "pt": [
-            1278.97,
+            404.47,
             14.3
           ],
-          "text": "REQ_011",
+          "text": "REQ_015",
           "width": 67.0
         }
+      ]
+    },
+    {
+      "_gvid": 7,
+      "name": "REQ_010",
+      "label": "\\N",
+      "pos": "1247.5,18",
+      "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            1247.47,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
       ],
-      "height": "0.5"
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1247.47,
+            14.3
+          ],
+          "text": "REQ_010",
+          "width": 67.0
+        }
+      ]
     },
     {
       "_gvid": 8,
-      "name": "REQ_014",
-      "bb": null,
+      "name": "REQ_012",
       "label": "\\N",
-      "pos": "2122,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "2111.5,18",
+      "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_draw_": [
         {
           "color": "#000000",
@@ -915,7 +899,7 @@
         {
           "op": "e",
           "rect": [
-            2121.97,
+            2111.47,
             18.0,
             53.89,
             18.0
@@ -937,49 +921,47 @@
           "align": "c",
           "op": "T",
           "pt": [
-            2121.97,
+            2111.47,
+            14.3
+          ],
+          "text": "REQ_012",
+          "width": 67.0
+        }
+      ]
+    },
+    {
+      "_gvid": 9,
+      "name": "REQ_014",
+      "label": "\\N",
+      "pos": "2968.5,18",
+      "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2968.47,
             14.3
           ],
           "text": "REQ_014",
           "width": 67.0
         }
       ],
-      "width": "1.4985",
-      "height": "0.5"
-    },
-    {
-      "_gvid": 9,
-      "name": "REQ_015",
-      "bb": null,
-      "label": "\\N",
-      "pos": "2959,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "width": "1.4985",
-      "height": "0.5",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            2958.97,
-            14.3
-          ],
-          "text": "REQ_015",
-          "width": 67.0
-        }
-      ],
       "_draw_": [
         {
           "color": "#000000",
@@ -989,7 +971,7 @@
         {
           "op": "e",
           "rect": [
-            2958.97,
+            2968.47,
             18.0,
             53.89,
             18.0
@@ -999,13 +981,31 @@
     },
     {
       "_gvid": 10,
-      "name": "REQ_009",
-      "bb": null,
+      "name": "REQ_011",
       "label": "\\N",
-      "pos": "3730,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "3811.5,18",
+      "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            3811.47,
+            18.0,
+            53.89,
+            18.0
+          ]
+        }
+      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1021,41 +1021,25 @@
           "align": "c",
           "op": "T",
           "pt": [
-            3729.97,
+            3811.47,
             14.3
           ],
-          "text": "REQ_009",
+          "text": "REQ_011",
           "width": 67.0
         }
-      ],
-      "width": "1.4985",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            3729.97,
-            18.0,
-            53.89,
-            18.0
-          ]
-        }
-      ],
-      "height": "0.5"
+      ]
     },
     {
       "_gvid": 11,
-      "name": "REQ_013",
-      "bb": null,
+      "name": "REQ_009",
       "label": "\\N",
-      "pos": "3856,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "4588.5,18",
+      "width": "1.4985",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_draw_": [
         {
           "color": "#000000",
@@ -1065,15 +1049,13 @@
         {
           "op": "e",
           "rect": [
-            3855.97,
+            4588.47,
             18.0,
             53.89,
             18.0
           ]
         }
       ],
-      "height": "0.5",
-      "width": "1.4985",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1089,41 +1071,25 @@
           "align": "c",
           "op": "T",
           "pt": [
-            3855.97,
+            4588.47,
             14.3
           ],
-          "text": "REQ_013",
+          "text": "REQ_009",
           "width": 67.0
         }
       ]
     },
     {
       "_gvid": 12,
-      "name": "REQ_010",
-      "bb": null,
+      "name": "REQ_013",
       "label": "\\N",
-      "pos": "4643,18",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "4714.5,18",
       "width": "1.4985",
       "height": "0.5",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            4642.97,
-            18.0,
-            53.89,
-            18.0
-          ]
-        }
-      ],
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1139,11 +1105,27 @@
           "align": "c",
           "op": "T",
           "pt": [
-            4642.97,
+            4714.47,
             14.3
           ],
-          "text": "REQ_010",
+          "text": "REQ_013",
           "width": 67.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            4714.47,
+            18.0,
+            53.89,
+            18.0
+          ]
         }
       ]
     }
@@ -1153,34 +1135,11 @@
       "tail": 0,
       "head": 6,
       "_gvid": 0,
-      "pos": "e,424.97,36.012 424.97,96.58 424.97,79.256 424.97,60.836 424.97,46.294",
+      "pos": "e,404.47,36.012 404.47,96.58 404.47,79.256 404.47,60.836 404.47,46.294",
       "label": "satisfies",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "lp": "454.47,61.5",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            454.47,
-            57.8
-          ],
-          "text": "satisfies",
-          "width": 59.0
-        }
-      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -1200,15 +1159,15 @@
           "op": "P",
           "points": [
             [
-              428.47,
+              407.97,
               46.01
             ],
             [
-              424.97,
+              404.47,
               36.01
             ],
             [
-              421.47,
+              400.97,
               46.01
             ]
           ]
@@ -1224,35 +1183,57 @@
           "op": "b",
           "points": [
             [
-              424.97,
+              404.47,
               96.58
             ],
             [
-              424.97,
+              404.47,
               79.26
             ],
             [
-              424.97,
+              404.47,
               60.84
             ],
             [
-              424.97,
+              404.47,
               46.29
             ]
           ]
         }
-      ]
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            433.97,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "lp": "433.97,61.5"
     },
     {
       "tail": 1,
       "head": 7,
       "_gvid": 1,
-      "pos": "e,1279,36.012 1279,96.58 1279,79.256 1279,60.836 1279,46.294",
+      "pos": "e,1247.5,36.012 1247.5,96.58 1247.5,79.256 1247.5,60.836 1247.5,46.294",
       "label": "satisfies",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "lp": "1308.5,61.5",
       "_draw_": [
         {
           "color": "#000000",
@@ -1263,19 +1244,19 @@
           "op": "b",
           "points": [
             [
-              1278.97,
+              1247.47,
               96.58
             ],
             [
-              1278.97,
+              1247.47,
               79.26
             ],
             [
-              1278.97,
+              1247.47,
               60.84
             ],
             [
-              1278.97,
+              1247.47,
               46.29
             ]
           ]
@@ -1300,15 +1281,15 @@
           "op": "P",
           "points": [
             [
-              1282.47,
+              1250.97,
               46.01
             ],
             [
-              1278.97,
+              1247.47,
               36.01
             ],
             [
-              1275.47,
+              1243.97,
               46.01
             ]
           ]
@@ -1329,24 +1310,86 @@
           "align": "c",
           "op": "T",
           "pt": [
-            1308.47,
+            1276.97,
             57.8
           ],
           "text": "satisfies",
           "width": 59.0
         }
-      ]
+      ],
+      "lp": "1277,61.5"
     },
     {
       "tail": 2,
       "head": 8,
       "_gvid": 2,
-      "pos": "e,2122,36.049 2122,86.961 2122,72.572 2122,58.06 2122,46.162",
+      "pos": "e,2111.5,36.012 2111.5,96.58 2111.5,79.256 2111.5,60.836 2111.5,46.294",
       "label": "satisfies",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "lp": "2151.5,61.5",
+      "lp": "2141,61.5",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2114.97,
+              46.01
+            ],
+            [
+              2111.47,
+              36.01
+            ],
+            [
+              2107.97,
+              46.01
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2111.47,
+              96.58
+            ],
+            [
+              2111.47,
+              79.26
+            ],
+            [
+              2111.47,
+              60.84
+            ],
+            [
+              2111.47,
+              46.29
+            ]
+          ]
+        }
+      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1362,13 +1405,24 @@
           "align": "c",
           "op": "T",
           "pt": [
-            2151.47,
+            2140.97,
             57.8
           ],
           "text": "satisfies",
           "width": 59.0
         }
-      ],
+      ]
+    },
+    {
+      "tail": 3,
+      "head": 9,
+      "_gvid": 3,
+      "pos": "e,2968.5,36.049 2968.5,86.961 2968.5,72.572 2968.5,58.06 2968.5,46.162",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "2998,61.5",
       "_draw_": [
         {
           "color": "#000000",
@@ -1379,19 +1433,19 @@
           "op": "b",
           "points": [
             [
-              2121.97,
+              2968.47,
               86.96
             ],
             [
-              2121.97,
+              2968.47,
               72.57
             ],
             [
-              2121.97,
+              2968.47,
               58.06
             ],
             [
-              2121.97,
+              2968.47,
               46.16
             ]
           ]
@@ -1416,31 +1470,20 @@
           "op": "P",
           "points": [
             [
-              2125.47,
+              2971.97,
               46.05
             ],
             [
-              2121.97,
+              2968.47,
               36.05
             ],
             [
-              2118.47,
+              2964.97,
               46.05
             ]
           ]
         }
-      ]
-    },
-    {
-      "tail": 3,
-      "head": 9,
-      "_gvid": 3,
-      "pos": "e,2959,36.012 2959,96.58 2959,79.256 2959,60.836 2959,46.294",
-      "label": "satisfies",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "lp": "2988.5,61.5",
+      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1456,72 +1499,11 @@
           "align": "c",
           "op": "T",
           "pt": [
-            2988.47,
+            2997.97,
             57.8
           ],
           "text": "satisfies",
           "width": 59.0
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              2958.97,
-              96.58
-            ],
-            [
-              2958.97,
-              79.26
-            ],
-            [
-              2958.97,
-              60.84
-            ],
-            [
-              2958.97,
-              46.29
-            ]
-          ]
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              2962.47,
-              46.01
-            ],
-            [
-              2958.97,
-              36.01
-            ],
-            [
-              2955.47,
-              46.01
-            ]
-          ]
         }
       ]
     },
@@ -1529,45 +1511,11 @@
       "tail": 4,
       "head": 10,
       "_gvid": 4,
-      "pos": "e,3738,35.819 3767.2,96.961 3758.6,78.965 3749.4,59.746 3742.3,44.892",
+      "pos": "e,3811.5,36.012 3811.5,96.58 3811.5,79.256 3811.5,60.836 3811.5,46.294",
       "label": "satisfies",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "lp": "3782.5,61.5",
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              3745.46,
-              43.34
-            ],
-            [
-              3738.0,
-              35.82
-            ],
-            [
-              3739.14,
-              46.35
-            ]
-          ]
-        }
-      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1583,13 +1531,14 @@
           "align": "c",
           "op": "T",
           "pt": [
-            3782.47,
+            3840.97,
             57.8
           ],
           "text": "satisfies",
           "width": 59.0
         }
       ],
+      "lp": "3841,61.5",
       "_draw_": [
         {
           "color": "#000000",
@@ -1600,157 +1549,129 @@
           "op": "b",
           "points": [
             [
-              3767.16,
-              96.96
-            ],
-            [
-              3758.58,
-              78.97
-            ],
-            [
-              3749.41,
-              59.75
-            ],
-            [
-              3742.32,
-              44.89
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "tail": 4,
-      "head": 11,
-      "_gvid": 5,
-      "pos": "e,3847.9,35.819 3818.8,96.961 3827.4,78.965 3836.5,59.746 3843.6,44.892",
-      "label": "satisfies",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              3846.8,
-              46.35
-            ],
-            [
-              3847.95,
-              35.82
-            ],
-            [
-              3840.48,
-              43.34
-            ]
-          ]
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              3818.78,
-              96.96
-            ],
-            [
-              3827.36,
-              78.97
-            ],
-            [
-              3836.53,
-              59.75
-            ],
-            [
-              3843.62,
-              44.89
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            3869.47,
-            57.8
-          ],
-          "text": "satisfies",
-          "width": 59.0
-        }
-      ],
-      "lp": "3869.5,61.5"
-    },
-    {
-      "tail": 5,
-      "head": 12,
-      "_gvid": 6,
-      "pos": "e,4643,36.012 4643,96.58 4643,79.256 4643,60.836 4643,46.294",
-      "label": "satisfies",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              4642.97,
+              3811.47,
               96.58
             ],
             [
-              4642.97,
+              3811.47,
               79.26
             ],
             [
-              4642.97,
+              3811.47,
               60.84
             ],
             [
-              4642.97,
+              3811.47,
               46.29
             ]
           ]
         }
       ],
-      "lp": "4672.5,61.5",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              3814.97,
+              46.01
+            ],
+            [
+              3811.47,
+              36.01
+            ],
+            [
+              3807.97,
+              46.01
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 5,
+      "head": 11,
+      "_gvid": 5,
+      "pos": "e,4596.5,35.819 4625.7,96.961 4617.1,78.965 4607.9,59.746 4600.8,44.892",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              4603.95,
+              43.34
+            ],
+            [
+              4596.49,
+              35.82
+            ],
+            [
+              4597.64,
+              46.35
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              4625.66,
+              96.96
+            ],
+            [
+              4617.07,
+              78.97
+            ],
+            [
+              4607.9,
+              59.75
+            ],
+            [
+              4600.82,
+              44.89
+            ]
+          ]
+        }
+      ],
+      "lp": "4641,61.5",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1766,11 +1687,49 @@
           "align": "c",
           "op": "T",
           "pt": [
-            4672.47,
+            4640.97,
             57.8
           ],
           "text": "satisfies",
           "width": 59.0
+        }
+      ]
+    },
+    {
+      "tail": 5,
+      "head": 12,
+      "_gvid": 6,
+      "pos": "e,4706.4,35.819 4677.3,96.961 4685.9,78.965 4695,59.746 4702.1,44.892",
+      "label": "satisfies",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              4677.27,
+              96.96
+            ],
+            [
+              4685.86,
+              78.97
+            ],
+            [
+              4695.03,
+              59.75
+            ],
+            [
+              4702.11,
+              44.89
+            ]
+          ]
         }
       ],
       "_hdraw_": [
@@ -1792,22 +1751,46 @@
           "op": "P",
           "points": [
             [
-              4646.47,
-              46.01
+              4705.29,
+              46.35
             ],
             [
-              4642.97,
-              36.01
+              4706.44,
+              35.82
             ],
             [
-              4639.47,
-              46.01
+              4698.98,
+              43.34
             ]
           ]
+        }
+      ],
+      "lp": "4727,61.5",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            4726.97,
+            57.8
+          ],
+          "text": "satisfies",
+          "width": 59.0
         }
       ]
     }
   ],
+  "fontcolor": "#FFFFFF",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -1831,16 +1814,15 @@
           217.11
         ],
         [
-          5063.7,
+          5063.0,
           217.11
         ],
         [
-          5063.7,
+          5063.0,
           0.0
         ]
       ]
     }
   ],
-  "fontcolor": "#FFFFFF",
   "xdotversion": "1.7"
 }

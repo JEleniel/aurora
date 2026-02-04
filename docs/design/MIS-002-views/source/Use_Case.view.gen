@@ -11,358 +11,16 @@
   "objects": [
     {
       "_gvid": 0,
-      "name": "ACT_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Actor</B><BR/>\n\t\t\t\t<B>Reference Actor</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tActor exercising desire/own/perform/present relationships in the reference model<BR/>.<BR/></FONT>\n\t\t\t",
-      "pos": "976.86,338.17",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            955.36,
-            362.97
-          ],
-          "text": "Actor",
-          "width": 43.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            913.36,
-            348.97
-          ],
-          "text": "Reference Actor",
-          "width": 127.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            684.36,
-            320.97
-          ],
-          "text": "Actor exercising desire/own/perform/present relationships in the reference model",
-          "width": 585.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            974.36,
-            306.97
-          ],
-          "text": ".",
-          "width": 5.0
-        }
-      ],
-      "height": "1.5321",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#1a2e05",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            976.86,
-            338.17,
-            424.94,
-            55.31
-          ]
-        }
-      ],
-      "icon": "user",
-      "fillcolor": "#1a2e05",
-      "style": "filled",
-      "width": "11.805",
-      "href": "../MIS-002-views/Reference_Actor.view.svg",
-      "svg_shape": "ellipse"
-    },
-    {
-      "_gvid": 1,
-      "name": "STR_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Story</B><BR/>\n\t\t\t\t<B>Reference Story</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tStory desired by an actor and implying a constraint in the reference model.<BR/></FONT>\n\t\t\t",
-      "pos": "393.86,186.76",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            372.86,
-            204.56
-          ],
-          "text": "Story",
-          "width": 42.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            330.36,
-            190.56
-          ],
-          "text": "Reference Story",
-          "width": 127.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            123.36,
-            162.56
-          ],
-          "text": "Story desired by an actor and implying a constraint in the reference model.",
-          "width": 541.0
-        }
-      ],
-      "icon": "book",
-      "height": "1.2571",
-      "href": "../MIS-002-views/Reference_Story.view.svg",
-      "width": "10.941",
-      "fillcolor": "#365314",
-      "svg_shape": "box",
-      "style": "filled",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#365314",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            393.86,
-            186.76,
-            393.72,
-            45.01
-          ]
-        }
-      ]
-    },
-    {
-      "_gvid": 2,
-      "name": "ACT_002",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Actor</B><BR/>\n\t\t\t\t<B>Triggered Actor</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tSecondary actor involved in the relationship-matrix reference model.<BR/></FONT>\n\t\t\t",
-      "pos": "1780.9,338.17",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1759.36,
-            355.97
-          ],
-          "text": "Actor",
-          "width": 43.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1718.86,
-            341.97
-          ],
-          "text": "Triggered Actor",
-          "width": 124.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1533.86,
-            313.97
-          ],
-          "text": "Secondary actor involved in the relationship-matrix reference model.",
-          "width": 494.0
-        }
-      ],
-      "style": "filled",
-      "fillcolor": "#1a2e05",
-      "height": "1.2571",
-      "href": "../MIS-002-views/Triggered_Actor.view.svg",
-      "svg_shape": "ellipse",
-      "width": "10.017",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#1a2e05",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            1780.86,
-            338.17,
-            360.75,
-            45.01
-          ]
-        }
-      ],
-      "icon": "user"
-    },
-    {
-      "_gvid": 3,
       "name": "CNS_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Constraint</B><BR/>\n\t\t\t\t<B>Reference Constraint</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tConstraint implied by a story in the relationship-matrix reference model.<BR/></FONT>\n\t\t\t",
+      "label": "\n\t\t\t\t<B>Constraint</B><BR/>\n\t\t\t\t<B>Reference Constraint</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tConstraint implied by a story in the relationship-matrix reference model.<BR/>\n\t\t\t",
       "pos": "393.86,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "width": "10.587",
       "height": "1.2571",
+      "color": null,
+      "fillcolor": "#082f49",
+      "svg_shape": "box",
+      "icon": "ruler",
+      "style": "filled",
       "_draw_": [
         {
           "color": "#000000",
@@ -384,8 +42,7 @@
           ]
         }
       ],
-      "svg_shape": "box",
-      "fillcolor": "#082f49",
+      "href": "../MIS-002-views/Reference_Constraint.view.svg",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -393,7 +50,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -417,7 +74,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -437,7 +94,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -455,21 +112,111 @@
           "text": "Constraint implied by a story in the relationship-matrix reference model.",
           "width": 523.0
         }
-      ],
-      "href": "../MIS-002-views/Reference_Constraint.view.svg",
-      "icon": "ruler",
-      "style": "filled",
-      "width": "10.587"
+      ]
     },
     {
-      "_gvid": 4,
-      "name": "AST_001",
-      "bb": null,
-      "label": "\\N",
-      "pos": "856.86,186.76",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "_gvid": 1,
+      "name": "ACT_001",
+      "label": "\n\t\t\t\t<B>Actor</B><BR/>\n\t\t\t\t<B>Reference Actor</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tActor exercising desire/own/perform/present relationships in the reference model<BR/>.<BR/>\n\t\t\t",
+      "pos": "976.86,338.17",
+      "width": "11.805",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#1a2e05",
+      "svg_shape": "ellipse",
+      "icon": "user",
+      "style": "filled",
+      "href": "../MIS-002-views/Reference_Actor.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            955.36,
+            362.97
+          ],
+          "text": "Actor",
+          "width": 43.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            913.36,
+            348.97
+          ],
+          "text": "Reference Actor",
+          "width": 127.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            684.36,
+            320.97
+          ],
+          "text": "Actor exercising desire/own/perform/present relationships in the reference model",
+          "width": 585.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            974.36,
+            306.97
+          ],
+          "text": ".",
+          "width": 5.0
+        }
+      ],
       "_draw_": [
         {
           "color": "#000000",
@@ -477,15 +224,242 @@
           "op": "c"
         },
         {
-          "op": "e",
+          "color": "#1a2e05",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
           "rect": [
-            856.86,
-            186.76,
-            51.19,
-            18.0
+            976.86,
+            338.17,
+            424.94,
+            55.31
           ]
         }
+      ]
+    },
+    {
+      "_gvid": 2,
+      "name": "STR_001",
+      "label": "\n\t\t\t\t<B>Story</B><BR/>\n\t\t\t\t<B>Reference Story</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tStory desired by an actor and implying a constraint in the reference model.<BR/>\n\t\t\t",
+      "pos": "393.86,186.76",
+      "width": "10.941",
+      "height": "1.2571",
+      "color": null,
+      "fillcolor": "#365314",
+      "svg_shape": "box",
+      "icon": "book",
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            372.86,
+            204.56
+          ],
+          "text": "Story",
+          "width": 42.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            330.36,
+            190.56
+          ],
+          "text": "Reference Story",
+          "width": 127.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            123.36,
+            162.56
+          ],
+          "text": "Story desired by an actor and implying a constraint in the reference model.",
+          "width": 541.0
+        }
       ],
+      "href": "../MIS-002-views/Reference_Story.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#365314",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            393.86,
+            186.76,
+            393.72,
+            45.01
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 3,
+      "name": "ACT_002",
+      "label": "\n\t\t\t\t<B>Actor</B><BR/>\n\t\t\t\t<B>Triggered Actor</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tSecondary actor involved in the relationship-matrix reference model.<BR/>\n\t\t\t",
+      "pos": "1780.9,338.17",
+      "width": "10.017",
+      "height": "1.2571",
+      "color": null,
+      "fillcolor": "#1a2e05",
+      "svg_shape": "ellipse",
+      "icon": "user",
+      "style": "filled",
+      "href": "../MIS-002-views/Triggered_Actor.view.svg",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1759.36,
+            355.97
+          ],
+          "text": "Actor",
+          "width": 43.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1718.86,
+            341.97
+          ],
+          "text": "Triggered Actor",
+          "width": 124.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1533.86,
+            313.97
+          ],
+          "text": "Secondary actor involved in the relationship-matrix reference model.",
+          "width": 494.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#1a2e05",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1780.86,
+            338.17,
+            360.75,
+            45.01
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 4,
+      "name": "AST_001",
+      "label": "\\N",
+      "pos": "856.86,186.76",
+      "width": "1.4263",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -508,18 +482,34 @@
           "width": 63.0
         }
       ],
-      "width": "1.4263",
-      "height": "0.5"
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            856.86,
+            186.76,
+            51.19,
+            18.0
+          ]
+        }
+      ]
     },
     {
       "_gvid": 5,
       "name": "ATV_001",
-      "bb": null,
       "label": "\\N",
       "pos": "976.86,186.76",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "width": "1.4082",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -557,19 +547,19 @@
             18.0
           ]
         }
-      ],
-      "width": "1.4082",
-      "height": "0.5"
+      ]
     },
     {
       "_gvid": 6,
       "name": "THR_001",
-      "bb": null,
       "label": "\\N",
       "pos": "1098.9,186.76",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "width": "1.4804",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -607,37 +597,19 @@
             18.0
           ]
         }
-      ],
-      "height": "0.5",
-      "width": "1.4804"
+      ]
     },
     {
       "_gvid": 7,
       "name": "THR_002",
-      "bb": null,
       "label": "\\N",
       "pos": "1223.9,186.76",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            1223.86,
-            186.76,
-            53.09,
-            18.0
-          ]
-        }
-      ],
-      "height": "0.5",
       "width": "1.4804",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -659,19 +631,63 @@
           "text": "THR_002",
           "width": 66.0
         }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            1223.86,
+            186.76,
+            53.09,
+            18.0
+          ]
+        }
       ]
     }
   ],
   "edges": [
     {
-      "tail": 0,
-      "head": 1,
+      "tail": 1,
+      "head": 2,
       "_gvid": 0,
       "pos": "e,551.96,228.28 787.58,288.66 714.86,270.03 632.42,248.9 561.84,230.81",
       "label": "desires",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              787.58,
+              288.66
+            ],
+            [
+              714.86,
+              270.03
+            ],
+            [
+              632.42,
+              248.9
+            ],
+            [
+              561.84,
+              230.81
+            ]
+          ]
+        }
+      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -727,38 +743,10 @@
           "width": 52.0
         }
       ],
-      "lp": "711.86,257.52",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              787.58,
-              288.66
-            ],
-            [
-              714.86,
-              270.03
-            ],
-            [
-              632.42,
-              248.9
-            ],
-            [
-              561.84,
-              230.81
-            ]
-          ]
-        }
-      ]
+      "lp": "711.86,257.52"
     },
     {
-      "tail": 0,
+      "tail": 1,
       "head": 4,
       "_gvid": 1,
       "pos": "e,870.09,204.24 933.54,283.23 914,258.91 891.91,231.41 876.47,212.19",
@@ -794,7 +782,28 @@
           ]
         }
       ],
-      "lp": "935.36,257.52",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            935.36,
+            253.82
+          ],
+          "text": "owns",
+          "width": 37.0
+        }
+      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -828,6 +837,17 @@
           ]
         }
       ],
+      "lp": "935.36,257.52"
+    },
+    {
+      "tail": 1,
+      "head": 5,
+      "_gvid": 2,
+      "pos": "e,976.86,204.82 976.86,282.81 976.86,259.79 976.86,233.99 976.86,215.08",
+      "label": "performs",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -843,23 +863,42 @@
           "align": "c",
           "op": "T",
           "pt": [
-            935.36,
+            1009.86,
             253.82
           ],
-          "text": "owns",
-          "width": 37.0
+          "text": "performs",
+          "width": 66.0
         }
-      ]
-    },
-    {
-      "tail": 0,
-      "head": 5,
-      "_gvid": 2,
-      "pos": "e,976.86,204.82 976.86,282.81 976.86,259.79 976.86,233.99 976.86,215.08",
-      "label": "performs",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
+      ],
+      "lp": "1009.9,257.52",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              976.86,
+              282.81
+            ],
+            [
+              976.86,
+              259.79
+            ],
+            [
+              976.86,
+              233.99
+            ],
+            [
+              976.86,
+              215.08
+            ]
+          ]
+        }
+      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -892,61 +931,10 @@
             ]
           ]
         }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              976.86,
-              282.81
-            ],
-            [
-              976.86,
-              259.79
-            ],
-            [
-              976.86,
-              233.99
-            ],
-            [
-              976.86,
-              215.08
-            ]
-          ]
-        }
-      ],
-      "lp": "1009.9,257.52",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1009.86,
-            253.82
-          ],
-          "text": "performs",
-          "width": 66.0
-        }
       ]
     },
     {
-      "tail": 0,
+      "tail": 1,
       "head": 6,
       "_gvid": 3,
       "pos": "e,1088.7,204.64 1031,283.36 1036.5,277.3 1041.9,271.12 1046.9,265.02 1060.2,248.54 1073.6,228.65 1083.4,213.18",
@@ -954,46 +942,6 @@
       "arrowhead": null,
       "color": null,
       "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              1031.05,
-              283.36
-            ],
-            [
-              1036.54,
-              277.3
-            ],
-            [
-              1041.91,
-              271.12
-            ],
-            [
-              1046.86,
-              265.02
-            ],
-            [
-              1060.22,
-              248.54
-            ],
-            [
-              1073.55,
-              228.65
-            ],
-            [
-              1083.37,
-              213.18
-            ]
-          ]
-        }
-      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -1049,10 +997,50 @@
           "width": 63.0
         }
       ],
-      "lp": "1089.4,257.52"
+      "lp": "1089.4,257.52",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1031.05,
+              283.36
+            ],
+            [
+              1036.54,
+              277.3
+            ],
+            [
+              1041.91,
+              271.12
+            ],
+            [
+              1046.86,
+              265.02
+            ],
+            [
+              1060.22,
+              248.54
+            ],
+            [
+              1073.55,
+              228.65
+            ],
+            [
+              1083.37,
+              213.18
+            ]
+          ]
+        }
+      ]
     },
     {
-      "tail": 0,
+      "tail": 1,
       "head": 7,
       "_gvid": 4,
       "pos": "e,1205.7,203.8 1090.5,284.81 1102.3,278.48 1113.9,271.83 1124.9,265.02 1151.1,248.65 1178.6,226.72 1198,210.41",
@@ -1060,7 +1048,61 @@
       "arrowhead": null,
       "color": null,
       "style": null,
-      "lp": "1175.4,257.52",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1200.39,
+              212.95
+            ],
+            [
+              1205.73,
+              203.8
+            ],
+            [
+              1195.85,
+              207.62
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1175.36,
+            253.82
+          ],
+          "text": "presents",
+          "width": 63.0
+        }
+      ],
       "_draw_": [
         {
           "color": "#000000",
@@ -1101,71 +1143,18 @@
           ]
         }
       ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1175.36,
-            253.82
-          ],
-          "text": "presents",
-          "width": 63.0
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              1200.39,
-              212.95
-            ],
-            [
-              1205.73,
-              203.8
-            ],
-            [
-              1195.85,
-              207.62
-            ]
-          ]
-        }
-      ]
+      "lp": "1175.4,257.52"
     },
     {
-      "tail": 1,
-      "head": 3,
+      "tail": 2,
+      "head": 0,
       "_gvid": 5,
       "pos": "e,393.86,90.836 393.86,141.24 393.86,128.4 393.86,114.25 393.86,100.88",
       "label": "implies",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "lp": "419.86,116.01",
       "_draw_": [
         {
           "color": "#000000",
@@ -1248,12 +1237,9 @@
           "text": "implies",
           "width": 52.0
         }
-      ],
-      "lp": "419.86,116.01"
+      ]
     }
   ],
-  "fontcolor": "#FFFFFF",
-  "xdotversion": "1.7",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -1286,5 +1272,7 @@
         ]
       ]
     }
-  ]
+  ],
+  "fontcolor": "#FFFFFF",
+  "xdotversion": "1.7"
 }

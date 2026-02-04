@@ -92,8 +92,8 @@ impl BoundingBox {
 #[derive(Debug, Deserialize, Serialize)]
 #[serde(untagged)]
 pub enum Object {
-	Subgraph(Subgraph),
 	Node(Node),
+	Subgraph(Subgraph),
 }
 
 #[derive(Debug, Deserialize, Serialize)]

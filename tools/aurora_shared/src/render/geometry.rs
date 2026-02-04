@@ -21,6 +21,17 @@ impl Point {
 			.map_err(|_| GeometryError::InvalidPoint(value.to_string()))?;
 		Ok(Point { x, y })
 	}
+
+	pub fn from_dot(x: f32, y: f32) -> Self {
+		Self { x, y }
+	}
+
+	pub fn parse_from_dot(value: &str) -> Result<Point, GeometryError> {
+		let dot_point = Self::parse(value)?;
+		let point = Self::from_dot(dot_point.x, dot_point.y);
+
+		Ok(point)
+	}
 }
 
 #[derive(Debug, Error)]

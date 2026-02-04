@@ -3,7 +3,7 @@
   "directed": true,
   "strict": false,
   "_subgraph_cnt": 0,
-  "bb": "0,0,4581.3,452.72",
+  "bb": "0,0,4795.4,452.72",
   "rankdir": null,
   "fontname": "Noto Sans",
   "fontsize": "12",
@@ -11,696 +11,15 @@
   "objects": [
     {
       "_gvid": 0,
-      "name": "COM_008",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Component</B><BR/>\n\t\t\t\t<B>Explorer Tree Pane</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tLeft navigation pane that presents a tree view derived from shortest paths from <BR/>the mission root, enabling fast card discovery and focus changes.<BR/></FONT>\n\t\t\t",
-      "pos": "421.44,226.36",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "href": "../MIS-004-views/Explorer_Tree_Pane.view.svg",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#1e40af",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            421.44,
-            226.36,
-            421.37,
-            55.31
-          ]
-        }
-      ],
-      "fillcolor": "#1e40af",
-      "style": "filled",
-      "svg_shape": "component",
-      "width": "11.707",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            375.94,
-            251.16
-          ],
-          "text": "Component",
-          "width": 91.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            345.94,
-            237.16
-          ],
-          "text": "Explorer Tree Pane",
-          "width": 151.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            131.44,
-            209.16
-          ],
-          "text": "Left navigation pane that presents a tree view derived from shortest paths from ",
-          "width": 580.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            187.44,
-            195.16
-          ],
-          "text": "the mission root, enabling fast card discovery and focus changes.",
-          "width": 468.0
-        }
-      ],
-      "height": "1.5321",
-      "icon": "cube"
-    },
-    {
-      "_gvid": 1,
-      "name": "COM_011",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Component</B><BR/>\n\t\t\t\t<B>Model Session and Persistence</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tIn-memory model session that loads a workspace model home, computes shortest pat<BR/>hs, validates changes, and persists updated card files using aurora_shared seman<BR/>tics.<BR/></FONT>\n\t\t\t",
-      "pos": "1534.4,226.36",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "href": "../MIS-004-views/Model_Session_and_Persistence.view.svg",
-      "icon": "cube",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1488.94,
-            258.16
-          ],
-          "text": "Component",
-          "width": 91.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1412.44,
-            244.16
-          ],
-          "text": "Model Session and Persistence",
-          "width": 244.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1227.94,
-            216.16
-          ],
-          "text": "In-memory model session that loads a workspace model home, computes shortest pat",
-          "width": 613.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1241.94,
-            202.16
-          ],
-          "text": "hs, validates changes, and persists updated card files using aurora_shared seman",
-          "width": 585.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1518.94,
-            188.16
-          ],
-          "text": "tics.",
-          "width": 31.0
-        }
-      ],
-      "style": "filled",
-      "width": "12.355",
-      "fillcolor": "#1e40af",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#1e40af",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            1534.44,
-            226.36,
-            444.54,
-            65.11
-          ]
-        }
-      ],
-      "height": "1.8071",
-      "svg_shape": "component"
-    },
-    {
-      "_gvid": 2,
-      "name": "COM_010",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Component</B><BR/>\n\t\t\t\t<B>Inspector Pane</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tRight pane that splits vertically: top half edits the focused card; bottom half <BR/>shows a rendered Markdown-style preview (and links) with a tab to reveal audit d<BR/>etails.<BR/></FONT>\n\t\t\t",
-      "pos": "2422.4,226.36",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "href": "../MIS-004-views/Inspector_Pane.view.svg",
-      "fillcolor": "#1e40af",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#1e40af",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            2422.44,
-            226.36,
-            425.86,
-            65.11
-          ]
-        }
-      ],
-      "svg_shape": "component",
-      "icon": "cube",
-      "width": "11.824",
-      "style": "filled",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2376.94,
-            258.16
-          ],
-          "text": "Component",
-          "width": 91.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2362.44,
-            244.16
-          ],
-          "text": "Inspector Pane",
-          "width": 120.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2147.44,
-            216.16
-          ],
-          "text": "Right pane that splits vertically: top half edits the focused card; bottom half ",
-          "width": 550.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2129.44,
-            202.16
-          ],
-          "text": "shows a rendered Markdown-style preview (and links) with a tab to reveal audit d",
-          "width": 586.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2400.44,
-            188.16
-          ],
-          "text": "etails.",
-          "width": 44.0
-        }
-      ],
-      "height": "1.8071"
-    },
-    {
-      "_gvid": 3,
-      "name": "COM_009",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Component</B><BR/>\n\t\t\t\t<B>Brain Graph Pane</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tCentral pane that renders a mind-map / TheBrain-style context graph with the foc<BR/>used card centered and related cards positioned by relationship role.<BR/></FONT>\n\t\t\t",
-      "pos": "3291.4,226.36",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "svg_shape": "component",
-      "href": "../MIS-004-views/Brain_Graph_Pane.view.svg",
-      "icon": "cube",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            3245.94,
-            251.16
-          ],
-          "text": "Component",
-          "width": 91.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            3220.44,
-            237.16
-          ],
-          "text": "Brain Graph Pane",
-          "width": 142.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            2998.44,
-            209.16
-          ],
-          "text": "Central pane that renders a mind-map / TheBrain-style context graph with the foc",
-          "width": 586.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            3043.94,
-            195.16
-          ],
-          "text": "used card centered and related cards positioned by relationship role.",
-          "width": 495.0
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#1e40af",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            3291.44,
-            226.36,
-            425.86,
-            55.31
-          ]
-        }
-      ],
-      "style": "filled",
-      "fillcolor": "#1e40af",
-      "width": "11.824",
-      "height": "1.5321"
-    },
-    {
-      "_gvid": 4,
-      "name": "INT_004",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#000000\"><B>Interface</B><BR/>\n\t\t\t\t<B>aurora_shared Domain API</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tPublic domain interface (Rust API) for discovering model homes, loading cards, v<BR/>alidating invariants, and rendering Markdown-style representations.<BR/></FONT>\n\t\t\t",
-      "pos": "682.44,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "fillcolor": "#102080",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#102080",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            682.44,
-            55.15,
-            421.37,
-            55.31
-          ]
-        }
-      ],
-      "height": "1.5321",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            645.94,
-            79.95
-          ],
-          "text": "Interface",
-          "width": 73.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            576.94,
-            65.95
-          ],
-          "text": "aurora_shared Domain API",
-          "width": 211.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            392.44,
-            37.95
-          ],
-          "text": "Public domain interface (Rust API) for discovering model homes, loading cards, v",
-          "width": 580.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            436.44,
-            23.95
-          ],
-          "text": "alidating invariants, and rendering Markdown-style representations.",
-          "width": 492.0
-        }
-      ],
-      "href": "../MIS-004-views/aurora_shared_Domain_API.view.svg",
-      "icon": "plug",
-      "style": "filled",
-      "width": "11.707",
-      "svg_shape": "interface"
-    },
-    {
-      "_gvid": 5,
       "name": "INT_005",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#000000\"><B>Interface</B><BR/>\n\t\t\t\t<B>Local Filesystem API</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tContract for reading and writing Aurora model files on the local filesystem (ope<BR/>n, read, write, atomic replace, and directory enumeration).<BR/></FONT>\n\t\t\t",
-      "pos": "1534.4,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "href": "../MIS-004-views/Local_Filesystem_API.view.svg",
+      "label": "\n\t\t\t\t<B>Interface</B><BR/>\n\t\t\t\t<B>Local Filesystem API</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tContract for reading and writing Aurora model files on the local filesystem (ope<BR/>n, read, write, atomic replace, and directory enumeration).<BR/>\n\t\t\t",
+      "pos": "3278.4,55.154",
+      "width": "11.471",
       "height": "1.5321",
-      "style": "filled",
+      "color": null,
+      "fillcolor": "#102080",
+      "svg_shape": "interface",
+      "icon": "plug",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -720,7 +39,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1497.94,
+            3241.94,
             79.95
           ],
           "text": "Interface",
@@ -740,7 +59,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1452.94,
+            3196.94,
             65.95
           ],
           "text": "Local Filesystem API",
@@ -764,7 +83,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1250.44,
+            2994.44,
             37.95
           ],
           "text": "Contract for reading and writing Aurora model files on the local filesystem (ope",
@@ -784,17 +103,13 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1323.94,
+            3067.94,
             23.95
           ],
           "text": "n, read, write, atomic replace, and directory enumeration).",
           "width": 421.0
         }
       ],
-      "width": "11.471",
-      "svg_shape": "interface",
-      "fillcolor": "#102080",
-      "icon": "plug",
       "_draw_": [
         {
           "color": "#000000",
@@ -809,51 +124,28 @@
         {
           "op": "E",
           "rect": [
-            1534.44,
+            3278.44,
             55.15,
             412.9,
             55.31
           ]
         }
-      ]
+      ],
+      "href": "../MIS-004-views/Local_Filesystem_API.view.svg",
+      "style": "filled"
     },
     {
-      "_gvid": 6,
-      "name": "APP_004",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Application</B><BR/>\n\t\t\t\t<B>aurora_editor</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tStandalone desktop application (built with Dioxus) for browsing and editing Auro<BR/>ra models, including live validation and Markdown-style previews.<BR/></FONT>\n\t\t\t",
-      "pos": "2422.4,397.57",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "svg_shape": "box",
-      "href": "../MIS-004-views/aurora_editor.view.svg",
-      "style": "filled",
-      "width": "11.726",
+      "_gvid": 1,
+      "name": "COM_008",
+      "label": "\n\t\t\t\t<B>Component</B><BR/>\n\t\t\t\t<B>Explorer Tree Pane</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tLeft navigation pane that presents a tree view derived from shortest paths from <BR/>the mission root, enabling fast card discovery and focus changes.<BR/>\n\t\t\t",
+      "pos": "421.44,226.36",
+      "width": "11.707",
       "height": "1.5321",
-      "icon": "app-window",
-      "fillcolor": "#1e3a8a",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#1e3a8a",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            2422.44,
-            397.57,
-            422.29,
-            55.31
-          ]
-        }
-      ],
+      "color": null,
+      "fillcolor": "#1e40af",
+      "svg_shape": "component",
+      "icon": "cube",
+      "style": "filled",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -861,7 +153,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -873,11 +165,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2377.44,
-            422.37
+            375.94,
+            251.16
           ],
-          "text": "Application",
-          "width": 90.0
+          "text": "Component",
+          "width": 91.0
         },
         {
           "face": "Times-Roman",
@@ -885,7 +177,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -893,11 +185,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2368.94,
-            408.37
+            345.94,
+            237.16
           ],
-          "text": "aurora_editor",
-          "width": 107.0
+          "text": "Explorer Tree Pane",
+          "width": 151.0
         },
         {
           "face": "Times-Roman",
@@ -905,7 +197,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -917,11 +209,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2131.94,
-            380.37
+            131.44,
+            209.16
           ],
-          "text": "Standalone desktop application (built with Dioxus) for browsing and editing Auro",
-          "width": 581.0
+          "text": "Left navigation pane that presents a tree view derived from shortest paths from ",
+          "width": 580.0
         },
         {
           "face": "Times-Roman",
@@ -929,7 +221,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -937,24 +229,14 @@
           "align": "l",
           "op": "T",
           "pt": [
-            2184.94,
-            366.37
+            187.44,
+            195.16
           ],
-          "text": "ra models, including live validation and Markdown-style previews.",
-          "width": 475.0
+          "text": "the mission root, enabling fast card discovery and focus changes.",
+          "width": 468.0
         }
-      ]
-    },
-    {
-      "_gvid": 7,
-      "name": "INT_003",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#000000\"><B>Interface</B><BR/>\n\t\t\t\t<B>Dioxus UI Framework API</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tUI framework interface used to declare layouts, render widgets, and process user<BR/> events for the standalone editor.<BR/></FONT>\n\t\t\t",
-      "pos": "3972.4,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "href": "../MIS-004-views/Dioxus_UI_Framework_API.view.svg",
+      ],
+      "href": "../MIS-004-views/Explorer_Tree_Pane.view.svg",
       "_draw_": [
         {
           "color": "#000000",
@@ -962,23 +244,55 @@
           "op": "c"
         },
         {
-          "color": "#102080",
+          "color": "#1e40af",
           "grad": "none",
           "op": "C"
         },
         {
           "op": "E",
           "rect": [
-            3972.44,
-            55.15,
-            425.86,
+            421.44,
+            226.36,
+            421.37,
+            55.31
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 2,
+      "name": "COM_007",
+      "label": "\n\t\t\t\t<B>Component</B><BR/>\n\t\t\t\t<B>Dioxus App Shell</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tTop-level Dioxus component that owns the UI shell layout and routes focus/select<BR/>ion changes between panes.<BR/>\n\t\t\t",
+      "pos": "1283.4,226.36",
+      "width": "11.746",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#1e40af",
+      "svg_shape": "component",
+      "icon": "cube",
+      "href": "../MIS-004-views/Dioxus_App_Shell.view.svg",
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#1e40af",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1283.44,
+            226.36,
+            422.7,
             55.31
           ]
         }
       ],
-      "height": "1.5321",
-      "icon": "plug",
-      "fillcolor": "#102080",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -998,7 +312,109 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3935.94,
+            1237.94,
+            251.16
+          ],
+          "text": "Component",
+          "width": 91.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1216.94,
+            237.16
+          ],
+          "text": "Dioxus App Shell",
+          "width": 133.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            992.44,
+            209.16
+          ],
+          "text": "Top-level Dioxus component that owns the UI shell layout and routes focus/select",
+          "width": 582.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1182.44,
+            195.16
+          ],
+          "text": "ion changes between panes.",
+          "width": 202.0
+        }
+      ]
+    },
+    {
+      "_gvid": 3,
+      "name": "INT_003",
+      "label": "\n\t\t\t\t<B>Interface</B><BR/>\n\t\t\t\t<B>Dioxus UI Framework API</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tUI framework interface used to declare layouts, render widgets, and process user<BR/> events for the standalone editor.<BR/>\n\t\t\t",
+      "pos": "1100.4,55.154",
+      "width": "11.824",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#102080",
+      "svg_shape": "interface",
+      "icon": "plug",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1063.94,
             79.95
           ],
           "text": "Interface",
@@ -1018,7 +434,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3871.44,
+            999.44,
             65.95
           ],
           "text": "Dioxus UI Framework API",
@@ -1042,7 +458,7 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3679.44,
+            807.44,
             37.95
           ],
           "text": "UI framework interface used to declare layouts, render widgets, and process user",
@@ -1062,30 +478,160 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3853.44,
+            981.44,
             23.95
           ],
           "text": " events for the standalone editor.",
           "width": 238.0
         }
       ],
-      "svg_shape": "interface",
-      "style": "filled",
-      "width": "11.824"
+      "href": "../MIS-004-views/Dioxus_UI_Framework_API.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#102080",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1100.44,
+            55.15,
+            425.86,
+            55.31
+          ]
+        }
+      ],
+      "style": "filled"
     },
     {
-      "_gvid": 8,
-      "name": "COM_007",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Component</B><BR/>\n\t\t\t\t<B>Dioxus App Shell</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tTop-level Dioxus component that owns the UI shell layout and routes focus/select<BR/>ion changes between panes.<BR/></FONT>\n\t\t\t",
-      "pos": "4158.4,226.36",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "href": "../MIS-004-views/Dioxus_App_Shell.view.svg",
-      "style": "filled",
+      "_gvid": 4,
+      "name": "COM_010",
+      "label": "\n\t\t\t\t<B>Component</B><BR/>\n\t\t\t\t<B>Inspector Pane</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tRight pane that splits vertically: top half edits the focused card; bottom half <BR/>shows a rendered Markdown-style preview (and links) with a tab to reveal audit d<BR/>etails.<BR/>\n\t\t\t",
+      "pos": "2150.4,226.36",
+      "width": "11.824",
+      "height": "1.8071",
+      "color": null,
       "fillcolor": "#1e40af",
-      "height": "1.5321",
+      "svg_shape": "component",
+      "icon": "cube",
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2104.94,
+            258.16
+          ],
+          "text": "Component",
+          "width": 91.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2090.44,
+            244.16
+          ],
+          "text": "Inspector Pane",
+          "width": 120.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1875.44,
+            216.16
+          ],
+          "text": "Right pane that splits vertically: top half edits the focused card; bottom half ",
+          "width": 550.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1857.44,
+            202.16
+          ],
+          "text": "shows a rendered Markdown-style preview (and links) with a tab to reveal audit d",
+          "width": 586.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2128.44,
+            188.16
+          ],
+          "text": "etails.",
+          "width": 44.0
+        }
+      ],
+      "href": "../MIS-004-views/Inspector_Pane.view.svg",
       "_draw_": [
         {
           "color": "#000000",
@@ -1100,9 +646,42 @@
         {
           "op": "E",
           "rect": [
-            4158.44,
+            2150.44,
             226.36,
-            422.7,
+            425.86,
+            65.11
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 5,
+      "name": "APP_004",
+      "label": "\n\t\t\t\t<B>Application</B><BR/>\n\t\t\t\t<B>aurora_editor</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tStandalone desktop application (built with Dioxus) for browsing and editing Auro<BR/>ra models, including live validation and Markdown-style previews.<BR/>\n\t\t\t",
+      "pos": "2150.4,397.57",
+      "width": "11.726",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#1e3a8a",
+      "svg_shape": "box",
+      "icon": "app-window",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#1e3a8a",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            2150.44,
+            397.57,
+            422.29,
             55.31
           ]
         }
@@ -1114,7 +693,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -1126,11 +705,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4112.94,
-            251.16
+            2105.44,
+            422.37
           ],
-          "text": "Component",
-          "width": 91.0
+          "text": "Application",
+          "width": 90.0
         },
         {
           "face": "Times-Roman",
@@ -1138,7 +717,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -1146,11 +725,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4091.94,
-            237.16
+            2096.94,
+            408.37
           ],
-          "text": "Dioxus App Shell",
-          "width": 133.0
+          "text": "aurora_editor",
+          "width": 107.0
         },
         {
           "face": "Times-Roman",
@@ -1158,7 +737,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -1170,11 +749,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            3867.44,
-            209.16
+            1859.94,
+            380.37
           ],
-          "text": "Top-level Dioxus component that owns the UI shell layout and routes focus/select",
-          "width": 582.0
+          "text": "Standalone desktop application (built with Dioxus) for browsing and editing Auro",
+          "width": 581.0
         },
         {
           "face": "Times-Roman",
@@ -1182,7 +761,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -1190,26 +769,422 @@
           "align": "l",
           "op": "T",
           "pt": [
-            4057.44,
-            195.16
+            1912.94,
+            366.37
           ],
-          "text": "ion changes between panes.",
-          "width": 202.0
+          "text": "ra models, including live validation and Markdown-style previews.",
+          "width": 475.0
         }
       ],
+      "href": "../MIS-004-views/aurora_editor.view.svg",
+      "style": "filled"
+    },
+    {
+      "_gvid": 6,
+      "name": "COM_009",
+      "label": "\n\t\t\t\t<B>Component</B><BR/>\n\t\t\t\t<B>Brain Graph Pane</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tCentral pane that renders a mind-map / TheBrain-style context graph with the foc<BR/>used card centered and related cards positioned by relationship role.<BR/>\n\t\t\t",
+      "pos": "3019.4,226.36",
+      "width": "11.824",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#1e40af",
+      "svg_shape": "component",
       "icon": "cube",
-      "width": "11.746",
-      "svg_shape": "component"
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2973.94,
+            251.16
+          ],
+          "text": "Component",
+          "width": 91.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2948.44,
+            237.16
+          ],
+          "text": "Brain Graph Pane",
+          "width": 142.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2726.44,
+            209.16
+          ],
+          "text": "Central pane that renders a mind-map / TheBrain-style context graph with the foc",
+          "width": 586.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            2771.94,
+            195.16
+          ],
+          "text": "used card centered and related cards positioned by relationship role.",
+          "width": 495.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#1e40af",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            3019.44,
+            226.36,
+            425.86,
+            55.31
+          ]
+        }
+      ],
+      "style": "filled",
+      "href": "../MIS-004-views/Brain_Graph_Pane.view.svg"
+    },
+    {
+      "_gvid": 7,
+      "name": "COM_011",
+      "label": "\n\t\t\t\t<B>Component</B><BR/>\n\t\t\t\t<B>Model Session and Persistence</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tIn-memory model session that loads a workspace model home, computes shortest pat<BR/>hs, validates changes, and persists updated card files using aurora_shared seman<BR/>tics.<BR/>\n\t\t\t",
+      "pos": "4130.4,226.36",
+      "width": "12.355",
+      "height": "1.8071",
+      "color": null,
+      "fillcolor": "#1e40af",
+      "svg_shape": "component",
+      "icon": "cube",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#1e40af",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            4130.44,
+            226.36,
+            444.54,
+            65.11
+          ]
+        }
+      ],
+      "style": "filled",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4084.94,
+            258.16
+          ],
+          "text": "Component",
+          "width": 91.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4008.44,
+            244.16
+          ],
+          "text": "Model Session and Persistence",
+          "width": 244.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3823.94,
+            216.16
+          ],
+          "text": "In-memory model session that loads a workspace model home, computes shortest pat",
+          "width": 613.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3837.94,
+            202.16
+          ],
+          "text": "hs, validates changes, and persists updated card files using aurora_shared seman",
+          "width": 585.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4114.94,
+            188.16
+          ],
+          "text": "tics.",
+          "width": 31.0
+        }
+      ],
+      "href": "../MIS-004-views/Model_Session_and_Persistence.view.svg"
+    },
+    {
+      "_gvid": 8,
+      "name": "INT_004",
+      "label": "\n\t\t\t\t<B>Interface</B><BR/>\n\t\t\t\t<B>aurora_shared Domain API</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tPublic domain interface (Rust API) for discovering model homes, loading cards, v<BR/>alidating invariants, and rendering Markdown-style representations.<BR/>\n\t\t\t",
+      "pos": "4130.4,55.154",
+      "width": "11.707",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#102080",
+      "svg_shape": "interface",
+      "icon": "plug",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#102080",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            4130.44,
+            55.15,
+            421.37,
+            55.31
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4093.94,
+            79.95
+          ],
+          "text": "Interface",
+          "width": 73.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            4024.94,
+            65.95
+          ],
+          "text": "aurora_shared Domain API",
+          "width": 211.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3840.44,
+            37.95
+          ],
+          "text": "Public domain interface (Rust API) for discovering model homes, loading cards, v",
+          "width": 580.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            3884.44,
+            23.95
+          ],
+          "text": "alidating invariants, and rendering Markdown-style representations.",
+          "width": 492.0
+        }
+      ],
+      "style": "filled",
+      "href": "../MIS-004-views/aurora_shared_Domain_API.view.svg"
     },
     {
       "_gvid": 9,
       "name": "FEA_011",
-      "bb": null,
       "label": "\\N",
-      "pos": "191.44,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "421.44,55.154",
+      "width": "1.4443",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1225,14 +1200,13 @@
           "align": "c",
           "op": "T",
           "pt": [
-            191.44,
+            421.44,
             51.45
           ],
           "text": "FEA_011",
           "width": 64.0
         }
       ],
-      "width": "1.4443",
       "_draw_": [
         {
           "color": "#000000",
@@ -1242,158 +1216,7 @@
         {
           "op": "e",
           "rect": [
-            191.44,
-            55.15,
-            51.99,
-            18.0
-          ]
-        }
-      ],
-      "height": "0.5"
-    },
-    {
-      "_gvid": 10,
-      "name": "FEA_015",
-      "bb": null,
-      "label": "\\N",
-      "pos": "2017.4,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            2017.44,
-            51.45
-          ],
-          "text": "FEA_015",
-          "width": 64.0
-        }
-      ],
-      "height": "0.5",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            2017.44,
-            55.15,
-            51.99,
-            18.0
-          ]
-        }
-      ],
-      "width": "1.4443"
-    },
-    {
-      "_gvid": 11,
-      "name": "ART_005",
-      "bb": null,
-      "label": "\\N",
-      "pos": "2139.4,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            2139.44,
-            51.45
-          ],
-          "text": "ART_005",
-          "width": 64.0
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            2139.44,
-            55.15,
-            51.99,
-            18.0
-          ]
-        }
-      ],
-      "width": "1.4443",
-      "height": "0.5"
-    },
-    {
-      "_gvid": 12,
-      "name": "FEA_013",
-      "bb": null,
-      "label": "\\N",
-      "pos": "2361.4,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            2361.44,
-            51.45
-          ],
-          "text": "FEA_013",
-          "width": 64.0
-        }
-      ],
-      "width": "1.4443",
-      "height": "0.5",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            2361.44,
+            421.44,
             55.15,
             51.99,
             18.0
@@ -1402,16 +1225,16 @@
       ]
     },
     {
-      "_gvid": 13,
-      "name": "FEA_014",
-      "bb": null,
+      "_gvid": 10,
+      "name": "FEA_010",
       "label": "\\N",
-      "pos": "2483.4,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "1596.4,55.154",
       "width": "1.4443",
       "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_draw_": [
         {
           "color": "#000000",
@@ -1421,7 +1244,7 @@
         {
           "op": "e",
           "rect": [
-            2483.44,
+            1596.44,
             55.15,
             51.99,
             18.0
@@ -1443,7 +1266,107 @@
           "align": "c",
           "op": "T",
           "pt": [
-            2483.44,
+            1596.44,
+            51.45
+          ],
+          "text": "FEA_010",
+          "width": 64.0
+        }
+      ]
+    },
+    {
+      "_gvid": 11,
+      "name": "FEA_013",
+      "label": "\\N",
+      "pos": "2089.4,55.154",
+      "width": "1.4443",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            2089.44,
+            55.15,
+            51.99,
+            18.0
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2089.44,
+            51.45
+          ],
+          "text": "FEA_013",
+          "width": 64.0
+        }
+      ]
+    },
+    {
+      "_gvid": 12,
+      "name": "FEA_014",
+      "label": "\\N",
+      "pos": "2211.4,55.154",
+      "width": "1.4443",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            2211.44,
+            55.15,
+            51.99,
+            18.0
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2211.44,
             51.45
           ],
           "text": "FEA_014",
@@ -1452,15 +1375,16 @@
       ]
     },
     {
-      "_gvid": 14,
+      "_gvid": 13,
       "name": "FEA_012",
-      "bb": null,
       "label": "\\N",
-      "pos": "3291.4,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "2795.4,55.154",
+      "width": "1.4443",
       "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_draw_": [
         {
           "color": "#000000",
@@ -1470,7 +1394,7 @@
         {
           "op": "e",
           "rect": [
-            3291.44,
+            2795.44,
             55.15,
             51.99,
             18.0
@@ -1492,24 +1416,25 @@
           "align": "c",
           "op": "T",
           "pt": [
-            3291.44,
+            2795.44,
             51.45
           ],
           "text": "FEA_012",
           "width": 64.0
         }
-      ],
-      "width": "1.4443"
+      ]
     },
     {
-      "_gvid": 15,
-      "name": "FEA_010",
-      "bb": null,
+      "_gvid": 14,
+      "name": "FEA_015",
       "label": "\\N",
-      "pos": "4468.4,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "pos": "4621.4,55.154",
+      "width": "1.4443",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -1525,15 +1450,13 @@
           "align": "c",
           "op": "T",
           "pt": [
-            4468.44,
+            4621.44,
             51.45
           ],
-          "text": "FEA_010",
+          "text": "FEA_015",
           "width": 64.0
         }
       ],
-      "height": "0.5",
-      "width": "1.4443",
       "_draw_": [
         {
           "color": "#000000",
@@ -1543,65 +1466,75 @@
         {
           "op": "e",
           "rect": [
-            4468.44,
+            4621.44,
             55.15,
             51.99,
             18.0
           ]
+        }
+      ]
+    },
+    {
+      "_gvid": 15,
+      "name": "ART_005",
+      "label": "\\N",
+      "pos": "4743.4,55.154",
+      "width": "1.4443",
+      "height": "0.5",
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            4743.44,
+            55.15,
+            51.99,
+            18.0
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            4743.44,
+            51.45
+          ],
+          "text": "ART_005",
+          "width": 64.0
         }
       ]
     }
   ],
   "edges": [
     {
-      "tail": 0,
+      "tail": 1,
       "head": 9,
       "_gvid": 0,
-      "pos": "e,208.54,72.409 338.7,172.12 310.75,153.33 279.74,131.58 252.44,110.31 240.03,100.64 226.91,89.174 216.03,79.283",
+      "pos": "e,421.44,73.19 421.44,170.89 421.44,141.7 421.44,107.01 421.44,83.467",
       "label": "implements",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              338.7,
-              172.12
-            ],
-            [
-              310.75,
-              153.33
-            ],
-            [
-              279.74,
-              131.58
-            ],
-            [
-              252.44,
-              110.31
-            ],
-            [
-              240.03,
-              100.64
-            ],
-            [
-              226.91,
-              89.17
-            ],
-            [
-              216.03,
-              79.28
-            ]
-          ]
-        }
-      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -1621,16 +1554,45 @@
           "op": "P",
           "points": [
             [
-              218.28,
-              76.6
+              424.94,
+              83.19
             ],
             [
-              208.54,
-              72.41
+              421.44,
+              73.19
             ],
             [
-              213.54,
-              81.75
+              417.94,
+              83.19
+            ]
+          ]
+        }
+      ],
+      "lp": "463.94,135.81",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              421.44,
+              170.89
+            ],
+            [
+              421.44,
+              141.7
+            ],
+            [
+              421.44,
+              107.01
+            ],
+            [
+              421.44,
+              83.47
             ]
           ]
         }
@@ -1650,432 +1612,113 @@
           "align": "c",
           "op": "T",
           "pt": [
-            335.94,
+            463.94,
             132.11
           ],
           "text": "implements",
           "width": 85.0
-        }
-      ],
-      "lp": "335.94,135.81"
-    },
-    {
-      "tail": 1,
-      "head": 4,
-      "_gvid": 1,
-      "pos": "e,911.01,101.55 1273.9,173.62 1161.4,151.28 1030.8,125.33 920.9,103.51",
-      "label": "invokes",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              1273.89,
-              173.62
-            ],
-            [
-              1161.44,
-              151.28
-            ],
-            [
-              1030.77,
-              125.33
-            ],
-            [
-              920.9,
-              103.51
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1135.94,
-            132.11
-          ],
-          "text": "invokes",
-          "width": 55.0
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              921.5,
-              100.07
-            ],
-            [
-              911.01,
-              101.55
-            ],
-            [
-              920.14,
-              106.93
-            ]
-          ]
-        }
-      ],
-      "lp": "1135.9,135.81"
-    },
-    {
-      "tail": 1,
-      "head": 5,
-      "_gvid": 2,
-      "pos": "e,1534.4,110.51 1534.4,160.91 1534.4,147.79 1534.4,133.99 1534.4,120.86",
-      "label": "invokes",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              1534.44,
-              160.91
-            ],
-            [
-              1534.44,
-              147.79
-            ],
-            [
-              1534.44,
-              133.99
-            ],
-            [
-              1534.44,
-              120.86
-            ]
-          ]
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              1537.94,
-              120.51
-            ],
-            [
-              1534.44,
-              110.51
-            ],
-            [
-              1530.94,
-              120.51
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1561.94,
-            132.11
-          ],
-          "text": "invokes",
-          "width": 55.0
-        }
-      ],
-      "lp": "1561.9,135.81"
-    },
-    {
-      "tail": 1,
-      "head": 10,
-      "_gvid": 3,
-      "pos": "e,2002.9,72.607 1797.2,173.82 1851.7,157.67 1907.3,136.88 1956.4,110.31 1971,102.42 1985,90.433 1995.9,79.738",
-      "label": "implements",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            1956.94,
-            132.11
-          ],
-          "text": "implements",
-          "width": 85.0
-        }
-      ],
-      "lp": "1956.9,135.81",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              1797.21,
-              173.82
-            ],
-            [
-              1851.66,
-              157.67
-            ],
-            [
-              1907.35,
-              136.88
-            ],
-            [
-              1956.44,
-              110.31
-            ],
-            [
-              1971.01,
-              102.42
-            ],
-            [
-              1985.0,
-              90.43
-            ],
-            [
-              1995.9,
-              79.74
-            ]
-          ]
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              1998.4,
-              82.19
-            ],
-            [
-              2002.92,
-              72.61
-            ],
-            [
-              1993.41,
-              77.28
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "tail": 1,
-      "head": 11,
-      "_gvid": 4,
-      "pos": "e,2124,72.348 1851.3,180.68 1902.6,170.37 1954.9,158 2003.4,143.31 2038.3,132.76 2047.8,129.97 2078.4,110.31 2092.1,101.57 2105.7,89.846 2116.6,79.54",
-      "label": "generates",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              1851.29,
-              180.68
-            ],
-            [
-              1902.65,
-              170.37
-            ],
-            [
-              1954.88,
-              158.0
-            ],
-            [
-              2003.44,
-              143.31
-            ],
-            [
-              2038.29,
-              132.76
-            ],
-            [
-              2047.78,
-              129.97
-            ],
-            [
-              2078.44,
-              110.31
-            ],
-            [
-              2092.06,
-              101.57
-            ],
-            [
-              2105.67,
-              89.85
-            ],
-            [
-              2116.57,
-              79.54
-            ]
-          ]
-        }
-      ],
-      "lp": "2082.4,135.81",
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              2119.25,
-              81.82
-            ],
-            [
-              2123.99,
-              72.35
-            ],
-            [
-              2114.37,
-              76.8
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            2082.44,
-            132.11
-          ],
-          "text": "generates",
-          "width": 72.0
         }
       ]
     },
     {
       "tail": 2,
-      "head": 12,
-      "_gvid": 5,
-      "pos": "e,2362.7,73.295 2383.9,161.38 2381.1,155.39 2378.6,149.31 2376.4,143.31 2369.6,123.89 2365.8,100.89 2363.7,83.397",
+      "head": 3,
+      "_gvid": 1,
+      "pos": "e,1158.8,110.08 1225.3,171.59 1206.5,154.25 1185.6,134.9 1166.3,117.08",
+      "label": "invokes",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1168.47,
+              114.29
+            ],
+            [
+              1158.75,
+              110.08
+            ],
+            [
+              1163.72,
+              119.43
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1219.94,
+            132.11
+          ],
+          "text": "invokes",
+          "width": 55.0
+        }
+      ],
+      "lp": "1219.9,135.81",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1225.28,
+              171.59
+            ],
+            [
+              1206.53,
+              154.25
+            ],
+            [
+              1185.6,
+              134.9
+            ],
+            [
+              1166.33,
+              117.08
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 2,
+      "head": 10,
+      "_gvid": 2,
+      "pos": "e,1580.4,72.771 1415.5,173.93 1455.4,156.1 1498.4,134.45 1535.4,110.31 1548.8,101.6 1562.2,90.073 1573.1,79.889",
       "label": "implements",
       "arrowhead": null,
       "color": null,
@@ -2090,58 +1733,142 @@
           "op": "b",
           "points": [
             [
-              2383.9,
+              1415.54,
+              173.93
+            ],
+            [
+              1455.38,
+              156.1
+            ],
+            [
+              1498.36,
+              134.45
+            ],
+            [
+              1535.44,
+              110.31
+            ],
+            [
+              1548.81,
+              101.6
+            ],
+            [
+              1562.22,
+              90.07
+            ],
+            [
+              1573.05,
+              79.89
+            ]
+          ]
+        }
+      ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1545.94,
+            132.11
+          ],
+          "text": "implements",
+          "width": 85.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              1575.67,
+              82.23
+            ],
+            [
+              1580.45,
+              72.77
+            ],
+            [
+              1570.81,
+              77.19
+            ]
+          ]
+        }
+      ],
+      "lp": "1545.9,135.81"
+    },
+    {
+      "tail": 4,
+      "head": 11,
+      "_gvid": 3,
+      "pos": "e,2090.7,73.295 2111.9,161.38 2109.1,155.39 2106.6,149.31 2104.4,143.31 2097.6,123.89 2093.8,100.89 2091.7,83.397",
+      "label": "implements",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2111.9,
               161.38
             ],
             [
-              2381.11,
+              2109.11,
               155.39
             ],
             [
-              2378.56,
+              2106.56,
               149.31
             ],
             [
-              2376.44,
+              2104.44,
               143.31
             ],
             [
-              2369.55,
+              2097.55,
               123.89
             ],
             [
-              2365.76,
+              2093.76,
               100.89
             ],
             [
-              2363.72,
+              2091.72,
               83.4
             ]
           ]
         }
       ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            2418.94,
-            132.11
-          ],
-          "text": "implements",
-          "width": 85.0
-        }
-      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -2161,32 +1888,87 @@
           "op": "P",
           "points": [
             [
-              2367.18,
+              2095.18,
               82.87
             ],
             [
-              2362.66,
+              2090.66,
               73.29
             ],
             [
-              2360.22,
+              2088.22,
               83.61
             ]
           ]
         }
       ],
-      "lp": "2418.9,135.81"
+      "lp": "2146.9,135.81",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2146.94,
+            132.11
+          ],
+          "text": "implements",
+          "width": 85.0
+        }
+      ]
     },
     {
-      "tail": 2,
-      "head": 13,
-      "_gvid": 6,
-      "pos": "e,2480.2,73.156 2454.3,161.37 2456.9,155.33 2459.3,149.24 2461.4,143.31 2468.5,123.61 2474.2,100.62 2478,83.203",
+      "tail": 4,
+      "head": 12,
+      "_gvid": 4,
+      "pos": "e,2208.2,73.156 2182.3,161.37 2184.9,155.33 2187.3,149.24 2189.4,143.31 2196.5,123.61 2202.2,100.62 2206,83.203",
       "label": "implements",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "lp": "2508.9,135.81",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2209.53,
+              83.66
+            ],
+            [
+              2208.18,
+              73.16
+            ],
+            [
+              2202.68,
+              82.21
+            ]
+          ]
+        }
+      ],
+      "lp": "2236.9,135.81",
       "_draw_": [
         {
           "color": "#000000",
@@ -2197,31 +1979,31 @@
           "op": "b",
           "points": [
             [
-              2454.31,
+              2182.31,
               161.37
             ],
             [
-              2456.88,
+              2184.88,
               155.33
             ],
             [
-              2459.3,
+              2187.3,
               149.24
             ],
             [
-              2461.44,
+              2189.44,
               143.31
             ],
             [
-              2468.53,
+              2196.53,
               123.61
             ],
             [
-              2474.23,
+              2202.23,
               100.62
             ],
             [
-              2478.05,
+              2206.05,
               83.2
             ]
           ]
@@ -2242,183 +2024,23 @@
           "align": "c",
           "op": "T",
           "pt": [
-            2508.94,
+            2236.94,
             132.11
           ],
           "text": "implements",
           "width": 85.0
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              2481.53,
-              83.66
-            ],
-            [
-              2480.18,
-              73.16
-            ],
-            [
-              2474.68,
-              82.21
-            ]
-          ]
         }
       ]
     },
     {
-      "tail": 3,
-      "head": 14,
-      "_gvid": 7,
-      "pos": "e,3291.4,73.19 3291.4,170.89 3291.4,141.7 3291.4,107.01 3291.4,83.467",
-      "label": "implements",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            3333.94,
-            132.11
-          ],
-          "text": "implements",
-          "width": 85.0
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              3291.44,
-              170.89
-            ],
-            [
-              3291.44,
-              141.7
-            ],
-            [
-              3291.44,
-              107.01
-            ],
-            [
-              3291.44,
-              83.47
-            ]
-          ]
-        }
-      ],
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              3294.94,
-              83.19
-            ],
-            [
-              3291.44,
-              73.19
-            ],
-            [
-              3287.94,
-              83.19
-            ]
-          ]
-        }
-      ],
-      "lp": "3333.9,135.81"
-    },
-    {
-      "tail": 6,
-      "head": 0,
-      "_gvid": 8,
-      "pos": "e,751.51,260.67 2057.4,369.82 1787.4,349.59 1410.9,320.42 1080.4,291.42 976.82,282.32 864.12,271.65 761.7,261.66",
+      "tail": 5,
+      "head": 1,
+      "_gvid": 5,
+      "pos": "e,684.86,269.46 1773.2,372.75 1513.6,354.71 1161.1,326.97 851.44,291.42 800.72,285.59 746.78,278.37 694.87,270.91",
       "label": "composes",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              761.8,
-              258.15
-            ],
-            [
-              751.51,
-              260.67
-            ],
-            [
-              761.12,
-              265.12
-            ]
-          ]
-        }
-      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -2434,14 +2056,46 @@
           "align": "c",
           "op": "T",
           "pt": [
-            1484.44,
+            1207.44,
             313.22
           ],
           "text": "composes",
           "width": 70.0
         }
       ],
-      "lp": "1484.4,316.92",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              695.25,
+              267.43
+            ],
+            [
+              684.86,
+              269.46
+            ],
+            [
+              694.25,
+              274.35
+            ]
+          ]
+        }
+      ],
       "_draw_": [
         {
           "color": "#000000",
@@ -2452,47 +2106,98 @@
           "op": "b",
           "points": [
             [
-              2057.39,
-              369.82
+              1773.2,
+              372.75
             ],
             [
-              1787.43,
-              349.59
+              1513.59,
+              354.71
             ],
             [
-              1410.87,
-              320.42
+              1161.07,
+              326.97
             ],
             [
-              1080.44,
+              851.44,
               291.42
             ],
             [
-              976.82,
-              282.32
+              800.72,
+              285.59
             ],
             [
-              864.12,
-              271.65
+              746.78,
+              278.37
             ],
             [
-              761.7,
-              261.66
+              694.87,
+              270.91
             ]
           ]
         }
-      ]
+      ],
+      "lp": "1207.4,316.92"
     },
     {
-      "tail": 6,
-      "head": 1,
-      "_gvid": 9,
-      "pos": "e,1802,278.34 2187.1,351.73 2071.9,329.77 1932.4,303.2 1812.1,280.26",
+      "tail": 5,
+      "head": 2,
+      "_gvid": 6,
+      "pos": "e,1515,272.55 1918.9,351.39 1797.2,327.63 1648.1,298.53 1524.9,274.49",
       "label": "composes",
       "arrowhead": null,
       "color": null,
       "style": null,
-      "lp": "2067.4,316.92",
+      "lp": "1804.4,316.92",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            1804.44,
+            313.22
+          ],
+          "text": "composes",
+          "width": 70.0
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              1918.95,
+              351.39
+            ],
+            [
+              1797.22,
+              327.63
+            ],
+            [
+              1648.11,
+              298.53
+            ],
+            [
+              1524.92,
+              274.49
+            ]
+          ]
+        }
+      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -2512,20 +2217,30 @@
           "op": "P",
           "points": [
             [
-              1812.43,
-              276.77
+              1525.46,
+              271.03
             ],
             [
-              1801.95,
-              278.34
+              1514.97,
+              272.55
             ],
             [
-              1811.12,
-              283.65
+              1524.12,
+              277.9
             ]
           ]
         }
-      ],
+      ]
+    },
+    {
+      "tail": 5,
+      "head": 4,
+      "_gvid": 7,
+      "pos": "e,2150.4,291.47 2150.4,342.1 2150.4,329.24 2150.4,315.32 2150.4,301.75",
+      "label": "composes",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -2541,11 +2256,45 @@
           "align": "c",
           "op": "T",
           "pt": [
-            2067.44,
+            2185.44,
             313.22
           ],
           "text": "composes",
           "width": 70.0
+        }
+      ],
+      "lp": "2185.4,316.92",
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2153.94,
+              301.47
+            ],
+            [
+              2150.44,
+              291.47
+            ],
+            [
+              2146.94,
+              301.47
+            ]
+          ]
         }
       ],
       "_draw_": [
@@ -2558,124 +2307,30 @@
           "op": "b",
           "points": [
             [
-              2187.09,
-              351.73
-            ],
-            [
-              2071.89,
-              329.77
-            ],
-            [
-              1932.44,
-              303.2
-            ],
-            [
-              1812.06,
-              280.26
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "tail": 6,
-      "head": 2,
-      "_gvid": 10,
-      "pos": "e,2422.4,291.47 2422.4,342.1 2422.4,329.24 2422.4,315.32 2422.4,301.75",
-      "label": "composes",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              2422.44,
+              2150.44,
               342.1
             ],
             [
-              2422.44,
+              2150.44,
               329.24
             ],
             [
-              2422.44,
+              2150.44,
               315.32
             ],
             [
-              2422.44,
+              2150.44,
               301.75
             ]
           ]
         }
-      ],
-      "lp": "2457.4,316.92",
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              2425.94,
-              301.47
-            ],
-            [
-              2422.44,
-              291.47
-            ],
-            [
-              2418.94,
-              301.47
-            ]
-          ]
-        }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            2457.44,
-            313.22
-          ],
-          "text": "composes",
-          "width": 70.0
-        }
       ]
     },
     {
-      "tail": 6,
-      "head": 3,
-      "_gvid": 11,
-      "pos": "e,3058.8,272.65 2654.2,351.45 2776.1,327.71 2925.4,298.63 3048.9,274.59",
+      "tail": 5,
+      "head": 6,
+      "_gvid": 8,
+      "pos": "e,2786.8,272.65 2382.2,351.45 2504.1,327.71 2653.4,298.63 2776.9,274.59",
       "label": "composes",
       "arrowhead": null,
       "color": null,
@@ -2690,25 +2345,24 @@
           "op": "b",
           "points": [
             [
-              2654.17,
+              2382.17,
               351.45
             ],
             [
-              2776.06,
+              2504.06,
               327.71
             ],
             [
-              2925.4,
+              2653.4,
               298.63
             ],
             [
-              3048.87,
+              2776.87,
               274.59
             ]
           ]
         }
       ],
-      "lp": "2892.4,316.92",
       "_hdraw_": [
         {
           "op": "S",
@@ -2728,16 +2382,89 @@
           "op": "P",
           "points": [
             [
-              3049.69,
+              2777.69,
               278.0
             ],
             [
-              3058.84,
+              2786.84,
               272.65
             ],
             [
-              3048.35,
+              2776.35,
               271.13
+            ]
+          ]
+        }
+      ],
+      "lp": "2620.4,316.92",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2620.44,
+            313.22
+          ],
+          "text": "composes",
+          "width": 70.0
+        }
+      ]
+    },
+    {
+      "tail": 5,
+      "head": 7,
+      "_gvid": 9,
+      "pos": "e,3763,263.12 2511,368.86 2772.9,348.4 3135.7,319.37 3454.4,291.42 3551.2,282.93 3655.8,273.27 3753,264.07",
+      "label": "composes",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              2511.01,
+              368.86
+            ],
+            [
+              2772.88,
+              348.4
+            ],
+            [
+              3135.7,
+              319.37
+            ],
+            [
+              3454.44,
+              291.42
+            ],
+            [
+              3551.23,
+              282.93
+            ],
+            [
+              3655.76,
+              273.27
+            ],
+            [
+              3753.02,
+              264.07
             ]
           ]
         }
@@ -2757,39 +2484,7 @@
           "align": "c",
           "op": "T",
           "pt": [
-            2892.44,
-            313.22
-          ],
-          "text": "composes",
-          "width": 70.0
-        }
-      ]
-    },
-    {
-      "tail": 6,
-      "head": 8,
-      "_gvid": 12,
-      "pos": "e,3894.1,269.41 2800.1,372.81 3060.8,354.77 3415.2,327 3726.4,291.42 3777.5,285.58 3831.8,278.35 3884,270.86",
-      "label": "composes",
-      "arrowhead": null,
-      "color": null,
-      "style": null,
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            3585.44,
+            3275.44,
             313.22
           ],
           "text": "composes",
@@ -2815,16 +2510,83 @@
           "op": "P",
           "points": [
             [
-              3884.67,
-              274.3
+              3753.39,
+              267.55
             ],
             [
-              3894.07,
-              269.41
+              3763.02,
+              263.12
             ],
             [
-              3883.68,
-              267.37
+              3752.73,
+              260.58
+            ]
+          ]
+        }
+      ],
+      "lp": "3275.4,316.92"
+    },
+    {
+      "tail": 6,
+      "head": 13,
+      "_gvid": 10,
+      "pos": "e,2812.6,72.326 2940.2,172.08 2913.2,153.2 2883,131.4 2856.4,110.31 2844.1,100.54 2831,89.055 2820.1,79.183",
+      "label": "implements",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "2937.9,135.81",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            2937.94,
+            132.11
+          ],
+          "text": "implements",
+          "width": 85.0
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              2822.35,
+              76.49
+            ],
+            [
+              2812.61,
+              72.33
+            ],
+            [
+              2817.63,
+              81.66
             ]
           ]
         }
@@ -2839,47 +2601,107 @@
           "op": "b",
           "points": [
             [
-              2800.05,
-              372.81
+              2940.21,
+              172.08
             ],
             [
-              3060.76,
-              354.77
+              2913.16,
+              153.2
             ],
             [
-              3415.17,
-              327.0
+              2883.04,
+              131.4
             ],
             [
-              3726.44,
-              291.42
+              2856.44,
+              110.31
             ],
             [
-              3777.48,
-              285.58
+              2844.11,
+              100.54
             ],
             [
-              3831.76,
-              278.35
+              2831.0,
+              89.06
             ],
             [
-              3884.0,
-              270.86
+              2820.11,
+              79.18
             ]
           ]
         }
-      ],
-      "lp": "3585.4,316.92"
+      ]
     },
     {
-      "tail": 8,
-      "head": 7,
-      "_gvid": 13,
-      "pos": "e,4031.4,109.79 4099.3,171.59 4080.1,154.09 4058.6,134.54 4038.9,116.58",
+      "tail": 7,
+      "head": 0,
+      "_gvid": 11,
+      "pos": "e,3505.6,101.27 3869.9,173.62 3757,151.19 3625.7,125.12 3515.5,103.24",
       "label": "invokes",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              3516.09,
+              99.78
+            ],
+            [
+              3505.6,
+              101.27
+            ],
+            [
+              3514.72,
+              106.65
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              3869.89,
+              173.62
+            ],
+            [
+              3756.96,
+              151.19
+            ],
+            [
+              3625.67,
+              125.12
+            ],
+            [
+              3515.51,
+              103.24
+            ]
+          ]
+        }
+      ],
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -2895,85 +2717,53 @@
           "align": "c",
           "op": "T",
           "pt": [
-            4092.94,
+            3731.94,
             132.11
           ],
           "text": "invokes",
           "width": 55.0
         }
       ],
-      "lp": "4092.9,135.81",
-      "_hdraw_": [
-        {
-          "op": "S",
-          "style": "solid"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "P",
-          "points": [
-            [
-              4041.14,
-              113.93
-            ],
-            [
-              4031.39,
-              109.79
-            ],
-            [
-              4036.43,
-              119.1
-            ]
-          ]
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              4099.33,
-              171.59
-            ],
-            [
-              4080.09,
-              154.09
-            ],
-            [
-              4058.6,
-              134.54
-            ],
-            [
-              4038.86,
-              116.58
-            ]
-          ]
-        }
-      ]
+      "lp": "3731.9,135.81"
     },
     {
-      "tail": 8,
-      "head": 15,
-      "_gvid": 14,
-      "pos": "e,4452.4,72.748 4288.6,173.89 4328.1,156.02 4370.7,134.36 4407.4,110.31 4420.8,101.57 4434.2,90.039 4445,79.86",
-      "label": "implements",
+      "tail": 7,
+      "head": 8,
+      "_gvid": 12,
+      "pos": "e,4130.4,110.51 4130.4,160.91 4130.4,147.79 4130.4,133.99 4130.4,120.86",
+      "label": "invokes",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              4130.44,
+              160.91
+            ],
+            [
+              4130.44,
+              147.79
+            ],
+            [
+              4130.44,
+              133.99
+            ],
+            [
+              4130.44,
+              120.86
+            ]
+          ]
+        }
+      ],
+      "lp": "4157.9,135.81",
       "_hdraw_": [
         {
           "op": "S",
@@ -2993,56 +2783,16 @@
           "op": "P",
           "points": [
             [
-              4447.65,
-              82.2
+              4133.94,
+              120.51
             ],
             [
-              4452.43,
-              72.75
+              4130.44,
+              110.51
             ],
             [
-              4442.8,
-              77.16
-            ]
-          ]
-        }
-      ],
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "b",
-          "points": [
-            [
-              4288.62,
-              173.89
-            ],
-            [
-              4328.08,
-              156.02
-            ],
-            [
-              4370.68,
-              134.36
-            ],
-            [
-              4407.44,
-              110.31
-            ],
-            [
-              4420.79,
-              101.57
-            ],
-            [
-              4434.2,
-              90.04
-            ],
-            [
-              4445.03,
-              79.86
+              4126.94,
+              120.51
             ]
           ]
         }
@@ -3062,17 +2812,239 @@
           "align": "c",
           "op": "T",
           "pt": [
-            4418.94,
+            4157.94,
+            132.11
+          ],
+          "text": "invokes",
+          "width": 55.0
+        }
+      ]
+    },
+    {
+      "tail": 7,
+      "head": 14,
+      "_gvid": 13,
+      "pos": "e,4606.9,72.632 4398.2,174.36 4453.7,158.17 4510.4,137.23 4560.4,110.31 4575,102.46 4589,90.47 4599.9,79.768",
+      "label": "implements",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "lp": "4558.9,135.81",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            4558.94,
             132.11
           ],
           "text": "implements",
           "width": 85.0
         }
       ],
-      "lp": "4418.9,135.81"
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              4602.42,
+              82.22
+            ],
+            [
+              4606.94,
+              72.63
+            ],
+            [
+              4597.43,
+              77.31
+            ]
+          ]
+        }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              4398.2,
+              174.36
+            ],
+            [
+              4453.68,
+              158.17
+            ],
+            [
+              4510.42,
+              137.23
+            ],
+            [
+              4560.44,
+              110.31
+            ],
+            [
+              4575.03,
+              102.46
+            ],
+            [
+              4589.02,
+              90.47
+            ],
+            [
+              4599.92,
+              79.77
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tail": 7,
+      "head": 15,
+      "_gvid": 14,
+      "pos": "e,4728,72.397 4449,180.93 4501.7,170.56 4555.5,158.1 4605.4,143.31 4641.1,132.73 4651,130.26 4682.4,110.31 4696.1,101.64 4709.7,89.919 4720.6,79.6",
+      "label": "generates",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            4684.44,
+            132.11
+          ],
+          "text": "generates",
+          "width": 72.0
+        }
+      ],
+      "lp": "4684.4,135.81",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              4449.0,
+              180.93
+            ],
+            [
+              4501.74,
+              170.56
+            ],
+            [
+              4555.49,
+              158.1
+            ],
+            [
+              4605.44,
+              143.31
+            ],
+            [
+              4641.14,
+              132.73
+            ],
+            [
+              4651.0,
+              130.26
+            ],
+            [
+              4682.44,
+              110.31
+            ],
+            [
+              4696.1,
+              101.64
+            ],
+            [
+              4709.72,
+              89.92
+            ],
+            [
+              4720.61,
+              79.6
+            ]
+          ]
+        }
+      ],
+      "_hdraw_": [
+        {
+          "op": "S",
+          "style": "solid"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "P",
+          "points": [
+            [
+              4723.29,
+              81.88
+            ],
+            [
+              4728.02,
+              72.4
+            ],
+            [
+              4718.41,
+              76.86
+            ]
+          ]
+        }
+      ]
     }
   ],
-  "xdotversion": "1.7",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -3096,15 +3068,16 @@
           452.72
         ],
         [
-          4581.29,
+          4795.43,
           452.72
         ],
         [
-          4581.29,
+          4795.43,
           0.0
         ]
       ]
     }
   ],
-  "fontcolor": "#FFFFFF"
+  "fontcolor": "#FFFFFF",
+  "xdotversion": "1.7"
 }

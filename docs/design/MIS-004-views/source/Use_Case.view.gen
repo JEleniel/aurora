@@ -12,14 +12,15 @@
     {
       "_gvid": 0,
       "name": "ACT_004",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Actor</B><BR/>\n\t\t\t\t<B>Model Author</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tHuman operator responsible for navigating, editing, and validating Aurora models<BR/> within the standalone editor.<BR/></FONT>\n\t\t\t",
+      "label": "\n\t\t\t\t<B>Actor</B><BR/>\n\t\t\t\t<B>Model Author</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tHuman operator responsible for navigating, editing, and validating Aurora models<BR/> within the standalone editor.<BR/>\n\t\t\t",
       "pos": "427.8,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "svg_shape": "ellipse",
+      "width": "11.883",
       "height": "1.5321",
+      "color": null,
+      "fillcolor": "#1a2e05",
+      "svg_shape": "ellipse",
+      "icon": "user",
+      "style": "filled",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -27,7 +28,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -51,7 +52,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -71,7 +72,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -95,7 +96,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -110,7 +111,6 @@
           "width": 211.0
         }
       ],
-      "width": "11.883",
       "_draw_": [
         {
           "color": "#000000",
@@ -132,15 +132,11 @@
           ]
         }
       ],
-      "fillcolor": "#1a2e05",
-      "href": "../MIS-004-views/Model_Author.view.svg",
-      "icon": "user",
-      "style": "filled"
+      "href": "../MIS-004-views/Model_Author.view.svg"
     }
   ],
   "edges": [],
   "fontcolor": "#FFFFFF",
-  "xdotversion": "1.7",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -173,5 +169,6 @@
         ]
       ]
     }
-  ]
+  ],
+  "xdotversion": "1.7"
 }

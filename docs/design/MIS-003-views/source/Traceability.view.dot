@@ -2,42 +2,12 @@ digraph {
 					fontname="Noto Sans";
 					fontcolor="#FFFFFF";
 					fontsize=12;
-				REQ_006[
+				REQ_003[
 			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
-				<B>Write Compact Agent Export</B><BR/>
-				<BR/>
-				The tooling SHALL generate a single-file compact export suitable for agent consu<BR/>mption (AGENT-&lt;MISSION_ID&gt;.jsjson by default) by removing non-essential fields (<BR/>e.g., $schema, audit trail metadata) while preserving the card graph structure.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-003-views/Write_Compact_Agent_Export.view.svg";
-			style=filled;
-			fillcolor="#065f46";
-			svg_shape="rounded-rectangle";
-			icon="checklist";
-		];
-		REQ_005[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
-				<B>Render View Diagrams</B><BR/>
-				<BR/>
-				The tooling SHALL render view diagrams (DOT sources plus SVG output) for the can<BR/>onical view set. Rendering MUST use a Graphviz-compatible DOT renderer (default <BR/>&apos;dot&apos;) and SHOULD allow overriding the executable via environment configuration <BR/>(AURORA_DOT_COMMAND).<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-003-views/Render_View_Diagrams.view.svg";
-			style=filled;
-			fillcolor="#065f46";
-			svg_shape="rounded-rectangle";
-			icon="checklist";
-		];
-		REQ_003[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Requirement</B><BR/>
 				<B>Validate Models and Emit Diagnostics</B><BR/>
 				<BR/>
-				The tooling SHALL validate loaded models for core invariants (unique ids, at lea<BR/>st one Mission, valid link targets, reachability from the mission root) and SHAL<BR/>L emit structured diagnostics with severity (error|warning|info). Validation SHA<BR/>LL fail the command when errors are present and SHOULD still surface warnings (e<BR/>.g., relationship matrix compliance).<BR/></FONT>
+				The tooling SHALL validate loaded models for core invariants (unique ids, at lea<BR/>st one Mission, valid link targets, reachability from the mission root) and SHAL<BR/>L emit structured diagnostics with severity (error|warning|info). Validation SHA<BR/>LL fail the command when errors are present and SHOULD still surface warnings (e<BR/>.g., relationship matrix compliance).<BR/>
 			>
 			height=1.0;
 			width=1.6;
@@ -47,27 +17,12 @@ digraph {
 			svg_shape="rounded-rectangle";
 			icon="checklist";
 		];
-		REQ_007[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
-				<B>Bump Model Audit Versions</B><BR/>
-				<BR/>
-				The CLI SHOULD support bumping model audit trail versions (patch, minor, major) <BR/>with deterministic edits to affected cards and an appended audit history entry. <BR/>The current aurora_cli surface exposes bump commands but does not yet implement <BR/>them.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-003-views/Bump_Model_Audit_Versions.view.svg";
-			style=filled;
-			fillcolor="#065f46";
-			svg_shape="rounded-rectangle";
-			icon="checklist";
-		];
 		REQ_008[
 			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Requirement</B><BR/>
 				<B>Embed Canonical Registries</B><BR/>
 				<BR/>
-				The tooling SHALL embed canonical registries for card types, relationship verbs,<BR/> and view definitions so validation and rendering can operate deterministically <BR/>without depending on external instruction files at runtime.<BR/></FONT>
+				The tooling SHALL embed canonical registries for card types, relationship verbs,<BR/> and view definitions so validation and rendering can operate deterministically <BR/>without depending on external instruction files at runtime.<BR/>
 			>
 			height=1.0;
 			width=1.6;
@@ -77,12 +32,27 @@ digraph {
 			svg_shape="rounded-rectangle";
 			icon="checklist";
 		];
+		REQ_002[
+			label=<
+				<B>Requirement</B><BR/>
+				<B>Discover and Load Models</B><BR/>
+				<BR/>
+				The tooling SHALL discover one or more Aurora model homes from an input path (fi<BR/>le, model-home directory, or ancestor directory) and load all card files under e<BR/>ach model home. Discovery is schema-based (presence of Aurora.schema.*), support<BR/>s a direct child &apos;aurora/&apos; folder, and bounds directory walking (max depth) for <BR/>predictable performance.<BR/>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-003-views/Discover_and_Load_Models.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
 		REQ_004[
 			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
+				<B>Requirement</B><BR/>
 				<B>Render Card Markdown</B><BR/>
 				<BR/>
-				The tooling SHALL render per-card Markdown documentation and a mission executive<BR/> summary into a user-specified output directory. Rendered files SHOULD mirror th<BR/>e source card layout (card-type subfolders) and MUST be produced only after the <BR/>model validates without errors.<BR/></FONT>
+				The tooling SHALL render per-card Markdown documentation and a mission executive<BR/> summary into a user-specified output directory. Rendered files SHOULD mirror th<BR/>e source card layout (card-type subfolders) and MUST be produced only after the <BR/>model validates without errors.<BR/>
 			>
 			height=1.0;
 			width=1.6;
@@ -92,16 +62,46 @@ digraph {
 			svg_shape="rounded-rectangle";
 			icon="checklist";
 		];
-		REQ_002[
+		REQ_005[
 			label=<
-				<FONT COLOR="#FFFFFF"><B>Requirement</B><BR/>
-				<B>Discover and Load Models</B><BR/>
+				<B>Requirement</B><BR/>
+				<B>Render View Diagrams</B><BR/>
 				<BR/>
-				The tooling SHALL discover one or more Aurora model homes from an input path (fi<BR/>le, model-home directory, or ancestor directory) and load all card files under e<BR/>ach model home. Discovery is schema-based (presence of Aurora.schema.*), support<BR/>s a direct child &apos;aurora/&apos; folder, and bounds directory walking (max depth) for <BR/>predictable performance.<BR/></FONT>
+				The tooling SHALL render view diagrams (DOT sources plus SVG output) for the can<BR/>onical view set. Rendering MUST use a Graphviz-compatible DOT renderer (default <BR/>&apos;dot&apos;) and SHOULD allow overriding the executable via environment configuration <BR/>(AURORA_DOT_COMMAND).<BR/>
 			>
 			height=1.0;
 			width=1.6;
-			href="../MIS-003-views/Discover_and_Load_Models.view.svg";
+			href="../MIS-003-views/Render_View_Diagrams.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_006[
+			label=<
+				<B>Requirement</B><BR/>
+				<B>Write Compact Agent Export</B><BR/>
+				<BR/>
+				The tooling SHALL generate a single-file compact export suitable for agent consu<BR/>mption (AGENT-&lt;MISSION_ID&gt;.jsjson by default) by removing non-essential fields (<BR/>e.g., $schema, audit trail metadata) while preserving the card graph structure.<BR/>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-003-views/Write_Compact_Agent_Export.view.svg";
+			style=filled;
+			fillcolor="#065f46";
+			svg_shape="rounded-rectangle";
+			icon="checklist";
+		];
+		REQ_007[
+			label=<
+				<B>Requirement</B><BR/>
+				<B>Bump Model Audit Versions</B><BR/>
+				<BR/>
+				The CLI SHOULD support bumping model audit trail versions (patch, minor, major) <BR/>with deterministic edits to affected cards and an appended audit history entry. <BR/>The current aurora_cli surface exposes bump commands but does not yet implement <BR/>them.<BR/>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-003-views/Bump_Model_Audit_Versions.view.svg";
 			style=filled;
 			fillcolor="#065f46";
 			svg_shape="rounded-rectangle";

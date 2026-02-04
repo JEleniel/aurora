@@ -4,10 +4,10 @@ digraph {
 					fontsize=12;
 				ACT_004[
 			label=<
-				<FONT COLOR="#FFFFFF"><B>Actor</B><BR/>
+				<B>Actor</B><BR/>
 				<B>Model Author</B><BR/>
 				<BR/>
-				Human operator responsible for navigating, editing, and validating Aurora models<BR/> within the standalone editor.<BR/></FONT>
+				Human operator responsible for navigating, editing, and validating Aurora models<BR/> within the standalone editor.<BR/>
 			>
 			height=1.0;
 			width=1.6;

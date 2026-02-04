@@ -11,14 +11,16 @@
   "objects": [
     {
       "_gvid": 0,
-      "name": "PRO_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Process</B><BR/>\n\t\t\t\t<B>Reference Process</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tProcess necessitated by a capability in the relationship-matrix reference model.<BR/></FONT>\n\t\t\t",
-      "pos": "415.78,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "style": "filled",
+      "name": "CAP_001",
+      "label": "\n\t\t\t\t<B>Capability</B><BR/>\n\t\t\t\t<B>Reference Capability</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tCapability used to satisfy a requirement and necessitate a process.<BR/>\n\t\t\t",
+      "pos": "659.78,186.76",
+      "width": "9.762",
+      "height": "1.2571",
+      "color": null,
+      "fillcolor": "#052e16",
+      "svg_shape": "rounded-rectangle",
+      "icon": "spark",
+      "href": "../MIS-002-views/Reference_Capability.view.svg",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -26,7 +28,111 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            619.78,
+            204.56
+          ],
+          "text": "Capability",
+          "width": 80.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            577.28,
+            190.56
+          ],
+          "text": "Reference Capability",
+          "width": 165.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            419.28,
+            162.56
+          ],
+          "text": "Capability used to satisfy a requirement and necessitate a process.",
+          "width": 481.0
+        }
+      ],
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#052e16",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            659.78,
+            186.76,
+            351.36,
+            45.01
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 1,
+      "name": "PRO_001",
+      "label": "\n\t\t\t\t<B>Process</B><BR/>\n\t\t\t\t<B>Reference Process</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tProcess necessitated by a capability in the relationship-matrix reference model.<BR/>\n\t\t\t",
+      "pos": "415.78,45.255",
+      "width": "11.549",
+      "height": "1.2571",
+      "color": null,
+      "fillcolor": "#2e1065",
+      "svg_shape": "box",
+      "icon": "workflow",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -50,7 +156,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -70,7 +176,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -110,148 +216,20 @@
           ]
         }
       ],
-      "width": "11.549",
-      "icon": "workflow",
-      "fillcolor": "#2e1065",
-      "height": "1.2571",
-      "svg_shape": "box",
-      "href": "../MIS-002-views/Reference_Process.view.svg"
-    },
-    {
-      "_gvid": 1,
-      "name": "CAP_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Capability</B><BR/>\n\t\t\t\t<B>Reference Capability</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tCapability used to satisfy a requirement and necessitate a process.<BR/></FONT>\n\t\t\t",
-      "pos": "659.78,186.76",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#052e16",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            659.78,
-            186.76,
-            351.36,
-            45.01
-          ]
-        }
-      ],
-      "icon": "spark",
       "style": "filled",
-      "svg_shape": "rounded-rectangle",
-      "height": "1.2571",
-      "fillcolor": "#052e16",
-      "width": "9.762",
-      "href": "../MIS-002-views/Reference_Capability.view.svg",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            619.78,
-            204.56
-          ],
-          "text": "Capability",
-          "width": 80.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            577.28,
-            190.56
-          ],
-          "text": "Reference Capability",
-          "width": 165.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            419.28,
-            162.56
-          ],
-          "text": "Capability used to satisfy a requirement and necessitate a process.",
-          "width": 481.0
-        }
-      ]
+      "href": "../MIS-002-views/Reference_Process.view.svg"
     },
     {
       "_gvid": 2,
       "name": "REQ_001",
-      "bb": null,
       "label": "\\N",
       "pos": "903.78,45.255",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
       "width": "1.4985",
       "height": "0.5",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "op": "e",
-          "rect": [
-            903.78,
-            45.25,
-            53.89,
-            18.0
-          ]
-        }
-      ],
+      "color": null,
+      "fillcolor": null,
+      "svg_shape": null,
+      "icon": null,
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -273,19 +251,57 @@
           "text": "REQ_001",
           "width": 67.0
         }
+      ],
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "e",
+          "rect": [
+            903.78,
+            45.25,
+            53.89,
+            18.0
+          ]
+        }
       ]
     }
   ],
   "edges": [
     {
-      "tail": 1,
-      "head": 0,
+      "tail": 0,
+      "head": 1,
       "_gvid": 0,
       "pos": "e,492.02,89.845 583.91,142.39 557.53,127.3 527.77,110.29 500.7,94.811",
       "label": "necessitates",
       "arrowhead": null,
       "color": null,
       "style": null,
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            590.28,
+            112.31
+          ],
+          "text": "necessitates",
+          "width": 89.0
+        }
+      ],
       "_hdraw_": [
         {
           "op": "S",
@@ -319,6 +335,7 @@
           ]
         }
       ],
+      "lp": "590.28,116.01",
       "_draw_": [
         {
           "color": "#000000",
@@ -346,33 +363,10 @@
             ]
           ]
         }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            590.28,
-            112.31
-          ],
-          "text": "necessitates",
-          "width": 89.0
-        }
-      ],
-      "lp": "590.28,116.01"
+      ]
     },
     {
-      "tail": 1,
+      "tail": 0,
       "head": 2,
       "_gvid": 1,
       "pos": "e,882.94,61.9 746.66,142.91 776.91,127.23 810.78,108.84 840.78,90.51 852.1,83.596 864.1,75.394 874.57,67.94",
@@ -413,6 +407,29 @@
           ]
         }
       ],
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "c",
+          "op": "T",
+          "pt": [
+            836.28,
+            112.31
+          ],
+          "text": "satisfies",
+          "width": 59.0
+        }
+      ],
+      "lp": "836.28,116.01",
       "_draw_": [
         {
           "color": "#000000",
@@ -452,32 +469,10 @@
             ]
           ]
         }
-      ],
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "c",
-          "op": "T",
-          "pt": [
-            836.28,
-            112.31
-          ],
-          "text": "satisfies",
-          "width": 59.0
-        }
-      ],
-      "lp": "836.28,116.01"
+      ]
     }
   ],
+  "xdotversion": "1.7",
   "fontcolor": "#FFFFFF",
   "_draw_": [
     {
@@ -511,6 +506,5 @@
         ]
       ]
     }
-  ],
-  "xdotversion": "1.7"
+  ]
 }

@@ -3,7 +3,7 @@
   "directed": true,
   "strict": false,
   "_subgraph_cnt": 0,
-  "bb": "0,0,2199.9,271.62",
+  "bb": "0,0,2361.6,271.62",
   "rankdir": null,
   "fontname": "Noto Sans",
   "fontsize": "12",
@@ -11,17 +11,15 @@
   "objects": [
     {
       "_gvid": 0,
-      "name": "THR_002",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Threat</B><BR/>\n\t\t\t\t<B>Secondary Threat</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tSecondary threat used as a target for actor threat presentation in the reference<BR/> model.<BR/></FONT>\n\t\t\t",
-      "pos": "416.49,216.46",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "width": "11.569",
-      "fillcolor": "#4c0519",
-      "style": "filled",
-      "href": "../MIS-002-views/Secondary_Threat.view.svg",
+      "name": "RIS_001",
+      "label": "\n\t\t\t\t<B>Risk</B><BR/>\n\t\t\t\t<B>Reference Risk</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tRisk raised by threats and mitigated by controls in the relationship-matrix refe<BR/>rence model.<BR/>\n\t\t\t",
+      "pos": "412.24,55.154",
+      "width": "11.451",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#881337",
+      "svg_shape": "octagon",
+      "icon": "alert-triangle",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -29,7 +27,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -41,11 +39,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            389.49,
-            241.26
+            394.24,
+            79.95
           ],
-          "text": "Threat",
-          "width": 54.0
+          "text": "Risk",
+          "width": 36.0
         },
         {
           "face": "Times-Roman",
@@ -53,7 +51,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -61,11 +59,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            346.99,
-            227.26
+            351.74,
+            65.95
           ],
-          "text": "Secondary Threat",
-          "width": 139.0
+          "text": "Reference Risk",
+          "width": 121.0
         },
         {
           "face": "Times-Roman",
@@ -73,7 +71,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -85,11 +83,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            129.99,
-            199.26
+            128.74,
+            37.95
           ],
-          "text": "Secondary threat used as a target for actor threat presentation in the reference",
-          "width": 573.0
+          "text": "Risk raised by threats and mitigated by controls in the relationship-matrix refe",
+          "width": 567.0
         },
         {
           "face": "Times-Roman",
@@ -97,7 +95,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -105,54 +103,15 @@
           "align": "l",
           "op": "T",
           "pt": [
-            389.99,
-            185.26
+            365.74,
+            23.95
           ],
-          "text": " model.",
-          "width": 53.0
+          "text": "rence model.",
+          "width": 93.0
         }
       ],
-      "height": "1.5321",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#4c0519",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            416.49,
-            216.46,
-            416.47,
-            55.31
-          ]
-        }
-      ],
-      "icon": "bug",
-      "svg_shape": "octagon"
-    },
-    {
-      "_gvid": 1,
-      "name": "RIS_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Risk</B><BR/>\n\t\t\t\t<B>Reference Risk</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tRisk raised by threats and mitigated by controls in the relationship-matrix refe<BR/>rence model.<BR/></FONT>\n\t\t\t",
-      "pos": "1102.5,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "href": "../MIS-002-views/Reference_Risk.view.svg",
-      "icon": "alert-triangle",
       "style": "filled",
-      "fillcolor": "#881337",
-      "svg_shape": "octagon",
-      "height": "1.5321",
-      "width": "11.451",
+      "href": "../MIS-002-views/Reference_Risk.view.svg",
       "_draw_": [
         {
           "color": "#000000",
@@ -167,150 +126,38 @@
         {
           "op": "E",
           "rect": [
-            1102.49,
+            412.24,
             55.15,
             412.49,
             55.31
           ]
         }
-      ],
+      ]
+    },
+    {
+      "_gvid": 1,
+      "name": "THR_002",
+      "label": "\n\t\t\t\t<B>Threat</B><BR/>\n\t\t\t\t<B>Secondary Threat</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tSecondary threat used as a target for actor threat presentation in the reference<BR/> model.<BR/>\n\t\t\t",
+      "pos": "1098.2,216.46",
+      "width": "11.569",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#4c0519",
+      "svg_shape": "octagon",
+      "icon": "bug",
+      "style": "filled",
       "_ldraw_": [
         {
           "face": "Times-Roman",
           "op": "F",
           "size": 14.0
         },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1084.49,
-            79.95
-          ],
-          "text": "Risk",
-          "width": 36.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1041.99,
-            65.95
-          ],
-          "text": "Reference Risk",
-          "width": 121.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            818.99,
-            37.95
-          ],
-          "text": "Risk raised by threats and mitigated by controls in the relationship-matrix refe",
-          "width": 567.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1055.99,
-            23.95
-          ],
-          "text": "rence model.",
-          "width": 93.0
-        }
-      ]
-    },
-    {
-      "_gvid": 2,
-      "name": "AST_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Asset</B><BR/>\n\t\t\t\t<B>Reference Asset</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAsset owned by an actor, protected by a control, and derived from an artifact in<BR/> the reference model.<BR/></FONT>\n\t\t\t",
-      "pos": "1785.5,216.46",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "_draw_": [
         {
           "color": "#000000",
           "grad": "none",
           "op": "c"
         },
         {
-          "color": "#334155",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            1785.49,
-            216.46,
-            414.23,
-            55.31
-          ]
-        }
-      ],
-      "svg_shape": "box",
-      "href": "../MIS-002-views/Reference_Asset.view.svg",
-      "fillcolor": "#334155",
-      "width": "11.51",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
           "fontchar": 1,
           "op": "t"
         },
@@ -318,11 +165,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1763.99,
+            1071.24,
             241.26
           ],
-          "text": "Asset",
-          "width": 43.0
+          "text": "Threat",
+          "width": 54.0
         },
         {
           "face": "Times-Roman",
@@ -330,7 +177,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -338,11 +185,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1721.49,
+            1028.74,
             227.26
           ],
-          "text": "Reference Asset",
-          "width": 128.0
+          "text": "Secondary Threat",
+          "width": 139.0
         },
         {
           "face": "Times-Roman",
@@ -350,7 +197,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -362,11 +209,11 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1500.49,
+            811.74,
             199.26
           ],
-          "text": "Asset owned by an actor, protected by a control, and derived from an artifact in",
-          "width": 570.0
+          "text": "Secondary threat used as a target for actor threat presentation in the reference",
+          "width": 573.0
         },
         {
           "face": "Times-Roman",
@@ -374,7 +221,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -382,28 +229,14 @@
           "align": "l",
           "op": "T",
           "pt": [
-            1708.49,
+            1071.74,
             185.26
           ],
-          "text": " the reference model.",
-          "width": 154.0
+          "text": " model.",
+          "width": 53.0
         }
       ],
-      "height": "1.5321",
-      "icon": "shield-key",
-      "style": "filled"
-    },
-    {
-      "_gvid": 3,
-      "name": "THR_001",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Threat</B><BR/>\n\t\t\t\t<B>Reference Threat</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThreat presented by an actor that raises a risk.<BR/></FONT>\n\t\t\t",
-      "pos": "1102.5,216.46",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
-      "fillcolor": "#4c0519",
-      "width": "6.9729",
+      "href": "../MIS-002-views/Secondary_Threat.view.svg",
       "_draw_": [
         {
           "color": "#000000",
@@ -418,101 +251,25 @@
         {
           "op": "E",
           "rect": [
-            1102.49,
+            1098.24,
             216.46,
-            251.05,
-            45.01
+            416.47,
+            55.31
           ]
         }
-      ],
-      "href": "../MIS-002-views/Reference_Threat.view.svg",
-      "icon": "bug",
-      "height": "1.2571",
-      "style": "filled",
-      "_ldraw_": [
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 1,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1075.49,
-            234.26
-          ],
-          "text": "Threat",
-          "width": 54.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            1032.99,
-            220.26
-          ],
-          "text": "Reference Threat",
-          "width": 139.0
-        },
-        {
-          "face": "Times-Roman",
-          "op": "F",
-          "size": 14.0
-        },
-        {
-          "color": "#ffffff",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "fontchar": 0,
-          "op": "t"
-        },
-        {
-          "align": "l",
-          "op": "T",
-          "pt": [
-            932.99,
-            192.26
-          ],
-          "text": "Threat presented by an actor that raises a risk.",
-          "width": 339.0
-        }
-      ],
-      "svg_shape": "octagon"
-    }
-  ],
-  "edges": [
+      ]
+    },
     {
-      "tail": 3,
-      "head": 1,
-      "_gvid": 0,
-      "pos": "e,1102.5,110.5 1102.5,171.09 1102.5,155.53 1102.5,137.73 1102.5,120.86",
-      "label": "raises",
-      "arrowhead": null,
+      "_gvid": 2,
+      "name": "THR_001",
+      "label": "\n\t\t\t\t<B>Threat</B><BR/>\n\t\t\t\t<B>Reference Threat</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThreat presented by an actor that raises a risk.<BR/>\n\t\t\t",
+      "pos": "412.24,216.46",
+      "width": "6.9729",
+      "height": "1.2571",
       "color": null,
-      "style": null,
-      "lp": "1124,135.81",
+      "fillcolor": "#4c0519",
+      "svg_shape": "octagon",
+      "icon": "bug",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -525,16 +282,253 @@
           "op": "c"
         },
         {
-          "align": "c",
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
           "op": "T",
           "pt": [
-            1123.99,
-            132.11
+            385.24,
+            234.26
           ],
-          "text": "raises",
-          "width": 43.0
+          "text": "Threat",
+          "width": 54.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            342.74,
+            220.26
+          ],
+          "text": "Reference Threat",
+          "width": 139.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            242.74,
+            192.26
+          ],
+          "text": "Threat presented by an actor that raises a risk.",
+          "width": 339.0
         }
       ],
+      "href": "../MIS-002-views/Reference_Threat.view.svg",
+      "style": "filled",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#4c0519",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            412.24,
+            216.46,
+            251.05,
+            45.01
+          ]
+        }
+      ]
+    },
+    {
+      "_gvid": 3,
+      "name": "AST_001",
+      "label": "\n\t\t\t\t<B>Asset</B><BR/>\n\t\t\t\t<B>Reference Asset</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAsset owned by an actor, protected by a control, and derived from an artifact in<BR/> the reference model.<BR/>\n\t\t\t",
+      "pos": "1947.2,216.46",
+      "width": "11.51",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#334155",
+      "svg_shape": "box",
+      "icon": "shield-key",
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 1,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1925.74,
+            241.26
+          ],
+          "text": "Asset",
+          "width": 43.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1883.24,
+            227.26
+          ],
+          "text": "Reference Asset",
+          "width": 128.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "fontchar": 0,
+          "op": "t"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1662.24,
+            199.26
+          ],
+          "text": "Asset owned by an actor, protected by a control, and derived from an artifact in",
+          "width": 570.0
+        },
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "align": "l",
+          "op": "T",
+          "pt": [
+            1870.24,
+            185.26
+          ],
+          "text": " the reference model.",
+          "width": 154.0
+        }
+      ],
+      "href": "../MIS-002-views/Reference_Asset.view.svg",
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#334155",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            1947.24,
+            216.46,
+            414.23,
+            55.31
+          ]
+        }
+      ],
+      "style": "filled"
+    }
+  ],
+  "edges": [
+    {
+      "tail": 2,
+      "head": 0,
+      "_gvid": 0,
+      "pos": "e,412.24,110.5 412.24,171.09 412.24,155.53 412.24,137.73 412.24,120.86",
+      "label": "raises",
+      "arrowhead": null,
+      "color": null,
+      "style": null,
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "op": "b",
+          "points": [
+            [
+              412.24,
+              171.09
+            ],
+            [
+              412.24,
+              155.53
+            ],
+            [
+              412.24,
+              137.73
+            ],
+            [
+              412.24,
+              120.86
+            ]
+          ]
+        }
+      ],
+      "lp": "433.74,135.81",
       "_hdraw_": [
         {
           "op": "S",
@@ -554,51 +548,44 @@
           "op": "P",
           "points": [
             [
-              1105.99,
+              415.74,
               120.5
             ],
             [
-              1102.49,
+              412.24,
               110.5
             ],
             [
-              1098.99,
+              408.74,
               120.5
             ]
           ]
         }
       ],
-      "_draw_": [
+      "_ldraw_": [
+        {
+          "face": "Times-Roman",
+          "op": "F",
+          "size": 14.0
+        },
         {
           "color": "#000000",
           "grad": "none",
           "op": "c"
         },
         {
-          "op": "b",
-          "points": [
-            [
-              1102.49,
-              171.09
-            ],
-            [
-              1102.49,
-              155.53
-            ],
-            [
-              1102.49,
-              137.73
-            ],
-            [
-              1102.49,
-              120.86
-            ]
-          ]
+          "align": "c",
+          "op": "T",
+          "pt": [
+            433.74,
+            132.11
+          ],
+          "text": "raises",
+          "width": 43.0
         }
       ]
     }
   ],
-  "fontcolor": "#FFFFFF",
   "_draw_": [
     {
       "color": "#fffffe00",
@@ -622,15 +609,16 @@
           271.62
         ],
         [
-          2199.85,
+          2361.61,
           271.62
         ],
         [
-          2199.85,
+          2361.61,
           0.0
         ]
       ]
     }
   ],
+  "fontcolor": "#FFFFFF",
   "xdotversion": "1.7"
 }

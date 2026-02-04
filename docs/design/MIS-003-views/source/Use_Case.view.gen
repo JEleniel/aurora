@@ -12,34 +12,15 @@
     {
       "_gvid": 0,
       "name": "ACT_003",
-      "bb": null,
-      "label": "\n\t\t\t\t<FONT COLOR=\"#FFFFFF\"><B>Actor</B><BR/>\n\t\t\t\t<B>Architect</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tHuman operator responsible for authoring Aurora models and running CLI tooling (<BR/>validate, render, compact) to maintain deterministic design artifacts.<BR/></FONT>\n\t\t\t",
+      "label": "\n\t\t\t\t<B>Actor</B><BR/>\n\t\t\t\t<B>Architect</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tHuman operator responsible for authoring Aurora models and running CLI tooling (<BR/>validate, render, compact) to maintain deterministic design artifacts.<BR/>\n\t\t\t",
       "pos": "434.16,55.154",
-      "nodes": null,
-      "edges": null,
-      "subgraphs": null,
+      "width": "12.06",
+      "height": "1.5321",
+      "color": null,
+      "fillcolor": "#1a2e05",
+      "svg_shape": "ellipse",
       "icon": "user",
-      "_draw_": [
-        {
-          "color": "#000000",
-          "grad": "none",
-          "op": "c"
-        },
-        {
-          "color": "#1a2e05",
-          "grad": "none",
-          "op": "C"
-        },
-        {
-          "op": "E",
-          "rect": [
-            434.16,
-            55.15,
-            434.33,
-            55.31
-          ]
-        }
-      ],
+      "style": "filled",
       "_ldraw_": [
         {
           "face": "Times-Roman",
@@ -47,7 +28,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -71,7 +52,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -91,7 +72,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -115,7 +96,7 @@
           "size": 14.0
         },
         {
-          "color": "#ffffff",
+          "color": "#000000",
           "grad": "none",
           "op": "c"
         },
@@ -130,15 +111,32 @@
           "width": 494.0
         }
       ],
-      "style": "filled",
-      "fillcolor": "#1a2e05",
-      "href": "../MIS-003-views/Architect.view.svg",
-      "svg_shape": "ellipse",
-      "height": "1.5321",
-      "width": "12.06"
+      "_draw_": [
+        {
+          "color": "#000000",
+          "grad": "none",
+          "op": "c"
+        },
+        {
+          "color": "#1a2e05",
+          "grad": "none",
+          "op": "C"
+        },
+        {
+          "op": "E",
+          "rect": [
+            434.16,
+            55.15,
+            434.33,
+            55.31
+          ]
+        }
+      ],
+      "href": "../MIS-003-views/Architect.view.svg"
     }
   ],
   "edges": [],
+  "xdotversion": "1.7",
   "fontcolor": "#FFFFFF",
   "_draw_": [
     {
@@ -172,6 +170,5 @@
         ]
       ]
     }
-  ],
-  "xdotversion": "1.7"
+  ]
 }

@@ -2,42 +2,27 @@ digraph {
 					fontname="Noto Sans";
 					fontcolor="#FFFFFF";
 					fontsize=12;
-				INT_002[
+				COM_002[
 			label=<
-				<FONT COLOR="#000000"><B>Interface</B><BR/>
-				<B>Graphviz DOT Renderer</B><BR/>
+				<B>Component</B><BR/>
+				<B>CLI Command Runner</B><BR/>
 				<BR/>
-				External executable interface for rendering Graphviz DOT into a layout used to g<BR/>enerate themed SVG views (default: &apos;dot&apos;, override via AURORA_DOT_COMMAND).<BR/></FONT>
+				CLI entrypoint and command dispatcher (clap subcommands) that orchestrates disco<BR/>very, validation, rendering, and compact export workflows and reports diagnostic<BR/>s and summaries.<BR/>
 			>
 			height=1.0;
 			width=1.6;
-			href="../MIS-003-views/Graphviz_DOT_Renderer.view.svg";
+			href="../MIS-003-views/CLI_Command_Runner.view.svg";
 			style=filled;
-			fillcolor="#102080";
-			svg_shape="interface";
-			icon="plug";
-		];
-		APP_003[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Application</B><BR/>
-				<B>aurora_shared</B><BR/>
-				<BR/>
-				Shared domain library that implements model discovery, parsing, validation, rend<BR/>ering, and compact export helpers for Aurora tooling surfaces.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-003-views/aurora_shared.view.svg";
-			style=filled;
-			fillcolor="#1e3a8a";
-			svg_shape="box";
-			icon="app-window";
+			fillcolor="#1e40af";
+			svg_shape="component";
+			icon="cube";
 		];
 		COM_004[
 			label=<
-				<FONT COLOR="#FFFFFF"><B>Component</B><BR/>
+				<B>Component</B><BR/>
 				<B>Validation Engine</B><BR/>
 				<BR/>
-				Validator that checks structural invariants (duplicate ids, mission presence, li<BR/>nk targets, reachability) plus policy checks (secret asset ownership) and relati<BR/>onship-matrix compliance using embedded registries.<BR/></FONT>
+				Validator that checks structural invariants (duplicate ids, mission presence, li<BR/>nk targets, reachability) plus policy checks (secret asset ownership) and relati<BR/>onship-matrix compliance using embedded registries.<BR/>
 			>
 			height=1.0;
 			width=1.6;
@@ -49,10 +34,10 @@ digraph {
 		];
 		COM_003[
 			label=<
-				<FONT COLOR="#FFFFFF"><B>Component</B><BR/>
+				<B>Component</B><BR/>
 				<B>Model Discovery and Loading</B><BR/>
 				<BR/>
-				Discovery and parsing layer that locates model homes (schema-based), loads card <BR/>files (JSON/JSJSON) from disk, and builds a searchable AuroraModel index.<BR/></FONT>
+				Discovery and parsing layer that locates model homes (schema-based), loads card <BR/>files (JSON/JSJSON) from disk, and builds a searchable AuroraModel index.<BR/>
 			>
 			height=1.0;
 			width=1.6;
@@ -62,57 +47,12 @@ digraph {
 			svg_shape="component";
 			icon="cube";
 		];
-		COM_006[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Component</B><BR/>
-				<B>Embedded Registries</B><BR/>
-				<BR/>
-				Compile-time canonical registries for card definitions (palette), relationship d<BR/>efinitions (matrix rules), and view definitions (canonical view set) used by val<BR/>idation and rendering.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-003-views/Embedded_Registries.view.svg";
-			style=filled;
-			fillcolor="#1e40af";
-			svg_shape="component";
-			icon="cube";
-		];
-		COM_002[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Component</B><BR/>
-				<B>CLI Command Runner</B><BR/>
-				<BR/>
-				CLI entrypoint and command dispatcher (clap subcommands) that orchestrates disco<BR/>very, validation, rendering, and compact export workflows and reports diagnostic<BR/>s and summaries.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-003-views/CLI_Command_Runner.view.svg";
-			style=filled;
-			fillcolor="#1e40af";
-			svg_shape="component";
-			icon="cube";
-		];
-		COM_005[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Component</B><BR/>
-				<B>Rendering Engine</B><BR/>
-				<BR/>
-				Renderer that produces per-card Markdown documentation, executive summaries, can<BR/>onical view DOT sources, and themed SVG diagrams; also writes compact agent expo<BR/>rts.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-003-views/Rendering_Engine.view.svg";
-			style=filled;
-			fillcolor="#1e40af";
-			svg_shape="component";
-			icon="cube";
-		];
 		APP_002[
 			label=<
-				<FONT COLOR="#FFFFFF"><B>Application</B><BR/>
+				<B>Application</B><BR/>
 				<B>aurora_cli</B><BR/>
 				<BR/>
-				Command-line interface that discovers Aurora model homes, validates mission-scop<BR/>ed models, renders Markdown + SVG views, and writes compact agent exports.<BR/></FONT>
+				Command-line interface that discovers Aurora model homes, validates mission-scop<BR/>ed models, renders Markdown + SVG views, and writes compact agent exports.<BR/>
 			>
 			height=1.0;
 			width=1.6;
@@ -122,19 +62,80 @@ digraph {
 			svg_shape="box";
 			icon="app-window";
 		];
-			APP_003 -> COM_003 [label="composes"];
-									APP_003 -> COM_004 [label="composes"];
-									APP_003 -> COM_005 [label="composes"];
-									APP_003 -> COM_006 [label="composes"];
-									COM_004 -> FEA_002 [label="implements"];
-									COM_003 -> FEA_008 [label="implements"];
-									COM_006 -> FEA_009 [label="implements"];
-									COM_002 -> FEA_002 [label="implements"];
+		COM_006[
+			label=<
+				<B>Component</B><BR/>
+				<B>Embedded Registries</B><BR/>
+				<BR/>
+				Compile-time canonical registries for card definitions (palette), relationship d<BR/>efinitions (matrix rules), and view definitions (canonical view set) used by val<BR/>idation and rendering.<BR/>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-003-views/Embedded_Registries.view.svg";
+			style=filled;
+			fillcolor="#1e40af";
+			svg_shape="component";
+			icon="cube";
+		];
+		INT_002[
+			label=<
+				<B>Interface</B><BR/>
+				<B>Graphviz DOT Renderer</B><BR/>
+				<BR/>
+				External executable interface for rendering Graphviz DOT into a layout used to g<BR/>enerate themed SVG views (default: &apos;dot&apos;, override via AURORA_DOT_COMMAND).<BR/>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-003-views/Graphviz_DOT_Renderer.view.svg";
+			style=filled;
+			fillcolor="#102080";
+			svg_shape="interface";
+			icon="plug";
+		];
+		APP_003[
+			label=<
+				<B>Application</B><BR/>
+				<B>aurora_shared</B><BR/>
+				<BR/>
+				Shared domain library that implements model discovery, parsing, validation, rend<BR/>ering, and compact export helpers for Aurora tooling surfaces.<BR/>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-003-views/aurora_shared.view.svg";
+			style=filled;
+			fillcolor="#1e3a8a";
+			svg_shape="box";
+			icon="app-window";
+		];
+		COM_005[
+			label=<
+				<B>Component</B><BR/>
+				<B>Rendering Engine</B><BR/>
+				<BR/>
+				Renderer that produces per-card Markdown documentation, executive summaries, can<BR/>onical view DOT sources, and themed SVG diagrams; also writes compact agent expo<BR/>rts.<BR/>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-003-views/Rendering_Engine.view.svg";
+			style=filled;
+			fillcolor="#1e40af";
+			svg_shape="component";
+			icon="cube";
+		];
+			COM_002 -> FEA_002 [label="implements"];
 									COM_002 -> FEA_003 [label="implements"];
 									COM_002 -> FEA_004 [label="implements"];
 									COM_002 -> FEA_005 [label="implements"];
 									COM_002 -> FEA_006 [label="implements"];
 									COM_002 -> FEA_007 [label="implements"];
+									COM_004 -> FEA_002 [label="implements"];
+									COM_003 -> FEA_008 [label="implements"];
+									APP_002 -> COM_002 [label="composes"];
+									COM_006 -> FEA_009 [label="implements"];
+									APP_003 -> COM_003 [label="composes"];
+									APP_003 -> COM_004 [label="composes"];
+									APP_003 -> COM_005 [label="composes"];
+									APP_003 -> COM_006 [label="composes"];
 									COM_005 -> FEA_003 [label="implements"];
 									COM_005 -> FEA_004 [label="implements"];
 									COM_005 -> FEA_005 [label="implements"];
@@ -143,5 +144,4 @@ digraph {
 									COM_005 -> ART_002 [label="generates"];
 									COM_005 -> ART_003 [label="generates"];
 									COM_005 -> ART_004 [label="generates"];
-									APP_002 -> COM_002 [label="composes"];
 								}

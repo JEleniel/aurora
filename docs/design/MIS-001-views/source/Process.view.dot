@@ -2,42 +2,12 @@ digraph {
 					fontname="Noto Sans";
 					fontcolor="#FFFFFF";
 					fontsize=12;
-				CAP_018[
+				CAP_017[
 			label=<
-				<FONT COLOR="#FFFFFF"><B>Capability</B><BR/>
-				<B>View Projection and Rendering</B><BR/>
-				<BR/>
-				Ability to select card types for a view and render the resulting subgraph as nav<BR/>igable documentation and diagrams without altering the underlying model.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-001-views/View_Projection_and_Rendering.view.svg";
-			style=filled;
-			fillcolor="#052e16";
-			svg_shape="rounded-rectangle";
-			icon="spark";
-		];
-		CAP_015[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Capability</B><BR/>
-				<B>Deterministic Model Invariants</B><BR/>
-				<BR/>
-				Ability to define and enforce mission-rooted graph invariants so any tool can tr<BR/>averse, validate, and interpret the model deterministically.<BR/></FONT>
-			>
-			height=1.0;
-			width=1.6;
-			href="../MIS-001-views/Deterministic_Model_Invariants.view.svg";
-			style=filled;
-			fillcolor="#052e16";
-			svg_shape="rounded-rectangle";
-			icon="spark";
-		];
-		CAP_017[
-			label=<
-				<FONT COLOR="#FFFFFF"><B>Capability</B><BR/>
+				<B>Capability</B><BR/>
 				<B>Model Layout and Serialization</B><BR/>
 				<BR/>
-				Ability to persist Aurora cards in a stable, tooling-friendly directory and file<BR/>name layout, with schema references and encoding rules suitable for reliable dif<BR/>fs and automated ingestion.<BR/></FONT>
+				Ability to persist Aurora cards in a stable, tooling-friendly directory and file<BR/>name layout, with schema references and encoding rules suitable for reliable dif<BR/>fs and automated ingestion.<BR/>
 			>
 			height=1.0;
 			width=1.6;
@@ -49,10 +19,10 @@ digraph {
 		];
 		CAP_016[
 			label=<
-				<FONT COLOR="#FFFFFF"><B>Capability</B><BR/>
+				<B>Capability</B><BR/>
 				<B>Canonical Registries</B><BR/>
 				<BR/>
-				Ability to define and distribute canonical registries for card types, relationsh<BR/>ip verbs, and views so multiple tools produce consistent validation and renderin<BR/>gs.<BR/></FONT>
+				Ability to define and distribute canonical registries for card types, relationsh<BR/>ip verbs, and views so multiple tools produce consistent validation and renderin<BR/>gs.<BR/>
 			>
 			height=1.0;
 			width=1.6;
@@ -62,16 +32,46 @@ digraph {
 			svg_shape="rounded-rectangle";
 			icon="spark";
 		];
-			CAP_018 -> REQ_026 [label="satisfies"];
-									CAP_015 -> REQ_018 [label="satisfies"];
-									CAP_015 -> REQ_019 [label="satisfies"];
-									CAP_015 -> REQ_028 [label="satisfies"];
-									CAP_015 -> REQ_025 [label="satisfies"];
-									CAP_015 -> REQ_027 [label="satisfies"];
-									CAP_017 -> REQ_016 [label="satisfies"];
+		CAP_015[
+			label=<
+				<B>Capability</B><BR/>
+				<B>Deterministic Model Invariants</B><BR/>
+				<BR/>
+				Ability to define and enforce mission-rooted graph invariants so any tool can tr<BR/>averse, validate, and interpret the model deterministically.<BR/>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/Deterministic_Model_Invariants.view.svg";
+			style=filled;
+			fillcolor="#052e16";
+			svg_shape="rounded-rectangle";
+			icon="spark";
+		];
+		CAP_018[
+			label=<
+				<B>Capability</B><BR/>
+				<B>View Projection and Rendering</B><BR/>
+				<BR/>
+				Ability to select card types for a view and render the resulting subgraph as nav<BR/>igable documentation and diagrams without altering the underlying model.<BR/>
+			>
+			height=1.0;
+			width=1.6;
+			href="../MIS-001-views/View_Projection_and_Rendering.view.svg";
+			style=filled;
+			fillcolor="#052e16";
+			svg_shape="rounded-rectangle";
+			icon="spark";
+		];
+			CAP_017 -> REQ_016 [label="satisfies"];
 									CAP_017 -> REQ_017 [label="satisfies"];
 									CAP_017 -> REQ_024 [label="satisfies"];
 									CAP_016 -> REQ_021 [label="satisfies"];
 									CAP_016 -> REQ_022 [label="satisfies"];
 									CAP_016 -> REQ_023 [label="satisfies"];
+									CAP_015 -> REQ_018 [label="satisfies"];
+									CAP_015 -> REQ_019 [label="satisfies"];
+									CAP_015 -> REQ_028 [label="satisfies"];
+									CAP_015 -> REQ_025 [label="satisfies"];
+									CAP_015 -> REQ_027 [label="satisfies"];
+									CAP_018 -> REQ_026 [label="satisfies"];
 								}

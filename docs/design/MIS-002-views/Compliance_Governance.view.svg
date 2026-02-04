@@ -71,4 +71,10 @@
 	</symbol>
 </defs>
 
-<rect x="16.00" y="26.31" width="100.00" height="100.00" fill="none" stroke="#FFF000000FFF" stroke-width="2.00" stroke-dasharray="5 5" /><text x="22.00" y="9.51" text-anchor="start" font-family="Noto Sans" font-size="12.00" fill="#111827" dominant-baseline="middle">&lt;FONT COLOR=&quot;#FFFFFF&quot;&gt;&lt;B&gt;Requirement&lt;/B&gt;</text><text x="22.00" y="23.91" text-anchor="start" font-family="Noto Sans" font-size="12.00" fill="#111827" dominant-baseline="middle">&lt;B&gt;Reference Requirement&lt;/B&gt;</text><text x="22.00" y="38.31" text-anchor="start" font-family="Noto Sans" font-size="12.00" fill="#111827" dominant-baseline="middle">Requirement referenced by multiple rules (driven by driver, satisfied by capabil</text><text x="22.00" y="52.71" text-anchor="start" font-family="Noto Sans" font-size="12.00" fill="#111827" dominant-baseline="middle">ity, documented by ADR, limited by constraint).</text><text x="22.00" y="67.11" text-anchor="start" font-family="Noto Sans" font-size="12.00" fill="#111827" dominant-baseline="middle">&lt;/FONT&gt;</text></svg>
+<use href="#rounded-rectangle" x="-337.60" y="-30.98" width="1537.33" height="204.28" fill="#065f46" stroke="#FFFFFF" stroke-width="2.00" />
+<text x="-273.60" y="71.16" font-size="48">☑️</text>
+<text x="431.07" y="49.56" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Requirement</B></text>
+<text x="431.07" y="63.96" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Reference Requirement</B></text>
+<text x="431.07" y="78.36" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">Requirement referenced by multiple rules (driven by driver, satisfied by capabil</text>
+<text x="431.07" y="92.76" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">ity, documented by ADR, limited by constraint).</text>
+</svg>
