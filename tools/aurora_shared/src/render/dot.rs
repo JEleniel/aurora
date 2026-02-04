@@ -4,6 +4,10 @@ use thiserror::Error;
 
 use crate::render::geometry::{GeometryError, Point};
 
+pub fn pts_to_pixels(pts: f32) -> f32 {
+	pts * 96.0 / 72.0
+}
+
 /// A Graphviz DOT diagram
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Diagram {
