@@ -106,7 +106,7 @@
 <text x="3984.50" y="57.66" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Requirement</B></text>
 <text x="3984.50" y="72.06" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Identifiers, Filenames, and Model Layout</B></text>
 <text x="3984.50" y="86.46" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">Aurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o</text>
-<text x="3984.50" y="100.86" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">nce issued. Card files SHALL be named &lt;id&gt;-&lt;Sanitized_Name&gt;.jsjson, where specia</text>
+<text x="3984.50" y="100.86" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">nce issued. Card files SHALL be named &lt;id&gt;-&lt;Sanitized_Name&gt;.json, where specia</text>
 <text x="3984.50" y="115.26" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">l characters are stripped and spaces are replaced with underscores. Models SHALL</text>
 <text x="3984.50" y="129.66" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">follow the Model Home and Mission folder layout conventions so tools can discov</text>
 <text x="3984.50" y="144.06" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">er, validate, and render deterministically.</text>
@@ -162,8 +162,8 @@
 <use href="#rounded-rectangle" x="10177.67" y="-19.62" width="1610.67" height="240.95" fill="#065f46" stroke="#FFFFFF" stroke-width="2.00" />
 <text x="10241.67" y="100.86" font-size="48">☑️</text>
 <text x="10983.00" y="72.06" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Requirement</B></text>
-<text x="10983.00" y="86.46" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Strict JSJSON Card Encoding</B></text>
-<text x="10983.00" y="100.86" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">Aurora card files SHALL be stored as strict JSON (RFC 8259) using the .jsjson ex</text>
+<text x="10983.00" y="86.46" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Strict json Card Encoding</B></text>
+<text x="10983.00" y="100.86" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">Aurora card files SHALL be stored as strict JSON (RFC 8259) using the .json ex</text>
 <text x="10983.00" y="115.26" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa</text>
 <text x="10983.00" y="129.66" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">ctly one trailing newline.</text>
 </svg>

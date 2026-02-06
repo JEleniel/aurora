@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-003",
+	"card_type": "Component",
+	"name": "Model Discovery and Loading",
+	"description": "Discovery and parsing layer that locates model homes (schema-based), loads card files (JSON/json) from disk, and builds a searchable AuroraModel index.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "implements",
+			"target": "FEA-008"
+		}
+	]
+}

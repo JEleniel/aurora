@@ -1,0 +1,40 @@
+{
+	"$schema": "./Aurora.schema.json",
+	"id": "MIS-003",
+	"card_type": "Mission",
+	"name": "CLI Tooling",
+	"description": "Provide CLI tooling capable of managing, rendering, compressing, and updating Aurora model(s).",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "establishes",
+			"target": "DRI-002"
+		},
+		{
+			"relationship": "establishes",
+			"target": "DRI-003"
+		},
+		{
+			"relationship": "involves",
+			"target": "ACT-003"
+		},
+		{
+			"relationship": "includes",
+			"target": "BND-002"
+		},
+		{
+			"relationship": "requires",
+			"target": "SYS-002"
+		}
+	]
+}

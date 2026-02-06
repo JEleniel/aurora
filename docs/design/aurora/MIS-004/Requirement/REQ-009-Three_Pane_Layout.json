@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-009",
+	"card_type": "Requirement",
+	"name": "Three Pane Layout",
+	"description": "The editor SHALL present a three-pane layout (similar to Visual Studio or Obsidian): left navigation tree, central graph view, and right inspector.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

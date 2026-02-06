@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "STR-001",
+	"card_type": "Story",
+	"name": "Reference Story",
+	"description": "Story desired by an actor and implying a constraint in the reference model.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "implies",
+			"target": "CNS-001"
+		}
+	]
+}

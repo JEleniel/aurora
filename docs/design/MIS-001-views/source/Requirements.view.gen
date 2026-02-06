@@ -592,7 +592,7 @@
     {
       "_gvid": 4,
       "name": "REQ_017",
-      "label": "\n\t\t\t\t<B>Requirement</B><BR/>\n\t\t\t\t<B>Identifiers, Filenames, and Model Layout</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o<BR/>nce issued. Card files SHALL be named &lt;id&gt;-&lt;Sanitized_Name&gt;.jsjson, where specia<BR/>l characters are stripped and spaces are replaced with underscores. Models SHALL<BR/> follow the Model Home and Mission folder layout conventions so tools can discov<BR/>er, validate, and render deterministically.<BR/>\n\t\t\t",
+      "label": "\n\t\t\t\t<B>Requirement</B><BR/>\n\t\t\t\t<B>Identifiers, Filenames, and Model Layout</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o<BR/>nce issued. Card files SHALL be named &lt;id&gt;-&lt;Sanitized_Name&gt;.json, where specia<BR/>l characters are stripped and spaces are replaced with underscores. Models SHALL<BR/> follow the Model Home and Mission folder layout conventions so tools can discov<BR/>er, validate, and render deterministically.<BR/>\n\t\t\t",
       "pos": "10068,84.853",
       "width": "12.414",
       "height": "2.357",
@@ -686,7 +686,7 @@
             9759.56,
             74.65
           ],
-          "text": "nce issued. Card files SHALL be named <id>-<Sanitized_Name>.jsjson, where specia",
+          "text": "nce issued. Card files SHALL be named <id>-<Sanitized_Name>.json, where specia",
           "width": 616.0
         },
         {
@@ -1642,7 +1642,7 @@
     {
       "_gvid": 10,
       "name": "REQ_016",
-      "label": "\n\t\t\t\t<B>Requirement</B><BR/>\n\t\t\t\t<B>Strict JSJSON Card Encoding</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora card files SHALL be stored as strict JSON (RFC 8259) using the .jsjson ex<BR/>tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa<BR/>ctly one trailing newline.<BR/>\n\t\t\t",
+      "label": "\n\t\t\t\t<B>Requirement</B><BR/>\n\t\t\t\t<B>Strict json Card Encoding</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAurora card files SHALL be stored as strict JSON (RFC 8259) using the .json ex<BR/>tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa<BR/>ctly one trailing newline.<BR/>\n\t\t\t",
       "pos": "10968,84.853",
       "width": "12.08",
       "height": "1.8071",
@@ -1714,7 +1714,7 @@
             10854.06,
             102.65
           ],
-          "text": "Strict JSJSON Card Encoding",
+          "text": "Strict json Card Encoding",
           "width": 227.0
         },
         {
@@ -1738,7 +1738,7 @@
             10677.56,
             74.65
           ],
-          "text": "Aurora card files SHALL be stored as strict JSON (RFC 8259) using the .jsjson ex",
+          "text": "Aurora card files SHALL be stored as strict JSON (RFC 8259) using the .json ex",
           "width": 580.0
         },
         {
@@ -1782,7 +1782,7 @@
           "width": 178.0
         }
       ],
-      "href": "../MIS-001-views/Strict_JSJSON_Card_Encoding.view.svg"
+      "href": "../MIS-001-views/Strict_json_Card_Encoding.view.svg"
     },
     {
       "_gvid": 11,

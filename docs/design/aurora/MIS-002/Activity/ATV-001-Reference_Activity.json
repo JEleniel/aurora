@@ -1,0 +1,37 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ATV-001",
+	"card_type": "Activity",
+	"name": "Reference Activity",
+	"description": "Activity that leads to another activity, emits an event, and evaluates a condition.",
+	"audit_trail": {
+		"version": "1.0.1",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T11:48:14Z",
+				"event": "edited"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "leads",
+			"target": "ATV-002"
+		},
+		{
+			"relationship": "emits",
+			"target": "EVT-001"
+		},
+		{
+			"relationship": "evaluates",
+			"target": "CON-001"
+		}
+	]
+}

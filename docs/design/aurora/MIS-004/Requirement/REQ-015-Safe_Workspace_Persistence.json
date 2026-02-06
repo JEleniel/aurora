@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-015",
+	"card_type": "Requirement",
+	"name": "Safe Workspace Persistence",
+	"description": "The editor SHALL persist edits to model files in a safe manner that avoids partial writes and preserves schema validity (e.g., atomic replace per card file).",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

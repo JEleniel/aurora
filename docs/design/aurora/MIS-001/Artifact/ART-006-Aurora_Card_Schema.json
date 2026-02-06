@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ART-006",
+	"card_type": "Artifact",
+	"name": "Aurora Card Schema",
+	"description": "The canonical JSON Schema that defines the required structure for full Aurora card files (including audit_trail). In this repository it is stored at docs/design/aurora/Aurora.schema.json.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

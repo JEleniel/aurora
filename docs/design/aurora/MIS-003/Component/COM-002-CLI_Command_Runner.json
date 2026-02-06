@@ -1,0 +1,44 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-002",
+	"card_type": "Component",
+	"name": "CLI Command Runner",
+	"description": "CLI entrypoint and command dispatcher (clap subcommands) that orchestrates discovery, validation, rendering, and compact export workflows and reports diagnostics and summaries.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "implements",
+			"target": "FEA-002"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-003"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-004"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-005"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-006"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-007"
+		}
+	]
+}

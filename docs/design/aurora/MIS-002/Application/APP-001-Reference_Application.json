@@ -1,0 +1,33 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "APP-001",
+	"card_type": "Application",
+	"name": "Reference Application",
+	"description": "Application that composes a component in the relationship-matrix reference model.",
+	"audit_trail": {
+		"version": "1.0.1",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T11:48:14Z",
+				"event": "edited"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "composes",
+			"target": "COM-001"
+		},
+				{
+			"relationship": "enforces",
+			"target": "CTL-001"
+		}
+	]
+}

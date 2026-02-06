@@ -1,0 +1,29 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "STA-001",
+	"card_type": "State",
+	"name": "Reference State",
+	"description": "State that transitions to another state in the relationship-matrix reference model.",
+	"audit_trail": {
+		"version": "1.0.1",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			},
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T11:48:14Z",
+				"event": "edited"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "transitions to",
+			"target": "STA-002"
+		}
+	]
+}

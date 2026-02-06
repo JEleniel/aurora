@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-013",
+	"card_type": "Requirement",
+	"name": "Dioxus UI",
+	"description": "The standalone editor SHOULD be implemented using Dioxus as the primary UI library.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

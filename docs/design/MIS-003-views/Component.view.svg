@@ -90,7 +90,7 @@
 <text x="2188.10" y="220.76" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Component</B></text>
 <text x="2188.10" y="235.16" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Model Discovery and Loading</B></text>
 <text x="2188.10" y="249.56" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">Discovery and parsing layer that locates model homes (schema-based), loads card</text>
-<text x="2188.10" y="263.96" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">files (JSON/JSJSON) from disk, and builds a searchable AuroraModel index.</text>
+<text x="2188.10" y="263.96" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">files (JSON/json) from disk, and builds a searchable AuroraModel index.</text>
 <use href="#box" x="2272.77" y="-30.99" width="1610.67" height="204.28" fill="#1e3a8a" stroke="#FFFFFF" stroke-width="2.00" />
 <text x="2336.77" y="71.15" font-size="48">🪟</text>
 <text x="3078.10" y="49.55" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Application</B></text>

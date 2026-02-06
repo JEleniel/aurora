@@ -37,7 +37,7 @@ digraph {
 				<B>Component</B><BR/>
 				<B>Model Discovery and Loading</B><BR/>
 				<BR/>
-				Discovery and parsing layer that locates model homes (schema-based), loads card <BR/>files (JSON/JSJSON) from disk, and builds a searchable AuroraModel index.<BR/>
+				Discovery and parsing layer that locates model homes (schema-based), loads card <BR/>files (JSON/json) from disk, and builds a searchable AuroraModel index.<BR/>
 			>
 			height=1.0;
 			width=1.6;

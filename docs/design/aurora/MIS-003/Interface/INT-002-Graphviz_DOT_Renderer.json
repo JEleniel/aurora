@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "INT-002",
+	"card_type": "Interface",
+	"name": "Graphviz DOT Renderer",
+	"description": "External executable interface for rendering Graphviz DOT into a layout used to generate themed SVG views (default: 'dot', override via AURORA_DOT_COMMAND).",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

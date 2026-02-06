@@ -1,0 +1,40 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "DRI-008",
+	"card_type": "Driver",
+	"name": "Canonical Registries and View Definitions",
+	"description": "Provide a stable, shared vocabulary for cards, relationship verbs, and views so validation and rendering can be deterministic and portable across tools.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "drives",
+			"target": "REQ-020"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-021"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-022"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-023"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-026"
+		}
+	]
+}

@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CAP-013",
+	"card_type": "Capability",
+	"name": "Markdown Preview and Audit View",
+	"description": "Ability to render the focused card as a readable Markdown-style document with link list, and to inspect audit trail history.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "satisfies",
+			"target": "REQ-012"
+		}
+	]
+}

@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-008",
+	"card_type": "Requirement",
+	"name": "Embed Canonical Registries",
+	"description": "The tooling SHALL embed canonical registries for card types, relationship verbs, and view definitions so validation and rendering can operate deterministically without depending on external instruction files at runtime.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

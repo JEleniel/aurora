@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-026",
+	"card_type": "Requirement",
+	"name": "Views as Projections",
+	"description": "Views SHALL be treated as projections of a single underlying model graph by selecting a set of card types (and optional subtypes) and rendering only those cards and the links between them; views SHALL NOT change the underlying model.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

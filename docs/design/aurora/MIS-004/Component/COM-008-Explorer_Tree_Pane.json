@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "COM-008",
+	"card_type": "Component",
+	"name": "Explorer Tree Pane",
+	"description": "Left navigation pane that presents a tree view derived from shortest paths from the mission root, enabling fast card discovery and focus changes.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "implements",
+			"target": "FEA-011"
+		}
+	]
+}

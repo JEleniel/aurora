@@ -137,7 +137,7 @@
     {
       "_gvid": 1,
       "name": "CAP_002",
-      "label": "\n\t\t\t\t<B>Capability</B><BR/>\n\t\t\t\t<B>Model Discovery and Loading</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to locate Aurora model homes from a user-provided path and load all card<BR/> JSON/JSJSON files into an indexed in-memory model.<BR/>\n\t\t\t",
+      "label": "\n\t\t\t\t<B>Capability</B><BR/>\n\t\t\t\t<B>Model Discovery and Loading</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tAbility to locate Aurora model homes from a user-provided path and load all card<BR/> JSON/json files into an indexed in-memory model.<BR/>\n\t\t\t",
       "pos": "1266.7,142.15",
       "width": "11.707",
       "height": "1.5321",
@@ -252,7 +252,7 @@
             1075.16,
             110.95
           ],
-          "text": " JSON/JSJSON files into an indexed in-memory model.",
+          "text": " JSON/json files into an indexed in-memory model.",
           "width": 383.0
         }
       ],

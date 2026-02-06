@@ -1417,7 +1417,7 @@
     {
       "_gvid": 9,
       "name": "REQ_006",
-      "label": "\n\t\t\t\t<B>Requirement</B><BR/>\n\t\t\t\t<B>Write Compact Agent Export</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe tooling SHALL generate a single-file compact export suitable for agent consu<BR/>mption (AGENT-&lt;MISSION_ID&gt;.jsjson by default) by removing non-essential fields (<BR/>e.g., $schema, audit trail metadata) while preserving the card graph structure.<BR/>\n\t\t\t",
+      "label": "\n\t\t\t\t<B>Requirement</B><BR/>\n\t\t\t\t<B>Write Compact Agent Export</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tThe tooling SHALL generate a single-file compact export suitable for agent consu<BR/>mption (AGENT-&lt;MISSION_ID&gt;.json by default) by removing non-essential fields (<BR/>e.g., $schema, audit trail metadata) while preserving the card graph structure.<BR/>\n\t\t\t",
       "pos": "5800.4,84.853",
       "width": "12.158",
       "height": "1.8071",
@@ -1513,7 +1513,7 @@
             5498.94,
             60.65
           ],
-          "text": "mption (AGENT-<MISSION_ID>.jsjson by default) by removing non-essential fields (",
+          "text": "mption (AGENT-<MISSION_ID>.json by default) by removing non-essential fields (",
           "width": 603.0
         },
         {

@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ART-005",
+	"card_type": "Artifact",
+	"name": "Aurora Model Source Files",
+	"description": "Aurora model source-of-truth files stored as json: a mission card plus per-card files under <MISSION_ID>/<Card Type>/.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "persists",
+			"target": "DTS-003"
+		}
+	]
+}

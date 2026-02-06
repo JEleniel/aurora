@@ -67,7 +67,7 @@ digraph {
 				<B>Requirement</B><BR/>
 				<B>Identifiers, Filenames, and Model Layout</B><BR/>
 				<BR/>
-				Aurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o<BR/>nce issued. Card files SHALL be named &lt;id&gt;-&lt;Sanitized_Name&gt;.jsjson, where specia<BR/>l characters are stripped and spaces are replaced with underscores. Models SHALL<BR/> follow the Model Home and Mission folder layout conventions so tools can discov<BR/>er, validate, and render deterministically.<BR/>
+				Aurora cards SHALL use stable identifiers (e.g., MIS-001) that MUST NOT change o<BR/>nce issued. Card files SHALL be named &lt;id&gt;-&lt;Sanitized_Name&gt;.json, where specia<BR/>l characters are stripped and spaces are replaced with underscores. Models SHALL<BR/> follow the Model Home and Mission folder layout conventions so tools can discov<BR/>er, validate, and render deterministically.<BR/>
 			>
 			height=1.0;
 			width=1.6;
@@ -157,13 +157,13 @@ Because it is designed to be rea<BR/>dable by machine agents as well as humans, 
 		REQ_016[
 			label=<
 				<B>Requirement</B><BR/>
-				<B>Strict JSJSON Card Encoding</B><BR/>
+				<B>Strict json Card Encoding</B><BR/>
 				<BR/>
-				Aurora card files SHALL be stored as strict JSON (RFC 8259) using the .jsjson ex<BR/>tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa<BR/>ctly one trailing newline.<BR/>
+				Aurora card files SHALL be stored as strict JSON (RFC 8259) using the .json ex<BR/>tension: double quotes, no comments, no trailing commas, UTF-8 encoding, and exa<BR/>ctly one trailing newline.<BR/>
 			>
 			height=1.0;
 			width=1.6;
-			href="../MIS-001-views/Strict_JSJSON_Card_Encoding.view.svg";
+			href="../MIS-001-views/Strict_json_Card_Encoding.view.svg";
 			style=filled;
 			fillcolor="#065f46";
 			svg_shape="rounded-rectangle";

@@ -43,8 +43,8 @@ impl Aurora {
 			return Err(AuroraError::InvalidAuroraHome(path.display().to_string()));
 		}
 
-		let card_schema_path = model_home.join("Aurora.schema.jsjson");
-		let compact_schema_path = model_home.join("Aurora.compact.schema.jsjson");
+		let card_schema_path = model_home.join("Aurora.schema.json");
+		let compact_schema_path = model_home.join("Aurora.compact.schema.json");
 		if !card_schema_path.is_file() || !compact_schema_path.is_file() {
 			return Err(AuroraError::SchemaLoadError);
 		}
@@ -146,7 +146,7 @@ impl Aurora {
 	pub fn write_compact(&self, path: &PathBuf) -> Result<(), AuroraError> {
 		for model in &self.models {
 			let mut output_path = path.clone();
-			output_path.push(format!("AGENT-{}.jsjson", model.root_card.id));
+			output_path.push(format!("AGENT-{}.json", model.root_card.id));
 			let compact = model.get_compact();
 			let output = serde_json::to_string(&compact)?;
 			std::fs::write(&output_path, output)?;

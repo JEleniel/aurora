@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-014",
+	"card_type": "Requirement",
+	"name": "Reuse aurora_shared",
+	"description": "The editor SHALL reuse aurora_shared for model discovery/loading and validation/rendering semantics to stay consistent with other Aurora tooling.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

@@ -49,19 +49,19 @@ fn split_by_mission_partitions_cards() -> Result<()> {
 	let temp = tempfile::tempdir()?;
 	let home = ModelHome::new(temp.path())?;
 
-	let mission_one_path = temp.path().join("MIS-001-Alpha.jsjson");
-	let mission_two_path = temp.path().join("MIS-002-Bravo.jsjson");
+	let mission_one_path = temp.path().join("MIS-001-Alpha.json");
+	let mission_two_path = temp.path().join("MIS-002-Bravo.json");
 	let req_one_path = temp
 		.path()
 		.join("MIS-001")
 		.join("Requirement")
-		.join("REQ-001.jsjson");
+		.join("REQ-001.json");
 	let req_two_path = temp
 		.path()
 		.join("MIS-002")
 		.join("Requirement")
-		.join("REQ-002.jsjson");
-	let shared_path = temp.path().join("Shared").join("CTL-001.jsjson");
+		.join("REQ-002.json");
+	let shared_path = temp.path().join("Shared").join("CTL-001.json");
 
 	let cards = vec![
 		card("MIS-001", "Mission", Some(mission_one_path)),

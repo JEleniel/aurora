@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "FEA-001",
+	"card_type": "Feature",
+	"name": "Reference Feature",
+	"description": "Feature that enables a capability in the relationship-matrix reference model.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "enables",
+			"target": "CAP-001"
+		}
+	]
+}

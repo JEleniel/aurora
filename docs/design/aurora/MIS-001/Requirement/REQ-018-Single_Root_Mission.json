@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-018",
+	"card_type": "Requirement",
+	"name": "Single Root Mission",
+	"description": "Each Aurora model SHALL start with exactly one Mission card that serves as the root of the directed graph. The Mission card SHALL only have outgoing links and SHALL provide a consistent starting point for traversal and view generation.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

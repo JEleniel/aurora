@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "CAP-005",
+	"card_type": "Capability",
+	"name": "View Rendering",
+	"description": "Ability to render canonical Aurora views by generating DOT sources and producing SVG diagrams using a Graphviz-compatible renderer.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "satisfies",
+			"target": "REQ-005"
+		}
+	]
+}

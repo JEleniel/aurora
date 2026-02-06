@@ -142,7 +142,7 @@ digraph {
 				<B>Requirement</B><BR/>
 				<B>Write Compact Agent Export</B><BR/>
 				<BR/>
-				The tooling SHALL generate a single-file compact export suitable for agent consu<BR/>mption (AGENT-&lt;MISSION_ID&gt;.jsjson by default) by removing non-essential fields (<BR/>e.g., $schema, audit trail metadata) while preserving the card graph structure.<BR/>
+				The tooling SHALL generate a single-file compact export suitable for agent consu<BR/>mption (AGENT-&lt;MISSION_ID&gt;.json by default) by removing non-essential fields (<BR/>e.g., $schema, audit trail metadata) while preserving the card graph structure.<BR/>
 			>
 			height=1.0;
 			width=1.6;

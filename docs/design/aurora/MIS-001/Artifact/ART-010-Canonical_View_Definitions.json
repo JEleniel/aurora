@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "ART-010",
+	"card_type": "Artifact",
+	"name": "Canonical View Definitions",
+	"description": "The canonical registry that defines standard Aurora views (roots and included card types) used by tooling as convenient default projections of the model.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

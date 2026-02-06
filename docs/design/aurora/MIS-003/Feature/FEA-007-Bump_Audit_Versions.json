@@ -1,0 +1,25 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "FEA-007",
+	"card_type": "Feature",
+	"name": "Bump Audit Versions",
+	"description": "Bump model audit trail versions (patch/minor/major). This feature is currently exposed as CLI commands but is not implemented yet.",
+	"status": "Design",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "enables",
+			"target": "CAP-007"
+		}
+	]
+}

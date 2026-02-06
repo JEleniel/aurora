@@ -1,0 +1,548 @@
+{
+  "cards": [
+    {
+      "attributes": null,
+      "card_type": "Mission",
+      "description": "Reference Aurora model encoding the canonical relationship registry as concrete card links for tooling and diagram validation.",
+      "id": "MIS-002",
+      "links": [
+        {
+          "relationship": "establishes",
+          "target": "DRI-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-001"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-002"
+        },
+        {
+          "relationship": "includes",
+          "target": "BND-001"
+        },
+        {
+          "relationship": "requires",
+          "target": "SYS-001"
+        },
+        {
+          "relationship": "requires",
+          "target": "APP-001"
+        }
+      ],
+      "name": "Relationship Matrix Reference"
+    },
+    {
+      "attributes": null,
+      "card_type": "Interface",
+      "description": "Interface that can be called by a component and exposed by a data store.",
+      "id": "INT-001",
+      "links": [],
+      "name": "Reference Interface"
+    },
+    {
+      "attributes": null,
+      "card_type": "Capability",
+      "description": "Capability used to satisfy a requirement and necessitate a process.",
+      "id": "CAP-001",
+      "links": [
+        {
+          "relationship": "necessitates",
+          "target": "PRO-001"
+        },
+        {
+          "relationship": "satisfies",
+          "target": "REQ-001"
+        }
+      ],
+      "name": "Reference Capability"
+    },
+    {
+      "attributes": null,
+      "card_type": "ADR",
+      "description": "Architectural Decision Record made by an actor and documenting a requirement.",
+      "id": "ADR-001",
+      "links": [
+        {
+          "relationship": "documents",
+          "target": "REQ-001"
+        }
+      ],
+      "name": "Reference ADR"
+    },
+    {
+      "attributes": null,
+      "card_type": "Feature",
+      "description": "Feature that enables a capability in the relationship-matrix reference model.",
+      "id": "FEA-001",
+      "links": [
+        {
+          "relationship": "enables",
+          "target": "CAP-001"
+        }
+      ],
+      "name": "Reference Feature"
+    },
+    {
+      "attributes": null,
+      "card_type": "Actor",
+      "description": "Actor exercising desire/own/perform/present relationships in the reference model.",
+      "id": "ACT-001",
+      "links": [
+        {
+          "relationship": "desires",
+          "target": "STR-001"
+        },
+        {
+          "relationship": "owns",
+          "target": "AST-001"
+        },
+        {
+          "relationship": "performs",
+          "target": "ATV-001"
+        },
+        {
+          "relationship": "presents",
+          "target": "THR-001"
+        },
+        {
+          "relationship": "presents",
+          "target": "THR-002"
+        }
+      ],
+      "name": "Reference Actor"
+    },
+    {
+      "attributes": null,
+      "card_type": "Actor",
+      "description": "Secondary actor involved in the relationship-matrix reference model.",
+      "id": "ACT-002",
+      "links": [],
+      "name": "Triggered Actor"
+    },
+    {
+      "attributes": null,
+      "card_type": "Note",
+      "description": "Placeholder for a duplicate mission file path that cannot be deleted in this environment. Tooling should treat this as a Note; the real mission card lives at `docs/design/aurora/MIS-002-Relationship_Matrix_Reference.json`.",
+      "id": "NOT-900",
+      "links": [],
+      "name": "Legacy Duplicate File Placeholder",
+      "status": "Deleted"
+    },
+    {
+      "attributes": null,
+      "card_type": "Test",
+      "description": "Test target for implement relationships in the reference model.",
+      "id": "TES-001",
+      "links": [],
+      "name": "Reference Test"
+    },
+    {
+      "attributes": null,
+      "card_type": "Control",
+      "description": "Control that mitigates risk and safeguards an asset in the relationship-matrix reference model.",
+      "id": "CTL-001",
+      "links": [
+        {
+          "relationship": "mitigates",
+          "target": "RIS-001"
+        },
+        {
+          "relationship": "safeguards",
+          "target": "AST-001"
+        }
+      ],
+      "name": "Reference Control"
+    },
+    {
+      "attributes": null,
+      "card_type": "Asset",
+      "description": "Asset owned by an actor, protected by a control, and derived from an artifact in the reference model.",
+      "id": "AST-001",
+      "links": [],
+      "name": "Reference Asset"
+    },
+    {
+      "attributes": null,
+      "card_type": "Class",
+      "description": "Class target for implement relationships in the reference model.",
+      "id": "CLS-001",
+      "links": [],
+      "name": "Reference Class"
+    },
+    {
+      "attributes": null,
+      "card_type": "Story",
+      "description": "Story desired by an actor and implying a constraint in the reference model.",
+      "id": "STR-001",
+      "links": [
+        {
+          "relationship": "implies",
+          "target": "CNS-001"
+        }
+      ],
+      "name": "Reference Story"
+    },
+    {
+      "attributes": null,
+      "card_type": "Boundary",
+      "description": "Boundary used to exercise includes/contains relationships in the relationship-matrix reference model.",
+      "id": "BND-001",
+      "links": [
+        {
+          "relationship": "contains",
+          "target": "SYS-001"
+        },
+        {
+          "relationship": "contains",
+          "target": "APP-001"
+        },
+        {
+          "relationship": "contains",
+          "target": "PRD-001"
+        },
+        {
+          "relationship": "contains",
+          "target": "DEP-001"
+        },
+        {
+          "relationship": "contains",
+          "target": "ADR-001"
+        },
+        {
+          "relationship": "contains",
+          "target": "NOT-900"
+        },
+        {
+          "relationship": "contains",
+          "target": "EVT-002"
+        },
+        {
+          "relationship": "contains",
+          "target": "CON-002"
+        }
+      ],
+      "name": "Reference Boundary"
+    },
+    {
+      "attributes": null,
+      "card_type": "Data Store",
+      "description": "Data store that exposes an interface and receives persisted artifacts.",
+      "id": "DTS-001",
+      "links": [
+        {
+          "relationship": "exposes",
+          "target": "INT-001"
+        }
+      ],
+      "name": "Reference Data Store"
+    },
+    {
+      "attributes": null,
+      "card_type": "Predicate",
+      "description": "Predicate used to exercise state machine transitions in the relationship-matrix reference model.",
+      "id": "PRD-001",
+      "links": [
+        {
+          "relationship": "transitions to",
+          "target": "STA-002"
+        }
+      ],
+      "name": "Reference Predicate"
+    },
+    {
+      "attributes": null,
+      "card_type": "Threat",
+      "description": "Secondary threat used as a target for actor threat presentation in the reference model.",
+      "id": "THR-002",
+      "links": [],
+      "name": "Secondary Threat"
+    },
+    {
+      "attributes": null,
+      "card_type": "Threat",
+      "description": "Threat presented by an actor that raises a risk.",
+      "id": "THR-001",
+      "links": [
+        {
+          "relationship": "raises",
+          "target": "RIS-001"
+        }
+      ],
+      "name": "Reference Threat"
+    },
+    {
+      "attributes": null,
+      "card_type": "Node Instance",
+      "description": "Concrete runtime realization of a node.",
+      "id": "NIN-001",
+      "links": [],
+      "name": "Reference Node Instance"
+    },
+    {
+      "attributes": null,
+      "card_type": "Activity",
+      "description": "Secondary activity used as the target of Activity/Event triggers in the reference model.",
+      "id": "ATV-002",
+      "links": [],
+      "name": "Triggered Activity"
+    },
+    {
+      "attributes": null,
+      "card_type": "Activity",
+      "description": "Activity that leads to another activity, emits an event, and evaluates a condition.",
+      "id": "ATV-001",
+      "links": [
+        {
+          "relationship": "leads",
+          "target": "ATV-002"
+        },
+        {
+          "relationship": "emits",
+          "target": "EVT-001"
+        },
+        {
+          "relationship": "evaluates",
+          "target": "CON-001"
+        }
+      ],
+      "name": "Reference Activity"
+    },
+    {
+      "attributes": null,
+      "card_type": "Risk",
+      "description": "Risk raised by threats and mitigated by controls in the relationship-matrix reference model.",
+      "id": "RIS-001",
+      "links": [],
+      "name": "Reference Risk"
+    },
+    {
+      "attributes": null,
+      "card_type": "System",
+      "description": "System that integrates an application and enforces a control.",
+      "id": "SYS-001",
+      "links": [
+        {
+          "relationship": "integrates",
+          "target": "APP-001"
+        },
+        {
+          "relationship": "enforces",
+          "target": "CTL-001"
+        }
+      ],
+      "name": "Reference System"
+    },
+    {
+      "attributes": null,
+      "card_type": "State Machine",
+      "description": "State machine that starts in a defined initial state.",
+      "id": "STM-001",
+      "links": [
+        {
+          "relationship": "starts in",
+          "target": "STA-001"
+        }
+      ],
+      "name": "Reference State Machine"
+    },
+    {
+      "attributes": null,
+      "card_type": "Event",
+      "description": "Secondary event used as a target of transitions/triggers in the reference model.",
+      "id": "EVT-002",
+      "links": [],
+      "name": "Triggered Event"
+    },
+    {
+      "attributes": null,
+      "card_type": "Event",
+      "description": "Event that transitions to a state in the relationship-matrix reference model.",
+      "id": "EVT-001",
+      "links": [
+        {
+          "relationship": "transitions to",
+          "target": "STA-002"
+        }
+      ],
+      "name": "Reference Event"
+    },
+    {
+      "attributes": null,
+      "card_type": "Process",
+      "description": "Process necessitated by a capability in the relationship-matrix reference model.",
+      "id": "PRO-001",
+      "links": [],
+      "name": "Reference Process"
+    },
+    {
+      "attributes": null,
+      "card_type": "Node",
+      "description": "Node that hosts a component and data store and instantiates a node instance.",
+      "id": "NOD-001",
+      "links": [
+        {
+          "relationship": "hosts",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "hosts",
+          "target": "DTS-001"
+        },
+        {
+          "relationship": "instantiates",
+          "target": "NIN-001"
+        }
+      ],
+      "name": "Reference Node"
+    },
+    {
+      "attributes": null,
+      "card_type": "Driver",
+      "description": "Motivation used to drive a downstream requirement in the relationship-matrix reference model.",
+      "id": "DRI-001",
+      "links": [
+        {
+          "relationship": "drives",
+          "target": "REQ-001"
+        }
+      ],
+      "name": "Reference Driver"
+    },
+    {
+      "attributes": null,
+      "card_type": "Constraint",
+      "description": "Constraint implied by a story in the relationship-matrix reference model.",
+      "id": "CNS-001",
+      "links": [],
+      "name": "Reference Constraint"
+    },
+    {
+      "attributes": null,
+      "card_type": "Deployment",
+      "description": "Deployment that provisions a node in the relationship-matrix reference model.",
+      "id": "DEP-001",
+      "links": [
+        {
+          "relationship": "provisions",
+          "target": "NOD-001"
+        }
+      ],
+      "name": "Reference Deployment"
+    },
+    {
+      "attributes": null,
+      "card_type": "Requirement",
+      "description": "Requirement referenced by multiple rules (driven by driver, satisfied by capability, documented by ADR, limited by constraint).",
+      "id": "REQ-001",
+      "links": [],
+      "name": "Reference Requirement"
+    },
+    {
+      "attributes": null,
+      "card_type": "Application",
+      "description": "Application that composes a component in the relationship-matrix reference model.",
+      "id": "APP-001",
+      "links": [
+        {
+          "relationship": "composes",
+          "target": "COM-001"
+        }
+      ],
+      "name": "Reference Application"
+    },
+    {
+      "attributes": null,
+      "card_type": "State",
+      "description": "State that transitions to another state in the relationship-matrix reference model.",
+      "id": "STA-001",
+      "links": [
+        {
+          "relationship": "transitions to",
+          "target": "STA-002"
+        }
+      ],
+      "name": "Reference State"
+    },
+    {
+      "attributes": null,
+      "card_type": "State",
+      "description": "Secondary state used as a target of State/Condition transitions in the reference model.",
+      "id": "STA-002",
+      "links": [],
+      "name": "Secondary State"
+    },
+    {
+      "attributes": null,
+      "card_type": "Artifact",
+      "description": "Artifact generated by a component, classified as an asset, and persisted to a data store.",
+      "id": "ART-001",
+      "links": [
+        {
+          "relationship": "is",
+          "target": "AST-001"
+        },
+        {
+          "relationship": "persists",
+          "target": "DTS-001"
+        }
+      ],
+      "name": "Reference Artifact"
+    },
+    {
+      "attributes": null,
+      "card_type": "Component",
+      "description": "Component used to exercise interface invocation, artifact generation, feature implementation, test fulfillment, class realization, control enforcement, and state machine execution.",
+      "id": "COM-001",
+      "links": [
+        {
+          "relationship": "invokes",
+          "target": "INT-001"
+        },
+        {
+          "relationship": "generates",
+          "target": "ART-001"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-001"
+        },
+        {
+          "relationship": "fulfills",
+          "target": "TES-001"
+        },
+        {
+          "relationship": "realizes",
+          "target": "CLS-001"
+        },
+        {
+          "relationship": "enforces",
+          "target": "CTL-001"
+        },
+        {
+          "relationship": "executes",
+          "target": "STM-001"
+        }
+      ],
+      "name": "Reference Component"
+    },
+    {
+      "attributes": null,
+      "card_type": "Condition",
+      "description": "Condition evaluated by an activity in the relationship-matrix reference model.",
+      "id": "CON-001",
+      "links": [],
+      "name": "Reference Condition"
+    },
+    {
+      "attributes": null,
+      "card_type": "Condition",
+      "description": "Secondary condition used as a target of Condition transitions to Condition.",
+      "id": "CON-002",
+      "links": [],
+      "name": "Secondary Condition"
+    }
+  ],
+  "generated_at": 1769715836
+}

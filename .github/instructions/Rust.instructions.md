@@ -8,9 +8,9 @@ This document defines formatting and style conventions for all Rust source code.
 
 ## Formatting Rules
 
-- **Edition (Required)**: Always use the Rust 2024 (or newer) edition style guide, unless the existing code uses an older version, in which case notify the user and get permission before using the older style. You MUST NOT use `mod.rs` files.
-- **Organization**: Organize code into logical modules that conform to the _single responsibility_ principle and the Rust 2024 style. Minimize top-level `*.rs` files by using modules.
-- **Indentation (Accessibility)**: Prefer hard tabs for indentation, unless `rustfmt.toml` specifies otherwise. `cargo fmt` is the source of truth; if this repo includes a `rustfmt.toml`, it MUST be treated as authoritative. If creating or modifying Rust code and the `rustfmt.toml` is missing, stop and notify the user.
+- **Edition (Required)**: Always use the Rust 2024 (or newer) edition, unless the `Cargo.toml` specifies an older version, in which case conform to the `Cargo.toml`. You MUST NOT use `mod.rs` files.
+- **Organization**: Organize code into logical modules that conform to the _single responsibility_ principle. Minimize top-level `*.rs` files by using modules.
+- **Indentation (Accessibility)**: Prefer hard tabs for indentation. `cargo fmt` is the source of truth; if this repo includes a `rustfmt.toml`, it MUST be treated as authoritative.
 - **Line Endings**: You MUST use POSIX-style newlines (`\n`).
 - **Comment Formatting**:
     + You MUST limit comments to 100 characters per line and wrap for readability - break at word boundaries and avoid hyphenation.
@@ -25,47 +25,23 @@ This document defines formatting and style conventions for all Rust source code.
 
 ## Coding Rules
 
-- You MUST follow these "Coding Rules" for all code that you write or modify. Existing code may have been written by other agents or users and you MUST NOT alter it simply for conformance.
-- You MUST ensure that all code you write passes all tests and lints.
-- You SHOULD use `mcp_cargo-mcp_*` for Rust cargo operations when available. If it is not available, use the standard `cargo` CLI.
-- Use `cargo` tools (`fmt`, `clippy`, etc.) to enforce code quality. You MUST fix all warnings and errors in the code you write.
-- Unimplemented code paths MUST fail fast and be explicit (prefer `todo!();`, `unimplemented!();`, or similar). Unused variables must be prefixed with an underscore (`_`). Both unimplemented code and unused variables MUST include a comment explaining the intended future use or implementation.
+- You MUST follow these rules for all Rust code you write or modify. Existing code may have been written by other agents or users and you MUST NOT alter it simply for conformance.
 - You MUST NOT use `unwrap`, `expect`, `panic`, or similar in non-test code unless explicitly instructed by the user.
-    + **Test-scoped exception**: In unit tests (`#[cfg(test)]`), integration tests (`tests/`), and doctests, `unwrap`/`expect` are allowed when they improve clarity and a failure represents a test failure.
-        * Prefer `expect("...")` with a short, specific message over bare `unwrap()`.
-        * Avoid `unwrap`/`expect` in shared helper code that is compiled into non-test builds.
-    + **Panics in tests**: Using `panic!` directly is allowed only when the test is explicitly verifying panic behavior; otherwise prefer assertion macros (`assert!`, `assert_eq!`, etc.) and propagate errors with `?` when practical.
-- You MUST use `thiserror` and `anyhow` for error handling:
-    + Library functions MUST return a well typed `thiserror::Error`.
-    + Executables and application boundaries MUST log the errors and exit with an error specific exit code. Prefer `anyhow` for ergonomic context (`anyhow::Context`) and `anyhow::Result`.
-    + Use the `?` shorthand and `#[from]` construct to map errors into `thiserror` enums.
-    + All errors MUST be handled. The code must make every effort to avoid crashing and return an appropriate type of error or exit value.
-    + You MUST NOT use `#[allow(...)]` constructs, or otherwise disable code checks. Fix the error, not the reporting.
 - You MUST include documentation comments for all modules and public functions that you create.
 - You SHOULD NOT use `unsafe` code unless a specific call or library requires it due to this being on an embedded platform.
-- Include a single reverse-DNS app ID in `Cargo.toml` as `app_id = "{Application ID}"`.
 
-## Libraries
+## Error Handling
 
-The following libraries are approved for use; always use the latest stable release. Sublibraries are those that start with the name of the parent or are designed to work as children of the parent:
+- Library code SHOULD return typed errors (prefer `thiserror`).
+- Executables and application boundaries MAY use `anyhow` for ergonomic context (`anyhow::Context`) and `anyhow::Result`.
+- Prefer `?` plus `#[from]` when mapping between error types.
+- All errors MUST be either handled or logged. The code should crash only if there is no choice.
 
-- `axum` (and sublibraries), `tower` (and sublibraries), and `hyper` (and sublibraries) for web server functions - always configure them to use TLS 1.3 and be well hardened unless instructed otherwise.
-- `reqwest` for making HTTP calls, and `urlencoding` and `url` for URL handling
-- `chrono` for time and date handling - use RFC 3339 with millisecond resolution when converting to strings.
-- `clap` for CLI interfaces, and `config` for configuration file handling. CLI parameters SHOULD override configuration files.
-- `dirs` (preferred) or `directories` to identify folders for configuration, data, and caching. A subfolder with the package name from Cargo SHOULD be created within those folders.
-    + Applications meant to run as services, such as web servers, should also look for configuration in the OS defined shared and user configuration folders, such as `/etc/{package_name}` on Linux. Treat the `app_id` prefix as the "vendor" on Windows, and as the application specific path (sandbox) on Apple OSes.
-- `r2d2`, `r2d2_sqlite`, and `rusqlite` for SQLite; use the `bundled` feature of `rusqlite` to ensure that SQLite libraries are available.
-- `rustls` (and `rustls` sublibraries), and `openssl` for TLS/SSL.
-- `serde` (and sublibraries), `serde_json`, `serde-binary-adv`, `lowlevel-types`, and other `serde` libraries for serialization and deserialization.
-- `log`, and either `fern` (preferred) or `tracing` (and sublibraries) for logging
-    + Configure logging to write `TRACE`, `DEBUG`, `INFO`, and `WARN` to `stdout` and `ERROR` to stderr
-    + For services, include an option to log to rotated log files and/or to the system logging facility (e.g., syslog, Event Log)
-- `ctrlc`, `uuid`, `base64`, `hex`, `num-traits`, `regex`, and `unicode-normalization` for their utility functions
-- `anyhow`, and `thiserror` for error handling
-- `ollama-rs` for Ollama access
-- `tokio` and sublibraries for asynchronous code
+## Notes
+
+- For services, configure TLS to use TLS 1.3 unless the user explicitly requires otherwise.
+- For services, configure logging to write `TRACE`, `DEBUG`, `INFO`, and `WARN` to stdout and `ERROR` to stderr.
 
 ## Acceptance Criteria
 
-- All `cargo` check tools (`clippy`, `fmt`, `check`, `test`) pass.
+- Relevant `cargo` checks for the change pass (`fmt`, `clippy`, and targeted `test`).

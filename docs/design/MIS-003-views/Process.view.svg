@@ -82,7 +82,7 @@
 <text x="1282.70" y="49.56" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Capability</B></text>
 <text x="1282.70" y="63.96" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Model Discovery and Loading</B></text>
 <text x="1282.70" y="78.36" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">Ability to locate Aurora model homes from a user-provided path and load all card</text>
-<text x="1282.70" y="92.76" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">JSON/JSJSON files into an indexed in-memory model.</text>
+<text x="1282.70" y="92.76" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">JSON/json files into an indexed in-memory model.</text>
 <use href="#rounded-rectangle" x="1367.10" y="-30.98" width="1545.20" height="204.28" fill="#052e16" stroke="#FFFFFF" stroke-width="2.00" />
 <text x="1431.10" y="71.16" font-size="48">✨</text>
 <text x="2139.70" y="49.56" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Capability</B></text>

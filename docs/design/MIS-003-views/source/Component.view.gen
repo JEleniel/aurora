@@ -302,7 +302,7 @@
     {
       "_gvid": 2,
       "name": "COM_003",
-      "label": "\n\t\t\t\t<B>Component</B><BR/>\n\t\t\t\t<B>Model Discovery and Loading</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tDiscovery and parsing layer that locates model homes (schema-based), loads card <BR/>files (JSON/JSJSON) from disk, and builds a searchable AuroraModel index.<BR/>\n\t\t\t",
+      "label": "\n\t\t\t\t<B>Component</B><BR/>\n\t\t\t\t<B>Model Discovery and Loading</B><BR/>\n\t\t\t\t<BR/>\n\t\t\t\tDiscovery and parsing layer that locates model homes (schema-based), loads card <BR/>files (JSON/json) from disk, and builds a searchable AuroraModel index.<BR/>\n\t\t\t",
       "pos": "2172.1,226.36",
       "width": "11.923",
       "height": "1.5321",
@@ -396,7 +396,7 @@
             1904.05,
             195.16
           ],
-          "text": "files (JSON/JSJSON) from disk, and builds a searchable AuroraModel index.",
+          "text": "files (JSON/json) from disk, and builds a searchable AuroraModel index.",
           "width": 536.0
         }
       ],

@@ -22,7 +22,7 @@ digraph {
 				<B>Capability</B><BR/>
 				<B>Model Discovery and Loading</B><BR/>
 				<BR/>
-				Ability to locate Aurora model homes from a user-provided path and load all card<BR/> JSON/JSJSON files into an indexed in-memory model.<BR/>
+				Ability to locate Aurora model homes from a user-provided path and load all card<BR/> JSON/json files into an indexed in-memory model.<BR/>
 			>
 			height=1.0;
 			width=1.6;

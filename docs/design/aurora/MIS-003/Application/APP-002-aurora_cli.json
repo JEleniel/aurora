@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "APP-002",
+	"card_type": "Application",
+	"name": "aurora_cli",
+	"description": "Command-line interface that discovers Aurora model homes, validates mission-scoped models, renders Markdown + SVG views, and writes compact agent exports.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "composes",
+			"target": "COM-002"
+		}
+	]
+}

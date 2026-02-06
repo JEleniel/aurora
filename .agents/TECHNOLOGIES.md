@@ -64,7 +64,7 @@ Contracts live in `tools/aurora_editor/src-tauri/src/types.rs` and are mirrored 
 
 - The workspace must be configured before any model operations.
 - `render_*`, `write_compact_export`, and card mutation commands require `workspace.trusted = true`.
-- Model homes must live inside the workspace and include `Aurora.schema.jsjson`.
+- Model homes must live inside the workspace and include `Aurora.schema.json`.
 - Card edits are validated when the existing model is already valid; failing edits are rolled back.
 
 ### Error handling expectations

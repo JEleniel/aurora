@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "FEA-014",
+	"card_type": "Feature",
+	"name": "Preview and Audit Panel",
+	"description": "Render a Markdown-style card preview (including outgoing link list) and provide a tab to display audit trail details for the focused card.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "enables",
+			"target": "CAP-013"
+		}
+	]
+}

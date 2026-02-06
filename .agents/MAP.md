@@ -5,24 +5,24 @@ Quick index of “where things live” for agents working in this repository.
 ## Architecture model (Aurora)
 
 - Source-of-truth model home: `docs/design/aurora/`
-    + Root mission cards live directly under `docs/design/aurora/` (for example `MIS-001-Provide_Default_Tooling_for_AURORA.jsjson`).
+    + Root mission cards live directly under `docs/design/aurora/` (for example `MIS-001-Provide_Default_Tooling_for_AURORA.json`).
     + Mission-scoped cards live under `docs/design/aurora/<MISSION_ID>/` in per-card-type folders.
     + Folder names match `card_type` exactly (Title Case, spaces included, for example `Data Store/`).
-    + Compact, agent-friendly snapshot(s): `docs/design/aurora/AGENT-<MISSION_ID>.jsjson` (for example `AGENT-MIS-001.jsjson`).
+    + Compact, agent-friendly snapshot(s): `docs/design/aurora/AGENT-<MISSION_ID>.json` (for example `AGENT-MIS-001.json`).
 - Current mission (this repo):
-    + Source mission card: `docs/design/aurora/MIS-001-Provide_Default_Tooling_for_AURORA.jsjson`
-    + Compact export: `docs/design/aurora/AGENT-MIS-001.jsjson`
+    + Source mission card: `docs/design/aurora/MIS-001-Provide_Default_Tooling_for_AURORA.json`
+    + Compact export: `docs/design/aurora/AGENT-MIS-001.json`
     + Rendered docs + views: `docs/design/MIS-001-Provide_Default_Tooling_for_AURORA/`
 - Schemas:
-    + `docs/design/aurora/Aurora.schema.jsjson`
-    + `docs/design/aurora/Aurora.compact.schema.jsjson`
+    + `docs/design/aurora/Aurora.schema.json`
+    + `docs/design/aurora/Aurora.compact.schema.json`
     + Duplicates are also under `schemas/` (keep them in sync intentionally).
-    + Note: there is also an `Aurora.schema jsjson` file name with a space; prefer the canonical `Aurora.schema.jsjson`.
+    + Note: there is also an `Aurora.schema json` file name with a space; prefer the canonical `Aurora.schema.json`.
 
 ## Finding things fast
 
 - Find a card by id (for example `REQ-014`):
-    + Source model: `docs/design/aurora/<MISSION_ID>/**/<CARD_ID>-*.jsjson`
+    + Source model: `docs/design/aurora/<MISSION_ID>/**/<CARD_ID>-*.json`
     + Rendered Markdown (if generated): `docs/design/<Rendered_Model_Name>/**/<CARD_ID>-*.md`
 - Find cards by type:
     + Source model: `docs/design/aurora/<MISSION_ID>/<Card Type>/`
@@ -60,7 +60,7 @@ These define the vocabulary and view rules; prefer updating these over duplicati
     + Common commands (examples):
         - `aurora_cli -i docs/design/aurora validate`
         - `aurora_cli -i docs/design/aurora render-all -o docs/design/`
-        - `aurora_cli -i docs/design/aurora compact -o docs/design/aurora/AGENT-<MISSION_ID>.jsjson`
+        - `aurora_cli -i docs/design/aurora compact -o docs/design/aurora/AGENT-<MISSION_ID>.json`
 
 ## UI / editor
 

@@ -100,7 +100,7 @@
 <text x="3124.00" y="72.06" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Requirement</B></text>
 <text x="3124.00" y="86.46" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle"><B>Write Compact Agent Export</B></text>
 <text x="3124.00" y="100.86" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">The tooling SHALL generate a single-file compact export suitable for agent consu</text>
-<text x="3124.00" y="115.26" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">mption (AGENT-&lt;MISSION_ID&gt;.jsjson by default) by removing non-essential fields (</text>
+<text x="3124.00" y="115.26" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">mption (AGENT-&lt;MISSION_ID&gt;.json by default) by removing non-essential fields (</text>
 <text x="3124.00" y="129.66" text-anchor="middle" font-family="'Noto Sans', Roboto, Verdana, system-ui, sans-serif" font-size="12.00" fill="#FFFFFF" dominant-baseline="middle">e.g., $schema, audit trail metadata) while preserving the card graph structure.</text>
 <use href="#rounded-rectangle" x="3206.47" y="-56.28" width="1621.07" height="314.27" fill="#065f46" stroke="#FFFFFF" stroke-width="2.00" />
 <text x="3270.47" y="100.86" font-size="48">☑️</text>

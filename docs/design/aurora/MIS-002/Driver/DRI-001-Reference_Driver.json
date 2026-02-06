@@ -1,0 +1,24 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "DRI-001",
+	"card_type": "Driver",
+	"name": "Reference Driver",
+	"description": "Motivation used to drive a downstream requirement in the relationship-matrix reference model.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": [
+		{
+			"relationship": "drives",
+			"target": "REQ-001"
+		}
+	]
+}

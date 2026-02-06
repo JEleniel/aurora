@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-023",
+	"card_type": "Requirement",
+	"name": "Canonical View Registry",
+	"description": "Aurora tooling and documentation SHALL use a canonical registry of view definitions that declare which card types are included and what root types anchor each view.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

@@ -5,6 +5,7 @@
 Provide a standalone application capable of creating and manipulating Aurora models visually, reusing the aurora_shared library to facilitate development.
 
 ## Views
+
 ![Traceability.view.svg](MIS-004-views/Traceability.view.svg)
 
 ![Process.view.svg](MIS-004-views/Process.view.svg)
@@ -18,6 +19,7 @@ Provide a standalone application capable of creating and manipulating Aurora mod
 ![Entire_Model.view.svg](MIS-004-views/Entire_Model.view.svg)
 
 ![Use_Case.view.svg](MIS-004-views/Use_Case.view.svg)
+
 ## Card Index
 
 ### ADR
@@ -34,7 +36,7 @@ Provide a standalone application capable of creating and manipulating Aurora mod
 
 ### Artifact
 
-- **[ART-005 - Aurora Model Source Files](MIS-004/Artifact/ART-005.md)**: Aurora model source-of-truth files stored as JSJSON: a mission card plus per-card files under <MISSION_ID>/<Card Type>/.
+- **[ART-005 - Aurora Model Source Files](MIS-004/Artifact/ART-005.md)**: Aurora model source-of-truth files stored as json: a mission card plus per-card files under <MISSION_ID>/<Card Type>/.
 
 ### Asset
 
@@ -78,7 +80,7 @@ Provide a standalone application capable of creating and manipulating Aurora mod
 
 ### Data Store
 
-- **[DTS-003 - Workspace File System](MIS-004/Data Store/DTS-003.md)**: Filesystem-backed store holding Aurora model source files (Mission card plus per-card JSJSON files) within a user-selected workspace.
+- **[DTS-003 - Workspace File System](MIS-004/Data Store/DTS-003.md)**: Filesystem-backed store holding Aurora model source files (Mission card plus per-card json files) within a user-selected workspace.
 
 ### Deployment
 
@@ -100,7 +102,7 @@ Provide a standalone application capable of creating and manipulating Aurora mod
 
 - **[FEA-010 - Three Pane Shell](MIS-004/Feature/FEA-010.md)**: Render the editor UI as three primary panes: left navigation tree, central context graph, and right inspector split into edit + preview/audit.
 
-- **[FEA-015 - Load, Validate, and Save Models](MIS-004/Feature/FEA-015.md)**: Load Aurora models from a chosen workspace, validate invariants on every change, and persist edits back to JSJSON card files using shared aurora_shared semantics.
+- **[FEA-015 - Load, Validate, and Save Models](MIS-004/Feature/FEA-015.md)**: Load Aurora models from a chosen workspace, validate invariants on every change, and persist edits back to json card files using shared aurora_shared semantics.
 
 - **[FEA-012 - Brain Style Graph View](MIS-004/Feature/FEA-012.md)**: Render a TheBrain-like local context view: focused card centered; show parent from the chosen shortest-path chain; show siblings (same card_type) as adjacent nodes linked from the parent; show focused card’s outgoing links as navigable children.
 

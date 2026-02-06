@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "REQ-004",
+	"card_type": "Requirement",
+	"name": "Render Card Markdown",
+	"description": "The tooling SHALL render per-card Markdown documentation and a mission executive summary into a user-specified output directory. Rendered files SHOULD mirror the source card layout (card-type subfolders) and MUST be produced only after the model validates without errors.",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

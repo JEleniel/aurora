@@ -228,7 +228,7 @@ impl Model {
 	pub fn get_compact(&self) -> Value {
 		let value: Value = json![
 			{
-				"$schema": "Aurora.compact.schema.jsjson",
+				"$schema": "Aurora.compact.schema.json",
 				"cards": [
 					self.root_card.get_compact(),
 					for card in &self.cards {

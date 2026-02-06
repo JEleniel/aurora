@@ -5,6 +5,7 @@
 Provide CLI tooling capable of managing, rendering, compressing, and updating Aurora model(s).
 
 ## Views
+
 ![Traceability.view.svg](MIS-003-views/Traceability.view.svg)
 
 ![Process.view.svg](MIS-003-views/Process.view.svg)
@@ -18,6 +19,7 @@ Provide CLI tooling capable of managing, rendering, compressing, and updating Au
 ![Entire_Model.view.svg](MIS-003-views/Entire_Model.view.svg)
 
 ![Use_Case.view.svg](MIS-003-views/Use_Case.view.svg)
+
 ## Card Index
 
 ### ADR
@@ -36,7 +38,7 @@ Provide CLI tooling capable of managing, rendering, compressing, and updating Au
 
 ### Artifact
 
-- **[ART-004 - Compact Agent Export](MIS-003/Artifact/ART-004.md)**: Single-file compact model export emitted as AGENT-<MISSION_ID>.jsjson (default location: model home root).
+- **[ART-004 - Compact Agent Export](MIS-003/Artifact/ART-004.md)**: Single-file compact model export emitted as AGENT-<MISSION_ID>.json (default location: model home root).
 
 - **[ART-003 - Rendered View Diagrams](MIS-003/Artifact/ART-003.md)**: Canonical view outputs emitted under Views/: DOT sources under Views/source and themed SVG diagrams under Views/.
 
@@ -58,7 +60,7 @@ Provide CLI tooling capable of managing, rendering, compressing, and updating Au
 
 - **[CAP-008 - Registry Backed Tooling](MIS-003/Capability/CAP-008.md)**: Ability to validate and render using embedded canonical registries for card definitions, relationship rules, and view specifications.
 
-- **[CAP-002 - Model Discovery and Loading](MIS-003/Capability/CAP-002.md)**: Ability to locate Aurora model homes from a user-provided path and load all card JSON/JSJSON files into an indexed in-memory model.
+- **[CAP-002 - Model Discovery and Loading](MIS-003/Capability/CAP-002.md)**: Ability to locate Aurora model homes from a user-provided path and load all card JSON/json files into an indexed in-memory model.
 
 - **[CAP-003 - Model Validation](MIS-003/Capability/CAP-003.md)**: Ability to validate Aurora model invariants and provide actionable diagnostics before any downstream rendering/export steps.
 
@@ -74,7 +76,7 @@ Provide CLI tooling capable of managing, rendering, compressing, and updating Au
 
 - **[COM-005 - Rendering Engine](MIS-003/Component/COM-005.md)**: Renderer that produces per-card Markdown documentation, executive summaries, canonical view DOT sources, and themed SVG diagrams; also writes compact agent exports.
 
-- **[COM-003 - Model Discovery and Loading](MIS-003/Component/COM-003.md)**: Discovery and parsing layer that locates model homes (schema-based), loads card files (JSON/JSJSON) from disk, and builds a searchable AuroraModel index.
+- **[COM-003 - Model Discovery and Loading](MIS-003/Component/COM-003.md)**: Discovery and parsing layer that locates model homes (schema-based), loads card files (JSON/json) from disk, and builds a searchable AuroraModel index.
 
 - **[COM-002 - CLI Command Runner](MIS-003/Component/COM-002.md)**: CLI entrypoint and command dispatcher (clap subcommands) that orchestrates discovery, validation, rendering, and compact export workflows and reports diagnostics and summaries.
 
@@ -86,7 +88,7 @@ Provide CLI tooling capable of managing, rendering, compressing, and updating Au
 
 ### Data Store
 
-- **[DTS-002 - Repository File System](MIS-003/Data Store/DTS-002.md)**: Filesystem-backed store that holds Aurora source cards (docs/design/aurora/), rendered artifacts (docs/design/*), and compact exports (AGENT-*.jsjson).
+- **[DTS-002 - Repository File System](MIS-003/Data Store/DTS-002.md)**: Filesystem-backed store that holds Aurora source cards (docs/design/aurora/), rendered artifacts (docs/design/_), and compact exports (AGENT-_.json).
 
 ### Deployment
 
@@ -112,7 +114,7 @@ Provide CLI tooling capable of managing, rendering, compressing, and updating Au
 
 - **[FEA-007 - Bump Audit Versions](MIS-003/Feature/FEA-007.md)**: Bump model audit trail versions (patch/minor/major). This feature is currently exposed as CLI commands but is not implemented yet.
 
-- **[FEA-006 - Write Compact Export](MIS-003/Feature/FEA-006.md)**: Write a compact, single-file mission snapshot (AGENT-<MISSION_ID>.jsjson by default) for agent consumption.
+- **[FEA-006 - Write Compact Export](MIS-003/Feature/FEA-006.md)**: Write a compact, single-file mission snapshot (AGENT-<MISSION_ID>.json by default) for agent consumption.
 
 - **[FEA-004 - Render View Diagrams](MIS-003/Feature/FEA-004.md)**: Render canonical Aurora views by writing DOT sources under Views/source and generating themed SVG diagrams under Views/.
 
@@ -142,7 +144,7 @@ Provide CLI tooling capable of managing, rendering, compressing, and updating Au
 
 - **[REQ-003 - Validate Models and Emit Diagnostics](MIS-003/Requirement/REQ-003.md)**: The tooling SHALL validate loaded models for core invariants (unique ids, at least one Mission, valid link targets, reachability from the mission root) and SHALL emit structured diagnostics with severity (error|warning|info). Validation SHALL fail the command when errors are present and SHOULD still surface warnings (e.g., relationship matrix compliance).
 
-- **[REQ-006 - Write Compact Agent Export](MIS-003/Requirement/REQ-006.md)**: The tooling SHALL generate a single-file compact export suitable for agent consumption (AGENT-<MISSION_ID>.jsjson by default) by removing non-essential fields (e.g., $schema, audit trail metadata) while preserving the card graph structure.
+- **[REQ-006 - Write Compact Agent Export](MIS-003/Requirement/REQ-006.md)**: The tooling SHALL generate a single-file compact export suitable for agent consumption (AGENT-<MISSION_ID>.json by default) by removing non-essential fields (e.g., $schema, audit trail metadata) while preserving the card graph structure.
 
 - **[REQ-004 - Render Card Markdown](MIS-003/Requirement/REQ-004.md)**: The tooling SHALL render per-card Markdown documentation and a mission executive summary into a user-specified output directory. Rendered files SHOULD mirror the source card layout (card-type subfolders) and MUST be produced only after the model validates without errors.
 

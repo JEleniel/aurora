@@ -1,0 +1,19 @@
+{
+	"$schema": "../../Aurora.schema.json",
+	"id": "INT-005",
+	"card_type": "Interface",
+	"name": "Local Filesystem API",
+	"description": "Contract for reading and writing Aurora model files on the local filesystem (open, read, write, atomic replace, and directory enumeration).",
+	"audit_trail": {
+		"version": "1.0.0",
+		"hash": null,
+		"history": [
+			{
+				"editor": "Architect",
+				"timestamp": "2026-01-29T00:00:00Z",
+				"event": "created"
+			}
+		]
+	},
+	"links": []
+}

@@ -27,13 +27,13 @@
     + Status: Design
     + Updates: Created a new MIS-001 mission model under `docs/design/aurora/` that documents the Aurora style (invariants, serialization/layout rules, audit trail rules, and canonical registries) and regenerated compact + rendered outputs via `aurora_cli`.
     + Links:
-        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-001-AgentUnified_Representation_of_Requirements_and_Architecture_Aurora.jsjson)
+        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-001-AgentUnified_Representation_of_Requirements_and_Architecture_Aurora.json)
         - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-001/)
-        - [Compact Export (agent snapshot)](../docs/design/aurora/AGENT-MIS-001.jsjson)
+        - [Compact Export (agent snapshot)](../docs/design/aurora/AGENT-MIS-001.json)
         - [Rendered Model Output (docs + views)](../docs/design/MIS-001-Agent-Unified_Representation_of_Requirements_and_Architecture__Aurora_/)
         - [Design Index](../docs/design/README.md)
     + Next Actions:
-        - Keep derived artifacts (`docs/design/MIS-001-*/**` and `docs/design/aurora/AGENT-MIS-001.jsjson`) synchronized with the source model (`docs/design/aurora/**`) by re-running `aurora_cli` after model edits.
+        - Keep derived artifacts (`docs/design/MIS-001-*/**` and `docs/design/aurora/AGENT-MIS-001.json`) synchronized with the source model (`docs/design/aurora/**`) by re-running `aurora_cli` after model edits.
         - If/when “default tooling” (CLI/editor/extension) is reintroduced as a dedicated mission, assign it a new Mission id to avoid identifier collision and update plan links accordingly.
 
 - [ ] **BackendDeveloper** (APP-001) **Bootstrap Aurora CLI and shared tooling**
@@ -59,7 +59,7 @@
     + Status: Design
     + Updates: Updated the MIS-002 reference model under `docs/design/aurora/` to use only canonical relationship verbs/directions (per the embedded registry) and ensured all cards remain reachable from the mission root. Validation now succeeds with 0 warnings/0 info and `render-all` generates the full rendered docs + views.
     + Links:
-        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-002-Relationship_Matrix_Reference.jsjson)
+        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-002-Relationship_Matrix_Reference.json)
         - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-002/)
         - [Rendered Model Output (docs + views)](../docs/design/MIS-002-Relationship_Matrix_Reference/)
         - [Design Index](../docs/design/README.md)
@@ -71,7 +71,7 @@
     + Status: Design
     + Updates: Added a reverse-engineered CLI tooling mission model (MIS-003) based on `aurora_cli` and `aurora_shared`, plus regenerated rendered docs and views.
     + Links:
-        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-003-CLI_Tooling.jsjson)
+        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-003-CLI_Tooling.json)
         - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-003/)
         - [Rendered Model Output (docs + views)](../docs/design/MIS-003-CLI_Tooling/)
         - [Design Index](../docs/design/README.md)
@@ -84,22 +84,22 @@
     + Status: Design
     + Updates: Added a new mission model (MIS-004) that specifies a Dioxus-based standalone Aurora editor with a three-pane UI (explorer tree, brain-style graph, and inspector with edit + Markdown preview + audit tab) and explicit reuse of aurora_shared semantics.
     + Links:
-        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-004-Standalone_Editor.jsjson)
+        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-004-Standalone_Editor.json)
         - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-004/)
-        - [Compact Export (agent snapshot)](../docs/design/aurora/AGENT-MIS-004.jsjson)
+        - [Compact Export (agent snapshot)](../docs/design/aurora/AGENT-MIS-004.json)
         - [Rendered Model Output (docs + views)](../docs/design/MIS-004-Standalone_Editor/)
         - [Design Index](../docs/design/README.md)
     + Next Actions:
-        - Keep derived artifacts (`docs/design/MIS-004-Standalone_Editor/**` and `docs/design/aurora/AGENT-MIS-004.jsjson`) synchronized with the source model (`docs/design/aurora/MIS-004/**`) by re-running `aurora_cli` after model edits.
+        - Keep derived artifacts (`docs/design/MIS-004-Standalone_Editor/**` and `docs/design/aurora/AGENT-MIS-004.json`) synchronized with the source model (`docs/design/aurora/MIS-004/**`) by re-running `aurora_cli` after model edits.
         - Decide and document concrete interaction semantics for the Brain Graph pane (exact placement rules for parent/siblings/children, and click/keyboard navigation).
         - Define editing guardrails (which fields are editable by default, link editing UX, and how audit trail edits are applied deterministically).
 
 - [ ] **BackendDeveloper** (APP-002) **Tauri Editor Backend**
     + Status: implementation
     + Links:
-        - [Design: APP-002 Editor](../docs/design/aurora/MIS-001/Application/APP-002-Editor.jsjson)
-        - [Design: COM-003 Tauri Rust Backend](../docs/design/aurora/MIS-001/Component/COM-003-Tauri_Rust_Backend.jsjson)
-        - [Design: INT-003 Editor Backend API](../docs/design/aurora/MIS-001/Interface/INT-003-Editor_Backend_API.jsjson)
+        - [Design: APP-002 Editor](../docs/design/aurora/MIS-001/Application/APP-002-Editor.json)
+        - [Design: COM-003 Tauri Rust Backend](../docs/design/aurora/MIS-001/Component/COM-003-Tauri_Rust_Backend.json)
+        - [Design: INT-003 Editor Backend API](../docs/design/aurora/MIS-001/Interface/INT-003-Editor_Backend_API.json)
         - [`tauri.conf.json`](../tools/aurora_editor/src-tauri/tauri.conf.json)
         - [`src/main.rs`](../tools/aurora_editor/src-tauri/src/main.rs)
         - [`src/commands.rs`](../tools/aurora_editor/src-tauri/src/commands.rs)
@@ -123,41 +123,41 @@
             + Status: pending
             + Owner: BackendDeveloper
             + Links:
-                - [Design: REQ-013 Preview Rendered Markdown](../docs/design/aurora/MIS-001/Requirement/REQ-013-Preview_Rendered_Markdown.jsjson)
-                - [Design: REQ-017 Sanitized Rendering](../docs/design/aurora/MIS-001/Requirement/REQ-017-Sanitized_Rendering.jsjson)
+                - [Design: REQ-013 Preview Rendered Markdown](../docs/design/aurora/MIS-001/Requirement/REQ-013-Preview_Rendered_Markdown.json)
+                - [Design: REQ-017 Sanitized Rendering](../docs/design/aurora/MIS-001/Requirement/REQ-017-Sanitized_Rendering.json)
             + Next Action: Add backend commands that return render output as data (strings / structured payload) suitable for in-app preview (avoid “write to disk then read” as the primary UX path).
         - [ ] **BackendDeveloper** (APP-002-BE-03) **Workspace watchers + event stream**
             + Status: pending
             + Owner: BackendDeveloper
             + Links:
-                - [Design: REQ-014 Workspace Integration](../docs/design/aurora/MIS-001/Requirement/REQ-014-Workspace_Integration.jsjson)
+                - [Design: REQ-014 Workspace Integration](../docs/design/aurora/MIS-001/Requirement/REQ-014-Workspace_Integration.json)
             + Next Action: Implement a watcher that tracks changes under the active workspace/model home and emits events to the UI (model-homes changed, snapshot stale, validation stale). Keep watcher scope constrained to the workspace root.
         - [ ] **BackendDeveloper** (APP-002-BE-04) **Diagnostics enrichment and navigation hooks**
             + Status: pending
             + Owner: BackendDeveloper
             + Links:
-                - [Design: REQ-011 Show Validation Diagnostics](../docs/design/aurora/MIS-001/Requirement/REQ-011-Show_Validation_Diagnostics.jsjson)
+                - [Design: REQ-011 Show Validation Diagnostics](../docs/design/aurora/MIS-001/Requirement/REQ-011-Show_Validation_Diagnostics.json)
             + Next Action: Ensure diagnostics always include enough context for UI navigation (card id when possible, relative path when possible). Add helper endpoints for “diagnostics for card” or “open card by id” flows if needed.
         - [ ] **BackendDeveloper** (APP-002-BE-05) **Editing guardrails + rollback UX**
             + Status: pending
             + Owner: BackendDeveloper
             + Links:
-                - [Design: REQ-010 Edit Models Interactively](../docs/design/aurora/MIS-001/Requirement/REQ-010-Edit_Models_Interactively.jsjson)
+                - [Design: REQ-010 Edit Models Interactively](../docs/design/aurora/MIS-001/Requirement/REQ-010-Edit_Models_Interactively.json)
                 - [`create_card/update_card/delete_card`](../tools/aurora_editor/src-tauri/src/commands.rs)
             + Next Action: Make edit failures “actionable” for UI (structured error response including validation errors). Confirm rollback paths are fully atomic and cannot leave partial writes.
         - [ ] **BackendDeveloper** (APP-002-BE-06) **ZIP export/import for postable models**
             + Status: pending
             + Owner: BackendDeveloper
             + Links:
-                - [Design: REQ-018 Store the Model in a Postable Format](../docs/design/aurora/MIS-001/Requirement/REQ-018-Store_the_Model_in_a_Postable_Format.jsjson)
+                - [Design: REQ-018 Store the Model in a Postable Format](../docs/design/aurora/MIS-001/Requirement/REQ-018-Store_the_Model_in_a_Postable_Format.json)
                 - [`write_compact_model`](../tools/aurora_shared/src/render.rs)
             + Next Action: Implement a ZIP (or equivalent archive) export in `aurora_shared` and expose it via the editor backend (trust-gated). Ensure safe path handling (no traversal, no symlink escape) and deterministic archive contents.
         - [ ] **BackendDeveloper** (APP-002-BE-07) **Security posture for webview rendering**
             + Status: pending
             + Owner: BackendDeveloper
             + Links:
-                - [Design: REQ-016 Workspace Trust Gating](../docs/design/aurora/MIS-001/Requirement/REQ-016-Workspace_Trust_Gating.jsjson)
-                - [Design: REQ-017 Sanitized Rendering](../docs/design/aurora/MIS-001/Requirement/REQ-017-Sanitized_Rendering.jsjson)
+                - [Design: REQ-016 Workspace Trust Gating](../docs/design/aurora/MIS-001/Requirement/REQ-016-Workspace_Trust_Gating.json)
+                - [Design: REQ-017 Sanitized Rendering](../docs/design/aurora/MIS-001/Requirement/REQ-017-Sanitized_Rendering.json)
                 - [`tauri.conf.json`](../tools/aurora_editor/src-tauri/tauri.conf.json)
             + Next Action: Replace `csp: null` with a locked-down CSP for non-dev builds and define a minimal capability set for the editor webview. Document which operations are blocked in “untrusted” mode.
         - [ ] **BackendDeveloper** (APP-002-BE-08) **Backend test strategy (unit-first)**
@@ -176,11 +176,11 @@
         - [`src/main.ts`](../tools/aurora_editor/src/main.ts)
         - [`src/styles/app.css`](../tools/aurora_editor/src/styles/app.css)
         - [`src/lib/components`](../tools/aurora_editor/src/lib/components)
-        - [Design: APP-002 Editor](../docs/design/aurora/MIS-001/Application/APP-002-Editor.jsjson)
-        - [Design: COM-004 Explorer Tree View](../docs/design/aurora/MIS-001/Component/COM-004-Explorer_Tree_View.jsjson)
-        - [Design: COM-005 Mind-Map Like View](../docs/design/aurora/MIS-001/Component/COM-005-Mind-Map_Like_View.jsjson)
-        - [Design: COM-006 Edit View](../docs/design/aurora/MIS-001/Component/COM-006-Edit_View.jsjson)
-        - [Design: COM-007 Markdown View](../docs/design/aurora/MIS-001/Component/COM-007-Markdown_View.jsjson)
+        - [Design: APP-002 Editor](../docs/design/aurora/MIS-001/Application/APP-002-Editor.json)
+        - [Design: COM-004 Explorer Tree View](../docs/design/aurora/MIS-001/Component/COM-004-Explorer_Tree_View.json)
+        - [Design: COM-005 Mind-Map Like View](../docs/design/aurora/MIS-001/Component/COM-005-Mind-Map_Like_View.json)
+        - [Design: COM-006 Edit View](../docs/design/aurora/MIS-001/Component/COM-006-Edit_View.json)
+        - [Design: COM-007 Markdown View](../docs/design/aurora/MIS-001/Component/COM-007-Markdown_View.json)
     + UI Notes:
         - Workspace connect + quick actions (validate/render/compact) are the primary flow.
         - Prefer TailwindCSS for styling, falling back to custom CSS only when needed.
@@ -207,48 +207,48 @@
             + Status: pending
             + Owner: UIDeveloper
             + Links:
-                - [Design: COM-004 Explorer Tree View](../docs/design/aurora/MIS-001/Component/COM-004-Explorer_Tree_View.jsjson)
-                - [Design: FEA-007 Browse and Search Models](../docs/design/aurora/MIS-001/Feature/FEA-007-Browse_and_Search_Models.jsjson)
+                - [Design: COM-004 Explorer Tree View](../docs/design/aurora/MIS-001/Component/COM-004-Explorer_Tree_View.json)
+                - [Design: FEA-007 Browse and Search Models](../docs/design/aurora/MIS-001/Feature/FEA-007-Browse_and_Search_Models.json)
             + Next Action: Render a tree/list grouped by card_type (and optionally folder path) with search/filter. Selecting a card should update the “focused card” across all panes.
         - [ ] **UIDeveloper** (APP-002-UI-03) **Diagnostics UX that users can act on**
             + Status: pending
             + Owner: UIDeveloper
             + Links:
-                - [Design: REQ-011 Show Validation Diagnostics](../docs/design/aurora/MIS-001/Requirement/REQ-011-Show_Validation_Diagnostics.jsjson)
+                - [Design: REQ-011 Show Validation Diagnostics](../docs/design/aurora/MIS-001/Requirement/REQ-011-Show_Validation_Diagnostics.json)
             + Next Action: Replace the “top 3 findings” summary with a full diagnostics list, severity filtering, and click-to-focus-card (or click-to-open-path) behavior.
         - [ ] **UIDeveloper** (APP-002-UI-04) **Edit View (card CRUD + link editing)**
             + Status: pending
             + Owner: UIDeveloper
             + Links:
-                - [Design: COM-006 Edit View](../docs/design/aurora/MIS-001/Component/COM-006-Edit_View.jsjson)
-                - [Design: REQ-010 Edit Models Interactively](../docs/design/aurora/MIS-001/Requirement/REQ-010-Edit_Models_Interactively.jsjson)
+                - [Design: COM-006 Edit View](../docs/design/aurora/MIS-001/Component/COM-006-Edit_View.json)
+                - [Design: REQ-010 Edit Models Interactively](../docs/design/aurora/MIS-001/Requirement/REQ-010-Edit_Models_Interactively.json)
             + Next Action: Implement an edit form for the focused card (including links + attributes). Hook it to backend create/update/delete and surface rollback/validation errors inline.
         - [ ] **UIDeveloper** (APP-002-UI-05) **Mind-map / graph navigation view**
             + Status: pending
             + Owner: UIDeveloper
             + Links:
-                - [Design: COM-005 Mind-Map Like View](../docs/design/aurora/MIS-001/Component/COM-005-Mind-Map_Like_View.jsjson)
-                - [Design: REQ-012 Visualize Model Graph](../docs/design/aurora/MIS-001/Requirement/REQ-012-Visualize_Model_Graph.jsjson)
+                - [Design: COM-005 Mind-Map Like View](../docs/design/aurora/MIS-001/Component/COM-005-Mind-Map_Like_View.json)
+                - [Design: REQ-012 Visualize Model Graph](../docs/design/aurora/MIS-001/Requirement/REQ-012-Visualize_Model_Graph.json)
             + Next Action: Add an interactive graph view (zoom/pan + focus-on-card + neighbor expansion). Keep it driven from the model snapshot to avoid backend coupling.
         - [ ] **UIDeveloper** (APP-002-UI-06) **Markdown View with sanitization**
             + Status: pending
             + Owner: UIDeveloper
             + Links:
-                - [Design: COM-007 Markdown View](../docs/design/aurora/MIS-001/Component/COM-007-Markdown_View.jsjson)
-                - [Design: REQ-013 Preview Rendered Markdown](../docs/design/aurora/MIS-001/Requirement/REQ-013-Preview_Rendered_Markdown.jsjson)
-                - [Design: REQ-017 Sanitized Rendering](../docs/design/aurora/MIS-001/Requirement/REQ-017-Sanitized_Rendering.jsjson)
+                - [Design: COM-007 Markdown View](../docs/design/aurora/MIS-001/Component/COM-007-Markdown_View.json)
+                - [Design: REQ-013 Preview Rendered Markdown](../docs/design/aurora/MIS-001/Requirement/REQ-013-Preview_Rendered_Markdown.json)
+                - [Design: REQ-017 Sanitized Rendering](../docs/design/aurora/MIS-001/Requirement/REQ-017-Sanitized_Rendering.json)
             + Next Action: Render Markdown previews in-app using a sanitizer-first pipeline. Navigation between cards should work from markdown links (at minimum: resolve `CARD_ID` links).
         - [ ] **UIDeveloper** (APP-002-UI-07) **Trust gating UX**
             + Status: pending
             + Owner: UIDeveloper
             + Links:
-                - [Design: REQ-016 Workspace Trust Gating](../docs/design/aurora/MIS-001/Requirement/REQ-016-Workspace_Trust_Gating.jsjson)
+                - [Design: REQ-016 Workspace Trust Gating](../docs/design/aurora/MIS-001/Requirement/REQ-016-Workspace_Trust_Gating.json)
             + Next Action: Make trust state always visible and enforce it consistently (disable/hide render/export/edit actions when untrusted; show explicit rationale).
         - [ ] **UIDeveloper** (APP-002-UI-08) **Accessibility + keyboard-first navigation**
             + Status: pending
             + Owner: UIDeveloper
             + Links:
-                - [Design: REQ-010 Edit Models Interactively](../docs/design/aurora/MIS-001/Requirement/REQ-010-Edit_Models_Interactively.jsjson)
+                - [Design: REQ-010 Edit Models Interactively](../docs/design/aurora/MIS-001/Requirement/REQ-010-Edit_Models_Interactively.json)
             + Next Action: Ensure full keyboard parity for: model selection, search, focus card, edit/save, diagnostics navigation, and graph interactions.
         - [ ] **UIDeveloper** (APP-002-UI-09) **Polish + end-to-end acceptance checks**
             + Status: pending
