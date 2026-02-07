@@ -1,0 +1,617 @@
+{
+	"$schema": "./Aurora.canonical.definitions.schema.json",
+	"definitions": [
+		{
+			"acronym": "ATV",
+			"card_type": "Activity",
+			"color": "#FFFFFF",
+			"description": "Discrete step within a process.",
+			"fill": "#4c1d95",
+			"icon": "⚙",
+			"relationships": [
+				{
+					"ATV": "leads to"
+				},
+				{
+					"TRG": "receives"
+				},
+				{
+					"CON": "triggers"
+				},
+				{
+					"COM": "uses"
+				},
+				{
+					"ART": "produces"
+				}
+			],
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "ACT",
+			"card_type": "Actor",
+			"color": "#FFFFFF",
+			"common_subtypes": ["User", "Admin", "External System", "Regulator"],
+			"description": "External role interacting with or obligating the system.",
+			"fill": "#1a2e05",
+			"icon": "👤",
+			"relationships": [
+				{
+					"ATV": "performs"
+				}
+			],
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "STK",
+			"card_type": "Stakeholder",
+			"color": "#FFFFFF",
+			"common_subtypes": ["Customer", "End User", "Operator", "Manager", "Regulator"],
+			"description": "Person, group, or role with an interest in or affected by the system.",
+			"fill": "#1a2e05",
+			"icon": "👥",
+			"relationships": [
+				{
+					"STR": "desires"
+				}
+			],
+			"shape": "ellipse"
+		},
+		{
+			"acronym": "ADR",
+			"card_type": "ADR",
+			"color": "#FFFFFF",
+			"description": "Architectural Decision Record capturing a significant decision, alternatives considered, rationale, trade-offs, and consequences.",
+			"fill": "#1f2937",
+			"icon": "📝",
+			"shape": "ruler"
+		},
+		{
+			"acronym": "ART",
+			"card_type": "Artifact",
+			"color": "#FFFFFF",
+			"common_subtypes": ["Document", "Data", "Diagram", "Code", "Model", "Report"],
+			"description": "Concrete work product produced or consumed by the system.",
+			"fill": "#1e293b",
+			"icon": "📄",
+			"relationships": [
+				{
+					"ART": "derives from"
+				},
+				{
+					"COM": "is input into"
+				},
+				{
+					"ATV": "goes into"
+				},
+				{
+					"AST": "is"
+				},
+				{
+					"DST": "persists to"
+				}
+			],
+			"shape": "document"
+		},
+		{
+			"acronym": "AST",
+			"card_type": "Asset",
+			"color": "#FFFFFF",
+			"description": "Valuable information/resources requiring protection.",
+			"fill": "#334155",
+			"icon": "🛡",
+			"shape": "box"
+		},
+		{
+			"acronym": "CAP",
+			"card_type": "Capability",
+			"color": "#FFFFFF",
+			"description": "Implementation-independent ability that satisfies requirements.",
+			"fill": "#052e16",
+			"icon": "✨",
+			"relationships": [
+				{
+					"PRO": "requires"
+				}
+			],
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "COM",
+			"card_type": "Component",
+			"color": "#FFFFFF",
+			"common_subtypes": ["System", "Application", "API", "Library", "Service", "Module", "Subsystem", "Class"],
+			"description": "Modular unit with a single responsibility and explicit interfaces.",
+			"fill": "#1e40af",
+			"icon": "🧩",
+			"relationships": [
+				{
+					"COM": "composes"
+				},
+				{
+					"FEA": "implements"
+				},
+				{
+					"INT": "exposes"
+				},
+				{
+					"TES": "implements"
+				},
+				{
+					"ART": "produces"
+				},
+				{
+					"DSR": "includes"
+				},
+				{
+					"DST": "stores in"
+				},
+				{
+					"STM": "executes"
+				}
+			],
+			"shape": "component"
+		},
+		{
+			"acronym": "DST",
+			"card_type": "Data Store",
+			"color": "#FFFFFF",
+			"common_subtypes": ["Relational", "Object Store", "Event Log", "Key-Value", "Graph"],
+			"description": "Persistent storage system that holds artifacts and data for retrieval and lineage.",
+			"fill": "#0f172a",
+			"icon": "🗄",
+			"relationships": [
+				{
+					"ART": "retrieves"
+				}
+			],
+			"shape": "cylinder"
+		},
+		{
+			"acronym": "CON",
+			"card_type": "Condition",
+			"color": "#FFFFFF",
+			"description": "Binary predicate influencing behavior.",
+			"fill": "#422006",
+			"icon": "⎇",
+			"relationships": [
+				{
+					"ATV": "branches to"
+				},
+				{
+					"TRG": "branches to"
+				},
+				{
+					"CON": "branches to"
+				}
+			],
+			"shape": "diamond"
+		},
+		{
+			"acronym": "CNS",
+			"card_type": "Constraint",
+			"color": "#FFFFFF",
+			"description": "Rule limiting allowable behavior or solutions.",
+			"fill": "#082f49",
+			"icon": "📏",
+			"relationships": [
+				{
+					"REQ": "limits"
+				}
+			],
+			"shape": "box"
+		},
+		{
+			"acronym": "CTL",
+			"card_type": "Control",
+			"color": "#FFFFFF",
+			"description": "Mechanism governing or constraining a process.",
+			"fill": "#713f12",
+			"icon": "🔒",
+			"relationships": [
+				{
+					"RIS": "mitigates"
+				},
+				{
+					"AST": "protects"
+				},
+				{
+					"CNS": "enforces"
+				},
+				{
+					"DST": "governs"
+				}
+			],
+			"shape": "octagon"
+		},
+		{
+			"acronym": "DEP",
+			"card_type": "Deployment",
+			"color": "#FFFFFF",
+			"description": "Defined environment or configuration where software executes.",
+			"fill": "#1e1b4b",
+			"icon": "☁",
+			"relationships": [
+				{
+					"NOD": "includes"
+				}
+			],
+			"shape": "deployment"
+		},
+		{
+			"acronym": "DSR",
+			"card_type": "Data Source",
+			"color": "#FFFFFF",
+			"common_subtypes": ["External System", "Upstream Feed", "Sensor", "Third-Party API"],
+			"description": "Origin of artifacts and data entering the system, used to model provenance and lineage.",
+			"fill": "#0b1220",
+			"icon": "📡",
+			"relationships": [
+				{
+					"ART": "provides"
+				}
+			],
+			"shape": "box"
+		},
+		{
+			"acronym": "DRI",
+			"card_type": "Driver",
+			"color": "#FFFFFF",
+			"description": "Motivation explaining why requirements exist.",
+			"fill": "#064e3b",
+			"icon": "🧭",
+			"relationships": [
+				{
+					"REQ": "drives"
+				}
+			],
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "EVT",
+			"card_type": "Event",
+			"color": "#FFFFFF",
+			"description": "Discrete occurrence initiating a process or triggering behavior.",
+			"fill": "#5b21b6",
+			"icon": "⚡",
+			"relationships": [
+				{
+					"STA": "transitions to"
+				},
+				{
+					"EVT": "triggers"
+				},
+				{
+					"PRD": "triggers"
+				}
+			],
+			"shape": "trapezoid"
+		},
+		{
+			"acronym": "FEA",
+			"card_type": "Feature",
+			"color": "#FFFFFF",
+			"description": "Externally observable behavior realizing one or more requirements.",
+			"fill": "#14532d",
+			"icon": "⭐",
+			"relationships": [
+				{
+					"CAP": "realizes"
+				},
+				{
+					"CNS": "implies"
+				}
+			],
+			"shape": "box"
+		},
+		{
+			"acronym": "INT",
+			"card_type": "Interface",
+			"color": "#000000",
+			"description": "Contract governing interaction across a boundary.",
+			"fill": "#102080",
+			"icon": "🔌",
+			"shape": "interface"
+		},
+		{
+			"acronym": "MIS",
+			"card_type": "Mission",
+			"color": "#FFFFFF",
+			"description": "Root intent that spawns every downstream driver.",
+			"fill": "#022c22",
+			"icon": "🎯",
+			"relationships": [
+				{
+					"DRI": "establishes"
+				},
+				{
+					"STK": "involves"
+				},
+				{
+					"COM": "includes"
+				},
+				{
+					"DEP": "involves"
+				},
+				{
+					"THM": "has"
+				}
+			],
+			"shape": "octagon"
+		},
+		{
+			"acronym": "NOD",
+			"card_type": "Node",
+			"color": "#FFFFFF",
+			"common_subtypes": ["Container", "Virtual Machine", "Hardware"],
+			"description": "Logical/physical execution environment hosting components or stores.",
+			"fill": "#312e81",
+			"icon": "🖥",
+			"relationships": [
+				{
+					"COM": "hosts"
+				},
+				{
+					"DST": "hosts"
+				},
+				{
+					"DSR": "hosts"
+				}
+			],
+			"shape": "double-box"
+		},
+		{
+			"acronym": "PRD",
+			"card_type": "Predicate",
+			"color": "#FFFFFF",
+			"description": "Logical statement evaluating to true/false in a state machine.",
+			"fill": "#581c87",
+			"icon": "ƒ",
+			"relationships": [
+				{
+					"STA": "branches to"
+				},
+				{
+					"PRD": "branches to"
+				},
+				{
+					"EVT": "branches to"
+				}
+			],
+			"shape": "diamond"
+		},
+		{
+			"acronym": "PRO",
+			"card_type": "Process",
+			"color": "#FFFFFF",
+			"description": "Ordered sequence of activities/decisions enabling a capability.",
+			"fill": "#2e1065",
+			"icon": "🔁",
+			"relationships": [
+				{
+					"ATV": "includes"
+				},
+				{
+					"TRG": "includes"
+				},
+				{
+					"CON": "branches on"
+				},
+				{
+					"ACT": "involves"
+				}
+			],
+			"shape": "box"
+		},
+		{
+			"acronym": "REQ",
+			"card_type": "Requirement",
+			"color": "#FFFFFF",
+			"description": "Verifiable statement of need/obligation.",
+			"fill": "#065f46",
+			"icon": "✅",
+			"relationships": [
+				{
+					"CAP": "requires"
+				},
+				{
+					"ADR": "has"
+				},
+				{
+					"CNS": "imposes"
+				},
+				{
+					"CTL": "requires"
+				}
+			],
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "RIS",
+			"card_type": "Risk",
+			"color": "#FFFFFF",
+			"description": "Potential for loss/harm from threats/vulnerabilities.",
+			"fill": "#881337",
+			"icon": "⚠",
+			"shape": "octagon"
+		},
+		{
+			"acronym": "STA",
+			"card_type": "State",
+			"color": "#FFFFFF",
+			"description": "Observable condition that persists until a transition.",
+			"fill": "#701a75",
+			"icon": "●",
+			"relationships": [
+				{
+					"STA": "transitions to"
+				},
+				{
+					"PRD": "evaluates"
+				},
+				{
+					"EVT": "handles"
+				}
+			],
+			"shape": "circle"
+		},
+		{
+			"acronym": "STM",
+			"card_type": "State Machine",
+			"color": "#FFFFFF",
+			"description": "Behavioral model defining allowable states/transitions.",
+			"fill": "#4a044e",
+			"icon": "⏱",
+			"relationships": [
+				{
+					"STA": "has"
+				}
+			],
+			"shape": "octagon"
+		},
+		{
+			"acronym": "STR",
+			"card_type": "Story",
+			"color": "#FFFFFF",
+			"description": "Narrative expressing desired behavior/outcome; should follow the “`As an ___ I want/need ___.`” format.",
+			"fill": "#365314",
+			"icon": "📖",
+			"relationships": [
+				{
+					"REQ": "explains"
+				},
+				{
+					"CNS": "implies"
+				}
+			],
+			"shape": "box"
+		},
+		{
+			"acronym": "TES",
+			"card_type": "Test",
+			"color": "#FFFFFF",
+			"description": "Procedure verifying that a feature satisfies requirements.",
+			"fill": "#022c22",
+			"icon": "🧪",
+			"relationships": [
+				{
+					"FEA": "verifies"
+				}
+			],
+			"shape": "hexagon"
+		},
+		{
+			"acronym": "THD",
+			"card_type": "Threat Diamond",
+			"color": "#FFFFFF",
+			"description": "Threat rendered as a diamond (diagramming variant).",
+			"fill": "#4c0519",
+			"icon": "♦",
+			"relationships": [
+				{
+					"AST": "threatens"
+				},
+				{
+					"ADV": "involves"
+				},
+				{
+					"THC": "uses"
+				},
+				{
+					"VIC": "impacts"
+				},
+				{
+					"RIS": "creates"
+				}
+			],
+			"shape": "diamond"
+		},
+		{
+			"acronym": "ADV",
+			"card_type": "Adversary",
+			"color": "#FFFFFF",
+			"common_subtypes": [
+				"Insider",
+				"Outsider",
+				"Script Kiddie",
+				"Hacktivist",
+				"Organized Crime",
+				"Nation State"
+			],
+			"description": "Threat source: actor with intent and capability to cause harm.",
+			"fill": "#4c0519",
+			"icon": "👾",
+			"shape": "octagon"
+		},
+		{
+			"acronym": "THC",
+			"card_type": "Threat Capability",
+			"color": "#FFFFFF",
+			"description": "Skills, access, tooling, or resources enabling an adversary to execute threats.",
+			"fill": "#4c0519",
+			"icon": "🛠",
+			"shape": "octagon"
+		},
+		{
+			"acronym": "VIC",
+			"card_type": "Victim",
+			"color": "#FFFFFF",
+			"common_subtypes": ["User", "Organization", "System", "Data"],
+			"description": "Entity that suffers impact when a threat is realized.",
+			"fill": "#4c0519",
+			"icon": "🧍",
+			"shape": "octagon"
+		},
+		{
+			"acronym": "ROW",
+			"card_type": "Resource Owner",
+			"color": "#FFFFFF",
+			"description": "Role accountable for an asset/resource and its protection.",
+			"fill": "#4c0519",
+			"icon": "🔑",
+			"relationships": [
+				{
+					"AST": "owns"
+				}
+			],
+			"shape": "octagon"
+		},
+		{
+			"acronym": "THM",
+			"card_type": "Threat Model",
+			"color": "#FFFFFF",
+			"description": "Structured analysis of assets, adversaries, threats, and mitigations.",
+			"fill": "#4c0519",
+			"icon": "🕵",
+			"relationships": [
+				{
+					"THD": "includes"
+				},
+				{
+					"ROW": "includes"
+				}
+			],
+			"shape": "octagon"
+		},
+		{
+			"acronym": "TRG",
+			"card_type": "Trigger",
+			"color": "#FFFFFF",
+			"description": "Event or condition initiating a process or action.",
+			"fill": "#78350f",
+			"icon": "⏰",
+			"relationships": [
+				{
+					"ATV": "initiates"
+				},
+				{
+					"CON": "initiates"
+				},
+				{
+					"TRG": "triggers"
+				}
+			],
+			"shape": "trapezoid"
+		}
+	]
+}

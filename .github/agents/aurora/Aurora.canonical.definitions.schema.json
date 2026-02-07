@@ -1,0 +1,102 @@
+{
+	"$id": "https://crystultima.org/aurora/canonical.definitions.schema.json",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Aurora Canonical Definitions Registry Schema",
+	"description": "JSON schema for Aurora.canonical.definitions.json (card type registry)",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"$schema": {
+			"description": "Optional reference to this schema file for editors/tooling",
+			"type": "string",
+			"minLength": 1
+		},
+		"definitions": {
+			"description": "List of canonical card type definitions",
+			"type": "array",
+			"minItems": 1,
+			"items": {
+				"$ref": "#/definitions/entry"
+			}
+		}
+	},
+	"required": ["definitions"],
+	"definitions": {
+		"hex_color": {
+			"description": "6-digit hex color in #RRGGBB form",
+			"type": "string",
+			"pattern": "^#[A-Fa-f0-9]{6}$"
+		},
+		"relationship": {
+			"description": "Single mapping from target card acronym to a human-readable verb",
+			"type": "object",
+			"minProperties": 1,
+			"maxProperties": 1,
+			"propertyNames": {
+				"pattern": "^[A-Z]{3}$"
+			},
+			"additionalProperties": {
+				"type": "string",
+				"minLength": 1
+			}
+		},
+		"entry": {
+			"description": "One canonical card type definition (normative + optional rendering fields)",
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"card_type": {
+					"description": "Human-facing type name in Title Case",
+					"type": "string",
+					"minLength": 1
+				},
+				"acronym": {
+					"description": "3-letter id prefix used in compact ids and link targets",
+					"type": "string",
+					"pattern": "^[A-Z]{3}$"
+				},
+				"description": {
+					"description": "Short definition of the card type",
+					"type": "string",
+					"minLength": 1
+				},
+				"relationships": {
+					"description": "Allowed outgoing relationship targets and verbs",
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/relationship"
+					},
+					"minItems": 1
+				},
+				"common_subtypes": {
+					"description": "Common subtype suggestions (non-normative)",
+					"type": "array",
+					"items": {
+						"type": "string",
+						"minLength": 1
+					},
+					"minItems": 1
+				},
+				"shape": {
+					"description": "Renderer shape identifier (non-normative)",
+					"type": "string",
+					"minLength": 1
+				},
+				"icon": {
+					"description": "Renderer icon (Unicode glyph) (non-normative)",
+					"type": "string",
+					"minLength": 1
+				},
+				"fill": {
+					"description": "Renderer fill color (non-normative)",
+					"$ref": "#/definitions/hex_color"
+				},
+				"color": {
+					"description": "Renderer text/stroke color (non-normative)",
+					"$ref": "#/definitions/hex_color"
+				}
+			},
+			"required": ["card_type", "acronym", "description"]
+		}
+	}
+}

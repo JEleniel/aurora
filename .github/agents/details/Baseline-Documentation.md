@@ -1,6 +1,6 @@
 # Documentation Baseline
 
-Use this as the shared baseline for documentation-focused roles.
+You MUST conform to this document when writing documentation of any kind, including inline documentation.
 
 ## Defaults
 

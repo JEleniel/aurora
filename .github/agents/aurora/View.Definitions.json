@@ -1,0 +1,150 @@
+{
+	"$schema": "./View.Definitions.schema.json",
+	"definitions": [
+		{
+			"description": "Demonstrates adherence to constraints through controls, risk treatment, and verifiable tests.",
+			"included_card_types": ["Requirement", "Constraint", "Control", "Risk", "Test"],
+			"name": "Compliance Governance",
+			"root_card_types": ["Mission"]
+		},
+		{
+			"description": "Explains internal implementation structure, focusing on how applications and components are realized in code.",
+			"included_card_types": ["Interface", "Artifact", "Data Store", "Data Source", "Test"],
+			"name": "Component",
+			"root_card_types": ["Component"]
+		},
+		{
+			"description": "Defines where software executes, focusing on deployments, nodes, and hosted runtime elements.",
+			"included_card_types": ["Node", "Component", "Data Store", "Data Source"],
+			"name": "Deployment",
+			"root_card_types": ["Deployment"]
+		},
+		{
+			"description": "Displays the complete architectural model, highlighting shortest paths from the mission and alternate relationships.",
+			"included_card_types": [
+				"Driver",
+				"Stakeholder",
+				"Capability",
+				"Requirement",
+				"Feature",
+				"ADR",
+				"Constraint",
+				"Control",
+				"Risk",
+				"Process",
+				"Activity",
+				"Condition",
+				"Trigger",
+				"Event",
+				"Predicate",
+				"State Machine",
+				"State",
+				"Story",
+				"Actor",
+				"Artifact",
+				"Data Store",
+				"Data Source",
+				"Asset",
+				"Deployment",
+				"Node",
+				"Component",
+				"Interface",
+				"Test",
+				"Threat Model",
+				"Threat Diamond",
+				"Adversary",
+				"Threat Capability",
+				"Victim",
+				"Resource Owner"
+			],
+			"name": "Entire Model",
+			"root_card_types": ["Mission"]
+		},
+		{
+			"description": "Details how a capability is realized through ordered processes and activities with explicit triggering conditions.",
+			"included_card_types": ["Process", "Activity", "Condition", "Trigger", "Actor"],
+			"name": "Process",
+			"root_card_types": ["Capability"]
+		},
+		{
+			"description": "Captures mission intent, motivation, and required capabilities, including architectural decisions that justify scope.",
+			"included_card_types": [
+				"Driver",
+				"Stakeholder",
+				"Capability",
+				"Requirement",
+				"ADR",
+				"Feature",
+				"Constraint"
+			],
+			"name": "Requirements",
+			"root_card_types": ["Mission"]
+		},
+		{
+			"description": "Shows system context: mission intent, stakeholders/actors, and primary system components and interfaces.",
+			"included_card_types": ["Stakeholder", "Actor", "Component", "Interface", "Data Source", "Constraint"],
+			"name": "Context",
+			"root_card_types": ["Mission"]
+		},
+		{
+			"description": "Shows the high-level landscape of major components, interfaces, deployments, and nodes.",
+			"included_card_types": ["Component", "Interface", "Data Store", "Data Source", "Deployment", "Asset"],
+			"name": "Landscape",
+			"root_card_types": ["Node"]
+		},
+		{
+			"description": "Analyzes protection of assets against threats, including actors, constraints, controls, and resulting risks.",
+			"included_card_types": [
+				"Data Store",
+				"Data Source",
+				"Threat Model",
+				"Adversary",
+				"Threat Capability",
+				"Victim",
+				"Resource Owner",
+				"Risk",
+				"Control",
+				"Constraint",
+				"Actor"
+			],
+			"name": "Security",
+			"root_card_types": ["Asset", "Threat Diamond"]
+		},
+		{
+			"description": "Models system behavior using state machines, states, predicates, and events without process contamination.",
+			"included_card_types": ["State", "Predicate", "Event"],
+			"name": "State Machine",
+			"root_card_types": ["State Machine"]
+		},
+		{
+			"description": "Provides end-to-end impact and coverage analysis from requirements through implementation and verification.",
+			"included_card_types": [
+				"Requirement",
+				"Capability",
+				"Feature",
+				"Component",
+				"Interface",
+				"Data Store",
+				"Data Source",
+				"Test",
+				"ADR",
+				"Constraint",
+				"Control",
+				"Risk",
+				"Artifact",
+				"Process",
+				"Activity",
+				"Condition",
+				"Trigger"
+			],
+			"name": "Traceability",
+			"root_card_types": ["Mission"]
+		},
+		{
+			"description": "Describes externally visible behavior from the perspective of actors using narrative stories and constraints.",
+			"included_card_types": ["Story", "Requirement", "Constraint"],
+			"name": "Use Case",
+			"root_card_types": ["Actor"]
+		}
+	]
+}

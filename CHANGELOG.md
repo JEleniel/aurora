@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added an SVG-based context graph in the Aurora editor that renders card shapes/icons and link lines centered on the focused card.
 - Added public `CardDefinition` and icon glyph helpers in `aurora_shared` to support editor graph rendering.
 - Introduced initial `aurora_cli` application wiring with validation, render, and compact subcommands.
+- Added `assets/Symbols.md` with a Unicode color-named symbol table.
 - Added validation requiring `Asset (Secret)` cards to have an incoming `owns` relationship (preferably from an `Actor`).
 - Added validation test coverage for canonical Relationships Matrix verbs and source/target constraints.
 - Added an `aurora_cli --instructions-root` override plus validation output that reports which instructions registry was used.

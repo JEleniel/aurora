@@ -72,6 +72,10 @@ Contracts live in `tools/aurora_editor/src-tauri/src/types.rs` and are mirrored 
 - Command handlers return `Result<_, String>`; the UI should display the string as a user-friendly message.
 - Errors are logged with `tracing` at the backend boundary; do not log secrets in the UI.
 
+### Modeling notes
+
+- Icons: A Unicode symbol/emoji is considered a valid icon choice for card types; the canonical registry now uses Unicode icons. If a symbol is not currently rendered, it can be added to the icon glyph mapping in `tools/aurora_shared/src/render/icons.rs` (and the editor glyph mapping in `tools/aurora_editor/src/graph.rs`).
+
 ### Adding new commands
 
 - Implement the handler in `src-tauri/src/commands.rs`.

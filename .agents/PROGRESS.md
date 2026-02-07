@@ -25,9 +25,9 @@
 
 - [ ] **Architect** (MIS-001) **Agent-Unified Representation of Requirements and Architecture (Aurora)**
     + Status: Design
-    + Updates: Created a new MIS-001 mission model under `docs/design/aurora/` that documents the Aurora style (invariants, serialization/layout rules, audit trail rules, and canonical registries) and regenerated compact + rendered outputs via `aurora_cli`.
+    + Updates: Created a new MIS-001 mission model under `docs/design/aurora/` that documents the Aurora style (invariants, serialization/layout rules, audit trail rules, and canonical registries) and regenerated compact + rendered outputs via `aurora_cli`. Aligned MIS-001 source card filenames to the canonical `{id}.json` convention and updated REQ-017 to match the canonical layout rule.
     + Links:
-        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-001-AgentUnified_Representation_of_Requirements_and_Architecture_Aurora.json)
+        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-001-Agent_Unified_Representation_of_Requirements_and_Architecture_Aurora.json)
         - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-001/)
         - [Compact Export (agent snapshot)](../docs/design/aurora/AGENT-MIS-001.json)
         - [Rendered Model Output (docs + views)](../docs/design/MIS-001-Agent-Unified_Representation_of_Requirements_and_Architecture__Aurora_/)

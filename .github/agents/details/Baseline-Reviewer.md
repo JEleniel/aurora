@@ -1,6 +1,6 @@
 # Reviewer Baseline
 
-Use this as the shared baseline for reviewer roles.
+You MUST conform to this document when reviewing code or documentation of any kind.
 
 ## Defaults
 
@@ -10,9 +10,10 @@ Use this as the shared baseline for reviewer roles.
 ## Key Checks
 
 - Correctness: code matches intent and wiring is complete.
-- Reliability: failures are handled intentionally.
+- Reliability: failures are handled intentionally, unhandled errors are logged and/or returned cleanly to the caller.
 - Security: apply OWASP guidance (input validation, authz/authn boundaries, secrets handling, least privilege, safe logging).
-- Maintainability: clear names, cohesive modules, minimal complexity.
+- Accessibility: WCAG AA (AAA preferred).
+- Maintainability: clear names; proper, cohesive modules; minimal complexity.
 - Tests: require tests that prove behavior; no null tests.
 - Code conciseness: <20 lines per method (not including wrapper code), <200 lines per file.
 - Documentation conciseness: clear, to the point, easily readable documentation

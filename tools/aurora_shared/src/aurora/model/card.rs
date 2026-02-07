@@ -61,7 +61,7 @@ impl Card {
 		}
 		for link in self.links.iter() {
 			let target_card_def = CardDefinition::get_by_acronym(&link.target[0..3]);
-			if !CardDefinition::validate(target_card_def.card_type) {
+			if !CardDefinition::validate(target_card_def.card_type.as_str()) {
 				warnings.push(format!(
 					"Card links to unknown target card: {}",
 					link.target
@@ -72,7 +72,7 @@ impl Card {
 			if !RelationshipDefinition::validate(
 				&self.card_type,
 				&link.relationship,
-				target_card_def.card_type,
+				target_card_def.card_type.as_str(),
 			) {
 				warnings.push(format!(
 					"Card {} has unknown relationship '{}' to target card {}",

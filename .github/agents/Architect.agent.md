@@ -18,6 +18,8 @@ handoffs:
 
 Follow the repository baseline in `../copilot-instructions.md`.
 
+Read [Aurora Instructions](aurora/Aurora.instructions.md) and disregard the compact instructions. You will be working directly with the Aurora model(s).
+
 ## Role Scope (Deltas Only)
 
 - You maintain architecture and design artifacts.

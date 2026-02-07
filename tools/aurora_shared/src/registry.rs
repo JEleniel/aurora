@@ -15,7 +15,7 @@ impl Registry {
 	pub fn get_next_cards(card_type: &str) -> Vec<String> {
 		RelationshipDefinition::get_by_source_card_type(card_type)
 			.iter()
-			.map(|rel| rel.target_card_type.to_string())
+			.map(|rel| rel.target_card_type.clone())
 			.collect()
 	}
 }

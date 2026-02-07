@@ -14,10 +14,12 @@ Quick index of “where things live” for agents working in this repository.
     + Compact export: `docs/design/aurora/AGENT-MIS-001.json`
     + Rendered docs + views: `docs/design/MIS-001-Provide_Default_Tooling_for_AURORA/`
 - Schemas:
-    + `docs/design/aurora/Aurora.schema.json`
-    + `docs/design/aurora/Aurora.compact.schema.json`
-    + Duplicates are also under `schemas/` (keep them in sync intentionally).
-    + Note: there is also an `Aurora.schema json` file name with a space; prefer the canonical `Aurora.schema.json`.
+    + Canonical schemas and registries for tooling live under `.github/agents/aurora/`.
+    + `schemas/` is a symlink to `.github/agents/aurora/`.
+    + Card schema: `.github/agents/aurora/Aurora.card.schema.json`
+    + Compact schema: `.github/agents/aurora/Aurora.compact.schema.json`
+    + Audit schema: `.github/agents/aurora/Aurora.audit.schema.json`
+    + Registry schemas: `.github/agents/aurora/Aurora.canonical.definitions.schema.json`, `.github/agents/aurora/View.Definitions.schema.json`
 
 ## Finding things fast
 
@@ -33,14 +35,12 @@ Quick index of “where things live” for agents working in this repository.
     + DOT: `docs/design/<Rendered_Model_Name>/Views/source/<View>_View.view.dot`
     + Tip: if a view looks odd, inspect its `.view.dot` first; it’s the exact Graphviz input.
 
-## Canonical registries (instructions)
+## Canonical registries
 
 These define the vocabulary and view rules; prefer updating these over duplicating lists elsewhere:
 
-- Card palette: `.github/instructions/details/Card_Definitions.md`
-- View registry: `.github/instructions/details/View_Definitions.md`
-- Relationship verbs: `.github/instructions/details/Relationship_Definitions.md`
-- Relationship matrix (derived): `.github/instructions/details/Relationships_Matrix.md`
+- Card types + allowed relationships: `.github/agents/aurora/Aurora.canonical.definitions.json`
+- View definitions: `.github/agents/aurora/View.Definitions.json`
 
 ## Rendering pipeline (Rust)
 
@@ -72,6 +72,7 @@ These define the vocabulary and view rules; prefer updating these over duplicati
 - Human-facing design docs: `docs/design/`
     + Quickstart: `docs/design/Model_Quickstart.md`
     + Request templates: `docs/design/How_to_Talk_to_the_Model.md`
+    + Canonical card types + relationships (Mermaid): `docs/design/Canonical.md`
 
 ## Workspace root
 
