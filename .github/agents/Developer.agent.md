@@ -1,5 +1,5 @@
 ---
-name: GeneralDeveloper
+name: Developer
 description: Implements Rust services following architectural patterns defined by the Architect agent.
 model: GPT-5.2
 ---
