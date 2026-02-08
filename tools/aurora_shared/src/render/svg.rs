@@ -94,16 +94,20 @@ impl Svg {
 			nodes_svg.push_str(&node::render_node(card, node, &config));
 		}
 
-		let drawing = format!(
-			"<g id=\"edges\">{}</g><g id=\"nodes\">{}</g>",
-			edges_svg, nodes_svg
-		);
-
 		let viewbox = compute_viewbox(
 			positioned.values().map(|n| n.bbox),
 			&edge_bounds,
 			&edge_points,
 			&config,
+		);
+
+		let background = format!(
+			"<style>@media print{{#aurora-bg{{display:none;}}}}</style><rect id=\"aurora-bg\" x=\"{}\" y=\"{}\" width=\"{}\" height=\"{}\" style=\"fill:#ffffff;stroke:none;\" />",
+			viewbox.x, viewbox.y, viewbox.w, viewbox.h
+		);
+		let drawing = format!(
+			"{}<g id=\"edges\">{}</g><g id=\"nodes\">{}</g>",
+			background, edges_svg, nodes_svg
 		);
 		let mut svg = fill_template(SVG_TEMPLATE, &drawing, &viewbox)?;
 
@@ -214,6 +218,9 @@ mod node;
 mod tests {
 	use super::node;
 	use super::{RenderError, fill_template, geom};
+	use crate::{Attributes, AuditLog, Card, Link, Model};
+	use std::collections::HashMap;
+	use std::path::PathBuf;
 
 	#[test]
 	fn wrap_preserves_newlines() {
@@ -267,5 +274,85 @@ mod tests {
 		};
 		let err = fill_template("nope", "X", &vb).unwrap_err();
 		assert!(matches!(err, RenderError::SvgTemplateMissingViewbox));
+	}
+
+	#[test]
+	fn render_includes_screen_background_and_no_text_stroke() {
+		let root = Card {
+			schema: None,
+			id: "MIS-001".to_string(),
+			card_type: "Mission".to_string(),
+			card_subtype: None,
+			name: "Test Mission".to_string(),
+			description: "desc".to_string(),
+			version: "1.0.0".to_string(),
+			status: None,
+			boundary: None,
+			notes: None,
+			attributes: Attributes::new(),
+			links: vec![Link {
+				target: "C-001".to_string(),
+				relationship: "rel".to_string(),
+			}],
+			source_path: PathBuf::from("MIS-001.json"),
+			validation_errors: Vec::new(),
+		};
+		let child = Card {
+			schema: None,
+			id: "C-001".to_string(),
+			card_type: "Extended".to_string(),
+			card_subtype: None,
+			name: "Child".to_string(),
+			description: "desc".to_string(),
+			version: "1.0.0".to_string(),
+			status: None,
+			boundary: None,
+			notes: None,
+			attributes: Attributes::new(),
+			links: Vec::new(),
+			source_path: PathBuf::from("C-001.json"),
+			validation_errors: Vec::new(),
+		};
+		let model = Model {
+			root_card: root,
+			cards: vec![child],
+			audit_log: AuditLog {
+				schema: None,
+				history: Vec::new(),
+				source_path: PathBuf::from("AuditLog.json"),
+				validation_errors: Vec::new(),
+			},
+			model_home: PathBuf::from("model"),
+			mission_home: PathBuf::from("mission"),
+		};
+
+		let mut nodes = HashMap::new();
+		nodes.insert(
+			"MIS-001".to_string(),
+			crate::render::LayoutNode {
+				id: "MIS-001".to_string(),
+				x: 0,
+				y: 0,
+			},
+		);
+		nodes.insert(
+			"C-001".to_string(),
+			crate::render::LayoutNode {
+				id: "C-001".to_string(),
+				x: 1,
+				y: 0,
+			},
+		);
+		let layout = crate::render::Layout {
+			nodes,
+			edges: vec![crate::render::LayoutEdge {
+				a: "MIS-001".to_string(),
+				b: "C-001".to_string(),
+			}],
+		};
+
+		let svg = super::Svg::render(&model, &layout, None).expect("svg render");
+		assert!(svg.contains("id=\"aurora-bg\""));
+		assert!(svg.contains("stroke:none"));
 	}
 }

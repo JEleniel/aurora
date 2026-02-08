@@ -175,7 +175,7 @@ pub fn render_node(card: &Card, node: &PositionedNode, config: &SvgConfig) -> St
 	let icon_x = (2 * rem_px) as f32;
 	let icon_y = (2 * rem_px) as f32;
 	out.push_str(&format!(
-		"<text x=\"{:.2}\" y=\"{:.2}\" style=\"font-size:{}px;text-anchor:middle;dominant-baseline:middle;fill:{};\">{}</text>",
+		"<text x=\"{:.2}\" y=\"{:.2}\" style=\"font-size:{}px;text-anchor:middle;dominant-baseline:middle;fill:{};stroke:none;\">{}</text>",
 		icon_x,
 		icon_y,
 		3 * rem_px,
@@ -186,7 +186,7 @@ pub fn render_node(card: &Card, node: &PositionedNode, config: &SvgConfig) -> St
 	for (i, line) in geom.lines.iter().enumerate() {
 		let y = start_y + (i as i32) * line_height_px;
 		let mut style = format!(
-			"fill:{};text-anchor:middle;dominant-baseline:middle;font-size:{}px;",
+			"fill:{};stroke:none;text-anchor:middle;dominant-baseline:middle;font-size:{}px;",
 			text_color, config.base_font_size_px
 		);
 		if geom.bold_line_index == Some(i) {

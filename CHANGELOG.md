@@ -119,3 +119,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Adjusted boundary rendering to avoid overlaps between disjoint boundaries and added overlap regression coverage.
 - Restored `aurora_cli render-views`/`render-all` by implementing layout+SVG view rendering and writing SVGs under `aurora/<MISSION_ID>/Views/`.
 - Made model Markdown view embedding deterministic by sorting embedded SVG filenames.
+- Improved SVG readability by removing inherited text stroke outlines and adding a screen-only white background (hidden when printing).
