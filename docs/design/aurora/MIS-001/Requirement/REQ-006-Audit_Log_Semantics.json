@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "REQ-006",
+	"card_type": "Requirement",
+	"name": "Audit Log Semantics",
+	"description": "Each mission MUST have an audit log recording create/change/delete events with timestamp, editor, target id, and change type.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-004"
+		}
+	],
+	"version": "1.0.0"
+}

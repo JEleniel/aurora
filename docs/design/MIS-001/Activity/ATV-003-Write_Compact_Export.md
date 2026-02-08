@@ -1,0 +1,25 @@
+# Activity: ATV-003 Write Compact Export
+
+Write the compact export JSON document for transport and agent consumption.
+
+
+
+## Attributes
+
+_No attributes defined._
+
+## Links
+
+- uses [COM-001](../Component/COM-001.md)
+- produces [ART-003](../Artifact/ART-003.md)
+
+
+## Version
+
+1.0.0
+
+## Audit Log
+
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
+| _No entries_ |  |  |

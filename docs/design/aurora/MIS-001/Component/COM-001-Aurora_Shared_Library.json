@@ -1,0 +1,23 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "COM-001",
+	"card_type": "Component",
+	"card_subtype": "Library",
+	"name": "Aurora Shared Library",
+	"description": "Shared Rust library providing registry-aware parsing, validation helpers, and rendering primitives used by Aurora tools.",
+	"links": [
+		{
+			"relationship": "implements",
+			"target": "FEA-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-002"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-003"
+		}
+	],
+	"version": "1.0.0"
+}

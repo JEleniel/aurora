@@ -1,0 +1,10 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ART-001",
+	"card_type": "Artifact",
+	"card_subtype": "Report",
+	"name": "Validation Report",
+	"description": "Diagnostics output describing schema, registry, and invariant validation results for a model home.",
+	"links": [],
+	"version": "1.0.0"
+}

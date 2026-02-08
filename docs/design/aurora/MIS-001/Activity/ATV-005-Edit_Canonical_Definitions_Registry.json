@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ATV-005",
+	"card_type": "Activity",
+	"name": "Edit Canonical Definitions Registry",
+	"description": "Maintain the canonical registry of card types and allowed outgoing relationships.",
+	"links": [
+		{
+			"relationship": "produces",
+			"target": "ART-005"
+		}
+	],
+	"version": "1.0.0"
+}

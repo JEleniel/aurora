@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "CAP-001",
+	"card_type": "Capability",
+	"name": "Validate Aurora Models",
+	"description": "Validate that an Aurora model conforms to schemas, canonical registries, and graph invariants (reachability, root direction, and no-orphan rules).",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-001"
+		}
+	],
+	"version": "1.0.0"
+}

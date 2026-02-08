@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "REQ-004",
+	"card_type": "Requirement",
+	"name": "Schema-Backed Card Format",
+	"description": "Cards MUST conform to the Aurora card schema (required fields, identifier format, and link structure) and be stored as pretty-printed JSON.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-001"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-005"
+		}
+	],
+	"version": "1.0.0"
+}

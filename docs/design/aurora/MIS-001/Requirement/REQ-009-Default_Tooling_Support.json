@@ -1,0 +1,22 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "REQ-009",
+	"card_type": "Requirement",
+	"name": "Default Tooling Support",
+	"description": "Default tooling SHOULD validate models, generate human-readable outputs, generate views, and export compact models from the source cards.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-001"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-002"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-003"
+		}
+	],
+	"version": "1.0.0"
+}

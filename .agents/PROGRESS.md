@@ -1,7 +1,18 @@
 # Progress Plan
 
+## Global constraints (important)
+
+- `aurora_cli` is **not usable right now** in this workspace/environment.
+    + Any plan items that say “re-run `aurora_cli`” should be treated as **blocked** until the CLI is available again.
+
+- The Aurora design model home under `docs/design/aurora/` is populated (schemas + MIS-001 source cards + audit log).
+    + CLI-based regeneration of derived outputs is still **blocked** until the CLI is usable again.
+
+- `tools/aurora_editor/` exists in this workspace.
+    + Treat editor UX and command surfaces as **evolving** unless confirmed in the current code.
+
 - [ ] **GeneralDeveloper** (APP-004) **Standalone Editor Scaffolding**
-    + Status: Implementation
+    + Status: Removed (editor deleted; rewrite later)
     + Updates: Added a new `tools/aurora_editor` crate (Dioxus desktop) with model loading, mission selection, shortest-path tree navigation, an SVG context graph with shapes/icons and link lines, clickable context lists, diagnostics panel, plus an editor/inspector split with draft editing fields, labeled navigation controls, and Aurora logo assets in the UI. Refactored the standalone editor UI into smaller modules under `tools/aurora_editor/src/app/` and adjusted the pane layout to a 25%/50%/25% split with diagnostics moved into the inspector pane. The mindmap pane now fills the center column height and uses icon fallbacks for graph glyphs, plus zoom controls with scroll-based panning and tighter layout sizing for the header and control rows, and the global editor CSS has been corrected after a layout regression. Logo assets are now embedded as data URLs using a base64 helper to avoid file-based loading.
     + Links:
         - [`tools/aurora_editor/Cargo.toml`](../tools/aurora_editor/Cargo.toml)
@@ -25,15 +36,15 @@
 
 - [ ] **Architect** (MIS-001) **Agent-Unified Representation of Requirements and Architecture (Aurora)**
     + Status: Design
-    + Updates: Created a new MIS-001 mission model under `docs/design/aurora/` that documents the Aurora style (invariants, serialization/layout rules, audit trail rules, and canonical registries) and regenerated compact + rendered outputs via `aurora_cli`. Aligned MIS-001 source card filenames to the canonical `{id}.json` convention and updated REQ-017 to match the canonical layout rule.
+    + Updates: Created the MIS-001 source model under `docs/design/aurora/` (Mission + supporting cards), including Processes/Activities/Artifacts and a per-mission audit log. CLI-based regeneration of derived outputs is currently blocked.
     + Links:
-        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-001-Agent_Unified_Representation_of_Requirements_and_Architecture_Aurora.json)
-        - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-001/)
-        - [Compact Export (agent snapshot)](../docs/design/aurora/AGENT-MIS-001.json)
-        - [Rendered Model Output (docs + views)](../docs/design/MIS-001-Agent-Unified_Representation_of_Requirements_and_Architecture__Aurora_/)
-        - [Design Index](../docs/design/README.md)
+        - [Model home](../docs/design/aurora/)
+        - [Mission](../docs/design/aurora/MIS-001-Model_Aurora_With_Aurora.json)
+        - [Audit log](../docs/design/aurora/MIS-001/AuditLog.json)
+        - [Canonical definitions (reference)](../docs/design/Aurora.canonical.definitions.md)
     + Next Actions:
-        - Keep derived artifacts (`docs/design/MIS-001-*/**` and `docs/design/aurora/AGENT-MIS-001.json`) synchronized with the source model (`docs/design/aurora/**`) by re-running `aurora_cli` after model edits.
+        - Keep MIS-001 consistent with the canonical registries (card types + allowed outgoing relationships).
+        - Optional: add `docs/design/aurora/MIS-001/Compact.json` when a deterministic exporter is available.
         - If/when “default tooling” (CLI/editor/extension) is reintroduced as a dedicated mission, assign it a new Mission id to avoid identifier collision and update plan links accordingly.
 
 - [ ] **BackendDeveloper** (APP-001) **Bootstrap Aurora CLI and shared tooling**
@@ -41,7 +52,7 @@
     + Links:
         - [Source: `tools/aurora_cli/src/main.rs`](../tools/aurora_cli/src/main.rs)
         - [Library & tests: `tools/aurora_shared/src/render.rs`](../tools/aurora_shared/src/render.rs)
-    + Updates: Added matrix-based validation warnings, completion summaries in the CLI, Everything View dashed-edge styling with regression coverage, new validation tests for updated relationship matrix rules, a CLI instructions-root override with reporting, plus centered SVG node labels and disjoint-boundary overlap avoidance in the SVG renderer with regression coverage. Aligned validation fixtures with the canonical relationships matrix (including `Application implements Test`, `Component implements Class`, `Artifact persists to Data Store`, and `uses`), added a standalone aurora_shared lockfile, and clarified CLI help/logging around the canonical registry files. Embedded the canonical registries directly in `aurora_shared`, removed the CLI's dependency on external instruction files, and aligned view rendering with the styling guide (label ordering, icon sizing, colors, dotted note edges, and subtype-aware view filtering). Refined SVG layout again by restoring curved splines with relaxed spacing, narrowing hexagons, shifting diamond/hexagon icon offsets, and making State nodes slightly larger and circular. Updated view rendering to emit a single view per type, skip empty or single-card views (except Entire Model), and remove legacy per-root artifacts during render.
+    + Updates: Added matrix-based validation warnings, completion summaries in the CLI, Everything View dashed-edge styling with regression coverage, new validation tests for updated relationship matrix rules, a CLI instructions-root override with reporting, plus centered SVG node labels and disjoint-boundary overlap avoidance in the SVG renderer with regression coverage. Aligned validation fixtures with the canonical relationships matrix (including `Application implements Test`, `Component implements Class`, `Artifact persists to Data Store`, and `uses`), added a standalone aurora_shared lockfile, and clarified CLI help/logging around the canonical registry files. Embedded the canonical registries directly in `aurora_shared`, removed the CLI's dependency on external instruction files, and aligned view rendering with the styling guide (label ordering, icon sizing, colors, dotted note edges, and subtype-aware view filtering). Refined SVG layout again by restoring curved splines with relaxed spacing, narrowing hexagons, shifting diamond/hexagon icon offsets, and making State nodes slightly larger and circular. Updated view rendering to emit a single view per type, skip empty or single-card views (except Entire Model), and remove legacy per-root artifacts during render. Reintroduced `System`/`Application` as first-class canonical card types, adjusted the Component view roots accordingly, and added a Mermaid overview of the canonical definitions.
     + Next Actions:
         - Re-render views to reflect embedded registries, updated label ordering, and dotted note edges; confirm SVG output matches styling guide.
         - Re-render views to confirm the dot-only layout selection matches expected output.
@@ -57,49 +68,37 @@
 
 - [ ] **Architect** (MIS-002) **Relationship Matrix Reference**
     + Status: Design
-    + Updates: Updated the MIS-002 reference model under `docs/design/aurora/` to use only canonical relationship verbs/directions (per the embedded registry) and ensured all cards remain reachable from the mission root. Validation now succeeds with 0 warnings/0 info and `render-all` generates the full rendered docs + views.
+    + Updates: Planned reference mission that exercises the canonical relationship matrix (verbs/directions) as a concrete, browsable example under `docs/design/aurora/`.
     + Links:
-        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-002-Relationship_Matrix_Reference.json)
-        - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-002/)
-        - [Rendered Model Output (docs + views)](../docs/design/MIS-002-Relationship_Matrix_Reference/)
-        - [Design Index](../docs/design/README.md)
+        - [Model home (pending cards)](../docs/design/aurora/)
     + Next Actions:
-        - Keep MIS-002 aligned with any future changes to the embedded registries (cards/relationships/views) and re-run `aurora_cli render-all` after model updates.
+        - Create the MIS-002 model and keep it aligned with the canonical relationship matrix.
         - Optional: prune now-redundant “secondary” cards/links if the goal shifts from coverage-fixture to minimal example, while preserving validator reachability.
 
 - [ ] **Architect** (MIS-003) **CLI Tooling**
     + Status: Design
-    + Updates: Added a reverse-engineered CLI tooling mission model (MIS-003) based on `aurora_cli` and `aurora_shared`, plus regenerated rendered docs and views.
+    + Updates: Planned mission model capturing the CLI’s responsibilities and its relationship to `aurora_shared`.
     + Links:
-        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-003-CLI_Tooling.json)
-        - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-003/)
-        - [Rendered Model Output (docs + views)](../docs/design/MIS-003-CLI_Tooling/)
-        - [Design Index](../docs/design/README.md)
+        - [Model home (pending cards)](../docs/design/aurora/)
     + Next Actions:
-        - Keep derived artifacts (`docs/design/MIS-003-CLI_Tooling/**`) synchronized with the source model (`docs/design/aurora/MIS-003/**`) by re-running `aurora_cli` after model edits.
+        - Create the MIS-003 model under `docs/design/aurora/`.
         - Decide and document semantics for the (currently unimplemented) audit bump commands (scope: which cards to bump; audit entry editor/timestamp; deterministic ordering).
         - Confirm whether compact export formatting should be compacted (minified) or remains pretty-printed; align implementation and documentation when bump commands are implemented.
 
 - [ ] **Architect** (MIS-004) **Standalone Editor**
     + Status: Design
-    + Updates: Added a new mission model (MIS-004) that specifies a Dioxus-based standalone Aurora editor with a three-pane UI (explorer tree, brain-style graph, and inspector with edit + Markdown preview + audit tab) and explicit reuse of aurora_shared semantics.
+    + Updates: Planned mission model specifying the standalone editor UX and its reuse of `aurora_shared` semantics.
     + Links:
-        - [Aurora Mission Card (source)](../docs/design/aurora/MIS-004-Standalone_Editor.json)
-        - [Aurora Mission Folder (all cards)](../docs/design/aurora/MIS-004/)
-        - [Compact Export (agent snapshot)](../docs/design/aurora/AGENT-MIS-004.json)
-        - [Rendered Model Output (docs + views)](../docs/design/MIS-004-Standalone_Editor/)
-        - [Design Index](../docs/design/README.md)
+        - [Model home (pending cards)](../docs/design/aurora/)
     + Next Actions:
-        - Keep derived artifacts (`docs/design/MIS-004-Standalone_Editor/**` and `docs/design/aurora/AGENT-MIS-004.json`) synchronized with the source model (`docs/design/aurora/MIS-004/**`) by re-running `aurora_cli` after model edits.
+        - Create the MIS-004 model under `docs/design/aurora/`.
         - Decide and document concrete interaction semantics for the Brain Graph pane (exact placement rules for parent/siblings/children, and click/keyboard navigation).
         - Define editing guardrails (which fields are editable by default, link editing UX, and how audit trail edits are applied deterministically).
 
 - [ ] **BackendDeveloper** (APP-002) **Tauri Editor Backend**
-    + Status: implementation
+    + Status: Removed (editor deleted; rewrite later)
     + Links:
-        - [Design: APP-002 Editor](../docs/design/aurora/MIS-001/Application/APP-002-Editor.json)
-        - [Design: COM-003 Tauri Rust Backend](../docs/design/aurora/MIS-001/Component/COM-003-Tauri_Rust_Backend.json)
-        - [Design: INT-003 Editor Backend API](../docs/design/aurora/MIS-001/Interface/INT-003-Editor_Backend_API.json)
+        - Design docs: pending under `docs/design/aurora/` (not currently checked in)
         - [`tauri.conf.json`](../tools/aurora_editor/src-tauri/tauri.conf.json)
         - [`src/main.rs`](../tools/aurora_editor/src-tauri/src/main.rs)
         - [`src/commands.rs`](../tools/aurora_editor/src-tauri/src/commands.rs)
@@ -169,7 +168,7 @@
             + Next Action: Add focused unit tests around the editor backend’s workspace path safety helpers, trust gating, and edit rollback behavior. Prefer tests that don’t require a full Tauri runtime.
 
 - [ ] **UIDeveloper** (APP-002) **Tauri Editor UI**
-    + Status: implementation
+    + Status: Removed (editor deleted; rewrite later)
     + Links:
         - [`index.html`](../tools/aurora_editor/index.html)
         - [`src/App.svelte`](../tools/aurora_editor/src/App.svelte)

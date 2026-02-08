@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ATV-001",
+	"card_type": "Activity",
+	"name": "Validate Model Home",
+	"description": "Load cards from the model home and validate them against schemas, canonical registries, and graph invariants.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-001"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-001"
+		}
+	],
+	"version": "1.0.0"
+}

@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "FEA-001",
+	"card_type": "Feature",
+	"name": "Validate Model",
+	"description": "Validate an Aurora model against schemas, registries, and graph invariants, producing actionable diagnostics.",
+	"links": [
+		{
+			"relationship": "realizes",
+			"target": "CAP-001"
+		}
+	],
+	"version": "1.0.0"
+}

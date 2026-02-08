@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "PRO-003",
+	"card_type": "Process",
+	"name": "Export Compact Model",
+	"description": "Export a compact representation of the model cards and links into a single JSON file.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "ATV-003"
+		}
+	],
+	"version": "1.0.0"
+}

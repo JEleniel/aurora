@@ -1,9 +1,8 @@
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, sync::OnceLock};
 
-const CANONICAL_DEFINITIONS: &str = include_str!(
-	"../../../../.github/agents/aurora/Aurora.canonical.definitions.json"
-);
+const CANONICAL_DEFINITIONS: &str =
+	include_str!("../../../../.github/agents/aurora/Aurora.canonical.definitions.json");
 
 #[derive(Debug, Clone, Deserialize)]
 struct CanonicalDefinitionsFile {
@@ -110,3 +109,13 @@ impl RelationshipDefinition {
 		Self::definitions().clone()
 	}
 }
+
+const _: () = {
+	let _ =
+		RelationshipDefinition::get_by_source_card_type as fn(&str) -> Vec<RelationshipDefinition>;
+	let _ = RelationshipDefinition::get_all as fn() -> Vec<RelationshipDefinition>;
+};
+
+#[cfg(test)]
+#[path = "relationship_definition_tests.rs"]
+mod relationship_definition_tests;

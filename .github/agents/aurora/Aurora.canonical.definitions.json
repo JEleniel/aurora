@@ -117,10 +117,38 @@
 			"shape": "rounded-rectangle"
 		},
 		{
+			"acronym": "SYS",
+			"card_type": "System",
+			"color": "#FFFFFF",
+			"description": "Top-level software system composed of applications and components.",
+			"fill": "#1e40af",
+			"icon": "🧱",
+			"relationships": [
+				{
+					"APP": "integrates"
+				}
+			],
+			"shape": "component"
+		},
+		{
+			"acronym": "APP",
+			"card_type": "Application",
+			"color": "#FFFFFF",
+			"description": "Deployable application within a system, composed of components.",
+			"fill": "#1e40af",
+			"icon": "📦",
+			"relationships": [
+				{
+					"COM": "comprises"
+				}
+			],
+			"shape": "rounded-rectangle"
+		},
+		{
 			"acronym": "COM",
 			"card_type": "Component",
 			"color": "#FFFFFF",
-			"common_subtypes": ["System", "Application", "API", "Library", "Service", "Module", "Subsystem", "Class"],
+			"common_subtypes": ["API", "Library", "Service", "Module", "Subsystem", "Class"],
 			"description": "Modular unit with a single responsibility and explicit interfaces.",
 			"fill": "#1e40af",
 			"icon": "🧩",
@@ -328,7 +356,10 @@
 					"STK": "involves"
 				},
 				{
-					"COM": "includes"
+					"SYS": "necessitates"
+				},
+				{
+					"APP": "necessitates"
 				},
 				{
 					"DEP": "involves"

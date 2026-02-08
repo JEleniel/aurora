@@ -26,6 +26,23 @@ pub fn run() -> Result<(), RuntimeError> {
 	Ok(())
 }
 
+fn validation_report(errors: &[String]) -> String {
+	let mut message = String::from("Validation failed; model could not be processed.");
+	for error in errors {
+		message.push('\n');
+		message.push_str(error);
+	}
+	message
+}
+
+fn ensure_valid(aurora: &Aurora) -> Result<(), RuntimeError> {
+	let errors = aurora.validate();
+	if errors.is_empty() {
+		return Ok(());
+	}
+	Err(RuntimeError::ValidationFailed(validation_report(&errors)))
+}
+
 fn validate(aurora: &Aurora) -> Result<(), RuntimeError> {
 	info!(
 		"Validating {} model(s) from {}",
@@ -34,25 +51,24 @@ fn validate(aurora: &Aurora) -> Result<(), RuntimeError> {
 	);
 
 	let errors = aurora.validate();
-	if errors.len() == 0 {
-		info!("No validation errors found.");
-	}
-	for error in errors {
-		info!("{}", error);
-	}
-
 	let warnings = aurora.check_registry();
-	if warnings.len() == 0 {
+	if warnings.is_empty() {
 		info!("No warnings found.");
 	}
 	for warning in warnings {
 		info!("{}", warning);
 	}
 
-	Ok(())
+	if errors.is_empty() {
+		info!("No validation errors found.");
+		return Ok(());
+	}
+
+	Err(RuntimeError::ValidationFailed(validation_report(&errors)))
 }
 
 fn render_markdown(aurora: &Aurora, output_dir: &PathBuf) -> Result<(), RuntimeError> {
+	ensure_valid(aurora)?;
 	info!(
 		"Rendering markdown for {} model(s) into {}",
 		aurora.models.len(),
@@ -64,12 +80,13 @@ fn render_markdown(aurora: &Aurora, output_dir: &PathBuf) -> Result<(), RuntimeE
 }
 
 fn render_views(aurora: &Aurora, output_dir: &PathBuf) -> Result<(), RuntimeError> {
+	ensure_valid(aurora)?;
 	info!(
 		"Rendering views for {} model(s) into {}",
 		aurora.models.len(),
 		output_dir.display()
 	);
-	aurora_shared::render(aurora, &output_dir.to_path_buf())?;
+	aurora_shared::render::render(aurora, &output_dir.to_path_buf())?;
 
 	Ok(())
 }
@@ -89,6 +106,7 @@ fn render_all(aurora: &Aurora, output_dir: &PathBuf) -> Result<(), RuntimeError>
 }
 
 fn run_compact(aurora: &Aurora, output: &PathBuf) -> Result<(), RuntimeError> {
+	ensure_valid(aurora)?;
 	info!(
 		"Writing compact exports for {} model(s)",
 		aurora.models.len()
@@ -114,6 +132,8 @@ pub enum RuntimeError {
 	Anyhow(#[from] anyhow::Error),
 	#[error("An Aurora error has occurred: {0}")]
 	Aurora(#[from] aurora_shared::AuroraError),
+	#[error("{0}")]
+	ValidationFailed(String),
 	#[error("An error occurred parsing the environment: {0}")]
 	EnvParseError(#[from] tracing_subscriber::filter::ParseError),
 	#[error("A Rendering error has occurred: {0}")]

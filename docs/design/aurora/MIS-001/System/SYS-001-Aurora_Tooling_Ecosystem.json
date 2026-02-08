@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "SYS-001",
+	"card_type": "System",
+	"name": "Aurora Tooling Ecosystem",
+	"description": "The overall Aurora system: schemas + canonical registries + model cards, supported by tools (CLI/editor/shared library) that validate models and generate views and exports.",
+	"links": [
+		{
+			"relationship": "integrates",
+			"target": "APP-001"
+		},
+		{
+			"relationship": "integrates",
+			"target": "APP-002"
+		}
+	],
+	"version": "1.0.0"
+}

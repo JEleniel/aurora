@@ -1,0 +1,49 @@
+{
+	"$id": "https://crystultima.org/aurora/audit.schema.json",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"additionalProperties": false,
+	"description": "JSON schema for Aurora model audit logs",
+	"properties": {
+		"$schema": {
+			"description": "The schema file this audit log adheres to",
+			"minLength": 1,
+			"type": "string"
+		},
+		"history": {
+			"description": "A chronological list of audit events for the model",
+			"items": {
+				"additionalProperties": false,
+				"properties": {
+					"change_type": {
+						"description": "The kind of change recorded",
+						"enum": ["create", "change", "delete"],
+						"type": "string"
+					},
+					"editor": {
+						"description": "The identity of the entity making the change",
+						"minLength": 1,
+						"type": "string"
+					},
+					"target": {
+						"description": "The destination card id changed by this audit event",
+						"pattern": "^[A-Z]{3}-\\d{3,}$",
+						"type": "string"
+					},
+					"timestamp": {
+						"description": "UTC time of the change in RFC3339/ISO 8601 format",
+						"format": "date-time",
+						"type": "string"
+					}
+				},
+				"required": ["timestamp", "editor", "target", "change_type"],
+				"type": "object"
+			},
+			"minItems": 1,
+			"type": "array"
+		}
+	},
+	"required": ["$schema", "history"],
+	"title": "Aurora Audit Log Schema",
+	"type": "object",
+	"version": "1.0.0"
+}

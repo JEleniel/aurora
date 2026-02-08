@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "REQ-003",
+	"card_type": "Requirement",
+	"name": "Canonical Definitions Registry",
+	"description": "A canonical registry MUST define the available card types, their id acronyms, and the allowed outgoing relationship targets and verbs for each card type.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-005"
+		}
+	],
+	"version": "1.0.0"
+}

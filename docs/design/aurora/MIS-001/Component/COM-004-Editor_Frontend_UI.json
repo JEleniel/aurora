@@ -1,0 +1,15 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "COM-004",
+	"card_type": "Component",
+	"card_subtype": "Module",
+	"name": "Editor Frontend UI",
+	"description": "The editor’s frontend UI that calls the backend API, displays validation diagnostics, and provides interactive navigation and editing experiences.",
+	"links": [
+		{
+			"relationship": "implements",
+			"target": "FEA-005"
+		}
+	],
+	"version": "1.0.0"
+}

@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "CAP-003",
+	"card_type": "Capability",
+	"name": "Export Compact Model",
+	"description": "Export an agent-friendly compact model representation containing the cards and their directed links in a single JSON document.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-003"
+		}
+	],
+	"version": "1.0.0"
+}

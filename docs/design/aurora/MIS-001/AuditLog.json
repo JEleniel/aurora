@@ -1,0 +1,11 @@
+{
+	"$schema": "../Aurora.audit.schema.json",
+	"history": [
+		{
+			"timestamp": "2026-02-07T00:00:00Z",
+			"editor": "Architect",
+			"target": "MIS-001",
+			"change_type": "create"
+		}
+	]
+}

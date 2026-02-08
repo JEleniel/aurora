@@ -1,0 +1,10 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ART-004",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "Mission Audit Log",
+	"description": "The per-mission audit log JSON file that records create/change/delete events over time.",
+	"links": [],
+	"version": "1.0.0"
+}

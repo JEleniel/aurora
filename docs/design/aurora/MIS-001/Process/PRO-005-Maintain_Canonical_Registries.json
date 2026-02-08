@@ -1,0 +1,22 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "PRO-005",
+	"card_type": "Process",
+	"name": "Maintain Canonical Registries",
+	"description": "Maintain the canonical registries and schemas that define the Aurora vocabulary and view semantics.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "ATV-005"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-006"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-007"
+		}
+	],
+	"version": "1.0.0"
+}

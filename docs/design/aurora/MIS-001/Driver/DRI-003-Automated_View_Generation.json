@@ -1,0 +1,22 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "DRI-003",
+	"card_type": "Driver",
+	"name": "Automated View Generation",
+	"description": "Enable tools to generate consistent diagrams and documentation from the model without manually drawing or maintaining multiple sources of truth.",
+	"links": [
+		{
+			"relationship": "drives",
+			"target": "REQ-008"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-009"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-010"
+		}
+	],
+	"version": "1.0.0"
+}

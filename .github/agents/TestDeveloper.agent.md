@@ -5,7 +5,7 @@ model: GPT-5.1-Codex
 handoffs:
     - agent: BackendDeveloper
       label: -> BackendDeveloper
-      prompt: Implement the behavior required by the tests. Keep changes minimal; update `.agents/PROGRESS.md`.
+      prompt: Implement the behavior required by the tests. Keep changes minimal; update `.agents/PROJECT_PLAN.md.
       send: true
 ---
 
@@ -21,4 +21,4 @@ Follow the repository baseline in `../copilot-instructions.md` and the shared de
 
 ## Outputs
 
-- Record test results, gaps, and defects in `.agents/PROGRESS.md`.
+- Record test results, gaps, and defects in `.agents/PROJECT_PLAN.md.

@@ -4,7 +4,7 @@ fn main() {
 	match run() {
 		Ok(_) => {}
 		Err(e) => {
-			eprintln!("An unhandled error occurred: {:?}", e);
+			eprintln!("{}", e);
 			std::process::exit(1);
 		}
 	}

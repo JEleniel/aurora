@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "REQ-008",
+	"card_type": "Requirement",
+	"name": "Compact Model Format",
+	"description": "A compact, single-file representation MUST be supported for transport and agent consumption, using the compact schema and retaining card ids, types, fields, and links.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-003"
+		}
+	],
+	"version": "1.0.0"
+}

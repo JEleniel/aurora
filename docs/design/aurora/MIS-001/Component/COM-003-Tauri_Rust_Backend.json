@@ -1,0 +1,23 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "COM-003",
+	"card_type": "Component",
+	"card_subtype": "API",
+	"name": "Tauri Rust Backend",
+	"description": "A trust-gated Rust backend exposing model discovery, snapshot loading, validation, rendering, exports, and card CRUD operations to the editor UI.",
+	"links": [
+		{
+			"relationship": "exposes",
+			"target": "INT-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-004"
+		},
+		{
+			"relationship": "composes",
+			"target": "COM-001"
+		}
+	],
+	"version": "1.0.0"
+}

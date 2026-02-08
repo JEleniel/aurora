@@ -1,7 +1,7 @@
 ---
 name: GeneralDeveloper
 description: Implements Rust services following architectural patterns defined by the Architect agent.
-model: GPT-5.2-Codex
+model: GPT-5.2
 handoffs:
     - agent: CodeReviewer
       label: -> CodeReviewer
@@ -20,4 +20,4 @@ Follow the repository baseline in `../copilot-instructions.md` and the shared de
 
 ## Outputs
 
-- Keep `.agents/PROGRESS.md` updated with implementation status and next actions.
+- Keep `.agents/PROJECT_PLAN.md updated with implementation status and next actions.

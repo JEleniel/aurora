@@ -1,0 +1,22 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "REQ-005",
+	"card_type": "Requirement",
+	"name": "Standard Model Home Layout",
+	"description": "Model homes MUST contain the shared Aurora schemas, and missions MUST follow the standard folder layout for cards and audit logs.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-004"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-005"
+		},
+		{
+			"relationship": "imposes",
+			"target": "CNS-003"
+		}
+	],
+	"version": "1.0.0"
+}

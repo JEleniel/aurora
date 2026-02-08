@@ -1,0 +1,10 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ART-002",
+	"card_type": "Artifact",
+	"card_subtype": "Diagram",
+	"name": "View Diagram Artifacts",
+	"description": "Rendered view artifacts (for example SVG diagrams and DOT sources) generated from a model and view definitions.",
+	"links": [],
+	"version": "1.0.0"
+}

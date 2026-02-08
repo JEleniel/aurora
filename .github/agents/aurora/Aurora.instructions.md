@@ -74,7 +74,7 @@ Each card is comprised of:
 
 A canonical set of cards and relationships is included. The canonical set is designed to cover all normal architectural elements and ensure that the relationships conform to the invariants. Aurora is designed to be easily extended, so models are not limited to the canonical set.
 
-- [Aurora Canonical Definitions](../agents/aurora/Aurora.canonical.definitions.json)
+- [Aurora Canonical Definitions](Aurora.canonical.definitions.json)
 
 ##### Registry format (canonical definitions)
 
@@ -133,10 +133,10 @@ A model is composed of up to four kinds of files:
     + All JSON files MUST have the `$schema` attribute with the relative path from that file to the appropriate schema in the model home.
 
 2. Cards: the central component of the model, each card is stored in a separate JSON file named `{id}-{name}.json` where name has had all symbols removed and spaces replaced with underscores. All cards must conform to the `Aurora.card.schema.json` in the model home.
-3. Audit Log: a history of who made changes to which cards over time, stored at `{model id}/AuditLog.json` and conforming to the `Aurora.audit.schema.json` in the model home.
+3. Audit Log: a history of who made changes to which cards over time, stored at `{model id}/AuditLog.json` and conforming to the `Aurora.audit.schema.json` in the model home. An audit log entry MUST be made for every card change to any part of the model.
 4. Compact Model: an optional compact, single file version of the model at `{mission id}/Compact.json` and conforming to the `Aurora.compact.schema.json` in the model home.
 
-- The model home may be stored as a ZIP file if the folder structure is preserved.
+- The model home may be stored as a ZIP file for transport if the folder structure is preserved.
 
 **Example Folder and File Structure**:
 
@@ -166,7 +166,7 @@ These invariant rules ensure that the model is a traversable, directed graph wit
 
 1. **The `Mission` Card**: All models must start with and include a single `Mission` card that summarizes the high-level "why" of the project. The `Mission` card must only have outgoing links, and serves as the root of the directed graph.
 
-2. **Direction (graph links)**: When traversing starting from Mission, all links must lead away from the `Mission` card. There must be a route from `Mission` to every card. Traversing any path starting from `Mission` must end either in a leaf card or a previously seen card, creating a local loop.
+2. **Direction (graph links)**: When traversing starting from Mission, all links must lead away from the `Mission` card. Traversing any path starting from `Mission` must end either in a leaf card or a previously seen card, creating a local loop.
 
 3. **No orphans**: Other than the `Mission` card, all cards must have one or more incoming links, and a path from the `Mission` card. All cards may have any number of outgoing links. All link targets must be valid cards in the model.
 

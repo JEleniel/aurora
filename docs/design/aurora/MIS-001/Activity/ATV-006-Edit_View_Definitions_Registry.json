@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ATV-006",
+	"card_type": "Activity",
+	"name": "Edit View Definitions Registry",
+	"description": "Maintain the canonical registry of view definitions (roots, included types, and view intent).",
+	"links": [
+		{
+			"relationship": "produces",
+			"target": "ART-006"
+		}
+	],
+	"version": "1.0.0"
+}

@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ATV-007",
+	"card_type": "Activity",
+	"name": "Maintain Aurora Schemas",
+	"description": "Maintain the Aurora JSON schemas used for cards, audit logs, and compact export.",
+	"links": [
+		{
+			"relationship": "produces",
+			"target": "ART-007"
+		}
+	],
+	"version": "1.0.0"
+}

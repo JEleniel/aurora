@@ -1,0 +1,10 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ART-006",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "View Definitions Registry",
+	"description": "The canonical registry JSON that defines views (roots, included card types, and view descriptions).",
+	"links": [],
+	"version": "1.0.0"
+}

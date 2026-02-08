@@ -1,0 +1,10 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ART-003",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "Compact Export",
+	"description": "The compact JSON export of the model cards and links for transport and agent consumption.",
+	"links": [],
+	"version": "1.0.0"
+}

@@ -34,7 +34,7 @@ You MUST conform to this document when writing code of any kind.
 
 - Add tests that prove behavior (positive and negative paths).
 - Add tests that prove secure behavior, e.g., malformed input, out of range values, etc.
-- Run the most targeted tests first, then broader checks if needed.
+- Run tests before considering coding work complete.
 
 ## Dependencies
 

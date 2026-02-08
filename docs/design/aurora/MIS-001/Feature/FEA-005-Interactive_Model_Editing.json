@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "FEA-005",
+	"card_type": "Feature",
+	"name": "Interactive Model Editing",
+	"description": "Browse and edit Aurora cards interactively while preserving schema validity and model invariants.",
+	"links": [
+		{
+			"relationship": "realizes",
+			"target": "CAP-004"
+		}
+	],
+	"version": "1.0.0"
+}

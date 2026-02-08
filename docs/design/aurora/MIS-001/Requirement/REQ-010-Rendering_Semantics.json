@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "REQ-010",
+	"card_type": "Requirement",
+	"name": "Rendering Semantics",
+	"description": "Rendering MUST treat canonical registry style fields (shape/icon/fill/color) as non-normative hints; model validity MUST depend on normative fields (types, ids, relationships), not styling.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-002"
+		}
+	],
+	"version": "1.0.0"
+}

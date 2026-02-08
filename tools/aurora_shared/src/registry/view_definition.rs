@@ -1,7 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-const DEFINITIONS: &str =
-	include_str!("../../../../.github/agents/aurora/View.Definitions.json");
+const DEFINITIONS: &str = include_str!("../../../../.github/agents/aurora/View.Definitions.json");
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 struct ViewDefinitionsFile {
@@ -30,3 +29,11 @@ impl ViewDefinition {
 			.unwrap_or_default()
 	}
 }
+
+const _: () = {
+	let _ = ViewDefinition::get_all as fn() -> Vec<ViewDefinition>;
+};
+
+#[cfg(test)]
+#[path = "view_definition_tests.rs"]
+mod view_definition_tests;

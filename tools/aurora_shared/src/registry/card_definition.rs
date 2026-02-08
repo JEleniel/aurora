@@ -88,3 +88,14 @@ impl CardDefinition {
 			.unwrap_or_default()
 	}
 }
+
+const _: () = {
+	let _ = CardDefinition::get_fill as fn(&str) -> String;
+	let _ = CardDefinition::get_color as fn(&str) -> String;
+	let _ = CardDefinition::get_shape as fn(&str) -> String;
+	let _ = CardDefinition::get_icon as fn(&str) -> String;
+};
+
+#[cfg(test)]
+#[path = "card_definition_tests.rs"]
+mod card_definition_tests;

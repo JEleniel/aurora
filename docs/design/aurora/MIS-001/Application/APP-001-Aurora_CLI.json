@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "APP-001",
+	"card_type": "Application",
+	"name": "Aurora CLI",
+	"description": "Command-line tooling for validating Aurora models, generating views, and exporting compact representations.",
+	"links": [
+		{
+			"relationship": "comprises",
+			"target": "COM-002"
+		},
+		{
+			"relationship": "comprises",
+			"target": "COM-001"
+		}
+	],
+	"version": "1.0.0"
+}

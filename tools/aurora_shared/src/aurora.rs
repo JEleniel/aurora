@@ -1,6 +1,11 @@
+mod auditlog;
 mod model;
 
+pub use auditlog::*;
 pub use model::*;
+
+#[cfg(test)]
+mod aurora_tests;
 
 use serde_json::Value;
 use std::{
@@ -21,6 +26,8 @@ pub struct Aurora {
 	pub card_schema: Value,
 	/// A copy of the compact shema located with the models
 	pub compact_schema: Value,
+	/// A copy of the audit schema located with the models
+	pub audit_schema: Value,
 }
 
 impl Aurora {
@@ -43,15 +50,21 @@ impl Aurora {
 			return Err(AuroraError::InvalidAuroraHome(path.display().to_string()));
 		}
 
-		let card_schema_path = model_home.join("Aurora.schema.json");
+		let card_schema_path = model_home.join("Aurora.card.schema.json");
 		let compact_schema_path = model_home.join("Aurora.compact.schema.json");
-		if !card_schema_path.is_file() || !compact_schema_path.is_file() {
+		let audit_schema_path = model_home.join("Aurora.audit.schema.json");
+		if !card_schema_path.is_file()
+			|| !compact_schema_path.is_file()
+			|| !audit_schema_path.is_file()
+		{
 			return Err(AuroraError::SchemaLoadError);
 		}
 		let card_schema_data = std::fs::read_to_string(&card_schema_path)?;
 		let card_schema: Value = serde_json::from_str(&card_schema_data)?;
 		let compact_schema_data = std::fs::read_to_string(&compact_schema_path)?;
 		let compact_schema: Value = serde_json::from_str(&compact_schema_data)?;
+		let audit_schema_data = std::fs::read_to_string(&audit_schema_path)?;
+		let audit_schema: Value = serde_json::from_str(&audit_schema_data)?;
 
 		let mut models: Vec<Model> = Vec::new();
 		for entry in std::fs::read_dir(&model_home)? {
@@ -61,7 +74,7 @@ impl Aurora {
 			}
 			if let Some(file_name) = entry.file_name().to_str() {
 				if file_name.starts_with("MIS-") {
-					let model = Model::try_load(&entry.path(), &card_schema)?;
+					let model = Model::try_load(&entry.path(), &card_schema, &audit_schema)?;
 					models.push(model);
 				}
 			}
@@ -79,6 +92,7 @@ impl Aurora {
 			models,
 			card_schema,
 			compact_schema,
+			audit_schema,
 		})
 	}
 
@@ -145,10 +159,13 @@ impl Aurora {
 
 	pub fn write_compact(&self, path: &PathBuf) -> Result<(), AuroraError> {
 		for model in &self.models {
-			let mut output_path = path.clone();
-			output_path.push(format!("AGENT-{}.json", model.root_card.id));
-			let compact = model.get_compact();
-			let output = serde_json::to_string(&compact)?;
+			let mut mission_dir = path.clone();
+			mission_dir.push(model.root_card.id.as_str());
+			std::fs::create_dir_all(&mission_dir)?;
+
+			let output_path = mission_dir.join("Compact.json");
+			let compact = model.get_compact(Some("../Aurora.compact.schema.json".to_string()));
+			let output = serde_json::to_string_pretty(&compact)?;
 			std::fs::write(&output_path, output)?;
 			info!(
 				"Wrote compact {}: {} ({} cards)",

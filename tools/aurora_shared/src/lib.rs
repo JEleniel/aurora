@@ -3,7 +3,8 @@
 
 mod aurora;
 mod registry;
-mod render;
+pub mod render;
 
 pub use aurora::*;
-pub use render::*;
+pub use render::render_error;
+pub use render::{Layout, LayoutEdge, LayoutNode, layout_model};

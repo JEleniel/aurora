@@ -1,0 +1,27 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "COM-002",
+	"card_type": "Component",
+	"card_subtype": "Service",
+	"name": "Aurora CLI Binary",
+	"description": "The aurora_cli executable that exposes validate/render/compact commands to users and pipelines.",
+	"links": [
+		{
+			"relationship": "composes",
+			"target": "COM-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-002"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-003"
+		}
+	],
+	"version": "1.0.0"
+}

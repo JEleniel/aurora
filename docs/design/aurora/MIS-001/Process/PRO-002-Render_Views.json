@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "PRO-002",
+	"card_type": "Process",
+	"name": "Render Views",
+	"description": "Render view artifacts by selecting roots, traversing reachable subgraphs, and generating diagrams and related assets from the model.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "ATV-002"
+		}
+	],
+	"version": "1.0.0"
+}

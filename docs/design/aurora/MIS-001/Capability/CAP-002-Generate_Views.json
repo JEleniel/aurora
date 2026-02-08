@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "CAP-002",
+	"card_type": "Capability",
+	"name": "Generate Views",
+	"description": "Generate view artifacts from the model by selecting roots and included card types, traversing reachable subgraphs, and rendering diagrams without changing the underlying model.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-002"
+		}
+	],
+	"version": "1.0.0"
+}

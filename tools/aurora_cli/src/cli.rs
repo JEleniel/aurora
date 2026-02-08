@@ -56,8 +56,9 @@ pub enum Commands {
 
 	/// Generate (or refresh) the compact agent export.
 	Compact {
-		/// Output file path (defaults to <model home>/AGENT-<MISSION_ID>.json).
-		#[arg(short, long, value_name = "FILE", default_value=DEFAULT_INPUT)]
+		/// Output directory (defaults to the model home).
+		/// Writes `<OUTPUT>/<MISSION_ID>/Compact.json` for each mission.
+		#[arg(short, long, value_name = "DIR", default_value=DEFAULT_INPUT)]
 		output: PathBuf,
 	},
 }

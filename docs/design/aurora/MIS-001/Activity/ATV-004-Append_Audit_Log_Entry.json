@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ATV-004",
+	"card_type": "Activity",
+	"name": "Append Audit Log Entry",
+	"description": "Append a create/change/delete entry to the mission audit log.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-003"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-004"
+		}
+	],
+	"version": "1.0.0"
+}

@@ -5,7 +5,7 @@ model: GPT-5.2 (copilot)
 handoffs:
     - agent: GeneralDeveloper
       label: -> GeneralDeveloper
-      prompt: Implement per Aurora design. Keep changes minimal, run relevant tests, update `.agents/PROGRESS.md`.
+      prompt: Implement per Aurora design. Keep changes minimal, run relevant tests, update `.agents/PROJECT_PLAN.md.
       send: true
     - agent: BackendDeveloper
       label: -> BackendDeveloper
@@ -36,4 +36,4 @@ Read [Aurora Instructions](aurora/Aurora.instructions.md) and disregard the comp
 
 ## Outputs
 
-- Keep architectural traceability updated in `.agents/PROGRESS.md` when needed.
+- Keep architectural traceability updated in `.agents/PROJECT_PLAN.md when needed.

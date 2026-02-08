@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "REQ-002",
+	"card_type": "Requirement",
+	"name": "Directed Graph Invariants",
+	"description": "Starting from the Mission, all links MUST traverse away from the Mission; every card must be reachable; and traversal must terminate in a leaf or a previously seen card (local loop).",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-001"
+		},
+		{
+			"relationship": "imposes",
+			"target": "CNS-002"
+		}
+	],
+	"version": "1.0.0"
+}

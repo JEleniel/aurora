@@ -1,27 +1,57 @@
 use thiserror::Error;
 
-use crate::render::svg::SvgError;
-
+/// Errors emitted during layout computation.
 #[derive(Debug, Error)]
 pub enum RenderError {
-	#[error("An IO error has occurred: {0}")]
-	IoError(#[from] std::io::Error),
-	#[error("Closure found with no boundaries open: {0} - {1}")]
-	NoOpenBoundary(String, String),
-	#[error("Closure found for the wrong boundary: expected {0}, found {1}: {2}")]
-	UnmatchedBoundaryClosure(String, String, String),
-	#[error("Invalid parent found for boundary: {0}")]
-	InvalidParent(String),
-	#[error("Invalid rood card set.")]
-	InvalidRootSet,
-	#[error("The Graphviz terminal command failed: {0}")]
-	TerminalFailed(String),
-	#[error("An error occurred parsing UTF-8: {0}")]
-	Utf8Error(#[from] std::string::FromUtf8Error),
-	#[error("A Serde error occurred: {0}")]
-	SerdeError(#[from] serde_json::Error),
-	#[error("An SVG rendering error has occurred: {0}")]
-	SvgError(#[from] SvgError),
-	#[error("Card not found: {0}")]
-	CardNotFound(String),
+	#[error("Layout requires at least one root node")]
+	MissingRoots,
+	#[error("Layout has a duplicate node id: {0}")]
+	DuplicateNodeId(String),
+	#[error("Layout is missing node data for {0}")]
+	MissingNode(String),
+	#[error("Link target {1} referenced by {0} is not in the model")]
+	UnknownTarget(String, String),
+	#[error("Root node {0} has incoming edges")]
+	RootHasIncoming(String),
+	#[error("Node {0} has no incoming edges")]
+	NodeHasNoIncoming(String),
+	#[error("Nodes are unreachable from roots: {0:?}")]
+	UnreachableNodes(Vec<String>),
+	#[error("Backbone topological order failed")]
+	BackboneOrderFailed,
+	#[error("Layout is missing rank data for node {0}")]
+	MissingRank(String),
+	#[error("Layout is missing layer data for index {0}")]
+	MissingLayer(usize),
+	#[error("Layout is missing layer position data for node {0}")]
+	MissingPosition(String),
+	#[error("Layout is missing x position data for node {0}")]
+	MissingX(String),
+	#[error("Root node {0} has a non-zero rank")]
+	RootRankNotZero(String),
+	#[error("Backbone edge {0} -> {1} violates rank ordering")]
+	BackboneRankOrder(String, String),
+	#[error(
+		"Edge classification mismatch (backbone {backbone_count}, loops {loop_count}, total {total_count})"
+	)]
+	EdgeClassificationMismatch {
+		backbone_count: usize,
+		loop_count: usize,
+		total_count: usize,
+	},
+	#[error("Rendering views is not available in this build")]
+	RenderUnavailable,
+
+	#[error("SVG template is missing the {{viewbox}} placeholder")]
+	SvgTemplateMissingViewbox,
+	#[error("SVG template is missing the {{diagram}} placeholder")]
+	SvgTemplateMissingDiagram,
+	#[error("SVG rendering is missing node data for {0}")]
+	SvgMissingNode(String),
+	#[error("SVG rendering has a duplicate card id: {0}")]
+	SvgDuplicateCardId(String),
+	#[error("SVG edge routing failed")]
+	SvgRouteFailed,
+	#[error("I/O error: {0}")]
+	Io(#[from] std::io::Error),
 }

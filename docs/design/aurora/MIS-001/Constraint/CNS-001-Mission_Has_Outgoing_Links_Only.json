@@ -1,0 +1,9 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "CNS-001",
+	"card_type": "Constraint",
+	"name": "Mission Has Outgoing Links Only",
+	"description": "The Mission card serves as the root of the model graph and must only have outgoing links.",
+	"links": [],
+	"version": "1.0.0"
+}

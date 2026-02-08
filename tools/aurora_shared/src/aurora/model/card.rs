@@ -1,17 +1,13 @@
-use crate::{
-	aurora::{
-		Attribute,
-		model::{audit_trail::AuditTrail, link::Link},
-	},
-	registry::CardDefinition,
-	registry::RelationshipDefinition,
-};
+use crate::{registry::CardDefinition, registry::RelationshipDefinition};
 use jsonschema::{CompilationError, Draft, JSONSchema};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use std::collections::BTreeMap;
 use std::path::PathBuf;
 use thiserror::Error;
 use tracing::debug;
+
+use super::{Attributes, Link, attributes_markdown};
 
 const CARD_MARKDOWN_TEMPLATE: &str = include_str!("card.template.md");
 
@@ -24,13 +20,17 @@ pub struct Card {
 	#[serde(default, skip_serializing_if = "Option::is_none")]
 	pub card_subtype: Option<String>,
 	pub name: String,
+	pub description: String,
+	pub version: String,
 	#[serde(default, skip_serializing_if = "Option::is_none")]
 	pub status: Option<String>,
-	pub description: String,
-	#[serde(default)]
-	pub attributes: Vec<Attribute>,
+	#[serde(default, skip_serializing_if = "Option::is_none")]
+	pub boundary: Option<String>,
+	#[serde(default, skip_serializing_if = "Option::is_none")]
+	pub notes: Option<String>,
+	#[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
+	pub attributes: Attributes,
 	pub links: Vec<Link>,
-	pub audit_trail: AuditTrail,
 	#[serde(skip)]
 	pub source_path: PathBuf,
 	#[serde(skip)]
@@ -89,7 +89,11 @@ impl Card {
 		std::fs::write(path, serialized).unwrap();
 	}
 
-	pub fn write_markdown(&self, path: &PathBuf) {
+	pub fn write_markdown<'a>(
+		&self,
+		path: &PathBuf,
+		audit_entries: impl Iterator<Item = &'a super::super::AuditLogEntry>,
+	) {
 		let mut markdown: String = String::from(CARD_MARKDOWN_TEMPLATE);
 
 		let subtype = match &self.card_subtype {
@@ -102,20 +106,17 @@ impl Card {
 			None => "".to_string(),
 		};
 
-		let hash = if let Some(hash) = &self.audit_trail.hash {
-			format!("Hash: {}", hash.as_str())
-		} else {
-			"".to_string()
+		let boundary = match &self.boundary {
+			Some(boundary) => format!("**Boundary**: {}\n", boundary),
+			None => "".to_string(),
 		};
 
-		let mut attributes: String = String::new();
-		if self.attributes.is_empty() {
-			attributes.push_str("_No attributes defined._");
-		} else {
-			for attrib in &self.attributes {
-				attributes.push_str(attrib.get_markdown().as_str());
-			}
-		}
+		let notes = match &self.notes {
+			Some(notes) => format!("## Notes\n\n{}\n", notes),
+			None => "".to_string(),
+		};
+
+		let attributes = attributes_markdown(&self.attributes);
 
 		let mut links: String = String::new();
 		if self.links.is_empty() {
@@ -126,7 +127,24 @@ impl Card {
 			}
 		}
 
-		let history = self.audit_trail.get_history_markdown();
+		let mut history = String::new();
+		history.push_str("| Timestamp | Editor | Change |\n");
+		history.push_str("|-----------|--------|--------|\n");
+		let mut any = false;
+		for entry in audit_entries {
+			any = true;
+			history.push_str(&format!(
+				"| {} | {} | {} |\n",
+				entry
+					.timestamp
+					.to_rfc3339_opts(chrono::SecondsFormat::Secs, true),
+				entry.editor,
+				entry.change_type.as_str(),
+			));
+		}
+		if !any {
+			history.push_str("| _No entries_ |  |  |\n");
+		}
 
 		markdown = markdown
 			.replace("{{card_type}}", &self.card_type)
@@ -135,10 +153,11 @@ impl Card {
 			.replace("{{name}}", &self.name)
 			.replace("{{description}}", &self.description)
 			.replace("{{status}}", &status)
+			.replace("{{boundary}}", &boundary)
+			.replace("{{notes}}", &notes)
 			.replace("{{attributes}}", &attributes)
 			.replace("{{links}}", &links)
-			.replace("{{version}}", &self.audit_trail.version)
-			.replace("{{hash}}", &hash)
+			.replace("{{version}}", &self.version)
 			.replace("{{history}}", &history)
 			.replace("|\n\n", "|\n")
 			.replace("\n\n\n\n", "\n\n");
@@ -149,7 +168,6 @@ impl Card {
 	pub fn get_compact(&self) -> Value {
 		let mut value = serde_json::to_value(self).unwrap();
 		Self::remove_key(&mut value, "$schema");
-		Self::remove_key(&mut value, "audit_trail");
 
 		value
 	}
@@ -197,3 +215,7 @@ pub enum CardError {
 	#[error("Card not found: {0}")]
 	CardNotFound(String),
 }
+
+#[cfg(test)]
+#[path = "card_tests.rs"]
+mod card_tests;

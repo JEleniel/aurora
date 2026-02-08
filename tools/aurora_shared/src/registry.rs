@@ -19,3 +19,12 @@ impl Registry {
 			.collect()
 	}
 }
+
+const _: () = {
+	let _ = Registry {};
+	let _ = Registry::get_next_cards as fn(&str) -> Vec<String>;
+	let _ = ViewDefinition::get_all as fn() -> Vec<ViewDefinition>;
+};
+
+#[cfg(test)]
+mod registry_tests;

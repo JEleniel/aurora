@@ -1,14 +1,23 @@
-use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use std::collections::BTreeMap;
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Attribute {
-	pub name: String,
-	pub value: Value,
-}
+/// Arbitrary per-card metadata for agents and tools.
+///
+/// Matches the Aurora v2 schema shape: an object with arbitrary keys.
+pub type Attributes = BTreeMap<String, Value>;
 
-impl Attribute {
-	pub fn get_markdown(&self) -> String {
-		format!("- **{}**: {}\n", self.name, self.value)
+pub fn attributes_markdown(attributes: &Attributes) -> String {
+	if attributes.is_empty() {
+		return "_No attributes defined._".to_string();
 	}
+
+	let mut md = String::new();
+	for (key, value) in attributes {
+		md.push_str(&format!("- **{}**: {}\n", key, value));
+	}
+	md
 }
+
+#[cfg(test)]
+#[path = "attribute_tests.rs"]
+mod attribute_tests;

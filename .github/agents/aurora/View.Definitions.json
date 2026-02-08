@@ -9,9 +9,9 @@
 		},
 		{
 			"description": "Explains internal implementation structure, focusing on how applications and components are realized in code.",
-			"included_card_types": ["Interface", "Artifact", "Data Store", "Data Source", "Test"],
+			"included_card_types": ["Component", "Interface", "Artifact", "Data Store", "Data Source", "Test"],
 			"name": "Component",
-			"root_card_types": ["Component"]
+			"root_card_types": ["System", "Application"]
 		},
 		{
 			"description": "Defines where software executes, focusing on deployments, nodes, and hosted runtime elements.",

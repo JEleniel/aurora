@@ -1,0 +1,84 @@
+{
+	"$id": "https://crystultima.org/aurora/card.schema.json",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"additionalProperties": false,
+	"description": "JSON schema for Aurora architectural model cards",
+	"properties": {
+		"$schema": {
+			"description": "The schema file this card adheres to",
+			"type": "string"
+		},
+		"boundary": {
+			"description": "Optional grouping label for rendering and organization",
+			"minLength": 1,
+			"type": "string"
+		},
+		"attributes": {
+			"additionalProperties": true,
+			"description": "Key-value pairs providing additional data for tooling and agents",
+			"type": "object"
+		},
+		"card_subtype": {
+			"description": "An optional refinement of the card_type in Title Case",
+			"type": "string"
+		},
+		"card_type": {
+			"description": "The architectural type represented by the card in Title Case",
+			"type": "string"
+		},
+		"description": {
+			"description": "Details regarding the element the card represents",
+			"minLength": 1,
+			"type": "string"
+		},
+		"id": {
+			"description": "A stable identifier composed of a 3-letter prefix and a numeric suffix (e.g., 'MIS-001')",
+			"pattern": "^[A-Z]{3}-\\d{3,}$",
+			"type": "string"
+		},
+		"links": {
+			"description": "Relationships between cards, always directed away from mission",
+			"items": {
+				"additionalProperties": false,
+				"properties": {
+					"relationship": {
+						"description": "A verb-based description of the relationship (view-dependent)",
+						"minLength": 1,
+						"type": "string"
+					},
+					"target": {
+						"description": "The destination card id",
+						"pattern": "^[A-Z]{3}-\\d{3,}$",
+						"type": "string"
+					}
+				},
+				"required": ["relationship", "target"],
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"name": {
+			"description": "A concise human-readable name for the card",
+			"minLength": 1,
+			"type": "string"
+		},
+		"notes": {
+			"description": "Additional notes and information attached to the card",
+			"minLength": 1,
+			"type": "string"
+		},
+		"status": {
+			"description": "Status of an implementable element",
+			"type": "string"
+		},
+		"version": {
+			"description": "Semantic version of the card meaning (major.minor.patch)",
+			"pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+			"type": "string"
+		}
+	},
+	"required": ["$schema", "id", "card_type", "name", "description", "links", "version"],
+	"title": "Aurora Card Schema",
+	"type": "object",
+	"version": "2.0.0"
+}

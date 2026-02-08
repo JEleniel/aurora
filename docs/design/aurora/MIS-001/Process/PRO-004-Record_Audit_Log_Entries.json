@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "PRO-004",
+	"card_type": "Process",
+	"name": "Record Audit Log Entries",
+	"description": "Record create/change/delete events for mission cards into the mission audit log.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "ATV-004"
+		}
+	],
+	"version": "1.0.0"
+}

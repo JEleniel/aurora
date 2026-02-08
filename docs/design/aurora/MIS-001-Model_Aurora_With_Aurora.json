@@ -1,0 +1,30 @@
+{
+	"$schema": "./Aurora.card.schema.json",
+	"id": "MIS-001",
+	"card_type": "Mission",
+	"name": "Model Aurora With Aurora",
+	"description": "Define Aurora (Agent-Unified Representation of Requirements and Architecture) using Aurora itself: a deterministic, machine-consumable architecture model rooted at a single Mission card, backed by schemas and canonical registries, and usable by tools and agents.",
+	"links": [
+		{
+			"relationship": "involves",
+			"target": "STK-001"
+		},
+		{
+			"relationship": "establishes",
+			"target": "DRI-001"
+		},
+		{
+			"relationship": "establishes",
+			"target": "DRI-002"
+		},
+		{
+			"relationship": "establishes",
+			"target": "DRI-003"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "SYS-001"
+		}
+	],
+	"version": "1.0.0"
+}

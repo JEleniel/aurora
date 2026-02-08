@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "REQ-001",
+	"card_type": "Requirement",
+	"name": "Single Mission Root",
+	"description": "A model MUST include exactly one Mission card as the root intent, with only outgoing links, summarizing the high-level why of the model.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-001"
+		},
+		{
+			"relationship": "imposes",
+			"target": "CNS-001"
+		}
+	],
+	"version": "1.0.0"
+}

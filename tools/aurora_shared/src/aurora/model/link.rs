@@ -19,3 +19,7 @@ impl Link {
 		)
 	}
 }
+
+#[cfg(test)]
+#[path = "link_tests.rs"]
+mod link_tests;

@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ATV-002",
+	"card_type": "Activity",
+	"name": "Render View Artifacts",
+	"description": "Select roots/included card types per view definitions, traverse the subgraph, and render the view into diagram artifacts.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-001"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-002"
+		}
+	],
+	"version": "1.0.0"
+}

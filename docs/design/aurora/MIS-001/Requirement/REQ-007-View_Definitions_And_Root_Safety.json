@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "REQ-007",
+	"card_type": "Requirement",
+	"name": "View Definitions And Root Safety",
+	"description": "View definitions MUST specify root card types and included card types; view roots MUST exclude cards participating in cycles (root safety rule).",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-002"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-005"
+		}
+	],
+	"version": "1.0.0"
+}

@@ -10,8 +10,7 @@ pub const DEFAULT_OUTPUT: &str = "docs/design/";
 pub const MAX_DISCOVERY_DEPTH: usize = 6;
 
 /// Candidate schema filenames for full card schemas.
-pub const CARD_SCHEMA_FILES: [&str; 2] = ["Aurora.schema.json", "Aurora.schema.json"];
+pub const CARD_SCHEMA_FILES: [&str; 1] = ["Aurora.card.schema.json"];
 
 /// Candidate schema filenames for compact card schemas.
-pub const COMPACT_SCHEMA_FILES: [&str; 2] =
-	["Aurora.compact.schema.json", "Aurora.compact.schema.json"];
+pub const COMPACT_SCHEMA_FILES: [&str; 1] = ["Aurora.compact.schema.json"];

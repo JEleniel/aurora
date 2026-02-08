@@ -1,0 +1,26 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "DRI-001",
+	"card_type": "Driver",
+	"name": "Deterministic Interpretation",
+	"description": "Eliminate ambiguous architectural meaning by enforcing invariant rules and schema-backed cards so that any interpretation (views, traceability, impact analysis) is reproducible.",
+	"links": [
+		{
+			"relationship": "drives",
+			"target": "REQ-001"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-002"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-004"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-006"
+		}
+	],
+	"version": "1.0.0"
+}

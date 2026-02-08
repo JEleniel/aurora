@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "STK-001",
+	"card_type": "Stakeholder",
+	"name": "Architects And Agents",
+	"description": "Humans and automation (LLMs, agents, validation/render tooling) that need a shared, unambiguous representation of architecture and requirements.",
+	"links": [
+		{
+			"relationship": "desires",
+			"target": "STR-001"
+		}
+	],
+	"version": "1.0.0"
+}

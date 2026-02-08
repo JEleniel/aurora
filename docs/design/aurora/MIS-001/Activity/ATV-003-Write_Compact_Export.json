@@ -1,0 +1,18 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "ATV-003",
+	"card_type": "Activity",
+	"name": "Write Compact Export",
+	"description": "Write the compact export JSON document for transport and agent consumption.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-001"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-003"
+		}
+	],
+	"version": "1.0.0"
+}

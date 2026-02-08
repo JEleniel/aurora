@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "CAP-005",
+	"card_type": "Capability",
+	"name": "Maintain Canonical Registries",
+	"description": "Maintain the canonical registries (card definitions and view definitions) that govern model validation and view generation.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-005"
+		}
+	],
+	"version": "1.0.0"
+}

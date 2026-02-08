@@ -1,0 +1,9 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "CNS-002",
+	"card_type": "Constraint",
+	"name": "No Orphan Cards",
+	"description": "Every non-Mission card must have one or more incoming links and be reachable from the Mission card.",
+	"links": [],
+	"version": "1.0.0"
+}

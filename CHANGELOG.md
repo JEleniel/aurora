@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added `aurora_shared::render::svg::Svg` for rendering an Aurora `Model` + `Layout` into a standalone SVG (with configurable spacing, font size, and edge style).
+
 - Added a Dioxus-based `aurora_editor` crate with model loading, navigation tree, context view, and read-only inspector panes.
 - Added clickable context and diagnostics panels in the Aurora editor to surface validation issues and jump to related cards.
 - Added an SVG-based context graph in the Aurora editor that renders card shapes/icons and link lines centered on the focused card.
@@ -19,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added validation test coverage for canonical Relationships Matrix verbs and source/target constraints.
 - Added an `aurora_cli --instructions-root` override plus validation output that reports which instructions registry was used.
 - Added file-system safe rendering helpers plus unit tests in `aurora_shared`.
+- Added hierarchical layout computation for view graphs in `aurora_shared`.
 - Added Everything View rendering support so the CLI view pipeline can include full-model diagrams.
 - Added mission executive summary markdown output (`MIS-XXX-Executive_Summary.md`) to the render pipeline.
 - Added DOT JSON → SVG rendering helpers in `aurora_shared` for Diagram-based SVG output.
@@ -31,6 +34,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated the view Markdown embeds to include a "Zoom & pan" note that links directly to the SVG so users can open it in VS Code's viewer without triggering sandbox warnings.
 
 ### Changed
+
+- Aligned `aurora_shared` model loading/serialization with Aurora v2.0.0: v2 schema filenames, v2 card fields (`version`, `boundary`, `notes`, object-shaped `attributes`), and compact exports written to `MIS-XXX/Compact.json`.
+- Failed model loading now returns validation errors instead of allowing invalid graphs.
+- Filtered view root candidates that participate in cycles to honor the root safety rule during rendering.
 
 - Refined the standalone Aurora editor layout with a labeled model selector, smaller navigation typography, tree lines, and a split editor/inspector pane.
 - Adjusted the standalone editor pane widths to 25%/50%/25% and moved diagnostics into the inspector pane.
@@ -73,6 +80,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Restored curved spline routing while keeping edge concentration for shared incoming/outgoing lines.
 
 ### Fixed
+
+- Fixed the Rust workspace members list so Cargo no longer references the deleted `tools/aurora_editor` crate.
+- Prevented extra `Mission` cards from loading inside mission folders.
+- Sanitized card filenames by removing symbols and only keeping alphanumerics with underscores for whitespace.
+- Made CLI validation report errors cleanly, exit non-zero on invalid models, and block render/compact on validation failures.
 
 - Ensured Aurora Editor UI actions dispatch reliably and surface backend availability, including Enter-to-connect support for workspace paths.
 - Added a default Tauri capability for the main window so internal devtools toggling is permitted during development.

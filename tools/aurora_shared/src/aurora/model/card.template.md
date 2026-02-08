@@ -4,6 +4,10 @@
 
 {{status}}
 
+{{boundary}}
+
+{{notes}}
+
 ## Attributes
 
 {{attributes}}
@@ -12,10 +16,10 @@
 
 {{links}}
 
-## Audit Trail
+## Version
 
-Version: {{version}}
+{{version}}
 
-{{hash}}
+## Audit Log
 
 {{history}}

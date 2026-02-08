@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "CAP-004",
+	"card_type": "Capability",
+	"name": "Maintain Audit Trail",
+	"description": "Maintain an audit log per mission that records deterministic create/change/delete events for cards.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-004"
+		}
+	],
+	"version": "1.0.0"
+}

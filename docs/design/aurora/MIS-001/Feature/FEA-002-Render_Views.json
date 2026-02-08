@@ -1,0 +1,14 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "FEA-002",
+	"card_type": "Feature",
+	"name": "Render Views",
+	"description": "Generate view diagrams and related artifacts from an Aurora model based on the view definitions registry.",
+	"links": [
+		{
+			"relationship": "realizes",
+			"target": "CAP-002"
+		}
+	],
+	"version": "1.0.0"
+}

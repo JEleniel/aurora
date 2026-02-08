@@ -34,7 +34,7 @@ The `.agents/` folder is for agent use. You MUST create it, and the files in it,
 You MUST ensure these minimum required files are present and kept up to date:
 
 - `.agents/PROJECT_BRIEF.md` - A summary of the project and notes on changes to the scope
-- `.agents/PROGRESS.md` - The Project Plan, written by the Planner and maintained by _all_ agents
+- `.agents/PROJECT_PLAN.md` - The Project Plan, written by the Planner and maintained by _all_ agents. All agents MUST check off items as they are completed and make no other changes to the plan unless instructed.
 - `.agents/MAP.md` - Notes on the layout of the source, locations of key functions, and other things to help agents navigate without searching
 - `.agents/TECHNOLOGIES.md` - Notes on the _current_ versions of libraries and tools in use to aid proper usage.
 

@@ -1,0 +1,22 @@
+{
+	"$schema": "../../Aurora.card.schema.json",
+	"id": "DRI-002",
+	"card_type": "Driver",
+	"name": "Canonical Vocabulary",
+	"description": "Provide a single, normative registry for card types and allowed relationship targets/verbs so models can be validated and interpreted consistently across tools.",
+	"links": [
+		{
+			"relationship": "drives",
+			"target": "REQ-003"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-007"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-005"
+		}
+	],
+	"version": "1.0.0"
+}
