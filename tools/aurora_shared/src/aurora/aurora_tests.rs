@@ -1,4 +1,4 @@
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use serde_json::{Value, json};
 
@@ -6,7 +6,7 @@ use super::{AuditChangeType, AuditLog, AuditLogEntry, Aurora, AuroraError, Card,
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
-fn write_json(path: &PathBuf, value: &Value) -> Result<()> {
+fn write_json(path: &Path, value: &Value) -> Result<()> {
 	let serialized = serde_json::to_string_pretty(value)?;
 	std::fs::write(path, serialized)?;
 	Ok(())
@@ -76,7 +76,7 @@ fn link_json(target: &str) -> Value {
 	})
 }
 
-fn write_schema_files(model_home: &PathBuf) -> Result<()> {
+fn write_schema_files(model_home: &Path) -> Result<()> {
 	write_json(&model_home.join("Aurora.card.schema.json"), &card_schema())?;
 	write_json(
 		&model_home.join("Aurora.compact.schema.json"),
@@ -93,7 +93,7 @@ fn build_card(id: &str, card_type: &str, targets: &[&str]) -> Card {
 	let links = targets
 		.iter()
 		.map(|target| Link {
-			target: (*target).to_string(),
+			target: target.to_string(),
 			relationship: "rel".to_string(),
 		})
 		.collect();
@@ -129,7 +129,7 @@ fn try_load_discovers_model_home() -> Result<()> {
 	write_json(&root_path, &card_json("MIS-001", "Mission", vec![]))?;
 	write_json(&mission_home.join("AuditLog.json"), &audit_log_json())?;
 
-	let aurora = Aurora::try_load(&temp.path().to_path_buf())?;
+	let aurora = Aurora::try_load(temp.path())?;
 	assert_eq!(aurora.models.len(), 1);
 	assert_eq!(aurora.model_home, aurora_home);
 	Ok(())
@@ -317,6 +317,6 @@ fn write_compact_writes_files() -> Result<()> {
 #[test]
 fn try_load_rejects_invalid_home() {
 	let temp = tempfile::tempdir().expect("temp dir");
-	let result = Aurora::try_load(&temp.path().to_path_buf());
+	let result = Aurora::try_load(temp.path());
 	assert!(matches!(result, Err(AuroraError::InvalidAuroraHome(_))));
 }

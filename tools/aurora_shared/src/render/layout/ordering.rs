@@ -4,6 +4,8 @@ use std::collections::{BTreeSet, HashMap, HashSet};
 
 use crate::render::render_error::RenderError;
 
+type NeighborMap = HashMap<String, Vec<String>>;
+
 /// Build adjacency lists for the backbone edges.
 pub(super) fn build_backbone_adjacency(
 	allowed_nodes: &HashSet<String>,
@@ -75,9 +77,9 @@ pub(super) fn build_layers(
 pub(super) fn layer_neighbors(
 	rank: &HashMap<String, i32>,
 	backbone_edges: &HashSet<(String, String)>,
-) -> Result<(HashMap<String, Vec<String>>, HashMap<String, Vec<String>>), RenderError> {
-	let mut predecessor_by_layer: HashMap<String, Vec<String>> = HashMap::new();
-	let mut successor_by_layer: HashMap<String, Vec<String>> = HashMap::new();
+) -> Result<(NeighborMap, NeighborMap), RenderError> {
+	let mut predecessor_by_layer: NeighborMap = HashMap::new();
+	let mut successor_by_layer: NeighborMap = HashMap::new();
 	for (a, b) in backbone_edges {
 		let rank_a = rank
 			.get(a)
@@ -145,7 +147,7 @@ pub(super) fn center_parents(
 		return Ok(());
 	}
 	for y in (0..max_layer_index).rev() {
-		let layer = layers.get(y).ok_or_else(|| RenderError::MissingLayer(y))?;
+		let layer = layers.get(y).ok_or(RenderError::MissingLayer(y))?;
 		center_layer(layer, x_positions, successor_by_layer)?;
 	}
 	Ok(())
@@ -296,9 +298,7 @@ fn sweep_down(
 	positions: &mut HashMap<String, usize>,
 ) -> Result<(), RenderError> {
 	for y in 1..=max_layer_index {
-		let layer = layers
-			.get_mut(y)
-			.ok_or_else(|| RenderError::MissingLayer(y))?;
+		let layer = layers.get_mut(y).ok_or(RenderError::MissingLayer(y))?;
 		reorder_layer(layer, predecessor_by_layer, positions)?;
 	}
 	Ok(())
@@ -311,9 +311,7 @@ fn sweep_up(
 	positions: &mut HashMap<String, usize>,
 ) -> Result<(), RenderError> {
 	for y in (0..max_layer_index).rev() {
-		let layer = layers
-			.get_mut(y)
-			.ok_or_else(|| RenderError::MissingLayer(y))?;
+		let layer = layers.get_mut(y).ok_or(RenderError::MissingLayer(y))?;
 		reorder_layer(layer, successor_by_layer, positions)?;
 	}
 	Ok(())
@@ -459,7 +457,7 @@ fn update_positions(layer: &[String], positions: &mut HashMap<String, usize>) {
 	}
 }
 
-fn median_key(values: &mut Vec<usize>, fallback: usize) -> i32 {
+fn median_key(values: &mut [usize], fallback: usize) -> i32 {
 	if values.is_empty() {
 		return fallback as i32;
 	}
@@ -472,7 +470,7 @@ fn median_key(values: &mut Vec<usize>, fallback: usize) -> i32 {
 	}
 }
 
-fn median_floor_i32(values: &mut Vec<i32>) -> i32 {
+fn median_floor_i32(values: &mut [i32]) -> i32 {
 	if values.is_empty() {
 		return 0;
 	}

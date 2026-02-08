@@ -12,7 +12,10 @@ use std::{
 	collections::{HashMap, HashSet},
 	fs,
 };
-use std::{ffi::OsStr, path::PathBuf};
+use std::{
+	ffi::OsStr,
+	path::{Path, PathBuf},
+};
 use thiserror::Error;
 use tracing::{debug, trace};
 
@@ -34,7 +37,7 @@ pub struct Model {
 
 impl Model {
 	pub fn try_load(
-		path: &PathBuf,
+		path: &Path,
 		card_schema: &serde_json::Value,
 		audit_schema: &serde_json::Value,
 	) -> Result<Self, ModelError> {
@@ -182,12 +185,12 @@ impl Model {
 		Ok(())
 	}
 
-	pub fn write_markdown(&self, path: &PathBuf) -> Result<(), ModelError> {
+	pub fn write_markdown(&self, path: &Path) -> Result<(), ModelError> {
 		let mission_slug = sanitize_filename(&self.root_card.name);
-		let mut readme_path = path.clone();
+		let mut readme_path = path.to_path_buf();
 		readme_path.push(format!("README-{}-{}.md", self.root_card.id, mission_slug));
 
-		let mission_md_path = &path.join(format!("{}-{}.md", self.root_card.id, mission_slug));
+		let mission_md_path = path.join(format!("{}-{}.md", self.root_card.id, mission_slug));
 
 		let mut markdown = String::from(MODEL_MARKDOWN_TEMPLATE);
 
@@ -203,23 +206,26 @@ impl Model {
 			.replace("{{description}}", self.root_card.description.as_str());
 
 		let mut views: String = String::new();
-		let mut view_path = path.clone();
-		view_path.push(format!("{}-views", self.root_card.id));
+		let view_path = path
+			.join("aurora")
+			.join(self.root_card.id.as_str())
+			.join("Views");
 		if view_path.exists() {
+			let mut svg_files: Vec<String> = Vec::new();
 			for entry in fs::read_dir(&view_path)? {
 				let entry = entry?;
-				if entry.file_type()?.is_file() {
-					if let Some(ext) = entry.path().extension() {
-						if ext == "svg" {
-							views.push_str(&format!(
-								"\n![{}]({}-views/{})\n",
-								entry.file_name().to_str().unwrap(),
-								self.root_card.id,
-								entry.path().file_name().unwrap().to_str().unwrap()
-							));
-						}
-					}
+				let is_svg = entry.file_type()?.is_file()
+					&& entry.path().extension().and_then(|s| s.to_str()) == Some("svg");
+				if is_svg {
+					svg_files.push(entry.file_name().to_string_lossy().into_owned());
 				}
+			}
+			svg_files.sort();
+			for file_name in svg_files {
+				views.push_str(&format!(
+					"\n![{}](aurora/{}/Views/{})\n",
+					file_name, self.root_card.id, file_name,
+				));
 			}
 		}
 		if views.is_empty() {
@@ -232,7 +238,7 @@ impl Model {
 			.iter()
 			.map(|c| c.card_type.to_string())
 			.collect();
-		card_types.sort_by(|a, b| a.cmp(b));
+		card_types.sort();
 		for card_type in card_types {
 			index.push_str(format!("### {}\n\n", card_type).as_str());
 
@@ -257,12 +263,12 @@ impl Model {
 		std::fs::write(&readme_path, markdown)?;
 
 		self.root_card.write_markdown(
-			mission_md_path,
+			&mission_md_path,
 			self.audit_log.entries_for_target(&self.root_card.id),
 		);
 
 		for card in &self.cards {
-			let mut card_path = path.clone();
+			let mut card_path = path.to_path_buf();
 			card_path.push(self.root_card.id.as_str());
 			card_path.push(&card.card_type);
 			fs::create_dir_all(&card_path)?;
@@ -292,10 +298,9 @@ impl Model {
 	fn validate_no_mission_incoming_links(&self) -> Vec<String> {
 		self.cards
 			.iter()
-			.map(|c| c.links.iter().map(|l| l.target.clone()))
-			.flatten()
-			.filter(|target_id| *target_id == self.root_card.id)
-			.map(|target_id| format!("Card {} links to the mission card.", target_id))
+			.flat_map(|card| card.links.iter())
+			.filter(|link| link.target == self.root_card.id)
+			.map(|link| format!("Card {} links to the mission card.", link.target))
 			.collect()
 	}
 
@@ -382,11 +387,9 @@ fn sanitize_filename(name: &str) -> String {
 			last_was_underscore = false;
 			continue;
 		}
-		if ch.is_whitespace() {
-			if !last_was_underscore {
-				out.push('_');
-				last_was_underscore = true;
-			}
+		if ch.is_whitespace() && !last_was_underscore {
+			out.push('_');
+			last_was_underscore = true;
 		}
 	}
 	while out.contains("__") {

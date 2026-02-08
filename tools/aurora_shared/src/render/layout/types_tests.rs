@@ -31,7 +31,7 @@ fn layout_types_handle_missing_nodes() {
 		edges: Vec::new(),
 	};
 
-	assert!(layout.nodes.get("missing").is_none());
+	assert!(!layout.nodes.contains_key("missing"));
 }
 
 #[test]

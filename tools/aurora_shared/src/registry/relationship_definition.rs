@@ -102,7 +102,6 @@ impl RelationshipDefinition {
 			.filter(|def| def.target_card_type == target_card_type)
 			.cloned()
 			.collect::<Vec<RelationshipDefinition>>()
-			.into()
 	}
 
 	pub fn get_all() -> Vec<RelationshipDefinition> {

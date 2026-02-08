@@ -6,7 +6,7 @@ pub(super) fn make_card(id: &str, card_type: &str, targets: &[&str]) -> Card {
 	let links = targets
 		.iter()
 		.map(|target| Link {
-			target: (*target).to_string(),
+			target: target.to_string(),
 			relationship: "rel".to_string(),
 		})
 		.collect();

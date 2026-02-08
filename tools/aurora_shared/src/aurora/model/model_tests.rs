@@ -9,7 +9,7 @@ use crate::{AuditChangeType, AuditLog, AuditLogEntry};
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 fn missing(message: &str) -> Box<dyn std::error::Error> {
-	Box::new(std::io::Error::new(std::io::ErrorKind::Other, message))
+	Box::new(std::io::Error::other(message))
 }
 
 fn card_schema() -> Value {

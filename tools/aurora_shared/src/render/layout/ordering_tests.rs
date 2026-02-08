@@ -12,7 +12,7 @@ fn assign_ranks_prefers_longest_path() {
 	let edges = edge_set([("A", "B"), ("A", "C"), ("B", "D"), ("C", "D")]);
 	let (outgoing, incoming) = build_backbone_adjacency(&allowed_nodes, &edges);
 	let order = topo_sort(&allowed_nodes, &outgoing, &incoming).expect("topo order");
-	let ranks = assign_ranks(&vec!["A".to_string()], &order, &incoming).expect("ranks");
+	let ranks = assign_ranks(&["A".to_string()], &order, &incoming).expect("ranks");
 
 	assert_eq!(ranks.get("A"), Some(&0));
 	assert_eq!(ranks.get("B"), Some(&1));
@@ -36,7 +36,7 @@ fn median_sweeps_are_deterministic() {
 	let edges = edge_set([("A", "B"), ("A", "C"), ("B", "D"), ("C", "D")]);
 	let (outgoing, incoming) = build_backbone_adjacency(&allowed_nodes, &edges);
 	let order = topo_sort(&allowed_nodes, &outgoing, &incoming).expect("topo order");
-	let ranks = assign_ranks(&vec!["A".to_string()], &order, &incoming).expect("ranks");
+	let ranks = assign_ranks(&["A".to_string()], &order, &incoming).expect("ranks");
 	let incoming_count = incoming_count(&incoming);
 	let (mut layers, max_layer_index) = build_layers(&ranks, &incoming_count).expect("layers");
 	let (predecessor_by_layer, successor_by_layer) =
@@ -62,7 +62,7 @@ fn median_sweeps_are_deterministic() {
 }
 
 fn set_of<const N: usize>(values: [&str; N]) -> HashSet<String> {
-	values.iter().map(|value| (*value).to_string()).collect()
+	values.iter().map(|value| value.to_string()).collect()
 }
 
 fn edge_set<const N: usize>(values: [(&str, &str); N]) -> HashSet<(String, String)> {

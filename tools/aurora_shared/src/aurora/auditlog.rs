@@ -2,7 +2,7 @@ use chrono::{DateTime, Utc};
 use jsonschema::{CompilationError, Draft, JSONSchema};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use thiserror::Error;
 use tracing::debug;
 
@@ -18,25 +18,22 @@ pub struct AuditLog {
 }
 
 impl AuditLog {
-	pub fn try_load(path: &PathBuf, audit_schema: &Value) -> Result<Self, AuditLogError> {
+	pub fn try_load(path: &Path, audit_schema: &Value) -> Result<Self, AuditLogError> {
 		debug!("Loading audit log from {}", path.display());
 
-		let data = std::fs::read_to_string(path).map_err(AuditLogError::IoError)?;
+		let data = std::fs::read_to_string(path)?;
 		let audit_json: Value = serde_json::from_str(&data)
 			.map_err(|e| AuditLogError::ParseError(path.display().to_string(), e))?;
 		let validation_errors = Self::validate_against_schema(&audit_json, audit_schema)?;
 
 		let mut audit_log: AuditLog = serde_json::from_str(&data)
 			.map_err(|e| AuditLogError::ParseError(path.display().to_string(), e))?;
-		audit_log.source_path = path.clone();
+		audit_log.source_path = path.to_path_buf();
 		audit_log.validation_errors = validation_errors;
 		Ok(audit_log)
 	}
 
-	pub fn entries_for_target<'a>(
-		&'a self,
-		target: &'a str,
-	) -> impl Iterator<Item = &'a AuditLogEntry> {
+	pub fn entries_for_target(&self, target: &str) -> impl Iterator<Item = &AuditLogEntry> {
 		self.history.iter().filter(move |e| e.target == target)
 	}
 

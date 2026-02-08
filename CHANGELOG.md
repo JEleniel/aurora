@@ -117,3 +117,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated the Everything View renderer to show only the most direct Mission paths as solid edges and dash alternate paths.
 - Centered SVG node labels to remove excessive right-side whitespace in rendered shapes.
 - Adjusted boundary rendering to avoid overlaps between disjoint boundaries and added overlap regression coverage.
+- Restored `aurora_cli render-views`/`render-all` by implementing layout+SVG view rendering and writing SVGs under `aurora/<MISSION_ID>/Views/`.
+- Made model Markdown view embedding deterministic by sorting embedded SVG filenames.

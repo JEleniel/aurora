@@ -10,7 +10,7 @@ mod aurora_tests;
 use serde_json::Value;
 use std::{
 	collections::HashMap,
-	path::{Component, PathBuf},
+	path::{Component, Path, PathBuf},
 };
 use thiserror::Error;
 use tracing::info;
@@ -34,20 +34,17 @@ impl Aurora {
 	/// Try to load a set of Aurora models from a given path
 	/// It will automatically pick up if the Model Home is a child
 	/// of the given path
-	pub fn try_load(path: &PathBuf) -> Result<Self, AuroraError> {
-		let mut model_home = path.clone();
+	pub fn try_load(path: &Path) -> Result<Self, AuroraError> {
+		let mut model_home = path.to_path_buf();
 
-		if let Some(folder) = Self::last_folder(path) {
-			if folder != "aurora" {
-				let test_path = path.join("aurora");
-				if !test_path.is_dir() || !test_path.exists() {
-					return Err(AuroraError::InvalidAuroraHome(path.display().to_string()));
-				} else {
-					model_home = test_path;
-				}
-			}
-		} else {
+		let folder = Self::last_folder(path)
+			.ok_or_else(|| AuroraError::InvalidAuroraHome(path.display().to_string()))?;
+		let test_path = path.join("aurora");
+		if folder != "aurora" && !test_path.is_dir() {
 			return Err(AuroraError::InvalidAuroraHome(path.display().to_string()));
+		}
+		if folder != "aurora" {
+			model_home = test_path;
 		}
 
 		let card_schema_path = model_home.join("Aurora.card.schema.json");
@@ -72,11 +69,11 @@ impl Aurora {
 			if entry.file_type()?.is_dir() {
 				continue;
 			}
-			if let Some(file_name) = entry.file_name().to_str() {
-				if file_name.starts_with("MIS-") {
-					let model = Model::try_load(&entry.path(), &card_schema, &audit_schema)?;
-					models.push(model);
-				}
+			if let Some(file_name) = entry.file_name().to_str()
+				&& file_name.starts_with("MIS-")
+			{
+				let model = Model::try_load(&entry.path(), &card_schema, &audit_schema)?;
+				models.push(model);
 			}
 		}
 
@@ -143,9 +140,9 @@ impl Aurora {
 
 	/// Write the entire set of models out as human friendly markdown files
 	/// with a README.md index
-	pub fn write_markdown(&self, path: &PathBuf) -> Result<(), AuroraError> {
+	pub fn write_markdown(&self, path: &Path) -> Result<(), AuroraError> {
 		for model in &self.models {
-			model.write_markdown(&path)?;
+			model.write_markdown(path)?;
 			info!(
 				"Wrote {}: {} ({} cards)",
 				model.root_card.id,
@@ -157,9 +154,9 @@ impl Aurora {
 		Ok(())
 	}
 
-	pub fn write_compact(&self, path: &PathBuf) -> Result<(), AuroraError> {
+	pub fn write_compact(&self, path: &Path) -> Result<(), AuroraError> {
 		for model in &self.models {
-			let mut mission_dir = path.clone();
+			let mut mission_dir = path.to_path_buf();
 			mission_dir.push(model.root_card.id.as_str());
 			std::fs::create_dir_all(&mission_dir)?;
 
@@ -178,13 +175,13 @@ impl Aurora {
 		Ok(())
 	}
 
-	fn last_folder(path: &PathBuf) -> Option<&std::ffi::OsStr> {
+	fn last_folder(path: &Path) -> Option<&std::ffi::OsStr> {
 		path.components()
 			.filter_map(|c| match c {
 				Component::Normal(name) => Some(name),
 				_ => None,
 			})
-			.last()
+			.next_back()
 	}
 }
 

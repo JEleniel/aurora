@@ -230,6 +230,6 @@ fn collect_reachable(roots: &[String], outgoing: &HashMap<String, Vec<String>>) 
 	visited
 }
 
-fn iter_cards<'a>(model: &'a Model) -> impl Iterator<Item = &'a Card> {
+fn iter_cards(model: &Model) -> impl Iterator<Item = &Card> + '_ {
 	std::iter::once(&model.root_card).chain(model.cards.iter())
 }

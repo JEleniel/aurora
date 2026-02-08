@@ -3,7 +3,7 @@ use jsonschema::{CompilationError, Draft, JSONSchema};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::BTreeMap;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use thiserror::Error;
 use tracing::debug;
 
@@ -38,10 +38,10 @@ pub struct Card {
 }
 
 impl Card {
-	pub fn try_load(path: &PathBuf, card_schema: &serde_json::Value) -> Result<Self, CardError> {
+	pub fn try_load(path: &Path, card_schema: &serde_json::Value) -> Result<Self, CardError> {
 		debug!("Loading card from {}", path.display());
 
-		let data = std::fs::read_to_string(&path).map_err(|e| CardError::IoError(e))?;
+		let data = std::fs::read_to_string(path)?;
 
 		let card_json: serde_json::Value = serde_json::from_str(&data)
 			.map_err(|e| CardError::ParseError(path.display().to_string(), e))?;
@@ -49,7 +49,7 @@ impl Card {
 
 		let mut card: Card = serde_json::from_str(&data)
 			.map_err(|e| CardError::ParseError(path.display().to_string(), e))?;
-		card.source_path = path.clone();
+		card.source_path = path.to_path_buf();
 		card.validation_errors = validation_errors;
 		Ok(card)
 	}
@@ -84,14 +84,14 @@ impl Card {
 		warnings
 	}
 
-	pub fn write(&self, path: &PathBuf) {
+	pub fn write(&self, path: &Path) {
 		let serialized = serde_json::to_string_pretty(self).unwrap();
 		std::fs::write(path, serialized).unwrap();
 	}
 
 	pub fn write_markdown<'a>(
 		&self,
-		path: &PathBuf,
+		path: &Path,
 		audit_entries: impl Iterator<Item = &'a super::super::AuditLogEntry>,
 	) {
 		let mut markdown: String = String::from(CARD_MARKDOWN_TEMPLATE);
@@ -180,7 +180,7 @@ impl Card {
 			.with_draft(Draft::Draft7)
 			.compile(card_schema)?;
 
-		let result = compiled_schema.validate(&card_json);
+		let result = compiled_schema.validate(card_json);
 		match result {
 			Ok(_) => Ok(vec![]),
 			Err(errors) => {
