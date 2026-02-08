@@ -3,7 +3,7 @@ pub mod constants;
 
 use crate::cli::Commands;
 use aurora_shared::Aurora;
-use std::path::PathBuf;
+use std::path::Path;
 use thiserror::Error;
 use tracing::info;
 use tracing_subscriber::EnvFilter;
@@ -67,31 +67,31 @@ fn validate(aurora: &Aurora) -> Result<(), RuntimeError> {
 	Err(RuntimeError::ValidationFailed(validation_report(&errors)))
 }
 
-fn render_markdown(aurora: &Aurora, output_dir: &PathBuf) -> Result<(), RuntimeError> {
+fn render_markdown(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeError> {
 	ensure_valid(aurora)?;
 	info!(
 		"Rendering markdown for {} model(s) into {}",
 		aurora.models.len(),
 		output_dir.display()
 	);
-	aurora.write_markdown(&output_dir.to_path_buf())?;
+	aurora.write_markdown(output_dir)?;
 
 	Ok(())
 }
 
-fn render_views(aurora: &Aurora, output_dir: &PathBuf) -> Result<(), RuntimeError> {
+fn render_views(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeError> {
 	ensure_valid(aurora)?;
 	info!(
 		"Rendering views for {} model(s) into {}",
 		aurora.models.len(),
 		output_dir.display()
 	);
-	aurora_shared::render::render(aurora, &output_dir.to_path_buf())?;
+	aurora_shared::render::render(aurora, output_dir)?;
 
 	Ok(())
 }
 
-fn render_all(aurora: &Aurora, output_dir: &PathBuf) -> Result<(), RuntimeError> {
+fn render_all(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeError> {
 	info!(
 		"Rendering all outputs for {} model(s) into {}",
 		aurora.models.len(),
@@ -105,7 +105,7 @@ fn render_all(aurora: &Aurora, output_dir: &PathBuf) -> Result<(), RuntimeError>
 	Ok(())
 }
 
-fn run_compact(aurora: &Aurora, output: &PathBuf) -> Result<(), RuntimeError> {
+fn run_compact(aurora: &Aurora, output: &Path) -> Result<(), RuntimeError> {
 	ensure_valid(aurora)?;
 	info!(
 		"Writing compact exports for {} model(s)",
