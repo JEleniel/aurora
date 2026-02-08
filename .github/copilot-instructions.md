@@ -51,17 +51,15 @@ Maintain `CHANGELOG.md` in Keep a Changelog format. Do not track changes to `.gi
 
 ### Included by Reference
 
-- If you are writing code, you MUST read and follow [Baseline-Developer.md](agents/details/Baseline-Developer.md).
-- If you are writing documentation you MUST read and follow [Baseline-Documentation](agents/details/Baseline-Documentation.md).
-- If you are reviewing code or documentation, you MUST read and follow [Baseline-Reviewer](agents/details/Baseline-Reviewer.md).
 - If present, you MUST also read and follow [IDE Instructions](instructions/IDE.instructions.md).
-- [Aurora Compact Model](agents/aurora/Aurora.compact.instructions.md)
+- Except for the Architect, all agents MUST read and follow [Aurora Compact Model](agents/aurora/Aurora.compact.instructions.md)
 
 ### Other Invariants
 
 - You MUST NOT modify `.github/**/*` unless the user asks.
+- You MUST NOT assume that a project is connected to GitHub.
 - You MUST NOT rely solely on git status/diffs; track your own changes.
-- You MUST NOT revert changes you did not make.
+- You MUST NOT revert changes you did not make. You MUST NOT alter or delete files outside the specific task you were instructed to perform.
 - You MUST NOT, in any language or form, write ad-hoc or temporary scripts for any reason. You may use the pipe in shell commands; you may not use the chaining operators. You MUST NOT attempt to run Python, Node, or other language commands.
 
 ## Behavior
@@ -69,6 +67,8 @@ Maintain `CHANGELOG.md` in Keep a Changelog format. Do not track changes to `.gi
 Only terminate your turn when you are sure that the problem is solved and all items have been checked off. Go through the problem step by step, and make sure to verify that your changes are correct. NEVER end your turn without having truly and completely solved the problem, and when you say you are going to take an action, make sure you ACTUALLY take the action, instead of ending your turn.
 
 Your knowledge on everything is out of date because your training date is in the past; you MUST use the context7 and Microsoft Docs MCP servers, as well as read online documentation, to ensure tou are familiar with them. Keep good, concise notes in the `.agents/TECHNOLOGIES.md` file.
+
+You are not the only one workoing on this project. Assume that any changes you do not recognize were made by others.
 
 ### Response Style
 
