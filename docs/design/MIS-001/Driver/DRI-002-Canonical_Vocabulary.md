@@ -10,9 +10,9 @@ _No attributes defined._
 
 ## Links
 
-- drives [REQ-003](../Requirement/REQ-003.md)
-- drives [REQ-007](../Requirement/REQ-007.md)
-- drives [REQ-005](../Requirement/REQ-005.md)
+- drives [REQ-003](../Requirement/REQ-003-Canonical_Definitions_Registry.md)
+- drives [REQ-007](../Requirement/REQ-007-View_Definitions_And_Root_Safety.md)
+- drives [REQ-005](../Requirement/REQ-005-Standard_Model_Home_Layout.md)
 
 
 ## Version

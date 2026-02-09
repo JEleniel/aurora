@@ -10,8 +10,8 @@ _No attributes defined._
 
 ## Links
 
-- integrates [APP-001](../Application/APP-001.md)
-- integrates [APP-002](../Application/APP-002.md)
+- integrates [APP-001](../Application/APP-001-Aurora_CLI.md)
+- integrates [APP-002](../Application/APP-002-Aurora_Editor.md)
 
 
 ## Version

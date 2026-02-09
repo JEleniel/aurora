@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- requires [CAP-002](../Capability/CAP-002.md)
+- requires [CAP-002](../Capability/CAP-002-Generate_Views.md)
 
 
 ## Version

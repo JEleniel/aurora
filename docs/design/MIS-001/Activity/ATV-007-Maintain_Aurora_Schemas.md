@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- produces [ART-007](../Artifact/ART-007.md)
+- produces [ART-007](../Artifact/ART-007-Aurora_Schemas.md)
 
 
 ## Version

@@ -9,23 +9,13 @@
 			"fill": "#4c1d95",
 			"icon": "⚙",
 			"relationships": [
-				{
-					"ATV": "leads to"
-				},
-				{
-					"TRG": "receives"
-				},
-				{
-					"CON": "triggers"
-				},
-				{
-					"COM": "uses"
-				},
-				{
-					"ART": "produces"
-				}
+				{ "target_card_type": "ATV", "relationship": "leads to" },
+				{ "target_card_type": "TRG", "relationship": "receives" },
+				{ "target_card_type": "CON", "relationship": "triggers" },
+				{ "target_card_type": "COM", "relationship": "uses" },
+				{ "target_card_type": "ART", "relationship": "produces" }
 			],
-			"shape": "rounded-rectangle"
+			"shape": "double-rectangle"
 		},
 		{
 			"acronym": "ACT",
@@ -35,11 +25,7 @@
 			"description": "External role interacting with or obligating the system.",
 			"fill": "#1a2e05",
 			"icon": "👤",
-			"relationships": [
-				{
-					"ATV": "performs"
-				}
-			],
+			"relationships": [{ "target_card_type": "ATV", "relationship": "performs" }],
 			"shape": "rounded-rectangle"
 		},
 		{
@@ -50,12 +36,8 @@
 			"description": "Person, group, or role with an interest in or affected by the system.",
 			"fill": "#1a2e05",
 			"icon": "👥",
-			"relationships": [
-				{
-					"STR": "desires"
-				}
-			],
-			"shape": "ellipse"
+			"relationships": [{ "target_card_type": "STR", "relationship": "desires" }],
+			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "ADR",
@@ -73,23 +55,13 @@
 			"common_subtypes": ["Document", "Data", "Diagram", "Code", "Model", "Report"],
 			"description": "Concrete work product produced or consumed by the system.",
 			"fill": "#1e293b",
-			"icon": "📄",
+			"icon": " ",
 			"relationships": [
-				{
-					"ART": "derives from"
-				},
-				{
-					"COM": "is input into"
-				},
-				{
-					"ATV": "goes into"
-				},
-				{
-					"AST": "is"
-				},
-				{
-					"DST": "persists to"
-				}
+				{ "target_card_type": "ART", "relationship": "derives from" },
+				{ "target_card_type": "COM", "relationship": "is input into" },
+				{ "target_card_type": "ATV", "relationship": "goes into" },
+				{ "target_card_type": "AST", "relationship": "is" },
+				{ "target_card_type": "DST", "relationship": "persists to" }
 			],
 			"shape": "document"
 		},
@@ -100,7 +72,7 @@
 			"description": "Valuable information/resources requiring protection.",
 			"fill": "#334155",
 			"icon": "🛡",
-			"shape": "box"
+			"shape": "document"
 		},
 		{
 			"acronym": "CAP",
@@ -108,12 +80,8 @@
 			"color": "#FFFFFF",
 			"description": "Implementation-independent ability that satisfies requirements.",
 			"fill": "#052e16",
-			"icon": "✨",
-			"relationships": [
-				{
-					"PRO": "requires"
-				}
-			],
+			"icon": " ",
+			"relationships": [{ "target_card_type": "PRO", "relationship": "requires" }],
 			"shape": "rounded-rectangle"
 		},
 		{
@@ -123,12 +91,8 @@
 			"description": "Top-level software system composed of applications and components.",
 			"fill": "#1e40af",
 			"icon": "🧱",
-			"relationships": [
-				{
-					"APP": "integrates"
-				}
-			],
-			"shape": "component"
+			"relationships": [{ "target_card_type": "APP", "relationship": "integrates" }],
+			"shape": "folder"
 		},
 		{
 			"acronym": "APP",
@@ -137,12 +101,8 @@
 			"description": "Deployable application within a system, composed of components.",
 			"fill": "#1e40af",
 			"icon": "📦",
-			"relationships": [
-				{
-					"COM": "comprises"
-				}
-			],
-			"shape": "rounded-rectangle"
+			"relationships": [{ "target_card_type": "COM", "relationship": "comprises" }],
+			"shape": "rectangle"
 		},
 		{
 			"acronym": "COM",
@@ -151,32 +111,16 @@
 			"common_subtypes": ["API", "Library", "Service", "Module", "Subsystem", "Class"],
 			"description": "Modular unit with a single responsibility and explicit interfaces.",
 			"fill": "#1e40af",
-			"icon": "🧩",
+			"icon": " ",
 			"relationships": [
-				{
-					"COM": "composes"
-				},
-				{
-					"FEA": "implements"
-				},
-				{
-					"INT": "exposes"
-				},
-				{
-					"TES": "implements"
-				},
-				{
-					"ART": "produces"
-				},
-				{
-					"DSR": "includes"
-				},
-				{
-					"DST": "stores in"
-				},
-				{
-					"STM": "executes"
-				}
+				{ "target_card_type": "COM", "relationship": "composes" },
+				{ "target_card_type": "FEA", "relationship": "implements" },
+				{ "target_card_type": "INT", "relationship": "exposes" },
+				{ "target_card_type": "TES", "relationship": "implements" },
+				{ "target_card_type": "ART", "relationship": "produces" },
+				{ "target_card_type": "DSR", "relationship": "includes" },
+				{ "target_card_type": "DST", "relationship": "stores in" },
+				{ "target_card_type": "STM", "relationship": "executes" }
 			],
 			"shape": "component"
 		},
@@ -187,12 +131,8 @@
 			"common_subtypes": ["Relational", "Object Store", "Event Log", "Key-Value", "Graph"],
 			"description": "Persistent storage system that holds artifacts and data for retrieval and lineage.",
 			"fill": "#0f172a",
-			"icon": "🗄",
-			"relationships": [
-				{
-					"ART": "retrieves"
-				}
-			],
+			"icon": " ",
+			"relationships": [{ "target_card_type": "ART", "relationship": "retrieves" }],
 			"shape": "cylinder"
 		},
 		{
@@ -201,17 +141,11 @@
 			"color": "#FFFFFF",
 			"description": "Binary predicate influencing behavior.",
 			"fill": "#422006",
-			"icon": "⎇",
+			"icon": " ",
 			"relationships": [
-				{
-					"ATV": "branches to"
-				},
-				{
-					"TRG": "branches to"
-				},
-				{
-					"CON": "branches to"
-				}
+				{ "target_card_type": "ATV", "relationship": "branches to" },
+				{ "target_card_type": "TRG", "relationship": "branches to" },
+				{ "target_card_type": "CON", "relationship": "branches to" }
 			],
 			"shape": "diamond"
 		},
@@ -222,12 +156,8 @@
 			"description": "Rule limiting allowable behavior or solutions.",
 			"fill": "#082f49",
 			"icon": "📏",
-			"relationships": [
-				{
-					"REQ": "limits"
-				}
-			],
-			"shape": "box"
+			"relationships": [{ "target_card_type": "REQ", "relationship": "limits" }],
+			"shape": "ruler"
 		},
 		{
 			"acronym": "CTL",
@@ -237,20 +167,12 @@
 			"fill": "#713f12",
 			"icon": "🔒",
 			"relationships": [
-				{
-					"RIS": "mitigates"
-				},
-				{
-					"AST": "protects"
-				},
-				{
-					"CNS": "enforces"
-				},
-				{
-					"DST": "governs"
-				}
+				{ "target_card_type": "RIS", "relationship": "mitigates" },
+				{ "target_card_type": "AST", "relationship": "protects" },
+				{ "target_card_type": "CNS", "relationship": "enforces" },
+				{ "target_card_type": "DST", "relationship": "governs" }
 			],
-			"shape": "octagon"
+			"shape": "ruler"
 		},
 		{
 			"acronym": "DEP",
@@ -259,12 +181,8 @@
 			"description": "Defined environment or configuration where software executes.",
 			"fill": "#1e1b4b",
 			"icon": "☁",
-			"relationships": [
-				{
-					"NOD": "includes"
-				}
-			],
-			"shape": "deployment"
+			"relationships": [{ "target_card_type": "NOD", "relationship": "includes" }],
+			"shape": "octagon"
 		},
 		{
 			"acronym": "DSR",
@@ -273,13 +191,9 @@
 			"common_subtypes": ["External System", "Upstream Feed", "Sensor", "Third-Party API"],
 			"description": "Origin of artifacts and data entering the system, used to model provenance and lineage.",
 			"fill": "#0b1220",
-			"icon": "📡",
-			"relationships": [
-				{
-					"ART": "provides"
-				}
-			],
-			"shape": "box"
+			"icon": " ",
+			"relationships": [{ "target_card_type": "ART", "relationship": "provides" }],
+			"shape": "cylinder"
 		},
 		{
 			"acronym": "DRI",
@@ -288,11 +202,7 @@
 			"description": "Motivation explaining why requirements exist.",
 			"fill": "#064e3b",
 			"icon": "🧭",
-			"relationships": [
-				{
-					"REQ": "drives"
-				}
-			],
+			"relationships": [{ "target_card_type": "REQ", "relationship": "drives" }],
 			"shape": "rounded-rectangle"
 		},
 		{
@@ -303,15 +213,9 @@
 			"fill": "#5b21b6",
 			"icon": "⚡",
 			"relationships": [
-				{
-					"STA": "transitions to"
-				},
-				{
-					"EVT": "triggers"
-				},
-				{
-					"PRD": "triggers"
-				}
+				{ "target_card_type": "STA", "relationship": "transitions to" },
+				{ "target_card_type": "EVT", "relationship": "triggers" },
+				{ "target_card_type": "PRD", "relationship": "triggers" }
 			],
 			"shape": "trapezoid"
 		},
@@ -323,23 +227,19 @@
 			"fill": "#14532d",
 			"icon": "⭐",
 			"relationships": [
-				{
-					"CAP": "realizes"
-				},
-				{
-					"CNS": "implies"
-				}
+				{ "target_card_type": "CAP", "relationship": "realizes" },
+				{ "target_card_type": "CNS", "relationship": "implies" }
 			],
-			"shape": "box"
+			"shape": "rectangle"
 		},
 		{
 			"acronym": "INT",
 			"card_type": "Interface",
-			"color": "#000000",
+			"color": "#FFFFFF",
 			"description": "Contract governing interaction across a boundary.",
 			"fill": "#102080",
-			"icon": "🔌",
-			"shape": "interface"
+			"icon": " ",
+			"shape": "lolipop"
 		},
 		{
 			"acronym": "MIS",
@@ -349,24 +249,12 @@
 			"fill": "#022c22",
 			"icon": "🎯",
 			"relationships": [
-				{
-					"DRI": "establishes"
-				},
-				{
-					"STK": "involves"
-				},
-				{
-					"SYS": "necessitates"
-				},
-				{
-					"APP": "necessitates"
-				},
-				{
-					"DEP": "involves"
-				},
-				{
-					"THM": "has"
-				}
+				{ "target_card_type": "DRI", "relationship": "establishes" },
+				{ "target_card_type": "STK", "relationship": "involves" },
+				{ "target_card_type": "SYS", "relationship": "necessitates" },
+				{ "target_card_type": "APP", "relationship": "necessitates" },
+				{ "target_card_type": "DEP", "relationship": "involves" },
+				{ "target_card_type": "THM", "relationship": "has" }
 			],
 			"shape": "octagon"
 		},
@@ -379,17 +267,11 @@
 			"fill": "#312e81",
 			"icon": "🖥",
 			"relationships": [
-				{
-					"COM": "hosts"
-				},
-				{
-					"DST": "hosts"
-				},
-				{
-					"DSR": "hosts"
-				}
+				{ "target_card_type": "COM", "relationship": "hosts" },
+				{ "target_card_type": "DST", "relationship": "hosts" },
+				{ "target_card_type": "DSR", "relationship": "hosts" }
 			],
-			"shape": "double-box"
+			"shape": "box"
 		},
 		{
 			"acronym": "PRD",
@@ -397,17 +279,11 @@
 			"color": "#FFFFFF",
 			"description": "Logical statement evaluating to true/false in a state machine.",
 			"fill": "#581c87",
-			"icon": "ƒ",
+			"icon": " ",
 			"relationships": [
-				{
-					"STA": "branches to"
-				},
-				{
-					"PRD": "branches to"
-				},
-				{
-					"EVT": "branches to"
-				}
+				{ "target_card_type": "STA", "relationship": "branches to" },
+				{ "target_card_type": "PRD", "relationship": "branches to" },
+				{ "target_card_type": "EVT", "relationship": "branches to" }
 			],
 			"shape": "diamond"
 		},
@@ -419,20 +295,12 @@
 			"fill": "#2e1065",
 			"icon": "🔁",
 			"relationships": [
-				{
-					"ATV": "includes"
-				},
-				{
-					"TRG": "includes"
-				},
-				{
-					"CON": "branches on"
-				},
-				{
-					"ACT": "involves"
-				}
+				{ "target_card_type": "ATV", "relationship": "includes" },
+				{ "target_card_type": "TRG", "relationship": "includes" },
+				{ "target_card_type": "CON", "relationship": "branches on" },
+				{ "target_card_type": "ACT", "relationship": "involves" }
 			],
-			"shape": "box"
+			"shape": "octagon"
 		},
 		{
 			"acronym": "REQ",
@@ -442,18 +310,10 @@
 			"fill": "#065f46",
 			"icon": "✅",
 			"relationships": [
-				{
-					"CAP": "requires"
-				},
-				{
-					"ADR": "has"
-				},
-				{
-					"CNS": "imposes"
-				},
-				{
-					"CTL": "requires"
-				}
+				{ "target_card_type": "CAP", "relationship": "requires" },
+				{ "target_card_type": "ADR", "relationship": "has" },
+				{ "target_card_type": "CNS", "relationship": "imposes" },
+				{ "target_card_type": "CTL", "relationship": "requires" }
 			],
 			"shape": "rounded-rectangle"
 		},
@@ -464,7 +324,7 @@
 			"description": "Potential for loss/harm from threats/vulnerabilities.",
 			"fill": "#881337",
 			"icon": "⚠",
-			"shape": "octagon"
+			"shape": "hexagon"
 		},
 		{
 			"acronym": "STA",
@@ -472,19 +332,13 @@
 			"color": "#FFFFFF",
 			"description": "Observable condition that persists until a transition.",
 			"fill": "#701a75",
-			"icon": "●",
+			"icon": " ",
 			"relationships": [
-				{
-					"STA": "transitions to"
-				},
-				{
-					"PRD": "evaluates"
-				},
-				{
-					"EVT": "handles"
-				}
+				{ "target_card_type": "STA", "relationship": "transitions to" },
+				{ "target_card_type": "PRD", "relationship": "evaluates" },
+				{ "target_card_type": "EVT", "relationship": "handles" }
 			],
-			"shape": "circle"
+			"shape": "ellipse"
 		},
 		{
 			"acronym": "STM",
@@ -493,11 +347,7 @@
 			"description": "Behavioral model defining allowable states/transitions.",
 			"fill": "#4a044e",
 			"icon": "⏱",
-			"relationships": [
-				{
-					"STA": "has"
-				}
-			],
+			"relationships": [{ "target_card_type": "STA", "relationship": "has" }],
 			"shape": "octagon"
 		},
 		{
@@ -508,14 +358,10 @@
 			"fill": "#365314",
 			"icon": "📖",
 			"relationships": [
-				{
-					"REQ": "explains"
-				},
-				{
-					"CNS": "implies"
-				}
+				{ "target_card_type": "REQ", "relationship": "explains" },
+				{ "target_card_type": "CNS", "relationship": "implies" }
 			],
-			"shape": "box"
+			"shape": "rectangle"
 		},
 		{
 			"acronym": "TES",
@@ -524,11 +370,7 @@
 			"description": "Procedure verifying that a feature satisfies requirements.",
 			"fill": "#022c22",
 			"icon": "🧪",
-			"relationships": [
-				{
-					"FEA": "verifies"
-				}
-			],
+			"relationships": [{ "target_card_type": "FEA", "relationship": "verifies" }],
 			"shape": "hexagon"
 		},
 		{
@@ -539,21 +381,11 @@
 			"fill": "#4c0519",
 			"icon": "♦",
 			"relationships": [
-				{
-					"AST": "threatens"
-				},
-				{
-					"ADV": "involves"
-				},
-				{
-					"THC": "uses"
-				},
-				{
-					"VIC": "impacts"
-				},
-				{
-					"RIS": "creates"
-				}
+				{ "target_card_type": "AST", "relationship": "threatens" },
+				{ "target_card_type": "ADV", "relationship": "involves" },
+				{ "target_card_type": "THC", "relationship": "uses" },
+				{ "target_card_type": "VIC", "relationship": "impacts" },
+				{ "target_card_type": "RIS", "relationship": "creates" }
 			],
 			"shape": "diamond"
 		},
@@ -572,7 +404,7 @@
 			"description": "Threat source: actor with intent and capability to cause harm.",
 			"fill": "#4c0519",
 			"icon": "👾",
-			"shape": "octagon"
+			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "THC",
@@ -581,7 +413,7 @@
 			"description": "Skills, access, tooling, or resources enabling an adversary to execute threats.",
 			"fill": "#4c0519",
 			"icon": "🛠",
-			"shape": "octagon"
+			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "VIC",
@@ -591,7 +423,7 @@
 			"description": "Entity that suffers impact when a threat is realized.",
 			"fill": "#4c0519",
 			"icon": "🧍",
-			"shape": "octagon"
+			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "ROW",
@@ -600,12 +432,8 @@
 			"description": "Role accountable for an asset/resource and its protection.",
 			"fill": "#4c0519",
 			"icon": "🔑",
-			"relationships": [
-				{
-					"AST": "owns"
-				}
-			],
-			"shape": "octagon"
+			"relationships": [{ "target_card_type": "AST", "relationship": "owns" }],
+			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "THM",
@@ -613,14 +441,10 @@
 			"color": "#FFFFFF",
 			"description": "Structured analysis of assets, adversaries, threats, and mitigations.",
 			"fill": "#4c0519",
-			"icon": "🕵",
+			"icon": " ",
 			"relationships": [
-				{
-					"THD": "includes"
-				},
-				{
-					"ROW": "includes"
-				}
+				{ "target_card_type": "THD", "relationship": "includes" },
+				{ "target_card_type": "ROW", "relationship": "includes" }
 			],
 			"shape": "octagon"
 		},
@@ -632,15 +456,9 @@
 			"fill": "#78350f",
 			"icon": "⏰",
 			"relationships": [
-				{
-					"ATV": "initiates"
-				},
-				{
-					"CON": "initiates"
-				},
-				{
-					"TRG": "triggers"
-				}
+				{ "target_card_type": "ATV", "relationship": "initiates" },
+				{ "target_card_type": "CON", "relationship": "initiates" },
+				{ "target_card_type": "TRG", "relationship": "triggers" }
 			],
 			"shape": "trapezoid"
 		}

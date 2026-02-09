@@ -10,11 +10,11 @@ _No attributes defined._
 
 ## Links
 
-- involves [STK-001](../Stakeholder/STK-001.md)
-- establishes [DRI-001](../Driver/DRI-001.md)
-- establishes [DRI-002](../Driver/DRI-002.md)
-- establishes [DRI-003](../Driver/DRI-003.md)
-- necessitates [SYS-001](../System/SYS-001.md)
+- involves [STK-001](MIS-001/Stakeholder/STK-001-Architects_And_Agents.md)
+- establishes [DRI-001](MIS-001/Driver/DRI-001-Deterministic_Interpretation.md)
+- establishes [DRI-002](MIS-001/Driver/DRI-002-Canonical_Vocabulary.md)
+- establishes [DRI-003](MIS-001/Driver/DRI-003-Automated_View_Generation.md)
+- necessitates [SYS-001](MIS-001/System/SYS-001-Aurora_Tooling_Ecosystem.md)
 
 
 ## Version

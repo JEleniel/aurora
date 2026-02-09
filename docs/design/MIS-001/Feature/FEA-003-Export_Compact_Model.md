@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- realizes [CAP-003](../Capability/CAP-003.md)
+- realizes [CAP-003](../Capability/CAP-003-Export_Compact_Model.md)
 
 
 ## Version

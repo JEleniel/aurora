@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- requires [CAP-005](../Capability/CAP-005.md)
+- requires [CAP-005](../Capability/CAP-005-Maintain_Canonical_Registries.md)
 
 
 ## Version

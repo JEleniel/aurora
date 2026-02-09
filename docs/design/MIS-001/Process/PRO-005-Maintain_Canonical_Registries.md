@@ -10,9 +10,9 @@ _No attributes defined._
 
 ## Links
 
-- includes [ATV-005](../Activity/ATV-005.md)
-- includes [ATV-006](../Activity/ATV-006.md)
-- includes [ATV-007](../Activity/ATV-007.md)
+- includes [ATV-005](../Activity/ATV-005-Edit_Canonical_Definitions_Registry.md)
+- includes [ATV-006](../Activity/ATV-006-Edit_View_Definitions_Registry.md)
+- includes [ATV-007](../Activity/ATV-007-Maintain_Aurora_Schemas.md)
 
 
 ## Version

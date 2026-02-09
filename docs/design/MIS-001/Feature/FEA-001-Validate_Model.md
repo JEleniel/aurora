@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- realizes [CAP-001](../Capability/CAP-001.md)
+- realizes [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)
 
 
 ## Version

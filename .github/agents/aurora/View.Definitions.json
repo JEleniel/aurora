@@ -68,15 +68,7 @@
 		},
 		{
 			"description": "Captures mission intent, motivation, and required capabilities, including architectural decisions that justify scope.",
-			"included_card_types": [
-				"Driver",
-				"Stakeholder",
-				"Capability",
-				"Requirement",
-				"ADR",
-				"Feature",
-				"Constraint"
-			],
+			"included_card_types": ["Driver", "Stakeholder", "Capability", "Requirement", "ADR", "Constraint"],
 			"name": "Requirements",
 			"root_card_types": ["Mission"]
 		},
@@ -88,9 +80,9 @@
 		},
 		{
 			"description": "Shows the high-level landscape of major components, interfaces, deployments, and nodes.",
-			"included_card_types": ["Component", "Interface", "Data Store", "Data Source", "Deployment", "Asset"],
+			"included_card_types": ["Component", "Interface", "Data Store", "Data Source", "Node", "Asset"],
 			"name": "Landscape",
-			"root_card_types": ["Node"]
+			"root_card_types": ["Deployment"]
 		},
 		{
 			"description": "Analyzes protection of assets against threats, including actors, constraints, controls, and resulting risks.",
@@ -105,10 +97,11 @@
 				"Risk",
 				"Control",
 				"Constraint",
-				"Actor"
+				"Actor",
+				"Threat Diamond"
 			],
 			"name": "Security",
-			"root_card_types": ["Asset", "Threat Diamond"]
+			"root_card_types": ["Threat Model"]
 		},
 		{
 			"description": "Models system behavior using state machines, states, predicates, and events without process contamination.",

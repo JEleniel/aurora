@@ -1,11 +1,17 @@
 use std::collections::{BTreeMap, HashMap};
 
-use crate::registry::CardDefinition;
+use crate::registry::{CardDefinition, CardRegistry, RegistryError};
 use crate::{Card, Layout};
 
 use super::{RenderError, SvgConfig, geom};
 
 const WRAP_COLS: usize = 80;
+
+fn lookup_card_definition(card_type: &str) -> Result<CardDefinition, RegistryError> {
+	let registry = CardRegistry::try_new()?;
+
+	Ok(registry.try_get_by_type(card_type)?)
+}
 
 #[derive(Debug, Clone)]
 pub struct NodeLayout {
@@ -57,11 +63,16 @@ pub fn position_nodes(
 	config: &SvgConfig,
 ) -> HashMap<String, PositionedNode> {
 	let spacing = config.node_spacing_px.max(0);
+	if node_layouts.is_empty() {
+		return HashMap::new();
+	}
 
-	let min_x = node_layouts.iter().map(|n| n.x).min().unwrap_or(0);
-	let max_x = node_layouts.iter().map(|n| n.x).max().unwrap_or(0);
-	let min_y = node_layouts.iter().map(|n| n.y).min().unwrap_or(0);
-	let max_y = node_layouts.iter().map(|n| n.y).max().unwrap_or(0);
+	let mut used_x: Vec<i32> = node_layouts.iter().map(|n| n.x).collect();
+	used_x.sort();
+	used_x.dedup();
+	let mut used_y: Vec<i32> = node_layouts.iter().map(|n| n.y).collect();
+	used_y.sort();
+	used_y.dedup();
 
 	let max_width = node_layouts
 		.iter()
@@ -75,43 +86,53 @@ pub fn position_nodes(
 		.unwrap_or(super::SYMBOL_BASE_HEIGHT_PX);
 
 	let mut col_width: BTreeMap<i32, i32> = BTreeMap::new();
-	for x in min_x..=max_x {
+	for x in &used_x {
 		let w = node_layouts
 			.iter()
-			.filter(|n| n.x == x)
+			.filter(|n| n.x == *x)
 			.map(|n| n.geom.width_px)
 			.max()
-			.unwrap_or(max_width);
-		col_width.insert(x, if w > 0 { w } else { max_width });
+			.unwrap_or(0);
+		col_width.insert(*x, w.max(0));
 	}
 	let mut row_height: BTreeMap<i32, i32> = BTreeMap::new();
-	for y in min_y..=max_y {
+	for y in &used_y {
 		let h = node_layouts
 			.iter()
-			.filter(|n| n.y == y)
+			.filter(|n| n.y == *y)
 			.map(|n| n.geom.height_px)
 			.max()
-			.unwrap_or(max_height);
-		row_height.insert(y, if h > 0 { h } else { max_height });
+			.unwrap_or(0);
+		row_height.insert(*y, h.max(0));
 	}
 
 	let mut col_origin: BTreeMap<i32, i32> = BTreeMap::new();
 	let mut current_x = 0;
-	for (x, w) in col_width.iter() {
+	for x in &used_x {
+		let w = col_width.get(x).copied().unwrap_or(0);
 		col_origin.insert(*x, current_x);
-		current_x += *w + spacing;
+		current_x += w + spacing;
 	}
 	let mut row_origin: BTreeMap<i32, i32> = BTreeMap::new();
 	let mut current_y = 0;
-	for (y, h) in row_height.iter() {
+	for y in &used_y {
+		let h = row_height.get(y).copied().unwrap_or(0);
 		row_origin.insert(*y, current_y);
-		current_y += *h + spacing;
+		current_y += h + spacing;
 	}
 
 	let mut positioned: HashMap<String, PositionedNode> = HashMap::new();
 	for n in node_layouts {
-		let cw = col_width.get(&n.x).copied().unwrap_or(max_width);
-		let rh = row_height.get(&n.y).copied().unwrap_or(max_height);
+		let cw = col_width
+			.get(&n.x)
+			.copied()
+			.unwrap_or_else(|| n.geom.width_px.max(max_width));
+		let rh = row_height
+			.get(&n.y)
+			.copied()
+			.unwrap_or_else(|| n.geom.height_px.max(max_height));
+		let cw = cw.max(n.geom.width_px);
+		let rh = rh.max(n.geom.height_px);
 		let origin_x = col_origin.get(&n.x).copied().unwrap_or(0);
 		let origin_y = row_origin.get(&n.y).copied().unwrap_or(0);
 		let px = origin_x + (cw - n.geom.width_px) / 2;
@@ -134,15 +155,49 @@ pub fn position_nodes(
 	positioned
 }
 
-pub fn render_node(card: &Card, node: &PositionedNode, config: &SvgConfig) -> String {
-	let def = CardDefinition::get_by_type(&card.card_type);
-	let fill = def.fill;
-	let stroke = def.color.clone();
-	let text_color = def.color;
-	let mut icon = def.icon;
-	if icon == "question" {
-		icon = "?".to_string();
+#[cfg(test)]
+mod tests {
+	use super::*;
+
+	#[test]
+	fn position_nodes_does_not_insert_empty_columns() {
+		let geom = NodeGeom {
+			width_px: 100,
+			height_px: 60,
+			lines: Vec::new(),
+			bold_line_index: None,
+		};
+		let nodes = vec![
+			NodeLayout {
+				id: "a".to_string(),
+				x: 0,
+				y: 0,
+				geom: geom.clone(),
+			},
+			// Gap at x=1: no node uses that column.
+			NodeLayout {
+				id: "b".to_string(),
+				x: 2,
+				y: 0,
+				geom: geom.clone(),
+			},
+		];
+		let config = SvgConfig {
+			node_spacing_px: 10,
+			base_font_size_px: 16,
+			edge_style: super::super::EdgeStyle::Orthogonal,
+		};
+
+		let positioned = position_nodes(&nodes, &config);
+		let a = positioned.get("a").expect("a should be positioned");
+		let b = positioned.get("b").expect("b should be positioned");
+		assert_eq!(a.bbox.x, 0);
+		assert_eq!(b.bbox.x, 100 + 10);
 	}
+}
+
+pub fn render_node(card: &Card, node: &PositionedNode, config: &SvgConfig) -> String {
+	let card_definition = lookup_card_definition(&card.card_type).unwrap();
 
 	let geom = &node.geom;
 	let rem_px = config.base_font_size_px.max(1);
@@ -151,7 +206,6 @@ pub fn render_node(card: &Card, node: &PositionedNode, config: &SvgConfig) -> St
 	let start_y = top_padding_px + config.base_font_size_px;
 	let center_x = (node.width_px as f32) / 2.0;
 
-	let shape_id = def.shape;
 	let sx = (node.width_px as f32) / (super::SYMBOL_BASE_WIDTH_PX as f32);
 	let sy = (node.height_px as f32) / (super::SYMBOL_BASE_HEIGHT_PX as f32);
 
@@ -166,28 +220,30 @@ pub fn render_node(card: &Card, node: &PositionedNode, config: &SvgConfig) -> St
 		"<g transform=\"scale({:.6}, {:.6})\"><use href=\"#{}\" style=\"fill:{};stroke:{};\" /></g>",
 		sx,
 		sy,
-		escape_attr(&shape_id),
-		fill,
-		stroke
+		escape_attr(&card_definition.shape),
+		card_definition.fill,
+		card_definition.color
 	));
 
 	// Icon: 2rem x 2rem, 3rem font-size.
-	let icon_x = (2 * rem_px) as f32;
-	let icon_y = (2 * rem_px) as f32;
+	// Use top-left anchoring so the icon is consistently 1rem (16px) from the top-left,
+	// regardless of the glyph's bounding box.
+	let icon_x = rem_px as f32 * 1.5;
+	let icon_y = rem_px as f32 * 2.0;
 	out.push_str(&format!(
-		"<text x=\"{:.2}\" y=\"{:.2}\" style=\"font-size:{}px;text-anchor:middle;dominant-baseline:middle;fill:{};stroke:none;\">{}</text>",
+		"<text x=\"{:.2}\" y=\"{:.2}\" style=\"font-size:{}px;text-anchor:start;dominant-baseline:hanging;fill:{};stroke:none;\">{}</text>",
 		icon_x,
 		icon_y,
 		3 * rem_px,
-		text_color,
-		escape_text(&icon)
+		card_definition.color,
+		escape_text(&card_definition.icon)
 	));
 
 	for (i, line) in geom.lines.iter().enumerate() {
 		let y = start_y + (i as i32) * line_height_px;
 		let mut style = format!(
 			"fill:{};stroke:none;text-anchor:middle;dominant-baseline:middle;font-size:{}px;",
-			text_color, config.base_font_size_px
+			card_definition.color, config.base_font_size_px
 		);
 		if geom.bold_line_index == Some(i) {
 			style.push_str("font-weight:bold;");

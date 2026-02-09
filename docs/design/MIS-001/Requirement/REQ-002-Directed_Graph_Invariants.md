@@ -10,8 +10,8 @@ _No attributes defined._
 
 ## Links
 
-- requires [CAP-001](../Capability/CAP-001.md)
-- imposes [CNS-002](../Constraint/CNS-002.md)
+- requires [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)
+- imposes [CNS-002](../Constraint/CNS-002-No_Orphan_Cards.md)
 
 
 ## Version

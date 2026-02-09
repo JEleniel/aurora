@@ -27,15 +27,44 @@ pub(super) fn build_graph(
 ) -> Result<LayoutGraph, RenderError> {
 	let (root_types, allowed_types) = collect_allowed_types(root_card_types, included_card_types);
 	let cards_by_id = index_cards(model)?;
-	let (allowed_nodes, mut roots) = select_nodes(model, &root_types, &allowed_types);
+	let (mut allowed_nodes, mut roots) = select_nodes(model, &root_types, &allowed_types);
 	if roots.is_empty() {
 		return Err(RenderError::MissingRoots);
 	}
 	roots.sort();
+	let declared_roots: HashSet<String> = roots.iter().cloned().collect();
 
-	let edges = collect_edges(&allowed_nodes, &cards_by_id)?;
-	let (outgoing, incoming) = build_adjacency(&allowed_nodes, &edges);
-	let incoming_count = compute_incoming_count(&allowed_nodes, &incoming);
+	let mut edges = collect_edges(&allowed_nodes, &cards_by_id)?;
+	let (mut outgoing, incoming) = build_adjacency(&allowed_nodes, &edges);
+	let mut incoming_count = compute_incoming_count(&allowed_nodes, &incoming);
+
+	// Expand roots to keep filtered subgraphs layout-able (nodes can lose all incoming edges
+	// when their predecessors are filtered out).
+	expand_roots_for_layout(&mut roots, &allowed_nodes, &incoming_count);
+
+	// Drop disconnected components entirely: they show up as unconnected cards and can
+	// dramatically widen horizontal spacing.
+	let reachable = collect_reachable(&roots, &outgoing);
+	allowed_nodes.retain(|node_id| reachable.contains(node_id));
+	roots.retain(|node_id| allowed_nodes.contains(node_id));
+	edges.retain(|(a, b)| allowed_nodes.contains(a) && allowed_nodes.contains(b));
+
+	// Also drop fully isolated nodes (no incident edges) unless they are explicitly declared
+	// roots by type.
+	let incident = collect_incident_nodes(&edges);
+	allowed_nodes.retain(|node_id| declared_roots.contains(node_id) || incident.contains(node_id));
+	roots.retain(|node_id| allowed_nodes.contains(node_id));
+	edges.retain(|(a, b)| allowed_nodes.contains(a) && allowed_nodes.contains(b));
+
+	// Rebuild adjacency and incoming counts after pruning.
+	let (rebuilt_outgoing, rebuilt_incoming) = build_adjacency(&allowed_nodes, &edges);
+	outgoing = rebuilt_outgoing;
+	incoming_count = compute_incoming_count(&allowed_nodes, &rebuilt_incoming);
+
+	// Re-expand roots using the pruned graph's incoming counts.
+	expand_roots_for_layout(&mut roots, &allowed_nodes, &incoming_count);
+	roots.sort();
+	roots.dedup();
 
 	Ok(LayoutGraph {
 		allowed_nodes,
@@ -46,14 +75,18 @@ pub(super) fn build_graph(
 	})
 }
 
+fn collect_incident_nodes(edges: &HashSet<(String, String)>) -> HashSet<String> {
+	let mut out: HashSet<String> = HashSet::new();
+	for (a, b) in edges {
+		out.insert(a.clone());
+		out.insert(b.clone());
+	}
+	out
+}
+
 /// Validate that layout graph invariants are satisfied.
 pub(super) fn validate_graph(graph: &LayoutGraph) -> Result<(), RenderError> {
 	let root_set: HashSet<&str> = graph.roots.iter().map(|id| id.as_str()).collect();
-	for root in &graph.roots {
-		if graph.incoming_count.get(root).copied().unwrap_or(0) != 0 {
-			return Err(RenderError::RootHasIncoming(root.clone()));
-		}
-	}
 	for node_id in &graph.allowed_nodes {
 		if root_set.contains(node_id.as_str()) {
 			continue;
@@ -76,6 +109,27 @@ pub(super) fn validate_graph(graph: &LayoutGraph) -> Result<(), RenderError> {
 	}
 
 	Ok(())
+}
+
+fn expand_roots_for_layout(
+	roots: &mut Vec<String>,
+	allowed_nodes: &HashSet<String>,
+	incoming_count: &HashMap<String, usize>,
+) {
+	let mut root_set: HashSet<String> = roots.iter().cloned().collect();
+
+	// In a filtered view subgraph, some nodes can lose all incoming edges because their
+	// predecessors were excluded. Treat those nodes as additional roots so they can still
+	// be ranked and positioned.
+	for node_id in allowed_nodes {
+		if incoming_count.get(node_id).copied().unwrap_or(0) == 0 {
+			root_set.insert(node_id.clone());
+		}
+	}
+
+	let mut expanded_roots: Vec<String> = root_set.into_iter().collect();
+	expanded_roots.sort();
+	*roots = expanded_roots;
 }
 
 /// Classify edges into backbone and loop sets.

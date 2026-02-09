@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- produces [ART-006](../Artifact/ART-006.md)
+- produces [ART-006](../Artifact/ART-006-View_Definitions_Registry.md)
 
 
 ## Version

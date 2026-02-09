@@ -19,8 +19,6 @@ use std::{
 use thiserror::Error;
 use tracing::{debug, trace};
 
-use crate::registry::CardDefinition;
-
 const MODEL_MARKDOWN_TEMPLATE: &str = include_str!("model.template.md");
 
 #[cfg(test)]
@@ -79,6 +77,10 @@ impl Model {
 					.unwrap_or_default();
 				if file_name == "AuditLog.json" || file_name == "Compact.json" {
 					continue;
+				}
+
+				if cards.len() >= 99999 {
+					return Err(ModelError::ModelTooLarge);
 				}
 
 				debug!("Loading card from {}", entry_path.display());
@@ -146,7 +148,10 @@ impl Model {
 		let mut warnings: Vec<String> = Vec::new();
 
 		for card in &self.cards {
-			warnings.extend(card.check_registry());
+			warnings.extend(
+				card.check_registry()
+					.unwrap_or_else(|e| vec![format!("{}: Registry error: {}", card.id, e)]),
+			);
 		}
 		warnings
 	}
@@ -192,6 +197,18 @@ impl Model {
 
 		let mission_md_path = path.join(format!("{}-{}.md", self.root_card.id, mission_slug));
 
+		// Map card IDs to their markdown output paths so we can produce correct relative links.
+		let mut markdown_paths_by_id: HashMap<String, PathBuf> = HashMap::new();
+		markdown_paths_by_id.insert(self.root_card.id.clone(), mission_md_path.clone());
+		for card in &self.cards {
+			let card_slug = sanitize_filename(&card.name);
+			let card_md_path = path
+				.join(self.root_card.id.as_str())
+				.join(card.card_type.as_str())
+				.join(format!("{}-{}.md", card.id, card_slug));
+			markdown_paths_by_id.insert(card.id.clone(), card_md_path);
+		}
+
 		let mut markdown = String::from(MODEL_MARKDOWN_TEMPLATE);
 
 		let mission_link = format!(
@@ -206,10 +223,7 @@ impl Model {
 			.replace("{{description}}", self.root_card.description.as_str());
 
 		let mut views: String = String::new();
-		let view_path = path
-			.join("aurora")
-			.join(self.root_card.id.as_str())
-			.join("Views");
+		let view_path = path.join(self.root_card.id.as_str()).join("Views");
 		if view_path.exists() {
 			let mut svg_files: Vec<String> = Vec::new();
 			for entry in fs::read_dir(&view_path)? {
@@ -223,8 +237,8 @@ impl Model {
 			svg_files.sort();
 			for file_name in svg_files {
 				views.push_str(&format!(
-					"\n![{}](aurora/{}/Views/{})\n",
-					file_name, self.root_card.id, file_name,
+					"\n![{}]({}/Views/{})\n",
+					file_name, self.root_card.id, file_name
 				));
 			}
 		}
@@ -234,15 +248,22 @@ impl Model {
 		markdown = markdown.replace("{{views}}", &views);
 
 		let mut index: String = String::new();
-		let mut card_types: Vec<String> = CardDefinition::get_all()
-			.iter()
-			.map(|c| c.card_type.to_string())
-			.collect();
+		// Only emit card types that exist in this model.
+		let mut card_types: Vec<String> = self.cards.iter().map(|c| c.card_type.clone()).collect();
 		card_types.sort();
+		card_types.dedup();
 		for card_type in card_types {
-			index.push_str(format!("### {}\n\n", card_type).as_str());
+			let cards_of_type: Vec<&Card> = self
+				.cards
+				.iter()
+				.filter(|c| c.card_type == card_type)
+				.collect();
+			if cards_of_type.is_empty() {
+				continue;
+			}
 
-			for card in self.cards.iter().filter(|c| c.card_type == card_type) {
+			index.push_str(format!("### {}\n\n", card_type).as_str());
+			for card in cards_of_type {
 				let card_slug = sanitize_filename(&card.name);
 				let card_link = format!(
 					"- **[{} - {}]({}/{}/{}-{}.md)**: {}\n\n",
@@ -258,12 +279,16 @@ impl Model {
 			}
 		}
 		markdown = markdown.replace("{{index}}", &index);
-		markdown = markdown.replace("\n\n\n", "\n");
+		// Keep at most a single blank line between sections.
+		while markdown.contains("\n\n\n") {
+			markdown = markdown.replace("\n\n\n", "\n\n");
+		}
 
 		std::fs::write(&readme_path, markdown)?;
 
 		self.root_card.write_markdown(
 			&mission_md_path,
+			Some(&markdown_paths_by_id),
 			self.audit_log.entries_for_target(&self.root_card.id),
 		);
 
@@ -274,7 +299,11 @@ impl Model {
 			fs::create_dir_all(&card_path)?;
 			let card_slug = sanitize_filename(&card.name);
 			card_path.push(format!("{}-{}.md", card.id, card_slug));
-			card.write_markdown(&card_path, self.audit_log.entries_for_target(&card.id));
+			card.write_markdown(
+				&card_path,
+				Some(&markdown_paths_by_id),
+				self.audit_log.entries_for_target(&card.id),
+			);
 		}
 		Ok(())
 	}
@@ -414,4 +443,6 @@ pub enum ModelError {
 	UnexpectedMissionCard(String),
 	#[error("{0}")]
 	ValidationErrors(String),
+	#[error("Model exceeds maximum allowed size of 99999 cards.")]
+	ModelTooLarge,
 }

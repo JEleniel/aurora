@@ -10,9 +10,9 @@ _No attributes defined._
 
 ## Links
 
-- requires [CAP-001](../Capability/CAP-001.md)
-- requires [CAP-002](../Capability/CAP-002.md)
-- requires [CAP-003](../Capability/CAP-003.md)
+- requires [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)
+- requires [CAP-002](../Capability/CAP-002-Generate_Views.md)
+- requires [CAP-003](../Capability/CAP-003-Export_Compact_Model.md)
 
 
 ## Version

@@ -10,9 +10,9 @@ _No attributes defined._
 
 ## Links
 
-- requires [CAP-004](../Capability/CAP-004.md)
-- requires [CAP-005](../Capability/CAP-005.md)
-- imposes [CNS-003](../Constraint/CNS-003.md)
+- requires [CAP-004](../Capability/CAP-004-Maintain_Audit_Trail.md)
+- requires [CAP-005](../Capability/CAP-005-Maintain_Canonical_Registries.md)
+- imposes [CNS-003](../Constraint/CNS-003-Standard_Model_File_Layout.md)
 
 
 ## Version

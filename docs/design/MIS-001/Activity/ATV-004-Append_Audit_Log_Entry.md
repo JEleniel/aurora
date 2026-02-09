@@ -10,8 +10,8 @@ _No attributes defined._
 
 ## Links
 
-- uses [COM-003](../Component/COM-003.md)
-- produces [ART-004](../Artifact/ART-004.md)
+- uses [COM-003](../Component/COM-003-Tauri_Rust_Backend.md)
+- produces [ART-004](../Artifact/ART-004-Mission_Audit_Log.md)
 
 
 ## Version

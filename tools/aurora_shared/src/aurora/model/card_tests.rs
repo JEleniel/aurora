@@ -3,7 +3,7 @@ use std::path::PathBuf;
 use serde_json::{Value, json};
 
 use super::{Card, Link};
-use crate::registry::{CardDefinition, RelationshipDefinition};
+use crate::registry::CardRegistry;
 
 fn card_schema(required_extra: bool) -> Value {
 	let mut required = vec!["id", "card_type", "name", "description", "links", "version"];
@@ -88,38 +88,62 @@ fn try_load_collects_schema_errors() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 #[test]
-fn check_registry_warns_on_unknown() {
+fn check_registry_warns_on_unknown() -> Result<(), Box<dyn std::error::Error>> {
+	let registry = CardRegistry::try_new()?;
+	let target_def = registry
+		.definitions
+		.iter()
+		.find(|def| def.acronym.as_bytes().len() == 3)
+		.expect("registry should contain at least one 3-letter card acronym");
+
 	let card = build_card(
 		"UNK-001",
 		"UnknownType",
 		vec![Link {
-			target: "BAD-001".to_string(),
+			target: format!("{}-001", target_def.acronym),
 			relationship: "rel".to_string(),
 		}],
 	);
 
-	let warnings = card.check_registry();
+	let warnings = card.check_registry()?;
 	assert!(!warnings.is_empty());
+	Ok(())
 }
 
 #[test]
-fn check_registry_accepts_known_relationships() {
-	let definitions = RelationshipDefinition::get_all();
-	assert!(!definitions.is_empty());
-	let definition = definitions[0].clone();
-	let target = CardDefinition::get_by_type(&definition.target_card_type);
+fn check_registry_accepts_known_relationships() -> Result<(), Box<dyn std::error::Error>> {
+	let registry = CardRegistry::try_new()?;
+	let source_def = registry
+		.definitions
+		.iter()
+		.find(|def| !def.relationships.is_empty())
+		.expect("registry should contain at least one card type with relationships");
+	let rel = source_def
+		.relationships
+		.first()
+		.expect("relationship list was unexpectedly empty");
+	let target_def = registry.try_get_by_type(&rel.target_card_type)?;
+	assert_eq!(
+		target_def.acronym.as_bytes().len(),
+		3,
+		"card acronyms must be 3 bytes because Card::check_registry slices target[0..3]"
+	);
 
 	let card = build_card(
 		"SRC-001",
-		&definition.source_card_type,
+		&source_def.card_type,
 		vec![Link {
-			target: format!("{}-001", target.acronym),
-			relationship: definition.relationship,
+			target: format!("{}-001", target_def.acronym),
+			relationship: rel.relationship.clone(),
 		}],
 	);
 
-	let warnings = card.check_registry();
-	assert!(warnings.is_empty());
+	let warnings = card.check_registry()?;
+	assert!(
+		warnings.is_empty(),
+		"expected no warnings, got: {warnings:?}"
+	);
+	Ok(())
 }
 
 #[test]
@@ -140,7 +164,11 @@ fn write_markdown_outputs_file() -> Result<(), Box<dyn std::error::Error>> {
 	let card_path = temp.path().join("REQ-001.md");
 	let card = build_card("REQ-001", "Requirement", Vec::new());
 
-	card.write_markdown(&card_path, std::iter::empty());
+	card.write_markdown(
+		&card_path,
+		None,
+		std::iter::empty::<&crate::AuditLogEntry>(),
+	);
 	let contents = std::fs::read_to_string(&card_path)?;
 	assert!(contents.contains("REQ-001"));
 	Ok(())

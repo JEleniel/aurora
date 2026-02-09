@@ -30,15 +30,8 @@
 		"relationship": {
 			"description": "Single mapping from target card acronym to a human-readable verb",
 			"type": "object",
-			"minProperties": 1,
-			"maxProperties": 1,
-			"propertyNames": {
-				"pattern": "^[A-Z]{3}$"
-			},
-			"additionalProperties": {
-				"type": "string",
-				"minLength": 1
-			}
+			"properties": { "target_card_type": { "type": "string" }, "relationship": { "type": "string" } },
+			"additionalProperties": false
 		},
 		"entry": {
 			"description": "One canonical card type definition (normative + optional rendering fields)",

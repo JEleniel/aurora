@@ -10,9 +10,9 @@ _No attributes defined._
 
 ## Links
 
-- comprises [COM-003](../Component/COM-003.md)
-- comprises [COM-004](../Component/COM-004.md)
-- comprises [COM-001](../Component/COM-001.md)
+- comprises [COM-003](../Component/COM-003-Tauri_Rust_Backend.md)
+- comprises [COM-004](../Component/COM-004-Editor_Frontend_UI.md)
+- comprises [COM-001](../Component/COM-001-Aurora_Shared_Library.md)
 
 
 ## Version

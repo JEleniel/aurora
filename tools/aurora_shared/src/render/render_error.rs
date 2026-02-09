@@ -41,7 +41,6 @@ pub enum RenderError {
 	},
 	#[error("Rendering views is not available in this build")]
 	RenderUnavailable,
-
 	#[error("SVG template is missing the {{viewbox}} placeholder")]
 	SvgTemplateMissingViewbox,
 	#[error("SVG template is missing the {{diagram}} placeholder")]
@@ -54,4 +53,6 @@ pub enum RenderError {
 	SvgRouteFailed,
 	#[error("I/O error: {0}")]
 	Io(#[from] std::io::Error),
+	#[error("SVG output exceeds maximum size")]
+	SvgTooLarge,
 }

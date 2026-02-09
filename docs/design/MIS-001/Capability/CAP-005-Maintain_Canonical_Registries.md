@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- requires [PRO-005](../Process/PRO-005.md)
+- requires [PRO-005](../Process/PRO-005-Maintain_Canonical_Registries.md)
 
 
 ## Version

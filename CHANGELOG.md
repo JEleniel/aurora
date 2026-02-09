@@ -78,6 +78,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Further refined SVG geometry by narrowing hexagons, making State nodes circular with a slight size increase, and moving diamond/hexagon icons further inward.
 - Snapped edge paths to the scaled shape boundaries (eliminating arrow gaps) and tuned default layout spacing (nodesep/ranksep).
 - Restored curved spline routing while keeping edge concentration for shared incoming/outgoing lines.
+- SVG edge routing now allows diagonal moves with octile A* costs to reduce stair-step paths in dense diagrams.
+- Layout centering now translates layers towards their target medians to avoid left-biased packing and reduce uneven horizontal gaps.
+- SVG edge routing now uses octilinear (0/45/90°) paths with turn penalties and soft avoidance of prior edges to reduce crossings while still routing around nodes.
 
 ### Fixed
 
@@ -117,6 +120,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated the Everything View renderer to show only the most direct Mission paths as solid edges and dash alternate paths.
 - Centered SVG node labels to remove excessive right-side whitespace in rendered shapes.
 - Adjusted boundary rendering to avoid overlaps between disjoint boundaries and added overlap regression coverage.
-- Restored `aurora_cli render-views`/`render-all` by implementing layout+SVG view rendering and writing SVGs under `aurora/<MISSION_ID>/Views/`.
+- Restored `aurora_cli render-views`/`render-all` by implementing layout+SVG view rendering and writing SVGs under `<OUTPUT>/<MISSION_ID>/Views/`.
+- Filtered view graph building now prunes disconnected components and isolated non-root nodes so diagrams don’t include unconnected cards.
+- Tightened bottom-rank horizontal packing while keeping higher ranks centered over their children to reduce overly-wide gaps in parts of a diagram.
+- Prevented filtered views from being skipped by promoting orphaned/unreachable nodes to additional layout roots.
 - Made model Markdown view embedding deterministic by sorting embedded SVG filenames.
 - Improved SVG readability by removing inherited text stroke outlines and adding a screen-only white background (hidden when printing).
+- Improved hierarchical layout centering so children can be centered under multiple parents (including long edges), and fixed SVG grid interpretation so empty columns/rows don't consume full node dimensions (restoring expected "gapping").
+- Fixed missing SVG symbols for `component` and `trapezoid` card shapes so updated canonical definitions render correctly.
+- Prevented SVG edge routes from falling back through nodes by expanding routing bounds and keeping node obstacles hard-blocked.

@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::registry::CardDefinition;
+use crate::{CardError, registry::CardRegistry};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Link {
@@ -9,14 +9,19 @@ pub struct Link {
 }
 
 impl Link {
-	pub fn get_markdown(&self) -> String {
-		format!(
+	pub fn markdown_with_href(&self, href: &str) -> String {
+		format!("- {} [{}]({})\n", self.relationship, self.target, href)
+	}
+
+	pub fn try_get_markdown(&self) -> Result<String, CardError> {
+		let registry = CardRegistry::try_new()?;
+		Ok(format!(
 			"- {} [{}](../{}/{}.md)\n",
 			self.relationship,
 			self.target,
-			CardDefinition::get_by_acronym(&self.target[0..3]).card_type,
+			registry.try_get_by_acronym(&self.target[0..3])?.card_type,
 			self.target,
-		)
+		))
 	}
 }
 

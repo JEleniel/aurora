@@ -10,9 +10,9 @@ _No attributes defined._
 
 ## Links
 
-- exposes [INT-001](../Interface/INT-001.md)
-- implements [FEA-004](../Feature/FEA-004.md)
-- composes [COM-001](../Component/COM-001.md)
+- exposes [INT-001](../Interface/INT-001-Editor_Backend_API.md)
+- implements [FEA-004](../Feature/FEA-004-Editor_Model_Operations.md)
+- composes [COM-001](COM-001-Aurora_Shared_Library.md)
 
 
 ## Version

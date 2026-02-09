@@ -1,5 +1,3 @@
-use crate::render::render_error::RenderError;
-
 use super::graph::{build_graph, classify_edges, validate_graph};
 use super::test_support::{make_card, make_model};
 
@@ -24,7 +22,7 @@ fn build_graph_filters_cards_by_type() {
 }
 
 #[test]
-fn validate_graph_rejects_unreachable_nodes() {
+fn build_graph_prunes_unreachable_components() {
 	let root = make_card("MIS-001", "Mission", &["REQ-001"]);
 	let requirement = make_card("REQ-001", "Requirement", &[]);
 	let driver_one = make_card("DRI-001", "Driver", &["DRI-002"]);
@@ -38,8 +36,12 @@ fn validate_graph_rejects_unreachable_nodes() {
 	)
 	.expect("graph should build");
 
-	let result = validate_graph(&graph);
-	assert!(matches!(result, Err(RenderError::UnreachableNodes(nodes)) if nodes.len() == 2));
+	assert!(graph.roots.contains(&"MIS-001".to_string()));
+	assert!(!graph.allowed_nodes.contains("DRI-001"));
+	assert!(!graph.allowed_nodes.contains("DRI-002"));
+	assert!(!graph.roots.contains(&"DRI-001".to_string()));
+	assert!(!graph.roots.contains(&"DRI-002".to_string()));
+	validate_graph(&graph).expect("graph should validate");
 }
 
 #[test]

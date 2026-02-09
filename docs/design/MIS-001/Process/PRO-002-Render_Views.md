@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- includes [ATV-002](../Activity/ATV-002.md)
+- includes [ATV-002](../Activity/ATV-002-Render_View_Artifacts.md)
 
 
 ## Version

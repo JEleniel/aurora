@@ -6,10 +6,12 @@ use crate::{Model, render::render_error::RenderError};
 
 use super::graph::{EdgeClassification, LayoutGraph, build_graph, classify_edges, validate_graph};
 use super::ordering::{
-	assign_ranks, assign_x_positions, build_backbone_adjacency, build_layers, center_parents,
-	layer_neighbors, median_sweeps, topo_sort,
+	assign_ranks, assign_x_positions, build_backbone_adjacency, build_layers, center_children,
+	center_parents, compact_layer_tight, layer_neighbors, median_sweeps, topo_sort,
 };
 use super::types::{Layout, LayoutEdge, LayoutNode};
+
+type NeighborMap = HashMap<String, Vec<String>>;
 
 /// Compute a hierarchical layout for a view selection over a model.
 pub fn layout_model(
@@ -41,15 +43,70 @@ pub fn layout_model(
 		&successor_by_layer,
 	)?;
 	let mut x_positions = assign_x_positions(&layers);
-	center_parents(
+
+	// Use full (non-adjacent) predecessor/successor maps when centering so that long edges
+	// influence positioning even without dummy-node expansion.
+	let (all_predecessors, all_successors) = layer_neighbors_all(&rank, &graph.edges)?;
+
+	// Keep the bottom-most rank tight (minimum spacing), but do not force it to start at x=0.
+	// We compact around its current position so multi-parent midpoints are preserved.
+	for _ in 0..8 {
+		center_children(
+			&mut x_positions,
+			&layers,
+			max_layer_index,
+			&all_predecessors,
+		)?;
+		if let Some(bottom) = layers.get(max_layer_index) {
+			compact_layer_tight(bottom, &mut x_positions);
+		}
+		center_parents(&mut x_positions, &layers, max_layer_index, &all_successors)?;
+	}
+	// Final refinement: ensure the bottom is tight, then center each higher rank above children.
+	center_children(
 		&mut x_positions,
 		&layers,
 		max_layer_index,
-		&successor_by_layer,
+		&all_predecessors,
 	)?;
+	if let Some(bottom) = layers.get(max_layer_index) {
+		compact_layer_tight(bottom, &mut x_positions);
+	}
+	center_parents(&mut x_positions, &layers, max_layer_index, &all_successors)?;
 
 	validate_layout(&graph, &edge_classification, &rank)?;
 	build_layout(&graph, &rank, &x_positions)
+}
+
+fn layer_neighbors_all(
+	rank: &HashMap<String, i32>,
+	edges: &std::collections::HashSet<(String, String)>,
+) -> Result<(NeighborMap, NeighborMap), RenderError> {
+	let mut predecessor: NeighborMap = HashMap::new();
+	let mut successor: NeighborMap = HashMap::new();
+	for (a, b) in edges {
+		let rank_a = rank
+			.get(a)
+			.copied()
+			.ok_or_else(|| RenderError::MissingRank(a.clone()))?;
+		let rank_b = rank
+			.get(b)
+			.copied()
+			.ok_or_else(|| RenderError::MissingRank(b.clone()))?;
+		if rank_b > rank_a {
+			predecessor.entry(b.clone()).or_default().push(a.clone());
+			successor.entry(a.clone()).or_default().push(b.clone());
+		}
+	}
+	for list in predecessor.values_mut() {
+		list.sort();
+		list.dedup();
+	}
+	for list in successor.values_mut() {
+		list.sort();
+		list.dedup();
+	}
+	Ok((predecessor, successor))
 }
 
 fn validate_layout(

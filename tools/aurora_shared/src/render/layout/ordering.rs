@@ -130,10 +130,35 @@ pub(super) fn assign_x_positions(layers: &[Vec<String>]) -> HashMap<String, i32>
 	let mut x_positions: HashMap<String, i32> = HashMap::new();
 	for layer in layers {
 		for (index, node_id) in layer.iter().enumerate() {
-			x_positions.insert(node_id.clone(), index as i32);
+			// Use half-step coordinates (2 units per column). This allows a node to be
+			// centered between two siblings (e.g. median of [0, 2] becomes 1).
+			x_positions.insert(node_id.clone(), (index as i32) * 2);
 		}
 	}
 	x_positions
+}
+
+/// Pack a layer tightly (minimum spacing) while keeping its overall horizontal placement stable.
+///
+/// The returned positions are the dense half-step grid ($0, 2, 4, \dots$) plus a single integer
+/// offset chosen to keep the packed layer close to its pre-compaction positions.
+pub(super) fn compact_layer_tight(layer: &[String], x_positions: &mut HashMap<String, i32>) {
+	if layer.is_empty() {
+		return;
+	}
+
+	let mut deltas: Vec<i32> = Vec::with_capacity(layer.len());
+	for (index, node_id) in layer.iter().enumerate() {
+		let current = x_positions.get(node_id).copied().unwrap_or(0);
+		let packed = (index as i32) * 2;
+		deltas.push(current - packed);
+	}
+	let offset = median_floor_i32(&mut deltas);
+
+	for (index, node_id) in layer.iter().enumerate() {
+		let packed = (index as i32) * 2;
+		x_positions.insert(node_id.clone(), packed + offset);
+	}
 }
 
 /// Center nodes over their children while preserving order.
@@ -149,6 +174,23 @@ pub(super) fn center_parents(
 	for y in (0..max_layer_index).rev() {
 		let layer = layers.get(y).ok_or(RenderError::MissingLayer(y))?;
 		center_layer(layer, x_positions, successor_by_layer)?;
+	}
+	Ok(())
+}
+
+/// Center nodes under their parents while preserving layer order.
+pub(super) fn center_children(
+	x_positions: &mut HashMap<String, i32>,
+	layers: &[Vec<String>],
+	max_layer_index: usize,
+	predecessor_by_layer: &HashMap<String, Vec<String>>,
+) -> Result<(), RenderError> {
+	if max_layer_index == 0 {
+		return Ok(());
+	}
+	for y in 1..=max_layer_index {
+		let layer = layers.get(y).ok_or(RenderError::MissingLayer(y))?;
+		center_layer(layer, x_positions, predecessor_by_layer)?;
 	}
 	Ok(())
 }
@@ -376,8 +418,23 @@ fn center_layer(
 	let desired = desired_positions(layer, x_positions, successor_by_layer)?;
 	let mut new_x = enforce_left_to_right(&desired);
 	tighten_right_to_left(&mut new_x);
+	translate_layer_towards_desired(&desired, &mut new_x);
 	apply_layer_positions(layer, &new_x, x_positions);
 	Ok(())
+}
+
+fn translate_layer_towards_desired(desired: &[i32], new_x: &mut [i32]) {
+	if desired.is_empty() {
+		return;
+	}
+	let mut offsets: Vec<i32> = Vec::with_capacity(desired.len());
+	for (d, x) in desired.iter().zip(new_x.iter()) {
+		offsets.push(*d - *x);
+	}
+	let offset = median_floor_i32(&mut offsets);
+	for x in new_x.iter_mut() {
+		*x += offset;
+	}
 }
 
 fn desired_positions(
@@ -417,7 +474,8 @@ fn enforce_left_to_right(desired: &[i32]) -> Vec<i32> {
 		let value = if index == 0 {
 			*desired_x
 		} else {
-			let prev = new_x[index - 1] + 1;
+			// Maintain at least one half-step between nodes (2 units).
+			let prev = new_x[index - 1] + 2;
 			std::cmp::max(*desired_x, prev)
 		};
 		new_x.push(value);
@@ -430,7 +488,7 @@ fn tighten_right_to_left(new_x: &mut [i32]) {
 		return;
 	}
 	for index in (0..new_x.len() - 1).rev() {
-		let limit = new_x[index + 1] - 1;
+		let limit = new_x[index + 1] - 2;
 		if new_x[index] > limit {
 			new_x[index] = limit;
 		}

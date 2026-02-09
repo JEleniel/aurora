@@ -1,30 +1,7 @@
-mod card_definition;
-mod relationship_definition;
-mod view_definition;
+mod card_registry;
+mod registry_error;
+mod view_registry;
 
-pub use card_definition::*;
-pub use relationship_definition::*;
-pub use view_definition::*;
-
-/// The official registry of cards, relationships, and views included
-/// in Aurora by default
-pub struct Registry {}
-
-impl Registry {
-	/// Get the cards that are valid to link to from a specified card
-	pub fn get_next_cards(card_type: &str) -> Vec<String> {
-		RelationshipDefinition::get_by_source_card_type(card_type)
-			.iter()
-			.map(|rel| rel.target_card_type.clone())
-			.collect()
-	}
-}
-
-const _: () = {
-	let _ = Registry {};
-	let _ = Registry::get_next_cards as fn(&str) -> Vec<String>;
-	let _ = ViewDefinition::get_all as fn() -> Vec<ViewDefinition>;
-};
-
-#[cfg(test)]
-mod registry_tests;
+pub use card_registry::*;
+pub use registry_error::*;
+pub use view_registry::*;

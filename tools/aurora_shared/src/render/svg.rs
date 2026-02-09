@@ -3,15 +3,16 @@
 //! This module renders an Aurora [`Model`](crate::Model) using an existing [`Layout`](super::Layout)
 //! into a standalone SVG string based on the `svgtemplate.txt` template.
 
+use super::Layout;
+use super::render_error::RenderError;
+use crate::{Card, Model};
 use std::collections::HashMap;
 use std::path::Path;
 
-use crate::{Card, Model};
-
-use super::Layout;
-use super::render_error::RenderError;
-
 const SVG_TEMPLATE: &str = include_str!("svgtemplate.txt");
+
+// Limit the size to prevent runaway rendering in case of very large graphs.
+const SVG_MAX_SIZE: u32 = 50 * 1024 * 1024; // 50 MiB, limit of many SVG renderers
 
 const SYMBOL_BASE_WIDTH_PX: i32 = 160;
 const SYMBOL_BASE_HEIGHT_PX: i32 = 100;
@@ -33,11 +34,12 @@ pub struct SvgConfig {
 
 impl Default for SvgConfig {
 	fn default() -> Self {
-		// Default: 16px root font size, 2rem spacing.
+		// Default: 16px root font size, generous spacing.
 		let base_font_size_px = 16;
 		let rem_px = base_font_size_px;
 		Self {
-			node_spacing_px: 2 * rem_px,
+			// Previously 2rem; triple spacing for readability.
+			node_spacing_px: 6 * rem_px,
 			base_font_size_px,
 			edge_style: EdgeStyle::Curved,
 		}
@@ -60,6 +62,8 @@ impl Svg {
 		layout: &Layout,
 		config: Option<SvgConfig>,
 	) -> Result<String, RenderError> {
+		let base_size: u32 = SVG_TEMPLATE.len() as u32;
+
 		let config = config.unwrap_or_default();
 
 		let cards_by_id = index_cards(model)?;
@@ -70,9 +74,39 @@ impl Svg {
 		let mut edge_bounds: Vec<geom::Bounds> = Vec::new();
 		let mut edge_points: Vec<geom::PointF> = Vec::new();
 
-		let obstacle_bboxes: Vec<geom::RectI> = positioned.values().map(|n| n.bbox).collect();
+		let node_obstacles: Vec<geom::RectI> = positioned.values().map(|n| n.bbox).collect();
+		let mut edge_obstacles: Vec<geom::RectI> = Vec::new();
+		let edge_obstacle_pad_px = (config.base_font_size_px.max(1) / 2).max(2);
+		let cell_px = config.base_font_size_px.max(1);
 
-		for e in &layout.edges {
+		let mut edges = layout.edges.clone();
+		edges.sort_by(|left, right| {
+			let a1 = positioned.get(left.a.as_str());
+			let b1 = positioned.get(left.b.as_str());
+			let a2 = positioned.get(right.a.as_str());
+			let b2 = positioned.get(right.b.as_str());
+			let l1 = a1
+				.and_then(|a| b1.map(|b| (a.bbox.center(), b.bbox.center())))
+				.map(|(a, b)| {
+					let dx = a.x - b.x;
+					let dy = a.y - b.y;
+					(dx * dx + dy * dy) as i32
+				})
+				.unwrap_or(0);
+			let l2 = a2
+				.and_then(|a| b2.map(|b| (a.bbox.center(), b.bbox.center())))
+				.map(|(a, b)| {
+					let dx = a.x - b.x;
+					let dy = a.y - b.y;
+					(dx * dx + dy * dy) as i32
+				})
+				.unwrap_or(0);
+			l2.cmp(&l1)
+				.then_with(|| left.a.cmp(&right.a))
+				.then_with(|| left.b.cmp(&right.b))
+		});
+
+		for e in &edges {
 			let a = positioned
 				.get(e.a.as_str())
 				.ok_or_else(|| RenderError::SvgMissingNode(e.a.clone()))?;
@@ -80,9 +114,20 @@ impl Svg {
 				.get(e.b.as_str())
 				.ok_or_else(|| RenderError::SvgMissingNode(e.b.clone()))?;
 
-			let route = edge::route_edge(&a.bbox, &b.bbox, &obstacle_bboxes, &config)?;
+			let route =
+				edge::route_edge(&a.bbox, &b.bbox, &node_obstacles, &edge_obstacles, &config)?;
+			edge_obstacles.extend(edge::route_obstacles_for_later_edges(
+				&route,
+				cell_px,
+				&a.bbox,
+				&b.bbox,
+				edge_obstacle_pad_px,
+			));
 			edge_points.extend(route.points.iter().copied());
 			edge_bounds.push(route.bounds);
+			if base_size + edges_svg.len() as u32 > SVG_MAX_SIZE {
+				return Err(RenderError::SvgTooLarge);
+			}
 			edges_svg.push_str(&edge::render_edge(&route, config.edge_style));
 		}
 
@@ -91,6 +136,9 @@ impl Svg {
 			let card = cards_by_id
 				.get(id.as_str())
 				.ok_or_else(|| RenderError::SvgMissingNode(id.clone()))?;
+			if base_size + edges_svg.len() as u32 + nodes_svg.len() as u32 > SVG_MAX_SIZE {
+				return Err(RenderError::SvgTooLarge);
+			}
 			nodes_svg.push_str(&node::render_node(card, node, &config));
 		}
 
@@ -105,16 +153,32 @@ impl Svg {
 			"<style>@media print{{#aurora-bg{{display:none;}}}}</style><rect id=\"aurora-bg\" x=\"{}\" y=\"{}\" width=\"{}\" height=\"{}\" style=\"fill:#ffffff;stroke:none;\" />",
 			viewbox.x, viewbox.y, viewbox.w, viewbox.h
 		);
+		if base_size + edges_svg.len() as u32 + nodes_svg.len() as u32 + background.len() as u32
+			> SVG_MAX_SIZE
+		{
+			return Err(RenderError::SvgTooLarge);
+		}
+
 		let drawing = format!(
 			"{}<g id=\"edges\">{}</g><g id=\"nodes\">{}</g>",
 			background, edges_svg, nodes_svg
 		);
+		if base_size + drawing.len() as u32 > SVG_MAX_SIZE {
+			return Err(RenderError::SvgTooLarge);
+		}
+
 		let mut svg = fill_template(SVG_TEMPLATE, &drawing, &viewbox)?;
+		if svg.len() as u32 > SVG_MAX_SIZE {
+			return Err(RenderError::SvgTooLarge);
+		}
 
 		// Keep template compatibility, but make width/height match the viewBox size.
 		svg = svg
 			.replace("width=\"1600\"", &format!("width=\"{}\"", viewbox.w))
 			.replace("height=\"400\"", &format!("height=\"{}\"", viewbox.h));
+		if svg.len() as u32 > SVG_MAX_SIZE {
+			return Err(RenderError::SvgTooLarge);
+		}
 
 		Ok(svg)
 	}
@@ -352,6 +416,8 @@ mod tests {
 		};
 
 		let svg = super::Svg::render(&model, &layout, None).expect("svg render");
+		assert!(!svg.contains("fill:#00000000;stroke:#000000"));
+		assert!(svg.contains("non-scaling-stroke"));
 		assert!(svg.contains("id=\"aurora-bg\""));
 		assert!(svg.contains("stroke:none"));
 	}

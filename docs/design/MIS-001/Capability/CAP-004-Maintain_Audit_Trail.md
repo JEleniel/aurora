@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- requires [PRO-004](../Process/PRO-004.md)
+- requires [PRO-004](../Process/PRO-004-Record_Audit_Log_Entries.md)
 
 
 ## Version

@@ -1,8 +1,8 @@
-use crate::{registry::CardDefinition, registry::RelationshipDefinition};
+use crate::registry::CardRegistry;
 use jsonschema::{CompilationError, Draft, JSONSchema};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, HashMap};
 use std::path::{Path, PathBuf};
 use thiserror::Error;
 use tracing::debug;
@@ -54,25 +54,27 @@ impl Card {
 		Ok(card)
 	}
 
-	pub fn check_registry(&self) -> Vec<String> {
+	pub fn check_registry(&self) -> Result<Vec<String>, CardError> {
+		let registry = CardRegistry::try_new()?;
 		let mut warnings: Vec<String> = Vec::new();
-		if !CardDefinition::validate(&self.card_type) {
+
+		if !registry.check(&self.card_type) {
 			warnings.push(format!("Card has unknown card type: {}", self.card_type));
 		}
 		for link in self.links.iter() {
-			let target_card_def = CardDefinition::get_by_acronym(&link.target[0..3]);
-			if !CardDefinition::validate(target_card_def.card_type.as_str()) {
+			let target_card_def = registry.try_get_by_acronym(&link.target[0..3])?;
+			if !registry.check(target_card_def.card_type.as_str()) {
 				warnings.push(format!(
-					"Card links to unknown target card: {}",
+					"Card links to unknown target card type: {}",
 					link.target
 				));
 				continue;
 			};
 
-			if !RelationshipDefinition::validate(
+			if !registry.check_link(
 				&self.card_type,
 				&link.relationship,
-				target_card_def.card_type.as_str(),
+				&target_card_def.card_type,
 			) {
 				warnings.push(format!(
 					"Card {} has unknown relationship '{}' to target card {}",
@@ -81,7 +83,7 @@ impl Card {
 			}
 		}
 
-		warnings
+		Ok(warnings)
 	}
 
 	pub fn write(&self, path: &Path) {
@@ -92,6 +94,7 @@ impl Card {
 	pub fn write_markdown<'a>(
 		&self,
 		path: &Path,
+		markdown_paths_by_id: Option<&HashMap<String, PathBuf>>,
 		audit_entries: impl Iterator<Item = &'a super::super::AuditLogEntry>,
 	) {
 		let mut markdown: String = String::from(CARD_MARKDOWN_TEMPLATE);
@@ -123,7 +126,16 @@ impl Card {
 			links.push_str("_No links defined._");
 		} else {
 			for link in &self.links {
-				links.push_str(link.get_markdown().as_str());
+				let href = markdown_paths_by_id
+					.and_then(|map| map.get(&link.target))
+					.and_then(|target_path| {
+						let from_dir = path.parent()?;
+						Some(relative_href(from_dir, target_path))
+					});
+				match href {
+					Some(href) => links.push_str(link.markdown_with_href(href.as_str()).as_str()),
+					None => links.push_str(&format!("- {} {}\n", link.relationship, link.target)),
+				}
 			}
 		}
 
@@ -200,6 +212,36 @@ impl Card {
 	}
 }
 
+fn relative_href(from_dir: &Path, target_path: &Path) -> String {
+	let rel = relative_path(from_dir, target_path);
+	rel.to_string_lossy().replace('\\', "/")
+}
+
+fn relative_path(from_dir: &Path, to: &Path) -> PathBuf {
+	let from_components: Vec<_> = from_dir.components().collect();
+	let to_components: Vec<_> = to.components().collect();
+
+	let mut common_len = 0usize;
+	while common_len < from_components.len()
+		&& common_len < to_components.len()
+		&& from_components[common_len] == to_components[common_len]
+	{
+		common_len += 1;
+	}
+
+	let mut out = PathBuf::new();
+	for _ in common_len..from_components.len() {
+		out.push("..");
+	}
+	for comp in &to_components[common_len..] {
+		out.push(comp.as_os_str());
+	}
+	if out.as_os_str().is_empty() {
+		out.push(".");
+	}
+	out
+}
+
 #[derive(Debug, Error)]
 pub enum CardError {
 	#[error("I/O error: {0}")]
@@ -214,6 +256,8 @@ pub enum CardError {
 	SchemaCompilationError(#[from] CompilationError),
 	#[error("Card not found: {0}")]
 	CardNotFound(String),
+	#[error("Registry error: {0}")]
+	RegistryError(#[from] crate::registry::RegistryError),
 }
 
 #[cfg(test)]

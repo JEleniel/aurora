@@ -10,10 +10,10 @@ _No attributes defined._
 
 ## Links
 
-- realizes [CAP-001](../Capability/CAP-001.md)
-- realizes [CAP-002](../Capability/CAP-002.md)
-- realizes [CAP-003](../Capability/CAP-003.md)
-- realizes [CAP-004](../Capability/CAP-004.md)
+- realizes [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)
+- realizes [CAP-002](../Capability/CAP-002-Generate_Views.md)
+- realizes [CAP-003](../Capability/CAP-003-Export_Compact_Model.md)
+- realizes [CAP-004](../Capability/CAP-004-Maintain_Audit_Trail.md)
 
 
 ## Version

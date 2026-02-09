@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- produces [ART-005](../Artifact/ART-005.md)
+- produces [ART-005](../Artifact/ART-005-Canonical_Definitions_Registry.md)
 
 
 ## Version

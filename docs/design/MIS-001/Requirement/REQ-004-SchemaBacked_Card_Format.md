@@ -10,8 +10,8 @@ _No attributes defined._
 
 ## Links
 
-- requires [CAP-001](../Capability/CAP-001.md)
-- requires [CAP-005](../Capability/CAP-005.md)
+- requires [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)
+- requires [CAP-005](../Capability/CAP-005-Maintain_Canonical_Registries.md)
 
 
 ## Version

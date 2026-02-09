@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- desires [STR-001](../Story/STR-001.md)
+- desires [STR-001](../Story/STR-001-Deterministic_Modeling_Experience.md)
 
 
 ## Version

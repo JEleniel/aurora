@@ -9,23 +9,29 @@ use std::collections::{BTreeSet, HashSet};
 use std::path::Path;
 
 use crate::Aurora;
-use crate::registry::ViewDefinition;
+use crate::registry::{ViewDefinition, ViewRegistry};
 use render_error::RenderError;
-use tracing::info;
+use tracing::{info, warn};
 
 /// Render all views for the provided Aurora models.
 pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
-	let view_definitions = ViewDefinition::get_all();
+	let view_definitions = match ViewRegistry::try_new().and_then(|r| r.try_get_all()) {
+		Ok(defs) => defs,
+		Err(err) => {
+			warn!(
+				"Failed to load view definitions; skipping view rendering ({})",
+				err
+			);
+			return Ok(());
+		}
+	};
 	if view_definitions.is_empty() {
-		info!("No view definitions available; skipping view rendering.");
+		warn!("No view definitions available; skipping view rendering.");
 		return Ok(());
 	}
 
 	for model in &aurora.models {
-		let views_dir = output_dir
-			.join("aurora")
-			.join(model.root_card.id.as_str())
-			.join("Views");
+		let views_dir = output_dir.join(model.root_card.id.as_str()).join("Views");
 		std::fs::create_dir_all(&views_dir)?;
 
 		let card_types = model_card_types(model);
@@ -47,21 +53,13 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 			{
 				Ok(layout) => layout,
 				Err(err) => {
-					info!(
+					warn!(
 						"Skipping view '{}' for {}: layout failed ({})",
 						view.name, model.root_card.id, err
 					);
 					continue;
 				}
 			};
-
-			if layout.nodes.len() <= 1 {
-				info!(
-					"Skipping view '{}' for {}: view has <= 1 node",
-					view.name, model.root_card.id
-				);
-				continue;
-			}
 
 			let view_slug = sanitize_filename(view.name.as_str());
 			let view_slug = if view_slug.is_empty() {
@@ -80,9 +78,8 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 						output_path.display()
 					);
 				}
-				Err(err @ RenderError::Io(_)) => return Err(err),
 				Err(err) => {
-					info!(
+					warn!(
 						"Skipping view '{}' for {}: SVG render failed ({})",
 						view.name, model.root_card.id, err
 					);
@@ -108,9 +105,6 @@ fn union_view_card_types(view: &ViewDefinition) -> Vec<String> {
 		all.insert(t.clone());
 	}
 	for t in &view.included_card_types {
-		all.insert(t.clone());
-	}
-	for t in &view.optional_card_types {
 		all.insert(t.clone());
 	}
 	all.into_iter().collect()

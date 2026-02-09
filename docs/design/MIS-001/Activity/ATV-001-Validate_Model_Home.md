@@ -10,8 +10,8 @@ _No attributes defined._
 
 ## Links
 
-- uses [COM-001](../Component/COM-001.md)
-- produces [ART-001](../Artifact/ART-001.md)
+- uses [COM-001](../Component/COM-001-Aurora_Shared_Library.md)
+- produces [ART-001](../Artifact/ART-001-Validation_Report.md)
 
 
 ## Version

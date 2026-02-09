@@ -4,6 +4,7 @@ use chrono::{TimeZone, Utc};
 use serde_json::{Value, json};
 
 use super::{Model, ModelError};
+use crate::registry::CardRegistry;
 use crate::{AuditChangeType, AuditLog, AuditLogEntry};
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
@@ -231,6 +232,227 @@ fn write_markdown_uses_sanitized_names_and_audit_history() -> Result<()> {
 	}
 	if !card_content.contains("Tester") {
 		return Err(missing("missing audit log entry"));
+	}
+
+	Ok(())
+}
+
+#[test]
+fn write_markdown_embeds_views_from_mission_views_dir() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let output_path = temp.path().to_path_buf();
+	let mission_name = "Mission Alpha";
+
+	let root_card = super::Card {
+		schema: None,
+		id: "MIS-001".to_string(),
+		card_type: "Mission".to_string(),
+		card_subtype: None,
+		name: mission_name.to_string(),
+		description: "Root description".to_string(),
+		version: "1.0.0".to_string(),
+		status: None,
+		boundary: None,
+		notes: None,
+		attributes: super::Attributes::new(),
+		links: Vec::new(),
+		source_path: PathBuf::new(),
+		validation_errors: Vec::new(),
+	};
+
+	let audit_log = AuditLog {
+		schema: None,
+		history: Vec::new(),
+		source_path: PathBuf::new(),
+		validation_errors: Vec::new(),
+	};
+
+	let model = Model {
+		root_card,
+		cards: Vec::new(),
+		audit_log,
+		model_home: PathBuf::new(),
+		mission_home: PathBuf::new(),
+	};
+
+	let views_dir = output_path.join("MIS-001").join("Views");
+	std::fs::create_dir_all(&views_dir)?;
+	std::fs::write(views_dir.join("Process.svg"), "<svg></svg>")?;
+
+	model.write_markdown(&output_path)?;
+
+	let mission_slug = super::sanitize_filename(mission_name);
+	let readme_path = output_path.join(format!("README-MIS-001-{}.md", mission_slug));
+	let readme = std::fs::read_to_string(readme_path)?;
+	if !readme.contains("![Process.svg](MIS-001/Views/Process.svg)") {
+		return Err(missing("missing view embed"));
+	}
+	if !readme.contains("## Views\n\n![Process.svg](MIS-001/Views/Process.svg)\n\n## Card Index") {
+		return Err(missing("views section lost surrounding blank lines"));
+	}
+
+	Ok(())
+}
+
+#[test]
+fn write_markdown_skips_empty_card_types_in_index() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let output_path = temp.path().to_path_buf();
+
+	let root_card = super::Card {
+		schema: None,
+		id: "MIS-001".to_string(),
+		card_type: "Mission".to_string(),
+		card_subtype: None,
+		name: "Mission".to_string(),
+		description: "Root description".to_string(),
+		version: "1.0.0".to_string(),
+		status: None,
+		boundary: None,
+		notes: None,
+		attributes: super::Attributes::new(),
+		links: Vec::new(),
+		source_path: PathBuf::new(),
+		validation_errors: Vec::new(),
+	};
+
+	let only_card = super::Card {
+		schema: None,
+		id: "FEA-001".to_string(),
+		card_type: "Feature".to_string(),
+		card_subtype: None,
+		name: "Feature One".to_string(),
+		description: "desc".to_string(),
+		version: "1.0.0".to_string(),
+		status: None,
+		boundary: None,
+		notes: None,
+		attributes: super::Attributes::new(),
+		links: Vec::new(),
+		source_path: PathBuf::new(),
+		validation_errors: Vec::new(),
+	};
+
+	let audit_log = AuditLog {
+		schema: None,
+		history: Vec::new(),
+		source_path: PathBuf::new(),
+		validation_errors: Vec::new(),
+	};
+
+	let model = Model {
+		root_card,
+		cards: vec![only_card],
+		audit_log,
+		model_home: PathBuf::new(),
+		mission_home: PathBuf::new(),
+	};
+
+	model.write_markdown(&output_path)?;
+
+	let readme_path = output_path.join("README-MIS-001-Mission.md");
+	let readme = std::fs::read_to_string(readme_path)?;
+	if !readme.contains("### Feature") {
+		return Err(missing("expected Feature section in index"));
+	}
+
+	// Find a card type from the registry that is not present and ensure it is not emitted.
+	let registry = CardRegistry::try_new()?;
+	let forbidden = registry
+		.definitions
+		.iter()
+		.map(|def| def.card_type.as_str())
+		.find(|t| *t != "Feature" && *t != "Mission")
+		.ok_or_else(|| {
+			missing("registry should contain a card type besides Feature and Mission")
+		})?;
+	if readme.contains(&format!("### {forbidden}\n")) {
+		return Err(missing("index should skip empty card types"));
+	}
+
+	Ok(())
+}
+
+#[test]
+fn write_markdown_links_are_relative_and_point_to_slugged_files() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let output_path = temp.path().to_path_buf();
+	let mission_name = "Mission Name!";
+
+	let root_card = super::Card {
+		schema: None,
+		id: "MIS-001".to_string(),
+		card_type: "Mission".to_string(),
+		card_subtype: None,
+		name: mission_name.to_string(),
+		description: "Root description".to_string(),
+		version: "1.0.0".to_string(),
+		status: None,
+		boundary: None,
+		notes: None,
+		attributes: super::Attributes::new(),
+		links: vec![super::Link {
+			target: "FEA-001".to_string(),
+			relationship: "rel".to_string(),
+		}],
+		source_path: PathBuf::new(),
+		validation_errors: Vec::new(),
+	};
+
+	let feature = super::Card {
+		schema: None,
+		id: "FEA-001".to_string(),
+		card_type: "Feature".to_string(),
+		card_subtype: None,
+		name: "Feature: One?".to_string(),
+		description: "desc".to_string(),
+		version: "1.0.0".to_string(),
+		status: None,
+		boundary: None,
+		notes: None,
+		attributes: super::Attributes::new(),
+		links: vec![super::Link {
+			target: "MIS-001".to_string(),
+			relationship: "back".to_string(),
+		}],
+		source_path: PathBuf::new(),
+		validation_errors: Vec::new(),
+	};
+
+	let audit_log = AuditLog {
+		schema: None,
+		history: Vec::new(),
+		source_path: PathBuf::new(),
+		validation_errors: Vec::new(),
+	};
+
+	let model = Model {
+		root_card,
+		cards: vec![feature],
+		audit_log,
+		model_home: PathBuf::new(),
+		mission_home: PathBuf::new(),
+	};
+
+	model.write_markdown(&output_path)?;
+
+	let mission_slug = super::sanitize_filename(mission_name);
+	let mission_md = output_path.join(format!("MIS-001-{}.md", mission_slug));
+	let mission_contents = std::fs::read_to_string(&mission_md)?;
+	if !mission_contents.contains("- rel [FEA-001](MIS-001/Feature/FEA-001-Feature_One.md)") {
+		return Err(missing("mission links are not correctly relative"));
+	}
+
+	let feature_md = output_path
+		.join("MIS-001")
+		.join("Feature")
+		.join("FEA-001-Feature_One.md");
+	let feature_contents = std::fs::read_to_string(&feature_md)?;
+	if !feature_contents.contains(&format!(
+		"- back [MIS-001](../../MIS-001-{}.md)",
+		mission_slug
+	)) {
+		return Err(missing("card links to mission are not correctly relative"));
 	}
 
 	Ok(())

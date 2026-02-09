@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- realizes [CAP-004](../Capability/CAP-004.md)
+- realizes [CAP-004](../Capability/CAP-004-Maintain_Audit_Trail.md)
 
 
 ## Version

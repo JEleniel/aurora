@@ -6,11 +6,21 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 ## Views
 
-_No views available._
+![Compliance_Governance.svg](MIS-001/Views/Compliance_Governance.svg)
+
+![Component.svg](MIS-001/Views/Component.svg)
+
+![Context.svg](MIS-001/Views/Context.svg)
+
+![Entire_Model.svg](MIS-001/Views/Entire_Model.svg)
+
+![Process.svg](MIS-001/Views/Process.svg)
+
+![Requirements.svg](MIS-001/Views/Requirements.svg)
+
+![Traceability.svg](MIS-001/Views/Traceability.svg)
 
 ## Card Index
-
-### ADR
 
 ### Activity
 
@@ -27,10 +37,6 @@ _No views available._
 - **[ATV-003 - Write Compact Export](MIS-001/Activity/ATV-003-Write_Compact_Export.md)**: Write the compact export JSON document for transport and agent consumption.
 
 - **[ATV-007 - Maintain Aurora Schemas](MIS-001/Activity/ATV-007-Maintain_Aurora_Schemas.md)**: Maintain the Aurora JSON schemas used for cards, audit logs, and compact export.
-
-### Actor
-
-### Adversary
 
 ### Application
 
@@ -54,8 +60,6 @@ _No views available._
 
 - **[ART-001 - Validation Report](MIS-001/Artifact/ART-001-Validation_Report.md)**: Diagnostics output describing schema, registry, and invariant validation results for a model home.
 
-### Asset
-
 ### Capability
 
 - **[CAP-002 - Generate Views](MIS-001/Capability/CAP-002-Generate_Views.md)**: Generate view artifacts from the model by selecting roots and included card types, traversing reachable subgraphs, and rendering diagrams without changing the underlying model.
@@ -78,8 +82,6 @@ _No views available._
 
 - **[COM-002 - Aurora CLI Binary](MIS-001/Component/COM-002-Aurora_CLI_Binary.md)**: The aurora_cli executable that exposes validate/render/compact commands to users and pipelines.
 
-### Condition
-
 ### Constraint
 
 - **[CNS-001 - Mission Has Outgoing Links Only](MIS-001/Constraint/CNS-001-Mission_Has_Outgoing_Links_Only.md)**: The Mission card serves as the root of the model graph and must only have outgoing links.
@@ -88,14 +90,6 @@ _No views available._
 
 - **[CNS-003 - Standard Model File Layout](MIS-001/Constraint/CNS-003-Standard_Model_File_Layout.md)**: Models must use the standard Aurora folder layout: Mission card at model home, mission-scoped cards under `<MISSION_ID>/<Card Type>/`, and an audit log at `<MISSION_ID>/AuditLog.json`.
 
-### Control
-
-### Data Source
-
-### Data Store
-
-### Deployment
-
 ### Driver
 
 - **[DRI-002 - Canonical Vocabulary](MIS-001/Driver/DRI-002-Canonical_Vocabulary.md)**: Provide a single, normative registry for card types and allowed relationship targets/verbs so models can be validated and interpreted consistently across tools.
@@ -103,8 +97,6 @@ _No views available._
 - **[DRI-001 - Deterministic Interpretation](MIS-001/Driver/DRI-001-Deterministic_Interpretation.md)**: Eliminate ambiguous architectural meaning by enforcing invariant rules and schema-backed cards so that any interpretation (views, traceability, impact analysis) is reproducible.
 
 - **[DRI-003 - Automated View Generation](MIS-001/Driver/DRI-003-Automated_View_Generation.md)**: Enable tools to generate consistent diagrams and documentation from the model without manually drawing or maintaining multiple sources of truth.
-
-### Event
 
 ### Feature
 
@@ -121,12 +113,6 @@ _No views available._
 ### Interface
 
 - **[INT-001 - Editor Backend API](MIS-001/Interface/INT-001-Editor_Backend_API.md)**: The interface contract between the editor UI and the Tauri backend for model operations (discover/load/validate/render/export and card CRUD).
-
-### Mission
-
-### Node
-
-### Predicate
 
 ### Process
 
@@ -162,17 +148,9 @@ _No views available._
 
 - **[REQ-009 - Default Tooling Support](MIS-001/Requirement/REQ-009-Default_Tooling_Support.md)**: Default tooling SHOULD validate models, generate human-readable outputs, generate views, and export compact models from the source cards.
 
-### Resource Owner
-
-### Risk
-
 ### Stakeholder
 
 - **[STK-001 - Architects And Agents](MIS-001/Stakeholder/STK-001-Architects_And_Agents.md)**: Humans and automation (LLMs, agents, validation/render tooling) that need a shared, unambiguous representation of architecture and requirements.
-
-### State
-
-### State Machine
 
 ### Story
 
@@ -182,14 +160,3 @@ _No views available._
 
 - **[SYS-001 - Aurora Tooling Ecosystem](MIS-001/System/SYS-001-Aurora_Tooling_Ecosystem.md)**: The overall Aurora system: schemas + canonical registries + model cards, supported by tools (CLI/editor/shared library) that validate models and generate views and exports.
 
-### Test
-
-### Threat Capability
-
-### Threat Diamond
-
-### Threat Model
-
-### Trigger
-
-### Victim
