@@ -18,9 +18,16 @@
 			"items": {
 				"$ref": "#/definitions/entry"
 			}
+		},
+		"relationships": {
+			"description": "List of allowed relationships between card types",
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/relationship"
+			}
 		}
 	},
-	"required": ["definitions"],
+	"required": ["definitions", "relationships"],
 	"definitions": {
 		"hex_color": {
 			"description": "6-digit hex color in #RRGGBB form",
@@ -30,7 +37,12 @@
 		"relationship": {
 			"description": "Single mapping from target card acronym to a human-readable verb",
 			"type": "object",
-			"properties": { "target_card_type": { "type": "string" }, "relationship": { "type": "string" } },
+			"properties": {
+				"source_card_type": { "type": "string" },
+				"target_card_type": { "type": "string" },
+				"relationship": { "type": "string" }
+			},
+			"required": ["source_card_type", "target_card_type", "relationship"],
 			"additionalProperties": false
 		},
 		"entry": {
@@ -53,14 +65,6 @@
 					"type": "string",
 					"minLength": 1
 				},
-				"relationships": {
-					"description": "Allowed outgoing relationship targets and verbs",
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/relationship"
-					},
-					"minItems": 1
-				},
 				"common_subtypes": {
 					"description": "Common subtype suggestions (non-normative)",
 					"type": "array",
@@ -70,23 +74,27 @@
 					},
 					"minItems": 1
 				},
-				"shape": {
-					"description": "Renderer shape identifier (non-normative)",
-					"type": "string",
-					"minLength": 1
-				},
-				"icon": {
-					"description": "Renderer icon (Unicode glyph) (non-normative)",
-					"type": "string",
-					"minLength": 1
-				},
-				"fill": {
-					"description": "Renderer fill color (non-normative)",
-					"$ref": "#/definitions/hex_color"
-				},
-				"color": {
-					"description": "Renderer text/stroke color (non-normative)",
-					"$ref": "#/definitions/hex_color"
+				"common_properties:": {
+					"description": "Common property suggestions (non-normative)",
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"description": "Property name",
+								"type": "string",
+								"minLength": 1
+							},
+							"description": {
+								"description": "Short description of the property",
+								"type": "string",
+								"minLength": 1
+							}
+						},
+						"required": ["name", "description"],
+						"additionalProperties": false
+					},
+					"additionalItems": false
 				}
 			},
 			"required": ["card_type", "acronym", "description"]

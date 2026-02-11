@@ -1,0 +1,271 @@
+{
+	"$schema": "./Aurora.appearance.schema.json",
+	"definitions": [
+		{
+			"acronym": "ATV",
+			"color": "#FFFFFF",
+			"fill": "#4c1d95",
+			"icon": "⚙",
+			"shape": "double-rectangle"
+		},
+		{
+			"acronym": "ACT",
+			"color": "#FFFFFF",
+			"fill": "#1a2e05",
+			"icon": "👤",
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "STK",
+			"color": "#FFFFFF",
+			"fill": "#1a2e05",
+			"icon": "👥",
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "ADR",
+			"color": "#FFFFFF",
+			"fill": "#1f2937",
+			"icon": "📝",
+			"shape": "ruler"
+		},
+		{
+			"acronym": "ART",
+			"color": "#FFFFFF",
+			"fill": "#1e293b",
+			"icon": " ",
+			"shape": "document"
+		},
+		{
+			"acronym": "AST",
+			"color": "#FFFFFF",
+			"fill": "#334155",
+			"icon": "🛡",
+			"shape": "document"
+		},
+		{
+			"acronym": "CAP",
+			"color": "#FFFFFF",
+			"fill": "#052e16",
+			"icon": " ",
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "SYS",
+			"color": "#FFFFFF",
+			"fill": "#1e40af",
+			"icon": "🧱",
+			"shape": "folder"
+		},
+		{
+			"acronym": "APP",
+			"color": "#FFFFFF",
+			"fill": "#1e40af",
+			"icon": "📦",
+			"shape": "rectangle"
+		},
+		{
+			"acronym": "COM",
+			"color": "#FFFFFF",
+			"fill": "#1e40af",
+			"icon": " ",
+			"shape": "component"
+		},
+		{
+			"acronym": "DST",
+			"color": "#FFFFFF",
+			"fill": "#0f172a",
+			"icon": " ",
+			"shape": "cylinder"
+		},
+		{
+			"acronym": "CON",
+			"color": "#FFFFFF",
+			"fill": "#422006",
+			"icon": " ",
+			"shape": "diamond"
+		},
+		{
+			"acronym": "CNS",
+			"color": "#FFFFFF",
+			"fill": "#082f49",
+			"icon": "📏",
+			"shape": "ruler"
+		},
+		{
+			"acronym": "CTL",
+			"color": "#FFFFFF",
+			"fill": "#713f12",
+			"icon": "🔒",
+			"shape": "ruler"
+		},
+		{
+			"acronym": "DEP",
+			"color": "#FFFFFF",
+			"fill": "#1e1b4b",
+			"icon": "☁",
+			"shape": "octagon"
+		},
+		{
+			"acronym": "DSR",
+			"color": "#FFFFFF",
+			"fill": "#0b1220",
+			"icon": " ",
+			"shape": "cylinder"
+		},
+		{
+			"acronym": "DRI",
+			"color": "#FFFFFF",
+			"fill": "#064e3b",
+			"icon": "🧭",
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "EVT",
+			"color": "#FFFFFF",
+			"fill": "#5b21b6",
+			"icon": "⚡",
+			"shape": "trapezoid"
+		},
+		{
+			"acronym": "FEA",
+			"color": "#FFFFFF",
+			"fill": "#14532d",
+			"icon": "⭐",
+			"shape": "rectangle"
+		},
+		{
+			"acronym": "INT",
+			"color": "#FFFFFF",
+			"fill": "#102080",
+			"icon": " ",
+			"shape": "lolipop"
+		},
+		{
+			"acronym": "MIS",
+			"color": "#FFFFFF",
+			"fill": "#022c22",
+			"icon": "🎯",
+			"shape": "octagon"
+		},
+		{
+			"acronym": "NOD",
+			"color": "#FFFFFF",
+			"fill": "#312e81",
+			"icon": "🖥",
+			"shape": "box"
+		},
+		{
+			"acronym": "PRD",
+			"color": "#FFFFFF",
+			"fill": "#581c87",
+			"icon": " ",
+			"shape": "diamond"
+		},
+		{
+			"acronym": "PRO",
+			"color": "#FFFFFF",
+			"fill": "#2e1065",
+			"icon": "🔁",
+			"shape": "octagon"
+		},
+		{
+			"acronym": "REQ",
+			"color": "#FFFFFF",
+			"fill": "#065f46",
+			"icon": "✅",
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "RIS",
+			"color": "#FFFFFF",
+			"fill": "#881337",
+			"icon": "⚠",
+			"shape": "hexagon"
+		},
+		{
+			"acronym": "STA",
+			"color": "#FFFFFF",
+			"fill": "#701a75",
+			"icon": " ",
+			"shape": "ellipse"
+		},
+		{
+			"acronym": "STM",
+			"color": "#FFFFFF",
+			"fill": "#4a044e",
+			"icon": "⏱",
+			"shape": "octagon"
+		},
+		{
+			"acronym": "STR",
+			"color": "#FFFFFF",
+			"fill": "#365314",
+			"icon": "📖",
+			"shape": "rectangle"
+		},
+		{
+			"acronym": "TES",
+			"color": "#FFFFFF",
+			"fill": "#022c22",
+			"icon": "🧪",
+			"shape": "hexagon"
+		},
+		{
+			"acronym": "THD",
+			"color": "#FFFFFF",
+			"fill": "#4c0519",
+			"icon": "♦",
+			"shape": "diamond"
+		},
+		{
+			"acronym": "ADV",
+			"color": "#FFFFFF",
+			"fill": "#4c0519",
+			"icon": "👾",
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "THC",
+			"color": "#FFFFFF",
+			"fill": "#4c0519",
+			"icon": "🛠",
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "VIC",
+			"color": "#FFFFFF",
+			"fill": "#4c0519",
+			"icon": "🧍",
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "ROW",
+			"color": "#FFFFFF",
+			"fill": "#4c0519",
+			"icon": "🔑",
+			"shape": "rounded-rectangle"
+		},
+		{
+			"acronym": "THM",
+			"color": "#FFFFFF",
+			"fill": "#4c0519",
+			"icon": " ",
+			"shape": "octagon"
+		},
+		{
+			"acronym": "TRG",
+			"color": "#FFFFFF",
+			"fill": "#78350f",
+			"icon": "⏰",
+			"shape": "trapezoid"
+		},
+		{
+			"acronym": "VND",
+			"color": "#FFFFFF",
+			"fill": "#1a2e05",
+			"icon": "🏢",
+			"shape": "rounded-rectangle"
+		}
+	]
+}

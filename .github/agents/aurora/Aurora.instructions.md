@@ -8,9 +8,7 @@ applyTo: '**/aurora/**/*'
 
 **Version**: 2.0.0
 
-Aurora is a deterministic architectural model designed so that any interpretation, such as view diagrams, can be generated from the model; and for direct machine consumption by LLMs, agents, reasoners, and automated tools. The model invariants guarantee unambiguous interpretation and reasoning about the model.
-
-Semantics are derived from the invariant rules: relationship verbs are descriptive only, and meaning comes from interpretation (views, impact analysis, traceability).
+Aurora is a deterministic, typed, directed graph rooted at a single Mission. Cards are nodes, relationships are constrained edges defined by a canonical registry. Meaning comes from graph structure and allowed link types, not from diagram shapes or wording. Every card (except Mission) must be reachable from the root and have at least one incoming link. Views are projections of the model and never modify it. Attributes are minimal and only allowed when they cannot be represented as relationships. The model represents logical architecture and intent, not runtime instances, operational state, or implementation tracking.
 
 **One Goal**: Enable the Architect to focus on modeling the architecture instead of drawing diagrams and pictures.
 
@@ -70,73 +68,67 @@ Each card is comprised of:
 - DRI-001
 - DRI-002
 
-#### Canonical Cards and Relationships
+#### Canonical Cards
 
-A canonical set of cards and relationships is included. The canonical set is designed to cover all normal architectural elements and ensure that the relationships conform to the invariants. Aurora is designed to be easily extended, so models are not limited to the canonical set.
+A canonical set of cards and relationships is included. The canonical set is designed to cover all normal architectural elements and ensure that the relationships conform to the invariants. The canonical set also includes common subtypes for convenience. Aurora is designed to be easily extended, so models are not limited to the canonical set.
 
 - [Aurora Canonical Definitions](Aurora.canonical.definitions.json)
+- [Aurora Canonical Definitions Schema](Aurora.canonical.definitions.schema.json)
 
 ##### Registry format (canonical definitions)
 
 The canonical definitions registry is a JSON object with:
 
 - `definitions`: a JSON array of entries. Each entry defines one card type.
+- `relationships`: a JSON array of objects that describe valid links.
 
-The file MAY include `$schema` for tooling.
+#### Non-Canonical Attributes
 
-- `card_type`: the human-facing type name (title case, for example `Mission`, `Data Store`).
-- `acronym`: the short id prefix used in compact ids and in relationship targets (for example `MIS`, `DST`).
-- `relationships`: optional array of allowed outgoing relationship targets for this card type.
-    + Each item is a single-key object mapping a target acronym to a human-readable verb (for example `{ "DST": "persists to" }`).
+The following is a list of commonly used attributes. It is not canonical:
 
-This registry is normative for (a) which card types exist and (b) which outgoing link targets/verbs are valid for each type.
+- Global (All Cards)
+   	+ assumptions: array of strings
+- Mission (MIS)
+   	+ in_scope: array of strings
+   	+ out_of_scope: array of strings
+- System (SYS)
+   	+ in_scope: array of strings
+   	+ out_of_scope: array of strings
+- Application (APP)
+   	+ in_scope: array of strings
+   	+ out_of_scope: array of strings
+- Capability (CAP)
+   	+ in_scope: array of strings
+   	+ out_of_scope: array of strings
+- Threat Model (THM)
+   	+ in_scope: array of strings
+   	+ out_of_scope: array of strings
+- Artifact (ART)
+   	+ format: string
+   	+ data_classification: string
 
-##### Normative vs rendering fields
+#### Appearance Definitions
 
-The canonical registry contains both **normative** semantics (used to validate and reason about models) and **rendering/style** fields (used to draw consistent diagrams).
+To aid in rendering Aurora includes a set of shape, icon, background, and foregrounds for each card type in the canonical set. Icons can be any valid Unicode character.
 
-- Normative for model meaning and validation:
-    + `card_type`, `acronym`, and `relationships`.
-- Rendering/style hints (non-normative for model validity):
-    + `shape`, `icon`, `fill`, `color`, `common_subtypes`.
-
-Rendering/style fields are still part of the canonical registry for consistency and theming, but a model MUST NOT be considered invalid because of stylistic choices.
-
-### Audit Log Entries
-
-The audit log contains one top level property, `history`, which is an array of audit entries:
-
-```json
-{
-	"$schema": "../Aurora.audit.schema.json",
-	"history": [
-		{
-			"timestamp": "<ISO 8601 UTC timestamp>",
-			"editor": "<name or id of editor>",
-			"target": "<card id changed>",
-			"change_type": "<create|change|delete>"
-		}
-	]
-}
-```
+- [Aurora Appearance Configuration](Aurora.appearance.json)
+- [Aurora Appearance Configuration Schema](Aurora.appearance.schema.json)
 
 ### File and Folder Structure
 
-Models live in a folder named `aurora/`, the model home. Multiple models may share a model home. The `Mission` card is stored in the model home, and all other cards are stored in a model and card type specific folder, `{mission id}/{card type}/` inside the model home.
+Models live in a folder named `aurora/`, the model home. If an `aurora/` foldeer already exists at the specified location it should be used. Never create an `aurora` folder in another `aurora` folder. Multiple models may share a model home. The `Mission` card is stored in the model home, and all other cards are stored in a model and card type specific folder, `{mission id}/{card type}/` inside the model home.
 
 A model is composed of up to four kinds of files:
 
 1. Schemas: `Aurora.card.schema.json`, `Aurora.audit.schema.json`, and `Aurora.compact.schema.json` files in the model.
     + These schemas are shared by all models, audit logs, and compact models in the same model home.
-    + If these files are not present, or when creating a new model home, copy them from `.github/agents/aurora/` to the model home before creating any other files.
-
+    + If these files are not present, or when creating a new model home, copy only them from `.github/agents/aurora/` to the model home before creating any other files.
     + All JSON files MUST have the `$schema` attribute with the relative path from that file to the appropriate schema in the model home.
-
 2. Cards: the central component of the model, each card is stored in a separate JSON file named `{id}-{name}.json` where name has had all symbols removed and spaces replaced with underscores. All cards must conform to the `Aurora.card.schema.json` in the model home.
 3. Audit Log: a history of who made changes to which cards over time, stored at `{model id}/AuditLog.json` and conforming to the `Aurora.audit.schema.json` in the model home. An audit log entry MUST be made for every card change to any part of the model.
 4. Compact Model: an optional compact, single file version of the model at `{mission id}/Compact.json` and conforming to the `Aurora.compact.schema.json` in the model home.
 
-- The model home may be stored as a ZIP file for transport if the folder structure is preserved.
+The model home may be stored as a ZIP file for transport if the folder structure is preserved.
 
 **Example Folder and File Structure**:
 
@@ -172,48 +164,17 @@ These invariant rules ensure that the model is a traversable, directed graph wit
 
 ## Views
 
-Views are generated by selecting a set of card types (and optionally subtypes) as roots for local graphs, selecting a set of other card types (and optionally subtypes) to include when traversing from the roots, and rendering a diagram showing those cards and the links between them. Views **do not change the model**; they change what part of and how the model is viewed. One model, many views.
+Views are generated by selecting a set of card types as roots for local graphs, selecting a set of other card types to include when traversing from the roots, and rendering a diagram showing those cards and the links between them. Views **do not change the model**; they change what part of and how the model is viewed. One model, many views.
 
-A set of common views can be found in [View Definitions](../agents/aurora/View.Definitions.json).
+The following is a set of common view definitions based on the canonical set:
 
-### Registry format (view definitions)
-
-The view definitions registry is a JSON array of view objects:
-
-- `name`: view name.
-- `description`: view intent.
-- `root_card_types`: card types that define candidate roots for this view.
-- `included_card_types`: card types that are eligible to be rendered when reachable from a root.
+- [View Definitions](View.Definitions.json)
+- [View Definitions Schema](View.Definitions.schema.json)
 
 ### View roots and traversal
 
-- A view **root** is a card that cannot participate in a loop; roots delineate specific subgraphs (for example, a `State Machine` view).
-- **Root safety rule**: `root_card_types` MUST only include card types whose selected root cards are not part of any cycle in the model graph.
-    + If selecting roots by type yields a candidate root card that participates in a cycle, it MUST be excluded from the root set for that view.
 - Traversal always starts from each root and (by the invariants) continues away until either reaching a leaf or closing a local loop.
 - Links are not filtered for general traversal.
 - When rendering a view, root cards are always rendered.
-- During traversal, a non-root card is eligible to be rendered if its `card_type` is in either `included_card_types` or `root_card_types`.
+- During traversal, a non-root card is eligible to be rendered if its `card_type` is in `included_card_types`.
     + Nothing outside the rendered cards (and the links between them) is rendered.
-
-## Default Tooling
-
-### `aurora_cli`
-
-- Validates models
-- Generates human readable Markdown copies
-- Generates Markdown files containing views
-- Generates the compact model files
-
-## Rendering
-
-This section defines rendering expectations for cards and views.
-
-- Shapes are geometry-only and MUST NOT encode colors or fills.
-    + Shapes can be anything that can be modeled with SVG.
-    + Shapes SHOULD provide adequate clearance for centered text and SHOULD keep a 1.6:1 proportion.
-        * Default node dimensions are 160w x 100h.
-- `icon` can be any Unicode symbol.
-- Colors and fills come from style fields (for example `fill` and `color`) and are applied by the renderer.
-- `boundary` is typically rendered as a dashed box with the boundary name.
-- `notes` are typically rendered as a callout attached to the node.
