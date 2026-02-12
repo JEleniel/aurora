@@ -3,8 +3,8 @@
 //! This module renders an Aurora [`Model`](crate::Model) using an existing [`Layout`](super::Layout)
 //! into a standalone SVG string based on the `svgtemplate.txt` template.
 
-use super::Layout;
 use super::render_error::RenderError;
+use super::{Layout, LayoutEdge};
 use crate::{Card, Model};
 use std::collections::HashMap;
 use std::path::Path;
@@ -73,35 +73,33 @@ impl Svg {
 		let mut edges_svg = String::new();
 		let mut edge_bounds: Vec<geom::Bounds> = Vec::new();
 		let mut edge_points: Vec<geom::PointF> = Vec::new();
+		let mut node_shapes_svg = String::new();
+		let mut node_labels_svg = String::new();
 
-		let node_obstacles: Vec<geom::RectI> = positioned.values().map(|n| n.bbox).collect();
-		let mut edge_obstacles: Vec<geom::RectI> = Vec::new();
-		let edge_obstacle_pad_px = (config.base_font_size_px.max(1) / 2).max(2);
+		let rem_px = config.base_font_size_px.max(1);
+		let node_bboxes: Vec<geom::RectI> = positioned.values().map(|n| n.bbox).collect();
+		let node_obstacle_pad = rem_px.max(6);
+		let node_obstacles: Vec<geom::RectI> = node_bboxes
+			.iter()
+			.copied()
+			.map(|bbox| grow_rect(bbox, node_obstacle_pad))
+			.collect();
+		let mut edge_obstacles: Vec<(String, geom::RectI)> = Vec::new();
+		let edge_obstacle_pad_px = (rem_px / 4).max(4);
 		let cell_px = config.base_font_size_px.max(1);
 
 		let mut edges = layout.edges.clone();
 		edges.sort_by(|left, right| {
-			let a1 = positioned.get(left.a.as_str());
-			let b1 = positioned.get(left.b.as_str());
-			let a2 = positioned.get(right.a.as_str());
-			let b2 = positioned.get(right.b.as_str());
-			let l1 = a1
-				.and_then(|a| b1.map(|b| (a.bbox.center(), b.bbox.center())))
-				.map(|(a, b)| {
-					let dx = a.x - b.x;
-					let dy = a.y - b.y;
-					(dx * dx + dy * dy) as i32
-				})
-				.unwrap_or(0);
-			let l2 = a2
-				.and_then(|a| b2.map(|b| (a.bbox.center(), b.bbox.center())))
-				.map(|(a, b)| {
-					let dx = a.x - b.x;
-					let dy = a.y - b.y;
-					(dx * dx + dy * dy) as i32
-				})
-				.unwrap_or(0);
-			l2.cmp(&l1)
+			let left_key = edge_route_order_key(left, &positioned);
+			let right_key = edge_route_order_key(right, &positioned);
+			left_key
+				.target_y
+				.cmp(&right_key.target_y)
+				.then_with(|| left_key.target_x.cmp(&right_key.target_x))
+				.then_with(|| left_key.target_id.cmp(right_key.target_id))
+				.then_with(|| left_key.target_side.cmp(&right_key.target_side))
+				.then_with(|| left_key.lane.cmp(&right_key.lane))
+				.then_with(|| right_key.span.cmp(&left_key.span))
 				.then_with(|| left.a.cmp(&right.a))
 				.then_with(|| left.b.cmp(&right.b))
 		});
@@ -114,15 +112,35 @@ impl Svg {
 				.get(e.b.as_str())
 				.ok_or_else(|| RenderError::SvgMissingNode(e.b.clone()))?;
 
-			let route =
-				edge::route_edge(&a.bbox, &b.bbox, &node_obstacles, &edge_obstacles, &config)?;
-			edge_obstacles.extend(edge::route_obstacles_for_later_edges(
+			let edge_obstacles_for_route: Vec<geom::RectI> = edge_obstacles
+				.iter()
+				.filter_map(|(target_id, obstacle)| {
+					if target_id == &e.b {
+						None
+					} else {
+						Some(*obstacle)
+					}
+				})
+				.collect();
+
+			let route = edge::route_edge(
+				&a.bbox,
+				&b.bbox,
+				&node_obstacles,
+				edge_obstacles_for_route.as_slice(),
+				node_bboxes.as_slice(),
+				&config,
+			)?;
+
+			for obstacle in edge::route_obstacles_for_later_edges(
 				&route,
 				cell_px,
 				&a.bbox,
 				&b.bbox,
 				edge_obstacle_pad_px,
-			));
+			) {
+				edge_obstacles.push((e.b.clone(), obstacle));
+			}
 			edge_points.extend(route.points.iter().copied());
 			edge_bounds.push(route.bounds);
 			if base_size + edges_svg.len() as u32 > SVG_MAX_SIZE {
@@ -131,15 +149,21 @@ impl Svg {
 			edges_svg.push_str(&edge::render_edge(&route, config.edge_style));
 		}
 
-		let mut nodes_svg = String::new();
 		for (id, node) in positioned.iter() {
 			let card = cards_by_id
 				.get(id.as_str())
 				.ok_or_else(|| RenderError::SvgMissingNode(id.clone()))?;
-			if base_size + edges_svg.len() as u32 + nodes_svg.len() as u32 > SVG_MAX_SIZE {
+			if base_size
+				+ edges_svg.len() as u32
+				+ node_shapes_svg.len() as u32
+				+ node_labels_svg.len() as u32
+				> SVG_MAX_SIZE
+			{
 				return Err(RenderError::SvgTooLarge);
 			}
-			nodes_svg.push_str(&node::render_node(card, node, &config));
+			let rendered = node::render_node(card, node, &config);
+			node_shapes_svg.push_str(&rendered.shape);
+			node_labels_svg.push_str(&rendered.labels);
 		}
 
 		let viewbox = compute_viewbox(
@@ -153,15 +177,19 @@ impl Svg {
 			"<style>@media print{{#aurora-bg{{display:none;}}}}</style><rect id=\"aurora-bg\" x=\"{}\" y=\"{}\" width=\"{}\" height=\"{}\" style=\"fill:#ffffff;stroke:none;\" />",
 			viewbox.x, viewbox.y, viewbox.w, viewbox.h
 		);
-		if base_size + edges_svg.len() as u32 + nodes_svg.len() as u32 + background.len() as u32
+		if base_size
+			+ edges_svg.len() as u32
+			+ node_shapes_svg.len() as u32
+			+ node_labels_svg.len() as u32
+			+ background.len() as u32
 			> SVG_MAX_SIZE
 		{
 			return Err(RenderError::SvgTooLarge);
 		}
 
 		let drawing = format!(
-			"{}<g id=\"edges\">{}</g><g id=\"nodes\">{}</g>",
-			background, edges_svg, nodes_svg
+			"{}<g id=\"edges\">{}</g><g id=\"node-shapes\">{}</g><g id=\"node-labels\">{}</g>",
+			background, edges_svg, node_shapes_svg, node_labels_svg
 		);
 		if base_size + drawing.len() as u32 > SVG_MAX_SIZE {
 			return Err(RenderError::SvgTooLarge);
@@ -214,6 +242,7 @@ fn compute_viewbox(
 ) -> geom::RectI {
 	let rem_px = config.base_font_size_px.max(1);
 	let margin = rem_px;
+	let top_margin = margin + rem_px;
 
 	let mut bounds = geom::Bounds::empty();
 	for bbox in node_bboxes {
@@ -236,7 +265,7 @@ fn compute_viewbox(
 	}
 
 	let min_x = (bounds.min_x.floor() as i32) - margin;
-	let min_y = (bounds.min_y.floor() as i32) - margin;
+	let min_y = (bounds.min_y.floor() as i32) - top_margin;
 	let max_x = (bounds.max_x.ceil() as i32) + margin;
 	let max_y = (bounds.max_y.ceil() as i32) + margin;
 
@@ -245,6 +274,64 @@ fn compute_viewbox(
 		y: min_y,
 		w: (max_x - min_x).max(1),
 		h: (max_y - min_y).max(1),
+	}
+}
+
+fn grow_rect(r: geom::RectI, pad: i32) -> geom::RectI {
+	let p = pad.max(0);
+	geom::RectI {
+		x: r.x - p,
+		y: r.y - p,
+		w: r.w + 2 * p,
+		h: r.h + 2 * p,
+	}
+}
+
+#[derive(Debug, Clone, Copy)]
+struct EdgeRouteOrderKey<'a> {
+	target_y: i32,
+	target_x: i32,
+	target_id: &'a str,
+	target_side: i32,
+	lane: i32,
+	span: i32,
+}
+
+fn edge_route_order_key<'a>(
+	edge: &'a LayoutEdge,
+	positioned: &HashMap<String, node::PositionedNode>,
+) -> EdgeRouteOrderKey<'a> {
+	let source_center = positioned
+		.get(edge.a.as_str())
+		.map(|node| node.bbox.center())
+		.unwrap_or(geom::PointF { x: 0.0, y: 0.0 });
+	let target_center = positioned
+		.get(edge.b.as_str())
+		.map(|node| node.bbox.center())
+		.unwrap_or(geom::PointF { x: 0.0, y: 0.0 });
+	let dx = source_center.x - target_center.x;
+	let dy = source_center.y - target_center.y;
+	let span = dx.abs().round() as i32 + dy.abs().round() as i32;
+
+	let (target_side, lane) = if dx.abs() >= dy.abs() {
+		if dx < 0.0 {
+			(0, source_center.y.round() as i32)
+		} else {
+			(1, source_center.y.round() as i32)
+		}
+	} else if dy < 0.0 {
+		(2, source_center.x.round() as i32)
+	} else {
+		(3, source_center.x.round() as i32)
+	};
+
+	EdgeRouteOrderKey {
+		target_y: target_center.y.round() as i32,
+		target_x: target_center.x.round() as i32,
+		target_id: edge.b.as_str(),
+		target_side,
+		lane,
+		span,
 	}
 }
 
@@ -364,7 +451,7 @@ mod tests {
 		let child = Card {
 			schema: None,
 			id: "C-001".to_string(),
-			card_type: "Extended".to_string(),
+			card_type: "Activity".to_string(),
 			card_subtype: None,
 			name: "Child".to_string(),
 			description: "desc".to_string(),

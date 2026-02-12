@@ -61,6 +61,27 @@ fn median_sweeps_are_deterministic() {
 	assert_eq!(layers, second_layers);
 }
 
+#[test]
+fn median_sweeps_reduces_simple_crossing() {
+	let mut layers = vec![
+		vec!["A".to_string(), "B".to_string()],
+		vec!["C".to_string(), "D".to_string()],
+	];
+	let predecessor_by_layer: HashMap<String, Vec<String>> = HashMap::from([
+		("C".to_string(), vec!["B".to_string()]),
+		("D".to_string(), vec!["A".to_string()]),
+	]);
+	let successor_by_layer: HashMap<String, Vec<String>> = HashMap::from([
+		("A".to_string(), vec!["D".to_string()]),
+		("B".to_string(), vec!["C".to_string()]),
+	]);
+
+	median_sweeps(&mut layers, 1, &predecessor_by_layer, &successor_by_layer).expect("sweeps");
+
+	let crossings = simple_two_layer_crossings(&layers[0], &layers[1], &successor_by_layer);
+	assert_eq!(crossings, 0, "layers not uncrossed: {:?}", layers);
+}
+
 fn set_of<const N: usize>(values: [&str; N]) -> HashSet<String> {
 	values.iter().map(|value| value.to_string()).collect()
 }
@@ -78,4 +99,44 @@ fn incoming_count(incoming: &HashMap<String, Vec<String>>) -> HashMap<String, us
 		counts.insert(node_id.clone(), predecessors.len());
 	}
 	counts
+}
+
+fn simple_two_layer_crossings(
+	upper: &[String],
+	lower: &[String],
+	successor_by_layer: &HashMap<String, Vec<String>>,
+) -> usize {
+	let mut upper_index: HashMap<String, usize> = HashMap::new();
+	for (index, node) in upper.iter().enumerate() {
+		upper_index.insert(node.clone(), index);
+	}
+	let mut lower_index: HashMap<String, usize> = HashMap::new();
+	for (index, node) in lower.iter().enumerate() {
+		lower_index.insert(node.clone(), index);
+	}
+
+	let mut edges: Vec<(usize, usize)> = Vec::new();
+	for source in upper {
+		let source_pos = upper_index[source];
+		if let Some(targets) = successor_by_layer.get(source) {
+			for target in targets {
+				if let Some(target_pos) = lower_index.get(target).copied() {
+					edges.push((source_pos, target_pos));
+				}
+			}
+		}
+	}
+
+	let mut crossings = 0usize;
+	for i in 0..edges.len() {
+		for j in i + 1..edges.len() {
+			let (a0, b0) = edges[i];
+			let (a1, b1) = edges[j];
+			if (a0 < a1 && b0 > b1) || (a0 > a1 && b0 < b1) {
+				crossings += 1;
+			}
+		}
+	}
+
+	crossings
 }

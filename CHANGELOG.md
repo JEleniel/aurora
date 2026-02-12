@@ -81,10 +81,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - SVG edge routing now allows diagonal moves with octile A* costs to reduce stair-step paths in dense diagrams.
 - Layout centering now translates layers towards their target medians to avoid left-biased packing and reduce uneven horizontal gaps.
 - SVG edge routing now uses octilinear (0/45/90°) paths with turn penalties and soft avoidance of prior edges to reduce crossings while still routing around nodes.
+- SVG node symbols now scale up when height allows (while preserving the ellipse aspect), with larger inset icons and vertically centered labels.
+- Increased SVG node/edge obstacle padding to 3rem, normalize shape lookup (e.g., component), and force obstacle-aware dogleg reroutes so edges avoid straight runs through nodes.
+- Reworked SVG edge routing to use deterministic orthogonal candidates first, with bounded grid A* fallback only when candidates fail.
+- Updated SVG symbol fitting to use axis-specific scaling and decoupled node height measurement from symbol-width coupling.
+- Tuned SVG routing obstacle inflation and edge ordering to reduce route congestion in dense views.
+- Further refined SVG route smoothing to collapse short staircase jogs more aggressively and reduce near-arrowhead bend artifacts in curved edges.
 
 ### Fixed
 
 - Fixed the Rust workspace members list so Cargo no longer references the deleted `tools/aurora_editor` crate.
+- Fixed layout-SVG rendering so symbol scaling is bounded by both node width and height, icon placement is proportionate to symbol geometry, multiline labels are centered as a block within the symbol, ellipse symbols render at the correct aspect/size, and edge routing no longer hard-blocks source/target endpoints (with edges drawn beneath node shapes to prevent visual overlap).
+- Fixed malformed SVG template symbol definitions, corrected ellipse base radii, and restored component symbol geometry.
+- Corrected the `INT` appearance mapping to use the `interface` symbol instead of `lolipop`, so Interface cards render with the expected shape in generated SVG views.
+- Fixed route polyline compression so orthogonal fallback paths are no longer collapsed into diagonal segments through obstacles.
+- Added emergency edge-detour recovery in SVG routing so unresolved fallbacks do not emit long straight-through node crossings in dense views.
 - Prevented extra `Mission` cards from loading inside mission folders.
 - Sanitized card filenames by removing symbols and only keeping alphanumerics with underscores for whitespace.
 - Made CLI validation report errors cleanly, exit non-zero on invalid models, and block render/compact on validation failures.

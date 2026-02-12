@@ -45,6 +45,8 @@ These define the vocabulary and view rules; prefer updating these over duplicati
     + View rendering entry points and Graphviz DOT/SVG generation live under `tools/aurora_shared/src/`.
     + Hierarchical layout for view graphs lives in `tools/aurora_shared/src/render/layout.rs` (`layout_model`).
     + DOT JSON → SVG rendering helpers live in `tools/aurora_shared/src/render/svg.rs`.
+    + Node symbol fitting, icon/text placement, and label wrapping logic live in `tools/aurora_shared/src/render/svg/node.rs`.
+    + Edge routing/path emission live in `tools/aurora_shared/src/render/svg/edge.rs` (orthogonal-first candidates with bounded grid A* fallback).
     + Graphviz HTML node labels (ID + type line) are generated in `tools/aurora_shared/src/render.rs` (`node_label`).
     + Embedded registries (card definitions, relationship rules, view definitions, styling guide) live in `tools/aurora_shared/src/registry.rs` and are compiled into the CLI.
     + DOT styling conventions are documented in:
@@ -54,7 +56,7 @@ These define the vocabulary and view rules; prefer updating these over duplicati
     + Binary outputs typically appear at:
         - `target/debug/aurora_cli`
         - `target/release/aurora_cli`
-    + Note: `aurora_cli` is currently not usable in this workspace/environment (see `.agents/TECHNOLOGIES.md`).
+    + Source-built CLI runs are validated via `cargo run -p aurora_cli -- render-all`.
 
 ## UI / editor
 

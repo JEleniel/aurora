@@ -3,14 +3,24 @@ use super::{CardDefinition, CardRegistry, RelationshipDefinition};
 use crate::registry::RegistryError;
 
 #[test]
-fn registry_parses_and_contains_definitions() {
-	match CardRegistry::try_new() {
-		Err(RegistryError::ParseError(_)) => {}
-		Ok(_) => panic!(
-			"expected canonical card registry JSON parsing to fail with current embedded format"
-		),
-		Err(other) => panic!("expected ParseError, got {other:?}"),
-	}
+fn registry_parses_and_merges_canonical_and_appearance_data() -> Result<(), RegistryError> {
+	let registry = CardRegistry::try_new()?;
+	assert!(registry.check("Activity"));
+
+	let activity = registry.try_get_by_acronym("ATV")?;
+	assert_eq!(activity.card_type, "Activity");
+	assert_eq!(activity.fill, "#4c1d95");
+	assert_eq!(activity.shape, "double-rectangle");
+
+	let interface = registry.try_get_by_acronym("INT")?;
+	assert_eq!(interface.card_type, "Interface");
+	assert_eq!(interface.shape, "interface");
+
+	assert!(registry.check_link("Activity", "leads to", "Activity"));
+	assert!(registry.check_link("Activity", "uses", "Component"));
+	assert!(!registry.check_link("Activity", "unknown", "Component"));
+
+	Ok(())
 }
 
 #[test]
@@ -27,6 +37,7 @@ fn check_and_getters_work_for_a_known_card_type() {
 			relationship: "rel".to_string(),
 		}],
 		shape: "rectangle".to_string(),
+		common_subtypes: Vec::new(),
 	};
 	let registry = CardRegistry {
 		definitions: vec![def.clone()],

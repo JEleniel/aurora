@@ -27,6 +27,7 @@
 - [ ] **GeneralDeveloper** (LIB-001) **DOT JSON SVG renderer**
     + Status: Implementation
     + Updates: Added DOT JSON → SVG rendering helpers with configurable options, basic shape/edge rendering, and unit tests for SVG output.
+    + Updates: Refined SVG node scaling (width-driven ellipse sizing, icon/text layout) and widened routing obstacles to keep edges off shapes.
     + Links:
         - [`tools/aurora_shared/src/render/svg.rs`](../tools/aurora_shared/src/render/svg.rs)
         - [`tools/aurora_shared/src/render.rs`](../tools/aurora_shared/src/render.rs)
