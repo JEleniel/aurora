@@ -46,7 +46,7 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 ### Artifact
 
-- **[ART-004 - Mission Audit Log](MIS-001/Artifact/ART-004-Mission_Audit_Log.md)**: The per-mission append-only `AuditLog.ndjson` file that records grouped card/link change events, paired with a mission-local `ChangedCards.json` snapshot.
+- **[ART-004 - Mission Audit Log](MIS-001/Artifact/ART-004-Mission_Audit_Log.md)**: The per-mission append-only `AuditLog.ndjson` file that records grouped card/link change events.
 
 - **[ART-006 - View Definitions Registry](MIS-001/Artifact/ART-006-View_Definitions_Registry.md)**: The canonical registry JSON that defines views (roots, included card types, and view descriptions).
 
@@ -64,7 +64,7 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[CAP-003 - Export Compact Model](MIS-001/Capability/CAP-003-Export_Compact_Model.md)**: Export an agent-friendly compact model representation containing the cards and their directed links in a single JSON document.
 
-- **[CAP-004 - Maintain Audit Trail](MIS-001/Capability/CAP-004-Maintain_Audit_Trail.md)**: Maintain an append-only audit log per mission (`AuditLog.ndjson`) with grouped card/link changes and regenerate `ChangedCards.json` after each audit append.
+- **[CAP-004 - Maintain Audit Trail](MIS-001/Capability/CAP-004-Maintain_Audit_Trail.md)**: Maintain an append-only audit log per mission (`AuditLog.ndjson`) with grouped card/link changes.
 
 - **[CAP-002 - Generate Views](MIS-001/Capability/CAP-002-Generate_Views.md)**: Generate view artifacts from the model by selecting roots and included card types, traversing reachable subgraphs, and rendering diagrams without changing the underlying model.
 

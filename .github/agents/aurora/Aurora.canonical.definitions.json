@@ -64,7 +64,7 @@
 		{
 			"acronym": "CON",
 			"card_type": "Condition",
-			"description": "Binary predicate influencing behavior."
+			"description": "Process-domain branching condition used by activities/processes; not used for state-machine branching."
 		},
 		{
 			"acronym": "CNS",
@@ -95,7 +95,7 @@
 		{
 			"acronym": "EVT",
 			"card_type": "Event",
-			"description": "Discrete occurrence initiating a process or triggering behavior."
+			"description": "State-machine event that causes transitions or predicate evaluation; distinct from process-domain triggers."
 		},
 		{
 			"acronym": "FEA",
@@ -121,7 +121,7 @@
 		{
 			"acronym": "PRD",
 			"card_type": "Predicate",
-			"description": "Logical statement evaluating to true/false in a state machine."
+			"description": "State-machine branching predicate that evaluates to true/false; distinct from process-domain conditions."
 		},
 		{
 			"acronym": "PRO",
@@ -200,7 +200,7 @@
 		{
 			"acronym": "TRG",
 			"card_type": "Trigger",
-			"description": "Event or condition initiating a process or action."
+			"description": "Process-domain trigger that initiates activities/conditions; distinct from state-machine events."
 		},
 		{
 			"acronym": "VND",

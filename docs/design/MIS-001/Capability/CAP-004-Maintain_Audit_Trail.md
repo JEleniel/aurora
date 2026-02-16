@@ -1,6 +1,6 @@
 # Capability: CAP-004 Maintain Audit Trail
 
-Maintain an append-only audit log per mission (`AuditLog.ndjson`) with grouped card/link changes and regenerate a mission-local `ChangedCards.json` snapshot after each audit append.
+Maintain an append-only audit log per mission (`AuditLog.ndjson`) with grouped card/link changes.
 
 ## Attributes
 

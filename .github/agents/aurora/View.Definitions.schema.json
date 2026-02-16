@@ -1,57 +1,61 @@
 {
 	"$id": "https://crystultima.org/aurora/view.definitions.schema.json",
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"title": "Aurora View Definitions Registry Schema",
-	"description": "JSON schema for View.Definitions.json (view registry)",
-	"type": "object",
 	"additionalProperties": false,
-	"properties": {
-		"$schema": {
-			"type": "string",
-			"minLength": 1
-		},
-		"definitions": {
-			"description": "List of view definitions",
-			"type": "array",
-			"minItems": 1,
-			"uniqueItems": true,
-			"items": {
-				"$ref": "#/definitions/view"
-			}
-		}
-	},
-	"required": ["definitions"],
 	"definitions": {
-		"non_empty": {
-			"type": "string",
-			"minLength": 1
+		"acronym": {
+			"pattern": "^[A-Z]{3}$",
+			"type": "string"
 		},
 		"card_type_list": {
-			"type": "array",
-			"minItems": 1,
-			"uniqueItems": true,
 			"items": {
-				"$ref": "#/definitions/non_empty"
-			}
+				"$ref": "#/definitions/acronym"
+			},
+			"minItems": 1,
+			"type": "array",
+			"uniqueItems": true
+		},
+		"non_empty": {
+			"minLength": 1,
+			"type": "string"
 		},
 		"view": {
-			"type": "object",
 			"additionalProperties": false,
 			"properties": {
-				"name": {
+				"description": {
 					"$ref": "#/definitions/non_empty"
 				},
-				"description": {
+				"included_card_types": {
+					"$ref": "#/definitions/card_type_list"
+				},
+				"name": {
 					"$ref": "#/definitions/non_empty"
 				},
 				"root_card_types": {
 					"$ref": "#/definitions/card_type_list"
-				},
-				"included_card_types": {
-					"$ref": "#/definitions/card_type_list"
 				}
 			},
-			"required": ["name", "description", "root_card_types", "included_card_types"]
+			"required": ["name", "description", "root_card_types", "included_card_types"],
+			"type": "object"
 		}
-	}
+	},
+	"description": "JSON schema for View.Definitions.json (view registry)",
+	"properties": {
+		"$schema": {
+			"minLength": 1,
+			"type": "string"
+		},
+		"definitions": {
+			"description": "List of view definitions",
+			"items": {
+				"$ref": "#/definitions/view"
+			},
+			"minItems": 1,
+			"type": "array",
+			"uniqueItems": true
+		}
+	},
+	"required": ["definitions"],
+	"title": "Aurora View Definitions Registry Schema",
+	"type": "object"
 }

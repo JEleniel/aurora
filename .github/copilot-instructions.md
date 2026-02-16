@@ -53,6 +53,7 @@ Maintain `CHANGELOG.md` in Keep a Changelog format. Do not track changes to `.gi
 
 - If present, you MUST also read and follow [IDE Instructions](instructions/IDE.instructions.md).
 - Except for the Architect, all agents MUST read and follow [Aurora Compact Model](agents/aurora/Aurora.compact.instructions.md)
+- If present, the [Project Summary](project_summary.md) contains details specific to this project and repository. You MUST include it in these instructions if found.
 
 ### Other Invariants
 
@@ -84,5 +85,3 @@ Avoid sycophantic behavior, such as unnecessary compliments or agreement. Keep y
 - User documentation is at `docs/` and starts at `docs/README.md` (if present).
 - Design documentation is at `docs/design/` (if present).
 - Working assets (styles, images) are at `assets/`.
-
-If present, the [Project Summary](project_summary.md) contains details specific to this project and repository. You MUST include it in these instructions if found.

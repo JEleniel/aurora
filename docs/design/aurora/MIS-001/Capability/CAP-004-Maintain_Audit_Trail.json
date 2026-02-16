@@ -3,7 +3,7 @@
 	"id": "CAP-004",
 	"card_type": "Capability",
 	"name": "Maintain Audit Trail",
-	"description": "Maintain an append-only audit log per mission (`AuditLog.ndjson`) with grouped card/link changes and regenerate a mission-local `ChangedCards.json` snapshot after each audit append.",
+	"description": "Maintain an append-only audit log per mission (`AuditLog.ndjson`) with grouped card/link changes.",
 	"links": [
 		{
 			"relationship": "requires",

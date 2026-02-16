@@ -1,106 +1,102 @@
 {
 	"$id": "https://crystultima.org/aurora/canonical.definitions.schema.json",
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"title": "Aurora Canonical Definitions Registry Schema",
-	"description": "JSON schema for Aurora.canonical.definitions.json",
-	"type": "object",
 	"additionalProperties": false,
-	"required": ["definitions", "relationships"],
-	"properties": {
-		"$schema": {
-			"type": "string",
-			"minLength": 1
-		},
-		"definitions": {
-			"type": "array",
-			"minItems": 1,
-			"uniqueItems": true,
-			"items": {
-				"$ref": "#/definitions/entry"
-			}
-		},
-		"relationships": {
-			"type": "array",
-			"minItems": 1,
-			"uniqueItems": true,
-			"items": {
-				"$ref": "#/definitions/relationship"
-			}
-		}
-	},
 	"definitions": {
-		"non_empty": {
-			"type": "string",
-			"minLength": 1
-		},
 		"acronym": {
-			"type": "string",
-			"pattern": "^[A-Z]{3}$"
-		},
-		"hex_color": {
-			"type": "string",
-			"pattern": "^#[A-Fa-f0-9]{6}$"
-		},
-		"relationship": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["source_card_type", "target_card_type", "relationship"],
-			"properties": {
-				"source_card_type": {
-					"$ref": "#/definitions/non_empty"
-				},
-				"target_card_type": {
-					"$ref": "#/definitions/non_empty"
-				},
-				"relationship": {
-					"$ref": "#/definitions/non_empty"
-				}
-			}
+			"pattern": "^[A-Z]{3}$",
+			"type": "string"
 		},
 		"common_property": {
-			"type": "object",
 			"additionalProperties": false,
-			"required": ["name", "description"],
 			"properties": {
-				"name": {
-					"$ref": "#/definitions/non_empty"
-				},
 				"description": {
 					"$ref": "#/definitions/non_empty"
+				},
+				"name": {
+					"$ref": "#/definitions/non_empty"
 				}
-			}
+			},
+			"required": ["name", "description"],
+			"type": "object"
 		},
 		"entry": {
-			"type": "object",
 			"additionalProperties": false,
-			"required": ["card_type", "acronym", "description"],
 			"properties": {
-				"card_type": {
-					"$ref": "#/definitions/non_empty"
-				},
 				"acronym": {
 					"$ref": "#/definitions/acronym"
 				},
-				"description": {
+				"card_type": {
 					"$ref": "#/definitions/non_empty"
 				},
-				"common_subtypes": {
-					"type": "array",
-					"minItems": 1,
-					"uniqueItems": true,
-					"items": {
-						"$ref": "#/definitions/non_empty"
-					}
-				},
 				"common_properties": {
-					"type": "array",
-					"minItems": 1,
-					"uniqueItems": true,
 					"items": {
 						"$ref": "#/definitions/common_property"
-					}
+					},
+					"minItems": 1,
+					"type": "array",
+					"uniqueItems": true
+				},
+				"common_subtypes": {
+					"items": {
+						"$ref": "#/definitions/non_empty"
+					},
+					"minItems": 1,
+					"type": "array",
+					"uniqueItems": true
+				},
+				"description": {
+					"$ref": "#/definitions/non_empty"
 				}
-			}
+			},
+			"required": ["card_type", "acronym", "description"],
+			"type": "object"
+		},
+		"non_empty": {
+			"minLength": 1,
+			"type": "string"
+		},
+		"relationship": {
+			"additionalProperties": false,
+			"properties": {
+				"relationship": {
+					"$ref": "#/definitions/non_empty"
+				},
+				"source_card_type": {
+					"$ref": "#/definitions/acronym"
+				},
+				"target_card_type": {
+					"$ref": "#/definitions/acronym"
+				}
+			},
+			"required": ["source_card_type", "target_card_type", "relationship"],
+			"type": "object"
 		}
-	}
+	},
+	"description": "JSON schema for Aurora.canonical.definitions.json",
+	"properties": {
+		"$schema": {
+			"minLength": 1,
+			"type": "string"
+		},
+		"definitions": {
+			"items": {
+				"$ref": "#/definitions/entry"
+			},
+			"minItems": 1,
+			"type": "array",
+			"uniqueItems": true
+		},
+		"relationships": {
+			"items": {
+				"$ref": "#/definitions/relationship"
+			},
+			"minItems": 1,
+			"type": "array",
+			"uniqueItems": true
+		}
+	},
+	"required": ["definitions", "relationships"],
+	"title": "Aurora Canonical Definitions Registry Schema",
+	"type": "object"
 }

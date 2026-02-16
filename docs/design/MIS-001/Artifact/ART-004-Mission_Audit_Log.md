@@ -1,6 +1,6 @@
 # Artifact (Data): ART-004 Mission Audit Log
 
-The per-mission append-only `AuditLog.ndjson` file that records grouped card/link change events, paired with a mission-local `ChangedCards.json` snapshot.
+The per-mission append-only `AuditLog.ndjson` file that records grouped card/link change events.
 
 ## Attributes
 
