@@ -2,10 +2,9 @@
 
 This is the primary repository for development of the Aurora architectural modeling framework.
 
-- The specification will change over time. When it does, agents MUST update their area of responsibility appropriately before undertaking other work. Questions may be asked at any time while doing so.
-- The `aurora_cli` tool may be out of date to the specification. You may still use it, but you MUST not consider it output 100% accurate. If the output doesn't match expectations, manually verify the results.
-- Aurora related files (instructions, canonical references, schemas) may change at any time. Reread them as necessary.
-- If the Aurora related files seem to be inconsistent, immediately stop and notify the user.
-- Since the model home will always contain the schemas used in constructing the model, the current schema may be diffed to determine what needs to be updated in the model.
-- You may edit files in `.github/agents/aurora/` when necessary to maintain the specification.
-- The schemas in `schemas/` are soft links to the official ones at `.github/agents/aurora/`. You do not need to maintain them.
+- The specification will change over time. When it does, agents MUST update their area of responsibility before undertaking other work. Questions may be asked at any time.
+- `aurora_cli` may lag the specification. You may still use it, but you MUST NOT treat its output as 100% authoritative. If results do not match expectations, manually verify.
+- Aurora-related files (instructions, canonical references, schemas) may change at any time. Re-read them as needed.
+- If Aurora-related files appear inconsistent, stop and notify the user immediately.
+- The model home contains the schemas used to construct the model; diff the current schema to determine required model updates.
+- `schemas/` contains soft links to the official schemas in `.github/agents/aurora/`. You do not need to maintain them.

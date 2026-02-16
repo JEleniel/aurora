@@ -5,7 +5,7 @@ applyTo: '*.yaml'
 
 # Agent Directives — YAML Formatting & Linting
 
-The repository's Prettier config (`.prettierrc.json`) is definitive for whitespace formatting (indentation, line endings, etc.). Preserve string quoting per the rules below.
+If present, the repository's Prettier config (`.prettierrc.json`) is the source of truth for whitespace formatting. Preserve string quoting per the rules below.
 
 ## Principles
 

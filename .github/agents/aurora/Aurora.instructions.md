@@ -21,10 +21,11 @@ Each model is identified by its `Mission` ID.
 ### Getting started
 
 1. Create or locate the model home folder: `aurora/` (located at `docs/design/aurora/` by default).
-2. Ensure `aurora/schemas/` contains `Aurora.card.schema.json`, `Aurora.audit.schema.json`, and `Aurora.compact.schema.json`. If missing, copy them from `.github/agents/aurora/`.
-3. Create the `Mission` card in the model home (`aurora/`).
-4. Add other cards under `{mission id}/{card type folder}/` and link them from existing cards.
-5. Append to `{mission id}/AuditLog.ndjson` for every change event. One entry may include changes to multiple cards.
+2. Ensure `aurora/schemas/` contains `Aurora.appearance.schema.json`, `Aurora.audit.schema.json`, `Aurora.canonical.definitions.schema.json`, `Aurora.card.schema.json`, `Aurora.compact.schema.json`, and `View.Definitions.schema.json`. If missing, copy them from `.github/agents/aurora/`. Do not copy the Markdown files.
+3. Ensure `aurora/reference/` contains `Aurora.appearance.json`, `Aurora.canonical.definitions.json`, and `View.Definitions.json`. If missing, copy them from `.github/agents/aurora/`. Do not copy the Markdown files.
+4. Create the `Mission` card in the model home (`aurora/`).
+5. Add other cards under `{mission id}/{card type folder}/` and link them from existing cards.
+6. Append to `{mission id}/AuditLog.ndjson` for every change event. One entry may include changes to multiple cards.
 
 At the end of making changes, validate the model(s), generate the Markdown, views, and compact model. **If this fails do not stop working.**
 
@@ -82,15 +83,15 @@ Extension rule (minimal): use canonical cards and relationships by default. Add 
 
 Models live in a folder named `aurora/` (the model home). If an `aurora/` folder already exists at the target location, use it. Never create an `aurora` folder inside another `aurora` folder. Multiple models may share one model home. The `Mission` card is stored in the model home, and all other cards are stored in mission- and card-type-specific folders: `{mission id}/{card type folder}/`. The `{card type folder}` value MUST use card type sanitization: remove symbols and replace spaces with underscores (for example, `Data Store` -> `Data_Store`, `State Machine` -> `State_Machine`, `Threat Diamond` -> `Threat_Diamond`).
 
-A model may include four kinds of files:
+A model may include five kinds of files:
 
-1. Schemas: `Aurora.card.schema.json`, `Aurora.audit.schema.json`, and `Aurora.compact.schema.json` files in `aurora/schemas/`.
+1. Schemas: These are used to validate the JSON and NDJSON files of models at load and when validating. See the list of schemas under [Getting Started](#getting-started).
     + These schemas are shared by all models, audit logs, and compact models in the same model home.
-    + If these files are not present, or when creating a new model home, copy only those schemas from `.github/agents/aurora/` into `aurora/schemas/` before creating any other files.
-    + All model JSON document files MUST have the `$schema` attribute with the relative path from that file to the appropriate schema. NDJSON does not use the `$schema` property.
-2. Cards: the central component of the model, each card is stored in a separate JSON file named `{id}-{name}.json` where name has had all symbols removed and spaces replaced with underscores. Card-type folder names use the same sanitization behavior.
-3. Audit Log: an append-only, line-delimited JSON history of change events over time, stored at `{mission id}/AuditLog.ndjson`. Each line MUST conform to `Aurora.audit.schema.json` and may capture multiple changed cards in one entry. An audit log entry MUST be appended for every change event.
-4. Compact Model: an optional compact, single file version of the model at `{mission id}/Compact.json` and conforming to the `Aurora.compact.schema.json` in the model home.
+    + All model JSON files MUST have the `$schema` attribute with the relative path from that file to the appropriate schema. NDJSON does not use the `$schema` property.
+2. References: These files are used by the tooling to ensure that models are handled according to the definitions in place at the time of their creation. See the list of reference files under [Getting Started](#getting-started).
+3. Cards: the central component of the model, each card is stored in a separate JSON file named `{id}-{name}.json` where name has had all symbols removed and spaces replaced with underscores. Card-type folder names use the same sanitization behavior.
+4. Audit Log: an append-only, line-delimited JSON history of change events over time, stored at `{mission id}/AuditLog.ndjson`. Each line MUST conform to `Aurora.audit.schema.json` and may capture multiple changed cards in one entry. An audit log entry MUST be appended for every change event.
+5. Compact Model: an optional compact, single file version of the model at `{mission id}/Compact.json` and conforming to the `Aurora.compact.schema.json` in the model home.
 
 The model home may be stored as a ZIP file for transport if the folder structure is preserved.
 
@@ -122,32 +123,6 @@ aurora
 
 These invariant rules ensure that the model is a rooted directed graph with only local recurrence.
 
-1. **The `Mission` Card**: All models must start with and include a single `Mission` card that summarizes the high-level "why" of the project. The `Mission` card must only have outgoing links and serves as the root of the directed graph.
-2. **Direction (graph links)**: Traversal follows directed edges from `Mission` outward. Traversal algorithms MUST halt when they encounter either a sink vertex (out-degree `0`) or a previously visited vertex.
+1. **The `Mission` Card**: All models must start with and include a single `Mission` card that summarizes the high-level "why" of the project. The `Mission` card must only have outgoing links and serves as the root node of the directed graph.
+2. **Direction (graph links)**: Traversal follows directed edges from `Mission` outward. Traversal algorithms MUST halt when they encounter either a leaf node (out-degree `0`) or a previously visited node.
 3. **No orphans**: Other than the `Mission` card, all cards must have one or more incoming links and a path from the `Mission` card. All cards may have any number of outgoing links. All link targets must be valid cards in the model.
-
-## Views
-
-Views are generated by selecting a set of card-type acronyms as roots for local graphs, selecting a set of other card-type acronyms to include when traversing from the roots, and rendering a diagram showing those cards and the links between them. Views **do not change the model**; they change what part of and how the model is viewed. One model, many views.
-
-The following is a set of common view definitions based on the canonical set:
-
-- [View Definitions](View.Definitions.json)
-- [View Definitions Schema](View.Definitions.schema.json)
-
-### View roots and traversal
-
-- Traversal always starts from each root and (by the invariants) continues away until either reaching a leaf or closing a local loop.
-- Links are not filtered for general traversal.
-- When rendering a view, root cards are always rendered.
-- During traversal, a non-root card is eligible to be rendered if its canonical card-type acronym is in `included_card_types`.
-    + Nothing outside the rendered cards (and the links between them) is rendered.
-
-### Appearance Definitions
-
-To aid rendering, Aurora includes a set of shapes, icons, backgrounds, and foregrounds for each card type in the canonical set. Icons can be any valid Unicode character.
-
-If a card type has no icon, omit the `icon` property. Empty-string icons are invalid.
-
-- [Aurora Appearance Configuration](Aurora.appearance.json)
-- [Aurora Appearance Configuration Schema](Aurora.appearance.schema.json)

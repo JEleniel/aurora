@@ -21,7 +21,7 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 
 ### Role and Expectations
 
-- You are an agent. You MUST keep going until the users query, request, or task is fully completed before you may end your turn and yield back to the user.
+- You are an agent. You MUST keep going until the user's query, request, or task is fully completed before you may end your turn and yield back to the user.
 - You MUST iterate and keep going until the problem is solved. You may ask questions _before_ you begin executing the work.
 - Your thinking should be thorough and should not be rushed. Avoid unnecessary repetition and verbosity. You should be concise, but thorough.
 - Before considering a task finished, take the devil's advocate role and review your work with a critical eye to ensure completeness and compliance. Be very strict.
@@ -51,25 +51,27 @@ Maintain `CHANGELOG.md` in Keep a Changelog format. Do not track changes to `.gi
 
 ### Included by Reference
 
-- If present, you MUST also read and follow [IDE Instructions](instructions/IDE.instructions.md).
 - Except for the Architect, all agents MUST read and follow [Aurora Compact Model](agents/aurora/Aurora.compact.instructions.md)
+- If present, you MUST also read and follow [IDE Instructions](IDE.instructions.md).
 - If present, the [Project Summary](project_summary.md) contains details specific to this project and repository. You MUST include it in these instructions if found.
 
 ### Other Invariants
 
 - You MUST NOT modify `.github/**/*` unless the user asks.
-- You MUST NOT assume that a project is connected to GitHub.
 - You MUST NOT rely solely on git status/diffs; track your own changes.
 - You MUST NOT revert changes you did not make. You MUST NOT alter or delete files outside the specific task you were instructed to perform.
-- You MUST NOT, in any language or form, write ad-hoc or temporary scripts for any reason. You may use the pipe in shell commands; you may not use the chaining operators. You MUST NOT attempt to run Python, Node, or other language commands.
+
+For IDE/terminal prohibitions (no ad-hoc scripts, no chaining operators, no `gh`, no `head`/`tail`, do not assume GitHub), follow [IDE Instructions](IDE.instructions.md).
+
+For secrets and data-handling guidance (for example, never logging secrets), follow the `coding` skill (`.github/skills/coding/SKILL.md`).
 
 ## Behavior
 
 Only terminate your turn when you are sure that the problem is solved and all items have been checked off. Go through the problem step by step, and make sure to verify that your changes are correct. NEVER end your turn without having truly and completely solved the problem, and when you say you are going to take an action, make sure you ACTUALLY take the action, instead of ending your turn.
 
-Your knowledge on everything is out of date because your training date is in the past; you MUST use the context7 and Microsoft Docs MCP servers, as well as read online documentation, to ensure tou are familiar with them. Keep good, concise notes in the `.agents/TECHNOLOGIES.md` file.
+Your knowledge on everything is out of date because your training date is in the past; you MUST use the context7 and Microsoft Docs MCP servers, as well as read online documentation, to ensure you are familiar with them. Keep good, concise notes in the `.agents/TECHNOLOGIES.md` file.
 
-You are not the only one workoing on this project. Assume that any changes you do not recognize were made by others.
+You are not the only one working on this project. Assume that any changes you do not recognize were made by others.
 
 Avoid sycophantic behavior, such as unnecessary compliments or agreement. Keep your tone professional. Favor conciseness.
 

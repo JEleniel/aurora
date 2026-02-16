@@ -79,7 +79,7 @@
 			"style": "leading_and_trailing"
 		},
 		"ul-indent": {
-			"indent": 4
+			"indent": 1
 		},
 		"ul-style": {
 			"style": "sublist"

@@ -4,26 +4,27 @@ applyTo: '*.md'
 
 # Markdown Style Guide
 
-The source of truth for enforcement is `.markdownlint-cli2.jsonc`.
+If present, the repository's Markdown lint config (`.markdownlint-cli2.jsonc`) is the source of truth for formatting.
 
 ## Guidelines
 
-- You MUST use only ATX headings (`#`, `##`, …) and do not indent them.
-- You MUST use a single H1.
-- You MUST increase heading levels one at a time; do not skip levels.
+- Use only ATX headings (`#`, `##`, …); do not indent headings.
+- Use a single H1.
+- Increase heading levels one at a time; do not skip levels.
     + Sibling headings must be unique.
-- You MUST NOT use emphasis/strong as the entire heading text.
-- You MUST NOT hard-wrap lines in paragraphs.
-- You MUST NOT use extra spaces in prose (for example, multiple spaces between words). Tables are an exception where spacing inside cells may be used for readability or alignment.
-- You MUST NOT manually align Markdown using spaces outside of tables. If you need alignment, use lists, tables, code blocks (tabs are fine in code), or omit the alignment.
-- You MUST end files with exactly one trailing newline.
-- You MUST avoid multiple blank lines together.
-- Unordered lists MUST follow `.markdownlint-cli2.jsonc` (`ul-style: sublist`, `ul-indent: 4`): use `-` at depth 1, `+` at depth 2, `*` at depth 3, then repeat (`-`, `+`, `*`, ...). Indent each nested level by 4 spaces.
+- Do not use emphasis/strong as the entire heading text.
+- Do not hard-wrap paragraph text.
+- Do not use extra spaces in prose. Tables may use spacing within cells.
+- Do not manually align Markdown with spaces outside tables.
+- End files with exactly one trailing newline.
+- Avoid multiple blank lines together.
+- Unordered lists MUST follow `.markdownlint-cli2.jsonc` (`ul-style: sublist`, `ul-indent.indent: 1`): `-` at depth 1, `+` at depth 2, `*` at depth 3, then repeat.
+- Indent each nested level one tab.
 
 ```markdown
 - Level 1
-    + Level 2
-        * Level 3
+	+ Level 2
+		* Level 3
 ```
 
 - Ordered lists MUST use sequential numbers.
