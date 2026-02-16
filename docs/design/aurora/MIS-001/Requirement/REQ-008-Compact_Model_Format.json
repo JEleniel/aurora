@@ -9,6 +9,5 @@
 			"relationship": "requires",
 			"target": "CAP-003"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

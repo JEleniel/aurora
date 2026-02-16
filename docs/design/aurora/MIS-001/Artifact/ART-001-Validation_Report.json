@@ -5,6 +5,5 @@
 	"card_subtype": "Report",
 	"name": "Validation Report",
 	"description": "Diagnostics output describing schema, registry, and invariant validation results for a model home.",
-	"links": [],
-	"version": "1.0.0"
+	"links": []
 }

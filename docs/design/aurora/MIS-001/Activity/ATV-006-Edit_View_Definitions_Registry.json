@@ -9,6 +9,5 @@
 			"relationship": "produces",
 			"target": "ART-006"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

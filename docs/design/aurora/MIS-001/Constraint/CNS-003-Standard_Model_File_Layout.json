@@ -3,7 +3,6 @@
 	"id": "CNS-003",
 	"card_type": "Constraint",
 	"name": "Standard Model File Layout",
-	"description": "Models must use the standard Aurora folder layout: Mission card at model home, mission-scoped cards under `<MISSION_ID>/<Card Type>/`, and an audit log at `<MISSION_ID>/AuditLog.json`.",
-	"links": [],
-	"version": "1.0.0"
+	"description": "Models must use the standard Aurora folder layout: Mission card at model home, mission-scoped cards under `<MISSION_ID>/<Card Type>/`, and an append-only audit log at `<MISSION_ID>/AuditLog.ndjson`.",
+	"links": []
 }

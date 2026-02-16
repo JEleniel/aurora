@@ -17,6 +17,5 @@
 			"relationship": "drives",
 			"target": "REQ-010"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

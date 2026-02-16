@@ -13,6 +13,5 @@
 			"relationship": "comprises",
 			"target": "COM-001"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

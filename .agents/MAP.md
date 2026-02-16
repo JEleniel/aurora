@@ -10,7 +10,7 @@ Quick index of “where things live” for agents working in this repository.
         - Root mission cards live directly under `docs/design/aurora/`.
         - Mission-scoped cards live under `docs/design/aurora/<MISSION_ID>/` in per-card-type folders.
         - Folder names match `card_type` exactly (Title Case; spaces preserved, for example `Data Store/`).
-        - Audit log lives at `docs/design/aurora/<MISSION_ID>/AuditLog.json`.
+        - Audit log lives at `docs/design/aurora/<MISSION_ID>/AuditLog.ndjson`.
         - Compact export lives at `docs/design/aurora/<MISSION_ID>/Compact.json`.
 - Schemas:
     + Canonical schemas and registries live under `.github/agents/aurora/`.

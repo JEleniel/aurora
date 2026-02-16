@@ -3,7 +3,7 @@
 	"id": "ATV-004",
 	"card_type": "Activity",
 	"name": "Append Audit Log Entry",
-	"description": "Append a create/change/delete entry to the mission audit log.",
+	"description": "Append one line to the mission `AuditLog.ndjson` file for each change event, allowing multiple changed cards and related link changes in one entry.",
 	"links": [
 		{
 			"relationship": "uses",
@@ -13,6 +13,5 @@
 			"relationship": "produces",
 			"target": "ART-004"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

@@ -1,0 +1,7 @@
+{
+	"$schema": "../Aurora.changed.cards.schema.json",
+	"mission_id": "MIS-001",
+	"generated_at": "2026-02-07T00:00:00Z",
+	"mode": "snapshot",
+	"cards": ["MIS-001"]
+}

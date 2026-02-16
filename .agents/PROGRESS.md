@@ -41,7 +41,7 @@
     + Links:
         - [Model home](../docs/design/aurora/)
         - [Mission](../docs/design/aurora/MIS-001-Model_Aurora_With_Aurora.json)
-        - [Audit log](../docs/design/aurora/MIS-001/AuditLog.json)
+        - [Audit log](../docs/design/aurora/MIS-001/AuditLog.ndjson)
         - [Canonical definitions (reference)](../docs/design/Aurora.canonical.definitions.md)
     + Next Actions:
         - Keep MIS-001 consistent with the canonical registries (card types + allowed outgoing relationships).

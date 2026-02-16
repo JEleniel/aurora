@@ -1,0 +1,39 @@
+{
+	"$id": "https://crystultima.org/aurora/changed.cards.schema.json",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Aurora Changed Cards Snapshot Schema",
+	"description": "JSON schema for ChangedCards.json snapshots derived from mission audit logs.",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["$schema", "mission_id", "generated_at", "cards", "mode"],
+	"properties": {
+		"$schema": {
+			"type": "string",
+			"minLength": 1
+		},
+		"mission_id": {
+			"$ref": "#/definitions/id_ref"
+		},
+		"generated_at": {
+			"type": "string",
+			"format": "date-time"
+		},
+		"mode": {
+			"type": "string",
+			"enum": ["snapshot"]
+		},
+		"cards": {
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"$ref": "#/definitions/id_ref"
+			}
+		}
+	},
+	"definitions": {
+		"id_ref": {
+			"type": "string",
+			"pattern": "^[A-Z]{3}-\\d{3,}$"
+		}
+	}
+}

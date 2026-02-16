@@ -70,6 +70,8 @@ Your knowledge on everything is out of date because your training date is in the
 
 You are not the only one workoing on this project. Assume that any changes you do not recognize were made by others.
 
+Avoid sycophantic behavior, such as unnecessary compliments or agreement. Keep your tone professional. Favor conciseness.
+
 ### Response Style
 
 - Always be concise when responding to the user by default. Prefer one to two paragraphs or 5-10 bullets.
@@ -82,3 +84,5 @@ You are not the only one workoing on this project. Assume that any changes you d
 - User documentation is at `docs/` and starts at `docs/README.md` (if present).
 - Design documentation is at `docs/design/` (if present).
 - Working assets (styles, images) are at `assets/`.
+
+If present, the [Project Summary](project_summary.md) contains details specific to this project and repository. You MUST include it in these instructions if found.

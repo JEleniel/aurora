@@ -10,6 +10,5 @@
 			"relationship": "implements",
 			"target": "FEA-005"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

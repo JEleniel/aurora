@@ -22,6 +22,5 @@
 			"relationship": "implements",
 			"target": "FEA-003"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

@@ -17,6 +17,5 @@
 			"relationship": "includes",
 			"target": "ATV-007"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

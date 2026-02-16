@@ -3,12 +3,11 @@
 	"id": "PRO-004",
 	"card_type": "Process",
 	"name": "Record Audit Log Entries",
-	"description": "Record create/change/delete events for mission cards into the mission audit log.",
+	"description": "Record mission change events by appending one entry per event to `AuditLog.ndjson`; each entry may include multiple changed cards and link changes.",
 	"links": [
 		{
 			"relationship": "includes",
 			"target": "ATV-004"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

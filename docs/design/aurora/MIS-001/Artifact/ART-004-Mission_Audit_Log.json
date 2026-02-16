@@ -4,7 +4,6 @@
 	"card_type": "Artifact",
 	"card_subtype": "Data",
 	"name": "Mission Audit Log",
-	"description": "The per-mission audit log JSON file that records create/change/delete events over time.",
-	"links": [],
-	"version": "1.0.0"
+	"description": "The per-mission append-only `AuditLog.ndjson` file that records grouped card/link change events, paired with a mission-local `ChangedCards.json` snapshot.",
+	"links": []
 }

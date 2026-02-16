@@ -13,6 +13,5 @@
 			"relationship": "integrates",
 			"target": "APP-002"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

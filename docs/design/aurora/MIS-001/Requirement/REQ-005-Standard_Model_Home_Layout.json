@@ -17,6 +17,5 @@
 			"relationship": "imposes",
 			"target": "CNS-003"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

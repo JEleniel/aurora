@@ -25,6 +25,5 @@
 			"relationship": "necessitates",
 			"target": "SYS-001"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

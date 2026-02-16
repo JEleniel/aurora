@@ -1,108 +1,86 @@
 {
 	"$id": "https://crystultima.org/aurora/compact.schema.json",
 	"$schema": "http://json-schema.org/draft-07/schema#",
+	"title": "Aurora Compact Model Schema",
+	"description": "JSON schema for Compact.json",
+	"type": "object",
 	"additionalProperties": false,
-	"definitions": {
-		"semver": {
-			"description": "Semantic version (major.minor.patch)",
-			"pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
-			"type": "string"
-		},
-		"card": {
-			"additionalProperties": false,
-			"description": "Aurora card stripped of audit trail metadata for compact transport",
-			"properties": {
-				"boundary": {
-					"description": "Optional grouping label for rendering and organization",
-					"minLength": 1,
-					"type": "string"
-				},
-				"attributes": {
-					"additionalProperties": true,
-					"description": "Key-value pairs providing additional data for tooling and agents",
-					"type": "object"
-				},
-				"card_subtype": {
-					"description": "Optional refinement of the card_type in Title Case",
-					"type": "string"
-				},
-				"card_type": {
-					"description": "The architectural type represented by the card in Title Case",
-					"type": "string"
-				},
-				"description": {
-					"description": "Details regarding the element the card represents",
-					"minLength": 1,
-					"type": "string"
-				},
-				"id": {
-					"description": "Stable identifier composed of a 3-letter prefix and numeric suffix (e.g., 'MIS-001')",
-					"pattern": "^[A-Z]{3}-\\d{3,}$",
-					"type": "string"
-				},
-				"links": {
-					"description": "Directed relationships between cards with only target identifiers retained",
-					"items": {
-						"$ref": "#/definitions/link"
-					},
-					"type": "array"
-				},
-				"name": {
-					"description": "Concise human-readable name for the card",
-					"minLength": 1,
-					"type": "string"
-				},
-				"notes": {
-					"description": "Additional notes and information attached to the card",
-					"minLength": 1,
-					"type": "string"
-				},
-				"status": {
-					"description": "Status of an implementable element",
-					"type": "string"
-				},
-				"version": {
-					"$ref": "#/definitions/semver"
-				}
-			},
-			"required": ["id", "card_type", "name", "description", "links"],
-			"type": "object"
-		},
-		"link": {
-			"additionalProperties": false,
-			"properties": {
-				"relationship": {
-					"description": "A verb-based description of the relationship (view-dependent)",
-					"minLength": 1,
-					"type": "string"
-				},
-				"target": {
-					"description": "The destination card id",
-					"pattern": "^[A-Z]{3}-\\d{3,}$",
-					"type": "string"
-				}
-			},
-			"required": ["relationship", "target"],
-			"type": "object"
-		}
-	},
-	"description": "JSON schema for the compact Aurora model representation emitted by the aurora_cli compact exporter",
+	"required": ["cards"],
 	"properties": {
 		"$schema": {
-			"description": "Optional reference to the Aurora.compact.schema.json in the Aurora model used to construct the compact document",
-			"type": "string"
+			"type": "string",
+			"minLength": 1
 		},
 		"cards": {
-			"description": "List of cards comprising the compact Aurora model",
+			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/card"
-			},
-			"minItems": 1,
-			"type": "array"
+			}
 		}
 	},
-	"required": ["cards"],
-	"title": "Aurora Compact Model Schema",
-	"type": "object",
-	"version": "2.0.0"
+	"definitions": {
+		"non_empty": {
+			"type": "string",
+			"minLength": 1
+		},
+		"id_ref": {
+			"type": "string",
+			"pattern": "^[A-Z]{3}-\\d{3,}$"
+		},
+		"link": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["relationship", "target"],
+			"properties": {
+				"relationship": {
+					"$ref": "#/definitions/non_empty"
+				},
+				"target": {
+					"$ref": "#/definitions/id_ref"
+				}
+			}
+		},
+		"card": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["id", "card_type", "name", "links", "attributes"],
+			"properties": {
+				"boundary": {
+					"type": "string",
+					"minLength": 1
+				},
+				"attributes": {
+					"type": "object",
+					"additionalProperties": true
+				},
+				"card_subtype": {
+					"$ref": "#/definitions/non_empty"
+				},
+				"card_type": {
+					"$ref": "#/definitions/non_empty"
+				},
+				"id": {
+					"$ref": "#/definitions/id_ref"
+				},
+				"links": {
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"$ref": "#/definitions/link"
+					}
+				},
+				"name": {
+					"$ref": "#/definitions/non_empty"
+				},
+				"notes": {
+					"$ref": "#/definitions/non_empty"
+				},
+				"status": {
+					"$ref": "#/definitions/non_empty"
+				}
+			}
+		}
+	}
 }

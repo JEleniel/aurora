@@ -21,6 +21,5 @@
 			"relationship": "realizes",
 			"target": "CAP-004"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

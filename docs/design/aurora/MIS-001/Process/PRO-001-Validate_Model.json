@@ -9,6 +9,5 @@
 			"relationship": "includes",
 			"target": "ATV-001"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

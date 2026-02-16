@@ -34,7 +34,7 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[ATV-002 - Render View Artifacts](MIS-001/Activity/ATV-002-Render_View_Artifacts.md)**: Select roots/included card types per view definitions, traverse the subgraph, and render the view into diagram artifacts.
 
-- **[ATV-004 - Append Audit Log Entry](MIS-001/Activity/ATV-004-Append_Audit_Log_Entry.md)**: Append a create/change/delete entry to the mission audit log.
+- **[ATV-004 - Append Audit Log Entry](MIS-001/Activity/ATV-004-Append_Audit_Log_Entry.md)**: Append one line to the mission `AuditLog.ndjson` file for each change event, allowing multiple changed cards and related link changes in one entry.
 
 - **[ATV-007 - Maintain Aurora Schemas](MIS-001/Activity/ATV-007-Maintain_Aurora_Schemas.md)**: Maintain the Aurora JSON schemas used for cards, audit logs, and compact export.
 
@@ -46,7 +46,7 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 ### Artifact
 
-- **[ART-004 - Mission Audit Log](MIS-001/Artifact/ART-004-Mission_Audit_Log.md)**: The per-mission audit log JSON file that records create/change/delete events over time.
+- **[ART-004 - Mission Audit Log](MIS-001/Artifact/ART-004-Mission_Audit_Log.md)**: The per-mission append-only `AuditLog.ndjson` file that records grouped card/link change events, paired with a mission-local `ChangedCards.json` snapshot.
 
 - **[ART-006 - View Definitions Registry](MIS-001/Artifact/ART-006-View_Definitions_Registry.md)**: The canonical registry JSON that defines views (roots, included card types, and view descriptions).
 
@@ -64,7 +64,7 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[CAP-003 - Export Compact Model](MIS-001/Capability/CAP-003-Export_Compact_Model.md)**: Export an agent-friendly compact model representation containing the cards and their directed links in a single JSON document.
 
-- **[CAP-004 - Maintain Audit Trail](MIS-001/Capability/CAP-004-Maintain_Audit_Trail.md)**: Maintain an audit log per mission that records deterministic create/change/delete events for cards.
+- **[CAP-004 - Maintain Audit Trail](MIS-001/Capability/CAP-004-Maintain_Audit_Trail.md)**: Maintain an append-only audit log per mission (`AuditLog.ndjson`) with grouped card/link changes and regenerate `ChangedCards.json` after each audit append.
 
 - **[CAP-002 - Generate Views](MIS-001/Capability/CAP-002-Generate_Views.md)**: Generate view artifacts from the model by selecting roots and included card types, traversing reachable subgraphs, and rendering diagrams without changing the underlying model.
 
@@ -86,7 +86,7 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[CNS-002 - No Orphan Cards](MIS-001/Constraint/CNS-002-No_Orphan_Cards.md)**: Every non-Mission card must have one or more incoming links and be reachable from the Mission card.
 
-- **[CNS-003 - Standard Model File Layout](MIS-001/Constraint/CNS-003-Standard_Model_File_Layout.md)**: Models must use the standard Aurora folder layout: Mission card at model home, mission-scoped cards under `<MISSION_ID>/<Card Type>/`, and an audit log at `<MISSION_ID>/AuditLog.json`.
+- **[CNS-003 - Standard Model File Layout](MIS-001/Constraint/CNS-003-Standard_Model_File_Layout.md)**: Models must use the standard Aurora folder layout: Mission card at model home, mission-scoped cards under `<MISSION_ID>/<Card Type>/`, and an append-only audit log at `<MISSION_ID>/AuditLog.ndjson`.
 
 - **[CNS-001 - Mission Has Outgoing Links Only](MIS-001/Constraint/CNS-001-Mission_Has_Outgoing_Links_Only.md)**: The Mission card serves as the root of the model graph and must only have outgoing links.
 
@@ -124,13 +124,13 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[PRO-003 - Export Compact Model](MIS-001/Process/PRO-003-Export_Compact_Model.md)**: Export a compact representation of the model cards and links into a single JSON file.
 
-- **[PRO-004 - Record Audit Log Entries](MIS-001/Process/PRO-004-Record_Audit_Log_Entries.md)**: Record create/change/delete events for mission cards into the mission audit log.
+- **[PRO-004 - Record Audit Log Entries](MIS-001/Process/PRO-004-Record_Audit_Log_Entries.md)**: Record mission change events by appending one entry per event to `AuditLog.ndjson`; each entry may include multiple changed cards and link changes.
 
 ### Requirement
 
 - **[REQ-010 - Rendering Semantics](MIS-001/Requirement/REQ-010-Rendering_Semantics.md)**: Rendering MUST treat canonical registry style fields (shape/icon/fill/color) as non-normative hints; model validity MUST depend on normative fields (types, ids, relationships), not styling.
 
-- **[REQ-006 - Audit Log Semantics](MIS-001/Requirement/REQ-006-Audit_Log_Semantics.md)**: Each mission MUST have an audit log recording create/change/delete events with timestamp, editor, target id, and change type.
+- **[REQ-006 - Audit Log Semantics](MIS-001/Requirement/REQ-006-Audit_Log_Semantics.md)**: Each mission MUST have an append-only `AuditLog.ndjson` audit log where each line records one change event with timestamp, editor, and a list of changed cards (including link changes when applicable).
 
 - **[REQ-002 - Directed Graph Invariants](MIS-001/Requirement/REQ-002-Directed_Graph_Invariants.md)**: Starting from the Mission, all links MUST traverse away from the Mission; every card must be reachable; and traversal must terminate in a leaf or a previously seen card (local loop).
 
@@ -159,4 +159,3 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 ### System
 
 - **[SYS-001 - Aurora Tooling Ecosystem](MIS-001/System/SYS-001-Aurora_Tooling_Ecosystem.md)**: The overall Aurora system: schemas + canonical registries + model cards, supported by tools (CLI/editor/shared library) that validate models and generate views and exports.
-

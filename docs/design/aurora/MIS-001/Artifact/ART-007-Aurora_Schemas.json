@@ -5,6 +5,5 @@
 	"card_subtype": "Data",
 	"name": "Aurora Schemas",
 	"description": "The Aurora JSON schemas used to validate cards, audit logs, and compact exports.",
-	"links": [],
-	"version": "1.0.0"
+	"links": []
 }

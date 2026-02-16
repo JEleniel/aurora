@@ -13,6 +13,5 @@
 			"relationship": "produces",
 			"target": "ART-002"
 		}
-	],
-	"version": "1.0.0"
+	]
 }

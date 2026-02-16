@@ -6,15 +6,38 @@ applyTo: '**/aurora/**/*'
 
 ## Model Overview
 
-**Version**: 2.0.0
+Aurora is a deterministic, typed, directed graph rooted at a single `Mission` card. Cards are nodes, and links are constrained edges defined by a canonical relationship registry. Meaning comes from graph structure and allowed link types, not from diagram shapes or wording. Views are read-only projections of the model and never modify it.
 
-Aurora is a deterministic, typed, directed graph rooted at a single Mission. Cards are nodes, relationships are constrained edges defined by a canonical registry. Meaning comes from graph structure and allowed link types, not from diagram shapes or wording. Every card (except Mission) must be reachable from the root and have at least one incoming link. Views are projections of the model and never modify it. Attributes are minimal and only allowed when they cannot be represented as relationships. The model represents logical architecture and intent, not runtime instances, operational state, or implementation tracking.
+Attributes capture properties of an element that are not already expressed by `card_type`, `card_subtype`, `name`, or `description`, while links capture relationships and interactions between elements. The model is a pure architecture which represents logical architecture and intent, not runtime instances, operational state, or implementation tracking.
+
+## Canonical split: schema vs instruction
+
+- Schemas are canonical for structure and field constraints.
+- Instructions are canonical for behavior and process rules.
+- Instructions MUST NOT redefine schema structure.
+- Examples are illustrative and non-canonical.
+- `Aurora.canonical.definitions.json` is machine-first canonical data.
 
 **One Goal**: Enable the Architect to focus on modeling the architecture instead of drawing diagrams and pictures.
 
 ## Models
 
-The model is the central piece of the architecture and is a collection of cards representing the architectural elements that have links describing their relationships, starting from a `Mission`.
+A model is the central artifact in Aurora. It is a collection of cards that represent architectural elements, connected by links that describe their relationships, starting from a `Mission`.
+
+Each model is identified by its `Mission` ID.
+
+### Getting started
+
+1. Create or locate the model home folder: `aurora/` (located at `docs/design/aurora/` by default).
+2. Ensure `aurora/schemas/` contains `Aurora.card.schema.json`, `Aurora.audit.schema.json`, `Aurora.compact.schema.json`, and `Aurora.changed.cards.schema.json`. If missing, copy them from `.github/agents/aurora/`.
+3. Create the `Mission` card in the model home (`aurora/`).
+4. Add other cards under `{mission id}/{card type}/` and link them from existing cards.
+5. Append to `{mission id}/AuditLog.ndjson` for every change event. One entry may include changes to multiple cards.
+6. Regenerate `{mission id}/ChangedCards.json` as a **snapshot** after each appended audit entry.
+
+At the end of making changes, validate the model(s), generate the Markdown, views, and compact model. **If this fails do not stop working.**
+
+### How the Model Works
 
 Any pair of cards in the model can be described using simple sentences:
 
@@ -28,7 +51,7 @@ The mission establishes the driver "Operational Friction Elimination" which is "
 "Operational Friction Elimination" drives the requirement "Define a Deterministic Modeling Framework" which is "Design a framework for documenting deterministic process models with measurable latency and failure semantics".
 ```
 
-**These result in a model that looks like this**:
+**These sentences produce a model that looks like this**:
 
 ```mermaid
 %%{init: {'flowchart': {'defaultRenderer': 'elk'}, 'themeVariables': { 'clusterBkg': 'transparent' }}}%%
@@ -43,24 +66,9 @@ graph LR
 
 ### Cards
 
-Cards represent the elements of the design, described as nouns, and contain the attributes of the element and the links to other elements. Cards have an `attributes` property that allows additional, arbitrary information to be included. Card files should be "pretty printed" using `prettier` or similar.
+Cards represent architectural elements (nouns). A card contains properties of the element and links to other elements. Use attributes for properties that are not already represented by `card_type`, `card_subtype`, `name`, or `description`. Use links for relationships and interactions between elements. Card files should be "pretty printed" using `prettier` or a similar tool.
 
-Each card is comprised of:
-
-| Field          | Required | Meaning                                                                                                                                                                                          |
-| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `$schema`      | Yes      | Relative link to the Aurora schema file in the model home.                                                                                                                                       |
-| `id`           | Yes      | Semi-permanent unique identifier with a `card_type` prefix and sequential (to the model) integer. If the `card_type` changes a new `id` must be issued.                                          |
-| `card_type`    | Yes      | Architectural element represented by the card in title case.                                                                                                                                     |
-| `card_subtype` | No       | Optional refinement of the `card_type` in title case.                                                                                                                                            |
-| `name`         | Yes      | Concise human-readable name for the card in title case.                                                                                                                                          |
-| `description`  | Yes      | Details regarding the element the card represents.                                                                                                                                               |
-| `status`       | No       | Status of an implementable element such as a `Feature`. Recommended lifecycle: "Proposed", "Design", "Implementation", "Released", "Deprecated", "Deleted"; extend consistently per `card_type`. |
-| `links`        | Yes      | Pointers to other cards establishing relationships (`target` is the destination card `id`; `relationship` is a human-readable verb).                                                             |
-| `version`      | Yes      | Semantic version of the card, starting from 1.0.0; increment major for changes in meaning, minor for changes like rephrasing, and patch for corrections and minor changes                        |
-| `boundary`     | No       | Optional grouping label for rendering and organization.                                                                                                                                            |
-| `notes`        | No       | Additional notes and information attached to the card.                                                                                                                                           |
-| `attributes`   | No       | Arbitrary optional key-value pairs providing additional data; the value can be any valid JSON value, including objects.                                                                          |
+Card field structure is defined exclusively in `Aurora.card.schema.json`.
 
 **Example `id`s**:
 
@@ -74,13 +82,6 @@ A canonical set of cards and relationships is included. The canonical set is des
 
 - [Aurora Canonical Definitions](Aurora.canonical.definitions.json)
 - [Aurora Canonical Definitions Schema](Aurora.canonical.definitions.schema.json)
-
-##### Registry format (canonical definitions)
-
-The canonical definitions registry is a JSON object with:
-
-- `definitions`: a JSON array of entries. Each entry defines one card type.
-- `relationships`: a JSON array of objects that describe valid links.
 
 #### Non-Canonical Attributes
 
@@ -109,24 +110,25 @@ The following is a list of commonly used attributes. It is not canonical:
 
 #### Appearance Definitions
 
-To aid in rendering Aurora includes a set of shape, icon, background, and foregrounds for each card type in the canonical set. Icons can be any valid Unicode character.
+To aid rendering, Aurora includes a set of shapes, icons, backgrounds, and foregrounds for each card type in the canonical set. Icons can be any valid Unicode character.
 
 - [Aurora Appearance Configuration](Aurora.appearance.json)
 - [Aurora Appearance Configuration Schema](Aurora.appearance.schema.json)
 
 ### File and Folder Structure
 
-Models live in a folder named `aurora/`, the model home. If an `aurora/` foldeer already exists at the specified location it should be used. Never create an `aurora` folder in another `aurora` folder. Multiple models may share a model home. The `Mission` card is stored in the model home, and all other cards are stored in a model and card type specific folder, `{mission id}/{card type}/` inside the model home.
+Models live in a folder named `aurora/` (the model home). If an `aurora/` folder already exists at the target location, use it. Never create an `aurora` folder inside another `aurora` folder. Multiple models may share one model home. The `Mission` card is stored in the model home, and all other cards are stored in mission- and card-type-specific folders: `{mission id}/{card type}/`.
 
-A model is composed of up to four kinds of files:
+A model may include five kinds of files:
 
-1. Schemas: `Aurora.card.schema.json`, `Aurora.audit.schema.json`, and `Aurora.compact.schema.json` files in the model.
+1. Schemas: `Aurora.card.schema.json`, `Aurora.audit.schema.json`, `Aurora.compact.schema.json`, and `Aurora.changed.cards.schema.json` files in `aurora/schemas/`.
     + These schemas are shared by all models, audit logs, and compact models in the same model home.
-    + If these files are not present, or when creating a new model home, copy only them from `.github/agents/aurora/` to the model home before creating any other files.
-    + All JSON files MUST have the `$schema` attribute with the relative path from that file to the appropriate schema in the model home.
+    + If these files are not present, or when creating a new model home, copy only those schemas from `.github/agents/aurora/` into `aurora/schemas/` before creating any other files.
+    + All model JSON document files MUST have the `$schema` attribute with the relative path from that file to the appropriate schema. Entries in `AuditLog.ndjson` are line-delimited JSON objects and do not include `$schema`.
 2. Cards: the central component of the model, each card is stored in a separate JSON file named `{id}-{name}.json` where name has had all symbols removed and spaces replaced with underscores. All cards must conform to the `Aurora.card.schema.json` in the model home.
-3. Audit Log: a history of who made changes to which cards over time, stored at `{model id}/AuditLog.json` and conforming to the `Aurora.audit.schema.json` in the model home. An audit log entry MUST be made for every card change to any part of the model.
-4. Compact Model: an optional compact, single file version of the model at `{mission id}/Compact.json` and conforming to the `Aurora.compact.schema.json` in the model home.
+3. Audit Log: an append-only, line-delimited JSON history of change events over time, stored at `{mission id}/AuditLog.ndjson`. Each line MUST conform to `Aurora.audit.schema.json` and may capture multiple changed cards in one entry. An audit log entry MUST be appended for every change event.
+4. Changed Cards Snapshot: a mission-local snapshot at `{mission id}/ChangedCards.json`, conforming to `Aurora.changed.cards.schema.json`. It MUST be regenerated after each appended audit entry.
+5. Compact Model: an optional compact, single file version of the model at `{mission id}/Compact.json` and conforming to the `Aurora.compact.schema.json` in the model home.
 
 The model home may be stored as a ZIP file for transport if the folder structure is preserved.
 
@@ -134,21 +136,25 @@ The model home may be stored as a ZIP file for transport if the folder structure
 
 ```text
 aurora
-  ├─ Aurora.audit.schema.json
-  ├─ Aurora.card.schema.json
-  ├─ Aurora.compact.schema.json
-  ├─ MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.json
-  ├─ MIS-002-Write_User_Documentation_for_Aurora.json
   ├─ MIS-001
-  │    ├─ AuditLog.json
-  │    ├─ Compact.json
   │    ├─ Driver
   │    │    ├─ DRI-001-Some_Reason.json
   │    │    └─ DRI-002-Another_Reason.json
-  │    └─ Requirement
+  │    ├─ Requirement
   │        └─ REQ-001-Something_Has_To_Happen.json
+  │    ├─ AuditLog.ndjson
+  │    ├─ ChangedCards.json
+  │    └─ Compact.json
   ├─ MIS-002
   │    ├─ Driver
+  │    └─ ...
+  ├─ schemas
+  │    ├─ Aurora.audit.schema.json
+  │    ├─ Aurora.changed.cards.schema.json
+  │    ├─ Aurora.card.schema.json
+  │    └─ Aurora.compact.schema.json
+  ├─ MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.json
+  └─ MIS-002-Write_User_Documentation_for_Aurora.json
 ... etc
 ```
 
@@ -156,11 +162,9 @@ aurora
 
 These invariant rules ensure that the model is a traversable, directed graph with local cycles only (cycles that do not reach a view root).
 
-1. **The `Mission` Card**: All models must start with and include a single `Mission` card that summarizes the high-level "why" of the project. The `Mission` card must only have outgoing links, and serves as the root of the directed graph.
-
-2. **Direction (graph links)**: When traversing starting from Mission, all links must lead away from the `Mission` card. Traversing any path starting from `Mission` must end either in a leaf card or a previously seen card, creating a local loop.
-
-3. **No orphans**: Other than the `Mission` card, all cards must have one or more incoming links, and a path from the `Mission` card. All cards may have any number of outgoing links. All link targets must be valid cards in the model.
+1. **The `Mission` Card**: All models must start with and include a single `Mission` card that summarizes the high-level "why" of the project. The `Mission` card must only have outgoing links and serves as the root of the directed graph.
+2. **Direction (graph links)**: When traversing from `Mission`, all links must lead away from the `Mission` card. Any traversal path that starts from `Mission` must end either in a leaf card or a previously seen card, creating a local loop.
+3. **No orphans**: Other than the `Mission` card, all cards must have one or more incoming links and a path from the `Mission` card. All cards may have any number of outgoing links. All link targets must be valid cards in the model.
 
 ## Views
 

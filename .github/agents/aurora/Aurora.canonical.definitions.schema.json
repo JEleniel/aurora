@@ -2,102 +2,105 @@
 	"$id": "https://crystultima.org/aurora/canonical.definitions.schema.json",
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"title": "Aurora Canonical Definitions Registry Schema",
-	"description": "JSON schema for Aurora.canonical.definitions.json (card type registry)",
+	"description": "JSON schema for Aurora.canonical.definitions.json",
 	"type": "object",
 	"additionalProperties": false,
+	"required": ["definitions", "relationships"],
 	"properties": {
 		"$schema": {
-			"description": "Optional reference to this schema file for editors/tooling",
 			"type": "string",
 			"minLength": 1
 		},
 		"definitions": {
-			"description": "List of canonical card type definitions",
 			"type": "array",
 			"minItems": 1,
+			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/entry"
 			}
 		},
 		"relationships": {
-			"description": "List of allowed relationships between card types",
 			"type": "array",
+			"minItems": 1,
+			"uniqueItems": true,
 			"items": {
 				"$ref": "#/definitions/relationship"
 			}
 		}
 	},
-	"required": ["definitions", "relationships"],
 	"definitions": {
+		"non_empty": {
+			"type": "string",
+			"minLength": 1
+		},
+		"acronym": {
+			"type": "string",
+			"pattern": "^[A-Z]{3}$"
+		},
 		"hex_color": {
-			"description": "6-digit hex color in #RRGGBB form",
 			"type": "string",
 			"pattern": "^#[A-Fa-f0-9]{6}$"
 		},
 		"relationship": {
-			"description": "Single mapping from target card acronym to a human-readable verb",
-			"type": "object",
-			"properties": {
-				"source_card_type": { "type": "string" },
-				"target_card_type": { "type": "string" },
-				"relationship": { "type": "string" }
-			},
-			"required": ["source_card_type", "target_card_type", "relationship"],
-			"additionalProperties": false
-		},
-		"entry": {
-			"description": "One canonical card type definition (normative + optional rendering fields)",
 			"type": "object",
 			"additionalProperties": false,
+			"required": ["source_card_type", "target_card_type", "relationship"],
 			"properties": {
-				"card_type": {
-					"description": "Human-facing type name in Title Case",
-					"type": "string",
-					"minLength": 1
+				"source_card_type": {
+					"$ref": "#/definitions/non_empty"
 				},
-				"acronym": {
-					"description": "3-letter id prefix used in compact ids and link targets",
-					"type": "string",
-					"pattern": "^[A-Z]{3}$"
+				"target_card_type": {
+					"$ref": "#/definitions/non_empty"
+				},
+				"relationship": {
+					"$ref": "#/definitions/non_empty"
+				}
+			}
+		},
+		"common_property": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["name", "description"],
+			"properties": {
+				"name": {
+					"$ref": "#/definitions/non_empty"
 				},
 				"description": {
-					"description": "Short definition of the card type",
-					"type": "string",
-					"minLength": 1
+					"$ref": "#/definitions/non_empty"
+				}
+			}
+		},
+		"entry": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["card_type", "acronym", "description"],
+			"properties": {
+				"card_type": {
+					"$ref": "#/definitions/non_empty"
+				},
+				"acronym": {
+					"$ref": "#/definitions/acronym"
+				},
+				"description": {
+					"$ref": "#/definitions/non_empty"
 				},
 				"common_subtypes": {
-					"description": "Common subtype suggestions (non-normative)",
 					"type": "array",
+					"minItems": 1,
+					"uniqueItems": true,
 					"items": {
-						"type": "string",
-						"minLength": 1
-					},
-					"minItems": 1
+						"$ref": "#/definitions/non_empty"
+					}
 				},
-				"common_properties:": {
-					"description": "Common property suggestions (non-normative)",
+				"common_properties": {
 					"type": "array",
+					"minItems": 1,
+					"uniqueItems": true,
 					"items": {
-						"type": "object",
-						"properties": {
-							"name": {
-								"description": "Property name",
-								"type": "string",
-								"minLength": 1
-							},
-							"description": {
-								"description": "Short description of the property",
-								"type": "string",
-								"minLength": 1
-							}
-						},
-						"required": ["name", "description"],
-						"additionalProperties": false
-					},
-					"additionalItems": false
+						"$ref": "#/definitions/common_property"
+					}
 				}
-			},
-			"required": ["card_type", "acronym", "description"]
+			}
 		}
 	}
 }

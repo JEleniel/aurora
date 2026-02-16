@@ -9,6 +9,5 @@
 			"relationship": "produces",
 			"target": "ART-007"
 		}
-	],
-	"version": "1.0.0"
+	]
 }
