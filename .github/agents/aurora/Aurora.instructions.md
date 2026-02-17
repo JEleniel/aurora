@@ -4,13 +4,13 @@
 
 Aurora is a deterministic, typed, directed graph rooted at a single `Mission` card. Cards are nodes, and links are constrained edges. Meaning comes from graph structure and allowed link types, not from diagram shapes or wording. Views are read-only projections of the model and never modify it. The model is a pure architecture which represents logical architecture and intent, not runtime instances, operational state, or implementation tracking.
 
+**One Goal**: Enable the Architect to focus on modeling the architecture instead of drawing diagrams and pictures.
+
 ## Canonical split: schema vs instruction
 
 - Schemas are canonical for structure and field constraints.
 - Instructions are canonical for behavior and process rules.
 - Examples are illustrative and non-canonical.
-
-**One Goal**: Enable the Architect to focus on modeling the architecture instead of drawing diagrams and pictures.
 
 ## Models
 
@@ -21,8 +21,8 @@ Each model is identified by its `Mission` ID.
 ### Getting started
 
 1. Create or locate the model home folder: `aurora/` (located at `docs/design/aurora/` by default).
-2. Ensure `aurora/schemas/` contains `Aurora.appearance.schema.json`, `Aurora.audit.schema.json`, `Aurora.canonical.definitions.schema.json`, `Aurora.card.schema.json`, `Aurora.compact.schema.json`, and `View.Definitions.schema.json`. If missing, copy them from `.github/agents/aurora/`. Do not copy the Markdown files.
-3. Ensure `aurora/reference/` contains `Aurora.appearance.json`, `Aurora.canonical.definitions.json`, and `View.Definitions.json`. If missing, copy them from `.github/agents/aurora/`. Do not copy the Markdown files.
+2. Ensure `aurora/schemas/` contains `Aurora.audit.schema.json`, `Aurora.card.schema.json`, `Aurora.compact.schema.json`, and `Aurora.modelconfiguration.schema.json`. If missing, copy them from `.github/agents/aurora/schemas/`. Do not copy the Markdown files.
+3. Ensure `aurora/reference/` contains `Aurora.modelconfiguration.json` and `SVGTemplate.svg`. If missing, copy them from `.github/agents/aurora/reference/`. Do not copy the Markdown files.
 4. Create the `Mission` card in the model home (`aurora/`).
 5. Add other cards under `{mission id}/{card type folder}/` and link them from existing cards.
 6. Append to `{mission id}/AuditLog.ndjson` for every change event. One entry may include changes to multiple cards.
@@ -58,15 +58,7 @@ graph LR
 
 Cards represent architectural elements (nouns). A card contains properties of the element and links to other elements. An `attributes` object is included to capture properties that are not already represented by other fields. Use links for relationships and interactions between elements. Card files should be "pretty printed" using `prettier` or a similar tool.
 
-Card field structure is defined exclusively in `Aurora.card.schema.json`.
-
-### Appearance icons
-
-The `icon` field in `Aurora.appearance.json` uses SVG symbol names, not Unicode emoji characters.
-
-- Icon values MUST be names from [Icons.txt](Icons.txt).
-- Icon values SHOULD choose the nearest semantic match for the card type.
-- Unicode icon characters MUST NOT be used.
+Card field structure is defined exclusively in `schemas/Aurora.card.schema.json`.
 
 **Example `id`s**:
 
@@ -84,8 +76,10 @@ A canonical set of cards and relationships is included. The canonical set is des
 
 Extension rule (minimal): use canonical cards and relationships by default. Add non-canonical types only when no canonical option is semantically correct, and preserve all graph invariants.
 
-- [Aurora Canonical Definitions](Aurora.canonical.definitions.json)
-- [Aurora Canonical Definitions Schema](Aurora.canonical.definitions.schema.json)
+Canonical card types, relationships, appearance, and view definitions are defined in the model configuration registry:
+
+- [Aurora Model Configuration](reference/Aurora.modelconfiguration.json)
+- [Aurora Model Configuration Schema](schemas/Aurora.modelconfiguration.schema.json)
 
 ### File and Folder Structure
 
@@ -121,7 +115,11 @@ aurora
   ├─ schemas
   │    ├─ Aurora.audit.schema.json
   │    ├─ Aurora.card.schema.json
-  │    └─ Aurora.compact.schema.json
+  │    ├─ Aurora.compact.schema.json
+  │    └─ Aurora.modelconfiguration.schema.json
+  ├─ reference
+  │    ├─ SVGTemplate.svg
+  │    └─ Aurora.modelconfiguration.json
   ├─ MIS-001-Enable_Deterministic_Aurora_CLI_Tooling.json
   └─ MIS-002-Write_User_Documentation_for_Aurora.json
 ... etc

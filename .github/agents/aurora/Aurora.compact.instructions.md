@@ -8,7 +8,7 @@ This instruction defines only what is needed to read and interpret Aurora compac
 
 ## Canonical split: schema vs instruction
 
-- Structure is canonical in `Aurora.compact.schema.json`.
+- Structure is canonical in `schemas/Aurora.compact.schema.json`.
 - This instruction is interpretation guidance only.
 
 ## What these files are
@@ -26,16 +26,16 @@ These files are derived artifacts and are not the editable source-of-truth repre
 ## Consumption rules
 
 - Parse compact exports using the compact schema only.
-- Compact exports MUST include the `$schema` property with a relative path to `Aurora.compact.schema.json`.
+- Compact exports MUST include the `$schema` property with a relative path to `schemas/Aurora.compact.schema.json` in the model home.
 - Compact cards omit `description` and omit `version`.
 - Compact cards require `attributes` to preserve implementation-specific metadata.
-- Relationship semantics remain canonical to `Aurora.canonical.definitions.json`.
+- Relationship semantics remain canonical to `reference/Aurora.modelconfiguration.json` (`canonical.relationships`).
 
 ## Canonical definitions
 
 When validating meaning (card types and relationships), use the canonical registry:
 
-- Canonical cards and relationships: [Aurora.canonical.definitions.json](Aurora.canonical.definitions.json)
+- Canonical cards and relationships: [reference/Aurora.modelconfiguration.json](reference/Aurora.modelconfiguration.json)
 
 ## Model interpretation (canonical invariants)
 

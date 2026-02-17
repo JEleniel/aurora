@@ -17,5 +17,5 @@ You MUST NOT, at any time, for any reason:
 - Use `|| true`, `true ||`, or `true` as a command or part of a command, especially in the terminal.
 - Use the `gh` command line tool. It is not installed and will not be.
 - Use the `head` or `tail` commands in the terminal.
-- Write or run ad-hoc scripts in any language, or invoke language runtimes (for example `python`, `node`, etc) for ad-hoc execution.
+- Write or run ad-hoc scripts in any language, or invoke language runtimes (for example `python`, `node`, etc) for ad-hoc execution. Signs of an ad-hoc script include, but are not limited to: use of conditional statements, use of multiple loops, use of keywords such as "function", and the entire command exceeding 120 characters.
 - Use chaining operators (for example `&&`, `;`). Pipes (`|`) are allowed.
