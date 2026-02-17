@@ -3,6 +3,7 @@ name: reviewing
 description: The skill of performing thorough reviews of code, documentation, and releases to ensure quality, security, and readiness.
 ---
 
+- If the user asks for feedback it is not a review.
 - When reviewing, do not alter code, documentation, or other files except your review.
 
 **Review Principles**:

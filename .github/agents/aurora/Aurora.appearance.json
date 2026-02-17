@@ -5,28 +5,28 @@
 			"acronym": "ATV",
 			"color": "#FFFFFF",
 			"fill": "#4c1d95",
-			"icon": "⚙",
+			"icon": "wrench",
 			"shape": "double-rectangle"
 		},
 		{
 			"acronym": "ACT",
 			"color": "#FFFFFF",
 			"fill": "#1a2e05",
-			"icon": "👤",
+			"icon": "person",
 			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "STK",
 			"color": "#FFFFFF",
 			"fill": "#1a2e05",
-			"icon": "👥",
+			"icon": "group",
 			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "ADR",
 			"color": "#FFFFFF",
 			"fill": "#1f2937",
-			"icon": "📝",
+			"icon": "penblack",
 			"shape": "ruler"
 		},
 		{
@@ -39,7 +39,7 @@
 			"acronym": "AST",
 			"color": "#FFFFFF",
 			"fill": "#334155",
-			"icon": "🛡",
+			"icon": "lockandkey",
 			"shape": "document"
 		},
 		{
@@ -52,14 +52,14 @@
 			"acronym": "SYS",
 			"color": "#FFFFFF",
 			"fill": "#1e40af",
-			"icon": "🧱",
+			"icon": "box",
 			"shape": "folder"
 		},
 		{
 			"acronym": "APP",
 			"color": "#FFFFFF",
 			"fill": "#1e40af",
-			"icon": "📦",
+			"icon": "box",
 			"shape": "rectangle"
 		},
 		{
@@ -84,21 +84,21 @@
 			"acronym": "CNS",
 			"color": "#FFFFFF",
 			"fill": "#082f49",
-			"icon": "📏",
+			"icon": "tag",
 			"shape": "ruler"
 		},
 		{
 			"acronym": "CTL",
 			"color": "#FFFFFF",
 			"fill": "#713f12",
-			"icon": "🔒",
+			"icon": "lock",
 			"shape": "ruler"
 		},
 		{
 			"acronym": "DEP",
 			"color": "#FFFFFF",
 			"fill": "#1e1b4b",
-			"icon": "☁",
+			"icon": "earth",
 			"shape": "octagon"
 		},
 		{
@@ -111,21 +111,21 @@
 			"acronym": "DRI",
 			"color": "#FFFFFF",
 			"fill": "#064e3b",
-			"icon": "🧭",
+			"icon": "compass",
 			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "EVT",
 			"color": "#FFFFFF",
 			"fill": "#5b21b6",
-			"icon": "⚡",
+			"icon": "bolt",
 			"shape": "trapezoid"
 		},
 		{
 			"acronym": "FEA",
 			"color": "#FFFFFF",
 			"fill": "#14532d",
-			"icon": "⭐",
+			"icon": "star",
 			"shape": "rectangle"
 		},
 		{
@@ -138,14 +138,14 @@
 			"acronym": "MIS",
 			"color": "#FFFFFF",
 			"fill": "#022c22",
-			"icon": "🎯",
+			"icon": "target",
 			"shape": "octagon"
 		},
 		{
 			"acronym": "NOD",
 			"color": "#FFFFFF",
 			"fill": "#312e81",
-			"icon": "🖥",
+			"icon": "computer",
 			"shape": "box"
 		},
 		{
@@ -158,21 +158,21 @@
 			"acronym": "PRO",
 			"color": "#FFFFFF",
 			"fill": "#2e1065",
-			"icon": "🔁",
+			"icon": "recycle",
 			"shape": "octagon"
 		},
 		{
 			"acronym": "REQ",
 			"color": "#FFFFFF",
 			"fill": "#065f46",
-			"icon": "✅",
+			"icon": "check",
 			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "RIS",
 			"color": "#FFFFFF",
 			"fill": "#881337",
-			"icon": "⚠",
+			"icon": "warning",
 			"shape": "hexagon"
 		},
 		{
@@ -185,56 +185,56 @@
 			"acronym": "STM",
 			"color": "#FFFFFF",
 			"fill": "#4a044e",
-			"icon": "⏱",
+			"icon": "stopwatch",
 			"shape": "octagon"
 		},
 		{
 			"acronym": "STR",
 			"color": "#FFFFFF",
 			"fill": "#365314",
-			"icon": "📖",
+			"icon": "card",
 			"shape": "rectangle"
 		},
 		{
 			"acronym": "TES",
 			"color": "#FFFFFF",
 			"fill": "#022c22",
-			"icon": "🧪",
+			"icon": "search",
 			"shape": "hexagon"
 		},
 		{
 			"acronym": "THD",
 			"color": "#FFFFFF",
 			"fill": "#4c0519",
-			"icon": "♦",
+			"icon": "diamond",
 			"shape": "diamond"
 		},
 		{
 			"acronym": "ADV",
 			"color": "#FFFFFF",
 			"fill": "#4c0519",
-			"icon": "👾",
+			"icon": "skullandcrossbones",
 			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "THC",
 			"color": "#FFFFFF",
 			"fill": "#4c0519",
-			"icon": "🛠",
+			"icon": "toolbox",
 			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "VIC",
 			"color": "#FFFFFF",
 			"fill": "#4c0519",
-			"icon": "🧍",
+			"icon": "person",
 			"shape": "rounded-rectangle"
 		},
 		{
 			"acronym": "ROW",
 			"color": "#FFFFFF",
 			"fill": "#4c0519",
-			"icon": "🔑",
+			"icon": "key",
 			"shape": "rounded-rectangle"
 		},
 		{
@@ -247,15 +247,81 @@
 			"acronym": "TRG",
 			"color": "#FFFFFF",
 			"fill": "#78350f",
-			"icon": "⏰",
+			"icon": "alarm",
 			"shape": "trapezoid"
 		},
 		{
 			"acronym": "VND",
 			"color": "#FFFFFF",
 			"fill": "#1a2e05",
-			"icon": "🏢",
+			"icon": "office",
 			"shape": "rounded-rectangle"
 		}
+	],
+	"available_icons": [
+		"alarm",
+		"audio",
+		"batterylow",
+		"biohazard",
+		"bolt",
+		"box",
+		"bulb",
+		"card",
+		"check",
+		"clock",
+		"commercial",
+		"compass",
+		"computer",
+		"computer2",
+		"copyright",
+		"cornersquare",
+		"crane",
+		"diamond",
+		"diskette",
+		"dollarsign",
+		"earth",
+		"exclamation",
+		"filingcabiner",
+		"folder",
+		"folderopen",
+		"group",
+		"hammer",
+		"hook",
+		"hourglass",
+		"ifepreserver",
+		"industrial",
+		"key",
+		"link",
+		"lock",
+		"lockandkey",
+		"lockedpen",
+		"mobile",
+		"moneybag",
+		"nopassingfire",
+		"office",
+		"penblack",
+		"penblue",
+		"person",
+		"pirateflag",
+		"ppe",
+		"question",
+		"radiation",
+		"recycle",
+		"redcircle",
+		"redflag",
+		"registered",
+		"school",
+		"screwdriver",
+		"search",
+		"skullandcrossbones",
+		"star",
+		"stopwatch",
+		"tag",
+		"target",
+		"toolbox",
+		"trashbasket",
+		"video",
+		"warning",
+		"wrench"
 	]
 }

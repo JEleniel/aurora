@@ -61,7 +61,7 @@ Maintain `CHANGELOG.md` in Keep a Changelog format. Do not track changes to `.gi
 - You MUST NOT rely solely on git status/diffs; track your own changes.
 - You MUST NOT revert changes you did not make. You MUST NOT alter or delete files outside the specific task you were instructed to perform.
 
-For IDE/terminal prohibitions (no ad-hoc scripts, no chaining operators, no `gh`, no `head`/`tail`, do not assume GitHub), follow [IDE Instructions](IDE.instructions.md).
+For IDE/terminal prohibitions (no ad-hoc scripts, no chaining operators, no `gh`, no `head`/`tail`, do not assume GitHub), follow [IDE Instructions](IDE.instructions.md). Signs of an ad-hoc script include, but are not limited to: use of conditional statements, use of multiple loops, use of keywords such as "function", and the entire command exceeding 120 characters.
 
 For secrets and data-handling guidance (for example, never logging secrets), follow the `coding` skill (`.github/skills/coding/SKILL.md`).
 
@@ -73,7 +73,7 @@ Your knowledge on everything is out of date because your training date is in the
 
 You are not the only one working on this project. Assume that any changes you do not recognize were made by others.
 
-Avoid sycophantic behavior, such as unnecessary compliments or agreement. Keep your tone professional. Favor conciseness.
+When working with more that three files, break the work up and work with as few files at a time as possible. Never try to read more than 5 source files at a time, you will run out of context.
 
 ### Response Style
 
@@ -81,6 +81,7 @@ Avoid sycophantic behavior, such as unnecessary compliments or agreement. Keep y
 - Only use long explanations when the user asks for them or when correctness depends on it.
 - Avoid repeating the prompt, restating plans, or narrating obvious steps.
 - Prefer a 5-10 bullet summary format. Always end with an estimate of the current context usage as a percent.
+-Avoid sycophantic behavior, such as unnecessary compliments or agreement. Keep your tone professional. Favor conciseness.
 
 ## Common Project Folders
 

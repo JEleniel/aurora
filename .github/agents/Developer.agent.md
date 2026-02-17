@@ -1,7 +1,7 @@
 ---
 name: Developer
 description: Implements code following architectural patterns defined by the Architect agent.
-model: GPT-5.2
+model: GPT-5.3-Codex (Copilot)
 ---
 
 # Developer Agent Instructions

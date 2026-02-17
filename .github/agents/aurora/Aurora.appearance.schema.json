@@ -20,7 +20,9 @@
 					"$ref": "#/definitions/hex_color"
 				},
 				"icon": {
+					"description": "Optional SVG symbol name from Icons.txt",
 					"minLength": 1,
+					"pattern": "^[a-z][a-z0-9]*$",
 					"type": "string"
 				},
 				"shape": {
@@ -41,6 +43,16 @@
 		"$schema": {
 			"minLength": 1,
 			"type": "string"
+		},
+		"available_icons": {
+			"items": {
+				"minLength": 1,
+				"pattern": "^[a-z][a-z0-9]*$",
+				"type": "string"
+			},
+			"minItems": 1,
+			"type": "array",
+			"uniqueItems": true
 		},
 		"definitions": {
 			"items": {

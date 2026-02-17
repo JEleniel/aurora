@@ -60,6 +60,14 @@ Cards represent architectural elements (nouns). A card contains properties of th
 
 Card field structure is defined exclusively in `Aurora.card.schema.json`.
 
+### Appearance icons
+
+The `icon` field in `Aurora.appearance.json` uses SVG symbol names, not Unicode emoji characters.
+
+- Icon values MUST be names from [Icons.txt](Icons.txt).
+- Icon values SHOULD choose the nearest semantic match for the card type.
+- Unicode icon characters MUST NOT be used.
+
 **Example `id`s**:
 
 - MIS-001
