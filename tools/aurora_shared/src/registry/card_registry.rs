@@ -5,9 +5,9 @@ use serde::{Deserialize, Serialize};
 use crate::registry::RegistryError;
 
 const CANONICAL_DEFINITIONS: &str =
-	include_str!("../../../../.github/agents/aurora/Aurora.canonical.definitions.json");
+	include_str!("../../../../.github/agents/aurora/reference/Aurora.canonical.definitions.json");
 const APPEARANCE_DEFINITIONS: &str =
-	include_str!("../../../../.github/agents/aurora/Aurora.appearance.json");
+	include_str!("../../../../.github/agents/aurora/reference/Aurora.appearance.json");
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CardRegistry {

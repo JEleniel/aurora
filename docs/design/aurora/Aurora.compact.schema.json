@@ -47,13 +47,13 @@
 			"additionalProperties": false,
 			"required": ["id", "card_type", "name", "links", "attributes"],
 			"properties": {
-				"boundary": {
-					"type": "string",
-					"minLength": 1
-				},
 				"attributes": {
 					"type": "object",
 					"additionalProperties": true
+				},
+				"boundary": {
+					"type": "string",
+					"minLength": 1
 				},
 				"card_subtype": {
 					"$ref": "#/definitions/non_empty"
@@ -72,9 +72,6 @@
 					}
 				},
 				"name": {
-					"$ref": "#/definitions/non_empty"
-				},
-				"notes": {
 					"$ref": "#/definitions/non_empty"
 				},
 				"status": {

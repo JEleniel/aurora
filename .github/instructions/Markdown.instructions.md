@@ -11,7 +11,7 @@ If present, the repository's Markdown lint config (`.markdownlint-cli2.jsonc`) i
 - Use only ATX headings (`#`, `##`, …); do not indent headings.
 - Use a single H1.
 - Increase heading levels one at a time; do not skip levels.
-    + Sibling headings must be unique.
+	+ Sibling headings must be unique.
 - Do not use emphasis/strong as the entire heading text.
 - Do not hard-wrap paragraph text.
 - Do not use extra spaces in prose. Tables may use spacing within cells.

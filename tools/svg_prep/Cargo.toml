@@ -1,0 +1,30 @@
+[package]
+name = "svg_prep"
+version = "0.1.0"
+edition = { workspace = true }
+description = "Generate reference SVG icon sheets and template defs for Aurora"
+license = { workspace = true }
+repository = { workspace = true }
+keywords = { workspace = true }
+categories = { workspace = true }
+publish = { workspace = true }
+
+[[bin]]
+name = "svg_prep"
+path = "src/main.rs"
+
+[package.metadata]
+app_id = "org.crystultima.aurora.svg_prep"
+
+[dependencies]
+anyhow = { workspace = true }
+clap = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+xmltree = "0.11"
+
+[dev-dependencies]
+tempfile = "3.10"
+
+[lints]
+workspace = true

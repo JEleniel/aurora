@@ -19,6 +19,8 @@ For agent work, compact exports are the preferred machine-readable model snapsho
 
 These files are derived artifacts and are not the editable source-of-truth representation of the model.
 
+Compact exports are not rendering inputs and MUST NOT be used to render views.
+
 ## Non-negotiable: do not modify
 
 - You MUST NOT edit any `docs/design/aurora/<MISSION_ID>/Compact.json` compact export.
@@ -28,14 +30,11 @@ These files are derived artifacts and are not the editable source-of-truth repre
 - Parse compact exports using the compact schema only.
 - Compact exports MUST include the `$schema` property with a relative path to `schemas/Aurora.compact.schema.json` in the model home.
 - Compact cards omit `description` and omit `version`.
+- Compact cards MAY include `boundary` because it can affect logical reasoning about grouping semantics.
+- Compact cards MUST NOT include rendering-only formatting data (for example, `icon` or `notes`).
 - Compact cards require `attributes` to preserve implementation-specific metadata.
 - Relationship semantics remain canonical to `reference/Aurora.modelconfiguration.json` (`canonical.relationships`).
-
-## Canonical definitions
-
-When validating meaning (card types and relationships), use the canonical registry:
-
-- Canonical cards and relationships: [reference/Aurora.modelconfiguration.json](reference/Aurora.modelconfiguration.json)
+- The compact model is not meant for validation. It MUST be generated from an already valid model.
 
 ## Model interpretation (canonical invariants)
 

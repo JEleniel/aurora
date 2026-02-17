@@ -1,80 +1,31 @@
 {
-	"$id": "https://crystultima.org/aurora/modelconfiguration.schema.json",
-	"$schema": "https://json-schema.org/draft/2020-12/schema",
-	"title": "Aurora Model Configuration Schema",
-	"description": "Schema for Aurora.modelconfiguration.json with card-centric canonical definitions, embedded appearance, and per-card relationships.",
-	"type": "object",
-	"additionalProperties": false,
-	"properties": {
-		"$schema": {
-			"type": "string",
-			"minLength": 1
-		},
-		"cards": {
-			"$ref": "#/$defs/cards"
-		},
-		"available_icons": {
-			"$ref": "#/$defs/available_icons"
-		},
-		"views": {
-			"$ref": "#/$defs/views"
-		}
-	},
-	"required": ["cards", "available_icons", "views"],
 	"$defs": {
 		"acronym": {
-			"type": "string",
-			"pattern": "^[A-Z]{3}$"
+			"pattern": "^[A-Z]{3}$",
+			"type": "string"
 		},
-		"non_empty": {
-			"type": "string",
-			"minLength": 1
-		},
-		"hex_color": {
-			"type": "string",
-			"pattern": "^#[A-Fa-f0-9]{6}$"
-		},
-		"icon_name": {
-			"type": "string",
-			"minLength": 1,
-			"pattern": "^[a-z][a-z0-9]*$"
-		},
-		"card_type_list": {
-			"type": "array",
+		"available_icons": {
 			"items": {
-				"$ref": "#/$defs/acronym"
+				"$ref": "#/$defs/icon_name"
 			},
 			"minItems": 1,
+			"type": "array",
 			"uniqueItems": true
 		},
 		"card_common_property": {
-			"type": "object",
 			"additionalProperties": false,
 			"properties": {
-				"name": {
-					"$ref": "#/$defs/non_empty"
-				},
 				"description": {
 					"$ref": "#/$defs/non_empty"
-				}
-			},
-			"required": ["name", "description"]
-		},
-		"card_relationship": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"target": {
-					"$ref": "#/$defs/acronym"
 				},
-				"relationship": {
+				"name": {
 					"$ref": "#/$defs/non_empty"
 				}
 			},
-			"required": ["target", "relationship"]
+			"required": ["name", "description"],
+			"type": "object"
 		},
 		"card_entry": {
-			"type": "object",
 			"additionalProperties": false,
 			"properties": {
 				"acronym": {
@@ -83,92 +34,141 @@
 				"card_type": {
 					"$ref": "#/$defs/non_empty"
 				},
-				"description": {
-					"$ref": "#/$defs/non_empty"
-				},
-				"common_subtypes": {
-					"type": "array",
-					"items": {
-						"$ref": "#/$defs/non_empty"
-					},
-					"minItems": 1,
-					"uniqueItems": true
+				"color": {
+					"$ref": "#/$defs/hex_color"
 				},
 				"common_properties": {
-					"type": "array",
 					"items": {
 						"$ref": "#/$defs/card_common_property"
 					},
 					"minItems": 1,
+					"type": "array",
 					"uniqueItems": true
 				},
-				"shape": {
+				"common_subtypes": {
+					"items": {
+						"$ref": "#/$defs/non_empty"
+					},
+					"minItems": 1,
+					"type": "array",
+					"uniqueItems": true
+				},
+				"description": {
 					"$ref": "#/$defs/non_empty"
 				},
 				"fill": {
 					"$ref": "#/$defs/hex_color"
 				},
-				"color": {
-					"$ref": "#/$defs/hex_color"
-				},
 				"icon": {
-					"description": "Optional SVG symbol name from the available_icons list.",
-					"$ref": "#/$defs/icon_name"
+					"$ref": "#/$defs/icon_name",
+					"description": "Optional SVG symbol name from the available_icons list."
 				},
 				"relationships": {
-					"type": "array",
 					"items": {
 						"$ref": "#/$defs/card_relationship"
 					},
 					"minItems": 1,
+					"type": "array",
 					"uniqueItems": true
+				},
+				"shape": {
+					"$ref": "#/$defs/non_empty"
 				}
 			},
-			"required": ["card_type", "acronym", "description", "shape", "fill", "color"]
+			"required": ["card_type", "acronym", "description", "shape", "fill", "color"],
+			"type": "object"
+		},
+		"card_relationship": {
+			"additionalProperties": false,
+			"properties": {
+				"relationship": {
+					"$ref": "#/$defs/non_empty"
+				},
+				"target": {
+					"$ref": "#/$defs/acronym"
+				}
+			},
+			"required": ["target", "relationship"],
+			"type": "object"
+		},
+		"card_type_list": {
+			"items": {
+				"$ref": "#/$defs/acronym"
+			},
+			"minItems": 1,
+			"type": "array",
+			"uniqueItems": true
 		},
 		"cards": {
-			"type": "array",
 			"items": {
 				"$ref": "#/$defs/card_entry"
 			},
 			"minItems": 1,
+			"type": "array",
 			"uniqueItems": true
 		},
-		"available_icons": {
-			"type": "array",
-			"items": {
-				"$ref": "#/$defs/icon_name"
-			},
-			"minItems": 1,
-			"uniqueItems": true
+		"hex_color": {
+			"pattern": "^#[A-Fa-f0-9]{6}$",
+			"type": "string"
+		},
+		"icon_name": {
+			"minLength": 1,
+			"pattern": "^[a-z][a-z0-9-_]*$",
+			"type": "string"
+		},
+		"non_empty": {
+			"minLength": 1,
+			"type": "string"
 		},
 		"view_definition": {
-			"type": "object",
 			"additionalProperties": false,
 			"properties": {
-				"name": {
+				"description": {
 					"$ref": "#/$defs/non_empty"
 				},
-				"description": {
+				"included_card_types": {
+					"$ref": "#/$defs/card_type_list"
+				},
+				"name": {
 					"$ref": "#/$defs/non_empty"
 				},
 				"root_card_types": {
 					"$ref": "#/$defs/card_type_list"
-				},
-				"included_card_types": {
-					"$ref": "#/$defs/card_type_list"
 				}
 			},
-			"required": ["name", "description", "root_card_types", "included_card_types"]
+			"required": ["name", "description", "root_card_types", "included_card_types"],
+			"type": "object"
 		},
 		"views": {
-			"type": "array",
 			"description": "List of view definitions",
 			"items": {
 				"$ref": "#/$defs/view_definition"
 			},
 			"minItems": 1,
+			"type": "array",
 			"uniqueItems": true
 		}
-	}
+	},
+	"$id": "https://crystultima.org/aurora/modelconfiguration.schema.json",
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"additionalProperties": false,
+	"description": "Schema for Aurora.modelconfiguration.json with card-centric canonical definitions, embedded appearance, and per-card relationships.",
+	"properties": {
+		"$schema": {
+			"minLength": 1,
+			"type": "string"
+		},
+		"available_icons": {
+			"$ref": "#/$defs/available_icons"
+		},
+		"cards": {
+			"$ref": "#/$defs/cards"
+		},
+		"views": {
+			"$ref": "#/$defs/views"
+		}
+	},
+	"required": ["cards", "available_icons", "views"],
+	"title": "Aurora Model Configuration Schema",
+	"type": "object"
 }

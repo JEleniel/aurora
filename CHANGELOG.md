@@ -38,6 +38,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Switched Aurora audit semantics from wrapped `AuditLog.json` history arrays to append-only `AuditLog.ndjson` event lines, and updated `schemas/Aurora.audit.schema.json` to validate one audit entry per line.
 - Tightened and deduplicated non-audit Aurora schemas in `schemas/`, including stricter view/card list uniqueness rules and compact card entries that no longer include a `version` field.
 
+- Consolidated Aurora reference registries into `Aurora_Specs/reference/Aurora.modelconfiguration.json` (validated by `Aurora_Specs/schemas/Aurora.modelconfiguration.schema.json`), replacing the separate appearance/canonical/view registries.
+
 - Aligned `aurora_shared` model loading/serialization with Aurora v2.0.0: v2 schema filenames, v2 card fields (`version`, `boundary`, `notes`, object-shaped `attributes`), and compact exports written to `MIS-XXX/Compact.json`.
 - Failed model loading now returns validation errors instead of allowing invalid graphs.
 - Filtered view root candidates that participate in cycles to honor the root safety rule during rendering.

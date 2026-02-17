@@ -33,9 +33,6 @@
 				"name": {
 					"$ref": "#/definitions/non_empty"
 				},
-				"notes": {
-					"$ref": "#/definitions/non_empty"
-				},
 				"status": {
 					"$ref": "#/definitions/non_empty"
 				}

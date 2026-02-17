@@ -35,6 +35,9 @@
 		"notes": {
 			"$ref": "#/definitions/non_empty"
 		},
+		"icon": {
+			"$ref": "#/definitions/non_empty"
+		},
 		"attributes": {
 			"additionalProperties": true,
 			"type": "object"

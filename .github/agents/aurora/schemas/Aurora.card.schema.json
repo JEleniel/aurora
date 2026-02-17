@@ -63,6 +63,9 @@
 		"notes": {
 			"$ref": "#/definitions/non_empty"
 		},
+		"icon": {
+			"$ref": "#/definitions/non_empty"
+		},
 		"status": {
 			"$ref": "#/definitions/non_empty"
 		}

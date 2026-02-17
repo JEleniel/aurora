@@ -56,9 +56,11 @@ graph LR
 
 ### Cards
 
-Cards represent architectural elements (nouns). A card contains properties of the element and links to other elements. An `attributes` object is included to capture properties that are not already represented by other fields. Use links for relationships and interactions between elements. Card files should be "pretty printed" using `prettier` or a similar tool.
+Cards represent architectural elements (nouns). A card contains properties of the element and links to other elements. A card MAY include an optional `icon` property to override the default icon mapping when rendering views. An `attributes` object is included to capture properties that are not already represented by other fields. Use links for relationships and interactions between elements. Card files should be "pretty printed" using `prettier` or a similar tool.
 
 Card field structure is defined exclusively in `schemas/Aurora.card.schema.json`.
+
+When present, the optional `icon` value MUST match an icon id in `reference/Aurora.modelconfiguration.json` (`appearance.available_icons`).
 
 **Example `id`s**:
 

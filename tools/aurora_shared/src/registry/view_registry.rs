@@ -3,7 +3,8 @@ use tracing::trace;
 
 use crate::registry::RegistryError;
 
-const DEFINITIONS: &str = include_str!("../../../../.github/agents/aurora/View.Definitions.json");
+const DEFINITIONS: &str =
+	include_str!("../../../../.github/agents/aurora/reference/View.Definitions.json");
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ViewDefinition {
