@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-012",
+	"card_type": "Requirement",
+	"name": "Model Home Local Schemas And References",
+	"description": "The editor MUST load and use the schemas and reference files included with the selected model home, allowing the editor to operate across multiple Aurora versions and customizations.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-006"
+		}
+	]
+}

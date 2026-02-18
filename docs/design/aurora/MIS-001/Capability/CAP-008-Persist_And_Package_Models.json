@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CAP-008",
+	"card_type": "Capability",
+	"name": "Persist And Package Models",
+	"description": "Persist edits safely (autosave or manual save), support undo/redo, and pack/unpack model homes as ZIP archives.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-008"
+		}
+	]
+}

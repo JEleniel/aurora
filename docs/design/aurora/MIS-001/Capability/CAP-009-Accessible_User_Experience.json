@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CAP-009",
+	"card_type": "Capability",
+	"name": "Accessible User Experience",
+	"description": "Provide an accessible and usable editor UI, including dark mode by default and adjustable typography.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-009"
+		}
+	]
+}

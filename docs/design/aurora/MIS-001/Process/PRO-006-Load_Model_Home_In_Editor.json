@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "PRO-006",
+	"card_type": "Process",
+	"name": "Load Model Home In Editor",
+	"description": "Load a model home for interactive use by locating the model home schemas/references, creating a backup archive, and validating the model.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "ATV-009"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-010"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-001"
+		}
+	]
+}

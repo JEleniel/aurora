@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-020",
+	"card_type": "Requirement",
+	"name": "Crash Safety Semantics",
+	"description": "With autosave enabled, on crash the model may at worst contain an orphan card that needs to be linked; with autosave disabled, the saved model MUST always be valid and unsaved changes are lost on crash.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-008"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-004"
+		}
+	]
+}

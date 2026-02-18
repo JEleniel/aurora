@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CAP-010",
+	"card_type": "Capability",
+	"name": "Editor Observability",
+	"description": "Emit logs suitable for debugging and operations, supporting multiple sinks (stdout/stderr/file) and consistent formatting.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-010"
+		}
+	]
+}

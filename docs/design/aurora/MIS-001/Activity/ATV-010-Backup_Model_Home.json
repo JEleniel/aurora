@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-010",
+	"card_type": "Activity",
+	"name": "Backup Model Home",
+	"description": "Create a ZIP backup of the model home at load time, stored per conventions defined in Aurora_Specs.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-007"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-010"
+		}
+	]
+}

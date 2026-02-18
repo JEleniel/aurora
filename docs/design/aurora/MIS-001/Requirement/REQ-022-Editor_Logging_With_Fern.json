@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-022",
+	"card_type": "Requirement",
+	"name": "Editor Logging With Fern",
+	"description": "Logging MUST be supported with fern integration, including stdout, stderr, and optional file-based logging.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-010"
+		},
+		{
+			"relationship": "imposes",
+			"target": "CNS-006"
+		}
+	]
+}

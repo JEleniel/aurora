@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-019",
+	"card_type": "Requirement",
+	"name": "Undo Redo Depth",
+	"description": "The editor SHOULD support undo/redo spanning 50 edits deep.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-008"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-012",
+	"card_type": "Activity",
+	"name": "Autosave Changes",
+	"description": "Persist edits immediately by default (autosave), while still supporting an optional manual save mode.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-007"
+		}
+	]
+}

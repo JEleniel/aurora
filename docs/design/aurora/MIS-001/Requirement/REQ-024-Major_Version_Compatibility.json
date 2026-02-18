@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-024",
+	"card_type": "Requirement",
+	"name": "Major Version Compatibility",
+	"description": "Each model home MUST include a complete set of schema and configuration files snapshotted at model creation time; incompatible models MUST be detected via schema validation.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-006"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-001"
+		}
+	]
+}

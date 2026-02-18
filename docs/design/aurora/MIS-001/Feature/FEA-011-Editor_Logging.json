@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "FEA-011",
+	"card_type": "Feature",
+	"name": "Editor Logging",
+	"description": "Emit structured logs for troubleshooting and diagnostics, with fern integration supporting stdout, stderr, and optional file output.",
+	"links": [
+		{
+			"relationship": "realizes",
+			"target": "CAP-010"
+		}
+	]
+}

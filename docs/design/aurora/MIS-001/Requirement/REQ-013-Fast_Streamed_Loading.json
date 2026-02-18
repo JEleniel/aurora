@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-013",
+	"card_type": "Requirement",
+	"name": "Fast Streamed Loading",
+	"description": "Models of any size SHOULD load almost instantly; the load method MUST traverse and validate in the time it takes to read files, and the editor MUST NOT load the entire model into memory at once.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-006"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-001"
+		}
+	]
+}

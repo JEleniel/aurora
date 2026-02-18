@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-018",
+	"card_type": "Requirement",
+	"name": "Autosave Default Manual Optional",
+	"description": "The editor MUST use immediate autosave by default and MUST provide an option for manual save mode.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-008"
+		}
+	]
+}

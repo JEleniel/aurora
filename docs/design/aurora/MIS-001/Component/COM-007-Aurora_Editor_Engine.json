@@ -1,0 +1,22 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "COM-007",
+	"card_type": "Component",
+	"card_subtype": "Module",
+	"name": "Aurora Editor Engine",
+	"description": "Background engine responsible for loading model homes, validating/linting, rendering views, packaging/unpackaging, and persistence behaviors without blocking the UI.",
+	"links": [
+		{
+			"relationship": "composes",
+			"target": "COM-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-007"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-009"
+		}
+	]
+}

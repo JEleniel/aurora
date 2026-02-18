@@ -1,0 +1,23 @@
+# Data Store (Relational): DST-900 Relational store
+
+Data store subtype used for persistence coverage.
+
+
+
+## Attributes
+
+_No attributes defined._
+
+## Links
+
+- retrieves [ART-905](../Artifact/ART-905-Example_report.md)
+- runs on [NOD-901](../Node/NOD-901-Example_virtual_machine.md)
+
+
+## Version
+
+## Audit Log
+
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
+| 2026-02-18T00:10:00Z | architect | create |

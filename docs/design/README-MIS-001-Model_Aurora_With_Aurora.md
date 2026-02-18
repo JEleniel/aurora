@@ -12,8 +12,6 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 ![Context.svg](MIS-001/Views/Context.svg)
 
-![Deployment.svg](MIS-001/Views/Deployment.svg)
-
 ![Entire_Model.svg](MIS-001/Views/Entire_Model.svg)
 
 ![Landscape.svg](MIS-001/Views/Landscape.svg)
@@ -36,6 +34,8 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[ATV-006 - Edit View Definitions Registry](MIS-001/Activity/ATV-006-Edit_View_Definitions_Registry.md)**: Maintain the canonical registry of view definitions (roots, included types, and view intent).
 
+- **[ATV-008 - Prepare SVG References](MIS-001/Activity/ATV-008-Prepare_SVG_References.md)**: Run svg_prep to generate/update Icons.svg and refresh SVGTemplate.svg defs from source icons and shapes, then synchronize icon availability into Aurora.modelconfiguration.json.
+
 - **[ATV-004 - Append Audit Log Entry](MIS-001/Activity/ATV-004-Append_Audit_Log_Entry.md)**: Append one line to the mission `AuditLog.ndjson` file for each change event, allowing multiple changed cards and related link changes in one entry.
 
 - **[ATV-002 - Render View Artifacts](MIS-001/Activity/ATV-002-Render_View_Artifacts.md)**: Select roots/included card types per view definitions, traverse the subgraph, and render the view into diagram artifacts.
@@ -44,11 +44,15 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[ATV-007 - Maintain Aurora Schemas](MIS-001/Activity/ATV-007-Maintain_Aurora_Schemas.md)**: Maintain the Aurora JSON schemas used for cards, audit logs, and compact export.
 
+### Actor
+
+- **[ACT-001 - Model Author](MIS-001/Actor/ACT-001-Model_Author.md)**: A human author (often the architect) who edits Aurora cards and keeps registries, references, and audit logs current.
+
 ### Application
 
 - **[APP-001 - Aurora CLI](MIS-001/Application/APP-001-Aurora_CLI.md)**: Command-line tooling for validating Aurora models, generating views, and exporting compact representations.
 
-- **[APP-002 - Aurora Editor](MIS-001/Application/APP-002-Aurora_Editor.md)**: Interactive editor application for browsing, validating, rendering, and editing Aurora models with trust gating.
+- **[APP-002 - SVG Prep](MIS-001/Application/APP-002-SVG_Prep.md)**: Command-line tool that builds Aurora SVG reference assets (Icons.svg, SVGTemplate.svg defs) from source icons/shapes and synchronizes the icon availability list in the canonical model configuration.
 
 ### Artifact
 
@@ -56,15 +60,19 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[ART-003 - Compact Export](MIS-001/Artifact/ART-003-Compact_Export.md)**: The compact JSON export of the model cards and links for transport and agent consumption.
 
+- **[ART-008 - SVG Template](MIS-001/Artifact/ART-008-SVG_Template.md)**: The SVGTemplate.svg reference template used by the renderer to wrap generated drawings and provide shared defs and styling.
+
 - **[ART-004 - Mission Audit Log](MIS-001/Artifact/ART-004-Mission_Audit_Log.md)**: The per-mission append-only `AuditLog.ndjson` file that records grouped card/link change events.
 
 - **[ART-007 - Aurora Schemas](MIS-001/Artifact/ART-007-Aurora_Schemas.md)**: The Aurora JSON schemas used to validate cards, audit logs, and compact exports.
 
-- **[ART-005 - Canonical Definitions Registry](MIS-001/Artifact/ART-005-Canonical_Definitions_Registry.md)**: The canonical registry JSON that defines card types, acronyms, and allowed outgoing relationships.
+- **[ART-005 - Canonical Definitions Registry](MIS-001/Artifact/ART-005-Canonical_Definitions_Registry.md)**: The canonical registry JSON (Aurora.modelconfiguration.json) that defines card types, acronyms, allowed outgoing relationships, view definitions, and the available icon list used by tooling.
 
 - **[ART-006 - View Definitions Registry](MIS-001/Artifact/ART-006-View_Definitions_Registry.md)**: The canonical registry JSON that defines views (roots, included card types, and view descriptions).
 
 - **[ART-001 - Validation Report](MIS-001/Artifact/ART-001-Validation_Report.md)**: Diagnostics output describing schema, registry, and invariant validation results for a model home.
+
+- **[ART-009 - Icons Reference Sheet](MIS-001/Artifact/ART-009-Icons_Reference_Sheet.md)**: The Icons.svg reference output produced from source icons, containing normalized icon defs and a proof-sheet layout used for verification and template integration.
 
 ### Capability
 
@@ -80,11 +88,9 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 ### Component
 
-- **[COM-004 - Editor Frontend UI](MIS-001/Component/COM-004-Editor_Frontend_UI.md)**: The editor’s frontend UI that calls the backend API, displays validation diagnostics, and provides interactive navigation and editing experiences.
+- **[COM-003 - svg_prep Binary](MIS-001/Component/COM-003-svgprep_Binary.md)**: The svg_prep executable used to generate/update Aurora SVG reference assets (Icons.svg and SVGTemplate.svg defs) and synchronize the icon list in Aurora.modelconfiguration.json.
 
 - **[COM-001 - Aurora Shared Library](MIS-001/Component/COM-001-Aurora_Shared_Library.md)**: Shared Rust library providing registry-aware parsing, validation helpers, and rendering primitives used by Aurora tools.
-
-- **[COM-003 - Tauri Rust Backend](MIS-001/Component/COM-003-Tauri_Rust_Backend.md)**: A trust-gated Rust backend exposing model discovery, snapshot loading, validation, rendering, exports, and card CRUD operations to the editor UI.
 
 - **[COM-002 - Aurora CLI Binary](MIS-001/Component/COM-002-Aurora_CLI_Binary.md)**: The aurora_cli executable that exposes validate/render/compact commands to users and pipelines.
 
@@ -108,17 +114,11 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[FEA-002 - Render Views](MIS-001/Feature/FEA-002-Render_Views.md)**: Generate view diagrams and related artifacts from an Aurora model based on the view definitions registry.
 
-- **[FEA-005 - Interactive Model Editing](MIS-001/Feature/FEA-005-Interactive_Model_Editing.md)**: Browse and edit Aurora cards interactively while preserving schema validity and model invariants.
+- **[FEA-006 - Prepare SVG References](MIS-001/Feature/FEA-006-Prepare_SVG_References.md)**: Generate and update Aurora SVG reference assets (Icons.svg and SVGTemplate.svg defs) and keep the canonical icon availability list synchronized.
 
 - **[FEA-001 - Validate Model](MIS-001/Feature/FEA-001-Validate_Model.md)**: Validate an Aurora model against schemas, registries, and graph invariants, producing actionable diagnostics.
 
-- **[FEA-004 - Editor Model Operations](MIS-001/Feature/FEA-004-Editor_Model_Operations.md)**: Provide model operations (discover/load/validate/render/export and CRUD) to the editor UI with trust gating.
-
 - **[FEA-003 - Export Compact Model](MIS-001/Feature/FEA-003-Export_Compact_Model.md)**: Export an Aurora compact model representation suitable for agent consumption and transport.
-
-### Interface
-
-- **[INT-001 - Editor Backend API](MIS-001/Interface/INT-001-Editor_Backend_API.md)**: The interface contract between the editor UI and the Tauri backend for model operations (discover/load/validate/render/export and card CRUD).
 
 ### Process
 
@@ -164,5 +164,5 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 ### System
 
-- **[SYS-001 - Aurora Tooling Ecosystem](MIS-001/System/SYS-001-Aurora_Tooling_Ecosystem.md)**: The overall Aurora system: schemas + canonical registries + model cards, supported by tools (CLI/editor/shared library) that validate models and generate views and exports.
+- **[SYS-001 - Aurora Tooling Ecosystem](MIS-001/System/SYS-001-Aurora_Tooling_Ecosystem.md)**: The overall Aurora system: schemas + canonical registries + model cards, supported by tools (CLI + svg_prep + shared library) that validate models, generate views/exports, and maintain reference SVG assets.
 

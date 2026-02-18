@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-015",
+	"card_type": "Requirement",
+	"name": "UI Engine Thread Separation",
+	"description": "The editor UI and engine MUST operate on separate threads to ensure UI responsiveness and effective use of modern hardware.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-007"
+		}
+	]
+}

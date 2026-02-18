@@ -1,0 +1,25 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "PRO-008",
+	"card_type": "Process",
+	"name": "Persist And Package Model Home",
+	"description": "Persist edits to disk safely (autosave or manual save), support undo/redo, and pack/unpack model homes as ZIP archives.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "ATV-012"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-013"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-014"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-015"
+		}
+	]
+}

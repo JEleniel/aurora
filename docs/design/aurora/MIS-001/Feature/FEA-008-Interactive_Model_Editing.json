@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "FEA-008",
+	"card_type": "Feature",
+	"name": "Interactive Model Editing",
+	"description": "Provide interactive model authoring with immediate feedback and enforcement so invalid edits are prevented before they can persist to disk.",
+	"links": [
+		{
+			"relationship": "realizes",
+			"target": "CAP-007"
+		}
+	]
+}

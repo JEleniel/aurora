@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-011",
+	"card_type": "Activity",
+	"name": "Edit Model Interactively",
+	"description": "Edit cards, links, and view definitions interactively with immediate feedback, keeping the model valid.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-006"
+		}
+	]
+}

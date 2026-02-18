@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-011",
+	"card_type": "Artifact",
+	"card_subtype": "Report",
+	"name": "Editor Log Output",
+	"description": "Editor log output emitted to stdout, stderr, and/or an optional log file, used for troubleshooting and diagnostics.",
+	"links": []
+}

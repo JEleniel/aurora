@@ -1,0 +1,8 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CNS-004",
+	"card_type": "Constraint",
+	"name": "Rust 2024",
+	"description": "The standalone editor MUST be implemented in Rust 2024.",
+	"links": []
+}

@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "FEA-009",
+	"card_type": "Feature",
+	"name": "Model Persistence And Recovery",
+	"description": "Persist changes safely (autosave or manual save), provide undo/redo, and support packing/unpacking model homes as ZIP archives.",
+	"links": [
+		{
+			"relationship": "realizes",
+			"target": "CAP-008"
+		}
+	]
+}

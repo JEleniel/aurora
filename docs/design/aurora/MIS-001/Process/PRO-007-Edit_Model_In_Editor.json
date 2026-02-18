@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "PRO-007",
+	"card_type": "Process",
+	"name": "Edit Model In Editor",
+	"description": "Edit a model via the UI while enforcing validity, recording audit entries, and keeping the editor responsive.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "ATV-011"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-001"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-004"
+		}
+	]
+}

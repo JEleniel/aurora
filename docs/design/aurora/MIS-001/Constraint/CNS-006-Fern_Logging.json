@@ -1,0 +1,8 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CNS-006",
+	"card_type": "Constraint",
+	"name": "Fern Logging",
+	"description": "The standalone editor MUST support logging with fern integration.",
+	"links": []
+}

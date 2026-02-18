@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-016",
+	"card_type": "Activity",
+	"name": "Apply Accessibility Preferences",
+	"description": "Apply dark mode defaults, WCAG AA accessibility behavior, and base font scaling preferences.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-006"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-023",
+	"card_type": "Requirement",
+	"name": "Accessibility And Dark Mode",
+	"description": "The editor MUST be WCAG AA compliant, MUST support dark mode (default), and MUST support adjustable base font size with proportional scaling.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-009"
+		}
+	]
+}

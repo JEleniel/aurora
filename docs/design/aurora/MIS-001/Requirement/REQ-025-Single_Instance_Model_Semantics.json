@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-025",
+	"card_type": "Requirement",
+	"name": "Single Instance Model Semantics",
+	"description": "Multiple instances on the same model are not supported; if concurrent edits occur, last write wins. Shared/networked models are not officially supported.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-008"
+		}
+	]
+}

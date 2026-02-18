@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "COM-006",
+	"card_type": "Component",
+	"card_subtype": "Module",
+	"name": "Aurora Editor UI",
+	"description": "Dioxus-based desktop UI responsible for interactive navigation (mind-map-like centered views), editing surfaces, and accessibility/theming preferences.",
+	"links": [
+		{
+			"relationship": "implements",
+			"target": "FEA-010"
+		}
+	]
+}

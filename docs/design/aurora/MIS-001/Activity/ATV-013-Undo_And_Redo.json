@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-013",
+	"card_type": "Activity",
+	"name": "Undo And Redo",
+	"description": "Allow undo/redo of recent edits (target depth: 50) across interactive editing operations.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-007"
+		}
+	]
+}

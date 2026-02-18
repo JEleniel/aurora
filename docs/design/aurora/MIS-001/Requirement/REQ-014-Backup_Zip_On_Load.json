@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-014",
+	"card_type": "Requirement",
+	"name": "Backup Zip On Load",
+	"description": "At load time, the editor MUST create a backup ZIP of the model home, stored per conventions defined in Aurora_Specs.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-006"
+		}
+	]
+}

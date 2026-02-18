@@ -1,0 +1,69 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "DRI-004",
+	"card_type": "Driver",
+	"name": "Interactive Safe Authoring",
+	"description": "Enable a fast, responsive, and safe desktop authoring experience so humans can edit models without breaking invariants, while tools and agents can still trust the model as deterministic and valid.",
+	"links": [
+		{
+			"relationship": "drives",
+			"target": "REQ-011"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-012"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-013"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-014"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-015"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-016"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-017"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-018"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-019"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-020"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-021"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-022"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-023"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-024"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-025"
+		}
+	]
+}

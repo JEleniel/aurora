@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-017",
+	"card_type": "Activity",
+	"name": "Configure Logging",
+	"description": "Configure logging sinks and formatting via fern, supporting stdout, stderr, and optional file-based logging.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-005"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-011"
+		}
+	]
+}

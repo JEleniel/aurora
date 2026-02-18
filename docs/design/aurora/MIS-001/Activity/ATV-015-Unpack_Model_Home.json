@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-015",
+	"card_type": "Activity",
+	"name": "Unpack Model Home",
+	"description": "Unpack a ZIP-compressed model home into the standard folder structure used by Aurora.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-007"
+		}
+	]
+}

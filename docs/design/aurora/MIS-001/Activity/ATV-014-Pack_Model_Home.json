@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-014",
+	"card_type": "Activity",
+	"name": "Pack Model Home",
+	"description": "Pack a model home into a single ZIP-compressed file while preserving the standard model home folder structure.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-007"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-010"
+		}
+	]
+}

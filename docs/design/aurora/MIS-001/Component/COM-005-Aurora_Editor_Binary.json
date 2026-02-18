@@ -1,0 +1,42 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "COM-005",
+	"card_type": "Component",
+	"card_subtype": "Service",
+	"name": "Aurora Editor Binary",
+	"description": "The aurora_editor desktop executable providing an interactive UI and background engine for safe, validated model authoring.",
+	"links": [
+		{
+			"relationship": "composes",
+			"target": "COM-006"
+		},
+		{
+			"relationship": "composes",
+			"target": "COM-007"
+		},
+		{
+			"relationship": "composes",
+			"target": "COM-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-007"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-008"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-009"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-010"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-011"
+		}
+	]
+}

@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-010",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "Model Archive Zip",
+	"description": "A ZIP-compressed archive of a model home used for backups and for pack/unpack workflows, preserving the model home folder structure.",
+	"links": []
+}

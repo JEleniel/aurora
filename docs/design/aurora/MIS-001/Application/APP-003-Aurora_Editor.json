@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "APP-003",
+	"card_type": "Application",
+	"name": "Aurora Editor",
+	"description": "Standalone cross-platform desktop editor for loading, exploring, editing, and packaging Aurora model homes while preserving deterministic validity, auditability, and view generation.",
+	"links": [
+		{
+			"relationship": "comprises",
+			"target": "COM-005"
+		},
+		{
+			"relationship": "comprises",
+			"target": "COM-001"
+		}
+	]
+}

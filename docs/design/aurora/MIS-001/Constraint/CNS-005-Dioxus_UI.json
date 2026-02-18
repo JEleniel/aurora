@@ -1,0 +1,8 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CNS-005",
+	"card_type": "Constraint",
+	"name": "Dioxus UI",
+	"description": "The standalone editor UI MUST be implemented using Dioxus.",
+	"links": []
+}

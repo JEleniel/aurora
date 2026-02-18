@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "FEA-007",
+	"card_type": "Feature",
+	"name": "Load And Validate Model Homes",
+	"description": "Load a model home quickly (including large models), using the schemas and references packaged with that model home, and validate in a way that keeps the UI responsive.",
+	"links": [
+		{
+			"relationship": "realizes",
+			"target": "CAP-006"
+		}
+	]
+}

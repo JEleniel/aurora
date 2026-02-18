@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-016",
+	"card_type": "Requirement",
+	"name": "Interactive View Rendering",
+	"description": "The editor MUST be able to render any view defined in the model configuration file and MUST support ad-hoc views.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-002"
+		}
+	]
+}

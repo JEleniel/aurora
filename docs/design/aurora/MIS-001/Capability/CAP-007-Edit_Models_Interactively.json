@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CAP-007",
+	"card_type": "Capability",
+	"name": "Edit Models Interactively",
+	"description": "Interactively navigate and edit Aurora models with guardrails that prevent invalid edits and preserve invariants.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-007"
+		}
+	]
+}

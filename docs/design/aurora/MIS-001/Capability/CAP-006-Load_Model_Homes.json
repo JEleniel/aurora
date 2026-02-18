@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CAP-006",
+	"card_type": "Capability",
+	"name": "Load Model Homes",
+	"description": "Load and validate model homes using the schemas and references bundled with that model home, while supporting very large models without blocking the UI.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-006"
+		}
+	]
+}

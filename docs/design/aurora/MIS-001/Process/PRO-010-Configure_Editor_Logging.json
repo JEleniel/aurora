@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "PRO-010",
+	"card_type": "Process",
+	"name": "Configure Editor Logging",
+	"description": "Configure and emit logs from the editor to stdout/stderr and optionally to a file sink.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "ATV-017"
+		}
+	]
+}

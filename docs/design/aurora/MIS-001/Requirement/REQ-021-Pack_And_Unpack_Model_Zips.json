@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-021",
+	"card_type": "Requirement",
+	"name": "Pack And Unpack Model Zips",
+	"description": "The editor MUST support packing and unpacking model homes as a single ZIP-compressed file.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-008"
+		}
+	]
+}
