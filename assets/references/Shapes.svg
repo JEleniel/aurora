@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="3600" height="1800" viewBox="0 0 3600 1800" version="1.1" id="Shapes" style="fill:#FFFFFF00;stroke:#000000;font-size:16px;line-height:1.2;font-family:'Noto Sans','Noto Color Emoji','Segoe UI Emoji','Apple Color Emoji','Noto Sans Symbols2','DejaVu Sans',Arial,Helvetica,sans-serif;;stroke-linecap:round;stroke-linejoin:round;stroke-width:2;" sodipodi:docname="Shapes.svg" inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
-	xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-	xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+<svg width="3600" height="1800" viewBox="0 0 3600 1800" version="1.1" id="Shapes" style="fill:#FFFFFF00;stroke:#000000;font-size:16px;line-height:1.2;font-family:'Noto Sans','Noto Color Emoji','Segoe UI Emoji','Apple Color Emoji','Noto Sans Symbols2','DejaVu Sans',Arial,Helvetica,sans-serif;;stroke-linecap:round;stroke-linejoin:round;stroke-width:2;"
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:svg="http://www.w3.org/2000/svg">
-	<sodipodi:namedview pagecolor="#505050" bordercolor="#eeeeee" borderopacity="1" inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#505050" showgrid="true" inkscape:zoom="1.8127395" inkscape:cx="1123.4378" inkscape:cy="143.98097" inkscape:window-width="1512" inkscape:window-height="949" inkscape:window-x="0" inkscape:window-y="33" inkscape:window-maximized="0" inkscape:current-layer="Shapes">
-	</sodipodi:namedview>
 	<style >
-			path, rect, circle, ellipse, line, polyline, polygon, use { vector-effect: non-scaling-stroke; }
+			path, rect, circle, ellipse, line, polyline, polygon, use { vector-effect: non-scaling-stroke; stroke:#000000;stroke-width:2;}
 	</style>
 	<defs>
 		<g id="layout">
+			<!---
 			<rect style="fill:#00808080" width="640" height="370" x="40" y="40" />
 			<rect style="fill:#808080;" width="480" height="289" x="158" y="81" />
 			<path d="M 398,81 v 289" style="stroke:#000080" />
 			<path d="M 158,100.2 h 479 m 0,19.2 h -479 m 0,19.2 h 479 m 0,19.2 h -479 m 0,19.2 h 479 m 0,19.2 h -479 m 0,19.2 h 479 m 0,19.2 h -479 m 0,19.2 h 479 m 0,19.2 h -479 m 0,19.2 h 479 m 0,19.2 h -479 m 0,19.2 h 479 m 0,19.2 h -479 m 0,19.2 h 479" style="stroke:#000080" />
 			<rect style="fill:#000080;" width="72" height="72" x="70" y="189" />
+			-->
 		</g>
 		<g id="rectangle">
 			<rect width="718" height="448" x="1" y="1" />
@@ -25,66 +23,81 @@
 			<rect width="678" height="408" x="1" y="41" />
 			<path d="m 1,41 40,-40 h 678 v 408 l -40,40" />
 			<path d="m 679,41 40,-40" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="cylinder">
 			<ellipse cx="360" cy="20" rx="358" ry="19" />
 			<path d="m 1,430 c 0,0 180,19 360,19 180,0 360,-19 360,-19" />
 			<path d="M 1,20 V 430" />
 			<path d="M 719,20 V 430" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="diamond">
 			<rect width="718" height="368" x="1" y="41" />
 			<path d="M 1,21 360,1 719,21 360,41 z" />
 			<path d="M 1,429 360,409 719,429 360,449 z" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="document">
 			<path d="M 1,434 V 1 h 718 v 434 c 0,0 -180,30 -360,0 0,0 -180,-30 -360,0 z" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="double-rectangle">
 			<rect width="718" height="448" x="1" y="1" />
 			<rect width="678" height="408" x="21" y="21" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="ellipse">
 			<ellipse cx="360" cy="225" rx="359" ry="224" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="hexagon">
 			<path d="m 1,225 80,-224 h 558 l 80,224 -80,224 h -558 z" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="interface">
 			<rect width="718" height="368" x="1" y="41" />
 			<circle cx="700" cy="21" r="19" />
-			<path d="M 1,21 H 680" />
-			<path d="M 41,429 H 719" />
-			<path d="M 20,409 C 45,409 45,449 20,449" />
+			<path d="M 1,21 H 680" style="stroke:#000000" />
+			<path d="M 41,429 H 719" style="stroke:#000000" />
+			<path d="M 20,409 C 45,409 45,449 20,449" style="stroke:#000000" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="component">
 			<rect width="678" height="448" x="41" y="1" />
 			<rect width="80" height="40" x="1" y="41" />
 			<rect width="80" height="40" x="1" y="359" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="octagon">
 			<path d="m 1,81 80,-80 h 558 l 80,80 v 288 l -80,80 H 81 l -80,-80 Z" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="folder">
 			<path d="m 1,449 V 41 l 40,-40 h 180 l 40,40 H 719 V 449 z" id="folder" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="ruler">
 			<rect width="718" height="448" x="1" y="1" />
 			<path d="M 1,40 H 719" />
 			<path d="M 45,1 v 15 m 45,5 v -20 m 45,0 v 15 m 45,10 v -25 m 45,0 v 15 m 45,5 v -20 m 45,0 v 15 m 45,10 v -25 m 45,0 v 15 m 45,5 v -20 m 45,0 v 15 m 45,10 v -25 m 45,0 v 15 m 45,5 v -20 m 45,0 v 15" />
 
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="curly-braces">
 			<path d="m 40,1 C 40,1 1,1 1,40 V 205 C 1,205 1,224 40,224 40,225 1,225 1,245 V 409 C 1,409 1,449 40,449" />
 			<path d="m 680,1 C 719,1 719,1 719,40 V 205 C 719,205 719,224 680,224 680,225 719,225 719,245 V 409 C 719,409 719,449 680,449" />
 			<path style="stroke-dasharray:4,8;stroke-dashoffset:0" d="M 40,1 H 718" />
 			<path style="stroke-dasharray:4,8;stroke-dashoffset:0" d="M 40,449 H 718" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="rounded-rectangle">
 			<rect width="718" height="448" x="1" y="1" rx="80" ry="80" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="trapezoid">
 			<path d="m 1,449 L 40,1 H 680 L 719,449 z" />
+			<use href="#layout" x="0" y="0" />
 		</g>
 	</defs>
 	<path style="stroke:#FF8040;" d="M 0,450 H 3600" />

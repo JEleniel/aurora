@@ -205,7 +205,7 @@
 			"shape": "ruler",
 			"fill": "#1f2937",
 			"color": "#FFFFFF",
-			"icon": "penblack"
+			"icon": "straight_ruler"
 		},
 		{
 			"acronym": "ART",
@@ -302,6 +302,7 @@
 			"description": "Modular unit with a single responsibility and explicit interfaces.",
 			"shape": "component",
 			"fill": "#1e40af",
+			"icon": "puzzle_piece",
 			"color": "#FFFFFF",
 			"relationships": [
 				{

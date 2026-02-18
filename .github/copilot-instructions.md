@@ -53,8 +53,8 @@ Maintain `CHANGELOG.md` in Keep a Changelog format. Do not track changes to `.gi
 ### Included by Reference
 
 - Except for the Architect, all agents MUST read and follow [Aurora Compact Model](agents/aurora/Aurora.compact.instructions.md)
-- If present, you MUST also read and follow [IDE Instructions](IDE.instructions.md).
-- If present, you MUST read and follow the [Project Summary](project_summary.md) which contains details specific to this project and repository.
+- If present, you MUST also read and follow [IDE Instructions](./IDE.instructions.md).
+- If present, you MUST read and follow the [Project Summary](./project_summary.md) which contains details specific to this project and repository.
 
 ### Other Invariants
 
