@@ -8,12 +8,8 @@ fn build_graph_filters_cards_by_type() {
 	let driver = make_card("DRI-001", "Driver", &["MIS-001"]);
 	let model = make_model(root, vec![requirement, driver]);
 
-	let graph = build_graph(
-		&model,
-		&["Mission".to_string()],
-		&["Requirement".to_string()],
-	)
-	.expect("graph should build");
+	let graph = build_graph(&model, &["MIS".to_string()], &["REQ".to_string()])
+		.expect("graph should build");
 
 	assert!(graph.allowed_nodes.contains("MIS-001"));
 	assert!(graph.allowed_nodes.contains("REQ-001"));
@@ -31,8 +27,8 @@ fn build_graph_prunes_unreachable_components() {
 
 	let graph = build_graph(
 		&model,
-		&["Mission".to_string()],
-		&["Requirement".to_string(), "Driver".to_string()],
+		&["MIS".to_string()],
+		&["REQ".to_string(), "DRI".to_string()],
 	)
 	.expect("graph should build");
 
@@ -51,12 +47,8 @@ fn classify_edges_is_deterministic() {
 	let requirement_two = make_card("REQ-002", "Requirement", &[]);
 	let model = make_model(root, vec![requirement, requirement_two]);
 
-	let graph = build_graph(
-		&model,
-		&["Mission".to_string()],
-		&["Requirement".to_string()],
-	)
-	.expect("graph should build");
+	let graph = build_graph(&model, &["MIS".to_string()], &["REQ".to_string()])
+		.expect("graph should build");
 
 	let first = classify_edges(&graph);
 	let second = classify_edges(&graph);

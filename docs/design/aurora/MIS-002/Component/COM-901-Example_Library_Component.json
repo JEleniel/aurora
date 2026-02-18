@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "COM-901",
+	"card_type": "Component",
+	"card_subtype": "Library",
+	"name": "Example library component",
+	"description": "Library subtype component used for coverage.",
+	"links": []
+}

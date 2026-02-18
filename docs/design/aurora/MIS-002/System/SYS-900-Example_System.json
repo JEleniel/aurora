@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "SYS-900",
+	"card_type": "System",
+	"name": "Example system",
+	"description": "A top-level system used to exercise System->Application integration.",
+	"links": [
+		{
+			"relationship": "integrates",
+			"target": "APP-900"
+		}
+	]
+}

@@ -1,38 +1,28 @@
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{BTreeMap, HashMap, HashSet};
 
-use crate::registry::{CardDefinition, CardRegistry, RegistryError};
+use crate::registry::{CardDefinition, CardRegistry};
 use crate::{Card, Layout};
 
 use super::{RenderError, SvgConfig, geom};
 
-const WRAP_COLS: usize = 80;
+const WRAP_COLS: usize = 67;
+const DESCRIPTION_WRAP_COLS: usize = WRAP_COLS - 5;
+const LEADING_LINE_FONT_SIZE_PX: i32 = 24;
+const SECOND_LINE_FONT_SIZE_PX: i32 = 28;
+const SECOND_LINE_VERTICAL_OFFSET_PX: i32 = 8;
+const DESCRIPTION_FONT_SIZE_PX: i32 = 18;
+const DESCRIPTION_LINE_HEIGHT: f32 = 1.2;
+const EXTRA_RANK_VERTICAL_SPACING_PX: i32 = 40;
 const SYMBOL_BASE_W: f32 = super::SYMBOL_BASE_WIDTH_PX as f32;
 const SYMBOL_BASE_H: f32 = super::SYMBOL_BASE_HEIGHT_PX as f32;
-const KNOWN_SHAPES: &[&str] = &[
-	"rectangle",
-	"box",
-	"cylinder",
-	"diamond",
-	"document",
-	"double-rectangle",
-	"ellipse",
-	"hexagon",
-	"interface",
-	"octagon",
-	"folder",
-	"ruler",
-	"lolipop",
-	"curly-braces",
-	"poploli",
-	"rounded-rectangle",
-	"trapezoid",
-	"component",
-];
+const ICON_VIEWBOX_SIZE_PX: i32 = 128;
+const ICON_RENDER_SIZE_PX: i32 = 72;
+const ICON_OFFSET_X: f32 = 70.0;
+const ICON_OFFSET_Y: f32 = 189.0;
+const TEMPLATE_DEFAULT_FONT_SIZE_PX: i32 = 16;
 
-fn lookup_card_definition(card_type: &str) -> Result<CardDefinition, RegistryError> {
-	let registry = CardRegistry::try_new()?;
-
-	Ok(registry.try_get_by_type(card_type)?)
+fn lookup_card_definition(card_type: &str, registry: &CardRegistry) -> Option<CardDefinition> {
+	registry.try_get_by_type(card_type).ok()
 }
 
 #[derive(Debug, Clone)]
@@ -49,6 +39,7 @@ pub struct NodeGeom {
 	pub height_px: i32,
 	pub lines: Vec<String>,
 	pub bold_line_index: Option<usize>,
+	pub description_start_index: usize,
 }
 
 #[derive(Debug, Clone)]
@@ -69,10 +60,6 @@ pub struct RenderedNode {
 struct SymbolPlacement {
 	offset_x: f32,
 	offset_y: f32,
-	width: f32,
-	height: f32,
-	scale_x: f32,
-	scale_y: f32,
 }
 
 pub fn collect_node_layouts(
@@ -156,7 +143,7 @@ pub fn position_nodes(
 	for y in &used_y {
 		let h = row_height.get(y).copied().unwrap_or(0);
 		row_origin.insert(*y, current_y);
-		current_y += h + spacing;
+		current_y += h + spacing + EXTRA_RANK_VERTICAL_SPACING_PX;
 	}
 
 	let mut positioned: HashMap<String, PositionedNode> = HashMap::new();
@@ -193,71 +180,108 @@ pub fn position_nodes(
 	positioned
 }
 
-pub fn render_node(card: &Card, node: &PositionedNode, config: &SvgConfig) -> RenderedNode {
-	let card_definition = lookup_card_definition(&card.card_type).unwrap();
+pub fn render_node(
+	card: &Card,
+	node: &PositionedNode,
+	registry: &CardRegistry,
+	known_shape_ids: &HashSet<String>,
+	config: &SvgConfig,
+) -> RenderedNode {
+	let card_definition =
+		lookup_card_definition(&card.card_type, registry).unwrap_or(CardDefinition {
+			acronym: String::new(),
+			card_type: card.card_type.clone(),
+			stroke: "#000000".to_string(),
+			text: "#000000".to_string(),
+			description: String::new(),
+			fill: "#ffffff".to_string(),
+			icon: None,
+			relationships: Vec::new(),
+			shape: "rectangle".to_string(),
+			common_subtypes: Vec::new(),
+		});
 	let shape_name = card_definition.shape.trim().to_lowercase();
-	let shape_id = if KNOWN_SHAPES.contains(&shape_name.as_str()) {
+	let shape_id = if known_shape_ids.contains(shape_name.as_str()) {
 		shape_name.as_str()
 	} else {
 		"rectangle"
 	};
 
 	let geom = &node.geom;
-	let rem_px = config.base_font_size_px.max(1);
-	let line_height_px = ((config.base_font_size_px as f32) * 1.2).ceil() as i32;
-	let center_x = (node.width_px as f32) / 2.0;
-
 	let symbol = fit_symbol(node.width_px, node.height_px);
+	let center_x = symbol.offset_x + 398.0;
 
 	let escaped_id = escape_attr(&card.id);
-	let label_id = escape_attr(&format!("{}-label", card.id));
 
 	let mut shape = String::new();
 	shape.push_str(&format!(
-		"<g id=\"{}\" transform=\"translate({}, {})\">",
+		"<g id=\"{}\" class=\"aurora-symbol\" transform=\"translate({}, {})\">",
 		escaped_id, node.bbox.x, node.bbox.y
 	));
+	let symbol_transform = if symbol.offset_x.abs() < 0.01 && symbol.offset_y.abs() < 0.01 {
+		String::new()
+	} else {
+		format!(
+			" transform=\"translate({:.2}, {:.2})\"",
+			symbol.offset_x, symbol.offset_y
+		)
+	};
 	shape.push_str(&format!(
-		"<g class=\"aurora-symbol\" transform=\"translate({:.2}, {:.2}) scale({:.6}, {:.6})\"><use href=\"#{}\" style=\"fill:{};stroke:{};\" /></g>",
-		symbol.offset_x,
-		symbol.offset_y,
-		symbol.scale_x,
-		symbol.scale_y,
+		"<use href=\"#{}\"{} style=\"fill:{};stroke:{};\" />",
 		escape_attr(shape_id),
+		symbol_transform,
 		card_definition.fill,
-		card_definition.color
-	));
-	shape.push_str("</g>");
-
-	let icon_x = symbol.offset_x + (symbol.width * 0.13);
-	let icon_y = symbol.offset_y + (symbol.height * 0.18);
-	let icon_font_size = (symbol.height * 0.24).clamp(rem_px as f32 * 1.2, rem_px as f32 * 2.8);
-
-	let mut labels = String::new();
-	labels.push_str(&format!(
-		"<g id=\"{}\" transform=\"translate({}, {})\">",
-		label_id, node.bbox.x, node.bbox.y
-	));
-	labels.push_str(&format!(
-		"<text x=\"{:.2}\" y=\"{:.2}\" style=\"font-size:{:.2}px;text-anchor:start;dominant-baseline:hanging;fill:{};stroke:none;\">{}</text>",
-		icon_x,
-		icon_y,
-		icon_font_size,
-		card_definition.color,
-		escape_text(&card_definition.icon)
+		card_definition.stroke
 	));
 
-	let start_y = text_start_with_top_inset(symbol, geom.lines.len(), line_height_px, rem_px);
+	let icon_x = symbol.offset_x + ICON_OFFSET_X;
+	let icon_y = symbol.offset_y + ICON_OFFSET_Y;
+	let icon_scale = ICON_RENDER_SIZE_PX as f32 / ICON_VIEWBOX_SIZE_PX as f32;
+
+	let labels = String::new();
+	let icon_name = card
+		.icon
+		.as_ref()
+		.or(card_definition.icon.as_ref())
+		.map(String::as_str)
+		.unwrap_or("");
+	if let Some(icon_id) = normalize_icon_id(icon_name) {
+		let icon_href = format!("#i-{}", escape_attr(icon_id.as_str()));
+		shape.push_str(&format!(
+			"<g class=\"aurora-icon\" transform=\"translate({:.2}, {:.2}) scale({:.6})\"><use href=\"{}\" /></g>",
+			icon_x,
+			icon_y,
+			icon_scale,
+			icon_href
+		));
+	}
+
+	let start_y = symbol.offset_y + 100.2;
+	let default_line_step_px = (config.base_font_size_px + 8).max(1) as f32;
+	let mut y = start_y;
 	for (i, line) in geom.lines.iter().enumerate() {
-		let y = start_y + (i as f32) * (line_height_px as f32);
-		let mut style = format!(
-			"fill:{};stroke:none;text-anchor:middle;dominant-baseline:middle;font-size:{}px;",
-			card_definition.color, config.base_font_size_px
-		);
-		if geom.bold_line_index == Some(i) {
+		if i > 0 {
+			let previous_font_px = line_font_size_px(i - 1, geom, config);
+			let previous_line_step_px = if i - 1 >= geom.description_start_index {
+				(previous_font_px as f32) * DESCRIPTION_LINE_HEIGHT
+			} else {
+				default_line_step_px
+			};
+			y += previous_line_step_px;
+		}
+		if i == 1 {
+			y += SECOND_LINE_VERTICAL_OFFSET_PX as f32;
+		}
+
+		let font_size_px = line_font_size_px(i, geom, config);
+		let mut style = format!("fill:{};", card_definition.text);
+		if font_size_px != TEMPLATE_DEFAULT_FONT_SIZE_PX {
+			style.push_str(format!("font-size:{}px;", font_size_px).as_str());
+		}
+		if i == 1 || geom.bold_line_index == Some(i) {
 			style.push_str("font-weight:bold;");
 		}
-		labels.push_str(&format!(
+		shape.push_str(&format!(
 			"<text x=\"{:.2}\" y=\"{:.2}\" style=\"{}\">{}</text>",
 			center_x,
 			y,
@@ -265,15 +289,13 @@ pub fn render_node(card: &Card, node: &PositionedNode, config: &SvgConfig) -> Re
 			escape_text(line)
 		));
 	}
-	labels.push_str("</g>");
+	shape.push_str("</g>");
 
 	RenderedNode { shape, labels }
 }
 
 fn measure_node(card: &Card, config: &SvgConfig) -> NodeGeom {
-	let rem_px = config.base_font_size_px.max(1);
-	let line_height_px = ((config.base_font_size_px as f32) * 1.2).ceil() as i32;
-	let char_width_px = ((config.base_font_size_px as f32) * 0.5).ceil() as i32;
+	let _ = config;
 
 	let title = match &card.card_subtype {
 		Some(subtype) if !subtype.trim().is_empty() => {
@@ -281,68 +303,63 @@ fn measure_node(card: &Card, config: &SvgConfig) -> NodeGeom {
 		}
 		_ => card.card_type.clone(),
 	};
+	let title = format!("{}: {}", card.id, title);
 
 	let mut lines: Vec<String> = Vec::new();
 	lines.extend(wrap_text(&title, WRAP_COLS));
 	let bold_line_index = Some(lines.len());
 	lines.extend(wrap_text(&card.name, WRAP_COLS));
 	lines.push(String::new());
-	lines.extend(wrap_text(&card.description, WRAP_COLS));
-
-	let longest = lines.iter().map(|s| s.chars().count()).max().unwrap_or(0);
-	let left_padding_px = 2 * rem_px;
-	let right_padding_px = 5 * rem_px;
-	let width_px = (longest as i32) * char_width_px + left_padding_px + right_padding_px;
-	let width_px = width_px.max(super::SYMBOL_BASE_WIDTH_PX);
-
-	let mut height_px = (lines.len() as i32) * line_height_px + (6 * rem_px);
-	height_px = height_px.max(super::SYMBOL_BASE_HEIGHT_PX + (2 * rem_px));
+	let description_start_index = lines.len();
+	lines.extend(wrap_text(&card.description, DESCRIPTION_WRAP_COLS));
 
 	NodeGeom {
-		width_px,
-		height_px,
+		width_px: super::SYMBOL_BASE_WIDTH_PX,
+		height_px: super::SYMBOL_BASE_HEIGHT_PX,
 		lines,
 		bold_line_index,
+		description_start_index,
+	}
+}
+
+fn line_font_size_px(index: usize, geom: &NodeGeom, config: &SvgConfig) -> i32 {
+	if index == 1 {
+		SECOND_LINE_FONT_SIZE_PX
+	} else if index < 2 {
+		LEADING_LINE_FONT_SIZE_PX
+	} else if index >= geom.description_start_index {
+		DESCRIPTION_FONT_SIZE_PX
+	} else {
+		config.base_font_size_px
 	}
 }
 
 fn fit_symbol(node_width_px: i32, node_height_px: i32) -> SymbolPlacement {
 	let width = node_width_px.max(1) as f32;
 	let height = node_height_px.max(1) as f32;
-	let symbol_w = (width * 0.98).max(SYMBOL_BASE_W);
-	let symbol_h = height.max(SYMBOL_BASE_H);
-	let scale_x = (symbol_w / SYMBOL_BASE_W).max(0.001);
-	let scale_y = (symbol_h / SYMBOL_BASE_H).max(0.001);
-	let offset_x = (width - symbol_w) / 2.0;
-	let offset_y = (height - symbol_h) / 2.0;
+	let symbol_w = SYMBOL_BASE_W;
+	let symbol_h = SYMBOL_BASE_H;
+	let offset_x = ((width - symbol_w) / 2.0).max(0.0);
+	let offset_y = ((height - symbol_h) / 2.0).max(0.0);
 
-	SymbolPlacement {
-		offset_x,
-		offset_y,
-		width: symbol_w,
-		height: symbol_h,
-		scale_x,
-		scale_y,
+	SymbolPlacement { offset_x, offset_y }
+}
+
+fn normalize_icon_id(icon: &str) -> Option<String> {
+	let normalized = icon.trim().trim_start_matches('#');
+	let normalized = normalized.strip_prefix("i-").unwrap_or(normalized);
+	if normalized.is_empty() {
+		None
+	} else {
+		Some(normalized.to_string())
 	}
-}
-
-fn centered_text_start(symbol: SymbolPlacement, line_count: usize, line_height_px: i32) -> f32 {
-	let text_block_h = (line_count as f32) * (line_height_px.max(1) as f32);
-	let symbol_center_y = symbol.offset_y + (symbol.height / 2.0);
-	symbol_center_y - (text_block_h / 2.0) + ((line_height_px.max(1) as f32) / 2.0)
-}
-
-fn text_start_with_top_inset(
-	symbol: SymbolPlacement,
-	line_count: usize,
-	line_height_px: i32,
-	top_inset_px: i32,
-) -> f32 {
-	centered_text_start(symbol, line_count, line_height_px) + (top_inset_px.max(0) as f32)
 }
 
 pub(super) fn wrap_text(text: &str, max_cols: usize) -> Vec<String> {
 	let mut out: Vec<String> = Vec::new();
+	if max_cols == 0 {
+		return vec![text.to_string()];
+	}
 	for raw_line in text.split('\n') {
 		if raw_line.is_empty() {
 			out.push(String::new());
@@ -350,31 +367,26 @@ pub(super) fn wrap_text(text: &str, max_cols: usize) -> Vec<String> {
 		}
 		let mut current = raw_line.trim_end().to_string();
 		while current.chars().count() > max_cols {
-			let mut cut = None;
-			let mut count = 0;
+			let mut cut_at_whitespace: Option<usize> = None;
+			let mut split_at: Option<usize> = None;
+			let mut count = 0usize;
 			for (idx, ch) in current.char_indices() {
 				count += 1;
 				if count > max_cols {
+					split_at = Some(idx);
 					break;
 				}
 				if ch.is_whitespace() {
-					cut = Some(idx);
+					cut_at_whitespace = Some(idx);
 				}
 			}
 
-			let split_at = cut.unwrap_or_else(|| {
-				current
-					.char_indices()
-					.nth(max_cols)
-					.map(|(idx, _)| idx)
-					.unwrap_or(current.len())
-			});
-
-			let (head, tail) = current.split_at(split_at);
-			out.push(head.trim().to_string());
-			current = tail.trim().to_string();
+			let cut_idx = cut_at_whitespace.or(split_at).unwrap_or(current.len());
+			let (head, tail) = current.split_at(cut_idx);
+			out.push(head.trim_end().to_string());
+			current = tail.trim_start().to_string();
 		}
-		out.push(current.to_string());
+		out.push(current);
 	}
 	out
 }
@@ -394,6 +406,7 @@ fn escape_attr(s: &str) -> String {
 #[cfg(test)]
 mod tests {
 	use super::*;
+	use std::collections::HashSet;
 
 	#[test]
 	fn position_nodes_does_not_insert_empty_columns() {
@@ -402,6 +415,7 @@ mod tests {
 			height_px: 60,
 			lines: Vec::new(),
 			bold_line_index: None,
+			description_start_index: 0,
 		};
 		let nodes = vec![
 			NodeLayout {
@@ -431,36 +445,205 @@ mod tests {
 	}
 
 	#[test]
+	fn position_nodes_adds_extra_vertical_rank_spacing() {
+		let geom = NodeGeom {
+			width_px: 100,
+			height_px: 60,
+			lines: Vec::new(),
+			bold_line_index: None,
+			description_start_index: 0,
+		};
+		let nodes = vec![
+			NodeLayout {
+				id: "a".to_string(),
+				x: 0,
+				y: 0,
+				geom: geom.clone(),
+			},
+			NodeLayout {
+				id: "b".to_string(),
+				x: 0,
+				y: 1,
+				geom,
+			},
+		];
+		let config = SvgConfig {
+			node_spacing_px: 10,
+			base_font_size_px: 16,
+			edge_style: super::super::EdgeStyle::Orthogonal,
+		};
+
+		let positioned = position_nodes(&nodes, &config);
+		let a = positioned.get("a").expect("a should be positioned");
+		let b = positioned.get("b").expect("b should be positioned");
+		assert_eq!(a.bbox.y, 0);
+		assert_eq!(b.bbox.y, 60 + 10 + EXTRA_RANK_VERTICAL_SPACING_PX);
+	}
+
+	#[test]
 	fn fit_symbol_stays_within_node_bounds() {
-		let symbol = fit_symbol(640, 220);
-		assert!(symbol.width <= 640.0 + 0.01);
-		assert!(symbol.height <= 220.0 + 0.01);
-		assert!((symbol.scale_x - (symbol.width / SYMBOL_BASE_W)).abs() < 0.0001);
-		assert!((symbol.scale_y - (symbol.height / SYMBOL_BASE_H)).abs() < 0.0001);
+		let symbol = fit_symbol(720, 450);
+		assert!((symbol.offset_x - 0.0).abs() < 0.01);
+		assert!((symbol.offset_y - 0.0).abs() < 0.01);
+
+		let shifted = fit_symbol(900, 700);
+		assert!(shifted.offset_x > 0.0);
+		assert!(shifted.offset_y > 0.0);
 		assert!(symbol.offset_x >= -0.01);
 		assert!(symbol.offset_y >= -0.01);
 	}
 
 	#[test]
-	fn centered_text_start_centers_block_in_symbol() {
-		let symbol = fit_symbol(320, 200);
-		let line_height = 20;
-		let line_count = 5;
-		let start_y = centered_text_start(symbol, line_count, line_height);
-		let first_center = start_y;
-		let last_center = start_y + ((line_count - 1) as f32) * (line_height as f32);
-		let block_center = (first_center + last_center) / 2.0;
-		let symbol_center = symbol.offset_y + (symbol.height / 2.0);
-		assert!((block_center - symbol_center).abs() < 0.001);
+	fn normalize_icon_id_accepts_prefixed_variants() {
+		assert_eq!(normalize_icon_id("wrench").as_deref(), Some("wrench"));
+		assert_eq!(normalize_icon_id("i-wrench").as_deref(), Some("wrench"));
+		assert_eq!(normalize_icon_id("#i-wrench").as_deref(), Some("wrench"));
+		assert_eq!(
+			normalize_icon_id("  #i-wrench  ").as_deref(),
+			Some("wrench")
+		);
+		assert!(normalize_icon_id(" ").is_none());
 	}
 
 	#[test]
-	fn text_start_with_top_inset_adds_requested_padding() {
-		let symbol = fit_symbol(320, 200);
-		let line_height = 20;
-		let line_count = 5;
-		let centered = centered_text_start(symbol, line_count, line_height);
-		let with_inset = text_start_with_top_inset(symbol, line_count, line_height, 16);
-		assert!((with_inset - centered - 16.0).abs() < 0.001);
+	fn wrap_text_respects_column_limit() {
+		let lines = wrap_text(
+			"A phrase that should wrap before the final word escapes the card boundary.",
+			32,
+		);
+		assert!(
+			lines.iter().all(|line| line.chars().count() <= 32),
+			"wrapped lines exceeded width: {lines:?}"
+		);
+	}
+
+	#[test]
+	fn icon_slot_matches_template_layout() {
+		assert_eq!(ICON_RENDER_SIZE_PX, 72);
+		assert!((ICON_OFFSET_X - 70.0).abs() < 0.01);
+		assert!((ICON_OFFSET_Y - 189.0).abs() < 0.01);
+	}
+
+	#[test]
+	fn measure_node_prefixes_first_line_with_card_id() {
+		let card = Card {
+			schema: None,
+			id: "APP-001".to_string(),
+			card_type: "Application".to_string(),
+			card_subtype: None,
+			name: "Portal".to_string(),
+			description: "desc".to_string(),
+			version: None,
+			status: None,
+			boundary: None,
+			notes: None,
+			icon: None,
+			attributes: crate::Attributes::new(),
+			links: Vec::new(),
+			source_path: std::path::PathBuf::from("APP-001.json"),
+			validation_errors: Vec::new(),
+			validation_warnings: Vec::new(),
+		};
+		let geom = measure_node(&card, &SvgConfig::default());
+		assert_eq!(
+			geom.lines.first().map(String::as_str),
+			Some("APP-001: Application")
+		);
+	}
+
+	#[test]
+	fn render_node_uses_stroke_and_text_colors_for_labels() {
+		let card = Card {
+			schema: None,
+			id: "FOO-001".to_string(),
+			card_type: "Foo".to_string(),
+			card_subtype: None,
+			name: "Sample Node".to_string(),
+			description: "Description".to_string(),
+			version: None,
+			status: None,
+			boundary: None,
+			notes: None,
+			icon: None,
+			attributes: crate::Attributes::new(),
+			links: Vec::new(),
+			source_path: std::path::PathBuf::from("FOO-001.json"),
+			validation_errors: Vec::new(),
+			validation_warnings: Vec::new(),
+		};
+
+		let registry = CardRegistry {
+			definitions: vec![CardDefinition {
+				acronym: "FOO".to_string(),
+				card_type: "Foo".to_string(),
+				stroke: "#111111".to_string(),
+				text: "#eeeeee".to_string(),
+				description: "desc".to_string(),
+				fill: "#222222".to_string(),
+				icon: None,
+				relationships: Vec::new(),
+				shape: "rectangle".to_string(),
+				common_subtypes: Vec::new(),
+			}],
+			available_icons: HashSet::new(),
+		};
+
+		let geom = measure_node(&card, &SvgConfig::default());
+		let node = PositionedNode {
+			bbox: geom::RectI {
+				x: 0,
+				y: 0,
+				w: geom.width_px,
+				h: geom.height_px,
+			},
+			width_px: geom.width_px,
+			height_px: geom.height_px,
+			geom,
+		};
+
+		let mut shape_ids = HashSet::new();
+		shape_ids.insert("rectangle".to_string());
+		let rendered = render_node(&card, &node, &registry, &shape_ids, &SvgConfig::default());
+
+		assert!(
+			rendered.shape.contains("fill:#222222;stroke:#111111;"),
+			"shape style did not apply fill/stroke correctly: {}",
+			rendered.shape
+		);
+		assert!(
+			rendered.shape.contains("fill:#eeeeee;"),
+			"label style did not apply text color as fill correctly: {}",
+			rendered.shape
+		);
+		assert!(
+			!rendered.shape.contains("stroke:#eeeeee;"),
+			"label style should not use text color as stroke: {}",
+			rendered.shape
+		);
+		assert!(
+			!rendered.shape.contains("text-anchor:middle;"),
+			"label style should rely on template default text-anchor: {}",
+			rendered.shape
+		);
+		assert!(
+			rendered.labels.is_empty(),
+			"render_node should no longer emit a separate labels group: {}",
+			rendered.labels
+		);
+		assert!(
+			!rendered.shape.contains("class=\"aurora-node"),
+			"rendered node should not include aurora-node class: {}",
+			rendered.shape
+		);
+		assert!(
+			!rendered.shape.contains("<svg class=\"aurora-icon\""),
+			"icon should be wrapped in a transformed <g> rather than nested <svg>: {}",
+			rendered.shape
+		);
+		assert!(
+			!rendered.shape.contains("translate(0.00, 0.00)"),
+			"rendered node should not emit redundant zero transforms: {}",
+			rendered.shape
+		);
 	}
 }

@@ -22,19 +22,76 @@ impl AuditLog {
 		debug!("Loading audit log from {}", path.display());
 
 		let data = std::fs::read_to_string(path)?;
-		let audit_json: Value = serde_json::from_str(&data)
-			.map_err(|e| AuditLogError::ParseError(path.display().to_string(), e))?;
-		let validation_errors = Self::validate_against_schema(&audit_json, audit_schema)?;
+		let mut validation_errors: Vec<String> = Vec::new();
+		let mut history: Vec<AuditLogEntry> = Vec::new();
+		let compiled_schema = JSONSchema::options()
+			.with_draft(Draft::Draft7)
+			.compile(audit_schema)?;
 
-		let mut audit_log: AuditLog = serde_json::from_str(&data)
-			.map_err(|e| AuditLogError::ParseError(path.display().to_string(), e))?;
-		audit_log.source_path = path.to_path_buf();
-		audit_log.validation_errors = validation_errors;
-		Ok(audit_log)
+		for (line_index, line) in data.lines().enumerate() {
+			let line_number = line_index + 1;
+			let trimmed = line.trim();
+			if trimmed.is_empty() {
+				continue;
+			}
+
+			let parsed: Value = match serde_json::from_str(trimmed) {
+				Ok(parsed) => parsed,
+				Err(error) => {
+					validation_errors.push(format!(
+						"Line {}: failed to parse audit entry: {}",
+						line_number, error
+					));
+					continue;
+				}
+			};
+
+			if let Err(errors) = compiled_schema.validate(&parsed) {
+				for error in errors {
+					validation_errors.push(format!("Line {}: {}", line_number, error));
+				}
+			}
+
+			match serde_json::from_value::<AuditLogEntry>(parsed) {
+				Ok(entry) => history.push(entry),
+				Err(error) => validation_errors.push(format!(
+					"Line {}: failed to decode audit entry: {}",
+					line_number, error
+				)),
+			}
+		}
+
+		Ok(AuditLog {
+			schema: None,
+			history,
+			source_path: path.to_path_buf(),
+			validation_errors,
+		})
 	}
 
 	pub fn entries_for_target(&self, target: &str) -> impl Iterator<Item = &AuditLogEntry> {
-		self.history.iter().filter(move |e| e.target == target)
+		self.history.iter().filter(move |entry| {
+			entry.changes.iter().any(|change| change.card_id == target) || entry.target == target
+		})
+	}
+
+	pub fn change_summary_for_target(entry: &AuditLogEntry, target: &str) -> String {
+		let mut changes: Vec<&str> = entry
+			.changes
+			.iter()
+			.filter(|change| change.card_id == target)
+			.map(|change| change.change_type.as_str())
+			.collect();
+		if changes.is_empty() && entry.target == target {
+			changes.push(entry.change_type.as_str());
+		}
+		changes.sort_unstable();
+		changes.dedup();
+		if changes.is_empty() {
+			"change".to_string()
+		} else {
+			changes.join(",")
+		}
 	}
 
 	pub fn entries_markdown(target: &str, entries: impl Iterator<Item = AuditLogEntry>) -> String {
@@ -44,13 +101,14 @@ impl AuditLog {
 		let mut any = false;
 		for entry in entries {
 			any = true;
+			let change_summary = Self::change_summary_for_target(&entry, target);
 			md.push_str(&format!(
 				"| {} | {} | {} |\n",
 				entry
 					.timestamp
 					.to_rfc3339_opts(chrono::SecondsFormat::Secs, true),
 				entry.editor,
-				entry.change_type.as_str(),
+				change_summary,
 			));
 		}
 		if !any {
@@ -58,28 +116,33 @@ impl AuditLog {
 		}
 		md
 	}
-
-	fn validate_against_schema(
-		audit_json: &Value,
-		audit_schema: &Value,
-	) -> Result<Vec<String>, AuditLogError> {
-		let compiled_schema = JSONSchema::options()
-			.with_draft(Draft::Draft7)
-			.compile(audit_schema)?;
-
-		match compiled_schema.validate(audit_json) {
-			Ok(_) => Ok(vec![]),
-			Err(errors) => Ok(errors.map(|e| e.to_string()).collect()),
-		}
-	}
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AuditLogEntry {
 	pub timestamp: DateTime<Utc>,
 	pub editor: String,
+	#[serde(default)]
 	pub target: String,
+	#[serde(default)]
 	pub change_type: AuditChangeType,
+	#[serde(default)]
+	pub changes: Vec<AuditCardChange>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AuditCardChange {
+	pub card_id: String,
+	pub change_type: AuditChangeType,
+	#[serde(default)]
+	pub link_changes: Vec<AuditLinkChange>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AuditLinkChange {
+	pub change_type: AuditChangeType,
+	pub relationship: String,
+	pub target: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
@@ -99,6 +162,12 @@ impl AuditChangeType {
 			AuditChangeType::Change => "change",
 			AuditChangeType::Delete => "delete",
 		}
+	}
+}
+
+impl Default for AuditChangeType {
+	fn default() -> Self {
+		Self::Change
 	}
 }
 

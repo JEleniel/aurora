@@ -53,14 +53,16 @@ fn build_card(id: &str, card_type: &str, links: Vec<Link>) -> Card {
 		card_subtype: None,
 		name: id.to_string(),
 		description: "desc".to_string(),
-		version: "1.0.0".to_string(),
+		version: Some("1.0.0".to_string()),
 		status: None,
 		boundary: None,
 		notes: None,
+		icon: None,
 		attributes: super::Attributes::new(),
 		links,
 		source_path: PathBuf::from(format!("{}.json", id)),
 		validation_errors: Vec::new(),
+		validation_warnings: Vec::new(),
 	}
 }
 
@@ -105,7 +107,7 @@ fn check_registry_warns_on_unknown() -> Result<(), Box<dyn std::error::Error>> {
 		}],
 	);
 
-	let warnings = card.check_registry()?;
+	let warnings = card.check_registry(&registry);
 	assert!(!warnings.is_empty());
 	Ok(())
 }
@@ -138,7 +140,7 @@ fn check_registry_accepts_known_relationships() -> Result<(), Box<dyn std::error
 		}],
 	);
 
-	let warnings = card.check_registry()?;
+	let warnings = card.check_registry(&registry);
 	assert!(
 		warnings.is_empty(),
 		"expected no warnings, got: {warnings:?}"

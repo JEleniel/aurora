@@ -1,0 +1,8 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CON-901",
+	"card_type": "Condition",
+	"name": "Downstream condition",
+	"description": "Second condition used to demonstrate condition-to-condition branching.",
+	"links": []
+}

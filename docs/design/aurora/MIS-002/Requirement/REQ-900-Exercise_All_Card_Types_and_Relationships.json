@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-900",
+	"card_type": "Requirement",
+	"name": "Exercise all card types and relationships",
+	"description": "The model must cover every canonical card type, every declared common subtype, and every relationship label in the canonical registry.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-900"
+		},
+		{
+			"relationship": "has",
+			"target": "ADR-900"
+		},
+		{
+			"relationship": "imposes",
+			"target": "CNS-900"
+		}
+	]
+}

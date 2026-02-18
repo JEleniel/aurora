@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "PRD-900",
+	"card_type": "Predicate",
+	"name": "Example predicate",
+	"description": "Predicate that branches and emits events.",
+	"links": [
+		{
+			"relationship": "branches to",
+			"target": "STA-901"
+		},
+		{
+			"relationship": "branches to",
+			"target": "PRD-901"
+		},
+		{
+			"relationship": "emits",
+			"target": "EVT-901"
+		}
+	]
+}

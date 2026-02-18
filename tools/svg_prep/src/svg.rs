@@ -1,5 +1,6 @@
 //! SVG transformation routines for `svg_prep`.
 
+use std::collections::HashMap;
 use std::ffi::OsStr;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -15,11 +16,18 @@ const MODEL_CONFIGURATION_FILE: &str = "Aurora.modelconfiguration.json";
 const MODEL_CONFIGURATION_RELATIVE_PATH: &str =
 	".github/agents/aurora/reference/Aurora.modelconfiguration.json";
 const AVAILABLE_CARD_KEYS: [&str; 2] = ["available_cards", "available_icons"];
+const PROOF_LABEL_FONT_SIZE_PX: f64 = 32.0;
+const PROOF_LABEL_LINE_HEIGHT: f64 = 1.2;
+const PROOF_LABEL_MAX_LINES: usize = 2;
+const PROOF_LABEL_MIN_CHARS_PER_LINE: usize = 8;
+const PROOF_LABEL_AVERAGE_CHAR_WIDTH_FACTOR: f64 = 0.55;
+const PROOF_COLUMN_GAP_PX: f64 = 36.0;
 
 #[derive(Debug, Clone)]
 struct IconGroup {
 	id: String,
 	group: Element,
+	defs: Vec<Element>,
 	width: f64,
 	height: f64,
 }
@@ -64,13 +72,14 @@ fn sync_available_cards(template_svg: &Element, template_path: &Path) -> Result<
 		);
 	}
 
-	let model_configuration_path = resolve_model_configuration_path(template_path).with_context(|| {
-		format!(
-			"Could not locate {} near template path {} or relative to current directory",
-			MODEL_CONFIGURATION_RELATIVE_PATH,
-			template_path.display()
-		)
-	})?;
+	let model_configuration_path =
+		resolve_model_configuration_path(template_path).with_context(|| {
+			format!(
+				"Could not locate {} near template path {} or relative to current directory",
+				MODEL_CONFIGURATION_RELATIVE_PATH,
+				template_path.display()
+			)
+		})?;
 	info!(
 		"Writing {} icon name(s) to {}",
 		icon_names.len(),
@@ -125,6 +134,9 @@ fn extract_available_icon_names(template_svg: &Element) -> Vec<String> {
 	let mut names = Vec::new();
 
 	for element in extract_defs_elements(template_svg) {
+		if !local_name(&element.name).eq_ignore_ascii_case("g") {
+			continue;
+		}
 		let Some(id) = element.attributes.get("id") else {
 			continue;
 		};
@@ -268,18 +280,23 @@ fn load_icon_groups(icons_dir: &Path) -> Result<Vec<IconGroup>> {
 				)
 			})?;
 		let svg = read_svg_file(&path)?;
-		let children = extract_icon_children(&svg);
+		let icon_id = format!("i-{stem}");
+		let mut defs = extract_defs_elements(&svg);
+		let id_map = prefix_element_ids(&mut defs, &icon_id);
+		rewrite_references_in_elements(&mut defs, &id_map);
+
+		let mut children = extract_icon_children(&svg);
+		rewrite_references_in_nodes(&mut children, &id_map);
 		let (width, height) = icon_dimensions(&svg);
 
 		let mut group = Element::new("g");
-		group
-			.attributes
-			.insert("id".to_string(), format!("i-{stem}"));
+		group.attributes.insert("id".to_string(), icon_id.clone());
 		group.children = children;
 
 		icons.push(IconGroup {
-			id: format!("i-{stem}"),
+			id: icon_id,
 			group,
+			defs,
 			width,
 			height,
 		});
@@ -312,9 +329,13 @@ fn build_icons_svg(icons: &[IconGroup]) -> Element {
 	} else {
 		icons.len().div_ceil(columns)
 	};
+	let line_height_px = PROOF_LABEL_FONT_SIZE_PX * PROOF_LABEL_LINE_HEIGHT;
+	let label_row_height = line_height_px * PROOF_LABEL_MAX_LINES as f64;
+	let row_height = cell_height + label_row_height;
+	let column_gap_total = PROOF_COLUMN_GAP_PX * columns.saturating_sub(1) as f64;
 
-	let width = cell_width * columns as f64;
-	let height = cell_height * rows as f64;
+	let width = cell_width * columns as f64 + column_gap_total;
+	let height = row_height * rows as f64;
 
 	root.attributes
 		.insert("width".to_string(), format_number(width));
@@ -339,13 +360,36 @@ fn build_icons_svg(icons: &[IconGroup]) -> Element {
 
 	let mut defs = Element::new("defs");
 	for icon in icons {
+		for def in &icon.defs {
+			defs.children.push(XMLNode::Element(def.clone()));
+		}
+	}
+	for icon in icons {
 		defs.children.push(XMLNode::Element(icon.group.clone()));
 	}
 	root.children.push(XMLNode::Element(defs));
 
+	let mut background = Element::new("rect");
+	background
+		.attributes
+		.insert("x".to_string(), "0".to_string());
+	background
+		.attributes
+		.insert("y".to_string(), "0".to_string());
+	background
+		.attributes
+		.insert("width".to_string(), format_number(width));
+	background
+		.attributes
+		.insert("height".to_string(), format_number(height));
+	background
+		.attributes
+		.insert("fill".to_string(), "#FFFFFF".to_string());
+	root.children.push(XMLNode::Element(background));
+
 	for (index, icon) in icons.iter().enumerate() {
-		let x = (index % columns) as f64 * cell_width;
-		let y = (index / columns) as f64 * cell_height;
+		let x = (index % columns) as f64 * (cell_width + PROOF_COLUMN_GAP_PX);
+		let y = (index / columns) as f64 * row_height;
 
 		let mut use_node = Element::new("use");
 		use_node
@@ -364,9 +408,154 @@ fn build_icons_svg(icons: &[IconGroup]) -> Element {
 			.attributes
 			.insert("height".to_string(), format_number(cell_height));
 		root.children.push(XMLNode::Element(use_node));
+
+		let mut label_node = Element::new("text");
+		label_node
+			.attributes
+			.insert("x".to_string(), format_number(x + cell_width / 2.0));
+		label_node.attributes.insert(
+			"y".to_string(),
+			format_number(y + cell_height + label_row_height / 2.0),
+		);
+		label_node
+			.attributes
+			.insert("text-anchor".to_string(), "middle".to_string());
+		label_node
+			.attributes
+			.insert("dominant-baseline".to_string(), "middle".to_string());
+		label_node.attributes.insert(
+			"font-size".to_string(),
+			format!("{}px", format_number(PROOF_LABEL_FONT_SIZE_PX)),
+		);
+		label_node.attributes.insert(
+			"style".to_string(),
+			format!("line-height:{}", format_number(PROOF_LABEL_LINE_HEIGHT)),
+		);
+
+		let label = proof_label_for_icon_id(&icon.id);
+		let max_chars_per_line = estimate_label_chars_per_line(cell_width);
+		let wrapped_lines = wrap_proof_label(&label, max_chars_per_line, PROOF_LABEL_MAX_LINES);
+		let wrapped_block_height = line_height_px * wrapped_lines.len().saturating_sub(1) as f64;
+		let first_line_y = y + cell_height + label_row_height / 2.0 - wrapped_block_height / 2.0;
+
+		for (line_index, line) in wrapped_lines.iter().enumerate() {
+			let mut tspan = Element::new("tspan");
+			tspan
+				.attributes
+				.insert("x".to_string(), format_number(x + cell_width / 2.0));
+			tspan.attributes.insert(
+				"y".to_string(),
+				format_number(first_line_y + line_height_px * line_index as f64),
+			);
+			tspan
+				.attributes
+				.insert("dominant-baseline".to_string(), "middle".to_string());
+			tspan.children.push(XMLNode::Text(line.clone()));
+			label_node.children.push(XMLNode::Element(tspan));
+		}
+
+		root.children.push(XMLNode::Element(label_node));
 	}
 
 	root
+}
+
+fn proof_label_for_icon_id(icon_id: &str) -> String {
+	icon_id
+		.strip_prefix("i-")
+		.unwrap_or(icon_id)
+		.replace('_', " ")
+}
+
+fn estimate_label_chars_per_line(cell_width: f64) -> usize {
+	let estimated =
+		(cell_width / (PROOF_LABEL_FONT_SIZE_PX * PROOF_LABEL_AVERAGE_CHAR_WIDTH_FACTOR)).floor();
+	(estimated as usize).max(PROOF_LABEL_MIN_CHARS_PER_LINE)
+}
+
+fn wrap_proof_label(label: &str, max_chars: usize, max_lines: usize) -> Vec<String> {
+	if max_lines == 0 {
+		return Vec::new();
+	}
+
+	let effective_max_chars = max_chars.max(1);
+	let mut remaining_words: Vec<String> = label
+		.split_whitespace()
+		.filter(|word| !word.is_empty())
+		.map(str::to_string)
+		.collect();
+
+	if remaining_words.is_empty() {
+		return vec![String::new()];
+	}
+
+	let mut lines = Vec::new();
+	let mut current_line = String::new();
+	let mut truncated = false;
+
+	while let Some(word) = remaining_words.first().cloned() {
+		let current_len = current_line.chars().count();
+		let word_len = word.chars().count();
+
+		if current_len == 0 {
+			if word_len <= effective_max_chars {
+				current_line.push_str(&word);
+				remaining_words.remove(0);
+				continue;
+			}
+
+			let head: String = word.chars().take(effective_max_chars).collect();
+			let tail: String = word.chars().skip(effective_max_chars).collect();
+			current_line.push_str(&head);
+			remaining_words.remove(0);
+			if !tail.is_empty() {
+				remaining_words.insert(0, tail);
+			}
+			continue;
+		}
+
+		if current_len + 1 + word_len <= effective_max_chars {
+			current_line.push(' ');
+			current_line.push_str(&word);
+			remaining_words.remove(0);
+			continue;
+		}
+
+		lines.push(std::mem::take(&mut current_line));
+		if lines.len() == max_lines {
+			truncated = true;
+			break;
+		}
+	}
+
+	if !current_line.is_empty() && lines.len() < max_lines {
+		lines.push(current_line);
+	}
+
+	if !remaining_words.is_empty() {
+		truncated = true;
+	}
+
+	if lines.is_empty() {
+		lines.push(String::new());
+	}
+
+	if truncated {
+		if let Some(last_line) = lines.last_mut() {
+			if !last_line.ends_with('…') {
+				if last_line.chars().count() >= effective_max_chars {
+					let keep = effective_max_chars.saturating_sub(1);
+					let shortened: String = last_line.chars().take(keep).collect();
+					*last_line = format!("{shortened}…");
+				} else {
+					last_line.push('…');
+				}
+			}
+		}
+	}
+
+	lines.truncate(max_lines);
+	lines
 }
 
 fn extract_icon_children(root: &Element) -> Vec<XMLNode> {
@@ -402,6 +591,120 @@ fn sanitize_element(element: &Element) -> Option<Element> {
 	}
 
 	Some(cleaned)
+}
+
+fn prefix_element_ids(elements: &mut [Element], id_prefix: &str) -> HashMap<String, String> {
+	let mut id_map = HashMap::new();
+	for element in elements {
+		prefix_element_ids_recursive(element, id_prefix, &mut id_map);
+	}
+	id_map
+}
+
+fn prefix_element_ids_recursive(
+	element: &mut Element,
+	id_prefix: &str,
+	id_map: &mut HashMap<String, String>,
+) {
+	if let Some(existing_id) = element.attributes.get("id").cloned() {
+		let prefixed_id = format!("{id_prefix}-{existing_id}");
+		element
+			.attributes
+			.insert("id".to_string(), prefixed_id.clone());
+		id_map.insert(existing_id, prefixed_id);
+	}
+
+	for node in &mut element.children {
+		if let XMLNode::Element(child) = node {
+			prefix_element_ids_recursive(child, id_prefix, id_map);
+		}
+	}
+}
+
+fn rewrite_references_in_nodes(nodes: &mut [XMLNode], id_map: &HashMap<String, String>) {
+	for node in nodes {
+		if let XMLNode::Element(element) = node {
+			rewrite_references_in_element(element, id_map);
+		}
+	}
+}
+
+fn rewrite_references_in_elements(elements: &mut [Element], id_map: &HashMap<String, String>) {
+	for element in elements {
+		rewrite_references_in_element(element, id_map);
+	}
+}
+
+fn rewrite_references_in_element(element: &mut Element, id_map: &HashMap<String, String>) {
+	for (name, value) in &mut element.attributes {
+		let rewritten = rewrite_reference_value(name, value, id_map);
+		*value = rewritten;
+	}
+
+	for node in &mut element.children {
+		if let XMLNode::Element(child) = node {
+			rewrite_references_in_element(child, id_map);
+		}
+	}
+}
+
+fn rewrite_reference_value(
+	attribute_name: &str,
+	value: &str,
+	id_map: &HashMap<String, String>,
+) -> String {
+	let mut rewritten = rewrite_url_reference_ids(value, id_map);
+
+	if local_name(attribute_name).eq_ignore_ascii_case("href") {
+		if let Some(id) = rewritten.strip_prefix('#') {
+			if id.chars().all(is_svg_id_char) {
+				if let Some(prefixed) = id_map.get(id) {
+					rewritten = format!("#{prefixed}");
+				}
+			}
+		}
+	}
+
+	rewritten
+}
+
+fn rewrite_url_reference_ids(value: &str, id_map: &HashMap<String, String>) -> String {
+	let mut out = String::new();
+	let mut cursor = 0usize;
+
+	while let Some(rel) = value[cursor..].find("url(#") {
+		let start = cursor + rel;
+		let id_start = start + "url(#".len();
+		out.push_str(&value[cursor..id_start]);
+
+		let mut id_end = id_start;
+		for ch in value[id_start..].chars() {
+			if !is_svg_id_char(ch) {
+				break;
+			}
+			id_end += ch.len_utf8();
+		}
+
+		let id = &value[id_start..id_end];
+		if let Some(prefixed) = id_map.get(id) {
+			out.push_str(prefixed);
+		} else {
+			out.push_str(id);
+		}
+
+		cursor = id_end;
+	}
+
+	if cursor == 0 {
+		return value.to_string();
+	}
+
+	out.push_str(&value[cursor..]);
+	out
+}
+
+fn is_svg_id_char(ch: char) -> bool {
+	ch.is_ascii_alphanumeric() || matches!(ch, '-' | '_' | ':' | '.')
 }
 
 fn icon_dimensions(root: &Element) -> (f64, f64) {
@@ -610,6 +913,30 @@ mod tests {
 			.unwrap_or_else(|| panic!("Expected to find {needle:?} in output"))
 	}
 
+	fn text_content(element: &Element) -> String {
+		element
+			.children
+			.iter()
+			.filter_map(|node| match node {
+				XMLNode::Text(text) => Some(text.as_str()),
+				_ => None,
+			})
+			.collect::<String>()
+	}
+
+	fn tspan_text_lines(text_element: &Element) -> Vec<String> {
+		text_element
+			.children
+			.iter()
+			.filter_map(|node| match node {
+				XMLNode::Element(element) if local_name(&element.name) == "tspan" => {
+					Some(text_content(element))
+				}
+				_ => None,
+			})
+			.collect()
+	}
+
 	#[test]
 	fn sanitize_removes_ids_and_excluded_nodes() {
 		let source = parse_inline(
@@ -632,6 +959,44 @@ mod tests {
 			panic!("Expected nested path element")
 		};
 		assert!(!path.attributes.contains_key("id"));
+	}
+
+	#[test]
+	fn defs_ids_are_prefixed_and_references_rewritten() {
+		let source = parse_inline(
+			r##"<svg xmlns="http://www.w3.org/2000/svg">
+				<defs>
+					<linearGradient id="SVGID_1_">
+						<stop offset="0" stop-color="#fff"/>
+					</linearGradient>
+				</defs>
+				<path fill="url(#SVGID_1_)"/>
+			</svg>"##,
+		);
+
+		let mut defs = extract_defs_elements(&source);
+		let id_map = prefix_element_ids(&mut defs, "i-alarm");
+		rewrite_references_in_elements(&mut defs, &id_map);
+
+		let mut children = extract_icon_children(&source);
+		rewrite_references_in_nodes(&mut children, &id_map);
+
+		assert_eq!(
+			id_map.get("SVGID_1_").map(String::as_str),
+			Some("i-alarm-SVGID_1_")
+		);
+		assert_eq!(
+			defs[0].attributes.get("id").map(String::as_str),
+			Some("i-alarm-SVGID_1_")
+		);
+
+		let XMLNode::Element(path) = &children[0] else {
+			panic!("Expected path element")
+		};
+		assert_eq!(
+			path.attributes.get("fill").map(String::as_str),
+			Some("url(#i-alarm-SVGID_1_)")
+		);
 	}
 
 	#[test]
@@ -681,6 +1046,18 @@ mod tests {
 			</svg>"#,
 		)
 		.expect("alpha icon should be written");
+		fs::write(
+			icons_dir.join("alarm.svg"),
+			r##"<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+				<defs>
+					<linearGradient id="SVGID_1_">
+						<stop offset="0" stop-color="#000"/>
+					</linearGradient>
+				</defs>
+				<path d="M0,0 L12,12" fill="url(#SVGID_1_)"/>
+			</svg>"##,
+		)
+		.expect("alarm icon should be written");
 
 		let shapes_path = refs_dir.join("Shapes.svg");
 		let template_path = refs_dir.join("SVGTemplate.svg");
@@ -732,30 +1109,113 @@ mod tests {
 		let icons_output = fs::read_to_string(&icons_out).expect("icons output should exist");
 		assert!(icons_output.contains("<defs>"));
 		assert!(icons_output.contains("id=\"i-Alpha\""));
+		assert!(icons_output.contains("id=\"i-alarm\""));
 		assert!(icons_output.contains("id=\"i-beta\""));
+		assert!(icons_output.contains("id=\"i-alarm-SVGID_1_\""));
+		assert!(icons_output.contains("url(#i-alarm-SVGID_1_)"));
 		assert!(!icons_output.contains("id=\"g-beta\""));
 		assert!(!icons_output.contains("id=\"p-alpha\""));
+		assert!(icons_output.contains("<rect"));
+		assert!(icons_output.contains("fill=\"#FFFFFF\""));
+		assert!(icons_output.contains("font-size=\"32px\""));
+		assert!(icons_output.contains("line-height:1.2"));
 
 		let alpha_pos = index_of(&icons_output, "id=\"i-Alpha\"");
+		let alarm_pos = index_of(&icons_output, "id=\"i-alarm\"");
 		let beta_pos = index_of(&icons_output, "id=\"i-beta\"");
 		assert!(alpha_pos < beta_pos);
-		assert_eq!(icons_output.matches("<use ").count(), 2);
+		assert!(alarm_pos < beta_pos);
+		assert_eq!(icons_output.matches("<use ").count(), 3);
+
+		let icons_svg = Element::parse(icons_output.as_bytes()).expect("icons output should parse");
+		let text_nodes: Vec<&Element> = icons_svg
+			.children
+			.iter()
+			.filter_map(|node| match node {
+				XMLNode::Element(element) if local_name(&element.name) == "text" => Some(element),
+				_ => None,
+			})
+			.collect();
+		let rect_nodes: Vec<&Element> = icons_svg
+			.children
+			.iter()
+			.filter_map(|node| match node {
+				XMLNode::Element(element) if local_name(&element.name) == "rect" => Some(element),
+				_ => None,
+			})
+			.collect();
+		let use_nodes: Vec<&Element> = icons_svg
+			.children
+			.iter()
+			.filter_map(|node| match node {
+				XMLNode::Element(element) if local_name(&element.name) == "use" => Some(element),
+				_ => None,
+			})
+			.collect();
+		assert_eq!(
+			icons_svg.attributes.get("width").map(String::as_str),
+			Some("76")
+		);
+		assert_eq!(rect_nodes.len(), 1);
+		assert_eq!(
+			rect_nodes[0].attributes.get("fill").map(String::as_str),
+			Some("#FFFFFF")
+		);
+		assert_eq!(use_nodes.len(), 3);
+		assert_eq!(
+			use_nodes[0].attributes.get("x").map(String::as_str),
+			Some("0")
+		);
+		assert_eq!(
+			use_nodes[1].attributes.get("x").map(String::as_str),
+			Some("56")
+		);
+		assert_eq!(
+			use_nodes[2].attributes.get("x").map(String::as_str),
+			Some("0")
+		);
+		assert_eq!(
+			use_nodes[2].attributes.get("y").map(String::as_str),
+			Some("88.8")
+		);
+		assert_eq!(text_nodes.len(), 3);
+		assert_eq!(tspan_text_lines(text_nodes[0]), vec!["alarm"]);
+		assert_eq!(tspan_text_lines(text_nodes[1]), vec!["Alpha"]);
+		assert_eq!(tspan_text_lines(text_nodes[2]), vec!["beta"]);
+		for text_node in text_nodes {
+			assert_eq!(
+				text_node.attributes.get("text-anchor").map(String::as_str),
+				Some("middle")
+			);
+			assert_eq!(
+				text_node.attributes.get("font-size").map(String::as_str),
+				Some("32px")
+			);
+			assert!(tspan_text_lines(text_node).len() <= 2);
+		}
 
 		let template_output = fs::read_to_string(&template_path).expect("template should exist");
 		assert!(!template_output.contains("id=\"old\""));
 		let i_alpha = index_of(&template_output, "id=\"i-Alpha\"");
+		let i_alarm = index_of(&template_output, "id=\"i-alarm\"");
 		let i_beta = index_of(&template_output, "id=\"i-beta\"");
+		let alarm_gradient = index_of(&template_output, "id=\"i-alarm-SVGID_1_\"");
 		let shape_a = index_of(&template_output, "id=\"Shape-A\"");
 		let shape_b = index_of(&template_output, "id=\"shape-b\"");
+		assert!(i_alarm < i_alpha);
 		assert!(i_alpha < i_beta);
+		assert!(i_alarm < alarm_gradient);
+		assert!(alarm_gradient < i_alpha);
 		assert!(i_beta < shape_a);
 		assert!(shape_a < shape_b);
 
-		let model_configuration_output =
-			fs::read_to_string(&model_configuration_path).expect("model configuration should exist");
+		let model_configuration_output = fs::read_to_string(&model_configuration_path)
+			.expect("model configuration should exist");
 		assert!(model_configuration_output.contains("\"available_cards\": ["));
 		assert!(model_configuration_output.contains("\"Alpha\""));
+		assert!(model_configuration_output.contains("\"alarm\""));
 		assert!(model_configuration_output.contains("\"beta\""));
+		assert!(!model_configuration_output.contains("\"alarm-SVGID_1_\""));
 		assert!(!model_configuration_output.contains("\"legacy\""));
 		assert!(!model_configuration_output.contains("\"shape-b\""));
 	}
@@ -803,6 +1263,7 @@ mod tests {
 		let template = parse_inline(
 			r#"<svg xmlns="http://www.w3.org/2000/svg"><defs>
 				<g id="i-alarm"><path d="M0,0"/></g>
+				<linearGradient id="i-alarm-SVGID_1_"/>
 				<symbol id="shape-rectangle"><path d="M0,0"/></symbol>
 				<g id="i-wrench"><path d="M0,0"/></g>
 				<g id="trapezoid"><path d="M0,0"/></g>
@@ -839,5 +1300,14 @@ mod tests {
 
 		let result = run(&args);
 		assert!(result.is_err());
+	}
+
+	#[test]
+	fn proof_label_replaces_underscores_and_wraps_to_two_lines() {
+		let label = proof_label_for_icon_id("i-service_dependency_map");
+		assert_eq!(label, "service dependency map");
+
+		let lines = wrap_proof_label(&label, 16, PROOF_LABEL_MAX_LINES);
+		assert_eq!(lines, vec!["service", "dependency map"]);
 	}
 }

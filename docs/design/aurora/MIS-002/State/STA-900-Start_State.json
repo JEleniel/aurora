@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "STA-900",
+	"card_type": "State",
+	"name": "Start state",
+	"description": "State used to exercise state transitions, predicate evaluation, and event handling.",
+	"links": [
+		{
+			"relationship": "transitions to",
+			"target": "STA-901"
+		},
+		{
+			"relationship": "evaluates",
+			"target": "PRD-900"
+		},
+		{
+			"relationship": "handles",
+			"target": "EVT-900"
+		}
+	]
+}

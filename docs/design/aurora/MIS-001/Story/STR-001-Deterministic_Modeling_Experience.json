@@ -1,5 +1,5 @@
 {
-	"$schema": "../../Aurora.card.schema.json",
+	"$schema": "../../schemas/Aurora.card.schema.json",
 	"id": "STR-001",
 	"card_type": "Story",
 	"name": "Deterministic Modeling Experience",

@@ -1,0 +1,33 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CTL-900",
+	"card_type": "Control",
+	"name": "Example control",
+	"description": "Control used to exercise control/risk/constraint governance relationships.",
+	"links": [
+		{
+			"relationship": "mitigates",
+			"target": "RIS-900"
+		},
+		{
+			"relationship": "protects",
+			"target": "AST-900"
+		},
+		{
+			"relationship": "enforces",
+			"target": "CNS-900"
+		},
+		{
+			"relationship": "governs",
+			"target": "DST-900"
+		},
+		{
+			"relationship": "governs",
+			"target": "REQ-900"
+		},
+		{
+			"relationship": "obstructs",
+			"target": "THC-900"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CNS-900",
+	"card_type": "Constraint",
+	"name": "Links must use canonical relationships",
+	"description": "All links in this example model use relationship labels that appear in the canonical model configuration.",
+	"links": [
+		{
+			"relationship": "limits",
+			"target": "REQ-900"
+		}
+	]
+}

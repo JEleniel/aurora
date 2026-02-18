@@ -112,8 +112,47 @@ pub(super) fn median_sweeps(
 	predecessor_by_layer: &HashMap<String, Vec<String>>,
 	successor_by_layer: &HashMap<String, Vec<String>>,
 ) -> Result<(), RenderError> {
+	let mut best_layers = layers.to_vec();
+	let mut best_score =
+		total_crossings(best_layers.as_slice(), max_layer_index, successor_by_layer)?;
+
+	let mut seeds: Vec<Vec<Vec<String>>> = vec![layers.to_vec()];
+	seeds.push(mirrored_layers(layers));
+
+	for mut candidate_layers in seeds {
+		optimize_crossings(
+			candidate_layers.as_mut_slice(),
+			max_layer_index,
+			predecessor_by_layer,
+			successor_by_layer,
+		)?;
+		let score = total_crossings(
+			candidate_layers.as_slice(),
+			max_layer_index,
+			successor_by_layer,
+		)?;
+		if score < best_score {
+			best_score = score;
+			best_layers = candidate_layers;
+		}
+	}
+
+	for (index, layer) in best_layers.into_iter().enumerate() {
+		if let Some(target) = layers.get_mut(index) {
+			*target = layer;
+		}
+	}
+	Ok(())
+}
+
+fn optimize_crossings(
+	layers: &mut [Vec<String>],
+	max_layer_index: usize,
+	predecessor_by_layer: &HashMap<String, Vec<String>>,
+	successor_by_layer: &HashMap<String, Vec<String>>,
+) -> Result<(), RenderError> {
 	let mut positions = rebuild_positions(layers);
-	for _ in 0..8 {
+	for _ in 0..12 {
 		sweep_down(
 			layers,
 			max_layer_index,
@@ -122,19 +161,23 @@ pub(super) fn median_sweeps(
 		)?;
 		sweep_up(layers, max_layer_index, successor_by_layer, &mut positions)?;
 	}
-	transpose_sweeps(
-		layers,
-		max_layer_index,
-		predecessor_by_layer,
-		successor_by_layer,
-	)?;
+	transpose_sweeps(layers, max_layer_index, successor_by_layer)?;
 	Ok(())
+}
+
+fn mirrored_layers(layers: &[Vec<String>]) -> Vec<Vec<String>> {
+	let mut mirrored = layers.to_vec();
+	for layer in mirrored.iter_mut() {
+		if layer.len() > 1 {
+			layer.reverse();
+		}
+	}
+	mirrored
 }
 
 fn transpose_sweeps(
 	layers: &mut [Vec<String>],
 	max_layer_index: usize,
-	predecessor_by_layer: &HashMap<String, Vec<String>>,
 	successor_by_layer: &HashMap<String, Vec<String>>,
 ) -> Result<(), RenderError> {
 	if layers.is_empty() {
@@ -150,22 +193,10 @@ fn transpose_sweeps(
 
 			let mut index = 0usize;
 			while index + 1 < layers[layer_index].len() {
-				let before = layer_crossings(
-					layers,
-					layer_index,
-					max_layer_index,
-					predecessor_by_layer,
-					successor_by_layer,
-				)?;
+				let before = total_crossings(layers, max_layer_index, successor_by_layer)?;
 
 				layers[layer_index].swap(index, index + 1);
-				let after = layer_crossings(
-					layers,
-					layer_index,
-					max_layer_index,
-					predecessor_by_layer,
-					successor_by_layer,
-				)?;
+				let after = total_crossings(layers, max_layer_index, successor_by_layer)?;
 
 				if after < before {
 					improved = true;
@@ -185,22 +216,16 @@ fn transpose_sweeps(
 	Ok(())
 }
 
-fn layer_crossings(
+fn total_crossings(
 	layers: &[Vec<String>],
-	layer_index: usize,
 	max_layer_index: usize,
-	predecessor_by_layer: &HashMap<String, Vec<String>>,
 	successor_by_layer: &HashMap<String, Vec<String>>,
 ) -> Result<usize, RenderError> {
 	let mut total = 0usize;
-	if layer_index > 0 {
-		total += crossings_from_predecessors(
-			&layers[layer_index - 1],
-			&layers[layer_index],
-			predecessor_by_layer,
-		)?;
+	if max_layer_index == 0 {
+		return Ok(0);
 	}
-	if layer_index < max_layer_index {
+	for layer_index in 0..max_layer_index {
 		total += crossings_from_successors(
 			&layers[layer_index],
 			&layers[layer_index + 1],
@@ -208,32 +233,6 @@ fn layer_crossings(
 		)?;
 	}
 	Ok(total)
-}
-
-fn crossings_from_predecessors(
-	upper_layer: &[String],
-	lower_layer: &[String],
-	predecessor_by_layer: &HashMap<String, Vec<String>>,
-) -> Result<usize, RenderError> {
-	let upper_pos = position_index(upper_layer);
-	let lower_pos = position_index(lower_layer);
-	let mut edges: Vec<(usize, usize)> = Vec::new();
-
-	for target in lower_layer {
-		let target_pos = lower_pos
-			.get(target)
-			.copied()
-			.ok_or_else(|| RenderError::MissingPosition(target.clone()))?;
-		if let Some(predecessors) = predecessor_by_layer.get(target) {
-			for source in predecessors {
-				if let Some(source_pos) = upper_pos.get(source).copied() {
-					edges.push((source_pos, target_pos));
-				}
-			}
-		}
-	}
-
-	Ok(count_crossings(edges.as_slice()))
 }
 
 fn crossings_from_successors(

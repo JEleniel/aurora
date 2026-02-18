@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "STK-901",
+	"card_type": "Stakeholder",
+	"card_subtype": "End User",
+	"name": "Example end user",
+	"description": "Representative end-user stakeholder for coverage.",
+	"links": [
+		{
+			"relationship": "desires",
+			"target": "STR-901"
+		}
+	]
+}

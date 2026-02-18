@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "STR-903",
+	"card_type": "Story",
+	"name": "As a manager I need traceability",
+	"description": "As a manager I need the example to demonstrate traceability from mission to implementation and verification.",
+	"links": [
+		{
+			"relationship": "explains",
+			"target": "REQ-900"
+		}
+	]
+}

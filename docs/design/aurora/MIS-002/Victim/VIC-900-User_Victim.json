@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "VIC-900",
+	"card_type": "Victim",
+	"card_subtype": "User",
+	"name": "User victim",
+	"description": "Victim subtype used for coverage.",
+	"links": []
+}

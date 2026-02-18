@@ -4,7 +4,14 @@ use std::collections::{BinaryHeap, HashMap, HashSet};
 use super::{EdgeStyle, RenderError, SvgConfig, geom};
 
 const EDGE_STROKE: &str = "#000000";
-const EDGE_STROKE_WIDTH_PX: i32 = 2;
+const EDGE_MASK_STROKE: &str = "#ffffff";
+const EDGE_STROKE_WIDTH_PX: i32 = 4;
+const EDGE_MASK_STROKE_WIDTH_PX: i32 = 19;
+const SYMBOL_PARALLEL_EDGE_CLEARANCE_PX: f32 = 80.0;
+const SYMBOL_ANCHOR_BIAS_SCALE: f32 = 0.35;
+const MIN_TERMINAL_SEGMENT_PX: i32 = 80;
+const ARROW_SIZE_PX: f32 = 30.0;
+const ADJACENT_STRAIGHT_GAP_PX: i32 = 220;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 struct Cell {
@@ -74,21 +81,25 @@ pub fn route_edge(
 	node_obstacles: &[geom::RectI],
 	edge_obstacles: &[geom::RectI],
 	symbol_bboxes: &[geom::RectI],
+	source_anchor_bias: f32,
+	target_anchor_bias: f32,
 	config: &SvgConfig,
 ) -> Result<Route, RenderError> {
 	let rem_px = config.base_font_size_px.max(1);
 	let clearance = (rem_px / 2).max(8);
+	let terminal_leg = clearance.max(MIN_TERMINAL_SEGMENT_PX);
 	let cell_px = rem_px.max(8);
 	let envelope = routing_envelope(symbol_bboxes, source_bbox, target_bbox);
 
-	let start_anchor = anchor_point(source_bbox, target_bbox.center());
-	let end_anchor = anchor_point(target_bbox, source_bbox.center());
+	let start_anchor =
+		preferred_anchor_point(source_bbox, target_bbox.center(), source_anchor_bias);
+	let end_anchor = preferred_anchor_point(target_bbox, source_bbox.center(), target_anchor_bias);
 	let start = clamp_point_to_envelope(
-		push_outside_bbox(source_bbox, start_anchor, clearance),
+		push_outside_bbox(source_bbox, start_anchor, terminal_leg),
 		&envelope,
 	);
 	let end = clamp_point_to_envelope(
-		push_outside_bbox(target_bbox, end_anchor, clearance),
+		push_outside_bbox(target_bbox, end_anchor, terminal_leg),
 		&envelope,
 	);
 	let source_center = source_bbox.center();
@@ -101,12 +112,27 @@ pub fn route_edge(
 			!rect_contains_point(*o, source_center) && !rect_contains_point(*o, target_center)
 		})
 		.collect();
-	let terminal_merge_zone = grow_rect(*target_bbox, clearance * 3);
-	let edge_blocks: Vec<geom::RectI> = edge_obstacles
-		.iter()
-		.copied()
-		.filter(|obstacle| !rect_intersects(*obstacle, terminal_merge_zone))
-		.collect();
+	let edge_blocks: Vec<geom::RectI> = edge_obstacles.to_vec();
+	let detour_blocks = nearby_obstacles_for_detours(start, end, node_blocks.as_slice(), clearance);
+
+	if let Some(points) = straight_adjacent_route(
+		source_bbox,
+		target_bbox,
+		node_blocks.as_slice(),
+		edge_blocks.as_slice(),
+		(clearance / 2).max(1),
+	) {
+		let arrow = arrowhead(points.as_slice(), rem_px as f32);
+		let bounds = bounds_for_points(points.as_slice())
+			.union_point(arrow[0])
+			.union_point(arrow[1])
+			.union_point(arrow[2]);
+		return Ok(Route {
+			points,
+			arrow,
+			bounds,
+		});
+	}
 
 	let mut candidates = orthogonal_candidates(start, end, source_bbox, target_bbox, clearance);
 	candidates.extend(obstacle_detour_candidates(
@@ -114,11 +140,9 @@ pub fn route_edge(
 		end,
 		source_bbox,
 		target_bbox,
-		&node_blocks,
+		detour_blocks.as_slice(),
 		clearance,
 	));
-	let fallback_straight = vec![start, end];
-	candidates.push(fallback_straight);
 	let candidates = clamp_candidates_to_envelope(candidates, &envelope);
 
 	let mut best = select_best_candidate(
@@ -165,7 +189,30 @@ pub fn route_edge(
 		);
 	}
 
-	let mut core = best.unwrap_or_else(|| vec![start, end]);
+	if best.is_none() {
+		best = select_best_candidate(
+			candidates.as_slice(),
+			node_blocks.as_slice(),
+			edge_blocks.as_slice(),
+			clearance,
+			false,
+		);
+	}
+
+	if best.is_none() {
+		best = grid_route(
+			start,
+			end,
+			node_blocks.as_slice(),
+			edge_blocks.as_slice(),
+			cell_px,
+			clearance,
+			&envelope,
+			false,
+		);
+	}
+
+	let mut core = best.unwrap_or_else(|| orthogonal_fallback_route(start, end));
 	let simplify_pad = clearance.max((rem_px / 2).max(6));
 	if polyline_hits_obstacles(core.as_slice(), node_blocks.as_slice(), clearance / 2) {
 		if let Some(recovery) = select_best_candidate(
@@ -174,7 +221,7 @@ pub fn route_edge(
 				end,
 				source_bbox,
 				target_bbox,
-				node_blocks.as_slice(),
+				detour_blocks.as_slice(),
 				clearance,
 			)
 			.as_slice(),
@@ -182,22 +229,6 @@ pub fn route_edge(
 			edge_blocks.as_slice(),
 			clearance,
 			true,
-		) {
-			core = recovery;
-		} else if let Some(recovery) = select_best_candidate(
-			emergency_detour_candidates(
-				start,
-				end,
-				source_bbox,
-				target_bbox,
-				node_blocks.as_slice(),
-				clearance,
-			)
-			.as_slice(),
-			node_blocks.as_slice(),
-			edge_blocks.as_slice(),
-			clearance,
-			false,
 		) {
 			core = recovery;
 		}
@@ -235,18 +266,45 @@ pub fn route_edge(
 	})
 }
 
-pub fn render_edge(route: &Route, style: EdgeStyle) -> String {
-	let d = match style {
-		EdgeStyle::Orthogonal => path_polyline(route.points.as_slice()),
-		EdgeStyle::Curved => path_curved(route.points.as_slice()),
-	};
+fn nearby_obstacles_for_detours(
+	start: geom::PointF,
+	end: geom::PointF,
+	node_obstacles: &[geom::RectI],
+	clearance: i32,
+) -> Vec<geom::RectI> {
+	if node_obstacles.is_empty() {
+		return Vec::new();
+	}
 
-	let mut out = String::new();
-	out.push_str(&format!(
-		"<path d=\"{}\" style=\"fill:none;stroke:{};stroke-width:{}px;\" />",
-		d, EDGE_STROKE, EDGE_STROKE_WIDTH_PX
-	));
-	out.push_str(&format!(
+	let corridor = segment_rect(start, end, (clearance * 6).max(120));
+	let mut nearby: Vec<geom::RectI> = node_obstacles
+		.iter()
+		.copied()
+		.filter(|obstacle| rect_intersects(*obstacle, corridor))
+		.collect();
+
+	if nearby.is_empty() {
+		nearby.extend_from_slice(node_obstacles);
+	}
+
+	nearby
+}
+
+#[derive(Debug, Default, Clone)]
+pub struct EdgeRenderLayers {
+	pub base: String,
+	pub overlay: String,
+}
+
+pub fn render_edge_layers(route: &Route, style: EdgeStyle) -> EdgeRenderLayers {
+	let mut layers = EdgeRenderLayers::default();
+	match style {
+		EdgeStyle::Orthogonal | EdgeStyle::Curved => {
+			render_orthogonal_with_underlay(&mut layers, route)
+		}
+	}
+
+	layers.overlay.push_str(&format!(
 		"<path d=\"M {:.2} {:.2} L {:.2} {:.2} L {:.2} {:.2} Z\" style=\"fill:{};stroke:none;\" />",
 		route.arrow[0].x,
 		route.arrow[0].y,
@@ -256,34 +314,187 @@ pub fn render_edge(route: &Route, style: EdgeStyle) -> String {
 		route.arrow[2].y,
 		EDGE_STROKE
 	));
-	out
+	layers
+}
+
+fn render_orthogonal_with_underlay(layers: &mut EdgeRenderLayers, route: &Route) {
+	let stroke_points = route_stroke_points(route);
+	if stroke_points.len() < 2 {
+		return;
+	}
+	let d = path_polyline(stroke_points.as_slice());
+	push_stroke_path(
+		&mut layers.base,
+		d.as_str(),
+		EDGE_MASK_STROKE,
+		EDGE_MASK_STROKE_WIDTH_PX,
+	);
+	push_stroke_path(
+		&mut layers.base,
+		d.as_str(),
+		EDGE_STROKE,
+		EDGE_STROKE_WIDTH_PX,
+	);
+}
+
+fn path_polyline(points: &[geom::PointF]) -> String {
+	let mut d = String::new();
+	if let Some(first) = points.first() {
+		d.push_str(&format!("M {:.2} {:.2}", first.x, first.y));
+	}
+	for point in points.iter().skip(1) {
+		d.push_str(&format!(" L {:.2} {:.2}", point.x, point.y));
+	}
+	d
+}
+
+fn route_stroke_points(route: &Route) -> Vec<geom::PointF> {
+	let mut points = route.points.clone();
+	if points.len() < 2 {
+		return points;
+	}
+	let base = geom::PointF {
+		x: (route.arrow[1].x + route.arrow[2].x) / 2.0,
+		y: (route.arrow[1].y + route.arrow[2].y) / 2.0,
+	};
+	if let Some(last) = points.last_mut() {
+		*last = base;
+	}
+	compress_polyline(points)
+}
+
+fn push_stroke_path(out: &mut String, d: &str, stroke: &str, width_px: i32) {
+	out.push_str(&format!(
+		"<path d=\"{}\" style=\"fill:none;stroke:{};stroke-width:{}px;stroke-linecap:round;stroke-linejoin:round;\" />",
+		d, stroke, width_px
+	));
 }
 
 pub fn route_obstacles_for_later_edges(
 	route: &Route,
 	_cell_px: i32,
 	_source_bbox: &geom::RectI,
-	target_bbox: &geom::RectI,
+	_target_bbox: &geom::RectI,
 	padding_px: i32,
 ) -> Vec<geom::RectI> {
-	let target_exclusion = grow_rect(*target_bbox, padding_px * 2);
 	let mut out: Vec<geom::RectI> = Vec::new();
-	let last_segment_index = route.points.len().saturating_sub(2);
 
-	for (segment_index, seg) in route.points.windows(2).enumerate() {
-		if segment_index == last_segment_index {
-			continue;
-		}
+	for seg in route.points.windows(2) {
 		let a = seg[0];
 		let b = seg[1];
 		let rect = segment_rect(a, b, padding_px.max(1));
-		if rect_intersects(rect, target_exclusion) {
-			continue;
-		}
 		out.push(rect);
 	}
 
 	out
+}
+
+fn orthogonal_fallback_route(start: geom::PointF, end: geom::PointF) -> Vec<geom::PointF> {
+	if (start.x - end.x).abs() < 0.01 || (start.y - end.y).abs() < 0.01 {
+		vec![start, end]
+	} else {
+		let mid_y = ((start.y + end.y) / 2.0).round();
+		vec![
+			start,
+			geom::PointF {
+				x: start.x,
+				y: mid_y,
+			},
+			geom::PointF { x: end.x, y: mid_y },
+			end,
+		]
+	}
+}
+
+fn straight_adjacent_route(
+	source_bbox: &geom::RectI,
+	target_bbox: &geom::RectI,
+	node_obstacles: &[geom::RectI],
+	edge_obstacles: &[geom::RectI],
+	pad: i32,
+) -> Option<Vec<geom::PointF>> {
+	let source_center = source_bbox.center();
+	let target_center = target_bbox.center();
+	let horizontal_overlap = ((source_bbox.y + source_bbox.h).min(target_bbox.y + target_bbox.h)
+		- source_bbox.y.max(target_bbox.y)) as f32;
+	let vertical_overlap = ((source_bbox.x + source_bbox.w).min(target_bbox.x + target_bbox.w)
+		- source_bbox.x.max(target_bbox.x)) as f32;
+
+	let horizontal_gap = if source_center.x <= target_center.x {
+		target_bbox.x as f32 - (source_bbox.x + source_bbox.w) as f32
+	} else {
+		source_bbox.x as f32 - (target_bbox.x + target_bbox.w) as f32
+	};
+	if horizontal_overlap > 0.0
+		&& horizontal_gap >= 0.0
+		&& horizontal_gap <= ADJACENT_STRAIGHT_GAP_PX as f32
+	{
+		let (start, end) = if source_center.x <= target_center.x {
+			(
+				geom::PointF {
+					x: (source_bbox.x + source_bbox.w) as f32,
+					y: source_center.y,
+				},
+				geom::PointF {
+					x: target_bbox.x as f32,
+					y: target_center.y,
+				},
+			)
+		} else {
+			(
+				geom::PointF {
+					x: source_bbox.x as f32,
+					y: source_center.y,
+				},
+				geom::PointF {
+					x: (target_bbox.x + target_bbox.w) as f32,
+					y: target_center.y,
+				},
+			)
+		};
+		if segment_clear(start, end, node_obstacles, edge_obstacles, pad) {
+			return Some(vec![start, end]);
+		}
+	}
+
+	let vertical_gap = if source_center.y <= target_center.y {
+		target_bbox.y as f32 - (source_bbox.y + source_bbox.h) as f32
+	} else {
+		source_bbox.y as f32 - (target_bbox.y + target_bbox.h) as f32
+	};
+	if vertical_overlap > 0.0
+		&& vertical_gap >= 0.0
+		&& vertical_gap <= ADJACENT_STRAIGHT_GAP_PX as f32
+	{
+		let (start, end) = if source_center.y <= target_center.y {
+			(
+				geom::PointF {
+					x: source_center.x,
+					y: (source_bbox.y + source_bbox.h) as f32,
+				},
+				geom::PointF {
+					x: target_center.x,
+					y: target_bbox.y as f32,
+				},
+			)
+		} else {
+			(
+				geom::PointF {
+					x: source_center.x,
+					y: source_bbox.y as f32,
+				},
+				geom::PointF {
+					x: target_center.x,
+					y: (target_bbox.y + target_bbox.h) as f32,
+				},
+			)
+		};
+		if segment_clear(start, end, node_obstacles, edge_obstacles, pad) {
+			return Some(vec![start, end]);
+		}
+	}
+
+	None
 }
 
 fn orthogonal_candidates(
@@ -530,7 +741,7 @@ fn select_best_candidate(
 		}
 		let mut adjusted_score = score;
 		if !strict_no_overlap {
-			adjusted_score += edge_hits * 40;
+			adjusted_score += edge_hits * 200;
 		}
 
 		match &best {
@@ -553,7 +764,39 @@ fn score_polyline(points: &[geom::PointF]) -> i32 {
 	}
 
 	let bends = (points.len() as i32).saturating_sub(2);
-	(distance.round() as i32) + bends * 18
+	(distance.round() as i32) + bends * 18 + route_deviation_penalty(points)
+}
+
+fn route_deviation_penalty(points: &[geom::PointF]) -> i32 {
+	if points.len() < 2 {
+		return 0;
+	}
+
+	let start = points[0];
+	let end = *points.last().unwrap_or(&start);
+	let min_x = start.x.min(end.x);
+	let max_x = start.x.max(end.x);
+	let min_y = start.y.min(end.y);
+	let max_y = start.y.max(end.y);
+	let allowance = 160.0;
+
+	let mut penalty = 0.0f32;
+	for point in points {
+		if point.x < min_x - allowance {
+			penalty += (min_x - allowance) - point.x;
+		}
+		if point.x > max_x + allowance {
+			penalty += point.x - (max_x + allowance);
+		}
+		if point.y < min_y - allowance {
+			penalty += (min_y - allowance) - point.y;
+		}
+		if point.y > max_y + allowance {
+			penalty += point.y - (max_y + allowance);
+		}
+	}
+
+	(penalty * 0.5).round() as i32
 }
 
 fn polyline_hits_obstacles(points: &[geom::PointF], obstacles: &[geom::RectI], pad: i32) -> bool {
@@ -711,10 +954,10 @@ fn reconstruct_path(mut came_from: HashMap<State, State>, mut current: State) ->
 }
 
 fn grid_bounds(start: Cell, goal: Cell, cell_px: i32, envelope: &RoutingEnvelope) -> GridBounds {
-	let mut min_x = ((envelope.min_x / (cell_px as f32)).floor() as i32) - 1;
-	let mut min_y = ((envelope.min_y / (cell_px as f32)).floor() as i32) - 1;
-	let mut max_x = ((envelope.max_x / (cell_px as f32)).ceil() as i32) + 1;
-	let mut max_y = ((envelope.max_y / (cell_px as f32)).ceil() as i32) + 1;
+	let mut min_x = (envelope.min_x / (cell_px as f32)).floor() as i32;
+	let mut min_y = (envelope.min_y / (cell_px as f32)).floor() as i32;
+	let mut max_x = (envelope.max_x / (cell_px as f32)).ceil() as i32;
+	let mut max_y = (envelope.max_y / (cell_px as f32)).ceil() as i32;
 
 	min_x = min_x.min(start.x.min(goal.x));
 	min_y = min_y.min(start.y.min(goal.y));
@@ -815,63 +1058,48 @@ fn push_outside_bbox(bbox: &geom::RectI, anchor: geom::PointF, clearance: i32) -
 	}
 }
 
-fn anchor_point(from: &geom::RectI, to: geom::PointF) -> geom::PointF {
+fn preferred_anchor_point(from: &geom::RectI, to: geom::PointF, bias: f32) -> geom::PointF {
 	let c = from.center();
-	let dir = geom::PointF {
-		x: to.x - c.x,
-		y: to.y - c.y,
-	};
-	let eps = 0.000_1;
-	if dir.x.abs() < eps && dir.y.abs() < eps {
-		return geom::PointF {
-			x: (from.x + from.w) as f32,
-			y: c.y,
-		};
-	}
-
 	let x0 = from.x as f32;
 	let x1 = (from.x + from.w) as f32;
 	let y0 = from.y as f32;
 	let y1 = (from.y + from.h) as f32;
+	let dx = to.x - c.x;
+	let dy = to.y - c.y;
+	let near_same_row = dy.abs() < (from.h as f32 * 0.2);
+	let strongly_horizontal = dx.abs() > dy.abs() * 2.0;
+	let allow_side_anchor = near_same_row && strongly_horizontal;
 
-	let mut best_t: f32 = f32::INFINITY;
-	let mut best: Option<geom::PointF> = None;
-
-	if dir.x.abs() >= eps {
-		for x in [x0, x1] {
-			let t = (x - c.x) / dir.x;
-			if t <= 0.0 {
-				continue;
-			}
-			let y = c.y + dir.y * t;
-			if y < y0 - 0.01 || y > y1 + 0.01 {
-				continue;
-			}
-			if t < best_t {
-				best_t = t;
-				best = Some(geom::PointF { x, y });
-			}
-		}
+	if !allow_side_anchor {
+		let y = if dy >= 0.0 { y1 } else { y0 };
+		let x =
+			weighted_anchor_coordinate(x0, x1, SYMBOL_PARALLEL_EDGE_CLEARANCE_PX, to.x, c.x, bias);
+		return geom::PointF { x, y };
 	}
 
-	if dir.y.abs() >= eps {
-		for y in [y0, y1] {
-			let t = (y - c.y) / dir.y;
-			if t <= 0.0 {
-				continue;
-			}
-			let x = c.x + dir.x * t;
-			if x < x0 - 0.01 || x > x1 + 0.01 {
-				continue;
-			}
-			if t < best_t {
-				best_t = t;
-				best = Some(geom::PointF { x, y });
-			}
-		}
+	let x = if dx >= 0.0 { x1 } else { x0 };
+	let y = weighted_anchor_coordinate(y0, y1, SYMBOL_PARALLEL_EDGE_CLEARANCE_PX, to.y, c.y, bias);
+	geom::PointF { x, y }
+}
+
+fn weighted_anchor_coordinate(
+	min: f32,
+	max: f32,
+	margin: f32,
+	_preferred: f32,
+	_center_hint: f32,
+	bias: f32,
+) -> f32 {
+	let low = min + margin;
+	let high = max - margin;
+	if low > high {
+		return (min + max) / 2.0;
 	}
 
-	best.unwrap_or(c)
+	let center = (low + high) / 2.0;
+	let spread = (high - low) / 2.0;
+	let biased = center + bias.clamp(-1.0, 1.0) * spread * SYMBOL_ANCHOR_BIAS_SCALE;
+	biased.clamp(low, high)
 }
 
 fn segment_rect(a: geom::PointF, b: geom::PointF, pad: i32) -> geom::RectI {
@@ -1214,8 +1442,18 @@ fn routing_envelope(
 	let mut min_y = source_bbox.y.min(target_bbox.y) as f32;
 	let mut max_x = (source_bbox.x + source_bbox.w).max(target_bbox.x + target_bbox.w) as f32;
 	let mut max_y = (source_bbox.y + source_bbox.h).max(target_bbox.y + target_bbox.h) as f32;
+	let source_center = source_bbox.center();
+	let target_center = target_bbox.center();
+	let corridor_pad = ((source_bbox.h.max(target_bbox.h)) / 2).max(120);
+	let corridor = grow_rect(
+		segment_rect(source_center, target_center, corridor_pad),
+		corridor_pad,
+	);
 
 	for symbol_bbox in symbol_bboxes {
+		if !rect_intersects(*symbol_bbox, corridor) {
+			continue;
+		}
 		min_x = min_x.min(symbol_bbox.x as f32);
 		min_y = min_y.min(symbol_bbox.y as f32);
 		max_x = max_x.max((symbol_bbox.x + symbol_bbox.w) as f32);
@@ -1258,84 +1496,6 @@ fn clamp_candidates_to_envelope(
 		.collect()
 }
 
-fn path_polyline(points: &[geom::PointF]) -> String {
-	let mut d = String::new();
-	if let Some(first) = points.first() {
-		d.push_str(&format!("M {:.2} {:.2}", first.x, first.y));
-	}
-	for p in points.iter().skip(1) {
-		d.push_str(&format!(" L {:.2} {:.2}", p.x, p.y));
-	}
-	d
-}
-
-fn path_curved(points: &[geom::PointF]) -> String {
-	if points.len() < 3 {
-		return path_polyline(points);
-	}
-
-	let base_radius: f32 = 8.0;
-	let k: f32 = 0.552_284_8;
-	let last = points[points.len() - 1];
-	let mut d = String::new();
-	d.push_str(&format!("M {:.2} {:.2}", points[0].x, points[0].y));
-
-	for i in 1..(points.len() - 1) {
-		let p0 = points[i - 1];
-		let p1 = points[i];
-		let p2 = points[i + 1];
-		if i == points.len() - 2 || segment_length(p1, last) <= base_radius * 3.0 {
-			d.push_str(&format!(" L {:.2} {:.2}", p1.x, p1.y));
-			continue;
-		}
-		let seg1 = vec_sub(p1, p0);
-		let seg2 = vec_sub(p2, p1);
-		let len1 = (seg1.x * seg1.x + seg1.y * seg1.y).sqrt();
-		let len2 = (seg2.x * seg2.x + seg2.y * seg2.y).sqrt();
-		let radius = base_radius.min(len1 / 2.0).min(len2 / 2.0);
-		let v1 = norm(seg1);
-		let v2 = norm(seg2);
-		let dot = v1.x * v2.x + v1.y * v2.y;
-		if dot > 0.999 {
-			d.push_str(&format!(" L {:.2} {:.2}", p1.x, p1.y));
-			continue;
-		}
-
-		let in_pt = geom::PointF {
-			x: p1.x - v1.x * radius,
-			y: p1.y - v1.y * radius,
-		};
-		let out_pt = geom::PointF {
-			x: p1.x + v2.x * radius,
-			y: p1.y + v2.y * radius,
-		};
-		let c1 = geom::PointF {
-			x: in_pt.x + v1.x * radius * k,
-			y: in_pt.y + v1.y * radius * k,
-		};
-		let c2 = geom::PointF {
-			x: out_pt.x - v2.x * radius * k,
-			y: out_pt.y - v2.y * radius * k,
-		};
-
-		d.push_str(&format!(" L {:.2} {:.2}", in_pt.x, in_pt.y));
-		d.push_str(&format!(
-			" C {:.2} {:.2} {:.2} {:.2} {:.2} {:.2}",
-			c1.x, c1.y, c2.x, c2.y, out_pt.x, out_pt.y
-		));
-	}
-
-	d.push_str(&format!(" L {:.2} {:.2}", last.x, last.y));
-	d
-}
-
-fn vec_sub(a: geom::PointF, b: geom::PointF) -> geom::PointF {
-	geom::PointF {
-		x: a.x - b.x,
-		y: a.y - b.y,
-	}
-}
-
 fn norm(v: geom::PointF) -> geom::PointF {
 	let len = (v.x * v.x + v.y * v.y).sqrt();
 	if len <= f32::EPSILON {
@@ -1349,7 +1509,8 @@ fn norm(v: geom::PointF) -> geom::PointF {
 }
 
 fn arrowhead(points: &[geom::PointF], min_size_px: f32) -> [geom::PointF; 3] {
-	let size = min_size_px.max(12.0);
+	let _ = min_size_px;
+	let size = ARROW_SIZE_PX;
 	let width = size * 0.6;
 	let end = *points.last().unwrap_or(&geom::PointF { x: 0.0, y: 0.0 });
 	let dir = arrow_direction(points, (size * 0.75).max(8.0));
@@ -1372,35 +1533,22 @@ fn arrowhead(points: &[geom::PointF], min_size_px: f32) -> [geom::PointF; 3] {
 	[end, p1, p2]
 }
 
-fn arrow_direction(points: &[geom::PointF], min_len: f32) -> geom::PointF {
+fn arrow_direction(points: &[geom::PointF], _min_len: f32) -> geom::PointF {
 	if points.len() < 2 {
 		return geom::PointF { x: 1.0, y: 0.0 };
 	}
 
 	for seg in points.windows(2).rev() {
-		let len = segment_length(seg[0], seg[1]);
-		if len >= min_len {
-			let dir = norm(geom::PointF {
-				x: seg[1].x - seg[0].x,
-				y: seg[1].y - seg[0].y,
-			});
-			if dir.x.abs() > 0.0001 || dir.y.abs() > 0.0001 {
-				return dir;
-			}
+		let dir = norm(geom::PointF {
+			x: seg[1].x - seg[0].x,
+			y: seg[1].y - seg[0].y,
+		});
+		if dir.x.abs() > 0.0001 || dir.y.abs() > 0.0001 {
+			return dir;
 		}
 	}
 
-	let last = points[points.len() - 1];
-	let prev = points[points.len() - 2];
-	let fallback = norm(geom::PointF {
-		x: last.x - prev.x,
-		y: last.y - prev.y,
-	});
-	if fallback.x.abs() > 0.0001 || fallback.y.abs() > 0.0001 {
-		fallback
-	} else {
-		geom::PointF { x: 1.0, y: 0.0 }
-	}
+	geom::PointF { x: 1.0, y: 0.0 }
 }
 
 fn bounds_for_points(points: &[geom::PointF]) -> geom::Bounds {
@@ -1472,7 +1620,7 @@ mod tests {
 	}
 
 	#[test]
-	fn route_obstacles_skip_last_segment_only() {
+	fn route_obstacles_include_all_segments() {
 		let route = Route {
 			points: vec![
 				geom::PointF { x: 0.0, y: 0.0 },
@@ -1499,7 +1647,7 @@ mod tests {
 			h: 40,
 		};
 		let obstacles = route_obstacles_for_later_edges(&route, 16, &source, &target, 4);
-		assert_eq!(obstacles.len(), 1);
+		assert_eq!(obstacles.len(), 2);
 	}
 
 	#[test]
@@ -1551,7 +1699,7 @@ mod tests {
 			h: 60,
 		};
 		let obstacles = route_obstacles_for_later_edges(&route, 16, &source, &target, 6);
-		assert!(obstacles.is_empty());
+		assert_eq!(obstacles.len(), 1);
 	}
 
 	#[test]
@@ -1645,6 +1793,8 @@ mod tests {
 			&node_obstacles,
 			&[],
 			&symbol_bboxes,
+			0.0,
+			0.0,
 			&config,
 		)
 		.expect("route");
@@ -1683,6 +1833,219 @@ mod tests {
 			polyline_clear(route.points.as_slice(), &blocking, 0),
 			"route intersects row nodes: {:?}",
 			route.points
+		);
+	}
+
+	#[test]
+	fn arrow_direction_prefers_terminal_segment() {
+		let points = vec![
+			geom::PointF { x: 0.0, y: 0.0 },
+			geom::PointF { x: 20.0, y: 0.0 },
+			geom::PointF { x: 10.0, y: 0.0 },
+		];
+
+		let direction = arrow_direction(points.as_slice(), 8.0);
+		assert!(direction.x < -0.99, "unexpected direction: {direction:?}");
+		assert!(
+			direction.y.abs() < 0.01,
+			"unexpected direction: {direction:?}"
+		);
+	}
+
+	#[test]
+	fn preferred_anchor_point_keeps_80px_parallel_clearance() {
+		let node = geom::RectI {
+			x: 100,
+			y: 200,
+			w: 720,
+			h: 450,
+		};
+		let below = geom::PointF {
+			x: 120.0,
+			y: 1000.0,
+		};
+		let anchor = preferred_anchor_point(&node, below, 0.0);
+		assert_eq!(anchor.y, (node.y + node.h) as f32);
+		assert!(anchor.x >= (node.x as f32 + 80.0));
+		assert!(anchor.x <= ((node.x + node.w) as f32 - 80.0));
+	}
+
+	#[test]
+	fn preferred_anchor_point_applies_bias_but_stays_inside_clearance() {
+		let node = geom::RectI {
+			x: 100,
+			y: 200,
+			w: 720,
+			h: 450,
+		};
+		let below = geom::PointF {
+			x: 460.0,
+			y: 1000.0,
+		};
+		let left_bias = preferred_anchor_point(&node, below, -1.0);
+		let right_bias = preferred_anchor_point(&node, below, 1.0);
+		assert!(left_bias.x < right_bias.x, "bias did not shift anchors");
+		assert!(left_bias.x >= (node.x as f32 + 80.0));
+		assert!(right_bias.x <= ((node.x + node.w) as f32 - 80.0));
+	}
+
+	#[test]
+	fn route_edge_has_terminal_segment_at_least_80px() {
+		let source = geom::RectI {
+			x: 0,
+			y: 0,
+			w: 720,
+			h: 450,
+		};
+		let target = geom::RectI {
+			x: 1200,
+			y: 0,
+			w: 720,
+			h: 450,
+		};
+		let config = SvgConfig::default();
+		let route = route_edge(
+			&source,
+			&target,
+			&[],
+			&[],
+			&[source, target],
+			0.0,
+			0.0,
+			&config,
+		)
+		.expect("route should exist");
+
+		let segment = route
+			.points
+			.windows(2)
+			.next_back()
+			.expect("route should have terminal segment");
+		let length = segment_length(segment[0], segment[1]);
+		assert!(length >= 80.0, "terminal segment too short: {length}");
+	}
+
+	#[test]
+	fn orthogonal_rendering_adds_white_underlay_for_vertical_segments() {
+		let base_route = Route {
+			points: vec![
+				geom::PointF { x: 0.0, y: 0.0 },
+				geom::PointF { x: 0.0, y: 200.0 },
+			],
+			arrow: [
+				geom::PointF { x: 0.0, y: 200.0 },
+				geom::PointF { x: -5.0, y: 190.0 },
+				geom::PointF { x: 5.0, y: 190.0 },
+			],
+			bounds: geom::Bounds::empty(),
+		};
+
+		let layers = render_edge_layers(&base_route, EdgeStyle::Orthogonal);
+		let svg = format!("{}{}", layers.base, layers.overlay);
+		assert!(
+			svg.contains("stroke:#ffffff;stroke-width:19px"),
+			"expected white mask stroke, got: {svg}"
+		);
+		assert!(
+			svg.contains("stroke:#000000;stroke-width:4px"),
+			"expected foreground stroke, got: {svg}"
+		);
+	}
+
+	#[test]
+	fn orthogonal_rendering_adds_white_underlay_for_horizontal_segments() {
+		let route = Route {
+			points: vec![
+				geom::PointF { x: 0.0, y: 50.0 },
+				geom::PointF { x: 200.0, y: 50.0 },
+			],
+			arrow: [
+				geom::PointF { x: 200.0, y: 50.0 },
+				geom::PointF { x: 188.0, y: 56.0 },
+				geom::PointF { x: 188.0, y: 44.0 },
+			],
+			bounds: geom::Bounds::empty(),
+		};
+
+		let layers = render_edge_layers(&route, EdgeStyle::Orthogonal);
+		assert!(layers.base.contains("stroke:#ffffff;stroke-width:19px"));
+		assert!(layers.base.contains("stroke:#000000;stroke-width:4px"));
+	}
+
+	#[test]
+	fn adjacent_symbols_route_straight_line() {
+		let source = geom::RectI {
+			x: 0,
+			y: 0,
+			w: 720,
+			h: 450,
+		};
+		let target = geom::RectI {
+			x: 880,
+			y: 0,
+			w: 720,
+			h: 450,
+		};
+		let config = SvgConfig::default();
+		let route = route_edge(
+			&source,
+			&target,
+			&[],
+			&[],
+			&[source, target],
+			0.0,
+			0.0,
+			&config,
+		)
+		.expect("adjacent route");
+
+		assert_eq!(
+			route.points.len(),
+			2,
+			"expected straight path: {:?}",
+			route.points
+		);
+		assert!((route.points[0].y - route.points[1].y).abs() < 0.01);
+	}
+
+	#[test]
+	fn orthogonal_rendering_stops_stroke_at_arrow_base() {
+		let route = Route {
+			points: vec![
+				geom::PointF { x: 0.0, y: 0.0 },
+				geom::PointF { x: 100.0, y: 0.0 },
+			],
+			arrow: [
+				geom::PointF { x: 100.0, y: 0.0 },
+				geom::PointF { x: 70.0, y: 9.0 },
+				geom::PointF { x: 70.0, y: -9.0 },
+			],
+			bounds: geom::Bounds::empty(),
+		};
+
+		let layers = render_edge_layers(&route, EdgeStyle::Orthogonal);
+		assert!(
+			layers.base.contains("L 70.00 0.00"),
+			"expected stroke to end at arrow base, got: {}",
+			layers.base
+		);
+		assert!(
+			!layers.base.contains("L 100.00 0.00"),
+			"stroke should not continue through arrow tip"
+		);
+	}
+
+	#[test]
+	fn arrowhead_uses_fixed_30px_length() {
+		let points = vec![
+			geom::PointF { x: 0.0, y: 0.0 },
+			geom::PointF { x: 100.0, y: 0.0 },
+		];
+		let arrow = arrowhead(points.as_slice(), 8.0);
+		let side = segment_length(arrow[0], arrow[1]);
+		assert!(
+			side > 29.0,
+			"arrow side should reflect fixed 30px length, got: {side}"
 		);
 	}
 }

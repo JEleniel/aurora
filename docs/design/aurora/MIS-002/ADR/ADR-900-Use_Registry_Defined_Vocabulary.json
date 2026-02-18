@@ -1,0 +1,8 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ADR-900",
+	"card_type": "ADR",
+	"name": "Use registry-defined vocabulary",
+	"description": "This example uses only canonical card types, common subtypes, and relationship labels from the model configuration registry.",
+	"links": []
+}

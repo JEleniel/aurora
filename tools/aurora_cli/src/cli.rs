@@ -19,11 +19,23 @@ pub struct Cli {
 
 	/// Input path pointing to a mission card, model home, or ancestor directory.
 	/// Default: docs/design/aurora
-	#[arg(short, long, value_name = "PATH", default_value = DEFAULT_INPUT)]
+	#[arg(
+		short,
+		long,
+		value_name = "PATH",
+		default_value = DEFAULT_INPUT,
+		global = true
+	)]
 	pub input: PathBuf,
 
 	/// Minimum log level to emit (trace|debug|info|warn|error).
-	#[arg(short, long, value_name = "LEVEL", default_value = "info")]
+	#[arg(
+		short,
+		long,
+		value_name = "LEVEL",
+		default_value = "info",
+		global = true
+	)]
 	pub log: String,
 }
 
@@ -40,14 +52,14 @@ pub enum Commands {
 		output: PathBuf,
 	},
 
-	/// Render tabular relationship views for each model.
+	/// Render diagram views for each model.
 	RenderViews {
 		/// Output directory for rendered views (recommended: docs/design/).
 		#[arg(short, long, value_name = "DIR", default_value = DEFAULT_OUTPUT)]
 		output: PathBuf,
 	},
 
-	/// Run both markdown and relationship renders for each model.
+	/// Run both markdown and diagram renders for each model.
 	RenderAll {
 		/// Output directory for rendered artifacts (recommended: docs/design/).
 		#[arg(short, long, value_name = "DIR", default_value = DEFAULT_OUTPUT)]

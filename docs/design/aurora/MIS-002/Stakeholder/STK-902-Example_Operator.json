@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "STK-902",
+	"card_type": "Stakeholder",
+	"card_subtype": "Operator",
+	"name": "Example operator",
+	"description": "Representative operations stakeholder for coverage.",
+	"links": [
+		{
+			"relationship": "desires",
+			"target": "STR-902"
+		}
+	]
+}

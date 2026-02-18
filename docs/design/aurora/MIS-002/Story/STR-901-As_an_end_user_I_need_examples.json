@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "STR-901",
+	"card_type": "Story",
+	"name": "As an end user I need examples",
+	"description": "As an end user I need a representative example model to understand the vocabulary and links.",
+	"links": [
+		{
+			"relationship": "explains",
+			"target": "REQ-900"
+		}
+	]
+}

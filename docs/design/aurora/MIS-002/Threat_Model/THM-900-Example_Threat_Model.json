@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "THM-900",
+	"card_type": "Threat Model",
+	"name": "Example threat model",
+	"description": "Threat model used to exercise the full canonical security vocabulary.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "THD-900"
+		},
+		{
+			"relationship": "includes",
+			"target": "ROW-900"
+		},
+		{
+			"relationship": "recommends",
+			"target": "CTL-900"
+		}
+	]
+}

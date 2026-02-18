@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ADV-900",
+	"card_type": "Adversary",
+	"card_subtype": "Insider",
+	"name": "Insider adversary",
+	"description": "Adversary subtype used for coverage.",
+	"links": []
+}

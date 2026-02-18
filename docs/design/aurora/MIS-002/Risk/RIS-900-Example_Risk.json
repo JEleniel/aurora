@@ -1,0 +1,8 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "RIS-900",
+	"card_type": "Risk",
+	"name": "Example risk",
+	"description": "Risk created by a threat and mitigated by a control.",
+	"links": []
+}

@@ -9,13 +9,13 @@ use std::collections::{BTreeSet, HashSet};
 use std::path::Path;
 
 use crate::Aurora;
-use crate::registry::{ViewDefinition, ViewRegistry};
+use crate::registry::ViewDefinition;
 use render_error::RenderError;
 use tracing::{info, warn};
 
 /// Render all views for the provided Aurora models.
 pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
-	let view_definitions = match ViewRegistry::try_new().and_then(|r| r.try_get_all()) {
+	let view_definitions = match aurora.view_registry.try_get_all() {
 		Ok(defs) => defs,
 		Err(err) => {
 			warn!(
@@ -34,12 +34,12 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 		let views_dir = output_dir.join(model.root_card.id.as_str()).join("Views");
 		std::fs::create_dir_all(&views_dir)?;
 
-		let card_types = model_card_types(model);
+		let card_acronyms = model_card_acronyms(model);
 		for view in &view_definitions {
 			let has_root_type = view
 				.root_card_types
 				.iter()
-				.any(|t| card_types.contains(t.as_str()));
+				.any(|t| card_acronyms.contains(t.as_str()));
 			if !has_root_type {
 				info!(
 					"Skipping view '{}' for {}: no roots of required types present",
@@ -69,7 +69,14 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 			};
 			let output_path = views_dir.join(format!("{}.svg", view_slug));
 
-			match svg::Svg::write_to_file(&output_path, model, &layout, None) {
+			match svg::Svg::write_to_file(
+				&output_path,
+				model,
+				&layout,
+				&aurora.card_registry,
+				&aurora.svg_template,
+				None,
+			) {
 				Ok(()) => {
 					info!(
 						"Rendered view '{}' for {} to {}",
@@ -91,12 +98,16 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 	Ok(())
 }
 
-fn model_card_types<'a>(model: &'a crate::Model) -> HashSet<&'a str> {
-	let mut out: HashSet<&'a str> = HashSet::new();
+fn model_card_acronyms(model: &crate::Model) -> HashSet<String> {
+	let mut out: HashSet<&str> = HashSet::new();
 	for card in std::iter::once(&model.root_card).chain(model.cards.iter()) {
-		out.insert(card.card_type.as_str());
+		if let Some(prefix) = card.id.split('-').next()
+			&& !prefix.is_empty()
+		{
+			out.insert(prefix);
+		}
 	}
-	out
+	out.into_iter().map(ToString::to_string).collect()
 }
 
 fn union_view_card_types(view: &ViewDefinition) -> Vec<String> {

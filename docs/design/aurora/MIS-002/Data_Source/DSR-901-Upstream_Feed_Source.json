@@ -1,0 +1,18 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "DSR-901",
+	"card_type": "Data Source",
+	"card_subtype": "Upstream Feed",
+	"name": "Upstream feed source",
+	"description": "Data source subtype used for provenance coverage.",
+	"links": [
+		{
+			"relationship": "provides",
+			"target": "ART-903"
+		},
+		{
+			"relationship": "runs on",
+			"target": "NOD-902"
+		}
+	]
+}

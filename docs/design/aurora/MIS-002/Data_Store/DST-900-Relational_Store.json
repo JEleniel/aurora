@@ -1,0 +1,18 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "DST-900",
+	"card_type": "Data Store",
+	"card_subtype": "Relational",
+	"name": "Relational store",
+	"description": "Data store subtype used for persistence coverage.",
+	"links": [
+		{
+			"relationship": "retrieves",
+			"target": "ART-905"
+		},
+		{
+			"relationship": "runs on",
+			"target": "NOD-901"
+		}
+	]
+}

@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "STM-900",
+	"card_type": "State Machine",
+	"name": "Example state machine",
+	"description": "State machine used to exercise state, predicate, and event relationships.",
+	"links": [
+		{
+			"relationship": "has",
+			"target": "STA-900"
+		},
+		{
+			"relationship": "has",
+			"target": "STA-901"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "STA-901",
+	"card_type": "State",
+	"name": "End state",
+	"description": "Second state used to exercise transitions and event handling.",
+	"links": [
+		{
+			"relationship": "handles",
+			"target": "EVT-901"
+		}
+	]
+}

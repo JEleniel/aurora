@@ -1,5 +1,5 @@
 {
-	"$schema": "../../Aurora.card.schema.json",
+	"$schema": "../../schemas/Aurora.card.schema.json",
 	"id": "APP-001",
 	"card_type": "Application",
 	"name": "Aurora CLI",

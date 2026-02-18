@@ -9,7 +9,7 @@ Quick index of “where things live” for agents working in this repository.
  + Intended structure (per Aurora invariants):
   - Root mission cards live directly under `docs/design/aurora/`.
   - Mission-scoped cards live under `docs/design/aurora/<MISSION_ID>/` in per-card-type folders.
-  - Folder names match `card_type` exactly (Title Case; spaces preserved, for example `Data Store/`).
+  - Folder names are sanitized from `card_type` (symbols removed, spaces become `_`, for example `Data Store` -> `Data_Store/`).
   - Audit log lives at `docs/design/aurora/<MISSION_ID>/AuditLog.ndjson`.
   - Compact export lives at `docs/design/aurora/<MISSION_ID>/Compact.json`.
 - Schemas:
@@ -19,6 +19,9 @@ Quick index of “where things live” for agents working in this repository.
  + Compact schema: `Aurora_Specs/schemas/Aurora.compact.schema.json`
  + Audit schema: `Aurora_Specs/schemas/Aurora.audit.schema.json`
  + Model configuration registry: `Aurora_Specs/reference/Aurora.modelconfiguration.json`
+ + Runtime model-home schemas live under `<model_home>/schemas/`.
+ + Runtime model-home references live under `<model_home>/reference/`.
+ + Canonical source of these artifacts is `.github/agents/aurora/{schemas,reference}/`.
 
 ## Finding things fast
 

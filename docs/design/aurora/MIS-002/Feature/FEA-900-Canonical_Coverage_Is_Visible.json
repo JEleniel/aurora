@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "FEA-900",
+	"card_type": "Feature",
+	"name": "Canonical coverage is visible",
+	"description": "The rendered views should show the full spread of canonical card types and relationship labels.",
+	"links": [
+		{
+			"relationship": "realizes",
+			"target": "CAP-900"
+		},
+		{
+			"relationship": "implies",
+			"target": "CNS-900"
+		}
+	]
+}

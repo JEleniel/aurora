@@ -1,5 +1,5 @@
 {
-	"$schema": "../../Aurora.card.schema.json",
+	"$schema": "../../schemas/Aurora.card.schema.json",
 	"id": "ATV-007",
 	"card_type": "Activity",
 	"name": "Maintain Aurora Schemas",

@@ -1,0 +1,8 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-901",
+	"card_type": "Activity",
+	"name": "Complete example activity",
+	"description": "Second activity used to demonstrate sequencing via 'leads to'.",
+	"links": []
+}

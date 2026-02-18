@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ROW-900",
+	"card_type": "Resource Owner",
+	"name": "Example resource owner",
+	"description": "Resource owner used to exercise ownership relationships.",
+	"links": [
+		{
+			"relationship": "owns",
+			"target": "AST-900"
+		}
+	]
+}

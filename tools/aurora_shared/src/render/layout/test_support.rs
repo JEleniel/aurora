@@ -18,14 +18,16 @@ pub(super) fn make_card(id: &str, card_type: &str, targets: &[&str]) -> Card {
 		card_subtype: None,
 		name: format!("{} name", id),
 		description: "desc".to_string(),
-		version: "1.0.0".to_string(),
+		version: Some("1.0.0".to_string()),
 		status: None,
 		boundary: None,
 		notes: None,
+		icon: None,
 		attributes: Attributes::new(),
 		links,
 		source_path: PathBuf::from(format!("{}.json", id)),
 		validation_errors: Vec::new(),
+		validation_warnings: Vec::new(),
 	}
 }
 
@@ -36,7 +38,7 @@ pub(super) fn make_model(root_card: Card, cards: Vec<Card>) -> Model {
 		audit_log: AuditLog {
 			schema: None,
 			history: Vec::new(),
-			source_path: PathBuf::from("AuditLog.json"),
+			source_path: PathBuf::from("AuditLog.ndjson"),
 			validation_errors: Vec::new(),
 		},
 		model_home: PathBuf::from("model"),

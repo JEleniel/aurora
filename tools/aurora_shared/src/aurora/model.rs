@@ -19,6 +19,8 @@ use std::{
 use thiserror::Error;
 use tracing::{debug, trace};
 
+use crate::registry::CardRegistry;
+
 const MODEL_MARKDOWN_TEMPLATE: &str = include_str!("model.template.md");
 
 #[cfg(test)]
@@ -48,7 +50,7 @@ impl Model {
 
 		let mut mission_home: PathBuf = model_home.clone();
 		mission_home.push(root_card.id.as_str());
-		let audit_log_path = mission_home.join("AuditLog.json");
+		let audit_log_path = mission_home.join("AuditLog.ndjson");
 		let audit_log = super::AuditLog::try_load(&audit_log_path, audit_schema)?;
 
 		let mut cards: Vec<Card> = Vec::new();
@@ -75,7 +77,7 @@ impl Model {
 					.file_name()
 					.and_then(|s| s.to_str())
 					.unwrap_or_default();
-				if file_name == "AuditLog.json" || file_name == "Compact.json" {
+				if file_name == "AuditLog.ndjson" || file_name == "Compact.json" {
 					continue;
 				}
 
@@ -144,16 +146,72 @@ impl Model {
 	}
 
 	/// Check against the registry
-	pub fn validate_registry(&self) -> Vec<String> {
+	pub fn validate_registry(&self, registry: &CardRegistry) -> Vec<String> {
 		let mut warnings: Vec<String> = Vec::new();
 
 		for card in &self.cards {
-			warnings.extend(
-				card.check_registry()
-					.unwrap_or_else(|e| vec![format!("{}: Registry error: {}", card.id, e)]),
-			);
+			warnings.extend(card.check_registry(registry));
+		}
+		warnings.extend(self.root_card.check_registry(registry));
+		warnings
+	}
+
+	pub fn get_schema_validation_warnings(&self) -> Vec<String> {
+		let mut warnings: Vec<String> = Vec::new();
+		for warning in &self.root_card.validation_warnings {
+			warnings.push(format!("{}: {}", self.root_card.id, warning));
+		}
+		for card in &self.cards {
+			for warning in &card.validation_warnings {
+				warnings.push(format!("{}: {}", card.id, warning));
+			}
 		}
 		warnings
+	}
+
+	pub fn validate_acronym_consistency(&self, registry: &CardRegistry) -> Vec<String> {
+		let canonical_by_type: HashMap<String, String> = registry
+			.definitions
+			.iter()
+			.map(|definition| (definition.card_type.clone(), definition.acronym.clone()))
+			.collect();
+
+		let mut non_canonical_by_type: HashMap<String, String> = HashMap::new();
+		let mut errors: Vec<String> = Vec::new();
+
+		for card in std::iter::once(&self.root_card).chain(self.cards.iter()) {
+			let prefix = id_prefix(&card.id).unwrap_or_default().to_string();
+			if prefix.len() != 3 {
+				errors.push(format!(
+					"Card {} has invalid ID prefix '{}' (expected 3 uppercase letters).",
+					card.id, prefix
+				));
+				continue;
+			}
+
+			if let Some(expected) = canonical_by_type.get(&card.card_type) {
+				if expected != &prefix {
+					errors.push(format!(
+						"Card {} has prefix '{}' but card type '{}' requires canonical acronym '{}'.",
+						card.id, prefix, card.card_type, expected
+					));
+				}
+				continue;
+			}
+
+			if let Some(existing) = non_canonical_by_type.get(&card.card_type) {
+				if existing != &prefix {
+					errors.push(format!(
+						"Non-canonical card type '{}' uses inconsistent acronyms '{}' and '{}'.",
+						card.card_type, existing, prefix
+					));
+				}
+			} else {
+				non_canonical_by_type.insert(card.card_type.clone(), prefix);
+			}
+		}
+
+		errors
 	}
 
 	pub fn write(&self) -> Result<(), ModelError> {
@@ -176,7 +234,7 @@ impl Model {
 
 		for card in &self.cards {
 			let mut card_path = self.mission_home.clone();
-			card_path.push(&card.card_type);
+			card_path.push(sanitize_card_type_folder(&card.card_type));
 			fs::create_dir_all(&card_path)?;
 
 			card_path.push(format!(
@@ -204,7 +262,7 @@ impl Model {
 			let card_slug = sanitize_filename(&card.name);
 			let card_md_path = path
 				.join(self.root_card.id.as_str())
-				.join(card.card_type.as_str())
+				.join(sanitize_card_type_folder(&card.card_type))
 				.join(format!("{}-{}.md", card.id, card_slug));
 			markdown_paths_by_id.insert(card.id.clone(), card_md_path);
 		}
@@ -264,13 +322,14 @@ impl Model {
 
 			index.push_str(format!("### {}\n\n", card_type).as_str());
 			for card in cards_of_type {
+				let card_type_folder = sanitize_card_type_folder(&card.card_type);
 				let card_slug = sanitize_filename(&card.name);
 				let card_link = format!(
 					"- **[{} - {}]({}/{}/{}-{}.md)**: {}\n\n",
 					card.id,
 					card.name,
 					self.root_card.id,
-					card.card_type,
+					card_type_folder,
 					card.id,
 					card_slug,
 					card.description
@@ -295,7 +354,7 @@ impl Model {
 		for card in &self.cards {
 			let mut card_path = path.to_path_buf();
 			card_path.push(self.root_card.id.as_str());
-			card_path.push(&card.card_type);
+			card_path.push(sanitize_card_type_folder(&card.card_type));
 			fs::create_dir_all(&card_path)?;
 			let card_slug = sanitize_filename(&card.name);
 			card_path.push(format!("{}-{}.md", card.id, card_slug));
@@ -325,12 +384,15 @@ impl Model {
 
 	/// Test Invariant 2a: All cards lead away from Mission
 	fn validate_no_mission_incoming_links(&self) -> Vec<String> {
-		self.cards
-			.iter()
-			.flat_map(|card| card.links.iter())
-			.filter(|link| link.target == self.root_card.id)
-			.map(|link| format!("Card {} links to the mission card.", link.target))
-			.collect()
+		let mut errors: Vec<String> = Vec::new();
+		for card in &self.cards {
+			for link in &card.links {
+				if link.target == self.root_card.id {
+					errors.push(format!("Card {} links to the mission card.", card.id));
+				}
+			}
+		}
+		errors
 	}
 
 	/// Test Invariant 2b: All cards reachable from Mission
@@ -425,6 +487,30 @@ fn sanitize_filename(name: &str) -> String {
 		out = out.replace("__", "_");
 	}
 	out.trim_matches('_').to_string()
+}
+
+fn sanitize_card_type_folder(card_type: &str) -> String {
+	let mut out = String::new();
+	let mut last_was_underscore = false;
+	for ch in card_type.chars() {
+		if ch.is_ascii_alphanumeric() || ch == '_' {
+			out.push(ch);
+			last_was_underscore = false;
+			continue;
+		}
+		if ch.is_whitespace() && !last_was_underscore {
+			out.push('_');
+			last_was_underscore = true;
+		}
+	}
+	while out.contains("__") {
+		out = out.replace("__", "_");
+	}
+	out.trim_matches('_').to_string()
+}
+
+fn id_prefix(id: &str) -> Option<&str> {
+	id.split('-').next()
 }
 
 #[derive(Debug, Error)]

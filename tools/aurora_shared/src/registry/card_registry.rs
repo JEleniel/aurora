@@ -1,74 +1,66 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use serde::{Deserialize, Serialize};
 
 use crate::registry::RegistryError;
 
-const CANONICAL_DEFINITIONS: &str =
-	include_str!("../../../../.github/agents/aurora/reference/Aurora.canonical.definitions.json");
-const APPEARANCE_DEFINITIONS: &str =
-	include_str!("../../../../.github/agents/aurora/reference/Aurora.appearance.json");
-
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CardRegistry {
 	pub definitions: Vec<CardDefinition>,
+	pub available_icons: HashSet<String>,
 }
 
 impl CardRegistry {
 	pub fn try_new() -> Result<Self, RegistryError> {
-		let canonical: CanonicalRegistry = serde_json::from_str(CANONICAL_DEFINITIONS)?;
-		let appearance: AppearanceRegistry = serde_json::from_str(APPEARANCE_DEFINITIONS)?;
+		let model_configuration = include_str!(
+			"../../../../.github/agents/aurora/reference/Aurora.modelconfiguration.json"
+		);
+		Self::try_new_from_model_configuration(model_configuration)
+	}
 
-		let appearance_by_acronym: HashMap<String, CardAppearance> = appearance
-			.definitions
-			.into_iter()
-			.map(|entry| (entry.acronym.clone(), entry))
-			.collect();
+	pub fn try_new_from_model_configuration(json: &str) -> Result<Self, RegistryError> {
+		let model_configuration: ModelConfiguration = serde_json::from_str(json)?;
+		Self::try_new_from_struct(model_configuration)
+	}
 
-		let card_type_by_acronym: HashMap<String, String> = canonical
-			.definitions
+	pub fn try_new_from_struct(
+		model_configuration: ModelConfiguration,
+	) -> Result<Self, RegistryError> {
+		let available_icons: HashSet<String> = model_configuration
+			.available_icons
 			.iter()
-			.map(|definition| (definition.acronym.clone(), definition.card_type.clone()))
+			.filter_map(|icon| normalize_icon_name(icon))
 			.collect();
 
-		for rel in &canonical.relationships {
-			if !card_type_by_acronym.contains_key(&rel.source_card_type) {
-				return Err(RegistryError::UnknownRelationshipSource(
-					rel.source_card_type.clone(),
-				));
-			}
-			if !card_type_by_acronym.contains_key(&rel.target_card_type) {
-				return Err(RegistryError::UnknownRelationshipTarget(
-					rel.target_card_type.clone(),
+		let mut card_type_by_acronym: HashMap<String, String> = HashMap::new();
+		for definition in &model_configuration.cards {
+			if card_type_by_acronym
+				.insert(definition.acronym.clone(), definition.card_type.clone())
+				.is_some()
+			{
+				return Err(RegistryError::DuplicateCardAcronym(
+					definition.acronym.clone(),
 				));
 			}
 		}
 
-		for acronym in appearance_by_acronym.keys() {
-			if !card_type_by_acronym.contains_key(acronym) {
-				return Err(RegistryError::UnknownAppearanceAcronym(acronym.clone()));
-			}
-		}
-
-		let mut definitions: Vec<CardDefinition> = Vec::with_capacity(canonical.definitions.len());
-		for definition in canonical.definitions {
-			let appearance = appearance_by_acronym
-				.get(&definition.acronym)
-				.ok_or_else(|| RegistryError::MissingAppearance(definition.acronym.clone()))?;
-
-			let relationships = canonical
+		let mut definitions: Vec<CardDefinition> =
+			Vec::with_capacity(model_configuration.cards.len());
+		for definition in model_configuration.cards {
+			let stroke = definition.stroke;
+			let text = definition.text.unwrap_or_else(|| stroke.clone());
+			let relationships = definition
 				.relationships
-				.iter()
-				.filter(|rel| rel.source_card_type == definition.acronym)
-				.map(|rel| {
+				.into_iter()
+				.map(|relationship| {
 					let target_card_type = card_type_by_acronym
-						.get(&rel.target_card_type)
+						.get(&relationship.target)
 						.ok_or_else(|| {
-							RegistryError::UnknownRelationshipTarget(rel.target_card_type.clone())
+							RegistryError::UnknownRelationshipTarget(relationship.target.clone())
 						})?;
 					Ok(RelationshipDefinition {
 						target_card_type: target_card_type.clone(),
-						relationship: rel.relationship.clone(),
+						relationship: relationship.relationship,
 					})
 				})
 				.collect::<Result<Vec<_>, RegistryError>>()?;
@@ -76,17 +68,21 @@ impl CardRegistry {
 			definitions.push(CardDefinition {
 				acronym: definition.acronym,
 				card_type: definition.card_type,
-				color: appearance.color.clone(),
+				stroke,
+				text,
 				description: definition.description,
-				fill: appearance.fill.clone(),
-				icon: appearance.icon.clone(),
+				fill: definition.fill,
+				icon: definition.icon,
 				relationships,
-				shape: appearance.shape.clone(),
+				shape: definition.shape,
 				common_subtypes: definition.common_subtypes,
 			});
 		}
 
-		Ok(Self { definitions })
+		Ok(Self {
+			definitions,
+			available_icons,
+		})
 	}
 
 	pub fn check(&self, card_type: &str) -> bool {
@@ -117,9 +113,18 @@ impl CardRegistry {
 		Ok(def.fill)
 	}
 
-	pub fn try_get_color(&self, card_type: &str) -> Result<String, RegistryError> {
+	pub fn try_get_stroke(&self, card_type: &str) -> Result<String, RegistryError> {
 		let def = self.try_get_by_type(card_type)?;
-		Ok(def.color)
+		Ok(def.stroke)
+	}
+
+	pub fn try_get_text(&self, card_type: &str) -> Result<String, RegistryError> {
+		let def = self.try_get_by_type(card_type)?;
+		Ok(def.text)
+	}
+
+	pub fn try_get_color(&self, card_type: &str) -> Result<String, RegistryError> {
+		self.try_get_stroke(card_type)
 	}
 
 	pub fn try_get_shape(&self, card_type: &str) -> Result<String, RegistryError> {
@@ -127,9 +132,26 @@ impl CardRegistry {
 		Ok(def.shape)
 	}
 
-	pub fn try_get_icon(&self, card_type: &str) -> Result<String, RegistryError> {
+	pub fn try_get_icon(&self, card_type: &str) -> Result<Option<String>, RegistryError> {
 		let def = self.try_get_by_type(card_type)?;
 		Ok(def.icon)
+	}
+
+	pub fn try_get_acronym_for_type(&self, card_type: &str) -> Result<String, RegistryError> {
+		let def = self.try_get_by_type(card_type)?;
+		Ok(def.acronym)
+	}
+
+	pub fn has_icon(&self, icon: &str) -> bool {
+		normalize_icon_name(icon)
+			.is_some_and(|normalized| self.available_icons.contains(&normalized))
+	}
+
+	pub fn canonical_card_types(&self) -> HashSet<String> {
+		self.definitions
+			.iter()
+			.map(|definition| definition.card_type.clone())
+			.collect()
 	}
 
 	pub fn try_get_by_type(&self, card_type: &str) -> Result<CardDefinition, RegistryError> {
@@ -149,6 +171,16 @@ impl CardRegistry {
 	}
 }
 
+fn normalize_icon_name(icon: &str) -> Option<String> {
+	let normalized = icon.trim().trim_start_matches('#');
+	let normalized = normalized.strip_prefix("i-").unwrap_or(normalized);
+	if normalized.is_empty() {
+		None
+	} else {
+		Some(normalized.to_string())
+	}
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub struct RelationshipDefinition {
 	pub target_card_type: String,
@@ -159,10 +191,11 @@ pub struct RelationshipDefinition {
 pub struct CardDefinition {
 	pub acronym: String,
 	pub card_type: String,
-	pub color: String,
+	pub stroke: String,
+	pub text: String,
 	pub description: String,
 	pub fill: String,
-	pub icon: String,
+	pub icon: Option<String>,
 	#[serde(default)]
 	pub relationships: Vec<RelationshipDefinition>,
 	pub shape: String,
@@ -171,39 +204,35 @@ pub struct CardDefinition {
 }
 
 #[derive(Debug, Clone, Deserialize)]
-struct CanonicalRegistry {
-	pub definitions: Vec<CanonicalCardDefinition>,
-	pub relationships: Vec<CanonicalRelationshipDefinition>,
+pub struct ModelConfiguration {
+	pub available_icons: Vec<String>,
+	pub cards: Vec<ModelConfigurationCardDefinition>,
+	pub views: Vec<super::ViewDefinition>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
-struct CanonicalCardDefinition {
-	pub card_type: String,
+pub struct ModelConfigurationCardDefinition {
 	pub acronym: String,
+	pub card_type: String,
 	pub description: String,
+	pub shape: String,
+	pub fill: String,
+	#[serde(alias = "color")]
+	pub stroke: String,
+	#[serde(default)]
+	pub text: Option<String>,
+	#[serde(default)]
+	pub icon: Option<String>,
+	#[serde(default)]
+	pub relationships: Vec<ModelConfigurationRelationshipDefinition>,
 	#[serde(default)]
 	pub common_subtypes: Vec<String>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
-struct CanonicalRelationshipDefinition {
-	pub source_card_type: String,
-	pub target_card_type: String,
+pub struct ModelConfigurationRelationshipDefinition {
+	pub target: String,
 	pub relationship: String,
-}
-
-#[derive(Debug, Clone, Deserialize)]
-struct AppearanceRegistry {
-	pub definitions: Vec<CardAppearance>,
-}
-
-#[derive(Debug, Clone, Deserialize)]
-struct CardAppearance {
-	pub acronym: String,
-	pub shape: String,
-	pub icon: String,
-	pub fill: String,
-	pub color: String,
 }
 
 #[cfg(test)]

@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "TRG-900",
+	"card_type": "Trigger",
+	"name": "Example trigger",
+	"description": "A process-domain trigger that demonstrates the full Trigger relationship set.",
+	"links": [
+		{
+			"relationship": "initiates",
+			"target": "ATV-900"
+		},
+		{
+			"relationship": "initiates",
+			"target": "CON-900"
+		},
+		{
+			"relationship": "triggers",
+			"target": "TRG-901"
+		}
+	]
+}

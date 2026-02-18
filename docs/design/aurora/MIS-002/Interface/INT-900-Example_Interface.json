@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "INT-900",
+	"card_type": "Interface",
+	"name": "Example interface",
+	"description": "Interface used to exercise accepts/returns relationships.",
+	"links": [
+		{
+			"relationship": "accepts",
+			"target": "ART-901"
+		},
+		{
+			"relationship": "returns",
+			"target": "ART-903"
+		}
+	]
+}

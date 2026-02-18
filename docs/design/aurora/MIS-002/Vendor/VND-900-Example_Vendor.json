@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "VND-900",
+	"card_type": "Vendor",
+	"name": "Example vendor",
+	"description": "A representative third party used to exercise Vendor relationships.",
+	"links": [
+		{
+			"relationship": "provides",
+			"target": "SYS-900"
+		},
+		{
+			"relationship": "provides",
+			"target": "APP-900"
+		}
+	]
+}

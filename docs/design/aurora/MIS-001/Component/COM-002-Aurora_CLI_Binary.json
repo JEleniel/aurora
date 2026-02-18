@@ -1,5 +1,5 @@
 {
-	"$schema": "../../Aurora.card.schema.json",
+	"$schema": "../../schemas/Aurora.card.schema.json",
 	"id": "COM-002",
 	"card_type": "Component",
 	"card_subtype": "Service",

@@ -1,5 +1,5 @@
 {
-	"$schema": "../../Aurora.card.schema.json",
+	"$schema": "../../schemas/Aurora.card.schema.json",
 	"id": "DRI-003",
 	"card_type": "Driver",
 	"name": "Automated View Generation",

@@ -1,0 +1,8 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "AST-900",
+	"card_type": "Asset",
+	"name": "Example asset",
+	"description": "A valuable asset used to exercise security relationships.",
+	"links": []
+}

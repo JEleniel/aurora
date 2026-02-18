@@ -1,5 +1,5 @@
 {
-	"$schema": "../../Aurora.card.schema.json",
+	"$schema": "../../schemas/Aurora.card.schema.json",
 	"id": "FEA-004",
 	"card_type": "Feature",
 	"name": "Editor Model Operations",

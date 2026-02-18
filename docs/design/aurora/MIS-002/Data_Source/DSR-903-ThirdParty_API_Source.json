@@ -1,0 +1,18 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "DSR-903",
+	"card_type": "Data Source",
+	"card_subtype": "Third-Party API",
+	"name": "Third-party API source",
+	"description": "Data source subtype used for provenance coverage.",
+	"links": [
+		{
+			"relationship": "provides",
+			"target": "ART-905"
+		},
+		{
+			"relationship": "runs on",
+			"target": "NOD-902"
+		}
+	]
+}

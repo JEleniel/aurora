@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ACT-901",
+	"card_type": "Actor",
+	"card_subtype": "Admin",
+	"name": "Example admin",
+	"description": "Representative administrative actor for coverage.",
+	"links": [
+		{
+			"relationship": "performs",
+			"target": "ATV-900"
+		}
+	]
+}

@@ -1,0 +1,18 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "DSR-900",
+	"card_type": "Data Source",
+	"card_subtype": "External System",
+	"name": "External system source",
+	"description": "Data source subtype used for provenance coverage.",
+	"links": [
+		{
+			"relationship": "provides",
+			"target": "ART-901"
+		},
+		{
+			"relationship": "runs on",
+			"target": "NOD-902"
+		}
+	]
+}

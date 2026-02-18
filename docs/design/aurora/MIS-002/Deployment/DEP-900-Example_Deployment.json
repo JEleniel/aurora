@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "DEP-900",
+	"card_type": "Deployment",
+	"name": "Example deployment",
+	"description": "A deployment that includes nodes to exercise the deployment view.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "NOD-900"
+		},
+		{
+			"relationship": "includes",
+			"target": "NOD-901"
+		},
+		{
+			"relationship": "includes",
+			"target": "NOD-902"
+		}
+	]
+}

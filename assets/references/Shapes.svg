@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="3600" height="1800" viewBox="0 0 3600 1800" version="1.1" id="Shapes" style="fill:#FFFFFF00;stroke:#000000;font-size:16px;line-height:1.2;font-family:'Noto Sans','Noto Color Emoji','Segoe UI Emoji','Apple Color Emoji','Noto Sans Symbols2','DejaVu Sans',Arial,Helvetica,sans-serif;;stroke-linecap:round;stroke-linejoin:round;stroke-width:2;"
+<svg width="3600" height="1800" viewBox="0 0 3600 1800" version="1.1" id="Shapes" style="fill:#FFFFFF00;stroke:#000000;font-size:16px;line-height:1.2;font-family:'Noto Sans','Noto Color Emoji','Segoe UI Emoji','Apple Color Emoji','Noto Sans Symbols2','DejaVu Sans',Arial,Helvetica,sans-serif;;stroke-linecap:round;stroke-linejoin:round;stroke-width:4;"
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:svg="http://www.w3.org/2000/svg">
-	<style >
-			path, rect, circle, ellipse, line, polyline, polygon, use { vector-effect: non-scaling-stroke; stroke:#000000;stroke-width:2;}
+	<style>
+		g.aurora-symbol > circle,
+		g.aurora-symbol > ellipse,
+		g.aurora-symbol > line,
+		g.aurora-symbol > mpath,
+		g.aurora-symbol > path,
+		g.aurora-symbol > polygon,
+		g.aurora-symbol > polyline,
+		g.aurora-symbol > rect {
+			fill:inherit;
+			font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+			font-size:16;
+			line-height:1.2;
+			stroke-linecap:round;
+			stroke-linejoin:round;
+			stroke-width:4;
+			stroke:inherit;
+		}
+		text {
+			text-anchor:middle;
+		}
+		.aurora-icon {}
+		.aurora-symbol {}
 	</style>
 	<defs>
 		<g id="layout">
@@ -26,6 +47,7 @@
 			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="cylinder">
+			<rect width="718" height="410" x="1" y="20" style="stroke:#00000000;" />
 			<ellipse cx="360" cy="20" rx="358" ry="19" />
 			<path d="m 1,430 c 0,0 180,19 360,19 180,0 360,-19 360,-19" />
 			<path d="M 1,20 V 430" />
@@ -58,9 +80,9 @@
 		<g id="interface">
 			<rect width="718" height="368" x="1" y="41" />
 			<circle cx="700" cy="21" r="19" />
-			<path d="M 1,21 H 680" style="stroke:#000000" />
-			<path d="M 41,429 H 719" style="stroke:#000000" />
-			<path d="M 20,409 C 45,409 45,449 20,449" style="stroke:#000000" />
+			<path d="M 1,21 H 680" />
+			<path d="M 41,429 H 719" />
+			<path d="M 20,409 C 45,409 45,449 20,449" />
 			<use href="#layout" x="0" y="0" />
 		</g>
 		<g id="component">
@@ -107,7 +129,6 @@
 	<path style="stroke:#FF8040;" d="M 1440,0 V 1800" />
 	<path style="stroke:#FF8040;" d="M 2160,0 V 1800" />
 	<path style="stroke:#FF8040;" d="M 2880,0 V 1800" />
-
 	<use href="#rectangle" x="0" y="0" />
 	<use href="#box" x="720" y="0" />
 	<use href="#cylinder" x="1440" y="0" />
@@ -124,12 +145,4 @@
 	<use href="#curly-braces" x="2160" y="900" />
 	<use href="#rounded-rectangle" x="2880" y="900" />
 	<use href="#trapezoid" x="0" y="1350" />
-
-	<g transform="translate(1440,1350)">
-
-		<use href="#folder" />
-		<text x="106" y="225" style="fill:#000000;font-size:72px;text-anchor:middle;dominant-baseline:middle;font-family:'Noto Color Emoji','Segoe UI Emoji','Apple Color Emoji';">👤</text>
-
-	</g>
-
 </svg>

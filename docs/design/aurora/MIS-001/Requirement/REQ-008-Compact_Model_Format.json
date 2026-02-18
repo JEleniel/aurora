@@ -1,5 +1,5 @@
 {
-	"$schema": "../../Aurora.card.schema.json",
+	"$schema": "../../schemas/Aurora.card.schema.json",
 	"id": "REQ-008",
 	"card_type": "Requirement",
 	"name": "Compact Model Format",

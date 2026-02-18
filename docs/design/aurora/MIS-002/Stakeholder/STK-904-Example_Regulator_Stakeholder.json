@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "STK-904",
+	"card_type": "Stakeholder",
+	"card_subtype": "Regulator",
+	"name": "Example regulator stakeholder",
+	"description": "Representative regulator stakeholder for coverage.",
+	"links": [
+		{
+			"relationship": "desires",
+			"target": "STR-904"
+		}
+	]
+}

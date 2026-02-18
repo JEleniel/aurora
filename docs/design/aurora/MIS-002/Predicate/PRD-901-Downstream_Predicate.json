@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "PRD-901",
+	"card_type": "Predicate",
+	"name": "Downstream predicate",
+	"description": "Second predicate used to exercise predicate-to-predicate branching.",
+	"links": [
+		{
+			"relationship": "branches to",
+			"target": "STA-900"
+		},
+		{
+			"relationship": "emits",
+			"target": "EVT-900"
+		}
+	]
+}

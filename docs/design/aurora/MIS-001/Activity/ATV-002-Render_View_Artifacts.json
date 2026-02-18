@@ -1,5 +1,5 @@
 {
-	"$schema": "../../Aurora.card.schema.json",
+	"$schema": "../../schemas/Aurora.card.schema.json",
 	"id": "ATV-002",
 	"card_type": "Activity",
 	"name": "Render View Artifacts",

@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "NOD-902",
+	"card_type": "Node",
+	"card_subtype": "Hardware",
+	"name": "Example hardware",
+	"description": "Hardware execution environment used for coverage.",
+	"links": []
+}

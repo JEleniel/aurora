@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CON-900",
+	"card_type": "Condition",
+	"name": "Example condition",
+	"description": "A process-domain condition that exercises branching to activities, triggers, and other conditions.",
+	"links": [
+		{
+			"relationship": "branches to",
+			"target": "ATV-901"
+		},
+		{
+			"relationship": "branches to",
+			"target": "TRG-901"
+		},
+		{
+			"relationship": "branches to",
+			"target": "CON-901"
+		}
+	]
+}

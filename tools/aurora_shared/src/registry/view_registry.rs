@@ -1,10 +1,7 @@
 use serde::{Deserialize, Serialize};
-use tracing::trace;
 
 use crate::registry::RegistryError;
-
-const DEFINITIONS: &str =
-	include_str!("../../../../.github/agents/aurora/reference/View.Definitions.json");
+use crate::registry::card_registry::ModelConfiguration;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ViewDefinition {
@@ -16,15 +13,28 @@ pub struct ViewDefinition {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ViewRegistry {
-	#[serde(rename = "$schema")]
-	schema: String,
 	definitions: Vec<ViewDefinition>,
 }
 
 impl ViewRegistry {
 	pub fn try_new() -> Result<Self, RegistryError> {
-		trace!(DEFINITIONS);
-		Ok(serde_json::from_str(DEFINITIONS)?)
+		let model_configuration = include_str!(
+			"../../../../.github/agents/aurora/reference/Aurora.modelconfiguration.json"
+		);
+		Self::try_new_from_model_configuration(model_configuration)
+	}
+
+	pub fn try_new_from_model_configuration(json: &str) -> Result<Self, RegistryError> {
+		let model_configuration: ModelConfiguration = serde_json::from_str(json)?;
+		Ok(Self {
+			definitions: model_configuration.views,
+		})
+	}
+
+	pub fn try_new_from_struct(model_configuration: &ModelConfiguration) -> Self {
+		Self {
+			definitions: model_configuration.views.clone(),
+		}
 	}
 
 	pub fn try_get_all(&self) -> Result<Vec<ViewDefinition>, RegistryError> {

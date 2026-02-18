@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ADV-902",
+	"card_type": "Adversary",
+	"card_subtype": "Script Kiddie",
+	"name": "Script kiddie adversary",
+	"description": "Adversary subtype used for coverage.",
+	"links": []
+}

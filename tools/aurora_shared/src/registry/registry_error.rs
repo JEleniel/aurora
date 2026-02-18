@@ -16,4 +16,8 @@ pub enum RegistryError {
 	UnknownRelationshipSource(String),
 	#[error("Relationship target not found for acronym: {0}")]
 	UnknownRelationshipTarget(String),
+	#[error("Duplicate card acronym in model configuration: {0}")]
+	DuplicateCardAcronym(String),
+	#[error("Unknown icon id referenced by model configuration: {0}")]
+	UnknownIcon(String),
 }

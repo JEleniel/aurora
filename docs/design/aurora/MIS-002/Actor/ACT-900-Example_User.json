@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ACT-900",
+	"card_type": "Actor",
+	"card_subtype": "User",
+	"name": "Example user",
+	"description": "Representative end-user actor for coverage.",
+	"links": [
+		{
+			"relationship": "performs",
+			"target": "ATV-900"
+		}
+	]
+}

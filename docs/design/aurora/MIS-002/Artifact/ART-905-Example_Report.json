@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-905",
+	"card_type": "Artifact",
+	"card_subtype": "Report",
+	"name": "Example report",
+	"description": "Artifact subtype used for coverage.",
+	"links": [
+		{
+			"relationship": "persists to",
+			"target": "DST-900"
+		}
+	]
+}

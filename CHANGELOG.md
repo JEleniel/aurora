@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added `aurora_shared::render::svg::Svg` for rendering an Aurora `Model` + `Layout` into a standalone SVG (with configurable spacing, font size, and edge style).
+- Added model-home runtime loading for required Aurora artifacts in `schemas/` and `reference/`, including model-configuration schema validation and SVG icon consistency checks.
+- Added root-cycle safety validation for rendered views so cycle-participating roots now fail validation and block render/export commands.
 
 - Added a Dioxus-based `aurora_editor` crate with model loading, navigation tree, context view, and read-only inspector panes.
 - Added clickable context and diagnostics panels in the Aurora editor to surface validation issues and jump to related cards.
@@ -36,6 +38,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Switched Aurora audit semantics from wrapped `AuditLog.json` history arrays to append-only `AuditLog.ndjson` event lines, and updated `schemas/Aurora.audit.schema.json` to validate one audit entry per line.
+- Updated `aurora_shared` registries and rendering pipeline to use `reference/Aurora.modelconfiguration.json` and `reference/SVGTemplate.svg` from the model home instead of compiled-in defaults.
+- Switched view filtering/root matching to acronym-based card ID prefixes from view definitions, and added warnings for custom acronyms not present in any view definition.
+- Updated SVG rendering defaults to fixed symbol geometry (native 720x450 symbols, fixed icon `<use>` references, and 160px node spacing baseline).
 - Tightened and deduplicated non-audit Aurora schemas in `schemas/`, including stricter view/card list uniqueness rules and compact card entries that no longer include a `version` field.
 
 - Consolidated Aurora reference registries into `Aurora_Specs/reference/Aurora.modelconfiguration.json` (validated by `Aurora_Specs/schemas/Aurora.modelconfiguration.schema.json`), replacing the separate appearance/canonical/view registries.
@@ -92,6 +97,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated SVG symbol fitting to use axis-specific scaling and decoupled node height measurement from symbol-width coupling.
 - Tuned SVG routing obstacle inflation and edge ordering to reduce route congestion in dense views.
 - Further refined SVG route smoothing to collapse short staircase jogs more aggressively and reduce near-arrowhead bend artifacts in curved edges.
+- Updated `svg_prep` proof-sheet output (`Icons.svg`) to render each icon name centered beneath the icon at 16px with `line-height: 1.2`.
+- Updated `svg_prep` proof-sheet output (`Icons.svg`) to include an explicit white background rectangle behind all rendered icons and labels.
+- Updated `svg_prep` proof-sheet labels to 32px text, normalize underscores to spaces for wrapping, and reserve up to two lines per icon label row.
 
 ### Fixed
 

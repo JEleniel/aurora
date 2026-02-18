@@ -8,7 +8,7 @@
 		"bank",
 		"bar_chart",
 		"battery",
-		"batterylow",
+		"battery_low",
 		"beetle",
 		"bell",
 		"biohazard",
@@ -27,6 +27,7 @@
 		"chart_increasing",
 		"check",
 		"chequered_flag",
+		"circle_red",
 		"classical_building",
 		"clock",
 		"clockwise_vertical_arrows",
@@ -38,7 +39,7 @@
 		"construction",
 		"control_knobs",
 		"copyright",
-		"cornersquare",
+		"corner_square",
 		"counterclockwise_arrows_button",
 		"crane",
 		"cross_mark_button",
@@ -53,9 +54,10 @@
 		"email",
 		"exclamation",
 		"exclamation_question_mark",
-		"filingcabiner",
+		"filing_cabinet",
+		"flag_red",
 		"folder",
-		"folderopen",
+		"folder_open",
 		"gear",
 		"globe_with_meridians",
 		"group",
@@ -64,7 +66,6 @@
 		"hammer_and_wrench",
 		"hook",
 		"hourglass",
-		"ifepreserver",
 		"inbox_tray",
 		"industrial",
 		"key",
@@ -73,25 +74,26 @@
 		"large_orange_diamond",
 		"ledger",
 		"level_slider",
+		"lifepreserver",
 		"link",
 		"lock",
-		"lockandkey",
-		"lockedpen",
+		"lock_and_key",
+		"locked_pen",
 		"magic_wand",
 		"magnifying_glass_tilted_left",
 		"memo",
 		"mobile",
 		"moneybag",
 		"no_entry",
-		"nopassingfire",
+		"no_passing_fire",
 		"office",
 		"outbox_tray",
 		"page_facing_up",
-		"penblack",
-		"penblue",
+		"pen_black",
+		"pen_blue",
 		"person",
 		"pick",
-		"pirateflag",
+		"pirate_flag",
 		"police_car_light",
 		"ppe",
 		"printer",
@@ -103,8 +105,6 @@
 		"recycle",
 		"red_triangle_pointed_down",
 		"red_triangle_pointed_up",
-		"redcircle",
-		"redflag",
 		"registered",
 		"repeat_button",
 		"rescue_workers_helmet",
@@ -114,7 +114,7 @@
 		"screwdriver",
 		"search",
 		"shield",
-		"skullandcrossbones",
+		"skull_and_crossbones",
 		"speaker_high_volume",
 		"spider_web",
 		"spiral_calendar",
@@ -126,7 +126,7 @@
 		"target",
 		"thermometer",
 		"toolbox",
-		"trashbasket",
+		"trash_basket",
 		"unlocked",
 		"vertical_traffic_light",
 		"video",
@@ -141,8 +141,9 @@
 			"description": "Discrete step within a process.",
 			"shape": "double-rectangle",
 			"fill": "#4c1d95",
-			"color": "#FFFFFF",
-			"icon": "wrench",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "hammer",
 			"relationships": [
 				{
 					"target": "ATV",
@@ -173,7 +174,8 @@
 			"description": "External role interacting with or obligating the system.",
 			"shape": "rounded-rectangle",
 			"fill": "#1a2e05",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "person",
 			"relationships": [
 				{
@@ -189,7 +191,8 @@
 			"description": "Person, group, or role with an interest in or affected by the system.",
 			"shape": "rounded-rectangle",
 			"fill": "#1a2e05",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "group",
 			"relationships": [
 				{
@@ -204,7 +207,8 @@
 			"description": "Architectural Decision Record capturing a significant decision, alternatives considered, rationale, trade-offs, and consequences.",
 			"shape": "ruler",
 			"fill": "#1f2937",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "straight_ruler"
 		},
 		{
@@ -213,8 +217,10 @@
 			"common_subtypes": ["Document", "Data", "Diagram", "Code", "Model", "Report"],
 			"description": "Concrete work product produced or consumed by the system.",
 			"shape": "document",
+			"icon": "page_facing_up",
 			"fill": "#1e293b",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"relationships": [
 				{
 					"target": "ART",
@@ -244,7 +250,8 @@
 			"description": "Valuable information/resources requiring protection.",
 			"shape": "document",
 			"fill": "#334155",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "lockandkey"
 		},
 		{
@@ -253,7 +260,8 @@
 			"description": "Implementation-independent ability that satisfies requirements.",
 			"shape": "rounded-rectangle",
 			"fill": "#052e16",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"relationships": [
 				{
 					"target": "PRO",
@@ -267,8 +275,9 @@
 			"description": "Top-level software system composed of applications and components.",
 			"shape": "folder",
 			"fill": "#1e40af",
-			"color": "#FFFFFF",
-			"icon": "box",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "robot",
 			"relationships": [
 				{
 					"target": "APP",
@@ -282,8 +291,9 @@
 			"description": "Deployable application within a system, composed of components.",
 			"shape": "rectangle",
 			"fill": "#1e40af",
-			"color": "#FFFFFF",
-			"icon": "box",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "crane",
 			"relationships": [
 				{
 					"target": "COM",
@@ -303,7 +313,8 @@
 			"shape": "component",
 			"fill": "#1e40af",
 			"icon": "puzzle_piece",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"relationships": [
 				{
 					"target": "COM",
@@ -349,8 +360,9 @@
 			"common_subtypes": ["Relational", "Object Store", "Event Log", "Key-Value", "Graph"],
 			"description": "Persistent storage system that holds artifacts and data for retrieval and lineage.",
 			"shape": "cylinder",
-			"fill": "#0f172a",
-			"color": "#FFFFFF",
+			"fill": "#5b21b6",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"relationships": [
 				{
 					"target": "ART",
@@ -368,7 +380,9 @@
 			"description": "Process-domain branching condition used by activities/processes; not used for state-machine branching.",
 			"shape": "diamond",
 			"fill": "#422006",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "large_blue_diamond",
 			"relationships": [
 				{
 					"target": "ATV",
@@ -390,8 +404,9 @@
 			"description": "Rule limiting allowable behavior or solutions.",
 			"shape": "ruler",
 			"fill": "#082f49",
-			"color": "#FFFFFF",
-			"icon": "tag",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "stop_sign",
 			"relationships": [
 				{
 					"target": "REQ",
@@ -405,8 +420,9 @@
 			"description": "Mechanism governing or constraining a process.",
 			"shape": "ruler",
 			"fill": "#713f12",
-			"color": "#FFFFFF",
-			"icon": "lock",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "shield",
 			"relationships": [
 				{
 					"target": "RIS",
@@ -440,8 +456,9 @@
 			"description": "Defined environment or configuration where software executes.",
 			"shape": "octagon",
 			"fill": "#1e1b4b",
-			"color": "#FFFFFF",
-			"icon": "earth",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "red_triangle_pointed_up",
 			"relationships": [
 				{
 					"target": "NOD",
@@ -455,8 +472,9 @@
 			"common_subtypes": ["External System", "Upstream Feed", "Sensor", "Third-Party API"],
 			"description": "Origin of artifacts and data entering the system, used to model provenance and lineage.",
 			"shape": "cylinder",
-			"fill": "#0b1220",
-			"color": "#FFFFFF",
+			"fill": "#0e7490",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"relationships": [
 				{
 					"target": "ART",
@@ -474,7 +492,8 @@
 			"description": "Motivation explaining why requirements exist.",
 			"shape": "rounded-rectangle",
 			"fill": "#064e3b",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "compass",
 			"relationships": [
 				{
@@ -489,8 +508,9 @@
 			"description": "State-machine event that causes transitions or predicate evaluation; distinct from process-domain triggers.",
 			"shape": "trapezoid",
 			"fill": "#5b21b6",
-			"color": "#FFFFFF",
-			"icon": "bolt",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "alarm",
 			"relationships": [
 				{
 					"target": "STA",
@@ -516,8 +536,9 @@
 			"description": "Externally observable behavior realizing one or more requirements.",
 			"shape": "rectangle",
 			"fill": "#14532d",
-			"color": "#FFFFFF",
-			"icon": "star",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "level_slider",
 			"relationships": [
 				{
 					"target": "CAP",
@@ -535,7 +556,9 @@
 			"description": "Contract governing interaction across a boundary.",
 			"shape": "interface",
 			"fill": "#102080",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "ellectric_plug",
 			"relationships": [
 				{
 					"target": "ART",
@@ -553,8 +576,9 @@
 			"description": "Root intent that spawns every downstream driver.",
 			"shape": "octagon",
 			"fill": "#022c22",
-			"color": "#FFFFFF",
-			"icon": "target",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "anchor",
 			"relationships": [
 				{
 					"target": "DRI",
@@ -593,7 +617,8 @@
 			"description": "Logical/physical execution environment hosting components or stores.",
 			"shape": "box",
 			"fill": "#312e81",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "computer"
 		},
 		{
@@ -602,7 +627,9 @@
 			"description": "State-machine branching predicate that evaluates to true/false; distinct from process-domain conditions.",
 			"shape": "diamond",
 			"fill": "#581c87",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "large_orange_diamond",
 			"relationships": [
 				{
 					"target": "STA",
@@ -624,8 +651,9 @@
 			"description": "Ordered sequence of activities/decisions enabling a capability.",
 			"shape": "octagon",
 			"fill": "#2e1065",
-			"color": "#FFFFFF",
-			"icon": "recycle",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "repeat_button",
 			"relationships": [
 				{
 					"target": "ATV",
@@ -651,7 +679,8 @@
 			"description": "Verifiable statement of need/obligation.",
 			"shape": "rounded-rectangle",
 			"fill": "#065f46",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "check",
 			"relationships": [
 				{
@@ -674,7 +703,8 @@
 			"description": "Potential for loss/harm from threats/vulnerabilities.",
 			"shape": "hexagon",
 			"fill": "#881337",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "warning"
 		},
 		{
@@ -683,7 +713,9 @@
 			"description": "Observable condition that persists until a transition.",
 			"shape": "ellipse",
 			"fill": "#701a75",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "tag",
 			"relationships": [
 				{
 					"target": "STA",
@@ -705,8 +737,9 @@
 			"description": "Behavioral model defining allowable states/transitions.",
 			"shape": "octagon",
 			"fill": "#4a044e",
-			"color": "#FFFFFF",
-			"icon": "stopwatch",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "gear",
 			"relationships": [
 				{
 					"target": "STA",
@@ -720,7 +753,8 @@
 			"description": "Narrative expressing desired behavior/outcome; should follow the “`As an ___ I want/need ___.`” format.",
 			"shape": "rectangle",
 			"fill": "#365314",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "card",
 			"relationships": [
 				{
@@ -739,8 +773,9 @@
 			"description": "Procedure verifying that a feature satisfies requirements.",
 			"shape": "hexagon",
 			"fill": "#022c22",
-			"color": "#FFFFFF",
-			"icon": "search",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "ppe",
 			"relationships": [
 				{
 					"target": "FEA",
@@ -754,7 +789,8 @@
 			"description": "Threat rendered as a diamond (diagramming variant).",
 			"shape": "diamond",
 			"fill": "#4c0519",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "diamond",
 			"relationships": [
 				{
@@ -793,8 +829,9 @@
 			"description": "Threat source: actor with intent and capability to cause harm.",
 			"shape": "rounded-rectangle",
 			"fill": "#4c0519",
-			"color": "#FFFFFF",
-			"icon": "skullandcrossbones"
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "pirate_flag"
 		},
 		{
 			"acronym": "THC",
@@ -802,8 +839,9 @@
 			"description": "Skills, access, tooling, or resources enabling an adversary to execute threats.",
 			"shape": "rounded-rectangle",
 			"fill": "#4c0519",
-			"color": "#FFFFFF",
-			"icon": "toolbox"
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "bomb"
 		},
 		{
 			"acronym": "VIC",
@@ -812,8 +850,9 @@
 			"description": "Entity that suffers impact when a threat is realized.",
 			"shape": "rounded-rectangle",
 			"fill": "#4c0519",
-			"color": "#FFFFFF",
-			"icon": "person"
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "target"
 		},
 		{
 			"acronym": "ROW",
@@ -821,7 +860,8 @@
 			"description": "Role accountable for an asset/resource and its protection.",
 			"shape": "rounded-rectangle",
 			"fill": "#4c0519",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "key",
 			"relationships": [
 				{
@@ -836,7 +876,9 @@
 			"description": "Structured analysis of assets, adversaries, threats, and mitigations.",
 			"shape": "octagon",
 			"fill": "#4c0519",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "no_passing_fire",
 			"relationships": [
 				{
 					"target": "THD",
@@ -858,8 +900,9 @@
 			"description": "Process-domain trigger that initiates activities/conditions; distinct from state-machine events.",
 			"shape": "trapezoid",
 			"fill": "#78350f",
-			"color": "#FFFFFF",
-			"icon": "alarm",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
+			"icon": "bolt",
 			"relationships": [
 				{
 					"target": "ATV",
@@ -881,7 +924,8 @@
 			"description": "Third party providing products/services integrated into the system.",
 			"shape": "rounded-rectangle",
 			"fill": "#1a2e05",
-			"color": "#FFFFFF",
+			"stroke": "#000000",
+			"text": "#FFFFFF",
 			"icon": "office",
 			"relationships": [
 				{
@@ -910,9 +954,9 @@
 		},
 		{
 			"description": "Defines where software executes, focusing on deployments, nodes, and hosted runtime elements.",
-			"included_card_types": ["DEP", "NOD", "COM", "DST", "DSR"],
+			"included_card_types": ["APP", "DEP", "NOD", "COM", "DST", "DSR"],
 			"name": "Deployment",
-			"root_card_types": ["SYS", "APP", "VND"]
+			"root_card_types": ["DEP", "VND"]
 		},
 		{
 			"description": "Displays the complete architectural model, highlighting shortest paths from the mission and alternate relationships.",

@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "TES-900",
+	"card_type": "Test",
+	"name": "Rendered views contain all relationships",
+	"description": "A verification procedure that checks the example model exercises every canonical relationship label.",
+	"links": [
+		{
+			"relationship": "verifies",
+			"target": "FEA-900"
+		}
+	]
+}

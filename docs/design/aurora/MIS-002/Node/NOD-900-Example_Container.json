@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "NOD-900",
+	"card_type": "Node",
+	"card_subtype": "Container",
+	"name": "Example container",
+	"description": "Logical container runtime used for coverage.",
+	"links": []
+}

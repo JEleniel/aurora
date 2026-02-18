@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-903",
+	"card_type": "Artifact",
+	"card_subtype": "Code",
+	"name": "Example code",
+	"description": "Artifact subtype used for coverage.",
+	"links": [
+		{
+			"relationship": "is input into",
+			"target": "COM-900"
+		}
+	]
+}

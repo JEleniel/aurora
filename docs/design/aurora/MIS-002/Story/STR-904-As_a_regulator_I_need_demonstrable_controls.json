@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "STR-904",
+	"card_type": "Story",
+	"name": "As a regulator I need demonstrable controls",
+	"description": "As a regulator I need the example to include controls, risks, and constraints so that compliance views are meaningful.",
+	"links": [
+		{
+			"relationship": "explains",
+			"target": "REQ-900"
+		}
+	]
+}

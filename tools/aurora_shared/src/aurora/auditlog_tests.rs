@@ -8,7 +8,7 @@ use super::{AuditChangeType, AuditLog, AuditLogEntry};
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 fn audit_schema(required_extra: bool) -> Value {
-	let mut required = vec!["$schema", "history"];
+	let mut required = vec!["timestamp", "editor", "changes"];
 	if required_extra {
 		required.push("extra");
 	}
@@ -18,21 +18,15 @@ fn audit_schema(required_extra: bool) -> Value {
 		"additionalProperties": true,
 		"required": required,
 		"properties": {
-			"$schema": { "type": "string" },
-			"history": { "type": "array", "minItems": 0 }
+			"timestamp": { "type": "string" },
+			"editor": { "type": "string" },
+			"changes": { "type": "array" }
 		}
 	})
 }
 
-fn audit_log_json() -> Value {
-	json!({
-		"$schema": "../Aurora.audit.schema.json",
-		"history": []
-	})
-}
-
-fn write_json(path: &PathBuf, value: &Value) -> Result<()> {
-	let serialized = serde_json::to_string_pretty(value)?;
+fn write_ndjson(path: &PathBuf, lines: &[&str]) -> Result<()> {
+	let serialized = lines.join("\n");
 	std::fs::write(path, serialized)?;
 	Ok(())
 }
@@ -40,8 +34,8 @@ fn write_json(path: &PathBuf, value: &Value) -> Result<()> {
 #[test]
 fn try_load_reads_audit_log() -> Result<()> {
 	let temp = tempfile::tempdir()?;
-	let audit_path = temp.path().join("AuditLog.json");
-	write_json(&audit_path, &audit_log_json())?;
+	let audit_path = temp.path().join("AuditLog.ndjson");
+	write_ndjson(&audit_path, &[])?;
 
 	let log = AuditLog::try_load(&audit_path, &audit_schema(false))?;
 	assert!(log.validation_errors.is_empty());
@@ -53,8 +47,11 @@ fn try_load_reads_audit_log() -> Result<()> {
 #[test]
 fn try_load_collects_schema_errors() -> Result<()> {
 	let temp = tempfile::tempdir()?;
-	let audit_path = temp.path().join("AuditLog.json");
-	write_json(&audit_path, &audit_log_json())?;
+	let audit_path = temp.path().join("AuditLog.ndjson");
+	write_ndjson(
+		&audit_path,
+		&[r#"{"timestamp":"2026-02-07T00:00:00Z","editor":"Tester","changes":[]}"#],
+	)?;
 
 	let log = AuditLog::try_load(&audit_path, &audit_schema(true))?;
 	assert!(!log.validation_errors.is_empty());
@@ -71,12 +68,14 @@ fn entries_for_target_filters_results() {
 				editor: "Tester".to_string(),
 				target: "A".to_string(),
 				change_type: AuditChangeType::Create,
+				changes: Vec::new(),
 			},
 			AuditLogEntry {
 				timestamp: Utc.with_ymd_and_hms(2026, 2, 7, 1, 0, 0).unwrap(),
 				editor: "Tester".to_string(),
 				target: "B".to_string(),
 				change_type: AuditChangeType::Change,
+				changes: Vec::new(),
 			},
 		],
 		source_path: PathBuf::new(),
@@ -95,6 +94,7 @@ fn entries_markdown_formats_rows() {
 		editor: "Tester".to_string(),
 		target: "A".to_string(),
 		change_type: AuditChangeType::Delete,
+		changes: Vec::new(),
 	}];
 
 	let markdown = AuditLog::entries_markdown("A", entries.into_iter());

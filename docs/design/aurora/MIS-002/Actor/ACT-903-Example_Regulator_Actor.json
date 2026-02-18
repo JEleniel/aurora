@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ACT-903",
+	"card_type": "Actor",
+	"card_subtype": "Regulator",
+	"name": "Example regulator actor",
+	"description": "Representative regulator actor for coverage.",
+	"links": [
+		{
+			"relationship": "performs",
+			"target": "ATV-900"
+		}
+	]
+}

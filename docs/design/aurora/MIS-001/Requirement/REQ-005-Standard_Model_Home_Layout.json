@@ -1,5 +1,5 @@
 {
-	"$schema": "../../Aurora.card.schema.json",
+	"$schema": "../../schemas/Aurora.card.schema.json",
 	"id": "REQ-005",
 	"card_type": "Requirement",
 	"name": "Standard Model Home Layout",

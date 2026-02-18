@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "DST-903",
+	"card_type": "Data Store",
+	"card_subtype": "Key-Value",
+	"name": "Key-value store",
+	"description": "Data store subtype used for persistence coverage.",
+	"links": [
+		{
+			"relationship": "runs on",
+			"target": "NOD-901"
+		}
+	]
+}

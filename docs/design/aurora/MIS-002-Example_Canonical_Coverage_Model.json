@@ -1,0 +1,65 @@
+{
+	"$schema": "./schemas/Aurora.card.schema.json",
+	"id": "MIS-002",
+	"card_type": "Mission",
+	"name": "Example Canonical Coverage Model",
+	"description": "Example Aurora model that exercises every canonical card type, subtype, and relationship defined in the model configuration registry.",
+	"links": [
+		{
+			"relationship": "establishes",
+			"target": "DRI-900"
+		},
+		{
+			"relationship": "involves",
+			"target": "STK-900"
+		},
+		{
+			"relationship": "involves",
+			"target": "STK-901"
+		},
+		{
+			"relationship": "involves",
+			"target": "STK-902"
+		},
+		{
+			"relationship": "involves",
+			"target": "STK-903"
+		},
+		{
+			"relationship": "involves",
+			"target": "STK-904"
+		},
+		{
+			"relationship": "involves",
+			"target": "ACT-900"
+		},
+		{
+			"relationship": "involves",
+			"target": "ACT-901"
+		},
+		{
+			"relationship": "involves",
+			"target": "ACT-902"
+		},
+		{
+			"relationship": "involves",
+			"target": "ACT-903"
+		},
+		{
+			"relationship": "involves",
+			"target": "VND-900"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "SYS-900"
+		},
+		{
+			"relationship": "necessitates",
+			"target": "APP-900"
+		},
+		{
+			"relationship": "remediates",
+			"target": "THM-900"
+		}
+	]
+}

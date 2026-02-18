@@ -25,9 +25,10 @@ pub(super) fn build_graph(
 	root_card_types: &[String],
 	included_card_types: &[String],
 ) -> Result<LayoutGraph, RenderError> {
-	let (root_types, allowed_types) = collect_allowed_types(root_card_types, included_card_types);
+	let (root_acronyms, allowed_acronyms) =
+		collect_allowed_types(root_card_types, included_card_types);
 	let cards_by_id = index_cards(model)?;
-	let (mut allowed_nodes, mut roots) = select_nodes(model, &root_types, &allowed_types);
+	let (mut allowed_nodes, mut roots) = select_nodes(model, &root_acronyms, &allowed_acronyms);
 	if roots.is_empty() {
 		return Err(RenderError::MissingRoots);
 	}
@@ -193,11 +194,14 @@ fn select_nodes(
 	let mut allowed_nodes: HashSet<String> = HashSet::new();
 	let mut roots: Vec<String> = Vec::new();
 	for card in iter_cards(model) {
-		if !allowed_types.contains(card.card_type.as_str()) {
+		let Some(prefix) = card.id.split('-').next() else {
+			continue;
+		};
+		if !allowed_types.contains(prefix) {
 			continue;
 		}
 		allowed_nodes.insert(card.id.clone());
-		if root_types.contains(card.card_type.as_str()) {
+		if root_types.contains(prefix) {
 			roots.push(card.id.clone());
 		}
 	}

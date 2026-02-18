@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "STR-902",
+	"card_type": "Story",
+	"name": "As an operator I need renderable views",
+	"description": "As an operator I need the example to render without missing references so that view generation works out-of-the-box.",
+	"links": [
+		{
+			"relationship": "explains",
+			"target": "REQ-900"
+		}
+	]
+}

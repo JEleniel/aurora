@@ -1,0 +1,8 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "EVT-901",
+	"card_type": "Event",
+	"name": "Downstream event",
+	"description": "Second event used to exercise event emission chains.",
+	"links": []
+}

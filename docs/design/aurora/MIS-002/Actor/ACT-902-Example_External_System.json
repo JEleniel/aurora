@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ACT-902",
+	"card_type": "Actor",
+	"card_subtype": "External System",
+	"name": "Example external system",
+	"description": "Representative machine actor for coverage.",
+	"links": [
+		{
+			"relationship": "performs",
+			"target": "ATV-900"
+		}
+	]
+}

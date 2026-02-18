@@ -1,0 +1,37 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "APP-900",
+	"card_type": "Application",
+	"name": "Example application",
+	"description": "A deployable application used to exercise Application relationships.",
+	"links": [
+		{
+			"relationship": "comprises",
+			"target": "COM-900"
+		},
+		{
+			"relationship": "comprises",
+			"target": "COM-901"
+		},
+		{
+			"relationship": "comprises",
+			"target": "COM-902"
+		},
+		{
+			"relationship": "comprises",
+			"target": "COM-903"
+		},
+		{
+			"relationship": "comprises",
+			"target": "COM-904"
+		},
+		{
+			"relationship": "comprises",
+			"target": "COM-905"
+		},
+		{
+			"relationship": "deploys to",
+			"target": "DEP-900"
+		}
+	]
+}

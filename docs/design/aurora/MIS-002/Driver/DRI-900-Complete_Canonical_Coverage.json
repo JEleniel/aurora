@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "DRI-900",
+	"card_type": "Driver",
+	"name": "Complete canonical coverage",
+	"description": "Ensure the example model contains at least one instance of every canonical card type and subtype, and demonstrates each canonical relationship.",
+	"links": [
+		{
+			"relationship": "drives",
+			"target": "REQ-900"
+		}
+	]
+}

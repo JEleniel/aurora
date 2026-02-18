@@ -1,0 +1,74 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "COM-900",
+	"card_type": "Component",
+	"card_subtype": "API",
+	"name": "Example API component",
+	"description": "Primary component that exercises the full Component relationship set.",
+	"links": [
+		{
+			"relationship": "composes",
+			"target": "COM-901"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-900"
+		},
+		{
+			"relationship": "exposes",
+			"target": "INT-900"
+		},
+		{
+			"relationship": "implements",
+			"target": "TES-900"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-900"
+		},
+		{
+			"relationship": "includes",
+			"target": "DSR-900"
+		},
+		{
+			"relationship": "includes",
+			"target": "DSR-901"
+		},
+		{
+			"relationship": "includes",
+			"target": "DSR-902"
+		},
+		{
+			"relationship": "includes",
+			"target": "DSR-903"
+		},
+		{
+			"relationship": "stores in",
+			"target": "DST-900"
+		},
+		{
+			"relationship": "stores in",
+			"target": "DST-901"
+		},
+		{
+			"relationship": "stores in",
+			"target": "DST-902"
+		},
+		{
+			"relationship": "stores in",
+			"target": "DST-903"
+		},
+		{
+			"relationship": "stores in",
+			"target": "DST-904"
+		},
+		{
+			"relationship": "executes",
+			"target": "STM-900"
+		},
+		{
+			"relationship": "runs on",
+			"target": "NOD-900"
+		}
+	]
+}

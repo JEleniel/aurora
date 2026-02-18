@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-901",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "Sample data",
+	"description": "Artifact subtype used for coverage.",
+	"links": [
+		{
+			"relationship": "derives from",
+			"target": "ART-900"
+		}
+	]
+}

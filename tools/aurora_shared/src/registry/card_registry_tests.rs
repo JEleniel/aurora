@@ -1,6 +1,7 @@
 use super::{CardDefinition, CardRegistry, RelationshipDefinition};
 
 use crate::registry::RegistryError;
+use std::collections::HashSet;
 
 #[test]
 fn registry_parses_and_merges_canonical_and_appearance_data() -> Result<(), RegistryError> {
@@ -28,10 +29,11 @@ fn check_and_getters_work_for_a_known_card_type() {
 	let def = CardDefinition {
 		acronym: "FOO".to_string(),
 		card_type: "Foo".to_string(),
-		color: "#FFFFFF".to_string(),
+		stroke: "#FFFFFF".to_string(),
+		text: "#DDDDDD".to_string(),
 		description: "A test definition".to_string(),
 		fill: "#000000".to_string(),
-		icon: "X".to_string(),
+		icon: Some("X".to_string()),
 		relationships: vec![RelationshipDefinition {
 			target_card_type: "Bar".to_string(),
 			relationship: "rel".to_string(),
@@ -41,13 +43,16 @@ fn check_and_getters_work_for_a_known_card_type() {
 	};
 	let registry = CardRegistry {
 		definitions: vec![def.clone()],
+		available_icons: HashSet::new(),
 	};
 
 	assert!(registry.check(&def.card_type));
 	assert!(!registry.check("UnknownType"));
 
 	assert_eq!(registry.try_get_fill(&def.card_type).unwrap(), def.fill);
-	assert_eq!(registry.try_get_color(&def.card_type).unwrap(), def.color);
+	assert_eq!(registry.try_get_stroke(&def.card_type).unwrap(), def.stroke);
+	assert_eq!(registry.try_get_text(&def.card_type).unwrap(), def.text);
+	assert_eq!(registry.try_get_color(&def.card_type).unwrap(), def.stroke);
 	assert_eq!(registry.try_get_shape(&def.card_type).unwrap(), def.shape);
 	assert_eq!(registry.try_get_icon(&def.card_type).unwrap(), def.icon);
 
@@ -66,6 +71,7 @@ fn check_and_getters_work_for_a_known_card_type() {
 fn unknown_lookups_return_expected_errors() {
 	let registry = CardRegistry {
 		definitions: Vec::new(),
+		available_icons: HashSet::new(),
 	};
 
 	match registry.try_get_by_type("UnknownType") {
@@ -81,4 +87,17 @@ fn unknown_lookups_return_expected_errors() {
 		}
 		other => panic!("expected CardAcronymNotFound error, got {other:?}"),
 	}
+}
+
+#[test]
+fn has_icon_accepts_prefixed_and_unprefixed_values() {
+	let registry = CardRegistry {
+		definitions: Vec::new(),
+		available_icons: HashSet::from(["wrench".to_string()]),
+	};
+
+	assert!(registry.has_icon("wrench"));
+	assert!(registry.has_icon("i-wrench"));
+	assert!(registry.has_icon("#i-wrench"));
+	assert!(!registry.has_icon("i-missing"));
 }

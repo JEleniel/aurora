@@ -18,8 +18,6 @@ _No attributes defined._
 
 ## Version
 
-1.0.0
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -1,5 +1,5 @@
 {
-	"$schema": "../../Aurora.card.schema.json",
+	"$schema": "../../schemas/Aurora.card.schema.json",
 	"id": "CNS-003",
 	"card_type": "Constraint",
 	"name": "Standard Model File Layout",

@@ -1,5 +1,5 @@
 {
-	"$schema": "../../Aurora.card.schema.json",
+	"$schema": "../../schemas/Aurora.card.schema.json",
 	"id": "PRO-005",
 	"card_type": "Process",
 	"name": "Maintain Canonical Registries",

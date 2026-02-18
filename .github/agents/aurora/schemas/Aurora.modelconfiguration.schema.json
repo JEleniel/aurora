@@ -34,7 +34,10 @@
 				"card_type": {
 					"$ref": "#/$defs/non_empty"
 				},
-				"color": {
+				"stroke": {
+					"$ref": "#/$defs/hex_color"
+				},
+				"text": {
 					"$ref": "#/$defs/hex_color"
 				},
 				"common_properties": {
@@ -75,7 +78,7 @@
 					"$ref": "#/$defs/non_empty"
 				}
 			},
-			"required": ["card_type", "acronym", "description", "shape", "fill", "color"],
+			"required": ["card_type", "acronym", "description", "shape", "fill", "text", "stroke"],
 			"type": "object"
 		},
 		"card_relationship": {

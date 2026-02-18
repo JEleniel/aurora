@@ -1,0 +1,8 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "TRG-901",
+	"card_type": "Trigger",
+	"name": "Downstream trigger",
+	"description": "Second trigger used to demonstrate trigger chaining via 'triggers'.",
+	"links": []
+}

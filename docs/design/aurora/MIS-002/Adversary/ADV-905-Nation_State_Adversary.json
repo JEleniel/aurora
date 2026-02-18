@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ADV-905",
+	"card_type": "Adversary",
+	"card_subtype": "Nation State",
+	"name": "Nation state adversary",
+	"description": "Adversary subtype used for coverage.",
+	"links": []
+}

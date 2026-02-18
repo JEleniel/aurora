@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "NOD-901",
+	"card_type": "Node",
+	"card_subtype": "Virtual Machine",
+	"name": "Example virtual machine",
+	"description": "Logical VM runtime used for coverage.",
+	"links": []
+}

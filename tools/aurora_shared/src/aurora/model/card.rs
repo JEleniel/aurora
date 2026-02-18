@@ -21,13 +21,16 @@ pub struct Card {
 	pub card_subtype: Option<String>,
 	pub name: String,
 	pub description: String,
-	pub version: String,
+	#[serde(default, skip_serializing_if = "Option::is_none")]
+	pub version: Option<String>,
 	#[serde(default, skip_serializing_if = "Option::is_none")]
 	pub status: Option<String>,
 	#[serde(default, skip_serializing_if = "Option::is_none")]
 	pub boundary: Option<String>,
 	#[serde(default, skip_serializing_if = "Option::is_none")]
 	pub notes: Option<String>,
+	#[serde(default, skip_serializing_if = "Option::is_none")]
+	pub icon: Option<String>,
 	#[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
 	pub attributes: Attributes,
 	pub links: Vec<Link>,
@@ -35,6 +38,8 @@ pub struct Card {
 	pub source_path: PathBuf,
 	#[serde(skip)]
 	pub validation_errors: Vec<String>,
+	#[serde(skip)]
+	pub validation_warnings: Vec<String>,
 }
 
 impl Card {
@@ -45,30 +50,64 @@ impl Card {
 
 		let card_json: serde_json::Value = serde_json::from_str(&data)
 			.map_err(|e| CardError::ParseError(path.display().to_string(), e))?;
-		let validation_errors = Self::validate_against_schema(&card_json, card_schema)?;
+		let mut validation_errors = Self::validate_against_schema(&card_json, card_schema)?;
+		let mut validation_warnings: Vec<String> = Vec::new();
+		Self::validate_schema_reference(
+			path,
+			&card_json,
+			"Aurora.card.schema.json",
+			&mut validation_errors,
+			&mut validation_warnings,
+		);
 
 		let mut card: Card = serde_json::from_str(&data)
 			.map_err(|e| CardError::ParseError(path.display().to_string(), e))?;
 		card.source_path = path.to_path_buf();
 		card.validation_errors = validation_errors;
+		card.validation_warnings = validation_warnings;
 		Ok(card)
 	}
 
-	pub fn check_registry(&self) -> Result<Vec<String>, CardError> {
-		let registry = CardRegistry::try_new()?;
+	pub fn check_registry(&self, registry: &CardRegistry) -> Vec<String> {
 		let mut warnings: Vec<String> = Vec::new();
 
 		if !registry.check(&self.card_type) {
 			warnings.push(format!("Card has unknown card type: {}", self.card_type));
 		}
+
+		if let Some(icon) = &self.icon
+			&& !registry.has_icon(icon)
+		{
+			warnings.push(format!(
+				"Card {} uses unknown icon override '{}'",
+				self.id, icon
+			));
+		}
+
 		for link in self.links.iter() {
-			let target_card_def = registry.try_get_by_acronym(&link.target[0..3])?;
-			if !registry.check(target_card_def.card_type.as_str()) {
+			let target_acronym = link
+				.target
+				.split('-')
+				.next()
+				.map(str::trim)
+				.unwrap_or_default();
+			if target_acronym.len() != 3 {
 				warnings.push(format!(
-					"Card links to unknown target card type: {}",
-					link.target
+					"Card {} has link with invalid target id format: {}",
+					self.id, link.target
 				));
 				continue;
+			}
+
+			let target_card_def = match registry.try_get_by_acronym(target_acronym) {
+				Ok(target_card_def) => target_card_def,
+				Err(_) => {
+					warnings.push(format!(
+						"Card links to unknown target card type: {}",
+						link.target
+					));
+					continue;
+				}
 			};
 
 			if !registry.check_link(
@@ -83,7 +122,7 @@ impl Card {
 			}
 		}
 
-		Ok(warnings)
+		warnings
 	}
 
 	pub fn write(&self, path: &Path) {
@@ -145,18 +184,21 @@ impl Card {
 		let mut any = false;
 		for entry in audit_entries {
 			any = true;
+			let change_summary = super::super::AuditLog::change_summary_for_target(entry, &self.id);
 			history.push_str(&format!(
 				"| {} | {} | {} |\n",
 				entry
 					.timestamp
 					.to_rfc3339_opts(chrono::SecondsFormat::Secs, true),
 				entry.editor,
-				entry.change_type.as_str(),
+				change_summary,
 			));
 		}
 		if !any {
 			history.push_str("| _No entries_ |  |  |\n");
 		}
+
+		let version = self.version.clone().unwrap_or_default();
 
 		markdown = markdown
 			.replace("{{card_type}}", &self.card_type)
@@ -169,7 +211,7 @@ impl Card {
 			.replace("{{notes}}", &notes)
 			.replace("{{attributes}}", &attributes)
 			.replace("{{links}}", &links)
-			.replace("{{version}}", &self.version)
+			.replace("{{version}}", &version)
 			.replace("{{history}}", &history)
 			.replace("|\n\n", "|\n")
 			.replace("\n\n\n\n", "\n\n");
@@ -178,10 +220,50 @@ impl Card {
 	}
 
 	pub fn get_compact(&self) -> Value {
-		let mut value = serde_json::to_value(self).unwrap();
-		Self::remove_key(&mut value, "$schema");
+		let mut map = serde_json::Map::new();
+		map.insert("id".to_string(), Value::String(self.id.clone()));
+		map.insert(
+			"card_type".to_string(),
+			Value::String(self.card_type.clone()),
+		);
+		if let Some(card_subtype) = &self.card_subtype {
+			map.insert(
+				"card_subtype".to_string(),
+				Value::String(card_subtype.clone()),
+			);
+		}
+		map.insert("name".to_string(), Value::String(self.name.clone()));
+		if let Some(status) = &self.status {
+			map.insert("status".to_string(), Value::String(status.clone()));
+		}
+		if let Some(boundary) = &self.boundary {
+			map.insert("boundary".to_string(), Value::String(boundary.clone()));
+		}
+		map.insert(
+			"attributes".to_string(),
+			Value::Object(
+				self.attributes
+					.iter()
+					.map(|(key, value)| (key.clone(), value.clone()))
+					.collect(),
+			),
+		);
+		map.insert(
+			"links".to_string(),
+			Value::Array(
+				self.links
+					.iter()
+					.map(|link| {
+						serde_json::json!({
+							"relationship": link.relationship,
+							"target": link.target,
+						})
+					})
+					.collect(),
+			),
+		);
 
-		value
+		Value::Object(map)
 	}
 
 	fn validate_against_schema(
@@ -205,9 +287,42 @@ impl Card {
 		}
 	}
 
-	fn remove_key(value: &mut Value, key: &str) {
-		if let Value::Object(map) = value {
-			map.remove(key);
+	fn validate_schema_reference(
+		path: &Path,
+		card_json: &Value,
+		expected_schema_file_name: &str,
+		validation_errors: &mut Vec<String>,
+		validation_warnings: &mut Vec<String>,
+	) {
+		let schema_ref = card_json.get("$schema").and_then(Value::as_str);
+		let Some(schema_ref) = schema_ref else {
+			validation_errors.push("Missing required $schema property.".to_string());
+			return;
+		};
+
+		let Some(parent) = path.parent() else {
+			validation_warnings.push("Could not resolve $schema path for validation.".to_string());
+			return;
+		};
+
+		let resolved_path = parent.join(schema_ref);
+		match std::fs::canonicalize(&resolved_path) {
+			Ok(canonicalized) => {
+				let schema_file_name = canonicalized
+					.file_name()
+					.and_then(|name| name.to_str())
+					.unwrap_or_default();
+				if schema_file_name != expected_schema_file_name {
+					validation_warnings.push(format!(
+						"$schema reference resolves to '{}' but '{}' is expected.",
+						schema_file_name, expected_schema_file_name
+					));
+				}
+			}
+			Err(_) => validation_warnings.push(format!(
+				"$schema reference '{}' could not be resolved; validating against '{}' anyway.",
+				schema_ref, expected_schema_file_name
+			)),
 		}
 	}
 }

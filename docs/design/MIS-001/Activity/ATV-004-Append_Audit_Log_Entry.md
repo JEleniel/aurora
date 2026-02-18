@@ -2,6 +2,8 @@
 
 Append one line to the mission `AuditLog.ndjson` file for each change event, allowing multiple changed cards and related link changes in one entry.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -10,6 +12,9 @@ _No attributes defined._
 
 - uses [COM-003](../Component/COM-003-Tauri_Rust_Backend.md)
 - produces [ART-004](../Artifact/ART-004-Mission_Audit_Log.md)
+
+
+## Version
 
 ## Audit Log
 

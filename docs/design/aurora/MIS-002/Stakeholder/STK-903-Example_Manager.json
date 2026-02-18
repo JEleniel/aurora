@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "STK-903",
+	"card_type": "Stakeholder",
+	"card_subtype": "Manager",
+	"name": "Example manager",
+	"description": "Representative management stakeholder for coverage.",
+	"links": [
+		{
+			"relationship": "desires",
+			"target": "STR-903"
+		}
+	]
+}

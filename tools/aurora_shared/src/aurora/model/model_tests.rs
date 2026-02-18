@@ -77,13 +77,6 @@ fn card_json_with_links(id: &str, card_type: &str, targets: &[&str]) -> Value {
 	})
 }
 
-fn audit_log_json() -> Value {
-	json!({
-		"$schema": "../Aurora.audit.schema.json",
-		"history": []
-	})
-}
-
 fn write_json(path: &PathBuf, value: &Value) -> Result<()> {
 	let serialized = serde_json::to_string_pretty(value)?;
 	std::fs::write(path, serialized)?;
@@ -107,7 +100,7 @@ fn try_load_rejects_nested_mission_card() -> Result<()> {
 	std::fs::create_dir_all(&mission_folder)?;
 
 	write_json(&root_path, &card_json("MIS-001", "Mission"))?;
-	write_json(&mission_home.join("AuditLog.json"), &audit_log_json())?;
+	std::fs::write(mission_home.join("AuditLog.ndjson"), "")?;
 	write_json(
 		&mission_folder.join("MIS-999-Extra.json"),
 		&card_json("MIS-999", "Mission"),
@@ -135,7 +128,7 @@ fn try_load_rejects_invalid_model() -> Result<()> {
 		&root_path,
 		&card_json_with_links("MIS-001", "Mission", &["REQ-999"]),
 	)?;
-	write_json(&mission_home.join("AuditLog.json"), &audit_log_json())?;
+	std::fs::write(mission_home.join("AuditLog.ndjson"), "")?;
 
 	let card_schema = card_schema();
 	let audit_schema = audit_schema();
@@ -162,14 +155,16 @@ fn write_markdown_uses_sanitized_names_and_audit_history() -> Result<()> {
 		card_subtype: None,
 		name: mission_name.to_string(),
 		description: "Root description".to_string(),
-		version: "1.0.0".to_string(),
+		version: Some("1.0.0".to_string()),
 		status: None,
 		boundary: None,
 		notes: None,
+		icon: None,
 		attributes: super::Attributes::new(),
 		links: Vec::new(),
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
+		validation_warnings: Vec::new(),
 	};
 
 	let feature_card = super::Card {
@@ -179,14 +174,16 @@ fn write_markdown_uses_sanitized_names_and_audit_history() -> Result<()> {
 		card_subtype: None,
 		name: card_name.to_string(),
 		description: "Feature description".to_string(),
-		version: "1.0.0".to_string(),
+		version: Some("1.0.0".to_string()),
 		status: None,
 		boundary: None,
 		notes: None,
+		icon: None,
 		attributes: super::Attributes::new(),
 		links: Vec::new(),
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
+		validation_warnings: Vec::new(),
 	};
 
 	let audit_log = AuditLog {
@@ -196,6 +193,7 @@ fn write_markdown_uses_sanitized_names_and_audit_history() -> Result<()> {
 			editor: "Tester".to_string(),
 			target: card_id.to_string(),
 			change_type: AuditChangeType::Create,
+			changes: Vec::new(),
 		}],
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
@@ -250,14 +248,16 @@ fn write_markdown_embeds_views_from_mission_views_dir() -> Result<()> {
 		card_subtype: None,
 		name: mission_name.to_string(),
 		description: "Root description".to_string(),
-		version: "1.0.0".to_string(),
+		version: Some("1.0.0".to_string()),
 		status: None,
 		boundary: None,
 		notes: None,
+		icon: None,
 		attributes: super::Attributes::new(),
 		links: Vec::new(),
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
+		validation_warnings: Vec::new(),
 	};
 
 	let audit_log = AuditLog {
@@ -306,14 +306,16 @@ fn write_markdown_skips_empty_card_types_in_index() -> Result<()> {
 		card_subtype: None,
 		name: "Mission".to_string(),
 		description: "Root description".to_string(),
-		version: "1.0.0".to_string(),
+		version: Some("1.0.0".to_string()),
 		status: None,
 		boundary: None,
 		notes: None,
+		icon: None,
 		attributes: super::Attributes::new(),
 		links: Vec::new(),
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
+		validation_warnings: Vec::new(),
 	};
 
 	let only_card = super::Card {
@@ -323,14 +325,16 @@ fn write_markdown_skips_empty_card_types_in_index() -> Result<()> {
 		card_subtype: None,
 		name: "Feature One".to_string(),
 		description: "desc".to_string(),
-		version: "1.0.0".to_string(),
+		version: Some("1.0.0".to_string()),
 		status: None,
 		boundary: None,
 		notes: None,
+		icon: None,
 		attributes: super::Attributes::new(),
 		links: Vec::new(),
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
+		validation_warnings: Vec::new(),
 	};
 
 	let audit_log = AuditLog {
@@ -386,10 +390,11 @@ fn write_markdown_links_are_relative_and_point_to_slugged_files() -> Result<()> 
 		card_subtype: None,
 		name: mission_name.to_string(),
 		description: "Root description".to_string(),
-		version: "1.0.0".to_string(),
+		version: Some("1.0.0".to_string()),
 		status: None,
 		boundary: None,
 		notes: None,
+		icon: None,
 		attributes: super::Attributes::new(),
 		links: vec![super::Link {
 			target: "FEA-001".to_string(),
@@ -397,6 +402,7 @@ fn write_markdown_links_are_relative_and_point_to_slugged_files() -> Result<()> 
 		}],
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
+		validation_warnings: Vec::new(),
 	};
 
 	let feature = super::Card {
@@ -406,10 +412,11 @@ fn write_markdown_links_are_relative_and_point_to_slugged_files() -> Result<()> 
 		card_subtype: None,
 		name: "Feature: One?".to_string(),
 		description: "desc".to_string(),
-		version: "1.0.0".to_string(),
+		version: Some("1.0.0".to_string()),
 		status: None,
 		boundary: None,
 		notes: None,
+		icon: None,
 		attributes: super::Attributes::new(),
 		links: vec![super::Link {
 			target: "MIS-001".to_string(),
@@ -417,6 +424,7 @@ fn write_markdown_links_are_relative_and_point_to_slugged_files() -> Result<()> 
 		}],
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
+		validation_warnings: Vec::new(),
 	};
 
 	let audit_log = AuditLog {
@@ -472,14 +480,16 @@ fn write_outputs_model_files() -> Result<()> {
 		card_subtype: None,
 		name: "Mission Alpha".to_string(),
 		description: "Root description".to_string(),
-		version: "1.0.0".to_string(),
+		version: Some("1.0.0".to_string()),
 		status: None,
 		boundary: None,
 		notes: None,
+		icon: None,
 		attributes: super::Attributes::new(),
 		links: Vec::new(),
 		source_path: root_path.clone(),
 		validation_errors: Vec::new(),
+		validation_warnings: Vec::new(),
 	};
 
 	let feature_card = super::Card {
@@ -489,20 +499,22 @@ fn write_outputs_model_files() -> Result<()> {
 		card_subtype: None,
 		name: "Feature One".to_string(),
 		description: "Feature description".to_string(),
-		version: "1.0.0".to_string(),
+		version: Some("1.0.0".to_string()),
 		status: None,
 		boundary: None,
 		notes: None,
+		icon: None,
 		attributes: super::Attributes::new(),
 		links: Vec::new(),
 		source_path: mission_home.join("Feature").join("FEA-001.json"),
 		validation_errors: Vec::new(),
+		validation_warnings: Vec::new(),
 	};
 
 	let audit_log = AuditLog {
 		schema: None,
 		history: Vec::new(),
-		source_path: mission_home.join("AuditLog.json"),
+		source_path: mission_home.join("AuditLog.ndjson"),
 		validation_errors: Vec::new(),
 	};
 

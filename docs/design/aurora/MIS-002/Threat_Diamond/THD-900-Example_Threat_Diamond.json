@@ -1,0 +1,61 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "THD-900",
+	"card_type": "Threat Diamond",
+	"name": "Example threat diamond",
+	"description": "Threat used to exercise threat-centric relationships including adversaries, capabilities, victims, and risks.",
+	"links": [
+		{
+			"relationship": "threatens",
+			"target": "AST-900"
+		},
+		{
+			"relationship": "involves",
+			"target": "ADV-900"
+		},
+		{
+			"relationship": "involves",
+			"target": "ADV-901"
+		},
+		{
+			"relationship": "involves",
+			"target": "ADV-902"
+		},
+		{
+			"relationship": "involves",
+			"target": "ADV-903"
+		},
+		{
+			"relationship": "involves",
+			"target": "ADV-904"
+		},
+		{
+			"relationship": "involves",
+			"target": "ADV-905"
+		},
+		{
+			"relationship": "uses",
+			"target": "THC-900"
+		},
+		{
+			"relationship": "impacts",
+			"target": "VIC-900"
+		},
+		{
+			"relationship": "impacts",
+			"target": "VIC-901"
+		},
+		{
+			"relationship": "impacts",
+			"target": "VIC-902"
+		},
+		{
+			"relationship": "impacts",
+			"target": "VIC-903"
+		},
+		{
+			"relationship": "creates",
+			"target": "RIS-900"
+		}
+	]
+}

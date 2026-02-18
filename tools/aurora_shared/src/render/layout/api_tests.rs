@@ -11,12 +11,8 @@ fn layout_model_positions_nodes_by_rank() {
 	let requirement_two = make_card("REQ-002", "Requirement", &[]);
 	let model = make_model(root, vec![requirement_one, requirement_two]);
 
-	let layout = layout_model(
-		&model,
-		&["Mission".to_string()],
-		&["Requirement".to_string()],
-	)
-	.expect("layout should succeed");
+	let layout = layout_model(&model, &["MIS".to_string()], &["REQ".to_string()])
+		.expect("layout should succeed");
 
 	assert_eq!(layout.nodes.len(), 3);
 	assert_eq!(layout.edges.len(), 2);
@@ -34,7 +30,7 @@ fn layout_model_rejects_missing_roots() {
 	let root = make_card("MIS-001", "Mission", &[]);
 	let model = make_model(root, vec![]);
 
-	let result = layout_model(&model, &[], &["Requirement".to_string()]);
+	let result = layout_model(&model, &[], &["REQ".to_string()]);
 	assert!(matches!(result, Err(RenderError::MissingRoots)));
 }
 
@@ -43,11 +39,7 @@ fn layout_model_rejects_unknown_targets() {
 	let root = make_card("MIS-001", "Mission", &["REQ-404"]);
 	let model = make_model(root, vec![]);
 
-	let result = layout_model(
-		&model,
-		&["Mission".to_string()],
-		&["Requirement".to_string()],
-	);
+	let result = layout_model(&model, &["MIS".to_string()], &["REQ".to_string()]);
 
 	assert!(matches!(result, Err(RenderError::UnknownTarget(_, _))));
 }
@@ -59,18 +51,10 @@ fn layout_model_is_deterministic() {
 	let requirement_two = make_card("REQ-002", "Requirement", &[]);
 	let model = make_model(root, vec![requirement_one, requirement_two]);
 
-	let layout_one = layout_model(
-		&model,
-		&["Mission".to_string()],
-		&["Requirement".to_string()],
-	)
-	.expect("layout should succeed");
-	let layout_two = layout_model(
-		&model,
-		&["Mission".to_string()],
-		&["Requirement".to_string()],
-	)
-	.expect("layout should succeed");
+	let layout_one = layout_model(&model, &["MIS".to_string()], &["REQ".to_string()])
+		.expect("layout should succeed");
+	let layout_two = layout_model(&model, &["MIS".to_string()], &["REQ".to_string()])
+		.expect("layout should succeed");
 
 	assert_eq!(sorted_nodes(&layout_one), sorted_nodes(&layout_two));
 	assert_eq!(sorted_edges(&layout_one), sorted_edges(&layout_two));
@@ -83,7 +67,7 @@ fn layout_model_succeeds_when_filtering_orphanizes_nodes() {
 	let process = make_card("PRO-001", "Process", &[]);
 	let model = make_model(root, vec![capability, process]);
 
-	let layout = layout_model(&model, &["Mission".to_string()], &["Process".to_string()])
+	let layout = layout_model(&model, &["MIS".to_string()], &["PRO".to_string()])
 		.expect("layout should succeed");
 
 	let mission = layout.nodes.get("MIS-001").expect("mission missing");
@@ -111,12 +95,8 @@ fn layout_model_centers_node_between_two_parents_across_long_edge() {
 
 	let layout = layout_model(
 		&model,
-		&["Mission".to_string()],
-		&[
-			"Capability".to_string(),
-			"Process".to_string(),
-			"Requirement".to_string(),
-		],
+		&["MIS".to_string()],
+		&["CAP".to_string(), "PRO".to_string(), "REQ".to_string()],
 	)
 	.expect("layout should succeed");
 
@@ -153,8 +133,8 @@ fn layout_model_can_center_a_node_between_two_parents() {
 
 	let layout = layout_model(
 		&model,
-		&["Mission".to_string()],
-		&["Capability".to_string(), "Process".to_string()],
+		&["MIS".to_string()],
+		&["CAP".to_string(), "PRO".to_string()],
 	)
 	.expect("layout should succeed");
 

@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CAP-900",
+	"card_type": "Capability",
+	"name": "Generate example views",
+	"description": "Provide enough connected structure that the CLI can render every view type from the canonical registry.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-900"
+		}
+	]
+}

@@ -1,0 +1,25 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "EVT-900",
+	"card_type": "Event",
+	"name": "Example event",
+	"description": "Event that demonstrates transitions, emission, predicate triggering, and artifact carrying.",
+	"links": [
+		{
+			"relationship": "transitions to",
+			"target": "STA-901"
+		},
+		{
+			"relationship": "emits",
+			"target": "EVT-901"
+		},
+		{
+			"relationship": "triggers",
+			"target": "PRD-900"
+		},
+		{
+			"relationship": "carries",
+			"target": "ART-904"
+		}
+	]
+}
