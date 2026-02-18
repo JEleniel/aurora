@@ -1,0 +1,25 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-008",
+	"card_type": "Activity",
+	"name": "Prepare SVG References",
+	"description": "Run svg_prep to generate/update Icons.svg and refresh SVGTemplate.svg defs from source icons and shapes, then synchronize icon availability into Aurora.modelconfiguration.json.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-003"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-009"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-008"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-005"
+		}
+	]
+}

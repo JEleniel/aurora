@@ -10,6 +10,10 @@
 			"target": "STK-001"
 		},
 		{
+			"relationship": "involves",
+			"target": "ACT-001"
+		},
+		{
 			"relationship": "establishes",
 			"target": "DRI-001"
 		},

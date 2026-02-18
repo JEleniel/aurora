@@ -134,3 +134,9 @@ These invariant rules ensure that the model is a rooted directed graph with only
 1. **The `Mission` Card**: All models must start with and include a single `Mission` card that summarizes the high-level "why" of the project. The `Mission` card must only have outgoing links and serves as the root node of the directed graph.
 2. **Direction (graph links)**: Traversal follows directed edges from `Mission` outward. Traversal algorithms MUST halt when they encounter either a leaf node (out-degree `0`) or a previously visited node.
 3. **No orphans**: Other than the `Mission` card, all cards must have one or more incoming links and a path from the `Mission` card. All cards may have any number of outgoing links. All link targets must be valid cards in the model.
+
+## Optimizations for Handling Models
+
+- Since the audit log is NDJSON and append only the entire file should only be read if necessary. In most use cases, simply appending to it suffices.
+- The cards are easy to locate and self indexing so there is, in general, no need to keep more that three cards in active memory.
+- It is better to simply run `aurora_cli validate` than to manually load the schemas to validate. Only load the schemas when necessary.

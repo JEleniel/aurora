@@ -4,6 +4,6 @@
 	"card_type": "Artifact",
 	"card_subtype": "Data",
 	"name": "Canonical Definitions Registry",
-	"description": "The canonical registry JSON that defines card types, acronyms, and allowed outgoing relationships.",
+	"description": "The canonical registry JSON (Aurora.modelconfiguration.json) that defines card types, acronyms, allowed outgoing relationships, view definitions, and the available icon list used by tooling.",
 	"links": []
 }

@@ -1,8 +1,0 @@
-{
-	"$schema": "../../schemas/Aurora.card.schema.json",
-	"id": "INT-001",
-	"card_type": "Interface",
-	"name": "Editor Backend API",
-	"description": "The interface contract between the editor UI and the Tauri backend for model operations (discover/load/validate/render/export and card CRUD).",
-	"links": []
-}

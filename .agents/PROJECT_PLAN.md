@@ -1,14 +1,11 @@
 # Project Plan
 
-Durable, repo-wide plan items. Use [.agents/PROGRESS.md](PROGRESS.md) for detailed status and per-owner checkpoints.
+Durable, repo-wide plan items (keep this short; details live in issues/PRs).
 
-- [ ] Maintain `.agents/` docs (Brief / Plan / Map / Technologies / Context / Patterns)
-- [ ] Keep canonical schemas/registries authoritative under `.github/agents/aurora/` and mirrored under `Aurora_Specs/`
-- [ ] Maintain one or more Aurora mission models under `docs/design/aurora/` (source-of-truth cards)
-- [ ] Keep mission models aligned to Aurora invariants (reachability, root safety, audit log semantics)
-- [ ] Keep tooling components (`aurora_shared`, `aurora_cli`, editors) traceable to capabilities/features in the mission models
-- [x] Implement `aurora_shared::render::svg::Svg` to render a `Model` + `Layout` into a standalone SVG export
+- [ ] Keep `.agents/` docs accurate and non-redundant.
+- [ ] Keep canonical schemas and reference registries authoritative under `.github/agents/aurora/`.
+- [ ] Keep `Aurora_Specs/` mirrored from `.github/agents/aurora/` (no drift).
+- [ ] Keep mission models under `docs/design/aurora/` passing `aurora_cli validate`.
+- [ ] Refresh checked-in rendered artifacts under `docs/design/` when model/specs or rendering behavior changes.
 
-Note: `tools/aurora_editor/` is currently deleted/placeholder in this workspace; a new editor will be started later.
-
-Last updated: 2026-02-08 (added `aurora_shared` SVG renderer for layout-based graph export).
+Last updated: 2026-02-18

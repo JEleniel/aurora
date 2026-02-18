@@ -16,6 +16,10 @@
 		{
 			"relationship": "includes",
 			"target": "ATV-007"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-008"
 		}
 	]
 }

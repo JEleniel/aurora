@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-009",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "Icons Reference Sheet",
+	"description": "The Icons.svg reference output produced from source icons, containing normalized icon defs and a proof-sheet layout used for verification and template integration.",
+	"links": []
+}

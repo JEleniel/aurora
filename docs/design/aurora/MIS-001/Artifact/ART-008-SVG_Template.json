@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-008",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "SVG Template",
+	"description": "The SVGTemplate.svg reference template used by the renderer to wrap generated drawings and provide shared defs and styling.",
+	"links": []
+}

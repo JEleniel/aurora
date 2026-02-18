@@ -1,0 +1,30 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ACT-001",
+	"card_type": "Actor",
+	"card_subtype": "User",
+	"name": "Model Author",
+	"description": "A human author (often the architect) who edits Aurora cards and keeps registries, references, and audit logs current.",
+	"links": [
+		{
+			"relationship": "performs",
+			"target": "ATV-004"
+		},
+		{
+			"relationship": "performs",
+			"target": "ATV-005"
+		},
+		{
+			"relationship": "performs",
+			"target": "ATV-006"
+		},
+		{
+			"relationship": "performs",
+			"target": "ATV-007"
+		},
+		{
+			"relationship": "performs",
+			"target": "ATV-008"
+		}
+	]
+}

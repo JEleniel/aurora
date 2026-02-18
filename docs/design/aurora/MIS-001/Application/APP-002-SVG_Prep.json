@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "APP-002",
+	"card_type": "Application",
+	"name": "SVG Prep",
+	"description": "Command-line tool that builds Aurora SVG reference assets (Icons.svg, SVGTemplate.svg defs) from source icons/shapes and synchronizes the icon availability list in the canonical model configuration.",
+	"links": [
+		{
+			"relationship": "comprises",
+			"target": "COM-003"
+		}
+	]
+}

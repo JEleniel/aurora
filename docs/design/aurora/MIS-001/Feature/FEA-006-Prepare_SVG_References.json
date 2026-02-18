@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "FEA-006",
+	"card_type": "Feature",
+	"name": "Prepare SVG References",
+	"description": "Generate and update Aurora SVG reference assets (Icons.svg and SVGTemplate.svg defs) and keep the canonical icon availability list synchronized.",
+	"links": [
+		{
+			"relationship": "realizes",
+			"target": "CAP-005"
+		}
+	]
+}

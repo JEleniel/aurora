@@ -6,10 +6,6 @@
 	"description": "Append one line to the mission `AuditLog.ndjson` file for each change event, allowing multiple changed cards and related link changes in one entry.",
 	"links": [
 		{
-			"relationship": "uses",
-			"target": "COM-003"
-		},
-		{
 			"relationship": "produces",
 			"target": "ART-004"
 		}
