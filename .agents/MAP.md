@@ -6,7 +6,7 @@ Quick index of “where things live”.
 
 - Source of truth
 	+ Schemas: `.github/agents/aurora/schemas/`
-	+ Reference assets (registry, SVG template): `.github/agents/aurora/reference/`
+	+ Reference registry (model configuration): `.github/agents/aurora/reference/`
 - Mirror (kept in sync): `Aurora_Specs/`
 
 ## Models and artifacts
@@ -28,6 +28,14 @@ Quick index of “where things live”.
 	+ Rendering: `tools/aurora_shared/src/render/`
 	+ Embedded registries/defaults: `tools/aurora_shared/src/registry/`
 - SVG prep tool: `tools/svg_prep/`
+	+ Entry point: `tools/svg_prep/src/svg.rs`
+	+ Build pipeline: `tools/svg_prep/src/svg/build.rs`
+		* Master (unoptimized) inputs: `assets/masters/icons/`, `assets/masters/shapes/`
+		* Optimized outputs: `assets/optimized/icons/`, `assets/optimized/shapes/`
+		* Default proof outputs: `assets/proofs/Icons.svg`, `assets/proofs/Shapes.svg`, `assets/proofs/SVGTemplate.svg`
+		* Template outputs: `assets/masters/SVGTemplate.svg` (updated) and `assets/templates/SVGTemplate.svgz` (default)
+	+ Optimize pipeline: `tools/svg_prep/src/svg/optimize.rs`
+	+ Shape group import (matches `id` and `inkscape:label`): `tools/svg_prep/src/svg/shapes.rs`
 - Editor: `tools/aurora_editor/`
 
-Last updated: 2026-02-18
+Last updated: 2026-02-19

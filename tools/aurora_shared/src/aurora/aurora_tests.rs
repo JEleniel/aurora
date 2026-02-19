@@ -1,6 +1,10 @@
 use std::path::{Path, PathBuf};
 
+use flate2::Compression;
+use flate2::write::GzEncoder;
+
 use serde_json::{Value, json};
+use std::io::Write;
 
 use super::{AuditChangeType, AuditLog, AuditLogEntry, Aurora, AuroraError, Card, Link, Model};
 use crate::registry::{CardRegistry, ModelConfiguration, ViewRegistry};
@@ -59,10 +63,47 @@ fn write_schema_files(model_home: &Path) -> Result<()> {
 		reference.join("Aurora.modelconfiguration.json"),
 		include_str!("../../../../.github/agents/aurora/reference/Aurora.modelconfiguration.json"),
 	)?;
+	write_svg_template_svgz(&reference)?;
+	Ok(())
+}
+
+fn write_schema_files_without_svg_template(model_home: &Path) -> Result<()> {
+	let schemas = model_home.join("schemas");
+	let reference = model_home.join("reference");
+	std::fs::create_dir_all(&schemas)?;
+	std::fs::create_dir_all(&reference)?;
+
 	std::fs::write(
-		reference.join("SVGTemplate.svg"),
-		include_str!("../../../../.github/agents/aurora/reference/SVGTemplate.svg"),
+		schemas.join("Aurora.card.schema.json"),
+		include_str!("../../../../.github/agents/aurora/schemas/Aurora.card.schema.json"),
 	)?;
+	std::fs::write(
+		schemas.join("Aurora.compact.schema.json"),
+		include_str!("../../../../.github/agents/aurora/schemas/Aurora.compact.schema.json"),
+	)?;
+	std::fs::write(
+		schemas.join("Aurora.audit.schema.json"),
+		include_str!("../../../../.github/agents/aurora/schemas/Aurora.audit.schema.json"),
+	)?;
+	std::fs::write(
+		schemas.join("Aurora.modelconfiguration.schema.json"),
+		include_str!(
+			"../../../../.github/agents/aurora/schemas/Aurora.modelconfiguration.schema.json"
+		),
+	)?;
+	std::fs::write(
+		reference.join("Aurora.modelconfiguration.json"),
+		include_str!("../../../../.github/agents/aurora/reference/Aurora.modelconfiguration.json"),
+	)?;
+	Ok(())
+}
+
+fn write_svg_template_svgz(reference_dir: &Path) -> Result<()> {
+	let svg_template = include_str!("../../../../assets/masters/SVGTemplate.svg");
+	let mut encoder = GzEncoder::new(Vec::new(), Compression::default());
+	encoder.write_all(svg_template.as_bytes())?;
+	let data = encoder.finish()?;
+	std::fs::write(reference_dir.join("SVGTemplate.svgz"), data)?;
 	Ok(())
 }
 
@@ -90,8 +131,7 @@ fn test_aurora(models: Vec<Model>) -> Aurora {
 		model_configuration,
 		card_registry,
 		view_registry,
-		svg_template: include_str!("../../../../.github/agents/aurora/reference/SVGTemplate.svg")
-			.to_string(),
+		svg_template: include_str!("../../../../assets/masters/SVGTemplate.svg").to_string(),
 		load_warnings: Vec::new(),
 		load_validation_errors: Vec::new(),
 	}
@@ -142,6 +182,31 @@ fn try_load_discovers_model_home() -> Result<()> {
 	let aurora = Aurora::try_load(temp.path())?;
 	assert_eq!(aurora.models.len(), 1);
 	assert_eq!(aurora.model_home, aurora_home);
+	Ok(())
+}
+
+#[test]
+fn try_load_allows_missing_svg_template_for_validation() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let aurora_home = temp.path().join("aurora");
+	std::fs::create_dir_all(&aurora_home)?;
+	write_schema_files_without_svg_template(&aurora_home)?;
+
+	let root_path = aurora_home.join("MIS-001-Alpha.json");
+	let mission_home = aurora_home.join("MIS-001");
+	std::fs::create_dir_all(&mission_home)?;
+	write_json(&root_path, &card_json("MIS-001", "Mission", vec![]))?;
+	write_audit_log(&mission_home.join("AuditLog.ndjson"))?;
+
+	let aurora = Aurora::try_load(temp.path())?;
+	assert!(aurora.svg_template.trim().is_empty());
+	assert!(
+		aurora
+			.load_warnings
+			.iter()
+			.any(|warning| warning.contains("Missing SVG template")),
+		"expected missing-template warning"
+	);
 	Ok(())
 }
 

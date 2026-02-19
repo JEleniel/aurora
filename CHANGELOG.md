@@ -34,6 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added wired workspace controls and action buttons in the editor UI to invoke backend commands for validation, render, and export workflows.
 - Implemented the canonical DOT → SVG → Markdown view pipeline in `aurora_shared::render_views`, including Graphviz invocation, instruction parsing, and regression tests for the CLI render path.
 - Updated the view Markdown embeds to include a "Zoom & pan" note that links directly to the SVG so users can open it in VS Code's viewer without triggering sandbox warnings.
+- Added gzipped SVG template support (`.svgz`) so the reference template can be stored and loaded in compressed form.
+- Added `svg_prep` optimizer subcommands for normalizing icon and shape SVG inputs.
 
 ### Changed
 
@@ -100,9 +102,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated `svg_prep` proof-sheet output (`Icons.svg`) to render each icon name centered beneath the icon at 16px with `line-height: 1.2`.
 - Updated `svg_prep` proof-sheet output (`Icons.svg`) to include an explicit white background rectangle behind all rendered icons and labels.
 - Updated `svg_prep` proof-sheet labels to 32px text, normalize underscores to spaces for wrapping, and reserve up to two lines per icon label row.
+- Updated `svg_prep` build output to write a gzipped SVG template (`.svgz`) alongside the uncompressed `.svg`.
+- Updated `svg_prep` default `--template-svgz` output to write to `assets/templates/SVGTemplate.svgz`.
+- Updated `svg_prep` build output to also write `assets/proofs/Shapes.svg` and a proofs-folder copy of `SVGTemplate.svg` for review.
+- Updated SVG template loading to prefer `.svgz` when present, falling back to the uncompressed `.svg`.
+- Updated `svg_prep` to load shape definitions from a shapes directory by default (while still supporting legacy single-file shape defs).
+- Updated `svg_prep` default operation to run masters -> optimized -> proofs & template: it optimizes sources from `assets/masters/icons/` and `assets/masters/shapes/` into `assets/optimized/icons/` and `assets/optimized/shapes/` before generating proofs and updating the template.
+- Updated `svg_prep` Shapes proof layout to treat shapes as 720x450 px (viewBox-based) and keep shared shape styling only in the proof sheet's root `<style>` block.
+- Refactored `svg_prep` SVG processing into focused submodules under `tools/svg_prep/src/svg/`.
+- Updated `svg_prep` proof-sheet label rendering to use a shared CSS class for `line-height` instead of repeating inline `style` attributes.
+- Updated `svg_prep` template style merging to deduplicate semantically equivalent CSS blocks even when declaration order differs.
 
 ### Fixed
 
+- Fixed shape import to match top-level groups by `inkscape:label` as well as `id`, normalizing the emitted group `id` to the file stem.
 - Fixed the Rust workspace members list so Cargo no longer references the deleted `tools/aurora_editor` crate.
 - Fixed layout-SVG rendering so symbol scaling is bounded by both node width and height, icon placement is proportionate to symbol geometry, multiline labels are centered as a block within the symbol, ellipse symbols render at the correct aspect/size, and edge routing no longer hard-blocks source/target endpoints (with edges drawn beneath node shapes to prevent visual overlap).
 - Fixed malformed SVG template symbol definitions, corrected ellipse base radii, and restored component symbol geometry.
@@ -153,3 +166,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved hierarchical layout centering so children can be centered under multiple parents (including long edges), and fixed SVG grid interpretation so empty columns/rows don't consume full node dimensions (restoring expected "gapping").
 - Fixed missing SVG symbols for `component` and `trapezoid` card shapes so updated canonical definitions render correctly.
 - Prevented SVG edge routes from falling back through nodes by expanding routing bounds and keeping node obstacles hard-blocked.
+
+- Sanitized `svg_prep` generated SVG outputs to strip `xmlns*` attributes from all non-root elements and remove Inkscape `nodetypes` attributes.
+- Preserved non-`none` `stroke-dasharray` and `stroke:none` declarations when sanitizing shapes so dashed/hidden geometry remains correct in optimized outputs and proofs.
+- Updated `svg_prep` optimization outputs to drop Inkscape/Sodipodi namespace declarations (e.g. `xmlns:inkscape`, `xmlns:sodipodi`) from optimized shapes.
+- Fixed Rust test fixtures to load `SVGTemplate.svg` from `assets/masters/` instead of a missing `.github/agents/` path.
+
+- Fixed `aurora_cli validate` to no longer fail when `reference/SVGTemplate.svgz` (or `SVGTemplate.svg`) is missing; SVG template icon consistency checks now run as part of view rendering.
+
+- Fixed `svg_prep` to treat `assets/masters/SVGTemplate.svg` as input-only and avoid overwriting it during builds; the merged template is written to `assets/templates/SVGTemplate.svg` by default.

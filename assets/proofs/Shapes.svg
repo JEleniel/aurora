@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2988" height="2107.2" version="1.1" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 2988 2107.2" id="Shapes" xmlns="http://www.w3.org/2000/svg">
+  <style>text.aurora-proof-label { line-height:1.2; font-size:32px; text-anchor:middle; dominant-baseline:middle; }
+text.aurora-proof-label tspan { dominant-baseline:middle; }
+
+g.aurora-symbol { fill:none; stroke:#000; }
+
+g.aurora-symbol &gt; circle,
+g.aurora-symbol &gt; ellipse,
+g.aurora-symbol &gt; line,
+g.aurora-symbol &gt; mpath,
+g.aurora-symbol &gt; path,
+g.aurora-symbol &gt; polygon,
+g.aurora-symbol &gt; polyline,
+g.aurora-symbol &gt; rect {
+	fill:inherit;
+	font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+	font-size:16;
+	line-height:1.2;
+	stroke-linecap:round;
+	stroke-linejoin:round;
+	stroke-width:4;
+	stroke:inherit;
+}
+text {
+	text-anchor:middle;
+}
+.aurora-icon {}
+.aurora-symbol {}</style>
+  <defs>
+    <g class="aurora-symbol" id="box">
+      <rect x="1" y="41" height="408" width="678" />
+      <path d="m 1,41 40,-40 h 678 v 408 l -40,40" />
+      <path d="m 679,41 40,-40" />
+    </g>
+    <g class="aurora-symbol" id="component">
+      <rect width="678" y="1" x="41" height="448" />
+      <rect x="1" height="40" y="41" width="80" />
+      <rect x="1" width="80" y="359" height="40" />
+    </g>
+    <g id="curly-braces" class="aurora-symbol">
+      <path d="m 40,1 C 40,1 1,1 1,40 V 205 C 1,205 1,224 40,224 40,225 1,225 1,245 V 409 C 1,409 1,449 40,449" />
+      <path d="m 680,1 C 719,1 719,1 719,40 V 205 C 719,205 719,224 680,224 680,225 719,225 719,245 V 409 C 719,409 719,449 680,449" />
+      <path style="stroke-dasharray:25,50;" d="M 40,1 H 718" />
+      <path style="stroke-dasharray:25,50;" d="M 40,449 H 718" />
+    </g>
+    <g class="aurora-symbol" id="cylinder">
+      <rect height="410" x="1" width="718" y="20" style="stroke:none;" />
+      <ellipse rx="358" cx="360" ry="19" cy="20" />
+      <path d="m 1,430 c 0,0 180,19 360,19 180,0 360,-19 360,-19" />
+      <path d="M 1,20 V 430" />
+      <path d="M 719,20 V 430" />
+    </g>
+    <g id="diamond" class="aurora-symbol">
+      <rect height="368" x="1" width="718" y="41" />
+      <path d="M 1,21 360,1 719,21 360,41 z" />
+      <path d="M 1,429 360,409 719,429 360,449 z" />
+    </g>
+    <g class="aurora-symbol" id="document">
+      <path d="M 1,434 V 1 h 718 v 434 c 0,0 -180,30 -360,0 0,0 -180,-30 -360,0 z" />
+    </g>
+    <g id="double-rectangle" class="aurora-symbol">
+      <rect y="1" x="1" width="718" height="448" />
+      <rect x="21" y="21" width="678" height="408" />
+    </g>
+    <g class="aurora-symbol" id="ellipse">
+      <ellipse cx="360" ry="224" cy="225" rx="359" />
+    </g>
+    <g class="aurora-symbol" id="folder">
+      <path d="m 1,449 V 41 l 40,-40 h 180 l 40,40 H 719 V 449 z" />
+    </g>
+    <g class="aurora-symbol" id="hexagon">
+      <path d="m 1,225 80,-224 h 558 l 80,224 -80,224 h -558 z" />
+    </g>
+    <g id="interface" class="aurora-symbol">
+      <rect x="1" y="41" height="368" width="718" />
+      <circle style="fill-opacity:0;" cx="700" cy="21" r="19" />
+      <path d="M 1,21 H 680" />
+      <path d="M 41,429 H 719" />
+      <path d="M 20,409 C 45,409 45,449 20,449" style="fill-opacity:0;" />
+    </g>
+    <g class="aurora-symbol" id="octagon">
+      <path d="M 3.1250001,125 125,3.1249999 593.75001,1.9999911 l 121.875,121.8749989 0,204.25 -121.875,118.75 H 125 L 3.1250001,328.12499 Z" />
+    </g>
+    <g class="aurora-symbol" id="rectangle">
+      <rect width="718" x="1" height="448" y="1" />
+    </g>
+    <g id="rounded-rectangle" class="aurora-symbol">
+      <rect x="1" height="448" width="718" ry="125" rx="125" y="1" />
+    </g>
+    <g class="aurora-symbol" id="ruler">
+      <rect width="718" y="1" height="448" x="1" />
+      <path d="M 1,40 H 719" />
+      <path d="M 45,1 v 15 m 45,5 v -20 m 45,0 v 15 m 45,10 v -25 m 45,0 v 15 m 45,5 v -20 m 45,0 v 15 m 45,10 v -25 m 45,0 v 15 m 45,5 v -20 m 45,0 v 15 m 45,10 v -25 m 45,0 v 15 m 45,5 v -20 m 45,0 v 15" />
+    </g>
+    <g id="trapezoid" class="aurora-symbol">
+      <path d="m 1,449 L 40,1 H 680 L 719,449 z" />
+    </g>
+  </defs>
+  <rect y="0" height="2107.2" fill="#FFFFFF" width="2988" x="0" />
+  <use x="0" width="720" height="450" href="#box" y="0" />
+  <text x="360" y="488.4" class="aurora-proof-label">
+    <tspan x="360" y="488.4">box</tspan>
+  </text>
+  <use href="#component" width="720" height="450" y="0" x="756" />
+  <text y="488.4" x="1116" class="aurora-proof-label">
+    <tspan y="488.4" x="1116">component</tspan>
+  </text>
+  <use height="450" x="1512" href="#curly-braces" width="720" y="0" />
+  <text y="488.4" x="1872" class="aurora-proof-label">
+    <tspan x="1872" y="488.4">curly-braces</tspan>
+  </text>
+  <use height="450" href="#cylinder" width="720" y="0" x="2268" />
+  <text x="2628" y="488.4" class="aurora-proof-label">
+    <tspan y="488.4" x="2628">cylinder</tspan>
+  </text>
+  <use x="0" height="450" href="#diamond" y="526.8" width="720" />
+  <text x="360" y="1015.2" class="aurora-proof-label">
+    <tspan y="1015.2" x="360">diamond</tspan>
+  </text>
+  <use href="#document" width="720" y="526.8" height="450" x="756" />
+  <text x="1116" class="aurora-proof-label" y="1015.2">
+    <tspan x="1116" y="1015.2">document</tspan>
+  </text>
+  <use width="720" height="450" href="#double-rectangle" y="526.8" x="1512" />
+  <text class="aurora-proof-label" x="1872" y="1015.2">
+    <tspan y="1015.2" x="1872">double-rectangle</tspan>
+  </text>
+  <use width="720" href="#ellipse" y="526.8" x="2268" height="450" />
+  <text y="1015.2" class="aurora-proof-label" x="2628">
+    <tspan y="1015.2" x="2628">ellipse</tspan>
+  </text>
+  <use width="720" height="450" x="0" y="1053.6" href="#folder" />
+  <text class="aurora-proof-label" y="1542" x="360">
+    <tspan y="1542" x="360">folder</tspan>
+  </text>
+  <use height="450" href="#hexagon" y="1053.6" width="720" x="756" />
+  <text x="1116" y="1542" class="aurora-proof-label">
+    <tspan y="1542" x="1116">hexagon</tspan>
+  </text>
+  <use height="450" y="1053.6" x="1512" width="720" href="#interface" />
+  <text x="1872" y="1542" class="aurora-proof-label">
+    <tspan x="1872" y="1542">interface</tspan>
+  </text>
+  <use x="2268" y="1053.6" href="#octagon" height="450" width="720" />
+  <text class="aurora-proof-label" x="2628" y="1542">
+    <tspan x="2628" y="1542">octagon</tspan>
+  </text>
+  <use x="0" href="#rectangle" y="1580.4" width="720" height="450" />
+  <text x="360" y="2068.8" class="aurora-proof-label">
+    <tspan y="2068.8" x="360">rectangle</tspan>
+  </text>
+  <use href="#rounded-rectangle" height="450" y="1580.4" width="720" x="756" />
+  <text class="aurora-proof-label" y="2068.8" x="1116">
+    <tspan y="2068.8" x="1116">rounded-rectangle</tspan>
+  </text>
+  <use height="450" width="720" href="#ruler" y="1580.4" x="1512" />
+  <text class="aurora-proof-label" x="1872" y="2068.8">
+    <tspan x="1872" y="2068.8">ruler</tspan>
+  </text>
+  <use y="1580.4" x="2268" href="#trapezoid" height="450" width="720" />
+  <text x="2628" class="aurora-proof-label" y="2068.8">
+    <tspan y="2068.8" x="2628">trapezoid</tspan>
+  </text>
+</svg>

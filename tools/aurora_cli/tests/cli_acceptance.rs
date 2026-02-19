@@ -1,6 +1,10 @@
 use std::fs;
+use std::io::Write;
 use std::path::{Path, PathBuf};
 use std::process::Command;
+
+use flate2::Compression;
+use flate2::write::GzEncoder;
 
 fn write_model_home_scaffold(model_home: &Path) {
 	let schemas = model_home.join("schemas");
@@ -35,11 +39,17 @@ fn write_model_home_scaffold(model_home: &Path) {
 		include_str!("../../../.github/agents/aurora/reference/Aurora.modelconfiguration.json"),
 	)
 	.expect("write modelconfiguration reference");
-	fs::write(
-		reference.join("SVGTemplate.svg"),
-		include_str!("../../../.github/agents/aurora/reference/SVGTemplate.svg"),
-	)
-	.expect("write svg template");
+	write_svg_template_svgz(&reference);
+}
+
+fn write_svg_template_svgz(reference_dir: &Path) {
+	let svg_template = include_str!("../../../assets/masters/SVGTemplate.svg");
+	let mut encoder = GzEncoder::new(Vec::new(), Compression::default());
+	encoder
+		.write_all(svg_template.as_bytes())
+		.expect("gzip svg template");
+	let data = encoder.finish().expect("finish gzip");
+	fs::write(reference_dir.join("SVGTemplate.svgz"), data).expect("write svgz template");
 }
 
 fn write_card(path: &Path, value: serde_json::Value) {

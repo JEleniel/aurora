@@ -1,6 +1,6 @@
 # Component (Library): COM-001 Aurora Shared Library
 
-Shared Rust library providing registry-aware parsing, validation helpers, and rendering primitives used by Aurora tools.
+Shared Rust library providing registry-aware parsing, validation helpers, and rendering primitives used by Aurora tools (CLI and Editor).
 
 
 
@@ -21,4 +21,4 @@ _No attributes defined._
 
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
-| _No entries_ |  |  |
+| 2026-02-18T13:55:00Z | Architect | change |

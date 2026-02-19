@@ -86,3 +86,9 @@ When working with more that three files, break the work up and work with as few 
 - User documentation is at `docs/` and starts at `docs/README.md` (if present).
 - Design documentation is at `docs/design/` (if present).
 - Working assets (styles, images) are at `assets/`.
+- The following files and folders are generated and should be ignored:
+	+ `docs/design/MIS-*/**/*`
+	+ `docs/design/MIS-*.md`
+	+ `docs/design/README-MIS-*`
+	+ `docs/design/aurora/**/Compact.json`
+- Files under `docs/design/**/*` excluding `docs/design/aurora/**.*` that you did not create were created by the user or another agent. They are part of the design, but _not_ part of the Aurora model(s).

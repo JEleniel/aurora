@@ -22,7 +22,8 @@ Aurora (Agent-Unified Representation of Requirements and Architecture) is a mach
 ## Key reference files
 
 - Model configuration registry: `.github/agents/aurora/reference/Aurora.modelconfiguration.json`
-- SVG template: `.github/agents/aurora/reference/SVGTemplate.svg`
+- SVG template (repo assets): `assets/masters/SVGTemplate.svg` (source) and `assets/templates/SVGTemplate.svgz` (generated)
+- SVG template (model homes at runtime): `<MODEL_HOME>/reference/SVGTemplate.svgz` (preferred) or `<MODEL_HOME>/reference/SVGTemplate.svg` (fallback)
 - CLI contract: `docs/Aurora_CLI_Contract.md`
 
-Last updated: 2026-02-18
+Last updated: 2026-02-19

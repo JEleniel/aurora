@@ -1,2 +1,4 @@
-**/*.svg merge=ours
-**/*.md merge=ours
+docs/design/MIS-*/**/* generated merge=ours
+docs/design/MIS-*.md generated merge=ours
+docs/design/README-MIS-*.md generated merge=ours
+docs/design/aurora/MIS-*/Compact.json generated merge=ours

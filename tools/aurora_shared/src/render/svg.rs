@@ -1165,8 +1165,7 @@ mod tests {
 	#[test]
 	fn render_includes_screen_background_and_no_text_stroke() {
 		let registry = crate::registry::CardRegistry::try_new().expect("registry");
-		let svg_template =
-			include_str!("../../../../.github/agents/aurora/reference/SVGTemplate.svg");
+		let svg_template = include_str!("../../../../assets/masters/SVGTemplate.svg");
 
 		let root = Card {
 			schema: None,

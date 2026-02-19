@@ -27,6 +27,7 @@ jsonschema = { workspace = true }
 thiserror = { workspace = true }
 
 [dev-dependencies]
+flate2 = { workspace = true }
 tempfile = "3.10"
 
 [lints]

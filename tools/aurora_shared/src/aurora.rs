@@ -9,9 +9,12 @@ mod aurora_tests;
 
 use serde_json::Value;
 use std::collections::{HashMap, HashSet};
+use std::io::Read;
 use std::path::{Component, Path, PathBuf};
 use thiserror::Error;
 use tracing::info;
+
+use flate2::read::GzDecoder;
 
 use crate::registry::RegistryError;
 use crate::registry::{CardRegistry, ModelConfiguration, ViewRegistry};
@@ -37,7 +40,11 @@ pub struct Aurora {
 	pub card_registry: CardRegistry,
 	/// Parsed view registry derived from model configuration
 	pub view_registry: ViewRegistry,
-	/// The SVG template loaded from `reference/SVGTemplate.svg`
+	/// The SVG template loaded from `reference/SVGTemplate.svgz` (preferred) or
+	/// `reference/SVGTemplate.svg` (fallback).
+	///
+	/// Note: This may be empty if the template is missing; rendering commands must
+	/// validate template availability before rendering views.
 	pub svg_template: String,
 	/// Warnings collected during initial load checks.
 	pub load_warnings: Vec<String>,
@@ -72,7 +79,8 @@ impl Aurora {
 		let modelconfiguration_schema_path =
 			schema_dir.join("Aurora.modelconfiguration.schema.json");
 		let modelconfiguration_path = reference_dir.join("Aurora.modelconfiguration.json");
-		let svg_template_path = reference_dir.join("SVGTemplate.svg");
+		let svg_template_svg_path = reference_dir.join("SVGTemplate.svg");
+		let svg_template_svgz_path = reference_dir.join("SVGTemplate.svgz");
 
 		for required in [
 			&card_schema_path,
@@ -80,7 +88,6 @@ impl Aurora {
 			&audit_schema_path,
 			&modelconfiguration_schema_path,
 			&modelconfiguration_path,
-			&svg_template_path,
 		] {
 			if !required.is_file() {
 				return Err(AuroraError::RequiredFileMissing(
@@ -88,6 +95,19 @@ impl Aurora {
 				));
 			}
 		}
+
+		let svg_template = match read_svg_template(&svg_template_svgz_path, &svg_template_svg_path)
+		{
+			Ok(svg) => svg,
+			Err(AuroraError::RequiredFileMissing(missing)) => {
+				load_warnings.push(format!(
+					"Missing SVG template: {}. View rendering requires reference/SVGTemplate.svgz (or SVGTemplate.svg).",
+					missing
+				));
+				String::new()
+			}
+			Err(e) => return Err(e),
+		};
 
 		let card_schema_data = std::fs::read_to_string(&card_schema_path)?;
 		let card_schema: Value = serde_json::from_str(&card_schema_data)?;
@@ -101,7 +121,6 @@ impl Aurora {
 			serde_json::from_str(&modelconfiguration_schema_data)?;
 		let modelconfiguration_data = std::fs::read_to_string(&modelconfiguration_path)?;
 		let modelconfiguration_json: Value = serde_json::from_str(&modelconfiguration_data)?;
-		let svg_template = std::fs::read_to_string(&svg_template_path)?;
 
 		Self::check_schema_reference(
 			&modelconfiguration_path,
@@ -122,21 +141,7 @@ impl Aurora {
 		let card_registry = CardRegistry::try_new_from_struct(model_configuration.clone())?;
 		let view_registry = ViewRegistry::try_new_from_struct(&model_configuration);
 
-		let svg_icon_ids = extract_svg_icon_ids(&svg_template);
-		for icon in &model_configuration.available_icons {
-			if !svg_icon_ids.contains(icon) {
-				return Err(AuroraError::ReferenceValidationFailed(vec![format!(
-					"reference/Aurora.modelconfiguration.json declares icon '{}' but reference/SVGTemplate.svg is missing group id 'i-{}'.",
-					icon, icon
-				)]));
-			}
-			if svg_icon_group_is_empty(&svg_template, icon) {
-				return Err(AuroraError::ReferenceValidationFailed(vec![format!(
-					"reference/Aurora.modelconfiguration.json declares icon '{}' but reference/SVGTemplate.svg has an empty group for id 'i-{}'.",
-					icon, icon
-				)]));
-			}
-		}
+		// SVG template validation is performed by rendering workflows.
 
 		let mut models: Vec<Model> = Vec::new();
 		for entry in std::fs::read_dir(&model_home)? {
@@ -179,6 +184,37 @@ impl Aurora {
 		aurora.load_warnings = aurora.check_registry();
 
 		Ok(aurora)
+	}
+
+	/// Validate that the loaded SVG template includes non-empty groups for all
+	/// configured icons.
+	pub fn validate_svg_template_icons(&self) -> Result<(), AuroraError> {
+		let svg_template = if self.svg_template.trim().is_empty() {
+			let reference_dir = self.model_home.join("reference");
+			let svg_path = reference_dir.join("SVGTemplate.svg");
+			let svgz_path = reference_dir.join("SVGTemplate.svgz");
+			read_svg_template(&svgz_path, &svg_path)?
+		} else {
+			self.svg_template.clone()
+		};
+
+		let svg_icon_ids = extract_svg_icon_ids(&svg_template);
+		for icon in &self.model_configuration.available_icons {
+			if !svg_icon_ids.contains(icon) {
+				return Err(AuroraError::ReferenceValidationFailed(vec![format!(
+					"reference/Aurora.modelconfiguration.json declares icon '{}' but reference/SVGTemplate.svgz (or SVGTemplate.svg) is missing group id 'i-{}'.",
+					icon, icon
+				)]));
+			}
+			if svg_icon_group_is_empty(&svg_template, icon) {
+				return Err(AuroraError::ReferenceValidationFailed(vec![format!(
+					"reference/Aurora.modelconfiguration.json declares icon '{}' but reference/SVGTemplate.svgz (or SVGTemplate.svg) has an empty group for id 'i-{}'.",
+					icon, icon
+				)]));
+			}
+		}
+
+		Ok(())
 	}
 
 	/// Check all models against the official registry and
@@ -461,6 +497,26 @@ impl Aurora {
 		warnings.dedup();
 		warnings
 	}
+}
+
+fn read_svg_template(svgz_path: &Path, svg_path: &Path) -> Result<String, AuroraError> {
+	if svgz_path.is_file() {
+		let file = std::fs::File::open(svgz_path)?;
+		let mut decoder = GzDecoder::new(file);
+		let mut out = String::new();
+		decoder.read_to_string(&mut out)?;
+		return Ok(out);
+	}
+
+	if svg_path.is_file() {
+		return Ok(std::fs::read_to_string(svg_path)?);
+	}
+
+	Err(AuroraError::RequiredFileMissing(format!(
+		"{} (or {})",
+		svgz_path.display(),
+		svg_path.display()
+	)))
 }
 
 #[derive(Debug, Error)]

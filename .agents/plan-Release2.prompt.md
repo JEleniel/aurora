@@ -2,6 +2,40 @@
 
 v2.0.0 release with comprehensive documentation, MIS-001 Architect session, cross-platform editor implementation, and in-code documentation for tools.
 
+## Phase 0: SVGZ support (template + tooling) (Complete)
+
+Phase 0 is complete. `svg_prep` and `aurora_cli` are feature complete and refined to work from
+Inkscape-authored masters under `assets/masters/`.
+
+- [x] Update svg_prep to generate `SVGTemplate.svgz`.
+- [x] Update aurora_shared to load and use `SVGTemplate.svgz`.
+- [x] Update svg_prep to import and consolidate `<style>` elements from icons into a single `<style>` element in the output template, to reduce file size and improve maintainability.
+- [x] Add a feature to svg_prep to strip Inkscape metadata and optimize SVG icon files for use in Aurora, to reduce file size and improve performance.
+    - The original file should remain untouched.
+    - The input folder is a CLI option (default: `assets/masters/icons/`).
+    - The output folder should be a CLI option with a default of `assets/optimized/icons/`.
+    - The proof file should be a CLI option with a default of `assets/proofs/Icons.svg`.
+    - The optimization process should include:
+        - Removing Inkscape-specific (`inkscape:*`) metadata and attributes that are not needed for rendering in Aurora.
+        - Remove sodipodi attributes (`sodipodi:*`).
+        - Remove comments and unnecessary whitespace to reduce file size.
+        - Remove xmlns:inkscape, xmlns:sodipodi, and xmlns:xlink
+        - Remove unnecessary id attributes that are not referenced by other elements in the file.
+        - Rename the remaining id attributes to the format used by the current svg_prep template, to ensure compatibility with aurora_shared's template loading and card rendering logic.
+        - Remove the "layer" elements.
+        - Place the remaining icon elements directly under the root `<svg>` element, to simplify the structure and ensure compatibility with aurora_shared's template parsing logic.
+        - Factor out common styles into a single `<style>` element to reduce file size and improve maintainability. Use class names based on the format used to rename id attributes.
+    - [x] Update svg_prep to perform the same optimizations on a set of shape files so that the shapes no longer have to be maintained by hand. Each shape should be defined as a separate SVG file in the input folder (unlike the current single file) and end up as a separate output file. Like the icons, a proof file should be generated that combines all the shapes into a single SVG for easy review and reference.
+    - The original file should remain untouched.
+    - The input folder is a CLI option (default: `assets/masters/shapes/`).
+    - The output folder should be a CLI option with a default of `assets/optimized/shapes/`.
+    - The proof file should be a CLI option with a default of `assets/proofs/Shapes.svg`.
+    * Additional optimizations for shapes:
+        - Remove "style" attributes from group elements.
+        - Remove "style" attributes from other elements with the exception of `fill-opacity:0;"` or `fill:#00000000;` which is used to define transparent elements of shapes. If one of these is present, the entire "style" attribute should be replaced with `style="fill-opacity:0;"` to ensure that the transparent parts of shapes are preserved while still removing any styles that would break the rendering.
+- [x] Update svg_prep to read the shapes from `assets/optimized/shapes/` instead of the hand-edited `assets/proofs/Shapes.svg` file.
+- [x] Update aurora_cli to use the svgz-based template flow.
+
 ## Phase 1: Foundation & Design
 
 - [ ] Architect works with user to design cross-platform editor.

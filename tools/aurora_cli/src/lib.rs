@@ -81,6 +81,8 @@ fn render_markdown(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeErro
 
 fn render_views(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeError> {
 	ensure_valid(aurora)?;
+	require_svg_template(aurora)?;
+	aurora.validate_svg_template_icons()?;
 	info!(
 		"Rendering views for {} model(s) into {}",
 		aurora.models.len(),
@@ -89,6 +91,23 @@ fn render_views(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeError> 
 	aurora_shared::render::render(aurora, output_dir)?;
 
 	Ok(())
+}
+
+fn require_svg_template(aurora: &Aurora) -> Result<(), RuntimeError> {
+	if !aurora.svg_template.trim().is_empty() {
+		return Ok(());
+	}
+
+	let reference_dir = aurora.model_home.join("reference");
+	let svgz_path = reference_dir.join("SVGTemplate.svgz");
+	let svg_path = reference_dir.join("SVGTemplate.svg");
+	Err(RuntimeError::Aurora(
+		aurora_shared::AuroraError::RequiredFileMissing(format!(
+			"{} (or {})",
+			svgz_path.display(),
+			svg_path.display()
+		)),
+	))
 }
 
 fn render_all(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeError> {

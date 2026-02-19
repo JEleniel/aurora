@@ -1,0 +1,1250 @@
+{
+  "$schema": "../schemas/Aurora.compact.schema.json",
+  "cards": [
+    {
+      "attributes": {},
+      "card_type": "Mission",
+      "id": "MIS-002",
+      "links": [
+        {
+          "relationship": "establishes",
+          "target": "DRI-900"
+        },
+        {
+          "relationship": "involves",
+          "target": "STK-900"
+        },
+        {
+          "relationship": "involves",
+          "target": "STK-901"
+        },
+        {
+          "relationship": "involves",
+          "target": "STK-902"
+        },
+        {
+          "relationship": "involves",
+          "target": "STK-903"
+        },
+        {
+          "relationship": "involves",
+          "target": "STK-904"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-900"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-901"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-902"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-903"
+        },
+        {
+          "relationship": "involves",
+          "target": "VND-900"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "SYS-900"
+        },
+        {
+          "relationship": "necessitates",
+          "target": "APP-900"
+        },
+        {
+          "relationship": "remediates",
+          "target": "THM-900"
+        }
+      ],
+      "name": "Example Canonical Coverage Model"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-900",
+      "links": [
+        {
+          "relationship": "includes",
+          "target": "ATV-900"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-901"
+        },
+        {
+          "relationship": "includes",
+          "target": "TRG-900"
+        },
+        {
+          "relationship": "branches on",
+          "target": "CON-900"
+        },
+        {
+          "relationship": "involves",
+          "target": "ACT-900"
+        }
+      ],
+      "name": "Run an end-to-end example flow"
+    },
+    {
+      "attributes": {},
+      "card_type": "Constraint",
+      "id": "CNS-900",
+      "links": [
+        {
+          "relationship": "limits",
+          "target": "REQ-900"
+        }
+      ],
+      "name": "Links must use canonical relationships"
+    },
+    {
+      "attributes": {},
+      "card_type": "Vendor",
+      "id": "VND-900",
+      "links": [
+        {
+          "relationship": "provides",
+          "target": "SYS-900"
+        },
+        {
+          "relationship": "provides",
+          "target": "APP-900"
+        }
+      ],
+      "name": "Example vendor"
+    },
+    {
+      "attributes": {},
+      "card_type": "Story",
+      "id": "STR-900",
+      "links": [
+        {
+          "relationship": "explains",
+          "target": "REQ-900"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-900"
+        }
+      ],
+      "name": "As a customer I need full coverage"
+    },
+    {
+      "attributes": {},
+      "card_type": "Story",
+      "id": "STR-904",
+      "links": [
+        {
+          "relationship": "explains",
+          "target": "REQ-900"
+        }
+      ],
+      "name": "As a regulator I need demonstrable controls"
+    },
+    {
+      "attributes": {},
+      "card_type": "Story",
+      "id": "STR-901",
+      "links": [
+        {
+          "relationship": "explains",
+          "target": "REQ-900"
+        }
+      ],
+      "name": "As an end user I need examples"
+    },
+    {
+      "attributes": {},
+      "card_type": "Story",
+      "id": "STR-903",
+      "links": [
+        {
+          "relationship": "explains",
+          "target": "REQ-900"
+        }
+      ],
+      "name": "As a manager I need traceability"
+    },
+    {
+      "attributes": {},
+      "card_type": "Story",
+      "id": "STR-902",
+      "links": [
+        {
+          "relationship": "explains",
+          "target": "REQ-900"
+        }
+      ],
+      "name": "As an operator I need renderable views"
+    },
+    {
+      "attributes": {},
+      "card_type": "Control",
+      "id": "CTL-900",
+      "links": [
+        {
+          "relationship": "mitigates",
+          "target": "RIS-900"
+        },
+        {
+          "relationship": "protects",
+          "target": "AST-900"
+        },
+        {
+          "relationship": "enforces",
+          "target": "CNS-900"
+        },
+        {
+          "relationship": "governs",
+          "target": "DST-900"
+        },
+        {
+          "relationship": "governs",
+          "target": "REQ-900"
+        },
+        {
+          "relationship": "obstructs",
+          "target": "THC-900"
+        }
+      ],
+      "name": "Example control"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Insider",
+      "card_type": "Adversary",
+      "id": "ADV-900",
+      "links": [],
+      "name": "Insider adversary"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Outsider",
+      "card_type": "Adversary",
+      "id": "ADV-901",
+      "links": [],
+      "name": "Outsider adversary"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Organized Crime",
+      "card_type": "Adversary",
+      "id": "ADV-904",
+      "links": [],
+      "name": "Organized crime adversary"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Nation State",
+      "card_type": "Adversary",
+      "id": "ADV-905",
+      "links": [],
+      "name": "Nation state adversary"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Hacktivist",
+      "card_type": "Adversary",
+      "id": "ADV-903",
+      "links": [],
+      "name": "Hacktivist adversary"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Script Kiddie",
+      "card_type": "Adversary",
+      "id": "ADV-902",
+      "links": [],
+      "name": "Script kiddie adversary"
+    },
+    {
+      "attributes": {},
+      "card_type": "Event",
+      "id": "EVT-900",
+      "links": [
+        {
+          "relationship": "transitions to",
+          "target": "STA-901"
+        },
+        {
+          "relationship": "emits",
+          "target": "EVT-901"
+        },
+        {
+          "relationship": "triggers",
+          "target": "PRD-900"
+        },
+        {
+          "relationship": "carries",
+          "target": "ART-904"
+        }
+      ],
+      "name": "Example event"
+    },
+    {
+      "attributes": {},
+      "card_type": "Event",
+      "id": "EVT-901",
+      "links": [],
+      "name": "Downstream event"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "User",
+      "card_type": "Actor",
+      "id": "ACT-900",
+      "links": [
+        {
+          "relationship": "performs",
+          "target": "ATV-900"
+        }
+      ],
+      "name": "Example user"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "External System",
+      "card_type": "Actor",
+      "id": "ACT-902",
+      "links": [
+        {
+          "relationship": "performs",
+          "target": "ATV-900"
+        }
+      ],
+      "name": "Example external system"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Regulator",
+      "card_type": "Actor",
+      "id": "ACT-903",
+      "links": [
+        {
+          "relationship": "performs",
+          "target": "ATV-900"
+        }
+      ],
+      "name": "Example regulator actor"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Admin",
+      "card_type": "Actor",
+      "id": "ACT-901",
+      "links": [
+        {
+          "relationship": "performs",
+          "target": "ATV-900"
+        }
+      ],
+      "name": "Example admin"
+    },
+    {
+      "attributes": {},
+      "card_type": "Risk",
+      "id": "RIS-900",
+      "links": [],
+      "name": "Example risk"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Hardware",
+      "card_type": "Node",
+      "id": "NOD-902",
+      "links": [],
+      "name": "Example hardware"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Container",
+      "card_type": "Node",
+      "id": "NOD-900",
+      "links": [],
+      "name": "Example container"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Virtual Machine",
+      "card_type": "Node",
+      "id": "NOD-901",
+      "links": [],
+      "name": "Example virtual machine"
+    },
+    {
+      "attributes": {},
+      "card_type": "Application",
+      "id": "APP-900",
+      "links": [
+        {
+          "relationship": "comprises",
+          "target": "COM-900"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-901"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-902"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-903"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-904"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-905"
+        },
+        {
+          "relationship": "deploys to",
+          "target": "DEP-900"
+        }
+      ],
+      "name": "Example application"
+    },
+    {
+      "attributes": {},
+      "card_type": "Feature",
+      "id": "FEA-900",
+      "links": [
+        {
+          "relationship": "realizes",
+          "target": "CAP-900"
+        },
+        {
+          "relationship": "implies",
+          "target": "CNS-900"
+        }
+      ],
+      "name": "Canonical coverage is visible"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Event Log",
+      "card_type": "Data Store",
+      "id": "DST-902",
+      "links": [
+        {
+          "relationship": "runs on",
+          "target": "NOD-901"
+        }
+      ],
+      "name": "Event log store"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Key-Value",
+      "card_type": "Data Store",
+      "id": "DST-903",
+      "links": [
+        {
+          "relationship": "runs on",
+          "target": "NOD-901"
+        }
+      ],
+      "name": "Key-value store"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Object Store",
+      "card_type": "Data Store",
+      "id": "DST-901",
+      "links": [
+        {
+          "relationship": "runs on",
+          "target": "NOD-901"
+        }
+      ],
+      "name": "Object store"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Graph",
+      "card_type": "Data Store",
+      "id": "DST-904",
+      "links": [
+        {
+          "relationship": "runs on",
+          "target": "NOD-901"
+        }
+      ],
+      "name": "Graph store"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Relational",
+      "card_type": "Data Store",
+      "id": "DST-900",
+      "links": [
+        {
+          "relationship": "retrieves",
+          "target": "ART-905"
+        },
+        {
+          "relationship": "runs on",
+          "target": "NOD-901"
+        }
+      ],
+      "name": "Relational store"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Report",
+      "card_type": "Artifact",
+      "id": "ART-905",
+      "links": [
+        {
+          "relationship": "persists to",
+          "target": "DST-900"
+        }
+      ],
+      "name": "Example report"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Code",
+      "card_type": "Artifact",
+      "id": "ART-903",
+      "links": [
+        {
+          "relationship": "is input into",
+          "target": "COM-900"
+        }
+      ],
+      "name": "Example code"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Model",
+      "card_type": "Artifact",
+      "id": "ART-904",
+      "links": [
+        {
+          "relationship": "is",
+          "target": "AST-900"
+        }
+      ],
+      "name": "Example model"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Diagram",
+      "card_type": "Artifact",
+      "id": "ART-902",
+      "links": [
+        {
+          "relationship": "goes into",
+          "target": "ATV-900"
+        }
+      ],
+      "name": "Example diagram"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-901",
+      "links": [
+        {
+          "relationship": "derives from",
+          "target": "ART-900"
+        }
+      ],
+      "name": "Sample data"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Document",
+      "card_type": "Artifact",
+      "id": "ART-900",
+      "links": [
+        {
+          "relationship": "is input into",
+          "target": "COM-900"
+        }
+      ],
+      "name": "Architecture document"
+    },
+    {
+      "attributes": {},
+      "card_type": "Deployment",
+      "id": "DEP-900",
+      "links": [
+        {
+          "relationship": "includes",
+          "target": "NOD-900"
+        },
+        {
+          "relationship": "includes",
+          "target": "NOD-901"
+        },
+        {
+          "relationship": "includes",
+          "target": "NOD-902"
+        }
+      ],
+      "name": "Example deployment"
+    },
+    {
+      "attributes": {},
+      "card_type": "Condition",
+      "id": "CON-900",
+      "links": [
+        {
+          "relationship": "branches to",
+          "target": "ATV-901"
+        },
+        {
+          "relationship": "branches to",
+          "target": "TRG-901"
+        },
+        {
+          "relationship": "branches to",
+          "target": "CON-901"
+        }
+      ],
+      "name": "Example condition"
+    },
+    {
+      "attributes": {},
+      "card_type": "Condition",
+      "id": "CON-901",
+      "links": [],
+      "name": "Downstream condition"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-900",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-900"
+        },
+        {
+          "relationship": "has",
+          "target": "ADR-900"
+        },
+        {
+          "relationship": "imposes",
+          "target": "CNS-900"
+        }
+      ],
+      "name": "Exercise all card types and relationships"
+    },
+    {
+      "attributes": {},
+      "card_type": "System",
+      "id": "SYS-900",
+      "links": [
+        {
+          "relationship": "integrates",
+          "target": "APP-900"
+        }
+      ],
+      "name": "Example system"
+    },
+    {
+      "attributes": {},
+      "card_type": "State",
+      "id": "STA-901",
+      "links": [
+        {
+          "relationship": "handles",
+          "target": "EVT-901"
+        }
+      ],
+      "name": "End state"
+    },
+    {
+      "attributes": {},
+      "card_type": "State",
+      "id": "STA-900",
+      "links": [
+        {
+          "relationship": "transitions to",
+          "target": "STA-901"
+        },
+        {
+          "relationship": "evaluates",
+          "target": "PRD-900"
+        },
+        {
+          "relationship": "handles",
+          "target": "EVT-900"
+        }
+      ],
+      "name": "Start state"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Class",
+      "card_type": "Component",
+      "id": "COM-905",
+      "links": [],
+      "name": "Example class component"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Module",
+      "card_type": "Component",
+      "id": "COM-903",
+      "links": [],
+      "name": "Example module component"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Subsystem",
+      "card_type": "Component",
+      "id": "COM-904",
+      "links": [],
+      "name": "Example subsystem component"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Library",
+      "card_type": "Component",
+      "id": "COM-901",
+      "links": [],
+      "name": "Example library component"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "API",
+      "card_type": "Component",
+      "id": "COM-900",
+      "links": [
+        {
+          "relationship": "composes",
+          "target": "COM-901"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-900"
+        },
+        {
+          "relationship": "exposes",
+          "target": "INT-900"
+        },
+        {
+          "relationship": "implements",
+          "target": "TES-900"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-900"
+        },
+        {
+          "relationship": "includes",
+          "target": "DSR-900"
+        },
+        {
+          "relationship": "includes",
+          "target": "DSR-901"
+        },
+        {
+          "relationship": "includes",
+          "target": "DSR-902"
+        },
+        {
+          "relationship": "includes",
+          "target": "DSR-903"
+        },
+        {
+          "relationship": "stores in",
+          "target": "DST-900"
+        },
+        {
+          "relationship": "stores in",
+          "target": "DST-901"
+        },
+        {
+          "relationship": "stores in",
+          "target": "DST-902"
+        },
+        {
+          "relationship": "stores in",
+          "target": "DST-903"
+        },
+        {
+          "relationship": "stores in",
+          "target": "DST-904"
+        },
+        {
+          "relationship": "executes",
+          "target": "STM-900"
+        },
+        {
+          "relationship": "runs on",
+          "target": "NOD-900"
+        }
+      ],
+      "name": "Example API component"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Service",
+      "card_type": "Component",
+      "id": "COM-902",
+      "links": [],
+      "name": "Example service component"
+    },
+    {
+      "attributes": {},
+      "card_type": "Threat Capability",
+      "id": "THC-900",
+      "links": [],
+      "name": "Example threat capability"
+    },
+    {
+      "attributes": {},
+      "card_type": "Threat Diamond",
+      "id": "THD-900",
+      "links": [
+        {
+          "relationship": "threatens",
+          "target": "AST-900"
+        },
+        {
+          "relationship": "involves",
+          "target": "ADV-900"
+        },
+        {
+          "relationship": "involves",
+          "target": "ADV-901"
+        },
+        {
+          "relationship": "involves",
+          "target": "ADV-902"
+        },
+        {
+          "relationship": "involves",
+          "target": "ADV-903"
+        },
+        {
+          "relationship": "involves",
+          "target": "ADV-904"
+        },
+        {
+          "relationship": "involves",
+          "target": "ADV-905"
+        },
+        {
+          "relationship": "uses",
+          "target": "THC-900"
+        },
+        {
+          "relationship": "impacts",
+          "target": "VIC-900"
+        },
+        {
+          "relationship": "impacts",
+          "target": "VIC-901"
+        },
+        {
+          "relationship": "impacts",
+          "target": "VIC-902"
+        },
+        {
+          "relationship": "impacts",
+          "target": "VIC-903"
+        },
+        {
+          "relationship": "creates",
+          "target": "RIS-900"
+        }
+      ],
+      "name": "Example threat diamond"
+    },
+    {
+      "attributes": {},
+      "card_type": "Resource Owner",
+      "id": "ROW-900",
+      "links": [
+        {
+          "relationship": "owns",
+          "target": "AST-900"
+        }
+      ],
+      "name": "Example resource owner"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-900",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-900"
+        }
+      ],
+      "name": "Generate example views"
+    },
+    {
+      "attributes": {},
+      "card_type": "Threat Model",
+      "id": "THM-900",
+      "links": [
+        {
+          "relationship": "includes",
+          "target": "THD-900"
+        },
+        {
+          "relationship": "includes",
+          "target": "ROW-900"
+        },
+        {
+          "relationship": "recommends",
+          "target": "CTL-900"
+        }
+      ],
+      "name": "Example threat model"
+    },
+    {
+      "attributes": {},
+      "card_type": "State Machine",
+      "id": "STM-900",
+      "links": [
+        {
+          "relationship": "has",
+          "target": "STA-900"
+        },
+        {
+          "relationship": "has",
+          "target": "STA-901"
+        }
+      ],
+      "name": "Example state machine"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-900",
+      "links": [
+        {
+          "relationship": "leads to",
+          "target": "ATV-901"
+        },
+        {
+          "relationship": "receives",
+          "target": "TRG-900"
+        },
+        {
+          "relationship": "triggers",
+          "target": "CON-900"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-900"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-902"
+        }
+      ],
+      "name": "Perform example activity"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-901",
+      "links": [],
+      "name": "Complete example activity"
+    },
+    {
+      "attributes": {},
+      "card_type": "Driver",
+      "id": "DRI-900",
+      "links": [
+        {
+          "relationship": "drives",
+          "target": "REQ-900"
+        }
+      ],
+      "name": "Complete canonical coverage"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "End User",
+      "card_type": "Stakeholder",
+      "id": "STK-901",
+      "links": [
+        {
+          "relationship": "desires",
+          "target": "STR-901"
+        }
+      ],
+      "name": "Example end user"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Regulator",
+      "card_type": "Stakeholder",
+      "id": "STK-904",
+      "links": [
+        {
+          "relationship": "desires",
+          "target": "STR-904"
+        }
+      ],
+      "name": "Example regulator stakeholder"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Customer",
+      "card_type": "Stakeholder",
+      "id": "STK-900",
+      "links": [
+        {
+          "relationship": "desires",
+          "target": "STR-900"
+        }
+      ],
+      "name": "Example customer"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Manager",
+      "card_type": "Stakeholder",
+      "id": "STK-903",
+      "links": [
+        {
+          "relationship": "desires",
+          "target": "STR-903"
+        }
+      ],
+      "name": "Example manager"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Operator",
+      "card_type": "Stakeholder",
+      "id": "STK-902",
+      "links": [
+        {
+          "relationship": "desires",
+          "target": "STR-902"
+        }
+      ],
+      "name": "Example operator"
+    },
+    {
+      "attributes": {},
+      "card_type": "Test",
+      "id": "TES-900",
+      "links": [
+        {
+          "relationship": "verifies",
+          "target": "FEA-900"
+        }
+      ],
+      "name": "Rendered views contain all relationships"
+    },
+    {
+      "attributes": {},
+      "card_type": "Asset",
+      "id": "AST-900",
+      "links": [],
+      "name": "Example asset"
+    },
+    {
+      "attributes": {},
+      "card_type": "Trigger",
+      "id": "TRG-900",
+      "links": [
+        {
+          "relationship": "initiates",
+          "target": "ATV-900"
+        },
+        {
+          "relationship": "initiates",
+          "target": "CON-900"
+        },
+        {
+          "relationship": "triggers",
+          "target": "TRG-901"
+        }
+      ],
+      "name": "Example trigger"
+    },
+    {
+      "attributes": {},
+      "card_type": "Trigger",
+      "id": "TRG-901",
+      "links": [],
+      "name": "Downstream trigger"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Upstream Feed",
+      "card_type": "Data Source",
+      "id": "DSR-901",
+      "links": [
+        {
+          "relationship": "provides",
+          "target": "ART-903"
+        },
+        {
+          "relationship": "runs on",
+          "target": "NOD-902"
+        }
+      ],
+      "name": "Upstream feed source"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Third-Party API",
+      "card_type": "Data Source",
+      "id": "DSR-903",
+      "links": [
+        {
+          "relationship": "provides",
+          "target": "ART-905"
+        },
+        {
+          "relationship": "runs on",
+          "target": "NOD-902"
+        }
+      ],
+      "name": "Third-party API source"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Sensor",
+      "card_type": "Data Source",
+      "id": "DSR-902",
+      "links": [
+        {
+          "relationship": "provides",
+          "target": "ART-902"
+        },
+        {
+          "relationship": "runs on",
+          "target": "NOD-902"
+        }
+      ],
+      "name": "Sensor source"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "External System",
+      "card_type": "Data Source",
+      "id": "DSR-900",
+      "links": [
+        {
+          "relationship": "provides",
+          "target": "ART-901"
+        },
+        {
+          "relationship": "runs on",
+          "target": "NOD-902"
+        }
+      ],
+      "name": "External system source"
+    },
+    {
+      "attributes": {},
+      "card_type": "ADR",
+      "id": "ADR-900",
+      "links": [],
+      "name": "Use registry-defined vocabulary"
+    },
+    {
+      "attributes": {},
+      "card_type": "Predicate",
+      "id": "PRD-901",
+      "links": [
+        {
+          "relationship": "branches to",
+          "target": "STA-900"
+        },
+        {
+          "relationship": "emits",
+          "target": "EVT-900"
+        }
+      ],
+      "name": "Downstream predicate"
+    },
+    {
+      "attributes": {},
+      "card_type": "Predicate",
+      "id": "PRD-900",
+      "links": [
+        {
+          "relationship": "branches to",
+          "target": "STA-901"
+        },
+        {
+          "relationship": "branches to",
+          "target": "PRD-901"
+        },
+        {
+          "relationship": "emits",
+          "target": "EVT-901"
+        }
+      ],
+      "name": "Example predicate"
+    },
+    {
+      "attributes": {},
+      "card_type": "Interface",
+      "id": "INT-900",
+      "links": [
+        {
+          "relationship": "accepts",
+          "target": "ART-901"
+        },
+        {
+          "relationship": "returns",
+          "target": "ART-903"
+        }
+      ],
+      "name": "Example interface"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "User",
+      "card_type": "Victim",
+      "id": "VIC-900",
+      "links": [],
+      "name": "User victim"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Organization",
+      "card_type": "Victim",
+      "id": "VIC-901",
+      "links": [],
+      "name": "Organization victim"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Victim",
+      "id": "VIC-903",
+      "links": [],
+      "name": "Data victim"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "System",
+      "card_type": "Victim",
+      "id": "VIC-902",
+      "links": [],
+      "name": "System victim"
+    }
+  ]
+}
