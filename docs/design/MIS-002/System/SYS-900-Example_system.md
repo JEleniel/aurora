@@ -2,8 +2,6 @@
 
 A top-level system used to exercise System->Application integration.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - integrates [APP-900](../Application/APP-900-Example_application.md)
-
 
 ## Version
 

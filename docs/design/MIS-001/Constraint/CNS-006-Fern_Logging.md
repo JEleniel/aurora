@@ -2,8 +2,6 @@
 
 The standalone editor MUST support logging with fern integration.
 
-
-
 ## Attributes
 
 _No attributes defined._

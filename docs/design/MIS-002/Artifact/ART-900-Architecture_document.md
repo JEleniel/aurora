@@ -2,8 +2,6 @@
 
 Artifact subtype used for coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - is input into [COM-900](../Component/COM-900-Example_API_component.md)
-
 
 ## Version
 

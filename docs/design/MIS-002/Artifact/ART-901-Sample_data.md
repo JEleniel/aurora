@@ -2,8 +2,6 @@
 
 Artifact subtype used for coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - derives from [ART-900](ART-900-Architecture_document.md)
-
 
 ## Version
 

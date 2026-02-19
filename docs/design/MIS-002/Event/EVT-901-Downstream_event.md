@@ -2,8 +2,6 @@
 
 Second event used to exercise event emission chains.
 
-
-
 ## Attributes
 
 _No attributes defined._

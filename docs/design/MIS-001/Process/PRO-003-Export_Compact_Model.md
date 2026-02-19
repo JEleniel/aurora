@@ -2,8 +2,6 @@
 
 Export a compact representation of the model cards and links into a single JSON file.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - includes [ATV-003](../Activity/ATV-003-Write_Compact_Export.md)
-
 
 ## Version
 

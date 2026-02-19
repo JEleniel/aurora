@@ -2,8 +2,6 @@
 
 Second condition used to demonstrate condition-to-condition branching.
 
-
-
 ## Attributes
 
 _No attributes defined._

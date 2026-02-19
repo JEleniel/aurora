@@ -2,8 +2,6 @@
 
 A ZIP-compressed archive of a model home used for backups and for pack/unpack workflows, preserving the model home folder structure.
 
-
-
 ## Attributes
 
 _No attributes defined._

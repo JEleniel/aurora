@@ -2,8 +2,6 @@
 
 Second activity used to demonstrate sequencing via 'leads to'.
 
-
-
 ## Attributes
 
 _No attributes defined._

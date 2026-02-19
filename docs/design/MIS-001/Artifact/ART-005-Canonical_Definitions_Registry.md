@@ -2,8 +2,6 @@
 
 The canonical registry JSON (Aurora.modelconfiguration.json) that defines card types, acronyms, allowed outgoing relationships, view definitions, and the available icon list used by tooling.
 
-
-
 ## Attributes
 
 _No attributes defined._

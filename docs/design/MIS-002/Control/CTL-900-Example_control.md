@@ -2,8 +2,6 @@
 
 Control used to exercise control/risk/constraint governance relationships.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -16,7 +14,6 @@ _No attributes defined._
 - governs [DST-900](../Data_Store/DST-900-Relational_store.md)
 - governs [REQ-900](../Requirement/REQ-900-Exercise_all_card_types_and_relationships.md)
 - obstructs [THC-900](../Threat_Capability/THC-900-Example_threat_capability.md)
-
 
 ## Version
 

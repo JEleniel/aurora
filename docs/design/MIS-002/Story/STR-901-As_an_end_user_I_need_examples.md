@@ -2,8 +2,6 @@
 
 As an end user I need a representative example model to understand the vocabulary and links.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - explains [REQ-900](../Requirement/REQ-900-Exercise_all_card_types_and_relationships.md)
-
 
 ## Version
 

@@ -2,8 +2,6 @@
 
 Example Aurora model that exercises every canonical card type, subtype, and relationship defined in the model configuration registry.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -24,7 +22,6 @@ _No attributes defined._
 - necessitates [SYS-900](MIS-002/System/SYS-900-Example_system.md)
 - necessitates [APP-900](MIS-002/Application/APP-900-Example_application.md)
 - remediates [THM-900](MIS-002/Threat_Model/THM-900-Example_threat_model.md)
-
 
 ## Version
 

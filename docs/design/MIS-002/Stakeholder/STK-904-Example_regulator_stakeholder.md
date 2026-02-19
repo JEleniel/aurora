@@ -2,8 +2,6 @@
 
 Representative regulator stakeholder for coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - desires [STR-904](../Story/STR-904-As_a_regulator_I_need_demonstrable_controls.md)
-
 
 ## Version
 

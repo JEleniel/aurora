@@ -22,7 +22,7 @@ Each model is identified by its `Mission` ID.
 
 1. Create or locate the model home folder: `aurora/` (located at `docs/design/aurora/` by default).
 2. Ensure `aurora/schemas/` contains `Aurora.audit.schema.json`, `Aurora.card.schema.json`, `Aurora.compact.schema.json`, and `Aurora.modelconfiguration.schema.json`. If missing, copy them from `.github/agents/aurora/schemas/`. Do not copy the Markdown files.
-3. Ensure `aurora/reference/` contains `Aurora.modelconfiguration.json` and `SVGTemplate.svg`. If missing, copy them from `.github/agents/aurora/reference/`. Do not copy the Markdown files.
+3. Ensure `aurora/reference/` contains `Aurora.modelconfiguration.json` and `SVGTemplate.svgz`. If missing, copy them from `.github/agents/aurora/reference/`. Do not copy the Markdown files.
 4. Create the `Mission` card in the model home (`aurora/`).
 5. Add other cards under `{mission id}/{card type folder}/` and link them from existing cards.
 6. Append to `{mission id}/AuditLog.ndjson` for every change event. One entry may include changes to multiple cards.

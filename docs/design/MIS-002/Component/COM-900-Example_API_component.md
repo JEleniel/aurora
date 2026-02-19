@@ -2,8 +2,6 @@
 
 Primary component that exercises the full Component relationship set.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -26,7 +24,6 @@ _No attributes defined._
 - stores in [DST-904](../Data_Store/DST-904-Graph_store.md)
 - executes [STM-900](../State_Machine/STM-900-Example_state_machine.md)
 - runs on [NOD-900](../Node/NOD-900-Example_container.md)
-
 
 ## Version
 

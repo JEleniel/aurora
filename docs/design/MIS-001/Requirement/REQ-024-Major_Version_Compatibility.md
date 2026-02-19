@@ -2,8 +2,6 @@
 
 Each model home MUST include a complete set of schema and configuration files snapshotted at model creation time; incompatible models MUST be detected via schema validation.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -12,7 +10,6 @@ _No attributes defined._
 
 - requires [CAP-006](../Capability/CAP-006-Load_Model_Homes.md)
 - requires [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)
-
 
 ## Version
 

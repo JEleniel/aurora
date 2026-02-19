@@ -2,8 +2,6 @@
 
 Select roots/included card types per view definitions, traverse the subgraph, and render the view into diagram artifacts.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -12,7 +10,6 @@ _No attributes defined._
 
 - uses [COM-001](../Component/COM-001-Aurora_Shared_Library.md)
 - produces [ART-002](../Artifact/ART-002-View_Diagram_Artifacts.md)
-
 
 ## Version
 

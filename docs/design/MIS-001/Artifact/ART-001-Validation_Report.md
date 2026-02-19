@@ -2,8 +2,6 @@
 
 Diagnostics output describing schema, registry, and invariant validation results for a model home.
 
-
-
 ## Attributes
 
 _No attributes defined._

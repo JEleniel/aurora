@@ -2,8 +2,6 @@
 
 Representative customer stakeholder for coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - desires [STR-900](../Story/STR-900-As_a_customer_I_need_full_coverage.md)
-
 
 ## Version
 

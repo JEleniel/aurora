@@ -2,8 +2,6 @@
 
 Representative operations stakeholder for coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - desires [STR-902](../Story/STR-902-As_an_operator_I_need_renderable_views.md)
-
 
 ## Version
 

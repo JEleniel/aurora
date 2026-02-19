@@ -2,8 +2,6 @@
 
 Risk created by a threat and mitigated by a control.
 
-
-
 ## Attributes
 
 _No attributes defined._

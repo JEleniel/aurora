@@ -2,8 +2,6 @@
 
 Provide interactive model authoring with immediate feedback and enforcement so invalid edits are prevented before they can persist to disk.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - realizes [CAP-007](../Capability/CAP-007-Edit_Models_Interactively.md)
-
 
 ## Version
 

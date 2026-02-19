@@ -2,8 +2,6 @@
 
 Provide an accessible and usable editor UI, including dark mode by default and adjustable typography.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - requires [PRO-009](../Process/PRO-009-Apply_Editor_Preferences.md)
-
 
 ## Version
 

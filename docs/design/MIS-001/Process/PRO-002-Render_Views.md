@@ -2,8 +2,6 @@
 
 Render view artifacts by selecting roots, traversing reachable subgraphs, and generating diagrams and related assets from the model.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - includes [ATV-002](../Activity/ATV-002-Render_View_Artifacts.md)
-
 
 ## Version
 

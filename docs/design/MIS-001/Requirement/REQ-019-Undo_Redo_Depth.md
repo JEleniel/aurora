@@ -2,8 +2,6 @@
 
 The editor SHOULD support undo/redo spanning 50 edits deep.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - requires [CAP-008](../Capability/CAP-008-Persist_And_Package_Models.md)
-
 
 ## Version
 

@@ -2,8 +2,6 @@
 
 The standalone editor UI MUST be implemented using Dioxus.
 
-
-
 ## Attributes
 
 _No attributes defined._

@@ -2,8 +2,6 @@
 
 Starting from the Mission, all links MUST traverse away from the Mission; every card must be reachable; and traversal must terminate in a leaf or a previously seen card (local loop).
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -12,7 +10,6 @@ _No attributes defined._
 
 - requires [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)
 - imposes [CNS-002](../Constraint/CNS-002-No_Orphan_Cards.md)
-
 
 ## Version
 

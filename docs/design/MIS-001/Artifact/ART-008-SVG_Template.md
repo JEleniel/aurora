@@ -2,8 +2,6 @@
 
 The SVGTemplate.svg reference template used by the renderer to wrap generated drawings and provide shared defs and styling.
 
-
-
 ## Attributes
 
 _No attributes defined._

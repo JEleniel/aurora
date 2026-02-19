@@ -2,8 +2,6 @@
 
 An activity that exercises the full Activity relationship set.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -15,7 +13,6 @@ _No attributes defined._
 - triggers [CON-900](../Condition/CON-900-Example_condition.md)
 - uses [COM-900](../Component/COM-900-Example_API_component.md)
 - produces [ART-902](../Artifact/ART-902-Example_diagram.md)
-
 
 ## Version
 

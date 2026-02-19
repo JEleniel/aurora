@@ -2,8 +2,6 @@
 
 Load cards from the model home and validate them against schemas, canonical registries, and graph invariants.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -12,7 +10,6 @@ _No attributes defined._
 
 - uses [COM-001](../Component/COM-001-Aurora_Shared_Library.md)
 - produces [ART-001](../Artifact/ART-001-Validation_Report.md)
-
 
 ## Version
 

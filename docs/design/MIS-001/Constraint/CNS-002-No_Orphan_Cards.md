@@ -2,8 +2,6 @@
 
 Every non-Mission card must have one or more incoming links and be reachable from the Mission card.
 
-
-
 ## Attributes
 
 _No attributes defined._

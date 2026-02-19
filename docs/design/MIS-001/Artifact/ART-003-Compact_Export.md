@@ -2,8 +2,6 @@
 
 The compact JSON export of the model cards and links for transport and agent consumption.
 
-
-
 ## Attributes
 
 _No attributes defined._

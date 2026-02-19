@@ -2,8 +2,6 @@
 
 Enable a fast, responsive, and safe desktop authoring experience so humans can edit models without breaking invariants, while tools and agents can still trust the model as deterministic and valid.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -25,7 +23,6 @@ _No attributes defined._
 - drives [REQ-023](../Requirement/REQ-023-Accessibility_And_Dark_Mode.md)
 - drives [REQ-024](../Requirement/REQ-024-Major_Version_Compatibility.md)
 - drives [REQ-025](../Requirement/REQ-025-Single_Instance_Model_Semantics.md)
-
 
 ## Version
 

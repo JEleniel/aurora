@@ -2,8 +2,6 @@
 
 A human author (often the architect) who edits Aurora cards and keeps registries, references, and audit logs current.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -15,7 +13,6 @@ _No attributes defined._
 - performs [ATV-006](../Activity/ATV-006-Edit_View_Definitions_Registry.md)
 - performs [ATV-007](../Activity/ATV-007-Maintain_Aurora_Schemas.md)
 - performs [ATV-008](../Activity/ATV-008-Prepare_SVG_References.md)
-
 
 ## Version
 

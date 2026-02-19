@@ -2,8 +2,6 @@
 
 Representative regulator actor for coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - performs [ATV-900](../Activity/ATV-900-Perform_example_activity.md)
-
 
 ## Version
 

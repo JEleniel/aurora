@@ -2,8 +2,6 @@
 
 A verification procedure that checks the example model exercises every canonical relationship label.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - verifies [FEA-900](../Feature/FEA-900-Canonical_coverage_is_visible.md)
-
 
 ## Version
 

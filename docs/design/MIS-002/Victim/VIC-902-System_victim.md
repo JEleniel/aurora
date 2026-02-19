@@ -2,8 +2,6 @@
 
 Victim subtype used for coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._

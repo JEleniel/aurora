@@ -2,8 +2,6 @@
 
 Threat model used to exercise the full canonical security vocabulary.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -13,7 +11,6 @@ _No attributes defined._
 - includes [THD-900](../Threat_Diamond/THD-900-Example_threat_diamond.md)
 - includes [ROW-900](../Resource_Owner/ROW-900-Example_resource_owner.md)
 - recommends [CTL-900](../Control/CTL-900-Example_control.md)
-
 
 ## Version
 

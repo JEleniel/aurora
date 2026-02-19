@@ -2,8 +2,6 @@
 
 Append one line to the mission `AuditLog.ndjson` file for each change event, allowing multiple changed cards and related link changes in one entry.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - produces [ART-004](../Artifact/ART-004-Mission_Audit_Log.md)
-
 
 ## Version
 

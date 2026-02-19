@@ -2,8 +2,6 @@
 
 The Mission card serves as the root of the model graph and must only have outgoing links.
 
-
-
 ## Attributes
 
 _No attributes defined._

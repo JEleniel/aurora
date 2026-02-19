@@ -2,8 +2,6 @@
 
 Data source subtype used for provenance coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -12,7 +10,6 @@ _No attributes defined._
 
 - provides [ART-905](../Artifact/ART-905-Example_report.md)
 - runs on [NOD-902](../Node/NOD-902-Example_hardware.md)
-
 
 ## Version
 

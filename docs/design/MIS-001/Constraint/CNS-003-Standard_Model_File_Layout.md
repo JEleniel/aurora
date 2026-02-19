@@ -2,8 +2,6 @@
 
 Models must use the standard Aurora folder layout: Mission card at model home, mission-scoped cards under `<MISSION_ID>/<Card Type>/`, and an append-only audit log at `<MISSION_ID>/AuditLog.ndjson`.
 
-
-
 ## Attributes
 
 _No attributes defined._

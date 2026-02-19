@@ -2,8 +2,6 @@
 
 Create a ZIP backup of the model home at load time, stored per conventions defined in Aurora_Specs.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -12,7 +10,6 @@ _No attributes defined._
 
 - uses [COM-007](../Component/COM-007-Aurora_Editor_Engine.md)
 - produces [ART-010](../Artifact/ART-010-Model_Archive_Zip.md)
-
 
 ## Version
 

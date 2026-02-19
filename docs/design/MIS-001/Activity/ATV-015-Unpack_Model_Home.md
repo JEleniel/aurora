@@ -2,8 +2,6 @@
 
 Unpack a ZIP-compressed model home into the standard folder structure used by Aurora.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - uses [COM-007](../Component/COM-007-Aurora_Editor_Engine.md)
-
 
 ## Version
 

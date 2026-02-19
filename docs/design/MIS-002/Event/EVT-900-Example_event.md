@@ -2,8 +2,6 @@
 
 Event that demonstrates transitions, emission, predicate triggering, and artifact carrying.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -14,7 +12,6 @@ _No attributes defined._
 - emits [EVT-901](EVT-901-Downstream_event.md)
 - triggers [PRD-900](../Predicate/PRD-900-Example_predicate.md)
 - carries [ART-904](../Artifact/ART-904-Example_model.md)
-
 
 ## Version
 

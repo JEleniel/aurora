@@ -2,8 +2,6 @@
 
 Generate view artifacts from the model by selecting roots and included card types, traversing reachable subgraphs, and rendering diagrams without changing the underlying model.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - requires [PRO-002](../Process/PRO-002-Render_Views.md)
-
 
 ## Version
 

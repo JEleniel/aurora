@@ -2,8 +2,6 @@
 
 Maintain the canonical registries and schemas that define the Aurora vocabulary and view semantics.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -14,7 +12,6 @@ _No attributes defined._
 - includes [ATV-006](../Activity/ATV-006-Edit_View_Definitions_Registry.md)
 - includes [ATV-007](../Activity/ATV-007-Maintain_Aurora_Schemas.md)
 - includes [ATV-008](../Activity/ATV-008-Prepare_SVG_References.md)
-
 
 ## Version
 

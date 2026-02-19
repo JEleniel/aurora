@@ -2,8 +2,6 @@
 
 Logical container runtime used for coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._

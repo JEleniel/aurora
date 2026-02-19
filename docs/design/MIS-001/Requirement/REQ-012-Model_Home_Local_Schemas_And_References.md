@@ -2,8 +2,6 @@
 
 The editor MUST load and use the schemas and reference files included with the selected model home, allowing the editor to operate across multiple Aurora versions and customizations.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - requires [CAP-006](../Capability/CAP-006-Load_Model_Homes.md)
-
 
 ## Version
 

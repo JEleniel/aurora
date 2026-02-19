@@ -2,8 +2,6 @@
 
 As a manager I need the example to demonstrate traceability from mission to implementation and verification.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - explains [REQ-900](../Requirement/REQ-900-Exercise_all_card_types_and_relationships.md)
-
 
 ## Version
 

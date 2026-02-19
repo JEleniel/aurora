@@ -2,8 +2,6 @@
 
 The canonical registry JSON that defines views (roots, included card types, and view descriptions).
 
-
-
 ## Attributes
 
 _No attributes defined._

@@ -2,8 +2,6 @@
 
 Persist changes safely (autosave or manual save), provide undo/redo, and support packing/unpacking model homes as ZIP archives.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - realizes [CAP-008](../Capability/CAP-008-Persist_And_Package_Models.md)
-
 
 ## Version
 

@@ -2,8 +2,6 @@
 
 A valuable asset used to exercise security relationships.
 
-
-
 ## Attributes
 
 _No attributes defined._

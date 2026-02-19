@@ -2,8 +2,6 @@
 
 The aurora_editor desktop executable providing an interactive UI and background engine for safe, validated model authoring.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -18,7 +16,6 @@ _No attributes defined._
 - implements [FEA-009](../Feature/FEA-009-Model_Persistence_And_Recovery.md)
 - implements [FEA-010](../Feature/FEA-010-Accessible_Themed_UI.md)
 - implements [FEA-011](../Feature/FEA-011-Editor_Logging.md)
-
 
 ## Version
 

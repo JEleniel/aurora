@@ -2,8 +2,6 @@
 
 The svg_prep executable used to generate/update Aurora SVG reference assets (Icons.svg and SVGTemplate.svg defs) and synchronize the icon list in Aurora.modelconfiguration.json.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -14,7 +12,6 @@ _No attributes defined._
 - produces [ART-009](../Artifact/ART-009-Icons_Reference_Sheet.md)
 - produces [ART-008](../Artifact/ART-008-SVG_Template.md)
 - produces [ART-005](../Artifact/ART-005-Canonical_Definitions_Registry.md)
-
 
 ## Version
 

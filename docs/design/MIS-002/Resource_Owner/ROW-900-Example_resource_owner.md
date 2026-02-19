@@ -2,8 +2,6 @@
 
 Resource owner used to exercise ownership relationships.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - owns [AST-900](../Asset/AST-900-Example_asset.md)
-
 
 ## Version
 

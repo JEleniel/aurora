@@ -2,8 +2,6 @@
 
 A process-domain condition that exercises branching to activities, triggers, and other conditions.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -13,7 +11,6 @@ _No attributes defined._
 - branches to [ATV-901](../Activity/ATV-901-Complete_example_activity.md)
 - branches to [TRG-901](../Trigger/TRG-901-Downstream_trigger.md)
 - branches to [CON-901](CON-901-Downstream_condition.md)
-
 
 ## Version
 

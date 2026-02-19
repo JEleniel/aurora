@@ -2,8 +2,6 @@
 
 Class subtype component used for coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._

@@ -2,8 +2,6 @@
 
 Second trigger used to demonstrate trigger chaining via 'triggers'.
 
-
-
 ## Attributes
 
 _No attributes defined._

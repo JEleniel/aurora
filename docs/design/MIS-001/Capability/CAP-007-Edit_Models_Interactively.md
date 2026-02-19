@@ -2,8 +2,6 @@
 
 Interactively navigate and edit Aurora models with guardrails that prevent invalid edits and preserve invariants.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - requires [PRO-007](../Process/PRO-007-Edit_Model_In_Editor.md)
-
 
 ## Version
 

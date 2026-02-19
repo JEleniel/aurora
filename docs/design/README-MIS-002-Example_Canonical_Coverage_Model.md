@@ -267,4 +267,3 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 - **[VIC-903 - Data victim](MIS-002/Victim/VIC-903-Data_victim.md)**: Victim subtype used for coverage.
 
 - **[VIC-902 - System victim](MIS-002/Victim/VIC-902-System_victim.md)**: Victim subtype used for coverage.
-

@@ -2,8 +2,6 @@
 
 The Icons.svg reference output produced from source icons, containing normalized icon defs and a proof-sheet layout used for verification and template integration.
 
-
-
 ## Attributes
 
 _No attributes defined._

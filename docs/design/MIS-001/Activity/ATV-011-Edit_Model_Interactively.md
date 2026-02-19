@@ -2,8 +2,6 @@
 
 Edit cards, links, and view definitions interactively with immediate feedback, keeping the model valid.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - uses [COM-006](../Component/COM-006-Aurora_Editor_UI.md)
-
 
 ## Version
 

@@ -2,8 +2,6 @@
 
 Emit structured logs for troubleshooting and diagnostics, with fern integration supporting stdout, stderr, and optional file output.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - realizes [CAP-010](../Capability/CAP-010-Editor_Observability.md)
-
 
 ## Version
 

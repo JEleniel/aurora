@@ -2,8 +2,6 @@
 
 Editor log output emitted to stdout, stderr, and/or an optional log file, used for troubleshooting and diagnostics.
 
-
-
 ## Attributes
 
 _No attributes defined._

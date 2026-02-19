@@ -2,8 +2,6 @@
 
 Threat used to exercise threat-centric relationships including adversaries, capabilities, victims, and risks.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -23,7 +21,6 @@ _No attributes defined._
 - impacts [VIC-902](../Victim/VIC-902-System_victim.md)
 - impacts [VIC-903](../Victim/VIC-903-Data_victim.md)
 - creates [RIS-900](../Risk/RIS-900-Example_risk.md)
-
 
 ## Version
 

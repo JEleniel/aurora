@@ -2,8 +2,6 @@
 
 Define Aurora (Agent-Unified Representation of Requirements and Architecture) using Aurora itself: a deterministic, machine-consumable architecture model rooted at a single Mission card, backed by schemas and canonical registries, and usable by tools and agents.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -17,7 +15,6 @@ _No attributes defined._
 - establishes [DRI-003](MIS-001/Driver/DRI-003-Automated_View_Generation.md)
 - establishes [DRI-004](MIS-001/Driver/DRI-004-Interactive_Safe_Authoring.md)
 - necessitates [SYS-001](MIS-001/System/SYS-001-Aurora_Tooling_Ecosystem.md)
-
 
 ## Version
 

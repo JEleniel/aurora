@@ -2,8 +2,6 @@
 
 Provide WCAG AA accessible UI behavior, dark mode by default, and adjustable base font sizing with proportional scaling.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - realizes [CAP-009](../Capability/CAP-009-Accessible_User_Experience.md)
-
 
 ## Version
 

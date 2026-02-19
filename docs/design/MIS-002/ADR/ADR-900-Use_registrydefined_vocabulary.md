@@ -2,8 +2,6 @@
 
 This example uses only canonical card types, common subtypes, and relationship labels from the model configuration registry.
 
-
-
 ## Attributes
 
 _No attributes defined._

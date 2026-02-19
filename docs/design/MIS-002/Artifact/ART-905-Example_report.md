@@ -2,8 +2,6 @@
 
 Artifact subtype used for coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - persists to [DST-900](../Data_Store/DST-900-Relational_store.md)
-
 
 ## Version
 

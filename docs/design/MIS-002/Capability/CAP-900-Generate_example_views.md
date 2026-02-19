@@ -2,8 +2,6 @@
 
 Provide enough connected structure that the CLI can render every view type from the canonical registry.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - requires [PRO-900](../Process/PRO-900-Run_an_endtoend_example_flow.md)
-
 
 ## Version
 

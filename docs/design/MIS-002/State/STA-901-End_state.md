@@ -2,8 +2,6 @@
 
 Second state used to exercise transitions and event handling.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - handles [EVT-901](../Event/EVT-901-Downstream_event.md)
-
 
 ## Version
 

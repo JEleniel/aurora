@@ -2,8 +2,6 @@
 
 Artifact subtype used for coverage.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -11,7 +9,6 @@ _No attributes defined._
 ## Links
 
 - is [AST-900](../Asset/AST-900-Example_asset.md)
-
 
 ## Version
 

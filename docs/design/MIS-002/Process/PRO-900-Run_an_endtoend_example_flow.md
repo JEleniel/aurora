@@ -2,8 +2,6 @@
 
 A simple process that demonstrates process-domain activities, triggers, and conditions.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -15,7 +13,6 @@ _No attributes defined._
 - includes [TRG-900](../Trigger/TRG-900-Example_trigger.md)
 - branches on [CON-900](../Condition/CON-900-Example_condition.md)
 - involves [ACT-900](../Actor/ACT-900-Example_user.md)
-
 
 ## Version
 

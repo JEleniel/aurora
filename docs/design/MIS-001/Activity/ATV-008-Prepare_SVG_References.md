@@ -2,8 +2,6 @@
 
 Run svg_prep to generate/update Icons.svg and refresh SVGTemplate.svg defs from source icons and shapes, then synchronize icon availability into Aurora.modelconfiguration.json.
 
-
-
 ## Attributes
 
 _No attributes defined._
@@ -14,7 +12,6 @@ _No attributes defined._
 - produces [ART-009](../Artifact/ART-009-Icons_Reference_Sheet.md)
 - produces [ART-008](../Artifact/ART-008-SVG_Template.md)
 - produces [ART-005](../Artifact/ART-005-Canonical_Definitions_Registry.md)
-
 
 ## Version
 
