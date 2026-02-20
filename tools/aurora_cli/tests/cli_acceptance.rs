@@ -1,10 +1,15 @@
 use std::fs;
-use std::io::Write;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
-use flate2::Compression;
-use flate2::write::GzEncoder;
+fn read_testdata(rel_path: &str) -> String {
+	let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+		.join("src")
+		.join("testdata")
+		.join(rel_path);
+	fs::read_to_string(&path)
+		.unwrap_or_else(|e| panic!("failed to read testdata file {}: {e}", path.display()))
+}
 
 fn write_model_home_scaffold(model_home: &Path) {
 	let schemas = model_home.join("schemas");
@@ -12,44 +17,21 @@ fn write_model_home_scaffold(model_home: &Path) {
 	fs::create_dir_all(&schemas).expect("create schemas dir");
 	fs::create_dir_all(&reference).expect("create reference dir");
 
-	fs::write(
-		schemas.join("Aurora.card.schema.json"),
-		include_str!("../../../.github/agents/aurora/schemas/Aurora.card.schema.json"),
-	)
-	.expect("write card schema");
-	fs::write(
-		schemas.join("Aurora.compact.schema.json"),
-		include_str!("../../../.github/agents/aurora/schemas/Aurora.compact.schema.json"),
-	)
-	.expect("write compact schema");
-	fs::write(
-		schemas.join("Aurora.audit.schema.json"),
-		include_str!("../../../.github/agents/aurora/schemas/Aurora.audit.schema.json"),
-	)
-	.expect("write audit schema");
-	fs::write(
-		schemas.join("Aurora.modelconfiguration.schema.json"),
-		include_str!(
-			"../../../.github/agents/aurora/schemas/Aurora.modelconfiguration.schema.json"
-		),
-	)
-	.expect("write modelconfiguration schema");
-	fs::write(
-		reference.join("Aurora.modelconfiguration.json"),
-		include_str!("../../../.github/agents/aurora/reference/Aurora.modelconfiguration.json"),
-	)
-	.expect("write modelconfiguration reference");
-	write_svg_template_svgz(&reference);
-}
-
-fn write_svg_template_svgz(reference_dir: &Path) {
-	let svg_template = include_str!("../../../assets/masters/SVGTemplate.svg");
-	let mut encoder = GzEncoder::new(Vec::new(), Compression::default());
-	encoder
-		.write_all(svg_template.as_bytes())
-		.expect("gzip svg template");
-	let data = encoder.finish().expect("finish gzip");
-	fs::write(reference_dir.join("SVGTemplate.svgz"), data).expect("write svgz template");
+	for schema_file in [
+		"Aurora.card.schema.json",
+		"Aurora.compact.schema.json",
+		"Aurora.audit.schema.json",
+		"Aurora.modelconfiguration.schema.json",
+	] {
+		let contents = read_testdata(&format!("model_home/schemas/{schema_file}"));
+		fs::write(schemas.join(schema_file), contents)
+			.unwrap_or_else(|e| panic!("failed to write schema fixture {schema_file}: {e}"));
+	}
+	for reference_file in ["Aurora.modelconfiguration.json", "SVGTemplate.svg"] {
+		let contents = read_testdata(&format!("model_home/reference/{reference_file}"));
+		fs::write(reference.join(reference_file), contents)
+			.unwrap_or_else(|e| panic!("failed to write reference fixture {reference_file}: {e}"));
+	}
 }
 
 fn write_card(path: &Path, value: serde_json::Value) {
@@ -127,6 +109,13 @@ fn render_views_fails_on_root_cycle_validation() {
 	let output_dir = temp.path().join("out");
 	fs::create_dir_all(&model_home).expect("create model home");
 	write_model_home_scaffold(&model_home);
+	fs::write(
+		model_home
+			.join("reference")
+			.join("Aurora.modelconfiguration.json"),
+		read_testdata("model_home/reference/Aurora.modelconfiguration.with_views.json"),
+	)
+	.expect("override modelconfiguration for render-views");
 
 	write_card(
 		&model_home.join("MIS-001-Example.json"),
@@ -163,7 +152,7 @@ fn render_views_fails_on_root_cycle_validation() {
 			"name": "Cap 2",
 			"description": "cap",
 			"attributes": {},
-			"links": [{"relationship": "depends on", "target": "CAP-001"}]
+			"links": [{"relationship": "depends on", "target": "MIS-001"}]
 		}),
 	);
 	write_empty_audit_log(&model_home.join("MIS-001"));

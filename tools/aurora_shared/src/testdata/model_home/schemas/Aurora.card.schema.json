@@ -1,0 +1,15 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"additionalProperties": true,
+	"required": ["id", "card_type", "name", "description", "links"],
+	"properties": {
+		"$schema": { "type": "string" },
+		"id": { "type": "string" },
+		"card_type": { "type": "string" },
+		"name": { "type": "string" },
+		"description": { "type": "string" },
+		"attributes": { "type": "object" },
+		"links": { "type": "array" }
+	}
+}

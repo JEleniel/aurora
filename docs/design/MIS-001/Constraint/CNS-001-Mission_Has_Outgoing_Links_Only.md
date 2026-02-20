@@ -14,6 +14,6 @@ _No links defined._
 
 ## Audit Log
 
-| Timestamp | Editor | Change |
-|-----------|--------|--------|
-| _No entries_ |  |  |
+| Timestamp    | Editor | Change |
+| ------------ | ------ | ------ |
+| _No entries_ |        |        |

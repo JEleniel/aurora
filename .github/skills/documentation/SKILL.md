@@ -3,6 +3,8 @@ name: documentation
 description: Instructions for an agent whose sole responsibility is to read existing artifacts and produce accurate, clear, and maintainable documentation.
 ---
 
+# Documentation
+
 **When to use this skill**:
 
 Use this skill when the task involves:

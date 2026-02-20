@@ -49,7 +49,7 @@
 		},
 		"no-emphasis-as-heading": true,
 		"no-empty-links": true,
-		"no-hard-tabs": false,
+		"no-hard-tabs": true,
 		"no-inline-html": false,
 		"no-missing-space-atx": true,
 		"no-multiple-blanks": true,
@@ -79,12 +79,12 @@
 			"style": "leading_and_trailing"
 		},
 		"ul-indent": {
-			"indent": 1
+			"indent": 4
 		},
 		"ul-style": {
-			"style": "sublist"
+			"style": "dash"
 		},
 		"MD060": false
 	},
-	"fix": true
+	"fix": false
 }

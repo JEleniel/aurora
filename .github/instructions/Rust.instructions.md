@@ -16,10 +16,10 @@ If present, the repository's Rust formatting config (`rustfmt.toml`) is the sour
 - **Indentation**: Prefer hard tabs.
 - **Line endings**: Use `\n`.
 - **Comments and docs**:
-	+ Keep comments accurate and up to date.
-	+ Wrap comment text at 100 characters.
-	+ Use `//!` for module/crate docs and `///` for item docs.
-	+ Follow the [rustdoc book](https://doc.rust-lang.org/rustdoc/).
+    - Keep comments accurate and up to date.
+    - Wrap comment text at 100 characters.
+    - Use `//!` for module/crate docs and `///` for item docs.
+    - Follow the [rustdoc book](https://doc.rust-lang.org/rustdoc/).
 - **Imports**: Group standard/external/crate. Put `mod` declarations first (after module docs), then a blank line, then `use`.
 - **Patterns**: Use `_` for single-item wildcards and `..` for rest patterns.
 - **Initialization**: Use field init shorthand when possible.
@@ -29,6 +29,7 @@ If present, the repository's Rust formatting config (`rustfmt.toml`) is the sour
 
 - Apply these rules to Rust code you write or modify. Do not rewrite unrelated existing code solely for conformance.
 - Do not use `unwrap`, `expect`, `panic`, or similar in non-test code unless explicitly instructed.
+    - Exception: `todo!()` and `unimplemented!()` are permitted for clearly unimplemented paths that must fail fast and communicate intent.
 - Add documentation comments for new modules and new public items.
 - Avoid `unsafe` unless a specific API requires it.
 

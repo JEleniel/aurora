@@ -3,8 +3,12 @@ name: reviewing
 description: The skill of performing thorough reviews of code, documentation, and releases to ensure quality, security, and readiness.
 ---
 
-- If the user asks for feedback it is not a review.
-- When reviewing, do not alter code, documentation, or other files except your review.
+# Reviewing
+
+- If the user asks for feedback, treat it as informal feedback (not a formal review).
+    - Provide feedback inline in your response.
+    - Do not write to the review output files unless the user explicitly asks for a formal review.
+- When performing a formal review, do not alter code, documentation, or other files except the review output file.
 
 **Review Principles**:
 
@@ -14,11 +18,16 @@ description: The skill of performing thorough reviews of code, documentation, an
 - Accessibility: WCAG AA (AAA preferred).
 - Maintainability: clear names; proper, cohesive modules; minimal complexity.
 - Tests: require tests that prove behavior; no null tests.
-- Code conciseness: <20 lines per method (not including wrapper code), <200 lines per file.
+- Code conciseness: prefer small functions (~20 lines) and cohesive modules (~200 lines) when practical.
+    - For newly written or substantially rewritten code, avoid new functions > 50 lines and new files > 500 lines.
 - Documentation conciseness: clear, to the point, easily readable documentation
 
 **Deliverables**:
 
-- Record findings in the appropriate `.agents/REVIEW-*.md` file.
+- Record findings in the appropriate review file under `docs/design/`:
+    - `docs/design/Review-Code.md`
+    - `docs/design/Review-Security.md`
+    - `docs/design/Review-Documentation.md`
+    - `docs/design/Review-Prerelease.md`
 - Group findings by severity and include verification guidance.
 - Provide actionable feedback: what, why it matters, and the smallest safe fix.

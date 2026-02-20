@@ -16,6 +16,6 @@ _No attributes defined._
 
 ## Audit Log
 
-| Timestamp | Editor | Change |
-|-----------|--------|--------|
-| _No entries_ |  |  |
+| Timestamp    | Editor | Change |
+| ------------ | ------ | ------ |
+| _No entries_ |        |        |

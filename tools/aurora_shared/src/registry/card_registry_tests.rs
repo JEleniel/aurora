@@ -2,10 +2,21 @@ use super::{CardDefinition, CardRegistry, RelationshipDefinition};
 
 use crate::registry::RegistryError;
 use std::collections::HashSet;
+use std::path::PathBuf;
+
+fn read_testdata(rel_path: &str) -> String {
+	let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+		.join("src")
+		.join("testdata")
+		.join(rel_path);
+	std::fs::read_to_string(&path)
+		.unwrap_or_else(|e| panic!("failed to read testdata file {}: {e}", path.display()))
+}
 
 #[test]
 fn registry_parses_and_merges_canonical_and_appearance_data() -> Result<(), RegistryError> {
-	let registry = CardRegistry::try_new()?;
+	let model_configuration = read_testdata("modelconfiguration/card_registry_test.json");
+	let registry = CardRegistry::try_new_from_model_configuration(&model_configuration)?;
 	assert!(registry.check("Activity"));
 
 	let activity = registry.try_get_by_acronym("ATV")?;

@@ -1,0 +1,16 @@
+{
+	"$schema": "../schemas/Aurora.modelconfiguration.schema.json",
+	"available_icons": [],
+	"cards": [
+		{
+			"acronym": "TGT",
+			"card_type": "TargetType",
+			"description": "Target type",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"color": "#000000",
+			"relationships": []
+		}
+	],
+	"views": []
+}

@@ -1090,6 +1090,15 @@ mod tests {
 	use std::collections::HashMap;
 	use std::path::PathBuf;
 
+	fn read_testdata(rel_path: &str) -> String {
+		let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+			.join("src")
+			.join("testdata")
+			.join(rel_path);
+		std::fs::read_to_string(&path)
+			.unwrap_or_else(|e| panic!("failed to read testdata file {}: {e}", path.display()))
+	}
+
 	#[test]
 	fn wrap_preserves_newlines() {
 		let lines = node::wrap_text("a b c\n\n1 2 3", 4);
@@ -1164,8 +1173,11 @@ mod tests {
 
 	#[test]
 	fn render_includes_screen_background_and_no_text_stroke() {
-		let registry = crate::registry::CardRegistry::try_new().expect("registry");
-		let svg_template = include_str!("../../../../assets/masters/SVGTemplate.svg");
+		let model_configuration = read_testdata("modelconfiguration/svg_render_registry.json");
+		let registry =
+			crate::registry::CardRegistry::try_new_from_model_configuration(&model_configuration)
+				.expect("registry");
+		let svg_template = read_testdata("svg/template_minimal.svg");
 
 		let root = Card {
 			schema: None,
@@ -1244,8 +1256,8 @@ mod tests {
 			}],
 		};
 
-		let svg =
-			super::Svg::render(&model, &layout, &registry, svg_template, None).expect("svg render");
+		let svg = super::Svg::render(&model, &layout, &registry, svg_template.as_str(), None)
+			.expect("svg render");
 		assert!(!svg.contains("fill:#00000000;stroke:#000000"));
 		assert!(svg.contains("id=\"aurora-bg\""));
 		assert!(svg.contains("id=\"aurora-bg\" x=\"0\" y=\"0\""));

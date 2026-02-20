@@ -35,12 +35,12 @@ Per the card schema (`schemas/Aurora.card.schema.json`), every card file must in
 
 ```json
 {
-	"$schema": "./schemas/Aurora.card.schema.json",
-	"id": "MIS-100",
-	"card_type": "Mission",
-	"name": "Example Mission",
-	"description": "Demonstrate an Aurora model.",
-	"links": []
+    "$schema": "./schemas/Aurora.card.schema.json",
+    "id": "MIS-100",
+    "card_type": "Mission",
+    "name": "Example Mission",
+    "description": "Demonstrate an Aurora model.",
+    "links": []
 }
 ```
 
@@ -50,8 +50,8 @@ A link is an outgoing edge from a source card to a target card.
 
 ```json
 {
-	"relationship": "drives",
-	"target": "REQ-001"
+    "relationship": "drives",
+    "target": "REQ-001"
 }
 ```
 
@@ -73,14 +73,16 @@ A small example:
 ```mermaid
 %%{init: {"flowchart": {"defaultRenderer": "elk"}, "themeVariables": {"clusterBkg": "transparent"}}}%%
 flowchart LR
-	MIS["Mission"]
-	DRI["Driver"]
-	REQ["Requirement"]
-	CAP["Capability"]
 
-	MIS -->|establishes| DRI
-	DRI -->|drives| REQ
-	REQ -->|requires| CAP
+    MIS["Mission"]
+    DRI["Driver"]
+    REQ["Requirement"]
+    CAP["Capability"]
+
+
+    MIS -->|establishes| DRI
+    DRI -->|drives| REQ
+    REQ -->|requires| CAP
 ```
 
 ## Model configuration (the registry)
@@ -112,21 +114,21 @@ Example entry:
 
 ```json
 {
-	"timestamp": "2026-02-19T19:00:00Z",
-	"editor": "Architect",
-	"changes": [
-		{
-			"card_id": "REQ-001",
-			"change_type": "change",
-			"link_changes": [
-				{
-					"change_type": "create",
-					"relationship": "requires",
-					"target": "CAP-001"
-				}
-			]
-		}
-	]
+    "timestamp": "2026-02-19T19:00:00Z",
+    "editor": "Architect",
+    "changes": [
+        {
+            "card_id": "REQ-001",
+            "change_type": "change",
+            "link_changes": [
+                {
+                    "change_type": "create",
+                    "relationship": "requires",
+                    "target": "CAP-001"
+                }
+            ]
+        }
+    ]
 }
 ```
 

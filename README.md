@@ -24,7 +24,9 @@ That documentation covers:
 
 ## Quick start (example models)
 
-This repository includes an example model home at `docs/design/aurora/`.
+The entire Aurora system is documented as an Aurora model at `doce/design/aurora/` as MIS-001. We eat our own cooking.
+
+This repository includes an example model home at `docs/design/aurora/` as MIS-002.
 
 Validate the example models:
 
@@ -51,7 +53,8 @@ aurora_cli render-all -i docs/design/aurora -o tmp/aurora_cli_out
 
 Key folders:
 
-- `Aurora_Specs/`: specification artifacts, including schemas and canonical registries.
+- `Aurora/`: specification artifacts, including schemas and canonical registries.
+    - Note: `Aurora` is a soft link to `.github/aurora/` which is where the canonical masters are kept. It's linked this dierection because agents have problems following softlinks.
 - `docs/`: user documentation (start at `docs/README.md`).
 - `docs/design/`: design documentation and example model home (`docs/design/aurora/`).
 - `tools/aurora_cli/`: CLI for validation and rendering.

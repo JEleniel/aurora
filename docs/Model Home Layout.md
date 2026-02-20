@@ -8,31 +8,32 @@ A minimal model home looks like this:
 
 ```text
 aurora/
-	schemas/
-		Aurora.audit.schema.json
-		Aurora.card.schema.json
-		Aurora.compact.schema.json
-		Aurora.modelconfiguration.schema.json
-	reference/
-		Aurora.modelconfiguration.json
-		SVGTemplate.svgz
-	MIS-001-My_Mission.json
-	MIS-001/
-		AuditLog.ndjson
-		<Other card-type folders...>
+
+    schemas/
+        Aurora.audit.schema.json
+        Aurora.card.schema.json
+        Aurora.compact.schema.json
+        Aurora.modelconfiguration.schema.json
+    reference/
+        Aurora.modelconfiguration.json
+        SVGTemplate.svgz
+    MIS-001-My_Mission.json
+    MIS-001/
+        AuditLog.ndjson
+        <Other card-type folders...>
 ```
 
 ### What’s required
 
 Aurora tooling requires these files to exist under the model home:
 
-| Path | Required | Purpose |
-|---|---:|---|
-| `schemas/Aurora.card.schema.json` | Yes | Structure validation for card JSON files. |
-| `schemas/Aurora.audit.schema.json` | Yes | Structure validation for `AuditLog.ndjson` lines. |
-| `schemas/Aurora.compact.schema.json` | Yes | Structure validation for compact exports (`Compact.json`). |
-| `schemas/Aurora.modelconfiguration.schema.json` | Yes | Structure validation for the registry (`Aurora.modelconfiguration.json`). |
-| `reference/Aurora.modelconfiguration.json` | Yes | Canonical card types, relationships, default appearance, and view definitions. |
+| Path                                                        |                     Required | Purpose                                                                                       |
+| ----------------------------------------------------------- | ---------------------------: | --------------------------------------------------------------------------------------------- |
+| `schemas/Aurora.card.schema.json`                           |                          Yes | Structure validation for card JSON files.                                                     |
+| `schemas/Aurora.audit.schema.json`                          |                          Yes | Structure validation for `AuditLog.ndjson` lines.                                             |
+| `schemas/Aurora.compact.schema.json`                        |                          Yes | Structure validation for compact exports (`Compact.json`).                                    |
+| `schemas/Aurora.modelconfiguration.schema.json`             |                          Yes | Structure validation for the registry (`Aurora.modelconfiguration.json`).                     |
+| `reference/Aurora.modelconfiguration.json`                  |                          Yes | Canonical card types, relationships, default appearance, and view definitions.                |
 | `reference/SVGTemplate.svgz` or `reference/SVGTemplate.svg` | Required for rendering views | SVG defs template for shapes and icons. The tooling prefers `.svgz` and falls back to `.svg`. |
 
 ## Where models live
@@ -63,12 +64,12 @@ Examples:
 
 ```json
 {
-	"$schema": "./schemas/Aurora.card.schema.json",
-	"id": "MIS-002",
-	"card_type": "Mission",
-	"name": "...",
-	"description": "...",
-	"links": []
+    "$schema": "./schemas/Aurora.card.schema.json",
+    "id": "MIS-002",
+    "card_type": "Mission",
+    "name": "...",
+    "description": "...",
+    "links": []
 }
 ```
 
@@ -76,12 +77,12 @@ Examples:
 
 ```json
 {
-	"$schema": "../../schemas/Aurora.card.schema.json",
-	"id": "REQ-900",
-	"card_type": "Requirement",
-	"name": "...",
-	"description": "...",
-	"links": []
+    "$schema": "../../schemas/Aurora.card.schema.json",
+    "id": "REQ-900",
+    "card_type": "Requirement",
+    "name": "...",
+    "description": "...",
+    "links": []
 }
 ```
 
@@ -107,6 +108,6 @@ Notes:
 If you’re using this repository as-is:
 
 - Example model home: `docs/design/aurora/`
-- Specification artifacts: `Aurora_Specs/`
+- Specification artifacts: `Aurora/`
 
-Aurora tooling uses the **local** files in the model home at runtime; `Aurora_Specs/` is the canonical source for the specification, but is not used directly by the CLI when loading models.
+Aurora tooling uses the **local** files in the model home at runtime; `Aurora/` is the canonical source for the specification, but is not used directly by the CLI when loading models.

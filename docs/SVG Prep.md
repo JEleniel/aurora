@@ -11,11 +11,11 @@ This tool is primarily for maintaining the **shared rendering template** and ref
 
 ## Commands
 
-| Command | What it does |
-|---|---|
-| `svg_prep` | Runs the default pipeline (optimize masters, generate proofs, merge defs into template, write `.svgz`, sync icon ids). |
-| `svg_prep optimize-icons` | Optimize master icons into Aurora’s normalized format and generate `Icons.svg`. |
-| `svg_prep optimize-shapes` | Optimize master shapes into Aurora’s normalized format and generate `Shapes.svg`. |
+| Command                    | What it does                                                                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `svg_prep`                 | Runs the default pipeline (optimize masters, generate proofs, merge defs into template, write `.svgz`, sync icon ids). |
+| `svg_prep optimize-icons`  | Optimize master icons into Aurora’s normalized format and generate `Icons.svg`.                                        |
+| `svg_prep optimize-shapes` | Optimize master shapes into Aurora’s normalized format and generate `Shapes.svg`.                                      |
 
 ## Default inputs and outputs
 
@@ -26,13 +26,13 @@ This tool is primarily for maintaining the **shared rendering template** and ref
 - Optimized icons: `assets/optimized/icons/`
 - Optimized shapes: `assets/optimized/shapes/`
 - Proof sheets:
-	+ `assets/proofs/Icons.svg`
-	+ `assets/proofs/Shapes.svg`
-	+ `assets/proofs/SVGTemplate.svg`
+    - `assets/proofs/Icons.svg`
+    - `assets/proofs/Shapes.svg`
+    - `assets/proofs/SVGTemplate.svg`
 - Template input: `assets/masters/SVGTemplate.svg`
 - Template outputs:
-	+ `assets/templates/SVGTemplate.svg`
-	+ `assets/templates/SVGTemplate.svgz`
+    - `assets/templates/SVGTemplate.svg`
+    - `assets/templates/SVGTemplate.svgz`
 
 ## `optimize-icons`
 
@@ -110,7 +110,7 @@ Resolution rules:
 
 - If an `Aurora.modelconfiguration.json` file exists adjacent to the template path, it is updated.
 - Otherwise, in this repository `svg_prep` looks for:
-	+ `.github/agents/aurora/reference/Aurora.modelconfiguration.json`
+    - `.github/aurora/reference/Aurora.modelconfiguration.json`
 
 This behavior is convenient for maintaining the repo’s canonical icon list, but it also means a full build can modify files outside `assets/`.
 

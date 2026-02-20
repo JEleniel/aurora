@@ -8,8 +8,8 @@
 - Can load and work with a model of any size or complexity.
 - Models of any size load almost instantly. The load method traverses and validates the model in the time it takes to read files; the editor does not load the entire model into memory at once.
 - Loads the schemas and reference files included with a set of models in a model home and uses those for all interaction with those models. This allows the editor to work across multiple versions and customizations of Aurora.
-- Makes a backup ZIP of the model at load time, stored per conventions defined in [Aurora_Specs/](../../Aurora_Specs/).
-- Storage location and format for models and configuration are defined in [Aurora_Specs/](../../Aurora_Specs/).
+- Makes a backup ZIP of the model at load time, stored per conventions defined in [Aurora/](../../Aurora/).
+- Storage location and format for models and configuration are defined in [Aurora/](../../Aurora/).
 
 ### Architecture & Performance
 
@@ -35,7 +35,7 @@
 
 ### Persistence & Storage
 
-See [Aurora_Specs/](../../Aurora_Specs/) for detailed storage format and location specifications.
+See [Aurora/](../../Aurora/) for detailed storage format and location specifications.
 
 ### Usability & Accessibility
 
@@ -52,7 +52,7 @@ See [Aurora_Specs/](../../Aurora_Specs/) for detailed storage format and locatio
 
 - Each model home includes a complete set of schema and configuration files snapshotted at model creation time.
 - Compatibility is guaranteed across a major version of Aurora (the system is separately versioned); the appropriate schema and configuration versions are always available within the model home.
-- Incompatible models are detected via schema validation (behavior defined in Aurora_Specs/).
+- Incompatible models are detected via schema validation (behavior defined in Aurora/).
 
 ## Future Ideas
 

@@ -65,8 +65,7 @@ crates-io-index/
 *.swx
 
 #Ignore IDE specific AI instructions
-.github/instructions/IDE.instructions.md
-.github/*.sh
+.github/IDE.rules.md
 
 # Archive Files
 *.7z

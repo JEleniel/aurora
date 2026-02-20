@@ -5,6 +5,15 @@ use serde_json::{Value, json};
 use super::{Card, Link};
 use crate::registry::CardRegistry;
 
+fn read_testdata(rel_path: &str) -> String {
+	let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+		.join("src")
+		.join("testdata")
+		.join(rel_path);
+	std::fs::read_to_string(&path)
+		.unwrap_or_else(|e| panic!("failed to read testdata file {}: {e}", path.display()))
+}
+
 fn card_schema(required_extra: bool) -> Value {
 	let mut required = vec!["id", "card_type", "name", "description", "links", "version"];
 	if required_extra {
@@ -91,7 +100,8 @@ fn try_load_collects_schema_errors() -> Result<(), Box<dyn std::error::Error>> {
 
 #[test]
 fn check_registry_warns_on_unknown() -> Result<(), Box<dyn std::error::Error>> {
-	let registry = CardRegistry::try_new()?;
+	let model_configuration = read_testdata("modelconfiguration/card_tests_target_only.json");
+	let registry = CardRegistry::try_new_from_model_configuration(&model_configuration)?;
 	let target_def = registry
 		.definitions
 		.iter()
@@ -114,7 +124,8 @@ fn check_registry_warns_on_unknown() -> Result<(), Box<dyn std::error::Error>> {
 
 #[test]
 fn check_registry_accepts_known_relationships() -> Result<(), Box<dyn std::error::Error>> {
-	let registry = CardRegistry::try_new()?;
+	let model_configuration = read_testdata("modelconfiguration/card_tests_relationships.json");
+	let registry = CardRegistry::try_new_from_model_configuration(&model_configuration)?;
 	let source_def = registry
 		.definitions
 		.iter()

@@ -1,0 +1,13 @@
+{
+	"$schema": "../schemas/Aurora.modelconfiguration.schema.json",
+	"available_icons": [],
+	"cards": [],
+	"views": [
+		{
+			"name": "Test View",
+			"description": "A test view",
+			"root_card_types": ["MIS"],
+			"included_card_types": ["CAP", "REQ"]
+		}
+	]
+}

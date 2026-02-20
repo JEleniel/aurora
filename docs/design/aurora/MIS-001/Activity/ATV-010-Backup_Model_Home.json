@@ -3,7 +3,7 @@
 	"id": "ATV-010",
 	"card_type": "Activity",
 	"name": "Backup Model Home",
-	"description": "Create a ZIP backup of the model home at load time, stored per conventions defined in Aurora_Specs.",
+	"description": "Create a ZIP backup of the model home at load time, stored per conventions defined in Aurora.",
 	"links": [
 		{
 			"relationship": "uses",

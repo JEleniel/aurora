@@ -1,0 +1,37 @@
+{
+	"$schema": "../schemas/Aurora.modelconfiguration.schema.json",
+	"available_icons": ["wrench"],
+	"cards": [
+		{
+			"acronym": "ATV",
+			"card_type": "Activity",
+			"description": "An activity card",
+			"shape": "double-rectangle",
+			"fill": "#4c1d95",
+			"color": "#111111",
+			"relationships": [
+				{ "target": "ATV", "relationship": "leads to" },
+				{ "target": "COM", "relationship": "uses" }
+			]
+		},
+		{
+			"acronym": "INT",
+			"card_type": "Interface",
+			"description": "An interface card",
+			"shape": "interface",
+			"fill": "#ffffff",
+			"color": "#222222",
+			"relationships": []
+		},
+		{
+			"acronym": "COM",
+			"card_type": "Component",
+			"description": "A component card",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"color": "#333333",
+			"relationships": []
+		}
+	],
+	"views": []
+}

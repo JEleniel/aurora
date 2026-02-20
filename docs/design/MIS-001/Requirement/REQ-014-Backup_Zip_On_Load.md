@@ -1,6 +1,6 @@
 # Requirement: REQ-014 Backup Zip On Load
 
-At load time, the editor MUST create a backup ZIP of the model home, stored per conventions defined in Aurora_Specs.
+At load time, the editor MUST create a backup ZIP of the model home, stored per conventions defined in Aurora.
 
 ## Attributes
 
@@ -14,6 +14,6 @@ _No attributes defined._
 
 ## Audit Log
 
-| Timestamp | Editor | Change |
-|-----------|--------|--------|
+| Timestamp            | Editor    | Change |
+| -------------------- | --------- | ------ |
 | 2026-02-18T13:55:00Z | Architect | create |

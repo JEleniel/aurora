@@ -45,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated SVG rendering defaults to fixed symbol geometry (native 720x450 symbols, fixed icon `<use>` references, and 160px node spacing baseline).
 - Tightened and deduplicated non-audit Aurora schemas in `schemas/`, including stricter view/card list uniqueness rules and compact card entries that no longer include a `version` field.
 
-- Consolidated Aurora reference registries into `Aurora_Specs/reference/Aurora.modelconfiguration.json` (validated by `Aurora_Specs/schemas/Aurora.modelconfiguration.schema.json`), replacing the separate appearance/canonical/view registries.
+- Consolidated Aurora reference registries into `Aurora/reference/Aurora.modelconfiguration.json` (validated by `Aurora/schemas/Aurora.modelconfiguration.schema.json`), replacing the separate appearance/canonical/view registries.
 
 - Aligned `aurora_shared` model loading/serialization with Aurora v2.0.0: v2 schema filenames, v2 card fields (`version`, `boundary`, `notes`, object-shaped `attributes`), and compact exports written to `MIS-XXX/Compact.json`.
 - Failed model loading now returns validation errors instead of allowing invalid graphs.
@@ -90,12 +90,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Further refined SVG geometry by narrowing hexagons, making State nodes circular with a slight size increase, and moving diamond/hexagon icons further inward.
 - Snapped edge paths to the scaled shape boundaries (eliminating arrow gaps) and tuned default layout spacing (nodesep/ranksep).
 - Restored curved spline routing while keeping edge concentration for shared incoming/outgoing lines.
-- SVG edge routing now allows diagonal moves with octile A* costs to reduce stair-step paths in dense diagrams.
+- SVG edge routing now allows diagonal moves with octile A\* costs to reduce stair-step paths in dense diagrams.
 - Layout centering now translates layers towards their target medians to avoid left-biased packing and reduce uneven horizontal gaps.
 - SVG edge routing now uses octilinear (0/45/90°) paths with turn penalties and soft avoidance of prior edges to reduce crossings while still routing around nodes.
 - SVG node symbols now scale up when height allows (while preserving the ellipse aspect), with larger inset icons and vertically centered labels.
 - Increased SVG node/edge obstacle padding to 3rem, normalize shape lookup (e.g., component), and force obstacle-aware dogleg reroutes so edges avoid straight runs through nodes.
-- Reworked SVG edge routing to use deterministic orthogonal candidates first, with bounded grid A* fallback only when candidates fail.
+- Reworked SVG edge routing to use deterministic orthogonal candidates first, with bounded grid A\* fallback only when candidates fail.
 - Updated SVG symbol fitting to use axis-specific scaling and decoupled node height measurement from symbol-width coupling.
 - Tuned SVG routing obstacle inflation and edge ordering to reduce route congestion in dense views.
 - Further refined SVG route smoothing to collapse short staircase jogs more aggressively and reduce near-arrowhead bend artifacts in curved edges.

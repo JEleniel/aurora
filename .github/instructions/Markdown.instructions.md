@@ -11,20 +11,20 @@ If present, the repository's Markdown lint config (`.markdownlint-cli2.jsonc`) i
 - Use only ATX headings (`#`, `##`, …); do not indent headings.
 - Use a single H1.
 - Increase heading levels one at a time; do not skip levels.
-	+ Sibling headings must be unique.
+    - Sibling headings must be unique.
 - Do not use emphasis/strong as the entire heading text.
 - Do not hard-wrap paragraph text.
 - Do not use extra spaces in prose. Tables may use spacing within cells.
 - Do not manually align Markdown with spaces outside tables.
 - End files with exactly one trailing newline.
 - Avoid multiple blank lines together.
-- Unordered lists MUST follow `.markdownlint-cli2.jsonc` (`ul-style: sublist`, `ul-indent.indent: 1`): `-` at depth 1, `+` at depth 2, `*` at depth 3, then repeat.
-- Indent each nested level one tab.
+- Unordered lists MUST follow `.markdownlint-cli2.jsonc` (`ul-style: dash`, `ul-indent.indent: 4`): use `-` for list items.
+- Indent each nested list level using 4 spaces.
 
 ```markdown
 - Level 1
-	+ Level 2
-		* Level 3
+    - Level 2
+        - Level 3
 ```
 
 - Ordered lists MUST use sequential numbers.
@@ -40,3 +40,7 @@ If present, the repository's Markdown lint config (`.markdownlint-cli2.jsonc`) i
 
 - Markdown frontmatter MUST use `---` delimiters.
 - Only include frontmatter when required by the consuming tool.
+
+## Tips
+
+- Don't waste a lot of time manually formatting Markdown, if `markdownlint-cli2` is available (and it is in the IDE) use it instead.

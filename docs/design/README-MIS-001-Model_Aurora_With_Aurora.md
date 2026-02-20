@@ -28,7 +28,7 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 ### Activity
 
-- **[ATV-010 - Backup Model Home](MIS-001/Activity/ATV-010-Backup_Model_Home.md)**: Create a ZIP backup of the model home at load time, stored per conventions defined in Aurora_Specs.
+- **[ATV-010 - Backup Model Home](MIS-001/Activity/ATV-010-Backup_Model_Home.md)**: Create a ZIP backup of the model home at load time, stored per conventions defined in Aurora.
 
 - **[ATV-005 - Edit Canonical Definitions Registry](MIS-001/Activity/ATV-005-Edit_Canonical_Definitions_Registry.md)**: Maintain the canonical registry of card types and allowed outgoing relationships.
 
@@ -214,7 +214,7 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[REQ-010 - Rendering Semantics](MIS-001/Requirement/REQ-010-Rendering_Semantics.md)**: Rendering MUST treat canonical registry style fields (shape/icon/fill/color) as non-normative hints; model validity MUST depend on normative fields (types, ids, relationships), not styling.
 
-- **[REQ-014 - Backup Zip On Load](MIS-001/Requirement/REQ-014-Backup_Zip_On_Load.md)**: At load time, the editor MUST create a backup ZIP of the model home, stored per conventions defined in Aurora_Specs.
+- **[REQ-014 - Backup Zip On Load](MIS-001/Requirement/REQ-014-Backup_Zip_On_Load.md)**: At load time, the editor MUST create a backup ZIP of the model home, stored per conventions defined in Aurora.
 
 - **[REQ-015 - UI Engine Thread Separation](MIS-001/Requirement/REQ-015-UI_Engine_Thread_Separation.md)**: The editor UI and engine MUST operate on separate threads to ensure UI responsiveness and effective use of modern hardware.
 

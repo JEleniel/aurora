@@ -55,19 +55,19 @@ Example (simplified):
 
 ```json
 {
-	"acronym": "REQ",
-	"card_type": "Requirement",
-	"description": "Verifiable statement of need/obligation.",
-	"shape": "rounded-rectangle",
-	"fill": "#065f46",
-	"stroke": "#000000",
-	"text": "#FFFFFF",
-	"icon": "check",
-	"common_subtypes": ["Functional", "Non-Functional"],
-	"relationships": [
-		{ "target": "CAP", "relationship": "requires" },
-		{ "target": "ADR", "relationship": "has" }
-	]
+    "acronym": "REQ",
+    "card_type": "Requirement",
+    "description": "Verifiable statement of need/obligation.",
+    "shape": "rounded-rectangle",
+    "fill": "#065f46",
+    "stroke": "#000000",
+    "text": "#FFFFFF",
+    "icon": "check",
+    "common_subtypes": ["Functional", "Non-Functional"],
+    "relationships": [
+        { "target": "CAP", "relationship": "requires" },
+        { "target": "ADR", "relationship": "has" }
+    ]
 }
 ```
 
@@ -98,10 +98,10 @@ Example:
 
 ```json
 {
-	"name": "Requirements",
-	"description": "Captures mission intent, motivation, and required capabilities.",
-	"root_card_types": ["MIS"],
-	"included_card_types": ["DRI", "STK", "CAP", "REQ", "ADR", "CNS"]
+    "name": "Requirements",
+    "description": "Captures mission intent, motivation, and required capabilities.",
+    "root_card_types": ["MIS"],
+    "included_card_types": ["DRI", "STK", "CAP", "REQ", "ADR", "CNS"]
 }
 ```
 
@@ -125,17 +125,15 @@ Example definition:
 
 ```json
 {
-	"acronym": "TMI",
-	"card_type": "Team",
-	"description": "A team responsible for owning and operating a set of components.",
-	"shape": "rounded-rectangle",
-	"fill": "#0f172a",
-	"stroke": "#000000",
-	"text": "#FFFFFF",
-	"icon": "group",
-	"relationships": [
-		{ "target": "COM", "relationship": "owns" }
-	]
+    "acronym": "TMI",
+    "card_type": "Team",
+    "description": "A team responsible for owning and operating a set of components.",
+    "shape": "rounded-rectangle",
+    "fill": "#0f172a",
+    "stroke": "#000000",
+    "text": "#FFFFFF",
+    "icon": "group",
+    "relationships": [{ "target": "COM", "relationship": "owns" }]
 }
 ```
 
@@ -147,7 +145,8 @@ Example (allow a `Team` to `owns` a `Component`):
 
 ```json
 "relationships": [
-	{ "target": "COM", "relationship": "owns" }
+
+    { "target": "COM", "relationship": "owns" }
 ]
 ```
 
@@ -193,10 +192,10 @@ Example:
 
 ```json
 {
-	"name": "Ownership",
-	"description": "Shows ownership relationships from teams to components.",
-	"root_card_types": ["TMI"],
-	"included_card_types": ["TMI", "COM", "APP", "SYS"]
+    "name": "Ownership",
+    "description": "Shows ownership relationships from teams to components.",
+    "root_card_types": ["TMI"],
+    "included_card_types": ["TMI", "COM", "APP", "SYS"]
 }
 ```
 

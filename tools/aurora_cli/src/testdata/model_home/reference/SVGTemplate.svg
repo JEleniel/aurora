@@ -1,0 +1,4 @@
+<svg viewBox="{{viewbox}}">
+	<defs>
+		<g id="rectangle" />
+	</defs>{{diagram}}</svg>

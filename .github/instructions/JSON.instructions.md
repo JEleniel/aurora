@@ -17,3 +17,5 @@ If present, the repository's Prettier config (`.prettierrc.json`) is the source 
 - **Encoding**: UTF-8 without BOM.
 - **EOF**: Exactly one trailing newline.
 - **Generated/lock files**: Avoid manual edits to generated artifacts and lockfiles. If you must, document why and validate the change.
+- **Consistent Ordering**: Sort JSON by keys when generating it, maintain the existing order when editing.
+- **Prettier**: Instead of wasting time formatting JSON, use `prettier` when available (and it is in the IDE).

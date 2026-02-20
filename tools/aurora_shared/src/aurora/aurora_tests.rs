@@ -11,6 +11,15 @@ use crate::registry::{CardRegistry, ModelConfiguration, ViewRegistry};
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
+fn read_testdata(rel_path: &str) -> String {
+	let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+		.join("src")
+		.join("testdata")
+		.join(rel_path);
+	std::fs::read_to_string(&path)
+		.unwrap_or_else(|e| panic!("failed to read testdata file {}: {e}", path.display()))
+}
+
 fn write_json(path: &Path, value: &Value) -> Result<()> {
 	let serialized = serde_json::to_string_pretty(value)?;
 	std::fs::write(path, serialized)?;
@@ -41,27 +50,20 @@ fn write_schema_files(model_home: &Path) -> Result<()> {
 	std::fs::create_dir_all(&schemas)?;
 	std::fs::create_dir_all(&reference)?;
 
-	std::fs::write(
-		schemas.join("Aurora.card.schema.json"),
-		include_str!("../../../../.github/agents/aurora/schemas/Aurora.card.schema.json"),
-	)?;
-	std::fs::write(
-		schemas.join("Aurora.compact.schema.json"),
-		include_str!("../../../../.github/agents/aurora/schemas/Aurora.compact.schema.json"),
-	)?;
-	std::fs::write(
-		schemas.join("Aurora.audit.schema.json"),
-		include_str!("../../../../.github/agents/aurora/schemas/Aurora.audit.schema.json"),
-	)?;
-	std::fs::write(
-		schemas.join("Aurora.modelconfiguration.schema.json"),
-		include_str!(
-			"../../../../.github/agents/aurora/schemas/Aurora.modelconfiguration.schema.json"
-		),
-	)?;
+	for schema_file in [
+		"Aurora.card.schema.json",
+		"Aurora.compact.schema.json",
+		"Aurora.audit.schema.json",
+		"Aurora.modelconfiguration.schema.json",
+	] {
+		std::fs::write(
+			schemas.join(schema_file),
+			read_testdata(&format!("model_home/schemas/{schema_file}")),
+		)?;
+	}
 	std::fs::write(
 		reference.join("Aurora.modelconfiguration.json"),
-		include_str!("../../../../.github/agents/aurora/reference/Aurora.modelconfiguration.json"),
+		read_testdata("model_home/reference/Aurora.modelconfiguration.json"),
 	)?;
 	write_svg_template_svgz(&reference)?;
 	Ok(())
@@ -73,33 +75,26 @@ fn write_schema_files_without_svg_template(model_home: &Path) -> Result<()> {
 	std::fs::create_dir_all(&schemas)?;
 	std::fs::create_dir_all(&reference)?;
 
-	std::fs::write(
-		schemas.join("Aurora.card.schema.json"),
-		include_str!("../../../../.github/agents/aurora/schemas/Aurora.card.schema.json"),
-	)?;
-	std::fs::write(
-		schemas.join("Aurora.compact.schema.json"),
-		include_str!("../../../../.github/agents/aurora/schemas/Aurora.compact.schema.json"),
-	)?;
-	std::fs::write(
-		schemas.join("Aurora.audit.schema.json"),
-		include_str!("../../../../.github/agents/aurora/schemas/Aurora.audit.schema.json"),
-	)?;
-	std::fs::write(
-		schemas.join("Aurora.modelconfiguration.schema.json"),
-		include_str!(
-			"../../../../.github/agents/aurora/schemas/Aurora.modelconfiguration.schema.json"
-		),
-	)?;
+	for schema_file in [
+		"Aurora.card.schema.json",
+		"Aurora.compact.schema.json",
+		"Aurora.audit.schema.json",
+		"Aurora.modelconfiguration.schema.json",
+	] {
+		std::fs::write(
+			schemas.join(schema_file),
+			read_testdata(&format!("model_home/schemas/{schema_file}")),
+		)?;
+	}
 	std::fs::write(
 		reference.join("Aurora.modelconfiguration.json"),
-		include_str!("../../../../.github/agents/aurora/reference/Aurora.modelconfiguration.json"),
+		read_testdata("model_home/reference/Aurora.modelconfiguration.json"),
 	)?;
 	Ok(())
 }
 
 fn write_svg_template_svgz(reference_dir: &Path) -> Result<()> {
-	let svg_template = include_str!("../../../../assets/masters/SVGTemplate.svg");
+	let svg_template = read_testdata("svg/template_minimal.svg");
 	let mut encoder = GzEncoder::new(Vec::new(), Compression::default());
 	encoder.write_all(svg_template.as_bytes())?;
 	let data = encoder.finish()?;
@@ -114,12 +109,13 @@ fn write_audit_log(path: &Path) -> Result<()> {
 
 fn test_aurora(models: Vec<Model>) -> Aurora {
 	let model_configuration_text =
-		include_str!("../../../../.github/agents/aurora/reference/Aurora.modelconfiguration.json");
+		read_testdata("model_home/reference/Aurora.modelconfiguration.json");
 	let model_configuration: ModelConfiguration =
-		serde_json::from_str(model_configuration_text).expect("model configuration");
+		serde_json::from_str(&model_configuration_text).expect("model configuration");
 	let card_registry =
 		CardRegistry::try_new_from_struct(model_configuration.clone()).expect("card registry");
 	let view_registry = ViewRegistry::try_new_from_struct(&model_configuration);
+	let svg_template = read_testdata("svg/template_minimal.svg");
 
 	Aurora {
 		model_home: PathBuf::new(),
@@ -131,7 +127,7 @@ fn test_aurora(models: Vec<Model>) -> Aurora {
 		model_configuration,
 		card_registry,
 		view_registry,
-		svg_template: include_str!("../../../../assets/masters/SVGTemplate.svg").to_string(),
+		svg_template,
 		load_warnings: Vec::new(),
 		load_validation_errors: Vec::new(),
 	}

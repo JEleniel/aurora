@@ -1,0 +1,25 @@
+{
+	"$schema": "../schemas/Aurora.modelconfiguration.schema.json",
+	"available_icons": [],
+	"cards": [
+		{
+			"acronym": "MIS",
+			"card_type": "Mission",
+			"description": "Mission",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"color": "#000000",
+			"relationships": []
+		},
+		{
+			"acronym": "ACT",
+			"card_type": "Activity",
+			"description": "Activity",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"color": "#000000",
+			"relationships": []
+		}
+	],
+	"views": []
+}

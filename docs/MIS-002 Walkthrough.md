@@ -41,11 +41,12 @@ A mission card’s links establish the “spine” of the model, for example:
 
 ```mermaid
 flowchart LR
-	MIS["Mission (MIS-002)"] -->|establishes| DRI["Drivers"]
-	DRI -->|drives| REQ["Requirements"]
-	REQ -->|requires| CAP["Capabilities"]
-	CAP -->|realizes| FEA["Features"]
-	FEA -->|is verified by| TES["Tests"]
+
+    MIS["Mission (MIS-002)"] -->|establishes| DRI["Drivers"]
+    DRI -->|drives| REQ["Requirements"]
+    REQ -->|requires| CAP["Capabilities"]
+    CAP -->|realizes| FEA["Features"]
+    FEA -->|is verified by| TES["Tests"]
 ```
 
 ## 4) Pick a card and follow links

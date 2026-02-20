@@ -14,6 +14,6 @@ _No links defined._
 
 ## Audit Log
 
-| Timestamp | Editor | Change |
-|-----------|--------|--------|
+| Timestamp            | Editor    | Change |
+| -------------------- | --------- | ------ |
 | 2026-02-18T00:00:00Z | architect | create |

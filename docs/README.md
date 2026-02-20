@@ -34,7 +34,7 @@ Aurora intentionally keeps its contracts simple:
 - **Reference registries** define the canonical card types, relationships, appearances, icons, and view definitions.
 - **Models** are plain files (JSON and NDJSON) that are validated by schemas and checked against the registries.
 
-In this repository, the authoritative specification artifacts live in `Aurora_Specs/`.
+In this repository, the authoritative specification artifacts live in `Aurora/`.
 
 In a working model home (an `aurora/` folder), the tooling requires **local copies** of:
 

@@ -16,7 +16,7 @@ _No attributes defined._
 
 ## Audit Log
 
-| Timestamp | Editor | Change |
-|-----------|--------|--------|
+| Timestamp            | Editor    | Change |
+| -------------------- | --------- | ------ |
 | 2026-02-18T12:39:06Z | Architect | change |
 | 2026-02-18T13:55:00Z | Architect | change |

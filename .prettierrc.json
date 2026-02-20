@@ -16,17 +16,10 @@
 			}
 		},
 		{
-			"files": [".github/agents/*.agent.md"],
-			"options": {
-				"tabWidth": 2,
-				"useTabs": false
-			}
-		},
-		{
 			"files": ["*.md", "*.markdown"],
 			"options": {
 				"tabWidth": 4,
-				"useTabs": true
+				"useTabs": false
 			}
 		}
 	],

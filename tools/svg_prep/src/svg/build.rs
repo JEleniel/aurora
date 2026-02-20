@@ -24,7 +24,7 @@ use super::util::{
 
 const MODEL_CONFIGURATION_FILE: &str = "Aurora.modelconfiguration.json";
 const MODEL_CONFIGURATION_RELATIVE_PATH: &str =
-	".github/agents/aurora/reference/Aurora.modelconfiguration.json";
+	".github/aurora/reference/Aurora.modelconfiguration.json";
 const AVAILABLE_CARD_KEYS: [&str; 2] = ["available_cards", "available_icons"];
 
 pub(super) fn run_build(args: &BuildArgs) -> Result<()> {

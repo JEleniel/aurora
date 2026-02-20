@@ -1,5 +1,14 @@
 # Aurora Machine Agent Instruction
 
+## Instruction precedence (Aurora models)
+
+When working with Aurora model artifacts (for example files under `docs/design/aurora/`, a model home `aurora/`, or the schema/reference material that supports them), this document's Aurora-specific rules override any general repository instructions where they conflict.
+
+Examples:
+
+- Aurora model JSON files require `$schema` to be a relative path into the model home, even if general JSON guidance prefers a URL.
+- Model-home schema/reference locations and invariants defined here are authoritative for Aurora modeling tasks.
+
 ## Model Overview
 
 Aurora is a deterministic, typed, directed graph rooted at a single `Mission` card. Cards are nodes, and links are constrained edges. Meaning comes from graph structure and allowed link types, not from diagram shapes or wording. Views are read-only projections of the model and never modify it. The model is a pure architecture which represents logical architecture and intent, not runtime instances, operational state, or implementation tracking.
@@ -21,8 +30,8 @@ Each model is identified by its `Mission` ID.
 ### Getting started
 
 1. Create or locate the model home folder: `aurora/` (located at `docs/design/aurora/` by default).
-2. Ensure `aurora/schemas/` contains `Aurora.audit.schema.json`, `Aurora.card.schema.json`, `Aurora.compact.schema.json`, and `Aurora.modelconfiguration.schema.json`. If missing, copy them from `.github/agents/aurora/schemas/`. Do not copy the Markdown files.
-3. Ensure `aurora/reference/` contains `Aurora.modelconfiguration.json` and `SVGTemplate.svgz`. If missing, copy them from `.github/agents/aurora/reference/`. Do not copy the Markdown files.
+2. Ensure `aurora/schemas/` contains `Aurora.audit.schema.json`, `Aurora.card.schema.json`, `Aurora.compact.schema.json`, and `Aurora.modelconfiguration.schema.json`. If missing, copy them from `.github/aurora/schemas/`. Do not copy the Markdown files.
+3. Ensure `aurora/reference/` contains `Aurora.modelconfiguration.json` and `SVGTemplate.svgz`. If missing, copy them from `.github/aurora/reference/`. Do not copy the Markdown files.
 4. Create the `Mission` card in the model home (`aurora/`).
 5. Add other cards under `{mission id}/{card type folder}/` and link them from existing cards.
 6. Append to `{mission id}/AuditLog.ndjson` for every change event. One entry may include changes to multiple cards.
@@ -51,7 +60,7 @@ graph LR
   drive_excellence(("`Mission:<br />Drive Excellence`"))
   operational_friction_elimination(["`Driver:<br />Operational Friction Elimination`"])
 
-	drive_excellence -- establishes --> operational_friction_elimination
+  drive_excellence -- establishes --> operational_friction_elimination
 ```
 
 ### Cards
@@ -90,8 +99,8 @@ Models live in a folder named `aurora/` (the model home). If an `aurora/` folder
 A model may include six kinds of files:
 
 1. Schemas: These are used to validate the JSON and NDJSON files of models at load and when validating. See the list of schemas under [Getting Started](#getting-started).
-    + These schemas are shared by all models, audit logs, and compact models in the same model home.
-    + All model JSON files MUST have the `$schema` attribute with the relative path from that file to the appropriate schema. NDJSON does not use the `$schema` property.
+    - These schemas are shared by all models, audit logs, and compact models in the same model home.
+    - All model JSON files MUST have the `$schema` attribute with the relative path from that file to the appropriate schema. NDJSON does not use the `$schema` property.
 2. References: These files are used by the tooling to ensure that models are handled according to the definitions in place at the time of their creation. See the list of reference files under [Getting Started](#getting-started).
 3. Cards: the central component of the model, each card is stored in a separate JSON file named `{id}-{name}.json` where name has had all symbols removed and spaces replaced with underscores. Card-type folder names use the same sanitization behavior.
 4. Audit Log: an append-only, line-delimited JSON history of change events over time, stored at `{mission id}/AuditLog.ndjson`. Each line MUST conform to `Aurora.audit.schema.json` and may capture multiple changed cards in one entry. An audit log entry MUST be appended for every change event.
@@ -142,13 +151,6 @@ These invariant rules ensure that the model is a rooted directed graph with only
 
 - The audit log is append-only NDJSON. In most workflows, appending a new entry is sufficient; avoid reading the entire file unless required.
 - Many Aurora workflows regenerate large, mechanical outputs (for example views, markdown renderings, and compact exports). These changes can overwhelm `git diff` and obscure intent.
-
-- Understand and use the `generated` Git attribute (defined in `.gitattributes`).
-
-- Files marked `generated` are tracked in SCM but are always generated outputs. Do not hand-edit them.
-- The `generated` attribute does nothing by itself; Git only uses it when a command uses attributes (for example via attribute-aware pathspecs).
-- In Git commands that accept pathspecs, you can select or exclude generated files with `:(attr:generated)` and `:(exclude,attr:generated)`.
-- When reviewing changes, ignore `generated` files by default unless you are explicitly reviewing rendered outputs.
 
 - The cards are easy to locate and self-indexing, so there is generally no need to keep more than three cards in active memory.
 - It is better to run `aurora_cli validate` than to manually load the schemas to validate. Only load schemas when necessary.

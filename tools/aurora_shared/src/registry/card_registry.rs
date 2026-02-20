@@ -11,13 +11,6 @@ pub struct CardRegistry {
 }
 
 impl CardRegistry {
-	pub fn try_new() -> Result<Self, RegistryError> {
-		let model_configuration = include_str!(
-			"../../../../.github/agents/aurora/reference/Aurora.modelconfiguration.json"
-		);
-		Self::try_new_from_model_configuration(model_configuration)
-	}
-
 	pub fn try_new_from_model_configuration(json: &str) -> Result<Self, RegistryError> {
 		let model_configuration: ModelConfiguration = serde_json::from_str(json)?;
 		Self::try_new_from_struct(model_configuration)

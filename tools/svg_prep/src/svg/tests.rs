@@ -110,7 +110,7 @@ impl TestLayout {
 		let proofs_dir = root.join("assets/proofs");
 		let refs_dir = root.join("assets/references");
 		let shapes_dir = root.join("assets/optimized/shapes");
-		let model_configuration_dir = root.join(".github/agents/aurora/reference");
+		let model_configuration_dir = root.join(".github/aurora/reference");
 		fs::create_dir_all(&masters_icons_dir).expect("masters icons dir should be created");
 		fs::create_dir_all(&masters_shapes_dir).expect("masters shapes dir should be created");
 		fs::create_dir_all(&icons_dir).expect("icons dir should be created");

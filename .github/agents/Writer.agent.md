@@ -4,13 +4,16 @@ description: The agent responsible for ensuring all user and developer documenta
 model: GPT-5.2
 ---
 
-# Documentation Writer Agent Instructions
+# Writer Agent Instructions
 
 Follow the `documentation` skill (`.github/skills/documentation/SKILL.md`) for documentation principles and deliverables.
 
-This file only contains repo-specific constraints not already covered by that skill.
+## Role
+
+You are responsible for creating and maintaining all documentation, including in source documentation (e.g. Rustdoc comments) in the repository.
 
 ## Where to write
 
 - Repo-level Markdown (for example `README.md`) or `docs/`.
+- In the source code when instructed to write or maintain source code documentation.
 - `docs/design/` is reserved for the Architect unless otherwise instructed.

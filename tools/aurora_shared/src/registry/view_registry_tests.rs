@@ -1,8 +1,24 @@
 use super::ViewRegistry;
+use std::path::PathBuf;
+
+fn read_testdata(rel_path: &str) -> String {
+	let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+		.join("src")
+		.join("testdata")
+		.join(rel_path);
+	std::fs::read_to_string(&path)
+		.unwrap_or_else(|e| panic!("failed to read testdata file {}: {e}", path.display()))
+}
+
+fn test_model_configuration() -> String {
+	read_testdata("modelconfiguration/view_registry_test.json")
+}
 
 #[test]
 fn try_get_all_returns_definitions() {
-	let registry = ViewRegistry::try_new().expect("view registry JSON should parse");
+	let model_configuration = test_model_configuration();
+	let registry = ViewRegistry::try_new_from_model_configuration(&model_configuration)
+		.expect("view registry JSON should parse");
 	let definitions = registry
 		.try_get_all()
 		.expect("view registry should return definitions");
@@ -11,7 +27,9 @@ fn try_get_all_returns_definitions() {
 
 #[test]
 fn can_find_a_definition_by_name_in_returned_list() {
-	let registry = ViewRegistry::try_new().expect("view registry JSON should parse");
+	let model_configuration = test_model_configuration();
+	let registry = ViewRegistry::try_new_from_model_configuration(&model_configuration)
+		.expect("view registry JSON should parse");
 	let definitions = registry
 		.try_get_all()
 		.expect("view registry should return definitions");
@@ -25,7 +43,9 @@ fn can_find_a_definition_by_name_in_returned_list() {
 
 #[test]
 fn find_by_name_returns_none_for_unknown() {
-	let registry = ViewRegistry::try_new().expect("view registry JSON should parse");
+	let model_configuration = test_model_configuration();
+	let registry = ViewRegistry::try_new_from_model_configuration(&model_configuration)
+		.expect("view registry JSON should parse");
 	let definitions = registry
 		.try_get_all()
 		.expect("view registry should return definitions");

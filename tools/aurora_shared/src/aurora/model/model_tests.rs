@@ -13,6 +13,15 @@ fn missing(message: &str) -> Box<dyn std::error::Error> {
 	Box::new(std::io::Error::other(message))
 }
 
+fn read_testdata(rel_path: &str) -> String {
+	let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+		.join("src")
+		.join("testdata")
+		.join(rel_path);
+	std::fs::read_to_string(&path)
+		.unwrap_or_else(|e| panic!("failed to read testdata file {}: {e}", path.display()))
+}
+
 fn card_schema() -> Value {
 	json!({
 		"$schema": "http://json-schema.org/draft-07/schema#",
@@ -361,7 +370,8 @@ fn write_markdown_skips_empty_card_types_in_index() -> Result<()> {
 	}
 
 	// Find a card type from the registry that is not present and ensure it is not emitted.
-	let registry = CardRegistry::try_new()?;
+	let model_configuration = read_testdata("modelconfiguration/model_tests_registry.json");
+	let registry = CardRegistry::try_new_from_model_configuration(&model_configuration)?;
 	let forbidden = registry
 		.definitions
 		.iter()

@@ -13,13 +13,25 @@ impl Link {
 		format!("- {} [{}]({})\n", self.relationship, self.target, href)
 	}
 
-	pub fn try_get_markdown(&self) -> Result<String, CardError> {
-		let registry = CardRegistry::try_new()?;
+	pub fn try_get_markdown(&self, registry: &CardRegistry) -> Result<String, CardError> {
+		let target_acronym = self
+			.target
+			.split('-')
+			.next()
+			.map(str::trim)
+			.unwrap_or_default();
+		if target_acronym.len() != 3 {
+			return Err(CardError::InvalidCard(format!(
+				"Invalid link target id format: {}",
+				self.target
+			)));
+		}
+
 		Ok(format!(
 			"- {} [{}](../{}/{}.md)\n",
 			self.relationship,
 			self.target,
-			registry.try_get_by_acronym(&self.target[0..3])?.card_type,
+			registry.try_get_by_acronym(target_acronym)?.card_type,
 			self.target,
 		))
 	}

@@ -9,13 +9,13 @@
 
 ## Commands
 
-| Command | What it does |
-|---|---|
-| `validate` | Validate models and print diagnostics (warnings + errors). |
-| `render-markdown` | Render Markdown for each card, plus a per-model index file. |
-| `render-views` | Render SVG diagrams for each view definition in the registry. |
-| `render-all` | Run both Markdown and view rendering. |
-| `compact` | Write a compact snapshot export per model. |
+| Command           | What it does                                                  |
+| ----------------- | ------------------------------------------------------------- |
+| `validate`        | Validate models and print diagnostics (warnings + errors).    |
+| `render-markdown` | Render Markdown for each card, plus a per-model index file.   |
+| `render-views`    | Render SVG diagrams for each view definition in the registry. |
+| `render-all`      | Run both Markdown and view rendering.                         |
+| `compact`         | Write a compact snapshot export per model.                    |
 
 ## Global options
 
@@ -87,11 +87,11 @@ Sample output:
 For each mission, you get:
 
 - A per-model index:
-	+ `README-<MISSION_ID>-<Mission_Name>.md`
+    - `README-<MISSION_ID>-<Mission_Name>.md`
 - A Markdown rendering of the mission card:
-	+ `<MISSION_ID>-<Mission_Name>.md`
+    - `<MISSION_ID>-<Mission_Name>.md`
 - A file per non-mission card:
-	+ `<MISSION_ID>/<Card_Type>/<CARD_ID>-<Card_Name>.md`
+    - `<MISSION_ID>/<Card_Type>/<CARD_ID>-<Card_Name>.md`
 
 Example (from a render run into `tmp/aurora_cli_out`):
 
