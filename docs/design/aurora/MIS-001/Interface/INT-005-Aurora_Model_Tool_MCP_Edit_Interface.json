@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "INT-005",
+	"card_type": "Interface",
+	"name": "Aurora Model Tool MCP Edit Interface",
+	"description": "Mutating MCP tool subset for editing Aurora model homes via validation-gated, transactional operations (no direct file writes). Covers the minimum write capabilities in REQ-028 (create/update/delete cards; create/update/delete links) and enforces confirmation gating by hosting policy (REQ-029), exclusive lock semantics (REQ-025), and validation on write (REQ-017).",
+	"links": [
+		{
+			"relationship": "accepts",
+			"target": "ART-013"
+		},
+		{
+			"relationship": "returns",
+			"target": "ART-014"
+		}
+	]
+}

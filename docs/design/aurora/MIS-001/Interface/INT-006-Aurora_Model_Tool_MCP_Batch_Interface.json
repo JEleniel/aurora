@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "INT-006",
+	"card_type": "Interface",
+	"name": "Aurora Model Tool MCP Batch Interface",
+	"description": "Batch MCP tool subset for applying multi-card/link edits as a single all-or-nothing operation (REQ-028) under the exclusive model lock. A failed batch MUST return a clear machine-readable failure report describing which validations failed and what was not applied.",
+	"links": [
+		{
+			"relationship": "accepts",
+			"target": "ART-013"
+		},
+		{
+			"relationship": "returns",
+			"target": "ART-014"
+		}
+	]
+}

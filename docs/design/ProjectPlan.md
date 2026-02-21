@@ -2,7 +2,7 @@
 
 ## Scope
 
-Extend the MIS-001 Aurora model to fully specify the standalone Aurora Editor (and its agent-assisted modeling surface) with enough detail for an implementor to build from.
+Extend the MIS-001 Aurora model to fully specify the standalone Aurora Editor (and its agent-assisted modeling surface, including the Aurora MCP Server) with enough detail for an implementor to build from.
 
 ## Work Items
 
@@ -11,6 +11,7 @@ Extend the MIS-001 Aurora model to fully specify the standalone Aurora Editor (a
 - [x] Reconcile and correct any conflicting semantics (for example “last write wins” vs “exclusive lock + refuse open”).
 - [x] Validate and render the updated MIS-001 model outputs (validate, render views, compact export).
 - [x] Audit the resulting model for orphans, invalid relationships, and missing traceability.
+- [x] Model the Aurora MCP Server component/application/interface (COM-010 / APP-004 / INT-002), including provenance partitioning for shared indexing across multiple model homes.
 
 ## Status
 

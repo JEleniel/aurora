@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-036",
+	"card_type": "Requirement",
+	"name": "File Based Logging For Stdio Servers",
+	"description": "When running as an stdio MCP server, logging MUST be file-based (and MUST NOT corrupt the protocol stream). The server SHOULD still support optional console logging when not using stdio for protocol transport.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-010"
+		},
+		{
+			"relationship": "imposes",
+			"target": "CNS-006"
+		}
+	]
+}

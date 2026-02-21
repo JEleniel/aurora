@@ -4,8 +4,12 @@
 	"card_type": "Component",
 	"card_subtype": "Library",
 	"name": "Aurora Shared Library",
-	"description": "Shared Rust library providing registry-aware parsing, validation helpers, and rendering primitives used by Aurora tools (CLI and Editor).",
+	"description": "Shared Rust library providing registry-aware parsing, validation helpers, transactional write primitives, and rendering primitives used by Aurora tools (CLI, Editor, and MCP server).",
 	"links": [
+		{
+			"relationship": "composes",
+			"target": "COM-008"
+		},
 		{
 			"relationship": "implements",
 			"target": "FEA-001"

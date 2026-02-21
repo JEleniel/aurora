@@ -11,6 +11,10 @@
 			"target": "COM-001"
 		},
 		{
+			"relationship": "exposes",
+			"target": "INT-003"
+		},
+		{
 			"relationship": "implements",
 			"target": "FEA-001"
 		},

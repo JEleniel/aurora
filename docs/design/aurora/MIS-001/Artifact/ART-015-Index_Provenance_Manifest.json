@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-015",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "Index Provenance Manifest",
+	"description": "Metadata describing the provenance, partitioning, and validation state of persisted index and derived-record stores (for example: model home identity, mission scope, schema/config versions, fingerprints, and last-built timestamps).",
+	"links": []
+}

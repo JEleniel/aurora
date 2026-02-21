@@ -3,7 +3,7 @@
 	"id": "REQ-012",
 	"card_type": "Requirement",
 	"name": "Model Home Local Schemas And References",
-	"description": "The editor MUST load and use the schemas and reference files included with the selected model home (not built-in or global defaults), allowing the editor to operate across multiple Aurora versions and customizations. At minimum this includes: using `schemas/*` for validation and using `reference/Aurora.modelconfiguration.json` (including its `version`) for canonical card registries, appearance/theming, and view definitions.",
+	"description": "Aurora tooling (editor and MCP server) MUST load and use the schemas and reference files included with the selected model home (not built-in or global defaults), allowing tooling to operate across multiple Aurora versions and customizations. At minimum this includes: using `schemas/*` for validation and using `reference/Aurora.modelconfiguration.json` (including its `version`) for canonical card registries, appearance/theming, and view definitions.",
 	"links": [
 		{
 			"relationship": "requires",

@@ -40,6 +40,8 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[ATV-022 - Apply Batch Edit](MIS-001/Activity/ATV-022-Apply_Batch_Edit.md)**: Apply a batch edit as a single transactional, validation-gated operation (all-or-nothing) while holding the exclusive model lock, and record one audit entry describing all card/link changes.
 
+- **[ATV-023 - Serve MCP Tool Calls](MIS-001/Activity/ATV-023-Serve_MCP_Tool_Calls.md)**: Accept MCP tool calls (stdio or in-process transport) and dispatch them to the Aurora model tool implementation. Read-only calls consult the index/working set; write calls are confirmation-gated by the hosting UI policy, acquire the exclusive model lock, validate, apply transactionally, append one audit entry, and schedule asynchronous index updates. Every tool call returns machine-readable JSON with success/failure plus progress/cancellation where applicable.
+
 - **[ATV-021 - Run Agentic Session](MIS-001/Activity/ATV-021-Run_Agentic_Session.md)**: Run an agent-assisted session with explicit context controls and a visible activity feed of tool actions; allow the agent to perform only tool-mediated reads/writes.
 
 - **[ATV-014 - Pack Model Home](MIS-001/Activity/ATV-014-Pack_Model_Home.md)**: Pack a model home into a single ZIP-compressed file while preserving the standard model home folder structure.
@@ -84,6 +86,8 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[APP-002 - SVG Prep](MIS-001/Application/APP-002-SVG_Prep.md)**: Command-line tool that builds Aurora SVG reference assets (Icons.svg, SVGTemplate.svg defs) from source icons/shapes and synchronizes the icon availability list in the canonical model configuration.
 
+- **[APP-004 - Aurora MCP Server](MIS-001/Application/APP-004-Aurora_MCP_Server.md)**: Model tool server that exposes the constrained Aurora model tool surface over MCP for UI and agent workflows, while keeping memory bounded and all writes validation-gated.
+
 ### Artifact
 
 - **[ART-011 - Editor Log Output](MIS-001/Artifact/ART-011-Editor_Log_Output.md)**: Editor log output emitted to stdout, stderr, and/or an optional log file, used for troubleshooting and diagnostics.
@@ -94,15 +98,25 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[ART-008 - SVG Template](MIS-001/Artifact/ART-008-SVG_Template.md)**: The SVGTemplate.svg reference template used by the renderer to wrap generated drawings and provide shared defs and styling.
 
+- **[ART-015 - Index Provenance Manifest](MIS-001/Artifact/ART-015-Index_Provenance_Manifest.md)**: Metadata describing the provenance, partitioning, and validation state of persisted index and derived-record stores (for example: model home identity, mission scope, schema/config versions, fingerprints, and last-built timestamps).
+
+- **[ART-016 - CLI Command Invocation](MIS-001/Artifact/ART-016-CLI_Command_Invocation.md)**: Structured representation of a single Aurora CLI invocation (command name, arguments, environment, and working directory assumptions) as consumed by the CLI interface.
+
+- **[ART-014 - Model Tool Call Result](MIS-001/Artifact/ART-014-Model_Tool_Call_Result.md)**: Structured JSON result payload for a single model tool call, including success/failure, error details, and (when applicable) progress and cancellation signals.
+
 - **[ART-004 - Mission Audit Log](MIS-001/Artifact/ART-004-Mission_Audit_Log.md)**: The per-mission append-only `AuditLog.ndjson` file that records grouped card/link change events.
 
 - **[ART-007 - Aurora Schemas](MIS-001/Artifact/ART-007-Aurora_Schemas.md)**: The Aurora JSON schemas used to validate cards, audit logs, and compact exports.
 
+- **[ART-017 - CLI Command Result](MIS-001/Artifact/ART-017-CLI_Command_Result.md)**: Structured result of a single Aurora CLI command execution, including exit status, machine-readable diagnostics, and references to produced artifacts (for example validation reports, rendered views, or compact exports).
+
 - **[ART-005 - Canonical Definitions Registry](MIS-001/Artifact/ART-005-Canonical_Definitions_Registry.md)**: The canonical registry JSON (Aurora.modelconfiguration.json) that defines card types, acronyms, allowed outgoing relationships, view definitions, and the available icon list used by tooling.
 
-- **[ART-012 - Index Cache](MIS-001/Artifact/ART-012-Index_Cache.md)**: Persisted on-disk index artifacts stored in the user cache directory to accelerate navigation and search without fully materializing a model in memory.
+- **[ART-012 - Index Cache](MIS-001/Artifact/ART-012-Index_Cache.md)**: Persisted on-disk index artifacts stored in the user cache directory to accelerate navigation and search without fully materializing a model in memory. Index artifacts MUST be partitioned/namespaced by model home identity and validated/invalidated against the originating model home content.
 
 - **[ART-006 - View Definitions Registry](MIS-001/Artifact/ART-006-View_Definitions_Registry.md)**: The canonical registry JSON that defines views (roots, included card types, and view descriptions).
+
+- **[ART-013 - Model Tool Call Request](MIS-001/Artifact/ART-013-Model_Tool_Call_Request.md)**: Structured JSON request payload for a single model tool call (tool name + arguments + optional correlation/progress metadata).
 
 - **[ART-001 - Validation Report](MIS-001/Artifact/ART-001-Validation_Report.md)**: Diagnostics output describing schema, registry, and invariant validation results for a model home.
 
@@ -138,7 +152,9 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 ### Component
 
-- **[COM-008 - Aurora Editor Index](MIS-001/Component/COM-008-Aurora_Editor_Index.md)**: Indexing subsystem that builds, persists, and queries the model index (for example using Tantivy) while keeping the editor responsive and memory bounded.
+- **[COM-010 - Aurora MCP Server](MIS-001/Component/COM-010-Aurora_MCP_Server.md)**: Constrained model tool server that exposes the validation-gated model tool surface over MCP (structured JSON tool calls/results) without full model materialization. The server can run as a standalone stdio MCP process or be hosted in-process via a spawn-friendly entry point (thread friendly). It enforces schema/invariant validation, transactional writes, audit logging, backups, and exclusive-lock requirements by delegating core model operations to aurora_shared.
+
+- **[COM-008 - Aurora Shared Index](MIS-001/Component/COM-008-Aurora_Shared_Index.md)**: Indexing subsystem (shared by the editor and MCP server) that builds, persists, and queries the model index (for example using Tantivy) while keeping the host responsive and memory bounded. The index MUST be namespaced by model home identity and MUST track provenance so multiple model homes can coexist without collisions.
 
 - **[COM-005 - Aurora Editor Binary](MIS-001/Component/COM-005-Aurora_Editor_Binary.md)**: The aurora_editor desktop executable providing an interactive UI and background engine for safe, validated model authoring.
 
@@ -146,11 +162,9 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[COM-003 - svg_prep Binary](MIS-001/Component/COM-003-svgprep_Binary.md)**: The svg_prep executable used to generate/update Aurora SVG reference assets (Icons.svg and SVGTemplate.svg defs) and synchronize the icon list in Aurora.modelconfiguration.json.
 
-- **[COM-009 - Aurora Agent Runtime](MIS-001/Component/COM-009-Aurora_Agent_Runtime.md)**: Agent runtime responsible for provider connectivity (Ollama, OpenAI, optional GitHub Models), request orchestration, offline-mode enforcement, and secret scrubbing before network calls.
+- **[COM-009 - Aurora Agent Runtime](MIS-001/Component/COM-009-Aurora_Agent_Runtime.md)**: Agent runtime responsible for provider connectivity (Ollama, OpenAI, optional GitHub Models), request orchestration, offline-mode enforcement, and secret scrubbing before network calls. For model reads/writes, it invokes the validation-gated model tool surface provided by the Aurora MCP server.
 
-- **[COM-001 - Aurora Shared Library](MIS-001/Component/COM-001-Aurora_Shared_Library.md)**: Shared Rust library providing registry-aware parsing, validation helpers, and rendering primitives used by Aurora tools (CLI and Editor).
-
-- **[COM-010 - Aurora Model Tool API](MIS-001/Component/COM-010-Aurora_Model_Tool_API.md)**: Constrained model tool surface used by the UI and agents to read and write the model without full materialization. The tool API enforces schema/invariant validation, transactional writes, audit logging, and exclusive-lock requirements. Tool calls and results are structured JSON; the surface may be implemented with MCP.
+- **[COM-001 - Aurora Shared Library](MIS-001/Component/COM-001-Aurora_Shared_Library.md)**: Shared Rust library providing registry-aware parsing, validation helpers, transactional write primitives, and rendering primitives used by Aurora tools (CLI, Editor, and MCP server).
 
 - **[COM-002 - Aurora CLI Binary](MIS-001/Component/COM-002-Aurora_CLI_Binary.md)**: The aurora_cli executable that exposes validate/render/compact commands to users and pipelines.
 
@@ -171,6 +185,10 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 - **[CNS-005 - Dioxus UI](MIS-001/Constraint/CNS-005-Dioxus_UI.md)**: The standalone editor UI MUST be implemented using Dioxus.
 
 - **[CNS-006 - Fern Logging](MIS-001/Constraint/CNS-006-Fern_Logging.md)**: The standalone editor MUST support logging with fern integration.
+
+### Data Store
+
+- **[DST-001 - Model Home Index Store](MIS-001/Data_Store/DST-001-Model_Home_Index_Store.md)**: On-disk store (under the OS user cache directory) for persisted indices and derived records used for navigation/search. The store is partitioned by model home identity (and mission scope when applicable) and retains provenance metadata required to validate/invalidate cached state.
 
 ### Driver
 
@@ -206,9 +224,23 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[FEA-003 - Export Compact Model](MIS-001/Feature/FEA-003-Export_Compact_Model.md)**: Export an Aurora compact model representation suitable for agent consumption and transport.
 
+### Interface
+
+- **[INT-006 - Aurora Model Tool MCP Batch Interface](MIS-001/Interface/INT-006-Aurora_Model_Tool_MCP_Batch_Interface.md)**: Batch MCP tool subset for applying multi-card/link edits as a single all-or-nothing operation (REQ-028) under the exclusive model lock. A failed batch MUST return a clear machine-readable failure report describing which validations failed and what was not applied.
+
+- **[INT-003 - Aurora CLI Command Interface](MIS-001/Interface/INT-003-Aurora_CLI_Command_Interface.md)**: Command-line contract exposed by the Aurora CLI for users and pipelines. The interface MUST be documented (commands, flags, exit codes, and stable output/diagnostic semantics) so automation can reliably validate models, render views, and export compact representations.
+
+- **[INT-004 - Aurora Model Tool MCP Query Interface](MIS-001/Interface/INT-004-Aurora_Model_Tool_MCP_Query_Interface.md)**: Read-only MCP tool subset for querying Aurora model homes without direct file access. Covers the minimum non-mutating capabilities in REQ-028 (for example: find cards by id/name/type/subtype; fetch normalized card representation; fetch inbound/outbound adjacency and bounded neighborhoods; query modelconfiguration; compute viable roots per the root safety rule; list possible next target types based on model configuration).
+
+- **[INT-005 - Aurora Model Tool MCP Edit Interface](MIS-001/Interface/INT-005-Aurora_Model_Tool_MCP_Edit_Interface.md)**: Mutating MCP tool subset for editing Aurora model homes via validation-gated, transactional operations (no direct file writes). Covers the minimum write capabilities in REQ-028 (create/update/delete cards; create/update/delete links) and enforces confirmation gating by hosting policy (REQ-029), exclusive lock semantics (REQ-025), and validation on write (REQ-017).
+
+- **[INT-002 - Aurora Model Tool MCP Interface](MIS-001/Interface/INT-002-Aurora_Model_Tool_MCP_Interface.md)**: MCP-exposed tool interface for reading and writing Aurora model homes. Tool calls and results are structured JSON and cover the minimum capabilities defined by REQ-028; long-running operations report progress and support cancellation. The MCP tool surface is further described as a set of sub-interfaces: INT-004 (query), INT-005 (edit), and INT-006 (batch).
+
 ### Process
 
 - **[PRO-011 - Index And Search Model Homes](MIS-001/Process/PRO-011-Index_And_Search_Model_Homes.md)**: Create or load a persisted index for a model home, use it to support fast search/navigation, and update it asynchronously on save.
+
+- **[PRO-013 - Serve Model Tool Surface (MCP)](MIS-001/Process/PRO-013-Serve_Model_Tool_Surface_MCP.md)**: Operate the constrained model tool surface as an MCP server so UI and agents can perform validated reads/writes without direct file access.
 
 - **[PRO-008 - Persist And Package Model Home](MIS-001/Process/PRO-008-Persist_And_Package_Model_Home.md)**: Persist edits to disk safely (autosave or manual save), support undo/redo, and pack/unpack model homes as ZIP archives.
 
@@ -234,7 +266,7 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 ### Requirement
 
-- **[REQ-017 - Prevent Invalid Edits](MIS-001/Requirement/REQ-017-Prevent_Invalid_Edits.md)**: The editor MUST prevent edits that would break a model (schema, registry constraints, invariants). Validation is performed at write points; if a candidate edit would fail validation, the write MUST be blocked and errors MUST be presented. Warning-only checks (for example naming/relationship verb linting) MUST remain warnings. These rules apply equally to human UI edits and agent-assisted edits.
+- **[REQ-017 - Prevent Invalid Edits](MIS-001/Requirement/REQ-017-Prevent_Invalid_Edits.md)**: Aurora tooling (editor and MCP server) MUST prevent edits that would break a model (schema, registry constraints, invariants). Validation is performed at write points; if a candidate edit would fail validation, the write MUST be blocked and errors MUST be presented. Warning-only checks (for example naming/relationship verb linting) MUST remain warnings. These rules apply equally to human UI edits and agent-assisted edits.
 
 - **[REQ-019 - Undo Redo Depth](MIS-001/Requirement/REQ-019-Undo_Redo_Depth.md)**: The editor SHOULD support undo/redo spanning 50 edits deep.
 
@@ -250,9 +282,11 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[REQ-010 - Rendering Semantics](MIS-001/Requirement/REQ-010-Rendering_Semantics.md)**: Rendering MUST treat canonical registry style fields (shape/icon/fill/color) as non-normative hints; model validity MUST depend on normative fields (types, ids, relationships), not styling.
 
-- **[REQ-014 - Backup Zip On Load](MIS-001/Requirement/REQ-014-Backup_Zip_On_Load.md)**: At load time, the editor MUST begin creating a timestamped backup ZIP of the entire model home under `aurora/backups/` (for example `MIS-001-20260210T061800Z.zip`). Backup creation MUST be asynchronous and MUST NOT block UI interactivity. If backup creation fails, the editor MUST warn the user but continue loading. A configurable number of ZIPs will be retained (default 5), with older backups automatically deleted.
+- **[REQ-014 - Backup Zip On Load](MIS-001/Requirement/REQ-014-Backup_Zip_On_Load.md)**: At load time, Aurora tooling (editor and MCP server) MUST begin creating a timestamped backup ZIP of the entire model home under `aurora/backups/` (for example `MIS-001-20260210T061800Z.zip`). Backup creation MUST be asynchronous and MUST NOT block UI interactivity or tool-call responsiveness. If backup creation fails, the tool MUST warn the user but continue loading. A configurable number of ZIPs will be retained (default 5), with older backups automatically deleted.
 
 - **[REQ-015 - UI Engine Thread Separation](MIS-001/Requirement/REQ-015-UI_Engine_Thread_Separation.md)**: The editor UI and engine MUST operate on separate threads to ensure UI responsiveness and effective use of modern hardware.
+
+- **[REQ-037 - Index And Record Provenance](MIS-001/Requirement/REQ-037-Index_And_Record_Provenance.md)**: When indexing and caching derived records for navigation/search, the editor and MCP server MUST track where each set of indices and derived records originates. Index and record stores MUST be namespaced by model home identity (and, where relevant, mission id) so multiple model homes can be opened and indexed concurrently without collisions. Provenance MUST include enough information to validate/invalidate cached data against the originating model home content (for example: model home path, schema/config versions, and content fingerprints).
 
 - **[REQ-013 - Fast Streamed Loading](MIS-001/Requirement/REQ-013-Fast_Streamed_Loading.md)**: Models of any size SHOULD load almost instantly; the editor MUST become interactive with visible progress feedback within 2 seconds on the minimum target platform (8GiB RAM baseline) for a typical model home (~2000 cards, ~3500 links). If reading model files exceeds this budget, the editor MUST still open quickly and continue loading with progress feedback. Operations MAY take longer on large models, but the editor MUST remain responsive (no runaway memory growth) and MUST NOT load the entire model into memory at once.
 
@@ -262,9 +296,11 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[REQ-016 - Interactive View Rendering](MIS-001/Requirement/REQ-016-Interactive_View_Rendering.md)**: The editor MUST be able to render any view defined in the model configuration file and MUST support ad-hoc views.
 
+- **[REQ-036 - File Based Logging For Stdio Servers](MIS-001/Requirement/REQ-036-File_Based_Logging_For_Stdio_Servers.md)**: When running as an stdio MCP server, logging MUST be file-based (and MUST NOT corrupt the protocol stream). The server SHOULD still support optional console logging when not using stdio for protocol transport.
+
 - **[REQ-002 - Directed Graph Invariants](MIS-001/Requirement/REQ-002-Directed_Graph_Invariants.md)**: Starting from the Mission, all links MUST traverse away from the Mission; every card must be reachable; and traversal must terminate in a leaf or a previously seen card (local loop).
 
-- **[REQ-025 - Single Instance Model Semantics](MIS-001/Requirement/REQ-025-Single_Instance_Model_Semantics.md)**: Multiple instances editing the same model are not supported. The editor MUST prevent accidental concurrent editing using OS-level locking by holding an exclusive lock (write handle) on the mission audit log at `aurora/<MISSION_ID>/AuditLog.ndjson` for the full duration of an editing session. If the exclusive lock cannot be acquired because it is already held, the editor MUST refuse to open the model and MUST present a clear locked-model error. This relies on the OS to release locks on crash, minimizing stale-lock cleanup. Shared/networked models remain not officially supported.
+- **[REQ-025 - Single Instance Model Semantics](MIS-001/Requirement/REQ-025-Single_Instance_Model_Semantics.md)**: Multiple instances editing the same model are not supported. Aurora tooling (editor and MCP server) MUST prevent accidental concurrent editing using OS-level locking by holding an exclusive lock (write handle) on the mission audit log at `aurora/<MISSION_ID>/AuditLog.ndjson` for the full duration of an editing session. If the exclusive lock cannot be acquired because it is already held, the tool MUST refuse to open the model and MUST present a clear locked-model error. This relies on the OS to release locks on crash, minimizing stale-lock cleanup. Shared/networked models remain not officially supported.
 
 - **[REQ-026 - Searchable Index](MIS-001/Requirement/REQ-026-Searchable_Index.md)**: The editor MUST build and maintain a searchable index so users and agents can navigate and search while keeping memory bounded. Full indexing SHOULD be available almost instantly for typical model homes. Minimum index coverage MUST include: card type, card subtype, card ID, card name, outbound link adjacency, and attribute property names. Indexing MUST update on save; index updates are asynchronous, expected to be inexpensive, and SHOULD not block the UI thread. Full-text search is optional.
 
@@ -274,7 +310,7 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[REQ-029 - Agentic Sidebar UX](MIS-001/Requirement/REQ-029-Agentic_Sidebar_UX.md)**: The editor MUST provide an agentic sidebar supporting: free-form chat, a visible structured activity feed of tool actions, explicit context controls (selected card only, view context, or user-selected scope), and a diff-like proposed-changes preview before writes. By default, applying proposed changes MUST require explicit user confirmation; deletes MUST always require confirmation.
 
-- **[REQ-028 - Agent Tool Surface Only](MIS-001/Requirement/REQ-028-Agent_Tool_Surface_Only.md)**: The editor MUST expose a constrained model tool surface that is the only way an agent can read or modify the model. Tool calls and tool results MUST be structured, machine-readable JSON. Minimum non-mutating tools MUST include: find cards by id/name/type/subtype; fetch a card's normalized representation (attributes + links); fetch inbound/outbound adjacency and bounded neighborhood expansions; query model configuration; compute viable roots per the root safety rule; retrieve validation errors/warnings for a candidate edit; and list possible next target card types based on model configuration. Minimum write tools MUST include: create/update/delete cards (updates supply a complete replacement payload); create/update/delete links; and apply a batch edit as a single all-or-nothing operation with a clear failure report. All writes MUST be transactional and validation-gated, MUST require the editor to hold the exclusive model lock, and MUST append exactly one audit entry per successful operation.
+- **[REQ-028 - Agent Tool Surface Only](MIS-001/Requirement/REQ-028-Agent_Tool_Surface_Only.md)**: Aurora tooling MUST expose a constrained model tool surface that is the only way an agent can read or modify the model. Tool calls and tool results MUST be structured, machine-readable JSON (for example via MCP). Minimum non-mutating tools MUST include: find cards by id/name/type/subtype; fetch a card's normalized representation (attributes + links); fetch inbound/outbound adjacency and bounded neighborhood expansions; query model configuration; compute viable roots per the root safety rule; retrieve validation errors/warnings for a candidate edit; and list possible next target card types based on model configuration. Minimum write tools MUST include: create/update/delete cards (updates supply a complete replacement payload); create/update/delete links; and apply a batch edit as a single all-or-nothing operation with a clear failure report. All writes MUST be transactional and validation-gated, MUST require holding the exclusive model lock, and MUST append exactly one audit entry per successful operation.
 
 - **[REQ-022 - Editor Logging With Fern](MIS-001/Requirement/REQ-022-Editor_Logging_With_Fern.md)**: Logging MUST be supported with fern integration, including stdout, stderr, and optional file-based logging.
 
@@ -284,7 +320,7 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[REQ-008 - Compact Model Format](MIS-001/Requirement/REQ-008-Compact_Model_Format.md)**: A compact, single-file representation MUST be supported for transport and agent consumption, using the compact schema and retaining card ids, types, fields, and links.
 
-- **[REQ-027 - Index Cache In User Cache Directory](MIS-001/Requirement/REQ-027-Index_Cache_In_User_Cache_Directory.md)**: Index persistence MUST use the user cache directory (OS cache folder) rather than the model home. Cached indices are disposable cache artifacts: they SHOULD be safe to delete, MUST be validated/invalidated against the current model home content, and MUST be rebuilt when stale or incompatible.
+- **[REQ-027 - Index Cache In User Cache Directory](MIS-001/Requirement/REQ-027-Index_Cache_In_User_Cache_Directory.md)**: Index persistence MUST use the user cache directory (OS cache folder) rather than the model home. Cached indices are disposable cache artifacts: they SHOULD be safe to delete, MUST be validated/invalidated against the current model home content, and MUST be rebuilt when stale or incompatible. Index persistence MUST be partitioned/namespaced by model home identity so multiple model homes can be indexed concurrently without collisions.
 
 - **[REQ-011 - Standalone Cross Platform Editor](MIS-001/Requirement/REQ-011-Standalone_Cross_Platform_Editor.md)**: The Aurora Editor MUST run on the major desktop platforms (Linux, Microsoft Windows, and Apple macOS).
 
@@ -294,9 +330,13 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 - **[REQ-030 - Agent Provider Support And Configuration](MIS-001/Requirement/REQ-030-Agent_Provider_Support_And_Configuration.md)**: Agent integration MUST support configuring providers explicitly (endpoint URL, model selection, timeouts). The editor MUST support Ollama endpoints and OpenAI endpoints, and SHOULD support GitHub Models via REST API including optional organizational attribution.
 
+- **[REQ-035 - Tool Call Progress And Cancellation](MIS-001/Requirement/REQ-035-Tool_Call_Progress_And_Cancellation.md)**: For long-running model tool operations (load/index/render/validate/batch edits), the editor and MCP server MUST remain responsive: every tool call MUST return a structured success or failure result, MUST report progress when work exceeds interactive latency budgets, and MUST support cancellation without leaving the model in an invalid state.
+
+- **[REQ-038 - Document Aurora CLI Interface](MIS-001/Requirement/REQ-038-Document_Aurora_CLI_Interface.md)**: The Aurora CLI interface (commands, flags, exit codes, and output/diagnostic semantics) MUST be documented and kept in sync with the implementation so users and pipelines can rely on stable tooling behavior.
+
 - **[REQ-034 - Modelconfiguration Is Versioned](MIS-001/Requirement/REQ-034-Modelconfiguration_Is_Versioned.md)**: `reference/Aurora.modelconfiguration.json` MUST include a `version` property so tooling can identify the exact canonical registry version. The modelconfiguration schema MUST require this field, and tooling that loads the registry MUST parse and surface it for diagnostics and compatibility decisions.
 
-- **[REQ-012 - Model Home Local Schemas And References](MIS-001/Requirement/REQ-012-Model_Home_Local_Schemas_And_References.md)**: The editor MUST load and use the schemas and reference files included with the selected model home (not built-in or global defaults), allowing the editor to operate across multiple Aurora versions and customizations. At minimum this includes: using `schemas/*` for validation and using `reference/Aurora.modelconfiguration.json` (including its `version`) for canonical card registries, appearance/theming, and view definitions.
+- **[REQ-012 - Model Home Local Schemas And References](MIS-001/Requirement/REQ-012-Model_Home_Local_Schemas_And_References.md)**: Aurora tooling (editor and MCP server) MUST load and use the schemas and reference files included with the selected model home (not built-in or global defaults), allowing tooling to operate across multiple Aurora versions and customizations. At minimum this includes: using `schemas/*` for validation and using `reference/Aurora.modelconfiguration.json` (including its `version`) for canonical card registries, appearance/theming, and view definitions.
 
 - **[REQ-009 - Default Tooling Support](MIS-001/Requirement/REQ-009-Default_Tooling_Support.md)**: Default tooling SHOULD validate models, generate human-readable outputs, generate views, and export compact models from the source cards.
 

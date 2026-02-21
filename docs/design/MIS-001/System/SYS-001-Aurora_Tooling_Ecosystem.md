@@ -13,6 +13,7 @@ _No attributes defined._
 - integrates [APP-001](../Application/APP-001-Aurora_CLI.md)
 - integrates [APP-002](../Application/APP-002-SVG_Prep.md)
 - integrates [APP-003](../Application/APP-003-Aurora_Editor.md)
+- integrates [APP-004](../Application/APP-004-Aurora_MCP_Server.md)
 
 
 ## Version
@@ -23,3 +24,4 @@ _No attributes defined._
 |-----------|--------|--------|
 | 2026-02-18T12:39:06Z | Architect | change |
 | 2026-02-18T13:55:00Z | Architect | change |
+| 2026-02-21T18:00:00Z | Architect | change |

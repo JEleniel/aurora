@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-017",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "CLI Command Result",
+	"description": "Structured result of a single Aurora CLI command execution, including exit status, machine-readable diagnostics, and references to produced artifacts (for example validation reports, rendered views, or compact exports).",
+	"links": []
+}

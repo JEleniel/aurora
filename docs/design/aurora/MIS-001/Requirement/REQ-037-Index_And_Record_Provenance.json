@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-037",
+	"card_type": "Requirement",
+	"name": "Index And Record Provenance",
+	"description": "When indexing and caching derived records for navigation/search, the editor and MCP server MUST track where each set of indices and derived records originates. Index and record stores MUST be namespaced by model home identity (and, where relevant, mission id) so multiple model homes can be opened and indexed concurrently without collisions. Provenance MUST include enough information to validate/invalidate cached data against the originating model home content (for example: model home path, schema/config versions, and content fingerprints).",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-011"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-006"
+		}
+	]
+}

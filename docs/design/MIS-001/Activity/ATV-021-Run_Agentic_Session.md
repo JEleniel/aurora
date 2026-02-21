@@ -12,7 +12,7 @@ _No attributes defined._
 
 - uses [COM-006](../Component/COM-006-Aurora_Editor_UI.md)
 - uses [COM-009](../Component/COM-009-Aurora_Agent_Runtime.md)
-- uses [COM-010](../Component/COM-010-Aurora_Model_Tool_API.md)
+- uses [COM-010](../Component/COM-010-Aurora_MCP_Server.md)
 
 
 ## Version

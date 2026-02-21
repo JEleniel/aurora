@@ -10,8 +10,9 @@ _No attributes defined._
 
 ## Links
 
-- uses [COM-008](../Component/COM-008-Aurora_Editor_Index.md)
+- uses [COM-008](../Component/COM-008-Aurora_Shared_Index.md)
 - produces [ART-012](../Artifact/ART-012-Index_Cache.md)
+- produces [ART-015](../Artifact/ART-015-Index_Provenance_Manifest.md)
 
 
 ## Version
@@ -21,3 +22,4 @@ _No attributes defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-21T00:00:00Z | Architect | create |
+| 2026-02-21T18:00:00Z | Architect | change |

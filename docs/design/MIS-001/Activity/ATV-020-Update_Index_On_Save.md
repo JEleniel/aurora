@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- uses [COM-008](../Component/COM-008-Aurora_Editor_Index.md)
+- uses [COM-008](../Component/COM-008-Aurora_Shared_Index.md)
 
 
 ## Version

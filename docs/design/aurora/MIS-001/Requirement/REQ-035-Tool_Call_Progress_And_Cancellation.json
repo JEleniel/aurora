@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-035",
+	"card_type": "Requirement",
+	"name": "Tool Call Progress And Cancellation",
+	"description": "For long-running model tool operations (load/index/render/validate/batch edits), the editor and MCP server MUST remain responsive: every tool call MUST return a structured success or failure result, MUST report progress when work exceeds interactive latency budgets, and MUST support cancellation without leaving the model in an invalid state.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-006"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-012"
+		}
+	]
+}

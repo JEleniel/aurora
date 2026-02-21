@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-038",
+	"card_type": "Requirement",
+	"name": "Document Aurora CLI Interface",
+	"description": "The Aurora CLI interface (commands, flags, exit codes, and output/diagnostic semantics) MUST be documented and kept in sync with the implementation so users and pipelines can rely on stable tooling behavior.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-001"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-002"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-003"
+		}
+	]
+}

@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-014",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "Model Tool Call Result",
+	"description": "Structured JSON result payload for a single model tool call, including success/failure, error details, and (when applicable) progress and cancellation signals.",
+	"links": []
+}

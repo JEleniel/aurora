@@ -1,6 +1,6 @@
 # Requirement: REQ-017 Prevent Invalid Edits
 
-The editor MUST prevent edits that would break a model (schema, registry constraints, invariants). Validation is performed at write points; if a candidate edit would fail validation, the write MUST be blocked and errors MUST be presented. Warning-only checks (for example naming/relationship verb linting) MUST remain warnings. These rules apply equally to human UI edits and agent-assisted edits.
+Aurora tooling (editor and MCP server) MUST prevent edits that would break a model (schema, registry constraints, invariants). Validation is performed at write points; if a candidate edit would fail validation, the write MUST be blocked and errors MUST be presented. Warning-only checks (for example naming/relationship verb linting) MUST remain warnings. These rules apply equally to human UI edits and agent-assisted edits.
 
 
 
@@ -22,3 +22,4 @@ _No attributes defined._
 |-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | create |
 | 2026-02-21T00:00:00Z | Architect | change |
+| 2026-02-21T18:10:00Z | Architect | change |

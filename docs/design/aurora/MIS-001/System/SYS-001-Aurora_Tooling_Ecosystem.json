@@ -16,6 +16,10 @@
 		{
 			"relationship": "integrates",
 			"target": "APP-003"
+		},
+		{
+			"relationship": "integrates",
+			"target": "APP-004"
 		}
 	]
 }

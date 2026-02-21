@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "INT-003",
+	"card_type": "Interface",
+	"name": "Aurora CLI Command Interface",
+	"description": "Command-line contract exposed by the Aurora CLI for users and pipelines. The interface MUST be documented (commands, flags, exit codes, and stable output/diagnostic semantics) so automation can reliably validate models, render views, and export compact representations.",
+	"links": [
+		{
+			"relationship": "accepts",
+			"target": "ART-016"
+		},
+		{
+			"relationship": "returns",
+			"target": "ART-017"
+		}
+	]
+}

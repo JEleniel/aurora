@@ -3,7 +3,7 @@
 	"id": "REQ-027",
 	"card_type": "Requirement",
 	"name": "Index Cache In User Cache Directory",
-	"description": "Index persistence MUST use the user cache directory (OS cache folder) rather than the model home. Cached indices are disposable cache artifacts: they SHOULD be safe to delete, MUST be validated/invalidated against the current model home content, and MUST be rebuilt when stale or incompatible.",
+	"description": "Index persistence MUST use the user cache directory (OS cache folder) rather than the model home. Cached indices are disposable cache artifacts: they SHOULD be safe to delete, MUST be validated/invalidated against the current model home content, and MUST be rebuilt when stale or incompatible. Index persistence MUST be partitioned/namespaced by model home identity so multiple model homes can be indexed concurrently without collisions.",
 	"links": [
 		{
 			"relationship": "requires",

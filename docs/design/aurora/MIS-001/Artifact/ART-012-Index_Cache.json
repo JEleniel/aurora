@@ -4,6 +4,6 @@
 	"card_type": "Artifact",
 	"card_subtype": "Data",
 	"name": "Index Cache",
-	"description": "Persisted on-disk index artifacts stored in the user cache directory to accelerate navigation and search without fully materializing a model in memory.",
+	"description": "Persisted on-disk index artifacts stored in the user cache directory to accelerate navigation and search without fully materializing a model in memory. Index artifacts MUST be partitioned/namespaced by model home identity and validated/invalidated against the originating model home content.",
 	"links": []
 }

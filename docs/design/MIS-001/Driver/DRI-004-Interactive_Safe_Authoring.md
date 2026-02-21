@@ -34,6 +34,9 @@ _No attributes defined._
 - drives [REQ-032](../Requirement/REQ-032-Offline_Mode.md)
 - drives [REQ-033](../Requirement/REQ-033-Editor_UX_Layout_And_Graph_Navigation.md)
 - drives [REQ-034](../Requirement/REQ-034-Modelconfiguration_Is_Versioned.md)
+- drives [REQ-035](../Requirement/REQ-035-Tool_Call_Progress_And_Cancellation.md)
+- drives [REQ-036](../Requirement/REQ-036-File_Based_Logging_For_Stdio_Servers.md)
+- drives [REQ-037](../Requirement/REQ-037-Index_And_Record_Provenance.md)
 
 
 ## Version
@@ -44,3 +47,4 @@ _No attributes defined._
 |-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | create |
 | 2026-02-21T00:00:00Z | Architect | change |
+| 2026-02-21T18:00:00Z | Architect | change |

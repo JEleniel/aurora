@@ -10,7 +10,7 @@ _No attributes defined._
 
 ## Links
 
-- uses [COM-010](../Component/COM-010-Aurora_Model_Tool_API.md)
+- uses [COM-010](../Component/COM-010-Aurora_MCP_Server.md)
 - uses [COM-007](../Component/COM-007-Aurora_Editor_Engine.md)
 
 

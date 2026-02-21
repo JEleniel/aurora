@@ -11,9 +11,9 @@ _No attributes defined._
 ## Links
 
 - composes [COM-001](COM-001-Aurora_Shared_Library.md)
-- composes [COM-008](COM-008-Aurora_Editor_Index.md)
+- composes [COM-008](COM-008-Aurora_Shared_Index.md)
 - composes [COM-009](COM-009-Aurora_Agent_Runtime.md)
-- composes [COM-010](COM-010-Aurora_Model_Tool_API.md)
+- composes [COM-010](COM-010-Aurora_MCP_Server.md)
 - implements [FEA-007](../Feature/FEA-007-Load_And_Validate_Model_Homes.md)
 - implements [FEA-009](../Feature/FEA-009-Model_Persistence_And_Recovery.md)
 - implements [FEA-012](../Feature/FEA-012-Index_And_Search.md)

@@ -1,0 +1,37 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "PRO-013",
+	"card_type": "Process",
+	"name": "Serve Model Tool Surface (MCP)",
+	"description": "Operate the constrained model tool surface as an MCP server so UI and agents can perform validated reads/writes without direct file access.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "ATV-023"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-009"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-010"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-018"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-019"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-020"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-022"
+		}
+	]
+}

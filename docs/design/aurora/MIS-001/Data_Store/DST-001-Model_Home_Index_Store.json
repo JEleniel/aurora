@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "DST-001",
+	"card_type": "Data Store",
+	"card_subtype": "Key-Value",
+	"name": "Model Home Index Store",
+	"description": "On-disk store (under the OS user cache directory) for persisted indices and derived records used for navigation/search. The store is partitioned by model home identity (and mission scope when applicable) and retains provenance metadata required to validate/invalidate cached state.",
+	"links": []
+}

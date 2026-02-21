@@ -16,6 +16,10 @@
 		{
 			"relationship": "drives",
 			"target": "REQ-010"
+		},
+		{
+			"relationship": "drives",
+			"target": "REQ-038"
 		}
 	]
 }

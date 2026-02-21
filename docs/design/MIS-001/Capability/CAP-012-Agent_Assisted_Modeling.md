@@ -11,6 +11,7 @@ _No attributes defined._
 ## Links
 
 - requires [PRO-012](../Process/PRO-012-Agent_Assisted_Modeling.md)
+- requires [PRO-013](../Process/PRO-013-Serve_Model_Tool_Surface_MCP.md)
 
 
 ## Version
@@ -20,3 +21,4 @@ _No attributes defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-21T00:00:00Z | Architect | create |
+| 2026-02-21T18:00:00Z | Architect | change |

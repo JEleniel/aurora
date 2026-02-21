@@ -13,6 +13,7 @@ _No attributes defined._
 - drives [REQ-008](../Requirement/REQ-008-Compact_Model_Format.md)
 - drives [REQ-009](../Requirement/REQ-009-Default_Tooling_Support.md)
 - drives [REQ-010](../Requirement/REQ-010-Rendering_Semantics.md)
+- drives [REQ-038](../Requirement/REQ-038-Document_Aurora_CLI_Interface.md)
 
 
 ## Version
@@ -21,4 +22,4 @@ _No attributes defined._
 
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
-| _No entries_ |  |  |
+| 2026-02-21T19:00:00Z | Architect | change |

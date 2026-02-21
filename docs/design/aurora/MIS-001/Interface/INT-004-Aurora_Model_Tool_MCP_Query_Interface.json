@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "INT-004",
+	"card_type": "Interface",
+	"name": "Aurora Model Tool MCP Query Interface",
+	"description": "Read-only MCP tool subset for querying Aurora model homes without direct file access. Covers the minimum non-mutating capabilities in REQ-028 (for example: find cards by id/name/type/subtype; fetch normalized card representation; fetch inbound/outbound adjacency and bounded neighborhoods; query modelconfiguration; compute viable roots per the root safety rule; list possible next target types based on model configuration).",
+	"links": [
+		{
+			"relationship": "accepts",
+			"target": "ART-013"
+		},
+		{
+			"relationship": "returns",
+			"target": "ART-014"
+		}
+	]
+}

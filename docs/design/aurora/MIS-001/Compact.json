@@ -56,6 +56,42 @@
     {
       "attributes": {},
       "card_type": "Process",
+      "id": "PRO-013",
+      "links": [
+        {
+          "relationship": "includes",
+          "target": "ATV-023"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-009"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-010"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-018"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-019"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-020"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-022"
+        }
+      ],
+      "name": "Serve Model Tool Surface (MCP)"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
       "id": "PRO-008",
       "links": [
         {
@@ -380,6 +416,22 @@
     },
     {
       "attributes": {},
+      "card_type": "Application",
+      "id": "APP-004",
+      "links": [
+        {
+          "relationship": "comprises",
+          "target": "COM-010"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-001"
+        }
+      ],
+      "name": "Aurora MCP Server"
+    },
+    {
+      "attributes": {},
       "card_type": "Feature",
       "id": "FEA-002",
       "links": [
@@ -512,6 +564,14 @@
     },
     {
       "attributes": {},
+      "card_subtype": "Key-Value",
+      "card_type": "Data Store",
+      "id": "DST-001",
+      "links": [],
+      "name": "Model Home Index Store"
+    },
+    {
+      "attributes": {},
       "card_subtype": "Report",
       "card_type": "Artifact",
       "id": "ART-011",
@@ -546,6 +606,30 @@
       "attributes": {},
       "card_subtype": "Data",
       "card_type": "Artifact",
+      "id": "ART-015",
+      "links": [],
+      "name": "Index Provenance Manifest"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-016",
+      "links": [],
+      "name": "CLI Command Invocation"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-014",
+      "links": [],
+      "name": "Model Tool Call Result"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
       "id": "ART-004",
       "links": [],
       "name": "Mission Audit Log"
@@ -557,6 +641,14 @@
       "id": "ART-007",
       "links": [],
       "name": "Aurora Schemas"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-017",
+      "links": [],
+      "name": "CLI Command Result"
     },
     {
       "attributes": {},
@@ -581,6 +673,14 @@
       "id": "ART-006",
       "links": [],
       "name": "View Definitions Registry"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-013",
+      "links": [],
+      "name": "Model Tool Call Request"
     },
     {
       "attributes": {},
@@ -745,6 +845,22 @@
     {
       "attributes": {},
       "card_type": "Requirement",
+      "id": "REQ-037",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-011"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        }
+      ],
+      "name": "Index And Record Provenance"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
       "id": "REQ-013",
       "links": [
         {
@@ -797,6 +913,22 @@
         }
       ],
       "name": "Interactive View Rendering"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-036",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-010"
+        },
+        {
+          "relationship": "imposes",
+          "target": "CNS-006"
+        }
+      ],
+      "name": "File Based Logging For Stdio Servers"
     },
     {
       "attributes": {},
@@ -1045,6 +1177,42 @@
     {
       "attributes": {},
       "card_type": "Requirement",
+      "id": "REQ-035",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        }
+      ],
+      "name": "Tool Call Progress And Cancellation"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-038",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-002"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-003"
+        }
+      ],
+      "name": "Document Aurora CLI Interface"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
       "id": "REQ-034",
       "links": [
         {
@@ -1126,9 +1294,46 @@
         {
           "relationship": "integrates",
           "target": "APP-003"
+        },
+        {
+          "relationship": "integrates",
+          "target": "APP-004"
         }
       ],
       "name": "Aurora Tooling Ecosystem"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Service",
+      "card_type": "Component",
+      "id": "COM-010",
+      "links": [
+        {
+          "relationship": "composes",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "exposes",
+          "target": "INT-002"
+        },
+        {
+          "relationship": "exposes",
+          "target": "INT-004"
+        },
+        {
+          "relationship": "exposes",
+          "target": "INT-005"
+        },
+        {
+          "relationship": "exposes",
+          "target": "INT-006"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-013"
+        }
+      ],
+      "name": "Aurora MCP Server"
     },
     {
       "attributes": {},
@@ -1139,9 +1344,17 @@
         {
           "relationship": "implements",
           "target": "FEA-012"
+        },
+        {
+          "relationship": "stores in",
+          "target": "DST-001"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-015"
         }
       ],
-      "name": "Aurora Editor Index"
+      "name": "Aurora Shared Index"
     },
     {
       "attributes": {},
@@ -1278,6 +1491,10 @@
       "id": "COM-001",
       "links": [
         {
+          "relationship": "composes",
+          "target": "COM-008"
+        },
+        {
           "relationship": "implements",
           "target": "FEA-001"
         },
@@ -1294,19 +1511,6 @@
     },
     {
       "attributes": {},
-      "card_subtype": "Module",
-      "card_type": "Component",
-      "id": "COM-010",
-      "links": [
-        {
-          "relationship": "implements",
-          "target": "FEA-013"
-        }
-      ],
-      "name": "Aurora Model Tool API"
-    },
-    {
-      "attributes": {},
       "card_subtype": "Service",
       "card_type": "Component",
       "id": "COM-002",
@@ -1314,6 +1518,10 @@
         {
           "relationship": "composes",
           "target": "COM-001"
+        },
+        {
+          "relationship": "exposes",
+          "target": "INT-003"
         },
         {
           "relationship": "implements",
@@ -1463,6 +1671,10 @@
         {
           "relationship": "requires",
           "target": "PRO-012"
+        },
+        {
+          "relationship": "requires",
+          "target": "PRO-013"
         }
       ],
       "name": "Agent Assisted Modeling"
@@ -1570,6 +1782,22 @@
         }
       ],
       "name": "Apply Batch Edit"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-023",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-010"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-014"
+        }
+      ],
+      "name": "Serve MCP Tool Calls"
     },
     {
       "attributes": {},
@@ -1707,6 +1935,10 @@
         {
           "relationship": "produces",
           "target": "ART-012"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-015"
         }
       ],
       "name": "Build Or Load Index"
@@ -1867,6 +2099,10 @@
         {
           "relationship": "drives",
           "target": "REQ-010"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-038"
         }
       ],
       "name": "Automated View Generation"
@@ -1971,6 +2207,18 @@
         {
           "relationship": "drives",
           "target": "REQ-034"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-035"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-036"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-037"
         }
       ],
       "name": "Interactive Safe Authoring"
@@ -1986,6 +2234,86 @@
         }
       ],
       "name": "Architects And Agents"
+    },
+    {
+      "attributes": {},
+      "card_type": "Interface",
+      "id": "INT-006",
+      "links": [
+        {
+          "relationship": "accepts",
+          "target": "ART-013"
+        },
+        {
+          "relationship": "returns",
+          "target": "ART-014"
+        }
+      ],
+      "name": "Aurora Model Tool MCP Batch Interface"
+    },
+    {
+      "attributes": {},
+      "card_type": "Interface",
+      "id": "INT-003",
+      "links": [
+        {
+          "relationship": "accepts",
+          "target": "ART-016"
+        },
+        {
+          "relationship": "returns",
+          "target": "ART-017"
+        }
+      ],
+      "name": "Aurora CLI Command Interface"
+    },
+    {
+      "attributes": {},
+      "card_type": "Interface",
+      "id": "INT-004",
+      "links": [
+        {
+          "relationship": "accepts",
+          "target": "ART-013"
+        },
+        {
+          "relationship": "returns",
+          "target": "ART-014"
+        }
+      ],
+      "name": "Aurora Model Tool MCP Query Interface"
+    },
+    {
+      "attributes": {},
+      "card_type": "Interface",
+      "id": "INT-005",
+      "links": [
+        {
+          "relationship": "accepts",
+          "target": "ART-013"
+        },
+        {
+          "relationship": "returns",
+          "target": "ART-014"
+        }
+      ],
+      "name": "Aurora Model Tool MCP Edit Interface"
+    },
+    {
+      "attributes": {},
+      "card_type": "Interface",
+      "id": "INT-002",
+      "links": [
+        {
+          "relationship": "accepts",
+          "target": "ART-013"
+        },
+        {
+          "relationship": "returns",
+          "target": "ART-014"
+        }
+      ],
+      "name": "Aurora Model Tool MCP Interface"
     }
   ]
 }

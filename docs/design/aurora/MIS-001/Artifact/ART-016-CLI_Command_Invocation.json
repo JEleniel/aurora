@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-016",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "CLI Command Invocation",
+	"description": "Structured representation of a single Aurora CLI invocation (command name, arguments, environment, and working directory assumptions) as consumed by the CLI interface.",
+	"links": []
+}

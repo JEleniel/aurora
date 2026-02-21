@@ -12,6 +12,10 @@
 		{
 			"relationship": "produces",
 			"target": "ART-012"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-015"
 		}
 	]
 }

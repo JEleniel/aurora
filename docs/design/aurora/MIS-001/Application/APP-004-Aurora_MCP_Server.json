@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "APP-004",
+	"card_type": "Application",
+	"name": "Aurora MCP Server",
+	"description": "Model tool server that exposes the constrained Aurora model tool surface over MCP for UI and agent workflows, while keeping memory bounded and all writes validation-gated.",
+	"links": [
+		{
+			"relationship": "comprises",
+			"target": "COM-010"
+		},
+		{
+			"relationship": "comprises",
+			"target": "COM-001"
+		}
+	]
+}
