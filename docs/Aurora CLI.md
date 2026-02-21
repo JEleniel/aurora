@@ -9,13 +9,13 @@
 
 ## Commands
 
-| Command           | What it does                                                  |
-| ----------------- | ------------------------------------------------------------- |
-| `validate`        | Validate models and print diagnostics (warnings + errors).    |
-| `render-markdown` | Render Markdown for each card, plus a per-model index file.   |
-| `render-views`    | Render SVG diagrams for each view definition in the registry. |
-| `render-all`      | Run both Markdown and view rendering.                         |
-| `compact`         | Write a compact snapshot export per model.                    |
+| Command         | What it does                                                  |
+| --------------- | ------------------------------------------------------------- |
+| `validate`      | Validate models and print diagnostics (warnings + errors).    |
+| `render-aurora` | Render Markdown for each card, plus a per-model index file.   |
+| `render-views`  | Render SVG diagrams for each view definition in the registry. |
+| `render-all`    | Run both Markdown and view rendering.                         |
+| `compact`       | Write a compact snapshot export per model.                    |
 
 ## Global options
 
