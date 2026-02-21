@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-030",
+	"card_type": "Requirement",
+	"name": "Agent Provider Support And Configuration",
+	"description": "Agent integration MUST support configuring providers explicitly (endpoint URL, model selection, timeouts). The editor MUST support Ollama endpoints and OpenAI endpoints, and SHOULD support GitHub Models via REST API including optional organizational attribution.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-012"
+		}
+	]
+}

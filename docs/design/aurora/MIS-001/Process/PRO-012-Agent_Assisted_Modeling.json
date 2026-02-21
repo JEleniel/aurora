@@ -1,0 +1,25 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "PRO-012",
+	"card_type": "Process",
+	"name": "Agent Assisted Modeling",
+	"description": "Perform agent-assisted tasks by selecting scope, issuing tool-mediated reads, presenting proposed changes for review, and applying batch edits transactionally with validation and audit logging.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "ATV-021"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-022"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-001"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-004"
+		}
+	]
+}

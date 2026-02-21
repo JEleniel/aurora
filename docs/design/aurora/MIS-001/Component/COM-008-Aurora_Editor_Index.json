@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "COM-008",
+	"card_type": "Component",
+	"card_subtype": "Module",
+	"name": "Aurora Editor Index",
+	"description": "Indexing subsystem that builds, persists, and queries the model index (for example using Tantivy) while keeping the editor responsive and memory bounded.",
+	"links": [
+		{
+			"relationship": "implements",
+			"target": "FEA-012"
+		}
+	]
+}

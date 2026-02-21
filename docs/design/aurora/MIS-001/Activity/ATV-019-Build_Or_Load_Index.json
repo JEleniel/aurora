@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-019",
+	"card_type": "Activity",
+	"name": "Build Or Load Index",
+	"description": "Load a persisted index from the user cache directory when valid; otherwise build a new index incrementally while keeping UI responsiveness. Indexing MUST NOT require loading the full model into memory.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-008"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-012"
+		}
+	]
+}

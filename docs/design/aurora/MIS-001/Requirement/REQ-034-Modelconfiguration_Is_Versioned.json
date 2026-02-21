@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-034",
+	"card_type": "Requirement",
+	"name": "Modelconfiguration Is Versioned",
+	"description": "`reference/Aurora.modelconfiguration.json` MUST include a `version` property so tooling can identify the exact canonical registry version. The modelconfiguration schema MUST require this field, and tooling that loads the registry MUST parse and surface it for diagnostics and compatibility decisions.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-005"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-006"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-001"
+		}
+	]
+}

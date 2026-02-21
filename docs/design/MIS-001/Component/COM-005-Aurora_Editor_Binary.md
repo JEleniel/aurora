@@ -18,6 +18,8 @@ _No attributes defined._
 - implements [FEA-009](../Feature/FEA-009-Model_Persistence_And_Recovery.md)
 - implements [FEA-010](../Feature/FEA-010-Accessible_Themed_UI.md)
 - implements [FEA-011](../Feature/FEA-011-Editor_Logging.md)
+- implements [FEA-012](../Feature/FEA-012-Index_And_Search.md)
+- implements [FEA-013](../Feature/FEA-013-Agent_Assisted_Modeling.md)
 
 
 ## Version
@@ -27,3 +29,4 @@ _No attributes defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | create |
+| 2026-02-21T00:00:00Z | Architect | change |

@@ -3,7 +3,7 @@
 	"id": "ATV-009",
 	"card_type": "Activity",
 	"name": "Load Model Home",
-	"description": "Load a model home for interactive use, using the schemas and reference files included with that model home.",
+	"description": "Load a model home for interactive use, using the schemas and reference files included with that model home and respecting single-writer locking semantics.",
 	"links": [
 		{
 			"relationship": "uses",

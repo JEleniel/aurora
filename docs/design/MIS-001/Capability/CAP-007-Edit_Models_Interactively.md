@@ -1,6 +1,6 @@
 # Capability: CAP-007 Edit Models Interactively
 
-Interactively navigate and edit Aurora models with guardrails that prevent invalid edits and preserve invariants.
+Interactively navigate and edit Aurora models (including agent-assisted workflows) with guardrails that prevent invalid edits and preserve invariants.
 
 
 
@@ -20,3 +20,4 @@ _No attributes defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | create |
+| 2026-02-21T00:00:00Z | Architect | change |

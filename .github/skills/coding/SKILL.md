@@ -26,7 +26,7 @@ description: Guidelines for writing code of any kind.
     - Avoid new dependencies when the standard library or existing dependencies already solve the problem.
 
 - Approved libraries
-    - The following libraries are approved for use. Sublibraries include crates that share the parent prefix or are designed as companions.
+    - The following libraries are approved for use. Sublibraries include crates that share the parent prefix or are designed as companions. This is not an exhaustive list, just the most commonly used ones:
     - `anyhow`, `thiserror` for error handling
     - `axum` (and sublibraries), `tower` (and sublibraries), `hyper` (and sublibraries) for web servers
     - `base64`, `hex`, `num-traits`, `regex`, `unicode-normalization`, `uuid` for utilities
@@ -37,7 +37,7 @@ description: Guidelines for writing code of any kind.
     - `dirs` (preferred) or `directories` for standard config/data/cache directories
     - `fern` (preferred) or `tracing` (and sublibraries) for logging
     - `log` for logging API
-    - `ollama-rs` for Ollama access
+    - `rig` for LLM access
     - `openssl` or `rustls` (and sublibraries) for TLS
     - `r2d2`, `r2d2_sqlite`, `rusqlite` for SQLite (use `rusqlite` with the `bundled` feature)
     - `reqwest` for HTTP client calls

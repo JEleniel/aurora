@@ -1,6 +1,6 @@
 # Requirement: REQ-012 Model Home Local Schemas And References
 
-The editor MUST load and use the schemas and reference files included with the selected model home, allowing the editor to operate across multiple Aurora versions and customizations.
+The editor MUST load and use the schemas and reference files included with the selected model home (not built-in or global defaults), allowing the editor to operate across multiple Aurora versions and customizations. At minimum this includes: using `schemas/*` for validation and using `reference/Aurora.modelconfiguration.json` (including its `version`) for canonical card registries, appearance/theming, and view definitions.
 
 
 
@@ -20,3 +20,4 @@ _No attributes defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | create |
+| 2026-02-21T00:00:00Z | Architect | change |

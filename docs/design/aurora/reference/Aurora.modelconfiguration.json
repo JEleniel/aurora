@@ -1,5 +1,6 @@
 {
 	"$schema": "../schemas/Aurora.modelconfiguration.schema.json",
+	"version": "2.0.0-prerelease.0",
 	"available_icons": [
 		"alarm",
 		"anchor",

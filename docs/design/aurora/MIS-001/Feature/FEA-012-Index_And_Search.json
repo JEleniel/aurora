@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "FEA-012",
+	"card_type": "Feature",
+	"name": "Index And Search",
+	"description": "Maintain a persisted index in the user cache directory and expose fast search and navigation over model homes without full in-memory materialization.",
+	"links": [
+		{
+			"relationship": "realizes",
+			"target": "CAP-011"
+		}
+	]
+}

@@ -3,7 +3,7 @@
 	"id": "CAP-006",
 	"card_type": "Capability",
 	"name": "Load Model Homes",
-	"description": "Load and validate model homes using the schemas and references bundled with that model home, while supporting very large models without blocking the UI.",
+	"description": "Load and validate model homes using the schemas and references bundled with that model home, while supporting very large models without blocking the UI. Loading includes acquiring the exclusive model lock, streaming validation, and (when available) loading a persisted index from the user cache directory to become interactive quickly.",
 	"links": [
 		{
 			"relationship": "requires",

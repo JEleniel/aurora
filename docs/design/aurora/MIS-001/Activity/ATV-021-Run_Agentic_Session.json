@@ -1,0 +1,21 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-021",
+	"card_type": "Activity",
+	"name": "Run Agentic Session",
+	"description": "Run an agent-assisted session with explicit context controls and a visible activity feed of tool actions; allow the agent to perform only tool-mediated reads/writes.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-006"
+		},
+		{
+			"relationship": "uses",
+			"target": "COM-009"
+		},
+		{
+			"relationship": "uses",
+			"target": "COM-010"
+		}
+	]
+}

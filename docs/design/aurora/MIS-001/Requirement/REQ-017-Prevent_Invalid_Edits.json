@@ -3,7 +3,7 @@
 	"id": "REQ-017",
 	"card_type": "Requirement",
 	"name": "Prevent Invalid Edits",
-	"description": "The editor MUST prevent edits that would break a model (schema, registry constraints, invariants) and SHOULD provide style checking and linting.",
+	"description": "The editor MUST prevent edits that would break a model (schema, registry constraints, invariants). Validation is performed at write points; if a candidate edit would fail validation, the write MUST be blocked and errors MUST be presented. Warning-only checks (for example naming/relationship verb linting) MUST remain warnings. These rules apply equally to human UI edits and agent-assisted edits.",
 	"links": [
 		{
 			"relationship": "requires",

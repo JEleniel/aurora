@@ -1,6 +1,6 @@
 # Requirement: REQ-020 Crash Safety Semantics
 
-With autosave enabled, on crash the model may at worst contain an orphan card that needs to be linked; with autosave disabled, the saved model MUST always be valid and unsaved changes are lost on crash.
+With autosave enabled, on crash the model may at worst contain an orphan card that needs to be linked; with autosave disabled, the saved model MUST always be valid and unsaved changes are lost on crash. Since the model is multi-file, atomic writes are not possible; transactional writes MUST be simulated so that if one write in a multi-file operation fails, the entire operation is rolled back.
 
 
 
@@ -21,3 +21,4 @@ _No attributes defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | create |
+| 2026-02-21T00:00:00Z | Architect | change |

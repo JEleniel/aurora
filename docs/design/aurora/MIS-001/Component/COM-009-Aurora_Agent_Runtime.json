@@ -1,0 +1,14 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "COM-009",
+	"card_type": "Component",
+	"card_subtype": "Module",
+	"name": "Aurora Agent Runtime",
+	"description": "Agent runtime responsible for provider connectivity (Ollama, OpenAI, optional GitHub Models), request orchestration, offline-mode enforcement, and secret scrubbing before network calls.",
+	"links": [
+		{
+			"relationship": "implements",
+			"target": "FEA-013"
+		}
+	]
+}

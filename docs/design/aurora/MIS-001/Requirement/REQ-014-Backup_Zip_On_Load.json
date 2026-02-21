@@ -3,7 +3,7 @@
 	"id": "REQ-014",
 	"card_type": "Requirement",
 	"name": "Backup Zip On Load",
-	"description": "At load time, the editor MUST create a backup ZIP of the model home, stored per conventions defined in Aurora.",
+	"description": "At load time, the editor MUST begin creating a timestamped backup ZIP of the entire model home under `aurora/backups/` (for example `MIS-001-20260210T061800Z.zip`). Backup creation MUST be asynchronous and MUST NOT block UI interactivity. If backup creation fails, the editor MUST warn the user but continue loading. A configurable number of ZIPs will be retained (default 5), with older backups automatically deleted.",
 	"links": [
 		{
 			"relationship": "requires",

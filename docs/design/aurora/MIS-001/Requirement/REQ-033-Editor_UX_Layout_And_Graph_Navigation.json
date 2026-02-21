@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-033",
+	"card_type": "Requirement",
+	"name": "Editor UX Layout And Graph Navigation",
+	"description": "The primary working screen MUST be divided into four resizable regions: left sidebar (default 20% width), right sidebar (default 20% width), bottom panel (default 20% height), and a top-center panel filling remaining space. The left sidebar MUST provide VS Code-like navigation including search, pinned, and recent items, with a primary tree rooted at the Mission and showing cards as `ID: Name`. The top-center panel MUST provide a centered graph view where selecting a card centers it, parents appear above, descendants below, siblings left/right (siblings ordered lexicographically by Card ID), and keyboard navigation is supported.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-007"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-009"
+		}
+	]
+}

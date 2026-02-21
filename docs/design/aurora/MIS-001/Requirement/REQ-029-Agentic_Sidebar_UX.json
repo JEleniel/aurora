@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-029",
+	"card_type": "Requirement",
+	"name": "Agentic Sidebar UX",
+	"description": "The editor MUST provide an agentic sidebar supporting: free-form chat, a visible structured activity feed of tool actions, explicit context controls (selected card only, view context, or user-selected scope), and a diff-like proposed-changes preview before writes. By default, applying proposed changes MUST require explicit user confirmation; deletes MUST always require confirmation.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-012"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-009"
+		}
+	]
+}

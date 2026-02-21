@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-032",
+	"card_type": "Requirement",
+	"name": "Offline Mode",
+	"description": "The editor MUST provide an offline mode that prevents network calls. When offline mode is enabled, agent provider requests MUST fail closed and MUST not attempt any outbound connections.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-012"
+		}
+	]
+}

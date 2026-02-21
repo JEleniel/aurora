@@ -3,7 +3,7 @@
 	"id": "APP-003",
 	"card_type": "Application",
 	"name": "Aurora Editor",
-	"description": "Standalone cross-platform desktop editor for loading, exploring, editing, and packaging Aurora model homes while preserving deterministic validity, auditability, and view generation.",
+	"description": "Standalone cross-platform desktop editor for loading, exploring, indexing/searching, editing, and packaging Aurora model homes while preserving deterministic validity, auditability, and view generation. Agent-assisted modeling is a first-class workflow and is mediated exclusively through validation-gated model tools.",
 	"links": [
 		{
 			"relationship": "comprises",

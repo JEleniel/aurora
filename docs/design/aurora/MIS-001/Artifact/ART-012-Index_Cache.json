@@ -1,0 +1,9 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ART-012",
+	"card_type": "Artifact",
+	"card_subtype": "Data",
+	"name": "Index Cache",
+	"description": "Persisted on-disk index artifacts stored in the user cache directory to accelerate navigation and search without fully materializing a model in memory.",
+	"links": []
+}

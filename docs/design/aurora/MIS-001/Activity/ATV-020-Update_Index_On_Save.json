@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-020",
+	"card_type": "Activity",
+	"name": "Update Index On Save",
+	"description": "Update the persisted index asynchronously when a change is saved so search/navigation reflect the latest model state without blocking the UI.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-008"
+		}
+	]
+}

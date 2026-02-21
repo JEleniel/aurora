@@ -4,11 +4,23 @@
 	"card_type": "Component",
 	"card_subtype": "Module",
 	"name": "Aurora Editor Engine",
-	"description": "Background engine responsible for loading model homes, validating/linting, rendering views, packaging/unpackaging, and persistence behaviors without blocking the UI.",
+	"description": "Background engine responsible for model-home locking, loading, indexing/search, validating/linting, rendering views, packaging/unpackaging, and persistence behaviors without blocking the UI.",
 	"links": [
 		{
 			"relationship": "composes",
 			"target": "COM-001"
+		},
+		{
+			"relationship": "composes",
+			"target": "COM-008"
+		},
+		{
+			"relationship": "composes",
+			"target": "COM-009"
+		},
+		{
+			"relationship": "composes",
+			"target": "COM-010"
 		},
 		{
 			"relationship": "implements",
@@ -17,6 +29,14 @@
 		{
 			"relationship": "implements",
 			"target": "FEA-009"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-012"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-013"
 		}
 	]
 }

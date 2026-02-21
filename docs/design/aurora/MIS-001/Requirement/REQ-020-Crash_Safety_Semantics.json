@@ -3,7 +3,7 @@
 	"id": "REQ-020",
 	"card_type": "Requirement",
 	"name": "Crash Safety Semantics",
-	"description": "With autosave enabled, on crash the model may at worst contain an orphan card that needs to be linked; with autosave disabled, the saved model MUST always be valid and unsaved changes are lost on crash.",
+	"description": "With autosave enabled, on crash the model may at worst contain an orphan card that needs to be linked; with autosave disabled, the saved model MUST always be valid and unsaved changes are lost on crash. Since the model is multi-file, atomic writes are not possible; transactional writes MUST be simulated so that if one write in a multi-file operation fails, the entire operation is rolled back.",
 	"links": [
 		{
 			"relationship": "requires",

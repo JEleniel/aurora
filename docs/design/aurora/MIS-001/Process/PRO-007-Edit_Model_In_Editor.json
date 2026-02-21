@@ -3,7 +3,7 @@
 	"id": "PRO-007",
 	"card_type": "Process",
 	"name": "Edit Model In Editor",
-	"description": "Edit a model via the UI while enforcing validity, recording audit entries, and keeping the editor responsive.",
+	"description": "Edit a model via the UI while enforcing validity, recording audit entries, keeping the editor responsive, and updating the search index asynchronously.",
 	"links": [
 		{
 			"relationship": "includes",
@@ -16,6 +16,10 @@
 		{
 			"relationship": "includes",
 			"target": "ATV-004"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-020"
 		}
 	]
 }

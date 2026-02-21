@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-026",
+	"card_type": "Requirement",
+	"name": "Searchable Index",
+	"description": "The editor MUST build and maintain a searchable index so users and agents can navigate and search while keeping memory bounded. Full indexing SHOULD be available almost instantly for typical model homes. Minimum index coverage MUST include: card type, card subtype, card ID, card name, outbound link adjacency, and attribute property names. Indexing MUST update on save; index updates are asynchronous, expected to be inexpensive, and SHOULD not block the UI thread. Full-text search is optional.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-011"
+		},
+		{
+			"relationship": "requires",
+			"target": "CAP-006"
+		}
+	]
+}

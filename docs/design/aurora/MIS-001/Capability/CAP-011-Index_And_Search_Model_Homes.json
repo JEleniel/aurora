@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CAP-011",
+	"card_type": "Capability",
+	"name": "Index And Search Model Homes",
+	"description": "Build, persist, and query a searchable index over Aurora model homes so users and agents can navigate and find cards quickly with bounded memory usage.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-011"
+		}
+	]
+}

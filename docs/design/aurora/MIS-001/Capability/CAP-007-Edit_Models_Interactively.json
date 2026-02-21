@@ -3,7 +3,7 @@
 	"id": "CAP-007",
 	"card_type": "Capability",
 	"name": "Edit Models Interactively",
-	"description": "Interactively navigate and edit Aurora models with guardrails that prevent invalid edits and preserve invariants.",
+	"description": "Interactively navigate and edit Aurora models (including agent-assisted workflows) with guardrails that prevent invalid edits and preserve invariants.",
 	"links": [
 		{
 			"relationship": "requires",

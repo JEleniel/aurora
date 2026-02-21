@@ -3,7 +3,7 @@
 	"id": "REQ-013",
 	"card_type": "Requirement",
 	"name": "Fast Streamed Loading",
-	"description": "Models of any size SHOULD load almost instantly; the load method MUST traverse and validate in the time it takes to read files, and the editor MUST NOT load the entire model into memory at once.",
+	"description": "Models of any size SHOULD load almost instantly; the editor MUST become interactive with visible progress feedback within 2 seconds on the minimum target platform (8GiB RAM baseline) for a typical model home (~2000 cards, ~3500 links). If reading model files exceeds this budget, the editor MUST still open quickly and continue loading with progress feedback. Operations MAY take longer on large models, but the editor MUST remain responsive (no runaway memory growth) and MUST NOT load the entire model into memory at once.",
 	"links": [
 		{
 			"relationship": "requires",

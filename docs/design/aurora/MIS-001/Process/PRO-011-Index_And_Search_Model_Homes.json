@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "PRO-011",
+	"card_type": "Process",
+	"name": "Index And Search Model Homes",
+	"description": "Create or load a persisted index for a model home, use it to support fast search/navigation, and update it asynchronously on save.",
+	"links": [
+		{
+			"relationship": "includes",
+			"target": "ATV-019"
+		},
+		{
+			"relationship": "includes",
+			"target": "ATV-020"
+		}
+	]
+}

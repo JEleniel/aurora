@@ -1,5 +1,10 @@
 {
 	"$defs": {
+		"semver": {
+			"description": "Semantic version (SemVer 2.0.0).",
+			"pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$",
+			"type": "string"
+		},
 		"acronym": {
 			"pattern": "^[A-Z]{3}$",
 			"type": "string"
@@ -161,6 +166,9 @@
 			"minLength": 1,
 			"type": "string"
 		},
+		"version": {
+			"$ref": "#/$defs/semver"
+		},
 		"available_icons": {
 			"$ref": "#/$defs/available_icons"
 		},
@@ -171,7 +179,7 @@
 			"$ref": "#/$defs/views"
 		}
 	},
-	"required": ["cards", "available_icons", "views"],
+	"required": ["version", "cards", "available_icons", "views"],
 	"title": "Aurora Model Configuration Schema",
 	"type": "object"
 }

@@ -1,0 +1,17 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-022",
+	"card_type": "Activity",
+	"name": "Apply Batch Edit",
+	"description": "Apply a batch edit as a single transactional, validation-gated operation (all-or-nothing) while holding the exclusive model lock, and record one audit entry describing all card/link changes.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-010"
+		},
+		{
+			"relationship": "uses",
+			"target": "COM-007"
+		}
+	]
+}

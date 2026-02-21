@@ -40,6 +40,22 @@
     {
       "attributes": {},
       "card_type": "Process",
+      "id": "PRO-011",
+      "links": [
+        {
+          "relationship": "includes",
+          "target": "ATV-019"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-020"
+        }
+      ],
+      "name": "Index And Search Model Homes"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
       "id": "PRO-008",
       "links": [
         {
@@ -68,11 +84,19 @@
       "links": [
         {
           "relationship": "includes",
+          "target": "ATV-018"
+        },
+        {
+          "relationship": "includes",
           "target": "ATV-009"
         },
         {
           "relationship": "includes",
           "target": "ATV-010"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-019"
         },
         {
           "relationship": "includes",
@@ -92,6 +116,30 @@
         }
       ],
       "name": "Validate Model"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-012",
+      "links": [
+        {
+          "relationship": "includes",
+          "target": "ATV-021"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-022"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-001"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-004"
+        }
+      ],
+      "name": "Agent Assisted Modeling"
     },
     {
       "attributes": {},
@@ -145,6 +193,10 @@
         {
           "relationship": "includes",
           "target": "ATV-004"
+        },
+        {
+          "relationship": "includes",
+          "target": "ATV-020"
         }
       ],
       "name": "Edit Model In Editor"
@@ -217,6 +269,13 @@
       "id": "CNS-004",
       "links": [],
       "name": "Rust 2024"
+    },
+    {
+      "attributes": {},
+      "card_type": "Constraint",
+      "id": "CNS-007",
+      "links": [],
+      "name": "Tool Mediated Agent Actions"
     },
     {
       "attributes": {},
@@ -394,6 +453,18 @@
     {
       "attributes": {},
       "card_type": "Feature",
+      "id": "FEA-013",
+      "links": [
+        {
+          "relationship": "realizes",
+          "target": "CAP-012"
+        }
+      ],
+      "name": "Agent Assisted Modeling"
+    },
+    {
+      "attributes": {},
+      "card_type": "Feature",
       "id": "FEA-009",
       "links": [
         {
@@ -414,6 +485,18 @@
         }
       ],
       "name": "Editor Logging"
+    },
+    {
+      "attributes": {},
+      "card_type": "Feature",
+      "id": "FEA-012",
+      "links": [
+        {
+          "relationship": "realizes",
+          "target": "CAP-011"
+        }
+      ],
+      "name": "Index And Search"
     },
     {
       "attributes": {},
@@ -482,6 +565,14 @@
       "id": "ART-005",
       "links": [],
       "name": "Canonical Definitions Registry"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-012",
+      "links": [],
+      "name": "Index Cache"
     },
     {
       "attributes": {},
@@ -558,6 +649,18 @@
     {
       "attributes": {},
       "card_type": "Requirement",
+      "id": "REQ-032",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        }
+      ],
+      "name": "Offline Mode"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
       "id": "REQ-005",
       "links": [
         {
@@ -586,6 +689,22 @@
         }
       ],
       "name": "Audit Log Semantics"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-031",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-010"
+        }
+      ],
+      "name": "Secrets Are Secure"
     },
     {
       "attributes": {},
@@ -642,6 +761,22 @@
     {
       "attributes": {},
       "card_type": "Requirement",
+      "id": "REQ-033",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-007"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-009"
+        }
+      ],
+      "name": "Editor UX Layout And Graph Navigation"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
       "id": "REQ-023",
       "links": [
         {
@@ -686,10 +821,34 @@
       "links": [
         {
           "relationship": "requires",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-007"
+        },
+        {
+          "relationship": "requires",
           "target": "CAP-008"
         }
       ],
       "name": "Single Instance Model Semantics"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-026",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-011"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        }
+      ],
+      "name": "Searchable Index"
     },
     {
       "attributes": {},
@@ -718,6 +877,38 @@
         }
       ],
       "name": "Single Mission Root"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-029",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-009"
+        }
+      ],
+      "name": "Agentic Sidebar UX"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-028",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        },
+        {
+          "relationship": "imposes",
+          "target": "CNS-007"
+        }
+      ],
+      "name": "Agent Tool Surface Only"
     },
     {
       "attributes": {},
@@ -778,6 +969,18 @@
     {
       "attributes": {},
       "card_type": "Requirement",
+      "id": "REQ-027",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-011"
+        }
+      ],
+      "name": "Index Cache In User Cache Directory"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
       "id": "REQ-011",
       "links": [
         {
@@ -826,6 +1029,38 @@
         }
       ],
       "name": "Schema-Backed Card Format"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-030",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        }
+      ],
+      "name": "Agent Provider Support And Configuration"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-034",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-001"
+        }
+      ],
+      "name": "Modelconfiguration Is Versioned"
     },
     {
       "attributes": {},
@@ -897,6 +1132,19 @@
     },
     {
       "attributes": {},
+      "card_subtype": "Module",
+      "card_type": "Component",
+      "id": "COM-008",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-012"
+        }
+      ],
+      "name": "Aurora Editor Index"
+    },
+    {
+      "attributes": {},
       "card_subtype": "Service",
       "card_type": "Component",
       "id": "COM-005",
@@ -932,6 +1180,14 @@
         {
           "relationship": "implements",
           "target": "FEA-011"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-012"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-013"
         }
       ],
       "name": "Aurora Editor Binary"
@@ -947,12 +1203,32 @@
           "target": "COM-001"
         },
         {
+          "relationship": "composes",
+          "target": "COM-008"
+        },
+        {
+          "relationship": "composes",
+          "target": "COM-009"
+        },
+        {
+          "relationship": "composes",
+          "target": "COM-010"
+        },
+        {
           "relationship": "implements",
           "target": "FEA-007"
         },
         {
           "relationship": "implements",
           "target": "FEA-009"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-012"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-013"
         }
       ],
       "name": "Aurora Editor Engine"
@@ -984,6 +1260,19 @@
     },
     {
       "attributes": {},
+      "card_subtype": "Module",
+      "card_type": "Component",
+      "id": "COM-009",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-013"
+        }
+      ],
+      "name": "Aurora Agent Runtime"
+    },
+    {
+      "attributes": {},
       "card_subtype": "Library",
       "card_type": "Component",
       "id": "COM-001",
@@ -1002,6 +1291,19 @@
         }
       ],
       "name": "Aurora Shared Library"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Module",
+      "card_type": "Component",
+      "id": "COM-010",
+      "links": [
+        {
+          "relationship": "implements",
+          "target": "FEA-013"
+        }
+      ],
+      "name": "Aurora Model Tool API"
     },
     {
       "attributes": {},
@@ -1037,6 +1339,10 @@
         {
           "relationship": "implements",
           "target": "FEA-010"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-013"
         }
       ],
       "name": "Aurora Editor UI"
@@ -1140,6 +1446,30 @@
     {
       "attributes": {},
       "card_type": "Capability",
+      "id": "CAP-011",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-011"
+        }
+      ],
+      "name": "Index And Search Model Homes"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-012",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-012"
+        }
+      ],
+      "name": "Agent Assisted Modeling"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
       "id": "CAP-004",
       "links": [
         {
@@ -1160,6 +1490,18 @@
         }
       ],
       "name": "Export Compact Model"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-018",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-007"
+        }
+      ],
+      "name": "Acquire Exclusive Model Lock"
     },
     {
       "attributes": {},
@@ -1212,6 +1554,42 @@
         }
       ],
       "name": "Unpack Model Home"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-022",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-010"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-007"
+        }
+      ],
+      "name": "Apply Batch Edit"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-021",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-006"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-009"
+        },
+        {
+          "relationship": "uses",
+          "target": "COM-010"
+        }
+      ],
+      "name": "Run Agentic Session"
     },
     {
       "attributes": {},
@@ -1272,6 +1650,18 @@
     {
       "attributes": {},
       "card_type": "Activity",
+      "id": "ATV-020",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-008"
+        }
+      ],
+      "name": "Update Index On Save"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
       "id": "ATV-016",
       "links": [
         {
@@ -1304,6 +1694,22 @@
         }
       ],
       "name": "Prepare SVG References"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-019",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-008"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-012"
+        }
+      ],
+      "name": "Build Or Load Index"
     },
     {
       "attributes": {},
@@ -1529,6 +1935,42 @@
         {
           "relationship": "drives",
           "target": "REQ-025"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-026"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-027"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-028"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-029"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-030"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-031"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-032"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-033"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-034"
         }
       ],
       "name": "Interactive Safe Authoring"

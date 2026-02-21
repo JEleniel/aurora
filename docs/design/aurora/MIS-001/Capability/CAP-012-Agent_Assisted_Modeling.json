@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CAP-012",
+	"card_type": "Capability",
+	"name": "Agent Assisted Modeling",
+	"description": "Support agent-assisted modeling workflows (chat, scoped context, proposals, and validation-gated edits) as a first-class authoring mode.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "PRO-012"
+		}
+	]
+}

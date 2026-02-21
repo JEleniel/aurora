@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "ATV-018",
+	"card_type": "Activity",
+	"name": "Acquire Exclusive Model Lock",
+	"description": "Acquire and hold an exclusive OS-level lock on `aurora/<MISSION_ID>/AuditLog.ndjson` for the duration of an interactive editing session; refuse to open the model if the lock cannot be acquired.",
+	"links": [
+		{
+			"relationship": "uses",
+			"target": "COM-007"
+		}
+	]
+}

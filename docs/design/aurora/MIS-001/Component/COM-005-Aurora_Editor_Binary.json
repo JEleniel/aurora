@@ -37,6 +37,14 @@
 		{
 			"relationship": "implements",
 			"target": "FEA-011"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-012"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-013"
 		}
 	]
 }

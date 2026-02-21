@@ -1,0 +1,8 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "CNS-007",
+	"card_type": "Constraint",
+	"name": "Tool Mediated Agent Actions",
+	"description": "Agents MUST NOT execute shell commands or spawn arbitrary OS processes, and MUST NOT write directly to model files. All agent reads and writes MUST be mediated by the editor's model tool surface that enforces validation, invariants, and locking.",
+	"links": []
+}

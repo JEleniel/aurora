@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "REQ-027",
+	"card_type": "Requirement",
+	"name": "Index Cache In User Cache Directory",
+	"description": "Index persistence MUST use the user cache directory (OS cache folder) rather than the model home. Cached indices are disposable cache artifacts: they SHOULD be safe to delete, MUST be validated/invalidated against the current model home content, and MUST be rebuilt when stale or incompatible.",
+	"links": [
+		{
+			"relationship": "requires",
+			"target": "CAP-011"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"$schema": "../../schemas/Aurora.card.schema.json",
+	"id": "FEA-013",
+	"card_type": "Feature",
+	"name": "Agent Assisted Modeling",
+	"description": "Provide an agentic sidebar with scoped context controls, an activity feed of tool actions, and a validation-gated model tool surface for proposing and applying edits.",
+	"links": [
+		{
+			"relationship": "realizes",
+			"target": "CAP-012"
+		}
+	]
+}
