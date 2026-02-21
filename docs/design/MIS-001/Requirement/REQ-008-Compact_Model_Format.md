@@ -2,6 +2,8 @@
 
 A compact, single-file representation MUST be supported for transport and agent consumption, using the compact schema and retaining card ids, types, fields, and links.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -10,10 +12,11 @@ _No attributes defined._
 
 - requires [CAP-003](../Capability/CAP-003-Export_Compact_Model.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp    | Editor | Change |
-| ------------ | ------ | ------ |
-| _No entries_ |        |        |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
+| _No entries_ |  |  |

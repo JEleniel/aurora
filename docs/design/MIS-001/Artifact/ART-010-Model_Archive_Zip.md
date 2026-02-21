@@ -2,6 +2,8 @@
 
 A ZIP-compressed archive of a model home used for backups and for pack/unpack workflows, preserving the model home folder structure.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -14,6 +16,6 @@ _No links defined._
 
 ## Audit Log
 
-| Timestamp            | Editor    | Change |
-| -------------------- | --------- | ------ |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | create |

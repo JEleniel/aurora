@@ -2,6 +2,8 @@
 
 Artifact subtype used for coverage.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -10,10 +12,11 @@ _No attributes defined._
 
 - derives from [ART-900](ART-900-Architecture_document.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp            | Editor    | Change |
-| -------------------- | --------- | ------ |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
 | 2026-02-18T00:10:00Z | architect | create |

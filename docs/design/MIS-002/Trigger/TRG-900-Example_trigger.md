@@ -2,6 +2,8 @@
 
 A process-domain trigger that demonstrates the full Trigger relationship set.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -12,10 +14,11 @@ _No attributes defined._
 - initiates [CON-900](../Condition/CON-900-Example_condition.md)
 - triggers [TRG-901](TRG-901-Downstream_trigger.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp            | Editor    | Change |
-| -------------------- | --------- | ------ |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
 | 2026-02-18T00:05:00Z | architect | create |

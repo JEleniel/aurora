@@ -263,3 +263,4 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 ### System
 
 - **[SYS-001 - Aurora Tooling Ecosystem](MIS-001/System/SYS-001-Aurora_Tooling_Ecosystem.md)**: The overall Aurora system: schemas + canonical registries + model cards, supported by tools (CLI + svg_prep + editor + shared library) that validate models, generate views/exports, and maintain reference SVG assets.
+

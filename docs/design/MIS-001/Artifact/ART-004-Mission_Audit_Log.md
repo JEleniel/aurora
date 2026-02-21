@@ -2,6 +2,8 @@
 
 The per-mission append-only `AuditLog.ndjson` file that records grouped card/link change events.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -14,6 +16,6 @@ _No links defined._
 
 ## Audit Log
 
-| Timestamp    | Editor | Change |
-| ------------ | ------ | ------ |
-| _No entries_ |        |        |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
+| _No entries_ |  |  |

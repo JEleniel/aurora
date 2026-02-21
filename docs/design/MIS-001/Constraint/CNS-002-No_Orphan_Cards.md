@@ -2,6 +2,8 @@
 
 Every non-Mission card must have one or more incoming links and be reachable from the Mission card.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -14,6 +16,6 @@ _No links defined._
 
 ## Audit Log
 
-| Timestamp    | Editor | Change |
-| ------------ | ------ | ------ |
-| _No entries_ |        |        |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
+| _No entries_ |  |  |

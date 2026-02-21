@@ -2,6 +2,8 @@
 
 The compact JSON export of the model cards and links for transport and agent consumption.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -14,6 +16,6 @@ _No links defined._
 
 ## Audit Log
 
-| Timestamp    | Editor | Change |
-| ------------ | ------ | ------ |
-| _No entries_ |        |        |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
+| _No entries_ |  |  |

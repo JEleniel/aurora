@@ -61,6 +61,21 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 				}
 			};
 
+			if layout.nodes.len() <= 1 {
+				info!(
+					"Skipping view '{}' for {}: normalized graph has one node",
+					view.name, model.root_card.id
+				);
+				continue;
+			}
+			if layout.edges.is_empty() {
+				info!(
+					"Skipping view '{}' for {}: normalized graph has no outgoing edges",
+					view.name, model.root_card.id
+				);
+				continue;
+			}
+
 			let view_slug = sanitize_filename(view.name.as_str());
 			let view_slug = if view_slug.is_empty() {
 				"View".to_string()

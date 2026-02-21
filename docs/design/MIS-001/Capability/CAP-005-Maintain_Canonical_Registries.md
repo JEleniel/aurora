@@ -2,6 +2,8 @@
 
 Maintain the canonical registries (card definitions and view definitions) that govern model validation and view generation.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -10,10 +12,11 @@ _No attributes defined._
 
 - requires [PRO-005](../Process/PRO-005-Maintain_Canonical_Registries.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp    | Editor | Change |
-| ------------ | ------ | ------ |
-| _No entries_ |        |        |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
+| _No entries_ |  |  |

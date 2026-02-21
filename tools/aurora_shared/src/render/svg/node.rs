@@ -1,18 +1,19 @@
-use std::collections::{BTreeMap, HashMap, HashSet};
+use std::collections::{HashMap, HashSet};
 
 use crate::registry::{CardDefinition, CardRegistry};
 use crate::{Card, Layout};
 
 use super::{RenderError, SvgConfig, geom};
 
-const WRAP_COLS: usize = 67;
+const WRAP_COLS: usize = 65;
 const DESCRIPTION_WRAP_COLS: usize = WRAP_COLS - 5;
 const LEADING_LINE_FONT_SIZE_PX: i32 = 24;
 const SECOND_LINE_FONT_SIZE_PX: i32 = 28;
 const SECOND_LINE_VERTICAL_OFFSET_PX: i32 = 8;
-const DESCRIPTION_FONT_SIZE_PX: i32 = 18;
+const DESCRIPTION_FONT_SIZE_PX: i32 = TEMPLATE_DEFAULT_FONT_SIZE_PX;
 const DESCRIPTION_LINE_HEIGHT: f32 = 1.2;
-const EXTRA_RANK_VERTICAL_SPACING_PX: i32 = 40;
+const COLUMN_PITCH_PX: i32 = 1080;
+const ROW_PITCH_PX: i32 = 810;
 const SYMBOL_BASE_W: f32 = super::SYMBOL_BASE_WIDTH_PX as f32;
 const SYMBOL_BASE_H: f32 = super::SYMBOL_BASE_HEIGHT_PX as f32;
 const ICON_VIEWBOX_SIZE_PX: i32 = 128;
@@ -87,81 +88,15 @@ pub fn position_nodes(
 	node_layouts: &[NodeLayout],
 	config: &SvgConfig,
 ) -> HashMap<String, PositionedNode> {
-	let spacing = config.node_spacing_px.max(0);
+	let _ = config;
 	if node_layouts.is_empty() {
 		return HashMap::new();
 	}
 
-	let mut used_x: Vec<i32> = node_layouts.iter().map(|n| n.x).collect();
-	used_x.sort();
-	used_x.dedup();
-	let mut used_y: Vec<i32> = node_layouts.iter().map(|n| n.y).collect();
-	used_y.sort();
-	used_y.dedup();
-
-	let max_width = node_layouts
-		.iter()
-		.map(|n| n.geom.width_px)
-		.max()
-		.unwrap_or(super::SYMBOL_BASE_WIDTH_PX);
-	let max_height = node_layouts
-		.iter()
-		.map(|n| n.geom.height_px)
-		.max()
-		.unwrap_or(super::SYMBOL_BASE_HEIGHT_PX);
-
-	let mut col_width: BTreeMap<i32, i32> = BTreeMap::new();
-	for x in &used_x {
-		let w = node_layouts
-			.iter()
-			.filter(|n| n.x == *x)
-			.map(|n| n.geom.width_px)
-			.max()
-			.unwrap_or(0);
-		col_width.insert(*x, w.max(0));
-	}
-	let mut row_height: BTreeMap<i32, i32> = BTreeMap::new();
-	for y in &used_y {
-		let h = node_layouts
-			.iter()
-			.filter(|n| n.y == *y)
-			.map(|n| n.geom.height_px)
-			.max()
-			.unwrap_or(0);
-		row_height.insert(*y, h.max(0));
-	}
-
-	let mut col_origin: BTreeMap<i32, i32> = BTreeMap::new();
-	let mut current_x = 0;
-	for x in &used_x {
-		let w = col_width.get(x).copied().unwrap_or(0);
-		col_origin.insert(*x, current_x);
-		current_x += w + spacing;
-	}
-	let mut row_origin: BTreeMap<i32, i32> = BTreeMap::new();
-	let mut current_y = 0;
-	for y in &used_y {
-		let h = row_height.get(y).copied().unwrap_or(0);
-		row_origin.insert(*y, current_y);
-		current_y += h + spacing + EXTRA_RANK_VERTICAL_SPACING_PX;
-	}
-
 	let mut positioned: HashMap<String, PositionedNode> = HashMap::new();
 	for n in node_layouts {
-		let cw = col_width
-			.get(&n.x)
-			.copied()
-			.unwrap_or_else(|| n.geom.width_px.max(max_width));
-		let rh = row_height
-			.get(&n.y)
-			.copied()
-			.unwrap_or_else(|| n.geom.height_px.max(max_height));
-		let cw = cw.max(n.geom.width_px);
-		let rh = rh.max(n.geom.height_px);
-		let origin_x = col_origin.get(&n.x).copied().unwrap_or(0);
-		let origin_y = row_origin.get(&n.y).copied().unwrap_or(0);
-		let px = origin_x + (cw - n.geom.width_px) / 2;
-		let py = origin_y + (rh - n.geom.height_px) / 2;
+		let px = n.x * COLUMN_PITCH_PX;
+		let py = n.y * ROW_PITCH_PX;
 		positioned.insert(
 			n.id.clone(),
 			PositionedNode {
@@ -262,7 +197,7 @@ pub fn render_node(
 	for (i, line) in geom.lines.iter().enumerate() {
 		if i > 0 {
 			let previous_font_px = line_font_size_px(i - 1, geom, config);
-			let previous_line_step_px = if i - 1 >= geom.description_start_index {
+			let previous_line_step_px = if i > geom.description_start_index {
 				(previous_font_px as f32) * DESCRIPTION_LINE_HEIGHT
 			} else {
 				default_line_step_px
@@ -441,11 +376,11 @@ mod tests {
 		let a = positioned.get("a").expect("a should be positioned");
 		let b = positioned.get("b").expect("b should be positioned");
 		assert_eq!(a.bbox.x, 0);
-		assert_eq!(b.bbox.x, 100 + 10);
+		assert_eq!(b.bbox.x, 2 * COLUMN_PITCH_PX);
 	}
 
 	#[test]
-	fn position_nodes_adds_extra_vertical_rank_spacing() {
+	fn position_nodes_uses_fixed_row_pitch() {
 		let geom = NodeGeom {
 			width_px: 100,
 			height_px: 60,
@@ -477,7 +412,7 @@ mod tests {
 		let a = positioned.get("a").expect("a should be positioned");
 		let b = positioned.get("b").expect("b should be positioned");
 		assert_eq!(a.bbox.y, 0);
-		assert_eq!(b.bbox.y, 60 + 10 + EXTRA_RANK_VERTICAL_SPACING_PX);
+		assert_eq!(b.bbox.y, ROW_PITCH_PX);
 	}
 
 	#[test]

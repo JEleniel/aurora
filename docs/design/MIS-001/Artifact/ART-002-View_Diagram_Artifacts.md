@@ -2,6 +2,8 @@
 
 Rendered view artifacts (for example SVG diagrams and DOT sources) generated from a model and view definitions.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -14,6 +16,6 @@ _No links defined._
 
 ## Audit Log
 
-| Timestamp    | Editor | Change |
-| ------------ | ------ | ------ |
-| _No entries_ |        |        |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
+| _No entries_ |  |  |

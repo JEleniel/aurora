@@ -34,10 +34,10 @@ pub struct SvgConfig {
 
 impl Default for SvgConfig {
 	fn default() -> Self {
-		// Default: fixed 16px root font size and minimum 160px symbol gap.
+		// Default geometry uses a fixed 16px base and 1080x810 grid pitch for 720x450 symbols.
 		let base_font_size_px = 16;
 		Self {
-			node_spacing_px: 160,
+			node_spacing_px: 360,
 			base_font_size_px,
 			edge_style: EdgeStyle::Orthogonal,
 		}
@@ -140,6 +140,8 @@ impl Svg {
 					normalized_slot_bias(target_index, target_total)
 				}
 			};
+			let source_merge = matches!(merge_mode, EdgeMergeMode::Source);
+			let target_merge = matches!(merge_mode, EdgeMergeMode::Target);
 
 			let a = positioned
 				.get(e.a.as_str())
@@ -150,14 +152,7 @@ impl Svg {
 
 			let edge_obstacles_for_route: Vec<geom::RectI> = edge_obstacles
 				.iter()
-				.filter_map(|(source_id, target_id, obstacle)| {
-					let skip = match merge_mode {
-						EdgeMergeMode::Source => source_id == &e.a,
-						EdgeMergeMode::Target => target_id == &e.b,
-						EdgeMergeMode::None => false,
-					};
-					if skip { None } else { Some(*obstacle) }
-				})
+				.map(|(_, _, obstacle)| *obstacle)
 				.collect();
 
 			let route = edge::route_edge(
@@ -168,6 +163,8 @@ impl Svg {
 				node_bboxes.as_slice(),
 				source_bias,
 				target_bias,
+				source_merge,
+				target_merge,
 				&config,
 			)?;
 
@@ -192,7 +189,9 @@ impl Svg {
 			edges_base_svg.push_str(layers.base.as_str());
 			edges_overlay_svg.push_str(layers.overlay.as_str());
 		}
+		let edge_jump_svg = edge::build_jump_overlay(routed_edges.as_slice());
 		edges_svg.push_str(edges_base_svg.as_str());
+		edges_svg.push_str(edge_jump_svg.as_str());
 		edges_svg.push_str(edges_overlay_svg.as_str());
 
 		for (id, node) in positioned.iter() {
@@ -330,9 +329,8 @@ fn compute_viewbox(
 	edge_points: &[geom::PointF],
 	config: &SvgConfig,
 ) -> geom::RectI {
-	let rem_px = config.base_font_size_px.max(1);
-	let margin = rem_px;
-	let top_margin = margin + rem_px;
+	let _ = config;
+	let margin = 150;
 
 	let mut bounds = geom::Bounds::empty();
 	for bbox in node_bboxes {
@@ -355,7 +353,7 @@ fn compute_viewbox(
 	}
 
 	let min_x = (bounds.min_x.floor() as i32) - margin;
-	let min_y = (bounds.min_y.floor() as i32) - top_margin;
+	let min_y = (bounds.min_y.floor() as i32) - margin;
 	let max_x = (bounds.max_x.ceil() as i32) + margin;
 	let max_y = (bounds.max_y.ceil() as i32) + margin;
 
@@ -670,7 +668,14 @@ fn normalized_slot_bias(index: usize, total: usize) -> f32 {
 		.get(index)
 		.copied()
 		.unwrap_or_else(|| total.saturating_sub(1));
-	(slot_index as f32 / total.saturating_sub(1) as f32) * 2.0 - 1.0
+
+	let lane_offset = slot_index as f32 - center;
+	let max_lane_offset = (edge::LANE_COUNT - 1) as f32 / 2.0;
+	if max_lane_offset <= 0.0 {
+		return 0.0;
+	}
+
+	(lane_offset / max_lane_offset).clamp(-1.0, 1.0)
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -681,11 +686,20 @@ enum EdgeMergeMode {
 }
 
 fn edge_merge_mode(source_total: usize, target_total: usize) -> EdgeMergeMode {
-	match (source_total > 1, target_total > 1) {
-		(true, true) => EdgeMergeMode::Source,
-		(true, false) => EdgeMergeMode::Source,
-		(false, true) => EdgeMergeMode::Target,
-		(false, false) => EdgeMergeMode::None,
+	if source_total <= 1 && target_total <= 1 {
+		return EdgeMergeMode::None;
+	}
+	if source_total > 1 && target_total <= 1 {
+		return EdgeMergeMode::Source;
+	}
+	if target_total > 1 && source_total <= 1 {
+		return EdgeMergeMode::Target;
+	}
+
+	if target_total >= source_total {
+		EdgeMergeMode::Target
+	} else {
+		EdgeMergeMode::Source
 	}
 }
 
@@ -1287,14 +1301,6 @@ mod tests {
 	}
 
 	#[test]
-	fn edge_merge_mode_allows_only_one_merge_side() {
-		assert_eq!(edge_merge_mode(3, 4), EdgeMergeMode::Source);
-		assert_eq!(edge_merge_mode(3, 1), EdgeMergeMode::Source);
-		assert_eq!(edge_merge_mode(1, 4), EdgeMergeMode::Target);
-		assert_eq!(edge_merge_mode(1, 1), EdgeMergeMode::None);
-	}
-
-	#[test]
 	fn collect_template_shape_ids_uses_template_groups() {
 		let template =
 			r#"<svg><defs><g id="rectangle" /><g id="hexagon" /><g id="i-wrench" /></defs></svg>"#;
@@ -1302,5 +1308,109 @@ mod tests {
 		assert!(ids.contains("rectangle"));
 		assert!(ids.contains("hexagon"));
 		assert!(!ids.contains("i-wrench"));
+	}
+
+	#[test]
+	fn outgoing_edges_use_distinct_source_biases() {
+		let edges = vec![
+			super::LayoutEdge {
+				a: "SRC-001".to_string(),
+				b: "TGT-001".to_string(),
+			},
+			super::LayoutEdge {
+				a: "SRC-001".to_string(),
+				b: "TGT-002".to_string(),
+			},
+		];
+
+		let mut positioned = HashMap::new();
+		for id in ["SRC-001", "TGT-001", "TGT-002"] {
+			positioned.insert(
+				id.to_string(),
+				node::PositionedNode {
+					bbox: geom::RectI {
+						x: 0,
+						y: 0,
+						w: 720,
+						h: 450,
+					},
+					width_px: 720,
+					height_px: 450,
+					geom: node::NodeGeom {
+						width_px: 720,
+						height_px: 450,
+						lines: Vec::new(),
+						bold_line_index: None,
+						description_start_index: 0,
+					},
+				},
+			);
+		}
+
+		let slots = super::compute_source_slot_indexes(edges.as_slice(), &positioned);
+		let bias_a = super::normalized_slot_bias(slots.get(&0).copied().unwrap_or(0), 2);
+		let bias_b = super::normalized_slot_bias(slots.get(&1).copied().unwrap_or(0), 2);
+		assert_ne!(bias_a, bias_b, "source biases should be distinct");
+		assert!(
+			bias_a.abs() < 0.2 && bias_b.abs() < 0.2,
+			"two-edge source biases should remain near center lanes: ({bias_a}, {bias_b})"
+		);
+	}
+
+	#[test]
+	fn incoming_edges_use_distinct_target_biases() {
+		let edges = vec![
+			super::LayoutEdge {
+				a: "SRC-001".to_string(),
+				b: "TGT-001".to_string(),
+			},
+			super::LayoutEdge {
+				a: "SRC-002".to_string(),
+				b: "TGT-001".to_string(),
+			},
+		];
+
+		let mut positioned = HashMap::new();
+		for id in ["SRC-001", "SRC-002", "TGT-001"] {
+			positioned.insert(
+				id.to_string(),
+				node::PositionedNode {
+					bbox: geom::RectI {
+						x: 0,
+						y: 0,
+						w: 720,
+						h: 450,
+					},
+					width_px: 720,
+					height_px: 450,
+					geom: node::NodeGeom {
+						width_px: 720,
+						height_px: 450,
+						lines: Vec::new(),
+						bold_line_index: None,
+						description_start_index: 0,
+					},
+				},
+			);
+		}
+
+		let slots = super::compute_target_slot_indexes(edges.as_slice(), &positioned);
+		let bias_a = super::normalized_slot_bias(slots.get(&0).copied().unwrap_or(0), 2);
+		let bias_b = super::normalized_slot_bias(slots.get(&1).copied().unwrap_or(0), 2);
+		assert_ne!(bias_a, bias_b, "target biases should be distinct");
+		assert!(
+			bias_a.abs() < 0.2 && bias_b.abs() < 0.2,
+			"two-edge target biases should remain near center lanes: ({bias_a}, {bias_b})"
+		);
+	}
+
+	#[test]
+	fn edge_merge_mode_selects_one_merge_side() {
+		assert_eq!(edge_merge_mode(6, 1), EdgeMergeMode::Source);
+		assert_eq!(edge_merge_mode(1, 6), EdgeMergeMode::Target);
+		assert_eq!(edge_merge_mode(6, 6), EdgeMergeMode::Target);
+		assert_eq!(edge_merge_mode(3, 5), EdgeMergeMode::Target);
+		assert_eq!(edge_merge_mode(5, 3), EdgeMergeMode::Source);
+		assert_eq!(edge_merge_mode(1, 1), EdgeMergeMode::None);
 	}
 }

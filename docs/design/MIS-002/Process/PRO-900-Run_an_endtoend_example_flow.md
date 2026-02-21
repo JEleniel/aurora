@@ -2,6 +2,8 @@
 
 A simple process that demonstrates process-domain activities, triggers, and conditions.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -14,10 +16,11 @@ _No attributes defined._
 - branches on [CON-900](../Condition/CON-900-Example_condition.md)
 - involves [ACT-900](../Actor/ACT-900-Example_user.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp            | Editor    | Change |
-| -------------------- | --------- | ------ |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
 | 2026-02-18T00:00:00Z | architect | create |

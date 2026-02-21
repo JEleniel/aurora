@@ -2,6 +2,8 @@
 
 A deployment that includes nodes to exercise the deployment view.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -12,10 +14,11 @@ _No attributes defined._
 - includes [NOD-901](../Node/NOD-901-Example_virtual_machine.md)
 - includes [NOD-902](../Node/NOD-902-Example_hardware.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp            | Editor    | Change |
-| -------------------- | --------- | ------ |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
 | 2026-02-18T00:10:00Z | architect | create |

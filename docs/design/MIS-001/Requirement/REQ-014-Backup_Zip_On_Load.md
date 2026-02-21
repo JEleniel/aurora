@@ -2,6 +2,8 @@
 
 At load time, the editor MUST create a backup ZIP of the model home, stored per conventions defined in Aurora.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -10,10 +12,11 @@ _No attributes defined._
 
 - requires [CAP-006](../Capability/CAP-006-Load_Model_Homes.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp            | Editor    | Change |
-| -------------------- | --------- | ------ |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | create |

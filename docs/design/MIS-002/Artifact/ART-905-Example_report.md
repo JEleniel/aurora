@@ -2,6 +2,8 @@
 
 Artifact subtype used for coverage.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -10,10 +12,11 @@ _No attributes defined._
 
 - persists to [DST-900](../Data_Store/DST-900-Relational_store.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp            | Editor    | Change |
-| -------------------- | --------- | ------ |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
 | 2026-02-18T00:10:00Z | architect | create |

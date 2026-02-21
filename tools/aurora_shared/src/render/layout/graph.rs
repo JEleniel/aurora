@@ -14,6 +14,7 @@ pub(super) struct LayoutGraph {
 }
 
 /// Backbone and loop edges discovered during traversal.
+#[cfg(test)]
 pub(super) struct EdgeClassification {
 	pub(super) backbone: HashSet<(String, String)>,
 	pub(super) loops: HashSet<(String, String)>,
@@ -134,6 +135,7 @@ fn expand_roots_for_layout(
 }
 
 /// Classify edges into backbone and loop sets.
+#[cfg(test)]
 pub(super) fn classify_edges(graph: &LayoutGraph) -> EdgeClassification {
 	let mut backbone_edges: HashSet<(String, String)> = HashSet::new();
 	let mut loop_edges: HashSet<(String, String)> = HashSet::new();

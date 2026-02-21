@@ -2,6 +2,8 @@
 
 Model homes MUST contain the shared Aurora schemas, and missions MUST follow the standard folder layout for cards and audit logs.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -12,10 +14,11 @@ _No attributes defined._
 - requires [CAP-005](../Capability/CAP-005-Maintain_Canonical_Registries.md)
 - imposes [CNS-003](../Constraint/CNS-003-Standard_Model_File_Layout.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp    | Editor | Change |
-| ------------ | ------ | ------ |
-| _No entries_ |        |        |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
+| _No entries_ |  |  |

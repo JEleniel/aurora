@@ -2,6 +2,8 @@
 
 The model must cover every canonical card type, every declared common subtype, and every relationship label in the canonical registry.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -12,10 +14,11 @@ _No attributes defined._
 - has [ADR-900](../ADR/ADR-900-Use_registrydefined_vocabulary.md)
 - imposes [CNS-900](../Constraint/CNS-900-Links_must_use_canonical_relationships.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp            | Editor    | Change |
-| -------------------- | --------- | ------ |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
 | 2026-02-18T00:00:00Z | architect | create |

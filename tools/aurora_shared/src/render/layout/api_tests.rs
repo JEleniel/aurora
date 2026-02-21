@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 use crate::render::render_error::RenderError;
 
 use super::api::layout_model;
@@ -14,15 +16,14 @@ fn layout_model_positions_nodes_by_rank() {
 	let layout = layout_model(&model, &["MIS".to_string()], &["REQ".to_string()])
 		.expect("layout should succeed");
 
-	assert_eq!(layout.nodes.len(), 3);
-	assert_eq!(layout.edges.len(), 2);
+	// REQ-001 is a normalized transit node (1 incoming, 1 outgoing), so it is removed.
+	assert_eq!(layout.nodes.len(), 2);
+	assert_eq!(layout.edges.len(), 1);
 
 	let root_node = layout.nodes.get("MIS-001").expect("root node missing");
 	assert_eq!(root_node.y, 0);
-	let first_requirement = layout.nodes.get("REQ-001").expect("node missing");
-	assert_eq!(first_requirement.y, 1);
 	let second_requirement = layout.nodes.get("REQ-002").expect("node missing");
-	assert_eq!(second_requirement.y, 2);
+	assert_eq!(second_requirement.y, 1);
 }
 
 #[test]
@@ -73,19 +74,13 @@ fn layout_model_succeeds_when_filtering_orphanizes_nodes() {
 	let mission = layout.nodes.get("MIS-001").expect("mission missing");
 	assert_eq!(mission.y, 0);
 	assert!(
-		layout.nodes.get("PRO-001").is_none(),
+		!layout.nodes.contains_key("PRO-001"),
 		"expected isolated PRO-001 to be pruned from the filtered view"
 	);
 }
 
 #[test]
-fn layout_model_centers_node_between_two_parents_across_long_edge() {
-	// Build a graph where REQ-001 has two parents: PRO-001 (rank 2) and CAP-001 (rank 1).
-	// The CAP-001 -> REQ-001 edge should span multiple ranks and must still influence centering.
-	//
-	// Important: edge classification builds a backbone spanning tree by discovery order. We want the
-	// backbone path to reach REQ-001 via CAP-002 -> PRO-001 -> REQ-001, so CAP-002 must be explored
-	// before CAP-001 (LIFO traversal with sorted neighbors makes that deterministic here).
+fn layout_model_places_longest_path_on_spine_column() {
 	let root = make_card("MIS-001", "Mission", &["CAP-001", "CAP-002"]);
 	let cap_one = make_card("CAP-001", "Capability", &["REQ-001"]);
 	let cap_two = make_card("CAP-002", "Capability", &["PRO-001"]);
@@ -100,31 +95,26 @@ fn layout_model_centers_node_between_two_parents_across_long_edge() {
 	)
 	.expect("layout should succeed");
 
-	let cap_one = layout.nodes.get("CAP-001").expect("CAP-001 missing");
-	let cap_two = layout.nodes.get("CAP-002").expect("CAP-002 missing");
-	let process = layout.nodes.get("PRO-001").expect("PRO-001 missing");
+	assert!(
+		!layout.nodes.contains_key("CAP-001"),
+		"CAP-001 should be removed as a transit node"
+	);
+	assert!(
+		!layout.nodes.contains_key("CAP-002"),
+		"CAP-002 should be removed as a transit node"
+	);
+	assert!(
+		!layout.nodes.contains_key("PRO-001"),
+		"PRO-001 should be removed as a transit node"
+	);
 	let requirement = layout.nodes.get("REQ-001").expect("REQ-001 missing");
 
-	assert_eq!(cap_one.y, 1);
-	assert_eq!(cap_two.y, 1);
-	assert!(cap_one.x != cap_two.x);
-	assert_eq!(process.y, 2);
-	assert_eq!(requirement.y, 3);
-	// CAP-001 -> REQ-001 should be a long edge (spanning at least one intermediate rank).
-	assert_eq!(requirement.y - cap_one.y, 2);
-
-	// Requirement should be centered under both parents, even though CAP-001 -> REQ-001 spans
-	// multiple ranks.
-	let expected = (cap_one.x + process.x) / 2;
-	assert_eq!(requirement.x, expected);
+	assert_eq!(layout.nodes.get("MIS-001").expect("MIS-001 missing").x, 0);
+	assert_eq!(requirement.x, 0);
 }
 
 #[test]
-fn layout_model_can_center_a_node_between_two_parents() {
-	// Two parents in the same layer should allow a child to land at the midpoint.
-	//
-	// This is one of the main reasons we use half-step x-coordinates (2 units per column):
-	// parents at x=0 and x=2 can place a child at x=1.
+fn layout_model_bounds_non_spine_width() {
 	let root = make_card("MIS-001", "Mission", &["CAP-001", "CAP-002"]);
 	let cap_one = make_card("CAP-001", "Capability", &["PRO-001"]);
 	let cap_two = make_card("CAP-002", "Capability", &["PRO-001"]);
@@ -138,18 +128,70 @@ fn layout_model_can_center_a_node_between_two_parents() {
 	)
 	.expect("layout should succeed");
 
-	let cap_one = layout.nodes.get("CAP-001").expect("CAP-001 missing");
-	let cap_two = layout.nodes.get("CAP-002").expect("CAP-002 missing");
-	let process = layout.nodes.get("PRO-001").expect("PRO-001 missing");
+	let non_spine_max_col = layout.nodes.values().map(|node| node.x).max().unwrap_or(0);
+	// n=1 non-spine node -> k=ceil(sqrt(0.75*1))=1
+	assert!(non_spine_max_col <= 1);
+}
 
-	assert_eq!(cap_one.y, 1);
-	assert_eq!(cap_two.y, 1);
-	assert_eq!(process.y, 2);
+#[test]
+fn layout_model_places_roots_above_descendants() {
+	let root_one = make_card("MIS-001", "Mission", &["REQ-001", "REQ-002"]);
+	let root_two = make_card("MIS-002", "Mission", &["REQ-003"]);
+	let req_one = make_card("REQ-001", "Requirement", &["REQ-004"]);
+	let req_two = make_card("REQ-002", "Requirement", &[]);
+	let req_three = make_card("REQ-003", "Requirement", &[]);
+	let req_four = make_card("REQ-004", "Requirement", &[]);
+	let model = make_model(
+		root_one,
+		vec![root_two, req_one, req_two, req_three, req_four],
+	);
 
-	let left = cap_one.x.min(cap_two.x);
-	let right = cap_one.x.max(cap_two.x);
-	assert_eq!(right - left, 2);
-	assert_eq!(process.x, left + 1);
+	let layout = layout_model(&model, &["MIS".to_string()], &["REQ".to_string()])
+		.expect("layout should succeed");
+
+	let mission = layout.nodes.get("MIS-001").expect("MIS-001 missing");
+	for edge in &layout.edges {
+		if edge.a == "MIS-001" {
+			let target = layout.nodes.get(edge.b.as_str()).expect("target missing");
+			assert!(
+				target.y > mission.y,
+				"root should be above descendants: {} -> {}",
+				edge.a,
+				edge.b
+			);
+		}
+	}
+}
+
+#[test]
+fn layout_model_does_not_overlap_node_coordinates() {
+	let root_one = make_card("MIS-001", "Mission", &["REQ-001"]);
+	let root_two = make_card("MIS-002", "Mission", &[]);
+	let root_three = make_card("MIS-003", "Mission", &[]);
+	let root_four = make_card("MIS-004", "Mission", &[]);
+	let root_five = make_card("MIS-005", "Mission", &[]);
+	let root_six = make_card("MIS-006", "Mission", &[]);
+	let req_one = make_card("REQ-001", "Requirement", &[]);
+	let model = make_model(
+		root_one,
+		vec![
+			root_two, root_three, root_four, root_five, root_six, req_one,
+		],
+	);
+
+	let layout = layout_model(&model, &["MIS".to_string()], &["REQ".to_string()])
+		.expect("layout should succeed");
+
+	let mut used = HashSet::new();
+	for node in layout.nodes.values() {
+		assert!(
+			used.insert((node.x, node.y)),
+			"node '{}' overlaps at ({}, {})",
+			node.id,
+			node.x,
+			node.y
+		);
+	}
 }
 
 fn sorted_nodes(layout: &Layout) -> Vec<(String, i32, i32)> {

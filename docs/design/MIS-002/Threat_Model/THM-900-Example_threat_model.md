@@ -2,6 +2,8 @@
 
 Threat model used to exercise the full canonical security vocabulary.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -12,10 +14,11 @@ _No attributes defined._
 - includes [ROW-900](../Resource_Owner/ROW-900-Example_resource_owner.md)
 - recommends [CTL-900](../Control/CTL-900-Example_control.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp            | Editor    | Change |
-| -------------------- | --------- | ------ |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
 | 2026-02-18T00:15:00Z | architect | create |

@@ -2,6 +2,8 @@
 
 Primary component that exercises the full Component relationship set.
 
+
+
 ## Attributes
 
 _No attributes defined._
@@ -25,10 +27,11 @@ _No attributes defined._
 - executes [STM-900](../State_Machine/STM-900-Example_state_machine.md)
 - runs on [NOD-900](../Node/NOD-900-Example_container.md)
 
+
 ## Version
 
 ## Audit Log
 
-| Timestamp            | Editor    | Change |
-| -------------------- | --------- | ------ |
+| Timestamp | Editor | Change |
+|-----------|--------|--------|
 | 2026-02-18T00:10:00Z | architect | create |

@@ -32,7 +32,7 @@ If tooling limitations or system instructions prevent compliance, you MUST stop 
 
 ### Work Tracking
 
-If `docs/design/ProjectPlan.md` exists, you MUST mark work off as you complete it and keep the status up to date. The Planner owns this file, and will create and maintain the plan itself.
+The project plan MUST be stored as `docs/design/ProjectPlan.md`. If one exists, you MUST mark work off as you complete it and keep the status up to date. The Planner owns this file, and will create and maintain the plan itself.
 
 You MUST ensure these minimum required elements are in your memory and kept up to date:
 
@@ -59,6 +59,7 @@ When instructed, maintain the `CHANGELOG.md` based on the git commit history and
 - Files marked with the git attribute `generated` are tracked in SCM but are always generated outputs. Do not hand-edit them.
 - In Git commands that accept pathspecs, you can select or exclude generated files with `:(attr:generated)` and `:(exclude,attr:generated)`.
 - When reviewing changes, ignore `generated` files by default unless you are explicitly reviewing rendered outputs.
+- You MUST NOT attempt to run Pythomn, Node, or any other scripting language _unless_ the project is in that platform. You MUST NOT attempt to run ad-hoc scripts.
 
 ## Behavior
 
