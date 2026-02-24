@@ -8,6 +8,10 @@ Validate a model home by loading cards, applying schema checks, validating canon
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [ATV-001](../Activity/ATV-001-Validate_Model_Home.md)

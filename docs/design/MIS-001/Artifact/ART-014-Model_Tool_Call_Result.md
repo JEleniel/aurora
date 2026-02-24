@@ -8,6 +8,10 @@ Structured JSON result payload for a single model tool call, including success/f
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

@@ -8,6 +8,10 @@ Generate view artifacts from the model by selecting roots and included card type
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [PRO-002](../Process/PRO-002-Render_Views.md)

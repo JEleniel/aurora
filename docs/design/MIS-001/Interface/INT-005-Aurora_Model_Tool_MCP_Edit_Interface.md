@@ -8,6 +8,10 @@ Mutating MCP tool subset for editing Aurora model homes via validation-gated, tr
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - accepts [ART-013](../Artifact/ART-013-Model_Tool_Call_Request.md)

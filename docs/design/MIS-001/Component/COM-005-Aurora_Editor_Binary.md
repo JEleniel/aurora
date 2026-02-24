@@ -8,6 +8,10 @@ The aurora_editor desktop executable providing an interactive UI and background 
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - composes [COM-006](COM-006-Aurora_Editor_UI.md)

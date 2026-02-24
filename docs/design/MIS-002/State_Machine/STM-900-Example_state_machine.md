@@ -8,6 +8,10 @@ State machine used to exercise state, predicate, and event relationships.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - has [STA-900](../State/STA-900-Start_state.md)

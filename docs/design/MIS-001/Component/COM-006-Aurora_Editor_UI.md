@@ -8,6 +8,10 @@ Dioxus-based desktop UI responsible for interactive navigation (mind-map-like ce
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - implements [FEA-010](../Feature/FEA-010-Accessible_Themed_UI.md)

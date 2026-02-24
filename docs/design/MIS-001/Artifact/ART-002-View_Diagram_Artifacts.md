@@ -8,6 +8,10 @@ Rendered view artifacts (for example SVG diagrams and DOT sources) generated fro
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

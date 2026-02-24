@@ -8,6 +8,10 @@ Write the compact export JSON document for transport and agent consumption.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-001](../Component/COM-001-Aurora_Shared_Library.md)

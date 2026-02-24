@@ -8,6 +8,10 @@ Configure and emit logs from the editor to stdout/stderr and optionally to a fil
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [ATV-017](../Activity/ATV-017-Configure_Logging.md)

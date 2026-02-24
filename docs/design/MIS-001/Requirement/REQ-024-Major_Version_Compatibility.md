@@ -8,6 +8,10 @@ Each model home MUST include a complete set of schema and configuration files sn
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-006](../Capability/CAP-006-Load_Model_Homes.md)

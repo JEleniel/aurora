@@ -8,6 +8,10 @@ Maintain the canonical registry of card types and allowed outgoing relationships
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - produces [ART-005](../Artifact/ART-005-Canonical_Definitions_Registry.md)

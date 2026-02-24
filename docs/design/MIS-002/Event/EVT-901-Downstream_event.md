@@ -8,6 +8,10 @@ Second event used to exercise event emission chains.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

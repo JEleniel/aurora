@@ -8,6 +8,10 @@ The editor MUST support packing and unpacking model homes as a single ZIP-compre
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-008](../Capability/CAP-008-Persist_And_Package_Models.md)

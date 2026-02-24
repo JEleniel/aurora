@@ -8,6 +8,10 @@ Load a model home for interactive use by acquiring the exclusive model lock, loc
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [ATV-018](../Activity/ATV-018-Acquire_Exclusive_Model_Lock.md)

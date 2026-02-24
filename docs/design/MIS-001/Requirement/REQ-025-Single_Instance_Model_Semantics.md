@@ -8,6 +8,10 @@ Multiple instances editing the same model are not supported. Aurora tooling (edi
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-006](../Capability/CAP-006-Load_Model_Homes.md)

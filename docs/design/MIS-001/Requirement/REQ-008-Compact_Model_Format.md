@@ -8,6 +8,10 @@ A compact, single-file representation MUST be supported for transport and agent 
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-003](../Capability/CAP-003-Export_Compact_Model.md)

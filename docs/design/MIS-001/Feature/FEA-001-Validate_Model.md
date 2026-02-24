@@ -8,6 +8,10 @@ Validate an Aurora model against schemas, registries, and graph invariants, prod
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - realizes [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)

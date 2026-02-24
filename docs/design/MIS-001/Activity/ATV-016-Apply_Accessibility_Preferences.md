@@ -8,6 +8,10 @@ Apply dark mode defaults, WCAG AA accessibility behavior, and base font scaling 
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-006](../Component/COM-006-Aurora_Editor_UI.md)

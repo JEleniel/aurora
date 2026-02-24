@@ -8,6 +8,10 @@ Eliminate ambiguous architectural meaning by enforcing invariant rules and schem
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - drives [REQ-001](../Requirement/REQ-001-Single_Mission_Root.md)

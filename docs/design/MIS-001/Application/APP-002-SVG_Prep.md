@@ -8,6 +8,10 @@ Command-line tool that builds Aurora SVG reference assets (Icons.svg, SVGTemplat
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - comprises [COM-003](../Component/COM-003-svgprep_Binary.md)

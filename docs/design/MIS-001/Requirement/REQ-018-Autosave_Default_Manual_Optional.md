@@ -8,6 +8,10 @@ The editor MUST use immediate autosave by default and MUST provide an option for
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-008](../Capability/CAP-008-Persist_And_Package_Models.md)

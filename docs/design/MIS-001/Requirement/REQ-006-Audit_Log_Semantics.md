@@ -8,6 +8,10 @@ Each mission MUST have an append-only `AuditLog.ndjson` audit log where each lin
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-004](../Capability/CAP-004-Maintain_Audit_Trail.md)

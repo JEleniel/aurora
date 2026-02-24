@@ -8,6 +8,10 @@ Persist edits immediately by default (autosave), while still supporting an optio
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-007](../Component/COM-007-Aurora_Editor_Engine.md)

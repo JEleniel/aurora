@@ -8,6 +8,10 @@ A top-level system used to exercise System->Application integration.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - integrates [APP-900](../Application/APP-900-Example_application.md)

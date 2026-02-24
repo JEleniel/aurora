@@ -8,6 +8,10 @@ The canonical registry JSON (Aurora.modelconfiguration.json) that defines card t
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

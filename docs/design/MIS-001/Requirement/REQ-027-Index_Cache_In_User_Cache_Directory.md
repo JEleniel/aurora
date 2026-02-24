@@ -8,6 +8,10 @@ Index persistence MUST use the user cache directory (OS cache folder) rather tha
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-011](../Capability/CAP-011-Index_And_Search_Model_Homes.md)

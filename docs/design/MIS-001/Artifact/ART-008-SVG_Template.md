@@ -8,6 +8,10 @@ The SVGTemplate.svg reference template used by the renderer to wrap generated dr
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

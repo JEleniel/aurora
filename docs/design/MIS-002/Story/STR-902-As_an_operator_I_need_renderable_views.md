@@ -8,6 +8,10 @@ As an operator I need the example to render without missing references so that v
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - explains [REQ-900](../Requirement/REQ-900-Exercise_all_card_types_and_relationships.md)

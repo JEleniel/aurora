@@ -8,6 +8,10 @@ Model tool server that exposes the constrained Aurora model tool surface over MC
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - comprises [COM-010](../Component/COM-010-Aurora_MCP_Server.md)

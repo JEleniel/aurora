@@ -8,6 +8,10 @@ Standalone cross-platform desktop editor for loading, exploring, indexing/search
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - comprises [COM-005](../Component/COM-005-Aurora_Editor_Binary.md)

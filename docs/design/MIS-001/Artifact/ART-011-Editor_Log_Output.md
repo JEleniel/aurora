@@ -8,6 +8,10 @@ Editor log output emitted to stdout, stderr, and/or an optional log file, used f
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

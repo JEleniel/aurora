@@ -8,6 +8,10 @@ The model must cover every canonical card type, every declared common subtype, a
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-900](../Capability/CAP-900-Generate_example_views.md)

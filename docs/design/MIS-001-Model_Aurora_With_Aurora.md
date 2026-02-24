@@ -8,6 +8,10 @@ Define Aurora (Agent-Unified Representation of Requirements and Architecture) us
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - involves [STK-001](MIS-001/Stakeholder/STK-001-Architects_And_Agents.md)

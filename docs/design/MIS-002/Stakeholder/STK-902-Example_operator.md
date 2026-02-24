@@ -8,6 +8,10 @@ Representative operations stakeholder for coverage.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - desires [STR-902](../Story/STR-902-As_an_operator_I_need_renderable_views.md)

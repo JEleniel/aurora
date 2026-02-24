@@ -8,6 +8,10 @@ The rendered views should show the full spread of canonical card types and relat
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - realizes [CAP-900](../Capability/CAP-900-Generate_example_views.md)

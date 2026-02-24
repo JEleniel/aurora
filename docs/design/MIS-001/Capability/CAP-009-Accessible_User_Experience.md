@@ -8,6 +8,10 @@ Provide an accessible and usable editor UI, including dark mode by default and a
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [PRO-009](../Process/PRO-009-Apply_Editor_Preferences.md)

@@ -4,7 +4,7 @@
 //! into a standalone SVG string based on the `svgtemplate.txt` template.
 
 use super::render_error::RenderError;
-use super::{Layout, LayoutEdge};
+use super::{Layout, LayoutEdge, LayoutFamily};
 use crate::registry::CardRegistry;
 use crate::{Card, Model};
 use std::collections::{HashMap, HashSet};
@@ -64,12 +64,15 @@ impl Svg {
 	) -> Result<String, RenderError> {
 		let base_size: u32 = svg_template.len() as u32;
 
-		let config = config.unwrap_or_default();
+		let mut config = config.unwrap_or_default();
+		if matches!(layout.family, Some(LayoutFamily::RadialSubtree)) {
+			config.node_spacing_px = (config.node_spacing_px / 2).max(120);
+		}
 		let template_shape_ids = collect_template_shape_ids(svg_template);
 
 		let cards_by_id = index_cards(model)?;
 		let node_layouts = node::collect_node_layouts(layout, &cards_by_id, &config)?;
-		let positioned = node::position_nodes(&node_layouts, &config);
+		let positioned = node::position_nodes(&node_layouts, layout.family, &config);
 
 		let mut edges_svg = String::new();
 		let mut edge_bounds: Vec<geom::Bounds> = Vec::new();
@@ -174,6 +177,8 @@ impl Svg {
 				&a.bbox,
 				&b.bbox,
 				edge_obstacle_pad_px,
+				source_merge,
+				target_merge,
 			) {
 				edge_obstacles.push((e.a.clone(), e.b.clone(), obstacle));
 			}
@@ -1265,6 +1270,7 @@ mod tests {
 			},
 		);
 		let layout = crate::render::Layout {
+			family: None,
 			nodes,
 			edges: vec![crate::render::LayoutEdge {
 				a: "MIS-001".to_string(),

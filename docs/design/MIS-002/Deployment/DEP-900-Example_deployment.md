@@ -8,6 +8,10 @@ A deployment that includes nodes to exercise the deployment view.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [NOD-900](../Node/NOD-900-Example_container.md)

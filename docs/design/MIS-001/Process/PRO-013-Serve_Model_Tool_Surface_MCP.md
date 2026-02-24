@@ -8,6 +8,10 @@ Operate the constrained model tool surface as an MCP server so UI and agents can
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [ATV-023](../Activity/ATV-023-Serve_MCP_Tool_Calls.md)

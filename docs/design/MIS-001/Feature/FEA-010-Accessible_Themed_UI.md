@@ -8,6 +8,10 @@ Provide WCAG AA accessible UI behavior, dark mode by default, and adjustable bas
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - realizes [CAP-009](../Capability/CAP-009-Accessible_User_Experience.md)

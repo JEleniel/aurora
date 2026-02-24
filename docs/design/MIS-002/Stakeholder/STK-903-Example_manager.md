@@ -8,6 +8,10 @@ Representative management stakeholder for coverage.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - desires [STR-903](../Story/STR-903-As_a_manager_I_need_traceability.md)

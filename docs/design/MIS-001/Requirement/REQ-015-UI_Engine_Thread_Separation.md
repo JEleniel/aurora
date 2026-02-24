@@ -8,6 +8,10 @@ The editor UI and engine MUST operate on separate threads to ensure UI responsiv
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-007](../Capability/CAP-007-Edit_Models_Interactively.md)

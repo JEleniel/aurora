@@ -8,6 +8,10 @@ Models of any size SHOULD load almost instantly; the editor MUST become interact
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-006](../Capability/CAP-006-Load_Model_Homes.md)

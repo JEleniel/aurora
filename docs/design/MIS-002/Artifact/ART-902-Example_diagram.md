@@ -8,6 +8,10 @@ Artifact subtype used for coverage.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - goes into [ATV-900](../Activity/ATV-900-Perform_example_activity.md)

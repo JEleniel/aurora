@@ -8,6 +8,10 @@ Secrets (for example API keys and tokens) MUST NOT be stored in plain text. Pref
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-012](../Capability/CAP-012-Agent_Assisted_Modeling.md)

@@ -8,6 +8,10 @@ Primary component that exercises the full Component relationship set.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - composes [COM-901](COM-901-Example_library_component.md)

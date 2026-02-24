@@ -8,6 +8,10 @@ The svg_prep executable used to generate/update Aurora SVG reference assets (Ico
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - implements [FEA-006](../Feature/FEA-006-Prepare_SVG_References.md)

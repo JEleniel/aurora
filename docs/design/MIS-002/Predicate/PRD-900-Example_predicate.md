@@ -8,6 +8,10 @@ Predicate that branches and emits events.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - branches to [STA-901](../State/STA-901-End_state.md)

@@ -8,6 +8,10 @@ Provide an agentic sidebar with scoped context controls, an activity feed of too
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - realizes [CAP-012](../Capability/CAP-012-Agent_Assisted_Modeling.md)

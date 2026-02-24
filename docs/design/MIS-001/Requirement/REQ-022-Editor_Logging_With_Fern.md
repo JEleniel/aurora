@@ -8,6 +8,10 @@ Logging MUST be supported with fern integration, including stdout, stderr, and o
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-010](../Capability/CAP-010-Editor_Observability.md)

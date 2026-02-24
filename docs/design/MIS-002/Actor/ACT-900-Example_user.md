@@ -8,6 +8,10 @@ Representative end-user actor for coverage.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - performs [ATV-900](../Activity/ATV-900-Perform_example_activity.md)

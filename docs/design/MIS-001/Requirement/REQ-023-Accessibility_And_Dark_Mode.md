@@ -8,6 +8,10 @@ The editor MUST be WCAG AA compliant, MUST support dark mode (default), and MUST
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-009](../Capability/CAP-009-Accessible_User_Experience.md)

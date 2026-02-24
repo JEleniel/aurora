@@ -8,6 +8,10 @@ Run svg_prep to generate/update Icons.svg and refresh SVGTemplate.svg defs from 
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-003](../Component/COM-003-svgprep_Binary.md)

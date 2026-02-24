@@ -8,6 +8,10 @@ Constrained model tool server that exposes the validation-gated model tool surfa
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - composes [COM-001](COM-001-Aurora_Shared_Library.md)

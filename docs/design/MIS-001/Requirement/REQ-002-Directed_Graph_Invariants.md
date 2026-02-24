@@ -8,6 +8,10 @@ Starting from the Mission, all links MUST traverse away from the Mission; every 
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)

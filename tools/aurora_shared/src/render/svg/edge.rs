@@ -9,7 +9,10 @@ const TERMINAL_DIRECTION_PENALTY: i64 = 120;
 pub(super) const LANE_COUNT: i32 = 10;
 pub(super) const LANE_PITCH_PX: f32 = 16.0;
 const CHANNEL_WIDTH_PX: f32 = 160.0;
-const CHANNEL_OUTER_CLEAR_PX: f32 = 80.0;
+
+fn channel_outer_clear_px(config: &SvgConfig) -> f32 {
+	((config.node_spacing_px as f32) * 0.20).clamp(16.0, 80.0)
+}
 
 #[derive(Debug, Clone)]
 pub struct Route {
@@ -39,8 +42,10 @@ pub fn route_edge(
 	let _ = config;
 	let source_center = source_bbox.center();
 	let target_center = target_bbox.center();
-	let start_anchor = preferred_source_anchor_point(source_bbox, source_anchor_bias);
-	let end_anchor = preferred_target_anchor_point(target_bbox, target_anchor_bias);
+	let channel_clear = channel_outer_clear_px(config);
+	let start_anchor =
+		preferred_source_anchor_point(source_bbox, source_anchor_bias, channel_clear);
+	let end_anchor = preferred_target_anchor_point(target_bbox, target_anchor_bias, channel_clear);
 
 	let prefer_vertical_terminals = source_center.y <= target_center.y;
 	let primary_is_vertical_channel = !prefer_vertical_terminals
@@ -55,6 +60,7 @@ pub fn route_edge(
 			target_anchor_bias,
 			source_merge,
 			target_merge,
+			channel_clear,
 		)
 	} else {
 		route_through_horizontal_channel(
@@ -66,6 +72,7 @@ pub fn route_edge(
 			target_anchor_bias,
 			source_merge,
 			target_merge,
+			channel_clear,
 		)
 	};
 	let secondary = if primary_is_vertical_channel {
@@ -78,6 +85,7 @@ pub fn route_edge(
 			target_anchor_bias,
 			source_merge,
 			target_merge,
+			channel_clear,
 		)
 	} else {
 		route_through_vertical_channel(
@@ -89,18 +97,30 @@ pub fn route_edge(
 			target_anchor_bias,
 			source_merge,
 			target_merge,
+			channel_clear,
 		)
 	};
 
-	let symbol_obstacles =
-		collect_symbol_obstacles(source_bbox, target_bbox, node_obstacles, symbol_bboxes);
+	let symbol_obstacles = collect_symbol_obstacles(
+		source_bbox,
+		target_bbox,
+		node_obstacles,
+		symbol_bboxes,
+		channel_clear,
+	);
 
 	let mut candidates: Vec<Vec<geom::PointF>> = vec![primary, secondary];
-	candidates.extend(detour_routes(start_anchor, end_anchor, &symbol_obstacles));
+	candidates.extend(detour_routes(
+		start_anchor,
+		end_anchor,
+		&symbol_obstacles,
+		channel_clear,
+	));
 	candidates.extend(expanded_candidate_routes(
 		start_anchor,
 		end_anchor,
 		symbol_obstacles.as_slice(),
+		channel_clear,
 	));
 
 	let points = choose_non_crossing_route(
@@ -110,7 +130,7 @@ pub fn route_edge(
 		end_anchor,
 	)
 	.ok_or(RenderError::SvgRouteFailed)?;
-	let points = enforce_terminal_clearance(points, start_anchor, end_anchor);
+	let points = enforce_terminal_clearance(points, start_anchor, end_anchor, channel_clear);
 	let points = compress_polyline(points);
 	let arrow = arrowhead(points.as_slice());
 	let bounds = bounds_for_points(points.as_slice())
@@ -130,16 +150,18 @@ fn collect_symbol_obstacles(
 	target_bbox: &geom::RectI,
 	node_obstacles: &[geom::RectI],
 	symbol_bboxes: &[geom::RectI],
+	channel_clear: f32,
 ) -> Vec<geom::RectI> {
+	let clearance = channel_clear.round() as i32;
 	let mut obstacles: Vec<geom::RectI> = Vec::new();
 	for obstacle in symbol_bboxes {
 		if !same_rect(*obstacle, *source_bbox) && !same_rect(*obstacle, *target_bbox) {
-			obstacles.push(inflate_rect(*obstacle, CHANNEL_OUTER_CLEAR_PX as i32));
+			obstacles.push(inflate_rect(*obstacle, clearance));
 		}
 	}
 	for obstacle in node_obstacles {
 		if !rect_overlaps(*obstacle, *source_bbox) && !rect_overlaps(*obstacle, *target_bbox) {
-			obstacles.push(inflate_rect(*obstacle, CHANNEL_OUTER_CLEAR_PX as i32));
+			obstacles.push(inflate_rect(*obstacle, clearance));
 		}
 	}
 	obstacles.sort_by(|left, right| {
@@ -173,6 +195,7 @@ fn detour_routes(
 	start_anchor: geom::PointF,
 	end_anchor: geom::PointF,
 	obstacles: &[geom::RectI],
+	channel_clear: f32,
 ) -> Vec<Vec<geom::PointF>> {
 	if obstacles.is_empty() {
 		return Vec::new();
@@ -190,7 +213,7 @@ fn detour_routes(
 		.map(|rect| rect.y + rect.h)
 		.max()
 		.unwrap_or(0) as f32;
-	let clearance = CHANNEL_OUTER_CLEAR_PX + CHANNEL_WIDTH_PX / 2.0;
+	let clearance = channel_clear + CHANNEL_WIDTH_PX / 2.0;
 
 	vec![
 		vec![
@@ -248,12 +271,13 @@ fn expanded_candidate_routes(
 	start_anchor: geom::PointF,
 	end_anchor: geom::PointF,
 	obstacles: &[geom::RectI],
+	channel_clear: f32,
 ) -> Vec<Vec<geom::PointF>> {
 	if obstacles.is_empty() {
 		return Vec::new();
 	}
 
-	let (x_lines, y_lines) = candidate_lines(start_anchor, end_anchor, obstacles);
+	let (x_lines, y_lines) = candidate_lines(start_anchor, end_anchor, obstacles, channel_clear);
 	let mut candidates: Vec<Vec<geom::PointF>> = Vec::new();
 
 	for x in &x_lines {
@@ -323,6 +347,7 @@ fn candidate_lines(
 	start_anchor: geom::PointF,
 	end_anchor: geom::PointF,
 	obstacles: &[geom::RectI],
+	channel_clear: f32,
 ) -> (Vec<f32>, Vec<f32>) {
 	let mut x_lines = vec![start_anchor.x, end_anchor.x];
 	let mut y_lines = vec![start_anchor.y, end_anchor.y];
@@ -339,7 +364,7 @@ fn candidate_lines(
 		.map(|rect| rect.y + rect.h)
 		.max()
 		.unwrap_or(0) as f32;
-	let clearance = CHANNEL_OUTER_CLEAR_PX + CHANNEL_WIDTH_PX / 2.0;
+	let clearance = channel_clear + CHANNEL_WIDTH_PX / 2.0;
 
 	x_lines.push(min_x - clearance);
 	x_lines.push(max_x + clearance);
@@ -419,6 +444,7 @@ fn enforce_terminal_clearance(
 	mut points: Vec<geom::PointF>,
 	start_anchor: geom::PointF,
 	end_anchor: geom::PointF,
+	channel_clear: f32,
 ) -> Vec<geom::PointF> {
 	if points.len() < 2 {
 		return points;
@@ -429,8 +455,8 @@ fn enforce_terminal_clearance(
 	} else {
 		-1.0
 	};
-	let mut start_depart_y = start_anchor.y + direction * CHANNEL_OUTER_CLEAR_PX;
-	let mut end_entry_y = end_anchor.y - direction * CHANNEL_OUTER_CLEAR_PX;
+	let mut start_depart_y = start_anchor.y + direction * channel_clear;
+	let mut end_entry_y = end_anchor.y - direction * channel_clear;
 	if (direction > 0.0 && start_depart_y > end_entry_y)
 		|| (direction < 0.0 && start_depart_y < end_entry_y)
 	{
@@ -570,11 +596,12 @@ fn route_through_vertical_channel(
 	target_bias: f32,
 	source_merge: bool,
 	target_merge: bool,
+	channel_clear: f32,
 ) -> Vec<geom::PointF> {
 	let source_center = source_bbox.center();
 	let target_center = target_bbox.center();
 	let lane_bias = resolve_lane_bias(source_bias, target_bias, source_merge, target_merge);
-	let terminal_leg = CHANNEL_OUTER_CLEAR_PX;
+	let terminal_leg = channel_clear;
 
 	let (left_edge, right_edge) = if source_center.x <= target_center.x {
 		((source_bbox.x + source_bbox.w) as f32, target_bbox.x as f32)
@@ -589,7 +616,7 @@ fn route_through_vertical_channel(
 	let lane_x = if overlap_x {
 		(start_anchor.x + end_anchor.x) / 2.0
 	} else {
-		lane_position(left_edge, right_edge, lane_bias)
+		lane_position(left_edge, right_edge, lane_bias, channel_clear)
 	};
 
 	let mut start_exit_y = start_anchor.y + terminal_leg;
@@ -631,11 +658,12 @@ fn route_through_horizontal_channel(
 	target_bias: f32,
 	source_merge: bool,
 	target_merge: bool,
+	channel_clear: f32,
 ) -> Vec<geom::PointF> {
 	let source_center = source_bbox.center();
 	let target_center = target_bbox.center();
 	let lane_bias = resolve_lane_bias(source_bias, target_bias, source_merge, target_merge);
-	let terminal_leg = CHANNEL_OUTER_CLEAR_PX;
+	let terminal_leg = channel_clear;
 	let source_above_target = source_center.y <= target_center.y;
 
 	let start_depart_y = if source_above_target {
@@ -649,7 +677,7 @@ fn route_through_horizontal_channel(
 		end_anchor.y + terminal_leg
 	};
 
-	let lane_y = lane_position(start_depart_y, end_entry_y, lane_bias);
+	let lane_y = lane_position(start_depart_y, end_entry_y, lane_bias, channel_clear);
 
 	vec![
 		start_anchor,
@@ -686,14 +714,14 @@ fn resolve_lane_bias(
 	}
 }
 
-fn lane_position(start_edge: f32, end_edge: f32, bias: f32) -> f32 {
+fn lane_position(start_edge: f32, end_edge: f32, bias: f32, channel_clear: f32) -> f32 {
 	let low = start_edge.min(end_edge);
 	let high = start_edge.max(end_edge);
 	let gap = (high - low).max(1.0);
 
 	let lane_band_start = if gap >= 320.0 {
 		let extra = gap - 320.0;
-		low + (extra / 2.0) + CHANNEL_OUTER_CLEAR_PX
+		low + (extra / 2.0) + channel_clear
 	} else {
 		let shortfall = (CHANNEL_WIDTH_PX - gap).max(0.0);
 		(low - shortfall / 2.0).min(low)
@@ -709,22 +737,30 @@ fn bias_to_lane_index(bias: f32) -> i32 {
 	(normalized * (LANE_COUNT - 1) as f32).round() as i32
 }
 
-fn preferred_source_anchor_point(from: &geom::RectI, bias: f32) -> geom::PointF {
+fn preferred_source_anchor_point(
+	from: &geom::RectI,
+	bias: f32,
+	channel_clear: f32,
+) -> geom::PointF {
 	let x0 = from.x as f32;
 	let x1 = (from.x + from.w) as f32;
 	let y1 = (from.y + from.h) as f32;
 	geom::PointF {
-		x: biased_coordinate(x0, x1, bias),
+		x: biased_coordinate(x0, x1, bias, channel_clear),
 		y: y1,
 	}
 }
 
-fn preferred_target_anchor_point(from: &geom::RectI, bias: f32) -> geom::PointF {
+fn preferred_target_anchor_point(
+	from: &geom::RectI,
+	bias: f32,
+	channel_clear: f32,
+) -> geom::PointF {
 	let x0 = from.x as f32;
 	let x1 = (from.x + from.w) as f32;
 	let y0 = from.y as f32;
 	geom::PointF {
-		x: biased_coordinate(x0, x1, bias),
+		x: biased_coordinate(x0, x1, bias, channel_clear),
 		y: y0,
 	}
 }
@@ -877,9 +913,9 @@ fn jump_path(center: geom::PointF) -> String {
 	)
 }
 
-fn biased_coordinate(min: f32, max: f32, bias: f32) -> f32 {
-	let inner_min = min + CHANNEL_OUTER_CLEAR_PX;
-	let inner_max = max - CHANNEL_OUTER_CLEAR_PX;
+fn biased_coordinate(min: f32, max: f32, bias: f32, channel_clear: f32) -> f32 {
+	let inner_min = min + channel_clear;
+	let inner_max = max - channel_clear;
 	if inner_max <= inner_min {
 		return (min + max) / 2.0;
 	}
@@ -925,9 +961,18 @@ pub fn route_obstacles_for_later_edges(
 	_source_bbox: &geom::RectI,
 	_target_bbox: &geom::RectI,
 	padding_px: i32,
+	source_merge: bool,
+	target_merge: bool,
 ) -> Vec<geom::RectI> {
 	let mut obstacles = Vec::new();
-	for segment in route.points.windows(2) {
+	let segment_count = route.points.len().saturating_sub(1);
+	for (segment_index, segment) in route.points.windows(2).enumerate() {
+		if source_merge && segment_index <= 1 {
+			continue;
+		}
+		if target_merge && segment_index + 2 >= segment_count {
+			continue;
+		}
 		obstacles.push(segment_rect(segment[0], segment[1], padding_px.max(1)));
 	}
 	obstacles
@@ -1263,11 +1308,12 @@ mod tests {
 			route.points
 		);
 
-		let clearance_rect = inflate_rect(middle, CHANNEL_OUTER_CLEAR_PX as i32);
+		let clearance = channel_outer_clear_px(&SvgConfig::default());
+		let clearance_rect = inflate_rect(middle, clearance as i32);
 		assert!(
 			!route_crosses_symbols(route.points.as_slice(), &[clearance_rect]),
 			"route violated {}px symbol clearance: {:?}",
-			CHANNEL_OUTER_CLEAR_PX,
+			clearance,
 			route.points
 		);
 	}
@@ -1308,5 +1354,77 @@ mod tests {
 				route.points
 			);
 		}
+	}
+
+	#[test]
+	fn route_obstacles_skip_source_terminal_segments_when_source_merges() {
+		let route = Route {
+			points: vec![
+				geom::PointF { x: 0.0, y: 0.0 },
+				geom::PointF { x: 0.0, y: 40.0 },
+				geom::PointF { x: 80.0, y: 40.0 },
+				geom::PointF { x: 80.0, y: 80.0 },
+			],
+			arrow: [
+				geom::PointF { x: 80.0, y: 80.0 },
+				geom::PointF { x: 40.0, y: 92.0 },
+				geom::PointF { x: 40.0, y: 68.0 },
+			],
+			bounds: geom::Bounds::empty(),
+		};
+		let source = geom::RectI {
+			x: 0,
+			y: 0,
+			w: 720,
+			h: 450,
+		};
+		let target = geom::RectI {
+			x: 1080,
+			y: 810,
+			w: 720,
+			h: 450,
+		};
+
+		let all = route_obstacles_for_later_edges(&route, 16, &source, &target, 10, false, false);
+		let merged = route_obstacles_for_later_edges(&route, 16, &source, &target, 10, true, false);
+
+		assert_eq!(all.len(), 3);
+		assert_eq!(merged.len(), 1);
+	}
+
+	#[test]
+	fn route_obstacles_skip_target_terminal_segments_when_target_merges() {
+		let route = Route {
+			points: vec![
+				geom::PointF { x: 0.0, y: 0.0 },
+				geom::PointF { x: 0.0, y: 40.0 },
+				geom::PointF { x: 80.0, y: 40.0 },
+				geom::PointF { x: 80.0, y: 80.0 },
+			],
+			arrow: [
+				geom::PointF { x: 80.0, y: 80.0 },
+				geom::PointF { x: 40.0, y: 92.0 },
+				geom::PointF { x: 40.0, y: 68.0 },
+			],
+			bounds: geom::Bounds::empty(),
+		};
+		let source = geom::RectI {
+			x: 0,
+			y: 0,
+			w: 720,
+			h: 450,
+		};
+		let target = geom::RectI {
+			x: 1080,
+			y: 810,
+			w: 720,
+			h: 450,
+		};
+
+		let all = route_obstacles_for_later_edges(&route, 16, &source, &target, 10, false, false);
+		let merged = route_obstacles_for_later_edges(&route, 16, &source, &target, 10, false, true);
+
+		assert_eq!(all.len(), 3);
+		assert_eq!(merged.len(), 1);
 	}
 }

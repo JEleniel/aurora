@@ -8,6 +8,10 @@ Indexing subsystem (shared by the editor and MCP server) that builds, persists, 
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - implements [FEA-012](../Feature/FEA-012-Index_And_Search.md)

@@ -8,6 +8,10 @@ Append one line to the mission `AuditLog.ndjson` file for each change event, all
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - produces [ART-004](../Artifact/ART-004-Mission_Audit_Log.md)

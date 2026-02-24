@@ -8,6 +8,10 @@ Enable a fast, responsive, and safe desktop authoring experience so humans can e
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - drives [REQ-011](../Requirement/REQ-011-Standalone_Cross_Platform_Editor.md)

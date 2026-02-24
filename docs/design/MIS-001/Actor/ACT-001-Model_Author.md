@@ -8,6 +8,10 @@ A human author (often the architect) who edits Aurora cards and keeps registries
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - performs [ATV-004](../Activity/ATV-004-Append_Audit_Log_Entry.md)

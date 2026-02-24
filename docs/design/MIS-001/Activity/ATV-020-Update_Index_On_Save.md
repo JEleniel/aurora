@@ -8,6 +8,10 @@ Update the persisted index asynchronously when a change is saved so search/navig
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-008](../Component/COM-008-Aurora_Shared_Index.md)

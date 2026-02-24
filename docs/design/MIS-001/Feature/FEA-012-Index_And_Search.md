@@ -8,6 +8,10 @@ Maintain a persisted index in the user cache directory and expose fast search an
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - realizes [CAP-011](../Capability/CAP-011-Index_And_Search_Model_Homes.md)

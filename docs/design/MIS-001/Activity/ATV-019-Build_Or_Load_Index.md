@@ -8,6 +8,10 @@ Load a persisted index from the user cache directory when valid; otherwise build
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-008](../Component/COM-008-Aurora_Shared_Index.md)

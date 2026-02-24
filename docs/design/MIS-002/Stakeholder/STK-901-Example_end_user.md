@@ -8,6 +8,10 @@ Representative end-user stakeholder for coverage.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - desires [STR-901](../Story/STR-901-As_an_end_user_I_need_examples.md)

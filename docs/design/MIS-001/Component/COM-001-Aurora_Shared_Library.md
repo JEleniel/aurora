@@ -8,6 +8,10 @@ Shared Rust library providing registry-aware parsing, validation helpers, transa
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - composes [COM-008](COM-008-Aurora_Shared_Index.md)

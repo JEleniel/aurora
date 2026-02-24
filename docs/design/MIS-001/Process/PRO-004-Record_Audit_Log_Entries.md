@@ -8,6 +8,10 @@ Record mission change events by appending one entry per event to `AuditLog.ndjso
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [ATV-004](../Activity/ATV-004-Append_Audit_Log_Entry.md)

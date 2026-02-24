@@ -8,6 +8,10 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - establishes [DRI-900](MIS-002/Driver/DRI-900-Complete_canonical_coverage.md)

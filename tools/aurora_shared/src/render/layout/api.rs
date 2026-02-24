@@ -1,12 +1,12 @@
 //! Public entry points for layout computation.
 
 use std::cmp::Ordering;
-use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet};
+use std::collections::{BTreeMap, BTreeSet, HashMap, HashSet, VecDeque};
 
 use crate::{Model, render::render_error::RenderError};
 
 use super::graph::{LayoutGraph, build_graph, validate_graph};
-use super::types::{Layout, LayoutEdge, LayoutNode};
+use super::types::{Layout, LayoutEdge, LayoutFamily, LayoutNode};
 
 #[derive(Debug, Clone)]
 struct CollapsedGraph {
@@ -19,9 +19,24 @@ struct CollapsedGraph {
 #[derive(Debug, Clone)]
 struct NormalizedGraph {
 	nodes: Vec<String>,
+	roots: Vec<String>,
 	edges: Vec<(String, String)>,
 	outgoing: HashMap<String, Vec<String>>,
 	incoming: HashMap<String, Vec<String>>,
+}
+
+#[derive(Debug, Clone)]
+struct PreparedLayoutGraph {
+	normalized: NormalizedGraph,
+	topo: Vec<String>,
+	spine: Vec<String>,
+}
+
+#[derive(Debug, Clone, Copy)]
+struct LayoutScore {
+	score_milli: i64,
+	crossings: usize,
+	bends: usize,
 }
 
 /// Compute a deterministic spine-based layout for a view selection over a model.
@@ -30,6 +45,64 @@ pub fn layout_model(
 	root_card_types: &[String],
 	included_card_types: &[String],
 ) -> Result<Layout, RenderError> {
+	layout_model_with_family(
+		model,
+		root_card_types,
+		included_card_types,
+		LayoutFamily::VerticalTree,
+	)
+}
+
+/// Compute a deterministic layout for a specific layout family.
+pub fn layout_model_with_family(
+	model: &Model,
+	root_card_types: &[String],
+	included_card_types: &[String],
+	family: LayoutFamily,
+) -> Result<Layout, RenderError> {
+	let prepared = prepare_layout_graph(model, root_card_types, included_card_types)?;
+	layout_for_family(&prepared, family)
+}
+
+/// Compute deterministic layouts for all families and return the best-scoring one.
+pub fn layout_model_best_family(
+	model: &Model,
+	root_card_types: &[String],
+	included_card_types: &[String],
+) -> Result<Layout, RenderError> {
+	let prepared = prepare_layout_graph(model, root_card_types, included_card_types)?;
+
+	let mut best_layout: Option<Layout> = None;
+	let mut best_score: Option<LayoutScore> = None;
+	let mut best_family: Option<LayoutFamily> = None;
+
+	for family in LayoutFamily::ordered() {
+		let layout = layout_for_family(&prepared, *family)?;
+		let score = score_layout(&prepared.normalized, &layout);
+
+		let should_replace = match (best_score, best_family) {
+			(None, _) => true,
+			(Some(current_score), Some(current_family)) => {
+				is_better_candidate(score, *family, current_score, current_family)
+			}
+			(Some(_), None) => true,
+		};
+
+		if should_replace {
+			best_layout = Some(layout);
+			best_score = Some(score);
+			best_family = Some(*family);
+		}
+	}
+
+	best_layout.ok_or(RenderError::BackboneOrderFailed)
+}
+
+fn prepare_layout_graph(
+	model: &Model,
+	root_card_types: &[String],
+	included_card_types: &[String],
+) -> Result<PreparedLayoutGraph, RenderError> {
 	if root_card_types.is_empty() {
 		return Err(RenderError::MissingRoots);
 	}
@@ -45,14 +118,51 @@ pub fn layout_model(
 		&normalized.incoming,
 	)?;
 	let spine = longest_spine_path(&topo, &normalized.incoming);
-	let coords = assign_spine_and_branches(&normalized, &spine, &topo)?;
 
-	build_layout(&normalized, &coords)
+	Ok(PreparedLayoutGraph {
+		normalized,
+		topo,
+		spine,
+	})
+}
+
+fn layout_for_family(
+	prepared: &PreparedLayoutGraph,
+	family: LayoutFamily,
+) -> Result<Layout, RenderError> {
+	let coords = assign_coords_for_family(prepared, family)?;
+
+	build_layout(&prepared.normalized, &coords, family)
+}
+
+fn assign_coords_for_family(
+	prepared: &PreparedLayoutGraph,
+	family: LayoutFamily,
+) -> Result<HashMap<String, (i32, i32)>, RenderError> {
+	match family {
+		LayoutFamily::VerticalTree => {
+			assign_spine_and_branches(&prepared.normalized, &prepared.spine, &prepared.topo)
+		}
+		LayoutFamily::HorizontalTree => {
+			let vertical =
+				assign_spine_and_branches(&prepared.normalized, &prepared.spine, &prepared.topo)?;
+			Ok(transpose_coords(vertical))
+		}
+		LayoutFamily::RadialSubtree => assign_radial_subtree_coords(&prepared.normalized),
+	}
+}
+
+fn transpose_coords(coords: HashMap<String, (i32, i32)>) -> HashMap<String, (i32, i32)> {
+	coords
+		.into_iter()
+		.map(|(id, (x, y))| (id, (y, x)))
+		.collect()
 }
 
 fn build_layout(
 	graph: &NormalizedGraph,
 	coords: &HashMap<String, (i32, i32)>,
+	family: LayoutFamily,
 ) -> Result<Layout, RenderError> {
 	let mut nodes: HashMap<String, LayoutNode> = HashMap::new();
 	for node_id in &graph.nodes {
@@ -81,7 +191,11 @@ fn build_layout(
 		.collect();
 	edges.sort_by(|left, right| left.a.cmp(&right.a).then_with(|| left.b.cmp(&right.b)));
 
-	Ok(Layout { nodes, edges })
+	Ok(Layout {
+		family: Some(family),
+		nodes,
+		edges,
+	})
 }
 
 fn collapse_strongly_connected_components(
@@ -229,6 +343,7 @@ fn remove_transit_nodes(graph: CollapsedGraph) -> Result<NormalizedGraph, Render
 
 	Ok(NormalizedGraph {
 		nodes,
+		roots,
 		edges,
 		outgoing,
 		incoming,
@@ -470,6 +585,359 @@ fn estimate_width_bound(non_spine_node_count: usize) -> usize {
 		return 1;
 	}
 	((0.75f64 * non_spine_node_count as f64).sqrt().ceil() as usize).max(1)
+}
+
+#[derive(Debug, Clone)]
+struct NodeOwnership {
+	root: String,
+	depth: usize,
+}
+
+fn assign_radial_subtree_coords(
+	graph: &NormalizedGraph,
+) -> Result<HashMap<String, (i32, i32)>, RenderError> {
+	let mut roots = graph.roots.clone();
+	roots.sort();
+	roots.dedup();
+	if roots.is_empty() {
+		roots.extend(
+			graph
+				.nodes
+				.iter()
+				.filter(|node_id| graph.incoming.get(*node_id).map_or(0, Vec::len) == 0)
+				.cloned(),
+		);
+		roots.sort();
+		roots.dedup();
+	}
+	if roots.is_empty() {
+		return Err(RenderError::MissingRoots);
+	}
+
+	let ownership = assign_node_ownership(graph, roots.as_slice());
+	let mut weight_by_root: HashMap<String, usize> =
+		roots.iter().map(|root| (root.clone(), 1usize)).collect();
+	for info in ownership.values() {
+		*weight_by_root.entry(info.root.clone()).or_insert(1) += 1;
+	}
+
+	let total_weight: usize = roots
+		.iter()
+		.map(|root| weight_by_root.get(root).copied().unwrap_or(1))
+		.sum::<usize>()
+		.max(1);
+	let root_ring_base_radius = 1.0f32;
+	let root_ring_per_root = 0.25f32;
+	let root_ring_radius = if roots.len() <= 1 {
+		0.0f32
+	} else {
+		root_ring_base_radius + roots.len() as f32 * root_ring_per_root
+	};
+
+	let mut root_centers: HashMap<String, (f32, f32)> = HashMap::new();
+	let mut root_sectors: HashMap<String, (f32, f32)> = HashMap::new();
+	let mut angle_cursor = -std::f32::consts::FRAC_PI_2;
+	for root in &roots {
+		let weight = weight_by_root.get(root).copied().unwrap_or(1) as f32;
+		let sweep = (2.0f32 * std::f32::consts::PI) * (weight / total_weight as f32);
+		let start = angle_cursor;
+		let end = angle_cursor + sweep;
+		let center_angle = (start + end) / 2.0;
+		let (cx, cy) = if roots.len() == 1 {
+			(0.0f32, 0.0f32)
+		} else {
+			(
+				root_ring_radius * center_angle.cos(),
+				root_ring_radius * center_angle.sin(),
+			)
+		};
+		root_centers.insert(root.clone(), (cx, cy));
+		root_sectors.insert(root.clone(), (start, end));
+		angle_cursor = end;
+	}
+
+	let mut grouped_by_root_depth: HashMap<String, BTreeMap<usize, Vec<String>>> = HashMap::new();
+	for node_id in &graph.nodes {
+		let Some(info) = ownership.get(node_id) else {
+			continue;
+		};
+		if info.depth == 0 {
+			continue;
+		}
+		grouped_by_root_depth
+			.entry(info.root.clone())
+			.or_default()
+			.entry(info.depth)
+			.or_default()
+			.push(node_id.clone());
+	}
+
+	let radial_step = 1.0f32;
+	let mut coords: HashMap<String, (i32, i32)> = HashMap::new();
+	for root in &roots {
+		let (cx, cy) = root_centers.get(root).copied().unwrap_or((0.0, 0.0));
+		coords.insert(root.clone(), (cx.round() as i32, cy.round() as i32));
+
+		let mut layers = grouped_by_root_depth.remove(root).unwrap_or_default();
+		for nodes in layers.values_mut() {
+			nodes.sort();
+		}
+
+		let (start, end) = root_sectors.get(root).copied().unwrap_or((0.0, 0.0));
+		let sector_span = (end - start).abs().max(0.4);
+		let inset = (sector_span * 0.08).min(0.25);
+		let usable_span = (sector_span - 2.0 * inset).max(0.1);
+
+		for (depth, nodes) in layers {
+			let row_count = if depth == 1 { 2usize } else { 1usize };
+			let base_band = depth.max(1) as f32;
+			for (index, node_id) in nodes.iter().enumerate() {
+				let row_index = index % row_count;
+				let slot_index = index / row_count;
+				let row_slot_count =
+					((nodes.len() + row_count - 1).saturating_sub(row_index) / row_count).max(1);
+				let fraction = (slot_index + 1) as f32 / (row_slot_count + 1) as f32;
+				let angle = start + inset + usable_span * fraction;
+				let row_offset = if depth == 1 { row_index as f32 } else { 0.0 };
+				let radius = (base_band + row_offset) * radial_step;
+				let x = cx + radius * angle.cos();
+				let y = cy + radius * angle.sin();
+				coords.insert(node_id.clone(), (x.round() as i32, y.round() as i32));
+			}
+		}
+	}
+
+	let mut missing: Vec<String> = graph
+		.nodes
+		.iter()
+		.filter(|node_id| !coords.contains_key(*node_id))
+		.cloned()
+		.collect();
+	missing.sort();
+	for (index, node_id) in missing.into_iter().enumerate() {
+		let angle = (index as f32) * 0.5;
+		let ring = (index / 12) as f32;
+		let radius = 1.5 + (ring * 0.75);
+		let x = radius * angle.cos();
+		let y = radius * angle.sin();
+		coords.insert(node_id, (x.round() as i32, y.round() as i32));
+	}
+
+	resolve_coordinate_collisions(&mut coords, graph.nodes.as_slice());
+	Ok(coords)
+}
+
+fn assign_node_ownership(
+	graph: &NormalizedGraph,
+	roots: &[String],
+) -> HashMap<String, NodeOwnership> {
+	let mut ownership: HashMap<String, NodeOwnership> = HashMap::new();
+
+	for root in roots {
+		let mut queue: VecDeque<(String, usize)> = VecDeque::new();
+		let mut visited: HashSet<String> = HashSet::new();
+		queue.push_back((root.clone(), 0));
+
+		while let Some((node_id, depth)) = queue.pop_front() {
+			if !visited.insert(node_id.clone()) {
+				continue;
+			}
+
+			let should_replace = match ownership.get(&node_id) {
+				None => true,
+				Some(current) => {
+					depth < current.depth
+						|| (depth == current.depth && root.as_str() < current.root.as_str())
+				}
+			};
+			if should_replace {
+				ownership.insert(
+					node_id.clone(),
+					NodeOwnership {
+						root: root.clone(),
+						depth,
+					},
+				);
+			}
+
+			if let Some(next_nodes) = graph.outgoing.get(&node_id) {
+				for next in next_nodes {
+					queue.push_back((next.clone(), depth + 1));
+				}
+			}
+		}
+	}
+
+	for root in roots {
+		ownership.entry(root.clone()).or_insert(NodeOwnership {
+			root: root.clone(),
+			depth: 0,
+		});
+	}
+
+	ownership
+}
+
+fn resolve_coordinate_collisions(coords: &mut HashMap<String, (i32, i32)>, node_ids: &[String]) {
+	let mut occupied: HashSet<(i32, i32)> = HashSet::new();
+
+	for node_id in node_ids {
+		let Some(origin) = coords.get(node_id).copied() else {
+			continue;
+		};
+		if occupied.insert(origin) {
+			continue;
+		}
+
+		let mut radius = 1i32;
+		'find_slot: loop {
+			for candidate in collision_ring(origin, radius) {
+				if occupied.insert(candidate) {
+					coords.insert(node_id.clone(), candidate);
+					break 'find_slot;
+				}
+			}
+			radius += 1;
+		}
+	}
+}
+
+fn collision_ring(origin: (i32, i32), radius: i32) -> [(i32, i32); 8] {
+	let (x, y) = origin;
+	[
+		(x + radius, y),
+		(x, y + radius),
+		(x - radius, y),
+		(x, y - radius),
+		(x + radius, y + radius),
+		(x - radius, y + radius),
+		(x - radius, y - radius),
+		(x + radius, y - radius),
+	]
+}
+
+fn score_layout(graph: &NormalizedGraph, layout: &Layout) -> LayoutScore {
+	let mut min_x = i32::MAX;
+	let mut max_x = i32::MIN;
+	let mut min_y = i32::MAX;
+	let mut max_y = i32::MIN;
+	for node in layout.nodes.values() {
+		min_x = min_x.min(node.x);
+		max_x = max_x.max(node.x);
+		min_y = min_y.min(node.y);
+		max_y = max_y.max(node.y);
+	}
+
+	let width = (max_x - min_x).max(1) as f64;
+	let height = (max_y - min_y).max(1) as f64;
+	let aspect_ratio = width / height;
+	let aspect_error = ((aspect_ratio / 1.6f64).ln()).abs();
+
+	let crossings = edge_crossings(graph, layout);
+	let mut bends = 0usize;
+	let mut total_length = 0usize;
+	let mut long_span = 0usize;
+	for (a, b) in &graph.edges {
+		let Some(source) = layout.nodes.get(a) else {
+			continue;
+		};
+		let Some(target) = layout.nodes.get(b) else {
+			continue;
+		};
+		let dx = (target.x - source.x).unsigned_abs() as usize;
+		let dy = (target.y - source.y).unsigned_abs() as usize;
+		total_length += dx + dy;
+		if dx > 0 && dy > 0 {
+			bends += 2;
+		} else if dx > 0 || dy > 0 {
+			bends += 1;
+		}
+		let span = dx.max(dy);
+		long_span += span.saturating_sub(2);
+	}
+
+	let score = 5.0f64 * aspect_error
+		+ 10.0f64 * crossings as f64
+		+ 2.0f64 * bends as f64
+		+ 0.5f64 * total_length as f64
+		+ 3.0f64 * long_span as f64;
+
+	LayoutScore {
+		score_milli: (score * 1000.0).round() as i64,
+		crossings,
+		bends,
+	}
+}
+
+fn edge_crossings(graph: &NormalizedGraph, layout: &Layout) -> usize {
+	let mut edges: Vec<((i32, i32), (i32, i32))> = Vec::new();
+	for (a, b) in &graph.edges {
+		let Some(source) = layout.nodes.get(a) else {
+			continue;
+		};
+		let Some(target) = layout.nodes.get(b) else {
+			continue;
+		};
+		edges.push(((source.x, source.y), (target.x, target.y)));
+	}
+
+	let mut crossings = 0usize;
+	for left_index in 0..edges.len() {
+		for right_index in left_index + 1..edges.len() {
+			let (left_a, left_b) = edges[left_index];
+			let (right_a, right_b) = edges[right_index];
+			if shares_endpoint(left_a, left_b, right_a, right_b) {
+				continue;
+			}
+			if segments_intersect(left_a, left_b, right_a, right_b) {
+				crossings += 1;
+			}
+		}
+	}
+
+	crossings
+}
+
+fn shares_endpoint(a1: (i32, i32), a2: (i32, i32), b1: (i32, i32), b2: (i32, i32)) -> bool {
+	a1 == b1 || a1 == b2 || a2 == b1 || a2 == b2
+}
+
+fn segments_intersect(a1: (i32, i32), a2: (i32, i32), b1: (i32, i32), b2: (i32, i32)) -> bool {
+	let o1 = orientation(a1, a2, b1);
+	let o2 = orientation(a1, a2, b2);
+	let o3 = orientation(b1, b2, a1);
+	let o4 = orientation(b1, b2, a2);
+
+	if o1 == 0 || o2 == 0 || o3 == 0 || o4 == 0 {
+		return false;
+	}
+
+	(o1 > 0 && o2 < 0 || o1 < 0 && o2 > 0) && (o3 > 0 && o4 < 0 || o3 < 0 && o4 > 0)
+}
+
+fn orientation(a: (i32, i32), b: (i32, i32), c: (i32, i32)) -> i64 {
+	let (ax, ay) = (a.0 as i64, a.1 as i64);
+	let (bx, by) = (b.0 as i64, b.1 as i64);
+	let (cx, cy) = (c.0 as i64, c.1 as i64);
+	(by - ay) * (cx - bx) - (bx - ax) * (cy - by)
+}
+
+fn is_better_candidate(
+	candidate_score: LayoutScore,
+	candidate_family: LayoutFamily,
+	current_score: LayoutScore,
+	current_family: LayoutFamily,
+) -> bool {
+	if candidate_score.score_milli != current_score.score_milli {
+		return candidate_score.score_milli < current_score.score_milli;
+	}
+	if candidate_score.crossings != current_score.crossings {
+		return candidate_score.crossings < current_score.crossings;
+	}
+	if candidate_score.bends != current_score.bends {
+		return candidate_score.bends < current_score.bends;
+	}
+	candidate_family < current_family
 }
 
 fn tarjan_scc(nodes: &[String], adjacency: &HashMap<String, Vec<String>>) -> Vec<Vec<String>> {

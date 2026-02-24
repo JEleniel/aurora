@@ -8,6 +8,10 @@ Aurora tooling (editor and MCP server) MUST prevent edits that would break a mod
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-007](../Capability/CAP-007-Edit_Models_Interactively.md)

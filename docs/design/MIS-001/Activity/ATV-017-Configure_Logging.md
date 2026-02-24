@@ -8,6 +8,10 @@ Configure logging sinks and formatting via fern, supporting stdout, stderr, and 
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-005](../Component/COM-005-Aurora_Editor_Binary.md)

@@ -8,6 +8,10 @@ The primary working screen MUST be divided into four resizable regions: left sid
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-007](../Capability/CAP-007-Edit_Models_Interactively.md)

@@ -8,6 +8,10 @@ Humans and automation (LLMs, agents, validation/render tooling) that need a shar
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - desires [STR-001](../Story/STR-001-Deterministic_Modeling_Experience.md)

@@ -8,6 +8,10 @@ Create or load a persisted index for a model home, use it to support fast search
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [ATV-019](../Activity/ATV-019-Build_Or_Load_Index.md)

@@ -8,6 +8,10 @@ Support agent-assisted modeling workflows (chat, scoped context, proposals, and 
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [PRO-012](../Process/PRO-012-Agent_Assisted_Modeling.md)

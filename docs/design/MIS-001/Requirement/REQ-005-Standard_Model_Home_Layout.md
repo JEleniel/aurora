@@ -8,6 +8,10 @@ Model homes MUST contain the shared Aurora schemas, and missions MUST follow the
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-004](../Capability/CAP-004-Maintain_Audit_Trail.md)

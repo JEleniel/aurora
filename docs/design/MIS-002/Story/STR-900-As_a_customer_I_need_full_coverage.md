@@ -8,6 +8,10 @@ As a customer I need the example model to include every canonical card and relat
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - explains [REQ-900](../Requirement/REQ-900-Exercise_all_card_types_and_relationships.md)

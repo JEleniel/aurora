@@ -8,6 +8,10 @@ The editor MUST build and maintain a searchable index so users and agents can na
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-011](../Capability/CAP-011-Index_And_Search_Model_Homes.md)

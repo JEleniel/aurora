@@ -49,8 +49,20 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 			}
 
 			let included_types = union_view_card_types(view);
-			let layout = match layout_model(model, &view.root_card_types, included_types.as_slice())
-			{
+			let layout_result = match preferred_layout_family(view.name.as_str()) {
+				Some(family) => layout_model_with_family(
+					model,
+					&view.root_card_types,
+					included_types.as_slice(),
+					family,
+				),
+				None => layout_model_best_family(
+					model,
+					&view.root_card_types,
+					included_types.as_slice(),
+				),
+			};
+			let layout = match layout_result {
 				Ok(layout) => layout,
 				Err(err) => {
 					warn!(
@@ -154,4 +166,60 @@ fn sanitize_filename(name: &str) -> String {
 		out = out.replace("__", "_");
 	}
 	out.trim_matches('_').to_string()
+}
+
+fn preferred_layout_family(view_name: &str) -> Option<LayoutFamily> {
+	if matches_any(
+		view_name,
+		&[
+			"Compliance Governance",
+			"Requirements",
+			"Security",
+			"Traceability",
+		],
+	) {
+		return Some(LayoutFamily::VerticalTree);
+	}
+	if matches_any(
+		view_name,
+		&["Deployment", "Process", "Landscape", "State Machine"],
+	) {
+		return Some(LayoutFamily::HorizontalTree);
+	}
+	if matches_any(view_name, &["Component", "Entire Model", "Context"]) {
+		return Some(LayoutFamily::RadialSubtree);
+	}
+	None
+}
+
+fn matches_any(value: &str, candidates: &[&str]) -> bool {
+	candidates
+		.iter()
+		.any(|candidate| candidate.eq_ignore_ascii_case(value.trim()))
+}
+
+#[cfg(test)]
+mod tests {
+	use super::{LayoutFamily, preferred_layout_family};
+
+	#[test]
+	fn preferred_layout_family_maps_canonical_views() {
+		assert_eq!(
+			preferred_layout_family("Requirements"),
+			Some(LayoutFamily::VerticalTree)
+		);
+		assert_eq!(
+			preferred_layout_family("Process"),
+			Some(LayoutFamily::HorizontalTree)
+		);
+		assert_eq!(
+			preferred_layout_family("Entire Model"),
+			Some(LayoutFamily::RadialSubtree)
+		);
+	}
+
+	#[test]
+	fn preferred_layout_family_returns_none_for_unmapped_views() {
+		assert_eq!(preferred_layout_family("Use Case"), None);
+	}
 }

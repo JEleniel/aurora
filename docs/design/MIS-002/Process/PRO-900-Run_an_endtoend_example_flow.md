@@ -8,6 +8,10 @@ A simple process that demonstrates process-domain activities, triggers, and cond
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [ATV-900](../Activity/ATV-900-Perform_example_activity.md)

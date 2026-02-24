@@ -8,6 +8,10 @@ The editor MUST be able to render any view defined in the model configuration fi
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-002](../Capability/CAP-002-Generate_Views.md)

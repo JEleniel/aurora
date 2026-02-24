@@ -8,6 +8,10 @@ Edit cards, links, and view definitions interactively with immediate feedback, k
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-006](../Component/COM-006-Aurora_Editor_UI.md)

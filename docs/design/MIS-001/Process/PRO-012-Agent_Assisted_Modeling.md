@@ -8,6 +8,10 @@ Perform agent-assisted tasks by selecting scope, issuing tool-mediated reads, pr
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [ATV-021](../Activity/ATV-021-Run_Agentic_Session.md)

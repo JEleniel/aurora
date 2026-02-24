@@ -8,6 +8,10 @@ Threat used to exercise threat-centric relationships including adversaries, capa
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - threatens [AST-900](../Asset/AST-900-Example_asset.md)

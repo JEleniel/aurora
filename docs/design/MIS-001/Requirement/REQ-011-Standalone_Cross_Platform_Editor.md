@@ -8,6 +8,10 @@ The Aurora Editor MUST run on the major desktop platforms (Linux, Microsoft Wind
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-007](../Capability/CAP-007-Edit_Models_Interactively.md)

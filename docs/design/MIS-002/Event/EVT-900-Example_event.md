@@ -8,6 +8,10 @@ Event that demonstrates transitions, emission, predicate triggering, and artifac
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - transitions to [STA-901](../State/STA-901-End_state.md)

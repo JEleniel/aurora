@@ -8,6 +8,10 @@ Apply a batch edit as a single transactional, validation-gated operation (all-or
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-010](../Component/COM-010-Aurora_MCP_Server.md)

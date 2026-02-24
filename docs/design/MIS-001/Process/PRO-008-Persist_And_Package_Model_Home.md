@@ -8,6 +8,10 @@ Persist edits to disk safely (autosave or manual save), support undo/redo, and p
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [ATV-012](../Activity/ATV-012-Autosave_Changes.md)

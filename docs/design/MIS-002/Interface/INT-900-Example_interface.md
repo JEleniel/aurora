@@ -8,6 +8,10 @@ Interface used to exercise accepts/returns relationships.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - accepts [ART-901](../Artifact/ART-901-Sample_data.md)

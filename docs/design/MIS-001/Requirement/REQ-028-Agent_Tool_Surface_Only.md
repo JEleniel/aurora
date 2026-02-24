@@ -8,6 +8,10 @@ Aurora tooling MUST expose a constrained model tool surface that is the only way
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-012](../Capability/CAP-012-Agent_Assisted_Modeling.md)

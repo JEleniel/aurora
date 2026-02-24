@@ -8,6 +8,10 @@ Diagnostics output describing schema, registry, and invariant validation results
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

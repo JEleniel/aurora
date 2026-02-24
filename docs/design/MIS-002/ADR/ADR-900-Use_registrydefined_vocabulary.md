@@ -8,6 +8,10 @@ This example uses only canonical card types, common subtypes, and relationship l
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

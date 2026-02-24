@@ -8,6 +8,10 @@ MCP-exposed tool interface for reading and writing Aurora model homes. Tool call
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - accepts [ART-013](../Artifact/ART-013-Model_Tool_Call_Request.md)

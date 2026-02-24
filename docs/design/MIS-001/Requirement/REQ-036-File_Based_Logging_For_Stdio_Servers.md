@@ -8,6 +8,10 @@ When running as an stdio MCP server, logging MUST be file-based (and MUST NOT co
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-010](../Capability/CAP-010-Editor_Observability.md)

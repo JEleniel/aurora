@@ -8,6 +8,10 @@ The canonical registry JSON that defines views (roots, included card types, and 
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

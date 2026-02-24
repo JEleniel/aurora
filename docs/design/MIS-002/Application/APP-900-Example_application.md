@@ -8,6 +8,10 @@ A deployable application used to exercise Application relationships.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - comprises [COM-900](../Component/COM-900-Example_API_component.md)

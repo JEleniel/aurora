@@ -13,5 +13,5 @@ mod test_support;
 #[cfg(test)]
 mod types_tests;
 
-pub use api::layout_model;
-pub use types::{Layout, LayoutEdge, LayoutNode};
+pub use api::{layout_model, layout_model_best_family, layout_model_with_family};
+pub use types::{Layout, LayoutEdge, LayoutFamily, LayoutNode};

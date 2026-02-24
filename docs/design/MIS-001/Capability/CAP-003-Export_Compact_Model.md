@@ -8,6 +8,10 @@ Export an agent-friendly compact model representation containing the cards and t
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [PRO-003](../Process/PRO-003-Export_Compact_Model.md)

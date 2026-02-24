@@ -8,6 +8,10 @@ An activity that exercises the full Activity relationship set.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - leads to [ATV-901](ATV-901-Complete_example_activity.md)

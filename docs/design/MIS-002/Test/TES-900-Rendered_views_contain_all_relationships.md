@@ -8,6 +8,10 @@ A verification procedure that checks the example model exercises every canonical
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - verifies [FEA-900](../Feature/FEA-900-Canonical_coverage_is_visible.md)

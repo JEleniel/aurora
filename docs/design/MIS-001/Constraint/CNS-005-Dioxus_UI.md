@@ -8,6 +8,10 @@ The standalone editor UI MUST be implemented using Dioxus.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

@@ -8,6 +8,10 @@ Models must use the standard Aurora folder layout: Mission card at model home, m
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

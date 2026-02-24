@@ -8,6 +8,10 @@ Provide a single, normative registry for card types and allowed relationship tar
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - drives [REQ-003](../Requirement/REQ-003-Canonical_Definitions_Registry.md)

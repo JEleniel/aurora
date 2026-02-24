@@ -8,6 +8,10 @@ The overall Aurora system: schemas + canonical registries + model cards, support
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - integrates [APP-001](../Application/APP-001-Aurora_CLI.md)

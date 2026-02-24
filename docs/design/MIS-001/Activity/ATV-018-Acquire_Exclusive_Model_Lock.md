@@ -8,6 +8,10 @@ Acquire and hold an exclusive OS-level lock on `aurora/<MISSION_ID>/AuditLog.ndj
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-007](../Component/COM-007-Aurora_Editor_Engine.md)

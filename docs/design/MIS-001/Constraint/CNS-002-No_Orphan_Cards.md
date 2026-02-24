@@ -8,6 +8,10 @@ Every non-Mission card must have one or more incoming links and be reachable fro
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

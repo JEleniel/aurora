@@ -8,6 +8,10 @@ Interactively navigate and edit Aurora models (including agent-assisted workflow
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [PRO-007](../Process/PRO-007-Edit_Model_In_Editor.md)

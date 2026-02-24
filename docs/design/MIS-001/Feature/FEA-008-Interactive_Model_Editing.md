@@ -8,6 +8,10 @@ Provide interactive model authoring with immediate feedback and enforcement so i
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - realizes [CAP-007](../Capability/CAP-007-Edit_Models_Interactively.md)

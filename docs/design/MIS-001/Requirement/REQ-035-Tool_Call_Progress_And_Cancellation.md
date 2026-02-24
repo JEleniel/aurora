@@ -8,6 +8,10 @@ For long-running model tool operations (load/index/render/validate/batch edits),
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-006](../Capability/CAP-006-Load_Model_Homes.md)

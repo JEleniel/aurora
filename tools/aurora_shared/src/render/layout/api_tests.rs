@@ -2,9 +2,9 @@ use std::collections::HashSet;
 
 use crate::render::render_error::RenderError;
 
-use super::api::layout_model;
+use super::api::{layout_model, layout_model_best_family, layout_model_with_family};
 use super::test_support::{make_card, make_model};
-use super::types::Layout;
+use super::types::{Layout, LayoutFamily};
 
 #[test]
 fn layout_model_positions_nodes_by_rank() {
@@ -192,6 +192,183 @@ fn layout_model_does_not_overlap_node_coordinates() {
 			node.y
 		);
 	}
+}
+
+#[test]
+fn horizontal_layout_progresses_across_x_axis() {
+	let root = make_card("MIS-001", "Mission", &["REQ-001"]);
+	let requirement_one = make_card("REQ-001", "Requirement", &["REQ-002"]);
+	let requirement_two = make_card("REQ-002", "Requirement", &[]);
+	let model = make_model(root, vec![requirement_one, requirement_two]);
+
+	let layout = layout_model_with_family(
+		&model,
+		&["MIS".to_string()],
+		&["REQ".to_string()],
+		LayoutFamily::HorizontalTree,
+	)
+	.expect("horizontal layout should succeed");
+
+	let mission = layout.nodes.get("MIS-001").expect("MIS-001 missing");
+	let req = layout.nodes.get("REQ-002").expect("REQ-002 missing");
+	assert!(
+		req.x > mission.x,
+		"expected horizontal progression on X axis"
+	);
+}
+
+#[test]
+fn radial_layout_spreads_children_around_root() {
+	let root = make_card("MIS-001", "Mission", &["REQ-001", "REQ-002", "REQ-003"]);
+	let req_one = make_card("REQ-001", "Requirement", &[]);
+	let req_two = make_card("REQ-002", "Requirement", &[]);
+	let req_three = make_card("REQ-003", "Requirement", &[]);
+	let model = make_model(root, vec![req_one, req_two, req_three]);
+
+	let layout = layout_model_with_family(
+		&model,
+		&["MIS".to_string()],
+		&["REQ".to_string()],
+		LayoutFamily::RadialSubtree,
+	)
+	.expect("radial layout should succeed");
+
+	let root = layout.nodes.get("MIS-001").expect("MIS-001 missing");
+	let req_one = layout.nodes.get("REQ-001").expect("REQ-001 missing");
+	let req_two = layout.nodes.get("REQ-002").expect("REQ-002 missing");
+
+	assert_ne!((root.x, root.y), (req_one.x, req_one.y));
+	assert_ne!((req_one.x, req_one.y), (req_two.x, req_two.y));
+}
+
+#[test]
+fn radial_layout_keeps_first_ring_compact() {
+	let root = make_card("MIS-001", "Mission", &["REQ-001", "REQ-002", "REQ-003"]);
+	let req_one = make_card("REQ-001", "Requirement", &[]);
+	let req_two = make_card("REQ-002", "Requirement", &[]);
+	let req_three = make_card("REQ-003", "Requirement", &[]);
+	let model = make_model(root, vec![req_one, req_two, req_three]);
+
+	let layout = layout_model_with_family(
+		&model,
+		&["MIS".to_string()],
+		&["REQ".to_string()],
+		LayoutFamily::RadialSubtree,
+	)
+	.expect("radial layout should succeed");
+
+	let root = layout.nodes.get("MIS-001").expect("MIS-001 missing");
+	for node_id in ["REQ-001", "REQ-002", "REQ-003"] {
+		let child = layout.nodes.get(node_id).expect("child missing");
+		let dx = (child.x - root.x).abs();
+		let dy = (child.y - root.y).abs();
+		assert!(
+			dx <= 2 && dy <= 2,
+			"direct radial child {node_id} should remain within the compact first two rings; got Δx={dx}, Δy={dy}"
+		);
+	}
+}
+
+#[test]
+fn radial_layout_allows_two_rows_for_first_descendants() {
+	let links: Vec<String> = (1..=10).map(|index| format!("REQ-{:03}", index)).collect();
+	let link_refs: Vec<&str> = links.iter().map(String::as_str).collect();
+	let root = make_card("MIS-001", "Mission", link_refs.as_slice());
+	let requirements = links
+		.iter()
+		.map(|id| make_card(id.as_str(), "Requirement", &[]))
+		.collect::<Vec<_>>();
+	let model = make_model(root, requirements);
+
+	let layout = layout_model_with_family(
+		&model,
+		&["MIS".to_string()],
+		&["REQ".to_string()],
+		LayoutFamily::RadialSubtree,
+	)
+	.expect("radial layout should succeed");
+
+	assert_eq!(layout.family, Some(LayoutFamily::RadialSubtree));
+
+	let root = layout.nodes.get("MIS-001").expect("MIS-001 missing");
+	let mut rings: HashSet<i32> = HashSet::new();
+	for node_id in &links {
+		let child = layout.nodes.get(node_id).expect("child missing");
+		let dx = (child.x - root.x).abs();
+		let dy = (child.y - root.y).abs();
+		rings.insert(dx.max(dy));
+	}
+
+	assert!(
+		rings.len() >= 2,
+		"expected first descendants to span two rows"
+	);
+	assert!(
+		rings.iter().copied().max().unwrap_or(0) <= 2,
+		"expected first descendants to remain compact within two rows"
+	);
+}
+
+#[test]
+fn radial_layout_keeps_multi_root_groups_reasonably_compact() {
+	let root_one = make_card("MIS-001", "Mission", &["REQ-001"]);
+	let root_two = make_card("MIS-002", "Mission", &["REQ-002"]);
+	let root_three = make_card("MIS-003", "Mission", &["REQ-003"]);
+	let root_four = make_card("MIS-004", "Mission", &["REQ-004"]);
+	let req_one = make_card("REQ-001", "Requirement", &[]);
+	let req_two = make_card("REQ-002", "Requirement", &[]);
+	let req_three = make_card("REQ-003", "Requirement", &[]);
+	let req_four = make_card("REQ-004", "Requirement", &[]);
+	let model = make_model(
+		root_one,
+		vec![
+			root_two, root_three, root_four, req_one, req_two, req_three, req_four,
+		],
+	);
+
+	let layout = layout_model_with_family(
+		&model,
+		&["MIS".to_string()],
+		&["MIS".to_string(), "REQ".to_string()],
+		LayoutFamily::RadialSubtree,
+	)
+	.expect("radial layout should succeed");
+
+	let max_abs_x = layout
+		.nodes
+		.values()
+		.map(|node| node.x.abs())
+		.max()
+		.unwrap_or(0);
+	assert!(
+		max_abs_x <= 5,
+		"expected multi-root radial spread to stay compact; max |x| was {max_abs_x}"
+	);
+}
+
+#[test]
+fn best_family_layout_is_deterministic() {
+	let root = make_card("MIS-001", "Mission", &["CAP-001", "CAP-002"]);
+	let cap_one = make_card("CAP-001", "Capability", &["REQ-001"]);
+	let cap_two = make_card("CAP-002", "Capability", &["REQ-001"]);
+	let requirement = make_card("REQ-001", "Requirement", &[]);
+	let model = make_model(root, vec![cap_one, cap_two, requirement]);
+
+	let first = layout_model_best_family(
+		&model,
+		&["MIS".to_string()],
+		&["CAP".to_string(), "REQ".to_string()],
+	)
+	.expect("best-family layout should succeed");
+	let second = layout_model_best_family(
+		&model,
+		&["MIS".to_string()],
+		&["CAP".to_string(), "REQ".to_string()],
+	)
+	.expect("best-family layout should succeed");
+
+	assert_eq!(sorted_nodes(&first), sorted_nodes(&second));
+	assert_eq!(sorted_edges(&first), sorted_edges(&second));
 }
 
 fn sorted_nodes(layout: &Layout) -> Vec<(String, i32, i32)> {

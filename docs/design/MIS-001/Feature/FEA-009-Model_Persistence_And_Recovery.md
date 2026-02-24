@@ -8,6 +8,10 @@ Persist changes safely (autosave or manual save), provide undo/redo, and support
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - realizes [CAP-008](../Capability/CAP-008-Persist_And_Package_Models.md)

@@ -8,6 +8,10 @@ Agent runtime responsible for provider connectivity (Ollama, OpenAI, optional Gi
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - implements [FEA-013](../Feature/FEA-013-Agent_Assisted_Modeling.md)

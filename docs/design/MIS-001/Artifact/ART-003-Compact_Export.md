@@ -8,6 +8,10 @@ The compact JSON export of the model cards and links for transport and agent con
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

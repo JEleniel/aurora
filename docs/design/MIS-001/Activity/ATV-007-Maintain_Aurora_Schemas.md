@@ -8,6 +8,10 @@ Maintain the Aurora JSON schemas used for cards, audit logs, and compact export.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - produces [ART-007](../Artifact/ART-007-Aurora_Schemas.md)

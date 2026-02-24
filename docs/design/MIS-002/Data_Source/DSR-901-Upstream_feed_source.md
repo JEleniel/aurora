@@ -8,6 +8,10 @@ Data source subtype used for provenance coverage.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - provides [ART-903](../Artifact/ART-903-Example_code.md)

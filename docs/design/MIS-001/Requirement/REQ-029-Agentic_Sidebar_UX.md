@@ -8,6 +8,10 @@ The editor MUST provide an agentic sidebar supporting: free-form chat, a visible
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-012](../Capability/CAP-012-Agent_Assisted_Modeling.md)

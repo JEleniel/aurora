@@ -8,6 +8,10 @@ Command-line tooling for validating Aurora models, generating views, and exporti
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - comprises [COM-002](../Component/COM-002-Aurora_CLI_Binary.md)

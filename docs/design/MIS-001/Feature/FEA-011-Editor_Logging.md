@@ -8,6 +8,10 @@ Emit structured logs for troubleshooting and diagnostics, with fern integration 
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - realizes [CAP-010](../Capability/CAP-010-Editor_Observability.md)

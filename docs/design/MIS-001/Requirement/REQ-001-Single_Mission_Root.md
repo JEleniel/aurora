@@ -8,6 +8,10 @@ A model MUST include exactly one Mission card as the root intent, with only outg
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)

@@ -8,6 +8,10 @@ Second predicate used to exercise predicate-to-predicate branching.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - branches to [STA-900](../State/STA-900-Start_state.md)

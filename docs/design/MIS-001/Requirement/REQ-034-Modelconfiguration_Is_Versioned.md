@@ -8,6 +8,10 @@
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-005](../Capability/CAP-005-Maintain_Canonical_Registries.md)

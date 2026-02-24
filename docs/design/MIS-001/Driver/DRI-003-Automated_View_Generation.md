@@ -8,6 +8,10 @@ Enable tools to generate consistent diagrams and documentation from the model wi
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - drives [REQ-008](../Requirement/REQ-008-Compact_Model_Format.md)

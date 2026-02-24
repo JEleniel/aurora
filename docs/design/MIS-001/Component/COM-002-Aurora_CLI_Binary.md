@@ -8,6 +8,10 @@ The aurora_cli executable that exposes validate/render/compact commands to users
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - composes [COM-001](COM-001-Aurora_Shared_Library.md)

@@ -8,6 +8,10 @@ At load time, Aurora tooling (editor and MCP server) MUST begin creating a times
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-006](../Capability/CAP-006-Load_Model_Homes.md)

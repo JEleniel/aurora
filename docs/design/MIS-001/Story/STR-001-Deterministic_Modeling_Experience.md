@@ -8,6 +8,10 @@ As an architect, I want to express architecture and requirements as a validated,
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

@@ -8,6 +8,10 @@ Data store subtype used for persistence coverage.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - retrieves [ART-905](../Artifact/ART-905-Example_report.md)

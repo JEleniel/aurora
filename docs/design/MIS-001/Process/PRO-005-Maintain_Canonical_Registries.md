@@ -8,6 +8,10 @@ Maintain the canonical registries and schemas that define the Aurora vocabulary 
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [ATV-005](../Activity/ATV-005-Edit_Canonical_Definitions_Registry.md)

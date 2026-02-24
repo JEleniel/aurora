@@ -8,6 +8,10 @@ Threat model used to exercise the full canonical security vocabulary.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [THD-900](../Threat_Diamond/THD-900-Example_threat_diamond.md)

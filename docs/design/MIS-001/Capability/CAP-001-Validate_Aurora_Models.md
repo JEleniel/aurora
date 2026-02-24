@@ -8,6 +8,10 @@ Validate that an Aurora model conforms to schemas, canonical registries, and gra
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [PRO-001](../Process/PRO-001-Validate_Model.md)

@@ -8,6 +8,10 @@ Select roots/included card types per view definitions, traverse the subgraph, an
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-001](../Component/COM-001-Aurora_Shared_Library.md)

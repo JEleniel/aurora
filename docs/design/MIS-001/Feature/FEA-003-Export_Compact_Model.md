@@ -8,6 +8,10 @@ Export an Aurora compact model representation suitable for agent consumption and
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - realizes [CAP-003](../Capability/CAP-003-Export_Compact_Model.md)

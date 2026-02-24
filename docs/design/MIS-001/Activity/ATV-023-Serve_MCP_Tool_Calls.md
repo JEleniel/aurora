@@ -8,6 +8,10 @@ Accept MCP tool calls (stdio or in-process transport) and dispatch them to the A
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-010](../Component/COM-010-Aurora_MCP_Server.md)

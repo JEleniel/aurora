@@ -8,6 +8,10 @@ Load cards from the model home and validate them against schemas, canonical regi
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - uses [COM-001](../Component/COM-001-Aurora_Shared_Library.md)

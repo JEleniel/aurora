@@ -8,6 +8,10 @@ Control used to exercise control/risk/constraint governance relationships.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - mitigates [RIS-900](../Risk/RIS-900-Example_risk.md)

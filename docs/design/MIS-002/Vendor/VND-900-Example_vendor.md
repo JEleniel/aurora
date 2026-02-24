@@ -8,6 +8,10 @@ A representative third party used to exercise Vendor relationships.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - provides [SYS-900](../System/SYS-900-Example_system.md)

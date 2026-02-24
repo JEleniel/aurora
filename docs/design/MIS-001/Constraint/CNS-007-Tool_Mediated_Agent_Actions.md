@@ -8,6 +8,10 @@ Agents MUST NOT execute shell commands or spawn arbitrary OS processes, and MUST
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

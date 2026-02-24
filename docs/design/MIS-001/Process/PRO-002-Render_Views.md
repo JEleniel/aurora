@@ -8,6 +8,10 @@ Render view artifacts by selecting roots, traversing reachable subgraphs, and ge
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - includes [ATV-002](../Activity/ATV-002-Render_View_Artifacts.md)

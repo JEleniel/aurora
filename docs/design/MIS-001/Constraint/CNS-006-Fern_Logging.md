@@ -8,6 +8,10 @@ The standalone editor MUST support logging with fern integration.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

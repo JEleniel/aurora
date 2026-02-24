@@ -8,6 +8,10 @@ Cards MUST conform to the Aurora card schema (required fields, identifier format
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - requires [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)

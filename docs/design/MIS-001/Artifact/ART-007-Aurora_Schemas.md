@@ -8,6 +8,10 @@ The Aurora JSON schemas used to validate cards, audit logs, and compact exports.
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 _No links defined._

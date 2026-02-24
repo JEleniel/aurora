@@ -8,6 +8,10 @@ State used to exercise state transitions, predicate evaluation, and event handli
 
 _No attributes defined._
 
+## References
+
+_No references defined._
+
 ## Links
 
 - transitions to [STA-901](STA-901-End_state.md)
