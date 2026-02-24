@@ -68,6 +68,7 @@ fn build_card(id: &str, card_type: &str, links: Vec<Link>) -> Card {
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
+		references: Vec::new(),
 		links,
 		source_path: PathBuf::from(format!("{}.json", id)),
 		validation_errors: Vec::new(),
@@ -184,6 +185,40 @@ fn write_markdown_outputs_file() -> Result<(), Box<dyn std::error::Error>> {
 	);
 	let contents = std::fs::read_to_string(&card_path)?;
 	assert!(contents.contains("REQ-001"));
+	Ok(())
+}
+
+#[test]
+fn write_markdown_renders_references_and_rewrites_relative_paths()
+-> Result<(), Box<dyn std::error::Error>> {
+	let temp = tempfile::tempdir()?;
+	let json_dir = temp.path().join("docs/design/aurora/MIS-001/Feature");
+	let md_dir = temp.path().join("docs/design/MIS-001/Feature");
+	std::fs::create_dir_all(&json_dir)?;
+	std::fs::create_dir_all(&md_dir)?;
+
+	let card_path = md_dir.join("REQ-001.md");
+	let mut card = build_card("REQ-001", "Requirement", Vec::new());
+	card.source_path = json_dir.join("REQ-001.json");
+	card.references = vec![
+		"../../../references/adr.md".to_string(),
+		"https://example.com/spec".to_string(),
+	];
+
+	card.write_markdown(
+		&card_path,
+		None,
+		std::iter::empty::<&crate::AuditLogEntry>(),
+	);
+	let contents = std::fs::read_to_string(&card_path)?;
+	assert!(
+		contents.contains("- [../../../references/adr.md](../../references/adr.md)"),
+		"expected relative reference link rewrite, got: {contents}"
+	);
+	assert!(
+		contents.contains("- [https://example.com/spec](https://example.com/spec)"),
+		"expected external reference link passthrough, got: {contents}"
+	);
 	Ok(())
 }
 

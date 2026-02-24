@@ -24,6 +24,7 @@ pub(super) fn make_card(id: &str, card_type: &str, targets: &[&str]) -> Card {
 		notes: None,
 		icon: None,
 		attributes: Attributes::new(),
+		references: Vec::new(),
 		links,
 		source_path: PathBuf::from(format!("{}.json", id)),
 		validation_errors: Vec::new(),

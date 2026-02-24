@@ -77,6 +77,12 @@ When present, the optional `icon` value MUST match an icon id in `reference/Auro
 - DRI-001
 - DRI-002
 
+#### External References
+
+In order to allow for the inclusion of artifacts, such as JSON schemas, ADR documents, URLs and other external material, the "references" attribute can contain an array of strings, each of which is a _relative_ path or URL to the external material. When rendered to Markdown these will become links.
+
+The default location for such material is `docs/design/references/`.
+
 #### ID acronym consistency
 
 For canonical card types, a card ID prefix MUST match the canonical card-type acronym (for example, `REQ-001` for `Requirement`, `DST-001` for `Data Store`). For non-canonical card types, define one stable three-letter acronym and use it consistently.

@@ -1,6 +1,8 @@
 mod cli;
 mod svg;
 
+use std::io::IsTerminal;
+
 use anyhow::Result;
 use tracing::info;
 use tracing_subscriber::EnvFilter;
@@ -19,6 +21,11 @@ pub fn run() -> Result<()> {
 }
 
 fn init_logging() {
+	std::thread::sleep(std::time::Duration::from_millis(300));
+	while !std::io::stdout().is_terminal() || !std::io::stderr().is_terminal() {
+		std::thread::sleep(std::time::Duration::from_millis(100));
+	}
+
 	let filter = EnvFilter::try_from_default_env().unwrap_or_else(|_| EnvFilter::new("info"));
 	let _ = tracing_subscriber::fmt()
 		.with_env_filter(filter)

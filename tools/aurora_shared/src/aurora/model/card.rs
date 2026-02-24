@@ -3,7 +3,7 @@ use jsonschema::{CompilationError, Draft, JSONSchema};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::{BTreeMap, HashMap};
-use std::path::{Path, PathBuf};
+use std::path::{Component, Path, PathBuf};
 use thiserror::Error;
 use tracing::debug;
 
@@ -33,6 +33,8 @@ pub struct Card {
 	pub icon: Option<String>,
 	#[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
 	pub attributes: Attributes,
+	#[serde(default, skip_serializing_if = "Vec::is_empty")]
+	pub references: Vec<String>,
 	pub links: Vec<Link>,
 	#[serde(skip)]
 	pub source_path: PathBuf,
@@ -159,6 +161,7 @@ impl Card {
 		};
 
 		let attributes = attributes_markdown(&self.attributes);
+		let references = references_markdown(&self.references, &self.source_path, path);
 
 		let mut links: String = String::new();
 		if self.links.is_empty() {
@@ -210,6 +213,7 @@ impl Card {
 			.replace("{{boundary}}", &boundary)
 			.replace("{{notes}}", &notes)
 			.replace("{{attributes}}", &attributes)
+			.replace("{{references}}", &references)
 			.replace("{{links}}", &links)
 			.replace("{{version}}", &version)
 			.replace("{{history}}", &history)
@@ -351,6 +355,72 @@ fn relative_path(from_dir: &Path, to: &Path) -> PathBuf {
 	for comp in &to_components[common_len..] {
 		out.push(comp.as_os_str());
 	}
+	if out.as_os_str().is_empty() {
+		out.push(".");
+	}
+	out
+}
+
+fn references_markdown(references: &[String], source_path: &Path, markdown_path: &Path) -> String {
+	if references.is_empty() {
+		return "_No references defined._".to_string();
+	}
+
+	let mut out = String::new();
+	for reference in references {
+		let href = resolve_reference_href(reference, source_path, markdown_path);
+		out.push_str(format!("- [{}]({})\n", reference, href).as_str());
+	}
+	out
+}
+
+fn resolve_reference_href(reference: &str, source_path: &Path, markdown_path: &Path) -> String {
+	if is_external_reference(reference) {
+		return reference.to_string();
+	}
+
+	let Some(markdown_dir) = markdown_path.parent() else {
+		return reference.to_string();
+	};
+	let Some(source_dir) = source_path.parent() else {
+		return reference.to_string();
+	};
+
+	let target_path = normalize_path(source_dir.join(reference).as_path());
+	relative_href(markdown_dir, target_path.as_path())
+}
+
+fn is_external_reference(reference: &str) -> bool {
+	let trimmed = reference.trim();
+	trimmed.starts_with("http://")
+		|| trimmed.starts_with("https://")
+		|| trimmed.starts_with("ftp://")
+		|| trimmed.starts_with("ftps://")
+		|| trimmed.starts_with("mailto:")
+		|| trimmed.starts_with("file://")
+}
+
+fn normalize_path(path: &Path) -> PathBuf {
+	let mut out = PathBuf::new();
+	let mut has_root = false;
+
+	for component in path.components() {
+		match component {
+			Component::Prefix(prefix) => out.push(prefix.as_os_str()),
+			Component::RootDir => {
+				has_root = true;
+				out.push(component.as_os_str());
+			}
+			Component::CurDir => {}
+			Component::ParentDir => {
+				if !out.pop() && !has_root {
+					out.push("..");
+				}
+			}
+			Component::Normal(part) => out.push(part),
+		}
+	}
+
 	if out.as_os_str().is_empty() {
 		out.push(".");
 	}

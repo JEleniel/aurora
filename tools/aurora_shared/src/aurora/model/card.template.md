@@ -12,6 +12,10 @@
 
 {{attributes}}
 
+## References
+
+{{references}}
+
 ## Links
 
 {{links}}

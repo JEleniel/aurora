@@ -1206,6 +1206,7 @@ mod tests {
 			notes: None,
 			icon: None,
 			attributes: Attributes::new(),
+			references: Vec::new(),
 			links: vec![Link {
 				target: "C-001".to_string(),
 				relationship: "rel".to_string(),
@@ -1227,6 +1228,7 @@ mod tests {
 			notes: None,
 			icon: None,
 			attributes: Attributes::new(),
+			references: Vec::new(),
 			links: Vec::new(),
 			source_path: PathBuf::from("C-001.json"),
 			validation_errors: Vec::new(),

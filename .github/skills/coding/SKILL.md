@@ -9,7 +9,7 @@ description: Guidelines for writing code of any kind.
 
 - The language-specific rules in `../../instructions/*.instructions.md` take precedence over these instructions.
 - Follow best practices for the language being edited. Language-specific configs (for example `rustfmt.toml`, `.markdownlint-cli2.jsonc`, `.prettierrc.json`) are authoritative.
-- Keep code modular and cohesive (single responsibility). Prefer small functions (~20 lines) and small modules (~200 lines) when practical.
+- Keep code modular and cohesive (single responsibility). Prefer small functions (~50 lines) and small modules (~500 lines) when practical.
 - Prefer small, cohesive changes. Fix root causes, not symptoms.
 - Use the shortest acceptable path for local files.
 - Prefer mature, well supported dependencies with GPL, MIT, or Apache-2.0 licenses.
@@ -26,7 +26,7 @@ description: Guidelines for writing code of any kind.
     - Avoid new dependencies when the standard library or existing dependencies already solve the problem.
 
 - Approved libraries
-    - The following libraries are approved for use. Sublibraries include crates that share the parent prefix or are designed as companions. This is not an exhaustive list, just the most commonly used ones:
+    - The following libraries are approved for use. Sublibraries include crates that share the parent prefix or are designed as companions.
     - `anyhow`, `thiserror` for error handling
     - `axum` (and sublibraries), `tower` (and sublibraries), `hyper` (and sublibraries) for web servers
     - `base64`, `hex`, `num-traits`, `regex`, `unicode-normalization`, `uuid` for utilities
@@ -37,7 +37,7 @@ description: Guidelines for writing code of any kind.
     - `dirs` (preferred) or `directories` for standard config/data/cache directories
     - `fern` (preferred) or `tracing` (and sublibraries) for logging
     - `log` for logging API
-    - `rig` for LLM access
+    - `ollama-rs` for Ollama access
     - `openssl` or `rustls` (and sublibraries) for TLS
     - `r2d2`, `r2d2_sqlite`, `rusqlite` for SQLite (use `rusqlite` with the `bundled` feature)
     - `reqwest` for HTTP client calls
@@ -76,6 +76,7 @@ For all added code:
 - Add tests that prove deterministic behavior, when appropriate (for example, fixed seeds for randomized tests).
 - Add tests that prove secure behavior, e.g., malformed input, out of range values, etc.
 - If tests need data files, or need to write files, create and use a `testdata` directory at the root of the source tree (e.g. `src/testdata/` for Rust code) and use that for test fixtures. Do not write files outside of the test environment.
+- You MUST NOT write “null tests” that assert tautologies (for example, `assert!(result.is_ok() || result.is_err())` or `assert!(normalized.is_some() || normalized.is_none())`).
 
 ## Deliverables
 
