@@ -54,6 +54,11 @@ This document specifies requirements and expectations for Aurora MCP server. It 
     - The server MUST use `schemas/*` for validation.
     - The server MUST use `reference/Aurora.modelconfiguration.json` for canonical registries, appearance, and view definitions.
 
+### Views and rendering
+
+- If the MCP surface exposes view rendering, the server MUST use the shared renderer behavior defined in `docs/design/ViewLayouts.md`.
+    - Architectural placement and ownership boundaries for rendering are defined in `docs/design/ViewRenderingArchitecture.md`.
+
 ### Editing, Validation, and Linting
 
 - The server MUST prevent edits that would break a model.

@@ -63,6 +63,7 @@ This list is deliberately high-level.
     - Improved edge routing
     - More layout options
     - PDF output (one file or one file per drawing)
+    - Design reference: `docs/design/ViewLayouts.md` and `docs/design/ViewRenderingArchitecture.md`
 - **Storage**
     - SQLite database model storage option (including a single-file model)
 - **Security and audit (TBD)**

@@ -73,6 +73,8 @@ This document specifies requirements and UX expectations for a standalone Aurora
 ### Views & Root Selection
 
 - The editor MUST be able to render any view defined in the model configuration file and ad hoc views.
+- View rendering (layout selection, depth assignment, packing, and orthogonal edge routing) MUST follow the requirements in `docs/design/ViewLayouts.md`.
+    - Architectural placement and ownership boundaries for rendering are defined in `docs/design/ViewRenderingArchitecture.md`.
 - View roots MUST follow the documented "root safety" rule:
     - A view root is a card that has descendants.
     - No descendant may link back to the root.
