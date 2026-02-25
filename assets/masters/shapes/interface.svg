@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="2.4in"
-   height="1.5in"
+   width="720"
+   height="450"
    viewBox="0 0 720 450"
    version="1.1"
    id="svg3"
@@ -22,16 +22,52 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
-     inkscape:document-units="in"
-     inkscape:zoom="2.5660533"
-     inkscape:cx="107.36332"
-     inkscape:cy="109.50669"
+     inkscape:document-units="px"
+     inkscape:zoom="1.4321827"
+     inkscape:cx="487.7171"
+     inkscape:cy="224.48253"
      inkscape:window-width="1512"
-     inkscape:window-height="949"
+     inkscape:window-height="920"
      inkscape:window-x="0"
-     inkscape:window-y="33"
+     inkscape:window-y="34"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg3" />
+     inkscape:current-layer="svg3"
+     showgrid="true">
+    <inkscape:grid
+       id="grid4"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="1"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14902"
+       empspacing="10"
+       enabled="true"
+       visible="true" />
+    <sodipodi:guide
+       position="0,450"
+       orientation="0,720"
+       id="guide4"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="720,450"
+       orientation="450,0"
+       id="guide5"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="720,0"
+       orientation="0,-720"
+       id="guide6"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="0,0"
+       orientation="-450,0"
+       id="guide7"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
   <style
      id="style1">
 		g.aurora-symbol &gt; circle,
@@ -57,32 +93,46 @@
 		.aurora-icon {}
 		.aurora-symbol {}
 	</style>
-  <g
-     id="interface">
-    <rect
-       width="718"
-       height="368"
-       x="1"
-       y="41"
-       id="rect1"
-       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:6.24999988;stroke-dasharray:none" />
-    <circle
-       cx="700"
-       cy="21"
-       r="19"
-       style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-opacity:1;stroke-width:6.24999988;stroke-dasharray:none"
-       id="circle1" />
-    <path
-       d="M 1,21 H 680"
-       id="path1"
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:6.24999988;stroke-dasharray:none" />
-    <path
-       d="M 41,429 H 719"
-       id="path2"
-       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:6.24999988;stroke-dasharray:none" />
-    <path
-       d="M 20,409 C 45,409 45,449 20,449"
-       style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-opacity:1;stroke-width:6.24999988;stroke-dasharray:none"
-       id="path3" />
-  </g>
+  <rect
+     style="fill:none;fill-opacity:1;stroke:none;stroke-width:1.79691;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0"
+     id="rect15"
+     width="638"
+     height="350"
+     x="81"
+     y="50"
+     rx="40"
+     ry="37.037037" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;fill-opacity:0;stroke-dasharray:none"
+     id="path11"
+     sodipodi:type="arc"
+     sodipodi:cx="39.500015"
+     sodipodi:cy="230"
+     sodipodi:rx="28.540611"
+     sodipodi:ry="29.023815"
+     sodipodi:start="0"
+     sodipodi:end="6.2622322"
+     sodipodi:open="true"
+     sodipodi:arc-type="arc"
+     d="M 68.040627,230 A 28.540611,29.023815 0 0 1 39.649518,259.02342 28.540611,29.023815 0 0 1 10.96097,230.30406 28.540611,29.023815 0 0 1 39.051523,200.97977 28.540611,29.023815 0 0 1 68.034362,229.39191" />
+  <path
+     style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none"
+     d="m 11,199 c 0,-10 9,-28 29,-28 20,0 29,18 29,28"
+     id="path12"
+     sodipodi:nodetypes="czc" />
+  <path
+     style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;stroke-dasharray:none"
+     d="M 40,170 V 21 H 360 V 1"
+     id="path13"
+     sodipodi:nodetypes="cccc" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;fill-opacity:0;stroke-dasharray:none"
+     d="m 39,260 1,169 h 319 v 20"
+     id="path14"
+     sodipodi:nodetypes="cccc" />
+  <path
+     style="fill:#000000;fill-opacity:0;stroke:#000000;stroke-width:1.94783;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
+     d="m 370,50 h 309 c 21,0 40,18.02168 40,37.940379 V 362.05962 C 719,381.02981 700,400 680,400 H 370"
+     id="path15"
+     sodipodi:nodetypes="cccccc" />
 </svg>

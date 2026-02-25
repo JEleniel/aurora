@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="2.4in"
-   height="1.5in"
+   width="720"
+   height="450"
    viewBox="0 0 720 450"
    version="1.1"
    id="svg2"
@@ -22,16 +22,52 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
-     inkscape:document-units="in"
-     inkscape:zoom="1.6204067"
-     inkscape:cx="142.86537"
-     inkscape:cy="54.615918"
+     inkscape:document-units="px"
+     inkscape:zoom="0.53086675"
+     inkscape:cx="268.42894"
+     inkscape:cy="283.49864"
      inkscape:window-width="1512"
      inkscape:window-height="920"
      inkscape:window-x="0"
      inkscape:window-y="34"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" />
+     inkscape:current-layer="diamond"
+     showgrid="true">
+    <inkscape:grid
+       id="grid4"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="1"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14902"
+       empspacing="10"
+       enabled="true"
+       visible="true" />
+    <sodipodi:guide
+       position="0,450"
+       orientation="0,720"
+       id="guide5"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="720,450"
+       orientation="450,0"
+       id="guide6"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="720,0"
+       orientation="0,-720"
+       id="guide7"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="0,0"
+       orientation="-450,0"
+       id="guide8"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
   <style
      id="style1">
 		g.aurora-symbol &gt; circle,
@@ -58,21 +94,30 @@
 		.aurora-symbol {}
 	</style>
   <g
-     id="diamond">
+     id="diamond"
+     transform="matrix(0.9178273,0,0,0.95108696,59.582172,11.005435)">
+    <path
+       style="fill:#eab308;fill-opacity:1;stroke:#000000;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 29.999996,20 -27.9999963,204.99999 27.9999993,205 28,-205 L 29.999996,20"
+       id="path4"
+       sodipodi:nodetypes="ccccc"
+       transform="matrix(1.0895296,0,0,1.0514286,-64.916539,-11.571429)" />
     <rect
-       width="718"
-       height="368"
-       x="1"
-       y="41"
+       width="716.91046"
+       height="365.89713"
+       x="1.5447656"
+       y="42.05143"
        id="rect1"
-       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:6.24999988;stroke-dasharray:none" />
+       style="fill:none;stroke:#000000;stroke-width:2.14062;stroke-dasharray:none;stroke-opacity:1"
+       rx="43.581184"
+       ry="42.057144" />
     <path
-       d="M 1,21 360,1 719,21 360,41 z"
-       id="path1"
-       style="stroke-width:6.24999988;stroke-dasharray:none;stroke:#000000;stroke-opacity:1;fill:none" />
+       style="fill:#000000;stroke:#000000;stroke-width:4.28124;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;fill-opacity:0"
+       d="M -32.230651,440.54287 H 327.31412 v 18.92571"
+       id="path5" />
     <path
-       d="M 1,429 360,409 719,429 360,449 z"
-       id="path2"
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:6.24999988;stroke-dasharray:none" />
+       style="fill:#000000;stroke:#000000;stroke-width:4.28124;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;fill-opacity:0"
+       d="M -32.230652,9.4571426 H 327.31411 v -18.92571"
+       id="path5-6" />
   </g>
 </svg>

@@ -615,35 +615,15 @@ fn assign_radial_subtree_coords(
 	}
 
 	let ownership = assign_node_ownership(graph, roots.as_slice());
-	let mut weight_by_root: HashMap<String, usize> =
-		roots.iter().map(|root| (root.clone(), 1usize)).collect();
-	for info in ownership.values() {
-		*weight_by_root.entry(info.root.clone()).or_insert(1) += 1;
-	}
-
-	let total_weight: usize = roots
-		.iter()
-		.map(|root| weight_by_root.get(root).copied().unwrap_or(1))
-		.sum::<usize>()
-		.max(1);
-	let root_ring_base_radius = 1.0f32;
-	let root_ring_per_root = 0.25f32;
-	let root_ring_radius = if roots.len() <= 1 {
-		0.0f32
-	} else {
-		root_ring_base_radius + roots.len() as f32 * root_ring_per_root
-	};
+	let root_ring_radius = radial_root_ring_radius(roots.len());
 
 	let mut root_centers: HashMap<String, (f32, f32)> = HashMap::new();
 	let mut root_sectors: HashMap<String, (f32, f32)> = HashMap::new();
-	let mut angle_cursor = -std::f32::consts::FRAC_PI_2;
-	for root in &roots {
-		let weight = weight_by_root.get(root).copied().unwrap_or(1) as f32;
-		let sweep = (2.0f32 * std::f32::consts::PI) * (weight / total_weight as f32);
-		let start = angle_cursor;
-		let end = angle_cursor + sweep;
-		let center_angle = (start + end) / 2.0;
-		let (cx, cy) = if roots.len() == 1 {
+	let root_count = roots.len().max(1);
+	let sweep = (2.0f32 * std::f32::consts::PI) / root_count as f32;
+	for (index, root) in roots.iter().enumerate() {
+		let center_angle = -std::f32::consts::FRAC_PI_2 + (index as f32 * sweep);
+		let (cx, cy) = if root_count == 1 {
 			(0.0f32, 0.0f32)
 		} else {
 			(
@@ -651,9 +631,10 @@ fn assign_radial_subtree_coords(
 				root_ring_radius * center_angle.sin(),
 			)
 		};
+		let start = center_angle - (sweep / 2.0);
+		let end = center_angle + (sweep / 2.0);
 		root_centers.insert(root.clone(), (cx, cy));
 		root_sectors.insert(root.clone(), (start, end));
-		angle_cursor = end;
 	}
 
 	let mut grouped_by_root_depth: HashMap<String, BTreeMap<usize, Vec<String>>> = HashMap::new();
@@ -725,6 +706,15 @@ fn assign_radial_subtree_coords(
 
 	resolve_coordinate_collisions(&mut coords, graph.nodes.as_slice());
 	Ok(coords)
+}
+
+fn radial_root_ring_radius(root_count: usize) -> f32 {
+	if root_count <= 1 {
+		return 0.0;
+	}
+
+	let min_radius_for_unique_spacing = (root_count as f32 / (2.0 * std::f32::consts::PI)).ceil();
+	2.0f32.max(min_radius_for_unique_spacing)
 }
 
 fn assign_node_ownership(

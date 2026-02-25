@@ -242,6 +242,50 @@ fn radial_layout_spreads_children_around_root() {
 }
 
 #[test]
+fn radial_layout_places_single_root_at_center() {
+	let root = make_card("MIS-001", "Mission", &[]);
+	let model = make_model(root, vec![]);
+
+	let layout = layout_model_with_family(
+		&model,
+		&["MIS".to_string()],
+		&["MIS".to_string()],
+		LayoutFamily::RadialSubtree,
+	)
+	.expect("radial layout should succeed");
+
+	let root = layout.nodes.get("MIS-001").expect("MIS-001 missing");
+	assert_eq!((root.x, root.y), (0, 0));
+}
+
+#[test]
+fn radial_layout_places_multi_roots_north_then_equal_angles() {
+	let root_one = make_card("MIS-001", "Mission", &[]);
+	let root_two = make_card("MIS-002", "Mission", &[]);
+	let root_three = make_card("MIS-003", "Mission", &[]);
+	let root_four = make_card("MIS-004", "Mission", &[]);
+	let model = make_model(root_one, vec![root_two, root_three, root_four]);
+
+	let layout = layout_model_with_family(
+		&model,
+		&["MIS".to_string()],
+		&["MIS".to_string()],
+		LayoutFamily::RadialSubtree,
+	)
+	.expect("radial layout should succeed");
+
+	let root_one = layout.nodes.get("MIS-001").expect("MIS-001 missing");
+	let root_two = layout.nodes.get("MIS-002").expect("MIS-002 missing");
+	let root_three = layout.nodes.get("MIS-003").expect("MIS-003 missing");
+	let root_four = layout.nodes.get("MIS-004").expect("MIS-004 missing");
+
+	assert_eq!((root_one.x, root_one.y), (0, -2));
+	assert_eq!((root_two.x, root_two.y), (2, 0));
+	assert_eq!((root_three.x, root_three.y), (0, 2));
+	assert_eq!((root_four.x, root_four.y), (-2, 0));
+}
+
+#[test]
 fn radial_layout_keeps_first_ring_compact() {
 	let root = make_card("MIS-001", "Mission", &["REQ-001", "REQ-002", "REQ-003"]);
 	let req_one = make_card("REQ-001", "Requirement", &[]);

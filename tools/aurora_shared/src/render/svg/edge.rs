@@ -1,7 +1,7 @@
 use super::{EdgeStyle, RenderError, SvgConfig, geom};
 
 const EDGE_STROKE: &str = "#000000";
-const EDGE_STROKE_WIDTH_PX: i32 = 2;
+const EDGE_STROKE_WIDTH_PX: i32 = 4;
 const ARROW_SIZE_PX: f32 = 40.0;
 const JUMP_RADIUS_PX: f32 = 8.0;
 const JUMP_CLEAR_STROKE_WIDTH_PX: i32 = EDGE_STROKE_WIDTH_PX + 2;
@@ -1129,7 +1129,7 @@ mod tests {
 	}
 
 	#[test]
-	fn orthogonal_rendering_uses_single_2px_stroke() {
+	fn orthogonal_rendering_uses_single_4px_stroke() {
 		let route = Route {
 			points: vec![
 				geom::PointF { x: 0.0, y: 0.0 },
@@ -1144,7 +1144,7 @@ mod tests {
 		};
 
 		let layers = render_edge_layers(&route, EdgeStyle::Orthogonal);
-		assert!(layers.base.contains("stroke:#000000;stroke-width:2px"));
+		assert!(layers.base.contains("stroke:#000000;stroke-width:4px"));
 		assert!(!layers.base.contains("stroke:#ffffff"));
 	}
 

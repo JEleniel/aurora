@@ -137,8 +137,10 @@ pub(super) fn sanitize_shape_group_in_place(group: &mut Element) {
 }
 
 fn retained_inline_style(style: &str) -> Option<String> {
+	let mut fill: Option<String> = None;
 	let mut keep_fill_opacity_zero = false;
-	let mut keep_stroke_none = false;
+	let mut keep_stroke_opacity_zero = false;
+	let mut stroke: Option<String> = None;
 	let mut dasharray: Option<String> = None;
 
 	for decl in style.split(';') {
@@ -158,8 +160,19 @@ fn retained_inline_style(style: &str) -> Option<String> {
 			continue;
 		}
 
-		if prop == "fill" && value.eq_ignore_ascii_case("#00000000") {
-			keep_fill_opacity_zero = true;
+		if prop == "fill" {
+			if value.eq_ignore_ascii_case("#00000000") {
+				keep_fill_opacity_zero = true;
+			} else if value.eq_ignore_ascii_case("none") || is_black_six_fill(value) {
+				fill = None;
+			} else if !value.is_empty() {
+				fill = Some(value.to_string());
+			}
+			continue;
+		}
+
+		if prop == "stroke-opacity" && value == "0" {
+			keep_stroke_opacity_zero = true;
 			continue;
 		}
 
@@ -170,18 +183,28 @@ fn retained_inline_style(style: &str) -> Option<String> {
 			continue;
 		}
 
-		if prop == "stroke" && value.eq_ignore_ascii_case("none") {
-			keep_stroke_none = true;
+		if prop == "stroke" {
+			if value.eq_ignore_ascii_case("#000000") {
+				stroke = None;
+			} else if !value.is_empty() {
+				stroke = Some(value.to_string());
+			}
 			continue;
 		}
 	}
 
 	let mut out = Vec::new();
+	if let Some(value) = fill {
+		out.push(format!("fill:{value}"));
+	}
 	if keep_fill_opacity_zero {
 		out.push("fill-opacity:0".to_string());
 	}
-	if keep_stroke_none {
-		out.push("stroke:none".to_string());
+	if keep_stroke_opacity_zero {
+		out.push("stroke-opacity:0".to_string());
+	}
+	if let Some(value) = stroke {
+		out.push(format!("stroke:{value}"));
 	}
 	if let Some(value) = dasharray {
 		out.push(format!("stroke-dasharray:{value}"));
@@ -192,6 +215,12 @@ fn retained_inline_style(style: &str) -> Option<String> {
 	} else {
 		Some(format!("{};", out.join(";")))
 	}
+}
+
+fn is_black_six_fill(value: &str) -> bool {
+	let trimmed = value.trim();
+	let hex = trimmed.strip_prefix('#').unwrap_or(trimmed);
+	hex.eq_ignore_ascii_case("000000")
 }
 
 fn ensure_group_class(group: &mut Element, class_name: &str) {
@@ -338,7 +367,7 @@ mod tests {
 		assert!(!path.attributes.contains_key("id"));
 		assert_eq!(
 			path.attributes.get("style").map(String::as_str),
-			Some("stroke-dasharray:6, 2;")
+			Some("stroke:#000;stroke-dasharray:6, 2;")
 		);
 	}
 
@@ -355,7 +384,10 @@ mod tests {
 		let XMLNode::Element(path) = &group.children[0] else {
 			panic!("expected path element")
 		};
-		assert!(!path.attributes.contains_key("style"));
+		assert_eq!(
+			path.attributes.get("style").map(String::as_str),
+			Some("stroke:#000;")
+		);
 	}
 
 	#[test]
@@ -391,8 +423,24 @@ mod tests {
 
 		assert_eq!(
 			group.attributes.get("style").map(String::as_str),
-			Some("stroke-dasharray:4 2;")
+			Some("stroke:#000;stroke-dasharray:4 2;")
 		);
+	}
+
+	#[test]
+	fn sanitize_drops_black_hex_stroke_in_inline_style() {
+		let mut group = Element::parse(
+			r#"<g id="g1"><path id="p1" style="stroke:#000000; stroke-width:2" d="M0,0"/></g>"#
+				.as_bytes(),
+		)
+		.expect("inline group should parse");
+
+		sanitize_shape_group_in_place(&mut group);
+
+		let XMLNode::Element(path) = &group.children[0] else {
+			panic!("expected path element")
+		};
+		assert!(!path.attributes.contains_key("style"));
 	}
 
 	#[test]
@@ -427,5 +475,72 @@ mod tests {
 			group.attributes.get("style").map(String::as_str),
 			Some("stroke:none;")
 		);
+	}
+
+	#[test]
+	fn sanitize_preserves_stroke_opacity_zero_in_inline_style() {
+		let mut group = Element::parse(
+			r#"<g id="g1"><path id="p1" style="stroke:#000000; stroke-opacity:0; stroke-width:2" d="M0,0"/></g>"#
+				.as_bytes(),
+		)
+		.expect("inline group should parse");
+
+		sanitize_shape_group_in_place(&mut group);
+
+		let XMLNode::Element(path) = &group.children[0] else {
+			panic!("expected path element")
+		};
+		assert_eq!(
+			path.attributes.get("style").map(String::as_str),
+			Some("stroke-opacity:0;")
+		);
+	}
+
+	#[test]
+	fn sanitize_preserves_non_black_fill_in_inline_style() {
+		let mut group = Element::parse(
+			r#"<g id="g1"><path id="p1" style="fill:#ff0000; stroke-width:2" d="M0,0"/></g>"#
+				.as_bytes(),
+		)
+		.expect("inline group should parse");
+
+		sanitize_shape_group_in_place(&mut group);
+
+		let XMLNode::Element(path) = &group.children[0] else {
+			panic!("expected path element")
+		};
+		assert_eq!(
+			path.attributes.get("style").map(String::as_str),
+			Some("fill:#ff0000;")
+		);
+	}
+
+	#[test]
+	fn sanitize_drops_black_and_none_fill_in_inline_style() {
+		let mut black_fill = Element::parse(
+			r#"<g id="g1"><path id="p1" style="fill:#000000; stroke-width:2" d="M0,0"/></g>"#
+				.as_bytes(),
+		)
+		.expect("inline group should parse");
+
+		sanitize_shape_group_in_place(&mut black_fill);
+
+		let XMLNode::Element(black_path) = &black_fill.children[0] else {
+			panic!("expected path element")
+		};
+		assert!(!black_path.attributes.contains_key("style"));
+
+		let mut none_fill = Element::parse(
+			r#"<g id="g2"><path id="p2" style="fill:none; stroke-width:2" d="M0,0"/></g>"#
+				.as_bytes(),
+		)
+		.expect("inline group should parse");
+
+		sanitize_shape_group_in_place(&mut none_fill);
+
+		let XMLNode::Element(none_path) = &none_fill.children[0] else {
+			panic!("expected path element")
+		};
+		assert!(!none_path.attributes.contains_key("style"));
 	}
 }

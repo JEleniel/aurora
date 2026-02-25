@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="2.4in"
-   height="1.5in"
+   width="720"
+   height="450"
    viewBox="0 0 720 450"
    version="1.1"
    id="svg3"
@@ -22,16 +22,52 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
-     inkscape:document-units="in"
-     inkscape:zoom="0.87542179"
-     inkscape:cx="-151.35561"
-     inkscape:cy="-3.9980727"
+     inkscape:document-units="px"
+     inkscape:zoom="1.0350532"
+     inkscape:cx="404.32704"
+     inkscape:cy="237.18588"
      inkscape:window-width="1512"
      inkscape:window-height="920"
      inkscape:window-x="0"
      inkscape:window-y="34"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg3" />
+     inkscape:current-layer="component"
+     showgrid="true">
+    <sodipodi:guide
+       position="0,450"
+       orientation="0,720"
+       id="guide1"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="720,450"
+       orientation="450,0"
+       id="guide2"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="720,0"
+       orientation="0,-720"
+       id="guide3"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="0,0"
+       orientation="-450,0"
+       id="guide4"
+       inkscape:locked="false" />
+    <inkscape:grid
+       id="grid4"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="1"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14902"
+       empspacing="10"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
   <style
      id="style1">
 		g.aurora-symbol &gt; circle,
@@ -58,27 +94,41 @@
 		.aurora-symbol {}
 	</style>
   <g
-     id="component">
+     id="component"
+     style="stroke-width:2;stroke-dasharray:none">
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 61,40 V 1 H 719 V 449 H 61 v -49"
+       id="path4"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 61,360 V 80"
+       id="path5"
+       sodipodi:nodetypes="cc" />
     <rect
-       width="678"
-       height="448"
-       x="41"
-       y="1"
-       id="rect1"
-       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:6.24999988;stroke-dasharray:none" />
-    <rect
-       width="80"
+       width="119"
        height="40"
        x="1"
-       y="41"
+       y="40"
        id="rect2"
-       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:6.24999988;stroke-dasharray:none" />
+       style="fill:none;stroke:#000000;stroke-width:1.99165;stroke-dasharray:none;stroke-opacity:1" />
     <rect
-       width="80"
+       width="119"
        height="40"
        x="1"
-       y="359"
+       y="360"
        id="rect3"
-       style="fill:none;stroke:#000000;stroke-opacity:1;stroke-width:6.24999988;stroke-dasharray:none" />
+       style="fill:none;stroke:#000000;stroke-width:2.00846;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:1.98354;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 62,38 h 60 V 82 H 62"
+       id="path1"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:1.98354;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 62,358 h 60 v 44 H 62"
+       id="path1-7"
+       sodipodi:nodetypes="cccc" />
   </g>
 </svg>
