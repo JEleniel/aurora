@@ -13,13 +13,15 @@ const SECOND_LINE_FONT_SIZE_PX: i32 = 28;
 const SECOND_LINE_VERTICAL_OFFSET_PX: i32 = 8;
 const DESCRIPTION_FONT_SIZE_PX: i32 = TEMPLATE_DEFAULT_FONT_SIZE_PX;
 const DESCRIPTION_LINE_HEIGHT: f32 = 1.2;
-const COLUMN_PITCH_PX: i32 = 1080;
-const ROW_PITCH_PX: i32 = 810;
-const RADIAL_COLUMN_PITCH_PX: i32 = 900;
-const RADIAL_ROW_PITCH_PX: i32 = 630;
+const DESCRIPTION_MAX_LINES: usize = 10;
+const SYMBOL_SPACING_BUMP_PX: i32 = 32;
+const COLUMN_PITCH_PX: i32 = 1080 + SYMBOL_SPACING_BUMP_PX;
+const ROW_PITCH_PX: i32 = 810 + SYMBOL_SPACING_BUMP_PX;
+const RADIAL_COLUMN_PITCH_PX: i32 = 900 + SYMBOL_SPACING_BUMP_PX;
+const RADIAL_ROW_PITCH_PX: i32 = 630 + SYMBOL_SPACING_BUMP_PX;
 const RADIAL_DENSE_NODE_THRESHOLD: usize = 24;
-const RADIAL_DENSE_COLUMN_PITCH_PX: i32 = 1020;
-const RADIAL_DENSE_ROW_PITCH_PX: i32 = 765;
+const RADIAL_DENSE_COLUMN_PITCH_PX: i32 = 1020 + SYMBOL_SPACING_BUMP_PX;
+const RADIAL_DENSE_ROW_PITCH_PX: i32 = 765 + SYMBOL_SPACING_BUMP_PX;
 const SYMBOL_BASE_W: f32 = super::SYMBOL_BASE_WIDTH_PX as f32;
 const SYMBOL_BASE_H: f32 = super::SYMBOL_BASE_HEIGHT_PX as f32;
 const ICON_VIEWBOX_SIZE_PX: i32 = 128;
@@ -260,7 +262,14 @@ fn measure_node(card: &Card, config: &SvgConfig) -> NodeGeom {
 	lines.extend(wrap_text(&card.name, WRAP_COLS));
 	lines.push(String::new());
 	let description_start_index = lines.len();
-	lines.extend(wrap_text(&card.description, DESCRIPTION_WRAP_COLS));
+	let mut description_lines = wrap_text(&card.description, DESCRIPTION_WRAP_COLS);
+	if description_lines.len() > DESCRIPTION_MAX_LINES {
+		description_lines.truncate(DESCRIPTION_MAX_LINES);
+		if let Some(last) = description_lines.last_mut() {
+			*last = truncate_with_ellipsis(last.as_str(), DESCRIPTION_WRAP_COLS);
+		}
+	}
+	lines.extend(description_lines);
 
 	NodeGeom {
 		width_px: super::SYMBOL_BASE_WIDTH_PX,
@@ -269,6 +278,20 @@ fn measure_node(card: &Card, config: &SvgConfig) -> NodeGeom {
 		bold_line_index,
 		description_start_index,
 	}
+}
+
+fn truncate_with_ellipsis(line: &str, max_cols: usize) -> String {
+	if max_cols == 0 {
+		return "…".to_string();
+	}
+	let chars: Vec<char> = line.chars().collect();
+	if chars.len() + 1 <= max_cols {
+		return format!("{}…", line.trim_end());
+	}
+	let keep = max_cols.saturating_sub(1);
+	let mut out: String = chars.into_iter().take(keep).collect();
+	out = out.trim_end().to_string();
+	format!("{}…", out)
 }
 
 fn line_font_size_px(index: usize, geom: &NodeGeom, config: &SvgConfig) -> i32 {
@@ -568,6 +591,47 @@ mod tests {
 		assert_eq!(
 			geom.lines.first().map(String::as_str),
 			Some("APP-001: Application")
+		);
+	}
+
+	#[test]
+	fn measure_node_truncates_description_to_ten_lines() {
+		let mut long_description_lines: Vec<String> = Vec::new();
+		for index in 0..15 {
+			long_description_lines.push(format!(
+				"line {} with enough words to wrap predictably",
+				index
+			));
+		}
+		let card = Card {
+			schema: None,
+			id: "APP-002".to_string(),
+			card_type: "Application".to_string(),
+			card_subtype: None,
+			name: "Portal".to_string(),
+			description: long_description_lines.join("\n"),
+			version: None,
+			status: None,
+			boundary: None,
+			notes: None,
+			icon: None,
+			attributes: crate::Attributes::new(),
+			references: Vec::new(),
+			links: Vec::new(),
+			source_path: std::path::PathBuf::from("APP-002.json"),
+			validation_errors: Vec::new(),
+			validation_warnings: Vec::new(),
+		};
+		let geom = measure_node(&card, &SvgConfig::default());
+		let description_len = geom
+			.lines
+			.len()
+			.saturating_sub(geom.description_start_index);
+		assert_eq!(description_len, DESCRIPTION_MAX_LINES);
+		assert!(
+			geom.lines.last().is_some_and(|line| line.ends_with('…')),
+			"last description line should be ellipsized: {:?}",
+			geom.lines.last()
 		);
 	}
 

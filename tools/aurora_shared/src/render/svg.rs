@@ -34,10 +34,10 @@ pub struct SvgConfig {
 
 impl Default for SvgConfig {
 	fn default() -> Self {
-		// Default geometry uses a fixed 16px base and 1080x810 grid pitch for 720x450 symbols.
+		// Default geometry uses a fixed 16px base and 1112x842 grid pitch for 720x450 symbols.
 		let base_font_size_px = 16;
 		Self {
-			node_spacing_px: 360,
+			node_spacing_px: 392,
 			base_font_size_px,
 			edge_style: EdgeStyle::Orthogonal,
 		}
@@ -85,106 +85,11 @@ impl Svg {
 		let mut node_labels_svg = String::new();
 
 		let rem_px = config.base_font_size_px.max(1);
-		let node_bboxes: Vec<geom::RectI> = positioned.values().map(|n| n.bbox).collect();
-		let node_obstacle_pad = rem_px.max(6);
-		let node_obstacles: Vec<geom::RectI> = node_bboxes
-			.iter()
-			.copied()
-			.map(|bbox| grow_rect(bbox, node_obstacle_pad))
-			.collect();
-		let mut edge_obstacles: Vec<(String, String, geom::RectI)> = Vec::new();
-		let edge_obstacle_pad_px = 10;
-		let cell_px = config.base_font_size_px.max(1);
-		let mut routed_edges: Vec<edge::Route> = Vec::new();
-
-		let mut edges = layout.edges.clone();
-		edges.sort_by(|left, right| {
-			let left_key = edge_route_order_key(left, &positioned);
-			let right_key = edge_route_order_key(right, &positioned);
-			left_key
-				.rank_y
-				.cmp(&right_key.rank_y)
-				.then_with(|| left_key.source_x.cmp(&right_key.source_x))
-				.then_with(|| left_key.target_x.cmp(&right_key.target_x))
-				.then_with(|| left_key.source_y.cmp(&right_key.source_y))
-				.then_with(|| left_key.target_y.cmp(&right_key.target_y))
-				.then_with(|| left_key.span.cmp(&right_key.span))
-				.then_with(|| left_key.target_side.cmp(&right_key.target_side))
-				.then_with(|| left_key.lane.cmp(&right_key.lane))
-				.then_with(|| left_key.target_id.cmp(right_key.target_id))
-				.then_with(|| left.a.cmp(&right.a))
-				.then_with(|| left.b.cmp(&right.b))
-		});
-
-		let mut outgoing_total: HashMap<String, usize> = HashMap::new();
-		let mut incoming_total: HashMap<String, usize> = HashMap::new();
-		for edge in &edges {
-			*outgoing_total.entry(edge.a.clone()).or_insert(0) += 1;
-			*incoming_total.entry(edge.b.clone()).or_insert(0) += 1;
-		}
-		let source_slots = compute_source_slot_indexes(edges.as_slice(), &positioned);
-		let target_slots = compute_target_slot_indexes(edges.as_slice(), &positioned);
-
-		for (edge_index, e) in edges.iter().enumerate() {
-			let source_total = outgoing_total.get(&e.a).copied().unwrap_or(1);
-			let target_total = incoming_total.get(&e.b).copied().unwrap_or(1);
-			let source_index = source_slots.get(&edge_index).copied().unwrap_or(0);
-			let target_index = target_slots.get(&edge_index).copied().unwrap_or(0);
-			let merge_mode = edge_merge_mode(source_total, target_total);
-			let source_bias = match merge_mode {
-				EdgeMergeMode::Source => 0.0,
-				EdgeMergeMode::Target | EdgeMergeMode::None => {
-					normalized_slot_bias(source_index, source_total)
-				}
-			};
-			let target_bias = match merge_mode {
-				EdgeMergeMode::Target => 0.0,
-				EdgeMergeMode::Source | EdgeMergeMode::None => {
-					normalized_slot_bias(target_index, target_total)
-				}
-			};
-			let source_merge = matches!(merge_mode, EdgeMergeMode::Source);
-			let target_merge = matches!(merge_mode, EdgeMergeMode::Target);
-
-			let a = positioned
-				.get(e.a.as_str())
-				.ok_or_else(|| RenderError::SvgMissingNode(e.a.clone()))?;
-			let b = positioned
-				.get(e.b.as_str())
-				.ok_or_else(|| RenderError::SvgMissingNode(e.b.clone()))?;
-
-			let edge_obstacles_for_route: Vec<geom::RectI> = edge_obstacles
-				.iter()
-				.map(|(_, _, obstacle)| *obstacle)
-				.collect();
-
-			let route = edge::route_edge(
-				&a.bbox,
-				&b.bbox,
-				&node_obstacles,
-				edge_obstacles_for_route.as_slice(),
-				node_bboxes.as_slice(),
-				source_bias,
-				target_bias,
-				source_merge,
-				target_merge,
-				&config,
-			)?;
-
-			for obstacle in edge::route_obstacles_for_later_edges(
-				&route,
-				cell_px,
-				&a.bbox,
-				&b.bbox,
-				edge_obstacle_pad_px,
-				source_merge,
-				target_merge,
-			) {
-				edge_obstacles.push((e.a.clone(), e.b.clone(), obstacle));
-			}
+		let _ = rem_px;
+		let routed_edges = edge_router::route_edges(&positioned, layout.edges.as_slice(), &config)?;
+		for route in &routed_edges {
 			edge_points.extend(route.points.iter().copied());
 			edge_bounds.push(route.bounds);
-			routed_edges.push(route);
 		}
 
 		let mut edges_base_svg = String::new();
@@ -1098,6 +1003,10 @@ fn span_contains_referenced_id(span: &str, referenced_ids: &HashSet<String>) -> 
 }
 
 mod edge;
+mod edge_router;
+mod edge_router_graph;
+mod edge_router_unicode;
+mod edge_router_utils;
 mod geom;
 mod node;
 

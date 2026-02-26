@@ -43,4 +43,4 @@ If present, the repository's Markdown lint config (`.markdownlint-cli2.jsonc`) i
 
 ## Tips
 
-- Don't waste a lot of time manually formatting Markdown, if `markdownlint-cli2` is available (and it is in the IDE) use it instead.
+- Don't waste a lot of time manually formatting Markdown, if `markdownlint-cli2` is available use it instead.

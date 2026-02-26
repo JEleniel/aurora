@@ -83,25 +83,6 @@ In order to allow for the inclusion of artifacts, such as JSON schemas, ADR docu
 
 The default location for such material is `docs/design/references/`.
 
-##### Common External Documents
-
-- JSON schemas
-- Example files (e.g. configuration, example models)
-- Wireframes or UI sketches
-- UX flows / user journeys
-- Interface specifications (e.g. OpenAPI, AsyncAPI, GraphQL schemas)
-- Message and event schemas (e.g. JSON Schema, Avro, Protobuf/IDL)
-- Data schemas and dictionaries (ERDs, database schema notes, data contracts)
-- Detailed algorithm documents
-- ADRs
-- Security and risk documents (isk registers, control mappings)
-- Operational documents (runbooks, on-call guides, incident postmortems)
-- Performance and capacity artifacts (benchmarks, load test reports, sizing guidance)
-- Test artifacts (test plans, test matrices, verification reports)
-- Deployment and infrastructure references (IaC, environment topology notes, deployment manifests)
-- Migration and compatibility guides (data migrations, version upgrade notes)
-- Compliance and audit evidence (policy excerpts, attestations, evidence bundles)
-
 #### ID acronym consistency
 
 For canonical card types, a card ID prefix MUST match the canonical card-type acronym (for example, `REQ-001` for `Requirement`, `DST-001` for `Data Store`). For non-canonical card types, define one stable three-letter acronym and use it consistently.
