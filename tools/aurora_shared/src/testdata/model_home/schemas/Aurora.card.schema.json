@@ -10,6 +10,12 @@
 		"name": { "type": "string" },
 		"description": { "type": "string" },
 		"attributes": { "type": "object" },
+		"external_references": {
+			"type": "array",
+			"items": { "type": "string", "minLength": 1 },
+			"minItems": 1,
+			"uniqueItems": true
+		},
 		"links": { "type": "array" }
 	}
 }

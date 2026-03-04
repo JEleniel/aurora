@@ -16,7 +16,10 @@ fn read_testdata(rel_path: &str) -> String {
 #[test]
 fn registry_parses_and_merges_canonical_and_appearance_data() -> Result<(), RegistryError> {
 	let model_configuration = read_testdata("modelconfiguration/card_registry_test.json");
-	let registry = CardRegistry::try_new_from_model_configuration(&model_configuration)?;
+	let view_configuration =
+		read_testdata("modelconfiguration/card_registry_viewconfiguration.json");
+	let registry =
+		CardRegistry::try_new_from_configurations(&model_configuration, &view_configuration)?;
 	assert!(registry.check("Activity"));
 
 	let activity = registry.try_get_by_acronym("ATV")?;

@@ -294,7 +294,7 @@ fn remove_inkscape_label_attribute(group: &mut Element) {
 	}
 }
 
-fn sanitize_shape_children(children: &mut Vec<XMLNode>) {
+fn sanitize_shape_children(children: &mut [XMLNode]) {
 	for node in children.iter_mut() {
 		let XMLNode::Element(element) = node else {
 			continue;

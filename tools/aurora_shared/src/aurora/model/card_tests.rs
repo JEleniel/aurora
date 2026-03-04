@@ -68,7 +68,7 @@ fn build_card(id: &str, card_type: &str, links: Vec<Link>) -> Card {
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
-		references: Vec::new(),
+		external_references: Vec::new(),
 		links,
 		source_path: PathBuf::from(format!("{}.json", id)),
 		validation_errors: Vec::new(),
@@ -102,7 +102,10 @@ fn try_load_collects_schema_errors() -> Result<(), Box<dyn std::error::Error>> {
 #[test]
 fn check_registry_warns_on_unknown() -> Result<(), Box<dyn std::error::Error>> {
 	let model_configuration = read_testdata("modelconfiguration/card_tests_target_only.json");
-	let registry = CardRegistry::try_new_from_model_configuration(&model_configuration)?;
+	let view_configuration =
+		read_testdata("modelconfiguration/card_tests_target_only_viewconfiguration.json");
+	let registry =
+		CardRegistry::try_new_from_configurations(&model_configuration, &view_configuration)?;
 	let target_def = registry
 		.definitions
 		.iter()
@@ -126,7 +129,10 @@ fn check_registry_warns_on_unknown() -> Result<(), Box<dyn std::error::Error>> {
 #[test]
 fn check_registry_accepts_known_relationships() -> Result<(), Box<dyn std::error::Error>> {
 	let model_configuration = read_testdata("modelconfiguration/card_tests_relationships.json");
-	let registry = CardRegistry::try_new_from_model_configuration(&model_configuration)?;
+	let view_configuration =
+		read_testdata("modelconfiguration/card_tests_relationships_viewconfiguration.json");
+	let registry =
+		CardRegistry::try_new_from_configurations(&model_configuration, &view_configuration)?;
 	let source_def = registry
 		.definitions
 		.iter()
@@ -200,7 +206,7 @@ fn write_markdown_renders_references_and_rewrites_relative_paths()
 	let card_path = md_dir.join("REQ-001.md");
 	let mut card = build_card("REQ-001", "Requirement", Vec::new());
 	card.source_path = json_dir.join("REQ-001.json");
-	card.references = vec![
+	card.external_references = vec![
 		"../../../references/adr.md".to_string(),
 		"https://example.com/spec".to_string(),
 	];
@@ -233,4 +239,39 @@ fn get_compact_removes_schema() {
 	} else {
 		panic!("expected compact object");
 	}
+}
+
+#[test]
+fn get_compact_omits_external_references_when_empty() {
+	let card = build_card("REQ-001", "Requirement", Vec::new());
+	let compact = card.get_compact();
+
+	if let Value::Object(map) = compact {
+		assert!(!map.contains_key("external_references"));
+	} else {
+		panic!("expected compact object");
+	}
+}
+
+#[test]
+fn get_compact_includes_external_references_when_present() {
+	let mut card = build_card("REQ-001", "Requirement", Vec::new());
+	card.external_references = vec!["https://example.com/spec".to_string()];
+	let compact = card.get_compact();
+
+	let Value::Object(map) = compact else {
+		panic!("expected compact object");
+	};
+	let Value::Array(external_references) = map
+		.get("external_references")
+		.expect("expected external_references to be present")
+		.clone()
+	else {
+		panic!("expected external_references to be an array");
+	};
+	assert_eq!(external_references.len(), 1);
+	assert_eq!(
+		external_references[0],
+		Value::String("https://example.com/spec".to_string())
+	);
 }

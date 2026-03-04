@@ -45,6 +45,9 @@ pub enum Commands {
 	/// Validate one or more models and print diagnostics.
 	Validate,
 
+	/// Upgrade model files in place to the latest supported schema.
+	Upgrade,
+
 	/// Render individual card markdown files for each model.
 	RenderAurora {
 		/// Output directory for card markdown (recommended: docs/design/).

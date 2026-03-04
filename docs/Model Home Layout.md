@@ -14,8 +14,10 @@ aurora/
         Aurora.card.schema.json
         Aurora.compact.schema.json
         Aurora.modelconfiguration.schema.json
+        Aurora.viewconfiguration.schema.json
     reference/
         Aurora.modelconfiguration.json
+        Aurora.viewconfiguration.json
         SVGTemplate.svgz
     MIS-001-My_Mission.json
     MIS-001/
@@ -33,7 +35,9 @@ Aurora tooling requires these files to exist under the model home:
 | `schemas/Aurora.audit.schema.json`                          |                          Yes | Structure validation for `AuditLog.ndjson` lines.                                             |
 | `schemas/Aurora.compact.schema.json`                        |                          Yes | Structure validation for compact exports (`Compact.json`).                                    |
 | `schemas/Aurora.modelconfiguration.schema.json`             |                          Yes | Structure validation for the registry (`Aurora.modelconfiguration.json`).                     |
-| `reference/Aurora.modelconfiguration.json`                  |                          Yes | Canonical card types, relationships, default appearance, and view definitions.                |
+| `schemas/Aurora.viewconfiguration.schema.json`              |                          Yes | Structure validation for the registry (`Aurora.viewconfiguration.json`).                      |
+| `reference/Aurora.modelconfiguration.json`                  |                          Yes | Canonical card types, relationships, and view definitions.                                    |
+| `reference/Aurora.viewconfiguration.json`                   |                          Yes | Canonical icon list and default appearance per acronym.                                       |
 | `reference/SVGTemplate.svgz` or `reference/SVGTemplate.svg` | Required for rendering views | SVG defs template for shapes and icons. The tooling prefers `.svgz` and falls back to `.svg`. |
 
 ## Where models live
@@ -96,11 +100,11 @@ View rendering requires a template file at:
 The template must contain, in its `<defs>`:
 
 - **Icons** as groups with ids `i-<icon_name>` (e.g., `i-wrench`)
-- **Shapes** as groups with ids matching the `shape` values used in the model configuration (e.g., `rounded-rectangle`)
+- **Shapes** as groups with ids matching the `shape` values used in the view configuration (e.g., `rounded-rectangle`)
 
 Notes:
 
-- Icon ids are validated against the `available_icons` list in `reference/Aurora.modelconfiguration.json`.
+- Icon ids are validated against the `available_icons` list in `reference/Aurora.viewconfiguration.json`.
 - Shape ids are best-effort: if a configured shape id does not exist in the template, rendering falls back to `rectangle`.
 
 ## Reference sources in this repository

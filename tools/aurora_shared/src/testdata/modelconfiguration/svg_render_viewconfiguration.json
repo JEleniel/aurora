@@ -1,0 +1,17 @@
+{
+	"available_icons": [],
+	"cards": [
+		{
+			"acronym": "MIS",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"stroke": "#000000"
+		},
+		{
+			"acronym": "ACT",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"stroke": "#000000"
+		}
+	]
+}

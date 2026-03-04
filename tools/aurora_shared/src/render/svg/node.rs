@@ -285,7 +285,7 @@ fn truncate_with_ellipsis(line: &str, max_cols: usize) -> String {
 		return "…".to_string();
 	}
 	let chars: Vec<char> = line.chars().collect();
-	if chars.len() + 1 <= max_cols {
+	if chars.len() < max_cols {
 		return format!("{}…", line.trim_end());
 	}
 	let keep = max_cols.saturating_sub(1);
@@ -581,7 +581,7 @@ mod tests {
 			notes: None,
 			icon: None,
 			attributes: crate::Attributes::new(),
-			references: Vec::new(),
+			external_references: Vec::new(),
 			links: Vec::new(),
 			source_path: std::path::PathBuf::from("APP-001.json"),
 			validation_errors: Vec::new(),
@@ -616,7 +616,7 @@ mod tests {
 			notes: None,
 			icon: None,
 			attributes: crate::Attributes::new(),
-			references: Vec::new(),
+			external_references: Vec::new(),
 			links: Vec::new(),
 			source_path: std::path::PathBuf::from("APP-002.json"),
 			validation_errors: Vec::new(),
@@ -650,7 +650,7 @@ mod tests {
 			notes: None,
 			icon: None,
 			attributes: crate::Attributes::new(),
-			references: Vec::new(),
+			external_references: Vec::new(),
 			links: Vec::new(),
 			source_path: std::path::PathBuf::from("FOO-001.json"),
 			validation_errors: Vec::new(),

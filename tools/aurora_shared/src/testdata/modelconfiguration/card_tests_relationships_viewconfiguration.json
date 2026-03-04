@@ -1,0 +1,17 @@
+{
+	"available_icons": [],
+	"cards": [
+		{
+			"acronym": "SRC",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"stroke": "#000000"
+		},
+		{
+			"acronym": "TGT",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"stroke": "#000000"
+		}
+	]
+}

@@ -194,11 +194,11 @@ fn blocked_intervals_x(obstacles: &[RectI], y: i32) -> Vec<(i32, i32)> {
 	out.sort_by(|left, right| left.0.cmp(&right.0).then_with(|| left.1.cmp(&right.1)));
 	let mut merged: Vec<(i32, i32)> = Vec::new();
 	for (x0, x1) in out {
-		if let Some(last) = merged.last_mut() {
-			if x0 <= last.1 + 1 {
-				last.1 = last.1.max(x1);
-				continue;
-			}
+		if let Some(last) = merged.last_mut()
+			&& x0 <= last.1 + 1
+		{
+			last.1 = last.1.max(x1);
+			continue;
 		}
 		merged.push((x0, x1));
 	}
@@ -214,11 +214,11 @@ fn blocked_intervals_y(obstacles: &[RectI], x: i32) -> Vec<(i32, i32)> {
 	out.sort_by(|left, right| left.0.cmp(&right.0).then_with(|| left.1.cmp(&right.1)));
 	let mut merged: Vec<(i32, i32)> = Vec::new();
 	for (y0, y1) in out {
-		if let Some(last) = merged.last_mut() {
-			if y0 <= last.1 + 1 {
-				last.1 = last.1.max(y1);
-				continue;
-			}
+		if let Some(last) = merged.last_mut()
+			&& y0 <= last.1 + 1
+		{
+			last.1 = last.1.max(y1);
+			continue;
 		}
 		merged.push((y0, y1));
 	}
@@ -231,9 +231,7 @@ fn collector_target_for_segment(
 	y1: i32,
 	by_x: &HashMap<i32, Vec<CollectorSpan>>,
 ) -> Option<usize> {
-	let Some(spans) = by_x.get(&x) else {
-		return None;
-	};
+	let spans = by_x.get(&x)?;
 	let a0 = y0.min(y1);
 	let a1 = y0.max(y1);
 	for s in spans {
@@ -276,7 +274,7 @@ pub(super) fn build_visibility_graph(
 		let mut start = min_x;
 		let mut free_spans: Vec<(i32, i32)> = Vec::new();
 		for (bx0, bx1) in blocked {
-			if start <= bx0 - 1 {
+			if start < bx0 {
 				free_spans.push((start, bx0 - 1));
 			}
 			start = bx1 + 1;
@@ -311,7 +309,7 @@ pub(super) fn build_visibility_graph(
 		let mut start = min_y;
 		let mut free_spans: Vec<(i32, i32)> = Vec::new();
 		for (by0, by1) in blocked {
-			if start <= by0 - 1 {
+			if start < by0 {
 				free_spans.push((start, by0 - 1));
 			}
 			start = by1 + 1;
@@ -460,10 +458,10 @@ pub(super) fn dijkstra_path(
 			return Some(out);
 		}
 		for edge in &graph.adj[idx] {
-			if let Some(t) = edge.collector_target() {
-				if t != allowed_target {
-					continue;
-				}
+			if let Some(t) = edge.collector_target()
+				&& t != allowed_target
+			{
+				continue;
 			}
 			let mut congestion: u32 = 0;
 			let mut same_source_overlap: u32 = 0;

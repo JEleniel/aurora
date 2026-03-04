@@ -1,0 +1,11 @@
+{
+	"available_icons": [],
+	"cards": [
+		{
+			"acronym": "TGT",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"stroke": "#000000"
+		}
+	]
+}

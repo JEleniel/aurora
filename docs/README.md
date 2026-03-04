@@ -39,7 +39,8 @@ In this repository, the authoritative specification artifacts live in `Aurora/`.
 In a working model home (an `aurora/` folder), the tooling requires **local copies** of:
 
 - `schemas/*.json` (the schemas)
-- `reference/Aurora.modelconfiguration.json` (the canonical registry)
+- `reference/Aurora.modelconfiguration.json` (canonical vocabulary + view definitions)
+- `reference/Aurora.viewconfiguration.json` (canonical icon list + appearance defaults)
 - `reference/SVGTemplate.svgz` or `reference/SVGTemplate.svg` (the SVG template)
 
 See **[Model Home Layout](./Model%20Home%20Layout.md)** for details.

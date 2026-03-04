@@ -170,7 +170,7 @@ fn write_markdown_uses_sanitized_names_and_audit_history() -> Result<()> {
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
-		references: Vec::new(),
+		external_references: Vec::new(),
 		links: Vec::new(),
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
@@ -190,7 +190,7 @@ fn write_markdown_uses_sanitized_names_and_audit_history() -> Result<()> {
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
-		references: Vec::new(),
+		external_references: Vec::new(),
 		links: Vec::new(),
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
@@ -265,7 +265,7 @@ fn write_markdown_embeds_views_from_mission_views_dir() -> Result<()> {
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
-		references: Vec::new(),
+		external_references: Vec::new(),
 		links: Vec::new(),
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
@@ -324,7 +324,7 @@ fn write_markdown_skips_empty_card_types_in_index() -> Result<()> {
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
-		references: Vec::new(),
+		external_references: Vec::new(),
 		links: Vec::new(),
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
@@ -344,7 +344,7 @@ fn write_markdown_skips_empty_card_types_in_index() -> Result<()> {
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
-		references: Vec::new(),
+		external_references: Vec::new(),
 		links: Vec::new(),
 		source_path: PathBuf::new(),
 		validation_errors: Vec::new(),
@@ -376,7 +376,9 @@ fn write_markdown_skips_empty_card_types_in_index() -> Result<()> {
 
 	// Find a card type from the registry that is not present and ensure it is not emitted.
 	let model_configuration = read_testdata("modelconfiguration/model_tests_registry.json");
-	let registry = CardRegistry::try_new_from_model_configuration(&model_configuration)?;
+	let view_configuration = read_testdata("modelconfiguration/model_tests_viewconfiguration.json");
+	let registry =
+		CardRegistry::try_new_from_configurations(&model_configuration, &view_configuration)?;
 	let forbidden = registry
 		.definitions
 		.iter()
@@ -411,7 +413,7 @@ fn write_markdown_links_are_relative_and_point_to_slugged_files() -> Result<()> 
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
-		references: Vec::new(),
+		external_references: Vec::new(),
 		links: vec![super::Link {
 			target: "FEA-001".to_string(),
 			relationship: "rel".to_string(),
@@ -434,7 +436,7 @@ fn write_markdown_links_are_relative_and_point_to_slugged_files() -> Result<()> 
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
-		references: Vec::new(),
+		external_references: Vec::new(),
 		links: vec![super::Link {
 			target: "MIS-001".to_string(),
 			relationship: "back".to_string(),
@@ -503,7 +505,7 @@ fn write_outputs_model_files() -> Result<()> {
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
-		references: Vec::new(),
+		external_references: Vec::new(),
 		links: Vec::new(),
 		source_path: root_path.clone(),
 		validation_errors: Vec::new(),
@@ -523,7 +525,7 @@ fn write_outputs_model_files() -> Result<()> {
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
-		references: Vec::new(),
+		external_references: Vec::new(),
 		links: Vec::new(),
 		source_path: mission_home.join("Feature").join("FEA-001.json"),
 		validation_errors: Vec::new(),

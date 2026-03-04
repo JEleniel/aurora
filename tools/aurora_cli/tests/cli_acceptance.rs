@@ -22,12 +22,17 @@ fn write_model_home_scaffold(model_home: &Path) {
 		"Aurora.compact.schema.json",
 		"Aurora.audit.schema.json",
 		"Aurora.modelconfiguration.schema.json",
+		"Aurora.viewconfiguration.schema.json",
 	] {
 		let contents = read_testdata(&format!("model_home/schemas/{schema_file}"));
 		fs::write(schemas.join(schema_file), contents)
 			.unwrap_or_else(|e| panic!("failed to write schema fixture {schema_file}: {e}"));
 	}
-	for reference_file in ["Aurora.modelconfiguration.json", "SVGTemplate.svg"] {
+	for reference_file in [
+		"Aurora.modelconfiguration.json",
+		"Aurora.viewconfiguration.json",
+		"SVGTemplate.svg",
+	] {
 		let contents = read_testdata(&format!("model_home/reference/{reference_file}"));
 		fs::write(reference.join(reference_file), contents)
 			.unwrap_or_else(|e| panic!("failed to write reference fixture {reference_file}: {e}"));
@@ -116,6 +121,13 @@ fn render_views_fails_on_root_cycle_validation() {
 		read_testdata("model_home/reference/Aurora.modelconfiguration.with_views.json"),
 	)
 	.expect("override modelconfiguration for render-views");
+	fs::write(
+		model_home
+			.join("reference")
+			.join("Aurora.viewconfiguration.json"),
+		read_testdata("model_home/reference/Aurora.viewconfiguration.with_views.json"),
+	)
+	.expect("override viewconfiguration for render-views");
 
 	write_card(
 		&model_home.join("MIS-001-Example.json"),
@@ -213,4 +225,124 @@ fn compact_requires_valid_model() {
 		!compact_path.exists(),
 		"compact should not be written when validation fails"
 	);
+}
+
+#[test]
+fn upgrade_migrates_attribute_references_into_external_references() {
+	let temp = tempfile::tempdir().expect("tempdir");
+	let model_home = temp.path().join("aurora");
+	fs::create_dir_all(&model_home).expect("create model home");
+	write_model_home_scaffold(&model_home);
+
+	let mission_path = model_home.join("MIS-001-Example.json");
+	write_card(
+		&mission_path,
+		serde_json::json!({
+			"$schema": "./schemas/Aurora.card.schema.json",
+			"id": "MIS-001",
+			"card_type": "Mission",
+			"name": "Mission",
+			"description": "mission",
+			"external_references": ["existing"],
+			"attributes": {
+				"keep": 1,
+				"references": ["a.md", "b.md"],
+				"external_reference": "https://example.com/spec"
+			},
+			"links": []
+		}),
+	);
+	write_empty_audit_log(&model_home.join("MIS-001"));
+
+	let output = run_cli(&[
+		"--input",
+		model_home.to_str().expect("model home path"),
+		"--log",
+		"error",
+		"upgrade",
+	]);
+	assert!(output.status.success(), "upgrade should succeed");
+
+	let upgraded: serde_json::Value =
+		serde_json::from_str(&fs::read_to_string(&mission_path).expect("read mission"))
+			.expect("parse upgraded mission");
+	let external = upgraded
+		.get("external_references")
+		.expect("external_references")
+		.as_array()
+		.expect("external_references array");
+	assert_eq!(
+		external,
+		&vec![
+			serde_json::Value::String("existing".to_string()),
+			serde_json::Value::String("a.md".to_string()),
+			serde_json::Value::String("b.md".to_string()),
+			serde_json::Value::String("https://example.com/spec".to_string()),
+		]
+	);
+	let attributes = upgraded
+		.get("attributes")
+		.expect("attributes")
+		.as_object()
+		.expect("attributes object");
+	assert!(attributes.contains_key("keep"));
+	assert!(!attributes.contains_key("references"));
+	assert!(!attributes.contains_key("external_reference"));
+}
+
+#[test]
+fn upgrade_bootstraps_required_assets_and_prunes_outdated_files() {
+	let temp = tempfile::tempdir().expect("tempdir");
+	let model_home = temp.path().join("aurora");
+	let schemas_dir = model_home.join("schemas");
+	let reference_dir = model_home.join("reference");
+	fs::create_dir_all(&schemas_dir).expect("create schemas dir");
+	fs::create_dir_all(&reference_dir).expect("create reference dir");
+	fs::write(schemas_dir.join("Legacy.schema.json"), "{}").expect("write outdated schema fixture");
+	fs::write(reference_dir.join("Legacy.reference.json"), "{}")
+		.expect("write outdated reference fixture");
+	fs::write(reference_dir.join("SVGTemplate.svg"), "<svg />")
+		.expect("write outdated svg fixture");
+
+	let mission_path = model_home.join("MIS-001-Example.json");
+	write_card(
+		&mission_path,
+		serde_json::json!({
+			"$schema": "./schemas/Aurora.card.schema.json",
+			"id": "MIS-001", "card_type": "Mission", "name": "Mission", "description": "mission",
+			"attributes": {"references": ["a.md"]}, "links": []
+		}),
+	);
+	write_empty_audit_log(&model_home.join("MIS-001"));
+
+	let output = run_cli(&[
+		"--input",
+		model_home.to_str().expect("model home path"),
+		"upgrade",
+	]);
+	assert!(output.status.success(), "upgrade should succeed");
+
+	for file in [
+		"Aurora.audit.schema.json",
+		"Aurora.card.schema.json",
+		"Aurora.compact.schema.json",
+		"Aurora.modelconfiguration.schema.json",
+		"Aurora.viewconfiguration.schema.json",
+	] {
+		assert!(schemas_dir.join(file).is_file(), "missing schema {}", file);
+	}
+	for file in [
+		"Aurora.modelconfiguration.json",
+		"Aurora.viewconfiguration.json",
+		"SVGTemplate.svgz",
+	] {
+		assert!(
+			reference_dir.join(file).is_file(),
+			"missing reference {}",
+			file
+		);
+	}
+	assert!(!schemas_dir.join("Legacy.schema.json").exists());
+	assert!(!reference_dir.join("Legacy.reference.json").exists());
+	assert!(!reference_dir.join("SVGTemplate.svg").exists());
 }

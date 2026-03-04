@@ -11,15 +11,21 @@ pub struct CardRegistry {
 }
 
 impl CardRegistry {
-	pub fn try_new_from_model_configuration(json: &str) -> Result<Self, RegistryError> {
-		let model_configuration: ModelConfiguration = serde_json::from_str(json)?;
-		Self::try_new_from_struct(model_configuration)
+	pub fn try_new_from_configurations(
+		model_configuration_json: &str,
+		view_configuration_json: &str,
+	) -> Result<Self, RegistryError> {
+		let model_configuration: ModelConfiguration =
+			serde_json::from_str(model_configuration_json)?;
+		let view_configuration: ViewConfiguration = serde_json::from_str(view_configuration_json)?;
+		Self::try_new_from_structs(model_configuration, view_configuration)
 	}
 
-	pub fn try_new_from_struct(
+	pub fn try_new_from_structs(
 		model_configuration: ModelConfiguration,
+		view_configuration: ViewConfiguration,
 	) -> Result<Self, RegistryError> {
-		let available_icons: HashSet<String> = model_configuration
+		let available_icons: HashSet<String> = view_configuration
 			.available_icons
 			.iter()
 			.filter_map(|icon| normalize_icon_name(icon))
@@ -37,11 +43,30 @@ impl CardRegistry {
 			}
 		}
 
+		let mut appearance_by_acronym: HashMap<String, ViewConfigurationCardDefinition> =
+			HashMap::new();
+		for appearance in view_configuration.cards {
+			let acronym = appearance.acronym.clone();
+			if !card_type_by_acronym.contains_key(&appearance.acronym) {
+				return Err(RegistryError::UnknownAppearanceAcronym(appearance.acronym));
+			}
+			if appearance_by_acronym
+				.insert(acronym.clone(), appearance)
+				.is_some()
+			{
+				return Err(RegistryError::DuplicateAppearanceAcronym(acronym));
+			}
+		}
+
 		let mut definitions: Vec<CardDefinition> =
 			Vec::with_capacity(model_configuration.cards.len());
 		for definition in model_configuration.cards {
-			let stroke = definition.stroke;
-			let text = definition.text.unwrap_or_else(|| stroke.clone());
+			let appearance = appearance_by_acronym
+				.get(&definition.acronym)
+				.ok_or_else(|| RegistryError::MissingAppearance(definition.acronym.clone()))?;
+
+			let stroke = appearance.stroke.clone();
+			let text = appearance.text.clone().unwrap_or_else(|| stroke.clone());
 			let relationships = definition
 				.relationships
 				.into_iter()
@@ -64,10 +89,10 @@ impl CardRegistry {
 				stroke,
 				text,
 				description: definition.description,
-				fill: definition.fill,
-				icon: definition.icon,
+				fill: appearance.fill.clone(),
+				icon: appearance.icon.clone(),
 				relationships,
-				shape: definition.shape,
+				shape: appearance.shape.clone(),
 				common_subtypes: definition.common_subtypes,
 			});
 		}
@@ -198,7 +223,6 @@ pub struct CardDefinition {
 
 #[derive(Debug, Clone, Deserialize)]
 pub struct ModelConfiguration {
-	pub available_icons: Vec<String>,
 	pub cards: Vec<ModelConfigurationCardDefinition>,
 	pub views: Vec<super::ViewDefinition>,
 }
@@ -208,6 +232,23 @@ pub struct ModelConfigurationCardDefinition {
 	pub acronym: String,
 	pub card_type: String,
 	pub description: String,
+	#[serde(default)]
+	pub relationships: Vec<ModelConfigurationRelationshipDefinition>,
+	#[serde(default)]
+	pub common_subtypes: Vec<String>,
+}
+
+/// Rendering and icon configuration used by view and SVG renderers.
+#[derive(Debug, Clone, Deserialize)]
+pub struct ViewConfiguration {
+	pub available_icons: Vec<String>,
+	pub cards: Vec<ViewConfigurationCardDefinition>,
+}
+
+/// Appearance configuration for a single card type.
+#[derive(Debug, Clone, Deserialize)]
+pub struct ViewConfigurationCardDefinition {
+	pub acronym: String,
 	pub shape: String,
 	pub fill: String,
 	#[serde(alias = "color")]
@@ -216,10 +257,6 @@ pub struct ModelConfigurationCardDefinition {
 	pub text: Option<String>,
 	#[serde(default)]
 	pub icon: Option<String>,
-	#[serde(default)]
-	pub relationships: Vec<ModelConfigurationRelationshipDefinition>,
-	#[serde(default)]
-	pub common_subtypes: Vec<String>,
 }
 
 #[derive(Debug, Clone, Deserialize)]

@@ -1,14 +1,16 @@
 # Canonical Set
 
-Aurora includes a canonical vocabulary of card types, relationships, icon ids, and view definitions.
+Aurora includes a canonical vocabulary of card types, relationships, icon ids, appearance defaults, and view definitions.
 
-This canonical set is defined in the model configuration registry:
+This canonical set is defined across the registry files:
 
 - `reference/Aurora.modelconfiguration.json`
+- `reference/Aurora.viewconfiguration.json`
 
 …and validated by:
 
 - `schemas/Aurora.modelconfiguration.schema.json`
+- `schemas/Aurora.viewconfiguration.schema.json`
 
 ## What the canonical set provides
 
@@ -20,7 +22,8 @@ This canonical set is defined in the model configuration registry:
 Note:
 
 - This page is a navigational overview.
-- The authoritative names, descriptions, and constraints live in `reference/Aurora.modelconfiguration.json`.
+- The authoritative names, descriptions, relationships, and view definitions live in `reference/Aurora.modelconfiguration.json`.
+- The authoritative icon ids and appearance defaults live in `reference/Aurora.viewconfiguration.json`.
 
 ## Canonical card types (overview)
 

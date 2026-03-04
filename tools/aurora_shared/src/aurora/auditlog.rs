@@ -145,11 +145,12 @@ pub struct AuditLinkChange {
 	pub target: String,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Default)]
 pub enum AuditChangeType {
 	#[serde(rename = "create")]
 	Create,
 	#[serde(rename = "change")]
+	#[default]
 	Change,
 	#[serde(rename = "delete")]
 	Delete,
@@ -162,12 +163,6 @@ impl AuditChangeType {
 			AuditChangeType::Change => "change",
 			AuditChangeType::Delete => "delete",
 		}
-	}
-}
-
-impl Default for AuditChangeType {
-	fn default() -> Self {
-		Self::Change
 	}
 }
 

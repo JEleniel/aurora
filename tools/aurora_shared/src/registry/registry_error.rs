@@ -12,6 +12,8 @@ pub enum RegistryError {
 	MissingAppearance(String),
 	#[error("Appearance provided for unknown acronym: {0}")]
 	UnknownAppearanceAcronym(String),
+	#[error("Duplicate appearance acronym in view configuration: {0}")]
+	DuplicateAppearanceAcronym(String),
 	#[error("Relationship source not found for acronym: {0}")]
 	UnknownRelationshipSource(String),
 	#[error("Relationship target not found for acronym: {0}")]

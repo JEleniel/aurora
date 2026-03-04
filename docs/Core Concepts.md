@@ -29,7 +29,7 @@ Per the card schema (`schemas/Aurora.card.schema.json`), every card file must in
 - `boundary`: a grouping label used by rendering and reasoning
 - `status`: a status string (project-specific)
 - `notes`: longer-form notes (rendered in Markdown outputs)
-- `icon`: an **override** icon id for rendering (must be declared in the model configuration)
+- `icon`: an **override** icon id for rendering (must be declared in the view configuration)
 
 ### Minimal example
 
@@ -85,14 +85,20 @@ flowchart LR
     REQ -->|requires| CAP
 ```
 
-## Model configuration (the registry)
+## Reference configuration (the registry)
 
-Every model home includes `reference/Aurora.modelconfiguration.json` (validated by `schemas/Aurora.modelconfiguration.schema.json`). It defines:
+Every model home includes:
+
+- `reference/Aurora.modelconfiguration.json` (validated by `schemas/Aurora.modelconfiguration.schema.json`): canonical vocabulary and view definitions
+- `reference/Aurora.viewconfiguration.json` (validated by `schemas/Aurora.viewconfiguration.schema.json`): rendering defaults and icon availability
+
+Together, they define:
 
 - Which **icons** are available (`available_icons`)
-- The canonical **card types** (`cards`) including default shape and colors
+- The canonical **card types** (`cards`) and descriptions
 - Allowed canonical **relationships** (per card definition)
 - The set of default **views** (`views`) and what they include
+- Default rendering appearance per acronym (shape, fill, stroke, text, icon)
 
 The registry is used for:
 

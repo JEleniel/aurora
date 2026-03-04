@@ -1,0 +1,12 @@
+{
+	"$schema": "../schemas/Aurora.viewconfiguration.schema.json",
+	"available_icons": [],
+	"cards": [
+		{
+			"acronym": "MIS",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"stroke": "#000000"
+		}
+	]
+}

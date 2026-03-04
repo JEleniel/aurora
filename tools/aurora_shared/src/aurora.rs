@@ -17,7 +17,7 @@ use tracing::info;
 use flate2::read::GzDecoder;
 
 use crate::registry::RegistryError;
-use crate::registry::{CardRegistry, ModelConfiguration, ViewRegistry};
+use crate::registry::{CardRegistry, ModelConfiguration, ViewConfiguration, ViewRegistry};
 
 /// A complete set of Aurora models in a shared Model Home
 #[derive(Debug)]
@@ -34,8 +34,12 @@ pub struct Aurora {
 	pub audit_schema: Value,
 	/// A copy of the model-configuration schema located with the models
 	pub modelconfiguration_schema: Value,
+	/// A copy of the view-configuration schema located with the models
+	pub viewconfiguration_schema: Value,
 	/// Parsed model configuration loaded from `reference/Aurora.modelconfiguration.json`
 	pub model_configuration: ModelConfiguration,
+	/// Parsed view configuration loaded from `reference/Aurora.viewconfiguration.json`
+	pub view_configuration: ViewConfiguration,
 	/// Parsed card registry derived from model configuration
 	pub card_registry: CardRegistry,
 	/// Parsed view registry derived from model configuration
@@ -78,7 +82,9 @@ impl Aurora {
 		let audit_schema_path = schema_dir.join("Aurora.audit.schema.json");
 		let modelconfiguration_schema_path =
 			schema_dir.join("Aurora.modelconfiguration.schema.json");
+		let viewconfiguration_schema_path = schema_dir.join("Aurora.viewconfiguration.schema.json");
 		let modelconfiguration_path = reference_dir.join("Aurora.modelconfiguration.json");
+		let viewconfiguration_path = reference_dir.join("Aurora.viewconfiguration.json");
 		let svg_template_svg_path = reference_dir.join("SVGTemplate.svg");
 		let svg_template_svgz_path = reference_dir.join("SVGTemplate.svgz");
 
@@ -87,7 +93,9 @@ impl Aurora {
 			&compact_schema_path,
 			&audit_schema_path,
 			&modelconfiguration_schema_path,
+			&viewconfiguration_schema_path,
 			&modelconfiguration_path,
+			&viewconfiguration_path,
 		] {
 			if !required.is_file() {
 				return Err(AuroraError::RequiredFileMissing(
@@ -119,13 +127,25 @@ impl Aurora {
 			std::fs::read_to_string(&modelconfiguration_schema_path)?;
 		let modelconfiguration_schema: Value =
 			serde_json::from_str(&modelconfiguration_schema_data)?;
+		let viewconfiguration_schema_data =
+			std::fs::read_to_string(&viewconfiguration_schema_path)?;
+		let viewconfiguration_schema: Value = serde_json::from_str(&viewconfiguration_schema_data)?;
 		let modelconfiguration_data = std::fs::read_to_string(&modelconfiguration_path)?;
 		let modelconfiguration_json: Value = serde_json::from_str(&modelconfiguration_data)?;
+		let viewconfiguration_data = std::fs::read_to_string(&viewconfiguration_path)?;
+		let viewconfiguration_json: Value = serde_json::from_str(&viewconfiguration_data)?;
 
 		Self::check_schema_reference(
 			&modelconfiguration_path,
 			&modelconfiguration_json,
 			"Aurora.modelconfiguration.schema.json",
+			&mut load_warnings,
+		)?;
+
+		Self::check_schema_reference(
+			&viewconfiguration_path,
+			&viewconfiguration_json,
+			"Aurora.viewconfiguration.schema.json",
 			&mut load_warnings,
 		)?;
 
@@ -136,9 +156,20 @@ impl Aurora {
 			return Err(AuroraError::ReferenceValidationFailed(messages));
 		}
 
+		let viewconfiguration_compiled =
+			jsonschema::JSONSchema::compile(&viewconfiguration_schema)?;
+		if let Err(errors) = viewconfiguration_compiled.validate(&viewconfiguration_json) {
+			let messages = errors.map(|error| error.to_string()).collect::<Vec<_>>();
+			return Err(AuroraError::ReferenceValidationFailed(messages));
+		}
+
 		let model_configuration: ModelConfiguration =
 			serde_json::from_str(&modelconfiguration_data)?;
-		let card_registry = CardRegistry::try_new_from_struct(model_configuration.clone())?;
+		let view_configuration: ViewConfiguration = serde_json::from_str(&viewconfiguration_data)?;
+		let card_registry = CardRegistry::try_new_from_structs(
+			model_configuration.clone(),
+			view_configuration.clone(),
+		)?;
 		let view_registry = ViewRegistry::try_new_from_struct(&model_configuration);
 
 		// SVG template validation is performed by rendering workflows.
@@ -172,7 +203,9 @@ impl Aurora {
 			compact_schema,
 			audit_schema,
 			modelconfiguration_schema,
+			viewconfiguration_schema,
 			model_configuration,
+			view_configuration,
 			card_registry,
 			view_registry,
 			svg_template,
@@ -199,16 +232,16 @@ impl Aurora {
 		};
 
 		let svg_icon_ids = extract_svg_icon_ids(&svg_template);
-		for icon in &self.model_configuration.available_icons {
+		for icon in &self.card_registry.available_icons {
 			if !svg_icon_ids.contains(icon) {
 				return Err(AuroraError::ReferenceValidationFailed(vec![format!(
-					"reference/Aurora.modelconfiguration.json declares icon '{}' but reference/SVGTemplate.svgz (or SVGTemplate.svg) is missing group id 'i-{}'.",
+					"reference/Aurora.viewconfiguration.json declares icon '{}' but reference/SVGTemplate.svgz (or SVGTemplate.svg) is missing group id 'i-{}'.",
 					icon, icon
 				)]));
 			}
 			if svg_icon_group_is_empty(&svg_template, icon) {
 				return Err(AuroraError::ReferenceValidationFailed(vec![format!(
-					"reference/Aurora.modelconfiguration.json declares icon '{}' but reference/SVGTemplate.svgz (or SVGTemplate.svg) has an empty group for id 'i-{}'.",
+					"reference/Aurora.viewconfiguration.json declares icon '{}' but reference/SVGTemplate.svgz (or SVGTemplate.svg) has an empty group for id 'i-{}'.",
 					icon, icon
 				)]));
 			}
@@ -390,7 +423,7 @@ impl Aurora {
 				&& !self.card_registry.has_icon(icon)
 			{
 				errors.push(format!(
-					"Card {} has icon override '{}' which is not present in reference/Aurora.modelconfiguration.json available_icons.",
+					"Card {} has icon override '{}' which is not present in reference/Aurora.viewconfiguration.json available_icons.",
 					card.id, icon
 				));
 			}
@@ -592,7 +625,7 @@ fn id_prefix(id: &str) -> Option<&str> {
 	id.split('-').next()
 }
 
-fn model_card_index<'a>(model: &'a Model) -> HashMap<String, &'a Card> {
+fn model_card_index(model: &Model) -> HashMap<String, &Card> {
 	let mut cards: HashMap<String, &Card> = HashMap::new();
 	for card in std::iter::once(&model.root_card).chain(model.cards.iter()) {
 		cards.insert(card.id.clone(), card);

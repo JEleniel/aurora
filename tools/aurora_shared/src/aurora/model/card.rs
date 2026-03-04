@@ -34,7 +34,7 @@ pub struct Card {
 	#[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
 	pub attributes: Attributes,
 	#[serde(default, skip_serializing_if = "Vec::is_empty")]
-	pub references: Vec<String>,
+	pub external_references: Vec<String>,
 	pub links: Vec<Link>,
 	#[serde(skip)]
 	pub source_path: PathBuf,
@@ -161,7 +161,7 @@ impl Card {
 		};
 
 		let attributes = attributes_markdown(&self.attributes);
-		let references = references_markdown(&self.references, &self.source_path, path);
+		let references = references_markdown(&self.external_references, &self.source_path, path);
 
 		let mut links: String = String::new();
 		if self.links.is_empty() {
@@ -242,6 +242,18 @@ impl Card {
 		}
 		if let Some(boundary) = &self.boundary {
 			map.insert("boundary".to_string(), Value::String(boundary.clone()));
+		}
+		if !self.external_references.is_empty() {
+			map.insert(
+				"external_references".to_string(),
+				Value::Array(
+					self.external_references
+						.iter()
+						.cloned()
+						.map(Value::String)
+						.collect(),
+				),
+			);
 		}
 		map.insert(
 			"attributes".to_string(),

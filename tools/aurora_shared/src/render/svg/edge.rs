@@ -5,6 +5,7 @@ const EDGE_STROKE_WIDTH_PX: i32 = 4;
 const ARROW_SIZE_PX: f32 = 40.0;
 const JUMP_RADIUS_PX: f32 = 16.0;
 const JUMP_CLEAR_STROKE_WIDTH_PX: i32 = EDGE_STROKE_WIDTH_PX + 2;
+#[cfg(test)]
 pub(super) const LANE_COUNT: i32 = 10;
 
 #[derive(Debug, Clone)]
@@ -211,25 +212,6 @@ pub fn render_edge_layers(route: &Route, style: EdgeStyle) -> EdgeRenderLayers {
 	layers
 }
 
-pub fn route_obstacles_for_later_edges(
-	route: &Route,
-	_cell_px: i32,
-	_source_bbox: &geom::RectI,
-	_target_bbox: &geom::RectI,
-	padding_px: i32,
-	source_merge: bool,
-	target_merge: bool,
-) -> Vec<geom::RectI> {
-	let _ = route;
-	let _ = _cell_px;
-	let _ = _source_bbox;
-	let _ = _target_bbox;
-	let _ = padding_px;
-	let _ = source_merge;
-	let _ = target_merge;
-	Vec::new()
-}
-
 fn route_stroke_points(route: &Route) -> Vec<geom::PointF> {
 	let mut points = route.points.clone();
 	if points.len() < 2 {
@@ -306,20 +288,6 @@ fn bounds_for_points(points: &[geom::PointF]) -> geom::Bounds {
 		bounds = bounds.union_point(*point);
 	}
 	bounds
-}
-
-fn segment_rect(a: geom::PointF, b: geom::PointF, pad: i32) -> geom::RectI {
-	let p = pad.max(0) as f32;
-	let min_x = (a.x.min(b.x) - p).floor() as i32;
-	let min_y = (a.y.min(b.y) - p).floor() as i32;
-	let max_x = (a.x.max(b.x) + p).ceil() as i32;
-	let max_y = (a.y.max(b.y) + p).ceil() as i32;
-	geom::RectI {
-		x: min_x,
-		y: min_y,
-		w: (max_x - min_x).max(1),
-		h: (max_y - min_y).max(1),
-	}
 }
 
 fn compress_polyline(points: Vec<geom::PointF>) -> Vec<geom::PointF> {

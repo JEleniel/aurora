@@ -122,7 +122,7 @@ fn strip_inkscape_metadata(svg: &mut Element) {
 
 fn strip_inkscape_attributes(element: &mut Element) {
 	let mut to_remove = Vec::new();
-	for (key, _) in &element.attributes {
+	for key in element.attributes.keys() {
 		if key.starts_with("inkscape:")
 			|| key.starts_with("sodipodi:")
 			|| key.eq_ignore_ascii_case("xmlns:inkscape")
@@ -249,10 +249,10 @@ fn collect_referenced_ids(element: &Element) -> Vec<String> {
 fn collect_referenced_ids_recursive(element: &Element, out: &mut Vec<String>) {
 	for (name, value) in &element.attributes {
 		let local = local_name(name);
-		if local.eq_ignore_ascii_case("href") {
-			if let Some(id) = value.strip_prefix('#') {
-				out.push(id.to_string());
-			}
+		if local.eq_ignore_ascii_case("href")
+			&& let Some(id) = value.strip_prefix('#')
+		{
+			out.push(id.to_string());
 		}
 		for id in extract_url_ids(value) {
 			out.push(id);
@@ -309,13 +309,11 @@ fn remove_unreferenced_ids(element: &mut Element, referenced: &[String], keep_id
 	let keep = keep_ids
 		.iter()
 		.any(|id| element.attributes.get("id") == Some(id));
-	if !keep {
-		if let Some(id) = element.attributes.get("id") {
-			let referenced_here = referenced.iter().any(|x| x == id);
-			if !referenced_here {
-				element.attributes.remove("id");
-			}
-		}
+	if !keep
+		&& let Some(id) = element.attributes.get("id")
+		&& !referenced.iter().any(|x| x == id)
+	{
+		element.attributes.remove("id");
 	}
 	for node in &mut element.children {
 		if let XMLNode::Element(child) = node {

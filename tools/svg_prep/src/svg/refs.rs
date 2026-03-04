@@ -64,14 +64,12 @@ fn rewrite_reference_value(
 ) -> String {
 	let mut rewritten = rewrite_url_reference_ids(value, id_map);
 
-	if local_name(attribute_name).eq_ignore_ascii_case("href") {
-		if let Some(id) = rewritten.strip_prefix('#') {
-			if id.chars().all(is_svg_id_char) {
-				if let Some(prefixed) = id_map.get(id) {
-					rewritten = format!("#{prefixed}");
-				}
-			}
-		}
+	if local_name(attribute_name).eq_ignore_ascii_case("href")
+		&& let Some(id) = rewritten.strip_prefix('#')
+		&& id.chars().all(is_svg_id_char)
+		&& let Some(prefixed) = id_map.get(id)
+	{
+		rewritten = format!("#{prefixed}");
 	}
 
 	rewritten

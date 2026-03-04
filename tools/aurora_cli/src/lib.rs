@@ -1,5 +1,6 @@
 mod cli;
 pub mod constants;
+mod upgrade;
 
 use crate::cli::Commands;
 use aurora_shared::Aurora;
@@ -13,10 +14,16 @@ pub fn run() -> Result<(), RuntimeError> {
 
 	init_tracing(&cli.log)?;
 
+	if matches!(cli.command, Commands::Upgrade) {
+		run_upgrade(&cli.input)?;
+		return Ok(());
+	}
+
 	let aurora = Aurora::try_load(&cli.input)?;
 
 	match cli.command {
 		Commands::Validate => validate(&aurora),
+		Commands::Upgrade => unreachable!("upgrade is handled before model load"),
 		Commands::RenderAurora { output } => render_markdown(&aurora, &output),
 		Commands::RenderViews { output } => render_views(&aurora, &output),
 		Commands::RenderAll { output } => render_all(&aurora, &output),
@@ -132,6 +139,11 @@ fn run_compact(aurora: &Aurora, output: &Path) -> Result<(), RuntimeError> {
 	);
 	aurora.write_compact(output)?;
 
+	Ok(())
+}
+
+fn run_upgrade(input_path: &Path) -> Result<(), RuntimeError> {
+	upgrade::upgrade_in_place(input_path)?;
 	Ok(())
 }
 

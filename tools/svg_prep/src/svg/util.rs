@@ -25,10 +25,10 @@ pub(super) fn is_defs_tag(name: &str) -> bool {
 }
 
 pub(super) fn local_name(name: &str) -> &str {
-	if let Some(stripped) = name.strip_prefix('{') {
-		if let Some(end) = stripped.find('}') {
-			return &stripped[end + 1..];
-		}
+	if let Some(stripped) = name.strip_prefix('{')
+		&& let Some(end) = stripped.find('}')
+	{
+		return &stripped[end + 1..];
 	}
 	name.rsplit(':').next().unwrap_or(name)
 }

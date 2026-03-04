@@ -4,17 +4,17 @@ use super::util::{is_defs_tag, local_name};
 
 pub(super) fn extract_defs_elements(svg: &Element) -> Vec<Element> {
 	for node in &svg.children {
-		if let XMLNode::Element(element) = node {
-			if is_defs_tag(&element.name) {
-				return element
-					.children
-					.iter()
-					.filter_map(|child| match child {
-						XMLNode::Element(next) => Some(next.clone()),
-						_ => None,
-					})
-					.collect();
-			}
+		if let XMLNode::Element(element) = node
+			&& is_defs_tag(&element.name)
+		{
+			return element
+				.children
+				.iter()
+				.filter_map(|child| match child {
+					XMLNode::Element(next) => Some(next.clone()),
+					_ => None,
+				})
+				.collect();
 		}
 	}
 	Vec::new()
@@ -30,13 +30,13 @@ pub(super) fn replace_defs_section(svg: &mut Element, defs_children: Vec<Element
 	let mut first_index = None;
 	let mut trailing = Vec::new();
 	for (index, node) in svg.children.iter().enumerate() {
-		if let XMLNode::Element(element) = node {
-			if is_defs_tag(&element.name) {
-				if first_index.is_none() {
-					first_index = Some(index);
-				} else {
-					trailing.push(index);
-				}
+		if let XMLNode::Element(element) = node
+			&& is_defs_tag(&element.name)
+		{
+			if first_index.is_none() {
+				first_index = Some(index);
+			} else {
+				trailing.push(index);
 			}
 		}
 	}

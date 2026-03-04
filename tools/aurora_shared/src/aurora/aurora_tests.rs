@@ -7,7 +7,7 @@ use serde_json::{Value, json};
 use std::io::Write;
 
 use super::{AuditChangeType, AuditLog, AuditLogEntry, Aurora, AuroraError, Card, Link, Model};
-use crate::registry::{CardRegistry, ModelConfiguration, ViewRegistry};
+use crate::registry::{CardRegistry, ModelConfiguration, ViewConfiguration, ViewRegistry};
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
@@ -55,6 +55,7 @@ fn write_schema_files(model_home: &Path) -> Result<()> {
 		"Aurora.compact.schema.json",
 		"Aurora.audit.schema.json",
 		"Aurora.modelconfiguration.schema.json",
+		"Aurora.viewconfiguration.schema.json",
 	] {
 		std::fs::write(
 			schemas.join(schema_file),
@@ -64,6 +65,10 @@ fn write_schema_files(model_home: &Path) -> Result<()> {
 	std::fs::write(
 		reference.join("Aurora.modelconfiguration.json"),
 		read_testdata("model_home/reference/Aurora.modelconfiguration.json"),
+	)?;
+	std::fs::write(
+		reference.join("Aurora.viewconfiguration.json"),
+		read_testdata("model_home/reference/Aurora.viewconfiguration.json"),
 	)?;
 	write_svg_template_svgz(&reference)?;
 	Ok(())
@@ -80,6 +85,7 @@ fn write_schema_files_without_svg_template(model_home: &Path) -> Result<()> {
 		"Aurora.compact.schema.json",
 		"Aurora.audit.schema.json",
 		"Aurora.modelconfiguration.schema.json",
+		"Aurora.viewconfiguration.schema.json",
 	] {
 		std::fs::write(
 			schemas.join(schema_file),
@@ -89,6 +95,10 @@ fn write_schema_files_without_svg_template(model_home: &Path) -> Result<()> {
 	std::fs::write(
 		reference.join("Aurora.modelconfiguration.json"),
 		read_testdata("model_home/reference/Aurora.modelconfiguration.json"),
+	)?;
+	std::fs::write(
+		reference.join("Aurora.viewconfiguration.json"),
+		read_testdata("model_home/reference/Aurora.viewconfiguration.json"),
 	)?;
 	Ok(())
 }
@@ -112,8 +122,13 @@ fn test_aurora(models: Vec<Model>) -> Aurora {
 		read_testdata("model_home/reference/Aurora.modelconfiguration.json");
 	let model_configuration: ModelConfiguration =
 		serde_json::from_str(&model_configuration_text).expect("model configuration");
+	let view_configuration_text =
+		read_testdata("model_home/reference/Aurora.viewconfiguration.json");
+	let view_configuration: ViewConfiguration =
+		serde_json::from_str(&view_configuration_text).expect("view configuration");
 	let card_registry =
-		CardRegistry::try_new_from_struct(model_configuration.clone()).expect("card registry");
+		CardRegistry::try_new_from_structs(model_configuration.clone(), view_configuration.clone())
+			.expect("card registry");
 	let view_registry = ViewRegistry::try_new_from_struct(&model_configuration);
 	let svg_template = read_testdata("svg/template_minimal.svg");
 
@@ -124,7 +139,9 @@ fn test_aurora(models: Vec<Model>) -> Aurora {
 		compact_schema: Value::Null,
 		audit_schema: Value::Null,
 		modelconfiguration_schema: Value::Null,
+		viewconfiguration_schema: Value::Null,
 		model_configuration,
+		view_configuration,
 		card_registry,
 		view_registry,
 		svg_template,
@@ -155,7 +172,7 @@ fn build_card(id: &str, card_type: &str, targets: &[&str]) -> Card {
 		notes: None,
 		icon: None,
 		attributes: super::Attributes::new(),
-		references: Vec::new(),
+		external_references: Vec::new(),
 		links,
 		source_path: PathBuf::from(format!("{}.json", id)),
 		validation_errors: Vec::new(),

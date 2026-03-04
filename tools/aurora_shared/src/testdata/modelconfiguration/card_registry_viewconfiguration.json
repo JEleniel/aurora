@@ -1,0 +1,23 @@
+{
+	"available_icons": ["wrench"],
+	"cards": [
+		{
+			"acronym": "ATV",
+			"shape": "double-rectangle",
+			"fill": "#4c1d95",
+			"stroke": "#111111"
+		},
+		{
+			"acronym": "INT",
+			"shape": "interface",
+			"fill": "#ffffff",
+			"stroke": "#222222"
+		},
+		{
+			"acronym": "COM",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"stroke": "#333333"
+		}
+	]
+}

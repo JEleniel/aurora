@@ -104,13 +104,13 @@ It may appear blank in many SVG viewers because it is primarily a `<defs>` conta
 
 ## Icon id synchronization
 
-As part of the full build, `svg_prep` extracts all `<g id="i-<name>">` groups from the template `<defs>` and uses that list to rewrite the icon-id array in an Aurora model configuration file.
+As part of the full build, `svg_prep` extracts all `<g id="i-<name>">` groups from the template `<defs>` and uses that list to rewrite the `available_icons` array in an Aurora view configuration file.
 
 Resolution rules:
 
-- If an `Aurora.modelconfiguration.json` file exists adjacent to the template path, it is updated.
+- If an `Aurora.viewconfiguration.json` file exists adjacent to the template path, it is updated.
 - Otherwise, in this repository `svg_prep` looks for:
-    - `.github/aurora/reference/Aurora.modelconfiguration.json`
+    - `.github/aurora/reference/Aurora.viewconfiguration.json`
 
 This behavior is convenient for maintaining the repo’s canonical icon list, but it also means a full build can modify files outside `assets/`.
 

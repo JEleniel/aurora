@@ -55,7 +55,8 @@ This document specifies requirements and UX expectations for a standalone Aurora
 
 - The editor MUST load the schemas and reference files included with a model home and use those for all interaction with that model. This allows the editor to work across multiple versions and customizations of Aurora.
     - The editor MUST use `schemas/*` for validation.
-    - The editor MUST use `reference/Aurora.modelconfiguration.json` for canonical registries, appearance, and view definitions.
+    - The editor MUST use `reference/Aurora.modelconfiguration.json` for canonical card registries and view definitions.
+    - The editor MUST use `reference/Aurora.viewconfiguration.json` for canonical appearance defaults (including `available_icons`).
 
 ### Editing, Validation, and Linting
 

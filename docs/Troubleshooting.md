@@ -38,7 +38,7 @@ Note:
 Example error class:
 
 - Missing schemas (`schemas/*.json`)
-- Missing registry (`reference/Aurora.modelconfiguration.json`)
+- Missing registry (`reference/Aurora.modelconfiguration.json` or `reference/Aurora.viewconfiguration.json`)
 - Missing template (`reference/SVGTemplate.svgz` or `reference/SVGTemplate.svg`)
 
 Fix:
@@ -54,7 +54,7 @@ Symptoms:
 
 What it means:
 
-- The registry’s `available_icons` list includes an icon id that does not exist in the template’s `<defs>` as a non-empty group with id `i-<icon_id>`.
+- `reference/Aurora.viewconfiguration.json` → `available_icons` includes an icon id that does not exist in the template’s `<defs>` as a non-empty group with id `i-<icon_id>`.
 
 Fix:
 

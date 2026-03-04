@@ -9,14 +9,6 @@
 			"pattern": "^[A-Z]{3}$",
 			"type": "string"
 		},
-		"available_icons": {
-			"items": {
-				"$ref": "#/$defs/icon_name"
-			},
-			"minItems": 1,
-			"type": "array",
-			"uniqueItems": true
-		},
 		"card_common_property": {
 			"additionalProperties": false,
 			"properties": {
@@ -39,12 +31,6 @@
 				"card_type": {
 					"$ref": "#/$defs/non_empty"
 				},
-				"stroke": {
-					"$ref": "#/$defs/hex_color"
-				},
-				"text": {
-					"$ref": "#/$defs/hex_color"
-				},
 				"common_properties": {
 					"items": {
 						"$ref": "#/$defs/card_common_property"
@@ -64,13 +50,6 @@
 				"description": {
 					"$ref": "#/$defs/non_empty"
 				},
-				"fill": {
-					"$ref": "#/$defs/hex_color"
-				},
-				"icon": {
-					"$ref": "#/$defs/icon_name",
-					"description": "Optional SVG symbol name from the available_icons list."
-				},
 				"relationships": {
 					"items": {
 						"$ref": "#/$defs/card_relationship"
@@ -78,12 +57,9 @@
 					"minItems": 1,
 					"type": "array",
 					"uniqueItems": true
-				},
-				"shape": {
-					"$ref": "#/$defs/non_empty"
 				}
 			},
-			"required": ["card_type", "acronym", "description", "shape", "fill", "text", "stroke"],
+			"required": ["card_type", "acronym", "description"],
 			"type": "object"
 		},
 		"card_relationship": {
@@ -160,7 +136,7 @@
 	"$id": "https://crystultima.org/aurora/modelconfiguration.schema.json",
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"additionalProperties": false,
-	"description": "Schema for Aurora.modelconfiguration.json with card-centric canonical definitions, embedded appearance, and per-card relationships.",
+	"description": "Schema for Aurora.modelconfiguration.json with card-centric canonical definitions and per-card relationships.",
 	"properties": {
 		"$schema": {
 			"minLength": 1,
@@ -169,9 +145,6 @@
 		"version": {
 			"$ref": "#/$defs/semver"
 		},
-		"available_icons": {
-			"$ref": "#/$defs/available_icons"
-		},
 		"cards": {
 			"$ref": "#/$defs/cards"
 		},
@@ -179,7 +152,7 @@
 			"$ref": "#/$defs/views"
 		}
 	},
-	"required": ["version", "cards", "available_icons", "views"],
+	"required": ["version", "cards", "views"],
 	"title": "Aurora Model Configuration Schema",
 	"type": "object"
 }

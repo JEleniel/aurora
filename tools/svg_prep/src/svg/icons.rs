@@ -138,10 +138,10 @@ fn text_content(element: &Element) -> String {
 fn extract_icon_children(root: &Element) -> Vec<XMLNode> {
 	let mut output = Vec::new();
 	for node in &root.children {
-		if let XMLNode::Element(element) = node {
-			if let Some(cleaned) = sanitize_element(element) {
-				output.push(XMLNode::Element(cleaned));
-			}
+		if let XMLNode::Element(element) = node
+			&& let Some(cleaned) = sanitize_element(element)
+		{
+			output.push(XMLNode::Element(cleaned));
 		}
 	}
 	output
@@ -195,16 +195,16 @@ fn defs_ids_already_prefixed(elements: &[Element], id_prefix: &str) -> bool {
 }
 
 fn element_ids_prefixed_recursive(element: &Element, id_prefix: &str) -> bool {
-	if let Some(id) = element.attributes.get("id") {
-		if !id.starts_with(&format!("{id_prefix}-")) {
-			return false;
-		}
+	if let Some(id) = element.attributes.get("id")
+		&& !id.starts_with(&format!("{id_prefix}-"))
+	{
+		return false;
 	}
 	for node in &element.children {
-		if let XMLNode::Element(child) = node {
-			if !element_ids_prefixed_recursive(child, id_prefix) {
-				return false;
-			}
+		if let XMLNode::Element(child) = node
+			&& !element_ids_prefixed_recursive(child, id_prefix)
+		{
+			return false;
 		}
 	}
 	true

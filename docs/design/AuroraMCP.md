@@ -52,7 +52,8 @@ This document specifies requirements and expectations for Aurora MCP server. It 
 
 - The server MUST load the schemas and reference files included with a model home and use those for all interaction with that model. This allows the server to work across multiple versions and customizations of Aurora.
     - The server MUST use `schemas/*` for validation.
-    - The server MUST use `reference/Aurora.modelconfiguration.json` for canonical registries, appearance, and view definitions.
+    - The server MUST use `reference/Aurora.modelconfiguration.json` for canonical card registries and view definitions.
+    - The server MUST use `reference/Aurora.viewconfiguration.json` for canonical appearance defaults (including `available_icons`).
 
 ### Views and rendering
 

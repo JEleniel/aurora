@@ -1,12 +1,14 @@
 # Configuration Guide
 
-Aurora’s canonical vocabulary and rendering defaults are defined by a single JSON registry file:
+Aurora’s canonical vocabulary, view definitions, and rendering defaults are defined by two JSON registry files:
 
 - `reference/Aurora.modelconfiguration.json`
+- `reference/Aurora.viewconfiguration.json`
 
-This file is validated by:
+These files are validated by:
 
 - `schemas/Aurora.modelconfiguration.schema.json`
+- `schemas/Aurora.viewconfiguration.schema.json`
 
 The tooling uses the registry to:
 
@@ -16,17 +18,23 @@ The tooling uses the registry to:
 
 ## File structure
 
-`Aurora.modelconfiguration.json` has three top-level properties:
+`Aurora.modelconfiguration.json` has these top-level properties:
 
+- `$schema`: schema reference (required)
+- `cards`: canonical card type definitions (semantics)
+- `views`: view definitions
+
+`Aurora.viewconfiguration.json` has these top-level properties:
+
+- `$schema`: schema reference (required)
 - `available_icons`: list of icon ids (strings)
-- `cards`: list of card type definitions
-- `views`: list of view definitions
+- `cards`: per-acronym appearance entries (rendering)
 
 The schema disallows additional top-level properties.
 
 ## `available_icons`
 
-`available_icons` is the list of icon ids a card may reference.
+`available_icons` (in `Aurora.viewconfiguration.json`) is the list of icon ids a card may reference.
 
 - Each entry is a plain id such as `wrench`.
 - In the SVG template, icons are stored as `<g id="i-<icon_id>">...</g>`.
@@ -36,18 +44,15 @@ Rendering and validation expectations:
 - View rendering checks that every `available_icons` entry has a non-empty matching `i-...` group in `reference/SVGTemplate.svgz` (or `.svg`).
 - Card `icon` overrides must reference an id that appears in `available_icons` (the renderer also tolerates `i-<id>` and `#i-<id>` forms).
 
-## `cards` definitions
+## Model card definitions (`Aurora.modelconfiguration.json` → `cards`)
 
-Each entry in `cards` defines a canonical card type and its defaults.
+Each entry in `cards` defines a canonical card type.
 
 Key fields:
 
 - `acronym` (required): three uppercase letters, e.g. `REQ`
 - `card_type` (required): string used in card files, e.g. `Requirement`
 - `description` (required): canonical meaning
-- `shape` (required): a shape id that should exist in the SVG template defs
-- `fill`, `stroke`, `text` (required): hex colors (`#RRGGBB`)
-- `icon` (optional): default icon id
 - `common_subtypes` (optional): list of strings (convenience vocabulary)
 - `relationships` (optional): allowed relationship labels from this type to target acronyms
 
@@ -58,11 +63,6 @@ Example (simplified):
     "acronym": "REQ",
     "card_type": "Requirement",
     "description": "Verifiable statement of need/obligation.",
-    "shape": "rounded-rectangle",
-    "fill": "#065f46",
-    "stroke": "#000000",
-    "text": "#FFFFFF",
-    "icon": "check",
     "common_subtypes": ["Functional", "Non-Functional"],
     "relationships": [
         { "target": "CAP", "relationship": "requires" },
@@ -83,9 +83,33 @@ When a model is checked:
 
 Registry mismatches produce **warnings** (not invariant errors).
 
+## View appearance definitions (`Aurora.viewconfiguration.json` → `cards`)
+
+Each entry in `Aurora.viewconfiguration.json` → `cards` defines the default rendering appearance for a card acronym.
+
+Key fields:
+
+- `acronym` (required): three uppercase letters, e.g. `REQ`
+- `shape` (required): a shape id that should exist in the SVG template defs
+- `fill`, `stroke`, `text` (required): hex colors (`#RRGGBB`)
+- `icon` (optional): default icon id (must appear in `available_icons`)
+
+Example (simplified):
+
+```json
+{
+    "acronym": "REQ",
+    "shape": "rounded-rectangle",
+    "fill": "#065f46",
+    "stroke": "#000000",
+    "text": "#FFFFFF",
+    "icon": "check"
+}
+```
+
 ## `views` definitions
 
-A view definition determines which portions of the model can be rendered.
+A view definition (in `Aurora.modelconfiguration.json`) determines which portions of the model can be rendered.
 
 Fields:
 
@@ -117,23 +141,30 @@ This section shows how to extend Aurora beyond the canonical set without breakin
 ### Add a new card type
 
 1. Choose a stable **three-letter acronym** (e.g. `TMI`).
-2. Add a new card definition to `cards`.
-3. Add the acronym to at least one view (otherwise the tools may warn that your acronym is unused).
-4. Create card JSON files with `card_type` matching your definition.
+2. Add a new model card definition to `Aurora.modelconfiguration.json` → `cards`.
+3. Add a new appearance entry to `Aurora.viewconfiguration.json` → `cards`.
+4. Add the acronym to at least one view (otherwise the tools may warn that your acronym is unused).
+5. Create card JSON files with `card_type` matching your definition.
 
-Example definition:
+Example definitions:
 
 ```json
 {
     "acronym": "TMI",
     "card_type": "Team",
     "description": "A team responsible for owning and operating a set of components.",
+    "relationships": [{ "target": "COM", "relationship": "owns" }]
+}
+```
+
+```json
+{
+    "acronym": "TMI",
     "shape": "rounded-rectangle",
     "fill": "#0f172a",
     "stroke": "#000000",
     "text": "#FFFFFF",
-    "icon": "group",
-    "relationships": [{ "target": "COM", "relationship": "owns" }]
+    "icon": "group"
 }
 ```
 
@@ -158,7 +189,7 @@ Then, in the model, use the same relationship string:
 
 ### Customize appearance (shape and colors)
 
-Appearance is defined per card type:
+Appearance is defined in `Aurora.viewconfiguration.json` per card acronym:
 
 - `shape` chooses which `<g id="...">` is used from the SVG template.
 - `fill`, `stroke`, and `text` control how the symbol and text are rendered.
@@ -176,7 +207,7 @@ To add an icon:
 
 1. Add a master icon SVG under your icons source directory.
 2. Run `svg_prep` to rebuild the template defs.
-3. Ensure the registry’s `available_icons` includes the new icon id.
+3. Ensure `Aurora.viewconfiguration.json` → `available_icons` includes the new icon id.
 
 See **[SVG Prep](./SVG%20Prep.md)** for the build pipeline.
 

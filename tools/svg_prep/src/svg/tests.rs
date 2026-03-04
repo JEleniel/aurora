@@ -97,7 +97,7 @@ struct TestLayout {
 	icons_out: std::path::PathBuf,
 	shapes_out: std::path::PathBuf,
 	template_proof: std::path::PathBuf,
-	model_configuration_path: std::path::PathBuf,
+	view_configuration_path: std::path::PathBuf,
 }
 
 impl TestLayout {
@@ -124,8 +124,7 @@ impl TestLayout {
 		let icons_out = proofs_dir.join("Icons.svg");
 		let shapes_out = proofs_dir.join("Shapes.svg");
 		let template_proof = proofs_dir.join("SVGTemplate.svg");
-		let model_configuration_path =
-			model_configuration_dir.join("Aurora.modelconfiguration.json");
+		let view_configuration_path = model_configuration_dir.join("Aurora.viewconfiguration.json");
 
 		Self {
 			_dir: dir,
@@ -138,7 +137,7 @@ impl TestLayout {
 			icons_out,
 			shapes_out,
 			template_proof,
-			model_configuration_path,
+			view_configuration_path,
 		}
 	}
 
@@ -162,23 +161,17 @@ impl TestLayout {
 		run(&args).expect("svg_prep run should succeed");
 	}
 
-	fn write_model_configuration_with_available_cards(&self) {
+	fn write_view_configuration_with_available_cards(&self) {
 		fs::write(
-			&self.model_configuration_path,
+			&self.view_configuration_path,
 			r##"{
-	"$schema": "../schemas/Aurora.modelconfiguration.schema.json",
+	"$schema": "../schemas/Aurora.viewconfiguration.schema.json",
 	"available_cards": ["legacy"],
-	"cards": [
-		{
-			"acronym": "MIS",
-			"card_type": "Mission"
-		}
-	],
-	"views": []
+	"cards": []
 }
 "##,
 		)
-		.expect("model configuration json should be written");
+		.expect("view configuration json should be written");
 	}
 }
 
@@ -238,7 +231,7 @@ fn build_pipeline_generates_icons_proof_sheet() {
 	)
 	.expect("template svg should be written");
 
-	layout.write_model_configuration_with_available_cards();
+	layout.write_view_configuration_with_available_cards();
 	layout.run_build();
 
 	let icons_output = fs::read_to_string(&layout.icons_out).expect("icons output should exist");
@@ -432,7 +425,7 @@ fn build_pipeline_does_not_overwrite_master_template_svg() {
 		r#"<svg xmlns="http://www.w3.org/2000/svg"><style>.x{}</style><defs><g id="old"/></defs><g/></svg>"#,
 	)
 	.expect("master template svg should be written");
-	layout.write_model_configuration_with_available_cards();
+	layout.write_view_configuration_with_available_cards();
 
 	let before = fs::read(&master_template_path).expect("master template should be readable");
 
@@ -505,7 +498,7 @@ fn build_pipeline_dedups_semantically_equivalent_style_blocks() {
 	)
 	.expect("template svg should be written");
 
-	layout.write_model_configuration_with_available_cards();
+	layout.write_view_configuration_with_available_cards();
 	layout.run_build();
 
 	let template_output = fs::read_to_string(&layout.template_path).expect("template should exist");
@@ -546,7 +539,7 @@ fn build_pipeline_updates_template_defs_and_available_cards() {
 	)
 	.expect("template svg should be written");
 
-	layout.write_model_configuration_with_available_cards();
+	layout.write_view_configuration_with_available_cards();
 	layout.run_build();
 
 	let template_output = fs::read_to_string(&layout.template_path).expect("template should exist");
@@ -560,12 +553,12 @@ fn build_pipeline_updates_template_defs_and_available_cards() {
 	assert!(alarm_gradient < shape_a);
 	assert!(shape_a < shape_b);
 
-	let model_configuration_output = fs::read_to_string(&layout.model_configuration_path)
-		.expect("model configuration should exist");
-	assert!(model_configuration_output.contains("\"available_cards\": ["));
-	assert!(model_configuration_output.contains("\"alarm\""));
-	assert!(!model_configuration_output.contains("\"legacy\""));
-	assert!(!model_configuration_output.contains("\"alarm-SVGID_1_\""));
+	let view_configuration_output = fs::read_to_string(&layout.view_configuration_path)
+		.expect("view configuration should exist");
+	assert!(view_configuration_output.contains("\"available_icons\": ["));
+	assert!(view_configuration_output.contains("\"alarm\""));
+	assert!(!view_configuration_output.contains("\"legacy\""));
+	assert!(!view_configuration_output.contains("\"alarm-SVGID_1_\""));
 
 	let template_svgz_path = layout.template_path.with_extension("svgz");
 	let svgz_bytes = fs::read(&template_svgz_path).expect("template svgz should exist");
@@ -599,7 +592,7 @@ fn build_pipeline_imports_shape_group_by_inkscape_label() {
 		r#"<svg xmlns="http://www.w3.org/2000/svg"><defs/></svg>"#,
 	)
 	.expect("template svg should be written");
-	layout.write_model_configuration_with_available_cards();
+	layout.write_view_configuration_with_available_cards();
 
 	// Point the build at the shapes directory so it loads each SVG and extracts its group.
 	let args = Cli {
@@ -638,7 +631,7 @@ fn run_returns_error_for_invalid_icon_svg() {
 	)
 	.expect("shapes should be written");
 	fs::write(&layout.template_path, "<svg><defs/></svg>").expect("template should be written");
-	layout.write_model_configuration_with_available_cards();
+	layout.write_view_configuration_with_available_cards();
 
 	let args = Cli {
 		build: BuildArgs {

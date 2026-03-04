@@ -22,10 +22,10 @@ use super::util::{
 	strip_non_root_namespaces_in_place,
 };
 
-const MODEL_CONFIGURATION_FILE: &str = "Aurora.modelconfiguration.json";
-const MODEL_CONFIGURATION_RELATIVE_PATH: &str =
-	".github/aurora/reference/Aurora.modelconfiguration.json";
-const AVAILABLE_CARD_KEYS: [&str; 2] = ["available_cards", "available_icons"];
+const VIEW_CONFIGURATION_FILE: &str = "Aurora.viewconfiguration.json";
+const VIEW_CONFIGURATION_RELATIVE_PATH: &str =
+	".github/aurora/reference/Aurora.viewconfiguration.json";
+const AVAILABLE_ICON_KEYS: [&str; 2] = ["available_icons", "available_cards"];
 
 pub(super) fn run_build(args: &BuildArgs) -> Result<()> {
 	// Default pipeline: masters -> optimized -> proofs & template.
@@ -90,7 +90,7 @@ pub(super) fn run_build(args: &BuildArgs) -> Result<()> {
 	write_svgz_file(&template_svgz_path, &template_svg)?;
 
 	// Use the input template path for resolving the model configuration location.
-	sync_available_cards(&template_svg, &args.template)?;
+	sync_available_icons(&template_svg, &args.template)?;
 	Ok(())
 }
 
@@ -109,13 +109,12 @@ fn derive_template_out_path(template_in: &Path) -> PathBuf {
 	let mut iter = template_in.components().peekable();
 	while let Some(component) = iter.next() {
 		out.push(component.as_os_str());
-		if component.as_os_str() == "assets" {
-			if let Some(next) = iter.peek()
-				&& next.as_os_str() == "masters"
-			{
-				let _ = iter.next();
-				out.push("templates");
-			}
+		if component.as_os_str() == "assets"
+			&& let Some(next) = iter.peek()
+			&& next.as_os_str() == "masters"
+		{
+			let _ = iter.next();
+			out.push("templates");
 		}
 	}
 
@@ -210,7 +209,7 @@ fn merge_icon_styles_into_template(template_svg: &mut Element, icons: &[super::t
 		.insert(insert_at, XMLNode::Element(style_el));
 }
 
-fn sync_available_cards(template_svg: &Element, template_path: &Path) -> Result<()> {
+fn sync_available_icons(template_svg: &Element, template_path: &Path) -> Result<()> {
 	let icon_names = extract_available_icon_names(template_svg);
 	if icon_names.is_empty() {
 		bail!(
@@ -219,40 +218,40 @@ fn sync_available_cards(template_svg: &Element, template_path: &Path) -> Result<
 		);
 	}
 
-	let model_configuration_path =
-		resolve_model_configuration_path(template_path).with_context(|| {
+	let view_configuration_path =
+		resolve_view_configuration_path(template_path).with_context(|| {
 			format!(
 				"Could not locate {} near template path {} or relative to current directory",
-				MODEL_CONFIGURATION_RELATIVE_PATH,
+				VIEW_CONFIGURATION_RELATIVE_PATH,
 				template_path.display()
 			)
 		})?;
 
-	let source = fs::read_to_string(&model_configuration_path).with_context(|| {
+	let source = fs::read_to_string(&view_configuration_path).with_context(|| {
 		format!(
-			"Failed reading Aurora model configuration file: {}",
-			model_configuration_path.display()
+			"Failed reading Aurora view configuration file: {}",
+			view_configuration_path.display()
 		)
 	})?;
-	let updated = replace_available_cards_array(&source, &icon_names)?;
-	fs::write(&model_configuration_path, updated).with_context(|| {
+	let updated = replace_available_icons_array(&source, &icon_names)?;
+	fs::write(&view_configuration_path, updated).with_context(|| {
 		format!(
-			"Failed writing Aurora model configuration file: {}",
-			model_configuration_path.display()
+			"Failed writing Aurora view configuration file: {}",
+			view_configuration_path.display()
 		)
 	})?;
 	Ok(())
 }
 
-fn resolve_model_configuration_path(template_path: &Path) -> Option<PathBuf> {
+fn resolve_view_configuration_path(template_path: &Path) -> Option<PathBuf> {
 	if let Some(parent) = template_path.parent() {
-		let sibling = parent.join(MODEL_CONFIGURATION_FILE);
+		let sibling = parent.join(VIEW_CONFIGURATION_FILE);
 		if sibling.is_file() {
 			return Some(sibling);
 		}
 	}
 
-	let relative = Path::new(MODEL_CONFIGURATION_RELATIVE_PATH);
+	let relative = Path::new(VIEW_CONFIGURATION_RELATIVE_PATH);
 
 	for ancestor in template_path.ancestors() {
 		let candidate = ancestor.join(relative);
@@ -292,16 +291,15 @@ fn extract_available_icon_names(template_svg: &Element) -> Vec<String> {
 	names
 }
 
-fn replace_available_cards_array(source: &str, icon_names: &[String]) -> Result<String> {
-	let (key_name, key, key_pos) = AVAILABLE_CARD_KEYS
+fn replace_available_icons_array(source: &str, icon_names: &[String]) -> Result<String> {
+	let (key_name, key, key_pos) = AVAILABLE_ICON_KEYS
 		.iter()
 		.find_map(|name| {
 			let key = format!("\"{name}\"");
 			source.find(&key).map(|position| (*name, key, position))
 		})
 		.with_context(|| {
-			"Missing \"available_cards\" or \"available_icons\" property in Aurora model configuration file"
-				.to_string()
+			"Missing \"available_icons\" property in Aurora view configuration file".to_string()
 		})?;
 
 	let colon_pos = source[key_pos + key.len()..]
@@ -319,8 +317,15 @@ fn replace_available_cards_array(source: &str, icon_names: &[String]) -> Result<
 	}
 
 	let array_end = find_matching_bracket(source, array_start, key_name)?;
-	let mut output = String::with_capacity(source.len() + icon_names.len() * 8);
-	output.push_str(&source[..array_start]);
+	let mut output = String::with_capacity(source.len() + icon_names.len() * 8 + 32);
+	let canonical_key = "\"available_icons\"";
+	if key_name == "available_cards" {
+		output.push_str(&source[..key_pos]);
+		output.push_str(canonical_key);
+		output.push_str(&source[key_pos + key.len()..array_start]);
+	} else {
+		output.push_str(&source[..array_start]);
+	}
 	output.push_str(&format_available_cards(icon_names));
 	output.push_str(&source[array_end + 1..]);
 	Ok(output)
@@ -364,7 +369,7 @@ fn find_matching_bracket(source: &str, start: usize, key_name: &str) -> Result<u
 		}
 	}
 
-	bail!("Unterminated {key_name} array in Aurora model configuration file")
+	bail!("Unterminated {key_name} array in Aurora view configuration file")
 }
 
 fn format_available_cards(icon_names: &[String]) -> String {
@@ -391,40 +396,37 @@ mod tests {
 	}
 
 	#[test]
-	fn replace_available_cards_array_rewrites_only_target_array() {
+	fn replace_available_icons_array_rewrites_available_icons() {
 		let source = r##"{
-	"$schema": "../schemas/Aurora.modelconfiguration.schema.json",
-	"available_cards": ["old", "older"],
-	"available_icons": ["legacy-icon"],
-	"cards": [],
-	"views": []
+	"$schema": "../schemas/Aurora.viewconfiguration.schema.json",
+	"available_icons": ["old", "older"],
+	"cards": []
 }
 "##;
 
 		let icons = vec!["alarm".to_string(), "wrench".to_string()];
-		let updated = replace_available_cards_array(source, &icons)
-			.expect("available_cards replacement should succeed");
+		let updated = replace_available_icons_array(source, &icons)
+			.expect("available_icons replacement should succeed");
 
-		assert!(updated.contains("\"available_cards\": [\n\t\t\"alarm\",\n\t\t\"wrench\"\n\t]"));
-		assert!(updated.contains("\"available_icons\": [\"legacy-icon\"]"));
+		assert!(updated.contains("\"available_icons\": [\n\t\t\"alarm\",\n\t\t\"wrench\"\n\t]"));
 		assert!(!updated.contains("\"old\""));
 	}
 
 	#[test]
-	fn replace_available_cards_array_falls_back_to_available_icons() {
+	fn replace_available_icons_array_renames_available_cards_to_available_icons() {
 		let source = r##"{
-	"$schema": "../schemas/Aurora.modelconfiguration.schema.json",
-	"cards": [],
-	"available_icons": ["old", "older"],
-	"views": []
+	"$schema": "../schemas/Aurora.viewconfiguration.schema.json",
+	"available_cards": ["old", "older"],
+	"cards": []
 }
 "##;
 
 		let icons = vec!["alarm".to_string(), "wrench".to_string()];
-		let updated = replace_available_cards_array(source, &icons)
-			.expect("available_icons fallback replacement should succeed");
+		let updated = replace_available_icons_array(source, &icons)
+			.expect("available_cards replacement should succeed");
 
 		assert!(updated.contains("\"available_icons\": [\n\t\t\"alarm\",\n\t\t\"wrench\"\n\t]"));
+		assert!(!updated.contains("\"available_cards\""));
 		assert!(!updated.contains("\"old\""));
 	}
 

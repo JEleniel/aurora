@@ -1,0 +1,23 @@
+{
+	"available_icons": [],
+	"cards": [
+		{
+			"acronym": "MIS",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"stroke": "#000000"
+		},
+		{
+			"acronym": "FEA",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"stroke": "#000000"
+		},
+		{
+			"acronym": "CAP",
+			"shape": "rectangle",
+			"fill": "#ffffff",
+			"stroke": "#000000"
+		}
+	]
+}

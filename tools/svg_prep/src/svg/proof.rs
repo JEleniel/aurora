@@ -286,17 +286,16 @@ pub(super) fn wrap_proof_label(label: &str, max_chars: usize, max_lines: usize) 
 		lines.push(String::new());
 	}
 
-	if truncated {
-		if let Some(last_line) = lines.last_mut() {
-			if !last_line.ends_with('…') {
-				if last_line.chars().count() >= effective_max_chars {
-					let keep = effective_max_chars.saturating_sub(1);
-					let shortened: String = last_line.chars().take(keep).collect();
-					*last_line = format!("{shortened}…");
-				} else {
-					last_line.push('…');
-				}
-			}
+	if truncated
+		&& let Some(last_line) = lines.last_mut()
+		&& !last_line.ends_with('…')
+	{
+		if last_line.chars().count() >= effective_max_chars {
+			let keep = effective_max_chars.saturating_sub(1);
+			let shortened: String = last_line.chars().take(keep).collect();
+			*last_line = format!("{shortened}…");
+		} else {
+			last_line.push('…');
 		}
 	}
 

@@ -3,8 +3,10 @@
 //! This module renders an Aurora [`Model`](crate::Model) using an existing [`Layout`](super::Layout)
 //! into a standalone SVG string based on the `svgtemplate.txt` template.
 
+#[cfg(test)]
+use super::LayoutEdge;
 use super::render_error::RenderError;
-use super::{Layout, LayoutEdge, LayoutFamily};
+use super::{Layout, LayoutFamily};
 use crate::registry::CardRegistry;
 use crate::{Card, Model};
 use std::collections::{HashMap, HashSet};
@@ -490,10 +492,10 @@ fn collect_template_shape_ids(svg_template: &str) -> HashSet<String> {
 		};
 		let group_end = group_start + group_end_rel;
 		let group_tag = &svg_template[group_start..=group_end];
-		if let Some(id) = extract_attribute_value(group_tag, "id") {
-			if !id.starts_with("i-") {
-				ids.insert(id);
-			}
+		if let Some(id) = extract_attribute_value(group_tag, "id")
+			&& !id.starts_with("i-")
+		{
+			ids.insert(id);
 		}
 
 		cursor = group_end + 1;
@@ -502,62 +504,7 @@ fn collect_template_shape_ids(svg_template: &str) -> HashSet<String> {
 	ids.insert("rectangle".to_string());
 	ids
 }
-
-#[derive(Debug, Clone, Copy)]
-struct EdgeRouteOrderKey<'a> {
-	rank_y: i32,
-	source_x: i32,
-	source_y: i32,
-	target_y: i32,
-	target_x: i32,
-	target_id: &'a str,
-	target_side: i32,
-	lane: i32,
-	span: i32,
-}
-
-fn edge_route_order_key<'a>(
-	edge: &'a LayoutEdge,
-	positioned: &HashMap<String, node::PositionedNode>,
-) -> EdgeRouteOrderKey<'a> {
-	let source_center = positioned
-		.get(edge.a.as_str())
-		.map(|node| node.bbox.center())
-		.unwrap_or(geom::PointF { x: 0.0, y: 0.0 });
-	let target_center = positioned
-		.get(edge.b.as_str())
-		.map(|node| node.bbox.center())
-		.unwrap_or(geom::PointF { x: 0.0, y: 0.0 });
-	let dx = source_center.x - target_center.x;
-	let dy = source_center.y - target_center.y;
-	let span = dx.abs().round() as i32 + dy.abs().round() as i32;
-	let rank_y = source_center.y.min(target_center.y).round() as i32;
-
-	let (target_side, lane) = if dx.abs() >= dy.abs() {
-		if dx < 0.0 {
-			(0, source_center.y.round() as i32)
-		} else {
-			(1, source_center.y.round() as i32)
-		}
-	} else if dy < 0.0 {
-		(2, source_center.x.round() as i32)
-	} else {
-		(3, source_center.x.round() as i32)
-	};
-
-	EdgeRouteOrderKey {
-		rank_y,
-		source_x: source_center.x.round() as i32,
-		source_y: source_center.y.round() as i32,
-		target_y: target_center.y.round() as i32,
-		target_x: target_center.x.round() as i32,
-		target_id: edge.b.as_str(),
-		target_side,
-		lane,
-		span,
-	}
-}
-
+#[cfg(test)]
 fn normalized_slot_bias(index: usize, total: usize) -> f32 {
 	if total <= 1 {
 		return 0.0;
@@ -588,6 +535,7 @@ fn normalized_slot_bias(index: usize, total: usize) -> f32 {
 	(lane_offset / max_lane_offset).clamp(-1.0, 1.0)
 }
 
+#[cfg(test)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum EdgeMergeMode {
 	Source,
@@ -595,6 +543,7 @@ enum EdgeMergeMode {
 	None,
 }
 
+#[cfg(test)]
 fn edge_merge_mode(source_total: usize, target_total: usize) -> EdgeMergeMode {
 	if source_total <= 1 && target_total <= 1 {
 		return EdgeMergeMode::None;
@@ -613,6 +562,7 @@ fn edge_merge_mode(source_total: usize, target_total: usize) -> EdgeMergeMode {
 	}
 }
 
+#[cfg(test)]
 fn compute_source_slot_indexes(
 	edges: &[LayoutEdge],
 	positioned: &HashMap<String, node::PositionedNode>,
@@ -643,6 +593,7 @@ fn compute_source_slot_indexes(
 	slots
 }
 
+#[cfg(test)]
 fn compute_target_slot_indexes(
 	edges: &[LayoutEdge],
 	positioned: &HashMap<String, node::PositionedNode>,
@@ -673,6 +624,7 @@ fn compute_target_slot_indexes(
 	slots
 }
 
+#[cfg(test)]
 #[derive(Debug, Clone, Copy)]
 struct SourceGroupSortKey<'a> {
 	target_x: i32,
@@ -680,6 +632,7 @@ struct SourceGroupSortKey<'a> {
 	target_id: &'a str,
 }
 
+#[cfg(test)]
 fn source_group_sort_key<'a>(
 	edges: &'a [LayoutEdge],
 	index: usize,
@@ -697,6 +650,7 @@ fn source_group_sort_key<'a>(
 	}
 }
 
+#[cfg(test)]
 #[derive(Debug, Clone, Copy)]
 struct TargetGroupSortKey<'a> {
 	source_x: i32,
@@ -704,6 +658,7 @@ struct TargetGroupSortKey<'a> {
 	source_id: &'a str,
 }
 
+#[cfg(test)]
 fn target_group_sort_key<'a>(
 	edges: &'a [LayoutEdge],
 	index: usize,
@@ -1007,6 +962,8 @@ mod edge_router;
 mod edge_router_graph;
 mod edge_router_unicode;
 mod edge_router_utils;
+
+pub use edge::Route;
 mod geom;
 mod node;
 
@@ -1102,9 +1059,13 @@ mod tests {
 	#[test]
 	fn render_includes_screen_background_and_no_text_stroke() {
 		let model_configuration = read_testdata("modelconfiguration/svg_render_registry.json");
-		let registry =
-			crate::registry::CardRegistry::try_new_from_model_configuration(&model_configuration)
-				.expect("registry");
+		let view_configuration =
+			read_testdata("modelconfiguration/svg_render_viewconfiguration.json");
+		let registry = crate::registry::CardRegistry::try_new_from_configurations(
+			&model_configuration,
+			&view_configuration,
+		)
+		.expect("registry");
 		let svg_template = read_testdata("svg/template_minimal.svg");
 
 		let root = Card {
@@ -1120,7 +1081,7 @@ mod tests {
 			notes: None,
 			icon: None,
 			attributes: Attributes::new(),
-			references: Vec::new(),
+			external_references: Vec::new(),
 			links: vec![Link {
 				target: "C-001".to_string(),
 				relationship: "rel".to_string(),
@@ -1142,7 +1103,7 @@ mod tests {
 			notes: None,
 			icon: None,
 			attributes: Attributes::new(),
-			references: Vec::new(),
+			external_references: Vec::new(),
 			links: Vec::new(),
 			source_path: PathBuf::from("C-001.json"),
 			validation_errors: Vec::new(),
