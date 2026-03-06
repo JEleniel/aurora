@@ -1,9 +1,10 @@
 use std::path::PathBuf;
 
 use chrono::{TimeZone, Utc};
+use fs2::FileExt;
 use serde_json::{Value, json};
 
-use super::{AuditChangeType, AuditLog, AuditLogEntry};
+use super::{AuditChangeType, AuditLog, AuditLogEntry, AuditLogError};
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
@@ -113,4 +114,73 @@ fn audit_change_type_as_str_returns_labels() {
 	assert_eq!(AuditChangeType::Create.as_str(), "create");
 	assert_eq!(AuditChangeType::Change.as_str(), "change");
 	assert_eq!(AuditChangeType::Delete.as_str(), "delete");
+}
+
+#[test]
+fn try_load_for_update_rejects_second_writer_in_same_process() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let audit_path = temp.path().join("AuditLog.ndjson");
+	write_ndjson(&audit_path, &[])?;
+
+	let first = AuditLog::try_load_for_update(&audit_path, &audit_schema(false))?;
+	let second = AuditLog::try_load_for_update(&audit_path, &audit_schema(false));
+
+	assert!(matches!(second, Err(AuditLogError::ModelLocked(_))));
+	drop(first);
+
+	let reopened = AuditLog::try_load_for_update(&audit_path, &audit_schema(false))?;
+	assert!(reopened.audit_log.validation_errors.is_empty());
+	Ok(())
+}
+
+#[cfg(unix)]
+#[test]
+fn os_lock_rejects_same_process_reacquire_on_separate_handles() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let audit_path = temp.path().join("AuditLog.ndjson");
+	write_ndjson(&audit_path, &[])?;
+
+	let first = std::fs::OpenOptions::new()
+		.read(true)
+		.write(true)
+		.open(&audit_path)?;
+	first.try_lock_exclusive()?;
+
+	let second = std::fs::OpenOptions::new()
+		.read(true)
+		.write(true)
+		.open(&audit_path)?;
+	let error = second
+		.try_lock_exclusive()
+		.expect_err("expected separate open handles to contend on Unix");
+	assert!(super::is_lock_contended(&error));
+
+	first.unlock()?;
+	Ok(())
+}
+
+#[cfg(windows)]
+#[test]
+fn os_lock_rejects_same_process_reacquire_on_separate_handles() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let audit_path = temp.path().join("AuditLog.ndjson");
+	write_ndjson(&audit_path, &[])?;
+
+	let first = std::fs::OpenOptions::new()
+		.read(true)
+		.write(true)
+		.open(&audit_path)?;
+	first.try_lock_exclusive()?;
+
+	let second = std::fs::OpenOptions::new()
+		.read(true)
+		.write(true)
+		.open(&audit_path)?;
+	let error = second
+		.try_lock_exclusive()
+		.expect_err("expected Windows same-process lock contention");
+	assert!(super::is_lock_contended(&error));
+
+	first.unlock()?;
+	Ok(())
 }

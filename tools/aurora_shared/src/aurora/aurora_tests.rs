@@ -147,6 +147,7 @@ fn test_aurora(models: Vec<Model>) -> Aurora {
 		svg_template,
 		load_warnings: Vec::new(),
 		load_validation_errors: Vec::new(),
+		_audit_log_locks: Vec::new(),
 	}
 }
 
@@ -385,4 +386,27 @@ fn try_load_rejects_invalid_home() {
 	let temp = tempfile::tempdir().expect("temp dir");
 	let result = Aurora::try_load(temp.path());
 	assert!(matches!(result, Err(AuroraError::InvalidAuroraHome(_))));
+}
+
+#[test]
+fn try_load_for_update_rejects_second_writer_for_same_model_home() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let aurora_home = temp.path().join("aurora");
+	std::fs::create_dir_all(&aurora_home)?;
+	write_schema_files(&aurora_home)?;
+
+	let root_path = aurora_home.join("MIS-001-Alpha.json");
+	let mission_home = aurora_home.join("MIS-001");
+	std::fs::create_dir_all(&mission_home)?;
+	write_json(&root_path, &card_json("MIS-001", "Mission", vec![]))?;
+	write_audit_log(&mission_home.join("AuditLog.ndjson"))?;
+
+	let first = Aurora::try_load_for_update(temp.path())?;
+	let second = Aurora::try_load_for_update(temp.path());
+	assert!(matches!(second, Err(AuroraError::ModelLocked(_))));
+	drop(first);
+
+	let reopened = Aurora::try_load_for_update(temp.path())?;
+	assert_eq!(reopened.models.len(), 1);
+	Ok(())
 }

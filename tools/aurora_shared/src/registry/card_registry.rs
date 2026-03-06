@@ -242,6 +242,7 @@ pub struct ModelConfigurationCardDefinition {
 pub struct ViewConfiguration {
 	pub available_icons: Vec<String>,
 	pub cards: Vec<ViewConfigurationCardDefinition>,
+	#[serde(default)]
 	pub views: Vec<super::ViewDefinition>,
 }
 

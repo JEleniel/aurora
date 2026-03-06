@@ -6,7 +6,7 @@
 
 ## Phase 0 — Foundation
 
-1. [ ] Extend `aurora_shared` model write API to be validation-gated and issue card IDs
+1. [x] Extend `aurora_shared` model write API to be validation-gated and issue card IDs
     - Priority: 0 (Critical)
     - Cards: SYS-001, CAP-001
     - Description: All writes to card and model files must be gated by schema and invariant validation. The current `Card::write()` and `Model::write()` write unconditionally. Replace them with a transactional write surface that validates, rejects invalid states, and returns structured errors instead of panicking. Card IDs are issued by the application — callers never supply an ID for a new card. This prevents collisions, enforces well-formed IDs, and removes the burden from users and agents alike.
@@ -16,21 +16,21 @@
         - `Model::write()` validates the entire model before persisting any file.
         - All existing tests pass; new tests cover write rejection paths and ID generation uniqueness.
     - Notes: Existing CLI callers must be updated to handle the new `Result` type.
-    - Status: Not Started
+    - Status: Completed
 
-2. [ ] Add OS-level exclusive lock on the audit log
+2. [x] Add OS-level exclusive lock on the audit log
     - Priority: 0 (Critical)
     - Cards: SYS-001, CAP-009
-    - Description: Implement single-writer enforcement via an OS-level exclusive file lock on `aurora/<MISSION_ID>/AuditLog.ndjson`. The audit log is used as the lock *target* rather than locking every card file individually because it is a single, always-present file in every model home — a reliable sentinel. Holding it session-scoped (not per-write) makes it a global mutex for the whole model home: a second process that cannot acquire the lock is refused access entirely, which closes the TOCTOU race on card files without per-file locking. The lock must be held for the lifetime of the write session and released when the owning process exits or closes the model. All writers are cooperative (our own code), so advisory locking is sufficient.
+    - Description: Implement single-writer enforcement via an OS-level exclusive file lock on `aurora/<MISSION_ID>/AuditLog.ndjson`. The audit log is used as the lock _target_ rather than locking every card file individually because it is a single, always-present file in every model home — a reliable sentinel. Holding it session-scoped (not per-write) makes it a global mutex for the whole model home: a second process that cannot acquire the lock is refused access entirely, which closes the TOCTOU race on card files without per-file locking. The lock must be held for the lifetime of the write session and released when the owning process exits or closes the model. All writers are cooperative (our own code), so advisory locking is sufficient.
 
         **Platform-specific semantics:**
-
         - **Linux / macOS**: Use `flock(2)` with `LOCK_EX | LOCK_NB`. The lock is associated with the open file description, not the process; it is released automatically by the OS when the file descriptor is closed or the process exits (including `SIGKILL`). Forking after acquiring the lock requires explicit care — the child inherits the file descriptor and therefore the lock; the child must close it immediately if it does not intend to hold it.
-        - **Windows**: Use `LockFileEx` with `LOCKFILE_EXCLUSIVE_LOCK | LOCKFILE_FAIL_IMMEDIATELY`. On Windows the lock is per-process, not per-file-descriptor; a second open by the *same* process would succeed on Linux but fail on Windows. The implementation must not attempt to re-acquire the lock from the same process.
+        - **Windows**: Use `LockFileEx` with `LOCKFILE_EXCLUSIVE_LOCK | LOCKFILE_FAIL_IMMEDIATELY`. On Windows the lock is per-process, not per-file-descriptor; a second open by the _same_ process would succeed on Linux but fail on Windows. The implementation must not attempt to re-acquire the lock from the same process.
 
         A non-blocking attempt must be used on all platforms so that the caller gets an immediate `AuroraError::ModelLocked` rather than blocking indefinitely.
 
         **Scope**: The lock is acquired only by the editor and MCP server. The CLI is read-only and never writes to the model, so it neither competes for the lock nor requires it.
+
     - Deliverables:
         - `AuditLog` acquires an exclusive, non-blocking OS lock on open and releases it on drop.
         - A second editor or MCP server opening the same model home fails with `AuroraError::ModelLocked` on all three target platforms.
@@ -38,9 +38,9 @@
         - Tests verify single-writer enforcement across two handles in the same process.
         - Platform-conditional tests document the differing same-process re-acquisition behavior.
     - Notes: `fd-lock` or `fs2` are candidate crates; evaluate for Windows correctness before use. Do not rely on a separate `.lock` sentinel file — the audit log itself is the target.
-    - Status: Not Started
+    - Status: Completed
 
-3. [ ] Add undo/redo stack to `aurora_shared`
+3. [x] Add undo/redo stack to `aurora_shared`
     - Priority: 0 (Critical)
     - Cards: SYS-001, CAP-001
     - Description: Implement an in-memory command-history stack with 50-entry depth. Each mutating operation produces a reversible command object. The stack must support `undo()` and `redo()` operations and must integrate with the validation-gated write API so that undone and redone states are also validated before persisting.
@@ -49,9 +49,9 @@
         - Stack is bounded to 50 entries; oldest entry is dropped when full.
         - Undo applies the logical inverse of each command and re-validates before persisting.
         - Tests cover push, overflow, undo, redo, and validation-failure rollback.
-    - Status: Not Started
+    - Status: Completed
 
-4. [ ] Add model backup system to `aurora_shared`
+4. [x] Add model backup system to `aurora_shared`
     - Priority: 1 (High)
     - Cards: SYS-001, CAP-009
     - Description: When the editor or MCP server opens a model in write mode, create a single timestamped ZIP archive of the model home under `aurora/backups/` before any writes occur. Archive creation must be non-blocking. Named `<MISSION_ID>-<timestamp>.zip` for the editor and `MCP-<MISSION_ID>-<timestamp>.zip` for the MCP server. The CLI does not trigger backup creation.
@@ -62,9 +62,9 @@
         - Tests verify archive creation and naming for both editor and MCP prefixes.
     - Notes: Requires async runtime (Task 5).
     - Dependencies: Task 5
-    - Status: Not Started
+    - Status: Completed
 
-5. [ ] Add async runtime to the workspace
+5. [x] Add async runtime to the workspace
     - Priority: 0 (Critical)
     - Cards: SYS-001
     - Description: The editor's background I/O (fs monitoring, backup, autosave) requires an async runtime. Add `tokio` to the workspace dependencies and integrate it as the executor for `aurora_shared` background operations.
@@ -72,7 +72,7 @@
         - `tokio` added to `[workspace.dependencies]` in the root `Cargo.toml`.
         - `aurora_shared` background operations use `tokio::spawn` or `block_in_place` where appropriate.
         - Compilation succeeds; no regressions in existing tests.
-    - Status: Not Started
+    - Status: Completed
 
 6. [ ] Add configuration safety backup to `aurora_shared`
     - Priority: 1 (High)

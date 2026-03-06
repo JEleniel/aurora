@@ -54,6 +54,14 @@ pub struct Aurora {
 	pub load_warnings: Vec<String>,
 	/// Validation errors discovered while performing initial load checks.
 	pub load_validation_errors: Vec<String>,
+	_audit_log_locks: Vec<AuditLogFileLock>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+enum AuroraLoadMode {
+	#[default]
+	ReadOnly,
+	ReadWrite,
 }
 
 impl Aurora {
@@ -61,6 +69,15 @@ impl Aurora {
 	/// It will automatically pick up if the Model Home is a child
 	/// of the given path
 	pub fn try_load(path: &Path) -> Result<Self, AuroraError> {
+		Self::try_load_with_mode(path, AuroraLoadMode::ReadOnly)
+	}
+
+	/// Try to load a set of Aurora models for an exclusive write session.
+	pub fn try_load_for_update(path: &Path) -> Result<Self, AuroraError> {
+		Self::try_load_with_mode(path, AuroraLoadMode::ReadWrite)
+	}
+
+	fn try_load_with_mode(path: &Path, load_mode: AuroraLoadMode) -> Result<Self, AuroraError> {
 		let mut model_home = path.to_path_buf();
 		let mut load_warnings: Vec<String> = Vec::new();
 
@@ -175,6 +192,7 @@ impl Aurora {
 		// SVG template validation is performed by rendering workflows.
 
 		let mut models: Vec<Model> = Vec::new();
+		let mut audit_log_locks: Vec<AuditLogFileLock> = Vec::new();
 		for entry in std::fs::read_dir(&model_home)? {
 			let entry = entry?;
 			if entry.file_type()?.is_dir() {
@@ -184,8 +202,21 @@ impl Aurora {
 				&& file_name.starts_with("MIS-")
 				&& file_name.ends_with(".json")
 			{
-				let model = Model::try_load(&entry.path(), &card_schema, &audit_schema)?;
-				models.push(model);
+				let loaded_model = match load_mode {
+					AuroraLoadMode::ReadOnly => super::LoadedModel {
+						model: Model::try_load(&entry.path(), &card_schema, &audit_schema)?,
+						audit_log_lock: None,
+					},
+					AuroraLoadMode::ReadWrite => {
+						Model::try_load_for_update(&entry.path(), &card_schema, &audit_schema)
+							.map_err(map_model_error)?
+					}
+				};
+
+				if let Some(lock) = loaded_model.audit_log_lock {
+					audit_log_locks.push(lock);
+				}
+				models.push(loaded_model.model);
 			}
 		}
 
@@ -211,6 +242,7 @@ impl Aurora {
 			svg_template,
 			load_warnings,
 			load_validation_errors: Vec::new(),
+			_audit_log_locks: audit_log_locks,
 		};
 
 		aurora.load_validation_errors = aurora.validate();
@@ -556,6 +588,8 @@ fn read_svg_template(svgz_path: &Path, svg_path: &Path) -> Result<String, Aurora
 pub enum AuroraError {
 	#[error("A model error occurred: {0}")]
 	ModelError(#[from] ModelError),
+	#[error("Model is locked by another write session: {0}")]
+	ModelLocked(String),
 	#[error("The specified path is not a valid Aurora model home: {0}")]
 	InvalidAuroraHome(String),
 	#[error("An IO error occurred: {0}")]
@@ -574,6 +608,13 @@ pub enum AuroraError {
 	JsonParseError(#[from] serde_json::Error),
 	#[error("A registry error occurred: {0}")]
 	RegistryError(#[from] RegistryError),
+}
+
+fn map_model_error(error: ModelError) -> AuroraError {
+	match error {
+		ModelError::ModelLocked(path) => AuroraError::ModelLocked(path),
+		other => AuroraError::ModelError(other),
+	}
 }
 
 fn extract_svg_icon_ids(svg_template: &str) -> HashSet<String> {

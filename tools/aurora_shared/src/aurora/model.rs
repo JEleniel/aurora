@@ -1,21 +1,17 @@
 mod attribute;
 mod card;
+mod edit_history;
 mod link;
 
 pub use attribute::*;
 pub use card::*;
+pub use edit_history::*;
 pub use link::*;
 
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::{
-	collections::{HashMap, HashSet},
-	fs,
-};
-use std::{
-	ffi::OsStr,
-	path::{Path, PathBuf},
-};
+use std::collections::{HashMap, HashSet};
+use std::path::{Path, PathBuf};
 use thiserror::Error;
 use tracing::{debug, trace};
 
@@ -23,10 +19,26 @@ use crate::registry::CardRegistry;
 
 const MODEL_MARKDOWN_TEMPLATE: &str = include_str!("model.template.md");
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+enum ModelLoadMode {
+	#[default]
+	ReadOnly,
+	ReadWrite,
+}
+
+#[derive(Debug)]
+pub(crate) struct LoadedModel {
+	pub(crate) model: Model,
+	pub(crate) audit_log_lock: Option<super::AuditLogFileLock>,
+}
+
+#[path = "model/model_write_support.rs"]
+mod model_write_support;
+
 #[cfg(test)]
 mod model_tests;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Model {
 	pub root_card: Card,
 	pub cards: Vec<Card>,
@@ -41,6 +53,26 @@ impl Model {
 		card_schema: &serde_json::Value,
 		audit_schema: &serde_json::Value,
 	) -> Result<Self, ModelError> {
+		Ok(
+			Self::try_load_with_mode(path, card_schema, audit_schema, ModelLoadMode::ReadOnly)?
+				.model,
+		)
+	}
+
+	pub(crate) fn try_load_for_update(
+		path: &Path,
+		card_schema: &serde_json::Value,
+		audit_schema: &serde_json::Value,
+	) -> Result<LoadedModel, ModelError> {
+		Self::try_load_with_mode(path, card_schema, audit_schema, ModelLoadMode::ReadWrite)
+	}
+
+	fn try_load_with_mode(
+		path: &Path,
+		card_schema: &serde_json::Value,
+		audit_schema: &serde_json::Value,
+		load_mode: ModelLoadMode,
+	) -> Result<LoadedModel, ModelError> {
 		let root_card = Card::try_load(path, card_schema)?;
 
 		let model_home: PathBuf = path
@@ -51,7 +83,7 @@ impl Model {
 		let mut mission_home: PathBuf = model_home.clone();
 		mission_home.push(root_card.id.as_str());
 		let audit_log_path = mission_home.join("AuditLog.ndjson");
-		let audit_log = super::AuditLog::try_load(&audit_log_path, audit_schema)?;
+		let (audit_log, audit_log_lock) = load_audit_log(&audit_log_path, audit_schema, load_mode)?;
 
 		let mut cards: Vec<Card> = Vec::new();
 		let mut folders_to_visit: Vec<PathBuf> = vec![mission_home.clone()];
@@ -104,7 +136,10 @@ impl Model {
 			mission_home,
 		};
 
-		Ok(model)
+		Ok(LoadedModel {
+			model,
+			audit_log_lock,
+		})
 	}
 
 	pub fn validate(&self) -> Vec<String> {
@@ -214,159 +249,6 @@ impl Model {
 		errors
 	}
 
-	pub fn write(&self) -> Result<(), ModelError> {
-		let ext = self
-			.root_card
-			.source_path
-			.extension()
-			.unwrap_or(OsStr::new("json"))
-			.to_str()
-			.unwrap();
-
-		let mut mission_path = self.model_home.clone();
-		mission_path.push(format!(
-			"{}-{}.{}",
-			&self.root_card.id,
-			sanitize_filename(&self.root_card.name),
-			ext
-		));
-		self.root_card.write(&mission_path);
-
-		for card in &self.cards {
-			let mut card_path = self.mission_home.clone();
-			card_path.push(sanitize_card_type_folder(&card.card_type));
-			fs::create_dir_all(&card_path)?;
-
-			card_path.push(format!(
-				"{}-{}.{}",
-				card.id,
-				sanitize_filename(&card.name),
-				ext
-			));
-			card.write(&card_path);
-		}
-		Ok(())
-	}
-
-	pub fn write_markdown(&self, path: &Path) -> Result<(), ModelError> {
-		let mission_slug = sanitize_filename(&self.root_card.name);
-		let mut readme_path = path.to_path_buf();
-		readme_path.push(format!("README-{}-{}.md", self.root_card.id, mission_slug));
-
-		let mission_md_path = path.join(format!("{}-{}.md", self.root_card.id, mission_slug));
-
-		// Map card IDs to their markdown output paths so we can produce correct relative links.
-		let mut markdown_paths_by_id: HashMap<String, PathBuf> = HashMap::new();
-		markdown_paths_by_id.insert(self.root_card.id.clone(), mission_md_path.clone());
-		for card in &self.cards {
-			let card_slug = sanitize_filename(&card.name);
-			let card_md_path = path
-				.join(self.root_card.id.as_str())
-				.join(sanitize_card_type_folder(&card.card_type))
-				.join(format!("{}-{}.md", card.id, card_slug));
-			markdown_paths_by_id.insert(card.id.clone(), card_md_path);
-		}
-
-		let mut markdown = String::from(MODEL_MARKDOWN_TEMPLATE);
-
-		let mission_link = format!(
-			"**[Mission Card]({}-{}.md)**",
-			self.root_card.id, mission_slug
-		);
-
-		markdown = markdown
-			.replace("{{id}}", self.root_card.id.as_str())
-			.replace("{{name}}", self.root_card.name.as_str())
-			.replace("{{mission_link}}", &mission_link)
-			.replace("{{description}}", self.root_card.description.as_str());
-
-		let mut views: String = String::new();
-		let view_path = path.join(self.root_card.id.as_str()).join("Views");
-		if view_path.exists() {
-			let mut svg_files: Vec<String> = Vec::new();
-			for entry in fs::read_dir(&view_path)? {
-				let entry = entry?;
-				let is_svg = entry.file_type()?.is_file()
-					&& entry.path().extension().and_then(|s| s.to_str()) == Some("svg");
-				if is_svg {
-					svg_files.push(entry.file_name().to_string_lossy().into_owned());
-				}
-			}
-			svg_files.sort();
-			for file_name in svg_files {
-				views.push_str(&format!(
-					"\n![{}]({}/Views/{})\n",
-					file_name, self.root_card.id, file_name
-				));
-			}
-		}
-		if views.is_empty() {
-			views.push_str("_No views available._");
-		}
-		markdown = markdown.replace("{{views}}", &views);
-
-		let mut index: String = String::new();
-		// Only emit card types that exist in this model.
-		let mut card_types: Vec<String> = self.cards.iter().map(|c| c.card_type.clone()).collect();
-		card_types.sort();
-		card_types.dedup();
-		for card_type in card_types {
-			let cards_of_type: Vec<&Card> = self
-				.cards
-				.iter()
-				.filter(|c| c.card_type == card_type)
-				.collect();
-			if cards_of_type.is_empty() {
-				continue;
-			}
-
-			index.push_str(format!("### {}\n\n", card_type).as_str());
-			for card in cards_of_type {
-				let card_type_folder = sanitize_card_type_folder(&card.card_type);
-				let card_slug = sanitize_filename(&card.name);
-				let card_link = format!(
-					"- **[{} - {}]({}/{}/{}-{}.md)**: {}\n\n",
-					card.id,
-					card.name,
-					self.root_card.id,
-					card_type_folder,
-					card.id,
-					card_slug,
-					card.description
-				);
-				index.push_str(card_link.as_str());
-			}
-		}
-		markdown = markdown.replace("{{index}}", &index);
-		// Keep at most a single blank line between sections.
-		while markdown.contains("\n\n\n") {
-			markdown = markdown.replace("\n\n\n", "\n\n");
-		}
-
-		std::fs::write(&readme_path, markdown)?;
-
-		self.root_card.write_markdown(
-			&mission_md_path,
-			Some(&markdown_paths_by_id),
-			self.audit_log.entries_for_target(&self.root_card.id),
-		);
-
-		for card in &self.cards {
-			let mut card_path = path.to_path_buf();
-			card_path.push(self.root_card.id.as_str());
-			card_path.push(sanitize_card_type_folder(&card.card_type));
-			fs::create_dir_all(&card_path)?;
-			let card_slug = sanitize_filename(&card.name);
-			card_path.push(format!("{}-{}.md", card.id, card_slug));
-			card.write_markdown(
-				&card_path,
-				Some(&markdown_paths_by_id),
-				self.audit_log.entries_for_target(&card.id),
-			);
-		}
-		Ok(())
-	}
-
 	pub fn get_compact(&self, schema_ref: Option<String>) -> Value {
 		let mut cards: Vec<Value> = Vec::new();
 		cards.push(self.root_card.get_compact());
@@ -469,6 +351,28 @@ impl Model {
 	}
 }
 
+fn load_audit_log(
+	path: &Path,
+	audit_schema: &Value,
+	load_mode: ModelLoadMode,
+) -> Result<(super::AuditLog, Option<super::AuditLogFileLock>), ModelError> {
+	match load_mode {
+		ModelLoadMode::ReadOnly => Ok((super::AuditLog::try_load(path, audit_schema)?, None)),
+		ModelLoadMode::ReadWrite => {
+			let loaded = super::AuditLog::try_load_for_update(path, audit_schema)
+				.map_err(map_audit_log_error)?;
+			Ok((loaded.audit_log, Some(loaded.lock)))
+		}
+	}
+}
+
+fn map_audit_log_error(error: super::AuditLogError) -> ModelError {
+	match error {
+		super::AuditLogError::ModelLocked(path) => ModelError::ModelLocked(path),
+		other => ModelError::AuditLogError(other),
+	}
+}
+
 fn sanitize_filename(name: &str) -> String {
 	let mut out = String::new();
 	let mut last_was_underscore = false;
@@ -517,6 +421,8 @@ fn id_prefix(id: &str) -> Option<&str> {
 pub enum ModelError {
 	#[error("Failed to read model file: {0}")]
 	ReadError(#[from] std::io::Error),
+	#[error("Model is locked by another write session: {0}")]
+	ModelLocked(String),
 	#[error("A Card error has occurred: {0}")]
 	CardError(#[from] CardError),
 	#[error("An AuditLog error has occurred: {0}")]
@@ -527,8 +433,8 @@ pub enum ModelError {
 	InvalidParentPath(String),
 	#[error("Unexpected Mission card at {0}")]
 	UnexpectedMissionCard(String),
-	#[error("{0}")]
-	ValidationErrors(String),
+	#[error("Model validation failed: {0:?}")]
+	ValidationErrors(Vec<String>),
 	#[error("Model exceeds maximum allowed size of 99999 cards.")]
 	ModelTooLarge,
 }

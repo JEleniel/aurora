@@ -488,6 +488,12 @@ fn write_markdown_links_are_relative_and_point_to_slugged_files() -> Result<()> 
 #[test]
 fn write_outputs_model_files() -> Result<()> {
 	let temp = tempfile::tempdir()?;
+	let schema_dir = temp.path().join("schemas");
+	std::fs::create_dir_all(&schema_dir)?;
+	std::fs::write(
+		schema_dir.join("Aurora.card.schema.json"),
+		serde_json::to_string_pretty(&card_schema())?,
+	)?;
 	let root_path = temp.path().join("MIS-001-Alpha.json");
 	let mission_home = temp.path().join("MIS-001");
 	std::fs::create_dir_all(&mission_home)?;
@@ -506,7 +512,10 @@ fn write_outputs_model_files() -> Result<()> {
 		icon: None,
 		attributes: super::Attributes::new(),
 		external_references: Vec::new(),
-		links: Vec::new(),
+		links: vec![super::Link {
+			target: "FEA-001".to_string(),
+			relationship: "rel".to_string(),
+		}],
 		source_path: root_path.clone(),
 		validation_errors: Vec::new(),
 		validation_warnings: Vec::new(),
@@ -564,6 +573,12 @@ fn write_outputs_model_files() -> Result<()> {
 		.join("FEA-001-Feature_One.json");
 	if !feature_path.exists() {
 		return Err(missing("missing feature card file"));
+	}
+	let feature_contents = std::fs::read_to_string(feature_path)?;
+	if !feature_contents.contains("\"$schema\": \"../../schemas/Aurora.card.schema.json\"") {
+		return Err(missing(
+			"missing inferred schema reference in feature card file",
+		));
 	}
 
 	Ok(())

@@ -11,7 +11,12 @@ use super::{Attributes, Link, attributes_markdown};
 
 const CARD_MARKDOWN_TEMPLATE: &str = include_str!("card.template.md");
 
-#[derive(Debug, Serialize, Deserialize)]
+#[path = "card_persistence.rs"]
+mod card_persistence;
+
+pub use card_persistence::NewCard;
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Card {
 	#[serde(rename = "$schema", default)]
 	pub schema: Option<String>,
@@ -125,11 +130,6 @@ impl Card {
 		}
 
 		warnings
-	}
-
-	pub fn write(&self, path: &Path) {
-		let serialized = serde_json::to_string_pretty(self).unwrap();
-		std::fs::write(path, serialized).unwrap();
 	}
 
 	pub fn write_markdown<'a>(
@@ -449,6 +449,10 @@ pub enum CardError {
 	InvalidCard(String),
 	#[error("Invalid filename: {0}")]
 	InvalidFilename(String),
+	#[error("Could not resolve card schema reference: {0}")]
+	SchemaReference(String),
+	#[error("Card validation failed: {0:?}")]
+	ValidationErrors(Vec<String>),
 	#[error("Schema compilation error: {0}")]
 	SchemaCompilationError(#[from] CompilationError),
 	#[error("Card not found: {0}")]

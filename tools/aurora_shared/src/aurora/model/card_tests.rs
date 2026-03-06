@@ -109,7 +109,7 @@ fn check_registry_warns_on_unknown() -> Result<(), Box<dyn std::error::Error>> {
 	let target_def = registry
 		.definitions
 		.iter()
-		.find(|def| def.acronym.as_bytes().len() == 3)
+		.find(|def| def.acronym.len() == 3)
 		.expect("registry should contain at least one 3-letter card acronym");
 
 	let card = build_card(
@@ -144,7 +144,7 @@ fn check_registry_accepts_known_relationships() -> Result<(), Box<dyn std::error
 		.expect("relationship list was unexpectedly empty");
 	let target_def = registry.try_get_by_type(&rel.target_card_type)?;
 	assert_eq!(
-		target_def.acronym.as_bytes().len(),
+		target_def.acronym.len(),
 		3,
 		"card acronyms must be 3 bytes because Card::check_registry slices target[0..3]"
 	);
@@ -169,12 +169,19 @@ fn check_registry_accepts_known_relationships() -> Result<(), Box<dyn std::error
 #[test]
 fn write_outputs_file() -> Result<(), Box<dyn std::error::Error>> {
 	let temp = tempfile::tempdir()?;
+	let schema_dir = temp.path().join("schemas");
+	std::fs::create_dir_all(&schema_dir)?;
+	std::fs::write(
+		schema_dir.join("Aurora.card.schema.json"),
+		serde_json::to_string_pretty(&card_schema(false))?,
+	)?;
 	let card_path = temp.path().join("REQ-001.json");
 	let card = build_card("REQ-001", "Requirement", Vec::new());
 
-	card.write(&card_path);
+	card.write(&card_path)?;
 	let contents = std::fs::read_to_string(&card_path)?;
 	assert!(contents.contains("REQ-001"));
+	assert!(contents.contains("\"$schema\": \"schemas/Aurora.card.schema.json\""));
 	Ok(())
 }
 

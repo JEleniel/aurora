@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::{CardError, registry::CardRegistry};
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Link {
 	pub target: String,
 	pub relationship: String,
