@@ -224,7 +224,6 @@ pub struct CardDefinition {
 #[derive(Debug, Clone, Deserialize)]
 pub struct ModelConfiguration {
 	pub cards: Vec<ModelConfigurationCardDefinition>,
-	pub views: Vec<super::ViewDefinition>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -243,6 +242,7 @@ pub struct ModelConfigurationCardDefinition {
 pub struct ViewConfiguration {
 	pub available_icons: Vec<String>,
 	pub cards: Vec<ViewConfigurationCardDefinition>,
+	pub views: Vec<super::ViewDefinition>,
 }
 
 /// Appearance configuration for a single card type.

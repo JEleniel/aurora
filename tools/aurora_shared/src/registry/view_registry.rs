@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 use crate::registry::RegistryError;
-use crate::registry::card_registry::ModelConfiguration;
+use crate::registry::card_registry::ViewConfiguration;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ViewDefinition {
@@ -17,16 +17,16 @@ pub struct ViewRegistry {
 }
 
 impl ViewRegistry {
-	pub fn try_new_from_model_configuration(json: &str) -> Result<Self, RegistryError> {
-		let model_configuration: ModelConfiguration = serde_json::from_str(json)?;
+	pub fn try_new_from_view_configuration(json: &str) -> Result<Self, RegistryError> {
+		let view_configuration: ViewConfiguration = serde_json::from_str(json)?;
 		Ok(Self {
-			definitions: model_configuration.views,
+			definitions: view_configuration.views,
 		})
 	}
 
-	pub fn try_new_from_struct(model_configuration: &ModelConfiguration) -> Self {
+	pub fn try_new_from_struct(view_configuration: &ViewConfiguration) -> Self {
 		Self {
-			definitions: model_configuration.views.clone(),
+			definitions: view_configuration.views.clone(),
 		}
 	}
 

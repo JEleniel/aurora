@@ -2,10 +2,11 @@
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"type": "object",
 	"additionalProperties": true,
-	"required": ["available_icons", "cards"],
+	"required": ["available_icons", "cards", "views"],
 	"properties": {
 		"$schema": { "type": "string" },
 		"available_icons": { "type": "array", "items": { "type": "string" } },
-		"cards": { "type": "array" }
+		"cards": { "type": "array" },
+		"views": { "type": "array" }
 	}
 }

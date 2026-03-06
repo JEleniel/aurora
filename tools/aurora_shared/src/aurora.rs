@@ -170,7 +170,7 @@ impl Aurora {
 			model_configuration.clone(),
 			view_configuration.clone(),
 		)?;
-		let view_registry = ViewRegistry::try_new_from_struct(&model_configuration);
+		let view_registry = ViewRegistry::try_new_from_struct(&view_configuration);
 
 		// SVG template validation is performed by rendering workflows.
 

@@ -23,6 +23,7 @@ description: The skill of performing thorough reviews of code, documentation, an
 - If reviewing architecture and designs, refer to the [Architecture Review Checklists and Principles](../ArchitectureChecklistsAndPrinciples.md) for comprehensive guidance on what to look for.
 - For a pre-release review, refer to the [Pre-release Review Checklists](../PreReleaseChecklists.md) for comprehensive guidance on what to look for.
 - The checklist documents are canonical. If a checklist and a skill instruction conflict, the checklist wins.
+- As a reviewer, you MAY run any tests you deem necessary to verify the code, documentation, or release. You may also ask for additional information or clarification from the user if necessary.
 
 ## Files and folders to ignore
 

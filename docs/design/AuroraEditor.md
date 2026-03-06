@@ -164,6 +164,40 @@ This document specifies requirements and UX expectations for a standalone Aurora
     - This requires an update to the matching schema.
     - This may require changes to the `aurora_shared` library.
 
+### Model Configuration and Appearance Customization
+
+The editor MUST allow users and agents to extend and customize the Aurora canon — the card type definitions, relationship rules, visual appearance, and view definitions stored in `reference/Aurora.modelconfiguration.json` and `reference/Aurora.viewconfiguration.json`. All configuration writes are subject to the same validation-gating as model writes.
+
+#### Safety Backup
+
+- Before the first write to any model configuration or view configuration file, the editor MUST create a single ZIP of the `reference/` and `schemas/` directories and store it in `aurora/backups/` (e.g., `MIS-001-config-backup.zip`).
+    - This backup is created once. If it already exists it MUST NOT be overwritten — the goal is to preserve the originals exactly as shipped.
+    - The backup is created synchronously before any configuration write proceeds.
+    - Backup failure MUST block the configuration write and present a clear error; the configuration MUST NOT be modified if the backup cannot be created.
+
+#### Card Type Management
+
+- Users MAY add, edit, and remove card type definitions.
+- The following fields MUST be unique within the registry; any user-supplied value that duplicates an existing entry MUST be rejected at input time, not merely warned about:
+    - Card type name
+    - Acronym
+- Acronyms MUST be generated automatically by the editor to prevent collisions. The generated acronym is derived from the card type name and guaranteed to be unique within the current registry. Users MAY override the generated acronym, but the override is subject to the same uniqueness rejection as any other input.
+- When adding or editing relationships between card types, the editor MUST reject duplicates. A duplicate is defined as: same source card type + same target card type + same relationship label.
+- Removing a card type that is in use in the model MUST be treated as a validation failure and blocked.
+
+#### Appearance Customization
+
+- The editor MUST provide a customization UI for each card type exposing: shape, fill colour, stroke colour, text colour, and icon.
+- A live preview MUST be shown alongside the controls, rendering a representative sample card using the configured style via the same rendering pipeline used for views.
+- The preview MUST update reactively as control values change.
+- Available icons and shapes are populated by extracting the `<defs>` entries from the model home's `reference/SVGTemplate.svgz`. The editor MUST NOT require the user to supply the full Aurora library; the template is the authoritative source of available assets for that model home.
+
+#### View Definition Management
+
+- Users MAY add, edit, and remove view definitions in the view configuration.
+- When selecting root card types for a view, input MUST be constrained to card types that currently satisfy the root safety rule.
+- If a subsequent model change causes a previously valid view root to become invalid, this is treated as a normal model validation error using the standard validation and reporting path.
+
 ## Agent Integration
 
 This section captures requirements for integrating AI assistants into the editor. Detailed interaction flows are to be defined by the Architect.
@@ -292,6 +326,17 @@ This is not the official design, but it defines minimum boundaries the Architect
     - Confirm Ollama and OpenAI endpoints can be configured.
     - Confirm offline mode blocks network calls.
     - Confirm secrets are not logged and are stored securely.
+- Model configuration customization:
+    - Confirm the reference/schemas backup is created before the first configuration write.
+    - Confirm the backup is not overwritten by subsequent configuration writes.
+    - Confirm that a backup failure blocks the configuration write.
+    - Confirm acronym generation produces a unique acronym and that manually entered duplicates are rejected.
+    - Confirm duplicate relationships (same source + target + label) are rejected.
+    - Confirm that attempting to remove a card type in use is blocked with a clear validation error.
+    - Confirm icon and shape options in the appearance UI are populated from `SVGTemplate.svgz` defs.
+    - Confirm the appearance preview updates reactively and uses the same rendering pipeline as views.
+    - Confirm view root selection is constrained to card types that satisfy the root safety rule.
+    - Confirm that a model change invalidating a view root is surfaced as a standard validation error.
 
 ## ADRs
 

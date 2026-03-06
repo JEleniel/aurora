@@ -44,27 +44,27 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 ### Actor
 
-- **[ACT-900 - Example user](MIS-002/Actor/ACT-900-Example_user.md)**: Representative end-user actor for coverage.
+- **[ACT-903 - Example regulator actor](MIS-002/Actor/ACT-903-Example_regulator_actor.md)**: Representative regulator actor for coverage.
 
 - **[ACT-902 - Example external system](MIS-002/Actor/ACT-902-Example_external_system.md)**: Representative machine actor for coverage.
 
-- **[ACT-903 - Example regulator actor](MIS-002/Actor/ACT-903-Example_regulator_actor.md)**: Representative regulator actor for coverage.
-
 - **[ACT-901 - Example admin](MIS-002/Actor/ACT-901-Example_admin.md)**: Representative administrative actor for coverage.
+
+- **[ACT-900 - Example user](MIS-002/Actor/ACT-900-Example_user.md)**: Representative end-user actor for coverage.
 
 ### Adversary
 
-- **[ADV-900 - Insider adversary](MIS-002/Adversary/ADV-900-Insider_adversary.md)**: Adversary subtype used for coverage.
+- **[ADV-903 - Hacktivist adversary](MIS-002/Adversary/ADV-903-Hacktivist_adversary.md)**: Adversary subtype used for coverage.
 
-- **[ADV-901 - Outsider adversary](MIS-002/Adversary/ADV-901-Outsider_adversary.md)**: Adversary subtype used for coverage.
+- **[ADV-902 - Script kiddie adversary](MIS-002/Adversary/ADV-902-Script_kiddie_adversary.md)**: Adversary subtype used for coverage.
 
 - **[ADV-904 - Organized crime adversary](MIS-002/Adversary/ADV-904-Organized_crime_adversary.md)**: Adversary subtype used for coverage.
 
 - **[ADV-905 - Nation state adversary](MIS-002/Adversary/ADV-905-Nation_state_adversary.md)**: Adversary subtype used for coverage.
 
-- **[ADV-903 - Hacktivist adversary](MIS-002/Adversary/ADV-903-Hacktivist_adversary.md)**: Adversary subtype used for coverage.
+- **[ADV-901 - Outsider adversary](MIS-002/Adversary/ADV-901-Outsider_adversary.md)**: Adversary subtype used for coverage.
 
-- **[ADV-902 - Script kiddie adversary](MIS-002/Adversary/ADV-902-Script_kiddie_adversary.md)**: Adversary subtype used for coverage.
+- **[ADV-900 - Insider adversary](MIS-002/Adversary/ADV-900-Insider_adversary.md)**: Adversary subtype used for coverage.
 
 ### Application
 
@@ -72,17 +72,17 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 ### Artifact
 
-- **[ART-905 - Example report](MIS-002/Artifact/ART-905-Example_report.md)**: Artifact subtype used for coverage.
-
 - **[ART-903 - Example code](MIS-002/Artifact/ART-903-Example_code.md)**: Artifact subtype used for coverage.
-
-- **[ART-904 - Example model](MIS-002/Artifact/ART-904-Example_model.md)**: Artifact subtype used for coverage.
-
-- **[ART-902 - Example diagram](MIS-002/Artifact/ART-902-Example_diagram.md)**: Artifact subtype used for coverage.
 
 - **[ART-901 - Sample data](MIS-002/Artifact/ART-901-Sample_data.md)**: Artifact subtype used for coverage.
 
+- **[ART-902 - Example diagram](MIS-002/Artifact/ART-902-Example_diagram.md)**: Artifact subtype used for coverage.
+
 - **[ART-900 - Architecture document](MIS-002/Artifact/ART-900-Architecture_document.md)**: Artifact subtype used for coverage.
+
+- **[ART-904 - Example model](MIS-002/Artifact/ART-904-Example_model.md)**: Artifact subtype used for coverage.
+
+- **[ART-905 - Example report](MIS-002/Artifact/ART-905-Example_report.md)**: Artifact subtype used for coverage.
 
 ### Asset
 
@@ -94,17 +94,17 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 ### Component
 
-- **[COM-905 - Example class component](MIS-002/Component/COM-905-Example_class_component.md)**: Class subtype component used for coverage.
-
-- **[COM-903 - Example module component](MIS-002/Component/COM-903-Example_module_component.md)**: Module subtype component used for coverage.
+- **[COM-902 - Example service component](MIS-002/Component/COM-902-Example_service_component.md)**: Service subtype component used for coverage.
 
 - **[COM-904 - Example subsystem component](MIS-002/Component/COM-904-Example_subsystem_component.md)**: Subsystem subtype component used for coverage.
 
-- **[COM-901 - Example library component](MIS-002/Component/COM-901-Example_library_component.md)**: Library subtype component used for coverage.
+- **[COM-903 - Example module component](MIS-002/Component/COM-903-Example_module_component.md)**: Module subtype component used for coverage.
 
 - **[COM-900 - Example API component](MIS-002/Component/COM-900-Example_API_component.md)**: Primary component that exercises the full Component relationship set.
 
-- **[COM-902 - Example service component](MIS-002/Component/COM-902-Example_service_component.md)**: Service subtype component used for coverage.
+- **[COM-901 - Example library component](MIS-002/Component/COM-901-Example_library_component.md)**: Library subtype component used for coverage.
+
+- **[COM-905 - Example class component](MIS-002/Component/COM-905-Example_class_component.md)**: Class subtype component used for coverage.
 
 ### Condition
 
@@ -122,13 +122,13 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 ### Data Source
 
-- **[DSR-901 - Upstream feed source](MIS-002/Data_Source/DSR-901-Upstream_feed_source.md)**: Data source subtype used for provenance coverage.
-
 - **[DSR-903 - Third-party API source](MIS-002/Data_Source/DSR-903-Thirdparty_API_source.md)**: Data source subtype used for provenance coverage.
+
+- **[DSR-900 - External system source](MIS-002/Data_Source/DSR-900-External_system_source.md)**: Data source subtype used for provenance coverage.
 
 - **[DSR-902 - Sensor source](MIS-002/Data_Source/DSR-902-Sensor_source.md)**: Data source subtype used for provenance coverage.
 
-- **[DSR-900 - External system source](MIS-002/Data_Source/DSR-900-External_system_source.md)**: Data source subtype used for provenance coverage.
+- **[DSR-901 - Upstream feed source](MIS-002/Data_Source/DSR-901-Upstream_feed_source.md)**: Data source subtype used for provenance coverage.
 
 ### Data Store
 
@@ -136,11 +136,11 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 - **[DST-903 - Key-value store](MIS-002/Data_Store/DST-903-Keyvalue_store.md)**: Data store subtype used for persistence coverage.
 
+- **[DST-900 - Relational store](MIS-002/Data_Store/DST-900-Relational_store.md)**: Data store subtype used for persistence coverage.
+
 - **[DST-901 - Object store](MIS-002/Data_Store/DST-901-Object_store.md)**: Data store subtype used for persistence coverage.
 
 - **[DST-904 - Graph store](MIS-002/Data_Store/DST-904-Graph_store.md)**: Data store subtype used for persistence coverage.
-
-- **[DST-900 - Relational store](MIS-002/Data_Store/DST-900-Relational_store.md)**: Data store subtype used for persistence coverage.
 
 ### Deployment
 
@@ -152,9 +152,9 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 ### Event
 
-- **[EVT-900 - Example event](MIS-002/Event/EVT-900-Example_event.md)**: Event that demonstrates transitions, emission, predicate triggering, and artifact carrying.
-
 - **[EVT-901 - Downstream event](MIS-002/Event/EVT-901-Downstream_event.md)**: Second event used to exercise event emission chains.
+
+- **[EVT-900 - Example event](MIS-002/Event/EVT-900-Example_event.md)**: Event that demonstrates transitions, emission, predicate triggering, and artifact carrying.
 
 ### Feature
 
@@ -166,11 +166,11 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 ### Node
 
-- **[NOD-902 - Example hardware](MIS-002/Node/NOD-902-Example_hardware.md)**: Hardware execution environment used for coverage.
+- **[NOD-901 - Example virtual machine](MIS-002/Node/NOD-901-Example_virtual_machine.md)**: Logical VM runtime used for coverage.
 
 - **[NOD-900 - Example container](MIS-002/Node/NOD-900-Example_container.md)**: Logical container runtime used for coverage.
 
-- **[NOD-901 - Example virtual machine](MIS-002/Node/NOD-901-Example_virtual_machine.md)**: Logical VM runtime used for coverage.
+- **[NOD-902 - Example hardware](MIS-002/Node/NOD-902-Example_hardware.md)**: Hardware execution environment used for coverage.
 
 ### Predicate
 
@@ -198,11 +198,11 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 - **[STK-901 - Example end user](MIS-002/Stakeholder/STK-901-Example_end_user.md)**: Representative end-user stakeholder for coverage.
 
-- **[STK-904 - Example regulator stakeholder](MIS-002/Stakeholder/STK-904-Example_regulator_stakeholder.md)**: Representative regulator stakeholder for coverage.
+- **[STK-903 - Example manager](MIS-002/Stakeholder/STK-903-Example_manager.md)**: Representative management stakeholder for coverage.
 
 - **[STK-900 - Example customer](MIS-002/Stakeholder/STK-900-Example_customer.md)**: Representative customer stakeholder for coverage.
 
-- **[STK-903 - Example manager](MIS-002/Stakeholder/STK-903-Example_manager.md)**: Representative management stakeholder for coverage.
+- **[STK-904 - Example regulator stakeholder](MIS-002/Stakeholder/STK-904-Example_regulator_stakeholder.md)**: Representative regulator stakeholder for coverage.
 
 - **[STK-902 - Example operator](MIS-002/Stakeholder/STK-902-Example_operator.md)**: Representative operations stakeholder for coverage.
 
@@ -218,6 +218,8 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 ### Story
 
+- **[STR-902 - As an operator I need renderable views](MIS-002/Story/STR-902-As_an_operator_I_need_renderable_views.md)**: As an operator I need the example to render without missing references so that view generation works out-of-the-box.
+
 - **[STR-900 - As a customer I need full coverage](MIS-002/Story/STR-900-As_a_customer_I_need_full_coverage.md)**: As a customer I need the example model to include every canonical card and relationship so that tooling demonstrations are complete.
 
 - **[STR-904 - As a regulator I need demonstrable controls](MIS-002/Story/STR-904-As_a_regulator_I_need_demonstrable_controls.md)**: As a regulator I need the example to include controls, risks, and constraints so that compliance views are meaningful.
@@ -225,8 +227,6 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 - **[STR-901 - As an end user I need examples](MIS-002/Story/STR-901-As_an_end_user_I_need_examples.md)**: As an end user I need a representative example model to understand the vocabulary and links.
 
 - **[STR-903 - As a manager I need traceability](MIS-002/Story/STR-903-As_a_manager_I_need_traceability.md)**: As a manager I need the example to demonstrate traceability from mission to implementation and verification.
-
-- **[STR-902 - As an operator I need renderable views](MIS-002/Story/STR-902-As_an_operator_I_need_renderable_views.md)**: As an operator I need the example to render without missing references so that view generation works out-of-the-box.
 
 ### System
 
@@ -250,9 +250,9 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 ### Trigger
 
-- **[TRG-900 - Example trigger](MIS-002/Trigger/TRG-900-Example_trigger.md)**: A process-domain trigger that demonstrates the full Trigger relationship set.
-
 - **[TRG-901 - Downstream trigger](MIS-002/Trigger/TRG-901-Downstream_trigger.md)**: Second trigger used to demonstrate trigger chaining via 'triggers'.
+
+- **[TRG-900 - Example trigger](MIS-002/Trigger/TRG-900-Example_trigger.md)**: A process-domain trigger that demonstrates the full Trigger relationship set.
 
 ### Vendor
 
@@ -262,9 +262,9 @@ Example Aurora model that exercises every canonical card type, subtype, and rela
 
 - **[VIC-900 - User victim](MIS-002/Victim/VIC-900-User_victim.md)**: Victim subtype used for coverage.
 
-- **[VIC-901 - Organization victim](MIS-002/Victim/VIC-901-Organization_victim.md)**: Victim subtype used for coverage.
-
 - **[VIC-903 - Data victim](MIS-002/Victim/VIC-903-Data_victim.md)**: Victim subtype used for coverage.
+
+- **[VIC-901 - Organization victim](MIS-002/Victim/VIC-901-Organization_victim.md)**: Victim subtype used for coverage.
 
 - **[VIC-902 - System victim](MIS-002/Victim/VIC-902-System_victim.md)**: Victim subtype used for coverage.
 

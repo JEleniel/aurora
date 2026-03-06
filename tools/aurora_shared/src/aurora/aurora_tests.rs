@@ -129,7 +129,7 @@ fn test_aurora(models: Vec<Model>) -> Aurora {
 	let card_registry =
 		CardRegistry::try_new_from_structs(model_configuration.clone(), view_configuration.clone())
 			.expect("card registry");
-	let view_registry = ViewRegistry::try_new_from_struct(&model_configuration);
+	let view_registry = ViewRegistry::try_new_from_struct(&view_configuration);
 	let svg_template = read_testdata("svg/template_minimal.svg");
 
 	Aurora {

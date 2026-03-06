@@ -14,5 +14,13 @@
 			"fill": "#ffffff",
 			"stroke": "#000000"
 		}
+	],
+	"views": [
+		{
+			"name": "Test View",
+			"description": "A test view",
+			"root_card_types": ["MIS"],
+			"included_card_types": ["CAP"]
+		}
 	]
 }

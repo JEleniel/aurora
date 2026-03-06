@@ -2,10 +2,9 @@
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"type": "object",
 	"additionalProperties": true,
-	"required": ["cards", "views"],
+	"required": ["cards"],
 	"properties": {
 		"$schema": { "type": "string" },
-		"cards": { "type": "array" },
-		"views": { "type": "array" }
+		"cards": { "type": "array" }
 	}
 }

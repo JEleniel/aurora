@@ -84,7 +84,8 @@ When instructed, maintain the `CHANGELOG.md` based on the git commit history and
 - User documentation is at `docs/` and starts at `docs/README.md` (if present).
 - Working assets (styles, images) are at `assets/`.
 - Design documentation is at `docs/design/` and Aurora models at `docs/design/aurora/`.
-    - The following files and folders are generated and should be ignored:
+- Many Aurora workflows regenerate large, mechanical outputs (for example views, markdown renderings, and compact exports). These changes can overwhelm `git diff` and obscure intent.
+    - The following files and folders are generated and should be ignored, including in git statuses:
         - `docs/design/MIS-*/**/*`
         - `docs/design/MIS-*.md`
         - `docs/design/README-MIS-*`

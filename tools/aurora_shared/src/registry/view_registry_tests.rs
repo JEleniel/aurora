@@ -10,14 +10,14 @@ fn read_testdata(rel_path: &str) -> String {
 		.unwrap_or_else(|e| panic!("failed to read testdata file {}: {e}", path.display()))
 }
 
-fn test_model_configuration() -> String {
+fn test_view_configuration() -> String {
 	read_testdata("modelconfiguration/view_registry_test.json")
 }
 
 #[test]
 fn try_get_all_returns_definitions() {
-	let model_configuration = test_model_configuration();
-	let registry = ViewRegistry::try_new_from_model_configuration(&model_configuration)
+	let view_configuration = test_view_configuration();
+	let registry = ViewRegistry::try_new_from_view_configuration(&view_configuration)
 		.expect("view registry JSON should parse");
 	let definitions = registry
 		.try_get_all()
@@ -27,8 +27,8 @@ fn try_get_all_returns_definitions() {
 
 #[test]
 fn can_find_a_definition_by_name_in_returned_list() {
-	let model_configuration = test_model_configuration();
-	let registry = ViewRegistry::try_new_from_model_configuration(&model_configuration)
+	let view_configuration = test_view_configuration();
+	let registry = ViewRegistry::try_new_from_view_configuration(&view_configuration)
 		.expect("view registry JSON should parse");
 	let definitions = registry
 		.try_get_all()
@@ -43,8 +43,8 @@ fn can_find_a_definition_by_name_in_returned_list() {
 
 #[test]
 fn find_by_name_returns_none_for_unknown() {
-	let model_configuration = test_model_configuration();
-	let registry = ViewRegistry::try_new_from_model_configuration(&model_configuration)
+	let view_configuration = test_view_configuration();
+	let registry = ViewRegistry::try_new_from_view_configuration(&view_configuration)
 		.expect("view registry JSON should parse");
 	let definitions = registry
 		.try_get_all()
