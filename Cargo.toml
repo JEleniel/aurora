@@ -1,5 +1,10 @@
 [workspace]
-members = ["tools/aurora_cli", "tools/aurora_shared", "tools/svg_prep"]
+members = [
+	"tools/aurora_cli",
+	"tools/aurora_editor",
+	"tools/aurora_shared",
+	"tools/svg_prep",
+]
 resolver = "3"
 
 [workspace.package]

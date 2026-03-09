@@ -221,12 +221,14 @@ pub struct CardDefinition {
 	pub common_subtypes: Vec<String>,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ModelConfiguration {
+	#[serde(default, rename = "$schema")]
+	pub schema: Option<String>,
 	pub cards: Vec<ModelConfigurationCardDefinition>,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ModelConfigurationCardDefinition {
 	pub acronym: String,
 	pub card_type: String,
@@ -238,8 +240,10 @@ pub struct ModelConfigurationCardDefinition {
 }
 
 /// Rendering and icon configuration used by view and SVG renderers.
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ViewConfiguration {
+	#[serde(default, rename = "$schema")]
+	pub schema: Option<String>,
 	pub available_icons: Vec<String>,
 	pub cards: Vec<ViewConfigurationCardDefinition>,
 	#[serde(default)]
@@ -247,7 +251,7 @@ pub struct ViewConfiguration {
 }
 
 /// Appearance configuration for a single card type.
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ViewConfigurationCardDefinition {
 	pub acronym: String,
 	pub shape: String,
@@ -260,7 +264,7 @@ pub struct ViewConfigurationCardDefinition {
 	pub icon: Option<String>,
 }
 
-#[derive(Debug, Clone, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ModelConfigurationRelationshipDefinition {
 	pub target: String,
 	pub relationship: String,

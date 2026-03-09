@@ -33,7 +33,7 @@ pub(crate) struct LoadedModel {
 }
 
 #[path = "model/model_write_support.rs"]
-mod model_write_support;
+pub(super) mod model_write_support;
 
 #[cfg(test)]
 mod model_tests;

@@ -1,0 +1,16 @@
+<svg viewBox="{{viewbox}}">
+	<defs>
+		<g id="rectangle" />
+		<g id="hexagon">
+			<path d="M0 0" />
+		</g>
+		<g id="double-rectangle">
+			<path d="M1 1" />
+		</g>
+		<g id="i-wrench">
+			<path d="M2 2" />
+		</g>
+		<g id='i-gear'>
+			<path d="M3 3" />
+		</g>
+	</defs>{{diagram}}</svg>

@@ -1,5 +1,6 @@
 use std::ffi::OsStr;
 use std::fs;
+use std::io::{Error, ErrorKind};
 use std::path::{Path, PathBuf};
 
 use super::{Card, Model, ModelError};
@@ -217,6 +218,15 @@ fn temp_path_for(final_path: &Path, index: usize) -> Result<PathBuf, ModelError>
 	Ok(parent.join(format!(".{file_name}.tmp-{}-{index}", std::process::id())))
 }
 
+pub(crate) fn write_single_file_transactionally(
+	final_path: PathBuf,
+	contents: String,
+) -> Result<(), std::io::Error> {
+	let prepared =
+		PreparedFileWrite::new(final_path, contents, 0).map_err(model_error_to_io_error)?;
+	write_transactionally(vec![prepared])
+}
+
 fn write_transactionally(writes: Vec<PreparedFileWrite>) -> Result<(), std::io::Error> {
 	let mut staged_temp_paths: Vec<PathBuf> = Vec::with_capacity(writes.len());
 	for write in &writes {
@@ -276,6 +286,14 @@ fn rollback_writes(committed: &[CommittedFileWrite]) {
 				let _ = fs::remove_file(&write.final_path);
 			}
 		}
+	}
+}
+
+fn model_error_to_io_error(error: ModelError) -> std::io::Error {
+	match error {
+		ModelError::ReadError(error) => error,
+		ModelError::InvalidFilename => Error::new(ErrorKind::InvalidInput, "invalid filename"),
+		other => Error::other(other.to_string()),
 	}
 }
 

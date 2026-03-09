@@ -1,0 +1,36 @@
+[package]
+name = "aurora_editor"
+description = "Aurora standalone desktop editor"
+edition = { workspace = true }
+version = "1.0.0"
+repository = { workspace = true }
+license = { workspace = true }
+publish = { workspace = true }
+keywords = { workspace = true }
+categories = { workspace = true }
+
+[[bin]]
+name = "aurora_editor"
+path = "src/main.rs"
+
+[package.metadata]
+app_id = "org.crystultima.aurora.editor"
+
+[dependencies]
+anyhow = { workspace = true }
+aurora_shared = { workspace = true }
+clap = { workspace = true }
+dioxus = { workspace = true }
+dioxus-desktop = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+thiserror = { workspace = true }
+dirs = "6"
+
+[dev-dependencies]
+tempfile = "3.10"
+
+[lints]
+workspace = true

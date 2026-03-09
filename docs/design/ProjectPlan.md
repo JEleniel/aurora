@@ -74,7 +74,7 @@
         - Compilation succeeds; no regressions in existing tests.
     - Status: Completed
 
-6. [ ] Add configuration safety backup to `aurora_shared`
+6. [x] Add configuration safety backup to `aurora_shared`
     - Priority: 1 (High)
     - Cards: SYS-001, CAP-009
     - Description: Before the first write to any model configuration or view configuration file, create a single ZIP of the `reference/` and `schemas/` directories and store it in `aurora/backups/` (e.g., `MIS-001-config-backup.zip`). This backup is created once — if it already exists it must not be overwritten, as the goal is to preserve the originals exactly as shipped. Creation is synchronous; failure must block the configuration write entirely.
@@ -84,9 +84,9 @@
         - If the backup already exists, skips creation silently.
         - Failure to create the backup returns an error and aborts the write with no partial changes.
         - Tests verify: backup created on first write, skipped on subsequent writes, write blocked on backup failure.
-    - Status: Not Started
+    - Status: Completed
 
-7. [ ] Implement SVGTemplate defs extraction in `aurora_shared`
+7. [x] Implement SVGTemplate defs extraction in `aurora_shared`
     - Priority: 1 (High)
     - Cards: SYS-001, FEA-006
     - Description: Implement a read-only utility that opens `reference/SVGTemplate.svgz` from a model home and extracts the available icon and shape `<defs>` entries. The result is a registry of named asset IDs used by the appearance customization UI to present available options without requiring the full Aurora library. This is distinct from the svg_prep build pipeline — it inspects the template rather than processing it.
@@ -95,13 +95,13 @@
         - Result is consumed by the appearance customization UI (Task 18).
         - Tests verify extraction against a known template fixture with a predictable set of defs.
     - Notes: May share decompression infrastructure with Task 27 (svg_prep integration); evaluate before duplicating.
-    - Status: Not Started
+    - Status: Completed
 
 ---
 
 ## Phase 1 — Search Index
 
-8. [ ] Implement in-memory search index in `aurora_shared`
+8. [x] Implement in-memory search index in `aurora_shared`
     - Priority: 0 (Critical)
     - Cards: SYS-001, CAP-003
     - Description: Implement a searchable in-memory index over the model home using `tantivy`. The index is rebuilt on startup from the card files on disk and kept live via filesystem monitoring (inotify on Linux, FSEvents on macOS, ReadDirectoryChangesW on Windows). Filesystem monitoring replaces any explicit update or remove API: changes on disk are detected automatically and the index is updated without application intervention. No persistence is required — rebuilding from disk is fast enough to beat even MCP server initialization time. Coverage: card type, subtype, ID, name, outbound link adjacency, and attribute property names.
@@ -113,13 +113,13 @@
         - Tests cover initial build, watcher-triggered update, card deletion, and search ranking.
     - Notes: Uses `tantivy` for search and a platform-appropriate fs-watch crate (e.g., `notify`).
     - Dependencies: Task 5
-    - Status: Not Started
+    - Status: Completed
 
 ---
 
 ## Phase 2 — `aurora_editor` Crate Scaffold
 
-9. [ ] Create `aurora_editor` crate and workspace member
+9. [x] Create `aurora_editor` crate and workspace member
     - Priority: 0 (Critical)
     - Cards: SYS-001, FEA-008
     - Description: Create the `tools/aurora_editor/` crate, register it in the workspace, and establish the binary entry point with CLI argument parsing (model home path, logging level). Wire up structured logging (file-based, same conventions as CLI).
@@ -129,9 +129,9 @@
         - `cargo build -p aurora_editor` succeeds with no warnings.
     - Notes: The UI framework approved in the ADR is Dioxus (desktop target).
     - Dependencies: Task 5
-    - Status: Not Started
+    - Status: Completed
 
-10. [ ] Implement model-home loading with bounded working set
+10. [x] Implement model-home loading with bounded working set
     - Priority: 0 (Critical)
     - Cards: SYS-001, CAP-001, CAP-003
     - Description: The editor must not fully materialize all cards on startup. Implement a session layer that builds the index (Task 8) immediately and defers full card deserialization to on-demand access. Interactive readiness must not wait for full model load. Target: interactive within 2 seconds on a typical model home (2000 cards, 3500 links).
@@ -141,7 +141,7 @@
         - Startup load time ≤ 2 s measured against a synthetic 2000-card / 3500-link fixture.
         - Exclusive lock is acquired on startup; second instance is refused with clear UX.
     - Dependencies: Task 2, Task 8, Task 9
-    - Status: Not Started
+    - Status: Completed
 
 11. [ ] Implement configuration and settings management
     - Priority: 1 (High)

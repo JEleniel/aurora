@@ -143,7 +143,7 @@ impl AuditLog {
 }
 
 impl AuditLogFileLock {
-	fn try_acquire(path: &Path) -> Result<Self, AuditLogError> {
+	pub(crate) fn try_acquire(path: &Path) -> Result<Self, AuditLogError> {
 		let canonical_path = register_process_lock(path)?;
 		let file = match open_lock_file(path) {
 			Ok(file) => file,

@@ -56,6 +56,31 @@ impl BackupRequest {
 	}
 }
 
+/// Parameters for creating a one-time immutable configuration backup ZIP.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct ConfigBackupRequest {
+	pub model_home: PathBuf,
+	pub mission_id: String,
+}
+
+impl ConfigBackupRequest {
+	/// Create a configuration-backup request for a specific model home.
+	pub fn new(model_home: PathBuf, mission_id: impl Into<String>) -> Self {
+		Self {
+			model_home,
+			mission_id: mission_id.into(),
+		}
+	}
+
+	fn archive_name(&self) -> String {
+		format!("{}-config-backup.zip", self.mission_id)
+	}
+
+	fn archive_path(&self) -> PathBuf {
+		self.model_home.join("backups").join(self.archive_name())
+	}
+}
+
 /// Creates timestamped ZIP archives of model homes for write sessions.
 #[derive(Debug, Default)]
 pub struct BackupManager;
@@ -76,15 +101,54 @@ impl BackupManager {
 			.ok_or_else(|| BackupError::InvalidBackupPath(archive_path.display().to_string()))?;
 
 		std::fs::create_dir_all(backup_dir)?;
-		write_archive(&request.model_home, backup_dir, &archive_path)?;
+		let files = backup_files(&request.model_home, backup_dir)?;
+		write_archive(&archive_path, &request.model_home, &files)?;
 		Ok(archive_path)
 	}
 }
 
+/// Creates one-time ZIP archives of the shipped configuration directories.
+#[derive(Debug, Default)]
+pub struct ConfigBackupManager;
+
+impl ConfigBackupManager {
+	/// Ensure that the original configuration assets have been archived once.
+	pub fn ensure_backup(request: &ConfigBackupRequest) -> Result<PathBuf, BackupError> {
+		let archive_path = request.archive_path();
+		if archive_path.is_file() {
+			return Ok(archive_path);
+		}
+
+		let backup_dir = archive_path
+			.parent()
+			.ok_or_else(|| BackupError::InvalidBackupPath(archive_path.display().to_string()))?;
+		std::fs::create_dir_all(backup_dir)?;
+
+		let temp_path = temp_archive_path(&archive_path)?;
+		let files = config_backup_files(&request.model_home)?;
+		if let Err(error) = write_archive(&temp_path, &request.model_home, &files) {
+			cleanup_file(&temp_path);
+			return Err(error);
+		}
+
+		match std::fs::rename(&temp_path, &archive_path) {
+			Ok(()) => Ok(archive_path),
+			Err(error) if archive_path.is_file() => {
+				cleanup_file(&temp_path);
+				Ok(archive_path)
+			}
+			Err(error) => {
+				cleanup_file(&temp_path);
+				Err(error.into())
+			}
+		}
+	}
+}
+
 fn write_archive(
-	model_home: &Path,
-	backup_dir: &Path,
 	archive_path: &Path,
+	model_home: &Path,
+	files: &[PathBuf],
 ) -> Result<(), BackupError> {
 	let archive_file = File::create(archive_path)?;
 	let mut zip = ZipWriter::new(archive_file);
@@ -92,10 +156,10 @@ fn write_archive(
 		.compression_method(CompressionMethod::Deflated)
 		.unix_permissions(0o644);
 
-	for path in backup_files(model_home, backup_dir)? {
-		let archive_name = archive_name_for(model_home, &path)?;
+	for path in files {
+		let archive_name = archive_name_for(model_home, path)?;
 		zip.start_file(archive_name, options)?;
-		let mut source = File::open(&path)?;
+		let mut source = File::open(path)?;
 		std::io::copy(&mut source, &mut zip)?;
 	}
 
@@ -118,11 +182,53 @@ fn backup_files(model_home: &Path, backup_dir: &Path) -> Result<Vec<PathBuf>, Ba
 	Ok(files)
 }
 
+fn config_backup_files(model_home: &Path) -> Result<Vec<PathBuf>, BackupError> {
+	let mut files = files_in_required_directory(&model_home.join("reference"))?;
+	files.extend(files_in_required_directory(&model_home.join("schemas"))?);
+	files.sort();
+	Ok(files)
+}
+
+fn files_in_required_directory(path: &Path) -> Result<Vec<PathBuf>, BackupError> {
+	if !path.is_dir() {
+		return Err(BackupError::RequiredBackupPathMissing(
+			path.display().to_string(),
+		));
+	}
+
+	let mut files = Vec::new();
+	for entry in WalkDir::new(path) {
+		let entry = entry.map_err(|error| BackupError::Io(error.into()))?;
+		if entry.file_type().is_file() {
+			files.push(entry.into_path());
+		}
+	}
+	files.sort();
+	Ok(files)
+}
+
 fn archive_name_for(model_home: &Path, path: &Path) -> Result<String, BackupError> {
 	let relative = path
 		.strip_prefix(model_home)
 		.map_err(|_| BackupError::InvalidBackupPath(path.display().to_string()))?;
 	Ok(relative.to_string_lossy().replace('\\', "/"))
+}
+
+fn temp_archive_path(archive_path: &Path) -> Result<PathBuf, BackupError> {
+	let parent = archive_path
+		.parent()
+		.ok_or_else(|| BackupError::InvalidBackupPath(archive_path.display().to_string()))?;
+	let file_name = archive_path
+		.file_name()
+		.and_then(|name| name.to_str())
+		.ok_or_else(|| BackupError::InvalidBackupPath(archive_path.display().to_string()))?;
+	Ok(parent.join(format!(".{file_name}.tmp-{}", std::process::id())))
+}
+
+fn cleanup_file(path: &Path) {
+	if path.exists() {
+		let _ = std::fs::remove_file(path);
+	}
 }
 
 /// Errors raised while preparing or writing a model-home backup archive.
@@ -134,6 +240,8 @@ pub enum BackupError {
 	Zip(#[from] zip::result::ZipError),
 	#[error("Invalid backup path: {0}")]
 	InvalidBackupPath(String),
+	#[error("Required backup source path is missing: {0}")]
+	RequiredBackupPathMissing(String),
 }
 
 #[cfg(test)]
@@ -143,7 +251,9 @@ mod tests {
 
 	use zip::ZipArchive;
 
-	use super::{BackupManager, BackupRequest, BackupSessionKind};
+	use super::{
+		BackupManager, BackupRequest, BackupSessionKind, ConfigBackupManager, ConfigBackupRequest,
+	};
 	use crate::block_on_background;
 
 	type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
@@ -201,6 +311,45 @@ mod tests {
 				.and_then(|name| name.to_str())
 				.is_some_and(|name| name.starts_with("MCP-MIS-001-") && name.ends_with(".zip"))
 		);
+		Ok(())
+	}
+
+	#[test]
+	fn ensure_config_backup_writes_reference_and_schema_contents_only() -> Result<()> {
+		let temp = tempfile::tempdir()?;
+		let model_home = temp.path().join("aurora");
+		seed_model_home(&model_home)?;
+
+		let archive_path =
+			ConfigBackupManager::ensure_backup(&ConfigBackupRequest::new(model_home, "MIS-001"))?;
+
+		assert_eq!(
+			archive_path.file_name().and_then(|name| name.to_str()),
+			Some("MIS-001-config-backup.zip")
+		);
+
+		let entries = archive_entries(&archive_path)?;
+		assert!(entries.contains(&"reference/Aurora.modelconfiguration.json".to_string()));
+		assert!(entries.contains(&"schemas/Aurora.card.schema.json".to_string()));
+		assert!(!entries.iter().any(|entry| entry == "MIS-001-Alpha.json"));
+		assert!(!entries.iter().any(|entry| entry.starts_with("MIS-001/")));
+		Ok(())
+	}
+
+	#[test]
+	fn ensure_config_backup_skips_existing_archive() -> Result<()> {
+		let temp = tempfile::tempdir()?;
+		let model_home = temp.path().join("aurora");
+		seed_model_home(&model_home)?;
+
+		let existing_path = model_home.join("backups").join("MIS-001-config-backup.zip");
+		std::fs::write(&existing_path, b"keep original")?;
+
+		let archive_path =
+			ConfigBackupManager::ensure_backup(&ConfigBackupRequest::new(model_home, "MIS-001"))?;
+
+		assert_eq!(archive_path, existing_path);
+		assert_eq!(std::fs::read(&archive_path)?, b"keep original");
 		Ok(())
 	}
 

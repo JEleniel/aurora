@@ -410,3 +410,93 @@ fn try_load_for_update_rejects_second_writer_for_same_model_home() -> Result<()>
 	assert_eq!(reopened.models.len(), 1);
 	Ok(())
 }
+
+#[test]
+fn write_model_configuration_creates_one_time_config_backup() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let aurora_home = temp.path().join("aurora");
+	std::fs::create_dir_all(&aurora_home)?;
+	write_schema_files(&aurora_home)?;
+
+	let root_path = aurora_home.join("MIS-001-Alpha.json");
+	let mission_home = aurora_home.join("MIS-001");
+	std::fs::create_dir_all(&mission_home)?;
+	write_json(&root_path, &card_json("MIS-001", "Mission", vec![]))?;
+	write_audit_log(&mission_home.join("AuditLog.ndjson"))?;
+
+	let mut aurora = Aurora::try_load_for_update(temp.path())?;
+	let mut updated = aurora.model_configuration.clone();
+	updated.cards[0].description = "updated description".to_string();
+
+	aurora.write_model_configuration(updated)?;
+
+	let backup_path = aurora_home
+		.join("backups")
+		.join("MIS-001-config-backup.zip");
+	assert!(backup_path.exists());
+	let written = std::fs::read_to_string(
+		aurora_home
+			.join("reference")
+			.join("Aurora.modelconfiguration.json"),
+	)?;
+	assert!(written.contains("updated description"));
+	Ok(())
+}
+
+#[test]
+fn write_view_configuration_preserves_existing_config_backup() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let aurora_home = temp.path().join("aurora");
+	std::fs::create_dir_all(&aurora_home)?;
+	write_schema_files(&aurora_home)?;
+
+	let root_path = aurora_home.join("MIS-001-Alpha.json");
+	let mission_home = aurora_home.join("MIS-001");
+	std::fs::create_dir_all(&mission_home)?;
+	write_json(&root_path, &card_json("MIS-001", "Mission", vec![]))?;
+	write_audit_log(&mission_home.join("AuditLog.ndjson"))?;
+
+	let backup_path = aurora_home
+		.join("backups")
+		.join("MIS-001-config-backup.zip");
+	std::fs::create_dir_all(backup_path.parent().expect("backup parent"))?;
+	std::fs::write(&backup_path, b"original backup")?;
+
+	let mut aurora = Aurora::try_load_for_update(temp.path())?;
+	let mut updated = aurora.view_configuration.clone();
+	updated.available_icons.push("new-icon".to_string());
+
+	aurora.write_view_configuration(updated)?;
+
+	assert_eq!(std::fs::read(&backup_path)?, b"original backup");
+	Ok(())
+}
+
+#[test]
+fn write_model_configuration_blocks_write_when_backup_fails() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let aurora_home = temp.path().join("aurora");
+	std::fs::create_dir_all(&aurora_home)?;
+	write_schema_files(&aurora_home)?;
+
+	let root_path = aurora_home.join("MIS-001-Alpha.json");
+	let mission_home = aurora_home.join("MIS-001");
+	std::fs::create_dir_all(&mission_home)?;
+	write_json(&root_path, &card_json("MIS-001", "Mission", vec![]))?;
+	write_audit_log(&mission_home.join("AuditLog.ndjson"))?;
+
+	let original_path = aurora_home
+		.join("reference")
+		.join("Aurora.modelconfiguration.json");
+	let original_contents = std::fs::read_to_string(&original_path)?;
+	std::fs::write(aurora_home.join("backups"), b"not a directory")?;
+
+	let mut aurora = Aurora::try_load_for_update(temp.path())?;
+	let mut updated = aurora.model_configuration.clone();
+	updated.cards[0].description = "blocked write".to_string();
+
+	let result = aurora.write_model_configuration(updated);
+	assert!(matches!(result, Err(AuroraError::BackupError(_))));
+	assert_eq!(std::fs::read_to_string(&original_path)?, original_contents);
+	Ok(())
+}

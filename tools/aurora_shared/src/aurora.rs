@@ -1,4 +1,5 @@
 mod auditlog;
+mod configuration_write_support;
 mod model;
 
 pub use auditlog::*;
@@ -16,6 +17,7 @@ use tracing::info;
 
 use flate2::read::GzDecoder;
 
+use crate::SvgTemplateDefs;
 use crate::registry::RegistryError;
 use crate::registry::{CardRegistry, ModelConfiguration, ViewConfiguration, ViewRegistry};
 
@@ -263,9 +265,9 @@ impl Aurora {
 			self.svg_template.clone()
 		};
 
-		let svg_icon_ids = extract_svg_icon_ids(&svg_template);
+		let svg_defs = SvgTemplateDefs::parse(&svg_template);
 		for icon in &self.card_registry.available_icons {
-			if !svg_icon_ids.contains(icon) {
+			if !svg_defs.icon_ids.contains(icon) {
 				return Err(AuroraError::ReferenceValidationFailed(vec![format!(
 					"reference/Aurora.viewconfiguration.json declares icon '{}' but reference/SVGTemplate.svgz (or SVGTemplate.svg) is missing group id 'i-{}'.",
 					icon, icon
@@ -608,6 +610,8 @@ pub enum AuroraError {
 	JsonParseError(#[from] serde_json::Error),
 	#[error("A registry error occurred: {0}")]
 	RegistryError(#[from] RegistryError),
+	#[error("A backup error occurred: {0}")]
+	BackupError(#[from] crate::BackupError),
 }
 
 fn map_model_error(error: ModelError) -> AuroraError {
@@ -615,25 +619,6 @@ fn map_model_error(error: ModelError) -> AuroraError {
 		ModelError::ModelLocked(path) => AuroraError::ModelLocked(path),
 		other => AuroraError::ModelError(other),
 	}
-}
-
-fn extract_svg_icon_ids(svg_template: &str) -> HashSet<String> {
-	let mut out: HashSet<String> = HashSet::new();
-	let mut search_start = 0usize;
-	while let Some(index) = svg_template[search_start..].find("id=\"i-") {
-		let start = search_start + index + "id=\"i-".len();
-		let remainder = &svg_template[start..];
-		if let Some(end) = remainder.find('"') {
-			let icon = &remainder[..end];
-			if !icon.trim().is_empty() {
-				out.insert(icon.to_string());
-			}
-			search_start = start + end + 1;
-		} else {
-			break;
-		}
-	}
-	out
 }
 
 fn svg_icon_group_is_empty(svg_template: &str, icon: &str) -> bool {

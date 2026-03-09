@@ -7,6 +7,7 @@
 use super::LayoutEdge;
 use super::render_error::RenderError;
 use super::{Layout, LayoutFamily};
+use crate::SvgTemplateDefs;
 use crate::registry::CardRegistry;
 use crate::{Card, Model};
 use std::collections::{HashMap, HashSet};
@@ -473,34 +474,10 @@ fn escape_attr(value: &str) -> String {
 }
 
 fn collect_template_shape_ids(svg_template: &str) -> HashSet<String> {
-	let mut ids = HashSet::new();
-	let mut cursor = 0usize;
-
-	while let Some(rel) = svg_template[cursor..].find("<g") {
-		let group_start = cursor + rel;
-		let next = svg_template[group_start + 2..].chars().next();
-		if !matches!(
-			next,
-			Some(' ') | Some('\t') | Some('\n') | Some('\r') | Some('>')
-		) {
-			cursor = group_start + 2;
-			continue;
-		}
-
-		let Some(group_end_rel) = svg_template[group_start..].find('>') else {
-			break;
-		};
-		let group_end = group_start + group_end_rel;
-		let group_tag = &svg_template[group_start..=group_end];
-		if let Some(id) = extract_attribute_value(group_tag, "id")
-			&& !id.starts_with("i-")
-		{
-			ids.insert(id);
-		}
-
-		cursor = group_end + 1;
-	}
-
+	let mut ids: HashSet<String> = SvgTemplateDefs::parse(svg_template)
+		.shape_ids
+		.into_iter()
+		.collect();
 	ids.insert("rectangle".to_string());
 	ids
 }
