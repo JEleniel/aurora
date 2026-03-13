@@ -5,6 +5,9 @@ mod app_settings;
 #[cfg(not(test))]
 mod app_shell;
 #[cfg(not(test))]
+mod bottom_panel;
+mod bottom_panel_model;
+#[cfg(not(test))]
 mod graph_view;
 mod inspector_model;
 #[cfg(not(test))]

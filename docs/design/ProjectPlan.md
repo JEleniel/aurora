@@ -228,7 +228,7 @@
     - Dependencies: Task 1, Task 3, Task 13, Task 14
     - Status: In Progress
 
-17. [ ] Implement bottom panel — audit log and diagnostics
+17. [x] Implement bottom panel — audit log and diagnostics
     - Priority: 2 (Medium)
     - Cards: SYS-001, FEA-011, FEA-008
     - Description: Bottom panel hosts two tabs: an audit log viewer (reverse-chronological entries for the selected card) and a diagnostics/validation messages pane (warnings and errors for the current model state). Entries in the audit log must link back to the relevant card in the graph view.
@@ -237,7 +237,7 @@
         - Diagnostics tab shows current `validation_errors` and `validation_warnings`.
         - Clicking an audit entry or diagnostic navigates to the relevant card.
     - Dependencies: Task 13, Task 14
-    - Status: Not Started
+    - Status: Completed
 
 18. [ ] Implement model configuration customization UI
     - Priority: 1 (High)

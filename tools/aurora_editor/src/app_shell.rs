@@ -6,11 +6,11 @@ use dioxus::prelude::*;
 
 use crate::EditorSession;
 use crate::app::{EditorAppBootstrap, SessionSummary};
-use crate::app_settings::{ProviderSection, SaveFeedback};
+use crate::app_settings::SaveFeedback;
+use crate::bottom_panel::BottomPanelTabs;
 use crate::graph_view::GraphWorkspace;
 use crate::inspector_sidebar::InspectorSidebar;
 use crate::navigation_sidebar::NavigationSidebar;
-use crate::secrets::AgentProvider;
 use crate::settings::SettingsDraft;
 use crate::shell::{ResizeCommand, ShellLayout, ShellRegion, resize_command_for_key};
 use crate::theme::ThemePalette;
@@ -114,7 +114,7 @@ fn WorkspaceGrid(
 				palette,
 			}
 			BottomPanelRail { shell_layout, layout, palette }
-			BottomPanelRegion { draft, palette }
+			BottomPanelRegion { session, selected_card_id, palette }
 		}
 	}
 }
@@ -324,34 +324,17 @@ fn BottomPanelRail(
 }
 
 #[component]
-fn BottomPanelRegion(draft: Signal<SettingsDraft>, palette: ThemePalette) -> Element {
+fn BottomPanelRegion(
+	session: Option<Arc<EditorSession>>,
+	selected_card_id: Signal<String>,
+	palette: ThemePalette,
+) -> Element {
 	rsx! {
 		section {
 			id: BOTTOM_PANEL_REGION_ID,
 			aria_label: "Diagnostics and providers panel",
 			style: workspace_region_style(&palette, "grid-column: 3; grid-row: 3; overflow: auto;"),
-			BottomPanel { draft, palette }
-		}
-	}
-}
-#[component]
-fn BottomPanel(draft: Signal<SettingsDraft>, palette: ThemePalette) -> Element {
-	rsx! {
-		div { style: region_content_style(),
-			h2 { style: heading_style(), "Bottom panel" }
-			p { style: body_style(&palette),
-				"Audit log and diagnostics land here in Task 17. The current shell keeps the region alive with provider configuration cards so resizing and scrolling can be exercised now."
-			}
-			div { style: provider_grid_style(),
-				for provider in AgentProvider::all() {
-					ProviderSection {
-						key: "{provider.as_str()}",
-						draft,
-						provider,
-						palette,
-					}
-				}
-			}
+			BottomPanelTabs { session, selected_card_id, palette }
 		}
 	}
 }
@@ -447,25 +430,6 @@ fn apply_resize_command(
 
 fn header_text_style(palette: &ThemePalette) -> String {
 	format!("margin: 0; color: {};", palette.muted_foreground)
-}
-
-fn heading_style() -> &'static str {
-	"margin: 0;"
-}
-
-fn body_style(palette: &ThemePalette) -> String {
-	format!(
-		"margin: 0; line-height: 1.6; color: {};",
-		palette.foreground
-	)
-}
-
-fn region_content_style() -> &'static str {
-	"display: grid; gap: 16px;"
-}
-
-fn provider_grid_style() -> &'static str {
-	"display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items: start;"
 }
 
 fn rail_content_style() -> &'static str {
