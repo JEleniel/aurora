@@ -1,27 +1,50 @@
 //! Editor session orchestration for bounded-load model-home startup.
 
+use std::collections::{BTreeSet, VecDeque};
 use std::path::Path;
 
 use aurora_shared::{
-	Card, CardRef, ModelHomeSession, ModelHomeSessionError, ModelIndex, ModelIndexError,
-	ModelRootCard,
+	Card, CardRef, CardRegistry, ModelHomeSession, ModelHomeSessionError, ModelIndex,
+	ModelIndexError, ModelRootCard, RegistryError, SvgTemplateDefsError, load_svg_template,
 };
 use thiserror::Error;
+use tracing::warn;
 
 /// Bounded-working-set editor session.
 pub struct EditorSession {
 	model_home_session: ModelHomeSession,
 	index: ModelIndex,
+	card_registry: CardRegistry,
+	svg_template: String,
 }
+
+impl PartialEq for EditorSession {
+	fn eq(&self, other: &Self) -> bool {
+		self.model_home() == other.model_home() && self.roots() == other.roots()
+	}
+}
+
+impl Eq for EditorSession {}
 
 impl EditorSession {
 	/// Open the editor session without fully materializing every card.
 	pub fn open(path: &Path) -> Result<Self, EditorSessionError> {
 		let model_home_session = ModelHomeSession::try_open_for_update(path)?;
 		let index = ModelIndex::open(&model_home_session.model_home)?;
+		let card_registry = load_card_registry(&model_home_session.model_home)?;
+		let svg_template = match load_svg_template(&model_home_session.model_home) {
+			Ok(svg_template) => svg_template,
+			Err(SvgTemplateDefsError::TemplateMissing(path)) => {
+				warn!(template = %path, "aurora_editor graph view template is unavailable");
+				String::new()
+			}
+			Err(error) => return Err(EditorSessionError::SvgTemplate(error)),
+		};
 		Ok(Self {
 			model_home_session,
 			index,
+			card_registry,
+			svg_template,
 		})
 	}
 
@@ -40,6 +63,18 @@ impl EditorSession {
 		Ok(self.index.search(query)?)
 	}
 
+	/// Root mission cards adapted for sidebar navigation.
+	pub fn root_cards(&self) -> Result<Vec<CardRef>, EditorSessionError> {
+		self.roots()
+			.iter()
+			.map(|root| {
+				Ok(self
+					.card_ref(root.id.as_str())?
+					.unwrap_or_else(|| root_summary_ref(root)))
+			})
+			.collect()
+	}
+
 	/// Load a full card document on demand by its card ID.
 	pub fn load_card(&self, card_id: &str) -> Result<Option<Card>, EditorSessionError> {
 		let Some(relative_path) = self.index.resolve_card_path(card_id)? else {
@@ -50,6 +85,106 @@ impl EditorSession {
 				.load_card_by_relative_path(&relative_path)?,
 		))
 	}
+
+	/// Resolve cards that link directly to the provided card ID.
+	pub fn cards_linking_to(&self, card_id: &str) -> Result<Vec<CardRef>, EditorSessionError> {
+		Ok(self.index.find_cards_linking_to(card_id)?)
+	}
+
+	/// Shortest discovered breadcrumb path from a mission root to the selected card.
+	pub fn breadcrumb(&self, selected_card_id: &str) -> Result<Vec<CardRef>, EditorSessionError> {
+		let Some(selected) = self.card_ref(selected_card_id)? else {
+			return Ok(Vec::new());
+		};
+
+		let root_ids = self
+			.roots()
+			.iter()
+			.map(|root| root.id.clone())
+			.collect::<BTreeSet<_>>();
+		if root_ids.contains(selected_card_id) {
+			return Ok(vec![selected]);
+		}
+
+		let mut queue = VecDeque::from([(
+			selected_card_id.to_string(),
+			vec![selected_card_id.to_string()],
+		)]);
+		let mut visited = BTreeSet::from([selected_card_id.to_string()]);
+
+		while let Some((current_id, path_from_selected)) = queue.pop_front() {
+			for parent in self.cards_linking_to(current_id.as_str())? {
+				if !visited.insert(parent.id.clone()) {
+					continue;
+				}
+
+				let mut next_path = path_from_selected.clone();
+				next_path.push(parent.id.clone());
+				if root_ids.contains(parent.id.as_str()) {
+					next_path.reverse();
+					return self.card_refs_for_ids(next_path);
+				}
+
+				queue.push_back((parent.id, next_path));
+			}
+		}
+
+		Ok(vec![selected])
+	}
+
+	/// Shared card registry loaded from the model home reference files.
+	pub fn card_registry(&self) -> &CardRegistry {
+		&self.card_registry
+	}
+
+	/// Shared SVG template used by the focused graph view.
+	pub fn svg_template(&self) -> &str {
+		self.svg_template.as_str()
+	}
+
+	fn card_ref(&self, card_id: &str) -> Result<Option<CardRef>, EditorSessionError> {
+		Ok(self.load_card(card_id)?.map(card_to_ref))
+	}
+
+	fn card_refs_for_ids(&self, card_ids: Vec<String>) -> Result<Vec<CardRef>, EditorSessionError> {
+		let mut cards = Vec::new();
+		for card_id in card_ids {
+			if let Some(card) = self.card_ref(card_id.as_str())? {
+				cards.push(card);
+			}
+		}
+		Ok(cards)
+	}
+}
+
+fn card_to_ref(card: Card) -> CardRef {
+	CardRef {
+		id: card.id,
+		card_type: card.card_type,
+		card_subtype: card.card_subtype,
+		name: card.name,
+	}
+}
+
+fn root_summary_ref(root: &ModelRootCard) -> CardRef {
+	CardRef {
+		id: root.id.clone(),
+		card_type: "Mission".to_string(),
+		card_subtype: None,
+		name: root.name.clone(),
+	}
+}
+
+fn load_card_registry(model_home: &Path) -> Result<CardRegistry, EditorSessionError> {
+	let reference_dir = model_home.join("reference");
+	let model_configuration =
+		std::fs::read_to_string(reference_dir.join("Aurora.modelconfiguration.json"))?;
+	let view_configuration =
+		std::fs::read_to_string(reference_dir.join("Aurora.viewconfiguration.json"))?;
+	Ok(CardRegistry::try_new_from_configurations(
+		&model_configuration,
+		&view_configuration,
+	)?)
 }
 
 /// Errors raised while opening or using an editor session.
@@ -57,205 +192,16 @@ impl EditorSession {
 pub enum EditorSessionError {
 	#[error("Model-home session failed: {0}")]
 	ModelHomeSession(#[from] ModelHomeSessionError),
+	#[error("Reference file IO failed: {0}")]
+	Io(#[from] std::io::Error),
 	#[error("Search index failed: {0}")]
 	ModelIndex(#[from] ModelIndexError),
+	#[error("Card registry failed: {0}")]
+	Registry(#[from] RegistryError),
+	#[error("SVG template failed: {0}")]
+	SvgTemplate(#[from] SvgTemplateDefsError),
 }
 
 #[cfg(test)]
-mod tests {
-	use super::{EditorSession, EditorSessionError};
-	use serde_json::json;
-	use std::path::Path;
-	use std::time::{Duration, Instant};
-
-	type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
-
-	#[test]
-	fn load_card_fetches_full_details_on_demand() -> Result<()> {
-		let temp = tempfile::tempdir()?;
-		let model_home = seed_model_home(temp.path())?;
-		write_card(
-			&model_home.join("MIS-001-Root.json"),
-			json!({
-				"$schema": "schemas/Aurora.card.schema.json",
-				"id": "MIS-001",
-				"card_type": "Mission",
-				"name": "Mission",
-				"description": "root",
-				"links": [{"target": "ACT-001", "relationship": "contains"}]
-			}),
-		)?;
-		write_card(
-			&model_home.join("MIS-001").join("ACT-001-Alpha.json"),
-			json!({
-				"$schema": "../schemas/Aurora.card.schema.json",
-				"id": "ACT-001",
-				"card_type": "Activity",
-				"name": "Alpha Workflow",
-				"description": "loaded lazily",
-				"links": []
-			}),
-		)?;
-
-		let session = EditorSession::open(temp.path())?;
-		let results = session.search("alpha")?;
-		assert_eq!(
-			results.first().map(|card| card.id.as_str()),
-			Some("ACT-001")
-		);
-
-		let card = session.load_card("ACT-001")?.expect("card should exist");
-		assert_eq!(card.description, "loaded lazily");
-		Ok(())
-	}
-
-	#[test]
-	fn open_refuses_second_writer_for_same_model_home() -> Result<()> {
-		let temp = tempfile::tempdir()?;
-		let model_home = seed_model_home(temp.path())?;
-		write_card(
-			&model_home.join("MIS-001-Root.json"),
-			json!({
-				"$schema": "schemas/Aurora.card.schema.json",
-				"id": "MIS-001",
-				"card_type": "Mission",
-				"name": "Mission",
-				"description": "root",
-				"links": []
-			}),
-		)?;
-
-		let first = EditorSession::open(temp.path())?;
-		let second = EditorSession::open(temp.path());
-		assert!(matches!(
-			second,
-			Err(EditorSessionError::ModelHomeSession(_))
-		));
-		drop(first);
-		Ok(())
-	}
-
-	#[test]
-	fn open_stays_within_two_seconds_for_typical_fixture() -> Result<()> {
-		let temp = tempfile::tempdir()?;
-		let model_home = seed_model_home(temp.path())?;
-		seed_typical_fixture(&model_home, 2_000, 3_500)?;
-
-		let started = Instant::now();
-		let session = EditorSession::open(temp.path())?;
-		let elapsed = started.elapsed();
-
-		assert_eq!(session.roots().len(), 1);
-		assert!(
-			elapsed <= Duration::from_secs(2),
-			"expected startup under 2s, got {:?}",
-			elapsed
-		);
-		Ok(())
-	}
-
-	fn seed_model_home(root: &Path) -> Result<std::path::PathBuf> {
-		let model_home = root.join("aurora");
-		std::fs::create_dir_all(model_home.join("schemas"))?;
-		std::fs::create_dir_all(model_home.join("MIS-001"))?;
-		std::fs::write(model_home.join("MIS-001").join("AuditLog.ndjson"), b"")?;
-		std::fs::write(
-			model_home.join("schemas").join("Aurora.card.schema.json"),
-			serde_json::to_string_pretty(&json!({
-				"$schema": "http://json-schema.org/draft-07/schema#",
-				"type": "object",
-				"required": ["$schema", "id", "card_type", "name", "description", "links"],
-				"properties": {
-					"$schema": { "type": "string" },
-					"id": { "type": "string" },
-					"card_type": { "type": "string" },
-					"card_subtype": { "type": "string" },
-					"name": { "type": "string" },
-					"description": { "type": "string" },
-					"version": { "type": "string" },
-					"status": { "type": "string" },
-					"boundary": { "type": "string" },
-					"notes": { "type": "string" },
-					"icon": { "type": "string" },
-					"attributes": { "type": "object" },
-					"external_references": { "type": "array", "items": { "type": "string" } },
-					"links": {
-						"type": "array",
-						"items": {
-							"type": "object",
-							"required": ["target", "relationship"],
-							"properties": {
-								"target": { "type": "string" },
-								"relationship": { "type": "string" }
-							}
-						}
-					}
-				}
-			}))?,
-		)?;
-		Ok(model_home)
-	}
-
-	fn write_card(path: &Path, value: serde_json::Value) -> Result<()> {
-		if let Some(parent) = path.parent() {
-			std::fs::create_dir_all(parent)?;
-		}
-		std::fs::write(path, serde_json::to_string_pretty(&value)?)?;
-		Ok(())
-	}
-
-	fn seed_typical_fixture(model_home: &Path, card_count: usize, link_count: usize) -> Result<()> {
-		let non_root_count = card_count.saturating_sub(1);
-		let ids = (1..=non_root_count)
-			.map(|index| format!("ACT-{index:04}"))
-			.collect::<Vec<_>>();
-
-		let root_links = ids
-			.iter()
-			.take(non_root_count.min(8))
-			.map(|target| json!({ "target": target, "relationship": "contains" }))
-			.collect::<Vec<_>>();
-		write_card(
-			&model_home.join("MIS-001-Root.json"),
-			json!({
-				"$schema": "schemas/Aurora.card.schema.json",
-				"id": "MIS-001",
-				"card_type": "Mission",
-				"name": "Mission",
-				"description": "root",
-				"links": root_links
-			}),
-		)?;
-
-		let mut remaining_links = link_count.saturating_sub(non_root_count.min(8));
-		for (index, id) in ids.iter().enumerate() {
-			let mut links = Vec::new();
-			if remaining_links > 0 && index + 1 < ids.len() {
-				links.push(json!({ "target": ids[index + 1], "relationship": "relates" }));
-				remaining_links -= 1;
-			}
-			if remaining_links > 0 && index + 5 < ids.len() {
-				links.push(json!({ "target": ids[index + 5], "relationship": "supports" }));
-				remaining_links -= 1;
-			}
-			if remaining_links > 0 && index + 25 < ids.len() {
-				links.push(json!({ "target": ids[index + 25], "relationship": "traces" }));
-				remaining_links -= 1;
-			}
-
-			write_card(
-				&model_home.join("MIS-001").join(format!("{id}.json")),
-				json!({
-					"$schema": "../schemas/Aurora.card.schema.json",
-					"id": id,
-					"card_type": "Activity",
-					"name": format!("Activity {index:04}"),
-					"description": "synthetic fixture",
-					"links": links
-				}),
-			)?;
-		}
-
-		Ok(())
-	}
-}
+#[path = "session_tests.rs"]
+mod session_tests;

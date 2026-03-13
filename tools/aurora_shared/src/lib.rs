@@ -15,6 +15,10 @@ pub use background::*;
 pub use backup::*;
 pub use model_home_session::*;
 pub use model_index::*;
+pub use registry::{CardRegistry, RegistryError};
 pub use render::render_error;
-pub use render::{Layout, LayoutEdge, LayoutNode, layout_model};
+pub use render::{
+	FocusedGraph, FocusedGraphDocument, FocusedGraphHotspot, FocusedGraphRole, Layout, LayoutEdge,
+	LayoutNode, layout_model, render_focused_graph,
+};
 pub use svg_template_defs::*;

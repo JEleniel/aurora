@@ -1,8 +1,12 @@
+mod focused_graph;
 mod layout;
 pub mod svg;
 
 pub mod render_error;
 
+pub use focused_graph::{
+	FocusedGraph, FocusedGraphDocument, FocusedGraphHotspot, FocusedGraphRole, render_focused_graph,
+};
 pub use layout::*;
 
 use std::collections::{BTreeSet, HashSet};

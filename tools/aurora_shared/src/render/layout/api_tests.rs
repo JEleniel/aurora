@@ -307,14 +307,14 @@ fn radial_layout_keeps_first_ring_compact() {
 		let dx = (child.x - root.x).abs();
 		let dy = (child.y - root.y).abs();
 		assert!(
-			dx <= 2 && dy <= 2,
-			"direct radial child {node_id} should remain within the compact first two rings; got Δx={dx}, Δy={dy}"
+			dx <= 2 && dy <= 2 && child.y > root.y,
+			"clustered tree child {node_id} should remain close to the root while staying below it; got Δx={dx}, Δy={dy}"
 		);
 	}
 }
 
 #[test]
-fn radial_layout_allows_two_rows_for_first_descendants() {
+fn radial_layout_stacks_wide_first_level_into_multiple_tree_rows() {
 	let links: Vec<String> = (1..=10).map(|index| format!("REQ-{:03}", index)).collect();
 	let link_refs: Vec<&str> = links.iter().map(String::as_str).collect();
 	let root = make_card("MIS-001", "Mission", link_refs.as_slice());
@@ -335,21 +335,23 @@ fn radial_layout_allows_two_rows_for_first_descendants() {
 	assert_eq!(layout.family, Some(LayoutFamily::RadialSubtree));
 
 	let root = layout.nodes.get("MIS-001").expect("MIS-001 missing");
-	let mut rings: HashSet<i32> = HashSet::new();
+	let mut rows: HashSet<i32> = HashSet::new();
 	for node_id in &links {
 		let child = layout.nodes.get(node_id).expect("child missing");
-		let dx = (child.x - root.x).abs();
-		let dy = (child.y - root.y).abs();
-		rings.insert(dx.max(dy));
+		assert!(
+			child.y > root.y,
+			"expected first descendant {node_id} to appear below the root"
+		);
+		rows.insert(child.y);
 	}
 
 	assert!(
-		rings.len() >= 2,
-		"expected first descendants to span two rows"
+		rows.len() >= 2,
+		"expected a wide first level to occupy multiple tree rows"
 	);
 	assert!(
-		rings.iter().copied().max().unwrap_or(0) <= 2,
-		"expected first descendants to remain compact within two rows"
+		rows.iter().copied().max().unwrap_or(root.y) - root.y <= 4,
+		"expected first descendants to remain reasonably compact beneath the root"
 	);
 }
 
@@ -384,9 +386,58 @@ fn radial_layout_keeps_multi_root_groups_reasonably_compact() {
 		.map(|node| node.x.abs())
 		.max()
 		.unwrap_or(0);
+	let max_abs_y = layout
+		.nodes
+		.values()
+		.map(|node| node.y.abs())
+		.max()
+		.unwrap_or(0);
 	assert!(
-		max_abs_x <= 5,
-		"expected multi-root radial spread to stay compact; max |x| was {max_abs_x}"
+		max_abs_x <= 6 && max_abs_y <= 6,
+		"expected clustered multi-root spread to stay compact; max |x|={max_abs_x}, max |y|={max_abs_y}"
+	);
+}
+
+#[test]
+fn radial_layout_keeps_root_clusters_separate() {
+	let root_one = make_card("MIS-001", "Mission", &["REQ-001", "REQ-002"]);
+	let root_two = make_card("MIS-002", "Mission", &["REQ-003", "REQ-004"]);
+	let req_one = make_card("REQ-001", "Requirement", &["REQ-005", "REQ-006"]);
+	let req_two = make_card("REQ-002", "Requirement", &[]);
+	let req_three = make_card("REQ-003", "Requirement", &["REQ-007", "REQ-008"]);
+	let req_four = make_card("REQ-004", "Requirement", &[]);
+	let req_five = make_card("REQ-005", "Requirement", &[]);
+	let req_six = make_card("REQ-006", "Requirement", &[]);
+	let req_seven = make_card("REQ-007", "Requirement", &[]);
+	let req_eight = make_card("REQ-008", "Requirement", &[]);
+	let model = make_model(
+		root_one,
+		vec![
+			root_two, req_one, req_two, req_three, req_four, req_five, req_six, req_seven,
+			req_eight,
+		],
+	);
+
+	let layout = layout_model_with_family(
+		&model,
+		&["MIS".to_string()],
+		&["MIS".to_string(), "REQ".to_string()],
+		LayoutFamily::RadialSubtree,
+	)
+	.expect("radial layout should succeed");
+
+	let left = bounds_for(
+		&layout,
+		&["MIS-001", "REQ-001", "REQ-002", "REQ-005", "REQ-006"],
+	);
+	let right = bounds_for(
+		&layout,
+		&["MIS-002", "REQ-003", "REQ-004", "REQ-007", "REQ-008"],
+	);
+
+	assert!(
+		left.1 < right.0 || right.1 < left.0 || left.3 < right.2 || right.3 < left.2,
+		"expected packed root clusters to remain separate: left={left:?}, right={right:?}"
 	);
 }
 
@@ -433,4 +484,19 @@ fn sorted_edges(layout: &Layout) -> Vec<(String, String)> {
 		.collect();
 	edges.sort_by(|left, right| left.0.cmp(&right.0).then_with(|| left.1.cmp(&right.1)));
 	edges
+}
+
+fn bounds_for(layout: &Layout, node_ids: &[&str]) -> (i32, i32, i32, i32) {
+	let mut min_x = i32::MAX;
+	let mut max_x = i32::MIN;
+	let mut min_y = i32::MAX;
+	let mut max_y = i32::MIN;
+	for node_id in node_ids {
+		let node = layout.nodes.get(*node_id).expect("node missing");
+		min_x = min_x.min(node.x);
+		max_x = max_x.max(node.x);
+		min_y = min_y.min(node.y);
+		max_y = max_y.max(node.y);
+	}
+	(min_x, max_x, min_y, max_y)
 }

@@ -593,9 +593,45 @@ struct NodeOwnership {
 	depth: usize,
 }
 
+#[derive(Debug, Clone, Copy)]
+struct ClusterBounds {
+	min_x: i32,
+	max_x: i32,
+	min_y: i32,
+	max_y: i32,
+}
+
+#[derive(Debug, Clone)]
+struct RadialCluster {
+	root: String,
+	coords: HashMap<String, (i32, i32)>,
+	bounds: ClusterBounds,
+	packing_radius: f32,
+}
+
 fn assign_radial_subtree_coords(
 	graph: &NormalizedGraph,
 ) -> Result<HashMap<String, (i32, i32)>, RenderError> {
+	let roots = resolve_radial_roots(graph)?;
+	let ownership = assign_node_ownership(graph, roots.as_slice());
+	let clusters = build_radial_clusters(graph, roots.as_slice(), &ownership)?;
+	let centers = pack_clusters_on_ring(clusters.as_slice());
+	let mut coords = translate_clusters(clusters.as_slice(), &centers);
+	place_missing_radial_nodes(graph, &mut coords);
+	resolve_coordinate_collisions(&mut coords, graph.nodes.as_slice());
+	Ok(coords)
+}
+
+fn radial_root_ring_radius(root_count: usize) -> f32 {
+	if root_count <= 1 {
+		return 0.0;
+	}
+
+	let min_radius_for_unique_spacing = (root_count as f32 / (2.0 * std::f32::consts::PI)).ceil();
+	2.0f32.max(min_radius_for_unique_spacing)
+}
+
+fn resolve_radial_roots(graph: &NormalizedGraph) -> Result<Vec<String>, RenderError> {
 	let mut roots = graph.roots.clone();
 	roots.sort();
 	roots.dedup();
@@ -613,81 +649,185 @@ fn assign_radial_subtree_coords(
 	if roots.is_empty() {
 		return Err(RenderError::MissingRoots);
 	}
+	Ok(roots)
+}
 
-	let ownership = assign_node_ownership(graph, roots.as_slice());
-	let root_ring_radius = radial_root_ring_radius(roots.len());
+fn build_radial_clusters(
+	graph: &NormalizedGraph,
+	roots: &[String],
+	ownership: &HashMap<String, NodeOwnership>,
+) -> Result<Vec<RadialCluster>, RenderError> {
+	let mut clusters = Vec::with_capacity(roots.len());
+	for root in roots {
+		clusters.push(build_radial_cluster(graph, root.as_str(), ownership)?);
+	}
+	Ok(clusters)
+}
 
-	let mut root_centers: HashMap<String, (f32, f32)> = HashMap::new();
-	let mut root_sectors: HashMap<String, (f32, f32)> = HashMap::new();
-	let root_count = roots.len().max(1);
-	let sweep = (2.0f32 * std::f32::consts::PI) / root_count as f32;
-	for (index, root) in roots.iter().enumerate() {
-		let center_angle = -std::f32::consts::FRAC_PI_2 + (index as f32 * sweep);
-		let (cx, cy) = if root_count == 1 {
-			(0.0f32, 0.0f32)
-		} else {
+fn build_radial_cluster(
+	graph: &NormalizedGraph,
+	root: &str,
+	ownership: &HashMap<String, NodeOwnership>,
+) -> Result<RadialCluster, RenderError> {
+	let local_graph = owned_subgraph(graph, root, ownership);
+	let topo = topo_sort_nodes(
+		&local_graph.nodes,
+		&local_graph.outgoing,
+		&local_graph.incoming,
+	)?;
+	let spine = longest_spine_path(&topo, &local_graph.incoming);
+	let coords = center_tree_horizontally(assign_spine_and_branches(&local_graph, &spine, &topo)?);
+	let bounds = cluster_bounds(&coords, root)?;
+	Ok(RadialCluster {
+		root: root.to_string(),
+		packing_radius: cluster_packing_radius(bounds),
+		coords,
+		bounds,
+	})
+}
+
+fn owned_subgraph(
+	graph: &NormalizedGraph,
+	root: &str,
+	ownership: &HashMap<String, NodeOwnership>,
+) -> NormalizedGraph {
+	let nodes: Vec<String> = graph
+		.nodes
+		.iter()
+		.filter(|node_id| {
+			ownership
+				.get(*node_id)
+				.is_some_and(|info| info.root.as_str() == root)
+		})
+		.cloned()
+		.collect();
+	let node_set: HashSet<&str> = nodes.iter().map(String::as_str).collect();
+	let edges: Vec<(String, String)> = graph
+		.edges
+		.iter()
+		.filter(|(a, b)| node_set.contains(a.as_str()) && node_set.contains(b.as_str()))
+		.cloned()
+		.collect();
+	let (outgoing, incoming) = build_neighbor_maps(nodes.clone(), edges.as_slice());
+	NormalizedGraph {
+		nodes,
+		roots: vec![root.to_string()],
+		edges,
+		outgoing,
+		incoming,
+	}
+}
+
+fn center_tree_horizontally(coords: HashMap<String, (i32, i32)>) -> HashMap<String, (i32, i32)> {
+	let Some((min_x, max_x)) = coords
+		.values()
+		.map(|(x, _)| *x)
+		.min()
+		.zip(coords.values().map(|(x, _)| *x).max())
+	else {
+		return coords;
+	};
+	let shift_x = (min_x + max_x) / 2;
+	coords
+		.into_iter()
+		.map(|(node_id, (x, y))| (node_id, (x - shift_x, y)))
+		.collect()
+}
+
+fn cluster_bounds(
+	coords: &HashMap<String, (i32, i32)>,
+	root: &str,
+) -> Result<ClusterBounds, RenderError> {
+	let mut values = coords.values().copied();
+	let Some((first_x, first_y)) = values.next() else {
+		return Err(RenderError::MissingNode(root.to_string()));
+	};
+	let mut bounds = ClusterBounds {
+		min_x: first_x,
+		max_x: first_x,
+		min_y: first_y,
+		max_y: first_y,
+	};
+	for (x, y) in values {
+		bounds.min_x = bounds.min_x.min(x);
+		bounds.max_x = bounds.max_x.max(x);
+		bounds.min_y = bounds.min_y.min(y);
+		bounds.max_y = bounds.max_y.max(y);
+	}
+	Ok(bounds)
+}
+
+fn cluster_packing_radius(bounds: ClusterBounds) -> f32 {
+	let half_width = (bounds.max_x - bounds.min_x).abs() as f32 / 2.0;
+	let half_height = (bounds.max_y - bounds.min_y).abs() as f32 / 2.0;
+	(half_width.mul_add(half_width, half_height * half_height)).sqrt() + 1.0
+}
+
+fn pack_clusters_on_ring(clusters: &[RadialCluster]) -> HashMap<String, (f32, f32)> {
+	if clusters.len() <= 1 {
+		return clusters
+			.iter()
+			.map(|cluster| (cluster.root.clone(), (0.0f32, 0.0f32)))
+			.collect();
+	}
+
+	let gap = 1.5f32;
+	let weights: Vec<f32> = clusters
+		.iter()
+		.map(|cluster| 2.0 * cluster.packing_radius + gap)
+		.collect();
+	let total_weight = weights.iter().sum::<f32>().max(1.0);
+	let min_ring_radius = radial_root_ring_radius(clusters.len());
+	let required_circumference = total_weight.max(min_ring_radius * 2.0 * std::f32::consts::PI);
+	let max_cluster_radius = clusters
+		.iter()
+		.map(|cluster| cluster.packing_radius)
+		.fold(0.0f32, f32::max);
+	let ring_radius = (required_circumference / (2.0 * std::f32::consts::PI))
+		.max(min_ring_radius)
+		.max(max_cluster_radius);
+
+	let mut centers = HashMap::with_capacity(clusters.len());
+	let first_span = (2.0 * std::f32::consts::PI) * (weights[0] / total_weight);
+	let mut cursor = -std::f32::consts::FRAC_PI_2 - (first_span / 2.0);
+	for (cluster, weight) in clusters.iter().zip(weights) {
+		let span = (2.0 * std::f32::consts::PI) * (weight / total_weight);
+		let center_angle = cursor + (span / 2.0);
+		centers.insert(
+			cluster.root.clone(),
 			(
-				root_ring_radius * center_angle.cos(),
-				root_ring_radius * center_angle.sin(),
-			)
-		};
-		let start = center_angle - (sweep / 2.0);
-		let end = center_angle + (sweep / 2.0);
-		root_centers.insert(root.clone(), (cx, cy));
-		root_sectors.insert(root.clone(), (start, end));
+				ring_radius * center_angle.cos(),
+				ring_radius * center_angle.sin(),
+			),
+		);
+		cursor += span;
 	}
+	centers
+}
 
-	let mut grouped_by_root_depth: HashMap<String, BTreeMap<usize, Vec<String>>> = HashMap::new();
-	for node_id in &graph.nodes {
-		let Some(info) = ownership.get(node_id) else {
-			continue;
-		};
-		if info.depth == 0 {
-			continue;
-		}
-		grouped_by_root_depth
-			.entry(info.root.clone())
-			.or_default()
-			.entry(info.depth)
-			.or_default()
-			.push(node_id.clone());
-	}
-
-	let radial_step = 1.0f32;
-	let mut coords: HashMap<String, (i32, i32)> = HashMap::new();
-	for root in &roots {
-		let (cx, cy) = root_centers.get(root).copied().unwrap_or((0.0, 0.0));
-		coords.insert(root.clone(), (cx.round() as i32, cy.round() as i32));
-
-		let mut layers = grouped_by_root_depth.remove(root).unwrap_or_default();
-		for nodes in layers.values_mut() {
-			nodes.sort();
-		}
-
-		let (start, end) = root_sectors.get(root).copied().unwrap_or((0.0, 0.0));
-		let sector_span = (end - start).abs().max(0.4);
-		let inset = (sector_span * 0.08).min(0.25);
-		let usable_span = (sector_span - 2.0 * inset).max(0.1);
-
-		for (depth, nodes) in layers {
-			let row_count = if depth == 1 { 2usize } else { 1usize };
-			let base_band = depth.max(1) as f32;
-			for (index, node_id) in nodes.iter().enumerate() {
-				let row_index = index % row_count;
-				let slot_index = index / row_count;
-				let row_slot_count =
-					((nodes.len() + row_count - 1).saturating_sub(row_index) / row_count).max(1);
-				let fraction = (slot_index + 1) as f32 / (row_slot_count + 1) as f32;
-				let angle = start + inset + usable_span * fraction;
-				let row_offset = if depth == 1 { row_index as f32 } else { 0.0 };
-				let radius = (base_band + row_offset) * radial_step;
-				let x = cx + radius * angle.cos();
-				let y = cy + radius * angle.sin();
-				coords.insert(node_id.clone(), (x.round() as i32, y.round() as i32));
-			}
+fn translate_clusters(
+	clusters: &[RadialCluster],
+	centers: &HashMap<String, (f32, f32)>,
+) -> HashMap<String, (i32, i32)> {
+	let mut coords = HashMap::new();
+	for cluster in clusters {
+		let (center_x, center_y) = centers.get(&cluster.root).copied().unwrap_or((0.0, 0.0));
+		let local_center_x = (cluster.bounds.min_x + cluster.bounds.max_x) as f32 / 2.0;
+		let local_center_y = (cluster.bounds.min_y + cluster.bounds.max_y) as f32 / 2.0;
+		for (node_id, (x, y)) in &cluster.coords {
+			coords.insert(
+				node_id.clone(),
+				(
+					(center_x + (*x as f32 - local_center_x)).round() as i32,
+					(center_y + (*y as f32 - local_center_y)).round() as i32,
+				),
+			);
 		}
 	}
+	coords
+}
 
+fn place_missing_radial_nodes(graph: &NormalizedGraph, coords: &mut HashMap<String, (i32, i32)>) {
 	let mut missing: Vec<String> = graph
 		.nodes
 		.iter()
@@ -699,22 +839,14 @@ fn assign_radial_subtree_coords(
 		let angle = (index as f32) * 0.5;
 		let ring = (index / 12) as f32;
 		let radius = 1.5 + (ring * 0.75);
-		let x = radius * angle.cos();
-		let y = radius * angle.sin();
-		coords.insert(node_id, (x.round() as i32, y.round() as i32));
+		coords.insert(
+			node_id,
+			(
+				(radius * angle.cos()).round() as i32,
+				(radius * angle.sin()).round() as i32,
+			),
+		);
 	}
-
-	resolve_coordinate_collisions(&mut coords, graph.nodes.as_slice());
-	Ok(coords)
-}
-
-fn radial_root_ring_radius(root_count: usize) -> f32 {
-	if root_count <= 1 {
-		return 0.0;
-	}
-
-	let min_radius_for_unique_spacing = (root_count as f32 / (2.0 * std::f32::consts::PI)).ceil();
-	2.0f32.max(min_radius_for_unique_spacing)
 }
 
 fn assign_node_ownership(

@@ -154,40 +154,42 @@ Unless otherwise specified, ordering is by `id` left to right, top to bottom.
 
 ## Radial Subtree Layout, Roots Centered
 
-- **Goal:** Eliminate directional bias by mapping depth to radius and siblings to angle.
+- **Goal:** Preserve readable top-down subtree structure while packing root-owned clusters without a dominant left/right bias.
 - **Complexity:**
     - BFS + subtree sizing: `O(V + E)`
     - Placement: `O(V)`.
-- **Encodes:** peer domains around a shared center; avoids implying sequence or dominance.
-- **Group by**: Root, then subtree
+- **Encodes:** peer domains around a shared center while keeping each domain internally tree-shaped.
+- **Group by**: Root cluster
 
-### Algorithm (radial BFS embedding)
+### Algorithm (two-phase clustered tree packing)
 
 1. Input: Directed graph plus roots $R$.
 2. Generate candidates by combining:
     - depth assignment strategies (shortest-path, longest-path, hybrid)
-    - root-ring sizing/sector sizing strategies
+    - cluster packing/ring sizing strategies
 3. For each candidate:
     1. Produce the **layout DAG** from the candidate depth assignment $d$ (see global constraints).
-    2. Place roots as centers arranged in a circle-ish ring around the origin.
+    2. For each root $r \in R$, collect the nodes owned by that root and lay the owned subgraph out with the existing **vertical tree layout**.
         - Root ordering defaults to `id` order.
-        - Allocate each root a non-overlapping angular sector sized proportional to its subtree weight.
-    3. For each root $r \in R$:
-        1. Treat $r$ as the center of its own radial layout.
-        2. Ensure the **first-order descendants** of $r$ form the base of visually separated subtrees by reserving distinct angular sub-sectors for each child of $r$.
-        3. Map each depth to radius: $\text{radius} = k \cdot d(v)$ with constant band spacing.
-        4. Place nodes by polar coordinate within the root's sector (subtree-weighted interval partitioning).
-    4. Route edges orthogonally (not as arcs), using clearance rings between bands.
-        - Cross-links within a root sector should prefer outer clearance bands to avoid clutter at smaller radii.
-        - Cross-links between root sectors route through reserved internal clearance bands and shared buses between sectors, without leaving the perimeter of the laid out nodes.
-    5. Optional relaxation step to equalize angular gaps while preserving sector separation.
-    6. Compute the score.
+        - Ownership remains deterministic: prefer the shallowest owning root, then lowest `id`.
+        - Center each tree horizontally so the root sits near the top-middle of its cluster.
+    3. Treat each per-root tree as a packed unit with a rectangular bounding box.
+    4. Place those tree clusters around a shared ring centered on the origin.
+        - Root clusters use deterministic angular ordering.
+        - Cluster spacing scales with the packed tree size so neighboring clusters do not overlap.
+        - The first root starts at the north position; remaining roots follow in `id` order.
+    5. Translate each local tree layout into its assigned cluster position.
+    6. Route edges orthogonally (not as arcs), using clearance space between clusters and within each local tree.
+        - Cross-links within a cluster should prefer outer clearance bands to avoid clutter near the root.
+        - Cross-links between clusters route through reserved internal clearance bands without leaving the perimeter of the laid out nodes.
+    7. Optional relaxation step to equalize cluster gaps while preserving separation.
+    8. Compute the score.
 4. Select the best-scoring candidate.
 
 ### When to use
 
 - Use when the view is intended to communicate peer domains without implying a primary direction.
-- Prefer when each root naturally owns a visually separated subtree.
+- Prefer when each root naturally owns a visually separated subtree that benefits from being read top-down.
 
 ### Alternatives
 

@@ -77,6 +77,11 @@ impl ModelIndex {
 	pub fn resolve_card_path(&self, id: &str) -> Result<Option<PathBuf>, ModelIndexError> {
 		self.state.resolve_card_path(id)
 	}
+
+	/// Resolve cards that link directly to the provided target card ID.
+	pub fn find_cards_linking_to(&self, id: &str) -> Result<Vec<CardRef>, ModelIndexError> {
+		self.state.find_cards_linking_to(id)
+	}
 }
 
 struct ModelIndexState {
@@ -139,6 +144,24 @@ impl ModelIndexState {
 		let path = first_text(&document, self.fields.path)
 			.ok_or(ModelIndexError::MissingStoredField("path"))?;
 		Ok(Some(PathBuf::from(path)))
+	}
+
+	fn find_cards_linking_to(&self, id: &str) -> Result<Vec<CardRef>, ModelIndexError> {
+		let searcher = self.reader.searcher();
+		let query = TermQuery::new(
+			Term::from_field_text(self.fields.link_targets_exact, id),
+			IndexRecordOption::Basic,
+		);
+		let top_docs = searcher.search(&query, &TopDocs::with_limit(SEARCH_LIMIT))?;
+		let mut refs = top_docs
+			.into_iter()
+			.map(|(_, address)| {
+				let document: TantivyDocument = searcher.doc(address)?;
+				self.card_ref_from_document(&document)
+			})
+			.collect::<Result<Vec<_>, _>>()?;
+		refs.sort_by(|left, right| left.id.cmp(&right.id));
+		Ok(refs)
 	}
 
 	fn apply_event(&self, event: Event) -> Result<(), ModelIndexError> {
@@ -211,6 +234,7 @@ impl ModelIndexState {
 		document.add_text(self.fields.name, card.name.as_str());
 		for target in &card.link_targets {
 			document.add_text(self.fields.link_targets, target.as_str());
+			document.add_text(self.fields.link_targets_exact, target.as_str());
 		}
 		for attribute in &card.attribute_names {
 			document.add_text(self.fields.attribute_names, attribute.as_str());
@@ -263,6 +287,7 @@ struct IndexFields {
 	card_subtype: Field,
 	name: Field,
 	link_targets: Field,
+	link_targets_exact: Field,
 	attribute_names: Field,
 	schema: Schema,
 }
@@ -276,6 +301,7 @@ impl IndexFields {
 		let card_subtype = schema_builder.add_text_field("card_subtype", TEXT | STORED);
 		let name = schema_builder.add_text_field("name", TEXT | STORED);
 		let link_targets = schema_builder.add_text_field("link_targets", TEXT);
+		let link_targets_exact = schema_builder.add_text_field("link_targets_exact", STRING);
 		let attribute_names = schema_builder.add_text_field("attribute_names", TEXT);
 		let schema = schema_builder.build();
 		Self {
@@ -285,6 +311,7 @@ impl IndexFields {
 			card_subtype,
 			name,
 			link_targets,
+			link_targets_exact,
 			attribute_names,
 			schema,
 		}
@@ -534,6 +561,53 @@ mod tests {
 
 		let result = wait_for_search(&index, "observer", |results| !results.is_empty())?;
 		assert_eq!(result[0].id, "ACT-002");
+		Ok(())
+	}
+
+	#[test]
+	fn find_cards_linking_to_returns_exact_inbound_neighbors() -> Result<()> {
+		let temp = tempfile::tempdir()?;
+		let model_home = seed_model_home(temp.path())?;
+		write_card(
+			&model_home.join("MIS-001-Root.json"),
+			json!({
+				"id": "MIS-001",
+				"card_type": "Mission",
+				"name": "Aurora Mission",
+				"links": [
+					{"target": "ACT-001", "relationship": "tracks"},
+					{"target": "ACT-002", "relationship": "tracks"}
+				],
+				"attributes": {}
+			}),
+		)?;
+		write_card(
+			&model_home.join("MIS-001").join("ACT-001.json"),
+			json!({
+				"id": "ACT-001",
+				"card_type": "Activity",
+				"name": "Focus",
+				"links": [],
+				"attributes": {}
+			}),
+		)?;
+		write_card(
+			&model_home.join("MIS-001").join("ACT-002.json"),
+			json!({
+				"id": "ACT-002",
+				"card_type": "Activity",
+				"name": "Peer",
+				"links": [{"target": "ACT-001", "relationship": "relates"}],
+				"attributes": {}
+			}),
+		)?;
+
+		let index = ModelIndex::open(&model_home)?;
+		let inbound = index.find_cards_linking_to("ACT-001")?;
+
+		assert_eq!(inbound.len(), 2);
+		assert_eq!(inbound[0].id, "ACT-002");
+		assert_eq!(inbound[1].id, "MIS-001");
 		Ok(())
 	}
 

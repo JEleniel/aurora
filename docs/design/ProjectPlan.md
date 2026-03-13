@@ -143,7 +143,7 @@
     - Dependencies: Task 2, Task 8, Task 9
     - Status: Completed
 
-11. [ ] Implement configuration and settings management
+11. [x] Implement configuration and settings management
     - Priority: 1 (High)
     - Cards: SYS-001, CAP-007
     - Description: Implement user-facing configuration: autosave toggle, theme preference (system / light / dark), base font size, editor identity (name used for audit log attribution), and agent provider endpoints and API keys. Configuration is stored in the OS-standard user config directory. Secrets (API keys) must use the OS keychain where available; log files must be scrubbed of secrets.
@@ -155,20 +155,20 @@
         - Secrets do not appear in log output.
     - Notes: Applies to both `aurora_editor` and `aurora_mcp`.
     - Dependencies: Task 9
-    - Status: Not Started
+    - Status: Completed
 
-12. [ ] Implement first-run configuration wizard
+12. [x] Implement first-run configuration wizard
     - Priority: 1 (High)
     - Cards: SYS-001, CAP-007
     - Description: On first launch (no config file present), display a setup wizard before opening any model. The wizard collects the minimum required preferences so the editor is correctly configured from the start. After the wizard completes, the config file is written and normal startup proceeds.
     - Deliverables:
         - Wizard is shown when no `EditorConfig` file exists.
         - Wizard collects: autosave preference, theme preference, editor identity (name/email for audit log attribution).
-        - Completed wizard writes an initial `EditorConfig` to the OS config directory.
+        - Completed wizard writes an initial `EditorConfig` to the OS-standard user config directory.
         - Subsequent launches skip the wizard.
         - Tests cover wizard completion and config file creation.
     - Dependencies: Task 11
-    - Status: Not Started
+    - Status: Completed
 
 ---
 
@@ -185,7 +185,7 @@
         - Keyboard navigation reaches all interactive controls.
         - Color contrast meets WCAG AA for all foreground/background pairings in all three theme modes.
     - Dependencies: Task 9
-    - Status: Not Started
+    - Status: In Progress
 
 14. [ ] Implement the centered graph view (main area)
     - Priority: 0 (Critical)
@@ -199,7 +199,7 @@
         - SVG rendering delegates to `aurora_shared::render`; no duplicate layout logic.
     - Notes: Nice-to-have (P3): when navigating to a new card, animate the transition as a rotation on a virtual sphere, as if the cards are arranged on its surface.
     - Dependencies: Task 10, Task 13
-    - Status: Not Started
+        - Status: In Progress
 
 15. [ ] Implement left sidebar — card browser, search, and breadcrumb
     - Priority: 1 (High)
@@ -213,7 +213,7 @@
         - Breadcrumb at the bottom of the sidebar reflects the current navigation path.
         - Clicking a breadcrumb crumb navigates to that card.
     - Dependencies: Task 8, Task 13, Task 14
-    - Status: Not Started
+        - Status: In Progress
 
 16. [ ] Implement right sidebar — card detail and editor
     - Priority: 1 (High)
@@ -226,7 +226,7 @@
         - Successful saves update the index (via fs watcher), the graph view, and the audit log.
         - Create and delete actions for cards and links are accessible from this panel; new card IDs are assigned by the application.
     - Dependencies: Task 1, Task 3, Task 13, Task 14
-    - Status: Not Started
+    - Status: In Progress
 
 17. [ ] Implement bottom panel — audit log and diagnostics
     - Priority: 2 (Medium)
@@ -354,7 +354,7 @@
     - Cards: SYS-001
     - Description: MCP server configuration mirrors the editor (Task 11) but without the UI. API keys must be stored in the OS keychain. Because the MCP server is typically started by an agent (non-interactively) it cannot prompt for credentials; the MCP binary must therefore expose a separate CLI subcommand (e.g., `aurora_mcp keychain set <provider> <key>`) so a human operator can provision keys into the keychain before handing control to the agent. Log output is scrubbed of all secret values.
     - Deliverables:
-        - Configuration file is read from the OS-standard config directory.
+        - Configuration file is read from the OS-standard user config directory.
         - `aurora_mcp keychain set <provider> <key>` stores the key in the OS keychain; intended for interactive human use only.
         - At runtime the server reads keys from the keychain; it does not accept keys via config files or environment variables.
         - Log scrubbing is verified by test: injected secrets must not appear in output.

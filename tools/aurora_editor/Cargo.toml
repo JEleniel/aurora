@@ -22,6 +22,8 @@ aurora_shared = { workspace = true }
 clap = { workspace = true }
 dioxus = { workspace = true }
 dioxus-desktop = { workspace = true }
+keyring = "3.6"
+serde = { workspace = true }
 serde_json = { workspace = true }
 tokio = { workspace = true }
 tracing = { workspace = true }

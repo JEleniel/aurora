@@ -17,10 +17,7 @@ pub struct SvgTemplateDefs {
 impl SvgTemplateDefs {
 	/// Load the Aurora SVG template from a model home and extract named defs.
 	pub fn load_from_model_home(model_home: &Path) -> Result<Self, SvgTemplateDefsError> {
-		let reference_dir = model_home.join("reference");
-		let svgz_path = reference_dir.join("SVGTemplate.svgz");
-		let svg_path = reference_dir.join("SVGTemplate.svg");
-		let svg = read_svg_template(&svgz_path, &svg_path)?;
+		let svg = load_svg_template(model_home)?;
 		Ok(Self::parse(&svg))
 	}
 
@@ -50,6 +47,14 @@ impl SvgTemplateDefs {
 
 		defs
 	}
+}
+
+/// Load the full Aurora SVG template from the model home's `reference/` folder.
+pub fn load_svg_template(model_home: &Path) -> Result<String, SvgTemplateDefsError> {
+	let reference_dir = model_home.join("reference");
+	let svgz_path = reference_dir.join("SVGTemplate.svgz");
+	let svg_path = reference_dir.join("SVGTemplate.svg");
+	read_svg_template(&svgz_path, &svg_path)
 }
 
 fn read_svg_template(svgz_path: &Path, svg_path: &Path) -> Result<String, SvgTemplateDefsError> {

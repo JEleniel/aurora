@@ -64,9 +64,7 @@
 			"br_spaces": 0,
 			"strict": true
 		},
-		"ol-prefix": {
-			"style": "ordered"
-		},
+		"ol-prefix": false,
 		"reference-links-images": true,
 		"single-h1": true,
 		"single-title": true,
