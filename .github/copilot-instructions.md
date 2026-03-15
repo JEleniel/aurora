@@ -23,6 +23,10 @@ If anything prevents compliance with any instructions, you MUST stop and notify 
 
 The project plan is stored as `docs/design/ProjectPlan.md`. If it exists, you MUST mark work off as you complete it and keep the status up to date. Unless instructed, do not create or alter the plan beyond tracking. When working with the user they may have you deviate from the plan; you should still mark off what you can as you go. If the plan is absent no action needs be taken.
 
+You MUST NOT track implementation details, challenges, etc. in the Project Plan. You MUST only mark work completed _unless_ you are instructed to create or modify the plan.
+
+Implementation details, challenges, etc. that you think need documenting MUST be tracked in `docs/design/AsBuilt.md`.
+
 ### Changelog
 
 With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do not track changes to `.github/`, `docs/`, or `.agents/` in the changelog. Consolidate similar or related entries to keep the log concise.
@@ -48,7 +52,8 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 
 ## Operating Assumptions/Constraints
 
-- Empirical evidence has shown that patches >50 lines fail >80% of the time, resulting in falling back to the smaller patches required here.
+- Empirical evidence has shown that patches >50 lines fail >80% of the time, resulting in falling back to the smaller patches required here. Your patch tooling oes not guarantee atomicity, either, so multi-file patches not only fail, but are difficult to revert.
+- Every restriction in the instructions in this repository have been put in place to enforce solid engineering practices, avoid known issues, and are backed by empirical evidence.
 - The same evidence has shown that multi-file patches corrupt files frequently, most often creating duplicate content.
 - All repos where these instructions are used will have validation, linting, and formatting tools appropriate to the project.
 
@@ -69,7 +74,8 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 - Files may change at any time as there is a team working this project. You MUST reread them before applying any edits.
 - You MUST NOT repeat the prompt, restate plans, or narrate obvious steps.
 - You MUST NOT compliment the user's request, compliment yourself, engage in sycophantic behavior, or otherwise violate neutral, professional behavior standards.
-- You MUST use small, focused, surgical edits and patches under 50 lines at a time.
+- You MUST NOT attempt to apply a patch larger than 50 lines. You MUST use small, focused, surgical edits and patches.
+- You MUST NOT attempt to patch multiple files at one time. You MUST plan for, and execute multi-file changes one file at a time.
 - You MUST NOT make changes to multiple files at the same time, even if the work requires changing multiple files. You MUST change them one at a time.
 - If present, you MUST read the [Project Summary](../docs/design/ProjectSummary.md) which contains details specific to this project and repository.
 - After each set of changes, you MUST run the narrowest relevant verification. It is not necessary to validate after every individual change.

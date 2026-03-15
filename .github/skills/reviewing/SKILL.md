@@ -1,13 +1,13 @@
 ---
 name: reviewing
-description: Use this skill when conducting an informal or formal review of code, documentation, architecture, or pre-release artifacts.
+description: Use this skill when conducting an informal or formal review (not analysis) of code, documentation, architecture, or pre-release artifacts.
 ---
 
 # Reviewing Skill
 
 ## General guidelines
 
-- If a `docs/design/aurora/` folder exists, read and follow [Aurora Compact Model](../../aurora/Aurora.compact.instructions.md) to understand the design.
+- If a `docs/design/aurora/` folder exists, you may read and follow [Aurora Compact Model](../../aurora/Aurora.compact.instructions.md) to understand the design.
     - The Aurora Compact Model exists to save time and tokens by keeping key information in a single compact (thus the name) file.
     - Use the full Aurora instructions only when applying the Architecture skill.
 - Evidence-First Review Focus: Base findings on observable evidence in the repository, relevant artifacts, or verified behavior.
@@ -54,12 +54,12 @@ description: Use this skill when conducting an informal or formal review of code
 
 ## Deliverables
 
-- Record findings in the appropriate review file under `docs/design/`:
-    - `docs/design/Review-Architecture.md`
-    - `docs/design/Review-Code.md`
-    - `docs/design/Review-Documentation.md`
-    - `docs/design/Review-Prerelease.md`
-    - `docs/design/Review-Security.md`
+- Record findings in the appropriate review file under `docs/design/analysis/`:
+    - `docs/design/analysis/Review-Architecture.md`
+    - `docs/design/analysis/Review-Code.md`
+    - `docs/design/analysis/Review-Documentation.md`
+    - `docs/design/analysis/Review-Prerelease.md`
+    - `docs/design/analysis/Review-Security.md`
 - Apply the canonical checklist for the review type and record findings according to checklist requirements.
 
 ## Operating Procedure
@@ -68,7 +68,7 @@ description: Use this skill when conducting an informal or formal review of code
 2. Gather enough context from the relevant artifacts to evaluate the requested scope without drifting into unrelated areas.
 3. Apply the appropriate review criteria for the artifact type and assess issues in terms of evidence, risk, severity, and user or system impact.
 4. Record findings with enough detail to be actionable, including the specific issue, why it matters, and how the user can verify a fix.
-5. For formal reviews, write findings to the appropriate review file under `docs/design/`. For informal reviews, provide the findings in the conversation without writing review files.
+5. For formal reviews, write findings to the appropriate review file under `docs/design/analysis/`. For informal reviews, provide the findings in the conversation without writing review files.
 6. Keep review output limited to findings, risks, verification guidance, and smallest-safe recommendations. Do not implement fixes under this skill unless explicitly switching to another skill.
 7. Validate the final review output against the deliverables and validation checklists in this skill before considering the review complete.
 
@@ -98,7 +98,7 @@ description: Use this skill when conducting an informal or formal review of code
 
 ## Things to Watch For
 
-### Review Foot-Guns
+### Foot-Guns
 
 - Findings without evidence.
 - Severity inflation.
@@ -106,6 +106,9 @@ description: Use this skill when conducting an informal or formal review of code
 - Recommendations too vague to act on.
 - Reviews that silently become implementation work.
 - Missing verification guidance.
+- Multiple paths for the same functionality.
+- Oversized files or functions.
+- Small functions that are null functions, thin wrappers over a constant, error type mappers, or otherwise add no value.
 
 ## Cross-skill tasks
 

@@ -8,7 +8,7 @@ description: Use this skill when writing or updating documentation, including in
 ## General guidelines
 
 - This skill must **never** generate, modify, or suggest changes to source code beyond documentation comments.
-- If a `docs/design/aurora/` folder exists, read and follow [Aurora Compact Model](../../aurora/Aurora.compact.instructions.md) to understand the design.
+- If a `docs/design/aurora/` folder exists, you may read and follow the [Aurora Compact Model](../../aurora/Aurora.compact.instructions.md) to understand the design.
     - The Aurora Compact Model exists to save time and tokens by keeping key information in a single compact (thus the name) file.
     - Use the full Aurora instructions only when applying the Architecture skill.
 - Accuracy-First Mindset: Treat every claim as potentially wrong until verified against source-of-truth artifacts.
