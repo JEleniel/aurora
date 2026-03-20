@@ -53,7 +53,7 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 			}
 
 			let included_types = union_view_card_types(view);
-			let layout_result = match preferred_layout_family(view.name.as_str()) {
+			let layout_result = match view.layout {
 				Some(family) => layout_model_with_family(
 					model,
 					&view.root_card_types,
@@ -172,58 +172,30 @@ fn sanitize_filename(name: &str) -> String {
 	out.trim_matches('_').to_string()
 }
 
-fn preferred_layout_family(view_name: &str) -> Option<LayoutFamily> {
-	if matches_any(
-		view_name,
-		&[
-			"Compliance Governance",
-			"Requirements",
-			"Security",
-			"Traceability",
-		],
-	) {
-		return Some(LayoutFamily::TreeTopDown);
-	}
-	if matches_any(
-		view_name,
-		&["Deployment", "Process", "Landscape", "State Machine"],
-	) {
-		return Some(LayoutFamily::TreeLeftRight);
-	}
-	if matches_any(view_name, &["Component", "Entire Model", "Context"]) {
-		return Some(LayoutFamily::Radial);
-	}
-	None
-}
-
-fn matches_any(value: &str, candidates: &[&str]) -> bool {
-	candidates
-		.iter()
-		.any(|candidate| candidate.eq_ignore_ascii_case(value.trim()))
-}
-
 #[cfg(test)]
 mod tests {
-	use super::{LayoutFamily, preferred_layout_family};
+	use super::LayoutFamily;
+	use crate::registry::ViewDefinition;
 
-	#[test]
-	fn preferred_layout_family_maps_canonical_views() {
-		assert_eq!(
-			preferred_layout_family("Requirements"),
-			Some(LayoutFamily::TreeTopDown)
-		);
-		assert_eq!(
-			preferred_layout_family("Process"),
-			Some(LayoutFamily::TreeLeftRight)
-		);
-		assert_eq!(
-			preferred_layout_family("Entire Model"),
-			Some(LayoutFamily::Radial)
-		);
+	fn view_definition(name: &str, layout: Option<LayoutFamily>) -> ViewDefinition {
+		ViewDefinition {
+			description: "desc".to_string(),
+			included_card_types: vec!["MIS".to_string()],
+			layout,
+			name: name.to_string(),
+			root_card_types: vec!["MIS".to_string()],
+		}
 	}
 
 	#[test]
-	fn preferred_layout_family_returns_none_for_unmapped_views() {
-		assert_eq!(preferred_layout_family("Use Case"), None);
+	fn configured_view_layout_preserves_explicit_setting() {
+		let view = view_definition("Requirements", Some(LayoutFamily::Circular));
+		assert_eq!(view.layout, Some(LayoutFamily::Circular));
+	}
+
+	#[test]
+	fn configured_view_layout_can_be_absent() {
+		let view = view_definition("Requirements", None);
+		assert_eq!(view.layout, None);
 	}
 }

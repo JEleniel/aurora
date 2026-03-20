@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Added
 
 - Graphviz layout/parser coverage in `aurora_shared` for DOT emission, helper-root handling, plain-output scaling, and deterministic best-family selection.
+- View-configuration coverage in `aurora_shared` for parsing and honoring explicit per-view layout families.
 
 ### Changed
 
@@ -16,3 +17,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Renamed layout families to `TreeTopDown`, `TreeLeftRight`, `Radial`, `Radial1`, and `Circular`, mapped to `dot`, `dot` with `rankdir=LR`, `twopi`, `neato`, and `circo` respectively.
 - Scaled Graphviz `plain` output into Aurora's existing 300 ppi SVG coordinate space so shared symbol rendering keeps its current visual units.
 - Updated shared SVG rendering to consume Graphviz-provided edge routes when present while retaining the local router for grid-based focused graph layouts.
+- Added an optional `layout` field to each view definition in the model's `Aurora.viewconfiguration.json`, using the new layout-family values and letting shared rendering fall back to best-family selection when the field is absent.

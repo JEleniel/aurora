@@ -7,6 +7,18 @@
 		"$schema": { "type": "string" },
 		"available_icons": { "type": "array", "items": { "type": "string" } },
 		"cards": { "type": "array" },
-		"views": { "type": "array" }
+		"views": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"layout": {
+						"type": "string",
+						"enum": ["TreeTopDown", "TreeLeftRight", "Radial", "Radial1", "Circular"]
+					}
+				},
+				"additionalProperties": true
+			}
+		}
 	}
 }

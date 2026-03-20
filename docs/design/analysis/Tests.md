@@ -32,6 +32,15 @@
 - `position_nodes_does_not_insert_empty_columns`: verifies grid layouts keep the focused-graph positioning contract.
 - `position_nodes_uses_compact_pitch_for_radial_layouts`: verifies legacy grid rendering still uses compact radial spacing for focused graphs.
 
+## `tools/aurora_shared/src/registry/view_registry.rs`
+
+- `parsed_view_definition_preserves_layout`: verifies view definitions preserve the configured per-view layout family from `Aurora.viewconfiguration.json`.
+
+## `tools/aurora_shared/src/render.rs`
+
+- `configured_view_layout_preserves_explicit_setting`: verifies configured views preserve the layout family loaded from `Aurora.viewconfiguration.json`.
+- `configured_view_layout_can_be_absent`: verifies views may omit the layout field, allowing renderer best-family selection to apply.
+
 ### Gaps
 
 - No golden SVG snapshot currently asserts exact Graphviz view output for canonical models.

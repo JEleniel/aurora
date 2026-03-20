@@ -2,11 +2,14 @@ use serde::{Deserialize, Serialize};
 
 use crate::registry::RegistryError;
 use crate::registry::card_registry::ViewConfiguration;
+use crate::render::LayoutFamily;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ViewDefinition {
 	pub description: String,
 	pub included_card_types: Vec<String>,
+	#[serde(default)]
+	pub layout: Option<LayoutFamily>,
 	pub name: String,
 	pub root_card_types: Vec<String>,
 }

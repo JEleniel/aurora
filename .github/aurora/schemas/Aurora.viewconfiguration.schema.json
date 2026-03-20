@@ -69,6 +69,10 @@
 			"type": "array",
 			"uniqueItems": true
 		},
+		"layout_family": {
+			"enum": ["TreeTopDown", "TreeLeftRight", "Radial", "Radial1", "Circular"],
+			"type": "string"
+		},
 		"view_definition": {
 			"additionalProperties": false,
 			"properties": {
@@ -77,6 +81,10 @@
 				},
 				"included_card_types": {
 					"$ref": "#/$defs/card_type_list"
+				},
+				"layout": {
+					"$ref": "#/$defs/layout_family",
+					"description": "Optional preferred layout family for rendering this view."
 				},
 				"name": {
 					"$ref": "#/$defs/non_empty"

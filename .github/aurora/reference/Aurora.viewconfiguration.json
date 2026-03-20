@@ -441,18 +441,21 @@
 		{
 			"description": "Demonstrates adherence to constraints through mission drivers, controls, risk treatment, and verifiable tests.",
 			"included_card_types": ["DRI", "REQ", "CNS", "THM", "CTL", "RIS", "SYS", "APP", "COM", "TES"],
+			"layout": "TreeTopDown",
 			"name": "Compliance Governance",
 			"root_card_types": ["MIS"]
 		},
 		{
 			"description": "Explains internal implementation structure, focusing on how applications and components are realized in code.",
 			"included_card_types": ["COM", "INT", "ART", "DST", "DSR", "TES"],
+			"layout": "Radial",
 			"name": "Component",
 			"root_card_types": ["SYS", "APP", "VND"]
 		},
 		{
 			"description": "Defines where software executes, focusing on deployments, nodes, and hosted runtime elements.",
 			"included_card_types": ["APP", "DEP", "NOD", "COM", "DST", "DSR"],
+			"layout": "TreeLeftRight",
 			"name": "Deployment",
 			"root_card_types": ["DEP", "VND"]
 		},
@@ -497,42 +500,49 @@
 				"VIC",
 				"ROW"
 			],
+			"layout": "Radial",
 			"name": "Entire Model",
 			"root_card_types": ["MIS"]
 		},
 		{
 			"description": "Details how a capability is realized through ordered processes and activities with explicit triggering conditions.",
 			"included_card_types": ["PRO", "ATV", "CON", "TRG", "ACT"],
+			"layout": "TreeLeftRight",
 			"name": "Process",
 			"root_card_types": ["CAP"]
 		},
 		{
 			"description": "Captures mission intent, motivation, and required capabilities, including architectural decisions that justify scope.",
 			"included_card_types": ["DRI", "STK", "CAP", "REQ", "ADR", "CNS"],
+			"layout": "TreeTopDown",
 			"name": "Requirements",
 			"root_card_types": ["MIS"]
 		},
 		{
 			"description": "Shows system context: mission intent, stakeholders/actors, and primary system components and interfaces.",
 			"included_card_types": ["DRI", "REQ", "CNS", "STK", "ACT", "VND", "SYS", "APP", "COM", "INT", "DSR"],
+			"layout": "Radial",
 			"name": "Context",
 			"root_card_types": ["MIS"]
 		},
 		{
 			"description": "Shows the high-level landscape of major components, interfaces, deployments, and nodes.",
 			"included_card_types": ["COM", "INT", "DST", "DSR", "DEP", "NOD"],
+			"layout": "TreeLeftRight",
 			"name": "Landscape",
 			"root_card_types": ["SYS", "APP", "VND"]
 		},
 		{
 			"description": "Analyzes protection of assets against threats, including actors, constraints, controls, and resulting risks.",
 			"included_card_types": ["THM", "THD", "ADV", "THC", "VIC", "ROW", "AST", "CTL", "CNS", "RIS", "DST"],
+			"layout": "TreeTopDown",
 			"name": "Security",
 			"root_card_types": ["THM"]
 		},
 		{
 			"description": "Models system behavior using state machines, states, predicates, and events without process contamination.",
 			"included_card_types": ["STA", "PRD", "EVT"],
+			"layout": "TreeLeftRight",
 			"name": "State Machine",
 			"root_card_types": ["STM"]
 		},
@@ -561,12 +571,14 @@
 				"CON",
 				"TRG"
 			],
+			"layout": "TreeTopDown",
 			"name": "Traceability",
 			"root_card_types": ["MIS"]
 		},
 		{
 			"description": "Describes externally visible behavior using stakeholder stories and actor activities.",
 			"included_card_types": ["STR", "REQ", "CNS", "ATV"],
+			"layout": "TreeTopDown",
 			"name": "Use Case",
 			"root_card_types": ["STK", "ACT"]
 		}

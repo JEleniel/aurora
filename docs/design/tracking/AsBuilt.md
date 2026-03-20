@@ -7,3 +7,4 @@
 - Graphviz geometry is consumed in inches and scaled into Aurora's existing 300 ppi SVG coordinate space before symbol rendering.
 - `tools/aurora_shared/src/render/svg.rs` now uses Graphviz-provided edge routes when available and keeps the in-repo edge router only for grid-based focused graph layouts.
 - The focused editor graph remains on explicit grid coordinates through `LayoutCoordinateSpace::Grid`; rendered views use `LayoutCoordinateSpace::Pixels`.
+- View definitions in the model's `Aurora.viewconfiguration.json` can now carry an explicit `layout` value using the shared family enum; when absent, shared rendering falls back to best-family selection rather than hard-coded view-name inference.
