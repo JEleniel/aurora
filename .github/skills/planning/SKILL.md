@@ -1,7 +1,6 @@
 ---
 name: planning
 description: Use this skill when creating or maintaining a project plan, including task decomposition, sequencing, dependencies, and progress tracking.
-description: Use this skill when creating or maintaining a project plan, including task decomposition, sequencing, dependencies, and progress tracking.
 ---
 
 # Planning Skill
