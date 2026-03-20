@@ -68,14 +68,19 @@ impl Svg {
 		let base_size: u32 = svg_template.len() as u32;
 
 		let mut config = config.unwrap_or_default();
-		if matches!(layout.family, Some(LayoutFamily::RadialSubtree)) {
+		if matches!(layout.family, Some(LayoutFamily::Radial)) {
 			config.node_spacing_px = (config.node_spacing_px / 2).max(120);
 		}
 		let template_shape_ids = collect_template_shape_ids(svg_template);
 
 		let cards_by_id = index_cards(model)?;
 		let node_layouts = node::collect_node_layouts(layout, &cards_by_id, &config)?;
-		let positioned = node::position_nodes(&node_layouts, layout.family, &config);
+		let positioned = node::position_nodes(
+			&node_layouts,
+			layout.coordinate_space,
+			layout.family,
+			&config,
+		);
 
 		let mut edges_svg = String::new();
 		let mut edge_bounds: Vec<geom::Bounds> = Vec::new();
@@ -89,7 +94,11 @@ impl Svg {
 
 		let rem_px = config.base_font_size_px.max(1);
 		let _ = rem_px;
-		let routed_edges = edge_router::route_edges(&positioned, layout.edges.as_slice(), &config)?;
+		let routed_edges = if layout.routes.is_empty() {
+			edge_router::route_edges(&positioned, layout.edges.as_slice(), &config)?
+		} else {
+			materialize_layout_routes(layout, &positioned)?
+		};
 		for route in &routed_edges {
 			edge_points.extend(route.points.iter().copied());
 			edge_bounds.push(route.bounds);
@@ -234,6 +243,44 @@ fn index_cards(model: &Model) -> Result<HashMap<String, &Card>, RenderError> {
 		}
 	}
 	Ok(cards_by_id)
+}
+
+fn materialize_layout_routes(
+	layout: &Layout,
+	positioned: &HashMap<String, node::PositionedNode>,
+) -> Result<Vec<edge::Route>, RenderError> {
+	let mut routes = Vec::with_capacity(layout.edges.len());
+	for edge_def in &layout.edges {
+		let key = (edge_def.a.clone(), edge_def.b.clone());
+		let points = layout.routes.get(&key).ok_or(RenderError::SvgRouteFailed)?;
+		if points.len() < 2 {
+			return Err(RenderError::SvgRouteFailed);
+		}
+		if !positioned.contains_key(edge_def.a.as_str())
+			|| !positioned.contains_key(edge_def.b.as_str())
+		{
+			return Err(RenderError::SvgRouteFailed);
+		}
+		let mut route = edge::Route {
+			edge_id: format!("{}->{}#0", edge_def.a, edge_def.b),
+			source_id: edge_def.a.clone(),
+			target_id: edge_def.b.clone(),
+			points: points
+				.iter()
+				.map(|point| geom::PointF {
+					x: point.x,
+					y: point.y,
+				})
+				.collect(),
+			junction_ids: Vec::new(),
+			track_id: format!("{}->{}", edge_def.a, edge_def.b),
+			arrow: [geom::PointF { x: 0.0, y: 0.0 }; 3],
+			bounds: geom::Bounds::empty(),
+		};
+		edge::finalize_route(&mut route);
+		routes.push(route);
+	}
+	Ok(routes)
 }
 
 fn compute_viewbox(
@@ -1118,11 +1165,13 @@ mod tests {
 		);
 		let layout = crate::render::Layout {
 			family: None,
+			coordinate_space: crate::render::LayoutCoordinateSpace::Grid,
 			nodes,
 			edges: vec![crate::render::LayoutEdge {
 				a: "MIS-001".to_string(),
 				b: "C-001".to_string(),
 			}],
+			routes: HashMap::new(),
 		};
 
 		let svg = super::Svg::render(&model, &layout, &registry, svg_template.as_str(), None)

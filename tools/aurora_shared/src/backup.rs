@@ -133,7 +133,7 @@ impl ConfigBackupManager {
 
 		match std::fs::rename(&temp_path, &archive_path) {
 			Ok(()) => Ok(archive_path),
-			Err(error) if archive_path.is_file() => {
+			Err(_error) if archive_path.is_file() => {
 				cleanup_file(&temp_path);
 				Ok(archive_path)
 			}

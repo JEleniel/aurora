@@ -1,0 +1,18 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Added
+
+- Graphviz layout/parser coverage in `aurora_shared` for DOT emission, helper-root handling, plain-output scaling, and deterministic best-family selection.
+
+### Changed
+
+- Replaced the shared in-repo view layout engine with Graphviz-backed layout and routing for SVG rendering.
+- Renamed layout families to `TreeTopDown`, `TreeLeftRight`, `Radial`, `Radial1`, and `Circular`, mapped to `dot`, `dot` with `rankdir=LR`, `twopi`, `neato`, and `circo` respectively.
+- Scaled Graphviz `plain` output into Aurora's existing 300 ppi SVG coordinate space so shared symbol rendering keeps its current visual units.
+- Updated shared SVG rendering to consume Graphviz-provided edge routes when present while retaining the local router for grid-based focused graph layouts.

@@ -182,16 +182,16 @@ fn preferred_layout_family(view_name: &str) -> Option<LayoutFamily> {
 			"Traceability",
 		],
 	) {
-		return Some(LayoutFamily::VerticalTree);
+		return Some(LayoutFamily::TreeTopDown);
 	}
 	if matches_any(
 		view_name,
 		&["Deployment", "Process", "Landscape", "State Machine"],
 	) {
-		return Some(LayoutFamily::HorizontalTree);
+		return Some(LayoutFamily::TreeLeftRight);
 	}
 	if matches_any(view_name, &["Component", "Entire Model", "Context"]) {
-		return Some(LayoutFamily::RadialSubtree);
+		return Some(LayoutFamily::Radial);
 	}
 	None
 }
@@ -210,15 +210,15 @@ mod tests {
 	fn preferred_layout_family_maps_canonical_views() {
 		assert_eq!(
 			preferred_layout_family("Requirements"),
-			Some(LayoutFamily::VerticalTree)
+			Some(LayoutFamily::TreeTopDown)
 		);
 		assert_eq!(
 			preferred_layout_family("Process"),
-			Some(LayoutFamily::HorizontalTree)
+			Some(LayoutFamily::TreeLeftRight)
 		);
 		assert_eq!(
 			preferred_layout_family("Entire Model"),
-			Some(LayoutFamily::RadialSubtree)
+			Some(LayoutFamily::Radial)
 		);
 	}
 

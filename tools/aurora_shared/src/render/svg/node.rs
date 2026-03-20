@@ -1,7 +1,7 @@
 use std::collections::{HashMap, HashSet};
 
 use crate::registry::{CardDefinition, CardRegistry};
-use crate::render::LayoutFamily;
+use crate::render::{LayoutCoordinateSpace, LayoutFamily};
 use crate::{Card, Layout};
 
 use super::{RenderError, SvgConfig, geom};
@@ -94,6 +94,7 @@ pub fn collect_node_layouts(
 
 pub fn position_nodes(
 	node_layouts: &[NodeLayout],
+	coordinate_space: LayoutCoordinateSpace,
 	layout_family: Option<LayoutFamily>,
 	config: &SvgConfig,
 ) -> HashMap<String, PositionedNode> {
@@ -101,11 +102,14 @@ pub fn position_nodes(
 	if node_layouts.is_empty() {
 		return HashMap::new();
 	}
+	if coordinate_space == LayoutCoordinateSpace::Pixels {
+		return position_pixel_nodes(node_layouts);
+	}
 	let (column_pitch_px, row_pitch_px) = match layout_family {
-		Some(LayoutFamily::RadialSubtree) if node_layouts.len() > RADIAL_DENSE_NODE_THRESHOLD => {
+		Some(LayoutFamily::Radial) if node_layouts.len() > RADIAL_DENSE_NODE_THRESHOLD => {
 			(RADIAL_DENSE_COLUMN_PITCH_PX, RADIAL_DENSE_ROW_PITCH_PX)
 		}
-		Some(LayoutFamily::RadialSubtree) => (RADIAL_COLUMN_PITCH_PX, RADIAL_ROW_PITCH_PX),
+		Some(LayoutFamily::Radial) => (RADIAL_COLUMN_PITCH_PX, RADIAL_ROW_PITCH_PX),
 		_ => (COLUMN_PITCH_PX, ROW_PITCH_PX),
 	};
 
@@ -125,6 +129,27 @@ pub fn position_nodes(
 				width_px: n.geom.width_px,
 				height_px: n.geom.height_px,
 				geom: n.geom.clone(),
+			},
+		);
+	}
+	positioned
+}
+
+fn position_pixel_nodes(node_layouts: &[NodeLayout]) -> HashMap<String, PositionedNode> {
+	let mut positioned = HashMap::new();
+	for node in node_layouts {
+		positioned.insert(
+			node.id.clone(),
+			PositionedNode {
+				bbox: geom::RectI {
+					x: node.x,
+					y: node.y,
+					w: node.geom.width_px,
+					h: node.geom.height_px,
+				},
+				width_px: node.geom.width_px,
+				height_px: node.geom.height_px,
+				geom: node.geom.clone(),
 			},
 		);
 	}
@@ -409,7 +434,7 @@ mod tests {
 			edge_style: super::super::EdgeStyle::Orthogonal,
 		};
 
-		let positioned = position_nodes(&nodes, None, &config);
+		let positioned = position_nodes(&nodes, LayoutCoordinateSpace::Grid, None, &config);
 		let a = positioned.get("a").expect("a should be positioned");
 		let b = positioned.get("b").expect("b should be positioned");
 		assert_eq!(a.bbox.x, 0);
@@ -445,7 +470,7 @@ mod tests {
 			edge_style: super::super::EdgeStyle::Orthogonal,
 		};
 
-		let positioned = position_nodes(&nodes, None, &config);
+		let positioned = position_nodes(&nodes, LayoutCoordinateSpace::Grid, None, &config);
 		let a = positioned.get("a").expect("a should be positioned");
 		let b = positioned.get("b").expect("b should be positioned");
 		assert_eq!(a.bbox.y, 0);
@@ -481,7 +506,12 @@ mod tests {
 			edge_style: super::super::EdgeStyle::Orthogonal,
 		};
 
-		let positioned = position_nodes(&nodes, Some(LayoutFamily::RadialSubtree), &config);
+		let positioned = position_nodes(
+			&nodes,
+			LayoutCoordinateSpace::Grid,
+			Some(LayoutFamily::Radial),
+			&config,
+		);
 		let b = positioned.get("b").expect("b should be positioned");
 		assert_eq!(b.bbox.x, RADIAL_COLUMN_PITCH_PX);
 		assert_eq!(b.bbox.y, RADIAL_ROW_PITCH_PX);
@@ -511,7 +541,12 @@ mod tests {
 			edge_style: super::super::EdgeStyle::Orthogonal,
 		};
 
-		let positioned = position_nodes(&nodes, Some(LayoutFamily::RadialSubtree), &config);
+		let positioned = position_nodes(
+			&nodes,
+			LayoutCoordinateSpace::Grid,
+			Some(LayoutFamily::Radial),
+			&config,
+		);
 		let probe = positioned
 			.get(format!("n-{}", RADIAL_DENSE_NODE_THRESHOLD).as_str())
 			.expect("probe should be positioned");

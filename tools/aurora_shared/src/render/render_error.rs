@@ -51,6 +51,12 @@ pub enum RenderError {
 	SvgDuplicateCardId(String),
 	#[error("SVG edge routing failed")]
 	SvgRouteFailed,
+	#[error("Graphviz executable '{0}' is not available")]
+	GraphvizUnavailable(String),
+	#[error("Graphviz layout failed: {0}")]
+	GraphvizFailed(String),
+	#[error("Graphviz output could not be parsed: {0}")]
+	GraphvizParse(String),
 	#[error("I/O error: {0}")]
 	Io(#[from] std::io::Error),
 	#[error("SVG output exceeds maximum size")]

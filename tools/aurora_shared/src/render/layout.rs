@@ -1,7 +1,8 @@
-//! Hierarchical layout for Aurora view graphs.
+//! Graphviz-backed layout for Aurora view graphs.
 
-mod api;
 mod graph;
+mod graphviz;
+mod graphviz_api;
 mod types;
 
 #[cfg(test)]
@@ -13,5 +14,8 @@ mod test_support;
 #[cfg(test)]
 mod types_tests;
 
-pub use api::{layout_model, layout_model_best_family, layout_model_with_family};
-pub use types::{Layout, LayoutEdge, LayoutFamily, LayoutNode};
+#[cfg(test)]
+use graphviz_api as api;
+
+pub use graphviz_api::{layout_model, layout_model_best_family, layout_model_with_family};
+pub use types::{Layout, LayoutCoordinateSpace, LayoutEdge, LayoutFamily, LayoutNode, LayoutPoint};

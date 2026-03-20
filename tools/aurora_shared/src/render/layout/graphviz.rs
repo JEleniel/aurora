@@ -1,0 +1,404 @@
+//! Graphviz-backed layout execution and `plain` output parsing.
+
+use std::collections::{HashMap, HashSet};
+use std::io::Write;
+use std::process::{Command, Stdio};
+
+use crate::render::render_error::RenderError;
+
+use super::graph::LayoutGraph;
+use super::types::{LayoutFamily, LayoutNode, LayoutPoint};
+
+const PIXELS_PER_INCH: f32 = 300.0;
+const NODE_WIDTH_IN: f32 = 720.0 / PIXELS_PER_INCH;
+const NODE_HEIGHT_IN: f32 = 450.0 / PIXELS_PER_INCH;
+const NODE_GAP_IN: f32 = 392.0 / PIXELS_PER_INCH;
+const HELPER_ROOT_ID: &str = "__aurora_layout_root__";
+
+#[derive(Debug, Clone, Copy)]
+struct EngineSpec {
+	command: &'static str,
+	rankdir: Option<&'static str>,
+	splines: &'static str,
+	overlap: Option<&'static str>,
+	oneblock: Option<&'static str>,
+	root_override: bool,
+}
+
+#[derive(Debug, Clone)]
+pub(super) struct GraphvizLayout {
+	pub(super) nodes: HashMap<String, LayoutNode>,
+	pub(super) routes: HashMap<(String, String), Vec<LayoutPoint>>,
+}
+
+pub(super) fn layout_with_graphviz(
+	graph: &LayoutGraph,
+	family: LayoutFamily,
+) -> Result<GraphvizLayout, RenderError> {
+	let spec = spec_for_family(family);
+	let dot = build_graphviz_input(graph, spec, family);
+	let output = run_graphviz(spec.command, dot.as_str())?;
+	parse_plain_output(output.as_str(), graph)
+}
+
+fn spec_for_family(family: LayoutFamily) -> EngineSpec {
+	match family {
+		LayoutFamily::TreeTopDown => EngineSpec {
+			command: "dot",
+			rankdir: Some("TB"),
+			splines: "ortho",
+			overlap: None,
+			oneblock: None,
+			root_override: false,
+		},
+		LayoutFamily::TreeLeftRight => EngineSpec {
+			command: "dot",
+			rankdir: Some("LR"),
+			splines: "ortho",
+			overlap: None,
+			oneblock: None,
+			root_override: false,
+		},
+		LayoutFamily::Radial => EngineSpec {
+			command: "twopi",
+			rankdir: None,
+			splines: "polyline",
+			overlap: Some("prism0"),
+			oneblock: None,
+			root_override: true,
+		},
+		LayoutFamily::Radial1 => EngineSpec {
+			command: "neato",
+			rankdir: None,
+			splines: "polyline",
+			overlap: Some("prism0"),
+			oneblock: None,
+			root_override: false,
+		},
+		LayoutFamily::Circular => EngineSpec {
+			command: "circo",
+			rankdir: None,
+			splines: "polyline",
+			overlap: Some("prism0"),
+			oneblock: Some("true"),
+			root_override: false,
+		},
+	}
+}
+
+fn build_graphviz_input(graph: &LayoutGraph, spec: EngineSpec, family: LayoutFamily) -> String {
+	let mut dot = String::from("digraph aurora {\n");
+	let helper_root = needs_helper_root(graph, family);
+	let root_id = selected_root_id(graph, helper_root);
+	let mut graph_attrs = vec![
+		format!("nodesep={:.4}", NODE_GAP_IN),
+		format!("ranksep={:.4}", NODE_GAP_IN),
+		"outputorder=edgesfirst".to_string(),
+		format!("splines={}", spec.splines),
+	];
+	if let Some(rankdir) = spec.rankdir {
+		graph_attrs.push(format!("rankdir={rankdir}"));
+	}
+	if let Some(overlap) = spec.overlap {
+		graph_attrs.push(format!("overlap={overlap}"));
+	}
+	if let Some(oneblock) = spec.oneblock {
+		graph_attrs.push(format!("oneblock={oneblock}"));
+	}
+	if spec.root_override {
+		graph_attrs.push(format!("root={}", quote_dot(root_id.as_str())));
+	}
+	dot.push_str(format!("  graph [{}];\n", graph_attrs.join(", ")).as_str());
+	dot.push_str(
+		format!(
+			"  node [shape=box, fixedsize=true, width={:.4}, height={:.4}, margin=0, label=\"\", fontsize=16];\n",
+			NODE_WIDTH_IN,
+			NODE_HEIGHT_IN,
+		)
+		.as_str(),
+	);
+	dot.push_str("  edge [arrowhead=none];\n");
+	if helper_root {
+		dot.push_str(
+			format!(
+				"  {} [shape=point, width=0.01, height=0.01, label=\"\", style=invis];\n",
+				quote_dot(HELPER_ROOT_ID),
+			)
+			.as_str(),
+		);
+	}
+
+	let mut nodes: Vec<&String> = graph.allowed_nodes.iter().collect();
+	nodes.sort();
+	for node_id in nodes {
+		dot.push_str(format!("  {};\n", quote_dot(node_id.as_str())).as_str());
+	}
+
+	if helper_root {
+		let mut roots = graph.roots.iter().collect::<Vec<_>>();
+		roots.sort();
+		for root_id in roots {
+			dot.push_str(
+				format!(
+					"  {} -> {} [style=invis, weight=100];\n",
+					quote_dot(HELPER_ROOT_ID),
+					quote_dot(root_id.as_str()),
+				)
+				.as_str(),
+			);
+		}
+	}
+
+	let mut edges = graph.edges.iter().collect::<Vec<_>>();
+	edges.sort();
+	for (source, target) in edges {
+		dot.push_str(
+			format!(
+				"  {} -> {};\n",
+				quote_dot(source.as_str()),
+				quote_dot(target.as_str()),
+			)
+			.as_str(),
+		);
+	}
+
+	dot.push_str("}\n");
+	dot
+}
+
+fn needs_helper_root(graph: &LayoutGraph, family: LayoutFamily) -> bool {
+	graph.roots.len() > 1
+		|| matches!(family, LayoutFamily::Radial)
+			&& !graph.roots.iter().any(|root| root == HELPER_ROOT_ID)
+}
+
+fn selected_root_id(graph: &LayoutGraph, helper_root: bool) -> String {
+	if helper_root {
+		return HELPER_ROOT_ID.to_string();
+	}
+	let mut roots = graph.roots.clone();
+	roots.sort();
+	roots
+		.into_iter()
+		.next()
+		.unwrap_or_else(|| HELPER_ROOT_ID.to_string())
+}
+
+fn run_graphviz(command: &str, input: &str) -> Result<String, RenderError> {
+	let mut child = Command::new(command)
+		.arg("-Tplain")
+		.arg("-y")
+		.stdin(Stdio::piped())
+		.stdout(Stdio::piped())
+		.stderr(Stdio::piped())
+		.spawn()
+		.map_err(|error| {
+			if error.kind() == std::io::ErrorKind::NotFound {
+				RenderError::GraphvizUnavailable(command.to_string())
+			} else {
+				RenderError::Io(error)
+			}
+		})?;
+	if let Some(stdin) = child.stdin.as_mut() {
+		stdin.write_all(input.as_bytes())?;
+	}
+	let output = child.wait_with_output()?;
+	if !output.status.success() {
+		let stderr = String::from_utf8_lossy(&output.stderr).trim().to_string();
+		let reason = if stderr.is_empty() {
+			format!("{command} exited with {}", output.status)
+		} else {
+			format!("{command}: {stderr}")
+		};
+		return Err(RenderError::GraphvizFailed(reason));
+	}
+	Ok(String::from_utf8_lossy(&output.stdout).into_owned())
+}
+
+fn parse_plain_output(output: &str, graph: &LayoutGraph) -> Result<GraphvizLayout, RenderError> {
+	let expected_nodes = graph.allowed_nodes.iter().cloned().collect::<HashSet<_>>();
+	let expected_edges = graph.edges.iter().cloned().collect::<HashSet<_>>();
+	let mut nodes = HashMap::new();
+	let mut routes = HashMap::new();
+	for line in output.lines() {
+		let trimmed = line.trim();
+		if trimmed.is_empty() || trimmed == "stop" || trimmed.starts_with("graph ") {
+			continue;
+		}
+		let fields = trimmed.split_whitespace().collect::<Vec<_>>();
+		match fields.first().copied() {
+			Some("node") => parse_node_line(fields.as_slice(), &expected_nodes, &mut nodes)?,
+			Some("edge") => parse_edge_line(fields.as_slice(), &expected_edges, &mut routes)?,
+			Some(other) => {
+				return Err(RenderError::GraphvizParse(format!(
+					"unsupported plain record '{other}'"
+				)));
+			}
+			None => continue,
+		}
+	}
+	for node_id in &expected_nodes {
+		if !nodes.contains_key(node_id) {
+			return Err(RenderError::GraphvizParse(format!(
+				"missing node '{node_id}' in plain output"
+			)));
+		}
+	}
+	Ok(GraphvizLayout { nodes, routes })
+}
+
+fn parse_node_line(
+	fields: &[&str],
+	expected_nodes: &HashSet<String>,
+	nodes: &mut HashMap<String, LayoutNode>,
+) -> Result<(), RenderError> {
+	if fields.len() < 6 {
+		return Err(RenderError::GraphvizParse(format!(
+			"node record is too short: {}",
+			fields.join(" ")
+		)));
+	}
+	let node_id = fields[1].trim_matches('"');
+	if node_id == HELPER_ROOT_ID || !expected_nodes.contains(node_id) {
+		return Ok(());
+	}
+	let center_x = parse_inches(fields[2])? * PIXELS_PER_INCH;
+	let center_y = parse_inches(fields[3])? * PIXELS_PER_INCH;
+	let width_px = parse_inches(fields[4])? * PIXELS_PER_INCH;
+	let height_px = parse_inches(fields[5])? * PIXELS_PER_INCH;
+	nodes.insert(
+		node_id.to_string(),
+		LayoutNode {
+			id: node_id.to_string(),
+			x: (center_x - (width_px / 2.0)).round() as i32,
+			y: (center_y - (height_px / 2.0)).round() as i32,
+		},
+	);
+	Ok(())
+}
+
+fn parse_edge_line(
+	fields: &[&str],
+	expected_edges: &HashSet<(String, String)>,
+	routes: &mut HashMap<(String, String), Vec<LayoutPoint>>,
+) -> Result<(), RenderError> {
+	if fields.len() < 5 {
+		return Err(RenderError::GraphvizParse(format!(
+			"edge record is too short: {}",
+			fields.join(" ")
+		)));
+	}
+	let source = normalize_edge_endpoint(fields[1]);
+	let target = normalize_edge_endpoint(fields[2]);
+	if source == HELPER_ROOT_ID || target == HELPER_ROOT_ID {
+		return Ok(());
+	}
+	if !expected_edges.contains(&(source.clone(), target.clone())) {
+		return Ok(());
+	}
+	let point_count = fields[3].parse::<usize>().map_err(|_| {
+		RenderError::GraphvizParse(format!("invalid edge point count '{}'", fields[3]))
+	})?;
+	let coord_fields = 4 + point_count * 2;
+	if fields.len() < coord_fields {
+		return Err(RenderError::GraphvizParse(format!(
+			"edge record is missing route coordinates: {}",
+			fields.join(" ")
+		)));
+	}
+	let mut points = Vec::with_capacity(point_count);
+	for index in 0..point_count {
+		let x = parse_inches(fields[4 + index * 2])? * PIXELS_PER_INCH;
+		let y = parse_inches(fields[5 + index * 2])? * PIXELS_PER_INCH;
+		points.push(LayoutPoint { x, y });
+	}
+	routes.insert((source, target), points);
+	Ok(())
+}
+
+fn normalize_edge_endpoint(value: &str) -> String {
+	value
+		.trim_matches('"')
+		.split(':')
+		.next()
+		.unwrap_or(value)
+		.to_string()
+}
+
+fn parse_inches(value: &str) -> Result<f32, RenderError> {
+	value.parse::<f32>().map_err(|_| {
+		RenderError::GraphvizParse(format!("invalid numeric value '{value}' in plain output"))
+	})
+}
+
+fn quote_dot(value: &str) -> String {
+	let escaped = value.replace('\\', "\\\\").replace('"', "\\\"");
+	format!("\"{escaped}\"")
+}
+
+#[cfg(test)]
+mod tests {
+	use super::{
+		GraphvizLayout, HELPER_ROOT_ID, LayoutFamily, NODE_GAP_IN, build_graphviz_input,
+		needs_helper_root, normalize_edge_endpoint, parse_plain_output, selected_root_id,
+		spec_for_family,
+	};
+	use crate::render::layout::graph::build_graph;
+	use crate::render::layout::test_support::{make_card, make_model};
+
+	#[test]
+	fn helper_root_is_used_for_multi_root_radial_layouts() {
+		let root_one = make_card("MIS-001", "Mission", &[]);
+		let root_two = make_card("MIS-002", "Mission", &[]);
+		let model = make_model(root_one, vec![root_two]);
+		let graph = build_graph(&model, &["MIS".to_string()], &["MIS".to_string()])
+			.expect("graph should build");
+
+		assert!(needs_helper_root(&graph, LayoutFamily::Radial));
+		assert_eq!(selected_root_id(&graph, true), HELPER_ROOT_ID);
+	}
+
+	#[test]
+	fn graphviz_input_uses_expected_spacing_and_rankdir() {
+		let root = make_card("MIS-001", "Mission", &["REQ-001"]);
+		let requirement = make_card("REQ-001", "Requirement", &[]);
+		let model = make_model(root, vec![requirement]);
+		let graph = build_graph(&model, &["MIS".to_string()], &["REQ".to_string()])
+			.expect("graph should build");
+
+		let dot = build_graphviz_input(
+			&graph,
+			spec_for_family(LayoutFamily::TreeLeftRight),
+			LayoutFamily::TreeLeftRight,
+		);
+		assert!(dot.contains("rankdir=LR"));
+		assert!(dot.contains(format!("nodesep={NODE_GAP_IN:.4}").as_str()));
+		assert!(dot.contains("splines=ortho"));
+	}
+
+	#[test]
+	fn normalize_edge_endpoint_strips_ports() {
+		assert_eq!(normalize_edge_endpoint("\"MIS-001:e\""), "MIS-001");
+	}
+
+	#[test]
+	fn parse_plain_output_scales_nodes_and_routes() {
+		let root = make_card("MIS-001", "Mission", &["REQ-001"]);
+		let requirement = make_card("REQ-001", "Requirement", &[]);
+		let model = make_model(root, vec![requirement]);
+		let graph = build_graph(&model, &["MIS".to_string()], &["REQ".to_string()])
+			.expect("graph should build");
+		let plain = "graph 1 5.0 3.0\nnode MIS-001 1.2 0.75 2.4 1.5 \"\" solid box black lightgrey\nnode REQ-001 3.8 2.25 2.4 1.5 \"\" solid box black lightgrey\nedge MIS-001 REQ-001 4 2.4 0.75 2.9 0.75 3.1 2.25 3.8 2.25 solid black\nstop\n";
+
+		let GraphvizLayout { nodes, routes } =
+			parse_plain_output(plain, &graph).expect("plain output should parse");
+		let mission = nodes.get("MIS-001").expect("mission node missing");
+		assert_eq!(mission.x, 0);
+		assert_eq!(mission.y, 0);
+		let route = routes
+			.get(&("MIS-001".to_string(), "REQ-001".to_string()))
+			.expect("route missing");
+		assert_eq!(route.len(), 4);
+		assert!((route[0].x - 720.0).abs() < 0.1);
+	}
+}

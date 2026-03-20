@@ -4,7 +4,7 @@ use crate::render::render_error::RenderError;
 
 use super::api::{layout_model, layout_model_best_family, layout_model_with_family};
 use super::test_support::{make_card, make_model};
-use super::types::{Layout, LayoutFamily};
+use super::types::{Layout, LayoutCoordinateSpace, LayoutFamily};
 
 #[test]
 fn layout_model_positions_nodes_by_rank() {
@@ -16,14 +16,16 @@ fn layout_model_positions_nodes_by_rank() {
 	let layout = layout_model(&model, &["MIS".to_string()], &["REQ".to_string()])
 		.expect("layout should succeed");
 
-	// REQ-001 is a normalized transit node (1 incoming, 1 outgoing), so it is removed.
-	assert_eq!(layout.nodes.len(), 2);
-	assert_eq!(layout.edges.len(), 1);
+	assert_eq!(layout.coordinate_space, LayoutCoordinateSpace::Pixels);
+	assert_eq!(layout.nodes.len(), 3);
+	assert_eq!(layout.edges.len(), 2);
+	assert_eq!(layout.routes.len(), layout.edges.len());
 
 	let root_node = layout.nodes.get("MIS-001").expect("root node missing");
-	assert_eq!(root_node.y, 0);
+	let first_requirement = layout.nodes.get("REQ-001").expect("node missing");
 	let second_requirement = layout.nodes.get("REQ-002").expect("node missing");
-	assert_eq!(second_requirement.y, 1);
+	assert!(root_node.y < first_requirement.y);
+	assert!(first_requirement.y <= second_requirement.y);
 }
 
 #[test]
@@ -95,22 +97,12 @@ fn layout_model_places_longest_path_on_spine_column() {
 	)
 	.expect("layout should succeed");
 
-	assert!(
-		!layout.nodes.contains_key("CAP-001"),
-		"CAP-001 should be removed as a transit node"
-	);
-	assert!(
-		!layout.nodes.contains_key("CAP-002"),
-		"CAP-002 should be removed as a transit node"
-	);
-	assert!(
-		!layout.nodes.contains_key("PRO-001"),
-		"PRO-001 should be removed as a transit node"
-	);
+	let mission = layout.nodes.get("MIS-001").expect("MIS-001 missing");
+	let capability = layout.nodes.get("CAP-001").expect("CAP-001 missing");
 	let requirement = layout.nodes.get("REQ-001").expect("REQ-001 missing");
 
-	assert_eq!(layout.nodes.get("MIS-001").expect("MIS-001 missing").x, 0);
-	assert_eq!(requirement.x, 0);
+	assert!(mission.y < capability.y);
+	assert!(capability.y < requirement.y);
 }
 
 #[test]
@@ -128,9 +120,12 @@ fn layout_model_bounds_non_spine_width() {
 	)
 	.expect("layout should succeed");
 
-	let non_spine_max_col = layout.nodes.values().map(|node| node.x).max().unwrap_or(0);
-	// n=1 non-spine node -> k=ceil(sqrt(0.75*1))=1
-	assert!(non_spine_max_col <= 1);
+	let cap_one = layout.nodes.get("CAP-001").expect("CAP-001 missing");
+	let cap_two = layout.nodes.get("CAP-002").expect("CAP-002 missing");
+	assert_ne!(
+		cap_one.x, cap_two.x,
+		"sibling branches should occupy distinct columns"
+	);
 }
 
 #[test]
@@ -205,7 +200,7 @@ fn horizontal_layout_progresses_across_x_axis() {
 		&model,
 		&["MIS".to_string()],
 		&["REQ".to_string()],
-		LayoutFamily::HorizontalTree,
+		LayoutFamily::TreeLeftRight,
 	)
 	.expect("horizontal layout should succeed");
 
@@ -229,7 +224,7 @@ fn radial_layout_spreads_children_around_root() {
 		&model,
 		&["MIS".to_string()],
 		&["REQ".to_string()],
-		LayoutFamily::RadialSubtree,
+		LayoutFamily::Radial,
 	)
 	.expect("radial layout should succeed");
 
@@ -250,7 +245,7 @@ fn radial_layout_places_single_root_at_center() {
 		&model,
 		&["MIS".to_string()],
 		&["MIS".to_string()],
-		LayoutFamily::RadialSubtree,
+		LayoutFamily::Radial,
 	)
 	.expect("radial layout should succeed");
 
@@ -270,7 +265,7 @@ fn radial_layout_places_multi_roots_north_then_equal_angles() {
 		&model,
 		&["MIS".to_string()],
 		&["MIS".to_string()],
-		LayoutFamily::RadialSubtree,
+		LayoutFamily::Radial,
 	)
 	.expect("radial layout should succeed");
 
@@ -279,10 +274,17 @@ fn radial_layout_places_multi_roots_north_then_equal_angles() {
 	let root_three = layout.nodes.get("MIS-003").expect("MIS-003 missing");
 	let root_four = layout.nodes.get("MIS-004").expect("MIS-004 missing");
 
-	assert_eq!((root_one.x, root_one.y), (0, -2));
-	assert_eq!((root_two.x, root_two.y), (2, 0));
-	assert_eq!((root_three.x, root_three.y), (0, 2));
-	assert_eq!((root_four.x, root_four.y), (-2, 0));
+	let center_x = (root_one.x + root_two.x + root_three.x + root_four.x) as f32 / 4.0;
+	let center_y = (root_one.y + root_two.y + root_three.y + root_four.y) as f32 / 4.0;
+	let distances = [root_one, root_two, root_three, root_four].map(|node| {
+		((node.x as f32 - center_x).powi(2) + (node.y as f32 - center_y).powi(2)).sqrt()
+	});
+	let min_distance = distances.into_iter().fold(f32::INFINITY, f32::min);
+	let max_distance = distances.into_iter().fold(f32::NEG_INFINITY, f32::max);
+	assert!(
+		max_distance - min_distance < 250.0,
+		"roots should stay on a consistent ring"
+	);
 }
 
 #[test]
@@ -297,7 +299,7 @@ fn radial_layout_keeps_first_ring_compact() {
 		&model,
 		&["MIS".to_string()],
 		&["REQ".to_string()],
-		LayoutFamily::RadialSubtree,
+		LayoutFamily::Radial,
 	)
 	.expect("radial layout should succeed");
 
@@ -307,8 +309,8 @@ fn radial_layout_keeps_first_ring_compact() {
 		let dx = (child.x - root.x).abs();
 		let dy = (child.y - root.y).abs();
 		assert!(
-			dx <= 2 && dy <= 2 && child.y > root.y,
-			"clustered tree child {node_id} should remain close to the root while staying below it; got Δx={dx}, Δy={dy}"
+			dx <= 4000 && dy <= 4000,
+			"clustered tree child {node_id} should remain within the first radial band; got Δx={dx}, Δy={dy}"
 		);
 	}
 }
@@ -328,30 +330,23 @@ fn radial_layout_stacks_wide_first_level_into_multiple_tree_rows() {
 		&model,
 		&["MIS".to_string()],
 		&["REQ".to_string()],
-		LayoutFamily::RadialSubtree,
+		LayoutFamily::Radial,
 	)
 	.expect("radial layout should succeed");
 
-	assert_eq!(layout.family, Some(LayoutFamily::RadialSubtree));
+	assert_eq!(layout.family, Some(LayoutFamily::Radial));
 
-	let root = layout.nodes.get("MIS-001").expect("MIS-001 missing");
 	let mut rows: HashSet<i32> = HashSet::new();
+	let mut columns: HashSet<i32> = HashSet::new();
 	for node_id in &links {
 		let child = layout.nodes.get(node_id).expect("child missing");
-		assert!(
-			child.y > root.y,
-			"expected first descendant {node_id} to appear below the root"
-		);
 		rows.insert(child.y);
+		columns.insert(child.x);
 	}
 
 	assert!(
-		rows.len() >= 2,
-		"expected a wide first level to occupy multiple tree rows"
-	);
-	assert!(
-		rows.iter().copied().max().unwrap_or(root.y) - root.y <= 4,
-		"expected first descendants to remain reasonably compact beneath the root"
+		rows.len() >= 2 || columns.len() >= 2,
+		"expected a wide first level to spread across multiple radial lanes"
 	);
 }
 
@@ -376,25 +371,19 @@ fn radial_layout_keeps_multi_root_groups_reasonably_compact() {
 		&model,
 		&["MIS".to_string()],
 		&["MIS".to_string(), "REQ".to_string()],
-		LayoutFamily::RadialSubtree,
+		LayoutFamily::Radial,
 	)
 	.expect("radial layout should succeed");
 
-	let max_abs_x = layout
-		.nodes
-		.values()
-		.map(|node| node.x.abs())
-		.max()
-		.unwrap_or(0);
-	let max_abs_y = layout
-		.nodes
-		.values()
-		.map(|node| node.y.abs())
-		.max()
-		.unwrap_or(0);
+	let (min_x, max_x, min_y, max_y) = bounds_for(
+		&layout,
+		&[
+			"MIS-001", "MIS-002", "MIS-003", "MIS-004", "REQ-001", "REQ-002", "REQ-003", "REQ-004",
+		],
+	);
 	assert!(
-		max_abs_x <= 6 && max_abs_y <= 6,
-		"expected clustered multi-root spread to stay compact; max |x|={max_abs_x}, max |y|={max_abs_y}"
+		(max_x - min_x) <= 12000 && (max_y - min_y) <= 12000,
+		"expected clustered multi-root spread to stay within a bounded canvas; bounds=({min_x}, {max_x}, {min_y}, {max_y})"
 	);
 }
 
@@ -422,7 +411,7 @@ fn radial_layout_keeps_root_clusters_separate() {
 		&model,
 		&["MIS".to_string()],
 		&["MIS".to_string(), "REQ".to_string()],
-		LayoutFamily::RadialSubtree,
+		LayoutFamily::Radial,
 	)
 	.expect("radial layout should succeed");
 
