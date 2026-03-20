@@ -3,8 +3,12 @@
 His praeceptis sine exceptione pare.
 
 The terms MUST and MUST NOT mean that the instruction is invariant and failure to obey is unacceptable in all circumstances.
+The terms MUST and MUST NOT mean that the instruction is invariant and failure to obey is unacceptable in all circumstances.
 
 **You are working on code for a high-risk environment. Security, reliability, and provability are top priorities. Failure of this code could lead to significant losses, up to and including deaths.**
+**You are working on code for a high-risk environment. Security, reliability, and provability are top priorities. Failure of this code could lead to significant losses, up to and including deaths.**
+
+## Instruction Precedence
 
 ## Instruction Precedence
 
@@ -16,6 +20,13 @@ Instructions MUST be obeyed in the following order, earlier overriding later:
 4. Skills and applicable instructions files
 5. Repo Instructions (this file)
 6. Tool configurations, defaults, and generated templates
+7. Skills and applicable instructions files
+8. Repo Instructions (this file)
+9. Tool configurations, defaults, and generated templates
+
+If anything prevents compliance with any instructions, you MUST stop and notify the user of the conflict.
+
+## Work Tracking
 
 If anything prevents compliance with any instructions, you MUST stop and notify the user of the conflict.
 
@@ -39,14 +50,20 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 - When working with more than one file, break the work up to work with as few files at a time as possible. Avoid working with more than three files at a time whenever possible.
 - Keep your responses concise, accurate, and focused. Avoid unnecessary detail, and if possible do not narrate every action.
 - Maintain a professional tone at all times.
+- You have the knowledge and skills of a senior team member. Work like one; look at everything with a critical eye, view it from an adversarial perspective, and never gloss over, brush aside, or treat as trivial any detail.
+- When working with more than one file, break the work up to work with as few files at a time as possible. Avoid working with more than three files at a time whenever possible.
+- Keep your responses concise, accurate, and focused. Avoid unnecessary detail, and if possible do not narrate every action.
+- Maintain a professional tone at all times.
 - Your user is an expert in the field and does not need basic explanations.
 
 ## Common Project Folders
 
 - User documentation is at `docs/` and starts at `docs/README.md` (if present).
 - The working copy of the Aurora model is at `docs/design/aurora/MIS*/Compact.json` (the compact model).
+- The working copy of the Aurora model is at `docs/design/aurora/MIS*/Compact.json` (the compact model).
 - Working assets (styles, images) are at `assets/`.
 - Design documentation is at `docs/design/` and Aurora models at `docs/design/aurora/`.
+    - The following files and folders are generated and should be ignored:
     - The following files and folders are generated and should be ignored:
         - `docs/design/MIS-*/**/*`
         - `docs/design/MIS-*.md`

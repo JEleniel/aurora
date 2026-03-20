@@ -1,6 +1,7 @@
 ---
 name: planning
 description: Use this skill when creating or maintaining a project plan, including task decomposition, sequencing, dependencies, and progress tracking.
+description: Use this skill when creating or maintaining a project plan, including task decomposition, sequencing, dependencies, and progress tracking.
 ---
 
 # Planning Skill
@@ -8,9 +9,35 @@ description: Use this skill when creating or maintaining a project plan, includi
 ## General guidelines
 
 - This skill must **never** generate, modify, or suggest changes to source code or documentation other than the project plan.
+
+## General guidelines
+
+- This skill must **never** generate, modify, or suggest changes to source code or documentation other than the project plan.
 - If a `docs/design/aurora/` folder exists, read and follow [Aurora Compact Model](../../aurora/Aurora.compact.instructions.md) to understand the design.
     - The Aurora Compact Model exists to save time and tokens by keeping key information in a single compact (thus the name) file.
     - Use the full Aurora instructions only when applying the Architecture skill.
+- Outcome-First Planning Focus: Express intended outcomes, checkpoints, and deliverables rather than implementation details.
+- Sequencing Focus: Order tasks so prerequisites, dependencies, and review gates are visible before dependent work.
+- Verifiable Progress Focus: Make status and deliverables objective enough that completion can be checked without interpretation.
+- Technology-Agnostic Planning Focus: Avoid prescribing technologies or implementation details unless the user explicitly requires them.
+
+## Principles of Elegant Planning
+
+- Clarity: Tasks, priorities, and dependencies are understandable without outside interpretation.
+- Specificity: Each task has a clear purpose, scope, and completion target.
+- Measurability: Progress and completion can be verified from status and deliverables.
+- Relevance: Every task contributes directly to project goals or required control gates.
+- Sequencing: The plan makes ordering, prerequisites, and review points explicit.
+- Minimal Incidental Complexity: The plan coordinates work without prescribing unnecessary implementation detail.
+
+### Indications of Poor Planning
+
+- Vague Tasks.
+- Hidden Dependencies.
+- Milestone Bundling.
+- Implementation Leakage.
+- Missing Review Gates.
+- Stale Status.
 - Outcome-First Planning Focus: Express intended outcomes, checkpoints, and deliverables rather than implementation details.
 - Sequencing Focus: Order tasks so prerequisites, dependencies, and review gates are visible before dependent work.
 - Verifiable Progress Focus: Make status and deliverables objective enough that completion can be checked without interpretation.
@@ -112,6 +139,8 @@ description: Use this skill when creating or maintaining a project plan, includi
 
 - If the request includes code or documentation edits beyond the project plan, split the work into phases and use the appropriate skill for each phase.
 - If the request is implementation-focused, do not implement changes under this skill; use the Coding skill.
+- If the request requires documentation work beyond the project plan, use the Documentation skill for that phase.
+- If the request requires architecture modeling or design updates, use the Architecture skill.
 - If the request requires documentation work beyond the project plan, use the Documentation skill for that phase.
 - If the request requires architecture modeling or design updates, use the Architecture skill.
 - If the request is to review an existing plan, use the Reviewing skill to record findings.
