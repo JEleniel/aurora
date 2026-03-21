@@ -10,8 +10,8 @@ use super::graph::LayoutGraph;
 use super::types::{LayoutFamily, LayoutNode, LayoutPoint};
 
 const PIXELS_PER_INCH: f32 = 300.0;
-const NODE_WIDTH_IN: f32 = 2.4;
-const NODE_HEIGHT_IN: f32 = 1.5;
+const NODE_WIDTH_IN: f32 = 1.6;
+const NODE_HEIGHT_IN: f32 = 1.0;
 
 #[derive(Debug, Clone, Copy)]
 struct EngineSpec {
@@ -54,7 +54,7 @@ fn spec_for_family(family: LayoutFamily) -> EngineSpec {
 			ranksep_attr: "ranksep",
 			ranksep: 2.0,
 			nodesep_attr: "nodesep",
-			nodesep: 2.0,
+			nodesep: 2.5,
 			rankdir: Some("TB"),
 			splines: "ortho",
 			overlap: None,
@@ -63,9 +63,9 @@ fn spec_for_family(family: LayoutFamily) -> EngineSpec {
 		LayoutFamily::TreeLeftRight => EngineSpec {
 			command: "dot",
 			ranksep_attr: "ranksep",
-			ranksep: 2.0,
+			ranksep: 2.5,
 			nodesep_attr: "nodesep",
-			nodesep: 1.0,
+			nodesep: 2.5,
 			rankdir: Some("LR"),
 			splines: "ortho",
 			overlap: None,
@@ -108,7 +108,7 @@ fn build_graphviz_input(graph: &LayoutGraph, spec: EngineSpec, family: LayoutFam
 		)
 		.as_str(),
 	);
-	dot.push_str("  edge [arrowhead=normal, penwidth=2];\n");
+	dot.push_str("  edge [arrowhead=none, penwidth=40];\n");
 
 	let mut nodes: Vec<&String> = graph.allowed_nodes.iter().collect();
 	nodes.sort();

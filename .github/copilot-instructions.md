@@ -77,6 +77,8 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 - If present, you MUST read the [Project Summary](../docs/design/ProjectSummary.md) which contains details specific to this project and repository.
 - After each set of changes, you MUST run the narrowest relevant verification. It is not necessary to validate after every individual change.
 - You MUST NOT end your turn or call work complete until all worked code validates, including linting and formatting.
+- You MUST NOT comment code out or leave dead code behind.
+- You MUST NOT make code changes just to make code compile; it is not important that the code compiles, it is important that the code compiles _from well written source_.
 
 ## Startegic Thinking Approach
 
