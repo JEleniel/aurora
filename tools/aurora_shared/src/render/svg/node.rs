@@ -175,6 +175,7 @@ pub fn render_node(
 			relationships: Vec::new(),
 			shape: "rectangle".to_string(),
 			common_subtypes: Vec::new(),
+			common_properties: Vec::new(),
 		});
 	let shape_name = card_definition.shape.trim().to_lowercase();
 	let shape_id = if known_shape_ids.contains(shape_name.as_str()) {
@@ -431,6 +432,7 @@ mod tests {
 		let config = SvgConfig {
 			node_spacing_px: 10,
 			base_font_size_px: 16,
+			domain_paths_by_acronym: HashMap::new(),
 			edge_style: super::super::EdgeStyle::Orthogonal,
 		};
 
@@ -467,6 +469,7 @@ mod tests {
 		let config = SvgConfig {
 			node_spacing_px: 10,
 			base_font_size_px: 16,
+			domain_paths_by_acronym: HashMap::new(),
 			edge_style: super::super::EdgeStyle::Orthogonal,
 		};
 
@@ -503,6 +506,7 @@ mod tests {
 		let config = SvgConfig {
 			node_spacing_px: 10,
 			base_font_size_px: 16,
+			domain_paths_by_acronym: HashMap::new(),
 			edge_style: super::super::EdgeStyle::Orthogonal,
 		};
 
@@ -538,6 +542,7 @@ mod tests {
 		let config = SvgConfig {
 			node_spacing_px: 10,
 			base_font_size_px: 16,
+			domain_paths_by_acronym: HashMap::new(),
 			edge_style: super::super::EdgeStyle::Orthogonal,
 		};
 
@@ -704,6 +709,7 @@ mod tests {
 				relationships: Vec::new(),
 				shape: "rectangle".to_string(),
 				common_subtypes: Vec::new(),
+				common_properties: Vec::new(),
 			}],
 			available_icons: HashSet::new(),
 		};

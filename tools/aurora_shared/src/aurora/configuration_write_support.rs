@@ -5,7 +5,10 @@ use serde_json::Value;
 
 use super::model::model_write_support::write_single_file_transactionally;
 use super::{Aurora, AuroraError};
-use crate::registry::{CardRegistry, ModelConfiguration, ViewConfiguration, ViewRegistry};
+use crate::registry::{
+	CardRegistry, MODEL_CONFIGURATION_VERSION, ModelConfiguration, VIEW_CONFIGURATION_VERSION,
+	ViewConfiguration, ViewRegistry,
+};
 use crate::{ConfigBackupManager, ConfigBackupRequest};
 
 const MODEL_CONFIGURATION_SCHEMA_REF: &str = "../schemas/Aurora.modelconfiguration.schema.json";
@@ -96,12 +99,18 @@ fn prepare_model_configuration(mut configuration: ModelConfiguration) -> ModelCo
 	if configuration.schema.is_none() {
 		configuration.schema = Some(MODEL_CONFIGURATION_SCHEMA_REF.to_string());
 	}
+	if configuration.version.is_none() {
+		configuration.version = Some(MODEL_CONFIGURATION_VERSION.to_string());
+	}
 	configuration
 }
 
 fn prepare_view_configuration(mut configuration: ViewConfiguration) -> ViewConfiguration {
 	if configuration.schema.is_none() {
 		configuration.schema = Some(VIEW_CONFIGURATION_SCHEMA_REF.to_string());
+	}
+	if configuration.version.is_none() {
+		configuration.version = Some(VIEW_CONFIGURATION_VERSION.to_string());
 	}
 	configuration
 }

@@ -261,7 +261,11 @@ fn upgrade_migrates_attribute_references_into_external_references() {
 		"error",
 		"upgrade",
 	]);
-	assert!(output.status.success(), "upgrade should succeed");
+	assert!(
+		output.status.success(),
+		"upgrade should succeed. stderr:\n{}",
+		String::from_utf8_lossy(&output.stderr)
+	);
 
 	let upgraded: serde_json::Value =
 		serde_json::from_str(&fs::read_to_string(&mission_path).expect("read mission"))
@@ -320,7 +324,16 @@ fn upgrade_bootstraps_required_assets_and_prunes_outdated_files() {
 		model_home.to_str().expect("model home path"),
 		"upgrade",
 	]);
-	assert!(output.status.success(), "upgrade should succeed");
+	let load_error = aurora_shared::Aurora::try_load(&model_home)
+		.err()
+		.map(|error| error.to_string())
+		.unwrap_or_else(|| "Aurora::try_load succeeded".to_string());
+	assert!(
+		output.status.success(),
+		"upgrade should succeed. stderr:\n{}\npost-upgrade load: {}",
+		String::from_utf8_lossy(&output.stderr),
+		load_error
+	);
 
 	for file in [
 		"Aurora.audit.schema.json",
@@ -345,4 +358,57 @@ fn upgrade_bootstraps_required_assets_and_prunes_outdated_files() {
 	assert!(!schemas_dir.join("Legacy.schema.json").exists());
 	assert!(!reference_dir.join("Legacy.reference.json").exists());
 	assert!(!reference_dir.join("SVGTemplate.svg").exists());
+}
+
+#[test]
+fn upgrade_adds_default_domains_when_missing() {
+	let temp = tempfile::tempdir().expect("tempdir");
+	let model_home = temp.path().join("aurora");
+	fs::create_dir_all(&model_home).expect("create model home");
+	write_model_home_scaffold(&model_home);
+	write_card(
+		&model_home.join("MIS-001-Example.json"),
+		serde_json::json!({
+			"$schema": "./schemas/Aurora.card.schema.json",
+			"id": "MIS-001", "card_type": "Mission", "name": "Mission", "description": "mission",
+			"attributes": {}, "links": []
+		}),
+	);
+	write_empty_audit_log(&model_home.join("MIS-001"));
+
+	let output = run_cli(&[
+		"--input",
+		model_home.to_str().expect("model home path"),
+		"upgrade",
+	]);
+	let load_error = aurora_shared::Aurora::try_load(&model_home)
+		.err()
+		.map(|error| error.to_string())
+		.unwrap_or_else(|| "Aurora::try_load succeeded".to_string());
+	assert!(
+		output.status.success(),
+		"upgrade should succeed. stderr:\n{}\npost-upgrade load: {}",
+		String::from_utf8_lossy(&output.stderr),
+		load_error
+	);
+
+	let upgraded: serde_json::Value = serde_json::from_str(
+		&fs::read_to_string(
+			model_home
+				.join("reference")
+				.join("Aurora.viewconfiguration.json"),
+		)
+		.expect("read upgraded view config"),
+	)
+	.expect("parse upgraded view config");
+	assert_eq!(
+		upgraded.get("version").and_then(|v| v.as_str()),
+		Some("1.1.0")
+	);
+	assert!(
+		upgraded
+			.get("domains")
+			.and_then(|v| v.as_object())
+			.is_some()
+	);
 }

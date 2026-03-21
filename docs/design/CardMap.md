@@ -5,164 +5,152 @@ This reference visualizes the canonical card types and configured relationships 
 ## Mermaid Graph
 
 ```mermaid
-flowchart LR
-    ATV["ATV"]
-    ACT["ACT"]
-    STK["STK"]
-    ADR["ADR"]
-    ART["ART"]
-    AST["AST"]
-    CAP["CAP"]
-    SYS["SYS"]
-    APP["APP"]
-    COM["COM"]
-    DST["DST"]
-    CON["CON"]
-    CNS["CNS"]
-    CTL["CTL"]
-    DEP["DEP"]
-    DSR["DSR"]
-    DRI["DRI"]
-    EVT["EVT"]
-    FEA["FEA"]
-    INT["INT"]
-    MIS["MIS"]
-    NOD["NOD"]
-    PRD["PRD"]
-    PRO["PRO"]
-    REQ["REQ"]
-    RIS["RIS"]
-    STA["STA"]
-    STM["STM"]
-    STR["STR"]
-    TES["TES"]
-    THD["THD"]
-    ADV["ADV"]
-    THC["THC"]
-    VIC["VIC"]
-    ROW["ROW"]
-    THM["THM"]
-    TRG["TRG"]
-    VND["VND"]
+---
+config:
+  flowchart:
+    defaultRenderer: "elk"
+---
+flowchart TB
+	subgraph Structure
+		APP["APP"]
+		ART["ART"]
+		COM["COM"]
+		DST["DST"]
+		INT["INT"]
+		SYS["SYS"]
+		subgraph External
+			VND["VND"]
+			API["API"]
+			DSR["DSR"]
+		end
+		subgraph State
+			EVT["EVT"]
+			PRD["PRD"]
+			STA["STA"]
+			STM["STM"]
+		end
+		subgraph Deployment
+			DEP["DEP"]
+			NOD["NOD"]
+			DAR["DAR"]
+		end
+	end
 
-    ATV -->|"leads to"| ATV
-    ATV -->|"receives"| TRG
-    ATV -->|"triggers"| CON
-    ATV -->|"uses"| COM
-    ATV -->|"produces"| ART
+	subgraph Governance
+		MIS["MIS"]
+		DRI["DRI"]
+		STK["STK"]
+		subgraph Requirements
+			EXC["EXC"]
+			TES["TES"]
+			ADR["ADR"]
+			CTL["CTL"]
+			CAP["CAP"]
+			CNS["CNS"]
+			FEA["FEA"]
+			REQ["REQ"]
+			STR["STR"]
+		end
+		subgraph Risk
+			subgraph ThreatDiamond
+				ADV["ADV"]
+				AST["AST"]
+				ROW["ROW"]
+				THC["THC"]
+				VIC["VIC"]
+			end
+			RIS["RIS"]
+			THD["THD"]
+			THM["THM"]
+		end
+		subgraph Process
+			subgraph ProcessSteps
+				ATV["ATV"]
+				ACT["ACT"]
+				CON["CON"]
+				TRG["TRG"]
+			end
+			PRO["PRO"]
+		end
+	end
 
-    ACT -->|"performs"| ATV
-
-    STK -->|"desires"| STR
-
-    ART -->|"derives from"| ART
-    ART -->|"is input into"| COM
-    ART -->|"goes into"| ATV
-    ART -->|"is"| AST
-    ART -->|"persists to"| DST
-
-    CAP -->|"requires"| PRO
-
-    SYS -->|"integrates"| APP
-
-    APP -->|"comprises"| COM
-    APP -->|"deploys to"| DEP
-
-    COM -->|"composes"| COM
-    COM -->|"implements"| FEA
-    COM -->|"calls"| INT
-    COM -->|"exposes"| INT
-    COM -->|"implements"| TES
-    COM -->|"produces"| ART
-    COM -->|"includes"| DSR
-    COM -->|"stores in"| DST
-    COM -->|"executes"| STM
-    COM -->|"runs on"| NOD
-
-    DST -->|"retrieves"| ART
-    DST -->|"runs on"| NOD
-
-    CON -->|"branches to"| ATV
-    CON -->|"branches to"| TRG
-    CON -->|"branches to"| CON
-
+    MIS -->|"establishes"| DRI
+	MIS -->|"has"| STK
+    MIS -->|"necessitates"| SYS
+	DRI -->|"drives"| REQ
+	DRI -->|"imposes"| CNS
+    STK -->|"define"| ADR
+	STK -->|"accepts"| EXC
+	EXC -->|"refines"| REQ
+	ADR -->|"refines"| REQ
+    REQ -->|"requires"| CAP
+	REQ -->|"imposes"| CTL
+	REQ -->|"defines"| TES
+	CAP -->|"requires"| PRO
     CNS -->|"limits"| REQ
+	CTL -->|"mitigates"| RIS
+    FEA -->|"realizes"| CAP
+    STK -->|"desires"| STR
+    STR -->|"defines"| REQ
+    TES -->|"verifies"| FEA
 
-    CTL -->|"mitigates"| RIS
-    CTL -->|"protects"| AST
-    CTL -->|"enforces"| CNS
-    CTL -->|"governs"| DST
-    CTL -->|"governs"| REQ
-    CTL -->|"obstructs"| THC
+    PRO -->|"starts with"| ATV
+    PRO -->|"involves"| ACT
+    ACT -->|"performs"| ATV
+    CON -->|"branches to"| ATV
+    CON -->|"branches to"| CON
+	CON -->|"branches to"| TRG
+    ATV -->|"leads to"| ATV
+    ATV -->|"triggers"| CON
+	ATV -->|"causes" | TRG
+    TRG -->|"triggers"| ATV
+    TRG -->|"triggers"| CON
+    TRG -->|"triggers"| TRG
+
+    STM -->|"starts in"| STA
+    STA -->|"triggers"| PRD
+    STA -->|"triggers"| EVT
+    STA -->|"transitions to"| STA
+    EVT -->|"triggers"| EVT
+    EVT -->|"triggers"| STA
+    EVT -->|"triggers"| PRD
+    PRD -->|"branches to"| PRD
+    PRD -->|"branches to"| STA
+    PRD -->|"branches to"| EVT
 
     DEP -->|"includes"| NOD
+	NOD -->|"runs"| DAR
 
+    SYS -->|"integrates"| APP
+	SYS -->|"involves"| VND
+    APP -->|"comprises"| COM
+	APP -->|"generates"| DAR
+    APP -->|"implements"| FEA
+    APP -->|"implements"| TES
+    ART -->|"persists to"| DST
+	ART -->|"is"| AST
+    COM -->|"calls"| INT
+    COM -->|"composes"| COM
+    COM -->|"executes"| STM
+    COM -->|"exposes"| INT
+    COM -->|"produces"| ART
+	COM -->|"calls"| API
     DSR -->|"provides"| ART
-    DSR -->|"runs on"| NOD
-
-    DRI -->|"drives"| REQ
-
-    EVT -->|"transitions to"| STA
-    EVT -->|"emits"| EVT
-    EVT -->|"triggers"| PRD
-    EVT -->|"carries"| ART
-
-    FEA -->|"realizes"| CAP
-    FEA -->|"implies"| CNS
-
+	DSR -->|"provides"| DAR
+	DST -->|"provides"| DAR
+    VND -->|"provides"| API
     INT -->|"accepts"| ART
     INT -->|"returns"| ART
 
-    MIS -->|"establishes"| DRI
-    MIS -->|"involves"| STK
-    MIS -->|"involves"| ACT
-    MIS -->|"involves"| VND
-    MIS -->|"necessitates"| SYS
-    MIS -->|"necessitates"| APP
-    MIS -->|"remediates"| THM
-
-    PRD -->|"branches to"| STA
-    PRD -->|"branches to"| PRD
-    PRD -->|"emits"| EVT
-
-    PRO -->|"includes"| ATV
-    PRO -->|"includes"| TRG
-    PRO -->|"branches on"| CON
-    PRO -->|"involves"| ACT
-
-    REQ -->|"requires"| CAP
-    REQ -->|"has"| ADR
-    REQ -->|"imposes"| CNS
-
-    STA -->|"transitions to"| STA
-    STA -->|"evaluates"| PRD
-    STA -->|"handles"| EVT
-
-    STM -->|"has"| STA
-
-    STR -->|"explains"| REQ
-    STR -->|"implies"| CNS
-
-    TES -->|"verifies"| FEA
-
-    THD -->|"threatens"| AST
-    THD -->|"involves"| ADV
-    THD -->|"uses"| THC
-    THD -->|"impacts"| VIC
-    THD -->|"creates"| RIS
-
-    ROW -->|"owns"| AST
-
     THM -->|"includes"| THD
-    THM -->|"includes"| ROW
-    THM -->|"recommends"| CTL
-
-    TRG -->|"initiates"| ATV
-    TRG -->|"initiates"| CON
-    TRG -->|"triggers"| TRG
-
-    VND -->|"provides"| APP
-    VND -->|"provides"| SYS
+    THM -->|"defines"| RIS
+	THD -->|"involves"| ADV
+	ADV -->|"develops"| THC
+	THC -->|"impacts"| VIC
+	VIC -->|"is"| ROW
+	ROW -->|"owns"| AST
+	ADV -->|"exploits"| AST
+	AST -->|"hosts"| THC
 ```
 
 ## Notes

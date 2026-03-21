@@ -41,6 +41,7 @@
 			"ul_multi": 1,
 			"ul_single": 1
 		},
+		"MD060": false,
 		"no-alt-text": true,
 		"no-bare-urls": true,
 		"no-blanks-blockquote": true,
@@ -49,7 +50,9 @@
 		},
 		"no-emphasis-as-heading": true,
 		"no-empty-links": true,
-		"no-hard-tabs": true,
+		"no-hard-tabs": {
+			"code_blocks": false
+		},
 		"no-inline-html": false,
 		"no-missing-space-atx": true,
 		"no-multiple-blanks": true,
@@ -64,7 +67,9 @@
 			"br_spaces": 0,
 			"strict": true
 		},
-		"ol-prefix": false,
+		"ol-prefix": {
+			"style": "ordered"
+		},
 		"reference-links-images": true,
 		"single-h1": true,
 		"single-title": true,
@@ -73,6 +78,10 @@
 			"style": "asterisk"
 		},
 		"table-column-count": true,
+		"table-column-style": {
+			"aligned_delimiter": true,
+			"style": "aligned"
+		},
 		"table-pipe-style": {
 			"style": "leading_and_trailing"
 		},
@@ -81,8 +90,7 @@
 		},
 		"ul-style": {
 			"style": "dash"
-		},
-		"MD060": false
+		}
 	},
 	"fix": false
 }

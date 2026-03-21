@@ -19,6 +19,7 @@ use tracing::{info, warn};
 
 /// Render all views for the provided Aurora models.
 pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
+	let domain_paths = aurora.view_configuration.try_domain_paths().ok();
 	let view_definitions = match aurora.view_registry.try_get_all() {
 		Ok(defs) => defs,
 		Err(err) => {
@@ -106,7 +107,10 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 				&layout,
 				&aurora.card_registry,
 				&aurora.svg_template,
-				None,
+				domain_paths.as_ref().map(|paths| svg::SvgConfig {
+					domain_paths_by_acronym: paths.clone(),
+					..svg::SvgConfig::default()
+				}),
 			) {
 				Ok(()) => {
 					info!(

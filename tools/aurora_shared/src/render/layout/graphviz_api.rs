@@ -52,21 +52,27 @@ pub fn layout_model_best_family(
 	let mut best_layout: Option<Layout> = None;
 	let mut best_score: Option<LayoutScore> = None;
 	let mut best_family: Option<LayoutFamily> = None;
+	let mut best_width: Option<i32> = None;
 
-	for family in LayoutFamily::ordered() {
-		let layout = layout_graph_with_family(&graph, *family)?;
+	for family in [LayoutFamily::TreeTopDown, LayoutFamily::TreeLeftRight] {
+		let layout = layout_graph_with_family(&graph, family)?;
+		let width = layout_width(&layout);
 		let score = score_layout(&layout);
-		let should_replace = match (best_score, best_family) {
-			(None, _) => true,
-			(Some(current_score), Some(current_family)) => {
-				is_better_candidate(score, *family, current_score, current_family)
+		let should_replace = match (best_width, best_score, best_family) {
+			(None, _, _) => true,
+			(Some(_), None, _) => true,
+			(Some(current_width), Some(current_score), Some(current_family)) => {
+				width < current_width
+					|| (width == current_width
+						&& is_better_candidate(score, family, current_score, current_family))
 			}
-			(Some(_), None) => true,
+			(Some(_), Some(_), None) => true,
 		};
 		if should_replace {
 			best_layout = Some(layout);
+			best_width = Some(width);
 			best_score = Some(score);
-			best_family = Some(*family);
+			best_family = Some(family);
 		}
 	}
 
@@ -137,6 +143,16 @@ fn score_layout(layout: &Layout) -> LayoutScore {
 		crossings,
 		bends,
 	}
+}
+
+fn layout_width(layout: &Layout) -> i32 {
+	let mut min_x = i32::MAX;
+	let mut max_x = i32::MIN;
+	for node in layout.nodes.values() {
+		min_x = min_x.min(node.x);
+		max_x = max_x.max(node.x + NODE_WIDTH_PX as i32);
+	}
+	(max_x - min_x).max(1)
 }
 
 fn edge_crossings(layout: &Layout) -> usize {
