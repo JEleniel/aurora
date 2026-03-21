@@ -10,3 +10,8 @@
 - Shared SVG rendering now falls back to a simple center-to-center edge when Graphviz omits a per-edge route record (for example when concentrated edges share a path) instead of skipping the entire view.
 - The focused editor graph remains on explicit grid coordinates through `LayoutCoordinateSpace::Grid`; rendered views use `LayoutCoordinateSpace::Pixels`.
 - View definitions in the model's `Aurora.viewconfiguration.json` can now carry an explicit `layout` value using the shared family enum; when absent, shared rendering falls back to best-family selection rather than hard-coded view-name inference.
+
+## 2026-03-21
+
+- `aurora_cli render-views` and `render-all` now accept `-D/--dot-output <DIR>` to write the Graphviz DOT used for each rendered view to `<DIR>/<MISSION_ID>/Views/<View_Name>.dot`, creating the last folder as needed.
+- Graphviz `plain` output scaling is corrected to Aurora's 300 ppi SVG contract in `tools/aurora_shared/src/render/layout/graphviz.rs`; this keeps rendered node boxes and Graphviz route endpoints aligned so arrow tips reach their symbols again.

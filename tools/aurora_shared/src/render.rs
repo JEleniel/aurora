@@ -19,6 +19,15 @@ use tracing::{info, warn};
 
 /// Render all views for the provided Aurora models.
 pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
+	render_with_dot_output(aurora, output_dir, None)
+}
+
+/// Render all views and optionally emit the Graphviz DOT used for each rendered SVG.
+pub fn render_with_dot_output(
+	aurora: &Aurora,
+	output_dir: &Path,
+	dot_output_dir: Option<&Path>,
+) -> Result<(), RenderError> {
 	let domain_paths = aurora.view_configuration.try_domain_paths().ok();
 	let view_definitions = match aurora.view_registry.try_get_all() {
 		Ok(defs) => defs,
@@ -99,6 +108,23 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 			} else {
 				view_slug
 			};
+			let layout_family = layout.family.unwrap_or(LayoutFamily::TreeTopDown);
+			if let Some(dot_root) = dot_output_dir {
+				let dot_path = write_view_dot(
+					dot_root,
+					model,
+					view,
+					included_types.as_slice(),
+					layout_family,
+					view_slug.as_str(),
+				)?;
+				info!(
+					"Wrote DOT for view '{}' for {} to {}",
+					view.name,
+					model.root_card.id,
+					dot_path.display()
+				);
+			}
 			let output_path = views_dir.join(format!("{}.svg", view_slug));
 
 			match svg::Svg::write_to_file(
@@ -174,6 +200,22 @@ fn sanitize_filename(name: &str) -> String {
 		out = out.replace("__", "_");
 	}
 	out.trim_matches('_').to_string()
+}
+
+fn write_view_dot(
+	dot_root: &Path,
+	model: &crate::Model,
+	view: &ViewDefinition,
+	included_types: &[String],
+	family: LayoutFamily,
+	view_slug: &str,
+) -> Result<std::path::PathBuf, RenderError> {
+	let views_dir = dot_root.join(model.root_card.id.as_str()).join("Views");
+	std::fs::create_dir_all(&views_dir)?;
+	let dot = build_layout_dot_with_family(model, &view.root_card_types, included_types, family)?;
+	let dot_path = views_dir.join(format!("{}.dot", view_slug));
+	std::fs::write(&dot_path, dot)?;
+	Ok(dot_path)
 }
 
 #[cfg(test)]

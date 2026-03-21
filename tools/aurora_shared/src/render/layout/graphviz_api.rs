@@ -3,7 +3,7 @@
 use crate::{Model, render::render_error::RenderError};
 
 use super::graph::{LayoutGraph, build_graph, validate_graph};
-use super::graphviz::layout_with_graphviz;
+use super::graphviz::{build_dot, layout_with_graphviz};
 use super::types::{Layout, LayoutCoordinateSpace, LayoutEdge, LayoutFamily, LayoutPoint};
 
 const NODE_WIDTH_PX: f32 = 720.0;
@@ -77,6 +77,17 @@ pub fn layout_model_best_family(
 	}
 
 	best_layout.ok_or(RenderError::BackboneOrderFailed)
+}
+
+/// Build the Graphviz DOT input for a specific layout family.
+pub fn build_layout_dot_with_family(
+	model: &Model,
+	root_card_types: &[String],
+	included_card_types: &[String],
+	family: LayoutFamily,
+) -> Result<String, RenderError> {
+	let graph = prepare_layout_graph(model, root_card_types, included_card_types)?;
+	Ok(build_dot(&graph, family))
 }
 
 fn prepare_layout_graph(

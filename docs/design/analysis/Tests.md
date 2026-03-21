@@ -5,7 +5,7 @@
 - `helper_root_is_used_for_multi_root_radial_layouts`: verifies multi-root radial layouts inject a deterministic helper root for Graphviz.
 - `graphviz_input_uses_expected_spacing_and_rankdir`: verifies Graphviz DOT generation uses Aurora spacing and the expected `rankdir` mapping.
 - `normalize_edge_endpoint_strips_ports`: verifies plain-output endpoint parsing removes Graphviz port suffixes.
-- `parse_plain_output_scales_nodes_and_routes`: verifies Graphviz `plain` coordinates scale from inches into Aurora's SVG pixel space.
+- `parse_plain_output_scales_nodes_and_routes`: verifies Graphviz `plain` coordinates scale from inches into Aurora's 300 ppi SVG pixel space so route endpoints align with rendered symbols.
 - `parse_plain_output_merges_wrapped_edge_records`: verifies wrapped Graphviz `plain` edge records are reassembled before parsing so continuation lines like `solid black` do not fail layout.
 
 ## `tools/aurora_shared/src/render/layout/graphviz_api.rs`
@@ -42,6 +42,10 @@
 
 - `configured_view_layout_preserves_explicit_setting`: verifies configured views preserve the layout family loaded from `Aurora.viewconfiguration.json`.
 - `configured_view_layout_can_be_absent`: verifies views may omit the layout field, allowing renderer best-family selection to apply.
+
+## `tools/aurora_cli/tests/cli_acceptance.rs`
+
+- `render_views_writes_requested_dot_files`: verifies `render-views --dot-output <DIR>` creates the requested folder structure and writes the Graphviz DOT used for the rendered SVG view.
 
 ### Gaps
 

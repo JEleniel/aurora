@@ -60,6 +60,10 @@ pub enum Commands {
 		/// Output directory for rendered views (recommended: docs/design/).
 		#[arg(short, long, value_name = "DIR", default_value = DEFAULT_OUTPUT)]
 		output: PathBuf,
+
+		/// Optional directory for the Graphviz DOT files used to build rendered views.
+		#[arg(short = 'D', long = "dot-output", value_name = "DIR")]
+		dot_output: Option<PathBuf>,
 	},
 
 	/// Run both markdown and diagram renders for each model.
@@ -67,6 +71,10 @@ pub enum Commands {
 		/// Output directory for rendered artifacts (recommended: docs/design/).
 		#[arg(short, long, value_name = "DIR", default_value = DEFAULT_OUTPUT)]
 		output: PathBuf,
+
+		/// Optional directory for the Graphviz DOT files used to build rendered views.
+		#[arg(short = 'D', long = "dot-output", value_name = "DIR")]
+		dot_output: Option<PathBuf>,
 	},
 
 	/// Generate (or refresh) the compact agent export.

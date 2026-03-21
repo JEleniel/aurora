@@ -25,8 +25,12 @@ pub fn run() -> Result<(), RuntimeError> {
 		Commands::Validate => validate(&aurora),
 		Commands::Upgrade => unreachable!("upgrade is handled before model load"),
 		Commands::RenderAurora { output } => render_markdown(&aurora, &output),
-		Commands::RenderViews { output } => render_views(&aurora, &output),
-		Commands::RenderAll { output } => render_all(&aurora, &output),
+		Commands::RenderViews { output, dot_output } => {
+			render_views(&aurora, &output, dot_output.as_deref())
+		}
+		Commands::RenderAll { output, dot_output } => {
+			render_all(&aurora, &output, dot_output.as_deref())
+		}
 		Commands::Compact { output } => run_compact(&aurora, &output),
 	}?;
 
@@ -86,7 +90,11 @@ fn render_markdown(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeErro
 	Ok(())
 }
 
-fn render_views(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeError> {
+fn render_views(
+	aurora: &Aurora,
+	output_dir: &Path,
+	dot_output_dir: Option<&Path>,
+) -> Result<(), RuntimeError> {
 	ensure_valid(aurora)?;
 	require_svg_template(aurora)?;
 	aurora.validate_svg_template_icons()?;
@@ -95,7 +103,7 @@ fn render_views(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeError> 
 		aurora.models.len(),
 		output_dir.display()
 	);
-	aurora_shared::render::render(aurora, output_dir)?;
+	aurora_shared::render::render_with_dot_output(aurora, output_dir, dot_output_dir)?;
 
 	Ok(())
 }
@@ -117,7 +125,11 @@ fn require_svg_template(aurora: &Aurora) -> Result<(), RuntimeError> {
 	))
 }
 
-fn render_all(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeError> {
+fn render_all(
+	aurora: &Aurora,
+	output_dir: &Path,
+	dot_output_dir: Option<&Path>,
+) -> Result<(), RuntimeError> {
 	info!(
 		"Rendering all outputs for {} model(s) into {}",
 		aurora.models.len(),
@@ -125,7 +137,7 @@ fn render_all(aurora: &Aurora, output_dir: &Path) -> Result<(), RuntimeError> {
 	);
 
 	// Note: The views have to be rendered first so the index picks them up
-	render_views(aurora, output_dir)?;
+	render_views(aurora, output_dir, dot_output_dir)?;
 	render_markdown(aurora, output_dir)?;
 
 	Ok(())

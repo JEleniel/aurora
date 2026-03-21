@@ -9,7 +9,7 @@ use crate::render::render_error::RenderError;
 use super::graph::LayoutGraph;
 use super::types::{LayoutFamily, LayoutNode, LayoutPoint};
 
-const PIXELS_PER_INCH: f32 = 450.0;
+const PIXELS_PER_INCH: f32 = 300.0;
 const NODE_WIDTH_IN: f32 = 1.6;
 const NODE_HEIGHT_IN: f32 = 1.0;
 const HELPER_ROOT_ID: &str = "__aurora_layout_root__";
@@ -42,6 +42,11 @@ pub(super) fn layout_with_graphviz(
 	let dot = build_graphviz_input(graph, spec, family);
 	let output = run_graphviz(spec.command, dot.as_str())?;
 	parse_plain_output(output.as_str(), graph)
+}
+
+pub(super) fn build_dot(graph: &LayoutGraph, family: LayoutFamily) -> String {
+	let spec = spec_for_family(family);
+	build_graphviz_input(graph, spec, family)
 }
 
 fn spec_for_family(family: LayoutFamily) -> EngineSpec {
