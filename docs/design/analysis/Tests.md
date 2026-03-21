@@ -6,6 +6,7 @@
 - `graphviz_input_uses_expected_spacing_and_rankdir`: verifies Graphviz DOT generation uses Aurora spacing and the expected `rankdir` mapping.
 - `normalize_edge_endpoint_strips_ports`: verifies plain-output endpoint parsing removes Graphviz port suffixes.
 - `parse_plain_output_scales_nodes_and_routes`: verifies Graphviz `plain` coordinates scale from inches into Aurora's SVG pixel space.
+- `parse_plain_output_merges_wrapped_edge_records`: verifies wrapped Graphviz `plain` edge records are reassembled before parsing so continuation lines like `solid black` do not fail layout.
 
 ## `tools/aurora_shared/src/render/layout/graphviz_api.rs`
 
@@ -26,6 +27,7 @@
 ## `tools/aurora_shared/src/render/svg.rs`
 
 - `render_includes_screen_background_and_no_text_stroke`: verifies shared SVG rendering still produces the expected Aurora layers and background when given a Graphviz-capable `Layout`.
+- `materialize_layout_routes_falls_back_when_graphviz_route_is_missing`: verifies SVG rendering falls back to a simple center-to-center route when Graphviz omits a per-edge route entry.
 
 ## `tools/aurora_shared/src/render/svg/node.rs`
 
