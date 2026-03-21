@@ -100,7 +100,7 @@
 			"type": "object"
 		},
 		"layout_family": {
-			"enum": ["TreeTopDown", "TreeLeftRight", "Radial", "Radial1", "Circular"],
+			"enum": ["TreeTopDown", "TreeLeftRight"],
 			"type": "string"
 		},
 		"view_definition": {

@@ -24,7 +24,6 @@ struct EngineSpec {
 	splines: &'static str,
 	overlap: Option<&'static str>,
 	oneblock: Option<&'static str>,
-	mark_roots: bool,
 }
 
 #[derive(Debug, Clone)]
@@ -60,55 +59,17 @@ fn spec_for_family(family: LayoutFamily) -> EngineSpec {
 			splines: "ortho",
 			overlap: None,
 			oneblock: None,
-			mark_roots: false,
 		},
 		LayoutFamily::TreeLeftRight => EngineSpec {
 			command: "dot",
-			ranksep_attr: "rranksep",
+			ranksep_attr: "ranksep",
 			ranksep: 2.0,
 			nodesep_attr: "nodesep",
-			nodesep: 2.0,
+			nodesep: 1.0,
 			rankdir: Some("LR"),
 			splines: "ortho",
 			overlap: None,
 			oneblock: None,
-			mark_roots: false,
-		},
-		LayoutFamily::Radial => EngineSpec {
-			command: "twopi",
-			ranksep_attr: "ranksep",
-			ranksep: 1.0,
-			nodesep_attr: "nodesep",
-			nodesep: 2.0,
-			rankdir: None,
-			splines: "polyline",
-			overlap: Some("prism0"),
-			oneblock: None,
-			mark_roots: true,
-		},
-		LayoutFamily::Radial1 => EngineSpec {
-			command: "neato",
-			ranksep_attr: "ranksep",
-			ranksep: 1.0,
-			nodesep_attr: "nodesep",
-			nodesep: 1.0,
-			rankdir: None,
-			splines: "polyline",
-			overlap: Some("prism0"),
-			oneblock: None,
-			mark_roots: false,
-		},
-		LayoutFamily::Circular => EngineSpec {
-			command: "circo",
-			ranksep_attr: "ranksep",
-			ranksep: 1.0,
-			nodesep_attr: "nodesep",
-			nodesep: 1.0,
-			rankdir: None,
-			splines: "polyline",
-			overlap: Some("prism0"),
-			oneblock: Some("true"),
-			mark_roots: false,
 		},
 	}
 }
@@ -152,12 +113,7 @@ fn build_graphviz_input(graph: &LayoutGraph, spec: EngineSpec, family: LayoutFam
 	let mut nodes: Vec<&String> = graph.allowed_nodes.iter().collect();
 	nodes.sort();
 	for node_id in nodes {
-		let attributes = if spec.mark_roots && graph.roots.iter().any(|root| root == node_id) {
-			" [root=true]"
-		} else {
-			""
-		};
-		dot.push_str(format!("  {}{};\n", quote_dot(node_id.as_str()), attributes).as_str());
+		dot.push_str(format!("  {};\n", quote_dot(node_id.as_str())).as_str());
 	}
 
 	let mut edges = graph.edges.iter().collect::<Vec<_>>();
@@ -362,20 +318,20 @@ mod tests {
 	use crate::render::layout::test_support::{make_card, make_model};
 
 	#[test]
-	fn radial_layout_marks_actual_roots_without_helper_node() {
-		let root_one = make_card("MIS-001", "Mission", &[]);
-		let root_two = make_card("MIS-002", "Mission", &[]);
-		let model = make_model(root_one, vec![root_two]);
-		let graph = build_graph(&model, &["MIS".to_string()], &["MIS".to_string()])
+	fn graphviz_input_emits_plain_tree_nodes_without_helper_root() {
+		let root = make_card("MIS-001", "Mission", &["REQ-001"]);
+		let requirement = make_card("REQ-001", "Requirement", &[]);
+		let model = make_model(root, vec![requirement]);
+		let graph = build_graph(&model, &["MIS".to_string()], &["REQ".to_string()])
 			.expect("graph should build");
 
 		let dot = build_graphviz_input(
 			&graph,
-			spec_for_family(LayoutFamily::Radial),
-			LayoutFamily::Radial,
+			spec_for_family(LayoutFamily::TreeTopDown),
+			LayoutFamily::TreeTopDown,
 		);
-		assert!(dot.contains("\"MIS-001\" [root=true];"));
-		assert!(dot.contains("\"MIS-002\" [root=true];"));
+		assert!(dot.contains("\"MIS-001\";"));
+		assert!(dot.contains("\"REQ-001\";"));
 		assert!(!dot.contains("__aurora_layout_root__"));
 	}
 
@@ -394,7 +350,7 @@ mod tests {
 		);
 		assert!(dot.contains("rankdir=LR"));
 		assert!(dot.contains("nodesep=1.0000"));
-		assert!(dot.contains("rranksep=2.0000"));
+		assert!(dot.contains("ranksep=2.0000"));
 		assert!(dot.contains("splines=ortho"));
 	}
 

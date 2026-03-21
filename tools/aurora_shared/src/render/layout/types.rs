@@ -9,19 +9,10 @@ use serde::{Deserialize, Serialize};
 pub enum LayoutFamily {
 	TreeTopDown,
 	TreeLeftRight,
-	Radial,
-	Radial1,
-	Circular,
 }
 
 impl LayoutFamily {
-	pub const ORDERED: [Self; 5] = [
-		Self::TreeTopDown,
-		Self::TreeLeftRight,
-		Self::Radial,
-		Self::Radial1,
-		Self::Circular,
-	];
+	pub const ORDERED: [Self; 2] = [Self::TreeTopDown, Self::TreeLeftRight];
 
 	pub fn ordered() -> &'static [Self] {
 		&Self::ORDERED
@@ -34,9 +25,6 @@ impl LayoutFamily {
 			| "vertical-tree" => Some(Self::TreeTopDown),
 			"tree_left_right" | "tree-left-right" | "treeleftright" | "horizontal"
 			| "horizontal_tree" | "horizontal-tree" => Some(Self::TreeLeftRight),
-			"radial" | "radial_subtree" | "radial-subtree" => Some(Self::Radial),
-			"radial1" | "radial_1" | "radial-1" => Some(Self::Radial1),
-			"circular" => Some(Self::Circular),
 			_ => None,
 		}
 	}

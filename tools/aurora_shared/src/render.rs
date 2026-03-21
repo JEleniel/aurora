@@ -235,8 +235,8 @@ mod tests {
 
 	#[test]
 	fn configured_view_layout_preserves_explicit_setting() {
-		let view = view_definition("Requirements", Some(LayoutFamily::Circular));
-		assert_eq!(view.layout, Some(LayoutFamily::Circular));
+		let view = view_definition("Requirements", Some(LayoutFamily::TreeLeftRight));
+		assert_eq!(view.layout, Some(LayoutFamily::TreeLeftRight));
 	}
 
 	#[test]

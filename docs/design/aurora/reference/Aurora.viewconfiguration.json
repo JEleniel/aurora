@@ -567,7 +567,6 @@
 		{
 			"description": "Details how a capability is realized through ordered processes and activities with explicit triggering conditions.",
 			"included_card_types": ["PRO", "ATV", "CON", "TRG", "ACT"],
-			"layout": "TreeLeftRight",
 			"name": "Process",
 			"root_card_types": ["CAP"]
 		},

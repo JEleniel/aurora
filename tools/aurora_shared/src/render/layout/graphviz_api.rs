@@ -50,27 +50,27 @@ pub fn layout_model_best_family(
 ) -> Result<Layout, RenderError> {
 	let graph = prepare_layout_graph(model, root_card_types, included_card_types)?;
 	let mut best_layout: Option<Layout> = None;
+	let mut best_aspect: Option<(bool, i64)> = None;
 	let mut best_score: Option<LayoutScore> = None;
 	let mut best_family: Option<LayoutFamily> = None;
-	let mut best_width: Option<i32> = None;
 
 	for family in [LayoutFamily::TreeTopDown, LayoutFamily::TreeLeftRight] {
 		let layout = layout_graph_with_family(&graph, family)?;
-		let width = layout_width(&layout);
+		let aspect = aspect_preference(&layout);
 		let score = score_layout(&layout);
-		let should_replace = match (best_width, best_score, best_family) {
+		let should_replace = match (best_aspect, best_score, best_family) {
 			(None, _, _) => true,
 			(Some(_), None, _) => true,
-			(Some(current_width), Some(current_score), Some(current_family)) => {
-				width < current_width
-					|| (width == current_width
+			(Some(current_aspect), Some(current_score), Some(current_family)) => {
+				aspect < current_aspect
+					|| (aspect == current_aspect
 						&& is_better_candidate(score, family, current_score, current_family))
 			}
 			(Some(_), Some(_), None) => true,
 		};
 		if should_replace {
 			best_layout = Some(layout);
-			best_width = Some(width);
+			best_aspect = Some(aspect);
 			best_score = Some(score);
 			best_family = Some(family);
 		}
@@ -156,14 +156,21 @@ fn score_layout(layout: &Layout) -> LayoutScore {
 	}
 }
 
-fn layout_width(layout: &Layout) -> i32 {
-	let mut min_x = i32::MAX;
-	let mut max_x = i32::MIN;
+fn aspect_preference(layout: &Layout) -> (bool, i64) {
+	let mut min_x = f32::INFINITY;
+	let mut min_y = f32::INFINITY;
+	let mut max_x = f32::NEG_INFINITY;
+	let mut max_y = f32::NEG_INFINITY;
 	for node in layout.nodes.values() {
-		min_x = min_x.min(node.x);
-		max_x = max_x.max(node.x + NODE_WIDTH_PX as i32);
+		min_x = min_x.min(node.x as f32);
+		min_y = min_y.min(node.y as f32);
+		max_x = max_x.max(node.x as f32 + NODE_WIDTH_PX);
+		max_y = max_y.max(node.y as f32 + NODE_HEIGHT_PX);
 	}
-	(max_x - min_x).max(1)
+	let ratio = ((max_x - min_x).max(1.0) / (max_y - min_y).max(1.0)) as f64;
+	let overshoots_target = ratio >= TARGET_ASPECT_RATIO;
+	let distance_milli = ((ratio - TARGET_ASPECT_RATIO).abs() * 1000.0).round() as i64;
+	(overshoots_target, distance_milli)
 }
 
 fn edge_crossings(layout: &Layout) -> usize {
@@ -317,8 +324,8 @@ fn is_better_candidate(
 #[cfg(test)]
 mod tests {
 	use super::{
-		Layout, LayoutCoordinateSpace, LayoutEdge, LayoutFamily, LayoutPoint, center_point,
-		edge_bends, edge_crossings, layout_model_best_family,
+		Layout, LayoutCoordinateSpace, LayoutEdge, LayoutFamily, LayoutPoint, aspect_preference,
+		center_point, edge_bends, edge_crossings, layout_model_best_family,
 	};
 	use crate::render::LayoutNode;
 	use crate::render::layout::test_support::{make_card, make_model};
@@ -358,6 +365,29 @@ mod tests {
 
 		assert_eq!(first.family, second.family);
 		assert_eq!(first.routes, second.routes);
+	}
+
+	#[test]
+	fn aspect_preference_prefers_ratio_below_target() {
+		let far_below = synthetic_bounds_layout(360, 450);
+		let close_below = synthetic_bounds_layout(672, 450);
+		let close_above = synthetic_bounds_layout(768, 450);
+
+		assert!(aspect_preference(&close_below) < aspect_preference(&far_below));
+		assert!(aspect_preference(&close_below) < aspect_preference(&close_above));
+	}
+
+	fn synthetic_bounds_layout(x: i32, y: i32) -> Layout {
+		let mut layout = synthetic_layout(Vec::new());
+		layout.nodes.insert(
+			"B".to_string(),
+			LayoutNode {
+				id: "B".to_string(),
+				x,
+				y,
+			},
+		);
+		layout
 	}
 
 	fn synthetic_layout(routes: Vec<SyntheticRoute<'_>>) -> Layout {

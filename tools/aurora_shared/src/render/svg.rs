@@ -70,10 +70,7 @@ impl Svg {
 	) -> Result<String, RenderError> {
 		let base_size: u32 = svg_template.len() as u32;
 
-		let mut config = config.unwrap_or_default();
-		if matches!(layout.family, Some(LayoutFamily::Radial)) {
-			config.node_spacing_px = (config.node_spacing_px / 2).max(120);
-		}
+		let config = config.unwrap_or_default();
 		let template_shape_ids = collect_template_shape_ids(svg_template);
 
 		let cards_by_id = index_cards(model)?;
