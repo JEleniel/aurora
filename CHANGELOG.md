@@ -20,3 +20,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Hardened Graphviz `plain` parsing to merge wrapped continuation lines before record parsing so long edge records do not fail on trailing style tokens.
 - Updated shared SVG rendering to fall back to a simple center-to-center route when Graphviz omits a per-edge route record, avoiding full-view render failure on concentrated edges.
 - Added an optional `layout` field to each view definition in the model's `Aurora.viewconfiguration.json`, using the new layout-family values and letting shared rendering fall back to best-family selection when the field is absent.
+- Removed final-SVG domain frame output from shared rendering so configured domains affect layout/routing behavior without emitting visible domain boxes in exported views.
