@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- Graphviz layout/parser coverage in `aurora_shared` for DOT emission, helper-root handling, plain-output scaling, and deterministic best-family selection.
+- Graphviz layout/parser coverage in `aurora_shared` for DOT emission, direct radial-root marking, plain-output scaling, and deterministic best-family selection.
 - View-configuration coverage in `aurora_shared` for parsing and honoring explicit per-view layout families.
 
 ### Changed
@@ -22,4 +22,4 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Added an optional `layout` field to each view definition in the model's `Aurora.viewconfiguration.json`, using the new layout-family values and letting shared rendering fall back to best-family selection when the field is absent.
 - Removed final-SVG domain frame output from shared rendering so configured domains affect layout/routing behavior without emitting visible domain boxes in exported views.
 - Added optional `-D` / `--dot-output` support to SVG-producing CLI commands so Graphviz DOT inputs can be written alongside rendered views for debugging.
-- Corrected Graphviz `plain` scaling to Aurora's 300 ppi SVG contract so routed edges and arrow tips align with rendered symbols again.
+- Corrected Graphviz view geometry to match Aurora's 720×450 symbol size at 300 ppi and removed the radial pseudo-root so routed edges and arrow tips align with rendered symbols again.

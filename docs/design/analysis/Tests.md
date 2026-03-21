@@ -2,7 +2,7 @@
 
 ## `tools/aurora_shared/src/render/layout/graphviz.rs`
 
-- `helper_root_is_used_for_multi_root_radial_layouts`: verifies multi-root radial layouts inject a deterministic helper root for Graphviz.
+- `radial_layout_marks_actual_roots_without_helper_node`: verifies multi-root radial layouts mark the actual root cards directly in DOT and do not inject a pseudo-root node.
 - `graphviz_input_uses_expected_spacing_and_rankdir`: verifies Graphviz DOT generation uses Aurora spacing and the expected `rankdir` mapping.
 - `normalize_edge_endpoint_strips_ports`: verifies plain-output endpoint parsing removes Graphviz port suffixes.
 - `parse_plain_output_scales_nodes_and_routes`: verifies Graphviz `plain` coordinates scale from inches into Aurora's 300 ppi SVG pixel space so route endpoints align with rendered symbols.

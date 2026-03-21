@@ -14,4 +14,5 @@
 ## 2026-03-21
 
 - `aurora_cli render-views` and `render-all` now accept `-D/--dot-output <DIR>` to write the Graphviz DOT used for each rendered view to `<DIR>/<MISSION_ID>/Views/<View_Name>.dot`, creating the last folder as needed.
-- Graphviz `plain` output scaling is corrected to Aurora's 300 ppi SVG contract in `tools/aurora_shared/src/render/layout/graphviz.rs`; this keeps rendered node boxes and Graphviz route endpoints aligned so arrow tips reach their symbols again.
+- Radial Graphviz DOT input now marks the actual root cards directly and no longer injects a pseudo-root helper node.
+- Graphviz node geometry in `tools/aurora_shared/src/render/layout/graphviz.rs` now matches Aurora's 720×450 symbol size at 300 ppi; this keeps rendered node boxes and Graphviz route endpoints aligned so arrow tips reach their symbols again.

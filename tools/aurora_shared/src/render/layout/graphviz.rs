@@ -10,9 +10,8 @@ use super::graph::LayoutGraph;
 use super::types::{LayoutFamily, LayoutNode, LayoutPoint};
 
 const PIXELS_PER_INCH: f32 = 300.0;
-const NODE_WIDTH_IN: f32 = 1.6;
-const NODE_HEIGHT_IN: f32 = 1.0;
-const HELPER_ROOT_ID: &str = "__aurora_layout_root__";
+const NODE_WIDTH_IN: f32 = 2.4;
+const NODE_HEIGHT_IN: f32 = 1.5;
 
 #[derive(Debug, Clone, Copy)]
 struct EngineSpec {
@@ -25,7 +24,7 @@ struct EngineSpec {
 	splines: &'static str,
 	overlap: Option<&'static str>,
 	oneblock: Option<&'static str>,
-	root_override: bool,
+	mark_roots: bool,
 }
 
 #[derive(Debug, Clone)]
@@ -61,7 +60,7 @@ fn spec_for_family(family: LayoutFamily) -> EngineSpec {
 			splines: "ortho",
 			overlap: None,
 			oneblock: None,
-			root_override: false,
+			mark_roots: false,
 		},
 		LayoutFamily::TreeLeftRight => EngineSpec {
 			command: "dot",
@@ -73,7 +72,7 @@ fn spec_for_family(family: LayoutFamily) -> EngineSpec {
 			splines: "ortho",
 			overlap: None,
 			oneblock: None,
-			root_override: false,
+			mark_roots: false,
 		},
 		LayoutFamily::Radial => EngineSpec {
 			command: "twopi",
@@ -85,7 +84,7 @@ fn spec_for_family(family: LayoutFamily) -> EngineSpec {
 			splines: "polyline",
 			overlap: Some("prism0"),
 			oneblock: None,
-			root_override: true,
+			mark_roots: true,
 		},
 		LayoutFamily::Radial1 => EngineSpec {
 			command: "neato",
@@ -97,7 +96,7 @@ fn spec_for_family(family: LayoutFamily) -> EngineSpec {
 			splines: "polyline",
 			overlap: Some("prism0"),
 			oneblock: None,
-			root_override: false,
+			mark_roots: false,
 		},
 		LayoutFamily::Circular => EngineSpec {
 			command: "circo",
@@ -109,19 +108,16 @@ fn spec_for_family(family: LayoutFamily) -> EngineSpec {
 			splines: "polyline",
 			overlap: Some("prism0"),
 			oneblock: Some("true"),
-			root_override: false,
+			mark_roots: false,
 		},
 	}
 }
 
 fn build_graphviz_input(graph: &LayoutGraph, spec: EngineSpec, family: LayoutFamily) -> String {
 	let mut dot = String::from("digraph aurora {\n");
-	let helper_root = needs_helper_root(graph, family);
-	let root_id = selected_root_id(graph, helper_root);
 	let mut graph_attrs = vec![
 		format!("{}={:.4}", spec.nodesep_attr, spec.nodesep),
 		format!("{}={:.4}", spec.ranksep_attr, spec.ranksep),
-		"outputorder=edgesfirst".to_string(),
 		format!("splines={}", spec.splines),
 	];
 	if matches!(
@@ -142,9 +138,6 @@ fn build_graphviz_input(graph: &LayoutGraph, spec: EngineSpec, family: LayoutFam
 	if let Some(oneblock) = spec.oneblock {
 		graph_attrs.push(format!("oneblock={oneblock}"));
 	}
-	if spec.root_override {
-		graph_attrs.push(format!("root={}", quote_dot(root_id.as_str())));
-	}
 	dot.push_str(format!("  graph [{}];\n", graph_attrs.join(", ")).as_str());
 	dot.push_str(
 		format!(
@@ -155,35 +148,16 @@ fn build_graphviz_input(graph: &LayoutGraph, spec: EngineSpec, family: LayoutFam
 		.as_str(),
 	);
 	dot.push_str("  edge [arrowhead=normal, penwidth=2];\n");
-	if helper_root {
-		dot.push_str(
-			format!(
-				"  {} [shape=point, width=0.01, height=0.01, label=\"\", style=invis];\n",
-				quote_dot(HELPER_ROOT_ID),
-			)
-			.as_str(),
-		);
-	}
 
 	let mut nodes: Vec<&String> = graph.allowed_nodes.iter().collect();
 	nodes.sort();
 	for node_id in nodes {
-		dot.push_str(format!("  {};\n", quote_dot(node_id.as_str())).as_str());
-	}
-
-	if helper_root {
-		let mut roots = graph.roots.iter().collect::<Vec<_>>();
-		roots.sort();
-		for root_id in roots {
-			dot.push_str(
-				format!(
-					"  {} -> {} [style=invis, weight=100];\n",
-					quote_dot(HELPER_ROOT_ID),
-					quote_dot(root_id.as_str()),
-				)
-				.as_str(),
-			);
-		}
+		let attributes = if spec.mark_roots && graph.roots.iter().any(|root| root == node_id) {
+			" [root=true]"
+		} else {
+			""
+		};
+		dot.push_str(format!("  {}{};\n", quote_dot(node_id.as_str()), attributes).as_str());
 	}
 
 	let mut edges = graph.edges.iter().collect::<Vec<_>>();
@@ -201,23 +175,6 @@ fn build_graphviz_input(graph: &LayoutGraph, spec: EngineSpec, family: LayoutFam
 
 	dot.push_str("}\n");
 	dot
-}
-
-fn needs_helper_root(graph: &LayoutGraph, family: LayoutFamily) -> bool {
-	matches!(family, LayoutFamily::Radial)
-		&& (graph.roots.len() > 1 || !graph.roots.iter().any(|root| root == HELPER_ROOT_ID))
-}
-
-fn selected_root_id(graph: &LayoutGraph, helper_root: bool) -> String {
-	if helper_root {
-		return HELPER_ROOT_ID.to_string();
-	}
-	let mut roots = graph.roots.clone();
-	roots.sort();
-	roots
-		.into_iter()
-		.next()
-		.unwrap_or_else(|| HELPER_ROOT_ID.to_string())
 }
 
 fn run_graphviz(command: &str, input: &str) -> Result<String, RenderError> {
@@ -321,7 +278,7 @@ fn parse_node_line(
 		)));
 	}
 	let node_id = fields[1].trim_matches('"');
-	if node_id == HELPER_ROOT_ID || !expected_nodes.contains(node_id) {
+	if !expected_nodes.contains(node_id) {
 		return Ok(());
 	}
 	let center_x = parse_inches(fields[2])? * PIXELS_PER_INCH;
@@ -352,9 +309,6 @@ fn parse_edge_line(
 	}
 	let source = normalize_edge_endpoint(fields[1]);
 	let target = normalize_edge_endpoint(fields[2]);
-	if source == HELPER_ROOT_ID || target == HELPER_ROOT_ID {
-		return Ok(());
-	}
 	if !expected_edges.contains(&(source.clone(), target.clone())) {
 		return Ok(());
 	}
@@ -401,22 +355,28 @@ fn quote_dot(value: &str) -> String {
 #[cfg(test)]
 mod tests {
 	use super::{
-		GraphvizLayout, HELPER_ROOT_ID, LayoutFamily, build_graphviz_input, needs_helper_root,
-		normalize_edge_endpoint, parse_plain_output, selected_root_id, spec_for_family,
+		GraphvizLayout, LayoutFamily, build_graphviz_input, normalize_edge_endpoint,
+		parse_plain_output, spec_for_family,
 	};
 	use crate::render::layout::graph::build_graph;
 	use crate::render::layout::test_support::{make_card, make_model};
 
 	#[test]
-	fn helper_root_is_used_for_multi_root_radial_layouts() {
+	fn radial_layout_marks_actual_roots_without_helper_node() {
 		let root_one = make_card("MIS-001", "Mission", &[]);
 		let root_two = make_card("MIS-002", "Mission", &[]);
 		let model = make_model(root_one, vec![root_two]);
 		let graph = build_graph(&model, &["MIS".to_string()], &["MIS".to_string()])
 			.expect("graph should build");
 
-		assert!(needs_helper_root(&graph, LayoutFamily::Radial));
-		assert_eq!(selected_root_id(&graph, true), HELPER_ROOT_ID);
+		let dot = build_graphviz_input(
+			&graph,
+			spec_for_family(LayoutFamily::Radial),
+			LayoutFamily::Radial,
+		);
+		assert!(dot.contains("\"MIS-001\" [root=true];"));
+		assert!(dot.contains("\"MIS-002\" [root=true];"));
+		assert!(!dot.contains("__aurora_layout_root__"));
 	}
 
 	#[test]
