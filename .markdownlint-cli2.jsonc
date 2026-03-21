@@ -1,5 +1,5 @@
 {
-	"$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/v0.20.0/schema/markdownlint-cli2-config-schema.json",
+	"$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint/refs/tags/v0.40.0/schema/markdownlint-config-schema.json",
 	"config": {
 		"blanks-around-fences": true,
 		"blanks-around-lists": true,
@@ -25,7 +25,8 @@
 			"style": "consistent"
 		},
 		"line-length": false,
-		"link-fragments": true,
+		"link-fragments": false,
+		"MD051": false,
 		"link-image-reference-definitions": true,
 		"link-image-style": {
 			"autolink": true,
@@ -49,7 +50,7 @@
 			"siblings_only": true
 		},
 		"no-emphasis-as-heading": true,
-		"no-empty-links": true,
+		"no-empty-links": false,
 		"no-hard-tabs": {
 			"code_blocks": false
 		},
@@ -78,10 +79,6 @@
 			"style": "asterisk"
 		},
 		"table-column-count": true,
-		"table-column-style": {
-			"aligned_delimiter": true,
-			"style": "aligned"
-		},
 		"table-pipe-style": {
 			"style": "leading_and_trailing"
 		},
