@@ -14,10 +14,7 @@ _No references defined._
 
 ## Links
 
-- includes [ATV-011](../Activity/ATV-011-Edit_Model_Interactively.md)
-- includes [ATV-001](../Activity/ATV-001-Validate_Model_Home.md)
-- includes [ATV-004](../Activity/ATV-004-Append_Audit_Log_Entry.md)
-- includes [ATV-020](../Activity/ATV-020-Update_Index_On_Save.md)
+- starts with [ATV-011](../Activity/ATV-011-Edit_Model_Interactively.md)
 
 
 ## Version
@@ -28,3 +25,4 @@ _No references defined._
 |-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | create |
 | 2026-02-21T00:00:00Z | Architect | change |
+| 2026-03-22T00:31:40Z | Copilot | change |

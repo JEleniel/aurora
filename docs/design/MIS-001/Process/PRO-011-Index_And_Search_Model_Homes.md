@@ -14,8 +14,7 @@ _No references defined._
 
 ## Links
 
-- includes [ATV-019](../Activity/ATV-019-Build_Or_Load_Index.md)
-- includes [ATV-020](../Activity/ATV-020-Update_Index_On_Save.md)
+- starts with [ATV-019](../Activity/ATV-019-Build_Or_Load_Index.md)
 
 
 ## Version
@@ -25,3 +24,4 @@ _No references defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-21T00:00:00Z | Architect | create |
+| 2026-03-22T00:31:40Z | Copilot | change |

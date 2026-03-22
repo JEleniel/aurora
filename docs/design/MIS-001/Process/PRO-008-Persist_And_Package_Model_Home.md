@@ -14,10 +14,7 @@ _No references defined._
 
 ## Links
 
-- includes [ATV-012](../Activity/ATV-012-Autosave_Changes.md)
-- includes [ATV-013](../Activity/ATV-013-Undo_And_Redo.md)
-- includes [ATV-014](../Activity/ATV-014-Pack_Model_Home.md)
-- includes [ATV-015](../Activity/ATV-015-Unpack_Model_Home.md)
+- starts with [ATV-012](../Activity/ATV-012-Autosave_Changes.md)
 
 
 ## Version
@@ -27,3 +24,4 @@ _No references defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | create |
+| 2026-03-22T00:31:40Z | Copilot | change |

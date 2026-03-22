@@ -16,6 +16,7 @@ _No references defined._
 
 - uses [COM-010](../Component/COM-010-Aurora_MCP_Server.md)
 - uses [COM-007](../Component/COM-007-Aurora_Editor_Engine.md)
+- leads to [ATV-001](ATV-001-Validate_Model_Home.md)
 
 
 ## Version
@@ -25,3 +26,4 @@ _No references defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-21T00:00:00Z | Architect | create |
+| 2026-03-22T00:31:40Z | Copilot | change |
