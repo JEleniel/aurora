@@ -419,7 +419,7 @@
     - Dependencies: Task 18, Task 19, Task 20, Task 21, Task 22, Task 23, Task 24, Task 25, Task 26, Task 27
     - Status: Not Started
 
-29. [ ] Write user and operator documentation
+29. [x] Write user and operator documentation
     - Priority: 1 (High)
     - Description: Produce the documentation required to install, configure, and operate the editor and MCP server.
     - Deliverables:

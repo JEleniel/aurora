@@ -13,7 +13,7 @@ This document specifies requirements and expectations for Aurora MCP server. It 
 
 - The server MUST remain responsive on large models by keeping memory bounded (small working set + searchable index).
 - All writes MUST be validation-gated.
-- The server MUST prevent concurrent editing of the same model (single active server/server instance).
+- The server MUST prevent concurrent editing of the same model (single active server instance).
 
 ## Requirements
 
@@ -87,7 +87,7 @@ This document specifies requirements and expectations for Aurora MCP server. It 
 ### Concurrency & Safety (Single Writer)
 
 - Multiple instances on the same model are not supported.
-- The server MUST prevent accidental concurrent editing using OS-level locking. The editor uses the same locking to prevent dcross access.
+- The server MUST prevent accidental concurrent editing using OS-level locking. The editor uses the same locking to prevent concurrent access.
     - The active server holds an exclusive lock (write handle) to the mission audit log at `aurora/<MISSION_ID>/AuditLog.ndjson`.
     - If the exclusive lock cannot be acquired because it is already held, the model is considered locked.
     - This relies on the OS to release locks on crash, minimizing "stale lock" cleanup.
@@ -112,8 +112,8 @@ This document specifies requirements and expectations for Aurora MCP server. It 
     - Tooling of a given major version MUST be able to load model homes created within that major version.
 - The server MAY offer to upgrade a model home on load, but it MUST be able to work with the model without upgrading.
 - Incompatible models are detected via schema validation (behavior defined in Aurora/).
-- `reference/Aurora.modelconfiguration.json` MUST include a `version` property so tooling can identify the exact registry version.
-    - This requires an update to the matching schema.
+- `reference/Aurora.modelconfiguration.json` and `reference/Aurora.viewconfiguration.json` MUST include a `version` property so tooling can identify the exact registry versions.
+    - This requires updates to the matching schemas.
     - This may require changes to the `aurora_shared` library.
 
 ### Tool Calls
