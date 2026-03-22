@@ -12,10 +12,6 @@
 		{
 			"relationship": "includes",
 			"target": "ROW-900"
-		},
-		{
-			"relationship": "defines",
-			"target": "RIS-900"
 		}
 	]
 }

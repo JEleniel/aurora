@@ -11,7 +11,8 @@
 					"target": "ATV",
 					"relationship": "leads to"
 				},
-				{
+			]
+		},
 					"target": "TRG",
 					"relationship": "causes"
 				},
@@ -433,7 +434,13 @@
 		{
 			"acronym": "RIS",
 			"card_type": "Risk",
-			"description": "Potential for loss/harm from threats/vulnerabilities."
+			"description": "Potential for loss/harm from threats/vulnerabilities.",
+			"relationships": [
+				{
+					"target": "THM",
+					"relationship": "defines"
+				}
+			]
 		},
 		{
 			"acronym": "STA",
@@ -564,10 +571,6 @@
 				{
 					"target": "THD",
 					"relationship": "includes"
-				},
-				{
-					"target": "RIS",
-					"relationship": "defines"
 				}
 			]
 		},

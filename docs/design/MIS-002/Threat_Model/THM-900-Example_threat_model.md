@@ -16,7 +16,6 @@ _No references defined._
 
 - includes [THD-900](../Threat_Diamond/THD-900-Example_threat_diamond.md)
 - includes [ROW-900](../Resource_Owner/ROW-900-Example_resource_owner.md)
-- defines [RIS-900](../Risk/RIS-900-Example_risk.md)
 
 
 ## Version

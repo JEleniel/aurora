@@ -39,39 +39,348 @@
     },
     {
       "attributes": {},
-      "card_type": "Feature",
-      "id": "FEA-011",
+      "card_type": "Process",
+      "id": "PRO-011",
       "links": [
         {
-          "relationship": "realizes",
-          "target": "CAP-010"
+          "relationship": "starts with",
+          "target": "ATV-019"
         }
       ],
-      "name": "Editor Logging"
+      "name": "Index And Search Model Homes"
     },
     {
       "attributes": {},
-      "card_type": "Feature",
-      "id": "FEA-006",
+      "card_type": "Process",
+      "id": "PRO-013",
       "links": [
         {
-          "relationship": "realizes",
-          "target": "CAP-005"
+          "relationship": "starts with",
+          "target": "ATV-023"
         }
       ],
-      "name": "Prepare SVG References"
+      "name": "Serve Model Tool Surface (MCP)"
     },
     {
       "attributes": {},
-      "card_type": "Feature",
-      "id": "FEA-013",
+      "card_type": "Process",
+      "id": "PRO-008",
       "links": [
         {
-          "relationship": "realizes",
-          "target": "CAP-012"
+          "relationship": "starts with",
+          "target": "ATV-012"
+        }
+      ],
+      "name": "Persist And Package Model Home"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-006",
+      "links": [
+        {
+          "relationship": "starts with",
+          "target": "ATV-018"
+        }
+      ],
+      "name": "Load Model Home In Editor"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-001",
+      "links": [
+        {
+          "relationship": "starts with",
+          "target": "ATV-001"
+        }
+      ],
+      "name": "Validate Model"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-012",
+      "links": [
+        {
+          "relationship": "starts with",
+          "target": "ATV-021"
         }
       ],
       "name": "Agent Assisted Modeling"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-005",
+      "links": [
+        {
+          "relationship": "starts with",
+          "target": "ATV-005"
+        }
+      ],
+      "name": "Maintain Canonical Registries"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-010",
+      "links": [
+        {
+          "relationship": "starts with",
+          "target": "ATV-017"
+        }
+      ],
+      "name": "Configure Editor Logging"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-007",
+      "links": [
+        {
+          "relationship": "starts with",
+          "target": "ATV-011"
+        }
+      ],
+      "name": "Edit Model In Editor"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-009",
+      "links": [
+        {
+          "relationship": "starts with",
+          "target": "ATV-016"
+        }
+      ],
+      "name": "Apply Editor Preferences"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-002",
+      "links": [
+        {
+          "relationship": "starts with",
+          "target": "ATV-002"
+        }
+      ],
+      "name": "Render Views"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-003",
+      "links": [
+        {
+          "relationship": "starts with",
+          "target": "ATV-003"
+        }
+      ],
+      "name": "Export Compact Model"
+    },
+    {
+      "attributes": {},
+      "card_type": "Process",
+      "id": "PRO-004",
+      "links": [
+        {
+          "relationship": "starts with",
+          "target": "ATV-004"
+        }
+      ],
+      "name": "Record Audit Log Entries"
+    },
+    {
+      "attributes": {},
+      "card_type": "Constraint",
+      "id": "CNS-001",
+      "links": [],
+      "name": "Mission Has Outgoing Links Only"
+    },
+    {
+      "attributes": {},
+      "card_type": "Constraint",
+      "id": "CNS-002",
+      "links": [],
+      "name": "No Orphan Cards"
+    },
+    {
+      "attributes": {},
+      "card_type": "Constraint",
+      "id": "CNS-004",
+      "links": [],
+      "name": "Rust 2024"
+    },
+    {
+      "attributes": {},
+      "card_type": "Constraint",
+      "id": "CNS-007",
+      "links": [],
+      "name": "Tool Mediated Agent Actions"
+    },
+    {
+      "attributes": {},
+      "card_type": "Constraint",
+      "id": "CNS-003",
+      "links": [],
+      "name": "Standard Model File Layout"
+    },
+    {
+      "attributes": {},
+      "card_type": "Constraint",
+      "id": "CNS-005",
+      "links": [],
+      "name": "Dioxus UI"
+    },
+    {
+      "attributes": {},
+      "card_type": "Constraint",
+      "id": "CNS-006",
+      "links": [],
+      "name": "Fern Logging"
+    },
+    {
+      "attributes": {},
+      "card_type": "Story",
+      "id": "STR-001",
+      "links": [],
+      "name": "Deterministic Modeling Experience"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "User",
+      "card_type": "Actor",
+      "id": "ACT-001",
+      "links": [
+        {
+          "relationship": "performs",
+          "target": "ATV-004"
+        },
+        {
+          "relationship": "performs",
+          "target": "ATV-005"
+        },
+        {
+          "relationship": "performs",
+          "target": "ATV-006"
+        },
+        {
+          "relationship": "performs",
+          "target": "ATV-007"
+        },
+        {
+          "relationship": "performs",
+          "target": "ATV-008"
+        }
+      ],
+      "name": "Model Author"
+    },
+    {
+      "attributes": {},
+      "card_type": "Application",
+      "id": "APP-003",
+      "links": [
+        {
+          "relationship": "comprises",
+          "target": "COM-005"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-007"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-008"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-009"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-010"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-011"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-012"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-013"
+        }
+      ],
+      "name": "Aurora Editor"
+    },
+    {
+      "attributes": {},
+      "card_type": "Application",
+      "id": "APP-001",
+      "links": [
+        {
+          "relationship": "comprises",
+          "target": "COM-002"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-001"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-002"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-003"
+        }
+      ],
+      "name": "Aurora CLI"
+    },
+    {
+      "attributes": {},
+      "card_type": "Application",
+      "id": "APP-002",
+      "links": [
+        {
+          "relationship": "comprises",
+          "target": "COM-003"
+        },
+        {
+          "relationship": "implements",
+          "target": "FEA-006"
+        }
+      ],
+      "name": "SVG Prep"
+    },
+    {
+      "attributes": {},
+      "card_type": "Application",
+      "id": "APP-004",
+      "links": [
+        {
+          "relationship": "comprises",
+          "target": "COM-010"
+        },
+        {
+          "relationship": "comprises",
+          "target": "COM-001"
+        }
+      ],
+      "name": "Aurora MCP Server"
     },
     {
       "attributes": {},
@@ -88,14 +397,26 @@
     {
       "attributes": {},
       "card_type": "Feature",
-      "id": "FEA-003",
+      "id": "FEA-008",
       "links": [
         {
           "relationship": "realizes",
-          "target": "CAP-003"
+          "target": "CAP-007"
         }
       ],
-      "name": "Export Compact Model"
+      "name": "Interactive Model Editing"
+    },
+    {
+      "attributes": {},
+      "card_type": "Feature",
+      "id": "FEA-006",
+      "links": [
+        {
+          "relationship": "realizes",
+          "target": "CAP-005"
+        }
+      ],
+      "name": "Prepare SVG References"
     },
     {
       "attributes": {},
@@ -112,38 +433,14 @@
     {
       "attributes": {},
       "card_type": "Feature",
-      "id": "FEA-008",
+      "id": "FEA-001",
       "links": [
         {
           "relationship": "realizes",
-          "target": "CAP-007"
+          "target": "CAP-001"
         }
       ],
-      "name": "Interactive Model Editing"
-    },
-    {
-      "attributes": {},
-      "card_type": "Feature",
-      "id": "FEA-012",
-      "links": [
-        {
-          "relationship": "realizes",
-          "target": "CAP-011"
-        }
-      ],
-      "name": "Index And Search"
-    },
-    {
-      "attributes": {},
-      "card_type": "Feature",
-      "id": "FEA-009",
-      "links": [
-        {
-          "relationship": "realizes",
-          "target": "CAP-008"
-        }
-      ],
-      "name": "Model Persistence And Recovery"
+      "name": "Validate Model"
     },
     {
       "attributes": {},
@@ -160,262 +457,62 @@
     {
       "attributes": {},
       "card_type": "Feature",
-      "id": "FEA-001",
+      "id": "FEA-013",
       "links": [
         {
           "relationship": "realizes",
-          "target": "CAP-001"
-        }
-      ],
-      "name": "Validate Model"
-    },
-    {
-      "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-006",
-      "links": [
-        {
-          "relationship": "includes",
-          "target": "ATV-018"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-009"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-010"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-019"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-001"
-        }
-      ],
-      "name": "Load Model Home In Editor"
-    },
-    {
-      "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-007",
-      "links": [
-        {
-          "relationship": "includes",
-          "target": "ATV-011"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-001"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-004"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-020"
-        }
-      ],
-      "name": "Edit Model In Editor"
-    },
-    {
-      "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-005",
-      "links": [
-        {
-          "relationship": "includes",
-          "target": "ATV-005"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-006"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-007"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-008"
-        }
-      ],
-      "name": "Maintain Canonical Registries"
-    },
-    {
-      "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-001",
-      "links": [
-        {
-          "relationship": "includes",
-          "target": "ATV-001"
-        }
-      ],
-      "name": "Validate Model"
-    },
-    {
-      "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-002",
-      "links": [
-        {
-          "relationship": "includes",
-          "target": "ATV-002"
-        }
-      ],
-      "name": "Render Views"
-    },
-    {
-      "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-011",
-      "links": [
-        {
-          "relationship": "includes",
-          "target": "ATV-019"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-020"
-        }
-      ],
-      "name": "Index And Search Model Homes"
-    },
-    {
-      "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-003",
-      "links": [
-        {
-          "relationship": "includes",
-          "target": "ATV-003"
-        }
-      ],
-      "name": "Export Compact Model"
-    },
-    {
-      "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-008",
-      "links": [
-        {
-          "relationship": "includes",
-          "target": "ATV-012"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-013"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-014"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-015"
-        }
-      ],
-      "name": "Persist And Package Model Home"
-    },
-    {
-      "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-012",
-      "links": [
-        {
-          "relationship": "includes",
-          "target": "ATV-021"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-022"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-001"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-004"
+          "target": "CAP-012"
         }
       ],
       "name": "Agent Assisted Modeling"
     },
     {
       "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-010",
+      "card_type": "Feature",
+      "id": "FEA-009",
       "links": [
         {
-          "relationship": "includes",
-          "target": "ATV-017"
+          "relationship": "realizes",
+          "target": "CAP-008"
         }
       ],
-      "name": "Configure Editor Logging"
+      "name": "Model Persistence And Recovery"
     },
     {
       "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-004",
+      "card_type": "Feature",
+      "id": "FEA-011",
       "links": [
         {
-          "relationship": "includes",
-          "target": "ATV-004"
+          "relationship": "realizes",
+          "target": "CAP-010"
         }
       ],
-      "name": "Record Audit Log Entries"
+      "name": "Editor Logging"
     },
     {
       "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-013",
+      "card_type": "Feature",
+      "id": "FEA-012",
       "links": [
         {
-          "relationship": "includes",
-          "target": "ATV-023"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-009"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-010"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-018"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-019"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-020"
-        },
-        {
-          "relationship": "includes",
-          "target": "ATV-022"
+          "relationship": "realizes",
+          "target": "CAP-011"
         }
       ],
-      "name": "Serve Model Tool Surface (MCP)"
+      "name": "Index And Search"
     },
     {
       "attributes": {},
-      "card_type": "Process",
-      "id": "PRO-009",
+      "card_type": "Feature",
+      "id": "FEA-003",
       "links": [
         {
-          "relationship": "includes",
-          "target": "ATV-016"
+          "relationship": "realizes",
+          "target": "CAP-003"
         }
       ],
-      "name": "Apply Editor Preferences"
+      "name": "Export Compact Model"
     },
     {
       "attributes": {},
@@ -427,71 +524,1074 @@
     },
     {
       "attributes": {},
-      "card_type": "Activity",
-      "id": "ATV-013",
-      "links": [
-        {
-          "relationship": "uses",
-          "target": "COM-007"
-        }
-      ],
-      "name": "Undo And Redo"
+      "card_subtype": "Report",
+      "card_type": "Artifact",
+      "id": "ART-011",
+      "links": [],
+      "name": "Editor Log Output"
     },
     {
       "attributes": {},
-      "card_type": "Activity",
-      "id": "ATV-012",
-      "links": [
-        {
-          "relationship": "uses",
-          "target": "COM-007"
-        }
-      ],
-      "name": "Autosave Changes"
+      "card_subtype": "Diagram",
+      "card_type": "Artifact",
+      "id": "ART-002",
+      "links": [],
+      "name": "View Diagram Artifacts"
     },
     {
       "attributes": {},
-      "card_type": "Activity",
-      "id": "ATV-006",
-      "links": [
-        {
-          "relationship": "produces",
-          "target": "ART-006"
-        }
-      ],
-      "name": "Edit View Definitions Registry"
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-003",
+      "links": [],
+      "name": "Compact Export"
     },
     {
       "attributes": {},
-      "card_type": "Activity",
-      "id": "ATV-017",
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-008",
+      "links": [],
+      "name": "SVG Template"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-015",
+      "links": [],
+      "name": "Index Provenance Manifest"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-016",
+      "links": [],
+      "name": "CLI Command Invocation"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-014",
+      "links": [],
+      "name": "Model Tool Call Result"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-004",
+      "links": [],
+      "name": "Mission Audit Log"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-007",
+      "links": [],
+      "name": "Aurora Schemas"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-017",
+      "links": [],
+      "name": "CLI Command Result"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-005",
+      "links": [],
+      "name": "Canonical Definitions Registry"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-012",
+      "links": [],
+      "name": "Index Cache"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-006",
+      "links": [],
+      "name": "View Definitions Registry"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-013",
+      "links": [],
+      "name": "Model Tool Call Request"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Report",
+      "card_type": "Artifact",
+      "id": "ART-001",
+      "links": [],
+      "name": "Validation Report"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-010",
+      "links": [],
+      "name": "Model Archive Zip"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Data",
+      "card_type": "Artifact",
+      "id": "ART-009",
+      "links": [],
+      "name": "Icons Reference Sheet"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-017",
       "links": [
         {
-          "relationship": "uses",
-          "target": "COM-005"
+          "relationship": "requires",
+          "target": "CAP-007"
         },
         {
-          "relationship": "produces",
-          "target": "ART-011"
+          "relationship": "requires",
+          "target": "CAP-001"
         }
       ],
-      "name": "Configure Logging"
+      "name": "Prevent Invalid Edits"
     },
     {
       "attributes": {},
-      "card_type": "Activity",
-      "id": "ATV-001",
+      "card_type": "Requirement",
+      "id": "REQ-019",
       "links": [
         {
-          "relationship": "uses",
+          "relationship": "requires",
+          "target": "CAP-008"
+        }
+      ],
+      "name": "Undo Redo Depth"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-018",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-008"
+        }
+      ],
+      "name": "Autosave Default Manual Optional"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-032",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        }
+      ],
+      "name": "Offline Mode"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-005",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-004"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "imposes",
+          "target": "CNS-003"
+        }
+      ],
+      "name": "Standard Model Home Layout"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-006",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-004"
+        }
+      ],
+      "name": "Audit Log Semantics"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-031",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-010"
+        }
+      ],
+      "name": "Secrets Are Secure"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-010",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-002"
+        }
+      ],
+      "name": "Rendering Semantics"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-014",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        }
+      ],
+      "name": "Backup Zip On Load"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-015",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-007"
+        }
+      ],
+      "name": "UI Engine Thread Separation"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-037",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-011"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        }
+      ],
+      "name": "Index And Record Provenance"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-013",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-001"
+        }
+      ],
+      "name": "Fast Streamed Loading"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-033",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-007"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-009"
+        }
+      ],
+      "name": "Editor UX Layout And Graph Navigation"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-023",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-009"
+        }
+      ],
+      "name": "Accessibility And Dark Mode"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-016",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-002"
+        }
+      ],
+      "name": "Interactive View Rendering"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-036",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-010"
+        },
+        {
+          "relationship": "imposes",
+          "target": "CNS-006"
+        }
+      ],
+      "name": "File Based Logging For Stdio Servers"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-002",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "imposes",
+          "target": "CNS-002"
+        }
+      ],
+      "name": "Directed Graph Invariants"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-025",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-007"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-008"
+        }
+      ],
+      "name": "Single Instance Model Semantics"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-026",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-011"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        }
+      ],
+      "name": "Searchable Index"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-003",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-005"
+        }
+      ],
+      "name": "Canonical Definitions Registry"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-001",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "imposes",
+          "target": "CNS-001"
+        }
+      ],
+      "name": "Single Mission Root"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-029",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-009"
+        }
+      ],
+      "name": "Agentic Sidebar UX"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-028",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        },
+        {
+          "relationship": "imposes",
+          "target": "CNS-007"
+        }
+      ],
+      "name": "Agent Tool Surface Only"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-022",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-010"
+        },
+        {
+          "relationship": "imposes",
+          "target": "CNS-006"
+        }
+      ],
+      "name": "Editor Logging With Fern"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-024",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-001"
+        }
+      ],
+      "name": "Major Version Compatibility"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-021",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-008"
+        }
+      ],
+      "name": "Pack And Unpack Model Zips"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-008",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-003"
+        }
+      ],
+      "name": "Compact Model Format"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-027",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-011"
+        }
+      ],
+      "name": "Index Cache In User Cache Directory"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-011",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-007"
+        },
+        {
+          "relationship": "imposes",
+          "target": "CNS-004"
+        },
+        {
+          "relationship": "imposes",
+          "target": "CNS-005"
+        }
+      ],
+      "name": "Standalone Cross Platform Editor"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-007",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-002"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-005"
+        }
+      ],
+      "name": "View Definitions And Root Safety"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-004",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-005"
+        }
+      ],
+      "name": "Schema-Backed Card Format"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-030",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        }
+      ],
+      "name": "Agent Provider Support And Configuration"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-035",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-012"
+        }
+      ],
+      "name": "Tool Call Progress And Cancellation"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-038",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-002"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-003"
+        }
+      ],
+      "name": "Document Aurora CLI Interface"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-034",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-005"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-001"
+        }
+      ],
+      "name": "Modelconfiguration Is Versioned"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-012",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-006"
+        }
+      ],
+      "name": "Model Home Local Schemas And References"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-009",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-001"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-002"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-003"
+        }
+      ],
+      "name": "Default Tooling Support"
+    },
+    {
+      "attributes": {},
+      "card_type": "Requirement",
+      "id": "REQ-020",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "CAP-008"
+        },
+        {
+          "relationship": "requires",
+          "target": "CAP-004"
+        }
+      ],
+      "name": "Crash Safety Semantics"
+    },
+    {
+      "attributes": {},
+      "card_type": "System",
+      "id": "SYS-001",
+      "links": [
+        {
+          "relationship": "integrates",
+          "target": "APP-001"
+        },
+        {
+          "relationship": "integrates",
+          "target": "APP-002"
+        },
+        {
+          "relationship": "integrates",
+          "target": "APP-003"
+        },
+        {
+          "relationship": "integrates",
+          "target": "APP-004"
+        }
+      ],
+      "name": "Aurora Tooling Ecosystem"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Service",
+      "card_type": "Component",
+      "id": "COM-010",
+      "links": [
+        {
+          "relationship": "composes",
           "target": "COM-001"
         },
         {
-          "relationship": "produces",
-          "target": "ART-001"
+          "relationship": "exposes",
+          "target": "INT-002"
+        },
+        {
+          "relationship": "exposes",
+          "target": "INT-004"
+        },
+        {
+          "relationship": "exposes",
+          "target": "INT-005"
+        },
+        {
+          "relationship": "exposes",
+          "target": "INT-006"
         }
       ],
-      "name": "Validate Model Home"
+      "name": "Aurora MCP Server"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Module",
+      "card_type": "Component",
+      "id": "COM-008",
+      "links": [
+        {
+          "relationship": "stores in",
+          "target": "DST-001"
+        }
+      ],
+      "name": "Aurora Shared Index"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Service",
+      "card_type": "Component",
+      "id": "COM-005",
+      "links": [
+        {
+          "relationship": "composes",
+          "target": "COM-006"
+        },
+        {
+          "relationship": "composes",
+          "target": "COM-007"
+        },
+        {
+          "relationship": "composes",
+          "target": "COM-001"
+        }
+      ],
+      "name": "Aurora Editor Binary"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Module",
+      "card_type": "Component",
+      "id": "COM-007",
+      "links": [
+        {
+          "relationship": "composes",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "composes",
+          "target": "COM-008"
+        },
+        {
+          "relationship": "composes",
+          "target": "COM-009"
+        },
+        {
+          "relationship": "composes",
+          "target": "COM-010"
+        }
+      ],
+      "name": "Aurora Editor Engine"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Service",
+      "card_type": "Component",
+      "id": "COM-003",
+      "links": [
+        {
+          "relationship": "produces",
+          "target": "ART-009"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-008"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-005"
+        }
+      ],
+      "name": "svg_prep Binary"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Module",
+      "card_type": "Component",
+      "id": "COM-009",
+      "links": [],
+      "name": "Aurora Agent Runtime"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Library",
+      "card_type": "Component",
+      "id": "COM-001",
+      "links": [
+        {
+          "relationship": "composes",
+          "target": "COM-008"
+        }
+      ],
+      "name": "Aurora Shared Library"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Service",
+      "card_type": "Component",
+      "id": "COM-002",
+      "links": [
+        {
+          "relationship": "composes",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "exposes",
+          "target": "INT-003"
+        }
+      ],
+      "name": "Aurora CLI Binary"
+    },
+    {
+      "attributes": {},
+      "card_subtype": "Module",
+      "card_type": "Component",
+      "id": "COM-006",
+      "links": [],
+      "name": "Aurora Editor UI"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-002",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-002"
+        }
+      ],
+      "name": "Generate Views"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-007",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-007"
+        }
+      ],
+      "name": "Edit Models Interactively"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-001",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-001"
+        }
+      ],
+      "name": "Validate Aurora Models"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-008",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-008"
+        }
+      ],
+      "name": "Persist And Package Models"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-010",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-010"
+        }
+      ],
+      "name": "Editor Observability"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-005",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-005"
+        }
+      ],
+      "name": "Maintain Canonical Registries"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-009",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-009"
+        }
+      ],
+      "name": "Accessible User Experience"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-006",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-006"
+        }
+      ],
+      "name": "Load Model Homes"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-011",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-011"
+        }
+      ],
+      "name": "Index And Search Model Homes"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-012",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-012"
+        },
+        {
+          "relationship": "requires",
+          "target": "PRO-013"
+        }
+      ],
+      "name": "Agent Assisted Modeling"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-004",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-004"
+        }
+      ],
+      "name": "Maintain Audit Trail"
+    },
+    {
+      "attributes": {},
+      "card_type": "Capability",
+      "id": "CAP-003",
+      "links": [
+        {
+          "relationship": "requires",
+          "target": "PRO-003"
+        }
+      ],
+      "name": "Export Compact Model"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-018",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-007"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-009"
+        }
+      ],
+      "name": "Acquire Exclusive Model Lock"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-010",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-007"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-010"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-019"
+        }
+      ],
+      "name": "Backup Model Home"
     },
     {
       "attributes": {},
@@ -508,22 +1608,18 @@
     {
       "attributes": {},
       "card_type": "Activity",
-      "id": "ATV-019",
+      "id": "ATV-009",
       "links": [
         {
           "relationship": "uses",
-          "target": "COM-008"
+          "target": "COM-007"
         },
         {
-          "relationship": "produces",
-          "target": "ART-012"
-        },
-        {
-          "relationship": "produces",
-          "target": "ART-015"
+          "relationship": "leads to",
+          "target": "ATV-010"
         }
       ],
-      "name": "Build Or Load Index"
+      "name": "Load Model Home"
     },
     {
       "attributes": {},
@@ -533,21 +1629,13 @@
         {
           "relationship": "uses",
           "target": "COM-007"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-020"
         }
       ],
       "name": "Unpack Model Home"
-    },
-    {
-      "attributes": {},
-      "card_type": "Activity",
-      "id": "ATV-009",
-      "links": [
-        {
-          "relationship": "uses",
-          "target": "COM-007"
-        }
-      ],
-      "name": "Load Model Home"
     },
     {
       "attributes": {},
@@ -561,6 +1649,10 @@
         {
           "relationship": "uses",
           "target": "COM-007"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-001"
         }
       ],
       "name": "Apply Batch Edit"
@@ -568,30 +1660,22 @@
     {
       "attributes": {},
       "card_type": "Activity",
-      "id": "ATV-016",
+      "id": "ATV-023",
       "links": [
         {
           "relationship": "uses",
-          "target": "COM-006"
-        }
-      ],
-      "name": "Apply Accessibility Preferences"
-    },
-    {
-      "attributes": {},
-      "card_type": "Activity",
-      "id": "ATV-003",
-      "links": [
-        {
-          "relationship": "uses",
-          "target": "COM-001"
+          "target": "COM-010"
         },
         {
           "relationship": "produces",
-          "target": "ART-003"
+          "target": "ART-014"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-009"
         }
       ],
-      "name": "Write Compact Export"
+      "name": "Serve MCP Tool Calls"
     },
     {
       "attributes": {},
@@ -609,6 +1693,10 @@
         {
           "relationship": "uses",
           "target": "COM-010"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-022"
         }
       ],
       "name": "Run Agentic Session"
@@ -616,7 +1704,7 @@
     {
       "attributes": {},
       "card_type": "Activity",
-      "id": "ATV-010",
+      "id": "ATV-014",
       "links": [
         {
           "relationship": "uses",
@@ -625,9 +1713,61 @@
         {
           "relationship": "produces",
           "target": "ART-010"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-015"
         }
       ],
-      "name": "Backup Model Home"
+      "name": "Pack Model Home"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-001",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-001"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-004"
+        }
+      ],
+      "name": "Validate Model Home"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-006",
+      "links": [
+        {
+          "relationship": "produces",
+          "target": "ART-006"
+        }
+      ],
+      "name": "Edit View Definitions Registry"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-011",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-006"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-001"
+        }
+      ],
+      "name": "Edit Model Interactively"
     },
     {
       "attributes": {},
@@ -637,6 +1777,10 @@
         {
           "relationship": "uses",
           "target": "COM-008"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-022"
         }
       ],
       "name": "Update Index On Save"
@@ -644,14 +1788,14 @@
     {
       "attributes": {},
       "card_type": "Activity",
-      "id": "ATV-018",
+      "id": "ATV-016",
       "links": [
         {
           "relationship": "uses",
-          "target": "COM-007"
+          "target": "COM-006"
         }
       ],
-      "name": "Acquire Exclusive Model Lock"
+      "name": "Apply Accessibility Preferences"
     },
     {
       "attributes": {},
@@ -680,18 +1824,58 @@
     {
       "attributes": {},
       "card_type": "Activity",
-      "id": "ATV-023",
+      "id": "ATV-019",
       "links": [
         {
           "relationship": "uses",
-          "target": "COM-010"
+          "target": "COM-008"
         },
         {
           "relationship": "produces",
-          "target": "ART-014"
+          "target": "ART-012"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-015"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-001"
         }
       ],
-      "name": "Serve MCP Tool Calls"
+      "name": "Build Or Load Index"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-004",
+      "links": [
+        {
+          "relationship": "produces",
+          "target": "ART-004"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-020"
+        }
+      ],
+      "name": "Append Audit Log Entry"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-017",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-005"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-011"
+        }
+      ],
+      "name": "Configure Logging"
     },
     {
       "attributes": {},
@@ -712,30 +1896,50 @@
     {
       "attributes": {},
       "card_type": "Activity",
-      "id": "ATV-014",
+      "id": "ATV-003",
+      "links": [
+        {
+          "relationship": "uses",
+          "target": "COM-001"
+        },
+        {
+          "relationship": "produces",
+          "target": "ART-003"
+        }
+      ],
+      "name": "Write Compact Export"
+    },
+    {
+      "attributes": {},
+      "card_type": "Activity",
+      "id": "ATV-013",
       "links": [
         {
           "relationship": "uses",
           "target": "COM-007"
         },
         {
-          "relationship": "produces",
-          "target": "ART-010"
+          "relationship": "leads to",
+          "target": "ATV-014"
         }
       ],
-      "name": "Pack Model Home"
+      "name": "Undo And Redo"
     },
     {
       "attributes": {},
       "card_type": "Activity",
-      "id": "ATV-004",
+      "id": "ATV-012",
       "links": [
         {
-          "relationship": "produces",
-          "target": "ART-004"
+          "relationship": "uses",
+          "target": "COM-007"
+        },
+        {
+          "relationship": "leads to",
+          "target": "ATV-013"
         }
       ],
-      "name": "Append Audit Log Entry"
+      "name": "Autosave Changes"
     },
     {
       "attributes": {},
@@ -751,175 +1955,23 @@
     },
     {
       "attributes": {},
-      "card_type": "Activity",
-      "id": "ATV-011",
-      "links": [
-        {
-          "relationship": "uses",
-          "target": "COM-006"
-        }
-      ],
-      "name": "Edit Model Interactively"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-010",
-      "links": [],
-      "name": "Model Archive Zip"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-004",
-      "links": [],
-      "name": "Mission Audit Log"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-016",
-      "links": [],
-      "name": "CLI Command Invocation"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-012",
-      "links": [],
-      "name": "Index Cache"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-006",
-      "links": [],
-      "name": "View Definitions Registry"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-005",
-      "links": [],
-      "name": "Canonical Definitions Registry"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-015",
-      "links": [],
-      "name": "Index Provenance Manifest"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-017",
-      "links": [],
-      "name": "CLI Command Result"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Report",
-      "card_type": "Artifact",
-      "id": "ART-011",
-      "links": [],
-      "name": "Editor Log Output"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Diagram",
-      "card_type": "Artifact",
-      "id": "ART-002",
-      "links": [],
-      "name": "View Diagram Artifacts"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-007",
-      "links": [],
-      "name": "Aurora Schemas"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-008",
-      "links": [],
-      "name": "SVG Template"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-013",
-      "links": [],
-      "name": "Model Tool Call Request"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Report",
-      "card_type": "Artifact",
-      "id": "ART-001",
-      "links": [],
-      "name": "Validation Report"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-014",
-      "links": [],
-      "name": "Model Tool Call Result"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-003",
-      "links": [],
-      "name": "Compact Export"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Data",
-      "card_type": "Artifact",
-      "id": "ART-009",
-      "links": [],
-      "name": "Icons Reference Sheet"
-    },
-    {
-      "attributes": {},
       "card_type": "Driver",
-      "id": "DRI-003",
+      "id": "DRI-002",
       "links": [
         {
           "relationship": "drives",
-          "target": "REQ-008"
+          "target": "REQ-003"
         },
         {
           "relationship": "drives",
-          "target": "REQ-009"
+          "target": "REQ-007"
         },
         {
           "relationship": "drives",
-          "target": "REQ-010"
-        },
-        {
-          "relationship": "drives",
-          "target": "REQ-038"
+          "target": "REQ-005"
         }
       ],
-      "name": "Automated View Generation"
+      "name": "Canonical Vocabulary"
     },
     {
       "attributes": {},
@@ -948,22 +2000,26 @@
     {
       "attributes": {},
       "card_type": "Driver",
-      "id": "DRI-002",
+      "id": "DRI-003",
       "links": [
         {
           "relationship": "drives",
-          "target": "REQ-003"
+          "target": "REQ-008"
         },
         {
           "relationship": "drives",
-          "target": "REQ-007"
+          "target": "REQ-009"
         },
         {
           "relationship": "drives",
-          "target": "REQ-005"
+          "target": "REQ-010"
+        },
+        {
+          "relationship": "drives",
+          "target": "REQ-038"
         }
       ],
-      "name": "Canonical Vocabulary"
+      "name": "Automated View Generation"
     },
     {
       "attributes": {},
@@ -1083,277 +2139,15 @@
     },
     {
       "attributes": {},
-      "card_type": "Constraint",
-      "id": "CNS-005",
-      "links": [],
-      "name": "Dioxus UI"
-    },
-    {
-      "attributes": {},
-      "card_type": "Constraint",
-      "id": "CNS-007",
-      "links": [],
-      "name": "Tool Mediated Agent Actions"
-    },
-    {
-      "attributes": {},
-      "card_type": "Constraint",
-      "id": "CNS-004",
-      "links": [],
-      "name": "Rust 2024"
-    },
-    {
-      "attributes": {},
-      "card_type": "Constraint",
-      "id": "CNS-002",
-      "links": [],
-      "name": "No Orphan Cards"
-    },
-    {
-      "attributes": {},
-      "card_type": "Constraint",
-      "id": "CNS-003",
-      "links": [],
-      "name": "Standard Model File Layout"
-    },
-    {
-      "attributes": {},
-      "card_type": "Constraint",
-      "id": "CNS-001",
-      "links": [],
-      "name": "Mission Has Outgoing Links Only"
-    },
-    {
-      "attributes": {},
-      "card_type": "Constraint",
-      "id": "CNS-006",
-      "links": [],
-      "name": "Fern Logging"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "User",
-      "card_type": "Actor",
-      "id": "ACT-001",
+      "card_type": "Stakeholder",
+      "id": "STK-001",
       "links": [
         {
-          "relationship": "performs",
-          "target": "ATV-004"
-        },
-        {
-          "relationship": "performs",
-          "target": "ATV-005"
-        },
-        {
-          "relationship": "performs",
-          "target": "ATV-006"
-        },
-        {
-          "relationship": "performs",
-          "target": "ATV-007"
-        },
-        {
-          "relationship": "performs",
-          "target": "ATV-008"
+          "relationship": "desires",
+          "target": "STR-001"
         }
       ],
-      "name": "Model Author"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-003",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-003"
-        }
-      ],
-      "name": "Export Compact Model"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-004",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-004"
-        }
-      ],
-      "name": "Maintain Audit Trail"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-007",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-007"
-        }
-      ],
-      "name": "Edit Models Interactively"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-002",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-002"
-        }
-      ],
-      "name": "Generate Views"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-010",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-010"
-        }
-      ],
-      "name": "Editor Observability"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-001",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-001"
-        }
-      ],
-      "name": "Validate Aurora Models"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-009",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-009"
-        }
-      ],
-      "name": "Accessible User Experience"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-005",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-005"
-        }
-      ],
-      "name": "Maintain Canonical Registries"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-011",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-011"
-        }
-      ],
-      "name": "Index And Search Model Homes"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-012",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-012"
-        },
-        {
-          "relationship": "requires",
-          "target": "PRO-013"
-        }
-      ],
-      "name": "Agent Assisted Modeling"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-008",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-008"
-        }
-      ],
-      "name": "Persist And Package Models"
-    },
-    {
-      "attributes": {},
-      "card_type": "Capability",
-      "id": "CAP-006",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "PRO-006"
-        }
-      ],
-      "name": "Load Model Homes"
-    },
-    {
-      "attributes": {},
-      "card_type": "Interface",
-      "id": "INT-004",
-      "links": [
-        {
-          "relationship": "accepts",
-          "target": "ART-013"
-        },
-        {
-          "relationship": "returns",
-          "target": "ART-014"
-        }
-      ],
-      "name": "Aurora Model Tool MCP Query Interface"
-    },
-    {
-      "attributes": {},
-      "card_type": "Interface",
-      "id": "INT-002",
-      "links": [
-        {
-          "relationship": "accepts",
-          "target": "ART-013"
-        },
-        {
-          "relationship": "returns",
-          "target": "ART-014"
-        }
-      ],
-      "name": "Aurora Model Tool MCP Interface"
-    },
-    {
-      "attributes": {},
-      "card_type": "Interface",
-      "id": "INT-005",
-      "links": [
-        {
-          "relationship": "accepts",
-          "target": "ART-013"
-        },
-        {
-          "relationship": "returns",
-          "target": "ART-014"
-        }
-      ],
-      "name": "Aurora Model Tool MCP Edit Interface"
+      "name": "Architects And Agents"
     },
     {
       "attributes": {},
@@ -1389,931 +2183,51 @@
     },
     {
       "attributes": {},
-      "card_type": "System",
-      "id": "SYS-001",
+      "card_type": "Interface",
+      "id": "INT-004",
       "links": [
         {
-          "relationship": "integrates",
-          "target": "APP-001"
+          "relationship": "accepts",
+          "target": "ART-013"
         },
         {
-          "relationship": "integrates",
-          "target": "APP-002"
-        },
-        {
-          "relationship": "integrates",
-          "target": "APP-003"
-        },
-        {
-          "relationship": "integrates",
-          "target": "APP-004"
+          "relationship": "returns",
+          "target": "ART-014"
         }
       ],
-      "name": "Aurora Tooling Ecosystem"
+      "name": "Aurora Model Tool MCP Query Interface"
     },
     {
       "attributes": {},
-      "card_type": "Application",
-      "id": "APP-002",
+      "card_type": "Interface",
+      "id": "INT-005",
       "links": [
         {
-          "relationship": "comprises",
-          "target": "COM-003"
+          "relationship": "accepts",
+          "target": "ART-013"
+        },
+        {
+          "relationship": "returns",
+          "target": "ART-014"
         }
       ],
-      "name": "SVG Prep"
+      "name": "Aurora Model Tool MCP Edit Interface"
     },
     {
       "attributes": {},
-      "card_type": "Application",
-      "id": "APP-003",
+      "card_type": "Interface",
+      "id": "INT-002",
       "links": [
         {
-          "relationship": "comprises",
-          "target": "COM-005"
+          "relationship": "accepts",
+          "target": "ART-013"
         },
         {
-          "relationship": "comprises",
-          "target": "COM-001"
+          "relationship": "returns",
+          "target": "ART-014"
         }
       ],
-      "name": "Aurora Editor"
-    },
-    {
-      "attributes": {},
-      "card_type": "Application",
-      "id": "APP-004",
-      "links": [
-        {
-          "relationship": "comprises",
-          "target": "COM-010"
-        },
-        {
-          "relationship": "comprises",
-          "target": "COM-001"
-        }
-      ],
-      "name": "Aurora MCP Server"
-    },
-    {
-      "attributes": {},
-      "card_type": "Application",
-      "id": "APP-001",
-      "links": [
-        {
-          "relationship": "comprises",
-          "target": "COM-002"
-        },
-        {
-          "relationship": "comprises",
-          "target": "COM-001"
-        }
-      ],
-      "name": "Aurora CLI"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-020",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-008"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-004"
-        }
-      ],
-      "name": "Crash Safety Semantics"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-034",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-005"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-006"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-001"
-        }
-      ],
-      "name": "Modelconfiguration Is Versioned"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-026",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-011"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-006"
-        }
-      ],
-      "name": "Searchable Index"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-010",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-002"
-        }
-      ],
-      "name": "Rendering Semantics"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-018",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-008"
-        }
-      ],
-      "name": "Autosave Default Manual Optional"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-030",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-012"
-        }
-      ],
-      "name": "Agent Provider Support And Configuration"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-006",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-004"
-        }
-      ],
-      "name": "Audit Log Semantics"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-028",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-012"
-        },
-        {
-          "relationship": "imposes",
-          "target": "CNS-007"
-        }
-      ],
-      "name": "Agent Tool Surface Only"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-002",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-001"
-        },
-        {
-          "relationship": "imposes",
-          "target": "CNS-002"
-        }
-      ],
-      "name": "Directed Graph Invariants"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-031",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-012"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-010"
-        }
-      ],
-      "name": "Secrets Are Secure"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-013",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-006"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-001"
-        }
-      ],
-      "name": "Fast Streamed Loading"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-025",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-006"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-007"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-008"
-        }
-      ],
-      "name": "Single Instance Model Semantics"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-033",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-007"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-009"
-        }
-      ],
-      "name": "Editor UX Layout And Graph Navigation"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-024",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-006"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-001"
-        }
-      ],
-      "name": "Major Version Compatibility"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-037",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-011"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-006"
-        }
-      ],
-      "name": "Index And Record Provenance"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-035",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-006"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-012"
-        }
-      ],
-      "name": "Tool Call Progress And Cancellation"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-005",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-004"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-005"
-        },
-        {
-          "relationship": "imposes",
-          "target": "CNS-003"
-        }
-      ],
-      "name": "Standard Model Home Layout"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-016",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-002"
-        }
-      ],
-      "name": "Interactive View Rendering"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-003",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-005"
-        }
-      ],
-      "name": "Canonical Definitions Registry"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-001",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-001"
-        },
-        {
-          "relationship": "imposes",
-          "target": "CNS-001"
-        }
-      ],
-      "name": "Single Mission Root"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-011",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-007"
-        },
-        {
-          "relationship": "imposes",
-          "target": "CNS-004"
-        },
-        {
-          "relationship": "imposes",
-          "target": "CNS-005"
-        }
-      ],
-      "name": "Standalone Cross Platform Editor"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-017",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-007"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-001"
-        }
-      ],
-      "name": "Prevent Invalid Edits"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-009",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-001"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-002"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-003"
-        }
-      ],
-      "name": "Default Tooling Support"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-014",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-006"
-        }
-      ],
-      "name": "Backup Zip On Load"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-029",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-012"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-009"
-        }
-      ],
-      "name": "Agentic Sidebar UX"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-022",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-010"
-        },
-        {
-          "relationship": "imposes",
-          "target": "CNS-006"
-        }
-      ],
-      "name": "Editor Logging With Fern"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-038",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-001"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-002"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-003"
-        }
-      ],
-      "name": "Document Aurora CLI Interface"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-019",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-008"
-        }
-      ],
-      "name": "Undo Redo Depth"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-027",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-011"
-        }
-      ],
-      "name": "Index Cache In User Cache Directory"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-008",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-003"
-        }
-      ],
-      "name": "Compact Model Format"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-007",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-002"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-005"
-        }
-      ],
-      "name": "View Definitions And Root Safety"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-023",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-009"
-        }
-      ],
-      "name": "Accessibility And Dark Mode"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-012",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-006"
-        }
-      ],
-      "name": "Model Home Local Schemas And References"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-036",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-010"
-        },
-        {
-          "relationship": "imposes",
-          "target": "CNS-006"
-        }
-      ],
-      "name": "File Based Logging For Stdio Servers"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-004",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-001"
-        },
-        {
-          "relationship": "requires",
-          "target": "CAP-005"
-        }
-      ],
-      "name": "Schema-Backed Card Format"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-032",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-012"
-        }
-      ],
-      "name": "Offline Mode"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-021",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-008"
-        }
-      ],
-      "name": "Pack And Unpack Model Zips"
-    },
-    {
-      "attributes": {},
-      "card_type": "Requirement",
-      "id": "REQ-015",
-      "links": [
-        {
-          "relationship": "requires",
-          "target": "CAP-007"
-        }
-      ],
-      "name": "UI Engine Thread Separation"
-    },
-    {
-      "attributes": {},
-      "card_type": "Story",
-      "id": "STR-001",
-      "links": [],
-      "name": "Deterministic Modeling Experience"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Service",
-      "card_type": "Component",
-      "id": "COM-003",
-      "links": [
-        {
-          "relationship": "implements",
-          "target": "FEA-006"
-        },
-        {
-          "relationship": "produces",
-          "target": "ART-009"
-        },
-        {
-          "relationship": "produces",
-          "target": "ART-008"
-        },
-        {
-          "relationship": "produces",
-          "target": "ART-005"
-        }
-      ],
-      "name": "svg_prep Binary"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Service",
-      "card_type": "Component",
-      "id": "COM-005",
-      "links": [
-        {
-          "relationship": "composes",
-          "target": "COM-006"
-        },
-        {
-          "relationship": "composes",
-          "target": "COM-007"
-        },
-        {
-          "relationship": "composes",
-          "target": "COM-001"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-007"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-008"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-009"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-010"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-011"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-012"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-013"
-        }
-      ],
-      "name": "Aurora Editor Binary"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Service",
-      "card_type": "Component",
-      "id": "COM-002",
-      "links": [
-        {
-          "relationship": "composes",
-          "target": "COM-001"
-        },
-        {
-          "relationship": "exposes",
-          "target": "INT-003"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-001"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-002"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-003"
-        }
-      ],
-      "name": "Aurora CLI Binary"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Module",
-      "card_type": "Component",
-      "id": "COM-007",
-      "links": [
-        {
-          "relationship": "composes",
-          "target": "COM-001"
-        },
-        {
-          "relationship": "composes",
-          "target": "COM-008"
-        },
-        {
-          "relationship": "composes",
-          "target": "COM-009"
-        },
-        {
-          "relationship": "composes",
-          "target": "COM-010"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-007"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-009"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-012"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-013"
-        }
-      ],
-      "name": "Aurora Editor Engine"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Service",
-      "card_type": "Component",
-      "id": "COM-010",
-      "links": [
-        {
-          "relationship": "composes",
-          "target": "COM-001"
-        },
-        {
-          "relationship": "exposes",
-          "target": "INT-002"
-        },
-        {
-          "relationship": "exposes",
-          "target": "INT-004"
-        },
-        {
-          "relationship": "exposes",
-          "target": "INT-005"
-        },
-        {
-          "relationship": "exposes",
-          "target": "INT-006"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-013"
-        }
-      ],
-      "name": "Aurora MCP Server"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Library",
-      "card_type": "Component",
-      "id": "COM-001",
-      "links": [
-        {
-          "relationship": "composes",
-          "target": "COM-008"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-001"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-002"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-003"
-        }
-      ],
-      "name": "Aurora Shared Library"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Module",
-      "card_type": "Component",
-      "id": "COM-009",
-      "links": [
-        {
-          "relationship": "implements",
-          "target": "FEA-013"
-        }
-      ],
-      "name": "Aurora Agent Runtime"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Module",
-      "card_type": "Component",
-      "id": "COM-008",
-      "links": [
-        {
-          "relationship": "implements",
-          "target": "FEA-012"
-        },
-        {
-          "relationship": "stores in",
-          "target": "DST-001"
-        },
-        {
-          "relationship": "produces",
-          "target": "ART-015"
-        }
-      ],
-      "name": "Aurora Shared Index"
-    },
-    {
-      "attributes": {},
-      "card_subtype": "Module",
-      "card_type": "Component",
-      "id": "COM-006",
-      "links": [
-        {
-          "relationship": "implements",
-          "target": "FEA-010"
-        },
-        {
-          "relationship": "implements",
-          "target": "FEA-013"
-        }
-      ],
-      "name": "Aurora Editor UI"
-    },
-    {
-      "attributes": {},
-      "card_type": "Stakeholder",
-      "id": "STK-001",
-      "links": [
-        {
-          "relationship": "desires",
-          "target": "STR-001"
-        }
-      ],
-      "name": "Architects And Agents"
+      "name": "Aurora Model Tool MCP Interface"
     }
   ]
 }
