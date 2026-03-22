@@ -19,8 +19,6 @@ _No references defined._
 - drives [REQ-005](../Requirement/REQ-005-Standard_Model_Home_Layout.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -20,8 +20,6 @@ _No references defined._
 - involves [VND-900](../Vendor/VND-900-Example_vendor.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

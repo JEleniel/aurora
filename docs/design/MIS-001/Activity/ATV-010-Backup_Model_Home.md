@@ -19,8 +19,6 @@ _No references defined._
 - leads to [ATV-019](ATV-019-Build_Or_Load_Index.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

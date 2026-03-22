@@ -17,8 +17,6 @@ _No references defined._
 - composes [COM-008](COM-008-Aurora_Shared_Index.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

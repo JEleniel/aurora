@@ -21,8 +21,6 @@ _No references defined._
 - involves [ACT-903](../Actor/ACT-903-Example_regulator_actor.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

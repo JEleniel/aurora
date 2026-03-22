@@ -21,8 +21,6 @@ _No references defined._
 - implements [FEA-003](../Feature/FEA-003-Export_Compact_Model.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

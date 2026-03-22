@@ -19,8 +19,6 @@ _No references defined._
 - defines [TES-900](../Test/TES-900-Rendered_views_contain_all_relationships.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

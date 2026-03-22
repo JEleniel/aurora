@@ -17,8 +17,6 @@ _No references defined._
 - provides [ART-903](../Artifact/ART-903-Example_code.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

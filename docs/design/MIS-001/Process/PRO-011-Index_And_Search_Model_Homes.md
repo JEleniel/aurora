@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-019](../Activity/ATV-019-Build_Or_Load_Index.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

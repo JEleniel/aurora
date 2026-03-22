@@ -18,8 +18,6 @@ _No references defined._
 - branches to [EVT-900](../Event/EVT-900-Example_event.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

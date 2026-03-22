@@ -18,8 +18,6 @@ _No references defined._
 - has [STA-901](../State/STA-901-End_state.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

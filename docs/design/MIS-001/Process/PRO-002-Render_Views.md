@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-002](../Activity/ATV-002-Render_View_Artifacts.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -32,8 +32,6 @@ _No references defined._
 - produces [ART-904](../Artifact/ART-904-Example_model.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

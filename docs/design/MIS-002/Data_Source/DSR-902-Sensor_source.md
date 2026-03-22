@@ -17,8 +17,6 @@ _No references defined._
 - provides [ART-902](../Artifact/ART-902-Example_diagram.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -18,8 +18,6 @@ _No references defined._
 - imposes [CNS-900](../Constraint/CNS-900-Links_must_use_canonical_relationships.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

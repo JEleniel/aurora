@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-016](../Activity/ATV-016-Apply_Accessibility_Preferences.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

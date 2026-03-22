@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-004](../Activity/ATV-004-Append_Audit_Log_Entry.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

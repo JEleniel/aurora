@@ -17,8 +17,6 @@ _No references defined._
 - verifies [FEA-900](../Feature/FEA-900-Canonical_coverage_is_visible.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

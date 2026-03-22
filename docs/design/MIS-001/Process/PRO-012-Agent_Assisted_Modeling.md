@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-021](../Activity/ATV-021-Run_Agentic_Session.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

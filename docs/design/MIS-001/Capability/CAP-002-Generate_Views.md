@@ -17,8 +17,6 @@ _No references defined._
 - requires [PRO-002](../Process/PRO-002-Render_Views.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

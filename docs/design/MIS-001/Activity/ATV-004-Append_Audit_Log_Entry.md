@@ -18,8 +18,6 @@ _No references defined._
 - leads to [ATV-020](ATV-020-Update_Index_On_Save.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

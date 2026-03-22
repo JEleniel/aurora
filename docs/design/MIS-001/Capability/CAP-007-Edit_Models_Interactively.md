@@ -17,8 +17,6 @@ _No references defined._
 - requires [PRO-007](../Process/PRO-007-Edit_Model_In_Editor.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

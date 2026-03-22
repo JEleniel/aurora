@@ -18,8 +18,6 @@ _No references defined._
 - leads to [ATV-009](ATV-009-Load_Model_Home.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

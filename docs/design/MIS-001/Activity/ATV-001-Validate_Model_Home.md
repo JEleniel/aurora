@@ -19,8 +19,6 @@ _No references defined._
 - leads to [ATV-004](ATV-004-Append_Audit_Log_Entry.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -19,8 +19,6 @@ _No references defined._
 - triggers [PRD-900](../Predicate/PRD-900-Example_predicate.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -18,8 +18,6 @@ _No references defined._
 - imposes [CNS-002](../Constraint/CNS-002-No_Orphan_Cards.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

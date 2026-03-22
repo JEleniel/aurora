@@ -17,8 +17,6 @@ _No references defined._
 - requires [PRO-008](../Process/PRO-008-Persist_And_Package_Model_Home.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

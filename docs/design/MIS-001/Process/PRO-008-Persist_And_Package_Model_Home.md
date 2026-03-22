@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-012](../Activity/ATV-012-Autosave_Changes.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

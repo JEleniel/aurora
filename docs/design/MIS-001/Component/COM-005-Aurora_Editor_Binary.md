@@ -19,8 +19,6 @@ _No references defined._
 - composes [COM-001](COM-001-Aurora_Shared_Library.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-023](../Activity/ATV-023-Serve_MCP_Tool_Calls.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -17,8 +17,6 @@ _No references defined._
 - provides [ART-901](../Artifact/ART-901-Sample_data.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

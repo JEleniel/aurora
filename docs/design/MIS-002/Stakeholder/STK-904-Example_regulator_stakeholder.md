@@ -18,8 +18,6 @@ _No references defined._
 - desires [STR-904](../Story/STR-904-As_a_regulator_I_need_demonstrable_controls.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

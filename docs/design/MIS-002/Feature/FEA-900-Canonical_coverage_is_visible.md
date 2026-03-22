@@ -17,8 +17,6 @@ _No references defined._
 - realizes [CAP-900](../Capability/CAP-900-Generate_example_views.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

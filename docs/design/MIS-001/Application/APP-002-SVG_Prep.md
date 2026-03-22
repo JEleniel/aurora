@@ -18,8 +18,6 @@ _No references defined._
 - implements [FEA-006](../Feature/FEA-006-Prepare_SVG_References.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

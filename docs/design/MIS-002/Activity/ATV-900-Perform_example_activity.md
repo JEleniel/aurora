@@ -19,8 +19,6 @@ _No references defined._
 - triggers [CON-900](../Condition/CON-900-Example_condition.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -18,8 +18,6 @@ _No references defined._
 - exploits [AST-900](../Asset/AST-900-Example_asset.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

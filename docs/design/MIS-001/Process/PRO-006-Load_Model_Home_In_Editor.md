@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-018](../Activity/ATV-018-Acquire_Exclusive_Model_Lock.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

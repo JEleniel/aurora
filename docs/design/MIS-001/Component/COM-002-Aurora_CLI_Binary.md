@@ -18,8 +18,6 @@ _No references defined._
 - exposes [INT-003](../Interface/INT-003-Aurora_CLI_Command_Interface.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -20,8 +20,6 @@ _No references defined._
 - drives [REQ-006](../Requirement/REQ-006-Audit_Log_Semantics.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

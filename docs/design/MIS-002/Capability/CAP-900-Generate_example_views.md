@@ -17,8 +17,6 @@ _No references defined._
 - requires [PRO-900](../Process/PRO-900-Run_an_endtoend_example_flow.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

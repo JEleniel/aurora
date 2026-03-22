@@ -25,8 +25,6 @@ _No references defined._
 - implements [FEA-013](../Feature/FEA-013-Agent_Assisted_Modeling.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

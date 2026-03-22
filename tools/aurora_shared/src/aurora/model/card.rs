@@ -201,7 +201,10 @@ impl Card {
 			history.push_str("| _No entries_ |  |  |\n");
 		}
 
-		let version = self.version.clone().unwrap_or_default();
+		let version = match &self.version {
+			Some(version) => format!("## Version\n\n{}\n", version),
+			None => String::new(),
+		};
 
 		markdown = markdown
 			.replace("{{card_type}}", &self.card_type)

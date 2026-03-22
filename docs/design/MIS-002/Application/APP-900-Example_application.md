@@ -23,8 +23,6 @@ _No references defined._
 - deploys to [DEP-900](../Deployment/DEP-900-Example_deployment.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

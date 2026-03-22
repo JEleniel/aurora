@@ -17,8 +17,6 @@ _No references defined._
 - defines [THM-900](../Threat_Model/THM-900-Example_threat_model.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

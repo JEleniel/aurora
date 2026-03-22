@@ -19,8 +19,6 @@ _No references defined._
 - imposes [CNS-003](../Constraint/CNS-003-Standard_Model_File_Layout.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

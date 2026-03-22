@@ -18,8 +18,6 @@ _No references defined._
 - leads to [ATV-022](ATV-022-Apply_Batch_Edit.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

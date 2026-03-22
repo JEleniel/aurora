@@ -17,8 +17,6 @@ _No references defined._
 - requires [CAP-007](../Capability/CAP-007-Edit_Models_Interactively.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

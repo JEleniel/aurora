@@ -18,8 +18,6 @@ _No references defined._
 - leads to [ATV-014](ATV-014-Pack_Model_Home.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

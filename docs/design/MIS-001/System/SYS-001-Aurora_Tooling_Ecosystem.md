@@ -20,8 +20,6 @@ _No references defined._
 - integrates [APP-004](../Application/APP-004-Aurora_MCP_Server.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

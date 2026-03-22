@@ -17,8 +17,6 @@ _No references defined._
 - mitigates [RIS-900](../Risk/RIS-900-Example_risk.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

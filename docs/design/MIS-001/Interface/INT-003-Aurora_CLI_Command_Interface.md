@@ -18,8 +18,6 @@ _No references defined._
 - returns [ART-017](../Artifact/ART-017-CLI_Command_Result.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

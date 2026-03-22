@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-001](../Activity/ATV-001-Validate_Model_Home.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

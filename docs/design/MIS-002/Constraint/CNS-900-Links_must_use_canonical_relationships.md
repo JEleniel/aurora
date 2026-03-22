@@ -17,8 +17,6 @@ _No references defined._
 - limits [REQ-900](../Requirement/REQ-900-Exercise_all_card_types_and_relationships.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

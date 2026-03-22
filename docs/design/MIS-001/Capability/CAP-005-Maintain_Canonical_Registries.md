@@ -17,8 +17,6 @@ _No references defined._
 - requires [PRO-005](../Process/PRO-005-Maintain_Canonical_Registries.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

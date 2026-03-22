@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-003](../Activity/ATV-003-Write_Compact_Export.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

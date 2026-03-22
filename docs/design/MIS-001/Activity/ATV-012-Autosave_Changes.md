@@ -18,8 +18,6 @@ _No references defined._
 - leads to [ATV-013](ATV-013-Undo_And_Redo.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-011](../Activity/ATV-011-Edit_Model_Interactively.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

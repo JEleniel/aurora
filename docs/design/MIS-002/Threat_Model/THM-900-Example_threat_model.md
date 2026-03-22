@@ -18,8 +18,6 @@ _No references defined._
 - includes [ROW-900](../Resource_Owner/ROW-900-Example_resource_owner.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

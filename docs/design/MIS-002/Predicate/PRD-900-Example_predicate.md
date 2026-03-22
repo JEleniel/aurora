@@ -19,8 +19,6 @@ _No references defined._
 - branches to [EVT-901](../Event/EVT-901-Downstream_event.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

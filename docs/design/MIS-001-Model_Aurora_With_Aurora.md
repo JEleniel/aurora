@@ -23,8 +23,6 @@ _No references defined._
 - necessitates [SYS-001](MIS-001/System/SYS-001-Aurora_Tooling_Ecosystem.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

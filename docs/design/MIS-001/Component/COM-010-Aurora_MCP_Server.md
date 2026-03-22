@@ -21,8 +21,6 @@ _No references defined._
 - exposes [INT-006](../Interface/INT-006-Aurora_Model_Tool_MCP_Batch_Interface.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

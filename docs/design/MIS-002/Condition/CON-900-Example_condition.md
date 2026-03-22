@@ -19,8 +19,6 @@ _No references defined._
 - branches to [CON-901](CON-901-Downstream_condition.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

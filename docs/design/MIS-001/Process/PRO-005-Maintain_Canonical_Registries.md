@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-005](../Activity/ATV-005-Edit_Canonical_Definitions_Registry.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

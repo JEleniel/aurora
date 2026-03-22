@@ -19,8 +19,6 @@ _No references defined._
 - triggers [TRG-901](TRG-901-Downstream_trigger.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

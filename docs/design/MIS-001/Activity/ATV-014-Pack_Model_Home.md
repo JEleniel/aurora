@@ -19,8 +19,6 @@ _No references defined._
 - leads to [ATV-015](ATV-015-Unpack_Model_Home.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

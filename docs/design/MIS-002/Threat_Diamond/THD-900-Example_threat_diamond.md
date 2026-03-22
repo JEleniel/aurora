@@ -22,8 +22,6 @@ _No references defined._
 - involves [ADV-905](../Adversary/ADV-905-Nation_state_adversary.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

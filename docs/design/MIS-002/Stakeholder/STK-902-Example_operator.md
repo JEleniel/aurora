@@ -17,8 +17,6 @@ _No references defined._
 - desires [STR-902](../Story/STR-902-As_an_operator_I_need_renderable_views.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

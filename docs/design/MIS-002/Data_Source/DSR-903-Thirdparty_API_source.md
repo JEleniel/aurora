@@ -17,8 +17,6 @@ _No references defined._
 - provides [ART-905](../Artifact/ART-905-Example_report.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

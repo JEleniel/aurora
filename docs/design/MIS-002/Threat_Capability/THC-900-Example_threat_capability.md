@@ -20,8 +20,6 @@ _No references defined._
 - impacts [VIC-903](../Victim/VIC-903-Data_victim.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

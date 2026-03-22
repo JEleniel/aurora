@@ -18,8 +18,6 @@ _No references defined._
 - leads to [ATV-010](ATV-010-Backup_Model_Home.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -20,8 +20,6 @@ _No references defined._
 - composes [COM-010](COM-010-Aurora_MCP_Server.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

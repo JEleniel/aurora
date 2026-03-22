@@ -17,8 +17,6 @@ _No references defined._
 - stores in [DST-001](../Data_Store/DST-001-Model_Home_Index_Store.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

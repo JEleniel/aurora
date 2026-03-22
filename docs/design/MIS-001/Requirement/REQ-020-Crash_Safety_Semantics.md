@@ -18,8 +18,6 @@ _No references defined._
 - requires [CAP-004](../Capability/CAP-004-Maintain_Audit_Trail.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -17,8 +17,6 @@ _No references defined._
 - realizes [CAP-008](../Capability/CAP-008-Persist_And_Package_Models.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

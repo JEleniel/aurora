@@ -17,8 +17,6 @@ _No references defined._
 - starts with [ATV-017](../Activity/ATV-017-Configure_Logging.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

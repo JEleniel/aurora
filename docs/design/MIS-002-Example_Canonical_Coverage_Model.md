@@ -24,8 +24,6 @@ _No references defined._
 - remediates [THM-900](MIS-002/Threat_Model/THM-900-Example_threat_model.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |
