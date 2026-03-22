@@ -10,6 +10,10 @@
 			"target": "DEP-900"
 		},
 		{
+			"relationship": "involves",
+			"target": "DSR-900"
+		},
+		{
 			"relationship": "integrates",
 			"target": "APP-900"
 		},

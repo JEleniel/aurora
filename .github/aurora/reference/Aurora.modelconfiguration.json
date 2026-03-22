@@ -124,6 +124,10 @@
 					"relationship": "has"
 				},
 				{
+					"target": "DSR",
+					"relationship": "involves"
+				},
+				{
 					"target": "APP",
 					"relationship": "integrates"
 				},
@@ -279,10 +283,6 @@
 					"target": "ART",
 					"relationship": "provides"
 				},
-				{
-					"target": "DAR",
-					"relationship": "provides"
-				}
 			]
 		},
 		{
