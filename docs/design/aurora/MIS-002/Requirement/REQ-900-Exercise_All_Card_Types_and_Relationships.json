@@ -10,12 +10,12 @@
 			"target": "CAP-900"
 		},
 		{
-			"relationship": "has",
-			"target": "ADR-900"
+			"relationship": "imposes",
+			"target": "CTL-900"
 		},
 		{
-			"relationship": "imposes",
-			"target": "CNS-900"
+			"relationship": "defines",
+			"target": "TES-900"
 		}
 	]
 }

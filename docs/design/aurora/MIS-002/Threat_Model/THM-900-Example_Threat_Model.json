@@ -14,8 +14,8 @@
 			"target": "ROW-900"
 		},
 		{
-			"relationship": "recommends",
-			"target": "CTL-900"
+			"relationship": "defines",
+			"target": "RIS-900"
 		}
 	]
 }

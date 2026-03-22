@@ -6,7 +6,7 @@
 	"description": "Record mission change events by appending one entry per event to `AuditLog.ndjson`; each entry may include multiple changed cards and link changes.",
 	"links": [
 		{
-			"relationship": "includes",
+			"relationship": "starts with",
 			"target": "ATV-004"
 		}
 	]

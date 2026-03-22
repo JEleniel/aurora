@@ -10,11 +10,11 @@
 			"target": "STA-901"
 		},
 		{
-			"relationship": "evaluates",
+			"relationship": "triggers",
 			"target": "PRD-900"
 		},
 		{
-			"relationship": "handles",
+			"relationship": "triggers",
 			"target": "EVT-900"
 		}
 	]

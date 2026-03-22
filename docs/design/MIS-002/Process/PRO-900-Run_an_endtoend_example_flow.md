@@ -14,11 +14,11 @@ _No references defined._
 
 ## Links
 
-- includes [ATV-900](../Activity/ATV-900-Perform_example_activity.md)
-- includes [ATV-901](../Activity/ATV-901-Complete_example_activity.md)
-- includes [TRG-900](../Trigger/TRG-900-Example_trigger.md)
-- branches on [CON-900](../Condition/CON-900-Example_condition.md)
+- starts with [ATV-900](../Activity/ATV-900-Perform_example_activity.md)
 - involves [ACT-900](../Actor/ACT-900-Example_user.md)
+- involves [ACT-901](../Actor/ACT-901-Example_admin.md)
+- involves [ACT-902](../Actor/ACT-902-Example_external_system.md)
+- involves [ACT-903](../Actor/ACT-903-Example_regulator_actor.md)
 
 
 ## Version
@@ -28,3 +28,4 @@ _No references defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T00:00:00Z | architect | create |
+| 2026-03-22T00:03:40Z | Copilot | change |

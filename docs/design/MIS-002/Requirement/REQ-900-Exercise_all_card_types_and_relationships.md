@@ -15,8 +15,8 @@ _No references defined._
 ## Links
 
 - requires [CAP-900](../Capability/CAP-900-Generate_example_views.md)
-- has [ADR-900](../ADR/ADR-900-Use_registrydefined_vocabulary.md)
-- imposes [CNS-900](../Constraint/CNS-900-Links_must_use_canonical_relationships.md)
+- imposes [CTL-900](../Control/CTL-900-Example_control.md)
+- defines [TES-900](../Test/TES-900-Rendered_views_contain_all_relationships.md)
 
 
 ## Version
@@ -26,3 +26,4 @@ _No references defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T00:00:00Z | architect | create |
+| 2026-03-22T00:03:40Z | Copilot | change |

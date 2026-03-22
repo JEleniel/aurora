@@ -19,7 +19,6 @@ _No references defined._
 - exposes [INT-004](../Interface/INT-004-Aurora_Model_Tool_MCP_Query_Interface.md)
 - exposes [INT-005](../Interface/INT-005-Aurora_Model_Tool_MCP_Edit_Interface.md)
 - exposes [INT-006](../Interface/INT-006-Aurora_Model_Tool_MCP_Batch_Interface.md)
-- implements [FEA-013](../Feature/FEA-013-Agent_Assisted_Modeling.md)
 
 
 ## Version
@@ -31,3 +30,4 @@ _No references defined._
 | 2026-02-21T00:00:00Z | Architect | create |
 | 2026-02-21T18:00:00Z | Architect | change |
 | 2026-02-21T19:00:00Z | Architect | change |
+| 2026-03-22T00:19:40Z | Copilot | change |

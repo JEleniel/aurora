@@ -6,7 +6,7 @@
 	"description": "Validate a model home by loading cards, applying schema checks, validating canonical relationship constraints, and enforcing reachability and root-direction invariants.",
 	"links": [
 		{
-			"relationship": "includes",
+			"relationship": "starts with",
 			"target": "ATV-001"
 		}
 	]

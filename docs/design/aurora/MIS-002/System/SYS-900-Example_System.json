@@ -8,6 +8,10 @@
 		{
 			"relationship": "integrates",
 			"target": "APP-900"
+		},
+		{
+			"relationship": "involves",
+			"target": "VND-900"
 		}
 	]
 }

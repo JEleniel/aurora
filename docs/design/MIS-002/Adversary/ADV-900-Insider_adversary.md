@@ -14,7 +14,9 @@ _No references defined._
 
 ## Links
 
-_No links defined._
+- develops [THC-900](../Threat_Capability/THC-900-Example_threat_capability.md)
+- exploits [AST-900](../Asset/AST-900-Example_asset.md)
+
 
 ## Version
 
@@ -23,3 +25,4 @@ _No links defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T00:15:00Z | architect | create |
+| 2026-03-22T00:03:40Z | Copilot | change |

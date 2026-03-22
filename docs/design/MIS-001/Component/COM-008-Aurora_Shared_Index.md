@@ -14,9 +14,7 @@ _No references defined._
 
 ## Links
 
-- implements [FEA-012](../Feature/FEA-012-Index_And_Search.md)
 - stores in [DST-001](../Data_Store/DST-001-Model_Home_Index_Store.md)
-- produces [ART-015](../Artifact/ART-015-Index_Provenance_Manifest.md)
 
 
 ## Version
@@ -27,3 +25,4 @@ _No references defined._
 |-----------|--------|--------|
 | 2026-02-21T00:00:00Z | Architect | create |
 | 2026-02-21T18:00:00Z | Architect | change |
+| 2026-03-22T00:19:40Z | Copilot | change |

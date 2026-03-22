@@ -14,8 +14,7 @@ _No references defined._
 
 ## Links
 
-- goes into [ATV-900](../Activity/ATV-900-Perform_example_activity.md)
-
+_No links defined._
 
 ## Version
 
@@ -24,3 +23,4 @@ _No references defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T00:10:00Z | architect | create |
+| 2026-03-22T00:03:40Z | Copilot | change |

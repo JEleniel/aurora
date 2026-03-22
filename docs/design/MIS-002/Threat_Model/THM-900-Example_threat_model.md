@@ -16,7 +16,7 @@ _No references defined._
 
 - includes [THD-900](../Threat_Diamond/THD-900-Example_threat_diamond.md)
 - includes [ROW-900](../Resource_Owner/ROW-900-Example_resource_owner.md)
-- recommends [CTL-900](../Control/CTL-900-Example_control.md)
+- defines [RIS-900](../Risk/RIS-900-Example_risk.md)
 
 
 ## Version
@@ -26,3 +26,4 @@ _No references defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T00:15:00Z | architect | create |
+| 2026-03-22T00:03:40Z | Copilot | change |

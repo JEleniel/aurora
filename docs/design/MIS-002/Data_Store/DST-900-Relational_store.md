@@ -14,9 +14,7 @@ _No references defined._
 
 ## Links
 
-- retrieves [ART-905](../Artifact/ART-905-Example_report.md)
-- runs on [NOD-901](../Node/NOD-901-Example_virtual_machine.md)
-
+_No links defined._
 
 ## Version
 
@@ -25,3 +23,4 @@ _No references defined._
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T00:10:00Z | architect | create |
+| 2026-03-22T00:03:40Z | Copilot | change |

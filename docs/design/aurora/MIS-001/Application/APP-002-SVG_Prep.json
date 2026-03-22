@@ -8,6 +8,10 @@
 		{
 			"relationship": "comprises",
 			"target": "COM-003"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-006"
 		}
 	]
 }

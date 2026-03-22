@@ -6,7 +6,7 @@
 	"description": "As a manager I need the example to demonstrate traceability from mission to implementation and verification.",
 	"links": [
 		{
-			"relationship": "explains",
+			"relationship": "defines",
 			"target": "REQ-900"
 		}
 	]

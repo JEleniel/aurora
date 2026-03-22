@@ -8,26 +8,6 @@
 		{
 			"relationship": "mitigates",
 			"target": "RIS-900"
-		},
-		{
-			"relationship": "protects",
-			"target": "AST-900"
-		},
-		{
-			"relationship": "enforces",
-			"target": "CNS-900"
-		},
-		{
-			"relationship": "governs",
-			"target": "DST-900"
-		},
-		{
-			"relationship": "governs",
-			"target": "REQ-900"
-		},
-		{
-			"relationship": "obstructs",
-			"target": "THC-900"
 		}
 	]
 }

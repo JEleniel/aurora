@@ -11,20 +11,24 @@
 			"target": "COM-901"
 		},
 		{
-			"relationship": "implements",
-			"target": "FEA-900"
-		},
-		{
 			"relationship": "exposes",
 			"target": "INT-900"
 		},
 		{
-			"relationship": "implements",
-			"target": "TES-900"
+			"relationship": "produces",
+			"target": "ART-900"
+		},
+		{
+			"relationship": "executes",
+			"target": "STM-900"
 		},
 		{
 			"relationship": "produces",
-			"target": "ART-900"
+			"target": "ART-902"
+		},
+		{
+			"relationship": "produces",
+			"target": "ART-903"
 		},
 		{
 			"relationship": "includes",
@@ -63,12 +67,8 @@
 			"target": "DST-904"
 		},
 		{
-			"relationship": "executes",
-			"target": "STM-900"
-		},
-		{
-			"relationship": "runs on",
-			"target": "NOD-900"
+			"relationship": "produces",
+			"target": "ART-904"
 		}
 	]
 }

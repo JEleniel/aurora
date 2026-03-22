@@ -6,24 +6,8 @@
 	"description": "Load a model home for interactive use by acquiring the exclusive model lock, locating the model home schemas/references, creating a backup archive, loading or building the search index, and validating the model.",
 	"links": [
 		{
-			"relationship": "includes",
+			"relationship": "starts with",
 			"target": "ATV-018"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-009"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-010"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-019"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-001"
 		}
 	]
 }

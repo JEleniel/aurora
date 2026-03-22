@@ -7,6 +7,10 @@
 	"description": "Representative regulator stakeholder for coverage.",
 	"links": [
 		{
+			"relationship": "define",
+			"target": "ADR-900"
+		},
+		{
 			"relationship": "desires",
 			"target": "STR-904"
 		}

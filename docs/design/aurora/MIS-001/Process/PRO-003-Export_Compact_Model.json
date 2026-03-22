@@ -6,7 +6,7 @@
 	"description": "Export a compact representation of the model cards and links into a single JSON file.",
 	"links": [
 		{
-			"relationship": "includes",
+			"relationship": "starts with",
 			"target": "ATV-003"
 		}
 	]

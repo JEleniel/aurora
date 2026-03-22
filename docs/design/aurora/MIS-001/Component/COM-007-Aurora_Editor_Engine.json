@@ -21,22 +21,6 @@
 		{
 			"relationship": "composes",
 			"target": "COM-010"
-		},
-		{
-			"relationship": "implements",
-			"target": "FEA-007"
-		},
-		{
-			"relationship": "implements",
-			"target": "FEA-009"
-		},
-		{
-			"relationship": "implements",
-			"target": "FEA-012"
-		},
-		{
-			"relationship": "implements",
-			"target": "FEA-013"
 		}
 	]
 }

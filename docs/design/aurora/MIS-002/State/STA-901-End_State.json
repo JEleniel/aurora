@@ -6,7 +6,7 @@
 	"description": "Second state used to exercise transitions and event handling.",
 	"links": [
 		{
-			"relationship": "handles",
+			"relationship": "triggers",
 			"target": "EVT-901"
 		}
 	]
