@@ -14,6 +14,7 @@ _No references defined._
 
 ## Links
 
+- has [DEP-900](../Deployment/DEP-900-Example_deployment.md)
 - integrates [APP-900](../Application/APP-900-Example_application.md)
 - involves [VND-900](../Vendor/VND-900-Example_vendor.md)
 

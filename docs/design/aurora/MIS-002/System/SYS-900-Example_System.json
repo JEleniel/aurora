@@ -6,6 +6,10 @@
 	"description": "A top-level system used to exercise System->Application integration.",
 	"links": [
 		{
+			"relationship": "has",
+			"target": "DEP-900"
+		},
+		{
 			"relationship": "integrates",
 			"target": "APP-900"
 		},

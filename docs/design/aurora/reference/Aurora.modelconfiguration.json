@@ -7,6 +7,10 @@
       "description": "Discrete step within a process.",
       "relationships": [
         {
+          "target": "DEP",
+          "relationship": "has"
+        },
+        {
           "relationship": "leads to",
           "target": "ATV"
         },

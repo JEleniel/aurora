@@ -120,6 +120,10 @@
 			"description": "Top-level software system composed of applications and components.",
 			"relationships": [
 				{
+					"target": "DEP",
+					"relationship": "has"
+				},
+				{
 					"target": "APP",
 					"relationship": "integrates"
 				},

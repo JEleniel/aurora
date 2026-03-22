@@ -551,6 +551,10 @@
       "id": "SYS-900",
       "links": [
         {
+          "relationship": "has",
+          "target": "DEP-900"
+        },
+        {
           "relationship": "integrates",
           "target": "APP-900"
         },
