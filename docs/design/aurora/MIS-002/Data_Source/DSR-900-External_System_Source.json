@@ -9,10 +9,6 @@
 		{
 			"relationship": "provides",
 			"target": "ART-901"
-		},
-		{
-			"relationship": "runs on",
-			"target": "NOD-902"
 		}
 	]
 }

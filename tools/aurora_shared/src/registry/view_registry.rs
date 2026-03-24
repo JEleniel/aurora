@@ -9,6 +9,7 @@ pub struct ViewDefinition {
 	pub description: String,
 	pub included_card_types: Vec<String>,
 	#[serde(default)]
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub layout: Option<LayoutFamily>,
 	pub name: String,
 	pub root_card_types: Vec<String>,

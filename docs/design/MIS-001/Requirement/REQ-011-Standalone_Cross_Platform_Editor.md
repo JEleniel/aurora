@@ -19,8 +19,6 @@ _No references defined._
 - imposes [CNS-005](../Constraint/CNS-005-Dioxus_UI.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

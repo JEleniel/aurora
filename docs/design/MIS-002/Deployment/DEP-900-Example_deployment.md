@@ -19,8 +19,6 @@ _No references defined._
 - includes [NOD-902](../Node/NOD-902-Example_hardware.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

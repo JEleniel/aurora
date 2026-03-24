@@ -5,10 +5,5 @@
 	"card_subtype": "Document",
 	"name": "Architecture document",
 	"description": "Artifact subtype used for coverage.",
-	"links": [
-		{
-			"relationship": "is input into",
-			"target": "COM-900"
-		}
-	]
+	"links": []
 }

@@ -338,6 +338,8 @@ impl Aurora {
 				errors.push(format!("Model {}: {}", model.root_card.id, error));
 			}
 		}
+
+		errors.extend(self.validate_domain_assignments());
 		errors.sort();
 		errors.dedup();
 		errors
@@ -563,6 +565,22 @@ impl Aurora {
 		warnings.sort();
 		warnings.dedup();
 		warnings
+	}
+
+	fn validate_domain_assignments(&self) -> Vec<String> {
+		let Ok(domain_paths) = self.view_configuration.try_domain_paths() else {
+			return Vec::new();
+		};
+		let mut errors = Vec::new();
+		for definition in &self.card_registry.definitions {
+			if !domain_paths.contains_key(&definition.acronym) {
+				errors.push(format!(
+					"View configuration domains do not assign card acronym '{}' to a domain.",
+					definition.acronym
+				));
+			}
+		}
+		errors
 	}
 }
 

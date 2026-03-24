@@ -6,20 +6,8 @@
 	"description": "Maintain the canonical registries and schemas that define the Aurora vocabulary and view semantics.",
 	"links": [
 		{
-			"relationship": "includes",
+			"relationship": "starts with",
 			"target": "ATV-005"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-006"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-007"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-008"
 		}
 	]
 }

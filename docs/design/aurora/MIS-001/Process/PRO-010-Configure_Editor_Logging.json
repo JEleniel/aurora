@@ -6,7 +6,7 @@
 	"description": "Configure and emit logs from the editor to stdout/stderr and optionally to a file sink.",
 	"links": [
 		{
-			"relationship": "includes",
+			"relationship": "starts with",
 			"target": "ATV-017"
 		}
 	]

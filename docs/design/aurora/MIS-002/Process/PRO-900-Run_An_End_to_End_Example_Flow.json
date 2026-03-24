@@ -6,24 +6,24 @@
 	"description": "A simple process that demonstrates process-domain activities, triggers, and conditions.",
 	"links": [
 		{
-			"relationship": "includes",
+			"relationship": "starts with",
 			"target": "ATV-900"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-901"
-		},
-		{
-			"relationship": "includes",
-			"target": "TRG-900"
-		},
-		{
-			"relationship": "branches on",
-			"target": "CON-900"
 		},
 		{
 			"relationship": "involves",
 			"target": "ACT-900"
+		},
+		{
+			"relationship": "involves",
+			"target": "ACT-901"
+		},
+		{
+			"relationship": "involves",
+			"target": "ACT-902"
+		},
+		{
+			"relationship": "involves",
+			"target": "ACT-903"
 		}
 	]
 }

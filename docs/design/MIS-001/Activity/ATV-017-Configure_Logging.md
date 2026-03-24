@@ -18,8 +18,6 @@ _No references defined._
 - produces [ART-011](../Artifact/ART-011-Editor_Log_Output.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

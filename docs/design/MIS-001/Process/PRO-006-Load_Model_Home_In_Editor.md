@@ -14,14 +14,8 @@ _No references defined._
 
 ## Links
 
-- includes [ATV-018](../Activity/ATV-018-Acquire_Exclusive_Model_Lock.md)
-- includes [ATV-009](../Activity/ATV-009-Load_Model_Home.md)
-- includes [ATV-010](../Activity/ATV-010-Backup_Model_Home.md)
-- includes [ATV-019](../Activity/ATV-019-Build_Or_Load_Index.md)
-- includes [ATV-001](../Activity/ATV-001-Validate_Model_Home.md)
+- starts with [ATV-018](../Activity/ATV-018-Acquire_Exclusive_Model_Lock.md)
 
-
-## Version
 
 ## Audit Log
 
@@ -29,3 +23,4 @@ _No references defined._
 |-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | create |
 | 2026-02-21T00:00:00Z | Architect | change |
+| 2026-03-22T00:31:40Z | Copilot | change |

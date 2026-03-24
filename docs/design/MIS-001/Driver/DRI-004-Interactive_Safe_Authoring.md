@@ -43,8 +43,6 @@ _No references defined._
 - drives [REQ-037](../Requirement/REQ-037-Index_And_Record_Provenance.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

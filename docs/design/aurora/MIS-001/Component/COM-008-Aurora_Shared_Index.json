@@ -7,16 +7,8 @@
 	"description": "Indexing subsystem (shared by the editor and MCP server) that builds, persists, and queries the model index (for example using Tantivy) while keeping the host responsive and memory bounded. The index MUST be namespaced by model home identity and MUST track provenance so multiple model homes can coexist without collisions.",
 	"links": [
 		{
-			"relationship": "implements",
-			"target": "FEA-012"
-		},
-		{
 			"relationship": "stores in",
 			"target": "DST-001"
-		},
-		{
-			"relationship": "produces",
-			"target": "ART-015"
 		}
 	]
 }

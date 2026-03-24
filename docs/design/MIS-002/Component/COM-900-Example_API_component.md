@@ -15,10 +15,11 @@ _No references defined._
 ## Links
 
 - composes [COM-901](COM-901-Example_library_component.md)
-- implements [FEA-900](../Feature/FEA-900-Canonical_coverage_is_visible.md)
 - exposes [INT-900](../Interface/INT-900-Example_interface.md)
-- implements [TES-900](../Test/TES-900-Rendered_views_contain_all_relationships.md)
 - produces [ART-900](../Artifact/ART-900-Architecture_document.md)
+- executes [STM-900](../State_Machine/STM-900-Example_state_machine.md)
+- produces [ART-902](../Artifact/ART-902-Example_diagram.md)
+- produces [ART-903](../Artifact/ART-903-Example_code.md)
 - includes [DSR-900](../Data_Source/DSR-900-External_system_source.md)
 - includes [DSR-901](../Data_Source/DSR-901-Upstream_feed_source.md)
 - includes [DSR-902](../Data_Source/DSR-902-Sensor_source.md)
@@ -28,14 +29,12 @@ _No references defined._
 - stores in [DST-902](../Data_Store/DST-902-Event_log_store.md)
 - stores in [DST-903](../Data_Store/DST-903-Keyvalue_store.md)
 - stores in [DST-904](../Data_Store/DST-904-Graph_store.md)
-- executes [STM-900](../State_Machine/STM-900-Example_state_machine.md)
-- runs on [NOD-900](../Node/NOD-900-Example_container.md)
+- produces [ART-904](../Artifact/ART-904-Example_model.md)
 
-
-## Version
 
 ## Audit Log
 
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T00:10:00Z | architect | create |
+| 2026-03-22T00:03:40Z | Copilot | change |

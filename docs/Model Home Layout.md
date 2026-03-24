@@ -1,6 +1,6 @@
 # Model Home Layout
 
-Aurora tooling loads models from a **model home**: a directory named `aurora/` containing schemas, reference registries, and one or more models.
+Aurora tooling loads models from a **model home**: a directory named `aurora/` containing schemas, versioned reference registries, and one or more models.
 
 ## Directory layout
 
@@ -36,8 +36,8 @@ Aurora tooling requires these files to exist under the model home:
 | `schemas/Aurora.compact.schema.json`                        |                          Yes | Structure validation for compact exports (`Compact.json`).                                    |
 | `schemas/Aurora.modelconfiguration.schema.json`             |                          Yes | Structure validation for the registry (`Aurora.modelconfiguration.json`).                     |
 | `schemas/Aurora.viewconfiguration.schema.json`              |                          Yes | Structure validation for the registry (`Aurora.viewconfiguration.json`).                      |
-| `reference/Aurora.modelconfiguration.json`                  |                          Yes | Canonical card types, relationships, and view definitions.                                    |
-| `reference/Aurora.viewconfiguration.json`                   |                          Yes | Canonical icon list and default appearance per acronym.                                       |
+| `reference/Aurora.modelconfiguration.json`                  |                          Yes | Versioned canonical card types, relationships, and view definitions.                          |
+| `reference/Aurora.viewconfiguration.json`                   |                          Yes | Versioned canonical icon list and default appearance per acronym.                             |
 | `reference/SVGTemplate.svgz` or `reference/SVGTemplate.svg` | Required for rendering views | SVG defs template for shapes and icons. The tooling prefers `.svgz` and falls back to `.svg`. |
 
 ## Where models live

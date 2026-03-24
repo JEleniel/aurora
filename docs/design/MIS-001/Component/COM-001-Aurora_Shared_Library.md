@@ -15,12 +15,7 @@ _No references defined._
 ## Links
 
 - composes [COM-008](COM-008-Aurora_Shared_Index.md)
-- implements [FEA-001](../Feature/FEA-001-Validate_Model.md)
-- implements [FEA-002](../Feature/FEA-002-Render_Views.md)
-- implements [FEA-003](../Feature/FEA-003-Export_Compact_Model.md)
 
-
-## Version
 
 ## Audit Log
 
@@ -28,3 +23,4 @@ _No references defined._
 |-----------|--------|--------|
 | 2026-02-18T13:55:00Z | Architect | change |
 | 2026-02-21T18:00:00Z | Architect | change |
+| 2026-03-22T00:19:40Z | Copilot | change |

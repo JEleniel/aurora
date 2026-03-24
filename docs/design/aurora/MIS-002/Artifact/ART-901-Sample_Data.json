@@ -5,10 +5,5 @@
 	"card_subtype": "Data",
 	"name": "Sample data",
 	"description": "Artifact subtype used for coverage.",
-	"links": [
-		{
-			"relationship": "derives from",
-			"target": "ART-900"
-		}
-	]
+	"links": []
 }

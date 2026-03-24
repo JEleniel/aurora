@@ -4,7 +4,7 @@
 
 - Validating one or more Aurora models
 - Rendering **Markdown** (one file per card)
-- Rendering **views** as **SVG** diagrams
+- Rendering **views** as **SVG** diagrams, with optional Graphviz **DOT** debug output
 - Generating **compact exports** (`Compact.json`) for automation
 
 ## Commands
@@ -105,6 +105,11 @@ tmp/aurora_cli_out/MIS-002/Requirement/REQ-900-Exercise_All_Card_Types_and_Relat
 
 Renders SVG diagrams for each view definition in the model configuration registry.
 
+Optional view-debug output:
+
+- `-D, --dot-output <DIR>` writes the Graphviz DOT used for each rendered view.
+- The directory is created as needed.
+
 Example:
 
 ```text
@@ -127,11 +132,19 @@ Rendered view files are written to:
 
 - `<OUTPUT>/<MISSION_ID>/Views/<Sanitized_View_Name>.svg`
 
+When `-D, --dot-output <DIR>` is provided, the matching DOT files are written to:
+
+- `<DOT_OUTPUT>/<MISSION_ID>/Views/<Sanitized_View_Name>.dot`
+
 View names are sanitized for filenames by converting whitespace to underscores and removing other punctuation.
 
 ## `render-all`
 
 Runs both `render-aurora` and `render-views`.
+
+Optional view-debug output:
+
+- `-D, --dot-output <DIR>` writes the Graphviz DOT files for the `render-views` portion of the run.
 
 Example:
 

@@ -1,8 +1,13 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::{BTreeMap, HashMap, HashSet};
 
 use serde::{Deserialize, Serialize};
 
 use crate::registry::RegistryError;
+
+pub const MODEL_CONFIGURATION_VERSION: &str = "1.1.0";
+pub const VIEW_CONFIGURATION_VERSION: &str = "1.1.0";
+const DEFAULT_VIEW_CONFIGURATION_JSON: &str =
+	include_str!("../../../../.github/aurora/reference/Aurora.viewconfiguration.json");
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CardRegistry {
@@ -25,6 +30,8 @@ impl CardRegistry {
 		model_configuration: ModelConfiguration,
 		view_configuration: ViewConfiguration,
 	) -> Result<Self, RegistryError> {
+		view_configuration.try_domain_paths()?;
+
 		let available_icons: HashSet<String> = view_configuration
 			.available_icons
 			.iter()
@@ -94,6 +101,7 @@ impl CardRegistry {
 				relationships,
 				shape: appearance.shape.clone(),
 				common_subtypes: definition.common_subtypes,
+				common_properties: definition.common_properties,
 			});
 		}
 
@@ -219,12 +227,44 @@ pub struct CardDefinition {
 	pub shape: String,
 	#[serde(default)]
 	pub common_subtypes: Vec<String>,
+	#[serde(default)]
+	pub common_properties: Vec<ModelConfigurationCommonPropertyDefinition>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub struct ModelConfigurationCommonPropertyDefinition {
+	pub name: String,
+	pub description: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Default)]
+pub struct ViewDomainDefinition {
+	#[serde(default)]
+	#[serde(skip_serializing_if = "Vec::is_empty")]
+	pub cards: Vec<String>,
+	#[serde(default)]
+	#[serde(skip_serializing_if = "BTreeMap::is_empty")]
+	pub subdomains: BTreeMap<String, ViewSubdomainDefinition>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Default)]
+pub struct ViewSubdomainDefinition {
+	#[serde(default)]
+	#[serde(skip_serializing_if = "Vec::is_empty")]
+	pub cards: Vec<String>,
+	#[serde(default)]
+	#[serde(skip_serializing_if = "BTreeMap::is_empty")]
+	pub subsubdomains: BTreeMap<String, Vec<String>>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ModelConfiguration {
 	#[serde(default, rename = "$schema")]
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub schema: Option<String>,
+	#[serde(default)]
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub version: Option<String>,
 	pub cards: Vec<ModelConfigurationCardDefinition>,
 }
 
@@ -234,8 +274,13 @@ pub struct ModelConfigurationCardDefinition {
 	pub card_type: String,
 	pub description: String,
 	#[serde(default)]
+	#[serde(skip_serializing_if = "Vec::is_empty")]
+	pub common_properties: Vec<ModelConfigurationCommonPropertyDefinition>,
+	#[serde(default)]
+	#[serde(skip_serializing_if = "Vec::is_empty")]
 	pub relationships: Vec<ModelConfigurationRelationshipDefinition>,
 	#[serde(default)]
+	#[serde(skip_serializing_if = "Vec::is_empty")]
 	pub common_subtypes: Vec<String>,
 }
 
@@ -243,11 +288,45 @@ pub struct ModelConfigurationCardDefinition {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ViewConfiguration {
 	#[serde(default, rename = "$schema")]
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub schema: Option<String>,
+	#[serde(default)]
+	#[serde(skip_serializing_if = "Option::is_none")]
+	pub version: Option<String>,
 	pub available_icons: Vec<String>,
 	pub cards: Vec<ViewConfigurationCardDefinition>,
 	#[serde(default)]
+	pub domains: BTreeMap<String, ViewDomainDefinition>,
+	#[serde(default)]
 	pub views: Vec<super::ViewDefinition>,
+}
+
+impl ViewConfiguration {
+	pub fn try_domain_paths(&self) -> Result<HashMap<String, Vec<String>>, RegistryError> {
+		let domains = self.effective_domains()?;
+		let known_acronyms: HashSet<String> =
+			self.cards.iter().map(|card| card.acronym.clone()).collect();
+		let mut paths: HashMap<String, Vec<String>> = HashMap::new();
+		let strict_unknowns = !self.domains.is_empty();
+		for (domain_name, definition) in &domains {
+			collect_domain_paths(
+				domain_name,
+				definition,
+				&known_acronyms,
+				strict_unknowns,
+				&mut paths,
+			)?;
+		}
+		Ok(paths)
+	}
+
+	fn effective_domains(&self) -> Result<BTreeMap<String, ViewDomainDefinition>, RegistryError> {
+		if !self.domains.is_empty() {
+			return Ok(self.domains.clone());
+		}
+		let defaults: ViewConfiguration = serde_json::from_str(DEFAULT_VIEW_CONFIGURATION_JSON)?;
+		Ok(defaults.domains)
+	}
 }
 
 /// Appearance configuration for a single card type.
@@ -259,8 +338,10 @@ pub struct ViewConfigurationCardDefinition {
 	#[serde(alias = "color")]
 	pub stroke: String,
 	#[serde(default)]
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub text: Option<String>,
 	#[serde(default)]
+	#[serde(skip_serializing_if = "Option::is_none")]
 	pub icon: Option<String>,
 }
 
@@ -268,6 +349,68 @@ pub struct ViewConfigurationCardDefinition {
 pub struct ModelConfigurationRelationshipDefinition {
 	pub target: String,
 	pub relationship: String,
+}
+
+fn collect_domain_paths(
+	domain_name: &str,
+	definition: &ViewDomainDefinition,
+	known_acronyms: &HashSet<String>,
+	strict_unknowns: bool,
+	paths: &mut HashMap<String, Vec<String>>,
+) -> Result<(), RegistryError> {
+	assign_domain_cards(
+		&[domain_name.to_string()],
+		&definition.cards,
+		known_acronyms,
+		strict_unknowns,
+		paths,
+	)?;
+	for (subdomain_name, subdomain) in &definition.subdomains {
+		let path = vec![domain_name.to_string(), subdomain_name.clone()];
+		assign_domain_cards(
+			path.as_slice(),
+			&subdomain.cards,
+			known_acronyms,
+			strict_unknowns,
+			paths,
+		)?;
+		for (leaf_name, cards) in &subdomain.subsubdomains {
+			let leaf_path = vec![
+				domain_name.to_string(),
+				subdomain_name.clone(),
+				leaf_name.clone(),
+			];
+			assign_domain_cards(
+				leaf_path.as_slice(),
+				cards,
+				known_acronyms,
+				strict_unknowns,
+				paths,
+			)?;
+		}
+	}
+	Ok(())
+}
+
+fn assign_domain_cards(
+	path: &[String],
+	cards: &[String],
+	known_acronyms: &HashSet<String>,
+	strict_unknowns: bool,
+	paths: &mut HashMap<String, Vec<String>>,
+) -> Result<(), RegistryError> {
+	for acronym in cards {
+		if !known_acronyms.contains(acronym) {
+			if strict_unknowns {
+				return Err(RegistryError::UnknownDomainCardAcronym(acronym.clone()));
+			}
+			continue;
+		}
+		if paths.insert(acronym.clone(), path.to_vec()).is_some() {
+			return Err(RegistryError::DuplicateDomainAssignment(acronym.clone()));
+		}
+	}
+	Ok(())
 }
 
 #[cfg(test)]

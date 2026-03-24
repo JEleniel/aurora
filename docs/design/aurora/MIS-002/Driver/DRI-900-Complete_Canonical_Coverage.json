@@ -8,6 +8,10 @@
 		{
 			"relationship": "drives",
 			"target": "REQ-900"
+		},
+		{
+			"relationship": "imposes",
+			"target": "CNS-900"
 		}
 	]
 }

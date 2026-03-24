@@ -17,8 +17,6 @@ _No references defined._
 - requires [PRO-001](../Process/PRO-001-Validate_Model.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -17,8 +17,6 @@ _No references defined._
 - desires [STR-900](../Story/STR-900-As_a_customer_I_need_full_coverage.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

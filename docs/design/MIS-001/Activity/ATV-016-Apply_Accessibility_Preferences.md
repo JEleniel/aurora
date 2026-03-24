@@ -17,8 +17,6 @@ _No references defined._
 - uses [COM-006](../Component/COM-006-Aurora_Editor_UI.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

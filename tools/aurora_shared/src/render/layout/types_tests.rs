@@ -84,15 +84,6 @@ fn layout_family_parse_is_case_insensitive() {
 		LayoutFamily::parse("Horizontal"),
 		Some(LayoutFamily::TreeLeftRight)
 	);
-	assert_eq!(
-		LayoutFamily::parse("RADIAL_SUBTREE"),
-		Some(LayoutFamily::Radial)
-	);
-	assert_eq!(LayoutFamily::parse("radial1"), Some(LayoutFamily::Radial1));
-	assert_eq!(
-		LayoutFamily::parse("circular"),
-		Some(LayoutFamily::Circular)
-	);
 	assert_eq!(LayoutFamily::parse("unknown"), None);
 }
 
@@ -100,13 +91,7 @@ fn layout_family_parse_is_case_insensitive() {
 fn layout_family_order_matches_tie_break_precedence() {
 	assert_eq!(
 		LayoutFamily::ordered(),
-		&[
-			LayoutFamily::TreeTopDown,
-			LayoutFamily::TreeLeftRight,
-			LayoutFamily::Radial,
-			LayoutFamily::Radial1,
-			LayoutFamily::Circular,
-		]
+		&[LayoutFamily::TreeTopDown, LayoutFamily::TreeLeftRight]
 	);
 }
 

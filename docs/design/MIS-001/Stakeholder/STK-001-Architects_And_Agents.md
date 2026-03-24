@@ -17,8 +17,6 @@ _No references defined._
 - desires [STR-001](../Story/STR-001-Deterministic_Modeling_Experience.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

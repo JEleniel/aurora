@@ -6,7 +6,7 @@
 	"description": "Apply user preferences related to accessibility and appearance (dark mode, font sizing) for the editor UI.",
 	"links": [
 		{
-			"relationship": "includes",
+			"relationship": "starts with",
 			"target": "ATV-016"
 		}
 	]

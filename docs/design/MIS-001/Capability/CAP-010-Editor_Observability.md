@@ -17,8 +17,6 @@ _No references defined._
 - requires [PRO-010](../Process/PRO-010-Configure_Editor_Logging.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -18,8 +18,6 @@ _No references defined._
 - produces [ART-003](../Artifact/ART-003-Compact_Export.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

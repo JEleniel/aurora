@@ -69,8 +69,38 @@
 			"type": "array",
 			"uniqueItems": true
 		},
+		"view_subdomain_definition": {
+			"additionalProperties": false,
+			"properties": {
+				"cards": {
+					"$ref": "#/$defs/card_type_list"
+				},
+				"subsubdomains": {
+					"additionalProperties": {
+						"$ref": "#/$defs/card_type_list"
+					},
+					"type": "object"
+				}
+			},
+			"type": "object"
+		},
+		"view_domain_definition": {
+			"additionalProperties": false,
+			"properties": {
+				"cards": {
+					"$ref": "#/$defs/card_type_list"
+				},
+				"subdomains": {
+					"additionalProperties": {
+						"$ref": "#/$defs/view_subdomain_definition"
+					},
+					"type": "object"
+				}
+			},
+			"type": "object"
+		},
 		"layout_family": {
-			"enum": ["TreeTopDown", "TreeLeftRight", "Radial", "Radial1", "Circular"],
+			"enum": ["TreeTopDown", "TreeLeftRight"],
 			"type": "string"
 		},
 		"view_definition": {
@@ -123,6 +153,12 @@
 		},
 		"cards": {
 			"$ref": "#/$defs/cards"
+		},
+		"domains": {
+			"additionalProperties": {
+				"$ref": "#/$defs/view_domain_definition"
+			},
+			"type": "object"
 		},
 		"views": {
 			"$ref": "#/$defs/views"

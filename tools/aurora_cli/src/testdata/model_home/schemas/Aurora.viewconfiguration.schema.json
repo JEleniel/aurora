@@ -14,7 +14,7 @@
 				"properties": {
 					"layout": {
 						"type": "string",
-						"enum": ["TreeTopDown", "TreeLeftRight", "Radial", "Radial1", "Circular"]
+						"enum": ["TreeTopDown", "TreeLeftRight"]
 					}
 				},
 				"additionalProperties": true

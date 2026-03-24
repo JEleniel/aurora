@@ -185,6 +185,86 @@ fn render_views_fails_on_root_cycle_validation() {
 }
 
 #[test]
+fn render_views_writes_requested_dot_files() {
+	let temp = tempfile::tempdir().expect("tempdir");
+	let model_home = temp.path().join("aurora");
+	let output_dir = temp.path().join("out");
+	let dot_dir = temp.path().join("tmp").join("graphviz");
+	fs::create_dir_all(&model_home).expect("create model home");
+	write_model_home_scaffold(&model_home);
+	fs::write(
+		model_home
+			.join("reference")
+			.join("Aurora.modelconfiguration.json"),
+		read_testdata("model_home/reference/Aurora.modelconfiguration.with_views.json"),
+	)
+	.expect("override modelconfiguration for render-views");
+	fs::write(
+		model_home
+			.join("reference")
+			.join("Aurora.viewconfiguration.json"),
+		read_testdata("model_home/reference/Aurora.viewconfiguration.with_views.json"),
+	)
+	.expect("override viewconfiguration for render-views");
+
+	write_card(
+		&model_home.join("MIS-001-Example.json"),
+		serde_json::json!({
+			"$schema": "./schemas/Aurora.card.schema.json",
+			"id": "MIS-001",
+			"card_type": "Mission",
+			"name": "Mission",
+			"description": "mission",
+			"attributes": {},
+			"links": [{"relationship": "contains", "target": "CAP-001"}]
+		}),
+	);
+	write_card(
+		&model_home
+			.join("MIS-001")
+			.join("Capability")
+			.join("CAP-001-One.json"),
+		serde_json::json!({
+			"$schema": "../../schemas/Aurora.card.schema.json",
+			"id": "CAP-001",
+			"card_type": "Capability",
+			"name": "Cap 1",
+			"description": "cap",
+			"attributes": {},
+			"links": []
+		}),
+	);
+	write_empty_audit_log(&model_home.join("MIS-001"));
+
+	let output = run_cli(&[
+		"--input",
+		model_home.to_str().expect("model home path"),
+		"--log",
+		"error",
+		"render-views",
+		"--output",
+		output_dir.to_str().expect("output path"),
+		"--dot-output",
+		dot_dir.to_str().expect("dot path"),
+	]);
+	assert!(
+		output.status.success(),
+		"expected render-views success. stderr:\n{}",
+		String::from_utf8_lossy(&output.stderr)
+	);
+
+	let dot_path = dot_dir.join("MIS-001").join("Views").join("Test_View.dot");
+	assert!(
+		dot_path.is_file(),
+		"expected DOT file at {}",
+		dot_path.display()
+	);
+	let dot = fs::read_to_string(&dot_path).expect("read dot output");
+	assert!(dot.contains("digraph aurora"));
+	assert!(dot.contains("\"MIS-001\" -> \"CAP-001\""));
+}
+
+#[test]
 fn compact_requires_valid_model() {
 	let temp = tempfile::tempdir().expect("tempdir");
 	let model_home = temp.path().join("aurora");
@@ -261,7 +341,11 @@ fn upgrade_migrates_attribute_references_into_external_references() {
 		"error",
 		"upgrade",
 	]);
-	assert!(output.status.success(), "upgrade should succeed");
+	assert!(
+		output.status.success(),
+		"upgrade should succeed. stderr:\n{}",
+		String::from_utf8_lossy(&output.stderr)
+	);
 
 	let upgraded: serde_json::Value =
 		serde_json::from_str(&fs::read_to_string(&mission_path).expect("read mission"))
@@ -320,7 +404,16 @@ fn upgrade_bootstraps_required_assets_and_prunes_outdated_files() {
 		model_home.to_str().expect("model home path"),
 		"upgrade",
 	]);
-	assert!(output.status.success(), "upgrade should succeed");
+	let load_error = aurora_shared::Aurora::try_load(&model_home)
+		.err()
+		.map(|error| error.to_string())
+		.unwrap_or_else(|| "Aurora::try_load succeeded".to_string());
+	assert!(
+		output.status.success(),
+		"upgrade should succeed. stderr:\n{}\npost-upgrade load: {}",
+		String::from_utf8_lossy(&output.stderr),
+		load_error
+	);
 
 	for file in [
 		"Aurora.audit.schema.json",
@@ -345,4 +438,57 @@ fn upgrade_bootstraps_required_assets_and_prunes_outdated_files() {
 	assert!(!schemas_dir.join("Legacy.schema.json").exists());
 	assert!(!reference_dir.join("Legacy.reference.json").exists());
 	assert!(!reference_dir.join("SVGTemplate.svg").exists());
+}
+
+#[test]
+fn upgrade_adds_default_domains_when_missing() {
+	let temp = tempfile::tempdir().expect("tempdir");
+	let model_home = temp.path().join("aurora");
+	fs::create_dir_all(&model_home).expect("create model home");
+	write_model_home_scaffold(&model_home);
+	write_card(
+		&model_home.join("MIS-001-Example.json"),
+		serde_json::json!({
+			"$schema": "./schemas/Aurora.card.schema.json",
+			"id": "MIS-001", "card_type": "Mission", "name": "Mission", "description": "mission",
+			"attributes": {}, "links": []
+		}),
+	);
+	write_empty_audit_log(&model_home.join("MIS-001"));
+
+	let output = run_cli(&[
+		"--input",
+		model_home.to_str().expect("model home path"),
+		"upgrade",
+	]);
+	let load_error = aurora_shared::Aurora::try_load(&model_home)
+		.err()
+		.map(|error| error.to_string())
+		.unwrap_or_else(|| "Aurora::try_load succeeded".to_string());
+	assert!(
+		output.status.success(),
+		"upgrade should succeed. stderr:\n{}\npost-upgrade load: {}",
+		String::from_utf8_lossy(&output.stderr),
+		load_error
+	);
+
+	let upgraded: serde_json::Value = serde_json::from_str(
+		&fs::read_to_string(
+			model_home
+				.join("reference")
+				.join("Aurora.viewconfiguration.json"),
+		)
+		.expect("read upgraded view config"),
+	)
+	.expect("parse upgraded view config");
+	assert_eq!(
+		upgraded.get("version").and_then(|v| v.as_str()),
+		Some("1.1.0")
+	);
+	assert!(
+		upgraded
+			.get("domains")
+			.and_then(|v| v.as_object())
+			.is_some()
+	);
 }

@@ -18,8 +18,6 @@ _No references defined._
 - returns [ART-014](../Artifact/ART-014-Model_Tool_Call_Result.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

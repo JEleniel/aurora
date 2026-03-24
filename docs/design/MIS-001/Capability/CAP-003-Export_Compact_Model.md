@@ -17,8 +17,6 @@ _No references defined._
 - requires [PRO-003](../Process/PRO-003-Export_Compact_Model.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

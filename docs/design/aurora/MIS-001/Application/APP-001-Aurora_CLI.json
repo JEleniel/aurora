@@ -12,6 +12,18 @@
 		{
 			"relationship": "comprises",
 			"target": "COM-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-001"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-002"
+		},
+		{
+			"relationship": "implements",
+			"target": "FEA-003"
 		}
 	]
 }

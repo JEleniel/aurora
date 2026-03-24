@@ -6,7 +6,7 @@
 #[cfg(test)]
 use super::LayoutEdge;
 use super::render_error::RenderError;
-use super::{Layout, LayoutFamily};
+use super::{Layout, LayoutFamily, LayoutPoint};
 use crate::SvgTemplateDefs;
 use crate::registry::CardRegistry;
 use crate::{Card, Model};
@@ -31,6 +31,8 @@ pub struct SvgConfig {
 	pub node_spacing_px: i32,
 	/// Base font size in pixels.
 	pub base_font_size_px: i32,
+	/// Optional flattened domain path assignment by card acronym.
+	pub domain_paths_by_acronym: HashMap<String, Vec<String>>,
 	/// How edges should be drawn.
 	pub edge_style: EdgeStyle,
 }
@@ -42,6 +44,7 @@ impl Default for SvgConfig {
 		Self {
 			node_spacing_px: 392,
 			base_font_size_px,
+			domain_paths_by_acronym: HashMap::new(),
 			edge_style: EdgeStyle::Orthogonal,
 		}
 	}
@@ -67,10 +70,7 @@ impl Svg {
 	) -> Result<String, RenderError> {
 		let base_size: u32 = svg_template.len() as u32;
 
-		let mut config = config.unwrap_or_default();
-		if matches!(layout.family, Some(LayoutFamily::Radial)) {
-			config.node_spacing_px = (config.node_spacing_px / 2).max(120);
-		}
+		let config = config.unwrap_or_default();
 		let template_shape_ids = collect_template_shape_ids(svg_template);
 
 		let cards_by_id = index_cards(model)?;
@@ -85,6 +85,7 @@ impl Svg {
 		let mut edges_svg = String::new();
 		let mut edge_bounds: Vec<geom::Bounds> = Vec::new();
 		let mut edge_points: Vec<geom::PointF> = Vec::new();
+		let domains_svg = render_domains(&cards_by_id, &positioned, &config);
 		let boundaries_svg = render_boundaries(&cards_by_id, &positioned, &config);
 		let (note_edges_svg, note_shapes_svg, note_labels_svg, note_bounds, note_points) =
 			render_note_callouts(&cards_by_id, &positioned, &config);
@@ -163,6 +164,9 @@ impl Svg {
 		}
 
 		let mut content = String::new();
+		if !domains_svg.is_empty() {
+			content.push_str(format!("<g id=\"domains\">{}</g>", domains_svg).as_str());
+		}
 		if !boundaries_svg.is_empty() {
 			content.push_str(format!("<g id=\"boundaries\">{}</g>", boundaries_svg).as_str());
 		}
@@ -250,28 +254,41 @@ fn materialize_layout_routes(
 	positioned: &HashMap<String, node::PositionedNode>,
 ) -> Result<Vec<edge::Route>, RenderError> {
 	let mut routes = Vec::with_capacity(layout.edges.len());
+	let mut fallback_routes: Option<HashMap<(String, String), Vec<geom::PointF>>> = None;
 	for edge_def in &layout.edges {
+		let source = positioned
+			.get(edge_def.a.as_str())
+			.ok_or(RenderError::SvgRouteFailed)?;
+		let target = positioned
+			.get(edge_def.b.as_str())
+			.ok_or(RenderError::SvgRouteFailed)?;
 		let key = (edge_def.a.clone(), edge_def.b.clone());
-		let points = layout.routes.get(&key).ok_or(RenderError::SvgRouteFailed)?;
-		if points.len() < 2 {
-			return Err(RenderError::SvgRouteFailed);
-		}
-		if !positioned.contains_key(edge_def.a.as_str())
-			|| !positioned.contains_key(edge_def.b.as_str())
-		{
-			return Err(RenderError::SvgRouteFailed);
-		}
+		let points = if route_points_need_fallback(layout.family, layout.routes.get(&key)) {
+			if fallback_routes.is_none() {
+				fallback_routes = Some(
+					edge_router::route_edges(
+						positioned,
+						layout.edges.as_slice(),
+						&SvgConfig::default(),
+					)?
+					.into_iter()
+					.map(|route| ((route.source_id, route.target_id), route.points))
+					.collect(),
+				);
+			}
+			fallback_routes
+				.as_ref()
+				.and_then(|routes| routes.get(&key))
+				.cloned()
+				.unwrap_or_else(|| vec![source.bbox.center(), target.bbox.center()])
+		} else {
+			materialize_route_points(layout.routes.get(&key), source, target)
+		};
 		let mut route = edge::Route {
 			edge_id: format!("{}->{}#0", edge_def.a, edge_def.b),
 			source_id: edge_def.a.clone(),
 			target_id: edge_def.b.clone(),
-			points: points
-				.iter()
-				.map(|point| geom::PointF {
-					x: point.x,
-					y: point.y,
-				})
-				.collect(),
+			points,
 			junction_ids: Vec::new(),
 			track_id: format!("{}->{}", edge_def.a, edge_def.b),
 			arrow: [geom::PointF { x: 0.0, y: 0.0 }; 3],
@@ -281,6 +298,46 @@ fn materialize_layout_routes(
 		routes.push(route);
 	}
 	Ok(routes)
+}
+
+fn route_points_need_fallback(
+	family: Option<LayoutFamily>,
+	points: Option<&Vec<LayoutPoint>>,
+) -> bool {
+	let Some(points) = points else {
+		return true;
+	};
+	if points.len() < 2 {
+		return true;
+	}
+	matches!(
+		family,
+		Some(LayoutFamily::TreeTopDown | LayoutFamily::TreeLeftRight)
+	) && points.windows(2).any(|segment| {
+		let dx = (segment[0].x - segment[1].x).abs();
+		let dy = (segment[0].y - segment[1].y).abs();
+		dx > 1.0 && dy > 1.0
+	})
+}
+
+fn materialize_route_points(
+	points: Option<&Vec<LayoutPoint>>,
+	source: &node::PositionedNode,
+	target: &node::PositionedNode,
+) -> Vec<geom::PointF> {
+	let Some(points) = points else {
+		return vec![source.bbox.center(), target.bbox.center()];
+	};
+	if points.len() < 2 {
+		return vec![source.bbox.center(), target.bbox.center()];
+	}
+	points
+		.iter()
+		.map(|point| geom::PointF {
+			x: point.x,
+			y: point.y,
+		})
+		.collect()
 }
 
 fn compute_viewbox(
@@ -350,6 +407,15 @@ fn grow_rect(r: geom::RectI, pad: i32) -> geom::RectI {
 	}
 }
 
+fn render_domains(
+	cards_by_id: &HashMap<String, &Card>,
+	positioned: &HashMap<String, node::PositionedNode>,
+	config: &SvgConfig,
+) -> String {
+	let _ = (cards_by_id, positioned, config);
+	String::new()
+}
+
 fn render_boundaries(
 	cards_by_id: &HashMap<String, &Card>,
 	positioned: &HashMap<String, node::PositionedNode>,
@@ -384,6 +450,16 @@ fn render_boundaries(
 		}
 	}
 
+	render_group_frames(bounds_by_path, config, "aurora-boundary", "#6b7280", None)
+}
+
+fn render_group_frames(
+	bounds_by_path: HashMap<String, geom::RectI>,
+	config: &SvgConfig,
+	class_name: &str,
+	stroke: &str,
+	fill: Option<&str>,
+) -> String {
 	let mut items: Vec<(String, geom::RectI)> = bounds_by_path.into_iter().collect();
 	items.sort_by(|left, right| {
 		left.0
@@ -392,8 +468,10 @@ fn render_boundaries(
 			.cmp(&right.0.matches('.').count())
 			.then_with(|| left.0.cmp(&right.0))
 	});
-
 	let pad = (config.base_font_size_px / 2).max(8);
+	let fill_style = fill
+		.map(|value| format!("fill:{value};fill-opacity:0.35;"))
+		.unwrap_or_else(|| "fill:none;".to_string());
 	let mut out = String::new();
 	for (path, rect) in items {
 		let label = path.rsplit('.').next().unwrap_or(path.as_str()).trim();
@@ -403,20 +481,24 @@ fn render_boundaries(
 		let frame = grow_rect(rect, pad);
 		let label_x = frame.x + (frame.w / 2);
 		let label_y = frame.y + config.base_font_size_px + 2;
-		out.push_str(&format!(
-			"<g class=\"aurora-boundary\" data-boundary=\"{}\"><rect x=\"{}\" y=\"{}\" width=\"{}\" height=\"{}\" style=\"fill:none;stroke:#6b7280;stroke-width:2;stroke-dasharray:12 8;\" /><text x=\"{}\" y=\"{}\" style=\"fill:#4b5563;stroke:none;font-size:{}px;text-anchor:middle;\">{}</text></g>",
+		out.push_str(format!(
+			"<rect class=\"{}\" data-group=\"{}\" x=\"{}\" y=\"{}\" width=\"{}\" height=\"{}\" style=\"{}stroke:{};stroke-width:2;stroke-dasharray:12 8;\" /><text class=\"{}-label\" data-group=\"{}\" x=\"{}\" y=\"{}\" style=\"fill:#4b5563;stroke:none;font-size:{}px;text-anchor:middle;\">{}</text>",
+			class_name,
 			escape_attr(path.as_str()),
 			frame.x,
 			frame.y,
 			frame.w,
 			frame.h,
+			fill_style,
+			stroke,
+			class_name,
+			escape_attr(path.as_str()),
 			label_x,
 			label_y,
 			config.base_font_size_px,
 			node::escape_text(label)
-		));
+		).as_str());
 	}
-
 	out
 }
 
@@ -1173,16 +1255,165 @@ mod tests {
 			}],
 			routes: HashMap::new(),
 		};
+		let config = super::SvgConfig {
+			domain_paths_by_acronym: HashMap::from([
+				("MIS".to_string(), vec!["Governance".to_string()]),
+				(
+					"C".to_string(),
+					vec!["Governance".to_string(), "Process".to_string()],
+				),
+			]),
+			..super::SvgConfig::default()
+		};
 
-		let svg = super::Svg::render(&model, &layout, &registry, svg_template.as_str(), None)
-			.expect("svg render");
+		let svg = super::Svg::render(
+			&model,
+			&layout,
+			&registry,
+			svg_template.as_str(),
+			Some(config),
+		)
+		.expect("svg render");
 		assert!(!svg.contains("fill:#00000000;stroke:#000000"));
+		assert!(!svg.contains("id=\"domains\""));
+		assert!(!svg.contains("aurora-domain"));
 		assert!(svg.contains("id=\"aurora-bg\""));
 		assert!(svg.contains("id=\"aurora-bg\" x=\"0\" y=\"0\""));
 		assert!(svg.contains("viewBox=\"0 0 "));
 		assert!(svg.contains("stroke:none"));
 		assert!(!svg.contains("dominant-baseline:middle"));
 		assert!(svg.contains("id=\"aurora-content\" transform=\"translate("));
+	}
+
+	#[test]
+	fn materialize_layout_routes_falls_back_when_graphviz_route_is_missing() {
+		let positioned = HashMap::from([
+			(
+				"A".to_string(),
+				node::PositionedNode {
+					bbox: geom::RectI {
+						x: 0,
+						y: 0,
+						w: 100,
+						h: 60,
+					},
+					width_px: 100,
+					height_px: 60,
+					geom: node::NodeGeom {
+						width_px: 100,
+						height_px: 60,
+						lines: Vec::new(),
+						bold_line_index: None,
+						description_start_index: 0,
+					},
+				},
+			),
+			(
+				"B".to_string(),
+				node::PositionedNode {
+					bbox: geom::RectI {
+						x: 200,
+						y: 0,
+						w: 100,
+						h: 60,
+					},
+					width_px: 100,
+					height_px: 60,
+					geom: node::NodeGeom {
+						width_px: 100,
+						height_px: 60,
+						lines: Vec::new(),
+						bold_line_index: None,
+						description_start_index: 0,
+					},
+				},
+			),
+		]);
+		let layout = crate::render::Layout {
+			family: Some(crate::render::LayoutFamily::TreeTopDown),
+			coordinate_space: crate::render::LayoutCoordinateSpace::Pixels,
+			nodes: HashMap::new(),
+			edges: vec![crate::render::LayoutEdge {
+				a: "A".to_string(),
+				b: "B".to_string(),
+			}],
+			routes: HashMap::new(),
+		};
+
+		let routes = super::materialize_layout_routes(&layout, &positioned)
+			.expect("route fallback should succeed");
+		assert_eq!(routes.len(), 1);
+		assert!(routes[0].points.windows(2).all(|segment| {
+			(segment[0].x - segment[1].x).abs() <= 1.0 || (segment[0].y - segment[1].y).abs() <= 1.0
+		}));
+	}
+
+	#[test]
+	fn materialize_layout_routes_rejects_diagonal_tree_segments() {
+		let positioned = HashMap::from([
+			(
+				"A".to_string(),
+				node::PositionedNode {
+					bbox: geom::RectI {
+						x: 0,
+						y: 0,
+						w: 100,
+						h: 60,
+					},
+					width_px: 100,
+					height_px: 60,
+					geom: node::NodeGeom {
+						width_px: 100,
+						height_px: 60,
+						lines: Vec::new(),
+						bold_line_index: None,
+						description_start_index: 0,
+					},
+				},
+			),
+			(
+				"B".to_string(),
+				node::PositionedNode {
+					bbox: geom::RectI {
+						x: 220,
+						y: 220,
+						w: 100,
+						h: 60,
+					},
+					width_px: 100,
+					height_px: 60,
+					geom: node::NodeGeom {
+						width_px: 100,
+						height_px: 60,
+						lines: Vec::new(),
+						bold_line_index: None,
+						description_start_index: 0,
+					},
+				},
+			),
+		]);
+		let layout = crate::render::Layout {
+			family: Some(crate::render::LayoutFamily::TreeTopDown),
+			coordinate_space: crate::render::LayoutCoordinateSpace::Pixels,
+			nodes: HashMap::new(),
+			edges: vec![crate::render::LayoutEdge {
+				a: "A".to_string(),
+				b: "B".to_string(),
+			}],
+			routes: HashMap::from([(
+				("A".to_string(), "B".to_string()),
+				vec![
+					crate::render::LayoutPoint { x: 50.0, y: 30.0 },
+					crate::render::LayoutPoint { x: 270.0, y: 250.0 },
+				],
+			)]),
+		};
+
+		let routes = super::materialize_layout_routes(&layout, &positioned)
+			.expect("route repair should succeed");
+		assert!(routes[0].points.windows(2).all(|segment| {
+			(segment[0].x - segment[1].x).abs() <= 1.0 || (segment[0].y - segment[1].y).abs() <= 1.0
+		}));
 	}
 
 	#[test]
@@ -1212,6 +1443,29 @@ mod tests {
 		assert!(ids.contains("rectangle"));
 		assert!(ids.contains("hexagon"));
 		assert!(!ids.contains("i-wrench"));
+	}
+
+	#[test]
+	fn render_group_frames_flattens_boundary_wrappers() {
+		let frames = super::render_group_frames(
+			HashMap::from([(
+				"Governance.Process".to_string(),
+				geom::RectI {
+					x: 10,
+					y: 20,
+					w: 30,
+					h: 40,
+				},
+			)]),
+			&super::SvgConfig::default(),
+			"aurora-boundary",
+			"#64748b",
+			Some("#eff6ff"),
+		);
+
+		assert!(frames.contains("<rect class=\"aurora-boundary\""));
+		assert!(frames.contains("<text class=\"aurora-boundary-label\""));
+		assert!(!frames.contains("<g class=\"aurora-boundary\""));
 	}
 
 	#[test]

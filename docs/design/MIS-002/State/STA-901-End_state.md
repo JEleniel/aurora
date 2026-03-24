@@ -14,13 +14,12 @@ _No references defined._
 
 ## Links
 
-- handles [EVT-901](../Event/EVT-901-Downstream_event.md)
+- triggers [EVT-901](../Event/EVT-901-Downstream_event.md)
 
-
-## Version
 
 ## Audit Log
 
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T00:15:00Z | architect | create |
+| 2026-03-22T00:03:40Z | Copilot | change |

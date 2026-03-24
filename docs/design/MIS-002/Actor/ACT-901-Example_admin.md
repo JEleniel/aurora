@@ -17,8 +17,6 @@ _No references defined._
 - performs [ATV-900](../Activity/ATV-900-Perform_example_activity.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -5,14 +5,5 @@
 	"card_subtype": "Module",
 	"name": "Aurora Editor UI",
 	"description": "Dioxus-based desktop UI responsible for interactive navigation (mind-map-like centered views), editing surfaces, agent-assisted modeling UX (chat, activity feed, diff preview), and accessibility/theming preferences.",
-	"links": [
-		{
-			"relationship": "implements",
-			"target": "FEA-010"
-		},
-		{
-			"relationship": "implements",
-			"target": "FEA-013"
-		}
-	]
+	"links": []
 }

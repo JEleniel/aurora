@@ -17,8 +17,6 @@ _No references defined._
 - persists to [DST-900](../Data_Store/DST-900-Relational_store.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

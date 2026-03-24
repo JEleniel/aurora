@@ -6,11 +6,11 @@
 	"description": "A process-domain trigger that demonstrates the full Trigger relationship set.",
 	"links": [
 		{
-			"relationship": "initiates",
+			"relationship": "triggers",
 			"target": "ATV-900"
 		},
 		{
-			"relationship": "initiates",
+			"relationship": "triggers",
 			"target": "CON-900"
 		},
 		{

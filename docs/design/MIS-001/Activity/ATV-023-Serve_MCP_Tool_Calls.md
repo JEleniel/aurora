@@ -16,12 +16,12 @@ _No references defined._
 
 - uses [COM-010](../Component/COM-010-Aurora_MCP_Server.md)
 - produces [ART-014](../Artifact/ART-014-Model_Tool_Call_Result.md)
+- leads to [ATV-009](ATV-009-Load_Model_Home.md)
 
-
-## Version
 
 ## Audit Log
 
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-21T18:00:00Z | Architect | create |
+| 2026-03-22T00:31:40Z | Copilot | change |

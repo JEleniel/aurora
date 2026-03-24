@@ -10,52 +10,28 @@
 			"target": "DRI-900"
 		},
 		{
-			"relationship": "involves",
+			"relationship": "has",
 			"target": "STK-900"
 		},
 		{
-			"relationship": "involves",
+			"relationship": "has",
 			"target": "STK-901"
 		},
 		{
-			"relationship": "involves",
+			"relationship": "has",
 			"target": "STK-902"
 		},
 		{
-			"relationship": "involves",
+			"relationship": "has",
 			"target": "STK-903"
 		},
 		{
-			"relationship": "involves",
+			"relationship": "has",
 			"target": "STK-904"
-		},
-		{
-			"relationship": "involves",
-			"target": "ACT-900"
-		},
-		{
-			"relationship": "involves",
-			"target": "ACT-901"
-		},
-		{
-			"relationship": "involves",
-			"target": "ACT-902"
-		},
-		{
-			"relationship": "involves",
-			"target": "ACT-903"
-		},
-		{
-			"relationship": "involves",
-			"target": "VND-900"
 		},
 		{
 			"relationship": "necessitates",
 			"target": "SYS-900"
-		},
-		{
-			"relationship": "necessitates",
-			"target": "APP-900"
 		},
 		{
 			"relationship": "remediates",

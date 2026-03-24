@@ -25,10 +25,6 @@
 		{
 			"relationship": "exposes",
 			"target": "INT-006"
-		},
-		{
-			"relationship": "implements",
-			"target": "FEA-013"
 		}
 	]
 }

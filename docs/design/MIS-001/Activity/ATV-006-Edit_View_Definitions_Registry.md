@@ -17,8 +17,6 @@ _No references defined._
 - produces [ART-006](../Artifact/ART-006-View_Definitions_Registry.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

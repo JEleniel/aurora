@@ -19,8 +19,6 @@ _No references defined._
 - requires [CAP-003](../Capability/CAP-003-Export_Compact_Model.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

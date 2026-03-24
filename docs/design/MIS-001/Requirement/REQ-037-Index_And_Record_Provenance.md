@@ -18,8 +18,6 @@ _No references defined._
 - requires [CAP-006](../Capability/CAP-006-Load_Model_Homes.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

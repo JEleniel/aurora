@@ -20,8 +20,6 @@ _No references defined._
 - produces [ART-005](../Artifact/ART-005-Canonical_Definitions_Registry.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

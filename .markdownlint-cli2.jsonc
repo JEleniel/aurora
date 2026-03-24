@@ -1,5 +1,5 @@
 {
-	"$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/v0.20.0/schema/markdownlint-cli2-config-schema.json",
+	"$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint/refs/tags/v0.40.0/schema/markdownlint-config-schema.json",
 	"config": {
 		"blanks-around-fences": true,
 		"blanks-around-lists": true,
@@ -25,7 +25,8 @@
 			"style": "consistent"
 		},
 		"line-length": false,
-		"link-fragments": true,
+		"link-fragments": false,
+		"MD051": false,
 		"link-image-reference-definitions": true,
 		"link-image-style": {
 			"autolink": true,
@@ -41,6 +42,7 @@
 			"ul_multi": 1,
 			"ul_single": 1
 		},
+		"MD060": false,
 		"no-alt-text": true,
 		"no-bare-urls": true,
 		"no-blanks-blockquote": true,
@@ -48,8 +50,10 @@
 			"siblings_only": true
 		},
 		"no-emphasis-as-heading": true,
-		"no-empty-links": true,
-		"no-hard-tabs": true,
+		"no-empty-links": false,
+		"no-hard-tabs": {
+			"code_blocks": false
+		},
 		"no-inline-html": false,
 		"no-missing-space-atx": true,
 		"no-multiple-blanks": true,
@@ -64,7 +68,9 @@
 			"br_spaces": 0,
 			"strict": true
 		},
-		"ol-prefix": false,
+		"ol-prefix": {
+			"style": "ordered"
+		},
 		"reference-links-images": true,
 		"single-h1": true,
 		"single-title": true,
@@ -81,8 +87,7 @@
 		},
 		"ul-style": {
 			"style": "dash"
-		},
-		"MD060": false
+		}
 	},
 	"fix": false
 }
