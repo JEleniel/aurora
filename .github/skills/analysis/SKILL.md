@@ -9,6 +9,7 @@ This skill produces a formal, clean-room analysis of source code structure from 
 
 ## General Guidelines
 
+- If available, refer to the Aurora compact model for additional context.
 - Evidence-First Analysis Focus: Base findings on observable code structure, dependency relationships, and verified behavior in the repository.
 - Scope Discipline Focus: Establish the analysis scope early and keep the depth of analysis proportional to that scope.
 - Systemic Thinking Focus: Evaluate how modules, layers, functions, and data flow interact rather than treating issues as isolated local defects.

@@ -1,3 +1,5 @@
+<!-- AGENT: Do not read or modify this file without specific instructions. -->
+
 # Future Roadmap (Aurora v3)
 
 ## Purpose

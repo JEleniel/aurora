@@ -1,8 +1,24 @@
 # View Layout Requirements
 
-While the current layout and routing produce a clean, grid-based layout, it is not always the best option for every view. In order to present more user-friendly diagrams, multiple layouts are required. This specification details the improved layout goals for each of the canonical views.
+Aurora's current view renderer is Graphviz-backed. Layout selection and routing are delegated to `aurora_shared`, which maps the layout family to `dot`, `twopi`, `neato`, or `circo` as appropriate. This document keeps the layout-family vocabulary used by configuration and user-facing docs; the detailed algorithmic sections below are historical design notes and do not describe the live renderer.
 
 Unless otherwise specified, ordering is by `id` left to right, top to bottom.
+
+## Current layout families
+
+Aurora recognizes five layout families in configuration and rendering:
+
+- **TreeTopDown** maps to `dot` with top-to-bottom flow.
+- **TreeLeftRight** maps to `dot` with left-to-right flow.
+- **Radial** maps to `twopi` for centered radial subtrees.
+- **Radial1** maps to `neato` for the alternate radial variant.
+- **Circular** maps to `circo` for circular layouts.
+
+Legacy names such as `vertical`, `horizontal`, and `radial_subtree` remain accepted by the parser for compatibility.
+
+## Historical layout goals
+
+The sections below are retained as prior design language for reference only. The live renderer uses the Graphviz-backed behavior described above.
 
 ## Global constraints and conventions
 

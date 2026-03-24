@@ -8,9 +8,7 @@ description: Use this skill when writing or updating documentation, including in
 ## General guidelines
 
 - This skill must **never** generate, modify, or suggest changes to source code beyond documentation comments.
-- If a `docs/design/aurora/` folder exists, you may read and follow the [Aurora Compact Model](../../aurora/Aurora.compact.instructions.md) to understand the design.
-    - The Aurora Compact Model exists to save time and tokens by keeping key information in a single compact (thus the name) file.
-    - Use the full Aurora instructions only when applying the Architecture skill.
+- If available, refer to the Aurora compact model for additional context.
 - Accuracy-First Mindset: Treat every claim as potentially wrong until verified against source-of-truth artifacts.
 - Task-Completion Focus: Prioritize whether a reader can complete the task safely and correctly.
 - Security and Privacy Awareness: Ensure guidance does not expose secrets, Non-Public Information (NPI), or unsafe operational patterns.

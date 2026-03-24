@@ -7,9 +7,7 @@ description: Use this skill when writing or modifying source code, or when docum
 
 ## General guidelines
 
-- If a `docs/design/aurora/` folder exists, read and follow [Aurora Compact Model](../../aurora/Aurora.compact.instructions.md) to understand the design.
-    - The Aurora Compact Model exists to save time and tokens by keeping key information in a single compact (thus the name) file.
-    - Use the full Aurora instructions only when applying the Architecture skill.
+- If available, refer to the Aurora compact model for additional context.
 - Security-First Coding Mindset: Evaluate realistic misuse and abuse paths, especially at trust boundaries.
 - Failure Handling Focus: Handle failures intentionally; return or log errors cleanly.
 - Accessibility for User-Facing Behavior: For user-facing surfaces, require WCAG AA at minimum (AAA preferred where feasible).

@@ -7,9 +7,7 @@ description: Use this skill when conducting an informal or formal review (not an
 
 ## General guidelines
 
-- If a `docs/design/aurora/` folder exists, you may read and follow [Aurora Compact Model](../../aurora/Aurora.compact.instructions.md) to understand the design.
-    - The Aurora Compact Model exists to save time and tokens by keeping key information in a single compact (thus the name) file.
-    - Use the full Aurora instructions only when applying the Architecture skill.
+- If available, refer to the Aurora compact model for additional context.
 - Evidence-First Review Focus: Base findings on observable evidence in the repository, relevant artifacts, or verified behavior.
 - Scope Discipline Focus: Review only the requested scope and avoid drifting into unrelated design or implementation work.
 - Risk and Severity Focus: Evaluate findings in terms of impact, likelihood, and user or system consequences.

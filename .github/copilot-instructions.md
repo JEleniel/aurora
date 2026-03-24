@@ -3,12 +3,8 @@
 His praeceptis sine exceptione pare.
 
 The terms MUST and MUST NOT mean that the instruction is invariant and failure to obey is unacceptable in all circumstances.
-The terms MUST and MUST NOT mean that the instruction is invariant and failure to obey is unacceptable in all circumstances.
 
 **You are working on code for a high-risk environment. Security, reliability, and provability are top priorities. Failure of this code could lead to significant losses, up to and including deaths.**
-**You are working on code for a high-risk environment. Security, reliability, and provability are top priorities. Failure of this code could lead to significant losses, up to and including deaths.**
-
-## Instruction Precedence
 
 ## Instruction Precedence
 
@@ -20,13 +16,6 @@ Instructions MUST be obeyed in the following order, earlier overriding later:
 4. Skills and applicable instructions files
 5. Repo Instructions (this file)
 6. Tool configurations, defaults, and generated templates
-7. Skills and applicable instructions files
-8. Repo Instructions (this file)
-9. Tool configurations, defaults, and generated templates
-
-If anything prevents compliance with any instructions, you MUST stop and notify the user of the conflict.
-
-## Work Tracking
 
 If anything prevents compliance with any instructions, you MUST stop and notify the user of the conflict.
 
@@ -46,10 +35,7 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 
 ## Behavior
 
-- You have the knowledge and skills of a senior team member. Work like one; look at everything with a critical eye, view it from an adversarial perspective, and never gloss over, brush aside, or treat as trivial any detail.
-- When working with more than one file, break the work up to work with as few files at a time as possible. Avoid working with more than three files at a time whenever possible.
-- Keep your responses concise, accurate, and focused. Avoid unnecessary detail, and if possible do not narrate every action.
-- Maintain a professional tone at all times.
+- If available, refer to the Aurora compact model at `docs/design/aurora/MIS**/Compact.json` for additional context.
 - You have the knowledge and skills of a senior team member. Work like one; look at everything with a critical eye, view it from an adversarial perspective, and never gloss over, brush aside, or treat as trivial any detail.
 - When working with more than one file, break the work up to work with as few files at a time as possible. Avoid working with more than three files at a time whenever possible.
 - Keep your responses concise, accurate, and focused. Avoid unnecessary detail, and if possible do not narrate every action.
@@ -59,14 +45,11 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 ## Common Project Folders
 
 - User documentation is at `docs/` and starts at `docs/README.md` (if present).
-- The working copy of the Aurora model is at `docs/design/aurora/MIS*/Compact.json` (the compact model).
-- The working copy of the Aurora model is at `docs/design/aurora/MIS*/Compact.json` (the compact model).
 - Working assets (styles, images) are at `assets/`.
 - Design documentation is at `docs/design/` and Aurora models at `docs/design/aurora/`.
     - The following files and folders are generated and should be ignored:
-    - The following files and folders are generated and should be ignored:
-        - `docs/design/MIS-*/**/*`
-        - `docs/design/MIS-*.md`
+        - `docs/design/MIS-**/**/*`
+        - `docs/design/MIS-**.md`
         - `docs/design/README-MIS-*`
 - Quality analysis and reviews are at `docs/design/analysis`.
 
@@ -80,6 +63,7 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 - When adding dependencies, you MUST consult current, authoritative documentation before making decisions that could affect correctness or security.
 - You MUST NOT modify `.github/**/*` unless the user asks.
 - You MUST NOT revert changes you did not make. This includes when you reread a document to make edits. You MUST NOT overwrite these collaborative edits.
+- You MUST NOT ever revert a change that happens between your reads of a file.
 - You MUST NOT alter files outside the specific task you were instructed to perform.
 - You MUST NOT delete _any_ file without direct permission from the user.
 - You MUST NOT try to read a URL that ends in a data or configuration file extension, such as `yml`, `yaml`, or `toml`.
@@ -94,6 +78,7 @@ With each commit, maintain the `CHANGELOG.md`, in Keep a Changelog format. Do no
 - If present, you MUST read the [Project Summary](../docs/design/ProjectSummary.md) which contains details specific to this project and repository.
 - After each set of changes, you MUST run the narrowest relevant verification. It is not necessary to validate after every individual change.
 - You MUST NOT end your turn or call work complete until all worked code validates, including linting and formatting.
+- You MUST NOT "optimize things away". You MUST NOT remove things unless you fully understand why they are there in the first place.
 
 ## Startegic Thinking Approach
 
