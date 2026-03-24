@@ -57,7 +57,7 @@ This document specifies requirements and expectations for Aurora MCP server. It 
 
 ### Views and rendering
 
-- If the MCP surface exposes view rendering, the server MUST use the shared renderer behavior defined in `docs/design/ViewLayouts.md`.
+- If the MCP surface exposes view rendering, the server MUST use the current Graphviz-backed renderer defined in `docs/design/ViewLayouts.md`.
     - Architectural placement and ownership boundaries for rendering are defined in `docs/design/ViewRenderingArchitecture.md`.
 
 ### Editing, Validation, and Linting

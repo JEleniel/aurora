@@ -185,6 +185,191 @@
 
 ---
 
-## Rework pending
+## Remaining work
 
-The incomplete plan items have been removed for rework. The completed foundation above is the only retained content in this draft.
+### Phase 4 — Review gates
+
+18. [x] P0: Reconfirm remaining editor and MCP scope
+    - Description: Re-read the synced editor, MCP, and shared-library docs against the current codebase to lock the remaining backlog before implementation.
+    - Deliverables:
+        - Remaining gaps list aligned with the current as-built state.
+        - Backlog order updated to reflect the current implementation baseline.
+    - References: `docs/design/AuroraEditor.md`, `docs/design/AuroraMCP.md`
+    - Depends on: none
+
+19. [x] P0: Reconfirm shared architecture boundaries
+    - Description: Revalidate the ownership split between `aurora_shared`, `aurora_editor`, and `aurora_mcp` before feature work begins.
+    - Deliverables:
+        - Boundary notes for model writes, tool calls, and archive operations.
+        - Any required ADR updates identified.
+    - References: `docs/design/ViewRenderingArchitecture.md`
+    - Depends on: 18
+
+### Phase 5 — Editor mutation surface
+
+20. [x] P0: Add selected-card field editing
+    - Description: Add in-place editing for the selected card's fields in the right-sidebar inspector.
+    - Deliverables:
+        - Scalar card fields are editable from the inspector.
+        - Invalid edits are rejected before write.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 1, 19
+
+21. [ ] P0: Add card-link editing actions
+    - Description: Add create and delete controls for card links in the editor.
+    - Deliverables:
+        - Link create and delete actions are available from the editor UI.
+        - Link writes are validation-gated and logged through the model layer.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 20
+
+22. [ ] P0: Wire editor save and autosave
+    - Description: Wire explicit save and autosave behavior to the shared write path for validated editor changes.
+    - Deliverables:
+        - Manual save persists the current validated editor state.
+        - Autosave persists validated changes without restart.
+        - Save feedback is surfaced in the editor shell.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 20
+
+23. [ ] P1: Add editor undo and redo actions
+    - Description: Expose the shared undo/redo stack through editor actions and shortcuts.
+    - Deliverables:
+        - Undo and redo are available in the editor UI.
+        - Control enabled-state follows the shared history stack.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 22
+
+24. [ ] P1: Add graph keyboard navigation
+    - Description: Finish the focused graph keyboard path so the editor can move focus, center a node, and navigate back and forward from the graph view.
+    - Deliverables:
+        - Focus movement works from the graph canvas.
+        - Center and history navigation are available from the keyboard.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 23
+
+### Phase 6 — Model configuration and packaging
+
+25. [ ] P0: Add card-type registry write support
+    - Description: Add validation-gated write support for card-type registry entries.
+    - Deliverables:
+        - Card-type registry changes can be written safely.
+        - Accepted and rejected card-type edits are covered by tests.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 19
+
+26. [ ] P0: Add view-definition write support
+    - Description: Add validation-gated write support for view definitions.
+    - Deliverables:
+        - View-definition changes can be written safely.
+        - Accepted and rejected view-definition edits are covered by tests.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 19
+
+27. [ ] P0: Add appearance-default write support
+    - Description: Add validation-gated write support for appearance defaults.
+    - Deliverables:
+        - Appearance-default changes can be written safely.
+        - Accepted and rejected appearance edits are covered by tests.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 19
+
+28. [ ] P1: Add model-home pack and unpack workflow
+    - Description: Add the shared ZIP transport flow for packing and unpacking a model home as a single archive.
+    - Deliverables:
+        - Pack operation writes a single ZIP archive for a model home.
+        - Unpack operation restores a model home from an archive.
+    - References: `docs/design/AuroraEditor.md`, `docs/design/AuroraMCP.md`
+    - Depends on: 19
+
+29. [ ] P0: Define model tool request and response types
+    - Description: Add the request and response types that editor agents and MCP calls use to read or modify models.
+    - Deliverables:
+        - Shared tool request/response types are available in `aurora_shared`.
+        - Batch-edit and validation-error paths are represented explicitly.
+    - References: `docs/design/AuroraEditor.md`, `docs/design/AuroraMCP.md`
+    - Depends on: 25, 26, 27
+
+30. [ ] P1: Add the card-type registry editor
+    - Description: Add the editor UI for creating, editing, and removing card-type registry entries.
+    - Deliverables:
+        - Card-type add/edit/remove controls are available.
+        - Duplicate-name and duplicate-acronym conflicts are blocked at input time.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 25
+
+31. [ ] P1: Add the appearance customization editor
+    - Description: Add the editor UI for card appearance defaults and live preview rendering.
+    - Deliverables:
+        - Shape, fill, stroke, text, and icon controls are available.
+        - The preview updates from the shared render pipeline.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 27
+
+32. [ ] P1: Add the view-definition editor
+    - Description: Add the editor UI for creating, editing, and removing view definitions.
+    - Deliverables:
+        - View add/edit/remove controls are available.
+        - Root selection is constrained by the root-safety rule.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 26
+
+### Phase 7 — MCP server and agent integration
+
+33. [ ] P0: Create the `aurora_mcp` crate scaffold
+    - Description: Add the MCP server crate to the workspace and wire its stdio runtime and logging setup.
+    - Deliverables:
+        - `tools/aurora_mcp` is registered as a workspace member.
+        - The server starts on stdio with file-based logging.
+    - References: `docs/design/AuroraMCP.md`
+    - Depends on: 27
+
+34. [ ] P0: Add MCP read-only tools
+    - Description: Add the MCP query handlers for card lookup, adjacency, root selection, and validation introspection.
+    - Deliverables:
+        - Read-only tool calls return structured JSON responses.
+        - Queries do not require full model materialization.
+    - References: `docs/design/AuroraMCP.md`
+    - Depends on: 33, 29
+
+35. [ ] P0: Add MCP write and batch-edit tools
+    - Description: Add the MCP mutation handlers for card edits, link edits, and batch edits.
+    - Deliverables:
+        - Mutation calls are validation-gated and logged.
+        - Batch edits fail atomically on the first validation error.
+    - References: `docs/design/AuroraMCP.md`
+    - Depends on: 33, 29
+
+36. [ ] P1: Add the editor agent sidebar
+    - Description: Add the opt-in agent chat sidebar with context controls and a visible tool-activity feed.
+    - Deliverables:
+        - Agent chat UI is available in the editor shell.
+        - Tool use and context scope are shown to the user.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 29, 35
+
+37. [ ] P1: Add agent proposed-change review
+    - Description: Add the diff-like approval flow that shows agent-proposed model changes before they are written.
+    - Deliverables:
+        - Proposed changes are reviewable before writes.
+        - User acceptance or rejection is explicit.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 36
+
+### Phase 8 — Verification and documentation
+
+38. [ ] P0: Code review — remaining implementation
+    - Description: Review the completed editor, shared-library, MCP, and agent-integration work against the code-review checklist.
+    - Deliverables:
+        - Open code-review findings are recorded and addressed.
+        - Final implementation remains within the agreed boundaries and validation gates.
+    - References: `docs/design/AuroraEditor.md`, `docs/design/AuroraMCP.md`
+    - Depends on: 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37
+
+39. [ ] P1: Documentation review — editor and MCP guides
+    - Description: Review the user and operator documentation for the editor and MCP server after the implementation review closes.
+    - Deliverables:
+        - Remaining documentation gaps are identified and closed.
+        - User-facing and operator-facing guides match the implemented behavior.
+    - References: `docs/design/AuroraEditor.md`, `docs/design/AuroraMCP.md`
+    - Depends on: 38

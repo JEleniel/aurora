@@ -45,6 +45,45 @@ fn load_card_fetches_full_details_on_demand() -> Result<()> {
 }
 
 #[test]
+fn save_card_persists_changes_to_source_file() -> Result<()> {
+	let temp = tempfile::tempdir()?;
+	let model_home = seed_model_home(temp.path())?;
+	write_card(
+		&model_home.join("MIS-001-Root.json"),
+		json!({
+			"$schema": "schemas/Aurora.card.schema.json",
+			"id": "MIS-001",
+			"card_type": "Mission",
+			"name": "Mission",
+			"description": "root",
+			"links": []
+		}),
+	)?;
+	write_card(
+		&model_home.join("MIS-001").join("ACT-001-Alpha.json"),
+		json!({
+			"$schema": "../schemas/Aurora.card.schema.json",
+			"id": "ACT-001",
+			"card_type": "Activity",
+			"name": "Alpha Workflow",
+			"description": "loaded lazily",
+			"links": []
+		}),
+	)?;
+
+	let session = EditorSession::open(temp.path())?;
+	let mut card = session.load_card("ACT-001")?.expect("card should exist");
+	card.name = "Updated Workflow".to_string();
+	card.description = "updated description".to_string();
+	session.save_card(&card)?;
+
+	let persisted = std::fs::read_to_string(model_home.join("MIS-001").join("ACT-001-Alpha.json"))?;
+	assert!(persisted.contains("Updated Workflow"));
+	assert!(persisted.contains("updated description"));
+	Ok(())
+}
+
+#[test]
 fn root_cards_return_sidebar_ready_refs() -> Result<()> {
 	let temp = tempfile::tempdir()?;
 	let model_home = seed_model_home(temp.path())?;
