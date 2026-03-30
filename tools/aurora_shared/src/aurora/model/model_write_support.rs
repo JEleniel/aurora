@@ -70,7 +70,7 @@ impl Model {
 			model_home: self.model_home.clone(),
 			mission_home: self.mission_home.clone(),
 		};
-		let errors = validation_model.validate();
+		let errors = validation_model.validate().errors;
 		if !errors.is_empty() {
 			return Err(ModelError::ValidationErrors(errors));
 		}

@@ -1,36 +1,29 @@
 mod attribute;
 mod card;
+mod compactor;
 mod edit_history;
 mod link;
+mod loader;
+mod persistence;
+mod validator;
 
 pub use attribute::*;
 pub use card::*;
 pub use edit_history::*;
 pub use link::*;
+pub use loader::{LoadMode, LoadedModel};
+pub(crate) use persistence::{sanitize_card_type_folder, sanitize_filename};
+pub use validator::ValidationReport;
+pub(crate) use validator::id_prefix;
 
 use serde::{Deserialize, Serialize};
-use serde_json::Value;
 use std::collections::{HashMap, HashSet};
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 use thiserror::Error;
-use tracing::{debug, trace};
 
 use crate::registry::CardRegistry;
 
 const MODEL_MARKDOWN_TEMPLATE: &str = include_str!("model.template.md");
-
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
-enum ModelLoadMode {
-	#[default]
-	ReadOnly,
-	ReadWrite,
-}
-
-#[derive(Debug)]
-pub(crate) struct LoadedModel {
-	pub(crate) model: Model,
-	pub(crate) audit_log_lock: Option<super::AuditLogFileLock>,
-}
 
 #[path = "model/model_write_support.rs"]
 pub(super) mod model_write_support;
@@ -48,114 +41,6 @@ pub struct Model {
 }
 
 impl Model {
-	pub fn try_load(
-		path: &Path,
-		card_schema: &serde_json::Value,
-		audit_schema: &serde_json::Value,
-	) -> Result<Self, ModelError> {
-		Ok(
-			Self::try_load_with_mode(path, card_schema, audit_schema, ModelLoadMode::ReadOnly)?
-				.model,
-		)
-	}
-
-	pub(crate) fn try_load_for_update(
-		path: &Path,
-		card_schema: &serde_json::Value,
-		audit_schema: &serde_json::Value,
-	) -> Result<LoadedModel, ModelError> {
-		Self::try_load_with_mode(path, card_schema, audit_schema, ModelLoadMode::ReadWrite)
-	}
-
-	fn try_load_with_mode(
-		path: &Path,
-		card_schema: &serde_json::Value,
-		audit_schema: &serde_json::Value,
-		load_mode: ModelLoadMode,
-	) -> Result<LoadedModel, ModelError> {
-		let root_card = Card::try_load(path, card_schema)?;
-
-		let model_home: PathBuf = path
-			.parent()
-			.ok_or_else(|| ModelError::InvalidParentPath(path.display().to_string()))?
-			.to_path_buf();
-
-		let mut mission_home: PathBuf = model_home.clone();
-		mission_home.push(root_card.id.as_str());
-		let audit_log_path = mission_home.join("AuditLog.ndjson");
-		let (audit_log, audit_log_lock) = load_audit_log(&audit_log_path, audit_schema, load_mode)?;
-
-		let mut cards: Vec<Card> = Vec::new();
-		let mut folders_to_visit: Vec<PathBuf> = vec![mission_home.clone()];
-		while let Some(current_folder) = folders_to_visit.pop() {
-			debug!("Scanning {}", current_folder.display());
-			for entry in std::fs::read_dir(&current_folder)? {
-				let entry = entry?;
-				let entry_path = entry.path();
-				if entry.file_type()?.is_dir() {
-					folders_to_visit.push(entry_path);
-					trace!(
-						"Added {} to be scanned",
-						folders_to_visit.last().unwrap().display()
-					);
-					continue;
-				}
-
-				if entry_path.extension().and_then(|s| s.to_str()) != Some("json") {
-					continue;
-				}
-
-				let file_name = entry_path
-					.file_name()
-					.and_then(|s| s.to_str())
-					.unwrap_or_default();
-				if file_name == "AuditLog.ndjson" || file_name == "Compact.json" {
-					continue;
-				}
-
-				if cards.len() >= 99999 {
-					return Err(ModelError::ModelTooLarge);
-				}
-
-				debug!("Loading card from {}", entry_path.display());
-				let card = Card::try_load(&entry_path, card_schema)?;
-				if card.card_type == "Mission" {
-					return Err(ModelError::UnexpectedMissionCard(
-						entry_path.display().to_string(),
-					));
-				}
-				cards.push(card);
-			}
-		}
-
-		let model = Model {
-			root_card,
-			cards,
-			audit_log,
-			model_home,
-			mission_home,
-		};
-
-		Ok(LoadedModel {
-			model,
-			audit_log_lock,
-		})
-	}
-
-	pub fn validate(&self) -> Vec<String> {
-		let mut errors: Vec<String> = Vec::new();
-
-		// Check for schema errors
-		errors.extend(self.get_schema_validation_errors());
-
-		// Check for invariant violations
-		errors.extend(self.validate_no_mission_incoming_links());
-		errors.extend(self.validate_reachability_and_orphans());
-		errors.extend(self.validate_broken_links());
-
-		errors
-	}
-
 	pub fn get_schema_validation_errors(&self) -> Vec<String> {
 		let mut errors: Vec<String> = Vec::new();
 		if !self.audit_log.validation_errors.is_empty() {
@@ -249,21 +134,6 @@ impl Model {
 		errors
 	}
 
-	pub fn get_compact(&self, schema_ref: Option<String>) -> Value {
-		let mut cards: Vec<Value> = Vec::new();
-		cards.push(self.root_card.get_compact());
-		for card in &self.cards {
-			cards.push(card.get_compact());
-		}
-
-		let mut root = serde_json::Map::new();
-		if let Some(schema_ref) = schema_ref {
-			root.insert("$schema".to_string(), Value::String(schema_ref));
-		}
-		root.insert("cards".to_string(), Value::Array(cards));
-		Value::Object(root)
-	}
-
 	/// Test Invariant 2a: All cards lead away from Mission
 	fn validate_no_mission_incoming_links(&self) -> Vec<String> {
 		let mut errors: Vec<String> = Vec::new();
@@ -351,72 +221,6 @@ impl Model {
 	}
 }
 
-fn load_audit_log(
-	path: &Path,
-	audit_schema: &Value,
-	load_mode: ModelLoadMode,
-) -> Result<(super::AuditLog, Option<super::AuditLogFileLock>), ModelError> {
-	match load_mode {
-		ModelLoadMode::ReadOnly => Ok((super::AuditLog::try_load(path, audit_schema)?, None)),
-		ModelLoadMode::ReadWrite => {
-			let loaded = super::AuditLog::try_load_for_update(path, audit_schema)
-				.map_err(map_audit_log_error)?;
-			Ok((loaded.audit_log, Some(loaded.lock)))
-		}
-	}
-}
-
-fn map_audit_log_error(error: super::AuditLogError) -> ModelError {
-	match error {
-		super::AuditLogError::ModelLocked(path) => ModelError::ModelLocked(path),
-		other => ModelError::AuditLogError(other),
-	}
-}
-
-fn sanitize_filename(name: &str) -> String {
-	let mut out = String::new();
-	let mut last_was_underscore = false;
-	for ch in name.chars() {
-		if ch.is_ascii_alphanumeric() {
-			out.push(ch);
-			last_was_underscore = false;
-			continue;
-		}
-		if ch.is_whitespace() && !last_was_underscore {
-			out.push('_');
-			last_was_underscore = true;
-		}
-	}
-	while out.contains("__") {
-		out = out.replace("__", "_");
-	}
-	out.trim_matches('_').to_string()
-}
-
-fn sanitize_card_type_folder(card_type: &str) -> String {
-	let mut out = String::new();
-	let mut last_was_underscore = false;
-	for ch in card_type.chars() {
-		if ch.is_ascii_alphanumeric() || ch == '_' {
-			out.push(ch);
-			last_was_underscore = false;
-			continue;
-		}
-		if ch.is_whitespace() && !last_was_underscore {
-			out.push('_');
-			last_was_underscore = true;
-		}
-	}
-	while out.contains("__") {
-		out = out.replace("__", "_");
-	}
-	out.trim_matches('_').to_string()
-}
-
-fn id_prefix(id: &str) -> Option<&str> {
-	id.split('-').next()
-}
-
 #[derive(Debug, Error)]
 pub enum ModelError {
 	#[error("Failed to read model file: {0}")]
@@ -426,7 +230,7 @@ pub enum ModelError {
 	#[error("A Card error has occurred: {0}")]
 	CardError(#[from] CardError),
 	#[error("An AuditLog error has occurred: {0}")]
-	AuditLogError(#[from] super::AuditLogError),
+	AuditLogError(super::AuditLogError),
 	#[error("Invalid filename")]
 	InvalidFilename,
 	#[error("Invalid parent path for model root: {0}")]
@@ -437,4 +241,13 @@ pub enum ModelError {
 	ValidationErrors(Vec<String>),
 	#[error("Model exceeds maximum allowed size of 99999 cards.")]
 	ModelTooLarge,
+}
+
+impl From<super::AuditLogError> for ModelError {
+	fn from(error: super::AuditLogError) -> Self {
+		match error {
+			super::AuditLogError::ModelLocked(path) => Self::ModelLocked(path),
+			other => Self::AuditLogError(other),
+		}
+	}
 }

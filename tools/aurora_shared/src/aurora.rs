@@ -206,12 +206,21 @@ impl Aurora {
 			{
 				let loaded_model = match load_mode {
 					AuroraLoadMode::ReadOnly => super::LoadedModel {
-						model: Model::try_load(&entry.path(), &card_schema, &audit_schema)?,
+						model: Model::try_load(
+							&entry.path(),
+							&card_schema,
+							&audit_schema,
+							super::LoadMode::ReadOnly,
+						)?
+						.model,
 						audit_log_lock: None,
 					},
-					AuroraLoadMode::ReadWrite => {
-						Model::try_load_for_update(&entry.path(), &card_schema, &audit_schema)?
-					}
+					AuroraLoadMode::ReadWrite => Model::try_load(
+						&entry.path(),
+						&card_schema,
+						&audit_schema,
+						super::LoadMode::ReadWrite,
+					)?,
 				};
 
 				if let Some(lock) = loaded_model.audit_log_lock {
@@ -316,7 +325,7 @@ impl Aurora {
 		let mut errors: Vec<String> = self.load_validation_errors.clone();
 
 		for model in &self.models {
-			let model_errors = model.validate();
+			let model_errors = model.validate().errors;
 			if !model_errors.is_empty() {
 				errors.extend(
 					model_errors
@@ -379,8 +388,7 @@ impl Aurora {
 			std::fs::create_dir_all(&mission_dir)?;
 
 			let output_path = mission_dir.join("Compact.json");
-			let compact =
-				model.get_compact(Some("../schemas/Aurora.compact.schema.json".to_string()));
+			let compact = model.compact(Some("../schemas/Aurora.compact.schema.json".to_string()));
 			let output = serde_json::to_string_pretty(&compact)?;
 			std::fs::write(&output_path, output)?;
 			info!(

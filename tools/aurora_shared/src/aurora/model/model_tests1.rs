@@ -5,7 +5,7 @@ use super::super::{Attributes, Card, sanitize_filename};
 use super::{
 	Model, Result, audit_schema, card_json, card_json_with_links, card_schema, missing, write_json,
 };
-use crate::{AuditChangeType, AuditLog, AuditLogEntry, ModelError};
+use crate::{AuditChangeType, AuditLog, AuditLogEntry, LoadMode, ModelError};
 
 #[test]
 fn sanitize_filename_strips_symbols() {
@@ -32,7 +32,7 @@ fn try_load_rejects_nested_mission_card() -> Result<()> {
 
 	let card_schema = card_schema();
 	let audit_schema = audit_schema();
-	let result = Model::try_load(&root_path, &card_schema, &audit_schema);
+	let result = Model::try_load(&root_path, &card_schema, &audit_schema, LoadMode::ReadOnly);
 
 	match result {
 		Err(ModelError::UnexpectedMissionCard(_)) => Ok(()),
@@ -56,8 +56,8 @@ fn try_load_rejects_invalid_model() -> Result<()> {
 
 	let card_schema = card_schema();
 	let audit_schema = audit_schema();
-	let model = Model::try_load(&root_path, &card_schema, &audit_schema)?;
-	let errors = model.validate();
+	let model = Model::try_load(&root_path, &card_schema, &audit_schema, LoadMode::ReadOnly)?;
+	let errors = model.model.validate().errors;
 	if !errors.iter().any(|error| error.contains("broken link")) {
 		return Err(missing("expected broken link error"));
 	}
