@@ -159,9 +159,9 @@ fn sanitize_element(element: &Element) -> Option<Element> {
 	for node in &element.children {
 		match node {
 			XMLNode::Element(child) => {
-				if let Some(next) = sanitize_element(child) {
-					cleaned.children.push(XMLNode::Element(next));
-				}
+				cleaned
+					.children
+					.extend(sanitize_element(child).into_iter().map(XMLNode::Element));
 			}
 			_ => cleaned.children.push(node.clone()),
 		}

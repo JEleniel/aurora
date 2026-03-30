@@ -47,13 +47,7 @@ pub(super) fn run_build(args: &BuildArgs) -> Result<()> {
 		{
 			// Keep supporting legacy single-file shapes inputs by skipping directory optimization.
 		} else {
-			optimize_shapes_dir(&args.masters_shapes_in, &args.shapes).with_context(|| {
-				format!(
-					"Failed optimizing shapes from {} into {}",
-					args.masters_shapes_in.display(),
-					args.shapes.display()
-				)
-			})?;
+			optimize_shapes_dir_with_context(&args.masters_shapes_in, &args.shapes)?;
 		}
 	}
 
@@ -109,11 +103,14 @@ fn derive_template_out_path(template_in: &Path) -> PathBuf {
 	let mut iter = template_in.components().peekable();
 	while let Some(component) = iter.next() {
 		out.push(component.as_os_str());
-		if component.as_os_str() == "assets"
-			&& let Some(next) = iter.peek()
-			&& next.as_os_str() == "masters"
-		{
-			let _ = iter.next();
+		if component.as_os_str() != "assets" {
+			continue;
+		}
+		let Some(next) = iter.peek() else {
+			continue;
+		};
+		if next.as_os_str() == "masters" {
+			iter.next();
 			out.push("templates");
 		}
 	}
@@ -124,6 +121,16 @@ fn derive_template_out_path(template_in: &Path) -> PathBuf {
 		return template_in.to_path_buf();
 	}
 	out
+}
+
+fn optimize_shapes_dir_with_context(input_dir: &Path, output_dir: &Path) -> Result<()> {
+	optimize_shapes_dir(input_dir, output_dir).with_context(|| {
+		format!(
+			"Failed optimizing shapes from {} into {}",
+			input_dir.display(),
+			output_dir.display()
+		)
+	})
 }
 
 fn load_shapes_for_proof(path: &Path) -> Result<Vec<IconGroup>> {
@@ -338,33 +345,27 @@ fn find_matching_bracket(source: &str, start: usize, key_name: &str) -> Result<u
 	let mut depth = 0usize;
 
 	for (index, byte) in bytes.iter().enumerate().skip(start) {
-		if in_string {
-			if escaped {
+		match (in_string, escaped, *byte) {
+			(true, true, _) => {
 				escaped = false;
 				continue;
 			}
-			if *byte == b'\\' {
+			(true, false, b'\\') => {
 				escaped = true;
 				continue;
 			}
-			if *byte == b'\"' {
+			(true, false, b'\"') => {
 				in_string = false;
+				continue;
 			}
-			continue;
-		}
-
-		match *byte {
-			b'\"' => in_string = true,
-			b'[' => depth += 1,
-			b']' => {
-				if depth == 0 {
-					bail!("Malformed JSON while finding {key_name} array");
-				}
-				depth -= 1;
-				if depth == 0 {
-					return Ok(index);
-				}
-			}
+			(true, false, _) => continue,
+			(false, _, b'\"') => in_string = true,
+			(false, _, b'[') => depth += 1,
+			(false, _, b']') => match depth {
+				0 => bail!("Malformed JSON while finding {key_name} array"),
+				1 => return Ok(index),
+				_ => depth -= 1,
+			},
 			_ => {}
 		}
 	}

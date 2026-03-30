@@ -34,13 +34,7 @@ fn strip_css_comments(input: &str) -> String {
 
 	while i < bytes.len() {
 		if i + 1 < bytes.len() && bytes[i] == b'/' && bytes[i + 1] == b'*' {
-			i += 2;
-			while i + 1 < bytes.len() && !(bytes[i] == b'*' && bytes[i + 1] == b'/') {
-				i += 1;
-			}
-			if i + 1 < bytes.len() {
-				i += 2;
-			}
+			i = skip_css_comment(bytes, i + 2);
 			continue;
 		}
 
@@ -49,6 +43,13 @@ fn strip_css_comments(input: &str) -> String {
 	}
 
 	out
+}
+
+fn skip_css_comment(bytes: &[u8], mut i: usize) -> usize {
+	while i + 1 < bytes.len() && !(bytes[i] == b'*' && bytes[i + 1] == b'/') {
+		i += 1;
+	}
+	if i + 1 < bytes.len() { i + 2 } else { i }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
@@ -85,12 +86,8 @@ fn find_matching_close_brace(css: &str, start: usize) -> Option<usize> {
 	for (offset, ch) in css[start..].chars().enumerate() {
 		match ch {
 			'{' => depth += 1,
-			'}' => {
-				depth = depth.saturating_sub(1);
-				if depth == 0 {
-					return Some(start + offset);
-				}
-			}
+			'}' if depth == 1 => return Some(start + offset),
+			'}' => depth = depth.saturating_sub(1),
 			_ => {}
 		}
 	}
@@ -141,12 +138,7 @@ fn canonicalize_rules(rules: &[CssRuleKey]) -> String {
 		out.push_str(&rule.selectors.join(","));
 		out.push('{');
 		for (prop, values) in rule.decls {
-			for value in values {
-				out.push_str(&prop);
-				out.push(':');
-				out.push_str(&value);
-				out.push(';');
-			}
+			out.extend(values.into_iter().map(|value| format!("{prop}:{value};")));
 		}
 		out.push('}');
 	}
@@ -159,15 +151,17 @@ fn collapse_whitespace(input: &str) -> String {
 	let mut prev_space = false;
 
 	for ch in input.chars() {
-		if ch.is_ascii_whitespace() {
-			if !prev_space {
+		match ch.is_ascii_whitespace() {
+			true if !prev_space => {
 				out.push(' ');
 				prev_space = true;
 			}
-			continue;
+			true => continue,
+			false => {
+				prev_space = false;
+				out.push(ch);
+			}
 		}
-		prev_space = false;
-		out.push(ch);
 	}
 
 	out

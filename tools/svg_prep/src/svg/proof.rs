@@ -104,9 +104,7 @@ pub(super) fn build_icons_svg(icons: &[IconGroup], root_id: &str) -> Element {
 	for icon in icons {
 		for style in &icon.styles {
 			let trimmed = style.trim();
-			if !trimmed.is_empty() {
-				style_texts.push(trimmed.to_string());
-			}
+			style_texts.extend((!trimmed.is_empty()).then(|| trimmed.to_string()));
 		}
 	}
 	style_texts = dedup_style_texts_semantic(style_texts);
@@ -219,6 +217,25 @@ fn estimate_label_chars_per_line(cell_width: f64) -> usize {
 	(estimated as usize).max(PROOF_LABEL_MIN_CHARS_PER_LINE)
 }
 
+fn place_word_at_line_start(
+	current_line: &mut String,
+	remaining_words: &mut Vec<String>,
+	word: String,
+	effective_max_chars: usize,
+) {
+	if word.chars().count() <= effective_max_chars {
+		current_line.push_str(&word);
+		remaining_words.remove(0);
+		return;
+	}
+
+	let head: String = word.chars().take(effective_max_chars).collect();
+	let tail: String = word.chars().skip(effective_max_chars).collect();
+	current_line.push_str(&head);
+	remaining_words.remove(0);
+	remaining_words.extend((!tail.is_empty()).then_some(tail));
+}
+
 pub(super) fn wrap_proof_label(label: &str, max_chars: usize, max_lines: usize) -> Vec<String> {
 	if max_lines == 0 {
 		return Vec::new();
@@ -244,19 +261,12 @@ pub(super) fn wrap_proof_label(label: &str, max_chars: usize, max_lines: usize) 
 		let word_len = word.chars().count();
 
 		if current_len == 0 {
-			if word_len <= effective_max_chars {
-				current_line.push_str(&word);
-				remaining_words.remove(0);
-				continue;
-			}
-
-			let head: String = word.chars().take(effective_max_chars).collect();
-			let tail: String = word.chars().skip(effective_max_chars).collect();
-			current_line.push_str(&head);
-			remaining_words.remove(0);
-			if !tail.is_empty() {
-				remaining_words.insert(0, tail);
-			}
+			place_word_at_line_start(
+				&mut current_line,
+				&mut remaining_words,
+				word,
+				effective_max_chars,
+			);
 			continue;
 		}
 
