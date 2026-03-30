@@ -114,10 +114,7 @@ pub(super) fn validate_graph(graph: &LayoutGraph) -> Result<(), RenderError> {
 	Ok(())
 }
 
-fn filter_declared_roots(
-	roots: &[String],
-	outgoing: &HashMap<String, Vec<String>>,
-) -> Vec<String> {
+fn filter_declared_roots(roots: &[String], outgoing: &HashMap<String, Vec<String>>) -> Vec<String> {
 	let mut filtered = Vec::new();
 	for root in roots {
 		let mut nested = false;
@@ -137,11 +134,7 @@ fn filter_declared_roots(
 	filtered
 }
 
-fn reaches_node(
-	start: &str,
-	target: &str,
-	outgoing: &HashMap<String, Vec<String>>,
-) -> bool {
+fn reaches_node(start: &str, target: &str, outgoing: &HashMap<String, Vec<String>>) -> bool {
 	let mut stack = outgoing.get(start).cloned().unwrap_or_default();
 	let mut visited: HashSet<String> = HashSet::new();
 	while let Some(node_id) = stack.pop() {

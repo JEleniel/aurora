@@ -210,8 +210,7 @@ impl Aurora {
 						audit_log_lock: None,
 					},
 					AuroraLoadMode::ReadWrite => {
-						Model::try_load_for_update(&entry.path(), &card_schema, &audit_schema)
-							.map_err(map_model_error)?
+						Model::try_load_for_update(&entry.path(), &card_schema, &audit_schema)?
 					}
 				};
 
@@ -285,7 +284,7 @@ impl Aurora {
 	}
 
 	/// Check all models against the official registry and
-	/// emit warnings if they don't conf=orm
+	/// emit warnings if they don't conform
 	pub fn check_registry(&self) -> Vec<String> {
 		let mut warnings: Vec<String> = self.load_warnings.clone();
 
@@ -630,13 +629,6 @@ pub enum AuroraError {
 	RegistryError(#[from] RegistryError),
 	#[error("A backup error occurred: {0}")]
 	BackupError(#[from] crate::BackupError),
-}
-
-fn map_model_error(error: ModelError) -> AuroraError {
-	match error {
-		ModelError::ModelLocked(path) => AuroraError::ModelLocked(path),
-		other => AuroraError::ModelError(other),
-	}
 }
 
 fn svg_icon_group_is_empty(svg_template: &str, icon: &str) -> bool {

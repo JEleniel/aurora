@@ -159,8 +159,9 @@ fn run_upgrade(input_path: &Path) -> Result<(), RuntimeError> {
 	Ok(())
 }
 
-fn init_tracing(level: &str) -> Result<(), RuntimeError> {
-	let filter = EnvFilter::try_from_default_env().or_else(|_| EnvFilter::try_new(level))?;
+fn init_tracing(level: &log::LevelFilter) -> Result<(), RuntimeError> {
+	let filter =
+		EnvFilter::try_from_default_env().or_else(|_| EnvFilter::try_new(level.to_string()))?;
 	let builder = tracing_subscriber::fmt()
 		.with_env_filter(filter)
 		.with_writer(std::io::stderr)

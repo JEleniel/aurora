@@ -403,7 +403,10 @@ fn try_load_for_update_rejects_second_writer_for_same_model_home() -> Result<()>
 
 	let first = Aurora::try_load_for_update(temp.path())?;
 	let second = Aurora::try_load_for_update(temp.path());
-	assert!(matches!(second, Err(AuroraError::ModelLocked(_))));
+	assert!(matches!(
+		second,
+		Err(AuroraError::ModelError(super::ModelError::ModelLocked(_)))
+	));
 	drop(first);
 
 	let reopened = Aurora::try_load_for_update(temp.path())?;

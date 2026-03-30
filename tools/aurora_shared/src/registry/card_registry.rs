@@ -31,24 +31,8 @@ impl CardRegistry {
 		view_configuration: ViewConfiguration,
 	) -> Result<Self, RegistryError> {
 		view_configuration.try_domain_paths()?;
-
-		let available_icons: HashSet<String> = view_configuration
-			.available_icons
-			.iter()
-			.filter_map(|icon| normalize_icon_name(icon))
-			.collect();
-
-		let mut card_type_by_acronym: HashMap<String, String> = HashMap::new();
-		for definition in &model_configuration.cards {
-			if card_type_by_acronym
-				.insert(definition.acronym.clone(), definition.card_type.clone())
-				.is_some()
-			{
-				return Err(RegistryError::DuplicateCardAcronym(
-					definition.acronym.clone(),
-				));
-			}
-		}
+		let available_icons = collect_available_icons(&view_configuration);
+		let card_type_by_acronym = build_card_type_by_acronym(&model_configuration)?;
 
 		let mut appearance_by_acronym: HashMap<String, ViewConfigurationCardDefinition> =
 			HashMap::new();
@@ -134,40 +118,6 @@ impl CardRegistry {
 			.any(|rel| rel.relationship == relationship && rel.target_card_type == target_card_type)
 	}
 
-	pub fn try_get_fill(&self, card_type: &str) -> Result<String, RegistryError> {
-		let def = self.try_get_by_type(card_type)?;
-		Ok(def.fill)
-	}
-
-	pub fn try_get_stroke(&self, card_type: &str) -> Result<String, RegistryError> {
-		let def = self.try_get_by_type(card_type)?;
-		Ok(def.stroke)
-	}
-
-	pub fn try_get_text(&self, card_type: &str) -> Result<String, RegistryError> {
-		let def = self.try_get_by_type(card_type)?;
-		Ok(def.text)
-	}
-
-	pub fn try_get_color(&self, card_type: &str) -> Result<String, RegistryError> {
-		self.try_get_stroke(card_type)
-	}
-
-	pub fn try_get_shape(&self, card_type: &str) -> Result<String, RegistryError> {
-		let def = self.try_get_by_type(card_type)?;
-		Ok(def.shape)
-	}
-
-	pub fn try_get_icon(&self, card_type: &str) -> Result<Option<String>, RegistryError> {
-		let def = self.try_get_by_type(card_type)?;
-		Ok(def.icon)
-	}
-
-	pub fn try_get_acronym_for_type(&self, card_type: &str) -> Result<String, RegistryError> {
-		let def = self.try_get_by_type(card_type)?;
-		Ok(def.acronym)
-	}
-
 	pub fn has_icon(&self, icon: &str) -> bool {
 		normalize_icon_name(icon)
 			.is_some_and(|normalized| self.available_icons.contains(&normalized))
@@ -195,6 +145,31 @@ impl CardRegistry {
 			.cloned()
 			.ok_or(RegistryError::CardAcronymNotFound(acronym.to_string()))
 	}
+}
+
+fn collect_available_icons(view_configuration: &ViewConfiguration) -> HashSet<String> {
+	view_configuration
+		.available_icons
+		.iter()
+		.filter_map(|icon| normalize_icon_name(icon))
+		.collect()
+}
+
+fn build_card_type_by_acronym(
+	model_configuration: &ModelConfiguration,
+) -> Result<HashMap<String, String>, RegistryError> {
+	let mut card_type_by_acronym: HashMap<String, String> = HashMap::new();
+	for definition in &model_configuration.cards {
+		if card_type_by_acronym
+			.insert(definition.acronym.clone(), definition.card_type.clone())
+			.is_some()
+		{
+			return Err(RegistryError::DuplicateCardAcronym(
+				definition.acronym.clone(),
+			));
+		}
+	}
+	Ok(card_type_by_acronym)
 }
 
 fn normalize_icon_name(icon: &str) -> Option<String> {

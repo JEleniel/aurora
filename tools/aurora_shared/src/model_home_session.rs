@@ -58,15 +58,7 @@ impl ModelHomeSession {
 						audit_log_path.display().to_string(),
 					));
 				}
-				audit_log_locks.push(AuditLogFileLock::try_acquire(&audit_log_path).map_err(
-					|error| match error {
-						AuditLogError::ModelLocked(path) => {
-							ModelHomeSessionError::ModelLocked(path)
-						}
-						AuditLogError::IoError(error) => ModelHomeSessionError::IoError(error),
-						other => ModelHomeSessionError::AuditLog(other),
-					},
-				)?);
+				audit_log_locks.push(AuditLogFileLock::try_acquire(&audit_log_path)?);
 				roots.push(ModelRootCard {
 					id: root_card.id,
 					name: root_card.name,
@@ -154,8 +146,6 @@ fn normalize_relative_card_path(path: &Path) -> Result<PathBuf, ModelHomeSession
 pub enum ModelHomeSessionError {
 	#[error("The specified path is not a valid Aurora model home: {0}")]
 	InvalidAuroraHome(String),
-	#[error("Model is locked by another write session: {0}")]
-	ModelLocked(String),
 	#[error("Missing required file in model home: {0}")]
 	RequiredFileMissing(String),
 	#[error("The requested card path escapes the model home: {0}")]
@@ -173,6 +163,7 @@ pub enum ModelHomeSessionError {
 #[cfg(test)]
 mod tests {
 	use super::{ModelHomeSession, ModelHomeSessionError};
+	use crate::AuditLogError;
 	use serde_json::json;
 	use std::path::Path;
 
@@ -213,7 +204,12 @@ mod tests {
 
 		let first = ModelHomeSession::try_open_for_update(temp.path())?;
 		let second = ModelHomeSession::try_open_for_update(temp.path());
-		assert!(matches!(second, Err(ModelHomeSessionError::ModelLocked(_))));
+		assert!(matches!(
+			second,
+			Err(ModelHomeSessionError::AuditLog(AuditLogError::ModelLocked(
+				_,
+			)))
+		));
 		drop(first);
 
 		let reopened = ModelHomeSession::try_open_for_update(temp.path())?;

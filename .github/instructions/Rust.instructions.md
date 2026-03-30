@@ -5,7 +5,7 @@ applyTo: '**/*.rs'
 
 # Rust Coding Guide
 
-If present, the repository's Rust formatting config (`rustfmt.toml`) is the source of truth for formatting.
+If present, the repository's Rust lint config (`Cargo.toml`, `clippy.toml`) and formatting config (`rustfmt.toml`) are the source of truth for formatting.
 
 ## Formatting Rules
 
@@ -20,23 +20,6 @@ If present, the repository's Rust formatting config (`rustfmt.toml`) is the sour
 - **Patterns**: Use `_` for single-item wildcards and `..` for rest patterns.
 - **Initialization**: Use field init shorthand when possible.
 - Baseline: [2024 Rust Style Guide](https://doc.rust-lang.org/stable/style-guide/index.html).
-
-### Imports
-
-- Put `mod` declarations first (after module docs), then a blank line, then `use`.
-  This is an organizational preference; `rustfmt` will not move `mod` declarations above
-  existing `use` declarations.
-- Within a contiguous import block, let `rustfmt` group imports into standard-library,
-  external-crate, and local-crate sections, and sort them in Rust style-guide order.
-- Keep intentionally separate import blocks separated by blank lines.
-- Format imports on one line where possible. Don’t put spaces around braces.
-- Prefer the simplest import form that remains readable. Under the current formatter config, `rustfmt` preserves import granularity, but it may regroup a contiguous block by crate origin.
-- If an import does require multiple lines (either because a list of single names does not fit within the max width, or because of the rules for nested imports below), then break after the opening brace and before the closing brace, use a trailing comma, and block indent the names.
-- Names in a list import must follow Rust style-guide order, recursively,
-  except that:
-    - self and super always come first if present, and
-    - groups and glob imports always come last if present.
-- If there are any nested imports in a list import, then use the multi-line form, even if the import fits on one line. Each nested import must be on its own line, but non-nested imports must be grouped on as few lines as possible.
 
 ## Coding Rules
 
@@ -61,7 +44,7 @@ If present, the repository's Rust formatting config (`rustfmt.toml`) is the sour
 - You MUST NOT let a source file exceed 500 lines or a single function exceed 50 lines. You may use the `./.github/violations.sh` script to verify compliance.
 - You MUST NOT write a function that executes a simple calculation or call that is only used once. Just use the call or formula directly.
 - You MUST NOT write multiple paths, functions, or other code that does the same thing. There MUST be one source of truth for any function or capability.
-- You MUST NOT use any form of shared data across task or thread boundaries; all communication must use channels or similar. Use of `mutex` is a red flag for this.
+- Outside of embedded environments you MUST NOT use any form of shared data across task or thread boundaries; all communication must use channels or similar. Use of `mutex` is a red flag for this.
 
 ## Error Handling
 

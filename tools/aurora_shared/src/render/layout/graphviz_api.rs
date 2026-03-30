@@ -156,7 +156,7 @@ fn score_layout(layout: &Layout) -> LayoutScore {
 	}
 }
 
-fn aspect_preference(layout: &Layout) -> (bool, i64) {
+pub(crate) fn aspect_preference(layout: &Layout) -> (bool, i64) {
 	let mut min_x = f32::INFINITY;
 	let mut min_y = f32::INFINITY;
 	let mut max_x = f32::NEG_INFINITY;

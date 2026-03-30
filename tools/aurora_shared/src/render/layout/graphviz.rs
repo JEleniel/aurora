@@ -63,9 +63,9 @@ fn spec_for_family(family: LayoutFamily) -> EngineSpec {
 		LayoutFamily::TreeLeftRight => EngineSpec {
 			command: "dot",
 			ranksep_attr: "ranksep",
-			ranksep: 2.5,
+			ranksep: 2.0,
 			nodesep_attr: "nodesep",
-			nodesep: 2.5,
+			nodesep: 1.0,
 			rankdir: Some("LR"),
 			splines: "ortho",
 			overlap: None,
@@ -85,7 +85,7 @@ fn build_graphviz_input(graph: &LayoutGraph, spec: EngineSpec, family: LayoutFam
 		family,
 		LayoutFamily::TreeTopDown | LayoutFamily::TreeLeftRight
 	) {
-		graph_attrs.push("compund=true".to_string());
+		graph_attrs.push("compound=true".to_string());
 		graph_attrs.push("reminicross=true".to_string());
 		graph_attrs.push("center=true".to_string());
 		graph_attrs.push("concentrate=true".to_string());
@@ -134,20 +134,20 @@ fn build_graphviz_input(graph: &LayoutGraph, spec: EngineSpec, family: LayoutFam
 }
 
 fn run_graphviz(command: &str, input: &str) -> Result<String, RenderError> {
-	let mut child = Command::new(command)
+	let mut child = match Command::new(command)
 		.arg("-Tplain")
 		.arg("-y")
 		.stdin(Stdio::piped())
 		.stdout(Stdio::piped())
 		.stderr(Stdio::piped())
 		.spawn()
-		.map_err(|error| {
-			if error.kind() == std::io::ErrorKind::NotFound {
-				RenderError::GraphvizUnavailable(command.to_string())
-			} else {
-				RenderError::Io(error)
-			}
-		})?;
+	{
+		Ok(child) => child,
+		Err(error) if error.kind() == std::io::ErrorKind::NotFound => {
+			return Err(RenderError::GraphvizUnavailable(command.to_string()));
+		}
+		Err(error) => return Err(RenderError::Io(error)),
+	};
 	if let Some(stdin) = child.stdin.as_mut() {
 		stdin.write_all(input.as_bytes())?;
 	}
@@ -309,88 +309,5 @@ fn quote_dot(value: &str) -> String {
 }
 
 #[cfg(test)]
-mod tests {
-	use super::{
-		GraphvizLayout, LayoutFamily, build_graphviz_input, normalize_edge_endpoint,
-		parse_plain_output, spec_for_family,
-	};
-	use crate::render::layout::graph::build_graph;
-	use crate::render::layout::test_support::{make_card, make_model};
-
-	#[test]
-	fn graphviz_input_emits_plain_tree_nodes_without_helper_root() {
-		let root = make_card("MIS-001", "Mission", &["REQ-001"]);
-		let requirement = make_card("REQ-001", "Requirement", &[]);
-		let model = make_model(root, vec![requirement]);
-		let graph = build_graph(&model, &["MIS".to_string()], &["REQ".to_string()])
-			.expect("graph should build");
-
-		let dot = build_graphviz_input(
-			&graph,
-			spec_for_family(LayoutFamily::TreeTopDown),
-			LayoutFamily::TreeTopDown,
-		);
-		assert!(dot.contains("\"MIS-001\";"));
-		assert!(dot.contains("\"REQ-001\";"));
-		assert!(!dot.contains("__aurora_layout_root__"));
-	}
-
-	#[test]
-	fn graphviz_input_uses_expected_spacing_and_rankdir() {
-		let root = make_card("MIS-001", "Mission", &["REQ-001"]);
-		let requirement = make_card("REQ-001", "Requirement", &[]);
-		let model = make_model(root, vec![requirement]);
-		let graph = build_graph(&model, &["MIS".to_string()], &["REQ".to_string()])
-			.expect("graph should build");
-
-		let dot = build_graphviz_input(
-			&graph,
-			spec_for_family(LayoutFamily::TreeLeftRight),
-			LayoutFamily::TreeLeftRight,
-		);
-		assert!(dot.contains("rankdir=LR"));
-		assert!(dot.contains("nodesep=1.0000"));
-		assert!(dot.contains("ranksep=2.0000"));
-		assert!(dot.contains("splines=ortho"));
-	}
-
-	#[test]
-	fn normalize_edge_endpoint_strips_ports() {
-		assert_eq!(normalize_edge_endpoint("\"MIS-001:e\""), "MIS-001");
-	}
-
-	#[test]
-	fn parse_plain_output_scales_nodes_and_routes() {
-		let root = make_card("MIS-001", "Mission", &["REQ-001"]);
-		let requirement = make_card("REQ-001", "Requirement", &[]);
-		let model = make_model(root, vec![requirement]);
-		let graph = build_graph(&model, &["MIS".to_string()], &["REQ".to_string()])
-			.expect("graph should build");
-		let plain = "graph 1 5.0 3.0\nnode MIS-001 1.2 0.75 2.4 1.5 \"\" solid box black lightgrey\nnode REQ-001 3.8 2.25 2.4 1.5 \"\" solid box black lightgrey\nedge MIS-001 REQ-001 4 2.4 0.75 2.9 0.75 3.1 2.25 3.8 2.25 solid black\nstop\n";
-
-		let GraphvizLayout { nodes, routes } =
-			parse_plain_output(plain, &graph).expect("plain output should parse");
-		let mission = nodes.get("MIS-001").expect("mission node missing");
-		assert_eq!(mission.x, 0);
-		assert_eq!(mission.y, 0);
-		let route = routes
-			.get(&("MIS-001".to_string(), "REQ-001".to_string()))
-			.expect("route missing");
-		assert_eq!(route.len(), 4);
-		assert!((route[0].x - 720.0).abs() < 0.1);
-	}
-
-	#[test]
-	fn parse_plain_output_merges_wrapped_edge_records() {
-		let root = make_card("MIS-001", "Mission", &["REQ-001"]);
-		let requirement = make_card("REQ-001", "Requirement", &[]);
-		let model = make_model(root, vec![requirement]);
-		let graph = build_graph(&model, &["MIS".to_string()], &["REQ".to_string()])
-			.expect("graph should build");
-		let plain = "graph 1 5.0 3.0\nnode MIS-001 1.2 0.75 2.4 1.5 \"\" solid box black lightgrey\nnode REQ-001 3.8 2.25 2.4 1.5 \"\" solid box black lightgrey\nedge MIS-001 REQ-001 4 2.4 0.75 2.9 0.75 3.1 2.25 3.8 2.25\nsolid black\nstop\n";
-
-		let GraphvizLayout { routes, .. } =
-			parse_plain_output(plain, &graph).expect("wrapped plain output should parse");
-		assert!(routes.contains_key(&("MIS-001".to_string(), "REQ-001".to_string())));
-	}
-}
+#[path = "graphviz_tests.rs"]
+mod tests;

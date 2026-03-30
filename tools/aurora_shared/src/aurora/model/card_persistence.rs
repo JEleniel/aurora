@@ -34,7 +34,7 @@ impl Card {
 		registry: &CardRegistry,
 		existing_ids: &HashSet<String>,
 	) -> Result<Self, CardError> {
-		let acronym = registry.try_get_acronym_for_type(&new_card.card_type)?;
+		let acronym = registry.try_get_by_type(&new_card.card_type)?.acronym;
 		let id = next_card_id(&acronym, existing_ids);
 
 		Ok(Self {

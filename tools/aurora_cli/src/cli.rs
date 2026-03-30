@@ -3,6 +3,7 @@
 use std::path::PathBuf;
 
 use clap::{Parser, Subcommand};
+use log::LevelFilter;
 
 use crate::constants::{DEFAULT_INPUT, DEFAULT_OUTPUT};
 
@@ -36,7 +37,7 @@ pub struct Cli {
 		default_value = "info",
 		global = true
 	)]
-	pub log: String,
+	pub log: LevelFilter,
 }
 
 /// CLI subcommands.

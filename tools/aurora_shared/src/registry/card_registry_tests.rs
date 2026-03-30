@@ -39,7 +39,7 @@ fn registry_parses_and_merges_canonical_and_appearance_data() -> Result<(), Regi
 }
 
 #[test]
-fn check_and_getters_work_for_a_known_card_type() {
+fn check_and_by_type_work_for_a_known_card_type() {
 	let def = CardDefinition {
 		acronym: "FOO".to_string(),
 		card_type: "Foo".to_string(),
@@ -63,13 +63,6 @@ fn check_and_getters_work_for_a_known_card_type() {
 
 	assert!(registry.check(&def.card_type));
 	assert!(!registry.check("UnknownType"));
-
-	assert_eq!(registry.try_get_fill(&def.card_type).unwrap(), def.fill);
-	assert_eq!(registry.try_get_stroke(&def.card_type).unwrap(), def.stroke);
-	assert_eq!(registry.try_get_text(&def.card_type).unwrap(), def.text);
-	assert_eq!(registry.try_get_color(&def.card_type).unwrap(), def.stroke);
-	assert_eq!(registry.try_get_shape(&def.card_type).unwrap(), def.shape);
-	assert_eq!(registry.try_get_icon(&def.card_type).unwrap(), def.icon);
 
 	let by_type = registry.try_get_by_type(&def.card_type).unwrap();
 	assert_eq!(by_type, def);

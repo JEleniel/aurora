@@ -85,7 +85,6 @@ impl Svg {
 		let mut edges_svg = String::new();
 		let mut edge_bounds: Vec<geom::Bounds> = Vec::new();
 		let mut edge_points: Vec<geom::PointF> = Vec::new();
-		let domains_svg = render_domains(&cards_by_id, &positioned, &config);
 		let boundaries_svg = render_boundaries(&cards_by_id, &positioned, &config);
 		let (note_edges_svg, note_shapes_svg, note_labels_svg, note_bounds, note_points) =
 			render_note_callouts(&cards_by_id, &positioned, &config);
@@ -164,9 +163,6 @@ impl Svg {
 		}
 
 		let mut content = String::new();
-		if !domains_svg.is_empty() {
-			content.push_str(format!("<g id=\"domains\">{}</g>", domains_svg).as_str());
-		}
 		if !boundaries_svg.is_empty() {
 			content.push_str(format!("<g id=\"boundaries\">{}</g>", boundaries_svg).as_str());
 		}
@@ -405,15 +401,6 @@ fn grow_rect(r: geom::RectI, pad: i32) -> geom::RectI {
 		w: r.w + 2 * p,
 		h: r.h + 2 * p,
 	}
-}
-
-fn render_domains(
-	cards_by_id: &HashMap<String, &Card>,
-	positioned: &HashMap<String, node::PositionedNode>,
-	config: &SvgConfig,
-) -> String {
-	let _ = (cards_by_id, positioned, config);
-	String::new()
 }
 
 fn render_boundaries(
