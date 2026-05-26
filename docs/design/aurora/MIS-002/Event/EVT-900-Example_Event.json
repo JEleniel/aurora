@@ -10,16 +10,12 @@
 			"target": "STA-901"
 		},
 		{
-			"relationship": "emits",
+			"relationship": "triggers",
 			"target": "EVT-901"
 		},
 		{
 			"relationship": "triggers",
 			"target": "PRD-900"
-		},
-		{
-			"relationship": "carries",
-			"target": "ART-904"
 		}
 	]
 }

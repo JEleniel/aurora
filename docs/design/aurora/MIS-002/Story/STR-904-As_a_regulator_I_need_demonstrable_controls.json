@@ -6,7 +6,7 @@
 	"description": "As a regulator I need the example to include controls, risks, and constraints so that compliance views are meaningful.",
 	"links": [
 		{
-			"relationship": "explains",
+			"relationship": "defines",
 			"target": "REQ-900"
 		}
 	]

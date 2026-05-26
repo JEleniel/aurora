@@ -17,8 +17,6 @@ _No references defined._
 - desires [STR-903](../Story/STR-903-As_a_manager_I_need_traceability.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

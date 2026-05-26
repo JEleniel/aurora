@@ -17,8 +17,6 @@ _No references defined._
 - realizes [CAP-011](../Capability/CAP-011-Index_And_Search_Model_Homes.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

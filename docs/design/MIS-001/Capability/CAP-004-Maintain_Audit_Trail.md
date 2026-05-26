@@ -17,8 +17,6 @@ _No references defined._
 - requires [PRO-004](../Process/PRO-004-Record_Audit_Log_Entries.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

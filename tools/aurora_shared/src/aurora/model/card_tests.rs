@@ -195,7 +195,7 @@ fn write_markdown_outputs_file() -> Result<(), Box<dyn std::error::Error>> {
 		&card_path,
 		None,
 		std::iter::empty::<&crate::AuditLogEntry>(),
-	);
+	)?;
 	let contents = std::fs::read_to_string(&card_path)?;
 	assert!(contents.contains("REQ-001"));
 	Ok(())
@@ -222,7 +222,7 @@ fn write_markdown_renders_references_and_rewrites_relative_paths()
 		&card_path,
 		None,
 		std::iter::empty::<&crate::AuditLogEntry>(),
-	);
+	)?;
 	let contents = std::fs::read_to_string(&card_path)?;
 	assert!(
 		contents.contains("- [../../../references/adr.md](../../references/adr.md)"),

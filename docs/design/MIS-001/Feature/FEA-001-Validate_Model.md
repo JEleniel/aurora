@@ -17,8 +17,6 @@ _No references defined._
 - realizes [CAP-001](../Capability/CAP-001-Validate_Aurora_Models.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

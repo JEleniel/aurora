@@ -137,7 +137,7 @@ impl Card {
 		path: &Path,
 		markdown_paths_by_id: Option<&HashMap<String, PathBuf>>,
 		audit_entries: impl Iterator<Item = &'a super::super::AuditLogEntry>,
-	) {
+	) -> Result<(), CardError> {
 		let mut markdown: String = String::from(CARD_MARKDOWN_TEMPLATE);
 
 		let subtype = match &self.card_subtype {
@@ -201,7 +201,10 @@ impl Card {
 			history.push_str("| _No entries_ |  |  |\n");
 		}
 
-		let version = self.version.clone().unwrap_or_default();
+		let version = match &self.version {
+			Some(version) => format!("## Version\n\n{}\n", version),
+			None => String::new(),
+		};
 
 		markdown = markdown
 			.replace("{{card_type}}", &self.card_type)
@@ -220,7 +223,8 @@ impl Card {
 			.replace("|\n\n", "|\n")
 			.replace("\n\n\n\n", "\n\n");
 
-		std::fs::write(path, markdown).unwrap();
+		std::fs::write(path, markdown)?;
+		Ok(())
 	}
 
 	pub fn get_compact(&self) -> Value {

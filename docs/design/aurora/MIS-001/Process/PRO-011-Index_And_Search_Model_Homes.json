@@ -6,12 +6,8 @@
 	"description": "Create or load a persisted index for a model home, use it to support fast search/navigation, and update it asynchronously on save.",
 	"links": [
 		{
-			"relationship": "includes",
+			"relationship": "starts with",
 			"target": "ATV-019"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-020"
 		}
 	]
 }

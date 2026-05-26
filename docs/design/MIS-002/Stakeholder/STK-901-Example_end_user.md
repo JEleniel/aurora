@@ -17,8 +17,6 @@ _No references defined._
 - desires [STR-901](../Story/STR-901-As_an_end_user_I_need_examples.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

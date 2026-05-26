@@ -185,287 +185,191 @@
 
 ---
 
-## Remaining work — recommended execution order
+## Remaining work
 
-### Close out already-finished foundation with formal review
+### Phase 4 — Review gates
 
-30. [ ] Code review — Phases 0 and 1 (`aurora_shared` foundation)
-    - Priority: 0 (Critical)
-    - Description: Apply the Code Review Checklist to all changes in Phases 0 and 1: validation-gated writes, ID issuance, exclusive lock, undo/redo, model backup, async runtime, configuration safety backup, SVGTemplate defs extraction, and search index.
+18. [x] P0: Reconfirm remaining editor and MCP scope
+    - Description: Re-read the synced editor, MCP, and shared-library docs against the current codebase to lock the remaining backlog before implementation.
     - Deliverables:
-        - All Secure Code checklist items addressed.
-        - No source file exceeds 500 lines; no function exceeds 50 lines.
-        - All tests are meaningful and cover edge cases and failure paths.
-        - Audit of trust boundaries for file I/O and lock acquisition.
-    - Notes: Recommended immediately; every prerequisite is already complete and later work should build on reviewed foundations rather than assumptions.
-    - Dependencies: Task 1, Task 2, Task 3, Task 4, Task 5, Task 6, Task 7, Task 8
-    - Status: Not Started
+        - Remaining gaps list aligned with the current as-built state.
+        - Backlog order updated to reflect the current implementation baseline.
+    - References: `docs/design/AuroraEditor.md`, `docs/design/AuroraMCP.md`
+    - Depends on: none
 
-### Finish the editor core interaction loop
-
-13. [ ] Implement the 4-region UI shell
-    - Priority: 0 (Critical)
-    - Cards: SYS-001, FEA-008
-    - Description: Complete the outer UI shell already scaffolded in the desktop app: left sidebar (20% width), right sidebar (20%), bottom panel (20% height), and top-center main area (remainder). Preserve bounded resize behavior and live theme switching, and finish the remaining cross-platform polish and accessibility verification.
+19. [x] P0: Reconfirm shared architecture boundaries
+    - Description: Revalidate the ownership split between `aurora_shared`, `aurora_editor`, and `aurora_mcp` before feature work begins.
     - Deliverables:
-        - 4-region layout renders correctly on Linux, Windows, and macOS.
-        - Regions are resizable; constraints prevent collapse below minimum usable size.
-        - All three theme modes (system, light, dark) are applied correctly and switch without restart.
-        - Keyboard navigation reaches all interactive controls.
-        - Color contrast meets WCAG AA for all foreground/background pairings in all three theme modes.
-    - Notes: Shell composition, live theme updates, bounded resize rails, and keyboard resize affordances are already in place; remaining work is verification, polish, and any cross-platform fixes discovered during that sweep.
-    - Dependencies: Task 9
-    - Status: In Progress
+        - Boundary notes for model writes, tool calls, and archive operations.
+        - Any required ADR updates identified.
+    - References: `docs/design/ViewRenderingArchitecture.md`
+    - Depends on: 18
 
-14. [ ] Implement the centered graph view (main area)
-    - Priority: 0 (Critical)
-    - Cards: SYS-001, FEA-008, CAP-005
-    - Description: Finish the central graph view on top of the existing focused-graph renderer and hotspot plumbing. The selected card is centered; adjacent cards radiate outward (TheBrain-style). The view renders live SVG output produced by `aurora_shared`'s rendering pipeline. Pan and zoom must be supported. Clicking a node navigates (centers) to that card.
+### Phase 5 — Editor mutation surface
+
+20. [x] P0: Add selected-card field editing
+    - Description: Add in-place editing for the selected card's fields in the right-sidebar inspector.
     - Deliverables:
-        - Graph view renders a focused subgraph centered on the selected card.
-        - Pan and zoom operate smoothly with mouse and keyboard.
-        - Clicking a node re-centers the view on that card.
-        - View re-renders reactively when card data changes.
-        - SVG rendering delegates to `aurora_shared::render`; no duplicate layout logic.
-    - Notes: Focused graph rendering, hotspot extraction, and keyboard zoom scaffolding already exist; remaining work is navigation completion, reactive refresh behavior, and cross-platform interaction polish.
-    - Dependencies: Task 10, Task 13
-    - Status: In Progress
+        - Scalar card fields are editable from the inspector.
+        - Invalid edits are rejected before write.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 1, 19
 
-15. [ ] Implement left sidebar — card browser, search, and breadcrumb
-    - Priority: 1 (High)
-    - Cards: SYS-001, FEA-008, CAP-003
-    - Description: Finish the left sidebar using the existing navigation/search scaffold. Search queries the `ModelIndex` (Task 8). Results show card type, subtype, ID, and name. Selecting a result navigates the graph view to that card. A breadcrumb at the bottom of the sidebar shows the navigation path from the root card to the currently selected card, and each crumb is clickable.
+21. [ ] P0: Add card-link editing actions
+    - Description: Add create and delete controls for card links in the editor.
     - Deliverables:
-        - Search input issues queries against `ModelIndex` and displays ranked results.
-        - Results are filterable by card type.
-        - Selecting a result updates the graph view.
-        - Search is non-blocking; UI does not freeze during query.
-        - Breadcrumb at the bottom of the sidebar reflects the current navigation path.
-        - Clicking a breadcrumb crumb navigates to that card.
-    - Notes: Mission-root navigation, live search, type filtering, and breadcrumb scaffolding already exist; remaining work is completion of navigation behaviors, UX polish, and performance verification under realistic model sizes.
-    - Dependencies: Task 8, Task 13, Task 14
-    - Status: In Progress
+        - Link create and delete actions are available from the editor UI.
+        - Link writes are validation-gated and logged through the model layer.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 20
 
-16. [ ] Implement right sidebar — card detail and editor
-    - Priority: 1 (High)
-    - Cards: SYS-001, FEA-008, CAP-001
-    - Description: Extend the current read-only inspector into a full inline editor. All edits must pass through the validation-gated write API; invalid states are indicated inline and save is blocked. The attribute editor does not need to be a full JSON builder: provide dedicated form controls for the scalar types (boolean, integer, number, text) and let the user enter a text value that may itself be a valid JSON object — it is accepted as-is without further parsing.
+22. [ ] P0: Wire editor save and autosave
+    - Description: Wire explicit save and autosave behavior to the shared write path for validated editor changes.
     - Deliverables:
-        - All standard card fields are editable via inline form controls.
-        - Attribute editor provides boolean, integer, number, and text inputs; text fields accept plain strings or raw JSON objects.
-        - Saving triggers the validation-gated write API; invalid states are rejected with inline error display.
-        - Successful saves update the index (via fs watcher), the graph view, and the audit log.
-        - Create and delete actions for cards and links are accessible from this panel; new card IDs are assigned by the application.
-    - Notes: The read-only inspector, link navigation, attributes, diagnostics, and registry warnings already exist; editing, mutation flows, and save plumbing are the remaining scope.
-    - Dependencies: Task 1, Task 3, Task 13, Task 14
-    - Status: In Progress
+        - Manual save persists the current validated editor state.
+        - Autosave persists validated changes without restart.
+        - Save feedback is surfaced in the editor shell.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 20
 
-17. [ ] Implement autosave and manual save
-    - Priority: 0 (Critical)
-    - Cards: SYS-001, CAP-001
-    - Description: Implement Apple-style immediate autosave: changes are persisted to disk as soon as they pass validation, without requiring an explicit save action. A manual save action must also be available. Autosave must be configurable (disable for users who prefer explicit save). Each save produces a new audit log entry.
+23. [ ] P1: Add editor undo and redo actions
+    - Description: Expose the shared undo/redo stack through editor actions and shortcuts.
     - Deliverables:
-        - Passing-validation changes are written to disk immediately in autosave mode.
-        - Autosave can be disabled; when disabled, a "modified" indicator is shown.
-        - Each save produces an audit log entry with the configured editor identity.
-        - The fs watcher picks up the saved file and updates the index automatically.
-    - Notes: Land the smallest end-to-end validated save path first, then layer the autosave toggle and dirty-state UX on top of it.
-    - Dependencies: Task 1, Task 8, Task 16
-    - Status: Not Started
+        - Undo and redo are available in the editor UI.
+        - Control enabled-state follows the shared history stack.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 22
 
-18. [ ] Implement undo/redo in the editor
-    - Priority: 1 (High)
-    - Cards: SYS-001, CAP-001
-    - Description: Wire the `EditHistory` stack (Task 3) to the editor UI. Undo and redo must be accessible via standard keyboard shortcuts and menu items.
+24. [ ] P1: Add graph keyboard navigation
+    - Description: Finish the focused graph keyboard path so the editor can move focus, center a node, and navigate back and forward from the graph view.
     - Deliverables:
-        - Undo and redo are accessible via ⌘Z / ⌃Z and ⌘⇧Z / ⌃Y.
-        - Stack depth (up to 50) is reflected in the UI (grayed when unavailable).
-        - Undo of a save creates a new audit log entry recording the reversion.
-    - Notes: Scope the first pass to card editing, then extend the same command-history affordances to configuration edits once Task 18 exists.
-    - Dependencies: Task 3, Task 19
-    - Status: Not Started
+        - Focus movement works from the graph canvas.
+        - Center and history navigation are available from the keyboard.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 23
 
-### Complete model-authoring surfaces before agent and MCP work
+### Phase 6 — Model configuration and packaging
 
-26. [ ] Add `version` field to `ModelConfiguration` schema and struct
-    - Priority: 1 (High)
-    - Cards: SYS-001
-    - Description: `AuroraEditor.md` explicitly requires a `version` property on `ModelConfiguration`. Add it to the JSON Schema, the `ModelConfiguration` struct, and the reference configuration files. Update the CLI upgrade path to handle configs that omit the field.
+25. [ ] P0: Add card-type registry write support
+    - Description: Add validation-gated write support for card-type registry entries.
     - Deliverables:
-        - `Aurora.modelconfiguration.schema.json` includes a `version` field.
-        - `ModelConfiguration` struct has a `version: Option<String>` field.
-        - Reference configuration files include a `version` value.
-        - CLI upgrade logic handles absence of `version` without error.
-        - All existing tests pass.
-    - Notes: Do this before further configuration UI and tool-surface work so every remaining config path targets the same stable schema.
-    - Status: Not Started
+        - Card-type registry changes can be written safely.
+        - Accepted and rejected card-type edits are covered by tests.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 19
 
-27. [ ] Implement model configuration customization UI
-    - Priority: 1 (High)
-    - Cards: SYS-001, CAP-001
-    - Description: Provide a dedicated editor panel for customizing the Aurora canon stored in `reference/Aurora.modelconfiguration.json` and `reference/Aurora.viewconfiguration.json`. All writes go through the configuration safety backup (Task 6) before any file is modified. Card type names and acronyms are validated for uniqueness at input time; duplicates are rejected, not warned. Acronyms are auto-generated from the card type name and may be overridden subject to the same rejection. Relationship duplicates (same source + target + label) are rejected. In-use card type deletion is blocked with a clear error. The appearance editor shows a live preview using the shared render pipeline; icon and shape options are sourced from the SVGTemplate defs (Task 7). View definition management constrains root card type selection to currently valid roots; subsequent invalidation of a root is surfaced as a standard validation error.
+26. [ ] P0: Add view-definition write support
+    - Description: Add validation-gated write support for view definitions.
     - Deliverables:
-        - Card type list with add, edit, and remove actions.
-        - Acronym auto-generated on type name entry; override field validates uniqueness on change, rejects duplicates at input time.
-        - Type name field validates uniqueness on change; duplicates are rejected at input time.
-        - Relationship editor rejects duplicate source + target + label triples at input time.
-        - In-use card type deletion is blocked with a clear validation error.
-        - Appearance editor: shape, fill, stroke, text colour, and icon controls with live preview card rendering via the shared pipeline.
-        - Icon and shape selectors populated from SVGTemplate defs (Task 7).
-        - View definition editor: add/edit/remove views; root card type selector constrained to currently valid roots.
-        - All writes go through `ConfigBackupManager` (Task 6) before any file is modified.
-    - Notes: Prefer after Task 26 so the customization UI writes the final versioned configuration shape from day one.
-    - Dependencies: Task 6, Task 7, Task 13, Task 26
-    - Status: Not Started
+        - View-definition changes can be written safely.
+        - Accepted and rejected view-definition edits are covered by tests.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 19
 
-28. [ ] Implement view rendering panel
-    - Priority: 2 (Medium)
-    - Cards: SYS-001, FEA-008, CAP-005
-    - Description: Provide an on-demand view rendering panel that can render any configured view or an ad-hoc view for the open model using `aurora_shared::render`. The root safety rule must be enforced before rendering. Ad-hoc views must support all three layout families (vertical tree, horizontal tree, radial subtree), with the user selecting the desired family. Output is displayed as a scrollable, zoomable SVG.
+27. [ ] P0: Add appearance-default write support
+    - Description: Add validation-gated write support for appearance defaults.
     - Deliverables:
-        - View selector lists all views from the `ViewRegistry` plus an ad-hoc option.
-        - Ad-hoc view allows selection of root card(s), included card types, and layout family.
-        - Selecting a view triggers a render via `aurora_shared::render` and displays the output SVG inline.
-        - Root safety rule violations are reported as a validation error; render is blocked.
-        - Renders are triggered asynchronously; UI remains responsive.
-    - Notes: Sequencing this after Task 18 reduces churn because configured views and view constraints will already have a stable editing surface.
-    - Dependencies: Task 10, Task 13, Task 18
-    - Status: Not Started
+        - Appearance-default changes can be written safely.
+        - Accepted and rejected appearance edits are covered by tests.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 19
 
-29. [ ] Integrate `svg_prep` functionality into `aurora_shared`
-    - Priority: 2 (Medium)
-    - Cards: FEA-006
-    - Description: Per the future roadmap, `svg_prep` functionality should be available inside `aurora_shared` so the editor and CLI can use it directly without spawning a subprocess. Move the core SVG preparation logic into `aurora_shared` as a library module. The standalone `svg_prep` binary can remain as a thin wrapper.
+28. [ ] P1: Add model-home pack and unpack workflow
+    - Description: Add the shared ZIP transport flow for packing and unpacking a model home as a single archive.
     - Deliverables:
-        - Core SVG preparation logic lives in `aurora_shared::render::svg_prep` (or equivalent module).
-        - `aurora_cli` and `aurora_editor` call the shared module directly.
-        - `svg_prep` binary is a thin wrapper over the shared module.
-        - All existing `svg_prep` tests pass.
-    - Notes: Reuse the SVGTemplate loading and defs-extraction work from Task 7 where practical; no second bespoke SVG pipeline, please and thank you.
-    - Dependencies: Task 7
-    - Status: Not Started
+        - Pack operation writes a single ZIP archive for a model home.
+        - Unpack operation restores a model home from an archive.
+    - References: `docs/design/AuroraEditor.md`, `docs/design/AuroraMCP.md`
+    - Depends on: 19
 
-### Build the shared model tool surface, then layer MCP and chat on top
-
-22. [ ] Define and implement the internal model tool surface
-    - Priority: 1 (High)
-    - Cards: SYS-001, CAP-008
-    - Description: Define the tool interface used by agentic access. To minimize the number of tools presented to agents, operations are organized into command/subcommand sets. Groupings: `card` (subcommands: `upsert`, `delete`, `get`), `link` (subcommands: `create`, `delete`), `query` (subcommands: `find`, `adjacency`), `config` (subcommands: `card-type upsert`, `card-type delete`, `card-type list`, `view upsert`, `view delete`, `view list`). Card create and update are merged into a single `upsert`: no ID creates a new card with a system-assigned ID returned in the response; an existing ID updates the card. Config writes go through the configuration safety backup (Task 6). All mutating operations go through the validation-gated write API and produce audit log or configuration change entries. This surface is shared by the editor agent integration and the MCP server.
+29. [ ] P0: Define model tool request and response types
+    - Description: Add the request and response types that editor agents and MCP calls use to read or modify models.
     - Deliverables:
-        - Tools are organized into command/subcommand sets; total tool count is minimized.
-        - `card upsert` without an ID creates a new card with a system-assigned ID and returns it.
-        - `card upsert` with an existing ID updates the card.
-        - `config card-type upsert` enforces acronym and name uniqueness and relationship duplicate rejection.
-        - `config view upsert` constrains root card types to currently valid roots.
-        - Read subcommands do not require confirmation.
-        - Mutating subcommands require confirmation by default (configurable opt-out).
-        - Tests cover every subcommand for success, validation-failure, and ID-issuance paths.
-    - Notes: Sequence this after Tasks 18 and 26 if possible so configuration semantics are settled once and encoded once.
-    - Dependencies: Task 1, Task 6, Task 8, Task 26
-    - Status: Not Started
+        - Shared tool request/response types are available in `aurora_shared`.
+        - Batch-edit and validation-error paths are represented explicitly.
+    - References: `docs/design/AuroraEditor.md`, `docs/design/AuroraMCP.md`
+    - Depends on: 25, 26, 27
 
-23. [ ] Create `aurora_mcp` crate and MCP server scaffold
-    - Priority: 1 (High)
-    - Cards: SYS-001
-    - Description: Create `tools/aurora_mcp/` as a workspace member. The binary reads from stdin and writes to stdout using the MCP protocol (`rmcp` library). File-based logging only (no stdout). On startup: acquire the audit log exclusive lock (Task 2) and create a model backup (Task 4). The same model tool surface (Task 22) is exposed as MCP tools.
+30. [ ] P1: Add the card-type registry editor
+    - Description: Add the editor UI for creating, editing, and removing card-type registry entries.
     - Deliverables:
-        - `cargo build -p aurora_mcp` succeeds.
-        - MCP handshake completes over stdio.
-        - All model tool surface operations (Task 22) are exposed as MCP tools.
-        - Exclusive lock prevents concurrent editor and MCP server access to the same model home.
-        - Backup is created on startup.
-        - Log output goes to file; stdout is reserved for MCP protocol only.
-    - Dependencies: Task 2, Task 4, Task 22
-    - Status: Not Started
+        - Card-type add/edit/remove controls are available.
+        - Duplicate-name and duplicate-acronym conflicts are blocked at input time.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 25
 
-24. [ ] Implement MCP secrets and configuration, including CLI key provisioning
-    - Priority: 1 (High)
-    - Cards: SYS-001
-    - Description: MCP server configuration mirrors the editor (Task 11) but without the UI. API keys must be stored in the OS keychain. Because the MCP server is typically started by an agent (non-interactively) it cannot prompt for credentials; the MCP binary must therefore expose a separate CLI subcommand (e.g., `aurora_mcp keychain set <provider> <key>`) so a human operator can provision keys into the keychain before handing control to the agent. Log output is scrubbed of all secret values.
+31. [ ] P1: Add the appearance customization editor
+    - Description: Add the editor UI for card appearance defaults and live preview rendering.
     - Deliverables:
-        - Configuration file is read from the OS-standard user config directory.
-        - `aurora_mcp keychain set <provider> <key>` stores the key in the OS keychain; intended for interactive human use only.
-        - At runtime the server reads keys from the keychain; it does not accept keys via config files or environment variables.
-        - Log scrubbing is verified by test: injected secrets must not appear in output.
-    - Dependencies: Task 11, Task 24
-    - Status: Not Started
+        - Shape, fill, stroke, text, and icon controls are available.
+        - The preview updates from the shared render pipeline.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 27
 
-25. [ ] Implement agentic chat sidebar in the editor
-    - Priority: 2 (Medium)
-    - Cards: SYS-001, CAP-008
-    - Description: Implement the opt-in agent integration sidebar. Chat input is forwarded to the configured AI provider. The agent has access only to the model tool surface (Task 22); it has no shell access. Mutating tool calls require user confirmation by default. Secrets (API keys) must not appear in logs or UI.
+32. [ ] P1: Add the view-definition editor
+    - Description: Add the editor UI for creating, editing, and removing view definitions.
     - Deliverables:
-        - Agent sidebar is hidden by default; opt-in toggle in settings.
-        - Chat input/output displayed in a scrollable conversation view.
-        - Agent tool calls are routed through the model tool surface only.
-        - Mutating calls display a confirmation dialog before execution.
-        - Supported providers: Ollama (required), OpenAI (required), GitHub Models (required).
-        - Provider endpoint and key configuration delegates to Task 11.
-    - Notes: Sequence after the MCP/server-side tool surface proves out so the editor sidebar can reuse the same hardened contract instead of inventing its own.
-    - Dependencies: Task 11, Task 22, Task 25
-    - Status: Not Started
+        - View add/edit/remove controls are available.
+        - Root selection is constrained by the root-safety rule.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 26
 
-### Close with verification, docs, and release gates
+### Phase 7 — MCP server and agent integration
 
-28. [ ] Implement testing strategy and integration test suite
-    - Priority: 0 (Critical)
-    - Description: Establish testing coverage across all components. Unit tests reside alongside source code (`*_tests.rs`). Integration tests cover full editor workflows and MCP protocol conformance. A performance benchmark validates the startup time requirement. Add tests alongside each remaining implementation task, then close the phase with cross-component suites and performance validation.
+33. [ ] P0: Create the `aurora_mcp` crate scaffold
+    - Description: Add the MCP server crate to the workspace and wire its stdio runtime and logging setup.
     - Deliverables:
-        - Each `aurora_shared` module has a corresponding `*_tests.rs` covering success, validation-failure, and edge-case paths.
-        - Integration test suite exercises: card create/update/delete, undo/redo, search, view render, autosave, configuration customization, and config backup behavior.
-        - MCP server integration test: tool call/response cycle over a simulated stdio transport for every tool subcommand including `config` subcommands.
-        - Performance benchmark: startup load time ≤ 2 s against a synthetic 2000-card / 3500-link fixture (Task 10 requirement).
-        - CI configuration runs all tests on Linux, Windows, and macOS.
-    - Dependencies: Task 18, Task 19, Task 20, Task 21, Task 22, Task 23, Task 24, Task 25, Task 26, Task 27
-    - Status: Not Started
+        - `tools/aurora_mcp` is registered as a workspace member.
+        - The server starts on stdio with file-based logging.
+    - References: `docs/design/AuroraMCP.md`
+    - Depends on: 27
 
-29. [ ] Write user and operator documentation
-    - Priority: 1 (High)
-    - Description: Produce the documentation required to install, configure, and operate the editor and MCP server.
+34. [ ] P0: Add MCP read-only tools
+    - Description: Add the MCP query handlers for card lookup, adjacency, root selection, and validation introspection.
     - Deliverables:
-        - User guide for the editor: installation, first-run wizard, navigation, card editing, model configuration customization, view rendering, agent sidebar.
-        - MCP server setup guide: installation, keychain provisioning via CLI (`aurora_mcp keychain set`), model home configuration, integration with agent frameworks.
-        - Architecture decision records updated to reflect final implementation choices (UI framework, search library, locking strategy, tool surface design).
-    - Dependencies: Task 12, Task 18, Task 21, Task 23, Task 24, Task 25
-    - Status: Not Started
+        - Read-only tool calls return structured JSON responses.
+        - Queries do not require full model materialization.
+    - References: `docs/design/AuroraMCP.md`
+    - Depends on: 33, 29
 
-30. [ ] Code review — Phases 2–5 (editor core, configuration customization, and agent integration)
-    - Priority: 0 (Critical)
-    - Description: Apply the Code Review Checklist to the `aurora_editor` crate (Tasks 9–23).
+35. [ ] P0: Add MCP write and batch-edit tools
+    - Description: Add the MCP mutation handlers for card edits, link edits, and batch edits.
     - Deliverables:
-        - WCAG AA accessibility verified for all interactive elements in all three theme modes.
-        - No duplicate layout or rendering logic (all delegates to `aurora_shared`).
-        - Secrets (API keys, keychain access) do not appear in logs or error messages.
-        - All mutating paths validated; no unconditional writes.
-        - Configuration customization UI enforces all uniqueness and duplicate rejection rules at input time.
-        - Agent tool surface has no shell access path.
-        - All mutating agent calls are confirmation-gated by default.
-        - File and function size limits met.
-    - Dependencies: Task 9, Task 10, Task 11, Task 12, Task 13, Task 14, Task 15, Task 16, Task 17, Task 18, Task 19, Task 20, Task 21, Task 22, Task 23
-    - Status: Not Started
+        - Mutation calls are validation-gated and logged.
+        - Batch edits fail atomically on the first validation error.
+    - References: `docs/design/AuroraMCP.md`
+    - Depends on: 33, 29
 
-31. [ ] Code review — Phase 6 (MCP server)
-    - Priority: 1 (High)
-    - Description: Apply the Code Review Checklist to the `aurora_mcp` crate (Tasks 24–25).
+36. [ ] P1: Add the editor agent sidebar
+    - Description: Add the opt-in agent chat sidebar with context controls and a visible tool-activity feed.
     - Deliverables:
-        - MCP server log scrubbing verified for secrets.
-        - Trust boundaries between MCP protocol and model tool surface are explicit.
-        - Keychain CLI subcommand is guarded against non-interactive invocation.
-        - Exclusive lock behavior verified against both editor and MCP server.
-        - `config` subcommands enforce the same validation rules as the editor UI.
-    - Dependencies: Task 24, Task 25
-    - Status: Not Started
+        - Agent chat UI is available in the editor shell.
+        - Tool use and context scope are shown to the user.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 29, 35
 
-32. [ ] Pre-release review — `aurora_editor` v1.0
-    - Priority: 0 (Critical)
-    - Description: Apply the Pre-Release Checklist before tagging the first editor release.
+37. [ ] P1: Add agent proposed-change review
+    - Description: Add the diff-like approval flow that shows agent-proposed model changes before they are written.
     - Deliverables:
-        - All required tests pass on Linux, Windows, and macOS.
-        - No unresolved P0 or P1 findings from code reviews.
-        - Versioning in `Cargo.toml` is correct and consistent with release scope.
-        - `Cargo.lock` committed and up to date.
-        - Release notes and changelog entries are accurate and complete.
-        - Distribution artifacts are reproducible from declared inputs.
-        - No secrets present in release artifacts or configuration templates.
-    - Dependencies: Task 28, Task 29, Task 30, Task 31, Task 32
-    - Status: Not Started
+        - Proposed changes are reviewable before writes.
+        - User acceptance or rejection is explicit.
+    - References: `docs/design/AuroraEditor.md`
+    - Depends on: 36
+
+### Phase 8 — Verification and documentation
+
+38. [ ] P0: Code review — remaining implementation
+    - Description: Review the completed editor, shared-library, MCP, and agent-integration work against the code-review checklist.
+    - Deliverables:
+        - Open code-review findings are recorded and addressed.
+        - Final implementation remains within the agreed boundaries and validation gates.
+    - References: `docs/design/AuroraEditor.md`, `docs/design/AuroraMCP.md`
+    - Depends on: 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37
+
+39. [ ] P1: Documentation review — editor and MCP guides
+    - Description: Review the user and operator documentation for the editor and MCP server after the implementation review closes.
+    - Deliverables:
+        - Remaining documentation gaps are identified and closed.
+        - User-facing and operator-facing guides match the implemented behavior.
+    - References: `docs/design/AuroraEditor.md`, `docs/design/AuroraMCP.md`
+    - Depends on: 38

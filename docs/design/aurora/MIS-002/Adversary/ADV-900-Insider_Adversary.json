@@ -5,5 +5,14 @@
 	"card_subtype": "Insider",
 	"name": "Insider adversary",
 	"description": "Adversary subtype used for coverage.",
-	"links": []
+	"links": [
+		{
+			"relationship": "develops",
+			"target": "THC-900"
+		},
+		{
+			"relationship": "exploits",
+			"target": "AST-900"
+		}
+	]
 }

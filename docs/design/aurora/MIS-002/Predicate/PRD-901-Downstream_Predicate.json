@@ -10,7 +10,7 @@
 			"target": "STA-900"
 		},
 		{
-			"relationship": "emits",
+			"relationship": "branches to",
 			"target": "EVT-900"
 		}
 	]

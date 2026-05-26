@@ -21,8 +21,6 @@ _No references defined._
 - performs [ATV-008](../Activity/ATV-008-Prepare_SVG_References.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

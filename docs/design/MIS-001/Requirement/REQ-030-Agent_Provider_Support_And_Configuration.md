@@ -17,8 +17,6 @@ _No references defined._
 - requires [CAP-012](../Capability/CAP-012-Agent_Assisted_Modeling.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -5,10 +5,5 @@
 	"card_subtype": "Event Log",
 	"name": "Event log store",
 	"description": "Data store subtype used for persistence coverage.",
-	"links": [
-		{
-			"relationship": "runs on",
-			"target": "NOD-901"
-		}
-	]
+	"links": []
 }

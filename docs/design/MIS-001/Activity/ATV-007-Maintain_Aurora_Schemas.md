@@ -17,8 +17,6 @@ _No references defined._
 - produces [ART-007](../Artifact/ART-007-Aurora_Schemas.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

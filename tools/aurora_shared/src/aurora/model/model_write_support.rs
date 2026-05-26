@@ -70,7 +70,7 @@ impl Model {
 			model_home: self.model_home.clone(),
 			mission_home: self.mission_home.clone(),
 		};
-		let errors = validation_model.validate();
+		let errors = validation_model.validate().errors;
 		if !errors.is_empty() {
 			return Err(ModelError::ValidationErrors(errors));
 		}
@@ -178,7 +178,7 @@ impl Model {
 			&mission_md_path,
 			Some(&markdown_paths_by_id),
 			self.audit_log.entries_for_target(&self.root_card.id),
-		);
+		)?;
 
 		for card in &self.cards {
 			let mut card_path = path.to_path_buf();
@@ -191,7 +191,7 @@ impl Model {
 				&card_path,
 				Some(&markdown_paths_by_id),
 				self.audit_log.entries_for_target(&card.id),
-			);
+			)?;
 		}
 
 		Ok(())

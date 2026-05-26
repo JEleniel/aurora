@@ -18,8 +18,6 @@ _No references defined._
 - requires [CAP-010](../Capability/CAP-010-Editor_Observability.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -13,18 +13,6 @@
 		{
 			"relationship": "exposes",
 			"target": "INT-003"
-		},
-		{
-			"relationship": "implements",
-			"target": "FEA-001"
-		},
-		{
-			"relationship": "implements",
-			"target": "FEA-002"
-		},
-		{
-			"relationship": "implements",
-			"target": "FEA-003"
 		}
 	]
 }

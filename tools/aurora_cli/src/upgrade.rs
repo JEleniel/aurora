@@ -1,9 +1,12 @@
 //! Upgrade helpers for migrating model files to the latest supported schema.
 
 use anyhow::{Context, Result, bail};
-use aurora_shared::Aurora;
+use aurora_shared::{
+	Aurora, MODEL_CONFIGURATION_VERSION, ModelConfiguration, ModelConfigurationCardDefinition,
+	VIEW_CONFIGURATION_VERSION, ViewConfiguration, ViewConfigurationCardDefinition, ViewDefinition,
+};
 use serde_json::Value;
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::ffi::OsStr;
 use std::path::{Path, PathBuf};
 use tracing::{info, warn};
@@ -46,6 +49,10 @@ const REFERENCE_BINARY_ASSETS: [(&str, &[u8]); 1] = [(
 	"SVGTemplate.svgz",
 	include_bytes!("../../../.github/aurora/reference/SVGTemplate.svgz"),
 )];
+const REFERENCE_CONFIGURATION_FILES: [&str; 2] = [
+	"Aurora.modelconfiguration.json",
+	"Aurora.viewconfiguration.json",
+];
 
 const NO_BINARY_ASSETS: [(&str, &[u8]); 0] = [];
 
@@ -93,11 +100,8 @@ fn sync_model_home_assets(model_home: &Path) -> Result<()> {
 		&SCHEMA_ASSETS,
 		&NO_BINARY_ASSETS,
 	)?;
-	sync_directory_assets(
-		&model_home.join("reference"),
-		&REFERENCE_TEXT_ASSETS,
-		&REFERENCE_BINARY_ASSETS,
-	)?;
+	sync_reference_assets(&model_home.join("reference"))?;
+	upgrade_reference_configurations(model_home)?;
 	Ok(())
 }
 
@@ -119,6 +123,22 @@ fn sync_directory_assets(
 		write_asset_file(directory, name, contents)?;
 	}
 
+	Ok(())
+}
+
+fn sync_reference_assets(directory: &Path) -> Result<()> {
+	std::fs::create_dir_all(directory)
+		.with_context(|| format!("Failed to create directory {}", directory.display()))?;
+	let mut required = required_file_names(&[], &REFERENCE_BINARY_ASSETS);
+	required.extend(
+		REFERENCE_CONFIGURATION_FILES
+			.iter()
+			.map(|name| (*name).to_string()),
+	);
+	prune_outdated_files(directory, &required)?;
+	for (name, contents) in REFERENCE_BINARY_ASSETS {
+		write_asset_file(directory, name, contents)?;
+	}
 	Ok(())
 }
 
@@ -172,6 +192,123 @@ fn write_asset_file(directory: &Path, file_name: &str, bytes: &[u8]) -> Result<(
 	std::fs::write(&path, bytes)
 		.with_context(|| format!("Failed to write required file {}", path.display()))?;
 	Ok(())
+}
+
+fn upgrade_reference_configurations(model_home: &Path) -> Result<()> {
+	let reference_dir = model_home.join("reference");
+	let default_model: ModelConfiguration = serde_json::from_str(REFERENCE_TEXT_ASSETS[0].1)?;
+	let default_view: ViewConfiguration = serde_json::from_str(REFERENCE_TEXT_ASSETS[1].1)?;
+	let current_model = read_model_configuration(&reference_dir.join(REFERENCE_TEXT_ASSETS[0].0))?;
+	let current_view = read_view_configuration(&reference_dir.join(REFERENCE_TEXT_ASSETS[1].0))?;
+	write_reference_json(
+		&reference_dir.join(REFERENCE_TEXT_ASSETS[0].0),
+		&serde_json::to_value(upgrade_model_configuration(current_model, &default_model))?,
+	)?;
+	write_reference_json(
+		&reference_dir.join(REFERENCE_TEXT_ASSETS[1].0),
+		&serde_json::to_value(upgrade_view_configuration(current_view, &default_view))?,
+	)?;
+	Ok(())
+}
+
+fn read_model_configuration(path: &Path) -> Result<ModelConfiguration> {
+	if !path.is_file() {
+		return Ok(serde_json::from_str(REFERENCE_TEXT_ASSETS[0].1)?);
+	}
+	Ok(serde_json::from_str(&std::fs::read_to_string(path)?)?)
+}
+
+fn read_view_configuration(path: &Path) -> Result<ViewConfiguration> {
+	if !path.is_file() {
+		return Ok(serde_json::from_str(REFERENCE_TEXT_ASSETS[1].1)?);
+	}
+	Ok(serde_json::from_str(&std::fs::read_to_string(path)?)?)
+}
+
+fn write_reference_json(path: &Path, value: &Value) -> Result<()> {
+	std::fs::write(path, serde_json::to_string_pretty(value)?)
+		.with_context(|| format!("Failed to write upgraded reference file {}", path.display()))?;
+	Ok(())
+}
+
+fn upgrade_model_configuration(
+	current: ModelConfiguration,
+	defaults: &ModelConfiguration,
+) -> ModelConfiguration {
+	let mut remaining: HashMap<String, ModelConfigurationCardDefinition> = current
+		.cards
+		.into_iter()
+		.map(|card| (card.acronym.clone(), card))
+		.collect();
+	let mut cards = defaults.cards.clone();
+	for card in &cards {
+		remaining.remove(&card.acronym);
+	}
+	let mut custom_cards: Vec<ModelConfigurationCardDefinition> = remaining.into_values().collect();
+	custom_cards.sort_by(|left, right| left.acronym.cmp(&right.acronym));
+	cards.extend(custom_cards);
+	ModelConfiguration {
+		schema: current.schema.or_else(|| defaults.schema.clone()),
+		version: Some(MODEL_CONFIGURATION_VERSION.to_string()),
+		cards,
+	}
+}
+
+fn upgrade_view_configuration(
+	current: ViewConfiguration,
+	defaults: &ViewConfiguration,
+) -> ViewConfiguration {
+	let mut appearances: HashMap<String, ViewConfigurationCardDefinition> = current
+		.cards
+		.into_iter()
+		.map(|card| (card.acronym.clone(), card))
+		.collect();
+	let mut cards = defaults.cards.clone();
+	for card in &cards {
+		appearances.remove(&card.acronym);
+	}
+	let mut custom_cards: Vec<ViewConfigurationCardDefinition> =
+		appearances.into_values().collect();
+	custom_cards.sort_by(|left, right| left.acronym.cmp(&right.acronym));
+	cards.extend(custom_cards);
+	let mut views = defaults.views.clone();
+	views.extend(custom_views(current.views, defaults.views.as_slice()));
+	ViewConfiguration {
+		schema: current.schema.or_else(|| defaults.schema.clone()),
+		version: Some(VIEW_CONFIGURATION_VERSION.to_string()),
+		available_icons: merged_icons(current.available_icons, defaults.available_icons.as_slice()),
+		cards,
+		domains: if current.domains.is_empty() {
+			defaults.domains.clone()
+		} else {
+			current.domains
+		},
+		views,
+	}
+}
+
+fn merged_icons(current: Vec<String>, defaults: &[String]) -> Vec<String> {
+	let mut seen: HashSet<String> = HashSet::new();
+	let mut icons = defaults.to_vec();
+	for icon in &icons {
+		seen.insert(icon.clone());
+	}
+	for icon in current {
+		if seen.insert(icon.clone()) {
+			icons.push(icon);
+		}
+	}
+	icons
+}
+
+fn custom_views(current: Vec<ViewDefinition>, defaults: &[ViewDefinition]) -> Vec<ViewDefinition> {
+	let default_names: HashSet<String> = defaults.iter().map(|view| view.name.clone()).collect();
+	let mut custom: Vec<ViewDefinition> = current
+		.into_iter()
+		.filter(|view| !default_names.contains(&view.name))
+		.collect();
+	custom.sort_by(|left, right| left.name.cmp(&right.name));
+	custom
 }
 
 fn upgrade_card_file(path: &Path) -> Result<bool> {

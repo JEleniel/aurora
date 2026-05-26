@@ -18,8 +18,6 @@ _No references defined._
 - imposes [CNS-007](../Constraint/CNS-007-Tool_Mediated_Agent_Actions.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

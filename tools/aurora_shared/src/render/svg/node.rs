@@ -1,7 +1,7 @@
 use std::collections::{HashMap, HashSet};
 
 use crate::registry::{CardDefinition, CardRegistry};
-use crate::render::LayoutFamily;
+use crate::render::{LayoutCoordinateSpace, LayoutFamily};
 use crate::{Card, Layout};
 
 use super::{RenderError, SvgConfig, geom};
@@ -17,11 +17,6 @@ const DESCRIPTION_MAX_LINES: usize = 10;
 const SYMBOL_SPACING_BUMP_PX: i32 = 32;
 const COLUMN_PITCH_PX: i32 = 1080 + SYMBOL_SPACING_BUMP_PX;
 const ROW_PITCH_PX: i32 = 810 + SYMBOL_SPACING_BUMP_PX;
-const RADIAL_COLUMN_PITCH_PX: i32 = 900 + SYMBOL_SPACING_BUMP_PX;
-const RADIAL_ROW_PITCH_PX: i32 = 630 + SYMBOL_SPACING_BUMP_PX;
-const RADIAL_DENSE_NODE_THRESHOLD: usize = 24;
-const RADIAL_DENSE_COLUMN_PITCH_PX: i32 = 1020 + SYMBOL_SPACING_BUMP_PX;
-const RADIAL_DENSE_ROW_PITCH_PX: i32 = 765 + SYMBOL_SPACING_BUMP_PX;
 const SYMBOL_BASE_W: f32 = super::SYMBOL_BASE_WIDTH_PX as f32;
 const SYMBOL_BASE_H: f32 = super::SYMBOL_BASE_HEIGHT_PX as f32;
 const ICON_VIEWBOX_SIZE_PX: i32 = 128;
@@ -94,6 +89,7 @@ pub fn collect_node_layouts(
 
 pub fn position_nodes(
 	node_layouts: &[NodeLayout],
+	coordinate_space: LayoutCoordinateSpace,
 	layout_family: Option<LayoutFamily>,
 	config: &SvgConfig,
 ) -> HashMap<String, PositionedNode> {
@@ -101,13 +97,11 @@ pub fn position_nodes(
 	if node_layouts.is_empty() {
 		return HashMap::new();
 	}
-	let (column_pitch_px, row_pitch_px) = match layout_family {
-		Some(LayoutFamily::RadialSubtree) if node_layouts.len() > RADIAL_DENSE_NODE_THRESHOLD => {
-			(RADIAL_DENSE_COLUMN_PITCH_PX, RADIAL_DENSE_ROW_PITCH_PX)
-		}
-		Some(LayoutFamily::RadialSubtree) => (RADIAL_COLUMN_PITCH_PX, RADIAL_ROW_PITCH_PX),
-		_ => (COLUMN_PITCH_PX, ROW_PITCH_PX),
-	};
+	if coordinate_space == LayoutCoordinateSpace::Pixels {
+		return position_pixel_nodes(node_layouts);
+	}
+	let _ = layout_family;
+	let (column_pitch_px, row_pitch_px) = (COLUMN_PITCH_PX, ROW_PITCH_PX);
 
 	let mut positioned: HashMap<String, PositionedNode> = HashMap::new();
 	for n in node_layouts {
@@ -125,6 +119,27 @@ pub fn position_nodes(
 				width_px: n.geom.width_px,
 				height_px: n.geom.height_px,
 				geom: n.geom.clone(),
+			},
+		);
+	}
+	positioned
+}
+
+fn position_pixel_nodes(node_layouts: &[NodeLayout]) -> HashMap<String, PositionedNode> {
+	let mut positioned = HashMap::new();
+	for node in node_layouts {
+		positioned.insert(
+			node.id.clone(),
+			PositionedNode {
+				bbox: geom::RectI {
+					x: node.x,
+					y: node.y,
+					w: node.geom.width_px,
+					h: node.geom.height_px,
+				},
+				width_px: node.geom.width_px,
+				height_px: node.geom.height_px,
+				geom: node.geom.clone(),
 			},
 		);
 	}
@@ -150,6 +165,7 @@ pub fn render_node(
 			relationships: Vec::new(),
 			shape: "rectangle".to_string(),
 			common_subtypes: Vec::new(),
+			common_properties: Vec::new(),
 		});
 	let shape_name = card_definition.shape.trim().to_lowercase();
 	let shape_id = if known_shape_ids.contains(shape_name.as_str()) {
@@ -406,10 +422,11 @@ mod tests {
 		let config = SvgConfig {
 			node_spacing_px: 10,
 			base_font_size_px: 16,
+			domain_paths_by_acronym: HashMap::new(),
 			edge_style: super::super::EdgeStyle::Orthogonal,
 		};
 
-		let positioned = position_nodes(&nodes, None, &config);
+		let positioned = position_nodes(&nodes, LayoutCoordinateSpace::Grid, None, &config);
 		let a = positioned.get("a").expect("a should be positioned");
 		let b = positioned.get("b").expect("b should be positioned");
 		assert_eq!(a.bbox.x, 0);
@@ -442,84 +459,15 @@ mod tests {
 		let config = SvgConfig {
 			node_spacing_px: 10,
 			base_font_size_px: 16,
+			domain_paths_by_acronym: HashMap::new(),
 			edge_style: super::super::EdgeStyle::Orthogonal,
 		};
 
-		let positioned = position_nodes(&nodes, None, &config);
+		let positioned = position_nodes(&nodes, LayoutCoordinateSpace::Grid, None, &config);
 		let a = positioned.get("a").expect("a should be positioned");
 		let b = positioned.get("b").expect("b should be positioned");
 		assert_eq!(a.bbox.y, 0);
 		assert_eq!(b.bbox.y, ROW_PITCH_PX);
-	}
-
-	#[test]
-	fn position_nodes_uses_compact_pitch_for_radial_layouts() {
-		let geom = NodeGeom {
-			width_px: 100,
-			height_px: 60,
-			lines: Vec::new(),
-			bold_line_index: None,
-			description_start_index: 0,
-		};
-		let nodes = vec![
-			NodeLayout {
-				id: "a".to_string(),
-				x: 0,
-				y: 0,
-				geom: geom.clone(),
-			},
-			NodeLayout {
-				id: "b".to_string(),
-				x: 1,
-				y: 1,
-				geom,
-			},
-		];
-		let config = SvgConfig {
-			node_spacing_px: 10,
-			base_font_size_px: 16,
-			edge_style: super::super::EdgeStyle::Orthogonal,
-		};
-
-		let positioned = position_nodes(&nodes, Some(LayoutFamily::RadialSubtree), &config);
-		let b = positioned.get("b").expect("b should be positioned");
-		assert_eq!(b.bbox.x, RADIAL_COLUMN_PITCH_PX);
-		assert_eq!(b.bbox.y, RADIAL_ROW_PITCH_PX);
-	}
-
-	#[test]
-	fn position_nodes_keeps_compact_pitch_for_dense_radial_layouts() {
-		let geom = NodeGeom {
-			width_px: 100,
-			height_px: 60,
-			lines: Vec::new(),
-			bold_line_index: None,
-			description_start_index: 0,
-		};
-		let mut nodes: Vec<NodeLayout> = Vec::new();
-		for index in 0..=RADIAL_DENSE_NODE_THRESHOLD {
-			nodes.push(NodeLayout {
-				id: format!("n-{index}"),
-				x: index as i32,
-				y: 1,
-				geom: geom.clone(),
-			});
-		}
-		let config = SvgConfig {
-			node_spacing_px: 10,
-			base_font_size_px: 16,
-			edge_style: super::super::EdgeStyle::Orthogonal,
-		};
-
-		let positioned = position_nodes(&nodes, Some(LayoutFamily::RadialSubtree), &config);
-		let probe = positioned
-			.get(format!("n-{}", RADIAL_DENSE_NODE_THRESHOLD).as_str())
-			.expect("probe should be positioned");
-		assert_eq!(
-			probe.bbox.x,
-			(RADIAL_DENSE_NODE_THRESHOLD as i32) * RADIAL_DENSE_COLUMN_PITCH_PX
-		);
-		assert_eq!(probe.bbox.y, RADIAL_DENSE_ROW_PITCH_PX);
 	}
 
 	#[test]
@@ -669,6 +617,7 @@ mod tests {
 				relationships: Vec::new(),
 				shape: "rectangle".to_string(),
 				common_subtypes: Vec::new(),
+				common_properties: Vec::new(),
 			}],
 			available_icons: HashSet::new(),
 		};

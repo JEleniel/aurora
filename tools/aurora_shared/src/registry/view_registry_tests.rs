@@ -1,4 +1,5 @@
 use super::ViewRegistry;
+use crate::render::LayoutFamily;
 use std::path::PathBuf;
 
 fn read_testdata(rel_path: &str) -> String {
@@ -52,4 +53,17 @@ fn find_by_name_returns_none_for_unknown() {
 
 	let found = definitions.iter().find(|d| d.name == "Unknown View");
 	assert!(found.is_none());
+}
+
+#[test]
+fn parsed_view_definition_preserves_layout() {
+	let view_configuration = test_view_configuration();
+	let registry = ViewRegistry::try_new_from_view_configuration(&view_configuration)
+		.expect("view registry JSON should parse");
+	let definitions = registry
+		.try_get_all()
+		.expect("view registry should return definitions");
+	let definition = definitions.first().expect("expected a view definition");
+
+	assert_eq!(definition.layout, Some(LayoutFamily::TreeTopDown));
 }

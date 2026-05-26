@@ -6,20 +6,8 @@
 	"description": "Persist edits to disk safely (autosave or manual save), support undo/redo, and pack/unpack model homes as ZIP archives.",
 	"links": [
 		{
-			"relationship": "includes",
+			"relationship": "starts with",
 			"target": "ATV-012"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-013"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-014"
-		},
-		{
-			"relationship": "includes",
-			"target": "ATV-015"
 		}
 	]
 }

@@ -16,6 +16,10 @@
 		{
 			"relationship": "produces",
 			"target": "ART-015"
+		},
+		{
+			"relationship": "leads to",
+			"target": "ATV-001"
 		}
 	]
 }

@@ -6,6 +6,7 @@
 		{
 			"name": "Test View",
 			"description": "A test view",
+			"layout": "TreeTopDown",
 			"root_card_types": ["MIS"],
 			"included_card_types": ["CAP", "REQ"]
 		}

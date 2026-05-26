@@ -14,14 +14,11 @@ _No references defined._
 
 ## Links
 
-- provides [SYS-900](../System/SYS-900-Example_system.md)
-- provides [APP-900](../Application/APP-900-Example_application.md)
-
-
-## Version
+_No links defined._
 
 ## Audit Log
 
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T00:05:00Z | architect | create |
+| 2026-03-22T00:03:40Z | Copilot | change |

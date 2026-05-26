@@ -6,7 +6,7 @@
 	"description": "Render view artifacts by selecting roots, traversing reachable subgraphs, and generating diagrams and related assets from the model.",
 	"links": [
 		{
-			"relationship": "includes",
+			"relationship": "starts with",
 			"target": "ATV-002"
 		}
 	]

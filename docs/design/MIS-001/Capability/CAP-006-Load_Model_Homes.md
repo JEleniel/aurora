@@ -17,8 +17,6 @@ _No references defined._
 - requires [PRO-006](../Process/PRO-006-Load_Model_Home_In_Editor.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

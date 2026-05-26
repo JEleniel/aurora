@@ -5,10 +5,5 @@
 	"card_subtype": "Diagram",
 	"name": "Example diagram",
 	"description": "Artifact subtype used for coverage.",
-	"links": [
-		{
-			"relationship": "goes into",
-			"target": "ATV-900"
-		}
-	]
+	"links": []
 }

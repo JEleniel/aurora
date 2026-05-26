@@ -20,6 +20,10 @@ pub enum RegistryError {
 	UnknownRelationshipTarget(String),
 	#[error("Duplicate card acronym in model configuration: {0}")]
 	DuplicateCardAcronym(String),
+	#[error("Card acronym assigned to more than one domain path: {0}")]
+	DuplicateDomainAssignment(String),
+	#[error("Card acronym referenced by domains but not defined in the view configuration: {0}")]
+	UnknownDomainCardAcronym(String),
 	#[error("Unknown icon id referenced by model configuration: {0}")]
 	UnknownIcon(String),
 }

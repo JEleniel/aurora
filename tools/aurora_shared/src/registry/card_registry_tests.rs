@@ -1,4 +1,4 @@
-use super::{CardDefinition, CardRegistry, RelationshipDefinition};
+use super::{CardDefinition, CardRegistry, RelationshipDefinition, ViewConfiguration};
 
 use crate::registry::RegistryError;
 use std::collections::HashSet;
@@ -39,7 +39,7 @@ fn registry_parses_and_merges_canonical_and_appearance_data() -> Result<(), Regi
 }
 
 #[test]
-fn check_and_getters_work_for_a_known_card_type() {
+fn check_and_by_type_work_for_a_known_card_type() {
 	let def = CardDefinition {
 		acronym: "FOO".to_string(),
 		card_type: "Foo".to_string(),
@@ -54,6 +54,7 @@ fn check_and_getters_work_for_a_known_card_type() {
 		}],
 		shape: "rectangle".to_string(),
 		common_subtypes: Vec::new(),
+		common_properties: Vec::new(),
 	};
 	let registry = CardRegistry {
 		definitions: vec![def.clone()],
@@ -62,13 +63,6 @@ fn check_and_getters_work_for_a_known_card_type() {
 
 	assert!(registry.check(&def.card_type));
 	assert!(!registry.check("UnknownType"));
-
-	assert_eq!(registry.try_get_fill(&def.card_type).unwrap(), def.fill);
-	assert_eq!(registry.try_get_stroke(&def.card_type).unwrap(), def.stroke);
-	assert_eq!(registry.try_get_text(&def.card_type).unwrap(), def.text);
-	assert_eq!(registry.try_get_color(&def.card_type).unwrap(), def.stroke);
-	assert_eq!(registry.try_get_shape(&def.card_type).unwrap(), def.shape);
-	assert_eq!(registry.try_get_icon(&def.card_type).unwrap(), def.icon);
 
 	let by_type = registry.try_get_by_type(&def.card_type).unwrap();
 	assert_eq!(by_type, def);
@@ -114,4 +108,28 @@ fn has_icon_accepts_prefixed_and_unprefixed_values() {
 	assert!(registry.has_icon("i-wrench"));
 	assert!(registry.has_icon("#i-wrench"));
 	assert!(!registry.has_icon("i-missing"));
+}
+
+#[test]
+fn view_configuration_uses_default_domains_when_omitted() {
+	let view_configuration: ViewConfiguration = serde_json::from_value(serde_json::json!({
+		"available_icons": [],
+		"cards": [
+			{"acronym": "APP", "shape": "rectangle", "fill": "#000000", "stroke": "#ffffff"},
+			{"acronym": "API", "shape": "rectangle", "fill": "#000000", "stroke": "#ffffff"},
+			{"acronym": "MIS", "shape": "rectangle", "fill": "#000000", "stroke": "#ffffff"}
+		],
+		"views": []
+	}))
+	.expect("view configuration should parse");
+
+	let paths = view_configuration
+		.try_domain_paths()
+		.expect("default domains should be available");
+	assert_eq!(paths.get("APP"), Some(&vec!["Structure".to_string()]));
+	assert_eq!(
+		paths.get("API"),
+		Some(&vec!["Structure".to_string(), "External".to_string()])
+	);
+	assert_eq!(paths.get("MIS"), Some(&vec!["Governance".to_string()]));
 }

@@ -10,6 +10,8 @@ use walkdir::WalkDir;
 use zip::write::SimpleFileOptions;
 use zip::{CompressionMethod, ZipWriter};
 
+use tracing::debug;
+
 use crate::{BackgroundRuntimeError, spawn_blocking_background};
 
 /// Identifies which write-session surface is requesting a model-home backup.
@@ -133,7 +135,7 @@ impl ConfigBackupManager {
 
 		match std::fs::rename(&temp_path, &archive_path) {
 			Ok(()) => Ok(archive_path),
-			Err(error) if archive_path.is_file() => {
+			Err(_error) if archive_path.is_file() => {
 				cleanup_file(&temp_path);
 				Ok(archive_path)
 			}
@@ -173,7 +175,7 @@ fn backup_files(model_home: &Path, backup_dir: &Path) -> Result<Vec<PathBuf>, Ba
 		.into_iter()
 		.filter_entry(|entry| !entry.path().starts_with(backup_dir))
 	{
-		let entry = entry.map_err(|error| BackupError::Io(error.into()))?;
+		let entry = entry?;
 		if entry.file_type().is_file() {
 			files.push(entry.into_path());
 		}
@@ -198,7 +200,7 @@ fn files_in_required_directory(path: &Path) -> Result<Vec<PathBuf>, BackupError>
 
 	let mut files = Vec::new();
 	for entry in WalkDir::new(path) {
-		let entry = entry.map_err(|error| BackupError::Io(error.into()))?;
+		let entry = entry?;
 		if entry.file_type().is_file() {
 			files.push(entry.into_path());
 		}
@@ -226,8 +228,10 @@ fn temp_archive_path(archive_path: &Path) -> Result<PathBuf, BackupError> {
 }
 
 fn cleanup_file(path: &Path) {
-	if path.exists() {
-		let _ = std::fs::remove_file(path);
+	if path.exists()
+		&& let Err(error) = std::fs::remove_file(path)
+	{
+		debug!(path = %path.display(), error = %error, "Failed to remove temporary backup file");
 	}
 }
 
@@ -242,6 +246,8 @@ pub enum BackupError {
 	InvalidBackupPath(String),
 	#[error("Required backup source path is missing: {0}")]
 	RequiredBackupPathMissing(String),
+	#[error("Backup directory walk error: {0}")]
+	Walkdir(#[from] walkdir::Error),
 }
 
 #[cfg(test)]

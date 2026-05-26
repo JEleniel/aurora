@@ -124,13 +124,7 @@ pub(super) fn find_top_level_group_by_name(svg: &Element, name: &str) -> Option<
 }
 
 pub(super) fn sanitize_shape_group_in_place(group: &mut Element) {
-	if let Some(style) = group.attributes.get("style").cloned() {
-		if let Some(retained) = retained_inline_style(&style) {
-			group.attributes.insert("style".to_string(), retained);
-		} else {
-			group.attributes.remove("style");
-		}
-	}
+	retain_inline_style_attribute(group);
 	ensure_group_class(group, "aurora-symbol");
 	remove_inkscape_label_attribute(group);
 	sanitize_shape_children(&mut group.children);
@@ -155,41 +149,22 @@ fn retained_inline_style(style: &str) -> Option<String> {
 		let prop = prop.trim().to_ascii_lowercase();
 		let value = value.trim();
 
-		if prop == "fill-opacity" && value == "0" {
-			keep_fill_opacity_zero = true;
-			continue;
-		}
-
-		if prop == "fill" {
-			if value.eq_ignore_ascii_case("#00000000") {
+		match prop.as_str() {
+			"fill-opacity" if value == "0" => keep_fill_opacity_zero = true,
+			"fill" if value.eq_ignore_ascii_case("#00000000") => {
 				keep_fill_opacity_zero = true;
-			} else if value.eq_ignore_ascii_case("none") || is_black_six_fill(value) {
-				fill = None;
-			} else if !value.is_empty() {
-				fill = Some(value.to_string());
 			}
-			continue;
-		}
-
-		if prop == "stroke-opacity" && value == "0" {
-			keep_stroke_opacity_zero = true;
-			continue;
-		}
-
-		if prop == "stroke-dasharray" {
-			if !value.is_empty() && !value.eq_ignore_ascii_case("none") {
+			"fill" if value.eq_ignore_ascii_case("none") || is_black_six_fill(value) => {
+				fill = None;
+			}
+			"fill" if !value.is_empty() => fill = Some(value.to_string()),
+			"stroke-opacity" if value == "0" => keep_stroke_opacity_zero = true,
+			"stroke-dasharray" if !value.is_empty() && !value.eq_ignore_ascii_case("none") => {
 				dasharray = Some(value.to_string());
 			}
-			continue;
-		}
-
-		if prop == "stroke" {
-			if value.eq_ignore_ascii_case("#000000") {
-				stroke = None;
-			} else if !value.is_empty() {
-				stroke = Some(value.to_string());
-			}
-			continue;
+			"stroke" if value.eq_ignore_ascii_case("#000000") => stroke = None,
+			"stroke" if !value.is_empty() => stroke = Some(value.to_string()),
+			_ => {}
 		}
 	}
 
@@ -214,6 +189,17 @@ fn retained_inline_style(style: &str) -> Option<String> {
 		None
 	} else {
 		Some(format!("{};", out.join(";")))
+	}
+}
+
+fn retain_inline_style_attribute(element: &mut Element) {
+	let Some(style) = element.attributes.get("style").cloned() else {
+		return;
+	};
+	if let Some(retained) = retained_inline_style(&style) {
+		element.attributes.insert("style".to_string(), retained);
+	} else {
+		element.attributes.remove("style");
 	}
 }
 
@@ -302,21 +288,7 @@ fn sanitize_shape_children(children: &mut [XMLNode]) {
 		element.attributes.remove("id");
 		// Inkscape occasionally emits nodetypes attributes that are not meaningful for rendering.
 		remove_attributes_by_local_name(element, "nodetypes");
-		if local_name(&element.name).eq_ignore_ascii_case("g") {
-			if let Some(style) = element.attributes.get("style").cloned() {
-				if let Some(retained) = retained_inline_style(&style) {
-					element.attributes.insert("style".to_string(), retained);
-				} else {
-					element.attributes.remove("style");
-				}
-			}
-		} else if let Some(style) = element.attributes.get("style").cloned() {
-			if let Some(retained) = retained_inline_style(&style) {
-				element.attributes.insert("style".to_string(), retained);
-			} else {
-				element.attributes.remove("style");
-			}
-		}
+		retain_inline_style_attribute(element);
 		sanitize_shape_children(&mut element.children);
 	}
 }

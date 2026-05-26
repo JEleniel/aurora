@@ -6,12 +6,8 @@
 	"description": "As a customer I need the example model to include every canonical card and relationship so that tooling demonstrations are complete.",
 	"links": [
 		{
-			"relationship": "explains",
+			"relationship": "defines",
 			"target": "REQ-900"
-		},
-		{
-			"relationship": "implies",
-			"target": "CNS-900"
 		}
 	]
 }

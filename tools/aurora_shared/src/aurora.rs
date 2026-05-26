@@ -206,13 +206,21 @@ impl Aurora {
 			{
 				let loaded_model = match load_mode {
 					AuroraLoadMode::ReadOnly => super::LoadedModel {
-						model: Model::try_load(&entry.path(), &card_schema, &audit_schema)?,
+						model: Model::try_load(
+							&entry.path(),
+							&card_schema,
+							&audit_schema,
+							super::LoadMode::ReadOnly,
+						)?
+						.model,
 						audit_log_lock: None,
 					},
-					AuroraLoadMode::ReadWrite => {
-						Model::try_load_for_update(&entry.path(), &card_schema, &audit_schema)
-							.map_err(map_model_error)?
-					}
+					AuroraLoadMode::ReadWrite => Model::try_load(
+						&entry.path(),
+						&card_schema,
+						&audit_schema,
+						super::LoadMode::ReadWrite,
+					)?,
 				};
 
 				if let Some(lock) = loaded_model.audit_log_lock {
@@ -285,7 +293,7 @@ impl Aurora {
 	}
 
 	/// Check all models against the official registry and
-	/// emit warnings if they don't conf=orm
+	/// emit warnings if they don't conform
 	pub fn check_registry(&self) -> Vec<String> {
 		let mut warnings: Vec<String> = self.load_warnings.clone();
 
@@ -317,7 +325,7 @@ impl Aurora {
 		let mut errors: Vec<String> = self.load_validation_errors.clone();
 
 		for model in &self.models {
-			let model_errors = model.validate();
+			let model_errors = model.validate().errors;
 			if !model_errors.is_empty() {
 				errors.extend(
 					model_errors
@@ -338,6 +346,8 @@ impl Aurora {
 				errors.push(format!("Model {}: {}", model.root_card.id, error));
 			}
 		}
+
+		errors.extend(self.validate_domain_assignments());
 		errors.sort();
 		errors.dedup();
 		errors
@@ -378,8 +388,7 @@ impl Aurora {
 			std::fs::create_dir_all(&mission_dir)?;
 
 			let output_path = mission_dir.join("Compact.json");
-			let compact =
-				model.get_compact(Some("../schemas/Aurora.compact.schema.json".to_string()));
+			let compact = model.compact(Some("../schemas/Aurora.compact.schema.json".to_string()));
 			let output = serde_json::to_string_pretty(&compact)?;
 			std::fs::write(&output_path, output)?;
 			info!(
@@ -564,6 +573,22 @@ impl Aurora {
 		warnings.dedup();
 		warnings
 	}
+
+	fn validate_domain_assignments(&self) -> Vec<String> {
+		let Ok(domain_paths) = self.view_configuration.try_domain_paths() else {
+			return Vec::new();
+		};
+		let mut errors = Vec::new();
+		for definition in &self.card_registry.definitions {
+			if !domain_paths.contains_key(&definition.acronym) {
+				errors.push(format!(
+					"View configuration domains do not assign card acronym '{}' to a domain.",
+					definition.acronym
+				));
+			}
+		}
+		errors
+	}
 }
 
 fn read_svg_template(svgz_path: &Path, svg_path: &Path) -> Result<String, AuroraError> {
@@ -612,13 +637,6 @@ pub enum AuroraError {
 	RegistryError(#[from] RegistryError),
 	#[error("A backup error occurred: {0}")]
 	BackupError(#[from] crate::BackupError),
-}
-
-fn map_model_error(error: ModelError) -> AuroraError {
-	match error {
-		ModelError::ModelLocked(path) => AuroraError::ModelLocked(path),
-		other => AuroraError::ModelError(other),
-	}
 }
 
 fn svg_icon_group_is_empty(svg_template: &str, icon: &str) -> bool {

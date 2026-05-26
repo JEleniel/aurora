@@ -17,8 +17,6 @@ _No references defined._
 - realizes [CAP-005](../Capability/CAP-005-Maintain_Canonical_Registries.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

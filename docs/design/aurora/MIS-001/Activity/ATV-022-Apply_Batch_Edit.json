@@ -12,6 +12,10 @@
 		{
 			"relationship": "uses",
 			"target": "COM-007"
+		},
+		{
+			"relationship": "leads to",
+			"target": "ATV-001"
 		}
 	]
 }

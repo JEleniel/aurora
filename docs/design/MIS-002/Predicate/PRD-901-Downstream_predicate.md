@@ -15,13 +15,12 @@ _No references defined._
 ## Links
 
 - branches to [STA-900](../State/STA-900-Start_state.md)
-- emits [EVT-900](../Event/EVT-900-Example_event.md)
+- branches to [EVT-900](../Event/EVT-900-Example_event.md)
 
-
-## Version
 
 ## Audit Log
 
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T00:15:00Z | architect | create |
+| 2026-03-22T00:03:40Z | Copilot | change |

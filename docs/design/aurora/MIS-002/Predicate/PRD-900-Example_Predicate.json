@@ -14,7 +14,7 @@
 			"target": "PRD-901"
 		},
 		{
-			"relationship": "emits",
+			"relationship": "branches to",
 			"target": "EVT-901"
 		}
 	]

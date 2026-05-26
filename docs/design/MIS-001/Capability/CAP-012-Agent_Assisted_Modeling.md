@@ -18,8 +18,6 @@ _No references defined._
 - requires [PRO-013](../Process/PRO-013-Serve_Model_Tool_Surface_MCP.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

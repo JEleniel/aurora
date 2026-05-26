@@ -20,8 +20,6 @@ _No references defined._
 - drives [REQ-038](../Requirement/REQ-038-Document_Aurora_CLI_Interface.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

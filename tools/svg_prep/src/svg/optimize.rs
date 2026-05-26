@@ -136,12 +136,12 @@ fn strip_inkscape_attributes(element: &mut Element) {
 		}
 	}
 	for key in to_remove {
-		if key.eq_ignore_ascii_case("xlink:href") {
-			if let Some(value) = element.attributes.remove(&key) {
-				element.attributes.insert("href".to_string(), value);
-			}
-		} else {
+		if !key.eq_ignore_ascii_case("xlink:href") {
 			element.attributes.remove(&key);
+			continue;
+		}
+		if let Some(value) = element.attributes.remove(&key) {
+			element.attributes.insert("href".to_string(), value);
 		}
 	}
 
@@ -226,10 +226,9 @@ where
 		match node {
 			XMLNode::Element(mut child) => {
 				unwrap_matching_groups(&mut child, predicate);
-				if predicate(&child) {
-					new_children.extend(child.children);
-				} else {
-					new_children.push(XMLNode::Element(child));
+				match predicate(&child) {
+					true => new_children.extend(child.children),
+					false => new_children.push(XMLNode::Element(child)),
 				}
 			}
 			other => new_children.push(other),

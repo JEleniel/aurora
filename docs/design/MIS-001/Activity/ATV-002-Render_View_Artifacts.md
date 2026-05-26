@@ -18,8 +18,6 @@ _No references defined._
 - produces [ART-002](../Artifact/ART-002-View_Diagram_Artifacts.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

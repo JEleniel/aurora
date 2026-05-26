@@ -18,8 +18,6 @@ _No references defined._
 - imposes [CNS-001](../Constraint/CNS-001-Mission_Has_Outgoing_Links_Only.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -4,5 +4,22 @@
 	"card_type": "Threat Capability",
 	"name": "Example threat capability",
 	"description": "Threat capability used for coverage.",
-	"links": []
+	"links": [
+		{
+			"relationship": "impacts",
+			"target": "VIC-900"
+		},
+		{
+			"relationship": "impacts",
+			"target": "VIC-901"
+		},
+		{
+			"relationship": "impacts",
+			"target": "VIC-902"
+		},
+		{
+			"relationship": "impacts",
+			"target": "VIC-903"
+		}
+	]
 }

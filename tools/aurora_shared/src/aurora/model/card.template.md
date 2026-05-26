@@ -20,8 +20,6 @@
 
 {{links}}
 
-## Version
-
 {{version}}
 
 ## Audit Log

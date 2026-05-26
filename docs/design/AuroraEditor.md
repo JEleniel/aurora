@@ -74,7 +74,7 @@ This document specifies requirements and UX expectations for a standalone Aurora
 ### Views & Root Selection
 
 - The editor MUST be able to render any view defined in the model configuration file and ad hoc views.
-- View rendering (layout selection, depth assignment, packing, and orthogonal edge routing) MUST follow the requirements in `docs/design/ViewLayouts.md`.
+- View rendering MUST use the current Graphviz-backed renderer described in `docs/design/ViewLayouts.md`.
     - Architectural placement and ownership boundaries for rendering are defined in `docs/design/ViewRenderingArchitecture.md`.
 - View roots MUST follow the documented "root safety" rule:
     - A view root is a card that has descendants.
@@ -160,8 +160,8 @@ This document specifies requirements and UX expectations for a standalone Aurora
     - Tooling of a given major version MUST be able to load model homes created within that major version.
 - The editor MAY offer to upgrade a model home on load, but it MUST be able to work with the model without upgrading.
 - Incompatible models are detected via schema validation (behavior defined in Aurora/).
-- `reference/Aurora.modelconfiguration.json` MUST include a `version` property so tooling can identify the exact registry version.
-    - This requires an update to the matching schema.
+- `reference/Aurora.modelconfiguration.json` and `reference/Aurora.viewconfiguration.json` MUST include a `version` property so tooling can identify the exact registry versions.
+    - This requires updates to the matching schemas.
     - This may require changes to the `aurora_shared` library.
 
 ### Model Configuration and Appearance Customization

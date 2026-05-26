@@ -4,7 +4,7 @@ use std::collections::{BTreeSet, VecDeque};
 use std::path::Path;
 
 use aurora_shared::{
-	Card, CardRef, CardRegistry, ModelHomeSession, ModelHomeSessionError, ModelIndex,
+	Card, CardError, CardRef, CardRegistry, ModelHomeSession, ModelHomeSessionError, ModelIndex,
 	ModelIndexError, ModelRootCard, RegistryError, SvgTemplateDefsError, load_svg_template,
 };
 use thiserror::Error;
@@ -84,6 +84,12 @@ impl EditorSession {
 			self.model_home_session
 				.load_card_by_relative_path(&relative_path)?,
 		))
+	}
+
+	/// Persist a fully materialized card back to its source path.
+	pub fn save_card(&self, card: &Card) -> Result<(), EditorSessionError> {
+		card.write(card.source_path.as_path())?;
+		Ok(())
 	}
 
 	/// Resolve cards that link directly to the provided card ID.
@@ -200,6 +206,8 @@ pub enum EditorSessionError {
 	Registry(#[from] RegistryError),
 	#[error("SVG template failed: {0}")]
 	SvgTemplate(#[from] SvgTemplateDefsError),
+	#[error("Card write failed: {0}")]
+	CardWrite(#[from] CardError),
 }
 
 #[cfg(test)]

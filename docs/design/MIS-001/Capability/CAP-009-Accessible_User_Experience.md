@@ -17,8 +17,6 @@ _No references defined._
 - requires [PRO-009](../Process/PRO-009-Apply_Editor_Preferences.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

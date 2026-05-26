@@ -7,10 +7,6 @@
 	"description": "The svg_prep executable used to generate/update Aurora SVG reference assets (Icons.svg and SVGTemplate.svg defs) and synchronize the icon list in Aurora.modelconfiguration.json.",
 	"links": [
 		{
-			"relationship": "implements",
-			"target": "FEA-006"
-		},
-		{
 			"relationship": "produces",
 			"target": "ART-009"
 		},

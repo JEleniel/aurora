@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use super::types::{Layout, LayoutEdge, LayoutFamily, LayoutNode};
+use super::types::{Layout, LayoutCoordinateSpace, LayoutEdge, LayoutFamily, LayoutNode};
 
 #[test]
 fn layout_types_hold_values() {
@@ -19,8 +19,10 @@ fn layout_types_hold_values() {
 	}];
 	let layout = Layout {
 		family: None,
+		coordinate_space: LayoutCoordinateSpace::Grid,
 		nodes,
 		edges,
+		routes: HashMap::new(),
 	};
 
 	let node = layout.nodes.get("A").expect("node missing");
@@ -32,8 +34,10 @@ fn layout_types_hold_values() {
 fn layout_types_handle_missing_nodes() {
 	let layout = Layout {
 		family: None,
+		coordinate_space: LayoutCoordinateSpace::Grid,
 		nodes: HashMap::new(),
 		edges: Vec::new(),
+		routes: HashMap::new(),
 	};
 
 	assert!(!layout.nodes.contains_key("missing"));
@@ -56,8 +60,10 @@ fn layout_types_are_deterministic_on_clone() {
 	}];
 	let layout = Layout {
 		family: None,
+		coordinate_space: LayoutCoordinateSpace::Grid,
 		nodes,
 		edges,
+		routes: HashMap::new(),
 	};
 	let clone = layout.clone();
 
@@ -72,15 +78,11 @@ fn layout_types_are_deterministic_on_clone() {
 fn layout_family_parse_is_case_insensitive() {
 	assert_eq!(
 		LayoutFamily::parse("vertical-tree"),
-		Some(LayoutFamily::VerticalTree)
+		Some(LayoutFamily::TreeTopDown)
 	);
 	assert_eq!(
 		LayoutFamily::parse("Horizontal"),
-		Some(LayoutFamily::HorizontalTree)
-	);
-	assert_eq!(
-		LayoutFamily::parse("RADIAL_SUBTREE"),
-		Some(LayoutFamily::RadialSubtree)
+		Some(LayoutFamily::TreeLeftRight)
 	);
 	assert_eq!(LayoutFamily::parse("unknown"), None);
 }
@@ -89,11 +91,7 @@ fn layout_family_parse_is_case_insensitive() {
 fn layout_family_order_matches_tie_break_precedence() {
 	assert_eq!(
 		LayoutFamily::ordered(),
-		&[
-			LayoutFamily::VerticalTree,
-			LayoutFamily::HorizontalTree,
-			LayoutFamily::RadialSubtree,
-		]
+		&[LayoutFamily::TreeTopDown, LayoutFamily::TreeLeftRight]
 	);
 }
 

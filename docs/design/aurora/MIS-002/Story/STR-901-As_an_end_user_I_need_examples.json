@@ -6,7 +6,7 @@
 	"description": "As an end user I need a representative example model to understand the vocabulary and links.",
 	"links": [
 		{
-			"relationship": "explains",
+			"relationship": "defines",
 			"target": "REQ-900"
 		}
 	]

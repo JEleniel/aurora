@@ -15,7 +15,13 @@ pub use background::*;
 pub use backup::*;
 pub use model_home_session::*;
 pub use model_index::*;
-pub use registry::{CardRegistry, RegistryError};
+pub use registry::{
+	CardRegistry, MODEL_CONFIGURATION_VERSION, ModelConfiguration,
+	ModelConfigurationCardDefinition, ModelConfigurationCommonPropertyDefinition,
+	ModelConfigurationRelationshipDefinition, RegistryError, VIEW_CONFIGURATION_VERSION,
+	ViewConfiguration, ViewConfigurationCardDefinition, ViewDefinition, ViewDomainDefinition,
+	ViewSubdomainDefinition,
+};
 pub use render::render_error;
 pub use render::{
 	FocusedGraph, FocusedGraphDocument, FocusedGraphHotspot, FocusedGraphRole, Layout, LayoutEdge,

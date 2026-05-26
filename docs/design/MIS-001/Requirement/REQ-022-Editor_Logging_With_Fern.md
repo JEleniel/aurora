@@ -18,8 +18,6 @@ _No references defined._
 - imposes [CNS-006](../Constraint/CNS-006-Fern_Logging.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

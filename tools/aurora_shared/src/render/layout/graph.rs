@@ -38,6 +38,7 @@ pub(super) fn build_graph(
 
 	let mut edges = collect_edges(&allowed_nodes, &cards_by_id)?;
 	let (mut outgoing, incoming) = build_adjacency(&allowed_nodes, &edges);
+	roots = filter_declared_roots(roots.as_slice(), &outgoing);
 	let mut incoming_count = compute_incoming_count(&allowed_nodes, &incoming);
 
 	// Expand roots to keep filtered subgraphs layout-able (nodes can lose all incoming edges
@@ -111,6 +112,43 @@ pub(super) fn validate_graph(graph: &LayoutGraph) -> Result<(), RenderError> {
 	}
 
 	Ok(())
+}
+
+fn filter_declared_roots(roots: &[String], outgoing: &HashMap<String, Vec<String>>) -> Vec<String> {
+	let mut filtered = Vec::new();
+	for root in roots {
+		let mut nested = false;
+		for candidate_parent in roots {
+			if candidate_parent == root {
+				continue;
+			}
+			if reaches_node(candidate_parent, root, outgoing) {
+				nested = true;
+				break;
+			}
+		}
+		if !nested {
+			filtered.push(root.clone());
+		}
+	}
+	filtered
+}
+
+fn reaches_node(start: &str, target: &str, outgoing: &HashMap<String, Vec<String>>) -> bool {
+	let mut stack = outgoing.get(start).cloned().unwrap_or_default();
+	let mut visited: HashSet<String> = HashSet::new();
+	while let Some(node_id) = stack.pop() {
+		if node_id == target {
+			return true;
+		}
+		if !visited.insert(node_id.clone()) {
+			continue;
+		}
+		for next in outgoing.get(&node_id).cloned().unwrap_or_default() {
+			stack.push(next);
+		}
+	}
+	false
 }
 
 fn expand_roots_for_layout(

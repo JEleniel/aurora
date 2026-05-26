@@ -43,16 +43,13 @@ pub(super) fn extract_url_ids(value: &str) -> Vec<String> {
 	while let Some(rel) = value[cursor..].find("url(#") {
 		let start = cursor + rel;
 		let id_start = start + "url(#".len();
-		let mut id_end = id_start;
-		for ch in value[id_start..].chars() {
-			if !is_svg_id_char(ch) {
-				break;
-			}
-			id_end += ch.len_utf8();
-		}
-		let id = value[id_start..id_end].to_string();
+		let id: String = value[id_start..]
+			.chars()
+			.take_while(|ch| is_svg_id_char(*ch))
+			.collect();
+		let id_len = id.len();
 		ids.push(id);
-		cursor = id_end;
+		cursor = id_start + id_len;
 	}
 	ids
 }
@@ -83,23 +80,17 @@ fn rewrite_url_reference_ids(value: &str, id_map: &HashMap<String, String>) -> S
 		let start = cursor + rel;
 		let id_start = start + "url(#".len();
 		out.push_str(&value[cursor..id_start]);
-
-		let mut id_end = id_start;
-		for ch in value[id_start..].chars() {
-			if !is_svg_id_char(ch) {
-				break;
-			}
-			id_end += ch.len_utf8();
-		}
-
-		let id = &value[id_start..id_end];
-		if let Some(prefixed) = id_map.get(id) {
+		let id: String = value[id_start..]
+			.chars()
+			.take_while(|ch| is_svg_id_char(*ch))
+			.collect();
+		if let Some(prefixed) = id_map.get(&id) {
 			out.push_str(prefixed);
 		} else {
-			out.push_str(id);
+			out.push_str(&id);
 		}
 
-		cursor = id_end;
+		cursor = id_start + id.len();
 	}
 
 	if cursor == 0 {

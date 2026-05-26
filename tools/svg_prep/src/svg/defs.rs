@@ -30,15 +30,17 @@ pub(super) fn replace_defs_section(svg: &mut Element, defs_children: Vec<Element
 	let mut first_index = None;
 	let mut trailing = Vec::new();
 	for (index, node) in svg.children.iter().enumerate() {
-		if let XMLNode::Element(element) = node
-			&& is_defs_tag(&element.name)
-		{
-			if first_index.is_none() {
-				first_index = Some(index);
-			} else {
-				trailing.push(index);
-			}
+		let XMLNode::Element(element) = node else {
+			continue;
+		};
+		if !is_defs_tag(&element.name) {
+			continue;
 		}
+		if first_index.is_none() {
+			first_index = Some(index);
+			continue;
+		}
+		trailing.push(index);
 	}
 
 	if let Some(index) = first_index {

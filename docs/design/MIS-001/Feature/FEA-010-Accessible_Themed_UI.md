@@ -17,8 +17,6 @@ _No references defined._
 - realizes [CAP-009](../Capability/CAP-009-Accessible_User_Experience.md)
 
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

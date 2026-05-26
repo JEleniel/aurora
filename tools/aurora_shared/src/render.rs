@@ -19,6 +19,16 @@ use tracing::{info, warn};
 
 /// Render all views for the provided Aurora models.
 pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
+	render_with_dot_output(aurora, output_dir, None)
+}
+
+/// Render all views and optionally emit the Graphviz DOT used for each rendered SVG.
+pub fn render_with_dot_output(
+	aurora: &Aurora,
+	output_dir: &Path,
+	dot_output_dir: Option<&Path>,
+) -> Result<(), RenderError> {
+	let domain_paths = aurora.view_configuration.try_domain_paths().ok();
 	let view_definitions = match aurora.view_registry.try_get_all() {
 		Ok(defs) => defs,
 		Err(err) => {
@@ -53,7 +63,7 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 			}
 
 			let included_types = union_view_card_types(view);
-			let layout_result = match preferred_layout_family(view.name.as_str()) {
+			let layout_result = match view.layout {
 				Some(family) => layout_model_with_family(
 					model,
 					&view.root_card_types,
@@ -98,6 +108,23 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 			} else {
 				view_slug
 			};
+			let layout_family = layout.family.unwrap_or(LayoutFamily::TreeTopDown);
+			if let Some(dot_root) = dot_output_dir {
+				let dot_path = write_view_dot(
+					dot_root,
+					model,
+					view,
+					included_types.as_slice(),
+					layout_family,
+					view_slug.as_str(),
+				)?;
+				info!(
+					"Wrote DOT for view '{}' for {} to {}",
+					view.name,
+					model.root_card.id,
+					dot_path.display()
+				);
+			}
 			let output_path = views_dir.join(format!("{}.svg", view_slug));
 
 			match svg::Svg::write_to_file(
@@ -106,7 +133,10 @@ pub fn render(aurora: &Aurora, output_dir: &Path) -> Result<(), RenderError> {
 				&layout,
 				&aurora.card_registry,
 				&aurora.svg_template,
-				None,
+				domain_paths.as_ref().map(|paths| svg::SvgConfig {
+					domain_paths_by_acronym: paths.clone(),
+					..svg::SvgConfig::default()
+				}),
 			) {
 				Ok(()) => {
 					info!(
@@ -172,58 +202,46 @@ fn sanitize_filename(name: &str) -> String {
 	out.trim_matches('_').to_string()
 }
 
-fn preferred_layout_family(view_name: &str) -> Option<LayoutFamily> {
-	if matches_any(
-		view_name,
-		&[
-			"Compliance Governance",
-			"Requirements",
-			"Security",
-			"Traceability",
-		],
-	) {
-		return Some(LayoutFamily::VerticalTree);
-	}
-	if matches_any(
-		view_name,
-		&["Deployment", "Process", "Landscape", "State Machine"],
-	) {
-		return Some(LayoutFamily::HorizontalTree);
-	}
-	if matches_any(view_name, &["Component", "Entire Model", "Context"]) {
-		return Some(LayoutFamily::RadialSubtree);
-	}
-	None
-}
-
-fn matches_any(value: &str, candidates: &[&str]) -> bool {
-	candidates
-		.iter()
-		.any(|candidate| candidate.eq_ignore_ascii_case(value.trim()))
+fn write_view_dot(
+	dot_root: &Path,
+	model: &crate::Model,
+	view: &ViewDefinition,
+	included_types: &[String],
+	family: LayoutFamily,
+	view_slug: &str,
+) -> Result<std::path::PathBuf, RenderError> {
+	let views_dir = dot_root.join(model.root_card.id.as_str()).join("Views");
+	std::fs::create_dir_all(&views_dir)?;
+	let dot = build_layout_dot_with_family(model, &view.root_card_types, included_types, family)?;
+	let dot_path = views_dir.join(format!("{}.dot", view_slug));
+	std::fs::write(&dot_path, dot)?;
+	Ok(dot_path)
 }
 
 #[cfg(test)]
 mod tests {
-	use super::{LayoutFamily, preferred_layout_family};
+	use super::LayoutFamily;
+	use crate::registry::ViewDefinition;
 
-	#[test]
-	fn preferred_layout_family_maps_canonical_views() {
-		assert_eq!(
-			preferred_layout_family("Requirements"),
-			Some(LayoutFamily::VerticalTree)
-		);
-		assert_eq!(
-			preferred_layout_family("Process"),
-			Some(LayoutFamily::HorizontalTree)
-		);
-		assert_eq!(
-			preferred_layout_family("Entire Model"),
-			Some(LayoutFamily::RadialSubtree)
-		);
+	fn view_definition(name: &str, layout: Option<LayoutFamily>) -> ViewDefinition {
+		ViewDefinition {
+			description: "desc".to_string(),
+			included_card_types: vec!["MIS".to_string()],
+			layout,
+			name: name.to_string(),
+			root_card_types: vec!["MIS".to_string()],
+		}
 	}
 
 	#[test]
-	fn preferred_layout_family_returns_none_for_unmapped_views() {
-		assert_eq!(preferred_layout_family("Use Case"), None);
+	fn configured_view_layout_preserves_explicit_setting() {
+		let view = view_definition("Requirements", Some(LayoutFamily::TreeLeftRight));
+		assert_eq!(view.layout, Some(LayoutFamily::TreeLeftRight));
+	}
+
+	#[test]
+	fn configured_view_layout_can_be_absent() {
+		let view = view_definition("Requirements", None);
+		assert_eq!(view.layout, None);
 	}
 }

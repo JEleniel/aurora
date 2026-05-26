@@ -16,8 +16,6 @@ _No references defined._
 
 _No links defined._
 
-## Version
-
 ## Audit Log
 
 | Timestamp | Editor | Change |

@@ -167,8 +167,10 @@ fn focused_layout(graph: &FocusedGraph) -> Layout {
 	insert_role_row(&mut nodes, graph.siblings.as_slice(), 0, true);
 	Layout {
 		family: None,
+		coordinate_space: crate::render::LayoutCoordinateSpace::Grid,
 		nodes,
 		edges: visible_edges(graph),
+		routes: HashMap::new(),
 	}
 }
 

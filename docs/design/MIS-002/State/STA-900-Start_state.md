@@ -15,14 +15,13 @@ _No references defined._
 ## Links
 
 - transitions to [STA-901](STA-901-End_state.md)
-- evaluates [PRD-900](../Predicate/PRD-900-Example_predicate.md)
-- handles [EVT-900](../Event/EVT-900-Example_event.md)
+- triggers [PRD-900](../Predicate/PRD-900-Example_predicate.md)
+- triggers [EVT-900](../Event/EVT-900-Example_event.md)
 
-
-## Version
 
 ## Audit Log
 
 | Timestamp | Editor | Change |
 |-----------|--------|--------|
 | 2026-02-18T00:15:00Z | architect | create |
+| 2026-03-22T00:03:40Z | Copilot | change |

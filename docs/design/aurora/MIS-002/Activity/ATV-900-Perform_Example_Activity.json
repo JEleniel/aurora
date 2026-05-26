@@ -10,20 +10,12 @@
 			"target": "ATV-901"
 		},
 		{
-			"relationship": "receives",
+			"relationship": "causes",
 			"target": "TRG-900"
 		},
 		{
 			"relationship": "triggers",
 			"target": "CON-900"
-		},
-		{
-			"relationship": "uses",
-			"target": "COM-900"
-		},
-		{
-			"relationship": "produces",
-			"target": "ART-902"
 		}
 	]
 }

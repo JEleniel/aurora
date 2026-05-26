@@ -43,8 +43,15 @@ where
 }
 
 fn shared_runtime() -> Result<&'static Runtime, BackgroundRuntimeError> {
-	static RUNTIME: OnceLock<Result<Runtime, String>> = OnceLock::new();
-	match RUNTIME.get_or_init(|| build_runtime().map_err(|error| error.to_string())) {
+	static RUNTIME: OnceLock<Result<&'static Runtime, String>> = OnceLock::new();
+	match RUNTIME.get_or_init(|| {
+		build_runtime()
+			.map(|runtime| {
+				let runtime: &'static Runtime = Box::leak(Box::new(runtime));
+				runtime
+			})
+			.map_err(|error| error.to_string())
+	}) {
 		Ok(runtime) => Ok(runtime),
 		Err(message) => Err(BackgroundRuntimeError::RuntimeInitialization(
 			message.clone(),
@@ -54,12 +61,12 @@ fn shared_runtime() -> Result<&'static Runtime, BackgroundRuntimeError> {
 
 fn build_runtime() -> Result<Runtime, BackgroundRuntimeError> {
 	let worker_threads = background_worker_threads();
-	Builder::new_multi_thread()
+	Ok(Builder::new_multi_thread()
 		.thread_name("aurora-bg")
 		.worker_threads(worker_threads)
 		.enable_all()
 		.build()
-		.map_err(|error| BackgroundRuntimeError::RuntimeInitialization(error.to_string()))
+		.map_err(|error| BackgroundRuntimeError::RuntimeInitialization(error.to_string()))?)
 }
 
 fn background_worker_threads() -> usize {
