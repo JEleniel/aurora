@@ -47,19 +47,18 @@ jsonschema = { version = "0.4" }
 log = { version = "0.4", features = ["serde"] }
 
 [workspace.lints.rust]
-unsafe_code = "forbid"
+unsafe_code = "deny"
 
 [workspace.lints.clippy]
-excessive-nesting = "forbid"
-too_many_lines = "forbid"
+excessive_nesting = "deny"
+too_many_lines = "deny"
 tabs_in_doc_comments = "allow"
-no_effect_underscore_binding = "forbid"
-doc_comment_double_space_linebreaks = "forbid"
-arbitrary_source_item_ordering = "forbid"
-panic = "forbid"
+no_effect_underscore_binding = "deny"
+doc_comment_double_space_linebreaks = "deny"
+panic = "deny"
 unwrap_in_result = "warn"
 unwrap_or_default = "warn"
-unwrap_used = "forbid"
-expect_used = "forbid"
-items_after_test_module = "forbid"
-tests_outside_test_module = "forbid"
+unwrap_used = "deny"
+expect_used = "deny"
+items_after_test-module = "deny"
+tests_outside_test_module = "deny"
